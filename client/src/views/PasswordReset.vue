@@ -8,7 +8,7 @@
                     type="email"
                     v-model="email"
                     id="email"
-                    placeholder="Enter Email"
+                    placeholder="Enter email..."
                     autocomplete="email"
                     autofocus
                 ></b-form-input>
@@ -30,7 +30,7 @@
                     type="text"
                     v-model="secretCode"
                     id="secretCode"
-                    placeholder="Enter code received by email"
+                    placeholder="Enter code received by email..."
                     autofocus
                 ></b-form-input>
                 <label for="password">Password</label>
@@ -39,7 +39,7 @@
                         :type="passwordType"
                         v-model="password"
                         id="password"
-                        placeholder="Enter Password"
+                        placeholder="Enter password..."
                         autocomplete="new-password"
                         aria-describedby="password-help-block"
                     ></b-form-input>
@@ -66,7 +66,7 @@
                         :type="passwordType"
                         v-model="password2"
                         id="password2"
-                        placeholder="Repeat Password"
+                        placeholder="Repeat password..."
                         autocomplete="new-password"
                     ></b-form-input>
                     <b-input-group-append is-text>

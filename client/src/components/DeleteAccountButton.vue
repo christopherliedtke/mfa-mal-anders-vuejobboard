@@ -35,7 +35,7 @@
                             :type="passwordType"
                             v-model="password"
                             id="password"
-                            placeholder="Enter Password"
+                            placeholder="Enter password..."
                             autocomplete="current-password"
                         ></b-form-input>
                         <b-input-group-append is-text>

@@ -7,7 +7,7 @@
                 type="email"
                 v-model="email"
                 id="email"
-                placeholder="Enter Email"
+                placeholder="Enter email..."
                 autocomplete="email"
                 autofocus
             ></b-form-input>
@@ -17,7 +17,7 @@
                     :type="passwordType"
                     v-model="password"
                     id="password"
-                    placeholder="Enter Password"
+                    placeholder="Enter password..."
                     autocomplete="current-password"
                 ></b-form-input>
                 <b-input-group-append is-text>
@@ -33,7 +33,7 @@
                 </b-input-group-append>
             </b-input-group>
 
-            <button class="btn btn-primary my-3" @click="onSubmit">
+            <button class="btn btn-primary my-3" @click.prevent="onSubmit">
                 Login
             </button>
             <p>
@@ -62,8 +62,7 @@ export default {
     name: "Login",
     methods: {
         ...mapActions(["userAuth"]),
-        async onSubmit(e) {
-            e.preventDefault();
+        async onSubmit() {
             const res = await this.userAuth({
                 url: "/api/auth/login",
                 userData: {

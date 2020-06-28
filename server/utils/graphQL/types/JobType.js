@@ -11,10 +11,22 @@ const {
 const JobType = new GraphQLObjectType({
     name: "Job",
     fields: () => ({
-        id: {
+        _id: {
+            type: GraphQLString,
+        },
+        userId: {
             type: GraphQLString,
         },
         title: {
+            type: GraphQLString,
+        },
+        description: {
+            type: GraphQLString,
+        },
+        status: {
+            type: GraphQLString,
+        },
+        dateCreated: {
             type: GraphQLString,
         },
     }),

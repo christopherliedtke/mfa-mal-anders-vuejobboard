@@ -1,24 +1,29 @@
 const express = require("express");
 const router = express.Router();
 const expressGraphQL = require("express-graphql");
-const allJobsSchema = require("../utils/graphQL/schemas/allJobsSchema");
+const publicJobsSchema = require("../utils/graphQL/schemas/publicJobsSchema");
+const privateJobsSchema = require("../utils/graphQL/schemas/privateJobsSchema");
+const authenticateToken = require("../utils/middleware/checkAuth");
 
-// #route:  GET /api/jobs
-// #desc:   Get all jobs
+// #route:  POST /api/jobs/public
+// #desc:   Get jobs available to public
 // #access: Public
-// router.get("/", async (req, res) => {
-//     res.json({
-//         jobs: [
-//             { id: 1, title: "Job 1" },
-//             { id: 2, title: "Job 2" },
-//         ],
-//     });
-// });
-
 router.use(
-    "/all",
+    "/public",
     expressGraphQL({
-        schema: allJobsSchema,
+        schema: publicJobsSchema,
+        graphiql: true,
+    })
+);
+
+// #route:  POST /api/jobs/private
+// #desc:   CRUD jobs to private
+// #access: Private
+router.use(
+    "/private",
+    authenticateToken,
+    expressGraphQL({
+        schema: privateJobsSchema,
         graphiql: true,
     })
 );

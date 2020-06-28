@@ -20,9 +20,9 @@
                     >
                     <b-nav-item to="/account" v-if="userId"
                         ><b-icon
-                            class="mr-1"
+                            class="mr-2"
                             icon="person-circle"
-                            font-scale="1.4"
+                            font-scale="1.3"
                         ></b-icon
                         >Account</b-nav-item
                     >

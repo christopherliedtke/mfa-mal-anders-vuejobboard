@@ -8,7 +8,7 @@
                     type="text"
                     v-model="firstName"
                     id="firstName"
-                    placeholder="Enter First Name"
+                    placeholder="Enter first name..."
                     autocomplete="given-name"
                     autofocus
                 ></b-form-input>
@@ -17,7 +17,7 @@
                     type="text"
                     v-model="lastName"
                     id="lastName"
-                    placeholder="Enter Last Name"
+                    placeholder="Enter last name..."
                     autocomplete="family-name"
                 ></b-form-input>
                 <label for="email">Email</label>
@@ -25,7 +25,7 @@
                     type="email"
                     v-model="email"
                     id="email"
-                    placeholder="Enter Email"
+                    placeholder="Enter email..."
                     autocomplete="email"
                 ></b-form-input>
                 <label for="password">Password</label>
@@ -34,7 +34,7 @@
                         :type="passwordType"
                         v-model="password"
                         id="password"
-                        placeholder="Enter Password"
+                        placeholder="Enter password..."
                         autocomplete="new-password"
                         aria-describedby="password-help-block"
                     ></b-form-input>
@@ -61,7 +61,7 @@
                         :type="passwordType"
                         v-model="password2"
                         id="password2"
-                        placeholder="Repeat Password"
+                        placeholder="Repeat password..."
                         autocomplete="new-password"
                     ></b-form-input>
                     <b-input-group-append is-text>
@@ -86,7 +86,7 @@
                 >
                     I accept the terms of use
                 </b-form-checkbox>
-                <button class="btn btn-primary my-3" @click="onSubmit">
+                <button class="btn btn-primary my-3" @click.prevent="onSubmit">
                     Register
                 </button>
                 <p>
@@ -113,8 +113,7 @@ export default {
     name: "Register",
     methods: {
         ...mapActions(["userAuth"]),
-        async onSubmit(e) {
-            e.preventDefault();
+        async onSubmit() {
             this.showOverlay = true;
 
             const res = await this.userAuth({
