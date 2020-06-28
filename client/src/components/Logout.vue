@@ -17,7 +17,7 @@
     <!-- <div
         class="align-self-start align-self-lg-center d-flex align-items-center"
     > -->
-    <b-icon icon="box-arrow-right" font-scale="1.4" @click="onLogout"></b-icon>
+    <b-icon icon="box-arrow-right" font-scale="1.3" @click="onLogout"></b-icon>
     <!-- </div> -->
 </template>
 

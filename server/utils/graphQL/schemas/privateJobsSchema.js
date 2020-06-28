@@ -9,13 +9,6 @@ const {
 const JobType = require("../types/JobType");
 const { Job } = require("../../models/job");
 
-// Hardcoded data
-const jobs = [
-    { id: "1", title: "Jobtitle 1" },
-    { id: "2", title: "Job 2" },
-    { id: "3", title: "Job 3" },
-];
-
 // #Root Query
 const RootQuery = new GraphQLObjectType({
     name: "RootQueryType",
@@ -25,17 +18,20 @@ const RootQuery = new GraphQLObjectType({
             args: {
                 id: { type: GraphQLString },
             },
-            resolve(parentValue, args) {
-                for (let i = 0; i < jobs.length; i++) {
-                    if (jobs[i].id == args.id) {
-                        return jobs[i];
-                    }
-                }
+            async resolve(parentValue, args, req) {
+                const job = await Job.findOne({
+                    _id: args.id,
+                    userId: req.userId,
+                });
+                return job;
             },
         },
         jobs: {
             type: new GraphQLList(JobType),
-            resolve(parentValue, args) {
+            async resolve(parentValue, args, req) {
+                const jobs = await Job.find({ userId: req.userId }).sort({
+                    dateCreated: "desc",
+                });
                 return jobs;
             },
         },
@@ -54,9 +50,6 @@ const mutation = new GraphQLObjectType({
                 description: { type: new GraphQLNonNull(GraphQLString) },
             },
             async resolve(parentValue, args, req) {
-                console.log("args: ", args);
-                console.log("req.userId: ", req.userId);
-
                 const newJob = new Job({
                     userId: req.userId,
                     title: args.title,
@@ -64,8 +57,6 @@ const mutation = new GraphQLObjectType({
                 });
 
                 const response = await newJob.save();
-
-                console.log("response: ", response);
 
                 return response;
             },

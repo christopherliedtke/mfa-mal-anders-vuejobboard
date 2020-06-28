@@ -2,9 +2,20 @@
     <div class="home container py-5">
         <h2>Home</h2>
         <div>
-            <div v-for="job in jobs" :key="job.id">
-                <p>{{ job.title }}</p>
-            </div>
+            <b-card
+                v-for="job in jobs"
+                :key="job.id"
+                :title="job.title"
+                :sub-title="
+                    new Date(parseInt(job.dateCreated)).toLocaleString()
+                "
+                class="my-3"
+            >
+                <b-card-text>
+                    <p>{{ job.description }}</p>
+                    <a href="#" class="card-link">Card link</a>
+                </b-card-text>
+            </b-card>
         </div>
     </div>
 </template>
@@ -24,8 +35,10 @@ export default {
             query: `
                 query {
                     jobs {
-                        id
+                        _id
                         title
+                        description
+                        dateCreated
                     }
                 }
             `

@@ -7,13 +7,7 @@ const {
     GraphQLNonNull,
 } = require("graphql");
 const JobType = require("../types/JobType");
-
-// Hardcoded data
-const jobs = [
-    { id: "1", title: "Jobtitle 1" },
-    { id: "2", title: "Job 2" },
-    { id: "3", title: "Job 3" },
-];
+const { Job } = require("../../models/job");
 
 // #Root Query
 const RootQuery = new GraphQLObjectType({
@@ -24,17 +18,22 @@ const RootQuery = new GraphQLObjectType({
             args: {
                 id: { type: GraphQLString },
             },
-            resolve(parentValue, args) {
-                for (let i = 0; i < jobs.length; i++) {
-                    if (jobs[i].id == args.id) {
-                        return jobs[i];
-                    }
-                }
+            // !change status to "published"
+            async resolve(parentValue, args) {
+                const job = await Job.findOne({
+                    _id: args.id,
+                    status: "draft",
+                });
+                return job;
             },
         },
         jobs: {
             type: new GraphQLList(JobType),
-            resolve(parentValue, args) {
+            // !change status to "published"
+            async resolve(parentValue, args) {
+                const jobs = await Job.find({ status: "draft" }).sort({
+                    dateCreated: "desc",
+                });
                 return jobs;
             },
         },
