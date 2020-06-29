@@ -4,6 +4,7 @@ Vue.use(VueRouter);
 import store from "@/store";
 
 import Home from "@/views/Home.vue";
+import Jobboard from "@/views/Jobboard.vue";
 import Dashboard from "@/views/Dashboard.vue";
 import NewJob from "@/views/NewJob.vue";
 import Account from "@/views/Account.vue";
@@ -18,6 +19,14 @@ const routes = [
         path: "/",
         name: "Home",
         component: Home,
+        meta: {
+            public: true
+        }
+    },
+    {
+        path: "/jobboard",
+        name: "Jobboard",
+        component: Jobboard,
         meta: {
             public: true
         }

@@ -18,20 +18,18 @@ const RootQuery = new GraphQLObjectType({
             args: {
                 id: { type: GraphQLString },
             },
-            // !change status to "published"
             async resolve(parentValue, args) {
                 const job = await Job.findOne({
                     _id: args.id,
-                    status: "draft",
+                    status: "published",
                 });
                 return job;
             },
         },
         jobs: {
             type: new GraphQLList(JobType),
-            // !change status to "published"
             async resolve(parentValue, args) {
-                const jobs = await Job.find({ status: "draft" }).sort({
+                const jobs = await Job.find({ status: "published" }).sort({
                     dateCreated: "desc",
                 });
                 return jobs;

@@ -48,18 +48,18 @@
 </template>
 
 <script>
-import axios from "@/axios";
-export default {
-    name: "NewJob",
-    methods: {
-        async onSubmit() {
-            if (!this.formValidation()) {
-                return null;
-            }
+    import axios from "@/axios";
+    export default {
+        name: "NewJob",
+        methods: {
+            async onSubmit() {
+                if (!this.formValidation()) {
+                    return null;
+                }
 
-            this.showOverlay = true;
-            const response = await axios.post("/api/jobs/private", {
-                query: `
+                this.showOverlay = true;
+                const response = await axios.post("/api/jobs/private", {
+                    query: `
                     mutation {
                         addJob(title: "${this.form.title}", description: "${this.form.description}") {
                             _id
@@ -71,45 +71,47 @@ export default {
                         }
                     }
                 `
-            });
-            this.showOverlay = false;
+                });
+                this.showOverlay = false;
 
-            console.log(
-                "response.data.data.addJob: ",
-                response.data.data.addJob
-            );
+                console.log(
+                    "response.data.data.addJob: ",
+                    response.data.data.addJob
+                );
 
-            if (!response.data.data.addJob) {
-                this.error = "Oh, something went wrong. Please try again!";
-            } else {
-                this.validated = false;
-                this.formReset();
-                this.success = true;
-            }
-        },
-        formValidation() {
-            this.validated = true;
-            return !this.form.title || !this.form.description ? false : true;
-        },
-        formReset() {
-            for (const key in this.form) {
-                this.form[key] = "";
-            }
-        }
-    },
-    data() {
-        return {
-            form: {
-                title: "",
-                description: ""
+                if (!response.data.data.addJob) {
+                    this.error = "Oh, something went wrong. Please try again!";
+                } else {
+                    this.validated = false;
+                    this.formReset();
+                    this.success = true;
+                }
             },
-            validated: false,
-            showOverlay: false,
-            success: "",
-            error: ""
-        };
-    }
-};
+            formValidation() {
+                this.validated = true;
+                return !this.form.title || !this.form.description
+                    ? false
+                    : true;
+            },
+            formReset() {
+                for (const key in this.form) {
+                    this.form[key] = "";
+                }
+            }
+        },
+        data() {
+            return {
+                form: {
+                    title: "",
+                    description: ""
+                },
+                validated: false,
+                showOverlay: false,
+                success: "",
+                error: ""
+            };
+        }
+    };
 </script>
 
 <style scoped lang="scss"></style>

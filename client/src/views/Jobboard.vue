@@ -1,10 +1,10 @@
 <template>
-    <div class="home container py-5">
-        <h2>Home</h2>
-        <!-- <div>
+    <div class="jobboard container py-5">
+        <h2>Jobboard</h2>
+        <div>
             <b-card
                 v-for="job in jobs"
-                :key="job.id"
+                :key="job._id"
                 :title="job.title"
                 :sub-title="
                     new Date(parseInt(job.dateCreated)).toLocaleString()
@@ -16,14 +16,14 @@
                     <a href="#" class="card-link">Card link</a>
                 </b-card-text>
             </b-card>
-        </div> -->
+        </div>
     </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from "vuex";
 export default {
-    name: "Home",
+    name: "Jobboard",
     methods: {
         ...mapActions(["getJobs"])
     },

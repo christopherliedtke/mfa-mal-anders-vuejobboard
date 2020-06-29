@@ -61,6 +61,30 @@ const mutation = new GraphQLObjectType({
                 return response;
             },
         },
+        updateJobStatus: {
+            type: JobType,
+            args: {
+                _id: { type: GraphQLString },
+                status: { type: GraphQLString },
+            },
+            async resolve(parentValue, args, req) {
+                const response = await Job.updateOne(
+                    { _id: args._id, userId: req.userId },
+                    { status: args.status }
+                );
+
+                if (response.nModified === 0) {
+                    return;
+                } else {
+                    const updatedJob = await Job.findOne({
+                        _id: args._id,
+                        userId: req.userId,
+                    });
+
+                    return updatedJob;
+                }
+            },
+        },
     },
 });
 

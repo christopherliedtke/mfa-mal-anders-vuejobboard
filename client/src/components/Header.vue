@@ -11,18 +11,24 @@
             <b-collapse id="nav-collapse" is-nav>
                 <b-navbar-nav class="ml-auto">
                     <b-nav-item to="/">Home</b-nav-item>
+                    <b-nav-item to="/jobboard">Jobboard</b-nav-item>
                     <b-nav-item to="/login" v-if="!userId">Login</b-nav-item>
                     <b-nav-item to="/register" v-if="!userId"
                         >Register</b-nav-item
                     >
                     <b-nav-item to="/dashboard" v-if="userId"
+                        ><b-icon
+                            class="mr-1"
+                            icon="kanban"
+                            font-scale="1.45"
+                        ></b-icon
                         >Dashboard</b-nav-item
                     >
                     <b-nav-item to="/account" v-if="userId"
                         ><b-icon
-                            class="mr-2"
+                            class="mr-1"
                             icon="person-circle"
-                            font-scale="1.3"
+                            font-scale="1.45"
                         ></b-icon
                         >Account</b-nav-item
                     >
