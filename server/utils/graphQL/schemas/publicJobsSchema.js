@@ -16,11 +16,11 @@ const RootQuery = new GraphQLObjectType({
         job: {
             type: JobType,
             args: {
-                id: { type: GraphQLString },
+                _id: { type: GraphQLString },
             },
             async resolve(parentValue, args) {
                 const job = await Job.findOne({
-                    _id: args.id,
+                    _id: args._id,
                     status: "published",
                 });
                 return job;

@@ -4,5 +4,13 @@
 
     .navbar {
         padding: 0 1rem;
+
+        :not(.home) > .router-link-active {
+            color: darken($light, 5%);
+        }
+
+        .router-link-exact-active {
+            color: darken($light, 5%);
+        }
     }
 }

@@ -2,18 +2,23 @@
     <div class="jobboard container py-5">
         <h2>Jobboard</h2>
         <div>
-            <b-card
+            <b-link
                 v-for="job in jobs"
                 :key="job._id"
-                :title="job.title"
-                :sub-title="new Date(parseInt(job.createdAt)).toLocaleString()"
-                class="my-3"
+                :to="`/jobboard/job/${job._id}`"
             >
-                <b-card-text>
-                    <p>{{ job.description }}</p>
-                    <a href="#" class="card-link">Card link</a>
-                </b-card-text>
-            </b-card>
+                <b-card
+                    :title="job.title"
+                    :sub-title="
+                        new Date(parseInt(job.createdAt)).toLocaleString()
+                    "
+                    class="my-3"
+                >
+                    <b-card-text>
+                        <p>{{ job.description.substring(0, 100) }}...</p>
+                    </b-card-text>
+                </b-card>
+            </b-link>
         </div>
     </div>
 </template>

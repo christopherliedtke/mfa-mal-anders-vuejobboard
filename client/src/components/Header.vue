@@ -10,7 +10,7 @@
 
             <b-collapse id="nav-collapse" is-nav @click="toggleNavbar">
                 <b-navbar-nav class="ml-auto">
-                    <b-nav-item to="/">Home</b-nav-item>
+                    <b-nav-item class="home" to="/">Home</b-nav-item>
                     <b-nav-item to="/jobboard">Jobboard</b-nav-item>
                     <b-nav-item to="/login" v-if="!userId">Login</b-nav-item>
                     <b-nav-item to="/register" v-if="!userId"
@@ -33,7 +33,6 @@
                         >Account</b-nav-item
                     >
                     <b-nav-item v-if="userId"><Logout /></b-nav-item>
-                    <!-- <Logout v-if="userId" /> -->
                 </b-navbar-nav>
             </b-collapse>
         </b-navbar>
@@ -60,8 +59,4 @@
     };
 </script>
 
-<style scoped lang="scss">
-    .router-link-exact-active {
-        color: rgba(255, 255, 255, 0.75) !important;
-    }
-</style>
+<style scoped lang="scss"></style>
