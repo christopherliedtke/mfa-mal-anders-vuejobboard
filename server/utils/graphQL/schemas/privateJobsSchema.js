@@ -45,7 +45,7 @@ const mutation = new GraphQLObjectType({
         addJob: {
             type: JobType,
             args: {
-                userId: { type: GraphQLString },
+                // userId: { type: GraphQLString },
                 title: { type: new GraphQLNonNull(GraphQLString) },
                 description: { type: new GraphQLNonNull(GraphQLString) },
             },
@@ -71,6 +71,31 @@ const mutation = new GraphQLObjectType({
                 const response = await Job.updateOne(
                     { _id: args._id, userId: req.userId },
                     { status: args.status }
+                );
+
+                if (response.nModified === 0) {
+                    return;
+                } else {
+                    const updatedJob = await Job.findOne({
+                        _id: args._id,
+                        userId: req.userId,
+                    });
+
+                    return updatedJob;
+                }
+            },
+        },
+        updateJob: {
+            type: JobType,
+            args: {
+                _id: { type: GraphQLString },
+                title: { type: new GraphQLNonNull(GraphQLString) },
+                description: { type: new GraphQLNonNull(GraphQLString) },
+            },
+            async resolve(parentValue, args, req) {
+                const response = await Job.updateOne(
+                    { _id: args._id, userId: req.userId },
+                    { title: args.title, description: args.description }
                 );
 
                 if (response.nModified === 0) {

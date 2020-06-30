@@ -1,7 +1,7 @@
 <template>
-    <div class="new-job container py-5">
+    <div class="edit-jobpage container py-5">
         <b-overlay :show="showOverlay" variant="transparent" blur="none">
-            <h2>New Job</h2>
+            <h2>Edit Job</h2>
             <b-form :validated="validated">
                 <label for="title">Job Title</label>
                 <b-form-input
@@ -65,8 +65,27 @@
 <script>
     import axios from "@/axios";
     export default {
-        name: "NewJob",
+        name: "EditJobPage",
         methods: {
+            async getJob(jobId) {
+                try {
+                    const job = await axios.post("/api/jobs/private", {
+                        query: `
+                            query {
+                                job(_id: "${jobId}") {
+                                    _id
+                                    title
+                                    description
+                                }
+                            }
+                        `
+                    });
+
+                    this.job = job.data.data.job;
+                } catch (err) {
+                    console.log("err: ", err);
+                }
+            },
             async onSubmit() {
                 try {
                     if (!this.formValidation()) {
@@ -77,7 +96,7 @@
                     const response = await axios.post("/api/jobs/private", {
                         query: `
                         mutation {
-                            addJob(title: "${this.job.title}", description: "${this.job.description}") {
+                            updateJob(_id: "${this.job._id}", title: "${this.job.title}", description: "${this.job.description}") {
                                 _id
                             }
                         }
@@ -85,12 +104,11 @@
                     });
                     this.showOverlay = false;
 
-                    if (!response.data.data.addJob) {
+                    if (!response.data.data.updateJob) {
                         this.error =
                             "Oh, something went wrong. Please try again!";
                     } else {
                         this.validated = false;
-                        this.formReset();
                         this.success = true;
 
                         setTimeout(() => {
@@ -105,19 +123,14 @@
             formValidation() {
                 this.validated = true;
                 return !this.job.title || !this.job.description ? false : true;
-            },
-            formReset() {
-                for (const key in this.job) {
-                    this.job[key] = "";
-                }
             }
+        },
+        created: function() {
+            this.getJob(this.$route.params.jobId);
         },
         data() {
             return {
-                job: {
-                    title: "",
-                    description: ""
-                },
+                job: {},
                 validated: false,
                 showOverlay: false,
                 success: "",

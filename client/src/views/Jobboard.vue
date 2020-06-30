@@ -1,25 +1,35 @@
 <template>
     <div class="jobboard container py-5">
         <h2>Jobboard</h2>
-        <div>
-            <b-link
-                v-for="job in jobs"
-                :key="job._id"
-                :to="`/jobboard/job/${job._id}`"
-            >
-                <b-card
-                    :title="job.title"
-                    :sub-title="
-                        new Date(parseInt(job.createdAt)).toLocaleString()
-                    "
-                    class="my-3"
-                >
-                    <b-card-text>
-                        <p>{{ job.description.substring(0, 100) }}...</p>
-                    </b-card-text>
-                </b-card>
-            </b-link>
-        </div>
+        <b-link
+            v-for="job in jobs"
+            :key="job._id"
+            :to="`/jobboard/job/${job._id}`"
+        >
+            <b-card class="my-3">
+                <b-card-text>
+                    <h4>
+                        {{ job.title }}
+                        <b-badge
+                            pill
+                            :variant="
+                                job.status === 'draft' ? 'light' : 'success'
+                            "
+                            >{{ job.status }}</b-badge
+                        >
+                    </h4>
+                    <p>
+                        Created at:
+                        {{
+                            new Date(
+                                parseInt(job.createdAt)
+                            ).toLocaleDateString()
+                        }}
+                    </p>
+                    <p>{{ job.description.substring(0, 100) }}...</p>
+                </b-card-text>
+            </b-card>
+        </b-link>
     </div>
 </template>
 
@@ -50,3 +60,5 @@
         computed: mapGetters(["jobs"])
     };
 </script>
+
+<style scoped lang="scss"></style>

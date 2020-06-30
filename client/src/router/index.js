@@ -8,6 +8,7 @@ import Jobboard from "@/views/Jobboard.vue";
 import JobPage from "@/views/JobPage.vue";
 import Dashboard from "@/views/Dashboard.vue";
 import NewJob from "@/views/NewJob.vue";
+import EditJobPage from "@/views/EditJobPage.vue";
 import Account from "@/views/Account.vue";
 import Login from "@/views/Login.vue";
 import Register from "@/views/Register.vue";
@@ -52,6 +53,14 @@ const routes = [
         path: "/dashboard/new-job",
         name: "NewJob",
         component: NewJob,
+        meta: {
+            public: false
+        }
+    },
+    {
+        path: "/dashboard/jobs/:jobId",
+        name: "EditJobPage",
+        component: EditJobPage,
         meta: {
             public: false
         }
