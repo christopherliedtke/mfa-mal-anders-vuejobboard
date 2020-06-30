@@ -8,7 +8,7 @@
 
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
-            <b-collapse id="nav-collapse" is-nav>
+            <b-collapse id="nav-collapse" is-nav @click="toggleNavbar">
                 <b-navbar-nav class="ml-auto">
                     <b-nav-item to="/">Home</b-nav-item>
                     <b-nav-item to="/jobboard">Jobboard</b-nav-item>
@@ -41,22 +41,27 @@
 </template>
 
 <script>
-import Logout from "@/components/Logout";
-export default {
-    name: "Header",
-    components: {
-        Logout
-    },
-    computed: {
-        userId() {
-            return this.$store.state.auth.userId;
+    import Logout from "@/components/Logout";
+    export default {
+        name: "Header",
+        components: {
+            Logout
+        },
+        methods: {
+            toggleNavbar() {
+                this.$root.$emit("bv::toggle::collapse", "nav-collapse");
+            }
+        },
+        computed: {
+            userId() {
+                return this.$store.state.auth.userId;
+            }
         }
-    }
-};
+    };
 </script>
 
 <style scoped lang="scss">
-.router-link-exact-active {
-    color: rgba(255, 255, 255, 0.75) !important;
-}
+    .router-link-exact-active {
+        color: rgba(255, 255, 255, 0.75) !important;
+    }
 </style>
