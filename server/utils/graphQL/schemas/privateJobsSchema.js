@@ -16,11 +16,11 @@ const RootQuery = new GraphQLObjectType({
         job: {
             type: JobType,
             args: {
-                id: { type: GraphQLString },
+                _id: { type: GraphQLString },
             },
             async resolve(parentValue, args, req) {
                 const job = await Job.findOne({
-                    _id: args.id,
+                    _id: args._id,
                     userId: req.userId,
                 });
                 return job;
@@ -30,7 +30,7 @@ const RootQuery = new GraphQLObjectType({
             type: new GraphQLList(JobType),
             async resolve(parentValue, args, req) {
                 const jobs = await Job.find({ userId: req.userId }).sort({
-                    dateCreated: "desc",
+                    createdAt: "desc",
                 });
                 return jobs;
             },
@@ -82,6 +82,24 @@ const mutation = new GraphQLObjectType({
                     });
 
                     return updatedJob;
+                }
+            },
+        },
+        deleteJob: {
+            type: JobType,
+            args: {
+                _id: { type: GraphQLString },
+            },
+            async resolve(parentValue, args, req) {
+                const response = await Job.deleteOne({
+                    _id: args._id,
+                    userId: req.userId,
+                });
+
+                if (response.n === 1) {
+                    return { status: "deleted" };
+                } else {
+                    return;
                 }
             },
         },

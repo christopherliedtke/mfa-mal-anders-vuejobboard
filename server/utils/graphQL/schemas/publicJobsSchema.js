@@ -30,7 +30,7 @@ const RootQuery = new GraphQLObjectType({
             type: new GraphQLList(JobType),
             async resolve(parentValue, args) {
                 const jobs = await Job.find({ status: "published" }).sort({
-                    dateCreated: "desc",
+                    createdAt: "desc",
                 });
                 return jobs;
             },

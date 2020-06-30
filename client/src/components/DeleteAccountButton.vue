@@ -1,7 +1,7 @@
 <template>
     <div>
         <b-button
-            class="px-2 align-self-start align-self-lg-center d-flex align-items-center"
+            class="px-2 align-self-start align-self-lg-center"
             size="sm"
             variant="danger"
             type="submit"
@@ -63,49 +63,49 @@
 </template>
 
 <script>
-import axios from "@/axios";
-export default {
-    name: "DeleteAccountButton",
-    methods: {
-        async deleteAccount(e) {
-            e.preventDefault();
-            this.showOverlay = true;
-            this.error = null;
+    import axios from "@/axios";
+    export default {
+        name: "DeleteAccountButton",
+        methods: {
+            async deleteAccount(e) {
+                e.preventDefault();
+                this.showOverlay = true;
+                this.error = null;
 
-            const response = await axios.post("/api/auth/delete-account", {
-                password: this.password
-            });
-            this.showOverlay = false;
+                const response = await axios.post("/api/auth/delete-account", {
+                    password: this.password
+                });
+                this.showOverlay = false;
 
-            if (!response.data.success) {
-                this.error = response.data.error;
-            } else {
-                localStorage.clear();
-                this.$store.commit("setUserId", null);
-                this.$store.commit("setUserRole", null);
-                this.$store.commit("setUserStatus", null);
-                this.$router.go({ path: "/login" });
+                if (!response.data.success) {
+                    this.error = response.data.error;
+                } else {
+                    localStorage.clear();
+                    this.$store.commit("setUserId", null);
+                    this.$store.commit("setUserRole", null);
+                    this.$store.commit("setUserStatus", null);
+                    this.$router.go({ path: "/login" });
+                }
+            },
+            togglePasswordType() {
+                this.passwordType === "text"
+                    ? (this.passwordType = "password")
+                    : (this.passwordType = "text");
             }
         },
-        togglePasswordType() {
-            this.passwordType === "text"
-                ? (this.passwordType = "password")
-                : (this.passwordType = "text");
+        data() {
+            return {
+                password: "",
+                passwordType: "password",
+                showOverlay: false,
+                error: null
+            };
         }
-    },
-    data() {
-        return {
-            password: "",
-            passwordType: "password",
-            showOverlay: false,
-            error: null
-        };
-    }
-};
+    };
 </script>
 
 <style scoped lang="scss">
-.b-icon {
-    cursor: pointer;
-}
+    .b-icon {
+        cursor: pointer;
+    }
 </style>

@@ -53,38 +53,43 @@
         name: "NewJob",
         methods: {
             async onSubmit() {
-                if (!this.formValidation()) {
-                    return null;
-                }
-
-                this.showOverlay = true;
-                const response = await axios.post("/api/jobs/private", {
-                    query: `
-                    mutation {
-                        addJob(title: "${this.form.title}", description: "${this.form.description}") {
-                            _id
-                            userId
-                            title
-                            description
-                            status
-                            dateCreated
-                        }
+                try {
+                    if (!this.formValidation()) {
+                        return null;
                     }
-                `
-                });
-                this.showOverlay = false;
 
-                console.log(
-                    "response.data.data.addJob: ",
-                    response.data.data.addJob
-                );
+                    this.showOverlay = true;
+                    const response = await axios.post("/api/jobs/private", {
+                        query: `
+                        mutation {
+                            addJob(title: "${this.form.title}", description: "${this.form.description}") {
+                                _id
+                                userId
+                                title
+                                description
+                                status
+                                createdAt
+                            }
+                        }
+                    `
+                    });
+                    this.showOverlay = false;
 
-                if (!response.data.data.addJob) {
+                    if (!response.data.data.addJob) {
+                        this.error =
+                            "Oh, something went wrong. Please try again!";
+                    } else {
+                        this.validated = false;
+                        this.formReset();
+                        this.success = true;
+
+                        setTimeout(() => {
+                            this.$router.push("/dashboard");
+                        }, 2000);
+                    }
+                } catch (err) {
                     this.error = "Oh, something went wrong. Please try again!";
-                } else {
-                    this.validated = false;
-                    this.formReset();
-                    this.success = true;
+                    console.log("err: ", err);
                 }
             },
             formValidation() {

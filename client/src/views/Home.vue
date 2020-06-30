@@ -7,7 +7,7 @@
                 :key="job.id"
                 :title="job.title"
                 :sub-title="
-                    new Date(parseInt(job.dateCreated)).toLocaleString()
+                    new Date(parseInt(job.createdAt)).toLocaleString()
                 "
                 class="my-3"
             >
@@ -21,29 +21,29 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
-export default {
-    name: "Home",
-    methods: {
-        ...mapActions(["getJobs"])
-    },
-    data() {
-        return {};
-    },
-    mounted: function() {
-        this.getJobs({
-            query: `
+    import { mapActions, mapGetters } from "vuex";
+    export default {
+        name: "Home",
+        methods: {
+            ...mapActions(["getJobs"])
+        },
+        data() {
+            return {};
+        },
+        mounted: function() {
+            this.getJobs({
+                query: `
                 query {
                     jobs {
                         _id
                         title
                         description
-                        dateCreated
+                        createdAt
                     }
                 }
             `
-        });
-    },
-    computed: mapGetters(["jobs"])
-};
+            });
+        },
+        computed: mapGetters(["jobs"])
+    };
 </script>

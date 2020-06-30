@@ -21,10 +21,18 @@
                             >
                         </h4>
                         <p>
-                            Created:
+                            Created at:
                             {{
                                 new Date(
-                                    parseInt(job.dateCreated)
+                                    parseInt(job.createdAt)
+                                ).toLocaleString()
+                            }}
+                        </p>
+                        <p>
+                            Last updated:
+                            {{
+                                new Date(
+                                    parseInt(job.updatedAt)
                                 ).toLocaleString()
                             }}
                         </p>
@@ -74,7 +82,10 @@
                                 </b-dropdown>
                             </div>
                             <div>
-                                <b-button variant="outline-danger" size="sm"
+                                <b-button
+                                    variant="outline-danger"
+                                    size="sm"
+                                    @click.prevent="$bvModal.show(job._id)"
                                     ><b-icon
                                         class="mr-2"
                                         scale="1"
@@ -85,8 +96,29 @@
                             </div>
                         </div>
                     </b-card-text>
-                </b-card></b-tab
-            >
+                    <b-modal
+                        :id="job._id"
+                        :title="`Delete ${job.title}`"
+                        ok-title="Delete Job"
+                        centered
+                        ok-variant="danger"
+                        footer-class="d-flex justify-content-between"
+                        @ok="deleteJob(job._id)"
+                        ><p class="my-4">
+                            Are you sure to delete this job?
+                        </p></b-modal
+                    >
+                </b-card>
+                <b-alert
+                    v-model="error"
+                    class="position-fixed fixed-bottom m-0 rounded-0"
+                    style="z-index: 2000;"
+                    variant="warning"
+                    dismissible
+                >
+                    Oh, something went wrong. Please try again later.
+                </b-alert>
+            </b-tab>
             <b-tab title="Companies"><p>Your Companies</p></b-tab>
         </b-tabs>
     </div>
@@ -98,20 +130,26 @@
         name: "Dashboard",
         methods: {
             async getJobsByUserId() {
-                const response = await axios.post("/api/jobs/private", {
-                    query: `
-                query {
-                    jobs {
-                        _id
-                        title
-                        status
-                        dateCreated
+                try {
+                    const response = await axios.post("/api/jobs/private", {
+                        query: `
+                    query {
+                        jobs {
+                            _id
+                            title
+                            status
+                            createdAt
+                            updatedAt
+                        }
                     }
-                }
-            `
-                });
+                `
+                    });
 
-                this.myJobs = response.data.data.jobs;
+                    this.myJobs = response.data.data.jobs;
+                } catch (err) {
+                    this.error = true;
+                    console.log("err: ", err);
+                }
             },
             async updateJobStatus(jobId, status) {
                 try {
@@ -124,7 +162,8 @@
                                 title
                                 description
                                 status
-                                dateCreated
+                                createdAt
+                                updatedAt
                             }
                         }
                     `
@@ -134,15 +173,46 @@
                         this.myJobs.forEach((job, index) => {
                             if (job._id === jobId) {
                                 this.myJobs[index].status = status;
+                                this.myJobs[index].updatedAt =
+                                    response.data.data.updateJobStatus.updatedAt;
                             }
                         });
+                    } else {
+                        this.error = true;
                     }
                 } catch (err) {
+                    this.error = true;
+                    console.log("err: ", err);
+                }
+            },
+            async deleteJob(jobId) {
+                try {
+                    const response = await axios.post("/api/jobs/private", {
+                        query: `
+                        mutation {
+                            deleteJob(_id: "${jobId}") {
+                                status
+                            }
+                        }
+                    `
+                    });
+
+                    if (response.data.data.deleteJob.status === "deleted") {
+                        this.myJobs.forEach((job, index) => {
+                            if (job._id === jobId) {
+                                this.myJobs.splice(index, 1);
+                            }
+                        });
+                    } else {
+                        this.error = true;
+                    }
+                } catch (err) {
+                    this.error = true;
                     console.log("err: ", err);
                 }
             }
         },
-        mounted: function() {
+        created: function() {
             this.getJobsByUserId();
         },
         data() {

@@ -2,6 +2,7 @@ const {
     GraphQLObjectType,
     GraphQLString,
     GraphQLInt,
+    GraphQLFloat,
     GraphQLSchema,
     GraphQLList,
     GraphQLNonNull,
@@ -26,8 +27,11 @@ const JobType = new GraphQLObjectType({
         status: {
             type: GraphQLString,
         },
-        dateCreated: {
-            type: GraphQLString,
+        createdAt: {
+            type: GraphQLFloat,
+        },
+        updatedAt: {
+            type: GraphQLFloat,
         },
     }),
 });
