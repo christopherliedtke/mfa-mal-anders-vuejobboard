@@ -45,7 +45,6 @@ const mutation = new GraphQLObjectType({
         addJob: {
             type: JobType,
             args: {
-                // userId: { type: GraphQLString },
                 title: { type: new GraphQLNonNull(GraphQLString) },
                 description: { type: new GraphQLNonNull(GraphQLString) },
             },

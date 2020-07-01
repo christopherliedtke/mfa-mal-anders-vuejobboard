@@ -5,10 +5,11 @@ import store from "@/store";
 
 import Home from "@/views/Home.vue";
 import Jobboard from "@/views/Jobboard.vue";
-import JobView from "@/views/JobView.vue";
+import PublicJobView from "@/views/PublicJobView.vue";
 import Dashboard from "@/views/Dashboard.vue";
 import NewJobView from "@/views/NewJobView.vue";
 import EditJobView from "@/views/EditJobView.vue";
+import PrivateJobView from "@/views/PrivateJobView.vue";
 import Account from "@/views/Account.vue";
 import Login from "@/views/Login.vue";
 import Register from "@/views/Register.vue";
@@ -35,8 +36,8 @@ const routes = [
     },
     {
         path: "/jobboard/job/:jobId",
-        name: "JobView",
-        component: JobView,
+        name: "PublicJobView",
+        component: PublicJobView,
         meta: {
             public: true
         }
@@ -61,6 +62,14 @@ const routes = [
         path: "/dashboard/jobs/:jobId",
         name: "EditJobView",
         component: EditJobView,
+        meta: {
+            public: false
+        }
+    },
+    {
+        path: "/dashboard/jobs/preview/:jobId",
+        name: "PrivateJobView",
+        component: PrivateJobView,
         meta: {
             public: false
         }

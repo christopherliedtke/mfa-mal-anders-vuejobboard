@@ -1,18 +1,21 @@
 <template>
     <div class="jobpage container py-5">
-        <h2>{{ job.title }}</h2>
-        <p>{{ job.description }}</p>
+        <Job :job="job"></Job>
     </div>
 </template>
 
 <script>
     import axios from "@/axios";
+    import Job from "@/components/Job.vue";
     export default {
-        name: "JobView",
+        name: "PrivateJobView",
+        components: {
+            Job
+        },
         methods: {
             async getJob(jobId) {
                 try {
-                    const job = await axios.post("/api/jobs/public", {
+                    const job = await axios.post("/api/jobs/private", {
                         query: `
                             query {
                                 job(_id: "${jobId}") {
