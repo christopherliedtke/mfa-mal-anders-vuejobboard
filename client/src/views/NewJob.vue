@@ -1,64 +1,65 @@
 <template>
-    <div class="new-job container py-5">
-        <b-overlay :show="showOverlay" variant="transparent" blur="none">
-            <h2>New Job</h2>
-            <b-form :validated="validated">
-                <label for="title">Job Title</label>
-                <b-form-input
-                    type="text"
-                    v-model="job.title"
-                    id="title"
-                    placeholder="Enter job title..."
-                    required
-                ></b-form-input>
-                <label for="description">Job Description</label>
-                <b-form-textarea
-                    id="textarea"
-                    v-model="job.description"
-                    placeholder="Enter job description..."
-                    rows="6"
-                    required
-                ></b-form-textarea>
-                <div class="d-flex justify-content-between">
-                    <b-button
-                        class="my-3"
-                        variant="outline-danger"
-                        to="/dashboard"
-                    >
-                        Cancel
-                    </b-button>
-                    <b-button
-                        class="my-3"
-                        variant="success"
-                        @click.prevent="onSubmit"
-                    >
-                        Save
-                    </b-button>
-                </div>
-                <b-alert
-                    v-if="error"
-                    class="mt-3"
-                    show
-                    dismissible
-                    variant="warning"
-                    >{{ error }}</b-alert
-                >
-                <b-alert
-                    v-if="success"
-                    class="mt-3"
-                    show
-                    dismissible
-                    variant="success"
-                    >Your job has been saved successfully. You will be
-                    redirected in a moment...
-                    <b-spinner
-                        style="width: 1.2rem; height: 1.2rem;"
-                        variant="success"
-                        label="Spinning"
-                    ></b-spinner>
-                </b-alert>
-            </b-form>
+    <div class="new-job container py-5 position-relative">
+        <b-overlay
+            :show="showOverlay"
+            variant="transparent"
+            blur="none"
+            no-wrap
+        >
         </b-overlay>
+        <h2>New Job</h2>
+        <b-form :validated="validated">
+            <label for="title">Job Title</label>
+            <b-form-input
+                type="text"
+                v-model="job.title"
+                id="title"
+                placeholder="Enter job title..."
+                required
+            ></b-form-input>
+            <label for="description">Job Description</label>
+            <b-form-textarea
+                id="textarea"
+                v-model="job.description"
+                placeholder="Enter job description..."
+                rows="6"
+                required
+            ></b-form-textarea>
+            <div class="d-flex justify-content-between">
+                <b-button class="my-3" variant="outline-danger" to="/dashboard">
+                    Cancel
+                </b-button>
+                <b-button
+                    class="my-3"
+                    variant="success"
+                    @click.prevent="onSubmit"
+                >
+                    Save
+                </b-button>
+            </div>
+            <b-alert
+                v-if="error"
+                class="mt-3"
+                show
+                dismissible
+                variant="warning"
+                >{{ error }}</b-alert
+            >
+            <b-alert
+                v-if="success"
+                class="mt-3"
+                show
+                dismissible
+                variant="success"
+                >Your job has been saved successfully. You will be redirected in
+                a moment...
+                <b-spinner
+                    style="width: 1.2rem; height: 1.2rem;"
+                    variant="success"
+                    label="Spinning"
+                ></b-spinner>
+            </b-alert>
+        </b-form>
     </div>
 </template>
 
