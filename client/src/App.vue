@@ -9,18 +9,18 @@
 </template>
 
 <script>
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-export default {
-    components: {
-        Header,
-        Footer
-    }
-};
+    import Header from "@/components/Header";
+    import Footer from "@/components/Footer";
+    export default {
+        components: {
+            Header,
+            Footer
+        }
+    };
 </script>
 
 <style lang="scss">
-@import "@/styles/custom_bootstrap.scss";
-@import "../node_modules/bootstrap/scss/bootstrap.scss";
-@import "@/styles/custom.scss";
+    @import "@/styles/custom_bootstrap.scss";
+    @import "../node_modules/bootstrap/scss/bootstrap.scss";
+    @import "@/styles/custom.scss";
 </style>

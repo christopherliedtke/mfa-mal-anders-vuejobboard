@@ -38,6 +38,7 @@
                 rows="6"
                 required
             ></b-form-textarea>
+            <TipTapEditor :content="job.description"></TipTapEditor>
             <div class="d-flex justify-content-between">
                 <b-button class="my-3" variant="outline-danger" to="/dashboard">
                     Cancel
@@ -78,16 +79,18 @@
 
 <script>
     import axios from "@/axios";
+    import TipTapEditor from "@/components/TipTapEditor.vue";
     export default {
         name: "JobForm",
+        components: { TipTapEditor },
         props: ["jobId"],
         data() {
             return {
                 job: {
                     title: "",
+                    description: "",
                     employmentType: "full",
-                    applicationDeadline: "",
-                    description: ""
+                    applicationDeadline: ""
                 },
                 employmentTypeOptions: [
                     { value: "full", text: "Full Time" },

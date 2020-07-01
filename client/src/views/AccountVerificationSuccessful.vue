@@ -16,38 +16,44 @@
 </template>
 
 <script>
-import axios from "@/axios";
-export default {
-    name: "AccountVerificationSuccessful",
-    methods: {
-        async updateUserStatus() {
-            const response = await axios.get(
-                "/api/auth/verification/update-user-status"
-            );
+    import axios from "@/axios";
+    export default {
+        name: "AccountVerificationSuccessful",
+        methods: {
+            async updateUserStatus() {
+                const response = await axios.get(
+                    "/api/auth/verification/update-user-status"
+                );
 
-            if (!response.data.success) {
-                localStorage.clear();
-                const logout = await axios.get("/api/auth/logout");
-                if (logout.data.success) {
-                    this.$router.push({ path: "/login" });
+                if (!response.data.success) {
+                    localStorage.clear();
+                    const logout = await axios.get("/api/auth/logout");
+                    if (logout.data.success) {
+                        this.$router.push({ path: "/login" });
+                    }
+                } else {
+                    localStorage.setItem("userId", response.data.userId);
+                    localStorage.setItem("userRole", response.data.userRole);
+                    localStorage.setItem(
+                        "userStatus",
+                        response.data.userStatus
+                    );
+                    this.$store.commit(
+                        "setUserStatus",
+                        response.data.userStatus
+                    );
+
+                    setTimeout(() => {
+                        this.$router.push({ path: "/dashboard" });
+                    }, 3500);
                 }
-            } else {
-                localStorage.setItem("userId", response.data.userId);
-                localStorage.setItem("userRole", response.data.userRole);
-                localStorage.setItem("userStatus", response.data.userStatus);
-                this.$store.commit("setUserStatus", response.data.userStatus);
-
-                setTimeout(() => {
-                    this.$router.push({ path: "/dashboard" });
-                }, 3500);
             }
+        },
+        mounted: function() {
+            this.updateUserStatus();
+        },
+        data() {
+            return {};
         }
-    },
-    mounted: function() {
-        this.updateUserStatus();
-    },
-    data() {
-        return {};
-    }
-};
+    };
 </script>

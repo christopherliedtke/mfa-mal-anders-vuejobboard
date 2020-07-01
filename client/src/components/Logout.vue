@@ -22,23 +22,23 @@
 </template>
 
 <script>
-import axios from "@/axios";
-export default {
-    name: "Logout",
-    methods: {
-        async onLogout() {
-            localStorage.clear();
-            const response = await axios.get("/api/auth/logout");
+    import axios from "@/axios";
+    export default {
+        name: "Logout",
+        methods: {
+            async onLogout() {
+                localStorage.clear();
+                const response = await axios.get("/api/auth/logout");
 
-            if (response.data.success) {
-                this.$store.commit("setUserId", null);
-                this.$store.commit("setUserRole", null);
-                this.$store.commit("setUserStatus", null);
-                this.$router.push({ path: "/login" });
+                if (response.data.success) {
+                    this.$store.commit("setUserId", null);
+                    this.$store.commit("setUserRole", null);
+                    this.$store.commit("setUserStatus", null);
+                    this.$router.push({ path: "/login" });
+                }
             }
         }
-    }
-};
+    };
 </script>
 
 <style scoped lang="scss"></style>

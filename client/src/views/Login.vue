@@ -57,53 +57,53 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
-export default {
-    name: "Login",
-    methods: {
-        ...mapActions(["userAuth"]),
-        async onSubmit() {
-            const res = await this.userAuth({
-                url: "/api/auth/login",
-                userData: {
-                    email: this.email,
-                    password: this.password
-                }
-            });
+    import { mapActions } from "vuex";
+    export default {
+        name: "Login",
+        methods: {
+            ...mapActions(["userAuth"]),
+            async onSubmit() {
+                const res = await this.userAuth({
+                    url: "/api/auth/login",
+                    userData: {
+                        email: this.email,
+                        password: this.password
+                    }
+                });
 
-            if (!res.success) {
-                this.errors = res.errors;
+                if (!res.success) {
+                    this.errors = res.errors;
+                }
+            },
+            togglePasswordType() {
+                this.passwordType === "text"
+                    ? (this.passwordType = "password")
+                    : (this.passwordType = "text");
             }
         },
-        togglePasswordType() {
-            this.passwordType === "text"
-                ? (this.passwordType = "password")
-                : (this.passwordType = "text");
+        data() {
+            return {
+                email: "",
+                password: "",
+                passwordType: "password",
+                errors: []
+            };
         }
-    },
-    data() {
-        return {
-            email: "",
-            password: "",
-            passwordType: "password",
-            errors: []
-        };
-    }
-};
+    };
 </script>
 
 <style scoped lang="scss">
-.login {
-    &.container {
-        width: 90%;
-        max-width: 450px;
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
+    .login {
+        &.container {
+            width: 90%;
+            max-width: 450px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
 
-        .b-icon {
-            cursor: pointer;
+            .b-icon {
+                cursor: pointer;
+            }
         }
     }
-}
 </style>

@@ -17,16 +17,16 @@
 </template>
 
 <script>
-import DeleteAccountButton from "@/components/DeleteAccountButton.vue";
-export default {
-    name: "Account",
-    components: {
-        DeleteAccountButton
-    },
-    methods: {},
-    mounted: function() {},
-    data() {
-        return {};
-    }
-};
+    import DeleteAccountButton from "@/components/DeleteAccountButton.vue";
+    export default {
+        name: "Account",
+        components: {
+            DeleteAccountButton
+        },
+        methods: {},
+        mounted: function() {},
+        data() {
+            return {};
+        }
+    };
 </script>
