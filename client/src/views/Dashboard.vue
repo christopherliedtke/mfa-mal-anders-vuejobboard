@@ -138,6 +138,7 @@
                             _id
                             title
                             status
+                            paid
                             createdAt
                             updatedAt
                         }
@@ -162,6 +163,7 @@
                                 title
                                 description
                                 status
+                                paid
                                 createdAt
                                 updatedAt
                             }

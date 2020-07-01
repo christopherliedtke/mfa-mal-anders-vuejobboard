@@ -22,6 +22,7 @@ const RootQuery = new GraphQLObjectType({
                 const job = await Job.findOne({
                     _id: args._id,
                     status: "published",
+                    paid: true,
                 });
                 return job;
             },
@@ -29,7 +30,10 @@ const RootQuery = new GraphQLObjectType({
         jobs: {
             type: new GraphQLList(JobType),
             async resolve(parentValue, args) {
-                const jobs = await Job.find({ status: "published" }).sort({
+                const jobs = await Job.find({
+                    status: "published",
+                    paid: true,
+                }).sort({
                     createdAt: "desc",
                 });
                 return jobs;

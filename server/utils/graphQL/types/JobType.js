@@ -1,6 +1,7 @@
 const {
     GraphQLObjectType,
     GraphQLString,
+    GraphQLBoolean,
     GraphQLInt,
     GraphQLFloat,
     GraphQLSchema,
@@ -26,6 +27,9 @@ const JobType = new GraphQLObjectType({
         },
         status: {
             type: GraphQLString,
+        },
+        paid: {
+            type: GraphQLBoolean,
         },
         createdAt: {
             type: GraphQLFloat,

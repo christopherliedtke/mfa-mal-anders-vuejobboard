@@ -19,6 +19,10 @@ const JobSchema = new Schema(
             type: String,
             default: "draft",
         },
+        paid: {
+            type: Boolean,
+            default: true,
+        },
     },
     { timestamps: true }
 );
