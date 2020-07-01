@@ -3,6 +3,14 @@ const Schema = mongoose.Schema;
 
 const JobSchema = new Schema(
     {
+        status: {
+            type: String,
+            default: "draft",
+        },
+        paid: {
+            type: Boolean,
+            default: true,
+        },
         userId: {
             type: String,
             required: true,
@@ -15,13 +23,13 @@ const JobSchema = new Schema(
             type: String,
             required: true,
         },
-        status: {
+        employmentType: {
             type: String,
-            default: "draft",
+            required: true,
         },
-        paid: {
-            type: Boolean,
-            default: true,
+        applicationDeadline: {
+            type: String,
+            required: true,
         },
     },
     { timestamps: true }

@@ -7,7 +7,7 @@
             no-wrap
         >
         </b-overlay>
-        <b-form :validated="validated">
+        <b-form id="job-form" :validated="validated">
             <label for="title">Job Title</label>
             <b-form-input
                 type="text"
@@ -16,6 +16,20 @@
                 placeholder="Enter job title..."
                 required
             ></b-form-input>
+            <label for="employment-type">Employment Type</label>
+            <b-form-select
+                id="employment-type"
+                v-model="job.employmentType"
+                :options="employmentTypeOptions"
+            ></b-form-select>
+            <label for="application-deadline">Application Deadline</label>
+            <b-form-datepicker
+                :state="validated && job.applicationDeadline != ''"
+                id="application-deadline"
+                v-model="job.applicationDeadline"
+                placeholder="Choose a date"
+                class=""
+            ></b-form-datepicker>
             <label for="description">Job Description</label>
             <b-form-textarea
                 id="textarea"
@@ -67,6 +81,25 @@
     export default {
         name: "JobForm",
         props: ["jobId"],
+        data() {
+            return {
+                job: {
+                    title: "",
+                    employmentType: "full",
+                    applicationDeadline: "",
+                    description: ""
+                },
+                employmentTypeOptions: [
+                    { value: "full", text: "Full Time" },
+                    { value: "part", text: "Part Time" },
+                    { value: "part_full", text: "Part Time or Full Time" }
+                ],
+                validated: null,
+                showOverlay: false,
+                success: "",
+                error: ""
+            };
+        },
         created: function() {
             if (this.jobId) {
                 this.getJob(this.jobId);
@@ -82,6 +115,8 @@
                                     _id
                                     title
                                     description
+                                    employmentType
+                                    applicationDeadline
                                 }
                             }
                         `
@@ -106,7 +141,13 @@
                         response = await axios.post("/api/jobs/private", {
                             query: `
                                 mutation {
-                                    updateJob(_id: "${this.job._id}", title: "${this.job.title}", description: "${this.job.description}") {
+                                    updateJob(
+                                        _id: "${this.job._id}", 
+                                        title: "${this.job.title}", 
+                                        description: "${this.job.description}", 
+                                        employmentType: "${this.job.employmentType}", 
+                                        applicationDeadline: "${this.job.applicationDeadline}"
+                                    ) {
                                         _id
                                     }
                                 }
@@ -116,7 +157,12 @@
                         response = await axios.post("/api/jobs/private", {
                             query: `
                                 mutation {
-                                    addJob(title: "${this.job.title}", description: "${this.job.description}") {
+                                    addJob(
+                                        title: "${this.job.title}", 
+                                        description: "${this.job.description}", 
+                                        employmentType: "${this.job.employmentType}", 
+                                        applicationDeadline: "${this.job.applicationDeadline}"
+                                    ) {
                                         _id
                                     }
                                 }
@@ -133,7 +179,7 @@
                         this.error =
                             "Oh, something went wrong. Please try again!";
                     } else {
-                        this.validated = false;
+                        this.validated = null;
                         // this.formReset();
                         this.success = true;
 
@@ -148,25 +194,18 @@
             },
             formValidation() {
                 this.validated = true;
-                return !this.job.title || !this.job.description ? false : true;
+                return !this.job.title ||
+                    !this.job.description ||
+                    !this.job.employmentType ||
+                    !this.job.applicationDeadline
+                    ? false
+                    : true;
             },
             formReset() {
                 for (const key in this.job) {
                     this.job[key] = "";
                 }
             }
-        },
-        data() {
-            return {
-                job: {
-                    title: "",
-                    description: ""
-                },
-                validated: false,
-                showOverlay: false,
-                success: "",
-                error: ""
-            };
         }
     };
 </script>

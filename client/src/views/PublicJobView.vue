@@ -20,9 +20,11 @@
                             query {
                                 job(_id: "${jobId}") {
                                     _id
+                                    createdAt
                                     title
                                     description
-                                    createdAt
+                                    employmentType
+                                    applicationDeadline
                                 }
                             }
                         `

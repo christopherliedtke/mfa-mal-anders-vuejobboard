@@ -16,15 +16,6 @@ const JobType = new GraphQLObjectType({
         _id: {
             type: GraphQLString,
         },
-        userId: {
-            type: GraphQLString,
-        },
-        title: {
-            type: GraphQLString,
-        },
-        description: {
-            type: GraphQLString,
-        },
         status: {
             type: GraphQLString,
         },
@@ -36,6 +27,21 @@ const JobType = new GraphQLObjectType({
         },
         updatedAt: {
             type: GraphQLFloat,
+        },
+        userId: {
+            type: GraphQLString,
+        },
+        title: {
+            type: GraphQLString,
+        },
+        description: {
+            type: GraphQLString,
+        },
+        employmentType: {
+            type: GraphQLString,
+        },
+        applicationDeadline: {
+            type: GraphQLString,
         },
     }),
 });

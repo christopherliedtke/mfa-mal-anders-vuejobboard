@@ -148,11 +148,11 @@
                     query {
                         jobs {
                             _id
-                            title
-                            status
-                            paid
                             createdAt
                             updatedAt
+                            status
+                            paid
+                            title
                         }
                     }
                 `
@@ -171,13 +171,11 @@
                         mutation {
                             updateJobStatus(_id: "${jobId}", status: "${status}") {
                                 _id
-                                userId
-                                title
-                                description
-                                status
-                                paid
                                 createdAt
                                 updatedAt
+                                status
+                                paid
+                                title
                             }
                         }
                     `
