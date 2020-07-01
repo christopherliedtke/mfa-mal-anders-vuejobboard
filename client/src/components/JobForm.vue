@@ -1,5 +1,5 @@
 <template>
-    <div class="new-job container py-5 position-relative">
+    <div class="job-form position-relative">
         <b-overlay
             :show="showOverlay"
             variant="transparent"
@@ -7,7 +7,6 @@
             no-wrap
         >
         </b-overlay>
-        <h2>New Job</h2>
         <b-form :validated="validated">
             <label for="title">Job Title</label>
             <b-form-input
@@ -66,8 +65,33 @@
 <script>
     import axios from "@/axios";
     export default {
-        name: "NewJob",
+        name: "JobForm",
+        props: ["jobId"],
+        created: function() {
+            if (this.jobId) {
+                this.getJob(this.jobId);
+            }
+        },
         methods: {
+            async getJob(jobId) {
+                try {
+                    const job = await axios.post("/api/jobs/private", {
+                        query: `
+                            query {
+                                job(_id: "${jobId}") {
+                                    _id
+                                    title
+                                    description
+                                }
+                            }
+                        `
+                    });
+
+                    this.job = job.data.data.job;
+                } catch (err) {
+                    console.log("err: ", err);
+                }
+            },
             async onSubmit() {
                 try {
                     if (!this.formValidation()) {
@@ -75,23 +99,42 @@
                     }
 
                     this.showOverlay = true;
-                    const response = await axios.post("/api/jobs/private", {
-                        query: `
-                        mutation {
-                            addJob(title: "${this.job.title}", description: "${this.job.description}") {
-                                _id
-                            }
-                        }
-                    `
-                    });
+
+                    let response;
+
+                    if (this.jobId) {
+                        response = await axios.post("/api/jobs/private", {
+                            query: `
+                                mutation {
+                                    updateJob(_id: "${this.job._id}", title: "${this.job.title}", description: "${this.job.description}") {
+                                        _id
+                                    }
+                                }
+                            `
+                        });
+                    } else {
+                        response = await axios.post("/api/jobs/private", {
+                            query: `
+                                mutation {
+                                    addJob(title: "${this.job.title}", description: "${this.job.description}") {
+                                        _id
+                                    }
+                                }
+                            `
+                        });
+                    }
+
                     this.showOverlay = false;
 
-                    if (!response.data.data.addJob) {
+                    if (
+                        !response.data.data.addJob &&
+                        !response.data.data.updateJob
+                    ) {
                         this.error =
                             "Oh, something went wrong. Please try again!";
                     } else {
                         this.validated = false;
-                        this.formReset();
+                        // this.formReset();
                         this.success = true;
 
                         setTimeout(() => {

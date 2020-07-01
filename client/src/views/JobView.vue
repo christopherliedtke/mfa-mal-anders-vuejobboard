@@ -8,7 +8,7 @@
 <script>
     import axios from "@/axios";
     export default {
-        name: "JobPage",
+        name: "JobView",
         methods: {
             async getJob(jobId) {
                 try {
