@@ -31,14 +31,17 @@
                 class=""
             ></b-form-datepicker>
             <label for="description">Job Description</label>
-            <b-form-textarea
+            <!-- <b-form-textarea
                 id="textarea"
                 v-model="job.description"
                 placeholder="Enter job description..."
                 rows="6"
                 required
-            ></b-form-textarea>
-            <TipTapEditor :content="job.description"></TipTapEditor>
+            ></b-form-textarea> -->
+            <TipTapEditor
+                :content="job.description"
+                v-on:update-content="job.description = $event"
+            ></TipTapEditor>
             <div class="d-flex justify-content-between">
                 <b-button class="my-3" variant="outline-danger" to="/dashboard">
                     Cancel

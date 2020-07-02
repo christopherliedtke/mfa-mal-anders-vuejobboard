@@ -32,8 +32,8 @@
                 <b-button
                     variant="light"
                     class="menubar__button"
-                    :class="{ 'is-active': isActive.heading({ level: 2 }) }"
-                    @click="commands.heading({ level: 2 })"
+                    :class="{ 'is-active': isActive.heading({ level: 3 }) }"
+                    @click="commands.heading({ level: 3 })"
                 >
                     <b-icon class="" scale="1" icon="type-h1"></b-icon>
                 </b-button>
@@ -41,8 +41,8 @@
                 <b-button
                     variant="light"
                     class="menubar__button"
-                    :class="{ 'is-active': isActive.heading({ level: 3 }) }"
-                    @click="commands.heading({ level: 3 })"
+                    :class="{ 'is-active': isActive.heading({ level: 4 }) }"
+                    @click="commands.heading({ level: 4 })"
                 >
                     <b-icon class="" scale="1" icon="type-h2"></b-icon>
                 </b-button>
@@ -50,8 +50,8 @@
                 <b-button
                     variant="light"
                     class="menubar__button"
-                    :class="{ 'is-active': isActive.heading({ level: 4 }) }"
-                    @click="commands.heading({ level: 4 })"
+                    :class="{ 'is-active': isActive.heading({ level: 5 }) }"
+                    @click="commands.heading({ level: 5 })"
                 >
                     <b-icon class="" scale="1" icon="type-h3"></b-icon>
                 </b-button>
@@ -144,7 +144,7 @@
                     extensions: [
                         new BulletList(),
                         new HardBreak(),
-                        new Heading({ levels: [2, 3, 4] }),
+                        new Heading({ levels: [3, 4, 5] }),
                         new HorizontalRule(),
                         new ListItem(),
                         new OrderedList(),
@@ -161,19 +161,24 @@
                         })
                     ],
                     // content: ``,
-                    onUpdate: ({ getJSON, getHTML }) => {
-                        this.json = getJSON();
+                    onUpdate: ({ getHTML }) => {
+                        // this.json = getJSON();
                         this.html = getHTML();
+
+                        this.$emit("update-content", this.html);
                     }
                 }),
-                json: "",
-                html: ""
+                // json: "",
+                html: "",
+                watchCounter: 0
             };
         },
         watch: {
             content: function() {
-                if (this.content) {
+                if (this.content && this.watchCounter === 0) {
+                    this.watchCounter++;
                     this.setContent(this.content);
+                    this.html = this.content;
                 }
             }
         },
@@ -198,7 +203,7 @@
 
                 // HTML string is also supported
                 this.editor.setContent(content);
-                this.editor.focus();
+                // this.editor.focus();
             }
         }
     };

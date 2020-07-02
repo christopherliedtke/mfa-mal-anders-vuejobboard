@@ -1,7 +1,7 @@
 <template>
     <div class="job">
         <h2>{{ job.title }}</h2>
-        <p>{{ job.description }}</p>
+        <p v-html="job.description"></p>
     </div>
 </template>
 

@@ -8,6 +8,7 @@ const {
 } = require("graphql");
 const JobType = require("../types/JobType");
 const { Job } = require("../../models/job");
+const sanitizeHtml = require("sanitize-html");
 
 // #Root Query
 const RootQuery = new GraphQLObjectType({
@@ -56,7 +57,7 @@ const mutation = new GraphQLObjectType({
                 const newJob = new Job({
                     userId: req.userId,
                     title: args.title,
-                    description: args.description,
+                    description: sanitizeHtml(args.description),
                     employmentType: args.employmentType,
                     applicationDeadline: args.applicationDeadline,
                 });
@@ -82,7 +83,7 @@ const mutation = new GraphQLObjectType({
                     { _id: args._id, userId: req.userId },
                     {
                         title: args.title,
-                        description: args.description,
+                        description: sanitizeHtml(args.description),
                         employmentType: args.employmentType,
                         applicationDeadline: args.applicationDeadline,
                     }
