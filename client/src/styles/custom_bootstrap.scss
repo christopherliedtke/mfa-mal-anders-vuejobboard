@@ -11,6 +11,13 @@ $light: #f8faf9;
 .b-form-datepicker {
     & > label {
         margin-bottom: 0 !important;
+
+        &.form-control {
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
     }
 
     span {
