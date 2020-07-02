@@ -15,6 +15,25 @@ main {
     align-items: center;
 }
 
+.editor__content {
+    &.is-invalid {
+        & > .ProseMirror {
+            @extend .is-invalid;
+        }
+    }
+    &.is-valid {
+        & > .ProseMirror {
+            @extend .is-valid;
+        }
+    }
+}
+
+.ProseMirror {
+    @extend .form-control;
+    height: unset;
+    min-height: 150px;
+}
+
 // #Transitions
 .fade-enter-active,
 .fade-leave-active {

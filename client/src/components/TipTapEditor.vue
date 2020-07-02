@@ -5,7 +5,7 @@
                 <b-button
                     variant="light"
                     class="menubar__button"
-                    :class="{ 'is-active': isActive.bold() }"
+                    :class="{ active: isActive.bold() }"
                     @click="commands.bold"
                 >
                     <b-icon class="" scale="1" icon="type-bold"></b-icon>
@@ -14,7 +14,7 @@
                 <b-button
                     variant="light"
                     class="menubar__button"
-                    :class="{ 'is-active': isActive.italic() }"
+                    :class="{ active: isActive.italic() }"
                     @click="commands.italic"
                 >
                     <b-icon class="" scale="1" icon="type-italic"></b-icon>
@@ -23,7 +23,7 @@
                 <b-button
                     variant="light"
                     class="menubar__button"
-                    :class="{ 'is-active': isActive.paragraph() }"
+                    :class="{ active: isActive.paragraph() }"
                     @click="commands.paragraph"
                 >
                     <b-icon class="" scale="1" icon="type"></b-icon>
@@ -32,7 +32,7 @@
                 <b-button
                     variant="light"
                     class="menubar__button"
-                    :class="{ 'is-active': isActive.heading({ level: 3 }) }"
+                    :class="{ active: isActive.heading({ level: 3 }) }"
                     @click="commands.heading({ level: 3 })"
                 >
                     <b-icon class="" scale="1" icon="type-h1"></b-icon>
@@ -41,7 +41,7 @@
                 <b-button
                     variant="light"
                     class="menubar__button"
-                    :class="{ 'is-active': isActive.heading({ level: 4 }) }"
+                    :class="{ active: isActive.heading({ level: 4 }) }"
                     @click="commands.heading({ level: 4 })"
                 >
                     <b-icon class="" scale="1" icon="type-h2"></b-icon>
@@ -50,7 +50,7 @@
                 <b-button
                     variant="light"
                     class="menubar__button"
-                    :class="{ 'is-active': isActive.heading({ level: 5 }) }"
+                    :class="{ active: isActive.heading({ level: 5 }) }"
                     @click="commands.heading({ level: 5 })"
                 >
                     <b-icon class="" scale="1" icon="type-h3"></b-icon>
@@ -59,7 +59,7 @@
                 <b-button
                     variant="light"
                     class="menubar__button"
-                    :class="{ 'is-active': isActive.bullet_list() }"
+                    :class="{ active: isActive.bullet_list() }"
                     @click="commands.bullet_list"
                 >
                     <b-icon class="" scale="1" icon="list-ul"></b-icon>
@@ -68,7 +68,7 @@
                 <b-button
                     variant="light"
                     class="menubar__button"
-                    :class="{ 'is-active': isActive.ordered_list() }"
+                    :class="{ active: isActive.ordered_list() }"
                     @click="commands.ordered_list"
                 >
                     <b-icon class="" scale="1" icon="list-ol"></b-icon>
@@ -113,7 +113,14 @@
             </div>
         </editor-menu-bar>
 
-        <editor-content class="editor__content" :editor="editor" />
+        <editor-content
+            :class="{
+                editor__content: true,
+                'is-invalid': validated && html.length < 10,
+                'is-valid': validated && html.length >= 10
+            }"
+            :editor="editor"
+        />
     </div>
 </template>
 
@@ -137,7 +144,7 @@
             EditorContent,
             EditorMenuBar
         },
-        props: ["content"],
+        props: ["content", "validated"],
         data() {
             return {
                 editor: new Editor({
@@ -216,25 +223,5 @@
         color: #777;
         pointer-events: none;
         height: 0;
-    }
-
-    .ProseMirror {
-        border: 1px solid #ddd;
-        border-radius: 0.25rem;
-        padding: 0.5rem;
-        min-height: 200px;
-    }
-
-    .ProseMirror-focused {
-        color: #495057;
-        background-color: #fff;
-        border-color: #80bdff;
-        outline: 0;
-        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-    }
-
-    .is-active {
-        background-color: #555;
-        color: white;
     }
 </style>

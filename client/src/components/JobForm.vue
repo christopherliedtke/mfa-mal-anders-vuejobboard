@@ -39,6 +39,7 @@
                 required
             ></b-form-textarea> -->
             <TipTapEditor
+                :validated="validated"
                 :content="job.description"
                 v-on:update-content="job.description = $event"
             ></TipTapEditor>
