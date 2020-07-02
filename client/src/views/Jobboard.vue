@@ -26,7 +26,13 @@
                             ).toLocaleDateString()
                         }}
                     </p>
-                    <p>{{ job.description.substring(0, 100) }}...</p>
+                    <p
+                        v-html="
+                            $sanitize(job.description, {
+                                allowedTags: []
+                            }).substring(0, 100) + '...'
+                        "
+                    ></p>
                 </b-card-text>
             </b-card>
         </b-link>
