@@ -52,6 +52,48 @@ const mutation = new GraphQLObjectType({
                 applicationDeadline: {
                     type: new GraphQLNonNull(GraphQLString),
                 },
+                extJobUrl: {
+                    type: GraphQLString,
+                },
+                applicationEmail: {
+                    type: GraphQLString,
+                },
+                contactTitle: {
+                    type: GraphQLString,
+                },
+                contactFirstName: {
+                    type: GraphQLString,
+                },
+                contactLastName: {
+                    type: GraphQLString,
+                },
+                contactEmail: {
+                    type: GraphQLString,
+                },
+                contactPhone: {
+                    type: GraphQLString,
+                },
+                companyId: {
+                    type: GraphQLString,
+                },
+                companyName: {
+                    type: new GraphQLNonNull(GraphQLString),
+                },
+                companyLocation: {
+                    type: new GraphQLNonNull(GraphQLString),
+                },
+                companyState: {
+                    type: new GraphQLNonNull(GraphQLString),
+                },
+                companyStreet: {
+                    type: new GraphQLNonNull(GraphQLString),
+                },
+                companyZipCode: {
+                    type: new GraphQLNonNull(GraphQLString),
+                },
+                companyUrl: {
+                    type: GraphQLString,
+                },
             },
             async resolve(parentValue, args, req) {
                 const newJob = new Job({
@@ -60,6 +102,20 @@ const mutation = new GraphQLObjectType({
                     description: sanitizeHtml(args.description),
                     employmentType: sanitizeHtml(args.employmentType),
                     applicationDeadline: sanitizeHtml(args.applicationDeadline),
+                    extJobUrl: sanitizeHtml(args.extJobUrl),
+                    applicationEmail: sanitizeHtml(args.applicationEmail),
+                    contactTitle: sanitizeHtml(args.contactTitle),
+                    contactFirstName: sanitizeHtml(args.contactFirstName),
+                    contactLastName: sanitizeHtml(args.contactLastName),
+                    contactEmail: sanitizeHtml(args.contactEmail),
+                    contactPhone: sanitizeHtml(args.contactPhone),
+                    companyId: sanitizeHtml(args.companyId),
+                    companyName: sanitizeHtml(args.companyName),
+                    companyLocation: sanitizeHtml(args.companyLocation),
+                    companyState: sanitizeHtml(args.companyState),
+                    companyStreet: sanitizeHtml(args.companyStreet),
+                    companyZipCode: sanitizeHtml(args.companyZipCode),
+                    companyUrl: sanitizeHtml(args.companyUrl),
                 });
 
                 const response = await newJob.save();
@@ -77,6 +133,48 @@ const mutation = new GraphQLObjectType({
                 applicationDeadline: {
                     type: new GraphQLNonNull(GraphQLString),
                 },
+                extJobUrl: {
+                    type: GraphQLString,
+                },
+                applicationEmail: {
+                    type: GraphQLString,
+                },
+                contactTitle: {
+                    type: GraphQLString,
+                },
+                contactFirstName: {
+                    type: GraphQLString,
+                },
+                contactLastName: {
+                    type: GraphQLString,
+                },
+                contactEmail: {
+                    type: GraphQLString,
+                },
+                contactPhone: {
+                    type: GraphQLString,
+                },
+                companyId: {
+                    type: GraphQLString,
+                },
+                companyName: {
+                    type: new GraphQLNonNull(GraphQLString),
+                },
+                companyLocation: {
+                    type: new GraphQLNonNull(GraphQLString),
+                },
+                companyState: {
+                    type: new GraphQLNonNull(GraphQLString),
+                },
+                companyStreet: {
+                    type: new GraphQLNonNull(GraphQLString),
+                },
+                companyZipCode: {
+                    type: new GraphQLNonNull(GraphQLString),
+                },
+                companyUrl: {
+                    type: GraphQLString,
+                },
             },
             async resolve(parentValue, args, req) {
                 const response = await Job.updateOne(
@@ -88,6 +186,20 @@ const mutation = new GraphQLObjectType({
                         applicationDeadline: sanitizeHtml(
                             args.applicationDeadline
                         ),
+                        extJobUrl: sanitizeHtml(args.extJobUrl),
+                        applicationEmail: sanitizeHtml(args.applicationEmail),
+                        contactTitle: sanitizeHtml(args.contactTitle),
+                        contactFirstName: sanitizeHtml(args.contactFirstName),
+                        contactLastName: sanitizeHtml(args.contactLastName),
+                        contactEmail: sanitizeHtml(args.contactEmail),
+                        contactPhone: sanitizeHtml(args.contactPhone),
+                        companyId: sanitizeHtml(args.companyId),
+                        companyName: sanitizeHtml(args.companyName),
+                        companyLocation: sanitizeHtml(args.companyLocation),
+                        companyState: sanitizeHtml(args.companyState),
+                        companyStreet: sanitizeHtml(args.companyStreet),
+                        companyZipCode: sanitizeHtml(args.companyZipCode),
+                        companyUrl: sanitizeHtml(args.companyUrl),
                     }
                 );
 

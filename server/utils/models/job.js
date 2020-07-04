@@ -31,6 +31,53 @@ const JobSchema = new Schema(
             type: String,
             required: true,
         },
+        extJobUrl: {
+            type: String,
+        },
+        applicationEmail: {
+            type: String,
+        },
+        contactTitle: {
+            type: String,
+        },
+        contactFirstName: {
+            type: String,
+        },
+        contactLastName: {
+            type: String,
+        },
+        contactEmail: {
+            type: String,
+        },
+        contactPhone: {
+            type: String,
+        },
+        companyId: {
+            type: String,
+        },
+        companyName: {
+            type: String,
+            required: true,
+        },
+        companyLocation: {
+            type: String,
+            required: true,
+        },
+        companyState: {
+            type: String,
+            required: true,
+        },
+        companyStreet: {
+            type: String,
+            required: true,
+        },
+        companyZipCode: {
+            type: String,
+            required: true,
+        },
+        companyUrl: {
+            type: String,
+        },
     },
     { timestamps: true }
 );

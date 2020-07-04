@@ -162,7 +162,7 @@
                         new Placeholder({
                             emptyEditorClass: "is-editor-empty",
                             emptyNodeClass: "is-empty",
-                            emptyNodeText: "Write something …",
+                            emptyNodeText: "Write something ...",
                             showOnlyWhenEditable: true,
                             showOnlyCurrent: true
                         })

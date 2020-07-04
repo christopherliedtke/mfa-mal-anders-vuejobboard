@@ -52,15 +52,22 @@
         created: function() {
             this.getJobs({
                 query: `
-                query {
-                    jobs {
-                        _id
-                        title
-                        description
-                        createdAt
+                    query {
+                        jobs {
+                            _id
+                            createdAt
+                            title
+                            description
+                            employmentType
+                            applicationDeadline
+                            companyName
+                            companyLocation
+                            companyState
+                            companyStreet
+                            companyZipCode
+                        }
                     }
-                }
-            `
+                `
             });
         },
         computed: mapGetters(["jobs"])

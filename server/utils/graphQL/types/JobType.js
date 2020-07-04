@@ -43,6 +43,48 @@ const JobType = new GraphQLObjectType({
         applicationDeadline: {
             type: GraphQLString,
         },
+        extJobUrl: {
+            type: GraphQLString,
+        },
+        applicationEmail: {
+            type: GraphQLString,
+        },
+        contactTitle: {
+            type: GraphQLString,
+        },
+        contactFirstName: {
+            type: GraphQLString,
+        },
+        contactLastName: {
+            type: GraphQLString,
+        },
+        contactEmail: {
+            type: GraphQLString,
+        },
+        contactPhone: {
+            type: GraphQLString,
+        },
+        companyId: {
+            type: GraphQLString,
+        },
+        companyName: {
+            type: GraphQLString,
+        },
+        companyLocation: {
+            type: GraphQLString,
+        },
+        companyState: {
+            type: GraphQLString,
+        },
+        companyStreet: {
+            type: GraphQLString,
+        },
+        companyZipCode: {
+            type: GraphQLString,
+        },
+        companyUrl: {
+            type: GraphQLString,
+        },
     }),
 });
 

@@ -25,6 +25,19 @@
                                     description
                                     employmentType
                                     applicationDeadline
+                                    extJobUrl
+                                    applicationEmail
+                                    contactTitle
+                                    contactFirstName
+                                    contactLastName
+                                    contactEmail
+                                    contactPhone
+                                    companyName
+                                    companyLocation
+                                    companyState
+                                    companyStreet
+                                    companyZipCode
+                                    companyUrl
                                 }
                             }
                         `
