@@ -74,6 +74,28 @@
             </b-input-group>
 
             <h3 class="mt-4">Company</h3>
+            <div class="mt-3 d-flex align-items-end">
+                <div>
+                    <label for="company-list">Re-use Company</label>
+                    <b-form-select
+                        id="company-list"
+                        v-model="job.companyId"
+                        @change="setCompany"
+                        ><b-form-select-option
+                            v-for="company in companies"
+                            :key="company._id"
+                            :value="company._id"
+                            >{{ company.name }}</b-form-select-option
+                        ></b-form-select
+                    >
+                </div>
+                <b-button
+                    class="ml-md-2 mt-2 mt-md-0"
+                    variant="warning"
+                    @click.prevent="resetCompany"
+                    >Reset</b-button
+                >
+            </div>
             <label for="company-name">Name *</label>
             <b-form-input
                 type="text"
@@ -133,7 +155,8 @@
                 ></b-form-input>
             </b-input-group>
             <b-form-checkbox class="mt-3 ml-1" v-model="saveCompany" switch>
-                Save this company to reuse another time.
+                {{ job.companyId ? "Update" : "Save" }} this company to reuse
+                another time.
             </b-form-checkbox>
 
             <h3 class="mt-4">Contact</h3>
@@ -232,7 +255,7 @@
                 job: {
                     title: "",
                     description: "",
-                    employmentType: employmentTypeOptions[0].value,
+                    employmentType: null,
                     applicationDeadline: "",
                     extJobUrl: "",
                     applicationEmail: "",
@@ -249,6 +272,7 @@
                     companyZipCode: null,
                     companyUrl: ""
                 },
+                companies: [],
                 employmentTypeOptions,
                 contactTitleOptions,
                 companyStateOptions,
@@ -263,6 +287,7 @@
             if (this.jobId) {
                 this.getJob(this.jobId);
             }
+            this.getCompanies();
         },
         methods: {
             async getJob(jobId) {
@@ -300,6 +325,32 @@
                     console.log("err: ", err);
                 }
             },
+            async getCompanies() {
+                try {
+                    const companies = await axios.post(
+                        "/api/companies/private",
+                        {
+                            query: `
+                            query {
+                                companies {
+                                    _id
+                                    name
+                                    location
+                                    state
+                                    street
+                                    zipCode
+                                    url
+                                }
+                            }
+                        `
+                        }
+                    );
+
+                    this.companies = companies.data.data.companies;
+                } catch (err) {
+                    console.log("err: ", err);
+                }
+            },
             async onSubmit() {
                 try {
                     this.error = false;
@@ -311,6 +362,50 @@
 
                     this.showOverlay = true;
 
+                    let newCompanyId;
+
+                    if (this.saveCompany && !this.job.companyId) {
+                        const response = await axios.post(
+                            "/api/companies/private",
+                            {
+                                query: `
+                                mutation {
+                                    addCompany(
+                                        name: "${this.job.companyName}", 
+                                        location: "${this.job.companyLocation}", 
+                                        state: "${this.job.companyState}", 
+                                        street: "${this.job.companyStreet}"
+                                        zipCode: "${this.job.companyZipCode}"
+                                        url: "${this.job.companyUrl}"
+                                    ) {
+                                        _id
+                                    }
+                                }
+                            `
+                            }
+                        );
+
+                        newCompanyId = response.data.data.addCompany._id;
+                    } else if (this.saveCompany && this.job.companyId) {
+                        await axios.post("/api/companies/private", {
+                            query: `
+                                mutation {
+                                    updateCompany(
+                                        _id: "${this.job.companyId}", 
+                                        name: "${this.job.companyName}", 
+                                        location: "${this.job.companyLocation}", 
+                                        state: "${this.job.companyState}", 
+                                        street: "${this.job.companyStreet}"
+                                        zipCode: "${this.job.companyZipCode}"
+                                        url: "${this.job.companyUrl}"
+                                    ) {
+                                        _id
+                                    }
+                                }
+                            `
+                        });
+                    }
+
                     let response;
 
                     if (this.jobId) {
@@ -321,21 +416,38 @@
                                         _id: "${this.job._id}", 
                                         title: "${this.job.title}", 
                                         description: "${this.job.description}", 
-                                        employmentType: "${this.job.employmentType}", 
-                                        applicationDeadline: "${this.job.applicationDeadline}"
+                                        employmentType: "${
+                                            this.job.employmentType
+                                        }", 
+                                        applicationDeadline: "${
+                                            this.job.applicationDeadline
+                                        }"
                                         extJobUrl: "${this.job.extJobUrl}"
-                                        applicationEmail: "${this.job.applicationEmail}"
+                                        applicationEmail: "${
+                                            this.job.applicationEmail
+                                        }"
                                         contactTitle: "${this.job.contactTitle}"
-                                        contactFirstName: "${this.job.contactFirstName}"
-                                        contactLastName: "${this.job.contactLastName}"
+                                        contactFirstName: "${
+                                            this.job.contactFirstName
+                                        }"
+                                        contactLastName: "${
+                                            this.job.contactLastName
+                                        }"
                                         contactEmail: "${this.job.contactEmail}"
                                         contactPhone: "${this.job.contactPhone}"
-                                        companyId: "${this.job.contactPhone}"
+                                        companyId: "${newCompanyId ||
+                                            this.job.companyId}"
                                         companyName: "${this.job.companyName}"
-                                        companyLocation: "${this.job.companyLocation}"
+                                        companyLocation: "${
+                                            this.job.companyLocation
+                                        }"
                                         companyState: "${this.job.companyState}"
-                                        companyStreet: "${this.job.companyStreet}"
-                                        companyZipCode: "${this.job.companyZipCode}"
+                                        companyStreet: "${
+                                            this.job.companyStreet
+                                        }"
+                                        companyZipCode: "${
+                                            this.job.companyZipCode
+                                        }"
                                         companyUrl: "${this.job.companyUrl}"
                                     ) {
                                         _id
@@ -350,21 +462,38 @@
                                     addJob(
                                         title: "${this.job.title}", 
                                         description: "${this.job.description}", 
-                                        employmentType: "${this.job.employmentType}", 
-                                        applicationDeadline: "${this.job.applicationDeadline}"
+                                        employmentType: "${
+                                            this.job.employmentType
+                                        }", 
+                                        applicationDeadline: "${
+                                            this.job.applicationDeadline
+                                        }"
                                         extJobUrl: "${this.job.extJobUrl}"
-                                        applicationEmail: "${this.job.applicationEmail}"
+                                        applicationEmail: "${
+                                            this.job.applicationEmail
+                                        }"
                                         contactTitle: "${this.job.contactTitle}"
-                                        contactFirstName: "${this.job.contactFirstName}"
-                                        contactLastName: "${this.job.contactLastName}"
+                                        contactFirstName: "${
+                                            this.job.contactFirstName
+                                        }"
+                                        contactLastName: "${
+                                            this.job.contactLastName
+                                        }"
                                         contactEmail: "${this.job.contactEmail}"
                                         contactPhone: "${this.job.contactPhone}"
-                                        companyId: "${this.job.contactPhone}"
+                                        companyId: "${newCompanyId ||
+                                            this.job.companyId}"
                                         companyName: "${this.job.companyName}"
-                                        companyLocation: "${this.job.companyLocation}"
+                                        companyLocation: "${
+                                            this.job.companyLocation
+                                        }"
                                         companyState: "${this.job.companyState}"
-                                        companyStreet: "${this.job.companyStreet}"
-                                        companyZipCode: "${this.job.companyZipCode}"
+                                        companyStreet: "${
+                                            this.job.companyStreet
+                                        }"
+                                        companyZipCode: "${
+                                            this.job.companyZipCode
+                                        }"
                                         companyUrl: "${this.job.companyUrl}"
                                     ) {
                                         _id
@@ -414,6 +543,27 @@
                 for (const key in this.job) {
                     this.job[key] = "";
                 }
+            },
+            resetCompany() {
+                this.job.companyId = "";
+                this.job.companyName = "";
+                this.job.companyLocation = "";
+                this.job.companyState = "";
+                this.job.companyStreet = "";
+                this.job.companyZipCode = "";
+                this.job.companyUrl = "";
+            },
+            setCompany() {
+                this.companies.forEach(company => {
+                    if (company._id === this.job.companyId) {
+                        this.job.companyName = company.name;
+                        this.job.companyLocation = company.location;
+                        this.job.companyState = company.state;
+                        this.job.companyStreet = company.street;
+                        this.job.companyZipCode = company.zipCode;
+                        this.job.companyUrl = company.url;
+                    }
+                });
             }
         }
     };
