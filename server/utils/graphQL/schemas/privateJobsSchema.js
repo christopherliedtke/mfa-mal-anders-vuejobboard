@@ -56,10 +56,10 @@ const mutation = new GraphQLObjectType({
             async resolve(parentValue, args, req) {
                 const newJob = new Job({
                     userId: req.userId,
-                    title: args.title,
+                    title: sanitizeHtml(args.title),
                     description: sanitizeHtml(args.description),
-                    employmentType: args.employmentType,
-                    applicationDeadline: args.applicationDeadline,
+                    employmentType: sanitizeHtml(args.employmentType),
+                    applicationDeadline: sanitizeHtml(args.applicationDeadline),
                 });
 
                 const response = await newJob.save();
@@ -82,10 +82,12 @@ const mutation = new GraphQLObjectType({
                 const response = await Job.updateOne(
                     { _id: args._id, userId: req.userId },
                     {
-                        title: args.title,
+                        title: sanitizeHtml(args.title),
                         description: sanitizeHtml(args.description),
-                        employmentType: args.employmentType,
-                        applicationDeadline: args.applicationDeadline,
+                        employmentType: sanitizeHtml(args.employmentType),
+                        applicationDeadline: sanitizeHtml(
+                            args.applicationDeadline
+                        ),
                     }
                 );
 
@@ -110,7 +112,7 @@ const mutation = new GraphQLObjectType({
             async resolve(parentValue, args, req) {
                 const response = await Job.updateOne(
                     { _id: args._id, userId: req.userId },
-                    { status: args.status }
+                    { status: sanitizeHtml(args.status) }
                 );
 
                 if (response.nModified === 0) {
