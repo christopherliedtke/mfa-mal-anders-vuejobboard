@@ -1,5 +1,5 @@
 <template>
-    <b-container class="edit-jobpage py-5">
+    <b-container class="edit-job py-5">
         <h2>Edit Job</h2>
         <JobForm :jobId="$route.params.jobId"></JobForm>
     </b-container>

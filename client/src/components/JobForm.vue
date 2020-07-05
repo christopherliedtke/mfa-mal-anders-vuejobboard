@@ -8,7 +8,6 @@
         >
         </b-overlay>
         <b-form id="job-form">
-            <!-- <b-form id="job-form" :validated="validated"> -->
             <h3 class="mt-4">Job Data</h3>
             <label for="title">Job Title *</label>
             <b-form-input
@@ -119,7 +118,7 @@
                 id="company-state"
                 v-model="job.companyState"
                 :options="companyStateOptions"
-                :state="!validated ? null : !job.companyState ? false : true"
+                :state="validated ? (job.companyState ? true : false) : null"
             ></b-form-select>
             <label for="company-street">Street and House Number *</label>
             <b-form-input

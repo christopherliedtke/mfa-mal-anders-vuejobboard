@@ -9,6 +9,8 @@ import PublicJobView from "@/views/PublicJobView.vue";
 import Dashboard from "@/views/Dashboard.vue";
 import NewJobView from "@/views/NewJobView.vue";
 import EditJobView from "@/views/EditJobView.vue";
+import NewCompanyView from "@/views/NewCompanyView.vue";
+import EditCompanyView from "@/views/EditCompanyView.vue";
 import PrivateJobView from "@/views/PrivateJobView.vue";
 import Account from "@/views/Account.vue";
 import Login from "@/views/Login.vue";
@@ -70,6 +72,22 @@ const routes = [
         path: "/dashboard/jobs/preview/:jobId",
         name: "PrivateJobView",
         component: PrivateJobView,
+        meta: {
+            public: false
+        }
+    },
+    {
+        path: "/dashboard/new-company",
+        name: "NewCompanyView",
+        component: NewCompanyView,
+        meta: {
+            public: false
+        }
+    },
+    {
+        path: "/dashboard/companies/:companyId",
+        name: "EditCompanyView",
+        component: EditCompanyView,
         meta: {
             public: false
         }
