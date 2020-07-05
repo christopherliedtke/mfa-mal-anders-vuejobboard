@@ -1,5 +1,5 @@
 <template>
-    <div class="register container py-5 position-relative">
+    <b-container class="register py-5 position-relative">
         <b-overlay
             :show="showOverlay"
             variant="transparent"
@@ -107,7 +107,7 @@
                 >
             </div>
         </b-form>
-    </div>
+    </b-container>
 </template>
 
 <script>

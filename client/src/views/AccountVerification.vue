@@ -1,5 +1,5 @@
 <template>
-    <div class="account-verification container py-5 position-relative">
+    <b-container class="account-verification position-relative py-5">
         <b-overlay
             :show="showOverlay"
             variant="transparent"
@@ -26,7 +26,7 @@
                 >The activation link was sent to your registered email address.
             </b-alert>
         </div>
-    </div>
+    </b-container>
 </template>
 
 <script>

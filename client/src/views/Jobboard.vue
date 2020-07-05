@@ -1,5 +1,5 @@
 <template>
-    <div class="jobboard container py-5">
+    <b-container class="jobboard py-5">
         <h2>Jobboard</h2>
         <b-link
             v-for="job in jobs"
@@ -36,7 +36,7 @@
                 </b-card-text>
             </b-card>
         </b-link>
-    </div>
+    </b-container>
 </template>
 
 <script>

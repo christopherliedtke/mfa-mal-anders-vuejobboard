@@ -1,7 +1,7 @@
 <template>
-    <div class="jobpage container py-5">
+    <b-container class="jobpage py-5">
         <Job :job="job"></Job>
-    </div>
+    </b-container>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-    <div class="home container py-5">
+    <b-container class="home py-5">
         <h2>Home</h2>
         <!-- <div>
             <b-card
@@ -17,7 +17,7 @@
                 </b-card-text>
             </b-card>
         </div> -->
-    </div>
+    </b-container>
 </template>
 
 <script>

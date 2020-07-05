@@ -119,24 +119,24 @@ const mutation = new GraphQLObjectType({
                 }
             },
         },
-        // deleteJob: {
-        //     type: JobType,
-        //     args: {
-        //         _id: { type: GraphQLString },
-        //     },
-        //     async resolve(parentValue, args, req) {
-        //         const response = await Job.deleteOne({
-        //             _id: args._id,
-        //             userId: req.userId,
-        //         });
+        deleteCompany: {
+            type: CompanyType,
+            args: {
+                _id: { type: GraphQLString },
+            },
+            async resolve(parentValue, args, req) {
+                const response = await Company.deleteOne({
+                    _id: args._id,
+                    userId: req.userId,
+                });
 
-        //         if (response.n === 1) {
-        //             return { status: "deleted" };
-        //         } else {
-        //             return;
-        //         }
-        //     },
-        // },
+                if (response.n === 1) {
+                    return { name: "deleted" };
+                } else {
+                    return;
+                }
+            },
+        },
     },
 });
 

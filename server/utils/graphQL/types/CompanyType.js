@@ -9,9 +9,9 @@ const {
     GraphQLNonNull,
 } = require("graphql");
 
-// #Job Type
+// #Company Type
 const CompanyType = new GraphQLObjectType({
-    name: "Job",
+    name: "Company",
     fields: () => ({
         _id: {
             type: GraphQLString,

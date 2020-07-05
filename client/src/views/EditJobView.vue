@@ -1,8 +1,8 @@
 <template>
-    <div class="edit-jobpage container py-5 position-relative">
+    <b-container class="edit-jobpage py-5">
         <h2>Edit Job</h2>
         <JobForm :jobId="$route.params.jobId"></JobForm>
-    </div>
+    </b-container>
 </template>
 
 <script>

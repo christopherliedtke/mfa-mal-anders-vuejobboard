@@ -1,5 +1,5 @@
 <template>
-    <div class="login container py-5">
+    <b-container class="login py-5">
         <h2>Login</h2>
         <b-form>
             <label for="email">Email</label>
@@ -53,7 +53,7 @@
                 >
             </div>
         </b-form>
-    </div>
+    </b-container>
 </template>
 
 <script>

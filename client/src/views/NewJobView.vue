@@ -1,8 +1,8 @@
 <template>
-    <div class="new-job container py-5 position-relative">
+    <b-container class="new-job py-5">
         <h2>New Job</h2>
         <JobForm :jobId="null"></JobForm>
-    </div>
+    </b-container>
 </template>
 
 <script>

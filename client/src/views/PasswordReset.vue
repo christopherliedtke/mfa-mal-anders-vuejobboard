@@ -1,5 +1,5 @@
 <template>
-    <div class="login container py-5 position-relative">
+    <b-container class="password-reset py-5 position-relative">
         <b-overlay
             :show="showOverlay"
             variant="transparent"
@@ -111,7 +111,7 @@
                 ></b-spinner
             ></b-alert>
         </div>
-    </div>
+    </b-container>
 </template>
 
 <script>
@@ -189,7 +189,7 @@
 </script>
 
 <style scoped lang="scss">
-    .login {
+    .password-reset {
         &.container {
             width: 90%;
             max-width: 450px;

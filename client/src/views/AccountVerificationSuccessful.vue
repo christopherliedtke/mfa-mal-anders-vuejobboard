@@ -1,5 +1,5 @@
 <template>
-    <div class="account-verification-successful container py-5">
+    <b-container class="account-verification-successful position-relative py-5">
         <h2>Account Verification Successful</h2>
         <div class="success mt-3">
             <b-alert show dismissible variant="success"
@@ -12,7 +12,7 @@
                 ></b-spinner>
             </b-alert>
         </div>
-    </div>
+    </b-container>
 </template>
 
 <script>

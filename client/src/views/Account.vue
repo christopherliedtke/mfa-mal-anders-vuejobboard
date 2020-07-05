@@ -1,19 +1,13 @@
 <template>
-    <div class="dashboard container py-5">
+    <b-container class="dashboard py-5">
         <h2>Account</h2>
-        <div>
-            <b-tabs content-class="mt-3">
-                <b-tab title="Account Data" active
-                    ><p>Account Data</p>
-                    <DeleteAccountButton
-                /></b-tab>
-                <b-tab title="Second"><p>I'm the second tab</p></b-tab>
-                <b-tab title="Disabled" :disabled="true"
-                    ><p>I'm a disabled tab!</p></b-tab
-                >
-            </b-tabs>
-        </div>
-    </div>
+        <b-tabs content-class="mt-3">
+            <b-tab title="Account Data" active
+                ><h3>Account Data</h3>
+                <DeleteAccountButton
+            /></b-tab>
+        </b-tabs>
+    </b-container>
 </template>
 
 <script>

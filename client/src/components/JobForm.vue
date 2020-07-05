@@ -76,7 +76,7 @@
             <h3 class="mt-4">Company</h3>
             <div class="mt-3 d-flex align-items-end">
                 <div>
-                    <label for="company-list">Re-use Company</label>
+                    <label for="company-list">Choose Company</label>
                     <b-form-select
                         id="company-list"
                         v-model="job.companyId"
