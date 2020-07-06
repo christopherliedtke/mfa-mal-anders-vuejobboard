@@ -13,15 +13,15 @@
             v-model="file"
             :state="validated ? (file ? true : null) : null"
             accept="image/jpeg, image/png"
-            placeholder="Choose/Drop a file (png, jpg) ..."
-            drop-placeholder="Drop file here (png, jpg) ..."
+            placeholder="Choose/Drop a file ..."
+            drop-placeholder="Drop file here ..."
             @input="uploadImage"
         ></b-form-file>
         <b-button
             class="ml-2"
             variant="outline-danger"
             @click.prevent="resetFile"
-            ><b-icon icon="x"></b-icon
+            ><b-icon icon="trash"></b-icon
         ></b-button>
     </div>
 </template>
@@ -30,7 +30,7 @@
     import axios from "@/axios";
     export default {
         name: "ImageUploader",
-        props: ["validated", "imageUrl"],
+        props: ["validated", "imageUrl", "width", "height"],
         data() {
             return {
                 file: null,
@@ -52,6 +52,8 @@
 
                     const formData = new FormData();
                     formData.append("file", file);
+                    formData.append("width", this.width);
+                    formData.append("height", this.height);
 
                     const response = await axios.post(
                         "/api/images/upload",

@@ -26,6 +26,7 @@
         "multer": "^1.4.2",
         "nodemailer": "^6.4.6",
         "sanitize-html": "^1.27.0",
+        "sharp": "^0.25.4",
         "uid-safe": "^2.1.5"
     },
     "devDependencies": {

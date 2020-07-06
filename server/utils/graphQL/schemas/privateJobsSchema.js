@@ -94,6 +94,9 @@ const mutation = new GraphQLObjectType({
                 companyUrl: {
                     type: GraphQLString,
                 },
+                companyLogoUrl: {
+                    type: GraphQLString,
+                },
             },
             async resolve(parentValue, args, req) {
                 const newJob = new Job({
@@ -116,6 +119,7 @@ const mutation = new GraphQLObjectType({
                     companyStreet: sanitizeHtml(args.companyStreet),
                     companyZipCode: sanitizeHtml(args.companyZipCode),
                     companyUrl: sanitizeHtml(args.companyUrl),
+                    companyLogoUrl: sanitizeHtml(args.companyLogoUrl),
                 });
 
                 const response = await newJob.save();
@@ -175,6 +179,9 @@ const mutation = new GraphQLObjectType({
                 companyUrl: {
                     type: GraphQLString,
                 },
+                companyLogoUrl: {
+                    type: GraphQLString,
+                },
             },
             async resolve(parentValue, args, req) {
                 const response = await Job.updateOne(
@@ -200,6 +207,7 @@ const mutation = new GraphQLObjectType({
                         companyStreet: sanitizeHtml(args.companyStreet),
                         companyZipCode: sanitizeHtml(args.companyZipCode),
                         companyUrl: sanitizeHtml(args.companyUrl),
+                        companyLogoUrl: sanitizeHtml(args.companyLogoUrl),
                     }
                 );
 

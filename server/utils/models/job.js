@@ -78,6 +78,9 @@ const JobSchema = new Schema(
         companyUrl: {
             type: String,
         },
+        companyLogoUrl: {
+            type: String,
+        },
     },
     { timestamps: true }
 );

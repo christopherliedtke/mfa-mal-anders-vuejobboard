@@ -85,6 +85,9 @@ const JobType = new GraphQLObjectType({
         companyUrl: {
             type: GraphQLString,
         },
+        companyLogoUrl: {
+            type: GraphQLString,
+        },
     }),
 });
 

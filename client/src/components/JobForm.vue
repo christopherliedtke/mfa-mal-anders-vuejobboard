@@ -153,6 +153,24 @@
                     placeholder="https://www.your-company.com"
                 ></b-form-input>
             </b-input-group>
+            <label for="file">Logo (jpg, png | max. 5MB)</label>
+            <div>
+                <b-avatar
+                    class="mb-2 d-flex align-items-center justify-content-center"
+                    size="lg"
+                    icon="box"
+                    variant="secondary"
+                    rounded
+                    :src="job.companyLogoUrl"
+                ></b-avatar>
+            </div>
+            <ImageUploader
+                :validated="validated"
+                :imageUrl="job.companyLogoUrl"
+                :width="200"
+                :height="200"
+                @update-url="job.companyLogoUrl = $event"
+            ></ImageUploader>
             <b-form-checkbox class="mt-3 ml-1" v-model="saveCompany" switch>
                 {{ job.companyId ? "Update" : "Save" }} this company to reuse
                 another time.
@@ -245,9 +263,10 @@
         companyStateOptions
     } from "@/utils/jobDataConfig.json";
     import TipTapEditor from "@/components/TipTapEditor.vue";
+    import ImageUploader from "@/components/ImageUploader.vue";
     export default {
         name: "JobForm",
-        components: { TipTapEditor },
+        components: { TipTapEditor, ImageUploader },
         props: ["jobId"],
         data() {
             return {
@@ -269,7 +288,8 @@
                     companyState: null,
                     companyStreet: "",
                     companyZipCode: null,
-                    companyUrl: ""
+                    companyUrl: "",
+                    companyLogoUrl: ""
                 },
                 companies: [],
                 employmentTypeOptions,
@@ -314,6 +334,7 @@
                                     companyStreet
                                     companyZipCode
                                     companyUrl
+                                    companyLogoUrl
                                 }
                             }
                         `
@@ -339,6 +360,7 @@
                                     street
                                     zipCode
                                     url
+                                    logoUrl
                                 }
                             }
                         `
@@ -376,6 +398,7 @@
                                         street: "${this.job.companyStreet}"
                                         zipCode: "${this.job.companyZipCode}"
                                         url: "${this.job.companyUrl}"
+                                        logoUrl: "${this.job.companyLogoUrl}"
                                     ) {
                                         _id
                                     }
@@ -397,6 +420,7 @@
                                         street: "${this.job.companyStreet}"
                                         zipCode: "${this.job.companyZipCode}"
                                         url: "${this.job.companyUrl}"
+                                        logoUrl: "${this.job.companyLogoUrl}"
                                     ) {
                                         _id
                                     }
@@ -448,6 +472,9 @@
                                             this.job.companyZipCode
                                         }"
                                         companyUrl: "${this.job.companyUrl}"
+                                        companyLogoUrl: "${
+                                            this.job.companyLogoUrl
+                                        }"
                                     ) {
                                         _id
                                     }
@@ -494,6 +521,9 @@
                                             this.job.companyZipCode
                                         }"
                                         companyUrl: "${this.job.companyUrl}"
+                                        companyLogoUrl: "${
+                                            this.job.companyLogoUrl
+                                        }"
                                     ) {
                                         _id
                                     }
@@ -551,6 +581,7 @@
                 this.job.companyStreet = "";
                 this.job.companyZipCode = "";
                 this.job.companyUrl = "";
+                this.job.companyLogoUrl = "";
             },
             setCompany() {
                 this.companies.forEach(company => {
@@ -561,6 +592,7 @@
                         this.job.companyStreet = company.street;
                         this.job.companyZipCode = company.zipCode;
                         this.job.companyUrl = company.url;
+                        this.job.companyLogoUrl = company.logoUrl;
                     }
                 });
             }

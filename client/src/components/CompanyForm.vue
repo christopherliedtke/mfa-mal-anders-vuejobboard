@@ -67,7 +67,7 @@
                     placeholder="https://www.your-company.com"
                 ></b-form-input>
             </b-input-group>
-            <label for="file">Logo</label>
+            <label for="file">Logo (jpg, png | max. 5MB)</label>
             <div>
                 <b-avatar
                     class="mb-2 d-flex align-items-center justify-content-center"
@@ -81,6 +81,8 @@
             <ImageUploader
                 :validated="validated"
                 :imageUrl="company.logoUrl"
+                :width="200"
+                :height="200"
                 @update-url="company.logoUrl = $event"
             ></ImageUploader>
 
