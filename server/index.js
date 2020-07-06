@@ -56,6 +56,7 @@ app.use("/api/auth", require("./routes/auth"));
 app.use("/api/user", require("./routes/user"));
 app.use("/api/jobs", require("./routes/jobs"));
 app.use("/api/companies", require("./routes/companies"));
+app.use("/api/images", require("./routes/images"));
 app.use("/", require("./routes/index"));
 
 // Serve the built static files in production

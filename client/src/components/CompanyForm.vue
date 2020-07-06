@@ -67,9 +67,25 @@
                     placeholder="https://www.your-company.com"
                 ></b-form-input>
             </b-input-group>
+            <label for="file">Logo</label>
+            <div>
+                <b-avatar
+                    class="mb-2 d-flex align-items-center justify-content-center"
+                    size="lg"
+                    icon="box"
+                    variant="secondary"
+                    rounded
+                    :src="company.logoUrl"
+                ></b-avatar>
+            </div>
+            <ImageUploader
+                :validated="validated"
+                :imageUrl="company.logoUrl"
+                @update-url="company.logoUrl = $event"
+            ></ImageUploader>
 
             <div class="d-flex justify-content-between my-4">
-                <b-button variant="outline-danger" to="/dashboard">
+                <b-button variant="outline-danger" to="/dashboard?tab=2">
                     Cancel
                 </b-button>
                 <b-button variant="success" @click.prevent="onSubmit">
@@ -95,8 +111,12 @@
 <script>
     import axios from "@/axios";
     import { companyStateOptions } from "@/utils/jobDataConfig.json";
+    import ImageUploader from "@/components/ImageUploader.vue";
     export default {
         name: "CompanyForm",
+        components: {
+            ImageUploader
+        },
         props: ["companyId"],
         data() {
             return {
@@ -106,7 +126,8 @@
                     state: null,
                     street: "",
                     zipCode: null,
-                    url: ""
+                    url: "",
+                    logoUrl: ""
                 },
                 companyStateOptions,
                 validated: null,
@@ -134,6 +155,7 @@
                                     street
                                     zipCode
                                     url
+                                    logoUrl
                                 }
                             }
                         `
@@ -169,6 +191,7 @@
                                         street: "${this.company.street}"
                                         zipCode: "${this.company.zipCode}"
                                         url: "${this.company.url}"
+                                        logoUrl: "${this.company.logoUrl}"
                                     ) {
                                         _id
                                     }
@@ -186,6 +209,7 @@
                                         street: "${this.company.street}"
                                         zipCode: "${this.company.zipCode}"
                                         url: "${this.company.url}"
+                                        logoUrl: "${this.company.logoUrl}"
                                     ) {
                                         _id
                                     }
@@ -230,17 +254,14 @@
                 for (const key in this.company) {
                     this.company[key] = "";
                 }
-            },
-            resetCompany() {
-                this.company.name = "";
-                this.company.location = "";
-                this.company.state = "";
-                this.company.street = "";
-                this.company.zipCode = "";
-                this.company.url = "";
             }
         }
     };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+    .b-avatar-img > img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+</style>

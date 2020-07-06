@@ -43,6 +43,9 @@ const CompanyType = new GraphQLObjectType({
         url: {
             type: GraphQLString,
         },
+        logoUrl: {
+            type: GraphQLString,
+        },
     }),
 });
 

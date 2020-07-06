@@ -60,6 +60,9 @@ const mutation = new GraphQLObjectType({
                 url: {
                     type: GraphQLString,
                 },
+                logoUrl: {
+                    type: GraphQLString,
+                },
             },
             async resolve(parentValue, args, req) {
                 const newCompany = new Company({
@@ -70,6 +73,7 @@ const mutation = new GraphQLObjectType({
                     street: sanitizeHtml(args.street),
                     zipCode: sanitizeHtml(args.zipCode),
                     url: sanitizeHtml(args.url),
+                    logoUrl: sanitizeHtml(args.logoUrl),
                 });
 
                 const response = await newCompany.save();
@@ -93,6 +97,9 @@ const mutation = new GraphQLObjectType({
                 url: {
                     type: GraphQLString,
                 },
+                logoUrl: {
+                    type: GraphQLString,
+                },
             },
             async resolve(parentValue, args, req) {
                 const response = await Company.updateOne(
@@ -104,6 +111,7 @@ const mutation = new GraphQLObjectType({
                         street: sanitizeHtml(args.street),
                         zipCode: sanitizeHtml(args.zipCode),
                         url: sanitizeHtml(args.url),
+                        logoUrl: sanitizeHtml(args.logoUrl),
                     }
                 );
 

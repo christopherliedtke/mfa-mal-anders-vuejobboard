@@ -37,7 +37,7 @@
             <TipTapEditor
                 :validated="validated"
                 :content="job.description"
-                v-on:update-content="job.description = $event"
+                @update-content="job.description = $event"
             ></TipTapEditor>
             <label for="ext-job-url">URL to Job Post</label>
             <b-input-group>

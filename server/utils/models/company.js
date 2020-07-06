@@ -30,6 +30,9 @@ const CompanySchema = new Schema(
         url: {
             type: String,
         },
+        logoUrl: {
+            type: String,
+        },
     },
     { timestamps: true }
 );
