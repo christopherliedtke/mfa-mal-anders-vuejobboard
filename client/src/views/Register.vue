@@ -1,12 +1,6 @@
 <template>
     <b-container class="register py-5 position-relative">
-        <b-overlay
-            :show="showOverlay"
-            variant="transparent"
-            blur="none"
-            no-wrap
-        >
-        </b-overlay>
+        <Overlay :show="showOverlay"></Overlay>
         <h2>Sign Up</h2>
         <b-form>
             <label for="firstName">First Name</label>
@@ -112,8 +106,25 @@
 
 <script>
     import { mapActions } from "vuex";
+    import Overlay from "@/components/Overlay";
     export default {
         name: "Register",
+        components: {
+            Overlay
+        },
+        data() {
+            return {
+                firstName: "",
+                lastName: "",
+                email: "",
+                password: "",
+                password2: "",
+                passwordType: "password",
+                acceptance: "",
+                showOverlay: false,
+                errors: []
+            };
+        },
         methods: {
             ...mapActions(["userAuth"]),
             async onSubmit() {
@@ -141,19 +152,6 @@
                     ? (this.passwordType = "password")
                     : (this.passwordType = "text");
             }
-        },
-        data() {
-            return {
-                firstName: "",
-                lastName: "",
-                email: "",
-                password: "",
-                password2: "",
-                passwordType: "password",
-                acceptance: "",
-                showOverlay: false,
-                errors: []
-            };
         }
     };
 </script>

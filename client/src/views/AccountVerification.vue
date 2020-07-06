@@ -1,12 +1,6 @@
 <template>
     <b-container class="account-verification position-relative py-5">
-        <b-overlay
-            :show="showOverlay"
-            variant="transparent"
-            blur="none"
-            no-wrap
-        >
-        </b-overlay>
+        <Overlay :show="showOverlay"> </Overlay>
         <h2>Account Verification</h2>
         <p>
             Please check your email inbox for the activation link. If you do not
@@ -31,8 +25,19 @@
 
 <script>
     import axios from "@/axios";
+    import Overlay from "@/components/Overlay";
     export default {
         name: "AccountVerification",
+        components: {
+            Overlay
+        },
+        data() {
+            return {
+                error: false,
+                success: false,
+                showOverlay: false
+            };
+        },
         methods: {
             async onSubmit(e) {
                 e.preventDefault();
@@ -51,14 +56,6 @@
                     this.success = response.data.success;
                 }
             }
-        },
-        mounted: function() {},
-        data() {
-            return {
-                error: false,
-                success: false,
-                showOverlay: false
-            };
         }
     };
 </script>

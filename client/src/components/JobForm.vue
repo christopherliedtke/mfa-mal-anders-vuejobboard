@@ -1,12 +1,6 @@
 <template>
     <div class="job-form position-relative">
-        <b-overlay
-            :show="showOverlay"
-            variant="transparent"
-            blur="none"
-            no-wrap
-        >
-        </b-overlay>
+        <Overlay :show="showOverlay"> </Overlay>
         <b-form id="job-form">
             <h3 class="mt-4">Job Data</h3>
             <label for="title">Job Title *</label>
@@ -89,7 +83,7 @@
                     >
                 </div>
                 <b-button
-                    class="ml-md-2 mt-2 mt-md-0"
+                    class="ml-2"
                     variant="warning"
                     @click.prevent="resetCompany"
                     >Reset</b-button
@@ -264,9 +258,10 @@
     } from "@/utils/jobDataConfig.json";
     import TipTapEditor from "@/components/TipTapEditor.vue";
     import ImageUploader from "@/components/ImageUploader.vue";
+    import Overlay from "@/components/Overlay";
     export default {
         name: "JobForm",
-        components: { TipTapEditor, ImageUploader },
+        components: { TipTapEditor, ImageUploader, Overlay },
         props: ["jobId"],
         data() {
             return {

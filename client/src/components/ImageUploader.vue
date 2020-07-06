@@ -1,12 +1,6 @@
 <template>
     <div class="d-flex">
-        <b-overlay
-            :show="showOverlay"
-            variant="transparent"
-            blur="none"
-            no-wrap
-        >
-        </b-overlay>
+        <Overlay :show="showOverlay"></Overlay>
         <b-form-file
             id="file"
             ref="file-input"
@@ -28,8 +22,12 @@
 
 <script>
     import axios from "@/axios";
+    import Overlay from "@/components/Overlay";
     export default {
         name: "ImageUploader",
+        components: {
+            Overlay
+        },
         props: ["validated", "imageUrl", "width", "height"],
         data() {
             return {

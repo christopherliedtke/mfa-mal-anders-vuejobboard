@@ -1,12 +1,6 @@
 <template>
     <div class="job-form position-relative">
-        <b-overlay
-            :show="showOverlay"
-            variant="transparent"
-            blur="none"
-            no-wrap
-        >
-        </b-overlay>
+        <Overlay :show="showOverlay"> </Overlay>
         <b-form id="company-form">
             <h3 class="mt-4">Company Data</h3>
             <label for="company-name">Name *</label>
@@ -114,10 +108,12 @@
     import axios from "@/axios";
     import { companyStateOptions } from "@/utils/jobDataConfig.json";
     import ImageUploader from "@/components/ImageUploader.vue";
+    import Overlay from "@/components/Overlay";
     export default {
         name: "CompanyForm",
         components: {
-            ImageUploader
+            ImageUploader,
+            Overlay
         },
         props: ["companyId"],
         data() {

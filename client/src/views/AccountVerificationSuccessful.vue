@@ -19,6 +19,9 @@
     import axios from "@/axios";
     export default {
         name: "AccountVerificationSuccessful",
+        mounted: function() {
+            this.updateUserStatus();
+        },
         methods: {
             async updateUserStatus() {
                 const response = await axios.get(
@@ -48,12 +51,6 @@
                     }, 3500);
                 }
             }
-        },
-        mounted: function() {
-            this.updateUserStatus();
-        },
-        data() {
-            return {};
         }
     };
 </script>

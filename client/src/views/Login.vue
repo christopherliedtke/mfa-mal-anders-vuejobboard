@@ -60,6 +60,14 @@
     import { mapActions } from "vuex";
     export default {
         name: "Login",
+        data() {
+            return {
+                email: "",
+                password: "",
+                passwordType: "password",
+                errors: []
+            };
+        },
         methods: {
             ...mapActions(["userAuth"]),
             async onSubmit() {
@@ -80,14 +88,6 @@
                     ? (this.passwordType = "password")
                     : (this.passwordType = "text");
             }
-        },
-        data() {
-            return {
-                email: "",
-                password: "",
-                passwordType: "password",
-                errors: []
-            };
         }
     };
 </script>

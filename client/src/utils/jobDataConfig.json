@@ -1,12 +1,16 @@
 {
     "employmentTypeOptions": [
-        { "value": null, "text": "-- Choose employment type --" },
+        {
+            "value": null,
+            "text": "-- Choose employment type --",
+            "disabled": true
+        },
         { "value": "full", "text": "Full Time" },
         { "value": "part", "text": "Part Time" },
         { "value": "part_full", "text": "Part Time or Full Time" }
     ],
     "contactTitleOptions": [
-        { "value": null, "text": "-- Choose a title --" },
+        { "value": null, "text": "-- Choose a title --", "disabled": true },
         { "value": "Dr.", "text": "Dr." },
         { "value": "Prof.", "text": "Prof." }
     ],

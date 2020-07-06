@@ -1,12 +1,6 @@
 <template>
     <b-container class="password-reset py-5 position-relative">
-        <b-overlay
-            :show="showOverlay"
-            variant="transparent"
-            blur="none"
-            no-wrap
-        >
-        </b-overlay>
+        <Overlay :show="showOverlay"></Overlay>
         <h2>Reset Password</h2>
         <b-form v-if="state === 0">
             <label for="email">Email</label>
@@ -116,8 +110,25 @@
 
 <script>
     import axios from "@/axios";
+    import Overlay from "@/components/Overlay";
     export default {
         name: "PasswordReset",
+        components: {
+            Overlay
+        },
+        data() {
+            return {
+                email: "",
+                password: "",
+                password2: "",
+                passwordType: "password",
+                secretCode: "",
+                state: 0,
+                errors: [],
+                success: "",
+                showOverlay: false
+            };
+        },
         methods: {
             async onSubmitEmail(e) {
                 e.preventDefault();
@@ -171,19 +182,6 @@
                     ? (this.passwordType = "password")
                     : (this.passwordType = "text");
             }
-        },
-        data() {
-            return {
-                email: "",
-                password: "",
-                password2: "",
-                passwordType: "password",
-                secretCode: "",
-                state: 0,
-                errors: [],
-                success: "",
-                showOverlay: false
-            };
         }
     };
 </script>
