@@ -85,22 +85,14 @@
                     Cancel
                 </b-button>
                 <b-button variant="success" @click.prevent="onSubmit">
-                    Save
+                    <b-icon v-if="success" icon="check2" class="mr-2"></b-icon>
+                    {{ success ? "Done" : "Save" }}
                 </b-button>
             </div>
         </b-form>
         <b-alert v-if="error" class="mt-3" show dismissible variant="warning">{{
             error
         }}</b-alert>
-        <b-alert v-if="success" class="mt-3" show dismissible variant="success"
-            >Your company has been saved successfully. You will be redirected in
-            a moment...
-            <b-spinner
-                style="width: 1.2rem; height: 1.2rem;"
-                variant="success"
-                label="Spinning"
-            ></b-spinner>
-        </b-alert>
     </div>
 </template>
 
@@ -119,6 +111,7 @@
         data() {
             return {
                 company: {
+                    _id: "",
                     name: "",
                     location: "",
                     state: null,
@@ -175,63 +168,48 @@
 
                     this.showOverlay = true;
 
-                    let response;
+                    let mutationType;
+                    this.companyId
+                        ? (mutationType = "updateCompany")
+                        : (mutationType = "addCompany");
 
-                    if (this.companyId) {
-                        response = await axios.post("/api/companies/private", {
-                            query: `
-                                mutation {
-                                    updateCompany(
-                                        _id: "${this.companyId}", 
-                                        name: "${this.company.name}", 
-                                        location: "${this.company.location}", 
-                                        state: "${this.company.state}", 
-                                        street: "${this.company.street}"
-                                        zipCode: "${this.company.zipCode}"
-                                        url: "${this.company.url}"
-                                        logoUrl: "${this.company.logoUrl}"
-                                    ) {
-                                        _id
-                                    }
-                                }
-                            `
-                        });
-                    } else {
-                        response = await axios.post("/api/companies/private", {
-                            query: `
-                                mutation {
-                                    addCompany(
-                                        name: "${this.company.name}", 
-                                        location: "${this.company.location}", 
-                                        state: "${this.company.state}", 
-                                        street: "${this.company.street}"
-                                        zipCode: "${this.company.zipCode}"
-                                        url: "${this.company.url}"
-                                        logoUrl: "${this.company.logoUrl}"
-                                    ) {
-                                        _id
-                                    }
-                                }
-                            `
-                        });
-                    }
+                    const query = `
+                        mutation {
+                            ${mutationType}(
+                                ${
+                                    mutationType === "updateCompany"
+                                        ? `_id: "${this.companyId}",`
+                                        : ""
+                                } 
+                                name: "${this.company.name}", 
+                                location: "${this.company.location}", 
+                                state: "${this.company.state}", 
+                                street: "${this.company.street}"
+                                zipCode: "${this.company.zipCode}"
+                                url: "${this.company.url}"
+                                logoUrl: "${this.company.logoUrl}"
+                            ) {
+                                _id
+                            }
+                        }
+                    `;
+
+                    const response = await axios.post(
+                        "/api/companies/private",
+                        { query }
+                    );
 
                     this.showOverlay = false;
 
-                    if (
-                        !response.data.data.addCompany &&
-                        !response.data.data.updateCompany
-                    ) {
+                    if (!response.data.data[mutationType]) {
                         this.error =
                             "Oh, something went wrong. Please try again!";
                     } else {
-                        // this.formReset();
                         this.success = true;
 
                         setTimeout(() => {
-                            this.validated = null;
                             this.$router.push("/dashboard?tab=2");
-                        }, 3000);
+                        }, 1000);
                     }
                 } catch (err) {
                     this.error = "Oh, something went wrong. Please try again!";

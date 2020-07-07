@@ -69,10 +69,10 @@
             <h3 class="mt-4">Company</h3>
             <div class="mt-3 d-flex align-items-end">
                 <div>
-                    <label for="company-list">Choose Company</label>
+                    <label for="company-list">Choose Existing Company</label>
                     <b-form-select
                         id="company-list"
-                        v-model="job.companyId"
+                        v-model="job.company._id"
                         @change="setCompany"
                         ><b-form-select-option
                             v-for="company in companies"
@@ -92,8 +92,8 @@
             <label for="company-name">Name *</label>
             <b-form-input
                 type="text"
-                v-model="job.companyName"
-                :state="validated ? (job.companyName ? true : false) : null"
+                v-model="job.company.name"
+                :state="validated ? (job.company.name ? true : false) : null"
                 id="company-name"
                 placeholder="Enter company name ..."
                 required
@@ -101,8 +101,10 @@
             <label for="company-location">Location *</label>
             <b-form-input
                 type="text"
-                v-model="job.companyLocation"
-                :state="validated ? (job.companyLocation ? true : false) : null"
+                v-model="job.company.location"
+                :state="
+                    validated ? (job.company.location ? true : false) : null
+                "
                 id="company-location"
                 placeholder="Enter location ..."
                 required
@@ -110,15 +112,15 @@
             <label for="company-state">State *</label>
             <b-form-select
                 id="company-state"
-                v-model="job.companyState"
+                v-model="job.company.state"
                 :options="companyStateOptions"
-                :state="validated ? (job.companyState ? true : false) : null"
+                :state="validated ? (job.company.state ? true : false) : null"
             ></b-form-select>
             <label for="company-street">Street and House Number *</label>
             <b-form-input
                 type="text"
-                v-model="job.companyStreet"
-                :state="validated ? (job.companyStreet ? true : false) : null"
+                v-model="job.company.street"
+                :state="validated ? (job.company.street ? true : false) : null"
                 id="company-street"
                 placeholder="Enter street and house number ..."
                 required
@@ -126,8 +128,8 @@
             <label for="company-zip-code">ZIP Code *</label>
             <b-form-input
                 type="number"
-                v-model="job.companyZipCode"
-                :state="validated ? (job.companyZipCode ? true : false) : null"
+                v-model="job.company.zipCode"
+                :state="validated ? (job.company.zipCode ? true : false) : null"
                 id="company-zip-code"
                 placeholder="Enter zip code ..."
                 required
@@ -141,8 +143,8 @@
                 </template>
                 <b-form-input
                     type="url"
-                    v-model="job.companyUrl"
-                    :state="validated ? (job.companyUrl ? true : null) : null"
+                    v-model="job.company.url"
+                    :state="validated ? (job.company.url ? true : null) : null"
                     id="company-url"
                     placeholder="https://www.your-company.com"
                 ></b-form-input>
@@ -155,20 +157,16 @@
                     icon="box"
                     variant="secondary"
                     rounded
-                    :src="job.companyLogoUrl"
+                    :src="job.company.logoUrl"
                 ></b-avatar>
             </div>
             <ImageUploader
                 :validated="validated"
-                :imageUrl="job.companyLogoUrl"
+                :imageUrl="job.company.logoUrl"
                 :width="200"
                 :height="200"
-                @update-url="job.companyLogoUrl = $event"
+                @update-url="job.company.logoUrl = $event"
             ></ImageUploader>
-            <b-form-checkbox class="mt-3 ml-1" v-model="saveCompany" switch>
-                {{ job.companyId ? "Update" : "Save" }} this company to reuse
-                another time.
-            </b-form-checkbox>
 
             <h3 class="mt-4">Contact</h3>
             <label for="contact-title">Title</label>
@@ -230,22 +228,14 @@
                     Cancel
                 </b-button>
                 <b-button variant="success" @click.prevent="onSubmit">
-                    Save
+                    <b-icon v-if="success" icon="check2" class="mr-2"></b-icon>
+                    {{ success ? "Done" : "Save" }}
                 </b-button>
             </div>
         </b-form>
         <b-alert v-if="error" class="mt-3" show dismissible variant="warning">{{
             error
         }}</b-alert>
-        <b-alert v-if="success" class="mt-3" show dismissible variant="success"
-            >Your job has been saved successfully. You will be redirected in a
-            moment...
-            <b-spinner
-                style="width: 1.2rem; height: 1.2rem;"
-                variant="success"
-                label="Spinning"
-            ></b-spinner>
-        </b-alert>
     </div>
 </template>
 
@@ -266,6 +256,7 @@
         data() {
             return {
                 job: {
+                    _id: "",
                     title: "",
                     description: "",
                     employmentType: null,
@@ -277,20 +268,21 @@
                     contactLastName: "",
                     contactEmail: "",
                     contactPhone: "",
-                    companyId: "",
-                    companyName: "",
-                    companyLocation: "",
-                    companyState: null,
-                    companyStreet: "",
-                    companyZipCode: null,
-                    companyUrl: "",
-                    companyLogoUrl: ""
+                    company: {
+                        _id: "",
+                        name: "",
+                        location: "",
+                        state: "",
+                        street: "",
+                        zipCode: "",
+                        url: "",
+                        logoUrl: ""
+                    }
                 },
                 companies: [],
                 employmentTypeOptions,
                 contactTitleOptions,
                 companyStateOptions,
-                saveCompany: false,
                 validated: null,
                 showOverlay: false,
                 success: "",
@@ -298,9 +290,7 @@
             };
         },
         created: function() {
-            if (this.jobId) {
-                this.getJob(this.jobId);
-            }
+            this.jobId ? this.getJob(this.jobId) : null;
             this.getCompanies();
         },
         methods: {
@@ -322,22 +312,37 @@
                                     contactLastName
                                     contactEmail
                                     contactPhone
-                                    companyId
-                                    companyName
-                                    companyLocation
-                                    companyState
-                                    companyStreet
-                                    companyZipCode
-                                    companyUrl
-                                    companyLogoUrl
+                                    company {
+                                        _id
+                                        name
+                                        location
+                                        state
+                                        street
+                                        zipCode
+                                        url
+                                        logoUrl
+                                    }
                                 }
                             }
                         `
                     });
 
                     this.job = job.data.data.job;
+
+                    if (!this.job.company) {
+                        this.job.company = {
+                            _id: "",
+                            name: "",
+                            location: "",
+                            state: "",
+                            street: "",
+                            zipCode: "",
+                            url: "",
+                            logoUrl: ""
+                        };
+                    }
                 } catch (err) {
-                    console.log("err: ", err);
+                    console.log("Error on getJob(): ", err);
                 }
             },
             async getCompanies() {
@@ -370,6 +375,7 @@
             async onSubmit() {
                 try {
                     this.error = false;
+
                     if (!this.formValidation()) {
                         this.error =
                             "Please provide all necessary information.";
@@ -378,171 +384,94 @@
 
                     this.showOverlay = true;
 
-                    let newCompanyId;
+                    // Save / Update company
+                    let companyMutationType;
+                    this.job.company._id
+                        ? (companyMutationType = "updateCompany")
+                        : (companyMutationType = "addCompany");
 
-                    if (this.saveCompany && !this.job.companyId) {
-                        const response = await axios.post(
-                            "/api/companies/private",
-                            {
-                                query: `
-                                mutation {
-                                    addCompany(
-                                        name: "${this.job.companyName}", 
-                                        location: "${this.job.companyLocation}", 
-                                        state: "${this.job.companyState}", 
-                                        street: "${this.job.companyStreet}"
-                                        zipCode: "${this.job.companyZipCode}"
-                                        url: "${this.job.companyUrl}"
-                                        logoUrl: "${this.job.companyLogoUrl}"
-                                    ) {
-                                        _id
-                                    }
-                                }
-                            `
+                    const companyQuery = `
+                        mutation {
+                            ${companyMutationType}(
+                                ${
+                                    companyMutationType === "updateCompany"
+                                        ? `_id: "${this.job.company._id}",`
+                                        : ""
+                                } 
+                                name: "${this.job.company.name}", 
+                                location: "${this.job.company.location}", 
+                                state: "${this.job.company.state}", 
+                                street: "${this.job.company.street}"
+                                zipCode: "${this.job.company.zipCode}"
+                                url: "${this.job.company.url}"
+                                logoUrl: "${this.job.company.logoUrl}"
+                            ) {
+                                _id
                             }
-                        );
+                        }
+                    `;
 
-                        newCompanyId = response.data.data.addCompany._id;
-                    } else if (this.saveCompany && this.job.companyId) {
-                        await axios.post("/api/companies/private", {
-                            query: `
-                                mutation {
-                                    updateCompany(
-                                        _id: "${this.job.companyId}", 
-                                        name: "${this.job.companyName}", 
-                                        location: "${this.job.companyLocation}", 
-                                        state: "${this.job.companyState}", 
-                                        street: "${this.job.companyStreet}"
-                                        zipCode: "${this.job.companyZipCode}"
-                                        url: "${this.job.companyUrl}"
-                                        logoUrl: "${this.job.companyLogoUrl}"
-                                    ) {
-                                        _id
-                                    }
-                                }
-                            `
-                        });
-                    }
+                    const companyQueryResponse = await axios.post(
+                        "/api/companies/private",
+                        { query: companyQuery }
+                    );
 
-                    let response;
+                    const newCompanyId =
+                        companyQueryResponse.data.data[companyMutationType]._id;
 
-                    if (this.jobId) {
-                        response = await axios.post("/api/jobs/private", {
-                            query: `
-                                mutation {
-                                    updateJob(
-                                        _id: "${this.job._id}", 
-                                        title: "${this.job.title}", 
-                                        description: "${this.job.description}", 
-                                        employmentType: "${
-                                            this.job.employmentType
-                                        }", 
-                                        applicationDeadline: "${
-                                            this.job.applicationDeadline
-                                        }"
-                                        extJobUrl: "${this.job.extJobUrl}"
-                                        applicationEmail: "${
-                                            this.job.applicationEmail
-                                        }"
-                                        contactTitle: "${this.job.contactTitle}"
-                                        contactFirstName: "${
-                                            this.job.contactFirstName
-                                        }"
-                                        contactLastName: "${
-                                            this.job.contactLastName
-                                        }"
-                                        contactEmail: "${this.job.contactEmail}"
-                                        contactPhone: "${this.job.contactPhone}"
-                                        companyId: "${newCompanyId ||
-                                            this.job.companyId}"
-                                        companyName: "${this.job.companyName}"
-                                        companyLocation: "${
-                                            this.job.companyLocation
-                                        }"
-                                        companyState: "${this.job.companyState}"
-                                        companyStreet: "${
-                                            this.job.companyStreet
-                                        }"
-                                        companyZipCode: "${
-                                            this.job.companyZipCode
-                                        }"
-                                        companyUrl: "${this.job.companyUrl}"
-                                        companyLogoUrl: "${
-                                            this.job.companyLogoUrl
-                                        }"
-                                    ) {
-                                        _id
-                                    }
-                                }
-                            `
-                        });
-                    } else {
-                        response = await axios.post("/api/jobs/private", {
-                            query: `
-                                mutation {
-                                    addJob(
-                                        title: "${this.job.title}", 
-                                        description: "${this.job.description}", 
-                                        employmentType: "${
-                                            this.job.employmentType
-                                        }", 
-                                        applicationDeadline: "${
-                                            this.job.applicationDeadline
-                                        }"
-                                        extJobUrl: "${this.job.extJobUrl}"
-                                        applicationEmail: "${
-                                            this.job.applicationEmail
-                                        }"
-                                        contactTitle: "${this.job.contactTitle}"
-                                        contactFirstName: "${
-                                            this.job.contactFirstName
-                                        }"
-                                        contactLastName: "${
-                                            this.job.contactLastName
-                                        }"
-                                        contactEmail: "${this.job.contactEmail}"
-                                        contactPhone: "${this.job.contactPhone}"
-                                        companyId: "${newCompanyId ||
-                                            this.job.companyId}"
-                                        companyName: "${this.job.companyName}"
-                                        companyLocation: "${
-                                            this.job.companyLocation
-                                        }"
-                                        companyState: "${this.job.companyState}"
-                                        companyStreet: "${
-                                            this.job.companyStreet
-                                        }"
-                                        companyZipCode: "${
-                                            this.job.companyZipCode
-                                        }"
-                                        companyUrl: "${this.job.companyUrl}"
-                                        companyLogoUrl: "${
-                                            this.job.companyLogoUrl
-                                        }"
-                                    ) {
-                                        _id
-                                    }
-                                }
-                            `
-                        });
-                    }
+                    // Save / Update job
+                    let jobMutationType;
+                    this.job._id
+                        ? (jobMutationType = "updateJob")
+                        : (jobMutationType = "addJob");
+
+                    const jobQuery = `
+                        mutation {
+                            ${jobMutationType}(
+                                ${
+                                    jobMutationType === "updateJob"
+                                        ? `_id: "${this.job._id}",`
+                                        : ""
+                                } 
+                                title: "${this.job.title}", 
+                                description: "${this.job.description}", 
+                                employmentType: "${this.job.employmentType}", 
+                                applicationDeadline: "${
+                                    this.job.applicationDeadline
+                                }"
+                                extJobUrl: "${this.job.extJobUrl}"
+                                applicationEmail: "${this.job.applicationEmail}"
+                                contactTitle: "${this.job.contactTitle}"
+                                contactFirstName: "${this.job.contactFirstName}"
+                                contactLastName: "${this.job.contactLastName}"
+                                contactEmail: "${this.job.contactEmail}"
+                                contactPhone: "${this.job.contactPhone}"
+                                company: "${newCompanyId ||
+                                    this.job.company._id}"
+                            ) {
+                                _id
+                            }
+                        }
+                    `;
+
+                    const jobQueryResponse = await axios.post(
+                        "/api/jobs/private",
+                        {
+                            query: jobQuery
+                        }
+                    );
 
                     this.showOverlay = false;
 
-                    if (
-                        !response.data.data.addJob &&
-                        !response.data.data.updateJob
-                    ) {
+                    if (!jobQueryResponse.data.data[jobMutationType]) {
                         this.error =
                             "Oh, something went wrong. Please try again!";
                     } else {
-                        // this.formReset();
                         this.success = true;
 
                         setTimeout(() => {
-                            this.validated = null;
                             this.$router.push("/dashboard");
-                        }, 3000);
+                        }, 1000);
                     }
                 } catch (err) {
                     this.error = "Oh, something went wrong. Please try again!";
@@ -555,39 +484,29 @@
                     !this.job.description ||
                     !this.job.employmentType ||
                     !this.job.applicationDeadline ||
-                    !this.job.companyName ||
-                    !this.job.companyLocation ||
-                    !this.job.companyState ||
-                    !this.job.companyStreet ||
-                    !this.job.companyZipCode
+                    !this.job.company.name ||
+                    !this.job.company.location ||
+                    !this.job.company.state ||
+                    !this.job.company.street ||
+                    !this.job.company.zipCode
                     ? false
                     : true;
             },
-            formReset() {
-                for (const key in this.job) {
-                    this.job[key] = "";
-                }
-            },
             resetCompany() {
-                this.job.companyId = "";
-                this.job.companyName = "";
-                this.job.companyLocation = "";
-                this.job.companyState = "";
-                this.job.companyStreet = "";
-                this.job.companyZipCode = "";
-                this.job.companyUrl = "";
-                this.job.companyLogoUrl = "";
+                for (const key in this.job.company) {
+                    this.job.company[key] = "";
+                }
             },
             setCompany() {
                 this.companies.forEach(company => {
-                    if (company._id === this.job.companyId) {
-                        this.job.companyName = company.name;
-                        this.job.companyLocation = company.location;
-                        this.job.companyState = company.state;
-                        this.job.companyStreet = company.street;
-                        this.job.companyZipCode = company.zipCode;
-                        this.job.companyUrl = company.url;
-                        this.job.companyLogoUrl = company.logoUrl;
+                    if (company._id === this.job.company._id) {
+                        this.job.company.name = company.name;
+                        this.job.company.location = company.location;
+                        this.job.company.state = company.state;
+                        this.job.company.street = company.street;
+                        this.job.company.zipCode = company.zipCode;
+                        this.job.company.url = company.url;
+                        this.job.company.logoUrl = company.logoUrl;
                     }
                 });
             }

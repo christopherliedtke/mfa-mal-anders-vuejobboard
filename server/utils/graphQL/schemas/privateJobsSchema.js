@@ -8,6 +8,7 @@ const {
 } = require("graphql");
 const JobType = require("../types/JobType");
 const { Job } = require("../../models/job");
+const { Company } = require("../../models/company");
 const sanitizeHtml = require("sanitize-html");
 
 // #Root Query
@@ -23,16 +24,19 @@ const RootQuery = new GraphQLObjectType({
                 const job = await Job.findOne({
                     _id: args._id,
                     userId: req.userId,
-                });
+                }).populate("company");
+
                 return job;
             },
         },
         jobs: {
             type: new GraphQLList(JobType),
             async resolve(parentValue, args, req) {
-                const jobs = await Job.find({ userId: req.userId }).sort({
-                    createdAt: "desc",
-                });
+                const jobs = await Job.find({ userId: req.userId })
+                    .populate("company")
+                    .sort({
+                        createdAt: "desc",
+                    });
                 return jobs;
             },
         },
@@ -73,28 +77,7 @@ const mutation = new GraphQLObjectType({
                 contactPhone: {
                     type: GraphQLString,
                 },
-                companyId: {
-                    type: GraphQLString,
-                },
-                companyName: {
-                    type: new GraphQLNonNull(GraphQLString),
-                },
-                companyLocation: {
-                    type: new GraphQLNonNull(GraphQLString),
-                },
-                companyState: {
-                    type: new GraphQLNonNull(GraphQLString),
-                },
-                companyStreet: {
-                    type: new GraphQLNonNull(GraphQLString),
-                },
-                companyZipCode: {
-                    type: new GraphQLNonNull(GraphQLString),
-                },
-                companyUrl: {
-                    type: GraphQLString,
-                },
-                companyLogoUrl: {
+                company: {
                     type: GraphQLString,
                 },
             },
@@ -112,14 +95,7 @@ const mutation = new GraphQLObjectType({
                     contactLastName: sanitizeHtml(args.contactLastName),
                     contactEmail: sanitizeHtml(args.contactEmail),
                     contactPhone: sanitizeHtml(args.contactPhone),
-                    companyId: sanitizeHtml(args.companyId),
-                    companyName: sanitizeHtml(args.companyName),
-                    companyLocation: sanitizeHtml(args.companyLocation),
-                    companyState: sanitizeHtml(args.companyState),
-                    companyStreet: sanitizeHtml(args.companyStreet),
-                    companyZipCode: sanitizeHtml(args.companyZipCode),
-                    companyUrl: sanitizeHtml(args.companyUrl),
-                    companyLogoUrl: sanitizeHtml(args.companyLogoUrl),
+                    company: args.company,
                 });
 
                 const response = await newJob.save();
@@ -158,28 +134,7 @@ const mutation = new GraphQLObjectType({
                 contactPhone: {
                     type: GraphQLString,
                 },
-                companyId: {
-                    type: GraphQLString,
-                },
-                companyName: {
-                    type: new GraphQLNonNull(GraphQLString),
-                },
-                companyLocation: {
-                    type: new GraphQLNonNull(GraphQLString),
-                },
-                companyState: {
-                    type: new GraphQLNonNull(GraphQLString),
-                },
-                companyStreet: {
-                    type: new GraphQLNonNull(GraphQLString),
-                },
-                companyZipCode: {
-                    type: new GraphQLNonNull(GraphQLString),
-                },
-                companyUrl: {
-                    type: GraphQLString,
-                },
-                companyLogoUrl: {
+                company: {
                     type: GraphQLString,
                 },
             },
@@ -200,14 +155,7 @@ const mutation = new GraphQLObjectType({
                         contactLastName: sanitizeHtml(args.contactLastName),
                         contactEmail: sanitizeHtml(args.contactEmail),
                         contactPhone: sanitizeHtml(args.contactPhone),
-                        companyId: sanitizeHtml(args.companyId),
-                        companyName: sanitizeHtml(args.companyName),
-                        companyLocation: sanitizeHtml(args.companyLocation),
-                        companyState: sanitizeHtml(args.companyState),
-                        companyStreet: sanitizeHtml(args.companyStreet),
-                        companyZipCode: sanitizeHtml(args.companyZipCode),
-                        companyUrl: sanitizeHtml(args.companyUrl),
-                        companyLogoUrl: sanitizeHtml(args.companyLogoUrl),
+                        company: args.company,
                     }
                 );
 
@@ -217,7 +165,7 @@ const mutation = new GraphQLObjectType({
                     const updatedJob = await Job.findOne({
                         _id: args._id,
                         userId: req.userId,
-                    });
+                    }).populate("company");
 
                     return updatedJob;
                 }
@@ -241,7 +189,7 @@ const mutation = new GraphQLObjectType({
                     const updatedJob = await Job.findOne({
                         _id: args._id,
                         userId: req.userId,
-                    });
+                    }).populate("company");
 
                     return updatedJob;
                 }

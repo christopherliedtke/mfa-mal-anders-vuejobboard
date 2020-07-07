@@ -8,6 +8,7 @@ const {
     GraphQLList,
     GraphQLNonNull,
 } = require("graphql");
+const CompanyType = require("../types/CompanyType");
 
 // #Job Type
 const JobType = new GraphQLObjectType({
@@ -64,29 +65,8 @@ const JobType = new GraphQLObjectType({
         contactPhone: {
             type: GraphQLString,
         },
-        companyId: {
-            type: GraphQLString,
-        },
-        companyName: {
-            type: GraphQLString,
-        },
-        companyLocation: {
-            type: GraphQLString,
-        },
-        companyState: {
-            type: GraphQLString,
-        },
-        companyStreet: {
-            type: GraphQLString,
-        },
-        companyZipCode: {
-            type: GraphQLString,
-        },
-        companyUrl: {
-            type: GraphQLString,
-        },
-        companyLogoUrl: {
-            type: GraphQLString,
+        company: {
+            type: CompanyType,
         },
     }),
 });

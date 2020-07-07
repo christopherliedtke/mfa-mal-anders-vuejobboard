@@ -60,11 +60,11 @@
                             description
                             employmentType
                             applicationDeadline
-                            companyName
-                            companyLocation
-                            companyState
-                            companyStreet
-                            companyZipCode
+                            company {
+                                _id
+                                name
+                                logoUrl
+                            }
                         }
                     }
                 `

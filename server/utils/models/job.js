@@ -52,37 +52,12 @@ const JobSchema = new Schema(
         contactPhone: {
             type: String,
         },
-        companyId: {
-            type: String,
-        },
-        companyName: {
-            type: String,
-            required: true,
-        },
-        companyLocation: {
-            type: String,
-            required: true,
-        },
-        companyState: {
-            type: String,
-            required: true,
-        },
-        companyStreet: {
-            type: String,
-            required: true,
-        },
-        companyZipCode: {
-            type: String,
-            required: true,
-        },
-        companyUrl: {
-            type: String,
-        },
-        companyLogoUrl: {
-            type: String,
+        company: {
+            type: Schema.Types.ObjectId,
+            ref: "Company",
         },
     },
     { timestamps: true }
 );
 
-module.exports.Job = mongoose.model("job", JobSchema);
+module.exports.Job = mongoose.model("Job", JobSchema);

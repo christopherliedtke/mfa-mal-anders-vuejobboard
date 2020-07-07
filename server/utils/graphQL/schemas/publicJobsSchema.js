@@ -23,7 +23,7 @@ const RootQuery = new GraphQLObjectType({
                     _id: args._id,
                     status: "published",
                     paid: true,
-                });
+                }).populate("company");
                 return job;
             },
         },
@@ -33,9 +33,11 @@ const RootQuery = new GraphQLObjectType({
                 const jobs = await Job.find({
                     status: "published",
                     paid: true,
-                }).sort({
-                    createdAt: "desc",
-                });
+                })
+                    .populate("company")
+                    .sort({
+                        createdAt: "desc",
+                    });
                 return jobs;
             },
         },
