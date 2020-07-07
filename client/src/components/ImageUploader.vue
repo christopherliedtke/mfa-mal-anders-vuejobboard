@@ -1,22 +1,27 @@
 <template>
-    <div class="d-flex">
-        <Overlay :show="showOverlay"></Overlay>
-        <b-form-file
-            id="file"
-            ref="file-input"
-            v-model="file"
-            :state="validated ? (file ? true : null) : null"
-            accept="image/jpeg, image/png"
-            placeholder="Choose/Drop a file ..."
-            drop-placeholder="Drop file here ..."
-            @input="uploadImage"
-        ></b-form-file>
-        <b-button
-            class="ml-2"
-            variant="outline-danger"
-            @click.prevent="resetFile"
-            ><b-icon icon="trash"></b-icon
-        ></b-button>
+    <div>
+        <div class="d-flex">
+            <Overlay :show="showOverlay"></Overlay>
+            <b-form-file
+                id="file"
+                ref="file-input"
+                v-model="file"
+                :state="validated ? (file ? true : null) : null"
+                accept="image/jpeg, image/png"
+                placeholder="Choose/Drop a file ..."
+                drop-placeholder="Drop file here ..."
+                @input="uploadImage"
+            ></b-form-file>
+            <b-button
+                class="ml-2"
+                variant="outline-danger"
+                @click.prevent="resetFile"
+                ><b-icon icon="trash"></b-icon
+            ></b-button>
+        </div>
+        <b-form-invalid-feedback :state="success">
+            The image must be *.jpg or *.png and maximum 5MB.
+        </b-form-invalid-feedback>
     </div>
 </template>
 
@@ -32,11 +37,14 @@
         data() {
             return {
                 file: null,
-                showOverlay: false
+                showOverlay: false,
+                success: null
             };
         },
         methods: {
             async uploadImage(file) {
+                this.success = null;
+
                 if (!file) {
                     return;
                 }
@@ -45,7 +53,7 @@
 
                 try {
                     if (this.imageUrl) {
-                        this.deleteImage("update");
+                        this.deleteImage();
                     }
 
                     const formData = new FormData();
@@ -61,7 +69,8 @@
                     if (response.data.success) {
                         this.$emit("update-url", response.data.url);
                     } else {
-                        this.$emit("update-url", null);
+                        this.success = false;
+                        this.$emit("update-url", "");
                     }
                 } catch (err) {
                     console.log("err: ", err);
@@ -69,16 +78,11 @@
 
                 this.showOverlay = false;
             },
-            async deleteImage(status = null) {
+            async deleteImage() {
                 try {
-                    const response = await axios.post("/api/images/delete", {
+                    await axios.post("/api/images/delete", {
                         imageUrl: this.imageUrl
                     });
-
-                    if (response.data.success && !status) {
-                        this.$refs["file-input"].reset();
-                        this.$emit("update-url", "");
-                    }
                 } catch (err) {
                     console.log("err: ", err);
                 }
@@ -89,6 +93,9 @@
                 if (this.imageUrl) {
                     this.deleteImage();
                 }
+
+                this.$refs["file-input"].reset();
+                this.$emit("update-url", "");
 
                 this.showOverlay = false;
             }

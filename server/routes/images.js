@@ -1,11 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const authenticateToken = require("../utils/middleware/checkAuth");
-const s3 = require("../utils/s3");
-const multer = require("multer");
-const uidSafe = require("uid-safe");
-const path = require("path");
+const upload = require("../utils/middleware/upload");
 const sharpImg = require("../utils/middleware/sharpImg");
+const s3 = require("../utils/middleware/s3");
 
 let secrets;
 if (process.env.NODE_ENV == "production") {
@@ -14,31 +12,13 @@ if (process.env.NODE_ENV == "production") {
     secrets = require("../utils/secrets"); // in dev they are in secrets.json which is listed in .gitignore
 }
 
-const diskStorage = multer.diskStorage({
-    destination: function (req, file, callback) {
-        callback(null, __dirname + "/../uploads");
-    },
-    filename: function (req, file, callback) {
-        uidSafe(24).then(function (uid) {
-            callback(null, uid + path.extname(file.originalname));
-        });
-    },
-});
-
-const uploader = multer({
-    storage: diskStorage,
-    limits: {
-        fileSize: 5242880,
-    },
-});
-
 // #route:  POST /api/images/upload
 // #desc:   upload image to AWS
 // #access: Private
 router.use(
     "/upload",
     authenticateToken,
-    uploader.single("file"),
+    upload,
     sharpImg,
     s3.upload,
     (req, res) => {
