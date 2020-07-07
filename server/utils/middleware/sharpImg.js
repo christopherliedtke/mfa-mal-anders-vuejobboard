@@ -16,7 +16,7 @@ const sharpImg = async (req, res, next) => {
     const newPath = __dirname + "/../../uploads/" + newFilename;
 
     await sharp(path)
-        .resize({ width: newWidth, height: newHeight, fit: "contain" })
+        .resize({ width: newWidth, height: newHeight, fit: "inside" })
         .toFile(newPath);
 
     fs.unlink(path, () => {});

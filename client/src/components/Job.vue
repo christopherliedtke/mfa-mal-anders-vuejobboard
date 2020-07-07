@@ -1,6 +1,32 @@
 <template>
     <div class="job">
         <h2>{{ job.title }}</h2>
+        <div class="my-3">
+            <div>
+                Published:
+                {{ new Date(parseInt(job.createdAt)).toLocaleDateString() }}
+            </div>
+            <div>
+                Application Deadline:
+                {{ new Date(job.applicationDeadline).toLocaleDateString() }}
+            </div>
+            <div>Employment Type: {{ job.employmentType }}</div>
+            <div>Company: {{ job.company && job.company.name }}</div>
+            <b-img
+                v-if="job.company && job.company.logoUrl"
+                class="my-3"
+                :src="job.company.logoUrl"
+                fluid
+                :alt="`Logo - ${job.company.name}`"
+            ></b-img>
+        </div>
+        <b-img
+            v-if="job.imageUrl"
+            class="my-3"
+            :src="job.imageUrl"
+            fluid
+            :alt="`Image - ${job.company && job.company.name}`"
+        ></b-img>
         <p v-html="job.description"></p>
         <b-alert
             v-if="error"
