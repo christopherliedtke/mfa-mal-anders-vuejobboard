@@ -50,6 +50,9 @@ const JobType = new GraphQLObjectType({
         applicationEmail: {
             type: GraphQLString,
         },
+        imageUrl: {
+            type: GraphQLString,
+        },
         contactTitle: {
             type: GraphQLString,
         },

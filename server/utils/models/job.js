@@ -37,6 +37,9 @@ const JobSchema = new Schema(
         applicationEmail: {
             type: String,
         },
+        imageUrl: {
+            type: String,
+        },
         contactTitle: {
             type: String,
         },

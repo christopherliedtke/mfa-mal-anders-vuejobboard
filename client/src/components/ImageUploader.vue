@@ -3,7 +3,7 @@
         <div class="d-flex">
             <Overlay :show="showOverlay"></Overlay>
             <b-form-file
-                id="file"
+                :id="id"
                 ref="file-input"
                 v-model="file"
                 :state="validated ? (file ? true : null) : null"
@@ -33,7 +33,7 @@
         components: {
             Overlay
         },
-        props: ["validated", "imageUrl", "width", "height"],
+        props: ["id", "validated", "imageUrl", "width", "height"],
         data() {
             return {
                 file: null,

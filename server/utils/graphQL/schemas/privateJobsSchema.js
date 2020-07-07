@@ -62,6 +62,9 @@ const mutation = new GraphQLObjectType({
                 applicationEmail: {
                     type: GraphQLString,
                 },
+                imageUrl: {
+                    type: GraphQLString,
+                },
                 contactTitle: {
                     type: GraphQLString,
                 },
@@ -90,6 +93,7 @@ const mutation = new GraphQLObjectType({
                     applicationDeadline: sanitizeHtml(args.applicationDeadline),
                     extJobUrl: sanitizeHtml(args.extJobUrl),
                     applicationEmail: sanitizeHtml(args.applicationEmail),
+                    imageUrl: sanitizeHtml(args.imageUrl),
                     contactTitle: sanitizeHtml(args.contactTitle),
                     contactFirstName: sanitizeHtml(args.contactFirstName),
                     contactLastName: sanitizeHtml(args.contactLastName),
@@ -117,6 +121,9 @@ const mutation = new GraphQLObjectType({
                     type: GraphQLString,
                 },
                 applicationEmail: {
+                    type: GraphQLString,
+                },
+                imageUrl: {
                     type: GraphQLString,
                 },
                 contactTitle: {
@@ -150,6 +157,7 @@ const mutation = new GraphQLObjectType({
                         ),
                         extJobUrl: sanitizeHtml(args.extJobUrl),
                         applicationEmail: sanitizeHtml(args.applicationEmail),
+                        imageUrl: sanitizeHtml(args.imageUrl),
                         contactTitle: sanitizeHtml(args.contactTitle),
                         contactFirstName: sanitizeHtml(args.contactFirstName),
                         contactLastName: sanitizeHtml(args.contactLastName),

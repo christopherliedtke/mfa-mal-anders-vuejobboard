@@ -65,6 +65,25 @@
                     placeholder="career@your-company.com"
                 ></b-form-input>
             </b-input-group>
+            <label for="title-image">Title Image (jpg, png | max. 5MB)</label>
+            <div>
+                <b-avatar
+                    class="mb-2 d-flex align-items-center justify-content-center"
+                    size="10rem"
+                    icon="card-image"
+                    variant="secondary"
+                    rounded
+                    :src="job.imageUrl"
+                ></b-avatar>
+            </div>
+            <ImageUploader
+                id="title-image"
+                :validated="validated"
+                :imageUrl="job.imageUrl"
+                :width="1280"
+                :height="720"
+                @update-url="job.imageUrl = $event"
+            ></ImageUploader>
 
             <h3 class="mt-4">Company</h3>
             <div class="mt-3 d-flex align-items-end">
@@ -149,7 +168,7 @@
                     placeholder="https://www.your-company.com"
                 ></b-form-input>
             </b-input-group>
-            <label for="file">Logo (jpg, png | max. 5MB)</label>
+            <label for="logo">Logo (jpg, png | max. 5MB)</label>
             <div>
                 <b-avatar
                     class="mb-2 d-flex align-items-center justify-content-center"
@@ -161,6 +180,7 @@
                 ></b-avatar>
             </div>
             <ImageUploader
+                id="logo"
                 :validated="validated"
                 :imageUrl="job.company.logoUrl"
                 :width="200"
@@ -263,6 +283,7 @@
                     applicationDeadline: "",
                     extJobUrl: "",
                     applicationEmail: "",
+                    imageUrl: "",
                     contactTitle: null,
                     contactFirstName: "",
                     contactLastName: "",
@@ -307,6 +328,7 @@
                                     applicationDeadline
                                     extJobUrl
                                     applicationEmail
+                                    imageUrl
                                     contactTitle
                                     contactFirstName
                                     contactLastName
@@ -441,6 +463,7 @@
                                 }"
                                 extJobUrl: "${this.job.extJobUrl}"
                                 applicationEmail: "${this.job.applicationEmail}"
+                                imageUrl: "${this.job.imageUrl}"
                                 contactTitle: "${this.job.contactTitle}"
                                 contactFirstName: "${this.job.contactFirstName}"
                                 contactLastName: "${this.job.contactLastName}"
