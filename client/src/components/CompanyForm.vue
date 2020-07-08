@@ -11,7 +11,7 @@
                 id="company-name"
                 placeholder="Enter company name ..."
                 required
-            ></b-form-input>
+            />
             <label for="company-location">Location *</label>
             <b-form-input
                 type="text"
@@ -20,14 +20,14 @@
                 id="company-location"
                 placeholder="Enter location ..."
                 required
-            ></b-form-input>
+            />
             <label for="company-state">State *</label>
             <b-form-select
                 id="company-state"
                 v-model="company.state"
                 :options="companyStateOptions"
                 :state="validated ? (company.state ? true : false) : null"
-            ></b-form-select>
+            />
             <label for="company-street">Street and House Number *</label>
             <b-form-input
                 type="text"
@@ -36,7 +36,7 @@
                 id="company-street"
                 placeholder="Enter street and house number ..."
                 required
-            ></b-form-input>
+            />
             <label for="company-zip-code">ZIP Code *</label>
             <b-form-input
                 type="number"
@@ -45,13 +45,13 @@
                 id="company-zip-code"
                 placeholder="Enter zip code ..."
                 required
-            ></b-form-input>
+            />
             <label for="company-url">Website</label>
             <b-input-group>
                 <template v-slot:prepend>
                     <b-input-group-text
-                        ><b-icon scale="1" icon="link45deg"></b-icon
-                    ></b-input-group-text>
+                        ><b-icon scale="1" icon="link45deg"
+                    /></b-input-group-text>
                 </template>
                 <b-form-input
                     type="url"
@@ -59,7 +59,7 @@
                     :state="validated ? (company.url ? true : null) : null"
                     id="company-url"
                     placeholder="https://www.your-company.com"
-                ></b-form-input>
+                />
             </b-input-group>
             <label for="file">Logo (jpg, png | max. 5MB)</label>
             <div>
@@ -70,22 +70,23 @@
                     variant="secondary"
                     rounded
                     :src="company.logoUrl"
-                ></b-avatar>
+                />
             </div>
             <ImageUploader
                 :validated="validated"
                 :imageUrl="company.logoUrl"
                 :width="200"
                 :height="200"
+                fit="inside"
                 @update-url="company.logoUrl = $event"
-            ></ImageUploader>
+            />
 
             <div class="d-flex justify-content-between my-4">
                 <b-button variant="outline-danger" to="/dashboard?tab=2">
                     Cancel
                 </b-button>
                 <b-button variant="success" @click.prevent="onSubmit">
-                    <b-icon v-if="success" icon="check2" class="mr-2"></b-icon>
+                    <b-icon v-if="success" icon="check2" class="mr-2" />
                     {{ success ? "Done" : "Save" }}
                 </b-button>
             </div>

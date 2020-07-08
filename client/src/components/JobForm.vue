@@ -11,14 +11,14 @@
                 id="title"
                 placeholder="Enter job title ..."
                 required
-            ></b-form-input>
+            />
             <label for="employment-type">Employment Type *</label>
             <b-form-select
                 id="employment-type"
                 v-model="job.employmentType"
                 :state="validated ? (job.employmentType ? true : false) : null"
                 :options="employmentTypeOptions"
-            ></b-form-select>
+            />
             <label for="application-deadline">Application Deadline *</label>
             <b-form-datepicker
                 :state="validated && job.applicationDeadline != ''"
@@ -26,19 +26,19 @@
                 v-model="job.applicationDeadline"
                 placeholder="Choose a date"
                 class=""
-            ></b-form-datepicker>
+            />
             <label for="description">Job Description *</label>
             <TipTapEditor
                 :validated="validated"
                 :content="job.description"
                 @update-content="job.description = $event"
-            ></TipTapEditor>
+            />
             <label for="ext-job-url">URL to Job Post</label>
             <b-input-group>
                 <template v-slot:prepend>
                     <b-input-group-text
-                        ><b-icon scale="1" icon="link45deg"></b-icon
-                    ></b-input-group-text>
+                        ><b-icon scale="1" icon="link45deg"
+                    /></b-input-group-text>
                 </template>
                 <b-form-input
                     type="url"
@@ -46,14 +46,14 @@
                     :state="validated ? (job.extJobUrl ? true : null) : null"
                     id="ext-job-url"
                     placeholder="https://www.your-company.com/job-post"
-                ></b-form-input>
+                />
             </b-input-group>
             <label for="application-email">Email for Applications</label>
             <b-input-group>
                 <template v-slot:prepend>
                     <b-input-group-text
-                        ><b-icon scale="1" icon="at"></b-icon
-                    ></b-input-group-text>
+                        ><b-icon scale="1" icon="at"
+                    /></b-input-group-text>
                 </template>
                 <b-form-input
                     type="email"
@@ -63,7 +63,7 @@
                     "
                     id="application-email"
                     placeholder="career@your-company.com"
-                ></b-form-input>
+                />
             </b-input-group>
             <label for="title-image">Title Image (jpg, png | max. 5MB)</label>
             <div>
@@ -74,7 +74,7 @@
                     variant="secondary"
                     rounded
                     :src="job.imageUrl"
-                ></b-avatar>
+                />
             </div>
             <ImageUploader
                 id="title-image"
@@ -82,8 +82,9 @@
                 :imageUrl="job.imageUrl"
                 :width="1280"
                 :height="720"
+                fit="inside"
                 @update-url="job.imageUrl = $event"
-            ></ImageUploader>
+            />
 
             <h3 class="mt-4">Company</h3>
             <div class="mt-3 d-flex align-items-end">
@@ -91,7 +92,7 @@
                     <label for="company-list">Choose Existing Company</label>
                     <b-form-select
                         id="company-list"
-                        v-model="job.company._id"
+                        v-model="selectedCompanyId"
                         @change="setCompany"
                         ><b-form-select-option
                             v-for="company in companies"
@@ -116,7 +117,7 @@
                 id="company-name"
                 placeholder="Enter company name ..."
                 required
-            ></b-form-input>
+            />
             <label for="company-location">Location *</label>
             <b-form-input
                 type="text"
@@ -127,14 +128,14 @@
                 id="company-location"
                 placeholder="Enter location ..."
                 required
-            ></b-form-input>
+            />
             <label for="company-state">State *</label>
             <b-form-select
                 id="company-state"
                 v-model="job.company.state"
                 :options="companyStateOptions"
                 :state="validated ? (job.company.state ? true : false) : null"
-            ></b-form-select>
+            />
             <label for="company-street">Street and House Number *</label>
             <b-form-input
                 type="text"
@@ -143,7 +144,7 @@
                 id="company-street"
                 placeholder="Enter street and house number ..."
                 required
-            ></b-form-input>
+            />
             <label for="company-zip-code">ZIP Code *</label>
             <b-form-input
                 type="number"
@@ -152,13 +153,13 @@
                 id="company-zip-code"
                 placeholder="Enter zip code ..."
                 required
-            ></b-form-input>
+            />
             <label for="company-url">Website</label>
             <b-input-group>
                 <template v-slot:prepend>
                     <b-input-group-text
-                        ><b-icon scale="1" icon="link45deg"></b-icon
-                    ></b-input-group-text>
+                        ><b-icon scale="1" icon="link45deg"
+                    /></b-input-group-text>
                 </template>
                 <b-form-input
                     type="url"
@@ -166,7 +167,7 @@
                     :state="validated ? (job.company.url ? true : null) : null"
                     id="company-url"
                     placeholder="https://www.your-company.com"
-                ></b-form-input>
+                />
             </b-input-group>
             <label for="logo">Logo (jpg, png | max. 5MB)</label>
             <div>
@@ -177,7 +178,7 @@
                     variant="secondary"
                     rounded
                     :src="job.company.logoUrl"
-                ></b-avatar>
+                />
             </div>
             <ImageUploader
                 id="logo"
@@ -185,9 +186,9 @@
                 :imageUrl="job.company.logoUrl"
                 :width="200"
                 :height="200"
+                fit="inside"
                 @update-url="job.company.logoUrl = $event"
-            ></ImageUploader>
-
+            />
             <h3 class="mt-4">Contact</h3>
             <label for="contact-title">Title</label>
             <b-form-select
@@ -195,7 +196,7 @@
                 v-model="job.contactTitle"
                 :state="validated ? (job.contactTitle ? true : null) : null"
                 :options="contactTitleOptions"
-            ></b-form-select>
+            />
             <label for="contact-first-name">First Name</label>
             <b-form-input
                 type="text"
@@ -203,7 +204,7 @@
                 :state="validated ? (job.contactFirstName ? true : null) : null"
                 id="contact-first-name"
                 placeholder="Enter first name ..."
-            ></b-form-input>
+            />
             <label for="contact-last-name">Last Name</label>
             <b-form-input
                 type="text"
@@ -211,7 +212,7 @@
                 :state="validated ? (job.contactLastName ? true : null) : null"
                 id="contact-last-name"
                 placeholder="Enter last name ..."
-            ></b-form-input>
+            />
             <label for="contact-email">Email Address</label>
             <b-input-group>
                 <template v-slot:prepend>
@@ -225,14 +226,14 @@
                     :state="validated ? (job.contactEmail ? true : null) : null"
                     id="contact-email"
                     placeholder="contact@your-company.com"
-                ></b-form-input>
+                />
             </b-input-group>
             <label for="contact-phone">Phone Number</label>
             <b-input-group>
                 <template v-slot:prepend>
                     <b-input-group-text
-                        ><b-icon scale="1" icon="phone"></b-icon
-                    ></b-input-group-text>
+                        ><b-icon scale="1" icon="phone"
+                    /></b-input-group-text>
                 </template>
                 <b-form-input
                     type="tel"
@@ -240,7 +241,7 @@
                     :state="validated ? (job.contactPhone ? true : null) : null"
                     id="contact-phone"
                     placeholder="Enter phone number ..."
-                ></b-form-input>
+                />
             </b-input-group>
 
             <div class="d-flex justify-content-between my-4">
@@ -248,7 +249,7 @@
                     Cancel
                 </b-button>
                 <b-button variant="success" @click.prevent="onSubmit">
-                    <b-icon v-if="success" icon="check2" class="mr-2"></b-icon>
+                    <b-icon v-if="success" icon="check2" class="mr-2" />
                     {{ success ? "Done" : "Save" }}
                 </b-button>
             </div>
@@ -301,6 +302,7 @@
                     }
                 },
                 companies: [],
+                selectedCompanyId: "",
                 employmentTypeOptions,
                 contactTitleOptions,
                 companyStateOptions,
@@ -350,6 +352,8 @@
                     });
 
                     this.job = job.data.data.job;
+
+                    this.selectedCompanyId = this.job.company._id;
 
                     if (!this.job.company) {
                         this.job.company = {
@@ -518,20 +522,13 @@
             resetCompany() {
                 for (const key in this.job.company) {
                     this.job.company[key] = "";
+                    this.selectedCompanyId = "";
                 }
             },
             setCompany() {
-                this.companies.forEach(company => {
-                    if (company._id === this.job.company._id) {
-                        this.job.company.name = company.name;
-                        this.job.company.location = company.location;
-                        this.job.company.state = company.state;
-                        this.job.company.street = company.street;
-                        this.job.company.zipCode = company.zipCode;
-                        this.job.company.url = company.url;
-                        this.job.company.logoUrl = company.logoUrl;
-                    }
-                });
+                this.job.company = this.companies.find(
+                    company => company._id === this.selectedCompanyId
+                );
             }
         }
     };

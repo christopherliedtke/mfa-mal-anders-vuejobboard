@@ -11,13 +11,13 @@
                 placeholder="Choose/Drop a file ..."
                 drop-placeholder="Drop file here ..."
                 @input="uploadImage"
-            ></b-form-file>
+            />
             <b-button
                 class="ml-2"
                 variant="outline-danger"
                 @click.prevent="resetFile"
-                ><b-icon icon="trash"></b-icon
-            ></b-button>
+                ><b-icon icon="trash"
+            /></b-button>
         </div>
         <b-form-invalid-feedback :state="success">
             The image must be *.jpg or *.png and maximum 5MB.
@@ -33,7 +33,7 @@
         components: {
             Overlay
         },
-        props: ["id", "validated", "imageUrl", "width", "height"],
+        props: ["id", "validated", "imageUrl", "width", "height", "fit"],
         data() {
             return {
                 file: null,
@@ -60,6 +60,7 @@
                     formData.append("file", file);
                     formData.append("width", this.width);
                     formData.append("height", this.height);
+                    formData.append("fit", this.fit);
 
                     const response = await axios.post(
                         "/api/images/upload",

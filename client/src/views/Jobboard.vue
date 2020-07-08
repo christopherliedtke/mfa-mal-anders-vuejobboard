@@ -1,48 +1,18 @@
 <template>
     <b-container class="jobboard py-5">
         <h2>Jobboard</h2>
-        <b-link
-            v-for="job in jobs"
-            :key="job._id"
-            :to="`/jobboard/job/${job._id}`"
-        >
-            <b-card class="my-3">
-                <b-card-text>
-                    <h4>
-                        {{ job.title }}
-                        <b-badge
-                            pill
-                            :variant="
-                                job.status === 'draft' ? 'light' : 'success'
-                            "
-                            >{{ job.status }}</b-badge
-                        >
-                    </h4>
-                    <p>
-                        Created at:
-                        {{
-                            new Date(
-                                parseInt(job.createdAt)
-                            ).toLocaleDateString()
-                        }}
-                    </p>
-                    <p
-                        v-html="
-                            $sanitize(job.description, {
-                                allowedTags: []
-                            }).substring(0, 100) + '...'
-                        "
-                    ></p>
-                </b-card-text>
-            </b-card>
-        </b-link>
+        <JobCard v-for="job in jobs" :key="job._id" :job="job" />
     </b-container>
 </template>
 
 <script>
     import { mapActions, mapGetters } from "vuex";
+    import JobCard from "@/components/JobCard.vue";
     export default {
         name: "Jobboard",
+        components: {
+            JobCard
+        },
         methods: {
             ...mapActions(["getJobs"])
         },
