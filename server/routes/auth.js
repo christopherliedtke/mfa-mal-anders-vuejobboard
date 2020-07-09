@@ -4,10 +4,13 @@ const jwt = require("jsonwebtoken");
 const cryptoRandomString = require("crypto-random-string");
 const { User } = require("../utils/models/user");
 const { Code } = require("../utils/models/secretCode");
+const { Company } = require("../utils/models/company");
+const { Job } = require("../utils/models/job");
 const { hash, compare } = require("../utils/bcrypt");
 const emailService = require("../utils/nodemailer");
 const authenticateTokenWhilePending = require("../utils/middleware/checkAuthWhilePending");
 const authenticateToken = require("../utils/middleware/checkAuth");
+const s3 = require("../utils/middleware/s3");
 
 // #route:  POST /Login
 // #desc:   Login a user
@@ -228,7 +231,7 @@ router.get(
                 code: req.params.secretCode,
             });
 
-            if (!user) {
+            if (!user || !response) {
                 res.sendStatus(401);
             } else {
                 await User.updateOne(
@@ -438,6 +441,42 @@ router.post("/delete-account", authenticateToken, async (req, res) => {
                         error: "The provided password is not correct.",
                     });
                 } else {
+                    // delete images
+                    const logoUrls = await Company.find(
+                        { userId: req.userId },
+                        "logoUrl"
+                    );
+                    const imageUrls = await Job.find(
+                        { userId: req.userId },
+                        "imageUrl"
+                    );
+
+                    const filesToDelete = [...logoUrls, ...imageUrls]
+                        .map((element) =>
+                            element.logoUrl || element.imageUrl
+                                ? element.logoUrl || element.imageUrl
+                                : null
+                        )
+                        .filter((element) => element)
+                        .map((element) =>
+                            element.split("/").slice(-1).join("")
+                        );
+
+                    await Promise.all(
+                        filesToDelete.map((file) => s3.delete(file))
+                    );
+
+                    // delete jobs and companies
+                    await Promise.all([
+                        Job.deleteMany({
+                            userId: req.userId,
+                        }),
+                        Company.deleteMany({
+                            userId: req.userId,
+                        }),
+                    ]);
+
+                    // delete user
                     const deleted = await User.deleteOne({
                         email: user.email,
                     });
