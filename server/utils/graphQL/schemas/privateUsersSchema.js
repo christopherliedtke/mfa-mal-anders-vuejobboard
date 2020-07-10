@@ -37,18 +37,12 @@ const mutation = new GraphQLObjectType({
                 email: { type: new GraphQLNonNull(GraphQLString) },
             },
             async resolve(parentValue, args, req) {
-                // !check if email is changed and re-verify
-
                 const oldUserData = await User.findOne({ _id: req.userId });
-
-                console.log("oldUserData: ", oldUserData);
 
                 const status =
                     args.email === oldUserData.email
                         ? oldUserData.status
                         : "pending";
-
-                console.log("status: ", status);
 
                 const response = await User.updateOne(
                     { _id: req.userId },
