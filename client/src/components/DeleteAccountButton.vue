@@ -1,13 +1,7 @@
 <template>
     <div>
-        <b-button
-            class="px-2 align-self-start align-self-lg-center"
-            size="sm"
-            variant="danger"
-            type="submit"
-            v-b-modal.delete-account
-            ><b-icon class="mr-1" icon="trash" font-scale="1"></b-icon>Delete
-            Account</b-button
+        <b-button variant="danger" type="submit" v-b-modal.delete-account
+            ><b-icon class="mr-2" icon="trash"></b-icon>Delete Account</b-button
         >
         <b-modal
             id="delete-account"

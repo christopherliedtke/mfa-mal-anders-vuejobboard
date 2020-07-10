@@ -1,13 +1,4 @@
-const {
-    GraphQLObjectType,
-    GraphQLString,
-    GraphQLBoolean,
-    GraphQLInt,
-    GraphQLFloat,
-    GraphQLSchema,
-    GraphQLList,
-    GraphQLNonNull,
-} = require("graphql");
+const { GraphQLObjectType, GraphQLString, GraphQLFloat } = require("graphql");
 
 // #Company Type
 const CompanyType = new GraphQLObjectType({

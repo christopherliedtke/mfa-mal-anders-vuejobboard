@@ -1,14 +1,12 @@
 const {
     GraphQLObjectType,
     GraphQLString,
-    GraphQLInt,
     GraphQLSchema,
     GraphQLList,
     GraphQLNonNull,
 } = require("graphql");
 const JobType = require("../types/JobType");
 const { Job } = require("../../models/job");
-const { Company } = require("../../models/company");
 const sanitizeHtml = require("sanitize-html");
 
 // #Root Query

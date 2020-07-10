@@ -1,6 +1,6 @@
 <template>
     <div class="job-form position-relative">
-        <Overlay :show="showOverlay"> </Overlay>
+        <Overlay :show="showOverlay" />
         <b-form id="company-form">
             <h3 class="mt-4">Company Data</h3>
             <label for="company-name">Name *</label>

@@ -2,8 +2,8 @@
     <b-container class="dashboard py-5">
         <h2>Account</h2>
         <b-tabs content-class="mt-3">
-            <b-tab title="Account Data" active
-                ><h3>Account Data</h3>
+            <b-tab title="Account Data" active>
+                <AccountDataForm />
                 <DeleteAccountButton
             /></b-tab>
         </b-tabs>
@@ -12,10 +12,12 @@
 
 <script>
     import DeleteAccountButton from "@/components/DeleteAccountButton.vue";
+    import AccountDataForm from "@/components/AccountDataForm.vue";
     export default {
         name: "Account",
         components: {
-            DeleteAccountButton
+            DeleteAccountButton,
+            AccountDataForm
         },
         methods: {},
         mounted: function() {},

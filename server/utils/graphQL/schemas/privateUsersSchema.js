@@ -14,13 +14,10 @@ const RootQuery = new GraphQLObjectType({
     fields: {
         user: {
             type: UserType,
-            args: {
-                _id: { type: GraphQLString },
-            },
+            args: {},
             async resolve(parentValue, args, req) {
                 const user = await User.findOne({
-                    _id: args._id,
-                    userId: req.userId,
+                    _id: req.userId,
                 });
                 return user;
             },
@@ -42,12 +39,24 @@ const mutation = new GraphQLObjectType({
             async resolve(parentValue, args, req) {
                 // !check if email is changed and re-verify
 
+                const oldUserData = await User.findOne({ _id: req.userId });
+
+                console.log("oldUserData: ", oldUserData);
+
+                const status =
+                    args.email === oldUserData.email
+                        ? oldUserData.status
+                        : "pending";
+
+                console.log("status: ", status);
+
                 const response = await User.updateOne(
                     { _id: req.userId },
                     {
                         firstName: sanitizeHtml(args.firstName),
                         lastName: sanitizeHtml(args.lastName),
                         email: sanitizeHtml(args.email),
+                        status: status,
                     }
                 );
 

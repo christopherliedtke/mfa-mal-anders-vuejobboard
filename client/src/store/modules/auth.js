@@ -18,9 +18,6 @@ const actions = {
         const response = await axios.post(data.url, data.userData);
 
         if (response.data.success) {
-            localStorage.setItem("userId", response.data.userId);
-            localStorage.setItem("userRole", response.data.userRole);
-            localStorage.setItem("userStatus", response.data.userStatus);
             commit("setUserId", response.data.userId);
             commit("setUserRole", response.data.userRole);
             commit("setUserStatus", response.data.userStatus);
@@ -43,12 +40,15 @@ const actions = {
 
 const mutations = {
     setUserId: (state, userId) => {
+        localStorage.setItem("userId", userId);
         state.userId = userId;
     },
     setUserRole: (state, userRole) => {
+        localStorage.setItem("userRole", userRole);
         state.userRole = userRole;
     },
     setUserStatus: (state, userStatus) => {
+        localStorage.setItem("userStatus", userStatus);
         state.userStatus = userStatus;
     }
 };
