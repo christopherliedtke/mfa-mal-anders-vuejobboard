@@ -28,6 +28,14 @@
             :alt="`Image - ${job.company && job.company.name}`"
         ></b-img>
         <p v-html="job.description"></p>
+        <HereMap
+            v-if="job.company && job.company.location"
+            :address="
+                `${job.company.street} ${job.company.location} ${job.company.street}`
+            "
+            :logoUrl="job.company.logoUrl"
+        />
+
         <b-alert
             v-if="error"
             class="position-fixed fixed-bottom m-0 rounded-0 mt-3"
@@ -42,8 +50,12 @@
 
 <script>
     import axios from "@/axios";
+    import HereMap from "@/components/HereMap.vue";
     export default {
         name: "Job",
+        components: {
+            HereMap
+        },
         props: ["apiRequest"],
         data() {
             return {
