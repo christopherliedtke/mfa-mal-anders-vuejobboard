@@ -14,6 +14,10 @@
         { "value": "Dr.", "text": "Dr." },
         { "value": "Prof.", "text": "Prof." }
     ],
+    "companyCountryOptions": [
+        { "value": null, "text": "-- Choose a state --", "disabled": true },
+        { "value": "USA", "text": "USA" }
+    ],
     "companyStateOptions": [
         { "value": null, "text": "-- Choose a state --", "disabled": true },
         { "value": "California", "text": "California" },

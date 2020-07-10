@@ -12,6 +12,13 @@
                 placeholder="Enter company name ..."
                 required
             />
+            <label for="company-country">Country *</label>
+            <b-form-select
+                id="company-country"
+                v-model="company.country"
+                :options="companyCountryOptions"
+                :state="validated ? (company.country ? true : false) : null"
+            />
             <label for="company-location">Location *</label>
             <b-form-input
                 type="text"
@@ -99,7 +106,10 @@
 
 <script>
     import axios from "@/axios";
-    import { companyStateOptions } from "@/utils/jobDataConfig.json";
+    import {
+        companyStateOptions,
+        companyCountryOptions
+    } from "@/utils/jobDataConfig.json";
     import ImageUploader from "@/components/ImageUploader.vue";
     import Overlay from "@/components/Overlay";
     export default {
@@ -114,6 +124,7 @@
                 company: {
                     _id: "",
                     name: "",
+                    country: null,
                     location: "",
                     state: null,
                     street: "",
@@ -121,6 +132,7 @@
                     url: "",
                     logoUrl: ""
                 },
+                companyCountryOptions,
                 companyStateOptions,
                 validated: null,
                 showOverlay: false,
@@ -142,6 +154,7 @@
                                 company(_id: "${companyId}") {
                                     _id
                                     name
+                                    country
                                     location
                                     state
                                     street
@@ -183,6 +196,7 @@
                                         : ""
                                 } 
                                 name: "${this.company.name}", 
+                                country: "${this.company.country}", 
                                 location: "${this.company.location}", 
                                 state: "${this.company.state}", 
                                 street: "${this.company.street}"
@@ -220,6 +234,7 @@
             formValidation() {
                 this.validated = true;
                 return !this.company.name ||
+                    !this.company.country ||
                     !this.company.location ||
                     !this.company.state ||
                     !this.company.street ||

@@ -132,7 +132,6 @@
             cursor: pointer;
             margin-top: -50px;
             margin-left: -25px;
-            // transform: translate(-100%, -50%);
         }
 
         .icon-inner {

@@ -31,7 +31,7 @@
         <HereMap
             v-if="job.company && job.company.location"
             :address="
-                `${job.company.street} ${job.company.location} ${job.company.street}`
+                `${job.company.street} ${job.company.location} ${job.company.state} ${job.company.country}`
             "
             :logoUrl="job.company.logoUrl"
         />
@@ -88,6 +88,7 @@
                                     contactPhone
                                     company {
                                         name
+                                        country
                                         location
                                         state
                                         street

@@ -48,6 +48,7 @@ const mutation = new GraphQLObjectType({
             type: CompanyType,
             args: {
                 name: { type: new GraphQLNonNull(GraphQLString) },
+                country: { type: new GraphQLNonNull(GraphQLString) },
                 location: { type: new GraphQLNonNull(GraphQLString) },
                 state: { type: new GraphQLNonNull(GraphQLString) },
                 street: {
@@ -67,6 +68,7 @@ const mutation = new GraphQLObjectType({
                 const newCompany = new Company({
                     userId: req.userId,
                     name: sanitizeHtml(args.name),
+                    country: sanitizeHtml(args.country),
                     location: sanitizeHtml(args.location),
                     state: sanitizeHtml(args.state),
                     street: sanitizeHtml(args.street),
@@ -85,6 +87,7 @@ const mutation = new GraphQLObjectType({
             args: {
                 _id: { type: GraphQLString },
                 name: { type: new GraphQLNonNull(GraphQLString) },
+                country: { type: new GraphQLNonNull(GraphQLString) },
                 location: { type: new GraphQLNonNull(GraphQLString) },
                 state: { type: new GraphQLNonNull(GraphQLString) },
                 street: {
@@ -105,6 +108,7 @@ const mutation = new GraphQLObjectType({
                     { _id: args._id, userId: req.userId },
                     {
                         name: sanitizeHtml(args.name),
+                        country: sanitizeHtml(args.country),
                         location: sanitizeHtml(args.location),
                         state: sanitizeHtml(args.state),
                         street: sanitizeHtml(args.street),

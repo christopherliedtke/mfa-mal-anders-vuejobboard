@@ -118,6 +118,13 @@
                 placeholder="Enter company name ..."
                 required
             />
+            <label for="company-country">Country *</label>
+            <b-form-select
+                id="company-country"
+                v-model="job.company.country"
+                :options="companyCountryOptions"
+                :state="validated ? (job.company.country ? true : false) : null"
+            />
             <label for="company-location">Location *</label>
             <b-form-input
                 type="text"
@@ -265,7 +272,8 @@
     import {
         employmentTypeOptions,
         contactTitleOptions,
-        companyStateOptions
+        companyStateOptions,
+        companyCountryOptions
     } from "@/utils/jobDataConfig.json";
     import TipTapEditor from "@/components/TipTapEditor.vue";
     import ImageUploader from "@/components/ImageUploader.vue";
@@ -293,6 +301,7 @@
                     company: {
                         _id: "",
                         name: "",
+                        country: null,
                         location: "",
                         state: "",
                         street: "",
@@ -305,6 +314,7 @@
                 selectedCompanyId: "",
                 employmentTypeOptions,
                 contactTitleOptions,
+                companyCountryOptions,
                 companyStateOptions,
                 validated: null,
                 showOverlay: false,
@@ -339,6 +349,7 @@
                                     company {
                                         _id
                                         name
+                                        country
                                         location
                                         state
                                         street
@@ -359,6 +370,7 @@
                         this.job.company = {
                             _id: "",
                             name: "",
+                            country: "",
                             location: "",
                             state: "",
                             street: "",
@@ -381,6 +393,7 @@
                                 companies {
                                     _id
                                     name
+                                    country
                                     location
                                     state
                                     street
@@ -425,6 +438,7 @@
                                         : ""
                                 } 
                                 name: "${this.job.company.name}", 
+                                country: "${this.job.company.country}", 
                                 location: "${this.job.company.location}", 
                                 state: "${this.job.company.state}", 
                                 street: "${this.job.company.street}"
@@ -512,6 +526,7 @@
                     !this.job.employmentType ||
                     !this.job.applicationDeadline ||
                     !this.job.company.name ||
+                    !this.job.company.country ||
                     !this.job.company.location ||
                     !this.job.company.state ||
                     !this.job.company.street ||
