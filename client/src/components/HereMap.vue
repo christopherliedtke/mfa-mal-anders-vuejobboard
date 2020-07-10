@@ -51,24 +51,45 @@
                             }
                         );
 
-                        // Create a marker icon from an image URL:
-                        const icon = new H.map.Icon(
-                            // this.logoUrl ||
-                            "/favicon.ico",
-                            {
-                                // size: {
-                                //     h: 25,
-                                //     w: 25
-                                // },
-                                crossOrigin: "ACCESS-CONTROL-ALLOW-ORIGIN"
-                            }
-                        );
+                        // DomMarker
+                        const outerElement = document.createElement("div");
+                        outerElement.classList.add("icon-outer");
+
+                        const innerElement = document.createElement("img");
+                        innerElement.classList.add("icon-inner");
+                        innerElement.src = this.logoUrl || "/favicon.ico";
+
+                        outerElement.appendChild(innerElement);
+
+                        const domIcon = new H.map.DomIcon(outerElement);
 
                         map.addObject(
-                            new window.H.map.Marker(geocode.items[0].position, {
-                                icon
-                            })
+                            new window.H.map.DomMarker(
+                                geocode.items[0].position,
+                                {
+                                    icon: domIcon
+                                }
+                            )
                         );
+
+                        // Create a marker icon from an image URL:
+                        // const icon = new H.map.Icon(
+                        //     // this.logoUrl ||
+                        //     "/favicon.ico",
+                        //     {
+                        //         // size: {
+                        //         //     h: 25,
+                        //         //     w: 25
+                        //         // },
+                        //         crossOrigin: "ACCESS-CONTROL-ALLOW-ORIGIN"
+                        //     }
+                        // );
+
+                        // map.addObject(
+                        //     new window.H.map.Marker(geocode.items[0].position, {
+                        //         icon
+                        //     })
+                        // );
 
                         addEventListener("resize", () =>
                             map.getViewPort().resize()
@@ -91,15 +112,38 @@
     };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
     #map-container {
         width: 100%;
-        height: 30vh;
+        height: 40vh;
         min-height: 300px;
     }
     #map {
         text-align: center;
         margin: 5% auto;
         background-color: #ccc;
+
+        .icon-outer {
+            width: 50px;
+            height: 50px;
+            position: relative;
+            background: url("/marker.svg") no-repeat center center;
+            background-size: contain;
+            cursor: pointer;
+            margin-top: -50px;
+            margin-left: -25px;
+            // transform: translate(-100%, -50%);
+        }
+
+        .icon-inner {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            object-fit: cover;
+            left: 50%;
+            top: 7%;
+            transform: translateX(-50%);
+        }
     }
 </style>
