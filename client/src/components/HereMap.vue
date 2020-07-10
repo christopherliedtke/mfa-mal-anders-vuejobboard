@@ -52,9 +52,17 @@
                         );
 
                         // Create a marker icon from an image URL:
-                        const icon = new H.map.Icon("/favicon.ico", {
-                            size: { h: 25, w: 25 }
-                        });
+                        const icon = new H.map.Icon(
+                            // this.logoUrl ||
+                            "/favicon.ico",
+                            {
+                                // size: {
+                                //     h: 25,
+                                //     w: 25
+                                // },
+                                crossOrigin: "ACCESS-CONTROL-ALLOW-ORIGIN"
+                            }
+                        );
 
                         map.addObject(
                             new window.H.map.Marker(geocode.items[0].position, {
