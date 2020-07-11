@@ -17,8 +17,17 @@
                 id="employment-type"
                 v-model="job.employmentType"
                 :state="validated ? (job.employmentType ? true : false) : null"
-                :options="employmentTypeOptions"
-            />
+            >
+                <b-form-select-option :value="null" disabled
+                    >-- Choose employment type --</b-form-select-option
+                >
+                <b-form-select-option
+                    v-for="type in employmentTypeOptions"
+                    :key="type.text"
+                    :value="type.value"
+                    >{{ type.text }}</b-form-select-option
+                ></b-form-select
+            >
             <label for="application-deadline">Application Deadline *</label>
             <b-form-datepicker
                 :state="validated && job.applicationDeadline != ''"
@@ -122,9 +131,18 @@
             <b-form-select
                 id="company-country"
                 v-model="job.company.country"
-                :options="companyCountryOptions"
                 :state="validated ? (job.company.country ? true : false) : null"
-            />
+            >
+                <b-form-select-option :value="null" disabled
+                    >-- Choose a country --</b-form-select-option
+                >
+                <b-form-select-option
+                    v-for="country in companyCountryOptions"
+                    :key="country.text"
+                    :value="country.value"
+                    >{{ country.text }}</b-form-select-option
+                >
+            </b-form-select>
             <label for="company-location">Location *</label>
             <b-form-input
                 type="text"
@@ -140,9 +158,18 @@
             <b-form-select
                 id="company-state"
                 v-model="job.company.state"
-                :options="companyStateOptions"
                 :state="validated ? (job.company.state ? true : false) : null"
-            />
+            >
+                <b-form-select-option :value="null" disabled
+                    >-- Choose a state --</b-form-select-option
+                >
+                <b-form-select-option
+                    v-for="state in companyStateOptions"
+                    :key="state.text"
+                    :value="state.value"
+                    >{{ state.text }}</b-form-select-option
+                >
+            </b-form-select>
             <label for="company-street">Street and House Number *</label>
             <b-form-input
                 type="text"
@@ -202,8 +229,17 @@
                 id="contact-title"
                 v-model="job.contactTitle"
                 :state="validated ? (job.contactTitle ? true : null) : null"
-                :options="contactTitleOptions"
-            />
+            >
+                <b-form-select-option :value="null" disabled
+                    >-- Choose a title --</b-form-select-option
+                >
+                <b-form-select-option
+                    v-for="title in contactTitleOptions"
+                    :key="title.text"
+                    :value="title.value"
+                    >{{ title.text }}</b-form-select-option
+                >
+            </b-form-select>
             <label for="contact-first-name">First Name</label>
             <b-form-input
                 type="text"

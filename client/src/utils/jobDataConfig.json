@@ -1,25 +1,15 @@
 {
     "employmentTypeOptions": [
-        {
-            "value": null,
-            "text": "-- Choose employment type --",
-            "disabled": true
-        },
-        { "value": "full", "text": "Full Time" },
-        { "value": "part", "text": "Part Time" },
-        { "value": "part_full", "text": "Part Time or Full Time" }
+        { "value": "Full Time", "text": "Full Time" },
+        { "value": "Part Time", "text": "Part Time" },
+        { "value": "Part/Full Time", "text": "Part Time or Full Time" }
     ],
     "contactTitleOptions": [
-        { "value": null, "text": "-- Choose a title --", "disabled": true },
         { "value": "Dr.", "text": "Dr." },
         { "value": "Prof.", "text": "Prof." }
     ],
-    "companyCountryOptions": [
-        { "value": null, "text": "-- Choose a state --", "disabled": true },
-        { "value": "USA", "text": "USA" }
-    ],
+    "companyCountryOptions": [{ "value": "USA", "text": "USA" }],
     "companyStateOptions": [
-        { "value": null, "text": "-- Choose a state --", "disabled": true },
         { "value": "California", "text": "California" },
         { "value": "Texas", "text": "Texas" }
     ]
