@@ -8,9 +8,9 @@
                 >
                 <b-form-select-option
                     v-for="state in companyStateOptions"
-                    :key="state.text"
-                    :value="state.value"
-                    >{{ state.text }}</b-form-select-option
+                    :key="state"
+                    :value="state"
+                    >{{ state }}</b-form-select-option
                 >
             </b-form-select>
             <b-form-input
@@ -34,13 +34,15 @@
                 >
                 <b-form-select-option
                     v-for="type in employmentTypeOptions"
-                    :key="type.text"
+                    :key="type.value"
                     :value="type.value"
                     >{{ type.text }}</b-form-select-option
                 >
             </b-form-select>
         </b-form>
-        <JobCard v-for="job in filteredJobs" :key="job._id" :job="job" />
+        <div class="job-list">
+            <JobCard v-for="job in filteredJobs" :key="job._id" :job="job" />
+        </div>
     </b-container>
 </template>
 
@@ -68,7 +70,9 @@
                     location: "",
                     state: null
                 },
-                employmentTypeOptions,
+                employmentTypeOptions: employmentTypeOptions.filter(
+                    type => type.value != "part_full"
+                ),
                 companyStateOptions
             };
         },
@@ -165,8 +169,9 @@
                     if (this.filter.employmentType) {
                         jobs = jobs.filter(job => {
                             if (
-                                job.employmentType ===
-                                this.filter.employmentType
+                                job.employmentType.includes(
+                                    this.filter.employmentType
+                                )
                             ) {
                                 return job;
                             } else {
@@ -198,11 +203,17 @@
 </script>
 
 <style scoped lang="scss">
-    a {
-        color: unset;
+    @import "@/styles/custom_bootstrap.scss";
 
-        &:hover {
-            text-decoration: unset;
+    .job-list {
+        a {
+            color: unset;
+            transition: linear 0.1s;
+
+            &:hover {
+                text-decoration: unset;
+                color: $primary;
+            }
         }
     }
 </style>

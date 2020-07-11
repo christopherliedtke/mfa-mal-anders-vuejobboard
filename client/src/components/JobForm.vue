@@ -23,7 +23,7 @@
                 >
                 <b-form-select-option
                     v-for="type in employmentTypeOptions"
-                    :key="type.text"
+                    :key="type.value"
                     :value="type.value"
                     >{{ type.text }}</b-form-select-option
                 ></b-form-select
@@ -127,22 +127,15 @@
                 placeholder="Enter company name ..."
                 required
             />
-            <label for="company-country">Country *</label>
-            <b-form-select
-                id="company-country"
-                v-model="job.company.country"
-                :state="validated ? (job.company.country ? true : false) : null"
-            >
-                <b-form-select-option :value="null" disabled
-                    >-- Choose a country --</b-form-select-option
-                >
-                <b-form-select-option
-                    v-for="country in companyCountryOptions"
-                    :key="country.text"
-                    :value="country.value"
-                    >{{ country.text }}</b-form-select-option
-                >
-            </b-form-select>
+            <label for="company-street">Street and House Number *</label>
+            <b-form-input
+                type="text"
+                v-model="job.company.street"
+                :state="validated ? (job.company.street ? true : false) : null"
+                id="company-street"
+                placeholder="Enter street and house number ..."
+                required
+            />
             <label for="company-location">Location *</label>
             <b-form-input
                 type="text"
@@ -152,6 +145,15 @@
                 "
                 id="company-location"
                 placeholder="Enter location ..."
+                required
+            />
+            <label for="company-zip-code">ZIP Code *</label>
+            <b-form-input
+                type="number"
+                v-model="job.company.zipCode"
+                :state="validated ? (job.company.zipCode ? true : false) : null"
+                id="company-zip-code"
+                placeholder="Enter zip code ..."
                 required
             />
             <label for="company-state">State *</label>
@@ -165,29 +167,27 @@
                 >
                 <b-form-select-option
                     v-for="state in companyStateOptions"
-                    :key="state.text"
-                    :value="state.value"
-                    >{{ state.text }}</b-form-select-option
+                    :key="state"
+                    :value="state"
+                    >{{ state }}</b-form-select-option
                 >
             </b-form-select>
-            <label for="company-street">Street and House Number *</label>
-            <b-form-input
-                type="text"
-                v-model="job.company.street"
-                :state="validated ? (job.company.street ? true : false) : null"
-                id="company-street"
-                placeholder="Enter street and house number ..."
-                required
-            />
-            <label for="company-zip-code">ZIP Code *</label>
-            <b-form-input
-                type="number"
-                v-model="job.company.zipCode"
-                :state="validated ? (job.company.zipCode ? true : false) : null"
-                id="company-zip-code"
-                placeholder="Enter zip code ..."
-                required
-            />
+            <label for="company-country">Country *</label>
+            <b-form-select
+                id="company-country"
+                v-model="job.company.country"
+                :state="validated ? (job.company.country ? true : false) : null"
+            >
+                <b-form-select-option :value="null" disabled
+                    >-- Choose a country --</b-form-select-option
+                >
+                <b-form-select-option
+                    v-for="country in companyCountryOptions"
+                    :key="country"
+                    :value="country"
+                    >{{ country }}</b-form-select-option
+                >
+            </b-form-select>
             <label for="company-url">Website</label>
             <b-input-group>
                 <template v-slot:prepend>
@@ -235,9 +235,9 @@
                 >
                 <b-form-select-option
                     v-for="title in contactTitleOptions"
-                    :key="title.text"
-                    :value="title.value"
-                    >{{ title.text }}</b-form-select-option
+                    :key="title"
+                    :value="title"
+                    >{{ title }}</b-form-select-option
                 >
             </b-form-select>
             <label for="contact-first-name">First Name</label>
