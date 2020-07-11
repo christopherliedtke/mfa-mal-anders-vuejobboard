@@ -7,10 +7,9 @@
 
 <script>
     export default {
-        name: "HereMap",
+        name: "HereMapSingleJob",
         props: {
-            address: String,
-            logoUrl: String
+            job: Object
         },
         data() {
             return {
@@ -32,7 +31,7 @@
                     const service = this.platform.getSearchService();
 
                     const geocode = await service.geocode({
-                        q: this.address
+                        q: `${this.job.company.street} ${this.job.company.location} ${this.job.company.state} ${this.job.company.country}`
                     });
 
                     if (geocode.items.length > 0) {
@@ -57,7 +56,8 @@
 
                         const innerElement = document.createElement("img");
                         innerElement.classList.add("icon-inner");
-                        innerElement.src = this.logoUrl || "/favicon.ico";
+                        innerElement.src =
+                            this.job.company.logoUrl || "/favicon.ico";
 
                         outerElement.appendChild(innerElement);
 
@@ -113,36 +113,37 @@
 </script>
 
 <style lang="scss">
-    #map-container {
-        width: 100%;
-        height: 40vh;
-        min-height: 300px;
-    }
     #map {
         text-align: center;
         margin: 5% auto;
         background-color: #ccc;
 
-        .icon-outer {
-            width: 50px;
-            height: 50px;
-            position: relative;
-            background: url("/marker.svg") no-repeat center center;
-            background-size: contain;
-            cursor: pointer;
-            margin-top: -50px;
-            margin-left: -25px;
-        }
+        #map-container {
+            width: 100%;
+            height: 40vh;
+            min-height: 300px;
 
-        .icon-inner {
-            position: absolute;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            object-fit: cover;
-            left: 50%;
-            top: 10%;
-            transform: translateX(-50%);
+            .icon-outer {
+                width: 48px;
+                height: 48px;
+                position: relative;
+                background: url("/marker.svg") no-repeat center center;
+                background-size: contain;
+                cursor: pointer;
+                margin-top: -48px;
+                margin-left: -24px;
+            }
+
+            .icon-inner {
+                position: absolute;
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                object-fit: cover;
+                left: 50%;
+                top: 10%;
+                transform: translateX(-49%);
+            }
         }
     }
 </style>

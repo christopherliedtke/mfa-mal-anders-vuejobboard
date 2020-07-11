@@ -40,8 +40,29 @@
                 >
             </b-form-select>
         </b-form>
-        <div class="job-list">
+        <b-button-toolbar aria-label="Jobboard view toolbarbar">
+            <b-button-group class="my-3">
+                <b-button
+                    :variant="
+                        jobboardView == 'list' ? 'primary' : 'outline-primary'
+                    "
+                    @click.prevent="setJobboardView('list')"
+                    ><b-icon class="mr-2" icon="list-ul" />List View</b-button
+                >
+                <b-button
+                    :variant="
+                        jobboardView == 'map' ? 'primary' : 'outline-primary'
+                    "
+                    @click.prevent="setJobboardView('map')"
+                    ><b-icon class="mr-2" icon="map" />Map View</b-button
+                >
+            </b-button-group>
+        </b-button-toolbar>
+        <div class="job-list" v-if="jobboardView === 'list'">
             <JobCard v-for="job in filteredJobs" :key="job._id" :job="job" />
+        </div>
+        <div class="job-map" v-if="jobboardView === 'map'">
+            <HereMapMultiJobs :jobs="filteredJobs" />
         </div>
     </b-container>
 </template>
@@ -53,13 +74,19 @@
         companyStateOptions
     } from "@/utils/jobDataConfig.json";
     import JobCard from "@/components/JobCard.vue";
+    import HereMapMultiJobs from "@/components/HereMapMultiJobs.vue";
     export default {
         name: "Jobboard",
         components: {
-            JobCard
+            JobCard,
+            HereMapMultiJobs
         },
         methods: {
-            ...mapActions(["getJobs"])
+            ...mapActions(["getJobs"]),
+            setJobboardView(view) {
+                this.$router.push({ query: { jobboardView: view } });
+                this.jobboardView = view;
+            }
         },
         data() {
             return {
@@ -73,7 +100,8 @@
                 employmentTypeOptions: employmentTypeOptions.filter(
                     type => type.value != "part_full"
                 ),
-                companyStateOptions
+                companyStateOptions,
+                jobboardView: this.$route.query.jobboardView || "list"
             };
         },
         created: function() {
@@ -91,9 +119,10 @@
                                 _id
                                 name
                                 street
-                                state
                                 location
                                 zipCode
+                                state
+                                country
                                 logoUrl
                             }
                         }
@@ -205,14 +234,16 @@
 <style scoped lang="scss">
     @import "@/styles/custom_bootstrap.scss";
 
-    .job-list {
-        a {
-            color: unset;
-            transition: linear 0.1s;
+    .jobboard {
+        .job-list {
+            a {
+                color: unset;
+                transition: linear 0.1s;
 
-            &:hover {
-                text-decoration: unset;
-                color: $primary;
+                &:hover {
+                    text-decoration: unset;
+                    color: $primary;
+                }
             }
         }
     }
