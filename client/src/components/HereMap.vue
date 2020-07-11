@@ -136,12 +136,12 @@
 
         .icon-inner {
             position: absolute;
-            width: 25px;
-            height: 25px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             object-fit: cover;
             left: 50%;
-            top: 7%;
+            top: 10%;
             transform: translateX(-50%);
         }
     }

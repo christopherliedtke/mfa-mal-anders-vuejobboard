@@ -197,4 +197,12 @@
     };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+    a {
+        color: unset;
+
+        &:hover {
+            text-decoration: unset;
+        }
+    }
+</style>
