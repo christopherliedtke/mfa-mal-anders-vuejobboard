@@ -11,7 +11,7 @@ const CompanySchema = new Schema(
             type: String,
             required: true,
         },
-        country: {
+        street: {
             type: String,
             required: true,
         },
@@ -19,17 +19,20 @@ const CompanySchema = new Schema(
             type: String,
             required: true,
         },
+        zipCode: {
+            type: String,
+            required: true,
+        },
         state: {
             type: String,
             required: true,
         },
-        street: {
+        country: {
             type: String,
             required: true,
         },
-        zipCode: {
+        geoCode: {
             type: String,
-            required: true,
         },
         url: {
             type: String,

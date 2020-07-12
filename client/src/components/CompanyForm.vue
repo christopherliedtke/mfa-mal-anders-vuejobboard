@@ -142,16 +142,21 @@
                 company: {
                     _id: "",
                     name: "",
-                    country: null,
-                    location: "",
-                    state: null,
                     street: "",
+                    location: "",
                     zipCode: null,
+                    state: null,
+                    country: null,
+                    geoCode: "",
                     url: "",
                     logoUrl: ""
                 },
                 companyCountryOptions,
                 companyStateOptions,
+                hereMaps: {
+                    platform: null,
+                    apikey: "n3GOlcV0Z6utqCKpJlDWH6lWYtJdvR0QomMzYs_EreM"
+                },
                 validated: null,
                 showOverlay: false,
                 success: "",
@@ -162,6 +167,12 @@
             if (this.companyId) {
                 this.getCompany(this.companyId);
             }
+
+            // Initialize the platform object:
+            const platform = new window.H.service.Platform({
+                apikey: this.hereMaps.apikey
+            });
+            this.hereMaps.platform = platform;
         },
         methods: {
             async getCompany(companyId) {
@@ -172,11 +183,12 @@
                                 company(_id: "${companyId}") {
                                     _id
                                     name
-                                    country
-                                    location
-                                    state
                                     street
+                                    location
                                     zipCode
+                                    state
+                                    country
+                                    geoCode
                                     url
                                     logoUrl
                                 }
@@ -200,6 +212,17 @@
 
                     this.showOverlay = true;
 
+                    // get geocode
+                    const service = this.hereMaps.platform.getSearchService();
+                    const geocode = await service.geocode({
+                        q: `${this.company.street} ${this.company.location} ${this.company.state} ${this.company.country}`
+                    });
+
+                    this.company.geoCode = JSON.stringify(
+                        geocode.items[0].position
+                    ).replace(/"/g, '\\"');
+
+                    // Save / Update company
                     let mutationType;
                     this.companyId
                         ? (mutationType = "updateCompany")
@@ -214,11 +237,12 @@
                                         : ""
                                 } 
                                 name: "${this.company.name}", 
-                                country: "${this.company.country}", 
-                                location: "${this.company.location}", 
-                                state: "${this.company.state}", 
                                 street: "${this.company.street}"
+                                location: "${this.company.location}", 
                                 zipCode: "${this.company.zipCode}"
+                                state: "${this.company.state}", 
+                                country: "${this.company.country}", 
+                                geoCode: "${this.company.geoCode}", 
                                 url: "${this.company.url}"
                                 logoUrl: "${this.company.logoUrl}"
                             ) {

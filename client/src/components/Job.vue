@@ -85,11 +85,12 @@
                                     contactPhone
                                     company {
                                         name
-                                        country
-                                        location
-                                        state
                                         street
+                                        location
                                         zipCode
+                                        state
+                                        country
+                                        geoCode
                                         url
                                         logoUrl
                                     }

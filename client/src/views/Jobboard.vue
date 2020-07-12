@@ -2,7 +2,7 @@
     <b-container class="jobboard py-5">
         <h2>Jobboard</h2>
         <b-form id="job-filter" inline @submit.prevent>
-            <b-form-select v-model="filter.state">
+            <b-form-select v-model="filter.state" @change="setQuery">
                 <b-form-select-option :value="null"
                     >Any state</b-form-select-option
                 >
@@ -18,6 +18,7 @@
                 v-model="filter.location"
                 list="location-list"
                 placeholder="Enter City ..."
+                @change="setQuery"
             />
             <b-form-datalist
                 id="location-list"
@@ -27,8 +28,9 @@
                 type="text"
                 v-model="filter.searchTerm"
                 placeholder="Enter search term ..."
+                @change="setQuery"
             />
-            <b-form-select v-model="filter.employmentType">
+            <b-form-select v-model="filter.employmentType" @change="setQuery">
                 <b-form-select-option :value="null"
                     >Any employment type</b-form-select-option
                 >
@@ -81,21 +83,14 @@
             JobCard,
             HereMapMultiJobs
         },
-        methods: {
-            ...mapActions(["getJobs"]),
-            setJobboardView(view) {
-                this.$router.push({ query: { jobboardView: view } });
-                this.jobboardView = view;
-            }
-        },
         data() {
             return {
                 filter: {
                     createdAt: "",
-                    searchTerm: "",
-                    employmentType: null,
-                    location: "",
-                    state: null
+                    searchTerm: this.$route.query.searchTerm || "",
+                    employmentType: this.$route.query.employmentType || null,
+                    location: this.$route.query.location || "",
+                    state: this.$route.query.state || null
                 },
                 employmentTypeOptions: employmentTypeOptions.filter(
                     type => type.value != "part_full"
@@ -103,6 +98,18 @@
                 companyStateOptions,
                 jobboardView: this.$route.query.jobboardView || "list"
             };
+        },
+        methods: {
+            ...mapActions(["getJobs"]),
+            setJobboardView(value) {
+                this.jobboardView = value;
+                this.setQuery();
+            },
+            setQuery() {
+                this.$router.push({
+                    query: { ...this.filter, jobboardView: this.jobboardView }
+                });
+            }
         },
         created: function() {
             this.getJobs({
@@ -123,6 +130,7 @@
                                 zipCode
                                 state
                                 country
+                                geoCode
                                 logoUrl
                             }
                         }

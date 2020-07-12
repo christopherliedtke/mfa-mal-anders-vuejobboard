@@ -337,11 +337,12 @@
                     company: {
                         _id: "",
                         name: "",
-                        country: null,
-                        location: "",
-                        state: "",
                         street: "",
+                        location: "",
                         zipCode: "",
+                        state: "",
+                        country: null,
+                        geoCode: "",
                         url: "",
                         logoUrl: ""
                     }
@@ -352,6 +353,10 @@
                 contactTitleOptions,
                 companyCountryOptions,
                 companyStateOptions,
+                hereMaps: {
+                    platform: null,
+                    apikey: "n3GOlcV0Z6utqCKpJlDWH6lWYtJdvR0QomMzYs_EreM"
+                },
                 validated: null,
                 showOverlay: false,
                 success: "",
@@ -361,6 +366,12 @@
         created: function() {
             this.jobId ? this.getJob(this.jobId) : null;
             this.getCompanies();
+
+            // Initialize the platform object:
+            const platform = new window.H.service.Platform({
+                apikey: this.hereMaps.apikey
+            });
+            this.hereMaps.platform = platform;
         },
         methods: {
             async getJob(jobId) {
@@ -385,11 +396,12 @@
                                     company {
                                         _id
                                         name
-                                        country
-                                        location
-                                        state
                                         street
+                                        location
                                         zipCode
+                                        state
+                                        country
+                                        geoCode
                                         url
                                         logoUrl
                                     }
@@ -406,11 +418,12 @@
                         this.job.company = {
                             _id: "",
                             name: "",
-                            country: "",
-                            location: "",
-                            state: "",
                             street: "",
+                            location: "",
                             zipCode: "",
+                            state: "",
+                            country: "",
+                            geoCode: "",
                             url: "",
                             logoUrl: ""
                         };
@@ -429,11 +442,12 @@
                                 companies {
                                     _id
                                     name
-                                    country
-                                    location
-                                    state
                                     street
+                                    location
                                     zipCode
+                                    state
+                                    country
+                                    geoCode
                                     url
                                     logoUrl
                                 }
@@ -459,6 +473,16 @@
 
                     this.showOverlay = true;
 
+                    // get geocode
+                    const service = this.hereMaps.platform.getSearchService();
+                    const geocode = await service.geocode({
+                        q: `${this.job.company.street} ${this.job.company.location} ${this.job.company.state} ${this.job.company.country}`
+                    });
+
+                    this.job.company.geoCode = JSON.stringify(
+                        geocode.items[0].position
+                    ).replace(/"/g, '\\"');
+
                     // Save / Update company
                     let companyMutationType;
                     this.job.company._id
@@ -474,11 +498,12 @@
                                         : ""
                                 } 
                                 name: "${this.job.company.name}", 
-                                country: "${this.job.company.country}", 
-                                location: "${this.job.company.location}", 
-                                state: "${this.job.company.state}", 
                                 street: "${this.job.company.street}"
+                                location: "${this.job.company.location}", 
                                 zipCode: "${this.job.company.zipCode}"
+                                state: "${this.job.company.state}", 
+                                country: "${this.job.company.country}", 
+                                geoCode: "${this.job.company.geoCode}", 
                                 url: "${this.job.company.url}"
                                 logoUrl: "${this.job.company.logoUrl}"
                             ) {

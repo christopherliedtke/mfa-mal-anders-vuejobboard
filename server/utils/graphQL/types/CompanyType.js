@@ -19,19 +19,22 @@ const CompanyType = new GraphQLObjectType({
         name: {
             type: GraphQLString,
         },
-        country: {
+        street: {
             type: GraphQLString,
         },
         location: {
             type: GraphQLString,
         },
+        zipCode: {
+            type: GraphQLString,
+        },
         state: {
             type: GraphQLString,
         },
-        street: {
+        country: {
             type: GraphQLString,
         },
-        zipCode: {
+        geoCode: {
             type: GraphQLString,
         },
         url: {

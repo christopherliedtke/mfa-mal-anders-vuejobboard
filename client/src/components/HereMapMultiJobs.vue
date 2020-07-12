@@ -29,8 +29,10 @@
         },
         watch: {
             jobs: function() {
-                this.deleteMarkers();
-                this.setMarkers();
+                if (this.map) {
+                    this.deleteMarkers();
+                    this.setMarkers();
+                }
             }
         },
         methods: {
@@ -40,12 +42,18 @@
             async initializeHereMap() {
                 try {
                     const service = this.platform.getSearchService();
-                    const geocode = await service.geocode({
-                        q:
-                            this.jobs.length > 0
-                                ? `${this.jobs[0].company.street} ${this.jobs[0].company.location} ${this.jobs[0].company.state} ${this.jobs[0].company.country}`
-                                : this.companyCountryOptions[0]
-                    });
+
+                    let geocode;
+
+                    if (this.jobs.length > 0 && this.jobs[0].company.geoCode) {
+                        geocode = JSON.parse(this.jobs[0].company.geoCode);
+                    } else {
+                        const response = await service.geocode({
+                            q: this.companyCountryOptions[0]
+                        });
+
+                        geocode = response.items[0].position;
+                    }
 
                     const mapContainer = this.$refs.hereMap;
                     const H = window.H;
@@ -58,7 +66,7 @@
                         maptypes.vector.normal.map,
                         {
                             zoom: 4,
-                            center: geocode.items[0].position
+                            center: geocode
                         }
                     );
 
@@ -83,7 +91,7 @@
                 }
             },
             async setMarkers() {
-                if (this.jobs.length > 0 && this.jobs[0].company) {
+                if (this.map && this.jobs.length > 0 && this.jobs[0].company) {
                     const service = this.platform.getSearchService();
                     const H = window.H;
 
@@ -91,9 +99,17 @@
 
                     // set markers
                     this.jobs.forEach(async job => {
-                        const geocode = await service.geocode({
-                            q: `${job.company.street} ${job.company.location} ${job.company.state} ${job.company.country}`
-                        });
+                        let geocode;
+
+                        if (job.company.geoCode) {
+                            geocode = JSON.parse(job.company.geoCode);
+                        } else {
+                            const response = await service.geocode({
+                                q: `${job.company.street} ${job.company.location} ${job.company.state} ${job.company.country}`
+                            });
+
+                            geocode = response.items[0].position;
+                        }
 
                         const outerElement = document.createElement("div");
                         outerElement.classList.add("icon-outer");
@@ -107,12 +123,9 @@
 
                         const domIcon = new H.map.DomIcon(outerElement);
 
-                        const marker = new window.H.map.DomMarker(
-                            geocode.items[0].position,
-                            {
-                                icon: domIcon
-                            }
-                        );
+                        const marker = new window.H.map.DomMarker(geocode, {
+                            icon: domIcon
+                        });
 
                         group.addObject(marker);
 
@@ -164,7 +177,7 @@
                 border-radius: 50%;
                 object-fit: cover;
                 left: 50%;
-                top: 10%;
+                top: 12%;
                 transform: translateX(-49%);
             }
         }

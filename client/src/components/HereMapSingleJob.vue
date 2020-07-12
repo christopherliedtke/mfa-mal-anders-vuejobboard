@@ -30,11 +30,19 @@
                 try {
                     const service = this.platform.getSearchService();
 
-                    const geocode = await service.geocode({
-                        q: `${this.job.company.street} ${this.job.company.location} ${this.job.company.state} ${this.job.company.country}`
-                    });
+                    let geocode;
 
-                    if (geocode.items.length > 0) {
+                    if (this.job.company.geoCode) {
+                        geocode = JSON.parse(this.job.company.geoCode);
+                    } else {
+                        const response = await service.geocode({
+                            q: `${this.job.company.street} ${this.job.company.location} ${this.job.company.state} ${this.job.company.country}`
+                        });
+
+                        geocode = response.items[0].position;
+                    }
+
+                    if (geocode) {
                         const mapContainer = this.$refs.hereMap;
                         const H = window.H;
                         // Obtain the default map types from the platform object
@@ -46,7 +54,7 @@
                             maptypes.vector.normal.map,
                             {
                                 zoom: 13,
-                                center: geocode.items[0].position
+                                center: geocode
                             }
                         );
 
@@ -64,32 +72,10 @@
                         const domIcon = new H.map.DomIcon(outerElement);
 
                         map.addObject(
-                            new window.H.map.DomMarker(
-                                geocode.items[0].position,
-                                {
-                                    icon: domIcon
-                                }
-                            )
+                            new window.H.map.DomMarker(geocode, {
+                                icon: domIcon
+                            })
                         );
-
-                        // Create a marker icon from an image URL:
-                        // const icon = new H.map.Icon(
-                        //     // this.logoUrl ||
-                        //     "/favicon.ico",
-                        //     {
-                        //         // size: {
-                        //         //     h: 25,
-                        //         //     w: 25
-                        //         // },
-                        //         crossOrigin: "ACCESS-CONTROL-ALLOW-ORIGIN"
-                        //     }
-                        // );
-
-                        // map.addObject(
-                        //     new window.H.map.Marker(geocode.items[0].position, {
-                        //         icon
-                        //     })
-                        // );
 
                         addEventListener("resize", () =>
                             map.getViewPort().resize()
@@ -141,7 +127,7 @@
                 border-radius: 50%;
                 object-fit: cover;
                 left: 50%;
-                top: 10%;
+                top: 12%;
                 transform: translateX(-49%);
             }
         }
