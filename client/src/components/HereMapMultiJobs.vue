@@ -80,7 +80,8 @@
                     new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
 
                     // add UI
-                    H.ui.UI.createDefault(map, maptypes);
+                    const ui = H.ui.UI.createDefault(map, maptypes);
+                    this.ui = ui;
 
                     // set markers
                     this.setMarkers();
@@ -91,25 +92,57 @@
                 }
             },
             async setMarkers() {
-                if (this.map && this.jobs.length > 0 && this.jobs[0].company) {
-                    const service = this.platform.getSearchService();
+                if (this.map && this.jobs.length > 0) {
+                    // const service = this.platform.getSearchService();
                     const H = window.H;
 
                     const group = new H.map.Group();
 
-                    // set markers
-                    this.jobs.forEach(async job => {
-                        let geocode;
+                    const markerObjects = [];
 
-                        if (job.company.geoCode) {
-                            geocode = JSON.parse(job.company.geoCode);
-                        } else {
-                            const response = await service.geocode({
-                                q: `${job.company.street} ${job.company.location} ${job.company.state} ${job.company.country}`
+                    this.jobs.forEach(job => {
+                        let newGeocode = true;
+
+                        markerObjects.forEach((item, j) => {
+                            if (item.geocode === job.company.geoCode) {
+                                markerObjects[j].jobs.push({
+                                    jobTitle: job.title,
+                                    jobId: job._id
+                                });
+                                newGeocode = false;
+                            }
+                        });
+
+                        if (newGeocode) {
+                            markerObjects.push({
+                                geocode: job.company.geoCode,
+                                companyName: job.company.name,
+                                logoUrl: job.company.logoUrl,
+                                jobs: [
+                                    {
+                                        jobTitle: job.title,
+                                        jobId: job._id
+                                    }
+                                ]
                             });
-
-                            geocode = response.items[0].position;
                         }
+                    });
+
+                    // set markers
+                    markerObjects.forEach(async markerObject => {
+                        // let geocode;
+
+                        // if (job.company.geoCode) {
+                        //     geocode = JSON.parse(job.company.geoCode);
+                        // } else {
+                        //     const response = await service.geocode({
+                        //         q: `${job.company.street} ${job.company.location} ${job.company.state} ${job.company.country}`
+                        //     });
+
+                        //     geocode = response.items[0].position;
+                        // }
+
+                        const geocode = JSON.parse(markerObject.geocode);
 
                         const outerElement = document.createElement("div");
                         outerElement.classList.add("icon-outer");
@@ -117,7 +150,7 @@
                         const innerElement = document.createElement("img");
                         innerElement.classList.add("icon-inner");
                         innerElement.src =
-                            job.company.logoUrl || "/favicon.ico";
+                            markerObject.logoUrl || "/favicon.ico";
 
                         outerElement.appendChild(innerElement);
 
@@ -127,11 +160,37 @@
                             icon: domIcon
                         });
 
+                        let str = `<div class="map-bubble mb-2"><strong>${markerObject.companyName}</strong></div><hr class="my-1" />`;
+                        markerObject.jobs.forEach(job => {
+                            str =
+                                str +
+                                `<p class="my-0"><a href="/jobboard/job/${job.jobId}" target="_blank">${job.jobTitle}</a></p><hr class="my-1" />`;
+                        });
+
+                        marker.setData(str);
+                        // marker.setData(`
+                        //         <div class="map-bubble">
+                        //             <a href="/jobboard/job/${job._id}" target="_blank">${job.title}</a>
+                        //         </div>
+                        //     `);
+
                         group.addObject(marker);
 
-                        marker.addEventListener("tap", () =>
-                            this.forward(job._id)
-                        );
+                        marker.addEventListener("tap", evt => {
+                            // this.forward(job._id)
+
+                            // event target is the marker itself, group is a parent event target
+                            // for all objects that it contains
+                            var bubble = new H.ui.InfoBubble(
+                                evt.target.getGeometry(),
+                                {
+                                    // read custom data
+                                    content: evt.target.getData()
+                                }
+                            );
+                            // show info bubble
+                            this.ui.addBubble(bubble);
+                        });
 
                         this.map.addObject(group);
                     });
@@ -179,6 +238,10 @@
                 left: 50%;
                 top: 12%;
                 transform: translateX(-49%);
+            }
+
+            .map-bubble {
+                min-width: 150px;
             }
         }
     }

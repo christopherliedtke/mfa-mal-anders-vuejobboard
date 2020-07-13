@@ -2,7 +2,11 @@
     <b-container class="jobboard py-5">
         <h2>Jobboard</h2>
         <b-form id="job-filter" inline @submit.prevent>
-            <b-form-select v-model="filter.state" @change="setQuery">
+            <b-form-select
+                class="my-1 mr-2"
+                v-model="filter.state"
+                @change="setQuery"
+            >
                 <b-form-select-option :value="null"
                     >Any state</b-form-select-option
                 >
@@ -13,24 +17,56 @@
                     >{{ state }}</b-form-select-option
                 >
             </b-form-select>
-            <b-form-input
-                type="text"
-                v-model="filter.location"
-                list="location-list"
-                placeholder="Enter City ..."
-                @change="setQuery"
-            />
+            <b-input-group class="my-1 mr-2">
+                <b-form-input
+                    type="text"
+                    v-model="filter.location"
+                    list="location-list"
+                    placeholder="Enter city ..."
+                    @change="setQuery"
+                />
+                <b-input-group-append>
+                    <b-button
+                        ><b-icon
+                            icon="x"
+                            @click.prevent="
+                                () => {
+                                    filter.location = '';
+                                    setQuery();
+                                }
+                            "
+                    /></b-button>
+                </b-input-group-append>
+            </b-input-group>
             <b-form-datalist
                 id="location-list"
                 :options="locationsList"
             ></b-form-datalist>
-            <b-form-input
-                type="text"
-                v-model="filter.searchTerm"
-                placeholder="Enter search term ..."
+            <b-input-group class="my-1 mr-2">
+                <b-form-input
+                    type="text"
+                    v-model="filter.searchTerm"
+                    placeholder="Enter search term ..."
+                    @change="setQuery"
+                />
+                <b-input-group-append>
+                    <b-button
+                        ><b-icon
+                            icon="x"
+                            @click.prevent="
+                                () => {
+                                    filter.searchTerm = '';
+                                    setQuery();
+                                }
+                            "
+                    /></b-button>
+                </b-input-group-append>
+            </b-input-group>
+            <b-form-select
+                class="my-1 mr-2"
+                v-model="filter.employmentType"
                 @change="setQuery"
-            />
-            <b-form-select v-model="filter.employmentType" @change="setQuery">
+            >
                 <b-form-select-option :value="null"
                     >Any employment type</b-form-select-option
                 >
@@ -43,7 +79,7 @@
             </b-form-select>
         </b-form>
         <b-button-toolbar aria-label="Jobboard view toolbarbar">
-            <b-button-group class="my-3">
+            <b-button-group class="mt-3">
                 <b-button
                     :variant="
                         jobboardView == 'list' ? 'primary' : 'outline-primary'
