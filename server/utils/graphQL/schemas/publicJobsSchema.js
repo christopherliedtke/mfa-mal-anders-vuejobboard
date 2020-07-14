@@ -23,6 +23,11 @@ const RootQuery = new GraphQLObjectType({
                     _id: args._id,
                     status: "published",
                     paid: true,
+                    applicationDeadline: {
+                        $gte: new Date(
+                            new Date().valueOf() - 1000 * 60 * 60 * 24
+                        ).toISOString(),
+                    },
                 }).populate("company");
                 return job;
             },
@@ -33,6 +38,11 @@ const RootQuery = new GraphQLObjectType({
                 const jobs = await Job.find({
                     status: "published",
                     paid: true,
+                    applicationDeadline: {
+                        $gte: new Date(
+                            new Date().valueOf() - 1000 * 60 * 60 * 24
+                        ).toISOString(),
+                    },
                 })
                     .populate("company")
                     .sort({

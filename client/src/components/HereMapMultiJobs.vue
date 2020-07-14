@@ -98,6 +98,7 @@
 
                     const group = new H.map.Group();
 
+                    // combine jobs per geocode
                     const markerObjects = [];
 
                     this.jobs.forEach(job => {
@@ -160,14 +161,14 @@
                             icon: domIcon
                         });
 
-                        let str = `<div class="map-bubble mb-2"><strong>${markerObject.companyName}</strong></div><hr class="my-1" />`;
+                        let markerHtml = `<div class="map-bubble mb-2"><strong>${markerObject.companyName}</strong></div><hr class="my-1" />`;
                         markerObject.jobs.forEach(job => {
-                            str =
-                                str +
+                            markerHtml =
+                                markerHtml +
                                 `<p class="my-0"><a href="/jobboard/job/${job.jobId}" target="_blank">${job.jobTitle}</a></p><hr class="my-1" />`;
                         });
 
-                        marker.setData(str);
+                        marker.setData(markerHtml);
                         // marker.setData(`
                         //         <div class="map-bubble">
                         //             <a href="/jobboard/job/${job._id}" target="_blank">${job.title}</a>

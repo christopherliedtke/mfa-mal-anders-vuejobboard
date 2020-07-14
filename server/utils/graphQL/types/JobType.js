@@ -2,11 +2,7 @@ const {
     GraphQLObjectType,
     GraphQLString,
     GraphQLBoolean,
-    GraphQLInt,
     GraphQLFloat,
-    GraphQLSchema,
-    GraphQLList,
-    GraphQLNonNull,
 } = require("graphql");
 const CompanyType = require("../types/CompanyType");
 

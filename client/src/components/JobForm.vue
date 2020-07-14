@@ -34,7 +34,6 @@
                 id="application-deadline"
                 v-model="job.applicationDeadline"
                 placeholder="Choose a date"
-                class=""
             />
             <label for="description">Job Description *</label>
             <TipTapEditor

@@ -10,9 +10,22 @@
                 <h4>
                     {{ job.title }}
                     <b-badge
+                        class="mr-1"
                         pill
                         :variant="job.status === 'draft' ? 'light' : 'success'"
                         >{{ job.status }}</b-badge
+                    >
+                    <b-badge
+                        v-if="
+                            job.applicationDeadline <
+                                new Date(
+                                    new Date().valueOf() - 1000 * 60 * 60 * 24
+                                ).toISOString()
+                        "
+                        class="mr-1"
+                        pill
+                        variant="danger"
+                        >deadline passed</b-badge
                     >
                 </h4>
                 <p>
@@ -126,6 +139,7 @@
                                     createdAt
                                     updatedAt
                                     status
+                                    applicationDeadline
                                     paid
                                     title
                                 }
