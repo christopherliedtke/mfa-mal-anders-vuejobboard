@@ -103,13 +103,34 @@
                     job.data.data.job
                         ? (this.job = job.data.data.job)
                         : (this.error = true);
+
+                    this.updateHead();
                 } catch (err) {
                     console.log("err: ", err);
                 }
+            },
+            updateHead: function() {
+                this.$emit("updateHead");
             }
         },
         created: function() {
             this.getJob(this.$route.params.jobId);
+        },
+        head: {
+            title: function() {
+                return {
+                    inner: this.job.title
+                };
+            },
+            meta: function() {
+                return [
+                    {
+                        name: "description",
+                        content: this.job.description.substring(0, 165),
+                        id: "desc"
+                    }
+                ];
+            }
         }
     };
 </script>

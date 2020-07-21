@@ -6,7 +6,23 @@
 
 <script>
     export default {
-        name: "PrivacyPolicy"
+        name: "PrivacyPolicy",
+        head: {
+            title: function() {
+                return {
+                    inner: "Privacy Policy"
+                };
+            },
+            meta: function() {
+                return [
+                    {
+                        name: "description",
+                        content: "This is the meta of Privacy Policy...",
+                        id: "desc"
+                    }
+                ];
+            }
+        }
     };
 </script>
 

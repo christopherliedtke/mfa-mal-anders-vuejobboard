@@ -4,7 +4,12 @@ import router from "./router";
 import store from "./store";
 import { BootstrapVue, BootstrapVueIcons } from "bootstrap-vue";
 import VueSanitize from "vue-sanitize";
+import VueHead from "vue-head";
 
+Vue.use(VueHead, {
+    separator: "–",
+    complement: "Vue Jobboard"
+});
 Vue.use(BootstrapVue);
 Vue.use(BootstrapVueIcons);
 Vue.use(VueSanitize);

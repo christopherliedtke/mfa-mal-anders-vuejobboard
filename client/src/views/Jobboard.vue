@@ -271,6 +271,22 @@
                         .sort();
                 }
             }
+        },
+        head: {
+            title: function() {
+                return {
+                    inner: "Jobboard"
+                };
+            },
+            meta: function() {
+                return [
+                    {
+                        name: "description",
+                        content: "This is the meta of jobboard...",
+                        id: "desc"
+                    }
+                ];
+            }
         }
     };
 </script>

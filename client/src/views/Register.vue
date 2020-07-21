@@ -152,6 +152,22 @@
                     ? (this.passwordType = "password")
                     : (this.passwordType = "text");
             }
+        },
+        head: {
+            title: function() {
+                return {
+                    inner: "Register"
+                };
+            },
+            meta: function() {
+                return [
+                    {
+                        name: "description",
+                        content: "This is the meta of register...",
+                        id: "desc"
+                    }
+                ];
+            }
         }
     };
 </script>

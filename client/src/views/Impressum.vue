@@ -6,7 +6,23 @@
 
 <script>
     export default {
-        name: "Impressum"
+        name: "Impressum",
+        head: {
+            title: function() {
+                return {
+                    inner: "Impressum"
+                };
+            },
+            meta: function() {
+                return [
+                    {
+                        name: "description",
+                        content: "This is the meta of Impressum...",
+                        id: "desc"
+                    }
+                ];
+            }
+        }
     };
 </script>
 

@@ -88,6 +88,22 @@
                     ? (this.passwordType = "password")
                     : (this.passwordType = "text");
             }
+        },
+        head: {
+            title: function() {
+                return {
+                    inner: "Login"
+                };
+            },
+            meta: function() {
+                return [
+                    {
+                        name: "description",
+                        content: "This is the meta of login...",
+                        id: "desc"
+                    }
+                ];
+            }
         }
     };
 </script>

@@ -1,49 +1,32 @@
 <template>
-    <b-container class="home py-5">
-        <h2>Home</h2>
-        <!-- <div>
-            <b-card
-                v-for="job in jobs"
-                :key="job.id"
-                :title="job.title"
-                :sub-title="
-                    new Date(parseInt(job.createdAt)).toLocaleString()
-                "
-                class="my-3"
-            >
-                <b-card-text>
-                    <p>{{ job.description }}</p>
-                    <a href="#" class="card-link">Card link</a>
-                </b-card-text>
-            </b-card>
-        </div> -->
-    </b-container>
+    <b-jumbotron
+        :container-fluid="true"
+        header="BootstrapVue Jobboard"
+        lead="Jobboard made with Bootstrap v4 Components for Vue.js 2"
+    >
+        <p>For more information visit website</p>
+        <b-button variant="primary" href="#">More Info</b-button>
+    </b-jumbotron>
 </template>
 
 <script>
-    import { mapActions, mapGetters } from "vuex";
     export default {
         name: "Home",
-        methods: {
-            ...mapActions(["getJobs"])
-        },
-        data() {
-            return {};
-        },
-        mounted: function() {
-            this.getJobs({
-                query: `
-                query {
-                    jobs {
-                        _id
-                        title
-                        description
-                        createdAt
+        head: {
+            title: function() {
+                return {
+                    inner: "Home"
+                };
+            },
+            meta: function() {
+                return [
+                    {
+                        name: "description",
+                        content: "This is the meta of home...",
+                        id: "desc"
                     }
-                }
-            `
-            });
-        },
-        computed: mapGetters(["jobs"])
+                ];
+            }
+        }
     };
 </script>
