@@ -18,12 +18,30 @@ import Register from "@/views/Register.vue";
 import PasswordReset from "@/views/PasswordReset.vue";
 import AccountVerification from "@/views/AccountVerification.vue";
 import AccountVerificationSuccessful from "@/views/AccountVerificationSuccessful.vue";
+import PrivacyPolicy from "@/views/PrivacyPolicy.vue";
+import Impressum from "@/views/Impressum.vue";
 
 const routes = [
     {
         path: "/",
         name: "Home",
         component: Home,
+        meta: {
+            public: true
+        }
+    },
+    {
+        path: "/privacy-policy",
+        name: "PrivacyPolicy",
+        component: PrivacyPolicy,
+        meta: {
+            public: true
+        }
+    },
+    {
+        path: "/impressum",
+        name: "Impressum",
+        component: Impressum,
         meta: {
             public: true
         }

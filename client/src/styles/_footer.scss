@@ -1,10 +1,23 @@
 #footer {
     background-color: $primary;
+    padding: 1rem 0;
 
-    .container {
-        display: flex;
-        padding: 1rem 2.5rem;
+    .nav-link {
         color: $light;
-        font-size: 0.9rem;
+
+        :not(.home) > .router-link-active {
+            color: darken($light, 5%);
+        }
+
+        .router-link-exact-active {
+            color: darken($light, 5%);
+        }
     }
+
+    // .container {
+    //     display: flex;
+    //     padding: 1rem 2.5rem;
+    //     color: $light;
+    //     font-size: 0.9rem;
+    // }
 }
