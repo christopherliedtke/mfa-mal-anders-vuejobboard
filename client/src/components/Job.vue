@@ -42,16 +42,19 @@
             style="z-index: 2000;"
             >Oh, something went wrong. Please try again later ...</b-alert
         >
+        <JobStructuredData :job="job" />
     </div>
 </template>
 
 <script>
     import axios from "@/axios";
+    import JobStructuredData from "@/components/JobStructuredData.vue";
     import HereMapSingleJob from "@/components/HereMapSingleJob.vue";
     export default {
         name: "Job",
         components: {
-            HereMapSingleJob
+            HereMapSingleJob,
+            JobStructuredData
         },
         props: ["apiRequest"],
         data() {
