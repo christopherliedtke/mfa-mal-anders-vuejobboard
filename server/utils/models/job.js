@@ -9,7 +9,7 @@ const JobSchema = new Schema(
         },
         paid: {
             type: Boolean,
-            default: true,
+            default: false,
         },
         userId: {
             type: String,

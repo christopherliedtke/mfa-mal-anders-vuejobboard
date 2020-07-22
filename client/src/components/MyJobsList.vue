@@ -9,10 +9,24 @@
             <b-card-text>
                 <h4>
                     {{ job.title }}
+                </h4>
+                <div>
                     <b-badge
                         class="mr-1"
                         pill
-                        :variant="job.status === 'draft' ? 'light' : 'success'"
+                        :variant="job.paid ? 'success' : 'warning'"
+                        >{{ job.paid ? "paid" : "unpaid" }}</b-badge
+                    >
+                    <b-badge
+                        class="mr-1"
+                        pill
+                        :variant="
+                            job.status === 'draft'
+                                ? 'light'
+                                : job.status === 'published'
+                                ? 'success'
+                                : 'warning'
+                        "
                         >{{ job.status }}</b-badge
                     >
                     <b-badge
@@ -27,15 +41,17 @@
                         variant="danger"
                         >deadline passed</b-badge
                     >
-                </h4>
-                <p>
-                    Created at:
-                    {{ new Date(parseInt(job.createdAt)).toLocaleString() }}
-                </p>
-                <p>
-                    Last updated:
-                    {{ new Date(parseInt(job.updatedAt)).toLocaleString() }}
-                </p>
+                </div>
+                <div class="my-3">
+                    <div>
+                        Created at:
+                        {{ new Date(parseInt(job.createdAt)).toLocaleString() }}
+                    </div>
+                    <div>
+                        Last updated:
+                        {{ new Date(parseInt(job.updatedAt)).toLocaleString() }}
+                    </div>
+                </div>
                 <div class="d-flex justify-content-between align-items-end">
                     <div>
                         <b-button
@@ -43,11 +59,7 @@
                             :to="`/dashboard/jobs/${job._id}`"
                             variant="primary"
                             size="sm"
-                            ><b-icon
-                                class="mr-2"
-                                scale="1"
-                                icon="pencil-square"
-                            ></b-icon>
+                            ><b-icon class="mr-2" icon="pencil-square"></b-icon>
                             Edit</b-button
                         >
                         <b-button
@@ -58,11 +70,16 @@
                             ><b-icon class="mr-2" scale="1" icon="eye"></b-icon>
                             Preview</b-button
                         >
-                        <b-dropdown size="sm" left variant="secondary">
+                        <b-dropdown
+                            class="mr-2 mb-2 mb-md-0"
+                            size="sm"
+                            left
+                            variant="secondary"
+                            :disabled="!job.paid"
+                        >
                             <template v-slot:button-content>
                                 <b-icon
                                     class="mr-2"
-                                    scale="1"
                                     icon="three-dots-vertical
 "
                                 ></b-icon>
@@ -82,18 +99,30 @@
                                 "
                                 >Published</b-dropdown-item
                             >
+                            <b-dropdown-item
+                                variant="warning"
+                                @click.prevent="
+                                    updateJobStatus(job._id, 'unpublished')
+                                "
+                                >Unpublished</b-dropdown-item
+                            >
                         </b-dropdown>
+                        <b-button
+                            v-if="!job.paid"
+                            class="mr-2 mb-2 mb-md-0"
+                            variant="success"
+                            size="sm"
+                            ><b-icon class="mr-2" icon="cart2"></b-icon> Pay
+                            Now</b-button
+                        >
                     </div>
                     <div>
                         <b-button
+                            class="mb-2 mb-md-0"
                             variant="outline-danger"
                             size="sm"
                             @click.prevent="$bvModal.show(job._id)"
-                            ><b-icon
-                                class="mr-2"
-                                scale="1"
-                                icon="trash"
-                            ></b-icon>
+                            ><b-icon class="mr-2" icon="trash"></b-icon>
                             Delete</b-button
                         >
                     </div>

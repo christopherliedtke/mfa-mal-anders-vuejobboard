@@ -185,7 +185,7 @@ const mutation = new GraphQLObjectType({
             },
             async resolve(parentValue, args, req) {
                 const response = await Job.updateOne(
-                    { _id: args._id, userId: req.userId },
+                    { _id: args._id, userId: req.userId, paid: true },
                     { status: sanitizeHtml(args.status) }
                 );
 
