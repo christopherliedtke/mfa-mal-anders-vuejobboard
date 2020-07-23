@@ -112,6 +112,7 @@
                             class="mr-2 mb-2 mb-md-0"
                             variant="success"
                             size="sm"
+                            @click.prevent="showStripeCheckoutModal(job)"
                             ><b-icon class="mr-2" icon="cart2"></b-icon> Pay
                             Now</b-button
                         >
@@ -141,6 +142,11 @@
                 </p></b-modal
             >
         </b-card>
+        <StripeCheckout
+            :showStripeCheckoutModal="stripe.showModal"
+            :job="stripe.checkoutJob"
+            @close="stripe.showModal = false"
+        />
         <b-alert
             v-model="error"
             class="position-fixed fixed-bottom m-0 rounded-0"
@@ -155,8 +161,22 @@
 
 <script>
     import axios from "@/axios";
+    import StripeCheckout from "@/components/StripeCheckout.vue";
     export default {
         name: "MyJobsList",
+        components: {
+            StripeCheckout
+        },
+        data() {
+            return {
+                myJobs: [],
+                stripe: {
+                    showModal: false,
+                    checkoutJob: null
+                },
+                error: false
+            };
+        },
         methods: {
             async getJobsByUserId() {
                 try {
@@ -240,16 +260,14 @@
                     this.error = true;
                     console.log("err: ", err);
                 }
+            },
+            showStripeCheckoutModal(job) {
+                this.stripe.checkoutJob = job;
+                this.stripe.showModal = true;
             }
         },
         created: function() {
             this.getJobsByUserId();
-        },
-        data() {
-            return {
-                myJobs: [],
-                error: false
-            };
         }
     };
 </script>

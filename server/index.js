@@ -27,9 +27,6 @@ app.use((req, res, next) => {
     next();
 });
 
-// Serve static ressources in production
-// app.use(express.static(__dirname + "/public"));
-
 // #Cookie Session
 const cookieSession = require("cookie-session");
 app.use(
@@ -41,8 +38,12 @@ app.use(
     })
 );
 
-// #CSRF security for Production
+// #Routes w/o csrf protection
+app.use("/api/webhooks", require("./routes/webhooks"));
+
+// #Middleware for production
 if (process.env.NODE_ENV == "production") {
+    app.use(express.static(__dirname + "/public"));
     app.use(csurf());
     app.use((req, res, next) => {
         res.set("x-frame-options", "DENY");
@@ -51,7 +52,7 @@ if (process.env.NODE_ENV == "production") {
     });
 }
 
-// #Routes
+// #Routes w csrf protection
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/user", require("./routes/user"));
 app.use("/api/jobs", require("./routes/jobs"));
