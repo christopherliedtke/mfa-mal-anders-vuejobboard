@@ -1,7 +1,6 @@
 <template>
-    <div id="map-multi">
-        <!--In the following div the HERE Map will render-->
-        <div id="map-container" ref="hereMap"></div>
+    <div class="map">
+        <div class="map-container multi" ref="hereMap"></div>
     </div>
 </template>
 
@@ -206,44 +205,4 @@
     };
 </script>
 
-<style lang="scss">
-    #map-multi {
-        height: 100%;
-        text-align: center;
-        margin: 5% auto;
-        background-color: #ccc;
-
-        #map-container {
-            width: 100%;
-            height: 100vh;
-            min-height: 300px;
-            max-height: 66vh;
-
-            .icon-outer {
-                width: 48px;
-                height: 48px;
-                position: relative;
-                background: url("/marker.svg") no-repeat center center;
-                background-size: contain;
-                cursor: pointer;
-                margin-top: -48px;
-                margin-left: -24px;
-            }
-
-            .icon-inner {
-                position: absolute;
-                width: 24px;
-                height: 24px;
-                border-radius: 50%;
-                object-fit: cover;
-                left: 50%;
-                top: 12%;
-                transform: translateX(-49%);
-            }
-
-            .map-bubble {
-                min-width: 150px;
-            }
-        }
-    }
-</style>
+<style lang="scss"></style>
