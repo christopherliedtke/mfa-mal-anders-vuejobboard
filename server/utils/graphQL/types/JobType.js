@@ -19,6 +19,12 @@ const JobType = new GraphQLObjectType({
         paid: {
             type: GraphQLBoolean,
         },
+        paidAt: {
+            type: GraphQLFloat,
+        },
+        paidExpiresAt: {
+            type: GraphQLFloat,
+        },
         createdAt: {
             type: GraphQLFloat,
         },

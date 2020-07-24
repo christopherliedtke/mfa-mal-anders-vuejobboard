@@ -12,6 +12,16 @@
                 </h4>
                 <div>
                     <b-badge
+                        v-if="
+                            job.paidExpiresAt && job.paidExpiresAt < new Date()
+                        "
+                        class="mr-1"
+                        pill
+                        variant="danger"
+                        >payment expired</b-badge
+                    >
+                    <b-badge
+                        v-else
                         class="mr-1"
                         pill
                         :variant="job.paid ? 'success' : 'warning'"
@@ -44,12 +54,24 @@
                 </div>
                 <div class="my-3">
                     <div>
-                        Created at:
-                        {{ new Date(parseInt(job.createdAt)).toLocaleString() }}
-                    </div>
-                    <div>
                         Last updated:
                         {{ new Date(parseInt(job.updatedAt)).toLocaleString() }}
+                    </div>
+                    <div v-if="job.paidAt">
+                        Paid:
+                        {{ new Date(parseInt(job.paidAt)).toLocaleString() }}
+                    </div>
+                    <div v-if="job.paidExpiresAt">
+                        Payment Expiration:
+                        {{
+                            new Date(
+                                parseInt(job.paidExpiresAt)
+                            ).toLocaleString()
+                        }}
+                    </div>
+                    <div>
+                        Created at:
+                        {{ new Date(parseInt(job.createdAt)).toLocaleString() }}
                     </div>
                 </div>
                 <div class="d-flex justify-content-between align-items-end">
@@ -71,11 +93,15 @@
                             Preview</b-button
                         >
                         <b-dropdown
+                            v-if="
+                                job.paid &&
+                                    job.paidExpiresAt &&
+                                    job.paidExpiresAt > new Date()
+                            "
                             class="mr-2 mb-2 mb-md-0"
                             size="sm"
                             left
                             variant="secondary"
-                            :disabled="!job.paid"
                         >
                             <template v-slot:button-content>
                                 <b-icon
@@ -108,7 +134,7 @@
                             >
                         </b-dropdown>
                         <b-button
-                            v-if="!job.paid"
+                            v-if="!job.paid || job.paidExpiresAt < new Date()"
                             class="mr-2 mb-2 mb-md-0"
                             variant="success"
                             size="sm"
@@ -187,6 +213,8 @@
                                     _id
                                     createdAt
                                     updatedAt
+                                    paidAt
+                                    paidExpiresAt
                                     status
                                     applicationDeadline
                                     paid
@@ -211,6 +239,8 @@
                                     _id
                                     createdAt
                                     updatedAt
+                                    paidAt
+                                    paidExpiresAt
                                     status
                                     paid
                                     title

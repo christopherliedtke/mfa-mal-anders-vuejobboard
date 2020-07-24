@@ -13,22 +13,6 @@ if (process.env.NODE_ENV == "production") {
 
 const stripe = require("stripe")(secrets.STRIPE_SK);
 
-// #route:  POST /api/stripe/create-payment-intent
-// #desc:   Create a payment intent for a user
-// #access: Private
-// router.post("/create-payment-intent", authenticateToken, async (req, res) => {
-//     const orderAmount = 2900;
-
-//     const paymentIntent = await stripe.paymentIntents.create({
-//         amount: orderAmount,
-//         currency: "usd",
-//     });
-
-//     res.json({
-//         clientSecret: paymentIntent.client_secret,
-//     });
-// });
-
 // #route:  POST /api/stripe/create-session-id
 // #desc:   Create a session id for a user
 // #access: Private

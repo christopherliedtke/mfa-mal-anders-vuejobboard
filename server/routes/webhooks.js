@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const config = require("../utils/config");
 const { Job } = require("../utils/models/job");
 
 let secrets;
@@ -22,8 +23,21 @@ router.post("/checkout-completed", async (req, res) => {
             req.body.data.object.payment_intent
         );
 
+        const paidAt = new Date();
+        const paidExpiresAt = new Date();
+        paidExpiresAt.setDate(
+            paidExpiresAt.getDate() + config.stripe.paymentExpirationDays
+        );
+
         if (intent.status === "succeeded") {
-            await Job.updateOne({ _id: jobId, userId: userId }, { paid: true });
+            await Job.updateOne(
+                { _id: jobId, userId: userId },
+                {
+                    paid: true,
+                    paidAt,
+                    paidExpiresAt,
+                }
+            );
         }
 
         res.json({ received: true });

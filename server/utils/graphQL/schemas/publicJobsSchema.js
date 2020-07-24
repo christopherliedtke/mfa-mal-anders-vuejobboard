@@ -36,6 +36,9 @@ const RootQuery = new GraphQLObjectType({
                 const jobs = await Job.find({
                     status: "published",
                     paid: true,
+                    paidExpiresAt: {
+                        $gte: new Date(),
+                    },
                     applicationDeadline: {
                         $gte: new Date(
                             new Date().valueOf() - 1000 * 60 * 60 * 24
@@ -44,6 +47,7 @@ const RootQuery = new GraphQLObjectType({
                 })
                     .populate("company")
                     .sort({
+                        paidAt: "desc",
                         createdAt: "desc",
                     });
                 return jobs;

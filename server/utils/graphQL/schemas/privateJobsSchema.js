@@ -33,7 +33,7 @@ const RootQuery = new GraphQLObjectType({
                 const jobs = await Job.find({ userId: req.userId })
                     .populate("company")
                     .sort({
-                        createdAt: "desc",
+                        updatedAt: "desc",
                     });
                 return jobs;
             },

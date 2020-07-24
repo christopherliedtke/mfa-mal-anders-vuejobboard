@@ -229,7 +229,7 @@
                 v-model="job.contactTitle"
                 :state="validated ? (job.contactTitle ? true : null) : null"
             >
-                <b-form-select-option :value="null" disabled
+                <b-form-select-option :value="null"
                     >-- Choose a title --</b-form-select-option
                 >
                 <b-form-select-option

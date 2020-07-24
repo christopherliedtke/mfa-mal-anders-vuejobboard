@@ -76,8 +76,6 @@
                     }
                 );
 
-                console.log("response: ", response);
-
                 if (response.data.success) {
                     this.checkoutSessionId = response.data.sessionId;
                     this.amount = response.data.amount;
@@ -86,11 +84,9 @@
                 }
             },
             async payNow() {
-                const response = await this.stripe.redirectToCheckout({
+                await this.stripe.redirectToCheckout({
                     sessionId: this.checkoutSessionId
                 });
-
-                console.log("response: ", response);
             },
             async checkPaymentSuccess(query) {
                 if (query.success === "true") {

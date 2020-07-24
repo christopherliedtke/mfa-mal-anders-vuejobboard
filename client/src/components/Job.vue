@@ -74,6 +74,7 @@
                                 job(_id: "${jobId}") {
                                     _id
                                     createdAt
+                                    paidAt
                                     title
                                     description
                                     employmentType
@@ -121,18 +122,22 @@
         },
         head: {
             title: function() {
-                return {
-                    inner: this.job.title
-                };
+                if (this.job.title) {
+                    return {
+                        inner: this.job.title
+                    };
+                }
             },
             meta: function() {
-                return [
-                    {
-                        name: "description",
-                        content: this.job.description.substring(0, 165),
-                        id: "desc"
-                    }
-                ];
+                if (this.job.description) {
+                    return [
+                        {
+                            name: "description",
+                            content: this.job.description.substring(0, 165),
+                            id: "desc"
+                        }
+                    ];
+                }
             }
         }
     };

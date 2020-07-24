@@ -38,10 +38,11 @@
         },
         head: {
             script: function() {
-                return [
-                    {
-                        type: "application/ld+json",
-                        inner: `{
+                if (this.job.title) {
+                    return [
+                        {
+                            type: "application/ld+json",
+                            inner: `{
                             "@context": "http://schema.org",
                             "@type" : "JobPosting",
                             "title": "${this.job.title}",
@@ -83,15 +84,16 @@
                                 "currency": "USD",
                                 "value": {
                                     "@type": "QuantitativeValue",
-                                    "minValue": 40.00,
-                                    "maxValue": 50.00,
+                                    "minValue": 0.00,
+                                    "maxValue": 50000.00,
                                     "value": 0,
                                     "unitText": "MONTH"
                                 }
                             }
                         }`
-                    }
-                ];
+                        }
+                    ];
+                }
             }
         }
     };

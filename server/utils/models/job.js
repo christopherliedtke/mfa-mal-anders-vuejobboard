@@ -11,6 +11,12 @@ const JobSchema = new Schema(
             type: Boolean,
             default: false,
         },
+        paidAt: {
+            type: Date,
+        },
+        paidExpiresAt: {
+            type: Date,
+        },
         userId: {
             type: String,
             required: true,

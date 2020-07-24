@@ -154,6 +154,7 @@
                         jobs {
                             _id
                             createdAt
+                            paidAt
                             title
                             description
                             employmentType

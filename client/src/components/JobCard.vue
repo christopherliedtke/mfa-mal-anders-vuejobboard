@@ -11,8 +11,8 @@
                     >
                 </h4>
                 <p>
-                    Created at:
-                    {{ new Date(parseInt(job.createdAt)).toLocaleDateString() }}
+                    Published at:
+                    {{ new Date(parseInt(job.paidAt)).toLocaleDateString() }}
                 </p>
                 <p
                     v-html="
