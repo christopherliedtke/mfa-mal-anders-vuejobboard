@@ -31,6 +31,13 @@
         },
         mounted() {
             this.tabIndex = this.$route.query.tab;
+        },
+        head: {
+            title: function() {
+                return {
+                    inner: "Dashboard"
+                };
+            }
         }
     };
 </script>

@@ -19,10 +19,12 @@
             DeleteAccountButton,
             AccountDataForm
         },
-        methods: {},
-        mounted: function() {},
-        data() {
-            return {};
+        head: {
+            title: function() {
+                return {
+                    inner: "Account"
+                };
+            }
         }
     };
 </script>

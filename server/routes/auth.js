@@ -11,6 +11,7 @@ const emailService = require("../utils/nodemailer");
 const authenticateTokenWhilePending = require("../utils/middleware/checkAuthWhilePending");
 const authenticateToken = require("../utils/middleware/checkAuth");
 const s3 = require("../utils/middleware/s3");
+const config = require("../utils/config");
 
 // #route:  POST /Login
 // #desc:   Login a user
@@ -151,9 +152,9 @@ router.post("/register", async (req, res) => {
                 const data = {
                     from: `YOUR NAME <${res.locals.secrets.EMAIL_USERNAME}>`,
                     to: user.email,
-                    subject: "Your Activation Link for YOUR APP",
-                    text: `Please use the following link within the next 10 minutes to activate your account on YOUR APP: ${baseUrl}/api/auth/verification/verify-account/${user._id}/${secretCode}`,
-                    html: `<p>Please use the following link within the next 10 minutes to activate your account on YOUR APP: <strong><a href="${baseUrl}/api/auth/verification/verify-account/${user._id}/${secretCode}" target="_blank">Email bestätigen</a></strong></p>`,
+                    subject: `Your Activation Link for ${config.website.name}`,
+                    text: `Please use the following link within the next 10 minutes to activate your account on ${config.website.name}: ${baseUrl}/api/auth/verification/verify-account/${user._id}/${secretCode}`,
+                    html: `<p>Please use the following link within the next 10 minutes to activate your account on ${config.website.name}: <strong><a href="${baseUrl}/api/auth/verification/verify-account/${user._id}/${secretCode}" target="_blank">Email bestätigen</a></strong></p>`,
                 };
                 await emailService.sendMail(data);
 
@@ -203,9 +204,9 @@ router.get(
                 const data = {
                     from: `YOUR NAME <${res.locals.secrets.EMAIL_USERNAME}>`,
                     to: user.email,
-                    subject: "Your Activation Link for YOUR APP",
-                    text: `Please use the following link within the next 10 minutes to activate your account on YOUR APP: ${baseUrl}/api/auth/verification/verify-account/${user._id}/${secretCode}`,
-                    html: `<p>Please use the following link within the next 10 minutes to activate your account on YOUR APP: <strong><a href="${baseUrl}/api/auth/verification/verify-account/${user._id}/${secretCode}" target="_blank">Email bestätigen</a></strong></p>`,
+                    subject: `Your Activation Link for ${config.website.name}`,
+                    text: `Please use the following link within the next 10 minutes to activate your account on ${config.website.name}: ${baseUrl}/api/auth/verification/verify-account/${user._id}/${secretCode}`,
+                    html: `<p>Please use the following link within the next 10 minutes to activate your account on ${config.website.name}: <strong><a href="${baseUrl}/api/auth/verification/verify-account/${user._id}/${secretCode}" target="_blank">Email bestätigen</a></strong></p>`,
                 };
                 await emailService.sendMail(data);
 
@@ -338,9 +339,9 @@ router.post("/password-reset/get-code", async (req, res) => {
                 const data = {
                     from: `YOUR NAME <${res.locals.secrets.EMAIL_USERNAME}>`,
                     to: email,
-                    subject: "Your Password Reset Code for YOUR APP",
-                    text: `Please use the following code within the next 10 minutes to reset your password on YOUR APP: ${secretCode}`,
-                    html: `<p>Please use the following code within the next 10 minutes to reset your password on YOUR APP: <strong>${secretCode}</strong></p>`,
+                    subject: `Your Password Reset Code for ${config.website.name}`,
+                    text: `Please use the following code within the next 10 minutes to reset your password on ${config.website.name}: ${secretCode}`,
+                    html: `<p>Please use the following code within the next 10 minutes to reset your password on ${config.website.name}: <strong>${secretCode}</strong></p>`,
                 };
                 await emailService.sendMail(data);
 

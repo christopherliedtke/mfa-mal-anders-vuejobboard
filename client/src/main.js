@@ -5,10 +5,11 @@ import store from "./store";
 import { BootstrapVue, BootstrapVueIcons } from "bootstrap-vue";
 import VueSanitize from "vue-sanitize";
 import VueHead from "vue-head";
+import config from "@/utils/config.json";
 
 Vue.use(VueHead, {
     separator: "–",
-    complement: "Vue Jobboard"
+    complement: config.website.name
 });
 Vue.use(BootstrapVue);
 Vue.use(BootstrapVueIcons);

@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const authenticateToken = require("../utils/middleware/checkAuth");
 const { User } = require("../utils/models/user");
+const config = require("../utils/config");
 
 let secrets;
 if (process.env.NODE_ENV == "production") {
@@ -46,13 +47,13 @@ router.post("/create-session-id", authenticateToken, async (req, res) => {
             line_items: [
                 {
                     price_data: {
-                        currency: secrets.CURRENCY,
+                        currency: config.stripe.currency,
                         product_data: {
                             name: req.body.job.title,
-                            description: `Publishing the job ad on website.`,
+                            description: `Publish ${req.body.job.title} on ${config.website.name}.`,
                             images: [],
                         },
-                        unit_amount: secrets.AMOUNT_PER_JOB,
+                        unit_amount: config.stripe.pricePerJob,
                     },
                     quantity: 1,
                 },
@@ -69,8 +70,8 @@ router.post("/create-session-id", authenticateToken, async (req, res) => {
         res.json({
             success: true,
             sessionId: session.id,
-            amount: secrets.AMOUNT_PER_JOB,
-            currency: secrets.CURRENCY,
+            amount: config.stripe.pricePerJob,
+            currency: config.stripe.currency,
         });
     } catch (err) {
         console.log("Error on /create-session-id: ", err);

@@ -1,0 +1,10 @@
+{
+    "website": {
+        "name": "Vue Jobboard",
+        "url": ""
+    },
+    "stripe": {
+        "currency": "usd",
+        "pricePerJob": 2900
+    }
+}
