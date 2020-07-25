@@ -15,6 +15,7 @@
             return {
                 platform: null,
                 map: null,
+                ui: null,
                 apikey: "n3GOlcV0Z6utqCKpJlDWH6lWYtJdvR0QomMzYs_EreM",
                 companyCountryOptions
             };
@@ -42,21 +43,23 @@
                 try {
                     const service = this.platform.getSearchService();
 
+                    let zoom = 4;
                     let geocode;
 
                     geocode = await new Promise((resolve, reject) => {
                         window.navigator.geolocation.getCurrentPosition(
                             position => {
                                 if (position.coords) {
+                                    zoom = 8;
                                     resolve({
                                         lat: position.coords.latitude,
                                         lng: position.coords.longitude
                                     });
                                 } else {
-                                    reject();
+                                    reject("");
                                 }
                             },
-                            () => resolve()
+                            () => resolve("")
                         );
                     });
 
@@ -70,36 +73,28 @@
 
                     const mapContainer = this.$refs.hereMap;
                     const H = window.H;
-                    // Obtain the default map types from the platform object
                     const maptypes = this.platform.createDefaultLayers();
 
-                    // Instantiate (and display) a map object:
-                    const map = new H.Map(
+                    this.map = new H.Map(
                         mapContainer,
                         maptypes.vector.normal.map,
                         {
-                            zoom: 4,
+                            zoom,
                             center: geocode
                         }
                     );
 
-                    this.map = map;
-
                     addEventListener("resize", () =>
-                        map.getViewPort().resize()
+                        this.map.getViewPort().resize()
                     );
 
-                    // add behavior control
-                    new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+                    new H.mapevents.Behavior(
+                        new H.mapevents.MapEvents(this.map)
+                    );
 
-                    // add UI
-                    const ui = H.ui.UI.createDefault(map, maptypes);
-                    this.ui = ui;
+                    this.ui = H.ui.UI.createDefault(this.map, maptypes);
 
-                    // set markers
                     this.addMarkers();
-
-                    // End rendering the initial map
                 } catch (err) {
                     console.log("Error on initializeHereMap(): ", err);
                 }
@@ -166,16 +161,12 @@
                     marker.setData(markerHtml);
 
                     marker.addEventListener("tap", evt => {
-                        // event target is the marker itself, group is a parent event target
-                        // for all objects that it contains
                         var bubble = new H.ui.InfoBubble(
                             evt.target.getGeometry(),
                             {
-                                // read custom data
                                 content: evt.target.getData()
                             }
                         );
-                        // show info bubble
                         this.ui.addBubble(bubble);
                     });
 

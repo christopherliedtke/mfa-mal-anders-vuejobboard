@@ -18,7 +18,6 @@
             };
         },
         async mounted() {
-            // Initialize the platform object:
             const platform = new window.H.service.Platform({
                 apikey: this.apikey
             });
@@ -28,8 +27,6 @@
         methods: {
             async initializeHereMap() {
                 try {
-                    // const service = this.platform.getSearchService();
-
                     let geocode;
 
                     if (this.job.company) {
@@ -37,23 +34,13 @@
                             lat: this.job.company.geoCodeLat,
                             lng: this.job.company.geoCodeLng
                         };
-                        // geocode = JSON.parse(this.job.company.geoCode);
                     }
-                    // else {
-                    //     const response = await service.geocode({
-                    //         q: `${this.job.company.street} ${this.job.company.location} ${this.job.company.state} ${this.job.company.country}`
-                    //     });
-
-                    //     geocode = response.items[0].position;
-                    // }
 
                     if (geocode) {
                         const mapContainer = this.$refs.hereMap;
                         const H = window.H;
-                        // Obtain the default map types from the platform object
                         const maptypes = this.platform.createDefaultLayers();
 
-                        // Instantiate (and display) a map object:
                         const map = new H.Map(
                             mapContainer,
                             maptypes.vector.normal.map,
@@ -63,7 +50,6 @@
                             }
                         );
 
-                        // DomMarker
                         const outerElement = document.createElement("div");
                         outerElement.classList.add("icon-outer");
 
@@ -86,14 +72,11 @@
                             map.getViewPort().resize()
                         );
 
-                        // add behavior control
                         new H.mapevents.Behavior(
                             new H.mapevents.MapEvents(map)
                         );
 
-                        // add UI
                         H.ui.UI.createDefault(map, maptypes);
-                        // End rendering the initial map
                     }
                 } catch (err) {
                     console.log("Error on initializeHereMap(): ", err);
@@ -102,5 +85,3 @@
         }
     };
 </script>
-
-<style lang="scss"></style>
