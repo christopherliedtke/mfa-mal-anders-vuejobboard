@@ -1,6 +1,7 @@
 const {
     GraphQLObjectType,
     GraphQLString,
+    GraphQLFloat,
     GraphQLSchema,
     GraphQLList,
     GraphQLNonNull,
@@ -57,8 +58,11 @@ const mutation = new GraphQLObjectType({
                 },
                 state: { type: new GraphQLNonNull(GraphQLString) },
                 country: { type: new GraphQLNonNull(GraphQLString) },
-                geoCode: {
-                    type: GraphQLString,
+                geoCodeLat: {
+                    type: GraphQLFloat,
+                },
+                geoCodeLng: {
+                    type: GraphQLFloat,
                 },
                 url: {
                     type: GraphQLString,
@@ -76,7 +80,8 @@ const mutation = new GraphQLObjectType({
                     zipCode: sanitizeHtml(args.zipCode),
                     state: sanitizeHtml(args.state),
                     country: sanitizeHtml(args.country),
-                    geoCode: sanitizeHtml(args.geoCode),
+                    geoCodeLat: sanitizeHtml(args.geoCodeLat),
+                    geoCodeLng: sanitizeHtml(args.geoCodeLng),
                     url: sanitizeHtml(args.url),
                     logoUrl: sanitizeHtml(args.logoUrl),
                 });
@@ -100,8 +105,11 @@ const mutation = new GraphQLObjectType({
                 },
                 state: { type: new GraphQLNonNull(GraphQLString) },
                 country: { type: new GraphQLNonNull(GraphQLString) },
-                geoCode: {
-                    type: GraphQLString,
+                geoCodeLat: {
+                    type: GraphQLFloat,
+                },
+                geoCodeLng: {
+                    type: GraphQLFloat,
                 },
                 url: {
                     type: GraphQLString,
@@ -120,7 +128,8 @@ const mutation = new GraphQLObjectType({
                         zipCode: sanitizeHtml(args.zipCode),
                         state: sanitizeHtml(args.state),
                         country: sanitizeHtml(args.country),
-                        geoCode: sanitizeHtml(args.geoCode),
+                        geoCodeLat: sanitizeHtml(args.geoCodeLat),
+                        geoCodeLng: sanitizeHtml(args.geoCodeLng),
                         url: sanitizeHtml(args.url),
                         logoUrl: sanitizeHtml(args.logoUrl),
                     }

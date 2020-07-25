@@ -147,7 +147,8 @@
                     zipCode: null,
                     state: null,
                     country: null,
-                    geoCode: "",
+                    geoCodeLat: null,
+                    geoCodeLng: null,
                     url: "",
                     logoUrl: ""
                 },
@@ -188,7 +189,8 @@
                                     zipCode
                                     state
                                     country
-                                    geoCode
+                                    geoCodeLat
+                                    geoCodeLng
                                     url
                                     logoUrl
                                 }
@@ -218,9 +220,10 @@
                         q: `${this.company.street} ${this.company.location} ${this.company.state} ${this.company.country}`
                     });
 
-                    this.company.geoCode = JSON.stringify(
-                        geocode.items[0].position
-                    ).replace(/"/g, '\\"');
+                    this.company.geoCodeLat = geocode.items[0].position.lat;
+                    this.company.geoCodeLng = geocode.items[0].position.lng;
+
+                    console.log("this.company: ", this.company);
 
                     // Save / Update company
                     let mutationType;
@@ -242,7 +245,8 @@
                                 zipCode: "${this.company.zipCode}"
                                 state: "${this.company.state}", 
                                 country: "${this.company.country}", 
-                                geoCode: "${this.company.geoCode}", 
+                                geoCodeLat: ${this.company.geoCodeLat}, 
+                                geoCodeLng: ${this.company.geoCodeLng}, 
                                 url: "${this.company.url}"
                                 logoUrl: "${this.company.logoUrl}"
                             ) {

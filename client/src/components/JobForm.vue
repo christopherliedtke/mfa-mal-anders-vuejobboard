@@ -341,7 +341,8 @@
                         zipCode: "",
                         state: "",
                         country: null,
-                        geoCode: "",
+                        geoCodeLat: null,
+                        geoCodeLng: null,
                         url: "",
                         logoUrl: ""
                     }
@@ -400,7 +401,8 @@
                                         zipCode
                                         state
                                         country
-                                        geoCode
+                                        geoCodeLat
+                                        geoCodeLng
                                         url
                                         logoUrl
                                     }
@@ -421,8 +423,9 @@
                             location: "",
                             zipCode: "",
                             state: "",
-                            country: "",
-                            geoCode: "",
+                            country: null,
+                            geoCodeLat: null,
+                            geoCodeLng: null,
                             url: "",
                             logoUrl: ""
                         };
@@ -446,7 +449,8 @@
                                     zipCode
                                     state
                                     country
-                                    geoCode
+                                    geoCodeLat
+                                    geoCodeLng
                                     url
                                     logoUrl
                                 }
@@ -478,9 +482,8 @@
                         q: `${this.job.company.street} ${this.job.company.location} ${this.job.company.state} ${this.job.company.country}`
                     });
 
-                    this.job.company.geoCode = JSON.stringify(
-                        geocode.items[0].position
-                    ).replace(/"/g, '\\"');
+                    this.job.company.geoCodeLat = geocode.items[0].position.lat;
+                    this.job.company.geoCodeLng = geocode.items[0].position.lng;
 
                     // Save / Update company
                     let companyMutationType;
@@ -502,7 +505,8 @@
                                 zipCode: "${this.job.company.zipCode}"
                                 state: "${this.job.company.state}", 
                                 country: "${this.job.company.country}", 
-                                geoCode: "${this.job.company.geoCode}", 
+                                geoCodeLat: ${this.job.company.geoCodeLat}, 
+                                geoCodeLng: ${this.job.company.geoCodeLng}, 
                                 url: "${this.job.company.url}"
                                 logoUrl: "${this.job.company.logoUrl}"
                             ) {

@@ -167,7 +167,8 @@
                                 zipCode
                                 state
                                 country
-                                geoCode
+                                geoCodeLat
+                                geoCodeLng
                                 logoUrl
                             }
                         }

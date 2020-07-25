@@ -94,28 +94,51 @@
                 if (this.map && this.jobs.length > 0) {
                     // const service = this.platform.getSearchService();
                     const H = window.H;
-
                     const group = new H.map.Group();
 
-                    // combine jobs per geocode
+                    // combine jobs per company&geocode || move marker for same geocode but different company
                     const markerObjects = [];
 
                     this.jobs.forEach(job => {
-                        let newGeocode = true;
+                        let existingGeoCode = false;
+                        const maxMarkerAdjust = 0.003;
 
-                        markerObjects.forEach((item, j) => {
-                            if (item.geocode === job.company.geoCode) {
-                                markerObjects[j].jobs.push({
-                                    jobTitle: job.title,
-                                    jobId: job._id
-                                });
-                                newGeocode = false;
+                        markerObjects.forEach(item => {
+                            if (
+                                item.geocode.lat === job.company.geoCodeLat &&
+                                item.geocode.lng === job.company.geoCodeLng
+                            ) {
+                                existingGeoCode = true;
                             }
                         });
 
-                        if (newGeocode) {
+                        if (!existingGeoCode) {
                             markerObjects.push({
-                                geocode: job.company.geoCode,
+                                geocode: {
+                                    lat: job.company.geoCodeLat,
+                                    lng: job.company.geoCodeLng
+                                },
+                                companyName: job.company.name,
+                                logoUrl: job.company.logoUrl,
+                                jobs: [
+                                    {
+                                        jobTitle: job.title,
+                                        jobId: job._id
+                                    }
+                                ]
+                            });
+                        } else if (existingGeoCode) {
+                            markerObjects.push({
+                                geocode: {
+                                    lat:
+                                        job.company.geoCodeLat +
+                                        (Math.random() * maxMarkerAdjust) / 2 -
+                                        maxMarkerAdjust / 4,
+                                    lng:
+                                        job.company.geoCodeLng +
+                                        (Math.random() * maxMarkerAdjust) / 2 -
+                                        maxMarkerAdjust / 4
+                                },
                                 companyName: job.company.name,
                                 logoUrl: job.company.logoUrl,
                                 jobs: [
@@ -130,19 +153,7 @@
 
                     // set markers
                     markerObjects.forEach(async markerObject => {
-                        // let geocode;
-
-                        // if (job.company.geoCode) {
-                        //     geocode = JSON.parse(job.company.geoCode);
-                        // } else {
-                        //     const response = await service.geocode({
-                        //         q: `${job.company.street} ${job.company.location} ${job.company.state} ${job.company.country}`
-                        //     });
-
-                        //     geocode = response.items[0].position;
-                        // }
-
-                        const geocode = JSON.parse(markerObject.geocode);
+                        const geocode = markerObject.geocode;
 
                         const outerElement = document.createElement("div");
                         outerElement.classList.add("icon-outer");
@@ -168,17 +179,10 @@
                         });
 
                         marker.setData(markerHtml);
-                        // marker.setData(`
-                        //         <div class="map-bubble">
-                        //             <a href="/jobboard/job/${job._id}" target="_blank">${job.title}</a>
-                        //         </div>
-                        //     `);
 
                         group.addObject(marker);
 
                         marker.addEventListener("tap", evt => {
-                            // this.forward(job._id)
-
                             // event target is the marker itself, group is a parent event target
                             // for all objects that it contains
                             var bubble = new H.ui.InfoBubble(

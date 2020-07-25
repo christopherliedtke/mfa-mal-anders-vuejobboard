@@ -28,19 +28,24 @@
         methods: {
             async initializeHereMap() {
                 try {
-                    const service = this.platform.getSearchService();
+                    // const service = this.platform.getSearchService();
 
                     let geocode;
 
-                    if (this.job.company.geoCode) {
-                        geocode = JSON.parse(this.job.company.geoCode);
-                    } else {
-                        const response = await service.geocode({
-                            q: `${this.job.company.street} ${this.job.company.location} ${this.job.company.state} ${this.job.company.country}`
-                        });
-
-                        geocode = response.items[0].position;
+                    if (this.job.company) {
+                        geocode = {
+                            lat: this.job.company.geoCodeLat,
+                            lng: this.job.company.geoCodeLng
+                        };
+                        // geocode = JSON.parse(this.job.company.geoCode);
                     }
+                    // else {
+                    //     const response = await service.geocode({
+                    //         q: `${this.job.company.street} ${this.job.company.location} ${this.job.company.state} ${this.job.company.country}`
+                    //     });
+
+                    //     geocode = response.items[0].position;
+                    // }
 
                     if (geocode) {
                         const mapContainer = this.$refs.hereMap;

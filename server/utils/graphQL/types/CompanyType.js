@@ -34,8 +34,11 @@ const CompanyType = new GraphQLObjectType({
         country: {
             type: GraphQLString,
         },
-        geoCode: {
-            type: GraphQLString,
+        geoCodeLat: {
+            type: GraphQLFloat,
+        },
+        geoCodeLng: {
+            type: GraphQLFloat,
         },
         url: {
             type: GraphQLString,

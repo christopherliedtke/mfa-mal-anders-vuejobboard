@@ -59,7 +59,7 @@
         props: ["apiRequest"],
         data() {
             return {
-                job: {},
+                job: Object,
                 error: null
             };
         },
@@ -94,7 +94,8 @@
                                         zipCode
                                         state
                                         country
-                                        geoCode
+                                        geoCodeLat
+                                        geoCodeLng
                                         url
                                         logoUrl
                                     }
