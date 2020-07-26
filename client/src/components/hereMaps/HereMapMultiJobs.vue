@@ -182,7 +182,11 @@
             },
             spreadMarker(val) {
                 const markerSpread = 0.0015;
-                return val + Math.random() * markerSpread - markerSpread;
+                return (
+                    val +
+                    Math.random() * markerSpread -
+                    Math.random() * markerSpread
+                );
             }
         }
     };
