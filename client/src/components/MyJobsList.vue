@@ -187,7 +187,7 @@
 
 <script>
     import axios from "@/axios";
-    import StripeCheckout from "@/components/StripeCheckout.vue";
+    import StripeCheckout from "@/components/stripe/StripeCheckout.vue";
     export default {
         name: "MyJobsList",
         components: {

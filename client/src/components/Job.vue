@@ -49,7 +49,7 @@
 <script>
     import axios from "@/axios";
     import JobStructuredData from "@/components/JobStructuredData.vue";
-    import HereMapSingleJob from "@/components/HereMapSingleJob.vue";
+    import HereMapSingleJob from "@/components/hereMaps/HereMapSingleJob.vue";
     export default {
         name: "Job",
         components: {

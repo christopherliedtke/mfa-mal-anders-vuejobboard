@@ -109,7 +109,7 @@
 
 <script>
     import { mapActions } from "vuex";
-    import Overlay from "@/components/Overlay";
+    import Overlay from "@/components/utils/Overlay";
     export default {
         name: "Register",
         components: {

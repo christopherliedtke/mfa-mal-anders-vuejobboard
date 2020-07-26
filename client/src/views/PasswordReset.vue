@@ -110,7 +110,7 @@
 
 <script>
     import axios from "@/axios";
-    import Overlay from "@/components/Overlay";
+    import Overlay from "@/components/utils/Overlay";
     export default {
         name: "PasswordReset",
         components: {

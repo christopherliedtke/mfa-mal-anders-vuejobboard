@@ -39,7 +39,7 @@
 </template>
 
 <script>
-    import Logout from "@/components/Logout";
+    import Logout from "@/components/utils/Logout";
     export default {
         name: "Header",
         components: {

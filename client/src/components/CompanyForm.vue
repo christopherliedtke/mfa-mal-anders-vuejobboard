@@ -128,8 +128,8 @@
         companyStateOptions,
         companyCountryOptions
     } from "@/utils/jobDataConfig.json";
-    import ImageUploader from "@/components/ImageUploader.vue";
-    import Overlay from "@/components/Overlay";
+    import ImageUploader from "@/components/utils/ImageUploader.vue";
+    import Overlay from "@/components/utils/Overlay";
     export default {
         name: "CompanyForm",
         components: {

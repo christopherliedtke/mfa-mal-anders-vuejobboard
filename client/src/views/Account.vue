@@ -11,7 +11,7 @@
 </template>
 
 <script>
-    import DeleteAccountButton from "@/components/DeleteAccountButton.vue";
+    import DeleteAccountButton from "@/components/utils/DeleteAccountButton.vue";
     import AccountDataForm from "@/components/AccountDataForm.vue";
     export default {
         name: "Account",

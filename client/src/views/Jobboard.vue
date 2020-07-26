@@ -112,7 +112,7 @@
         companyStateOptions
     } from "@/utils/jobDataConfig.json";
     import JobCard from "@/components/JobCard.vue";
-    import HereMapMultiJobs from "@/components/HereMapMultiJobs.vue";
+    import HereMapMultiJobs from "@/components/hereMaps/HereMapMultiJobs.vue";
     export default {
         name: "Jobboard",
         components: {

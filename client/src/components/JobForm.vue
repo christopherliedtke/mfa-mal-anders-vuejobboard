@@ -310,9 +310,9 @@
         companyStateOptions,
         companyCountryOptions
     } from "@/utils/jobDataConfig.json";
-    import TipTapEditor from "@/components/TipTapEditor.vue";
-    import ImageUploader from "@/components/ImageUploader.vue";
-    import Overlay from "@/components/Overlay";
+    import TipTapEditor from "@/components/utils/TipTapEditor.vue";
+    import ImageUploader from "@/components/utils/ImageUploader.vue";
+    import Overlay from "@/components/utils/Overlay";
     export default {
         name: "JobForm",
         components: { TipTapEditor, ImageUploader, Overlay },
