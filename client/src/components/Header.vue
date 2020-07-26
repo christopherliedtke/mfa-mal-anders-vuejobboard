@@ -3,7 +3,6 @@
         <b-navbar toggleable="lg" type="dark">
             <b-navbar-brand to="/">
                 <img src="@/assets/logo.png" height="40" alt="" />
-                <!-- <h2 class="m-0">BRAND</h2> -->
             </b-navbar-brand>
 
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>

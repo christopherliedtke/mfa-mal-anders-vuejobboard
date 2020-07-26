@@ -11,6 +11,7 @@
                 placeholder="Enter first name..."
                 autocomplete="given-name"
                 autofocus
+                trim
             ></b-form-input>
             <label for="lastName">Last Name</label>
             <b-form-input
@@ -19,6 +20,7 @@
                 id="lastName"
                 placeholder="Enter last name..."
                 autocomplete="family-name"
+                trim
             ></b-form-input>
             <label for="email">Email</label>
             <b-form-input
@@ -27,6 +29,7 @@
                 id="email"
                 placeholder="Enter email..."
                 autocomplete="email"
+                trim
             ></b-form-input>
             <label for="password">Password</label>
             <b-input-group>

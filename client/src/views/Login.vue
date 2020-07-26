@@ -10,6 +10,7 @@
                 placeholder="Enter email..."
                 autocomplete="email"
                 autofocus
+                trim
             ></b-form-input>
             <label for="password">Password</label>
             <b-input-group>
