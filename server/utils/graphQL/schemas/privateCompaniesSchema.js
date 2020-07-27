@@ -9,6 +9,7 @@ const {
 const CompanyType = require("../types/CompanyType");
 const { Company } = require("../../models/company");
 const sanitizeHtml = require("sanitize-html");
+const s3 = require("../../middleware/s3");
 
 // #Root Query
 const RootQuery = new GraphQLObjectType({
@@ -153,6 +154,15 @@ const mutation = new GraphQLObjectType({
                 _id: { type: GraphQLString },
             },
             async resolve(parentValue, args, req) {
+                const { logoUrl } = await Company.findOne(
+                    { _id: args._id },
+                    "logoUrl"
+                );
+
+                if (logoUrl) {
+                    await s3.delete(logoUrl);
+                }
+
                 const response = await Company.deleteOne({
                     _id: args._id,
                     userId: req.userId,

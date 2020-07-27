@@ -8,6 +8,7 @@ const {
 const JobType = require("../types/JobType");
 const { Job } = require("../../models/job");
 const sanitizeHtml = require("sanitize-html");
+const s3 = require("../../middleware/s3");
 
 // #Root Query
 const RootQuery = new GraphQLObjectType({
@@ -207,6 +208,15 @@ const mutation = new GraphQLObjectType({
                 _id: { type: GraphQLString },
             },
             async resolve(parentValue, args, req) {
+                const { imageUrl } = await Job.find(
+                    { _id: args._id },
+                    "imageUrl"
+                );
+
+                if (imageUrl) {
+                    await s3.delete(imageUrl);
+                }
+
                 const response = await Job.deleteOne({
                     _id: args._id,
                     userId: req.userId,
