@@ -13,6 +13,7 @@ import NewCompanyView from "@/views/NewCompanyView.vue";
 import EditCompanyView from "@/views/EditCompanyView.vue";
 import PrivateJobView from "@/views/PrivateJobView.vue";
 import Account from "@/views/Account.vue";
+import Admin from "@/views/Admin.vue";
 import Login from "@/views/Login.vue";
 import Register from "@/views/Register.vue";
 import PasswordReset from "@/views/PasswordReset.vue";
@@ -111,6 +112,15 @@ const routes = [
         }
     },
     {
+        path: "/admin",
+        name: "Admin",
+        component: Admin,
+        meta: {
+            public: false,
+            onlyAdmin: true
+        }
+    },
+    {
         path: "/account",
         name: "Account",
         component: Account,
@@ -179,9 +189,15 @@ router.beforeEach((to, from, next) => {
     const onlyWhenPending = to.matched.some(
         record => record.meta.onlyWhenPending
     );
+    const onlyAdmin = to.matched.some(record => record.meta.onlyAdmin);
 
     const loggedIn = !!store.getters.userId;
     const userActivated = localStorage.getItem("userStatus") != "pending";
+    const userRole = store.getters.userRole;
+
+    if (onlyAdmin && userRole !== "admin") {
+        return next("/");
+    }
 
     if (!isPublic && !loggedIn) {
         return next({

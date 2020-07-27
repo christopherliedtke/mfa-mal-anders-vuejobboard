@@ -31,6 +31,14 @@
                         ></b-icon
                         >Account</b-nav-item
                     >
+                    <b-nav-item to="/admin" v-if="userRole === 'admin'"
+                        ><b-icon
+                            class="mr-1"
+                            icon="shield-lock"
+                            font-scale="1.45"
+                        ></b-icon
+                        >Admin</b-nav-item
+                    >
                     <b-nav-item v-if="userId"><Logout /></b-nav-item>
                 </b-navbar-nav>
             </b-collapse>
@@ -53,6 +61,9 @@
         computed: {
             userId() {
                 return this.$store.state.auth.userId;
+            },
+            userRole() {
+                return this.$store.state.auth.userRole;
             }
         }
     };

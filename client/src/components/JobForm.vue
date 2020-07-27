@@ -74,16 +74,6 @@
                 />
             </b-input-group>
             <label for="title-image">Title Image (jpg, png | max. 5MB)</label>
-            <div>
-                <b-avatar
-                    class="mb-2 d-flex align-items-center justify-content-center"
-                    size="10rem"
-                    icon="card-image"
-                    variant="secondary"
-                    rounded
-                    :src="job.imageUrl"
-                />
-            </div>
             <ImageUploader
                 id="title-image"
                 :validated="validated"
@@ -93,6 +83,16 @@
                 fit="inside"
                 @update-url="job.imageUrl = $event"
             />
+            <div>
+                <b-avatar
+                    class="mt-2 d-flex align-items-center justify-content-center"
+                    size="10rem"
+                    icon="card-image"
+                    variant="secondary"
+                    rounded
+                    :src="job.imageUrl"
+                />
+            </div>
 
             <h3 class="mt-4">Company</h3>
             <div class="mt-3 d-flex align-items-end">
@@ -106,7 +106,9 @@
                             v-for="company in companies"
                             :key="company._id"
                             :value="company._id"
-                            >{{ company.name }}</b-form-select-option
+                            >{{
+                                company.name + " | " + company.location
+                            }}</b-form-select-option
                         ></b-form-select
                     >
                 </div>
@@ -135,7 +137,7 @@
                 placeholder="Enter street and house number ..."
                 required
             />
-            <label for="company-location">Location *</label>
+            <label for="company-location">City *</label>
             <b-form-input
                 type="text"
                 v-model="job.company.location"
@@ -203,16 +205,6 @@
                 />
             </b-input-group>
             <label for="logo">Logo (jpg, png | max. 5MB)</label>
-            <div>
-                <b-avatar
-                    class="mb-2 d-flex align-items-center justify-content-center"
-                    size="lg"
-                    icon="box"
-                    variant="secondary"
-                    rounded
-                    :src="job.company.logoUrl"
-                />
-            </div>
             <ImageUploader
                 id="logo"
                 :validated="validated"
@@ -222,6 +214,16 @@
                 fit="inside"
                 @update-url="job.company.logoUrl = $event"
             />
+            <div>
+                <b-avatar
+                    class="mt-2 d-flex align-items-center justify-content-center"
+                    size="lg"
+                    icon="box"
+                    variant="secondary"
+                    rounded
+                    :src="job.company.logoUrl"
+                />
+            </div>
             <h3 class="mt-4">Contact</h3>
             <label for="contact-title">Title</label>
             <b-form-select

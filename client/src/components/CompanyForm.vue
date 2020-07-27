@@ -21,7 +21,7 @@
                 placeholder="Enter street and house number ..."
                 required
             />
-            <label for="company-location">Location *</label>
+            <label for="company-location">City *</label>
             <b-form-input
                 type="text"
                 v-model="company.location"
@@ -87,16 +87,6 @@
                 />
             </b-input-group>
             <label for="file">Logo (jpg, png | max. 5MB)</label>
-            <div>
-                <b-avatar
-                    class="mb-2 d-flex align-items-center justify-content-center"
-                    size="lg"
-                    icon="box"
-                    variant="secondary"
-                    rounded
-                    :src="company.logoUrl"
-                />
-            </div>
             <ImageUploader
                 :validated="validated"
                 :imageUrl="company.logoUrl"
@@ -105,6 +95,16 @@
                 fit="inside"
                 @update-url="company.logoUrl = $event"
             />
+            <div>
+                <b-avatar
+                    class="mt-2 d-flex align-items-center justify-content-center"
+                    size="lg"
+                    icon="box"
+                    variant="secondary"
+                    rounded
+                    :src="company.logoUrl"
+                />
+            </div>
 
             <div class="d-flex justify-content-between my-4">
                 <b-button variant="outline-danger" to="/dashboard?tab=2">

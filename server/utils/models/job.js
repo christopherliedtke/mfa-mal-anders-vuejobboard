@@ -18,7 +18,8 @@ const JobSchema = new Schema(
             type: Date,
         },
         userId: {
-            type: String,
+            type: Schema.Types.ObjectId,
+            ref: "User",
             required: true,
         },
         title: {

@@ -1,4 +1,5 @@
 const { GraphQLObjectType, GraphQLString, GraphQLFloat } = require("graphql");
+const UserType = require("../types/UserType");
 
 // #Company Type
 const CompanyType = new GraphQLObjectType({
@@ -14,7 +15,7 @@ const CompanyType = new GraphQLObjectType({
             type: GraphQLFloat,
         },
         userId: {
-            type: GraphQLString,
+            type: UserType,
         },
         name: {
             type: GraphQLString,
