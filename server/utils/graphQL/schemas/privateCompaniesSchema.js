@@ -73,20 +73,13 @@ const mutation = new GraphQLObjectType({
                 },
             },
             async resolve(parentValue, args, req) {
-                const newCompany = new Company({
-                    userId: req.userId,
-                    name: sanitizeHtml(args.name),
-                    street: sanitizeHtml(args.street),
-                    location: sanitizeHtml(args.location),
-                    zipCode: sanitizeHtml(args.zipCode),
-                    state: sanitizeHtml(args.state),
-                    country: sanitizeHtml(args.country),
-                    geoCodeLat: sanitizeHtml(args.geoCodeLat),
-                    geoCodeLng: sanitizeHtml(args.geoCodeLng),
-                    url: sanitizeHtml(args.url),
-                    logoUrl: sanitizeHtml(args.logoUrl),
-                });
+                const addObj = { ...args, userId: req.userId };
 
+                for (const key in addObj) {
+                    addObj[key] = sanitizeHtml(addObj[key]);
+                }
+
+                const newCompany = new Company(addObj);
                 const response = await newCompany.save();
 
                 return response;
@@ -120,20 +113,16 @@ const mutation = new GraphQLObjectType({
                 },
             },
             async resolve(parentValue, args, req) {
+                const updateObj = { ...args };
+                delete updateObj._id;
+
+                for (const key in updateObj) {
+                    updateObj[key] = sanitizeHtml(updateObj[key]);
+                }
+
                 const response = await Company.updateOne(
                     { _id: args._id, userId: req.userId },
-                    {
-                        name: sanitizeHtml(args.name),
-                        street: sanitizeHtml(args.street),
-                        location: sanitizeHtml(args.location),
-                        zipCode: sanitizeHtml(args.zipCode),
-                        state: sanitizeHtml(args.state),
-                        country: sanitizeHtml(args.country),
-                        geoCodeLat: sanitizeHtml(args.geoCodeLat),
-                        geoCodeLng: sanitizeHtml(args.geoCodeLng),
-                        url: sanitizeHtml(args.url),
-                        logoUrl: sanitizeHtml(args.logoUrl),
-                    }
+                    updateObj
                 );
 
                 if (response.nModified === 0) {

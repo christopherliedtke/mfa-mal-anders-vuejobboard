@@ -84,23 +84,13 @@ const mutation = new GraphQLObjectType({
                 },
             },
             async resolve(parentValue, args, req) {
-                const newJob = new Job({
-                    userId: req.userId,
-                    title: sanitizeHtml(args.title),
-                    description: sanitizeHtml(args.description),
-                    employmentType: sanitizeHtml(args.employmentType),
-                    applicationDeadline: sanitizeHtml(args.applicationDeadline),
-                    extJobUrl: sanitizeHtml(args.extJobUrl),
-                    applicationEmail: sanitizeHtml(args.applicationEmail),
-                    imageUrl: sanitizeHtml(args.imageUrl),
-                    contactTitle: sanitizeHtml(args.contactTitle),
-                    contactFirstName: sanitizeHtml(args.contactFirstName),
-                    contactLastName: sanitizeHtml(args.contactLastName),
-                    contactEmail: sanitizeHtml(args.contactEmail),
-                    contactPhone: sanitizeHtml(args.contactPhone),
-                    company: args.company,
-                });
+                const addObj = { ...args, userId: req.userId };
 
+                for (const key in addObj) {
+                    addObj[key] = sanitizeHtml(addObj[key]);
+                }
+
+                const newJob = new Job(addObj);
                 const response = await newJob.save();
 
                 return response;
@@ -145,25 +135,16 @@ const mutation = new GraphQLObjectType({
                 },
             },
             async resolve(parentValue, args, req) {
+                const updateObj = { ...args };
+                delete updateObj._id;
+
+                for (const key in updateObj) {
+                    updateObj[key] = sanitizeHtml(updateObj[key]);
+                }
+
                 const response = await Job.updateOne(
                     { _id: args._id, userId: req.userId },
-                    {
-                        title: sanitizeHtml(args.title),
-                        description: sanitizeHtml(args.description),
-                        employmentType: sanitizeHtml(args.employmentType),
-                        applicationDeadline: sanitizeHtml(
-                            args.applicationDeadline
-                        ),
-                        extJobUrl: sanitizeHtml(args.extJobUrl),
-                        applicationEmail: sanitizeHtml(args.applicationEmail),
-                        imageUrl: sanitizeHtml(args.imageUrl),
-                        contactTitle: sanitizeHtml(args.contactTitle),
-                        contactFirstName: sanitizeHtml(args.contactFirstName),
-                        contactLastName: sanitizeHtml(args.contactLastName),
-                        contactEmail: sanitizeHtml(args.contactEmail),
-                        contactPhone: sanitizeHtml(args.contactPhone),
-                        company: args.company,
-                    }
+                    updateObj
                 );
 
                 if (response.nModified === 0) {

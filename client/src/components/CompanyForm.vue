@@ -223,8 +223,6 @@
                     this.company.geoCodeLat = geocode.items[0].position.lat;
                     this.company.geoCodeLng = geocode.items[0].position.lng;
 
-                    console.log("this.company: ", this.company);
-
                     // Save / Update company
                     let mutationType;
                     this.companyId

@@ -31,7 +31,7 @@ router.use(
 );
 
 // #route:  POST /api/jobs/admin
-// #desc:   CRUD jobs to admin
+// #desc:   RUD jobs to admin
 // #access: Private
 router.use(
     "/admin",
