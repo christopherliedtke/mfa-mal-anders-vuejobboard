@@ -96,6 +96,7 @@
                 >
             </b-button-group>
         </b-button-toolbar>
+
         <div class="job-list" v-if="jobboardView === 'list'">
             <JobCard v-for="job in filteredJobs" :key="job._id" :job="job" />
         </div>
@@ -122,7 +123,6 @@
         data() {
             return {
                 filter: {
-                    createdAt: "",
                     searchTerm: this.$route.query.searchTerm || "",
                     employmentType: this.$route.query.employmentType || null,
                     location: this.$route.query.location || "",
@@ -293,20 +293,4 @@
     };
 </script>
 
-<style scoped lang="scss">
-    @import "@/styles/custom_bootstrap.scss";
-
-    .jobboard {
-        .job-list {
-            a {
-                color: unset;
-                transition: linear 0.1s;
-
-                &:hover {
-                    text-decoration: unset;
-                    color: $primary;
-                }
-            }
-        }
-    }
-</style>
+<style scoped lang="scss"></style>

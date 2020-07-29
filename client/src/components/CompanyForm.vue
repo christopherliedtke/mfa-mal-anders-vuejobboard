@@ -107,7 +107,14 @@
             </div>
 
             <div class="d-flex justify-content-between my-4">
-                <b-button variant="outline-danger" to="/dashboard?tab=2">
+                <b-button
+                    variant="outline-danger"
+                    :to="
+                        `/${
+                            apiJobsSchema === 'private' ? 'dashboard' : 'admin'
+                        }?tab=2`
+                    "
+                >
                     Cancel
                 </b-button>
                 <b-button variant="success" @click.prevent="onSubmit">

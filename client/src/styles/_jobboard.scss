@@ -1,0 +1,13 @@
+.jobboard {
+    .job-list {
+        a {
+            color: unset;
+            transition: linear 0.1s;
+
+            &:hover {
+                text-decoration: unset;
+                color: $primary;
+            }
+        }
+    }
+}

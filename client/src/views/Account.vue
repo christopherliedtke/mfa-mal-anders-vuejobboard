@@ -3,7 +3,7 @@
         <h2>Account</h2>
         <b-tabs content-class="mt-3">
             <b-tab title="Account Data" active>
-                <AccountDataForm />
+                <AccountDataForm apiUsersSchema="private"/>
                 <DeleteAccountButton
             /></b-tab>
         </b-tabs>
@@ -11,8 +11,8 @@
 </template>
 
 <script>
-    import DeleteAccountButton from "@/components/utils/DeleteAccountButton.vue";
-    import AccountDataForm from "@/components/AccountDataForm.vue";
+    import DeleteAccountButton from "@/components/account/DeleteAccountButton.vue";
+    import AccountDataForm from "@/components/account/AccountDataForm.vue";
     export default {
         name: "Account",
         components: {

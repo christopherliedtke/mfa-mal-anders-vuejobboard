@@ -28,12 +28,11 @@
         >
             <template v-slot:cell(user)="row">
                 {{
-                    row.item.userId.firstName +
-                        " " +
-                        row.item.userId.lastName +
-                        " " +
-                        row.item.userId.email
+                    row.item.userId.lastName + ", " + row.item.userId.firstName
                 }}
+                <a :href="`mailto:${row.item.userId.email}`">
+                    {{ row.item.userId.email }}</a
+                >
             </template>
             <template v-slot:cell(createdAt)="row">
                 {{ new Date(row.value).toLocaleString() }}
@@ -189,7 +188,7 @@
                     },
                     {
                         key: "title",
-                        sortable: false
+                        sortable: true
                     },
                     {
                         key: "createdAt",
@@ -250,7 +249,10 @@
                                     job.company.zipCode,
                                     job.company.state,
                                     job.company.country,
-                                    job.userId._id
+                                    job.userId._id,
+                                    job.userId.lastName,
+                                    job.userId.firstName,
+                                    job.userId.email
                                 ],
                                 this.filter.searchTerm
                             )

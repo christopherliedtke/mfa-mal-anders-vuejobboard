@@ -33,6 +33,7 @@ import Admin from "@/views/Admin.vue";
 import AdminJobView from "@/views/AdminJobView.vue";
 import AdminEditJobView from "@/views/AdminEditJobView.vue";
 import AdminEditCompanyView from "@/views/AdminEditCompanyView.vue";
+import AdminEditUserView from "@/views/AdminEditUserView.vue";
 
 const routes = [
     // #Public
@@ -211,6 +212,15 @@ const routes = [
         path: "/admin/companies/:companyId",
         name: "AdminEditCompanyView",
         component: AdminEditCompanyView,
+        meta: {
+            public: false,
+            onlyAdmin: true
+        }
+    },
+    {
+        path: "/admin/users/:userId",
+        name: "AdminEditUserView",
+        component: AdminEditUserView,
         meta: {
             public: false,
             onlyAdmin: true

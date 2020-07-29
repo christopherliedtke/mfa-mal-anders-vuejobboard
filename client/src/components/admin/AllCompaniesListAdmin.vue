@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-form id="job-filter" inline @submit.prevent>
+        <b-form id="company-filter" inline @submit.prevent>
             <b-input-group class="my-1 mr-2">
                 <b-form-input
                     type="text"
@@ -27,12 +27,11 @@
         >
             <template v-slot:cell(user)="row">
                 {{
-                    row.item.userId.firstName +
-                        " " +
-                        row.item.userId.lastName +
-                        " " +
-                        row.item.userId.email
+                    row.item.userId.lastName + ", " + row.item.userId.firstName
                 }}
+                <a :href="`mailto:${row.item.userId.email}`">
+                    {{ row.item.userId.email }}</a
+                >
             </template>
             <template v-slot:cell(createdAt)="row">
                 {{ new Date(row.value).toLocaleString() }}
@@ -114,7 +113,7 @@
                     },
                     {
                         key: "name",
-                        sortable: false
+                        sortable: true
                     },
                     {
                         key: "createdAt",
@@ -161,7 +160,10 @@
                                     company.zipCode,
                                     company.state,
                                     company.country,
-                                    company.userId._id
+                                    company.userId._id,
+                                    company.userId.lastName,
+                                    company.userId.firstName,
+                                    company.userId.email
                                 ],
                                 this.filter.searchTerm
                             )

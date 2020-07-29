@@ -74,6 +74,7 @@
         components: {
             Overlay
         },
+        props: ["apiUsersSchema"],
         data() {
             return {
                 user: {
@@ -93,18 +94,26 @@
         methods: {
             async getUserData() {
                 try {
-                    const userData = await axios.post("/api/user/private", {
-                        query: `
-                            query {
-                                user {
-                                    _id
-                                    firstName
-                                    lastName
-                                    email
+                    const userData = await axios.post(
+                        `/api/user/${this.apiUsersSchema}`,
+                        {
+                            query: `
+                                query {
+                                    user ${
+                                        this.apiUsersSchema === "admin"
+                                            ? `(_id: "${this.$route.params.userId}")`
+                                            : ""
+                                    }
+                                        {
+                                        _id
+                                        firstName
+                                        lastName
+                                        email
+                                    }
                                 }
-                            }
-                        `
-                    });
+                            `
+                        }
+                    );
 
                     if (userData.data.data.user) {
                         this.user = userData.data.data.user;
@@ -118,10 +127,17 @@
                     try {
                         this.showOverlay = true;
 
-                        const response = await axios.post("/api/user/private", {
-                            query: `
+                        const response = await axios.post(
+                            `/api/user/${this.apiUsersSchema}`,
+                            {
+                                query: `
                                 mutation {
                                     updateUser (
+                                        ${
+                                            this.apiUsersSchema === "admin"
+                                                ? `_id: "${this.user._id}",`
+                                                : ""
+                                        }
                                         firstName: "${this.user.firstName}", 
                                         lastName: "${this.user.lastName}", 
                                         email: "${this.user.email}", 
@@ -131,7 +147,8 @@
                                     }
                                 }
                             `
-                        });
+                            }
+                        );
 
                         if (response.data.data.updateUser) {
                             this.success = true;

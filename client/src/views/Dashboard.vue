@@ -1,14 +1,11 @@
 <template>
     <b-container class="dashboard py-5">
         <h2>Dashboard</h2>
-        <b-tabs content-class="mt-3">
-            <b-tab
-                title="Jobs"
-                :active="tabIndex === '1' || tabIndex === undefined"
-            >
+        <b-tabs content-class="mt-3" :value="query.tab">
+            <b-tab title="Jobs" @click="setQuery('tab', 0)">
                 <MyJobsList></MyJobsList>
             </b-tab>
-            <b-tab title="Companies" :active="tabIndex === '2'">
+            <b-tab title="Companies" @click="setQuery('tab', 1)">
                 <MyCompaniesList></MyCompaniesList>
             </b-tab>
         </b-tabs>
@@ -16,8 +13,8 @@
 </template>
 
 <script>
-    import MyJobsList from "@/components/MyJobsList.vue";
-    import MyCompaniesList from "@/components/MyCompaniesList.vue";
+    import MyJobsList from "@/components/dashboard/MyJobsList.vue";
+    import MyCompaniesList from "@/components/dashboard/MyCompaniesList.vue";
     export default {
         name: "Dashboard",
         components: {
@@ -26,11 +23,21 @@
         },
         data() {
             return {
-                tabIndex: "1"
+                query: {
+                    tab: 0
+                }
             };
         },
         mounted() {
-            this.tabIndex = this.$route.query.tab;
+            this.query.tab = this.$route.query.tab;
+        },
+        methods: {
+            setQuery(key, value) {
+                this.query[key] = value;
+                this.$router.push({
+                    query: { ...this.$route.query, [key]: value }
+                });
+            }
         },
         head: {
             title: function() {
