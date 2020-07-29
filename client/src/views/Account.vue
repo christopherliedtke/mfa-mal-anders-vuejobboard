@@ -22,7 +22,7 @@
         head: {
             title: function() {
                 return {
-                    inner: "Account"
+                    inner: "My Account"
                 };
             }
         }
