@@ -1,6 +1,6 @@
 <template>
     <b-container class="jobpage py-5">
-        <Job apiRequest="private" />
+        <Job apiJobsSchema="private" />
     </b-container>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
     <b-container class="edit-job py-5">
         <h2>Edit Job</h2>
-        <JobForm :jobId="$route.params.jobId"></JobForm>
+        <JobForm :jobId="$route.params.jobId" apiJobsSchema="private"></JobForm>
     </b-container>
 </template>
 

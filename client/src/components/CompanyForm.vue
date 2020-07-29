@@ -136,7 +136,7 @@
             ImageUploader,
             Overlay
         },
-        props: ["companyId"],
+        props: ["companyId", "apiJobsSchema"],
         data() {
             return {
                 company: {
@@ -178,8 +178,10 @@
         methods: {
             async getCompany(companyId) {
                 try {
-                    const company = await axios.post("/api/companies/private", {
-                        query: `
+                    const company = await axios.post(
+                        `/api/companies/${this.apiJobsSchema}`,
+                        {
+                            query: `
                             query {
                                 company(_id: "${companyId}") {
                                     _id
@@ -196,7 +198,8 @@
                                 }
                             }
                         `
-                    });
+                        }
+                    );
 
                     this.company = company.data.data.company;
                 } catch (err) {
@@ -254,7 +257,7 @@
                     `;
 
                     const response = await axios.post(
-                        "/api/companies/private",
+                        `/api/companies/${this.apiJobsSchema}`,
                         { query }
                     );
 
@@ -267,7 +270,9 @@
                         this.success = true;
 
                         setTimeout(() => {
-                            this.$router.push("/dashboard?tab=2");
+                            this.hasHistory && this.apiJobsSchema === "admin"
+                                ? this.$router.go(-1)
+                                : this.$router.push("/dashboard?tab=2");
                         }, 1000);
                     }
                 } catch (err) {
@@ -290,6 +295,9 @@
                 for (const key in this.company) {
                     this.company[key] = "";
                 }
+            },
+            hasHistory() {
+                return window.history.length > 2;
             }
         }
     };

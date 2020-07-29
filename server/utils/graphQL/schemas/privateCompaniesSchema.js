@@ -144,7 +144,7 @@ const mutation = new GraphQLObjectType({
             },
             async resolve(parentValue, args, req) {
                 const { logoUrl } = await Company.findOne(
-                    { _id: args._id },
+                    { _id: args._id, userId: req.userId },
                     "logoUrl"
                 );
 

@@ -85,7 +85,7 @@
             />
             <div>
                 <b-avatar
-                    class="mt-2 d-flex align-items-center justify-content-center"
+                    class="mt-2 d-flex align-items-center justify-content-center avatar"
                     size="10rem"
                     icon="card-image"
                     variant="secondary"
@@ -318,7 +318,7 @@
     export default {
         name: "JobForm",
         components: { TipTapEditor, ImageUploader, Overlay },
-        props: ["jobId"],
+        props: ["jobId", "apiJobsSchema"],
         data() {
             return {
                 job: {
@@ -378,8 +378,10 @@
         methods: {
             async getJob(jobId) {
                 try {
-                    const job = await axios.post("/api/jobs/private", {
-                        query: `
+                    const job = await axios.post(
+                        `/api/jobs/${this.apiJobsSchema}`,
+                        {
+                            query: `
                             query {
                                 job(_id: "${jobId}") {
                                     _id
@@ -411,7 +413,8 @@
                                 }
                             }
                         `
-                    });
+                        }
+                    );
 
                     this.job = job.data.data.job;
 
@@ -439,7 +442,7 @@
             async getCompanies() {
                 try {
                     const companies = await axios.post(
-                        "/api/companies/private",
+                        `/api/companies/${this.apiJobsSchema}`,
                         {
                             query: `
                             query {
@@ -518,7 +521,7 @@
                     `;
 
                     const companyQueryResponse = await axios.post(
-                        "/api/companies/private",
+                        `/api/companies/${this.apiJobsSchema}`,
                         { query: companyQuery }
                     );
 
@@ -562,7 +565,7 @@
                     `;
 
                     const jobQueryResponse = await axios.post(
-                        "/api/jobs/private",
+                        `/api/jobs/${this.apiJobsSchema}`,
                         {
                             query: jobQuery
                         }
@@ -577,7 +580,9 @@
                         this.success = true;
 
                         setTimeout(() => {
-                            this.$router.push("/dashboard");
+                            this.hasHistory
+                                ? this.$router.go(-1)
+                                : this.$router.push("/dashboard");
                         }, 1000);
                     }
                 } catch (err) {
@@ -610,9 +615,18 @@
                 this.job.company = this.companies.find(
                     company => company._id === this.selectedCompanyId
                 );
+            },
+            hasHistory() {
+                return window.history.length > 2;
             }
         }
     };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+    .b-avatar .b-avatar-img img {
+        width: auto;
+        height: auto;
+        border-radius: 0;
+    }
+</style>

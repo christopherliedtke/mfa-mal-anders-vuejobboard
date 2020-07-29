@@ -56,7 +56,7 @@
             HereMapSingleJob,
             JobStructuredData
         },
-        props: ["apiRequest"],
+        props: ["apiJobsSchema"],
         data() {
             return {
                 job: Object,
@@ -67,7 +67,7 @@
             async getJob(jobId) {
                 try {
                     const job = await axios.post(
-                        `/api/jobs/${this.apiRequest}`,
+                        `/api/jobs/${this.apiJobsSchema}`,
                         {
                             query: `
                             query {
@@ -134,7 +134,7 @@
                     return [
                         {
                             name: "description",
-                            content: this.job.description.substring(0, 165),
+                            content: `We are looking for a ${this.job.title} in ${this.job.company.location}`,
                             id: "desc"
                         }
                     ];

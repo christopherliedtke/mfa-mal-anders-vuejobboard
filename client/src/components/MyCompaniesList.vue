@@ -10,14 +10,24 @@
                 <h4>
                     {{ company.name }}
                 </h4>
-                <p>
-                    Created at:
-                    {{ new Date(parseInt(company.createdAt)).toLocaleString() }}
-                </p>
-                <p>
-                    Last updated:
-                    {{ new Date(parseInt(company.updatedAt)).toLocaleString() }}
-                </p>
+                <div class="my-3">
+                    <div>
+                        Created at:
+                        {{
+                            new Date(
+                                parseInt(company.createdAt)
+                            ).toLocaleString()
+                        }}
+                    </div>
+                    <div>
+                        Last updated:
+                        {{
+                            new Date(
+                                parseInt(company.updatedAt)
+                            ).toLocaleString()
+                        }}
+                    </div>
+                </div>
                 <div class="d-flex justify-content-between align-items-end">
                     <div>
                         <b-button

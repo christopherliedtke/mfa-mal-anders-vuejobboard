@@ -1,9 +1,27 @@
 <template>
     <div>
+        <b-form id="job-filter" inline @submit.prevent>
+            <b-input-group class="my-1 mr-2">
+                <b-form-input
+                    type="text"
+                    v-model="filter.searchTerm"
+                    placeholder="Enter search term ..."
+                />
+                <b-input-group-append>
+                    <b-button
+                        ><b-icon
+                            icon="x"
+                            @click.prevent="filter.searchTerm = ''"
+                    /></b-button>
+                </b-input-group-append>
+            </b-input-group>
+        </b-form>
         <b-table
             responsive
             striped
             hover
+            sticky-header="80vh"
+            :tbody-tr-class="rowClass"
             :items="computedJobs"
             :fields="fields"
             primary-key="_id"
@@ -43,6 +61,20 @@
                 }}
             </template>
             <template v-slot:cell(actions)="row">
+                <b-button
+                    class="mr-2 mb-2"
+                    :to="`/admin/jobs/${row.item._id}`"
+                    variant="primary"
+                    size="sm"
+                    ><b-icon icon="pencil-square"></b-icon>
+                </b-button>
+                <b-button
+                    class="mr-2 mb-2"
+                    :to="`/admin/jobs/preview/${row.item._id}`"
+                    variant="info"
+                    size="sm"
+                    ><b-icon scale="1" icon="eye"></b-icon>
+                </b-button>
                 <b-dropdown
                     class="mr-2 mb-2"
                     size="sm"
@@ -52,10 +84,9 @@
                     <template v-slot:button-content>
                         <b-icon
                             class="mr-2"
-                            icon="three-dots-vertical
-"
+                            icon="three-dots-vertical"
                         ></b-icon>
-                        Change Status
+                        Status
                     </template>
                     <b-dropdown-item
                         :active="row.item.status === 'draft'"
@@ -89,12 +120,8 @@
                     variant="secondary"
                 >
                     <template v-slot:button-content>
-                        <b-icon
-                            class="mr-2"
-                            icon="three-dots-vertical
-"
-                        ></b-icon>
-                        Change Payment Status
+                        <b-icon class="mr-2" icon="credit-card"></b-icon> Paid
+                        Status
                     </template>
                     <b-dropdown-item
                         :active="row.item.paid === false"
@@ -111,7 +138,7 @@
                 </b-dropdown>
                 <b-button
                     size="sm"
-                    variant="outline-danger"
+                    variant="danger"
                     @click="showDeleteJobModal(row.item)"
                 >
                     <b-icon class="mr-2" icon="trash"></b-icon>Delete
@@ -151,11 +178,14 @@
                 jobs: [],
                 jobToDelete: Object,
                 error: false,
+                filter: {
+                    searchTerm: ""
+                },
                 fields: [
                     {
                         key: "_id",
-                        sortable: false,
-                        label: "Job ID"
+                        label: "Job ID",
+                        sortable: false
                     },
                     {
                         key: "title",
@@ -179,8 +209,8 @@
                     },
                     {
                         key: "company.name",
-                        sortable: true,
-                        label: "Company"
+                        label: "Company",
+                        sortable: true
                     },
                     {
                         key: "location",
@@ -188,8 +218,8 @@
                     },
                     {
                         key: "userId._id",
-                        sortable: false,
-                        label: "User ID"
+                        label: "User ID",
+                        sortable: false
                     },
                     {
                         key: "user",
@@ -204,7 +234,33 @@
         },
         computed: {
             computedJobs: function() {
-                const jobs = [...this.jobs];
+                let jobs = [...this.jobs];
+
+                // filter search term
+                if (this.filter.searchTerm) {
+                    jobs = jobs.filter(job => {
+                        if (
+                            this.checkForSearchTerm(
+                                [
+                                    job._id,
+                                    job.title,
+                                    job.company.name,
+                                    job.company.street,
+                                    job.company.location,
+                                    job.company.zipCode,
+                                    job.company.state,
+                                    job.company.country,
+                                    job.userId._id
+                                ],
+                                this.filter.searchTerm
+                            )
+                        ) {
+                            return job;
+                        } else {
+                            return;
+                        }
+                    });
+                }
 
                 return jobs;
             }
@@ -213,6 +269,17 @@
             this.getAllJobs();
         },
         methods: {
+            checkForSearchTerm(arrOfValues, searchTerm) {
+                let result = false;
+                arrOfValues.forEach(value => {
+                    if (
+                        value.toLowerCase().includes(searchTerm.toLowerCase())
+                    ) {
+                        result = true;
+                    }
+                });
+                return result;
+            },
             async getAllJobs() {
                 try {
                     const response = await axios.post("/api/jobs/admin", {
@@ -337,6 +404,15 @@
                     this.error = true;
                     console.log("err: ", err);
                 }
+            },
+            rowClass(item, type) {
+                if (!item || type !== "row") return;
+                if (
+                    item.status === "published" &&
+                    item.paid === true &&
+                    item.paidExpiresAt > new Date()
+                )
+                    return "table-success";
             }
         }
     };

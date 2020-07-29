@@ -14,6 +14,8 @@ import EditCompanyView from "@/views/EditCompanyView.vue";
 import PrivateJobView from "@/views/PrivateJobView.vue";
 import Account from "@/views/Account.vue";
 import Admin from "@/views/Admin.vue";
+import AdminJobView from "@/views/AdminJobView.vue";
+import AdminEditJobView from "@/views/AdminEditJobView.vue";
 import Login from "@/views/Login.vue";
 import Register from "@/views/Register.vue";
 import PasswordReset from "@/views/PasswordReset.vue";
@@ -115,6 +117,24 @@ const routes = [
         path: "/admin",
         name: "Admin",
         component: Admin,
+        meta: {
+            public: false,
+            onlyAdmin: true
+        }
+    },
+    {
+        path: "/admin/jobs/preview/:jobId",
+        name: "AdminJobView",
+        component: AdminJobView,
+        meta: {
+            public: false,
+            onlyAdmin: true
+        }
+    },
+    {
+        path: "/admin/jobs/:jobId",
+        name: "AdminEditJobView",
+        component: AdminEditJobView,
         meta: {
             public: false,
             onlyAdmin: true

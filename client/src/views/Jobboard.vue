@@ -78,7 +78,7 @@
                 >
             </b-form-select>
         </b-form>
-        <b-button-toolbar aria-label="Jobboard view toolbarbar">
+        <b-button-toolbar aria-label="Jobboard view toolbar">
             <b-button-group class="mt-3">
                 <b-button
                     :variant="
