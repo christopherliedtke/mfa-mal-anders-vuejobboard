@@ -5,7 +5,9 @@
             <b-tab title="All Jobs" @click="setQuery('tab', 0)">
                 <AllJobsListAdmin />
             </b-tab>
-            <b-tab title="All Companies" @click="setQuery('tab', 1)"> </b-tab>
+            <b-tab title="All Companies" @click="setQuery('tab', 1)">
+                <AllCompaniesListAdmin />
+            </b-tab>
             <b-tab title="All Users" @click="setQuery('tab', 2)"> </b-tab>
             <b-tab title="Data Analytics" @click="setQuery('tab', 3)"> </b-tab>
         </b-tabs>
@@ -14,9 +16,10 @@
 
 <script>
     import AllJobsListAdmin from "@/components/admin/AllJobsListAdmin.vue";
+    import AllCompaniesListAdmin from "@/components/admin/AllCompaniesListAdmin.vue";
     export default {
         name: "Admin",
-        components: { AllJobsListAdmin },
+        components: { AllJobsListAdmin, AllCompaniesListAdmin },
         data() {
             return {
                 query: {

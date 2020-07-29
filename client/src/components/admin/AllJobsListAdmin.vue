@@ -273,6 +273,7 @@
                 let result = false;
                 arrOfValues.forEach(value => {
                     if (
+                        value &&
                         value.toLowerCase().includes(searchTerm.toLowerCase())
                     ) {
                         result = true;

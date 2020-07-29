@@ -30,7 +30,7 @@ const RootQuery = new GraphQLObjectType({
         companies: {
             type: new GraphQLList(CompanyType),
             async resolve(parentValue, args) {
-                const companies = await Company.find().sort({
+                const companies = await Company.find().populate("userId").sort({
                     createdAt: "desc",
                 });
                 return companies;
@@ -88,7 +88,7 @@ const mutation = new GraphQLObjectType({
                 } else {
                     const updatedCompany = await Company.findOne({
                         _id: args._id,
-                    });
+                    }).populate("userId");
 
                     return updatedCompany;
                 }
