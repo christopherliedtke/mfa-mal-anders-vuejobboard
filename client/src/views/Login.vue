@@ -54,13 +54,17 @@
                 >
             </div>
         </b-form>
+
+        <Head title="Login" desc="This is the meta of login..." img="" />
     </b-container>
 </template>
 
 <script>
     import { mapActions } from "vuex";
+    import Head from "@/components/utils/Head.vue";
     export default {
         name: "Login",
+        components: { Head },
         data() {
             return {
                 email: "",
@@ -88,22 +92,6 @@
                 this.passwordType === "text"
                     ? (this.passwordType = "password")
                     : (this.passwordType = "text");
-            }
-        },
-        head: {
-            title: function() {
-                return {
-                    inner: "Login"
-                };
-            },
-            meta: function() {
-                return [
-                    {
-                        name: "description",
-                        content: "This is the meta of login...",
-                        id: "desc"
-                    }
-                ];
             }
         }
     };

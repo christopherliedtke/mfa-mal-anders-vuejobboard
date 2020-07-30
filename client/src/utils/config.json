@@ -1,5 +1,9 @@
 {
     "website": {
-        "name": "Vue Jobboard"
+        "name": "Vue Jobboard",
+        "url": "https://www.mfa-mal-anders.de"
+    },
+    "fb": {
+        "appId": "0"
     }
 }

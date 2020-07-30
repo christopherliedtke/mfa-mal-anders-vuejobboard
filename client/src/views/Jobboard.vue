@@ -103,6 +103,8 @@
         <div class="job-map" v-if="jobboardView === 'map'">
             <HereMapMultiJobs :jobs="filteredJobs" />
         </div>
+
+        <Head title="Jobboard" desc="This is the meta of jobboard..." img="" />
     </b-container>
 </template>
 
@@ -114,11 +116,13 @@
     } from "@/utils/jobDataConfig.json";
     import JobCard from "@/components/JobCard.vue";
     import HereMapMultiJobs from "@/components/hereMaps/HereMapMultiJobs.vue";
+    import Head from "@/components/utils/Head.vue";
     export default {
         name: "Jobboard",
         components: {
             JobCard,
-            HereMapMultiJobs
+            HereMapMultiJobs,
+            Head
         },
         data() {
             return {
@@ -272,22 +276,6 @@
                         .filter((v, i) => locations.indexOf(v) === i)
                         .sort();
                 }
-            }
-        },
-        head: {
-            title: function() {
-                return {
-                    inner: "Jobboard"
-                };
-            },
-            meta: function() {
-                return [
-                    {
-                        name: "description",
-                        content: "This is the meta of jobboard...",
-                        id: "desc"
-                    }
-                ];
             }
         }
     };

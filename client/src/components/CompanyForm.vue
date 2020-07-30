@@ -214,16 +214,16 @@
                 }
             },
             async onSubmit() {
+                this.error = false;
+
+                if (!this.formValidation()) {
+                    this.error = "Please provide all necessary information.";
+                    return null;
+                }
+
+                this.showOverlay = true;
+
                 try {
-                    this.error = false;
-                    if (!this.formValidation()) {
-                        this.error =
-                            "Please provide all necessary information.";
-                        return null;
-                    }
-
-                    this.showOverlay = true;
-
                     // get geocode
                     const service = this.hereMaps.platform.getSearchService();
                     const geocode = await service.geocode({
@@ -232,7 +232,14 @@
 
                     this.company.geoCodeLat = geocode.items[0].position.lat;
                     this.company.geoCodeLng = geocode.items[0].position.lng;
+                } catch (err) {
+                    console.log("Error on getGeoCode(): ", err);
 
+                    this.company.geoCodeLat = null;
+                    this.company.geoCodeLng = null;
+                }
+
+                try {
                     // Save / Update company
                     let mutationType;
                     this.companyId
@@ -268,8 +275,6 @@
                         { query }
                     );
 
-                    this.showOverlay = false;
-
                     if (!response.data.data[mutationType]) {
                         this.error =
                             "Oh, something went wrong. Please try again!";
@@ -284,8 +289,10 @@
                     }
                 } catch (err) {
                     this.error = "Oh, something went wrong. Please try again!";
-                    console.log("err: ", err);
+                    console.log("Error on update/save company: ", err);
                 }
+
+                this.showOverlay = false;
             },
             formValidation() {
                 this.validated = true;

@@ -43,6 +43,14 @@
             >Oh, something went wrong. Please try again later ...</b-alert
         >
         <JobStructuredData :job="job" />
+        <Head
+            v-if="job.title"
+            :title="job.title"
+            :desc="
+                `${job.company.name} is looking for a ${job.title} in ${job.company.location}`
+            "
+            :img="job.imageUrl || job.company.logoUrl"
+        />
     </div>
 </template>
 
@@ -50,11 +58,13 @@
     import axios from "@/axios";
     import JobStructuredData from "@/components/JobStructuredData.vue";
     import HereMapSingleJob from "@/components/hereMaps/HereMapSingleJob.vue";
+    import Head from "@/components/utils/Head.vue";
     export default {
         name: "Job",
         components: {
             HereMapSingleJob,
-            JobStructuredData
+            JobStructuredData,
+            Head
         },
         props: ["apiJobsSchema"],
         data() {
@@ -120,26 +130,6 @@
         },
         created: function() {
             this.getJob(this.$route.params.jobId);
-        },
-        head: {
-            title: function() {
-                if (this.job.title) {
-                    return {
-                        inner: this.job.title
-                    };
-                }
-            },
-            meta: function() {
-                if (this.job.description) {
-                    return [
-                        {
-                            name: "description",
-                            content: `We are looking for a ${this.job.title} in ${this.job.company.location}`,
-                            id: "desc"
-                        }
-                    ];
-                }
-            }
         }
     };
 </script>

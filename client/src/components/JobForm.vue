@@ -470,17 +470,16 @@
                 }
             },
             async onSubmit() {
+                this.error = false;
+
+                if (!this.formValidation()) {
+                    this.error = "Please provide all necessary information.";
+                    return null;
+                }
+
+                this.showOverlay = true;
+
                 try {
-                    this.error = false;
-
-                    if (!this.formValidation()) {
-                        this.error =
-                            "Please provide all necessary information.";
-                        return null;
-                    }
-
-                    this.showOverlay = true;
-
                     // get geocode
                     const service = this.hereMaps.platform.getSearchService();
                     const geocode = await service.geocode({
@@ -489,7 +488,14 @@
 
                     this.job.company.geoCodeLat = geocode.items[0].position.lat;
                     this.job.company.geoCodeLng = geocode.items[0].position.lng;
+                } catch (err) {
+                    console.log("Error on getGeoCode(): ", err);
 
+                    this.job.company.geoCodeLat = null;
+                    this.job.company.geoCodeLng = null;
+                }
+
+                try {
                     // Save / Update company
                     let companyMutationType;
                     this.job.company._id
@@ -571,8 +577,6 @@
                         }
                     );
 
-                    this.showOverlay = false;
-
                     if (!jobQueryResponse.data.data[jobMutationType]) {
                         this.error =
                             "Oh, something went wrong. Please try again!";
@@ -589,6 +593,8 @@
                     this.error = "Oh, something went wrong. Please try again!";
                     console.log("err: ", err);
                 }
+
+                this.showOverlay = false;
             },
             formValidation() {
                 this.validated = true;

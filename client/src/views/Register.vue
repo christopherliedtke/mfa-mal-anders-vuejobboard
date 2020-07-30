@@ -104,16 +104,20 @@
                 >
             </div>
         </b-form>
+
+        <Head title="Register" desc="This is the meta of register..." img="" />
     </b-container>
 </template>
 
 <script>
     import { mapActions } from "vuex";
+    import Head from "@/components/utils/Head.vue";
     import Overlay from "@/components/utils/Overlay";
     export default {
         name: "Register",
         components: {
-            Overlay
+            Overlay,
+            Head
         },
         data() {
             return {
@@ -154,22 +158,6 @@
                 this.passwordType === "text"
                     ? (this.passwordType = "password")
                     : (this.passwordType = "text");
-            }
-        },
-        head: {
-            title: function() {
-                return {
-                    inner: "Register"
-                };
-            },
-            meta: function() {
-                return [
-                    {
-                        name: "description",
-                        content: "This is the meta of register...",
-                        id: "desc"
-                    }
-                ];
             }
         }
     };
