@@ -5,5 +5,11 @@
     },
     "fb": {
         "appId": "0"
+    },
+    "ga": {
+        "active": true,
+        "trackingCode": "UA-138281267-4",
+        "anonymizeIP": true,
+        "storage": "none"
     }
 }

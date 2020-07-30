@@ -9,17 +9,21 @@
                 <MyCompaniesList></MyCompaniesList>
             </b-tab>
         </b-tabs>
+
+        <Head title="Dashboard" desc="" img="" />
     </b-container>
 </template>
 
 <script>
     import MyJobsList from "@/components/dashboard/MyJobsList.vue";
     import MyCompaniesList from "@/components/dashboard/MyCompaniesList.vue";
+    import Head from "@/components/utils/Head.vue";
     export default {
         name: "Dashboard",
         components: {
             MyJobsList,
-            MyCompaniesList
+            MyCompaniesList,
+            Head
         },
         data() {
             return {
@@ -37,13 +41,6 @@
                 this.$router.push({
                     query: { ...this.$route.query, [key]: value }
                 });
-            }
-        },
-        head: {
-            title: function() {
-                return {
-                    inner: "Dashboard"
-                };
             }
         }
     };

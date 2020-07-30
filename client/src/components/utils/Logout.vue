@@ -12,9 +12,9 @@
                 const response = await axios.get("/api/auth/logout");
 
                 if (response.data.success) {
-                    this.$store.commit("setUserId", null);
-                    this.$store.commit("setUserRole", null);
-                    this.$store.commit("setUserStatus", null);
+                    this.$store.commit("setUserId", "");
+                    this.$store.commit("setUserRole", "");
+                    this.$store.commit("setUserStatus", "");
                     this.$router.push({ path: "/login" });
                 }
             }

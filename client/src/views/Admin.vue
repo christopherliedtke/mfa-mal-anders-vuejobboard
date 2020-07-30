@@ -13,6 +13,8 @@
             </b-tab>
             <b-tab title="Data Analytics" @click="setQuery('tab', 3)"> </b-tab>
         </b-tabs>
+
+        <Head title="Admin" desc="" img="" />
     </b-container>
 </template>
 
@@ -20,12 +22,14 @@
     import AllJobsListAdmin from "@/components/admin/AllJobsListAdmin.vue";
     import AllCompaniesListAdmin from "@/components/admin/AllCompaniesListAdmin.vue";
     import AllUsersListAdmin from "@/components/admin/AllUsersListAdmin.vue";
+    import Head from "@/components/utils/Head.vue";
     export default {
         name: "Admin",
         components: {
             AllJobsListAdmin,
             AllCompaniesListAdmin,
-            AllUsersListAdmin
+            AllUsersListAdmin,
+            Head
         },
         data() {
             return {

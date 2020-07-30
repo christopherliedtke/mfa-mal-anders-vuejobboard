@@ -7,24 +7,21 @@
                 <DeleteAccountButton
             /></b-tab>
         </b-tabs>
+
+        <Head title="Account" desc="" img="" />
     </b-container>
 </template>
 
 <script>
     import DeleteAccountButton from "@/components/account/DeleteAccountButton.vue";
     import AccountDataForm from "@/components/account/AccountDataForm.vue";
+    import Head from "@/components/utils/Head.vue";
     export default {
         name: "Account",
         components: {
             DeleteAccountButton,
-            AccountDataForm
-        },
-        head: {
-            title: function() {
-                return {
-                    inner: "Account"
-                };
-            }
+            AccountDataForm,
+            Head
         }
     };
 </script>

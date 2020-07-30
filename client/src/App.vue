@@ -11,10 +11,33 @@
 <script>
     import Header from "@/components/layout/Header";
     import Footer from "@/components/layout/Footer";
+    import config from "@/utils/config.json";
+
     export default {
         components: {
             Header,
             Footer
+        },
+        methods: {
+            track() {
+                this.$gtag.pageview({
+                    page_title: this.$route.name,
+                    page_path: this.$route.fullPath,
+                    page_location: window.location.href,
+                    anonymize_ip: config.ga.anonymizeIP,
+                    client_storage: config.ga.storage
+                });
+            }
+        },
+        watch: {
+            $route(to, from) {
+                if (to.path != from.path && config.ga.active) {
+                    this.track();
+                }
+            }
+        },
+        created() {
+            this.track();
         }
     };
 </script>
