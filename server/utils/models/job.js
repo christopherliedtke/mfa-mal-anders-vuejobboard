@@ -38,6 +38,13 @@ const JobSchema = new Schema(
             type: String,
             required: true,
         },
+        simpleApplication: {
+            type: Boolean,
+            default: false,
+        },
+        specialization: {
+            type: String,
+        },
         extJobUrl: {
             type: String,
         },

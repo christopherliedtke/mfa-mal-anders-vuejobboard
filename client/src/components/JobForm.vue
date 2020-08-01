@@ -12,6 +12,22 @@
                 placeholder="Enter job title ..."
                 required
             />
+            <label for="specialization">Specialization</label>
+            <b-form-select
+                id="specialization"
+                v-model="job.specialization"
+                :state="validated ? true : null"
+            >
+                <b-form-select-option :value="null"
+                    >-- Choose specialization --</b-form-select-option
+                >
+                <b-form-select-option
+                    v-for="type in specializationOptions"
+                    :key="type"
+                    :value="type"
+                    >{{ type }}</b-form-select-option
+                ></b-form-select
+            >
             <label for="employment-type">Employment Type *</label>
             <b-form-select
                 id="employment-type"
@@ -35,6 +51,19 @@
                 v-model="job.applicationDeadline"
                 placeholder="Choose a date"
             />
+            <label for="simple-applcation">Allow simple CV Application</label>
+            <b-form-select
+                id="simple-application"
+                v-model="job.simpleApplication"
+                :state="validated ? true : null"
+            >
+                <b-form-select-option
+                    v-for="type in simpleApplicationOptions"
+                    :key="type.value"
+                    :value="type.value"
+                    >{{ type.text }}</b-form-select-option
+                ></b-form-select
+            >
             <label for="description">Job Description *</label>
             <TipTapEditor
                 :validated="validated"
@@ -307,7 +336,9 @@
 <script>
     import axios from "@/axios";
     import {
+        specializationOptions,
         employmentTypeOptions,
+        simpleApplicationOptions,
         contactTitleOptions,
         companyStateOptions,
         companyCountryOptions
@@ -325,8 +356,10 @@
                     _id: "",
                     title: "",
                     description: "",
+                    specialization: null,
                     employmentType: null,
                     applicationDeadline: "",
+                    simpleApplication: false,
                     extJobUrl: "",
                     applicationEmail: "",
                     imageUrl: "",
@@ -351,7 +384,9 @@
                 },
                 companies: [],
                 selectedCompanyId: "",
+                specializationOptions,
                 employmentTypeOptions,
+                simpleApplicationOptions,
                 contactTitleOptions,
                 companyCountryOptions,
                 companyStateOptions,
@@ -389,6 +424,8 @@
                                     description
                                     employmentType
                                     applicationDeadline
+                                    simpleApplication
+                                    specialization
                                     extJobUrl
                                     applicationEmail
                                     imageUrl
@@ -554,6 +591,8 @@
                                 applicationDeadline: "${
                                     this.job.applicationDeadline
                                 }"
+                                simpleApplication: ${this.job.simpleApplication}
+                                specialization: "${this.job.specialization}"
                                 extJobUrl: "${this.job.extJobUrl}"
                                 applicationEmail: "${this.job.applicationEmail}"
                                 imageUrl: "${this.job.imageUrl}"

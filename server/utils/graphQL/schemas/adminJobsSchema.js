@@ -61,6 +61,12 @@ const mutation = new GraphQLObjectType({
                 description: { type: GraphQLString },
                 employmentType: { type: GraphQLString },
                 applicationDeadline: { type: GraphQLString },
+                simpleApplication: {
+                    type: GraphQLBoolean,
+                },
+                specialization: {
+                    type: GraphQLString,
+                },
                 extJobUrl: {
                     type: GraphQLString,
                 },

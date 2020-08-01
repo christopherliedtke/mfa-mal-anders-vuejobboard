@@ -1,6 +1,7 @@
 const {
     GraphQLObjectType,
     GraphQLString,
+    GraphQLBoolean,
     GraphQLSchema,
     GraphQLList,
     GraphQLNonNull,
@@ -55,6 +56,12 @@ const mutation = new GraphQLObjectType({
                 applicationDeadline: {
                     type: new GraphQLNonNull(GraphQLString),
                 },
+                simpleApplication: {
+                    type: GraphQLBoolean,
+                },
+                specialization: {
+                    type: GraphQLString,
+                },
                 extJobUrl: {
                     type: GraphQLString,
                 },
@@ -105,6 +112,12 @@ const mutation = new GraphQLObjectType({
                 employmentType: { type: new GraphQLNonNull(GraphQLString) },
                 applicationDeadline: {
                     type: new GraphQLNonNull(GraphQLString),
+                },
+                simpleApplication: {
+                    type: GraphQLBoolean,
+                },
+                specialization: {
+                    type: GraphQLString,
                 },
                 extJobUrl: {
                     type: GraphQLString,

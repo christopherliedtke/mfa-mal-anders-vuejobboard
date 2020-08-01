@@ -47,6 +47,12 @@ const JobType = new GraphQLObjectType({
         applicationDeadline: {
             type: GraphQLString,
         },
+        simpleApplication: {
+            type: GraphQLBoolean,
+        },
+        specialization: {
+            type: GraphQLString,
+        },
         extJobUrl: {
             type: GraphQLString,
         },

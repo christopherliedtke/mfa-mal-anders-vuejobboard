@@ -1,8 +1,13 @@
 {
+    "specializationOptions": ["General", "Surgery"],
     "employmentTypeOptions": [
         { "value": "full", "text": "Full Time" },
         { "value": "part", "text": "Part Time" },
         { "value": "part_full", "text": "Part/Full Time" }
+    ],
+    "simpleApplicationOptions": [
+        { "value": false, "text": "No" },
+        { "value": true, "text": "Yes" }
     ],
     "contactTitleOptions": ["Dr.", "Prof."],
     "companyCountryOptions": ["USA"],
