@@ -37,7 +37,9 @@
             }
         },
         created() {
-            this.track();
+            if (config.ga.active) {
+                this.track();
+            }
         }
     };
 </script>

@@ -16,7 +16,7 @@ Vue.use(BootstrapVue);
 Vue.use(BootstrapVueIcons);
 Vue.use(VueSanitize);
 
-// // GA tracking
+// GA tracking -> tracking in App.vue
 Vue.use(VueGtag, {
     config: {
         id: config.ga.trackingCode,
