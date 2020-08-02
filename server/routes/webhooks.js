@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const config = require("../utils/config");
 const { Job } = require("../utils/models/job");
+const { Coupon } = require("../utils/models/coupon");
+const { UsedCoupon } = require("../utils/models/usedCoupon");
 
 let secrets;
 if (process.env.NODE_ENV == "production") {
@@ -16,7 +18,12 @@ const stripe = require("stripe")(secrets.STRIPE_SK);
 // #desc:   Check if payment is completed and update job.paid
 // #access: Private
 router.post("/checkout-completed", async (req, res) => {
-    const { jobId, userId } = req.body.data.object.metadata;
+    const {
+        jobId,
+        userId,
+        coupon,
+        couponUsage,
+    } = req.body.data.object.metadata;
 
     try {
         const intent = await stripe.paymentIntents.retrieve(
@@ -30,14 +37,25 @@ router.post("/checkout-completed", async (req, res) => {
         );
 
         if (intent.status === "succeeded") {
-            await Job.updateOne(
-                { _id: jobId, userId: userId },
-                {
-                    paid: true,
-                    paidAt,
-                    paidExpiresAt,
-                }
-            );
+            await Promise.all([
+                Job.updateOne(
+                    { _id: jobId, userId: userId },
+                    {
+                        paid: true,
+                        paidAt,
+                        paidExpiresAt,
+                    }
+                ),
+                Coupon.deleteOne({ code: coupon, usage: "single" }),
+            ]);
+
+            if (couponUsage === "singlePerUser") {
+                const newUsedCoupon = new UsedCoupon({
+                    userId: userId,
+                    code: coupon,
+                });
+                await newUsedCoupon.save();
+            }
         }
 
         res.json({ received: true });
