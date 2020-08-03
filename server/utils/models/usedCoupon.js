@@ -7,6 +7,11 @@ const UsedCouponSchema = new Schema(
             type: String,
             required: true,
         },
+        couponId: {
+            type: Schema.Types.ObjectId,
+            ref: "Coupon",
+            required: true,
+        },
         userId: {
             type: Schema.Types.ObjectId,
             ref: "User",

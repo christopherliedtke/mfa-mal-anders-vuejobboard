@@ -21,7 +21,8 @@ router.post("/checkout-completed", async (req, res) => {
     const {
         jobId,
         userId,
-        coupon,
+        couponId,
+        couponCode,
         couponUsage,
     } = req.body.data.object.metadata;
 
@@ -46,13 +47,14 @@ router.post("/checkout-completed", async (req, res) => {
                         paidExpiresAt,
                     }
                 ),
-                Coupon.deleteOne({ code: coupon, usage: "single" }),
+                Coupon.deleteOne({ code: couponCode, usage: "single" }),
             ]);
 
             if (couponUsage === "singlePerUser") {
                 const newUsedCoupon = new UsedCoupon({
                     userId: userId,
-                    code: coupon,
+                    couponId: couponId,
+                    code: couponCode,
                 });
                 await newUsedCoupon.save();
             }

@@ -4,6 +4,7 @@
         "url": ""
     },
     "stripe": {
+        "paymentMethods": ["card"],
         "currency": "usd",
         "pricePerJob": 2900,
         "paymentExpirationDays": 60

@@ -65,6 +65,7 @@ router.post("/create-session-id", authenticateToken, async (req, res) => {
 
         let discount = 0;
         let couponUsage = "";
+        let couponId;
 
         if (req.body.code) {
             const coupon = await Coupon.findOne({ code: req.body.code });
@@ -74,6 +75,7 @@ router.post("/create-session-id", authenticateToken, async (req, res) => {
             });
 
             couponUsage = coupon.usage;
+            couponId = coupon._id;
 
             if (coupon && !usedCoupon) {
                 if (coupon.userId && coupon.userId === req.userId) {
@@ -86,7 +88,7 @@ router.post("/create-session-id", authenticateToken, async (req, res) => {
 
         const session = await stripe.checkout.sessions.create({
             customer_email: user.email,
-            payment_method_types: ["card"],
+            payment_method_types: config.stripe.paymentMethods,
             line_items: [
                 {
                     price_data: {
@@ -106,7 +108,8 @@ router.post("/create-session-id", authenticateToken, async (req, res) => {
             metadata: {
                 jobId: req.body.job._id,
                 userId: req.userId,
-                coupon: discount && req.body.code,
+                couponId: couponId,
+                couponCode: discount && req.body.code,
                 couponUsage: couponUsage,
             },
             mode: "payment",
