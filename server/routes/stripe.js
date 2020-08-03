@@ -105,6 +105,7 @@ router.post("/create-session-id", authenticateToken, async (req, res) => {
                     quantity: 1,
                 },
             ],
+            billing_address_collection: "required",
             metadata: {
                 jobId: req.body.job._id,
                 userId: req.userId,
