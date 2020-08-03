@@ -17,6 +17,9 @@ const CouponSchema = new Schema(
         usage: {
             type: String,
         },
+        expireAt: {
+            type: Date,
+        },
     },
     { timestamps: true }
 );

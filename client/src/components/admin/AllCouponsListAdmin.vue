@@ -47,6 +47,9 @@
             <template v-slot:cell(updatedAt)="row">
                 {{ new Date(row.value).toLocaleString() }}
             </template>
+            <template v-slot:cell(expireAt)="row">
+                {{ new Date(row.value).toLocaleString() }}
+            </template>
 
             <template v-slot:cell(actions)="row">
                 <b-button
@@ -137,6 +140,11 @@
                         sortable: true
                     },
                     {
+                        key: "expireAt",
+                        label: "Expires at",
+                        sortable: true
+                    },
+                    {
                         key: "actions",
                         sortable: false
                     }
@@ -205,6 +213,7 @@
                                     usage
                                     createdAt
                                     updatedAt
+                                    expireAt
                                     userId {
                                         _id
                                         firstName

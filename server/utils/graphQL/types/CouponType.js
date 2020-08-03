@@ -26,6 +26,9 @@ const CouponType = new GraphQLObjectType({
         usage: {
             type: GraphQLString,
         },
+        expireAt: {
+            type: GraphQLFloat,
+        },
     }),
 });
 

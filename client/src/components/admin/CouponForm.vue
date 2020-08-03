@@ -44,6 +44,15 @@
                 placeholder="Enter User ID ..."
             />
 
+            <label for="expire-at">Expiration Date</label>
+            <b-form-datepicker
+                :value-as-date="true"
+                :state="validated && coupon.expireAt ? true : null"
+                id="expire-at"
+                v-model="coupon.expireAt"
+                placeholder="Choose a date"
+            />
+
             <div class="d-flex justify-content-between my-4">
                 <b-button variant="outline-danger" :to="`/admin?tab=3`">
                     Cancel
@@ -76,6 +85,7 @@
                     code: "",
                     discount: 0,
                     usage: null,
+                    expireAt: null,
                     userId: {
                         _id: null
                     }
@@ -103,6 +113,7 @@
                                     code
                                     discount
                                     usage
+                                    expireAt
                                     userId {
                                         _id
                                     }
@@ -113,6 +124,13 @@
 
                     if (!coupon.data.data.coupon.userId) {
                         coupon.data.data.coupon.userId = { _id: null };
+                    }
+                    if (coupon.data.data.coupon.expireAt) {
+                        coupon.data.data.coupon.expireAt = new Date(
+                            coupon.data.data.coupon.expireAt
+                        );
+                    } else {
+                        coupon.data.data.coupon.expireAt = null;
                     }
 
                     this.coupon = coupon.data.data.coupon;
@@ -144,15 +162,22 @@
                                     mutationType === "updateCoupon"
                                         ? `_id: "${this.couponId}",`
                                         : ""
-                                } 
-                                code: "${this.coupon.code}", 
+                                }
+                                code: "${this.coupon.code}",
                                 discount: ${this.coupon.discount}
-                                usage: "${this.coupon.usage}", 
+                                usage: "${this.coupon.usage}",
+                                ${
+                                    this.coupon.expireAt
+                                        ? `expireAt: ${Number(
+                                              this.coupon.expireAt
+                                          )},`
+                                        : ""
+                                }
                                 ${
                                     this.coupon.userId._id
                                         ? `userId: "${this.coupon.userId._id}",`
                                         : ""
-                                } 
+                                }
                             ) {
                                 _id
                             }

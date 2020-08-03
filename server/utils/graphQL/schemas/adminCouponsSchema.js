@@ -50,9 +50,13 @@ const mutation = new GraphQLObjectType({
                 code: { type: new GraphQLNonNull(GraphQLString) },
                 discount: { type: new GraphQLNonNull(GraphQLFloat) },
                 usage: { type: GraphQLString },
+                expireAt: { type: GraphQLFloat },
             },
             async resolve(parentValue, args) {
                 const addObj = { ...args };
+                if (addObj.expireAt) {
+                    addObj.expireAt = new Date(addObj.expireAt);
+                }
 
                 for (const key in addObj) {
                     addObj[key] = sanitizeHtml(addObj[key]);
@@ -68,6 +72,7 @@ const mutation = new GraphQLObjectType({
             type: CouponType,
             args: {
                 _id: { type: GraphQLString },
+                userId: { type: GraphQLString },
                 code: {
                     type: GraphQLString,
                 },
@@ -77,10 +82,15 @@ const mutation = new GraphQLObjectType({
                 usage: {
                     type: GraphQLString,
                 },
+                expireAt: { type: GraphQLFloat },
             },
             async resolve(parentValue, args) {
                 const updateObj = { ...args };
                 delete updateObj._id;
+
+                if (updateObj.expireAt) {
+                    updateObj.expireAt = new Date(updateObj.expireAt);
+                }
 
                 for (const key in updateObj) {
                     updateObj[key] = sanitizeHtml(updateObj[key]);
