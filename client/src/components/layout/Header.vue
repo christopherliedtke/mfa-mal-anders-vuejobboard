@@ -12,12 +12,31 @@
                     <b-nav-item class="home" to="/">Home</b-nav-item>
                     <b-nav-item to="/jobboard">Jobboard</b-nav-item>
 
-                    <b-nav-item
+                    <div v-for="item in cmsMenu" :key="item.id">
+                        <b-nav-item
+                            v-if="!item.childItems.length"
+                            :to="item.path"
+                            >{{ item.name }}</b-nav-item
+                        >
+
+                        <b-nav-item-dropdown v-else :text="item.name" left>
+                            <div
+                                v-for="childItem in item.childItems"
+                                :key="childItem.id"
+                            >
+                                <b-dropdown-item :to="childItem.path">{{
+                                    childItem.name
+                                }}</b-dropdown-item>
+                            </div>
+                        </b-nav-item-dropdown>
+                    </div>
+
+                    <!-- <b-nav-item
                         v-for="item in cmsMenu"
                         :key="item.id"
                         :to="item.path"
                         >{{ item.name }}</b-nav-item
-                    >
+                    > -->
 
                     <b-nav-item to="/login" v-if="!userId">Login</b-nav-item>
                     <b-nav-item to="/register" v-if="!userId"
@@ -103,18 +122,26 @@
             toggleNavbar() {
                 this.$root.$emit("bv::toggle::collapse", "nav-collapse");
             },
+            openDropdown() {
+                console.log("test");
+            },
             async fetchMenu() {
                 const response = await axios.post(config.cms.url, {
                     query: `
                         query MyQuery {
                             menu(id: "header", idType: NAME) {
                                 menuItems {
-                                    edges {
-                                        node {
-                                            id
-                                            path
-                                            label
-                                            url
+                                    nodes {
+                                        id
+                                        path
+                                        label
+                                        parentId
+                                        childItems {
+                                            nodes {
+                                                path
+                                                label
+                                                id
+                                            }
                                         }
                                     }
                                 }
@@ -124,15 +151,24 @@
                     `
                 });
 
-                this.cmsMenu = response.data.data.menu.menuItems.edges.map(
-                    edge => {
+                this.cmsMenu = response.data.data.menu.menuItems.nodes
+                    .filter(node => !node.parentId)
+                    .map(node => {
                         return {
-                            id: edge.node.id,
-                            name: edge.node.label,
-                            path: "/page" + edge.node.path
+                            id: node.id,
+                            name: node.label,
+                            path: "/page" + node.path,
+                            childItems:
+                                node.childItems.nodes.length > 0 &&
+                                node.childItems.nodes.map(childNode => {
+                                    return {
+                                        id: childNode.id,
+                                        name: childNode.label,
+                                        path: "/page" + childNode.path
+                                    };
+                                })
                         };
-                    }
-                );
+                    });
             }
         },
         computed: {

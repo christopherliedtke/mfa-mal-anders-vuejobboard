@@ -12,5 +12,23 @@
         .router-link-exact-active {
             color: darken($light, 5%);
         }
+
+        .dropdown-menu {
+            background-color: $primary;
+            border: none;
+
+            .dropdown-item {
+                color: transparentize($light, 0.5);
+
+                &:hover {
+                    background-color: $primary;
+                    color: transparentize($light, 0.15);
+                }
+
+                &.router-link-exact-active {
+                    color: darken($light, 5%);
+                }
+            }
+        }
     }
 }
