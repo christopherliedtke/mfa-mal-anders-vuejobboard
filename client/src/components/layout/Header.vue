@@ -11,11 +11,50 @@
                 <b-navbar-nav class="ml-auto">
                     <b-nav-item class="home" to="/">Home</b-nav-item>
                     <b-nav-item to="/jobboard">Jobboard</b-nav-item>
+
+                    <b-nav-item
+                        v-for="item in cmsMenu"
+                        :key="item.id"
+                        :to="item.path"
+                        >{{ item.name }}</b-nav-item
+                    >
+
                     <b-nav-item to="/login" v-if="!userId">Login</b-nav-item>
                     <b-nav-item to="/register" v-if="!userId"
                         >Register</b-nav-item
                     >
-                    <b-nav-item to="/dashboard" v-if="userId"
+
+                    <b-nav-item-dropdown v-if="userId" text="User" right>
+                        <b-dropdown-item v-if="userId" to="/dashboard"
+                            ><b-icon
+                                class="mr-1"
+                                icon="kanban"
+                                font-scale="1.45"
+                            ></b-icon
+                            >Dashboard</b-dropdown-item
+                        >
+                        <b-dropdown-item v-if="userId" to="/account"
+                            ><b-icon
+                                class="mr-1"
+                                icon="person-circle"
+                                font-scale="1.45"
+                            ></b-icon
+                            >Account</b-dropdown-item
+                        >
+                        <b-dropdown-item v-if="userRole === 'admin'" to="/admin"
+                            ><b-icon
+                                class="mr-1"
+                                icon="shield-lock"
+                                font-scale="1.45"
+                            ></b-icon
+                            >Admin</b-dropdown-item
+                        >
+                        <b-dropdown-item v-if="userId"
+                            ><Logout
+                        /></b-dropdown-item>
+                    </b-nav-item-dropdown>
+
+                    <!-- <b-nav-item to="/dashboard" v-if="userId"
                         ><b-icon
                             class="mr-1"
                             icon="kanban"
@@ -39,7 +78,7 @@
                         ></b-icon
                         >Admin</b-nav-item
                     >
-                    <b-nav-item v-if="userId"><Logout /></b-nav-item>
+                    <b-nav-item v-if="userId"><Logout /></b-nav-item> -->
                 </b-navbar-nav>
             </b-collapse>
         </b-navbar>
@@ -47,15 +86,53 @@
 </template>
 
 <script>
+    import axios from "@/axios";
+    import config from "@/utils/config.json";
     import Logout from "@/components/utils/Logout";
     export default {
         name: "Header",
         components: {
             Logout
         },
+        data() {
+            return {
+                cmsMenu: []
+            };
+        },
         methods: {
             toggleNavbar() {
                 this.$root.$emit("bv::toggle::collapse", "nav-collapse");
+            },
+            async fetchMenu() {
+                const response = await axios.post(config.cms.url, {
+                    query: `
+                        query MyQuery {
+                            menu(id: "header", idType: NAME) {
+                                menuItems {
+                                    edges {
+                                        node {
+                                            id
+                                            path
+                                            label
+                                            url
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                    `
+                });
+
+                this.cmsMenu = response.data.data.menu.menuItems.edges.map(
+                    edge => {
+                        return {
+                            id: edge.node.id,
+                            name: edge.node.label,
+                            path: "/page" + edge.node.path
+                        };
+                    }
+                );
             }
         },
         computed: {
@@ -64,6 +141,11 @@
             },
             userRole() {
                 return this.$store.state.auth.userRole;
+            }
+        },
+        created() {
+            if (config.cms.active) {
+                this.fetchMenu();
             }
         }
     };

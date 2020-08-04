@@ -9,6 +9,8 @@ import store from "@/store";
 import Home from "@/views/Home.vue";
 import Jobboard from "@/views/Jobboard.vue";
 import PublicJobView from "@/views/PublicJobView.vue";
+import CMSPageView from "@/views/CMSPageView.vue";
+import CMSPostView from "@/views/CMSPostView.vue";
 import PrivacyPolicy from "@/views/PrivacyPolicy.vue";
 import Impressum from "@/views/Impressum.vue";
 
@@ -38,6 +40,9 @@ import AdminEditCompanyView from "@/views/AdminEditCompanyView.vue";
 import AdminEditUserView from "@/views/AdminEditUserView.vue";
 import AdminCouponView from "@/views/AdminCouponView.vue";
 
+// 404
+import NotFound from "@/views/NotFound.vue";
+
 const routes = [
     // #Public
     {
@@ -60,6 +65,22 @@ const routes = [
         path: "/jobboard/job/:jobId",
         name: "PublicJobView",
         component: PublicJobView,
+        meta: {
+            public: true
+        }
+    },
+    {
+        path: "/page/:path",
+        name: "CMSPageView",
+        component: CMSPageView,
+        meta: {
+            public: true
+        }
+    },
+    {
+        path: "/post/:year/:month/:day/:path",
+        name: "CMSPostView",
+        component: CMSPostView,
         meta: {
             public: true
         }
@@ -237,7 +258,10 @@ const routes = [
             public: false,
             onlyAdmin: true
         }
-    }
+    },
+    // #404
+    { path: "/404", component: NotFound },
+    { path: "*", redirect: "/404" }
 ];
 
 const router = new VueRouter({

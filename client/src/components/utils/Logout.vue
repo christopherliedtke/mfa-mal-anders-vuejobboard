@@ -1,5 +1,8 @@
 <template>
-    <b-icon icon="box-arrow-right" font-scale="1.45" @click="onLogout"></b-icon>
+    <div @click="onLogout">
+        <b-icon class="mr-1" icon="box-arrow-right" font-scale="1.45"></b-icon
+        >Logout
+    </div>
 </template>
 
 <script>

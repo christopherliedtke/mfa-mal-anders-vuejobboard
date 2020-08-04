@@ -3,6 +3,13 @@
         "name": "Vue Jobboard",
         "url": "https://www.mfa-mal-anders.de"
     },
+    "cms": {
+        "url": "https://wordpress.mfa-mal-anders.de/graphql",
+        "active": true,
+        "postsActive": true,
+        "postsPath": "magazin",
+        "postsPageTitle": "Magazin"
+    },
     "fb": {
         "appId": "0"
     },
