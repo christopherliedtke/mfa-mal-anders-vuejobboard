@@ -12,6 +12,7 @@ const { Job } = require("../../models/job");
 // const sanitizeHtml = require("sanitize-html");
 const config = require("../../config.json");
 const s3 = require("../../middleware/s3");
+const { googleIndexing } = require("../../middleware/googleJobIndexing");
 
 // #Root Query
 const RootQuery = new GraphQLObjectType({
@@ -123,6 +124,20 @@ const mutation = new GraphQLObjectType({
                     })
                         .populate("userId")
                         .populate("company");
+
+                    if (config.googleIndexing.active) {
+                        //
+                        console.log("test");
+
+                        googleIndexing(
+                            config.website.url +
+                                config.googleIndexing.pathPrefix +
+                                args._id,
+                            args.status === "pusblished"
+                                ? "URL_UPDATED"
+                                : "URL_DELETED"
+                        );
+                    }
 
                     return updatedJob;
                 }

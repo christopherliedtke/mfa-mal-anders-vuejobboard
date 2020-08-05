@@ -10,6 +10,8 @@ const JobType = require("../types/JobType");
 const { Job } = require("../../models/job");
 const sanitizeHtml = require("sanitize-html");
 const s3 = require("../../middleware/s3");
+const config = require("../../config.json");
+const { googleIndexing } = require("../../middleware/googleJobIndexing");
 
 // #Root Query
 const RootQuery = new GraphQLObjectType({
@@ -191,6 +193,17 @@ const mutation = new GraphQLObjectType({
                         _id: args._id,
                         userId: req.userId,
                     }).populate("company");
+
+                    if (config.googleIndexing.active) {
+                        googleIndexing(
+                            config.website.url +
+                                config.googleIndexing.pathPrefix +
+                                args._id,
+                            args.status === "published"
+                                ? "URL_UPDATED"
+                                : "URL_DELETED"
+                        );
+                    }
 
                     return updatedJob;
                 }
