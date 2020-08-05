@@ -2,8 +2,10 @@
     <footer id="footer">
         <b-container>
             <b-nav>
-                <b-nav-item to="/privacy-policy">Privacy Policy</b-nav-item>
-                <b-nav-item to="/impressum">Impressum</b-nav-item>
+                <b-nav-item to="/page/privacy-policy"
+                    >Privacy Policy</b-nav-item
+                >
+                <b-nav-item to="/page/impressum">Impressum</b-nav-item>
             </b-nav>
         </b-container>
     </footer>

@@ -12,31 +12,9 @@
                     <b-nav-item class="home" to="/">Home</b-nav-item>
                     <b-nav-item to="/jobboard">Jobboard</b-nav-item>
 
-                    <div v-for="item in cmsMenu" :key="item.id">
-                        <b-nav-item
-                            v-if="!item.childItems.length"
-                            :to="item.path"
-                            >{{ item.name }}</b-nav-item
-                        >
-
-                        <b-nav-item-dropdown v-else :text="item.name" left>
-                            <div
-                                v-for="childItem in item.childItems"
-                                :key="childItem.id"
-                            >
-                                <b-dropdown-item :to="childItem.path">{{
-                                    childItem.name
-                                }}</b-dropdown-item>
-                            </div>
-                        </b-nav-item-dropdown>
-                    </div>
-
-                    <!-- <b-nav-item
-                        v-for="item in cmsMenu"
-                        :key="item.id"
-                        :to="item.path"
-                        >{{ item.name }}</b-nav-item
-                    > -->
+                    <b-nav-item to="/page/mfa-career">MFA Career</b-nav-item>
+                    <b-nav-item to="/page/magazin">Magazin</b-nav-item>
+                    <b-nav-item to="/page/about">About</b-nav-item>
 
                     <b-nav-item to="/login" v-if="!userId">Login</b-nav-item>
                     <b-nav-item to="/register" v-if="!userId"
@@ -105,70 +83,16 @@
 </template>
 
 <script>
-    import axios from "@/axios";
-    import config from "@/utils/config.json";
     import Logout from "@/components/utils/Logout";
     export default {
         name: "Header",
         components: {
             Logout
         },
-        data() {
-            return {
-                cmsMenu: []
-            };
-        },
+
         methods: {
             toggleNavbar() {
                 this.$root.$emit("bv::toggle::collapse", "nav-collapse");
-            },
-            openDropdown() {
-                console.log("test");
-            },
-            async fetchMenu() {
-                const response = await axios.post(config.cms.url, {
-                    query: `
-                        query MyQuery {
-                            menu(id: "header", idType: NAME) {
-                                menuItems {
-                                    nodes {
-                                        id
-                                        path
-                                        label
-                                        parentId
-                                        childItems {
-                                            nodes {
-                                                path
-                                                label
-                                                id
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-
-                    `
-                });
-
-                this.cmsMenu = response.data.data.menu.menuItems.nodes
-                    .filter(node => !node.parentId)
-                    .map(node => {
-                        return {
-                            id: node.id,
-                            name: node.label,
-                            path: "/page" + node.path,
-                            childItems:
-                                node.childItems.nodes.length > 0 &&
-                                node.childItems.nodes.map(childNode => {
-                                    return {
-                                        id: childNode.id,
-                                        name: childNode.label,
-                                        path: "/page" + childNode.path
-                                    };
-                                })
-                        };
-                    });
             }
         },
         computed: {
@@ -177,11 +101,6 @@
             },
             userRole() {
                 return this.$store.state.auth.userRole;
-            }
-        },
-        created() {
-            if (config.cms.active) {
-                this.fetchMenu();
             }
         }
     };

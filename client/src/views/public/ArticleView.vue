@@ -1,25 +1,19 @@
 <template>
-    <div class="cms-page">
-        <h1>{{ post.title }}</h1>
-        <b-img
-            v-if="post.featuredImage"
-            :src="post.featuredImage.url"
-            :alt="post.featuredImage.altText"
-            class="my-3"
-            fluid
-        ></b-img>
-        <div v-html="post.content"></div>
-    </div>
+    <Article :article="article" />
 </template>
 
 <script>
     import axios from "@/axios";
     import config from "@/utils/config.json";
+    import Article from "@/components/cms/Article.vue";
     export default {
-        name: "CMSPost",
+        name: "ArticleView",
+        components: {
+            Article
+        },
         data() {
             return {
-                post: {
+                article: {
                     title: "",
                     content: "",
                     featuredImage: {
@@ -35,19 +29,20 @@
                 this.title = "";
                 this.content = "";
 
-                if (to.params.path != from.params.path) {
+                if (to.params.title != from.params.title) {
                     this.getPostContent();
                 }
             }
         },
         methods: {
-            async getPostContent() {
+            async fetchArticle() {
                 const response = await axios.post(config.cms.url, {
                     query: `
                         query MyQuery {
-                            post(id: "/${this.$route.params.path}/", idType: URI) {
+                            post(id: "/${this.$route.params.title}/", idType: URI) {
                                 title
                                 content
+                                excerpt
                                 featuredImage {
                                     node {
                                         altText
@@ -65,9 +60,10 @@
                     return;
                 }
 
-                this.post = {
+                this.article = {
                     title: response.data.data.post.title,
                     content: response.data.data.post.content,
+                    excerpt: response.data.data.post.excerpt,
                     featuredImage: response.data.data.post.featuredImage && {
                         title: response.data.data.post.featuredImage.node.title,
                         altText:
@@ -79,7 +75,7 @@
             }
         },
         created() {
-            this.getPostContent();
+            this.fetchArticle();
         }
     };
 </script>

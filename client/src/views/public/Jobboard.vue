@@ -96,13 +96,12 @@
                 >
             </b-button-group>
         </b-button-toolbar>
-
-        <div class="job-list" v-if="jobboardView === 'list'">
-            <JobCard v-for="job in filteredJobs" :key="job._id" :job="job" />
-        </div>
-        <div class="job-map" v-if="jobboardView === 'map'">
-            <HereMapMultiJobs :jobs="filteredJobs" />
-        </div>
+        <keep-alive>
+            <component
+                :jobs="filteredJobs"
+                :is="computedJobboardView"
+            ></component>
+        </keep-alive>
 
         <Head title="Jobboard" desc="This is the meta of jobboard..." img="" />
     </b-container>
@@ -114,13 +113,13 @@
         employmentTypeOptions,
         companyStateOptions
     } from "@/utils/jobDataConfig.json";
-    import JobCard from "@/components/JobCard.vue";
     import HereMapMultiJobs from "@/components/hereMaps/HereMapMultiJobs.vue";
+    import JobboardList from "@/components/JobboardList.vue";
     import Head from "@/components/utils/Head.vue";
     export default {
         name: "Jobboard",
         components: {
-            JobCard,
+            JobboardList,
             HereMapMultiJobs,
             Head
         },
@@ -182,6 +181,13 @@
         },
         computed: {
             ...mapGetters(["jobs"]),
+            computedJobboardView: {
+                get: function() {
+                    return this.jobboardView === "map"
+                        ? "HereMapMultiJobs"
+                        : "JobboardList";
+                }
+            },
             filteredJobs: {
                 get: function() {
                     let jobs = [...this.jobs];

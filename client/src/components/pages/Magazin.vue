@@ -1,27 +1,31 @@
 <template>
-    <div class="cms-posts">
+    <b-container class="privacy-policy py-5">
         <h1>{{ title }}</h1>
-        <PostCard v-for="post in posts" :key="post.id" :post="post" />
-    </div>
+        <Articles :articles="articles" />
+
+        <Head :title="title" desc="This is the meta of Magazin..." img="" />
+    </b-container>
 </template>
 
 <script>
     import axios from "@/axios";
     import config from "@/utils/config.json";
-    import PostCard from "@/components/cms/PostCard.vue";
+    import Articles from "@/components/cms/Articles.vue";
+    import Head from "@/components/utils/Head.vue";
     export default {
-        name: "CMSPosts",
+        name: "Magazin",
         components: {
-            PostCard
+            Articles,
+            Head
         },
         data() {
             return {
                 title: config.cms.postsPageTitle,
-                posts: Array
+                articles: Array
             };
         },
         methods: {
-            async getPosts() {
+            async getArticles() {
                 const response = await axios.post(config.cms.url, {
                     query: `
                         query MyQuery {
@@ -51,7 +55,7 @@
                     `
                 });
 
-                this.posts = response.data.data.posts.edges.map(edge => {
+                this.articles = response.data.data.posts.edges.map(edge => {
                     return {
                         id: edge.node.id,
                         title: edge.node.title,
@@ -70,7 +74,7 @@
             }
         },
         created() {
-            this.getPosts();
+            this.getArticles();
         }
     };
 </script>

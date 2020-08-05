@@ -6,42 +6,40 @@ Vue.use(VueRouter);
 import store from "@/store";
 
 // Public
-import Home from "@/views/Home.vue";
-import Jobboard from "@/views/Jobboard.vue";
-import PublicJobView from "@/views/PublicJobView.vue";
-import CMSPageView from "@/views/CMSPageView.vue";
-import CMSPostView from "@/views/CMSPostView.vue";
-import PrivacyPolicy from "@/views/PrivacyPolicy.vue";
-import Impressum from "@/views/Impressum.vue";
+import Home from "@/views/public/Home.vue";
+import Jobboard from "@/views/public/Jobboard.vue";
+import PublicJobView from "@/views/public/PublicJobView.vue";
+import PageView from "@/views/public/PageView.vue";
+import ArticleView from "@/views/public/ArticleView.vue";
 
 // Auth
-import Login from "@/views/Login.vue";
-import Register from "@/views/Register.vue";
-import PasswordReset from "@/views/PasswordReset.vue";
-import AccountVerification from "@/views/AccountVerification.vue";
-import AccountVerificationSuccessful from "@/views/AccountVerificationSuccessful.vue";
+import Login from "@/views/auth/Login.vue";
+import Register from "@/views/auth/Register.vue";
+import PasswordReset from "@/views/auth/PasswordReset.vue";
+import AccountVerification from "@/views/auth/AccountVerification.vue";
+import AccountVerificationSuccessful from "@/views/auth/AccountVerificationSuccessful.vue";
 
 // Private
-import Account from "@/views/Account.vue";
-import Dashboard from "@/views/Dashboard.vue";
+import Account from "@/views/private/Account.vue";
+import Dashboard from "@/views/private/Dashboard.vue";
 
-import NewJobView from "@/views/NewJobView.vue";
-import EditJobView from "@/views/EditJobView.vue";
-import PrivateJobView from "@/views/PrivateJobView.vue";
+import NewJobView from "@/views/private/NewJobView.vue";
+import EditJobView from "@/views/private/EditJobView.vue";
+import PrivateJobView from "@/views/private/PrivateJobView.vue";
 
-import NewCompanyView from "@/views/NewCompanyView.vue";
-import EditCompanyView from "@/views/EditCompanyView.vue";
+import NewCompanyView from "@/views/private/NewCompanyView.vue";
+import EditCompanyView from "@/views/private/EditCompanyView.vue";
 
 // Admin
-import Admin from "@/views/Admin.vue";
-import AdminJobView from "@/views/AdminJobView.vue";
-import AdminEditJobView from "@/views/AdminEditJobView.vue";
-import AdminEditCompanyView from "@/views/AdminEditCompanyView.vue";
-import AdminEditUserView from "@/views/AdminEditUserView.vue";
-import AdminCouponView from "@/views/AdminCouponView.vue";
+import Admin from "@/views/admin/Admin.vue";
+import AdminJobView from "@/views/admin/AdminJobView.vue";
+import AdminEditJobView from "@/views/admin/AdminEditJobView.vue";
+import AdminEditCompanyView from "@/views/admin/AdminEditCompanyView.vue";
+import AdminEditUserView from "@/views/admin/AdminEditUserView.vue";
+import AdminCouponView from "@/views/admin/AdminCouponView.vue";
 
 // 404
-import NotFound from "@/views/NotFound.vue";
+import NotFound from "@/views/public/NotFound.vue";
 
 const routes = [
     // #Public
@@ -70,33 +68,17 @@ const routes = [
         }
     },
     {
-        path: "/page/:path",
-        name: "CMSPageView",
-        component: CMSPageView,
+        path: "/page/:title",
+        name: "PageView",
+        component: PageView,
         meta: {
             public: true
         }
     },
     {
-        path: "/post/:year/:month/:day/:path",
-        name: "CMSPostView",
-        component: CMSPostView,
-        meta: {
-            public: true
-        }
-    },
-    {
-        path: "/privacy-policy",
-        name: "PrivacyPolicy",
-        component: PrivacyPolicy,
-        meta: {
-            public: true
-        }
-    },
-    {
-        path: "/impressum",
-        name: "Impressum",
-        component: Impressum,
+        path: "/article/:y/:m/:d/:title",
+        name: "ArticleView",
+        component: ArticleView,
         meta: {
             public: true
         }
