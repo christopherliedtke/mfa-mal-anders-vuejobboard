@@ -10,7 +10,7 @@
         "paymentExpirationDays": 60
     },
     "googleIndexing": {
-        "active": false,
+        "active": true,
         "pathPrefix": "/jobboard/job/"
     }
 }

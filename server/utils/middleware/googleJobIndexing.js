@@ -17,28 +17,33 @@ const jwtClient = new google.auth.JWT(
 );
 
 module.exports.googleIndexing = function (url = "", type = "URL_UPDATED") {
-    jwtClient.authorize(function (err, tokens) {
-        if (err) {
-            console.log(err);
-            return;
-        }
-        let options = {
-            url: "https://indexing.googleapis.com/v3/urlNotifications:publish",
-            method: "POST",
-            // Your options, which must include the Content-Type and auth headers
-            headers: {
-                "Content-Type": "application/json",
-            },
-            auth: { bearer: tokens.access_token },
-            // Define contents here. The structure of the content is described in the next step.
-            json: {
-                url: url,
-                type: type,
-            },
-        };
-        request(options, function (error, response, body) {
-            // Handle the response
-            console.log(body);
+    try {
+        jwtClient.authorize(function (err, tokens) {
+            if (err) {
+                console.log(err);
+                return;
+            }
+            let options = {
+                url:
+                    "https://indexing.googleapis.com/v3/urlNotifications:publish",
+                method: "POST",
+                // Your options, which must include the Content-Type and auth headers
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                auth: { bearer: tokens.access_token },
+                // Define contents here. The structure of the content is described in the next step.
+                json: {
+                    url: url,
+                    type: type,
+                },
+            };
+            request(options, function (error, response, body) {
+                // Handle the response
+                console.log(body);
+            });
         });
-    });
+    } catch (err) {
+        console.log("Error on googleIndexing(): ", err);
+    }
 };
