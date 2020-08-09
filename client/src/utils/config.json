@@ -6,7 +6,6 @@
     "cms": {
         "url": "https://wordpress.mfa-mal-anders.de/graphql",
         "active": true,
-        "postsActive": true,
         "postsPath": "magazin",
         "postsPageTitle": "Magazin"
     },

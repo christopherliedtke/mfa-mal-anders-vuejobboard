@@ -5,19 +5,22 @@
 </template>
 
 <script>
+    import config from "@/utils/config.json";
     import MFACareer from "@/components/pages/MFACareer.vue";
-    import Magazin from "@/components/pages/Magazin.vue";
     import About from "@/components/pages/About.vue";
     import PrivacyPolicy from "@/components/pages/PrivacyPolicy.vue";
     import Impressum from "@/components/pages/Impressum.vue";
+    // CMS Blog component
+    import Magazin from "@/components/pages/Magazin.vue";
     export default {
         name: "PageView",
         components: {
             MFACareer,
-            Magazin,
             About,
             PrivacyPolicy,
-            Impressum
+            Impressum,
+            // CMS blog component
+            Magazin
         },
         data() {
             return {
@@ -42,8 +45,8 @@
                     case "mfa-career":
                         comp = "MFACareer";
                         break;
-                    case "magazin":
-                        comp = "Magazin";
+                    case config.cms.postsPath:
+                        comp = config.cms.postsPageTitle;
                         break;
                     case "about":
                         comp = "About";

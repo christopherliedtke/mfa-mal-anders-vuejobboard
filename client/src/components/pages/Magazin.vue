@@ -1,5 +1,5 @@
 <template>
-    <b-container class="privacy-policy py-5">
+    <b-container v-if="config.cms.active" class="privacy-policy py-5">
         <h1>{{ title }}</h1>
         <Articles :articles="articles" />
 
@@ -21,7 +21,8 @@
         data() {
             return {
                 title: config.cms.postsPageTitle,
-                articles: Array
+                articles: Array,
+                config
             };
         },
         methods: {
@@ -74,7 +75,9 @@
             }
         },
         created() {
-            this.getArticles();
+            if (config.cms.active) {
+                this.getArticles();
+            }
         }
     };
 </script>

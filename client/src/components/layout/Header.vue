@@ -13,7 +13,11 @@
                     <b-nav-item to="/jobboard">Jobboard</b-nav-item>
 
                     <b-nav-item to="/page/mfa-career">MFA Career</b-nav-item>
-                    <b-nav-item to="/page/magazin">Magazin</b-nav-item>
+                    <b-nav-item
+                        v-if="config.cms.active"
+                        :to="`/page/${config.cms.postsPath}`"
+                        >{{ config.cms.postsPageTitle }}</b-nav-item
+                    >
                     <b-nav-item to="/page/about">About</b-nav-item>
 
                     <b-nav-item to="/login" v-if="!userId">Login</b-nav-item>
@@ -83,13 +87,18 @@
 </template>
 
 <script>
+    import config from "@/utils/config.json";
     import Logout from "@/components/utils/Logout";
     export default {
         name: "Header",
         components: {
             Logout
         },
-
+        data() {
+            return {
+                config
+            };
+        },
         methods: {
             toggleNavbar() {
                 this.$root.$emit("bv::toggle::collapse", "nav-collapse");

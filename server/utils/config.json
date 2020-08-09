@@ -12,5 +12,8 @@
     "googleIndexing": {
         "active": true,
         "pathPrefix": "/jobboard/job/"
+    },
+    "facebook": {
+        "autoShare": true
     }
 }
