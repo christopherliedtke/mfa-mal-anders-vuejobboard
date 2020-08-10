@@ -150,7 +150,7 @@
                         this.validated = null;
                         this.resetForm();
                     } else {
-                        throw Error;
+                        throw new Error("Email could not be sent.");
                     }
                 } catch (err) {
                     this.error =
