@@ -10,6 +10,7 @@
     import About from "@/components/pages/About.vue";
     import PrivacyPolicy from "@/components/pages/PrivacyPolicy.vue";
     import Impressum from "@/components/pages/Impressum.vue";
+    import Contact from "@/components/pages/Contact.vue";
     // CMS Blog component
     import Magazin from "@/components/pages/Magazin.vue";
     export default {
@@ -17,6 +18,7 @@
         components: {
             MFACareer,
             About,
+            Contact,
             PrivacyPolicy,
             Impressum,
             // CMS blog component
@@ -50,6 +52,9 @@
                         break;
                     case "about":
                         comp = "About";
+                        break;
+                    case "contact":
+                        comp = "Contact";
                         break;
                     case "privacy-policy":
                         comp = "PrivacyPolicy";

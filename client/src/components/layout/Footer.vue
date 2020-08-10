@@ -1,7 +1,8 @@
 <template>
     <footer id="footer">
         <b-container>
-            <b-nav>
+            <b-nav class="justify-content-end">
+                <b-nav-item to="/page/contact">Contact</b-nav-item>
                 <b-nav-item to="/page/privacy-policy"
                     >Privacy Policy</b-nav-item
                 >

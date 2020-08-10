@@ -1,7 +1,8 @@
 {
     "website": {
         "name": "Vue Jobboard",
-        "url": "https://www.mfa-mal-anders.de"
+        "url": "https://www.mfa-mal-anders.de",
+        "contactEmail": "kontakt@mfa-mal-anders.de"
     },
     "stripe": {
         "paymentMethods": ["card"],
