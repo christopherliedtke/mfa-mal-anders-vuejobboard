@@ -207,6 +207,10 @@
                         sortable: true
                     },
                     {
+                        key: "applicationDeadline",
+                        sortable: true
+                    },
+                    {
                         key: "company.name",
                         label: "Company",
                         sortable: true
@@ -413,7 +417,8 @@
                 if (
                     item.status === "published" &&
                     item.paid === true &&
-                    item.paidExpiresAt > new Date()
+                    item.paidExpiresAt > new Date() &&
+                    new Date(item.applicationDeadline) > new Date()
                 )
                     return "table-success";
             }
