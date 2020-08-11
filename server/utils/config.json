@@ -2,7 +2,9 @@
     "website": {
         "name": "Vue Jobboard",
         "url": "https://www.mfa-mal-anders.de",
-        "contactEmail": "kontakt@mfa-mal-anders.de"
+        "contactEmail": "kontakt@mfa-mal-anders.de",
+        "emailFrom": "Christopher Liedtke",
+        "newsletterSuccessPath": "/page/subscription-successful"
     },
     "stripe": {
         "paymentMethods": ["card"],

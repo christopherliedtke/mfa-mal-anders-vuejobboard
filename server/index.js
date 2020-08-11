@@ -58,6 +58,7 @@ app.use("/api/user", require("./routes/user"));
 app.use("/api/jobs", require("./routes/jobs"));
 app.use("/api/companies", require("./routes/companies"));
 app.use("/api/contact", require("./routes/contact"));
+app.use("/api/newsletter", require("./routes/newsletter"));
 app.use("/api/coupons", require("./routes/coupons"));
 app.use("/api/images", require("./routes/images"));
 app.use("/api/stripe", require("./routes/stripe"));

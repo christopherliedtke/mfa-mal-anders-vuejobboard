@@ -2,12 +2,18 @@ const express = require("express");
 const router = express.Router();
 const emailService = require("../utils/nodemailer");
 const config = require("../utils/config");
+const sanitizeHtml = require("sanitize-html");
+const emailTemplate = require("../utils/emailTemplate");
 
 // #route:  POST /api/contact/send
 // #desc:   Send contact form
 // #access: Public
 router.post("/send", async (req, res) => {
     const form = { ...req.body };
+
+    for (const key in form) {
+        form[key] = sanitizeHtml(form[key]);
+    }
 
     if (form.honeypot) {
         res.sendStatus(400);
@@ -18,7 +24,7 @@ router.post("/send", async (req, res) => {
                 to: config.website.contactEmail,
                 replyTo: `${form.email}`,
                 subject: `${form.subject}`,
-                html: `
+                html: emailTemplate.generate(`
                     <div>
                         <strong>First Name:</strong> ${form.firstName} <br>
                         <strong>Last Name:</strong> ${form.lastName} <br>
@@ -28,7 +34,7 @@ router.post("/send", async (req, res) => {
                         <h2>Subject: ${form.subject}</h2>
                         <p>${form.message}</p>
                     </div>
-                `,
+                `),
             };
 
             const response = await emailService.sendMail(data);

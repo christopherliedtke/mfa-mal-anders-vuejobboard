@@ -63,6 +63,19 @@
                 rows="6"
                 :state="validated ? (form.message ? true : false) : null"
             ></b-form-textarea>
+            <b-form-checkbox
+                class="mt-2"
+                id="acceptance"
+                v-model="form.accepted"
+                name="acceptance"
+                :value="true"
+                :unchecked-value="false"
+                switch
+                required
+                :state="validated ? (form.accepted ? true : false) : null"
+            >
+                I accept the terms of use
+            </b-form-checkbox>
 
             <b-form-input
                 class="d-none"
@@ -109,6 +122,7 @@
                     phone: "",
                     subject: "",
                     message: "",
+                    accepted: false,
                     honeypot: ""
                 },
                 validated: null,
@@ -125,6 +139,7 @@
                     !this.form.email ||
                     !this.form.subject ||
                     !this.form.message ||
+                    !this.form.accepted ||
                     this.form.honeypot
                     ? false
                     : true;
@@ -132,12 +147,12 @@
             async onSubmit() {
                 this.error = null;
 
-                this.showOverlay = true;
-
                 if (!this.formValidation()) {
                     this.error = "Please provide all necessary information.";
                     return null;
                 }
+
+                this.showOverlay = true;
 
                 try {
                     const response = await axios.post(
