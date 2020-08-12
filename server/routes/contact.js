@@ -3,7 +3,6 @@ const router = express.Router();
 const emailService = require("../utils/nodemailer");
 const config = require("../utils/config");
 const sanitizeHtml = require("sanitize-html");
-const emailTemplate = require("../utils/emailTemplate");
 
 // #route:  POST /api/contact/send
 // #desc:   Send contact form
@@ -24,7 +23,7 @@ router.post("/send", async (req, res) => {
                 to: config.website.contactEmail,
                 replyTo: `${form.email}`,
                 subject: `${form.subject}`,
-                html: emailTemplate.generate(`
+                html: `
                     <div>
                         <strong>First Name:</strong> ${form.firstName} <br>
                         <strong>Last Name:</strong> ${form.lastName} <br>
@@ -34,7 +33,7 @@ router.post("/send", async (req, res) => {
                         <h2>Subject: ${form.subject}</h2>
                         <p>${form.message}</p>
                     </div>
-                `),
+                `,
             };
 
             const response = await emailService.sendMail(data);

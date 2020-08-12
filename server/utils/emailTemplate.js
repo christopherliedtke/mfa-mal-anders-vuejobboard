@@ -1,5 +1,5 @@
 module.exports = {
-    generate: function (content) {
+    generate: function (content, footer = "") {
         // for templating https://beefree.io/
         return `
             <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -166,6 +166,9 @@ module.exports = {
                                                                 <div style="color: #555555; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; line-height: 1.2; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;">
                                                                     <div style="font-size: undefined; line-height: 1.2; color: #555555; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; mso-line-height-alt: NaNpx;">
                                                                         ${content}
+                                                                    </div>
+                                                                    <div>
+                                                                        ${footer}
                                                                     </div>
                                                                 </div>
                                                                 <!--[if mso]></td></tr></table><![endif]-->

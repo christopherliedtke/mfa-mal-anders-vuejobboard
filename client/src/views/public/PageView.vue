@@ -12,6 +12,7 @@
     import Impressum from "@/components/pages/Impressum.vue";
     import Contact from "@/components/pages/Contact.vue";
     import NewsletterSubscriptionSuccess from "@/components/pages/NewsletterSubscriptionSuccess.vue";
+    import NewsletterUnsubscriptionSuccess from "@/components/pages/NewsletterUnsubscriptionSuccess.vue";
     // CMS Blog component
     import Magazin from "@/components/pages/Magazin.vue";
     export default {
@@ -21,6 +22,7 @@
             About,
             Contact,
             NewsletterSubscriptionSuccess,
+            NewsletterUnsubscriptionSuccess,
             PrivacyPolicy,
             Impressum,
             // CMS blog component
@@ -61,6 +63,9 @@
                     case "subscription-successful":
                         comp = "NewsletterSubscriptionSuccess";
                         break;
+                    case "unsubscribed-successful":
+                        comp = "NewsletterUnsubscriptionSuccess";
+                        break;
                     case "privacy-policy":
                         comp = "PrivacyPolicy";
                         break;
@@ -68,9 +73,9 @@
                         comp = "Impressum";
                         break;
 
-                    default:
-                        this.$router.push("/404");
-                        break;
+                    // default:
+                    //     this.$router.push("/404");
+                    //     break;
                 }
 
                 this.renderedComponent = comp;

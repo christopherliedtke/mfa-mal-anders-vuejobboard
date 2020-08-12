@@ -8,6 +8,17 @@ import VueHead from "vue-head";
 import config from "@/utils/config.json";
 import VueGtag from "vue-gtag";
 
+// FontAwesome Integration
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faUser as farUser } from "@fortawesome/free-regular-svg-icons";
+import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
+library.add(faUser, farUser, faFacebookSquare);
+
+Vue.component("font-awesome-icon", FontAwesomeIcon);
+
 Vue.use(VueHead, {
     separator: "–",
     complement: config.website.name

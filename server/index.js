@@ -15,8 +15,16 @@ if (process.env.NODE_ENV == "production") {
     port = 5000;
 }
 
+const config = require("./utils/config");
+
 // #mongoDB
 require("./utils/db");
+
+// #Send Newsletter CRON job
+const { sendNewsletter } = require("./utils/sendNewsletter");
+if (config.newsletter.active) {
+    sendNewsletter.start();
+}
 
 // #Middleware
 app.use(compression());

@@ -1,10 +1,11 @@
 {
     "website": {
         "name": "Vue Jobboard",
-        "url": "https://www.mfa-mal-anders.de",
+        "url": "http://127.0.0.1:8080",
         "contactEmail": "kontakt@mfa-mal-anders.de",
         "emailFrom": "Christopher Liedtke",
-        "newsletterSuccessPath": "/page/subscription-successful"
+        "newsletterSuccessPath": "/page/subscription-successful",
+        "newsletterUnsubscribeSuccessPath": "/page/unsubscribed-successful"
     },
     "stripe": {
         "paymentMethods": ["card"],
@@ -18,5 +19,9 @@
     },
     "facebook": {
         "autoPost": false
+    },
+    "newsletter": {
+        "active": false,
+        "interval": "*/10 * * * * *"
     }
 }

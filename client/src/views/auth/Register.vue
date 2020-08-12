@@ -80,6 +80,7 @@
                 </b-input-group-append>
             </b-input-group>
             <b-form-checkbox
+                class="mt-2"
                 id="acceptance"
                 v-model="acceptance"
                 name="acceptance"

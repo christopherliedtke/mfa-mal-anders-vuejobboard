@@ -97,7 +97,10 @@ router.get("/delete/:subscriberId", async (req, res) => {
         });
 
         if (deletedSubscriber.n === 1) {
-            res.redirect(config.website.url);
+            res.redirect(
+                config.website.url +
+                    config.website.newsletterUnsubscribeSuccessPath
+            );
         } else {
             res.sendStatus(503);
         }

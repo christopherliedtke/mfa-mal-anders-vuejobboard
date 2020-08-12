@@ -1,7 +1,7 @@
 <template>
     <b-container class="new-job py-5">
         <h2>New Job</h2>
-        <JobForm :jobId="null"></JobForm>
+        <JobForm :jobId="null" apiJobsSchema="private"></JobForm>
     </b-container>
 </template>
 
