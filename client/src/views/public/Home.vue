@@ -1,14 +1,14 @@
 <template>
     <div>
-        <b-jumbotron
-            :container-fluid="true"
-            header="BootstrapVue Jobboard"
-            lead="Jobboard made with Bootstrap v4 Components for Vue.js 2"
-        >
-            <p>For more information visit website</p>
-            <b-button variant="primary" href="#">More Info</b-button>
-            <FacebookBtn />
-            <FacebookShareBtn />
+        <b-jumbotron :container-fluid="true">
+            <b-container>
+                <h1 class="display-4">BootstrapVue Jobboard</h1>
+                <h4>Jobboard made with Bootstrap v4 Components for Vue.js 2</h4>
+                <p>For more information visit website</p>
+                <b-button variant="primary" href="#">More Info</b-button>
+                <FacebookBtn />
+                <FacebookShareBtn />
+            </b-container>
         </b-jumbotron>
 
         <b-container>
