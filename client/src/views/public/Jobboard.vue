@@ -77,6 +77,21 @@
                     >{{ type.text }}</b-form-select-option
                 >
             </b-form-select>
+            <b-form-select
+                class="my-1 mr-2"
+                v-model="filter.specialization"
+                @change="setQuery"
+            >
+                <b-form-select-option :value="null"
+                    >Any specialization</b-form-select-option
+                >
+                <b-form-select-option
+                    v-for="specialization in specializationOptions"
+                    :key="specialization"
+                    :value="specialization"
+                    >{{ specialization }}</b-form-select-option
+                >
+            </b-form-select>
         </b-form>
         <b-button-toolbar aria-label="Jobboard view toolbar">
             <b-button-group class="mt-3">
@@ -111,7 +126,8 @@
     import { mapActions, mapGetters } from "vuex";
     import {
         employmentTypeOptions,
-        companyStateOptions
+        companyStateOptions,
+        specializationOptions
     } from "@/utils/jobDataConfig.json";
     import HereMapMultiJobs from "@/components/hereMaps/HereMapMultiJobs.vue";
     import JobboardList from "@/components/JobboardList.vue";
@@ -129,12 +145,14 @@
                     searchTerm: this.$route.query.searchTerm || "",
                     employmentType: this.$route.query.employmentType || null,
                     location: this.$route.query.location || "",
-                    state: this.$route.query.state || null
+                    state: this.$route.query.state || null,
+                    specialization: this.$route.query.specialization || null
                 },
                 employmentTypeOptions: employmentTypeOptions.filter(
                     type => type.value != "part_full"
                 ),
                 companyStateOptions,
+                specializationOptions,
                 jobboardView: this.$route.query.jobboardView || "list"
             };
         },
@@ -162,6 +180,7 @@
                             description
                             employmentType
                             applicationDeadline
+                            specialization
                             company {
                                 _id
                                 name
@@ -256,6 +275,21 @@
                             if (
                                 job.employmentType.includes(
                                     this.filter.employmentType
+                                )
+                            ) {
+                                return job;
+                            } else {
+                                return;
+                            }
+                        });
+                    }
+
+                    // filter specialization
+                    if (this.filter.specialization) {
+                        jobs = jobs.filter(job => {
+                            if (
+                                job.specialization.includes(
+                                    this.filter.specialization
                                 )
                             ) {
                                 return job;
