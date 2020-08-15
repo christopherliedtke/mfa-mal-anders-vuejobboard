@@ -15,7 +15,7 @@
         },
         data() {
             return {
-                title: "MFA Career"
+                title: "Karriere"
             };
         }
     };

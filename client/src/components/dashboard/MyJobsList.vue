@@ -1,9 +1,9 @@
 <template>
     <div>
-        <h3>Your Jobs</h3>
+        <h3>Meine Stellenanzeigen</h3>
         <b-button to="/dashboard/new-job" variant="outline-primary"
-            ><b-icon class="mr-2" scale="1" icon="plus-circle"></b-icon>New
-            Job</b-button
+            ><b-icon class="mr-2" scale="1" icon="plus-circle"></b-icon>Neue
+            Stelle</b-button
         >
         <b-card v-for="job in myJobs" :key="job._id" class="my-3">
             <b-card-text>
@@ -18,14 +18,14 @@
                         class="mr-1"
                         pill
                         variant="danger"
-                        >payment expired</b-badge
+                        >Zahlung abgelaufen</b-badge
                     >
                     <b-badge
                         v-else
                         class="mr-1"
                         pill
                         :variant="job.paid ? 'success' : 'warning'"
-                        >{{ job.paid ? "paid" : "unpaid" }}</b-badge
+                        >{{ job.paid ? "bezahlt" : "unbezahlt" }}</b-badge
                     >
                     <b-badge
                         class="mr-1"
@@ -49,20 +49,20 @@
                         class="mr-1"
                         pill
                         variant="danger"
-                        >deadline passed</b-badge
+                        >Bewerbungsfrist abgelaufen</b-badge
                     >
                 </div>
                 <div class="my-3">
                     <div>
-                        Last updated:
+                        Aktualisiert:
                         {{ new Date(parseInt(job.updatedAt)).toLocaleString() }}
                     </div>
                     <div v-if="job.paidAt">
-                        Paid:
+                        Bezahlt:
                         {{ new Date(parseInt(job.paidAt)).toLocaleString() }}
                     </div>
                     <div v-if="job.paidExpiresAt">
-                        Payment Expiration:
+                        Zahlung läuft ab:
                         {{
                             new Date(
                                 parseInt(job.paidExpiresAt)
@@ -70,7 +70,7 @@
                         }}
                     </div>
                     <div>
-                        Created at:
+                        Erstellt:
                         {{ new Date(parseInt(job.createdAt)).toLocaleString() }}
                     </div>
                 </div>
@@ -82,7 +82,7 @@
                             variant="primary"
                             size="sm"
                             ><b-icon class="mr-2" icon="pencil-square"></b-icon>
-                            Edit</b-button
+                            Bearbeiten</b-button
                         >
                         <b-button
                             class="mr-2 mb-2 mb-md-0"
@@ -90,7 +90,7 @@
                             variant="info"
                             size="sm"
                             ><b-icon class="mr-2" scale="1" icon="eye"></b-icon>
-                            Preview</b-button
+                            Vorschau</b-button
                         >
                         <b-dropdown
                             v-if="
@@ -109,28 +109,28 @@
                                     icon="three-dots-vertical
 "
                                 ></b-icon>
-                                Change Status
+                                Status ändern
                             </template>
                             <b-dropdown-item
                                 variant="secondary"
                                 @click.prevent="
                                     updateJobStatus(job._id, 'draft')
                                 "
-                                >Draft</b-dropdown-item
+                                >Entwurf</b-dropdown-item
                             >
                             <b-dropdown-item
                                 variant="success"
                                 @click.prevent="
                                     updateJobStatus(job._id, 'published')
                                 "
-                                >Published</b-dropdown-item
+                                >Online</b-dropdown-item
                             >
                             <b-dropdown-item
                                 variant="warning"
                                 @click.prevent="
                                     updateJobStatus(job._id, 'unpublished')
                                 "
-                                >Unpublished</b-dropdown-item
+                                >Offline</b-dropdown-item
                             >
                         </b-dropdown>
                         <b-button
@@ -139,8 +139,8 @@
                             variant="success"
                             size="sm"
                             @click.prevent="showStripeCheckoutModal(job)"
-                            ><b-icon class="mr-2" icon="cart2"></b-icon> Pay
-                            Now</b-button
+                            ><b-icon class="mr-2" icon="cart2"></b-icon>Jetzt
+                            bezahlen</b-button
                         >
                     </div>
                     <div>
@@ -150,7 +150,7 @@
                             size="sm"
                             @click.prevent="$bvModal.show(job._id)"
                             ><b-icon class="mr-2" icon="trash"></b-icon>
-                            Delete</b-button
+                            Löschen</b-button
                         >
                     </div>
                 </div>
@@ -164,7 +164,8 @@
                 footer-class="d-flex justify-content-between"
                 @ok="deleteJob(job._id)"
                 ><p class="my-4">
-                    Are you sure to delete this job?
+                    Bist Du sicher, dass Du diese Stellenanzeige löschen
+                    möchtest?
                 </p></b-modal
             >
         </b-card>
@@ -180,7 +181,8 @@
             variant="warning"
             dismissible
         >
-            Oh, something went wrong. Please try again later.
+            Oh, da ist leider etwas schief gelaufen. Bitte probiere es noch
+            einmal.
         </b-alert>
     </div>
 </template>

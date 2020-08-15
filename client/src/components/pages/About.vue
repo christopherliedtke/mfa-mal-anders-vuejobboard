@@ -15,7 +15,7 @@
         },
         data() {
             return {
-                title: "About"
+                title: "Über"
             };
         }
     };

@@ -2,34 +2,33 @@
     <div class="account-data-form position-relative mb-3">
         <Overlay :show="showOverlay" />
         <b-form id="account-data-form">
-            <h3>Account Data</h3>
-            <label for="first-name">First Name *</label>
+            <label for="first-name">Vorname *</label>
             <b-form-input
                 type="text"
                 v-model="user.firstName"
                 :state="validated ? (user.firstName ? true : false) : null"
                 id="first-name"
-                placeholder="Enter your first name ..."
+                placeholder="Vorname eingeben..."
                 required
                 :disabled="disabled"
             />
-            <label for="last-name">Last Name *</label>
+            <label for="last-name">Nachname *</label>
             <b-form-input
                 type="text"
                 v-model="user.lastName"
                 :state="validated ? (user.lastName ? true : false) : null"
                 id="last-name"
-                placeholder="Enter your last name ..."
+                placeholder="Nachname eingeben..."
                 required
                 :disabled="disabled"
             />
-            <label for="email">Email *</label>
+            <label for="email">E-Mail Adresse *</label>
             <b-form-input
                 type="email"
                 v-model="user.email"
                 :state="validated ? (user.email ? true : false) : null"
                 id="email"
-                placeholder="Enter your email address ..."
+                placeholder="E-Mail Adresse eingeben..."
                 required
                 :disabled="disabled"
             />
@@ -39,7 +38,7 @@
                     :variant="disabled ? 'primary' : 'outline-secondary'"
                     @click="disabled = !disabled"
                 >
-                    {{ disabled ? "Edit" : "Cancel" }}
+                    {{ disabled ? "Bearbeiten" : "Abbrechen" }}
                 </b-button>
                 <b-button
                     v-if="!disabled"
@@ -47,12 +46,12 @@
                     @click.prevent="onSubmit"
                 >
                     <b-icon v-if="success" icon="check2" class="mr-2" />
-                    {{ success ? "Done" : "Save" }}
+                    {{ success ? "Gespeichert" : "Speichern" }}
                 </b-button>
             </div>
             <b-alert v-if="verify" class="mt-3" show dismissible variant="info"
-                >Please check your email inbox to verify your new email
-                address.</b-alert
+                >Bitte überprüfe Dein E-Mail Postfach, um Deine E-Mail Adresse
+                zu bestätigen.</b-alert
             >
             <b-alert
                 v-if="error"
@@ -60,7 +59,8 @@
                 show
                 dismissible
                 variant="warning"
-                >Oh, something went wrong. Please try again.</b-alert
+                >Oh, da ist leider etwas schief gelaufen. Bitte probiere es noch
+                einmal.</b-alert
             >
         </b-form>
     </div>

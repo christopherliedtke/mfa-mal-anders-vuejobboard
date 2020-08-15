@@ -1,15 +1,16 @@
 {
     "website": {
-        "name": "Vue Jobboard",
+        "name": "MFA mal anders",
         "url": "http://127.0.0.1:8080",
+        "noreplyEmail": "noreply@mfa-mal-anders.de",
         "contactEmail": "kontakt@mfa-mal-anders.de",
-        "emailFrom": "Christopher Liedtke",
+        "emailFrom": "Kristin Maurach",
         "newsletterSuccessPath": "/page/subscription-successful",
         "newsletterUnsubscribeSuccessPath": "/page/unsubscribed-successful"
     },
     "stripe": {
         "paymentMethods": ["card"],
-        "currency": "usd",
+        "currency": "eur",
         "pricePerJob": 2900,
         "paymentExpirationDays": 60
     },

@@ -1,23 +1,25 @@
 <template>
     <b-container class="account-verification position-relative py-5">
         <Overlay :show="showOverlay"> </Overlay>
-        <h2>Account Verification</h2>
+        <h2>E-Mail Adresse verifizieren</h2>
         <p>
-            Please check your email inbox for the activation link. If you do not
-            find the email, check your spam folder as well.
+            Bitte überprüfe Dein E-Mail Postfach und bestätige Deine E-Mail
+            Adresse über den Aktivierungslink. Bitte überprüfe gegebenenfalls
+            auch Deinen Spam Ordner.
         </p>
-        <p>You did not receive an email?</p>
+        <p>Keine E-Mail erhalten?</p>
         <button class="btn btn-primary my-3" @click="onSubmit">
-            Send New Activation Email
+            Neue E-Mail zur Aktivierung senden
         </button>
         <div class="error mt-3" v-if="error">
             <b-alert show dismissible variant="warning"
-                >Oh, something went wrong. Please try again later.</b-alert
+                >Oh, da ist leider etwas schief gelaufen. Bitte probiere es noch
+                einmal.</b-alert
             >
         </div>
         <div class="success mt-3" v-if="success">
             <b-alert show dismissible variant="success"
-                >The activation link was sent to your registered email address.
+                >Eine neue E-Mail mit Aktivierungslink wurde versandt.
             </b-alert>
         </div>
     </b-container>

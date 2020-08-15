@@ -19,7 +19,7 @@
         },
         data() {
             return {
-                title: "Privacy Policy"
+                title: "Datenschutzerklärung"
             };
         }
     };

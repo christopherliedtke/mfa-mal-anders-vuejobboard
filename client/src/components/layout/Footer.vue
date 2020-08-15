@@ -2,9 +2,9 @@
     <footer id="footer">
         <b-container>
             <b-nav class="justify-content-end">
-                <b-nav-item to="/page/contact">Contact</b-nav-item>
+                <b-nav-item to="/page/contact">Kontakt</b-nav-item>
                 <b-nav-item to="/page/privacy-policy"
-                    >Privacy Policy</b-nav-item
+                    >Datenschutzerklärung</b-nav-item
                 >
                 <b-nav-item to="/page/impressum">Impressum</b-nav-item>
             </b-nav>

@@ -1,6 +1,6 @@
 <template>
     <b-container class="jobboard py-5">
-        <h2>Jobboard</h2>
+        <h2>Stellenbörse</h2>
         <b-form id="job-filter" inline @submit.prevent>
             <b-form-select
                 class="my-1 mr-2"
@@ -8,7 +8,7 @@
                 @change="setQuery"
             >
                 <b-form-select-option :value="null"
-                    >Any state</b-form-select-option
+                    >Alle Bundesländer</b-form-select-option
                 >
                 <b-form-select-option
                     v-for="state in companyStateOptions"
@@ -22,7 +22,7 @@
                     type="text"
                     v-model="filter.location"
                     list="location-list"
-                    placeholder="Enter city ..."
+                    placeholder="Ort..."
                     @change="setQuery"
                 />
                 <b-input-group-append>
@@ -46,7 +46,7 @@
                 <b-form-input
                     type="text"
                     v-model="filter.searchTerm"
-                    placeholder="Enter search term ..."
+                    placeholder="Suchbegriff..."
                     @change="setQuery"
                 />
                 <b-input-group-append>
@@ -68,7 +68,7 @@
                 @change="setQuery"
             >
                 <b-form-select-option :value="null"
-                    >Any employment type</b-form-select-option
+                    >Alle Anstellungsarten</b-form-select-option
                 >
                 <b-form-select-option
                     v-for="type in employmentTypeOptions"
@@ -83,7 +83,7 @@
                 @change="setQuery"
             >
                 <b-form-select-option :value="null"
-                    >Any specialization</b-form-select-option
+                    >Alle Fachrichtungen</b-form-select-option
                 >
                 <b-form-select-option
                     v-for="specialization in specializationOptions"
@@ -100,14 +100,14 @@
                         jobboardView == 'list' ? 'primary' : 'outline-primary'
                     "
                     @click.prevent="setJobboardView('list')"
-                    ><b-icon class="mr-2" icon="list-ul" />List View</b-button
+                    ><b-icon class="mr-2" icon="list-ul" />Liste</b-button
                 >
                 <b-button
                     :variant="
                         jobboardView == 'map' ? 'primary' : 'outline-primary'
                     "
                     @click.prevent="setJobboardView('map')"
-                    ><b-icon class="mr-2" icon="map" />Map View</b-button
+                    ><b-icon class="mr-2" icon="map" />Karte</b-button
                 >
             </b-button-group>
         </b-button-toolbar>

@@ -1,13 +1,13 @@
 <template>
     <div class="newsletter-signup">
-        <h5>Sign Up for Job Newsletter</h5>
+        <h5>Job-Newsletter abonnieren</h5>
         <b-form>
             <b-form-input
                 class="mt-2"
                 type="email"
                 v-model="form.email"
                 id="email"
-                placeholder="Enter your email..."
+                placeholder="E-Mail Adresse eingeben..."
                 autocomplete="email"
                 required
                 trim
@@ -20,7 +20,7 @@
                 :state="validated ? (form.state ? true : false) : null"
             >
                 <b-form-select-option :value="null" disabled
-                    >-- Choose a state --</b-form-select-option
+                    >-- Bundesland auswählen --</b-form-select-option
                 >
                 <b-form-select-option
                     v-for="state in companyStateOptions"
@@ -40,7 +40,16 @@
                 required
                 :state="validated ? (form.accepted ? true : false) : null"
             >
-                I accept the terms of use
+                Ich habe die
+                <b-link to="/page/agbs">
+                    Nutzungsbedingungen
+                </b-link>
+                und
+                <b-link to="/page/privacy-policy">
+                    Datenschutzbestimmungen
+                </b-link>
+
+                gelesen und akzeptiere diese.
             </b-form-checkbox>
 
             <b-button
@@ -49,13 +58,13 @@
                 @click.prevent="onSubmit"
             >
                 <b-icon v-if="success" icon="check2" class="mr-2" />
-                {{ success ? "Subscribed" : "Subscribe" }}
+                {{ success ? "Abonniert" : "Abonnieren" }}
             </b-button>
         </b-form>
 
         <b-alert v-if="success" class="mt-3" show dismissible variant="success"
-            >You signed up for the job newsletter. Please check your email inbox
-            to verify the subscription.</b-alert
+            >Bitte überprüfe Dein E-Mail Postfach und bestätige Deine
+            Anmeldung.</b-alert
         >
         <b-alert v-if="error" class="mt-3" show dismissible variant="warning">{{
             error
@@ -92,7 +101,7 @@
                 this.error = false;
 
                 if (!this.formValidation()) {
-                    this.error = "Please provide all necessary information.";
+                    this.error = "Bitte fülle die erforderlichen Felder aus!";
                     return null;
                 }
 
@@ -112,14 +121,15 @@
                         this.success = true;
                     } else {
                         this.error =
-                            "Your subscription failed. Please try again!";
+                            "Bei der Anmeldung ist ein Fehler aufgetreten. Bitte probiere es noch einmal.";
                     }
                 } catch (err) {
                     console.log(
                         "Error on post to /api/newsletter/sign-up: ",
                         err
                     );
-                    this.error = "Your subscription failed. Please try again!";
+                    this.error =
+                        "Bei der Anmeldung ist ein Fehler aufgetreten. Bitte probiere es noch einmal.";
                 }
 
                 this.showOverlay = false;

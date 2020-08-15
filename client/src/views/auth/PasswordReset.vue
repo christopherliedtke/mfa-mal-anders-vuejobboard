@@ -1,45 +1,46 @@
 <template>
     <b-container class="password-reset py-5 position-relative">
         <Overlay :show="showOverlay"></Overlay>
-        <h2>Reset Password</h2>
+        <h2>Passwort zurücksetzen</h2>
         <b-form v-if="state === 0">
-            <label for="email">Email</label>
+            <label for="email">E-Mail Adresse</label>
             <b-form-input
                 type="email"
                 v-model="email"
                 id="email"
-                placeholder="Enter email..."
+                placeholder="E-Mail Adresse eingeben..."
                 autocomplete="email"
                 autofocus
             ></b-form-input>
             <button class="btn btn-primary my-3" @click="onSubmitEmail">
-                Reset Password
+                Passwort zurücksetzen
             </button>
             <p>
-                Not what you wanted?
-                <b-link to="/register">Sign up</b-link> or
-                <b-link to="/login">Login</b-link>!
+                Nicht was Du möchtest?
+                <b-link to="/register">Registrieren</b-link> oder
+                <b-link to="/login">Anmelden</b-link>!
             </p>
         </b-form>
         <b-form v-if="state === 1">
             <p class="mt-4">
-                Please check your email inbox for the code to enter.
+                Bitte überprüfe Dein E-Mail Postfach und gib den erhaltenen Code
+                ein.
             </p>
             <label for="secretCode">Code</label>
             <b-form-input
                 type="text"
                 v-model="secretCode"
                 id="secretCode"
-                placeholder="Enter code received by email..."
+                placeholder="Code eingeben..."
                 autofocus
             ></b-form-input>
-            <label for="password">Password</label>
+            <label for="password">Neues Passwort</label>
             <b-input-group>
                 <b-form-input
                     :type="passwordType"
                     v-model="password"
                     id="password"
-                    placeholder="Enter password..."
+                    placeholder="Neues Passwort eingeben..."
                     autocomplete="new-password"
                     aria-describedby="password-help-block"
                 ></b-form-input>
@@ -56,17 +57,17 @@
                 </b-input-group-append>
             </b-input-group>
             <b-form-text id="password-help-block">
-                Your password must be 6+ characters long, contain letters,
-                numbers and special characters.
+                Das Passwort muss mindestens 6 Zeichen inkl. jeweils ein
+                Kleinbuchstabe, Großbuchstabe, Zahl und Sonderzeichen enthalten.
             </b-form-text>
 
-            <label for="password2">Repeat Password</label>
+            <label for="password2">Passwort wiederholen</label>
             <b-input-group>
                 <b-form-input
                     :type="passwordType"
                     v-model="password2"
                     id="password2"
-                    placeholder="Repeat password..."
+                    placeholder="Passwort eingeben..."
                     autocomplete="new-password"
                 ></b-form-input>
                 <b-input-group-append is-text>
@@ -82,7 +83,7 @@
                 </b-input-group-append>
             </b-input-group>
             <button class="btn btn-primary my-3" @click="onSubmitNewPw">
-                Set New Password
+                Neues Passwort speichern
             </button>
         </b-form>
         <div class="error mt-3" v-if="errors">
@@ -170,7 +171,7 @@
                     this.errors = res.data.errors;
                 } else {
                     this.success =
-                        "Your password has been updated successfully. You are being redirected to login in a few seconds...";
+                        "Dein Passwort wurde erfolgreich gespeichert. Du wirst sofort weitergeleitet...";
 
                     setTimeout(() => {
                         this.$router.push({ path: "/login" });

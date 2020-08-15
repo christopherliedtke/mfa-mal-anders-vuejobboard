@@ -13,7 +13,7 @@
             :icon="['fab', 'facebook-square']"
             size="lg"
         />
-        Share
+        Teilen
         <b-icon class="ml-2" icon="share-fill" font-scale="0.95"></b-icon>
     </b-button>
 </template>

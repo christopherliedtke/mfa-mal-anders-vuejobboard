@@ -1,9 +1,9 @@
 <template>
     <div>
-        <h3>Your Companies</h3>
+        <h3>Meine Unternehmen</h3>
         <b-button to="/dashboard/new-company" variant="outline-primary"
-            ><b-icon class="mr-2" scale="1" icon="plus-circle"></b-icon>New
-            Company</b-button
+            ><b-icon class="mr-2" scale="1" icon="plus-circle"></b-icon>Neues
+            Unternehmen</b-button
         >
         <b-card v-for="company in myCompanies" :key="company._id" class="my-3">
             <b-card-text>
@@ -12,7 +12,7 @@
                 </h4>
                 <div class="my-3">
                     <div>
-                        Created at:
+                        Erstellt:
                         {{
                             new Date(
                                 parseInt(company.createdAt)
@@ -20,7 +20,7 @@
                         }}
                     </div>
                     <div>
-                        Last updated:
+                        Aktualisiert:
                         {{
                             new Date(
                                 parseInt(company.updatedAt)
@@ -40,7 +40,7 @@
                                 scale="1"
                                 icon="pencil-square"
                             ></b-icon>
-                            Edit</b-button
+                            Bearbeiten</b-button
                         >
                     </div>
                     <div>
@@ -53,7 +53,7 @@
                                 scale="1"
                                 icon="trash"
                             ></b-icon>
-                            Delete</b-button
+                            Löschen</b-button
                         >
                     </div>
                 </div>
@@ -67,7 +67,7 @@
                 footer-class="d-flex justify-content-between"
                 @ok="deleteCompany(company._id)"
                 ><p class="my-4">
-                    Are you sure to delete this company?
+                    Bist Du sicher, dass Du das Unternehmen löschen möchtest?
                 </p></b-modal
             >
         </b-card>
@@ -78,7 +78,8 @@
             variant="warning"
             dismissible
         >
-            Oh, something went wrong. Please try again later.
+            Oh, da ist leider etwas schief gelaufen. Bitte probiere es noch
+            einmal.
         </b-alert>
     </div>
 </template>

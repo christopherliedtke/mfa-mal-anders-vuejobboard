@@ -1,12 +1,13 @@
 <template>
     <div>
         <b-button variant="danger" type="submit" v-b-modal.delete-account
-            ><b-icon class="mr-2" icon="trash"></b-icon>Delete Account</b-button
+            ><b-icon class="mr-2" icon="trash"></b-icon>Account
+            löschen</b-button
         >
         <b-modal
             id="delete-account"
-            title="Delete account"
-            ok-title="Delete Account"
+            title="Account löschen"
+            ok-title="Jetzt löschen"
             centered
             ok-variant="danger"
             footer-class="d-flex justify-content-between"
@@ -19,17 +20,16 @@
                 z-index="9999"
             >
                 <p class="my-4">
-                    Are you sure to delete your account? Please provide your
-                    password.
+                    Bist Du sicher, dass Du Deinen Account löschen möchtest?
                 </p>
                 <b-form>
-                    <label for="password">Password</label>
+                    <label for="password">Passwort</label>
                     <b-input-group>
                         <b-form-input
                             :type="passwordType"
                             v-model="password"
                             id="password"
-                            placeholder="Enter password..."
+                            placeholder="Passwort eingeben..."
                             autocomplete="current-password"
                         ></b-form-input>
                         <b-input-group-append is-text>

@@ -12,6 +12,7 @@ const authenticateTokenWhilePending = require("../utils/middleware/checkAuthWhil
 const authenticateToken = require("../utils/middleware/checkAuth");
 const s3 = require("../utils/middleware/s3");
 const config = require("../utils/config");
+const errorMsg = require("../utils/errorMsg");
 const emailTemplate = require("../utils/emailTemplate");
 
 // #route:  POST /Login
@@ -22,20 +23,24 @@ router.post("/login", async (req, res) => {
     let errors = [];
 
     if (!email || !password) {
-        errors.push({ msg: "Please fill in all fields!" });
+        errors.push({ msg: errorMsg.auth.fillAll });
         res.json({ success: false, errors });
     } else {
         try {
             const user = await User.findOne({ email: email });
 
             if (!user) {
-                errors.push({ msg: "The provided email is not registered." });
+                errors.push({
+                    msg: errorMsg.auth.noMatch,
+                });
                 res.json({ success: false, errors });
             } else {
                 const pwCheckSuccess = await compare(password, user.password);
 
                 if (!pwCheckSuccess) {
-                    errors.push({ msg: "Email and password do not match." });
+                    errors.push({
+                        msg: errorMsg.auth.noMatch,
+                    });
                     res.json({ success: false, errors });
                 } else {
                     const token = jwt.sign(
@@ -83,10 +88,10 @@ router.post("/register", async (req, res) => {
 
     // Check if data is correctly provided
     if (!firstName || !lastName || !email || !password || !password2) {
-        errors.push({ msg: "Please fill in all fields!" });
+        errors.push({ msg: errorMsg.auth.fillAll });
     }
     if (password != password2) {
-        errors.push({ msg: "The entered passwords do not match!" });
+        errors.push({ msg: errorMsg.auth.pwsNoMatch });
     }
     if (
         !password.match(
@@ -94,12 +99,11 @@ router.post("/register", async (req, res) => {
         )
     ) {
         errors.push({
-            msg:
-                "Your password must be at least 6 characters long and contain a lowercase letter, an uppercase letter, a numeric digit and a special character.",
+            msg: errorMsg.auth.pwRequirements,
         });
     }
     if (acceptance != "accepted") {
-        errors.push({ msg: "You need to accept the terms of use." });
+        errors.push({ msg: errorMsg.auth.termsOfUse });
     }
 
     if (errors.length > 0) {
@@ -111,7 +115,7 @@ router.post("/register", async (req, res) => {
 
             if (existingUser) {
                 errors.push({
-                    msg: "The provided email is registered already.",
+                    msg: errorMsg.auth.emailRegistered,
                 });
                 res.json({ success: false, errors });
             } else {
@@ -151,7 +155,7 @@ router.post("/register", async (req, res) => {
                 await newCode.save();
 
                 const data = {
-                    from: `${config.website.emailFrom} <${res.locals.secrets.EMAIL_USERNAME}>`,
+                    from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
                     to: user.email,
                     subject: `Your Activation Link for ${config.website.name}`,
                     text: `
@@ -173,7 +177,7 @@ router.post("/register", async (req, res) => {
         } catch (err) {
             console.log("Error on /api/auth/register: ", err);
             errors.push({
-                msg: "Oh, something went wrong. Please try again!",
+                msg: errorMsg.general,
             });
             res.json({ success: false, errors });
         }
@@ -207,7 +211,7 @@ router.get(
                 await newCode.save();
 
                 const data = {
-                    from: `${config.website.emailFrom} <${res.locals.secrets.EMAIL_USERNAME}>`,
+                    from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
                     to: user.email,
                     subject: `Your Activation Link for ${config.website.name}`,
                     text: `
@@ -217,6 +221,7 @@ router.get(
                         <p>Please use the following link within the next 10 minutes to activate your account on ${config.website.name}: <strong><a href="${baseUrl}/api/auth/verification/verify-account/${user._id}/${secretCode}" target="_blank">Email bestätigen</a></strong></p>
                     `),
                 };
+
                 await emailService.sendMail(data);
 
                 res.json({ success: true });
@@ -346,7 +351,7 @@ router.post("/password-reset/get-code", async (req, res) => {
                 await newCode.save();
 
                 const data = {
-                    from: `${config.website.emailFrom} <${res.locals.secrets.EMAIL_USERNAME}>`,
+                    from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
                     to: email,
                     subject: `Your Password Reset Code for ${config.website.name}`,
                     text: `
@@ -363,7 +368,7 @@ router.post("/password-reset/get-code", async (req, res) => {
         } catch (err) {
             console.log("Error on /api/auth/password-reset/get-code: ", err);
             errors.push({
-                msg: "Oh, something went wrong. Please try again!",
+                msg: errorMsg.general,
             });
             res.json({ success: false, errors });
         }
@@ -378,10 +383,10 @@ router.post("/password-reset/verify", async (req, res) => {
     let errors = [];
 
     if (!email || !password || !password2 || !code) {
-        errors.push({ msg: "Please fill in all fields!" });
+        errors.push({ msg: errorMsg.auth.fillAll });
     }
     if (password != password2) {
-        errors.push({ msg: "The entered passwords do not match!" });
+        errors.push({ msg: errorMsg.auth.noMatch });
     }
     if (
         !password.match(
@@ -389,8 +394,7 @@ router.post("/password-reset/verify", async (req, res) => {
         )
     ) {
         errors.push({
-            msg:
-                "Your password must be at least 6 characters long and contain a lowercase letter, an uppercase letter, a numeric digit and a special character.",
+            msg: errorMsg.auth.pwRequirements,
         });
     }
     if (errors.length > 0) {
@@ -401,8 +405,7 @@ router.post("/password-reset/verify", async (req, res) => {
 
             if (response.length === 0) {
                 errors.push({
-                    msg:
-                        "The entered code is not correct. Please make sure to enter the code in the requested time interval.",
+                    msg: errorMsg.auth.codeIncorrect,
                 });
                 res.json({ success: false, errors });
             } else {
@@ -414,7 +417,7 @@ router.post("/password-reset/verify", async (req, res) => {
         } catch (err) {
             console.log("Error on /api/auth/password-reset/verify: ", err);
             errors.push({
-                msg: "Oh, something went wrong. Please try again!",
+                msg: errorMsg.general,
             });
             res.json({ success: false, errors });
         }
@@ -436,7 +439,7 @@ router.post("/delete-account", authenticateToken, async (req, res) => {
     const { password } = req.body;
 
     if (!password) {
-        res.json({ success: false, error: "Please provide your password." });
+        res.json({ success: false, error: errorMsg.auth.fillAll });
     } else {
         try {
             const user = await User.findById(req.userId);
@@ -444,7 +447,7 @@ router.post("/delete-account", authenticateToken, async (req, res) => {
             if (!user) {
                 res.json({
                     success: false,
-                    error: "Oh, something went wrong. Please try again!",
+                    error: errorMsg.general,
                 });
             } else {
                 const pwCheckSuccess = await compare(password, user.password);
@@ -452,7 +455,7 @@ router.post("/delete-account", authenticateToken, async (req, res) => {
                 if (!pwCheckSuccess) {
                     res.json({
                         success: false,
-                        error: "The provided password is not correct.",
+                        error: errorMsg.auth.pwNoMatch,
                     });
                 } else {
                     // delete images
@@ -498,8 +501,7 @@ router.post("/delete-account", authenticateToken, async (req, res) => {
                     if (!deleted) {
                         res.json({
                             success: false,
-                            error:
-                                "Oh, something went wrong. Please try again!",
+                            error: errorMsg.general,
                         });
                     } else {
                         req.session = null;
@@ -511,7 +513,7 @@ router.post("/delete-account", authenticateToken, async (req, res) => {
             console.log("Error on /api/auth/delete-account: ", err);
             res.json({
                 success: false,
-                error: "Oh, something went wrong. Please try again!",
+                error: errorMsg.general,
             });
         }
     }

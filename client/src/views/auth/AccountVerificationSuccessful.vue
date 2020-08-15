@@ -1,10 +1,10 @@
 <template>
     <b-container class="account-verification-successful position-relative py-5">
-        <h2>Account Verification Successful</h2>
+        <h2>E-Mail Adresse erfolgreich verifiziert</h2>
         <div class="success mt-3">
             <b-alert show dismissible variant="success"
-                >Your email has been successfully verified. You will be
-                redirected in a moment...
+                >Deine E-Mail Adresse wurde erfolgreich verifiziert. Du wirst
+                sofort weitergeleitet...
                 <b-spinner
                     style="width: 1.2rem; height: 1.2rem;"
                     variant="success"

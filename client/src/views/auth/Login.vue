@@ -1,24 +1,24 @@
 <template>
     <b-container class="login py-5">
-        <h2>Login</h2>
+        <h2>Anmeldung</h2>
         <b-form>
-            <label for="email">Email</label>
+            <label for="email">E-Mail Addresse</label>
             <b-form-input
                 type="email"
                 v-model="email"
                 id="email"
-                placeholder="Enter email..."
+                placeholder="E-Mail Adresse eingeben..."
                 autocomplete="email"
                 autofocus
                 trim
             ></b-form-input>
-            <label for="password">Password</label>
+            <label for="password">Passwort</label>
             <b-input-group>
                 <b-form-input
                     :type="passwordType"
                     v-model="password"
                     id="password"
-                    placeholder="Enter password..."
+                    placeholder="Passwort eingeben..."
                     autocomplete="current-password"
                 ></b-form-input>
                 <b-input-group-append is-text>
@@ -35,13 +35,14 @@
             </b-input-group>
 
             <button class="btn btn-primary my-3" @click.prevent="onSubmit">
-                Login
+                Anmelden
             </button>
             <p>
-                Not registered yet? <b-link to="/register">Sign up</b-link> now.
+                Noch nicht registriert? Jetzt
+                <b-link to="/register">Registrieren</b-link>.
             </p>
             <p>
-                <b-link to="/password-reset">Forgot Password?</b-link>
+                <b-link to="/password-reset">Passwort vergessen?</b-link>
             </p>
             <div class="error mt-3" v-if="errors">
                 <b-alert
@@ -55,7 +56,7 @@
             </div>
         </b-form>
 
-        <Head title="Login" desc="This is the meta of login..." img="" />
+        <Head title="Anmelden" desc="Anmelden bei MFA mal anders" img="" />
     </b-container>
 </template>
 

@@ -2,7 +2,7 @@
     <b-container class="dashboard py-5">
         <h2>Account</h2>
         <b-tabs content-class="mt-3">
-            <b-tab title="Account Data" active>
+            <b-tab title="Profil" active>
                 <AccountDataForm apiUsersSchema="private"/>
                 <DeleteAccountButton
             /></b-tab>

@@ -2,10 +2,10 @@
     <b-container class="dashboard py-5">
         <h2>Dashboard</h2>
         <b-tabs content-class="mt-3" :value="parseInt(query.tab)">
-            <b-tab title="Jobs" @click="setQuery('tab', 0)">
+            <b-tab title="Stellenanzeigen" @click="setQuery('tab', 0)">
                 <MyJobsList></MyJobsList>
             </b-tab>
-            <b-tab title="Companies" @click="setQuery('tab', 1)">
+            <b-tab title="Unternehmen" @click="setQuery('tab', 1)">
                 <MyCompaniesList></MyCompaniesList>
             </b-tab>
         </b-tabs>

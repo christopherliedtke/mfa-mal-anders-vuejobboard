@@ -1,43 +1,43 @@
 <template>
     <b-container class="register py-5 position-relative">
         <Overlay :show="showOverlay"></Overlay>
-        <h2>Sign Up</h2>
+        <h2>Registrieren</h2>
         <b-form>
-            <label for="firstName">First Name</label>
+            <label for="firstName">Vorname</label>
             <b-form-input
                 type="text"
                 v-model="firstName"
                 id="firstName"
-                placeholder="Enter first name..."
+                placeholder="Vorname eingeben..."
                 autocomplete="given-name"
                 autofocus
                 trim
             ></b-form-input>
-            <label for="lastName">Last Name</label>
+            <label for="lastName">Nachname</label>
             <b-form-input
                 type="text"
                 v-model="lastName"
                 id="lastName"
-                placeholder="Enter last name..."
+                placeholder="Nachname eigeben..."
                 autocomplete="family-name"
                 trim
             ></b-form-input>
-            <label for="email">Email</label>
+            <label for="email">E-Mail Adresse</label>
             <b-form-input
                 type="email"
                 v-model="email"
                 id="email"
-                placeholder="Enter email..."
+                placeholder="E-Mail Adresse eingeben..."
                 autocomplete="email"
                 trim
             ></b-form-input>
-            <label for="password">Password</label>
+            <label for="password">Passwort</label>
             <b-input-group>
                 <b-form-input
                     :type="passwordType"
                     v-model="password"
                     id="password"
-                    placeholder="Enter password..."
+                    placeholder="Passwort eingeben..."
                     autocomplete="new-password"
                     aria-describedby="password-help-block"
                 ></b-form-input>
@@ -54,17 +54,17 @@
                 </b-input-group-append>
             </b-input-group>
             <b-form-text id="password-help-block">
-                Your password must be 6+ characters long, contain letters,
-                numbers and special characters.
+                Das Passwort muss mindestens 6 Zeichen inkl. jeweils ein
+                Kleinbuchstabe, Großbuchstabe, Zahl und Sonderzeichen enthalten.
             </b-form-text>
 
-            <label for="password2">Repeat Password</label>
+            <label for="password2">Passwort wiederholen</label>
             <b-input-group>
                 <b-form-input
                     :type="passwordType"
                     v-model="password2"
                     id="password2"
-                    placeholder="Repeat password..."
+                    placeholder="Passwort eingeben..."
                     autocomplete="new-password"
                 ></b-form-input>
                 <b-input-group-append is-text>
@@ -88,12 +88,24 @@
                 unchecked-value="not_accepted"
                 switch
             >
-                I accept the terms of use
+                Ich habe die
+                <b-link to="/page/agbs">
+                    Nutzungsbedingungen
+                </b-link>
+                und
+                <b-link to="/page/privacy-policy">
+                    Datenschutzbestimmungen
+                </b-link>
+
+                gelesen und akzeptiere diese.
             </b-form-checkbox>
             <button class="btn btn-primary my-3" @click.prevent="onSubmit">
-                Register
+                Registrieren
             </button>
-            <p>Already registered? <b-link to="/login">Login</b-link> now.</p>
+            <p>
+                Du bist bereits registriert? Jetzt
+                <b-link to="/login">Anmelden</b-link>.
+            </p>
             <div class="error mt-3" v-if="errors">
                 <b-alert
                     show
@@ -106,7 +118,11 @@
             </div>
         </b-form>
 
-        <Head title="Register" desc="This is the meta of register..." img="" />
+        <Head
+            title="Registrieren"
+            desc="Registriere Dich jetzt bei MFA mal anders und veröffentliche noch heute Deine Stellenanzeige."
+            img=""
+        />
     </b-container>
 </template>
 
