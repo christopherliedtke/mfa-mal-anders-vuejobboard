@@ -1,6 +1,6 @@
 <template>
     <b-container class="edit-job py-5">
-        <h2>Job bearbeiten</h2>
+        <h2>Stellenanzeige bearbeiten</h2>
         <JobForm :jobId="$route.params.jobId" apiJobsSchema="private"></JobForm>
     </b-container>
 </template>

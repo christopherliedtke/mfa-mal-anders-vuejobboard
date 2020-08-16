@@ -2,24 +2,23 @@
     <div class="job-form position-relative">
         <Overlay :show="showOverlay"> </Overlay>
         <b-form id="job-form">
-            <h3 class="mt-4">Job Data</h3>
-            <label for="title">Job Title *</label>
+            <label for="title">Titel *</label>
             <b-form-input
                 type="text"
                 v-model="job.title"
                 :state="validated ? (job.title ? true : false) : null"
                 id="title"
-                placeholder="Enter job title ..."
+                placeholder="Titel der Stellenanzeige eingeben..."
                 required
             />
-            <label for="specialization">Specialization</label>
+            <label for="specialization">Fachbereich</label>
             <b-form-select
                 id="specialization"
                 v-model="job.specialization"
                 :state="validated ? true : null"
             >
                 <b-form-select-option :value="null"
-                    >-- Choose specialization --</b-form-select-option
+                    >-- Fachbereich wählen --</b-form-select-option
                 >
                 <b-form-select-option
                     v-for="type in specializationOptions"
@@ -28,14 +27,14 @@
                     >{{ type }}</b-form-select-option
                 ></b-form-select
             >
-            <label for="employment-type">Employment Type *</label>
+            <label for="employment-type">Anstellungsart *</label>
             <b-form-select
                 id="employment-type"
                 v-model="job.employmentType"
                 :state="validated ? (job.employmentType ? true : false) : null"
             >
                 <b-form-select-option :value="null" disabled
-                    >-- Choose employment type --</b-form-select-option
+                    >-- Anstellungsart wählen --</b-form-select-option
                 >
                 <b-form-select-option
                     v-for="type in employmentTypeOptions"
@@ -44,14 +43,14 @@
                     >{{ type.text }}</b-form-select-option
                 ></b-form-select
             >
-            <label for="application-deadline">Application Deadline *</label>
+            <label for="application-deadline">Bewerbungsfrist *</label>
             <b-form-datepicker
                 :state="validated && job.applicationDeadline != ''"
                 id="application-deadline"
                 v-model="job.applicationDeadline"
-                placeholder="Choose a date"
+                placeholder="Bewerbungsfrist wählen"
             />
-            <label for="simple-applcation">Allow simple CV Application</label>
+            <label for="simple-applcation">Nur mit Lebenslauf bewerben</label>
             <b-form-select
                 id="simple-application"
                 v-model="job.simpleApplication"
@@ -64,13 +63,15 @@
                     >{{ type.text }}</b-form-select-option
                 ></b-form-select
             >
-            <label for="description">Job Description *</label>
+            <label for="description">Stellenbeschreibung *</label>
             <TipTapEditor
                 :validated="validated"
                 :content="job.description"
                 @update-content="job.description = $event"
             />
-            <label for="ext-job-url">URL to Job Post</label>
+            <label for="ext-job-url"
+                >URL zur Stellenanzeige auf Ihrer Webseite</label
+            >
             <b-input-group>
                 <template v-slot:prepend>
                     <b-input-group-text
@@ -82,10 +83,12 @@
                     v-model="job.extJobUrl"
                     :state="validated ? (job.extJobUrl ? true : null) : null"
                     id="ext-job-url"
-                    placeholder="https://www.your-company.com/job-post"
+                    placeholder="https://www.ihr-unternehmen.com/karriere/stelle"
                 />
             </b-input-group>
-            <label for="application-email">Email for Applications</label>
+            <label for="application-email"
+                >E-Mail Adresse für Bewerbungen</label
+            >
             <b-input-group>
                 <template v-slot:prepend>
                     <b-input-group-text
@@ -99,10 +102,10 @@
                         validated ? (job.applicationEmail ? true : null) : null
                     "
                     id="application-email"
-                    placeholder="career@your-company.com"
+                    placeholder="karriere@ihr-unternehmen.de"
                 />
             </b-input-group>
-            <label for="title-image">Title Image (jpg, png | max. 5MB)</label>
+            <label for="title-image">Title Bild (jpg, png | max. 5MB)</label>
             <ImageUploader
                 id="title-image"
                 :validated="validated"
@@ -123,10 +126,12 @@
                 />
             </div>
 
-            <h3 class="mt-4">Company</h3>
+            <h3 class="mt-4">Unternehmen</h3>
             <div class="mt-3 d-flex align-items-end">
                 <div>
-                    <label for="company-list">Choose Existing Company</label>
+                    <label for="company-list"
+                        >Vorhandenes Unternehmen wählen</label
+                    >
                     <b-form-select
                         id="company-list"
                         v-model="selectedCompanyId"
@@ -145,7 +150,7 @@
                     class="ml-2"
                     variant="warning"
                     @click.prevent="resetCompany"
-                    >Reset</b-button
+                    >Zurücksetzen</b-button
                 >
             </div>
             <label for="company-name">Name *</label>
@@ -154,19 +159,19 @@
                 v-model="job.company.name"
                 :state="validated ? (job.company.name ? true : false) : null"
                 id="company-name"
-                placeholder="Enter company name ..."
+                placeholder="Name eingeben..."
                 required
             />
-            <label for="company-street">Street and House Number *</label>
+            <label for="company-street">Straße und Hausnummer *</label>
             <b-form-input
                 type="text"
                 v-model="job.company.street"
                 :state="validated ? (job.company.street ? true : false) : null"
                 id="company-street"
-                placeholder="Enter street and house number ..."
+                placeholder="Straße und Hausnummer eingeben..."
                 required
             />
-            <label for="company-location">City *</label>
+            <label for="company-location">Stadt *</label>
             <b-form-input
                 type="text"
                 v-model="job.company.location"
@@ -174,26 +179,26 @@
                     validated ? (job.company.location ? true : false) : null
                 "
                 id="company-location"
-                placeholder="Enter location ..."
+                placeholder="Stadt eingeben..."
                 required
             />
-            <label for="company-zip-code">ZIP Code *</label>
+            <label for="company-zip-code">PLZ *</label>
             <b-form-input
                 type="number"
                 v-model="job.company.zipCode"
                 :state="validated ? (job.company.zipCode ? true : false) : null"
                 id="company-zip-code"
-                placeholder="Enter zip code ..."
+                placeholder="PLZ eingeben..."
                 required
             />
-            <label for="company-state">State *</label>
+            <label for="company-state">Bundesland *</label>
             <b-form-select
                 id="company-state"
                 v-model="job.company.state"
                 :state="validated ? (job.company.state ? true : false) : null"
             >
                 <b-form-select-option :value="null" disabled
-                    >-- Choose a state --</b-form-select-option
+                    >-- Bundesland auswählen --</b-form-select-option
                 >
                 <b-form-select-option
                     v-for="state in companyStateOptions"
@@ -202,14 +207,14 @@
                     >{{ state }}</b-form-select-option
                 >
             </b-form-select>
-            <label for="company-country">Country *</label>
+            <label for="company-country">Land *</label>
             <b-form-select
                 id="company-country"
                 v-model="job.company.country"
                 :state="validated ? (job.company.country ? true : false) : null"
             >
                 <b-form-select-option :value="null" disabled
-                    >-- Choose a country --</b-form-select-option
+                    >-- Land auswählen --</b-form-select-option
                 >
                 <b-form-select-option
                     v-for="country in companyCountryOptions"
@@ -218,7 +223,7 @@
                     >{{ country }}</b-form-select-option
                 >
             </b-form-select>
-            <label for="company-url">Website</label>
+            <label for="company-url">Webseite</label>
             <b-input-group>
                 <template v-slot:prepend>
                     <b-input-group-text
@@ -230,7 +235,7 @@
                     v-model="job.company.url"
                     :state="validated ? (job.company.url ? true : null) : null"
                     id="company-url"
-                    placeholder="https://www.your-company.com"
+                    placeholder="https://www.ihr-unternehmen.de"
                 />
             </b-input-group>
             <label for="logo">Logo (jpg, png | max. 5MB)</label>
@@ -253,15 +258,15 @@
                     :src="job.company.logoUrl"
                 />
             </div>
-            <h3 class="mt-4">Contact</h3>
-            <label for="contact-title">Title</label>
+            <h3 class="mt-4">Ansprechpartner</h3>
+            <label for="contact-title">Titel</label>
             <b-form-select
                 id="contact-title"
                 v-model="job.contactTitle"
                 :state="validated ? (job.contactTitle ? true : null) : null"
             >
                 <b-form-select-option :value="null"
-                    >-- Choose a title --</b-form-select-option
+                    >-- Titel auswählen --</b-form-select-option
                 >
                 <b-form-select-option
                     v-for="title in contactTitleOptions"
@@ -270,23 +275,23 @@
                     >{{ title }}</b-form-select-option
                 >
             </b-form-select>
-            <label for="contact-first-name">First Name</label>
+            <label for="contact-first-name">Vorname</label>
             <b-form-input
                 type="text"
                 v-model="job.contactFirstName"
                 :state="validated ? (job.contactFirstName ? true : null) : null"
                 id="contact-first-name"
-                placeholder="Enter first name ..."
+                placeholder="Vorname eingeben..."
             />
-            <label for="contact-last-name">Last Name</label>
+            <label for="contact-last-name">Nachname</label>
             <b-form-input
                 type="text"
                 v-model="job.contactLastName"
                 :state="validated ? (job.contactLastName ? true : null) : null"
                 id="contact-last-name"
-                placeholder="Enter last name ..."
+                placeholder="Nachname eingeben..."
             />
-            <label for="contact-email">Email Address</label>
+            <label for="contact-email">E-Mail Adresse</label>
             <b-input-group>
                 <template v-slot:prepend>
                     <b-input-group-text
@@ -298,10 +303,10 @@
                     v-model="job.contactEmail"
                     :state="validated ? (job.contactEmail ? true : null) : null"
                     id="contact-email"
-                    placeholder="contact@your-company.com"
+                    placeholder="kontakt@ihr-unternehmen.de"
                 />
             </b-input-group>
-            <label for="contact-phone">Phone Number</label>
+            <label for="contact-phone">Telefon</label>
             <b-input-group>
                 <template v-slot:prepend>
                     <b-input-group-text
@@ -313,17 +318,17 @@
                     v-model="job.contactPhone"
                     :state="validated ? (job.contactPhone ? true : null) : null"
                     id="contact-phone"
-                    placeholder="Enter phone number ..."
+                    placeholder="Telefonnummer eingeben..."
                 />
             </b-input-group>
 
             <div class="d-flex justify-content-between my-4">
                 <b-button variant="outline-danger" to="/dashboard">
-                    Cancel
+                    Abbrechen
                 </b-button>
                 <b-button variant="success" @click.prevent="onSubmit">
                     <b-icon v-if="success" icon="check2" class="mr-2" />
-                    {{ success ? "Done" : "Save" }}
+                    {{ success ? "Gespeichert" : "Speichern" }}
                 </b-button>
             </div>
         </b-form>
@@ -374,8 +379,8 @@
                         street: "",
                         location: "",
                         zipCode: "",
-                        state: "",
-                        country: null,
+                        state: null,
+                        country: "Deutschland",
                         geoCodeLat: null,
                         geoCodeLng: null,
                         url: "",
@@ -510,7 +515,7 @@
                 this.error = false;
 
                 if (!this.formValidation()) {
-                    this.error = "Please provide all necessary information.";
+                    this.error = "Bitte fülle die erforderlichen Felder aus!";
                     return null;
                 }
 
@@ -586,7 +591,10 @@
                                         : ""
                                 } 
                                 title: "${this.job.title}", 
-                                description: "${this.job.description}", 
+                                description: "${this.job.description.replace(
+                                    /"/g,
+                                    '\\"'
+                                )}", 
                                 employmentType: "${this.job.employmentType}", 
                                 applicationDeadline: "${
                                     this.job.applicationDeadline
@@ -618,7 +626,7 @@
 
                     if (!jobQueryResponse.data.data[jobMutationType]) {
                         this.error =
-                            "Oh, something went wrong. Please try again!";
+                            "Oh, da ist leider etwas schief gelaufen. Bitte probiere es noch einmal.";
                     } else {
                         this.success = true;
 
@@ -629,7 +637,8 @@
                         }, 1000);
                     }
                 } catch (err) {
-                    this.error = "Oh, something went wrong. Please try again!";
+                    this.error =
+                        "Oh, da ist leider etwas schief gelaufen. Bitte probiere es noch einmal.";
                     console.log("err: ", err);
                 }
 

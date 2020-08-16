@@ -1,6 +1,6 @@
 <template>
     <b-container class="new-job py-5">
-        <h2>Neuer Job</h2>
+        <h2>Neue Stellenanzeige</h2>
         <JobForm :jobId="null" apiJobsSchema="private"></JobForm>
     </b-container>
 </template>

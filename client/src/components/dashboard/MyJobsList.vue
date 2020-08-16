@@ -37,7 +37,13 @@
                                 ? 'success'
                                 : 'warning'
                         "
-                        >{{ job.status }}</b-badge
+                        >{{
+                            job.status === "published"
+                                ? "online"
+                                : job.status === "draft"
+                                ? "Entwurf"
+                                : "offline"
+                        }}</b-badge
                     >
                     <b-badge
                         v-if="

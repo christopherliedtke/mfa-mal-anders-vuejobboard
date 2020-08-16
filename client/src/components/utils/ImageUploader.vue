@@ -8,8 +8,8 @@
                 v-model="file"
                 :state="validated ? (file ? true : null) : null"
                 accept="image/jpeg, image/png"
-                placeholder="Choose/Drop a file ..."
-                drop-placeholder="Drop file here ..."
+                placeholder="Datei wählen/ablegen..."
+                drop-placeholder="Datei hier ablegen..."
                 @input="uploadImage"
             />
             <b-button

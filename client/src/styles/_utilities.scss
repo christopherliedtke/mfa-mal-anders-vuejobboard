@@ -49,6 +49,8 @@ body::-webkit-scrollbar-thumb {
     @extend .form-control;
     height: unset;
     min-height: 150px;
+    padding-top: 0.8rem !important;
+    padding-bottom: 0.8rem !important;
 }
 
 // #Transitions
