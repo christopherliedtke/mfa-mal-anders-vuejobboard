@@ -2,21 +2,26 @@
     <b-container class="jobboard py-5">
         <h2>Stellenbörse</h2>
         <b-form id="job-filter" inline @submit.prevent>
-            <b-form-select
-                class="my-1 mr-2"
-                v-model="filter.state"
-                @change="setQuery"
-            >
-                <b-form-select-option :value="null"
-                    >Alle Bundesländer</b-form-select-option
-                >
-                <b-form-select-option
-                    v-for="state in companyStateOptions"
-                    :key="state"
-                    :value="state"
-                    >{{ state }}</b-form-select-option
-                >
-            </b-form-select>
+            <b-input-group class="my-1 mr-2">
+                <b-form-input
+                    type="text"
+                    v-model="filter.searchTerm"
+                    placeholder="Suchbegriff..."
+                    @change="setQuery"
+                />
+                <b-input-group-append>
+                    <b-button
+                        ><b-icon
+                            icon="x"
+                            @click.prevent="
+                                () => {
+                                    filter.searchTerm = '';
+                                    setQuery();
+                                }
+                            "
+                    /></b-button>
+                </b-input-group-append>
+            </b-input-group>
             <b-input-group class="my-1 mr-2">
                 <b-form-input
                     type="text"
@@ -42,26 +47,21 @@
                 id="location-list"
                 :options="locationsList"
             ></b-form-datalist>
-            <b-input-group class="my-1 mr-2">
-                <b-form-input
-                    type="text"
-                    v-model="filter.searchTerm"
-                    placeholder="Suchbegriff..."
-                    @change="setQuery"
-                />
-                <b-input-group-append>
-                    <b-button
-                        ><b-icon
-                            icon="x"
-                            @click.prevent="
-                                () => {
-                                    filter.searchTerm = '';
-                                    setQuery();
-                                }
-                            "
-                    /></b-button>
-                </b-input-group-append>
-            </b-input-group>
+            <b-form-select
+                class="my-1 mr-2"
+                v-model="filter.state"
+                @change="setQuery"
+            >
+                <b-form-select-option :value="null"
+                    >Alle Bundesländer</b-form-select-option
+                >
+                <b-form-select-option
+                    v-for="state in companyStateOptions"
+                    :key="state"
+                    :value="state"
+                    >{{ state }}</b-form-select-option
+                >
+            </b-form-select>
             <b-form-select
                 class="my-1 mr-2"
                 v-model="filter.employmentType"

@@ -9,7 +9,32 @@ import store from "@/store";
 import Home from "@/views/public/Home.vue";
 import Jobboard from "@/views/public/Jobboard.vue";
 import PublicJobView from "@/views/public/PublicJobView.vue";
+
 import PageView from "@/views/public/PageView.vue";
+import About from "@/views/public/pages/About.vue";
+import Employer from "@/views/public/pages/Employer.vue";
+import PrivacyPolicy from "@/views/public/pages/PrivacyPolicy.vue";
+import Impressum from "@/views/public/pages/Impressum.vue";
+import Contact from "@/views/public/pages/Contact.vue";
+import NewsletterSubscriptionSuccess from "@/views/public/pages/NewsletterSubscriptionSuccess.vue";
+import NewsletterUnsubscriptionSuccess from "@/views/public/pages/NewsletterUnsubscriptionSuccess.vue";
+
+import MFACareer from "@/views/public/pages/MFACareer.vue";
+import MFACareerHome from "@/views/public/pages/mfa-career/MFACareerHome.vue";
+import Gehalt from "@/views/public/pages/mfa-career/Gehalt.vue";
+
+import JobsBerufsbilder from "@/views/public/pages/mfa-career/JobsBerufsbilder.vue";
+import JobsBerufsbilderHome from "@/views/public/pages/mfa-career/jobs-berufsbilder/JobsBerufsbilderHome.vue";
+import MedizinischTechnisch from "@/views/public/pages/mfa-career/jobs-berufsbilder/MedizinischTechnisch.vue";
+import Management from "@/views/public/pages/mfa-career/jobs-berufsbilder/Management.vue";
+import Beratung from "@/views/public/pages/mfa-career/jobs-berufsbilder/Beratung.vue";
+import Verwaltung from "@/views/public/pages/mfa-career/jobs-berufsbilder/Verwaltung.vue";
+import Forschung from "@/views/public/pages/mfa-career/jobs-berufsbilder/Forschung.vue";
+
+import FortWeiterbildungen from "@/views/public/pages/mfa-career/FortWeiterbildungen.vue";
+
+import Magazin from "@/views/public/pages/Magazin.vue";
+
 import ArticleView from "@/views/public/ArticleView.vue";
 
 // Auth
@@ -68,12 +93,94 @@ const routes = [
         }
     },
     {
-        path: "/page/:title",
+        path: "/page",
         name: "PageView",
         component: PageView,
         meta: {
             public: true
-        }
+        },
+        children: [
+            {
+                path: "mfa-career",
+                component: MFACareer,
+                children: [
+                    {
+                        path: "",
+                        component: MFACareerHome
+                    },
+                    {
+                        path: "gehalt",
+                        component: Gehalt
+                    },
+                    {
+                        path: "jobs-und-berufsbilder",
+                        component: JobsBerufsbilder,
+                        children: [
+                            {
+                                path: "",
+                                component: JobsBerufsbilderHome
+                            },
+                            {
+                                path: "medizinisch-technisch",
+                                component: MedizinischTechnisch
+                            },
+                            {
+                                path: "management",
+                                component: Management
+                            },
+                            {
+                                path: "beratung",
+                                component: Beratung
+                            },
+                            {
+                                path: "verwaltung",
+                                component: Verwaltung
+                            },
+                            {
+                                path: "forschung",
+                                component: Forschung
+                            }
+                        ]
+                    },
+                    {
+                        path: "fort-und-weiterbildungen",
+                        component: FortWeiterbildungen
+                    }
+                ]
+            },
+            {
+                path: "about",
+                component: About
+            },
+            {
+                path: "fuer-arbeitgeber",
+                component: Employer
+            },
+            {
+                path: "magazin",
+                component: Magazin
+            },
+            {
+                path: "contact",
+                component: Contact
+            },
+            {
+                path: "subscription-successful",
+                component: NewsletterSubscriptionSuccess
+            },
+            {
+                path: "unsubscribed-successful",
+                component: NewsletterUnsubscriptionSuccess
+            },
+            {
+                path: "impressum",
+                component: Impressum
+            },
+            {
+                path: "privacy-policy",
+                component: PrivacyPolicy
+            }
+        ]
     },
     {
         path: "/article/:y/:m/:d/:title",

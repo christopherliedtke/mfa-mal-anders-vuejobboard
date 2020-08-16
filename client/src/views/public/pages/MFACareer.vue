@@ -4,8 +4,6 @@
 
 <script>
     export default {
-        name: "PageView"
+        name: "MFACareer"
     };
 </script>
-
-<style></style>
