@@ -1,8 +1,12 @@
 <template>
-    <header class="py-2" id="header">
+    <header class="" id="header">
         <b-navbar toggleable="lg" type="dark">
             <b-navbar-brand to="/">
-                <img src="@/assets/logo.png" height="40" alt="" />
+                <img
+                    src="@/assets/Logo_mfa-mal-anders-white.png"
+                    height="70"
+                    alt="MFA mal anders - Logo"
+                />
             </b-navbar-brand>
 
             <b-navbar-toggle class="ui-hamburger-05" target="nav-collapse">
@@ -149,7 +153,7 @@
                     <b-nav-item v-if="userId"><Logout /></b-nav-item>
                 </b-navbar-nav>
                 <b-button variant="secondary" to="/login" v-if="!userId"
-                    >Anmelden</b-button
+                    >Login</b-button
                 >
             </b-collapse>
         </b-navbar>

@@ -1,12 +1,15 @@
 form {
-    & > input {
-        // border-radius: 5px;
-        // border: 1px solid #818a91;
-        // padding: 0.625em 0.4375em;
+    input,
+    select,
+    .form-control,
+    .custom-select {
+        border-radius: $border-radius2;
+        padding: 0 1.4rem;
 
-        &:focus {
-            // outline: none;
-            // border-color: $secondary;
+        &:focus,
+        &:active {
+            outline: none !important;
+            box-shadow: none !important;
         }
     }
 

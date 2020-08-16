@@ -1,32 +1,33 @@
 .btn {
     display: inline-flex;
     align-items: center;
-    // border-radius: 5px;
-    // padding: 7px 18px;
-    // cursor: pointer;
-    // transition: linear 0.3s;
+    border-radius: $border-radius2;
+    padding: 0.466rem 1.4rem;
+    transition: linear 0.3s;
 
-    &:focus {
-        // outline: none;
+    &:focus,
+    &:active {
+        outline: none !important;
+        box-shadow: none !important;
     }
 }
 
 .btn-primary {
     @extend .btn;
-    // background-color: $primary;
+    background-color: $primary;
 
     &:hover {
-        // background-color: lighten($primary, 15%);
-        // border-color: lighten($primary, 15%);
+        background-color: lighten($primary, 10%);
+        border-color: lighten($primary, 10%);
     }
 }
 
 .btn-secondary {
     @extend .btn;
-    // background-color: $secondary;
+    background-color: $secondary;
 
     &:hover {
-        // background-color: lighten($secondary, 15%);
-        // border-color: lighten($secondary, 15%);
+        background-color: lighten($secondary, 10%);
+        border-color: lighten($secondary, 10%);
     }
 }

@@ -43,7 +43,7 @@
                 try {
                     const service = this.platform.getSearchService();
 
-                    let zoom = 4;
+                    let zoom = 6;
                     let geocode;
 
                     geocode = await new Promise((resolve, reject) => {

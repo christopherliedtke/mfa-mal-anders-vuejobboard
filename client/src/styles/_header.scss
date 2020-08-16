@@ -6,40 +6,34 @@ $break-menu: 991px;
     z-index: 3;
 
     .navbar {
-        padding: 0 1rem;
         max-width: 1400px;
         margin: 0 auto;
+        padding: 0 1rem;
+
+        .navbar-collapse {
+            @media screen and (max-width: $break-menu) {
+                padding: 1rem;
+            }
+        }
 
         .nav-link {
             display: flex;
             align-items: center;
+            padding: 0.5rem 0.8rem;
+            color: transparentize($color: $light, $amount: 0.3);
+
+            &:hover {
+                color: transparentize($color: $light, $amount: 0);
+            }
         }
 
         :not(.home) > .router-link-active {
-            color: darken($light, 5%);
+            color: transparentize($color: $light, $amount: 0);
         }
 
         .router-link-exact-active {
-            color: darken($light, 5%);
+            color: transparentize($color: $light, $amount: 0);
         }
-
-        // .dropdown-menu {
-        //     background-color: $primary;
-        //     border: none;
-
-        //     .dropdown-item {
-        //         color: transparentize($light, 0.5);
-
-        //         &:hover {
-        //             background-color: $primary;
-        //             color: transparentize($light, 0.15);
-        //         }
-
-        //         &.router-link-exact-active {
-        //             color: darken($light, 5%);
-        //         }
-        //     }
-        // }
 
         .sub-container {
             position: relative;
@@ -47,16 +41,24 @@ $break-menu: 991px;
             .sub-menu {
                 position: absolute;
                 top: 100%;
-                padding-left: 0.7rem;
-                padding-right: 0.7rem;
+                padding: 0.7rem;
                 background-color: $primary;
+                border-radius: $border-radius1;
                 width: max-content;
                 max-height: 0;
                 visibility: hidden;
                 transition: linear 0.3s;
 
+                @media screen and (max-width: $break-menu) {
+                    margin: 0.5rem;
+                    background-color: transparentize(
+                        $color: $dark,
+                        $amount: 0.5
+                    );
+                }
+
                 &.show {
-                    max-height: none;
+                    max-height: 300px;
                     visibility: visible;
                 }
 

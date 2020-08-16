@@ -22,6 +22,36 @@
                     /></b-button>
                 </b-input-group-append>
             </b-input-group>
+            <b-form-select
+                class="my-1 mr-2"
+                v-model="filter.employmentType"
+                @change="setQuery"
+            >
+                <b-form-select-option :value="null"
+                    >Alle Anstellungsarten</b-form-select-option
+                >
+                <b-form-select-option
+                    v-for="type in employmentTypeOptions"
+                    :key="type.value"
+                    :value="type.value"
+                    >{{ type.text }}</b-form-select-option
+                >
+            </b-form-select>
+            <b-form-select
+                class="my-1 mr-2"
+                v-model="filter.specialization"
+                @change="setQuery"
+            >
+                <b-form-select-option :value="null"
+                    >Alle Fachrichtungen</b-form-select-option
+                >
+                <b-form-select-option
+                    v-for="specialization in specializationOptions"
+                    :key="specialization"
+                    :value="specialization"
+                    >{{ specialization }}</b-form-select-option
+                >
+            </b-form-select>
             <b-input-group class="my-1 mr-2">
                 <b-form-input
                     type="text"
@@ -60,36 +90,6 @@
                     :key="state"
                     :value="state"
                     >{{ state }}</b-form-select-option
-                >
-            </b-form-select>
-            <b-form-select
-                class="my-1 mr-2"
-                v-model="filter.employmentType"
-                @change="setQuery"
-            >
-                <b-form-select-option :value="null"
-                    >Alle Anstellungsarten</b-form-select-option
-                >
-                <b-form-select-option
-                    v-for="type in employmentTypeOptions"
-                    :key="type.value"
-                    :value="type.value"
-                    >{{ type.text }}</b-form-select-option
-                >
-            </b-form-select>
-            <b-form-select
-                class="my-1 mr-2"
-                v-model="filter.specialization"
-                @change="setQuery"
-            >
-                <b-form-select-option :value="null"
-                    >Alle Fachrichtungen</b-form-select-option
-                >
-                <b-form-select-option
-                    v-for="specialization in specializationOptions"
-                    :key="specialization"
-                    :value="specialization"
-                    >{{ specialization }}</b-form-select-option
                 >
             </b-form-select>
         </b-form>
@@ -159,8 +159,10 @@
         methods: {
             ...mapActions(["getJobs"]),
             setJobboardView(value) {
-                this.jobboardView = value;
-                this.setQuery();
+                if (this.jobboardView != value) {
+                    this.jobboardView = value;
+                    this.setQuery();
+                }
             },
             setQuery() {
                 this.$router.push({
