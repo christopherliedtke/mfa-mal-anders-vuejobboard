@@ -15,6 +15,7 @@ import About from "@/views/public/pages/About.vue";
 import Employer from "@/views/public/pages/Employer.vue";
 import PrivacyPolicy from "@/views/public/pages/PrivacyPolicy.vue";
 import Impressum from "@/views/public/pages/Impressum.vue";
+import AGBs from "@/views/public/pages/AGBs.vue";
 import Contact from "@/views/public/pages/Contact.vue";
 import NewsletterSubscriptionSuccess from "@/views/public/pages/NewsletterSubscriptionSuccess.vue";
 import NewsletterUnsubscriptionSuccess from "@/views/public/pages/NewsletterUnsubscriptionSuccess.vue";
@@ -179,6 +180,10 @@ const routes = [
             {
                 path: "privacy-policy",
                 component: PrivacyPolicy
+            },
+            {
+                path: "agbs",
+                component: AGBs
             }
         ]
     },

@@ -18,5 +18,11 @@
         "trackingCode": "UA-138281267-4",
         "anonymizeIP": true,
         "storage": "none"
+    },
+    "maps": {
+        "defaultCenter": {
+            "lat": 51.241,
+            "lng": 10.528
+        }
     }
 }

@@ -25,6 +25,7 @@
 .btn-secondary {
     @extend .btn;
     background-color: $secondary;
+    color: $light;
 
     &:hover {
         background-color: lighten($secondary, 10%);

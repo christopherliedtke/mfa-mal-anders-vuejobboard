@@ -4,9 +4,17 @@
     color: $light;
     margin-top: 2rem;
 
+    hr {
+        border-top: 1px solid transparentize($color: $light, $amount: 0.75);
+    }
+
     .container {
         .col {
-            padding: 1rem;
+            padding: 0 2rem;
+
+            @media screen and (max-width: $break-menu) {
+                padding: 1rem 2rem;
+            }
         }
 
         a {
@@ -22,6 +30,7 @@
                 padding: 0.5rem 0;
                 color: $light;
                 font-family: $font-family-headlines;
+                font-size: 1.2rem;
 
                 :not(.home) > .router-link-active {
                     color: darken($light, 5%);

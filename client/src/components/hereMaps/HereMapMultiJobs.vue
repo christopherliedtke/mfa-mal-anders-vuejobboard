@@ -6,6 +6,7 @@
 
 <script>
     import { companyCountryOptions } from "@/utils/jobDataConfig.json";
+    import config from "@/utils/config.json";
     export default {
         name: "HereMapMultiJobs",
         props: {
@@ -41,9 +42,9 @@
             },
             async initializeHereMap() {
                 try {
-                    const service = this.platform.getSearchService();
+                    // const service = this.platform.getSearchService();
 
-                    let zoom = 6;
+                    let zoom = 6.3;
                     let geocode;
 
                     geocode = await new Promise((resolve, reject) => {
@@ -64,11 +65,12 @@
                     });
 
                     if (!geocode) {
-                        const response = await service.geocode({
-                            q: this.companyCountryOptions[0]
-                        });
+                        // const response = await service.geocode({
+                        //     q: this.companyCountryOptions[0]
+                        // });
 
-                        geocode = response.items[0].position;
+                        // geocode = response.items[0].position;
+                        geocode = config.maps.defaultCenter;
                     }
 
                     const mapContainer = this.$refs.hereMap;

@@ -1,6 +1,6 @@
 <template>
     <footer id="footer" class="py-5">
-        <b-container class="px-5">
+        <b-container class="px-3 px-lg-5">
             <b-row cols="1" cols-lg="3">
                 <b-col order="3" order-lg="1">
                     <b-img
@@ -14,7 +14,7 @@
                         Fachangestellte.
                     </h6>
                     <div class="small">
-                        <div class="mt-5">
+                        <div class="pt-5 mt-5">
                             <h6><strong>Hinweis</strong></h6>
                             <p>
                                 Hinter den mit (*) gekennzeichneten Links
@@ -43,7 +43,16 @@
                         </div>
                     </div>
                 </b-col>
-                <b-col order="2" order-lg="2">Col 2</b-col>
+                <b-col order="2" order-lg="2">
+                    <a :href="`https://www.facebook.com/${config.fb.path}`">
+                        <font-awesome-icon
+                            class="mb-4"
+                            :icon="['fab', 'facebook-square']"
+                            size="3x"
+                        />
+                    </a>
+                    <NewsletterSignUpForm />
+                </b-col>
                 <b-col order="1" order-lg="3">
                     <b-nav vertical class="justify-content-end">
                         <b-nav-item to="/page/contact">Kontakt</b-nav-item>
@@ -51,15 +60,32 @@
                             >Datenschutzerklärung</b-nav-item
                         >
                         <b-nav-item to="/page/impressum">Impressum</b-nav-item>
+                        <b-nav-item to="/page/agbs">AGBs</b-nav-item>
                     </b-nav>
                 </b-col>
             </b-row>
+        </b-container>
+        <hr />
+        <b-container class="px-3 px-lg-5">
+            <p class="text-right">
+                &copy; {{ new Date().getFullYear() }} MFA mal anders
+            </p>
         </b-container>
     </footer>
 </template>
 
 <script>
+    import config from "@/utils/config.json";
+    import NewsletterSignUpForm from "@/components/utils/NewsletterSignUpForm.vue";
     export default {
-        name: "Footer"
+        name: "Footer",
+        components: {
+            NewsletterSignUpForm
+        },
+        data() {
+            return {
+                config
+            };
+        }
     };
 </script>

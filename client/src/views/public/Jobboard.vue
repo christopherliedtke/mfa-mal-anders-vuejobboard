@@ -193,6 +193,7 @@
                                 country
                                 geoCodeLat
                                 geoCodeLng
+                                size
                                 logoUrl
                             }
                         }

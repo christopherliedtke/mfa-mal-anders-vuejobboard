@@ -1,6 +1,6 @@
 <template>
     <div class="newsletter-signup">
-        <h5>Job-Newsletter abonnieren</h5>
+        <h4 class="mb-4">Deine wöchentlichen Jobangebote</h4>
         <b-form>
             <b-form-input
                 class="mt-2"
@@ -30,7 +30,7 @@
                 >
             </b-form-select>
             <b-form-checkbox
-                class="mt-2"
+                class="mt-3 small"
                 id="acceptance"
                 v-model="form.accepted"
                 name="acceptance"
@@ -53,8 +53,8 @@
             </b-form-checkbox>
 
             <b-button
-                class="mt-2"
-                :variant="success ? 'success' : 'primary'"
+                class="mt-3"
+                :variant="success ? 'success' : 'secondary'"
                 @click.prevent="onSubmit"
             >
                 <b-icon v-if="success" icon="check2" class="mr-2" />
