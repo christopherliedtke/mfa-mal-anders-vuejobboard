@@ -1,6 +1,6 @@
 <template>
     <b-container class="jobboard py-5">
-        <h2>Stellenbörse</h2>
+        <h2>Stellenangebote</h2>
         <b-form id="job-filter" inline @submit.prevent>
             <b-input-group class="my-1 mr-2">
                 <b-form-input

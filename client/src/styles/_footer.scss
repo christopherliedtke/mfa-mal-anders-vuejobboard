@@ -1,23 +1,36 @@
 #footer {
     background-color: $primary;
     padding: 1rem 0;
+    color: $light;
+    margin-top: 2rem;
 
-    .nav-link {
-        color: $light;
-
-        :not(.home) > .router-link-active {
-            color: darken($light, 5%);
+    .container {
+        .col {
+            padding: 1rem;
         }
 
-        .router-link-exact-active {
-            color: darken($light, 5%);
+        a {
+            color: $light;
+
+            &:hover {
+                color: transparentize($color: $light, $amount: 0.5);
+            }
+        }
+
+        .nav {
+            .nav-link {
+                padding: 0.5rem 0;
+                color: $light;
+                font-family: $font-family-headlines;
+
+                :not(.home) > .router-link-active {
+                    color: darken($light, 5%);
+                }
+
+                .router-link-exact-active {
+                    color: darken($light, 5%);
+                }
+            }
         }
     }
-
-    // .container {
-    //     display: flex;
-    //     padding: 1rem 2.5rem;
-    //     color: $light;
-    //     font-size: 0.9rem;
-    // }
 }

@@ -38,6 +38,9 @@ const CompanySchema = new Schema(
         geoCodeLng: {
             type: Number,
         },
+        size: {
+            type: String,
+        },
         url: {
             type: String,
         },

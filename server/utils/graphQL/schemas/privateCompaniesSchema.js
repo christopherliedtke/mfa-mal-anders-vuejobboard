@@ -65,6 +65,7 @@ const mutation = new GraphQLObjectType({
                 geoCodeLng: {
                     type: GraphQLFloat,
                 },
+                size: { type: new GraphQLNonNull(GraphQLString) },
                 url: {
                     type: GraphQLString,
                 },
@@ -105,6 +106,7 @@ const mutation = new GraphQLObjectType({
                 geoCodeLng: {
                     type: GraphQLFloat,
                 },
+                size: { type: new GraphQLNonNull(GraphQLString) },
                 url: {
                     type: GraphQLString,
                 },

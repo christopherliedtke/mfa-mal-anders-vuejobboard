@@ -1,6 +1,6 @@
 <template>
     <div @click="onLogout">
-        <b-icon class="mr-1" icon="box-arrow-right" font-scale="1.45"></b-icon
+        <b-icon class="mr-1" icon="box-arrow-right" font-scale="1.3"></b-icon
         >Logout
     </div>
 </template>

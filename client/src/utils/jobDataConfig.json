@@ -79,5 +79,11 @@
         "Sachen-Anhalt",
         "Schleswig-Holstein",
         "Thüringen"
+    ],
+    "companySizeOptions": [
+        "1 - 5 Mitarbeiter",
+        "6 - 10 Mitarbeiter",
+        "11 - 20 Mitarbeiter",
+        "20+ Mitarbeiter"
     ]
 }

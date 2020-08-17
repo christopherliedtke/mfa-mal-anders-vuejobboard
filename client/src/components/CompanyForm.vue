@@ -2,51 +2,50 @@
     <div class="job-form position-relative">
         <Overlay :show="showOverlay" />
         <b-form id="company-form">
-            <h3 class="mt-4">Company Data</h3>
-            <label for="company-name">Name *</label>
+            <label for="company-name">Unternehmensname *</label>
             <b-form-input
                 type="text"
                 v-model="company.name"
                 :state="validated ? (company.name ? true : false) : null"
                 id="company-name"
-                placeholder="Enter company name ..."
+                placeholder="Unternehmensname eingeben..."
                 required
             />
-            <label for="company-street">Street and House Number *</label>
+            <label for="company-street">Straße und Hausnummer *</label>
             <b-form-input
                 type="text"
                 v-model="company.street"
                 :state="validated ? (company.street ? true : false) : null"
                 id="company-street"
-                placeholder="Enter street and house number ..."
+                placeholder="Straße und Hausnummer eingeben..."
                 required
             />
-            <label for="company-location">City *</label>
+            <label for="company-location">Ort *</label>
             <b-form-input
                 type="text"
                 v-model="company.location"
                 :state="validated ? (company.location ? true : false) : null"
                 id="company-location"
-                placeholder="Enter location ..."
+                placeholder="Ort eingeben..."
                 required
             />
-            <label for="company-zip-code">ZIP Code *</label>
+            <label for="company-zip-code">PLZ *</label>
             <b-form-input
                 type="number"
                 v-model="company.zipCode"
                 :state="validated ? (company.zipCode ? true : false) : null"
                 id="company-zip-code"
-                placeholder="Enter zip code ..."
+                placeholder="PLZ eingeben..."
                 required
             />
-            <label for="company-state">State *</label>
+            <label for="company-state">Bundesland *</label>
             <b-form-select
                 id="company-state"
                 v-model="company.state"
                 :state="validated ? (company.state ? true : false) : null"
             >
                 <b-form-select-option :value="null" disabled
-                    >-- Choose a state --</b-form-select-option
+                    >-- Bundesland auswählen --</b-form-select-option
                 >
                 <b-form-select-option
                     v-for="state in companyStateOptions"
@@ -55,14 +54,14 @@
                     >{{ state }}</b-form-select-option
                 >
             </b-form-select>
-            <label for="company-country">Country *</label>
+            <label for="company-country">Land *</label>
             <b-form-select
                 id="company-country"
                 v-model="company.country"
                 :state="validated ? (company.country ? true : false) : null"
             >
                 <b-form-select-option :value="null" disabled
-                    >-- Choose a country --</b-form-select-option
+                    >-- Land auswählen --</b-form-select-option
                 >
                 <b-form-select-option
                     v-for="country in companyCountryOptions"
@@ -71,7 +70,23 @@
                     >{{ country }}</b-form-select-option
                 >
             </b-form-select>
-            <label for="company-url">Website</label>
+            <label for="company-size">Unternehmensgröße *</label>
+            <b-form-select
+                id="company-size"
+                v-model="company.size"
+                :state="validated ? (company.size ? true : false) : null"
+            >
+                <b-form-select-option :value="null" disabled
+                    >-- Unternehmensgröße auswählen --</b-form-select-option
+                >
+                <b-form-select-option
+                    v-for="size in companySizeOptions"
+                    :key="size"
+                    :value="size"
+                    >{{ size }}</b-form-select-option
+                >
+            </b-form-select>
+            <label for="company-url">Webseite</label>
             <b-input-group>
                 <template v-slot:prepend>
                     <b-input-group-text
@@ -83,7 +98,7 @@
                     v-model="company.url"
                     :state="validated ? (company.url ? true : null) : null"
                     id="company-url"
-                    placeholder="https://www.your-company.com"
+                    placeholder="https://www.ihr-unternehmen.de"
                 />
             </b-input-group>
             <label for="file">Logo (jpg, png | max. 5MB)</label>
@@ -115,11 +130,11 @@
                         }?tab=2`
                     "
                 >
-                    Cancel
+                    Abbrechen
                 </b-button>
                 <b-button variant="success" @click.prevent="onSubmit">
                     <b-icon v-if="success" icon="check2" class="mr-2" />
-                    {{ success ? "Done" : "Save" }}
+                    {{ success ? "Gespeichert" : "Speichern" }}
                 </b-button>
             </div>
         </b-form>
@@ -133,7 +148,8 @@
     import axios from "@/axios";
     import {
         companyStateOptions,
-        companyCountryOptions
+        companyCountryOptions,
+        companySizeOptions
     } from "@/utils/jobDataConfig.json";
     import ImageUploader from "@/components/utils/ImageUploader.vue";
     import Overlay from "@/components/utils/Overlay";
@@ -156,11 +172,13 @@
                     country: null,
                     geoCodeLat: null,
                     geoCodeLng: null,
+                    size: null,
                     url: "",
                     logoUrl: ""
                 },
                 companyCountryOptions,
                 companyStateOptions,
+                companySizeOptions,
                 hereMaps: {
                     platform: null,
                     apikey: "n3GOlcV0Z6utqCKpJlDWH6lWYtJdvR0QomMzYs_EreM"
@@ -200,6 +218,7 @@
                                     country
                                     geoCodeLat
                                     geoCodeLng
+                                    size
                                     url
                                     logoUrl
                                 }
@@ -217,7 +236,7 @@
                 this.error = false;
 
                 if (!this.formValidation()) {
-                    this.error = "Please provide all necessary information.";
+                    this.error = "Bitte fülle die erforderlichen Felder aus!";
                     return null;
                 }
 
@@ -262,6 +281,7 @@
                                 country: "${this.company.country}", 
                                 geoCodeLat: ${this.company.geoCodeLat}, 
                                 geoCodeLng: ${this.company.geoCodeLng}, 
+                                size: "${this.company.size}"
                                 url: "${this.company.url}"
                                 logoUrl: "${this.company.logoUrl}"
                             ) {
@@ -277,7 +297,7 @@
 
                     if (!response.data.data[mutationType]) {
                         this.error =
-                            "Oh, something went wrong. Please try again!";
+                            "Oh, da ist leider etwas schief gelaufen. Bitte probiere es noch einmal.";
                     } else {
                         this.success = true;
 
@@ -288,7 +308,8 @@
                         }, 1000);
                     }
                 } catch (err) {
-                    this.error = "Oh, something went wrong. Please try again!";
+                    this.error =
+                        "Oh, da ist leider etwas schief gelaufen. Bitte probiere es noch einmal.";
                     console.log("Error on update/save company: ", err);
                 }
 
@@ -301,7 +322,8 @@
                     !this.company.location ||
                     !this.company.state ||
                     !this.company.street ||
-                    !this.company.zipCode
+                    !this.company.zipCode ||
+                    !this.company.size
                     ? false
                     : true;
             },

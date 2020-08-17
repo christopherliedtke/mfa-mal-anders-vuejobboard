@@ -153,13 +153,13 @@
                     >Zurücksetzen</b-button
                 >
             </div>
-            <label for="company-name">Name *</label>
+            <label for="company-name">Unternehmensname *</label>
             <b-form-input
                 type="text"
                 v-model="job.company.name"
                 :state="validated ? (job.company.name ? true : false) : null"
                 id="company-name"
-                placeholder="Name eingeben..."
+                placeholder="Unternehmensname eingeben..."
                 required
             />
             <label for="company-street">Straße und Hausnummer *</label>
@@ -171,7 +171,7 @@
                 placeholder="Straße und Hausnummer eingeben..."
                 required
             />
-            <label for="company-location">Stadt *</label>
+            <label for="company-location">Ort *</label>
             <b-form-input
                 type="text"
                 v-model="job.company.location"
@@ -179,7 +179,7 @@
                     validated ? (job.company.location ? true : false) : null
                 "
                 id="company-location"
-                placeholder="Stadt eingeben..."
+                placeholder="Ort eingeben..."
                 required
             />
             <label for="company-zip-code">PLZ *</label>
@@ -223,6 +223,23 @@
                     >{{ country }}</b-form-select-option
                 >
             </b-form-select>
+            <label for="company-size">Unternehmensgröße *</label>
+            <b-form-select
+                id="company-size"
+                v-model="job.company.size"
+                :state="validated ? (job.company.size ? true : false) : null"
+            >
+                <b-form-select-option :value="null" disabled
+                    >-- Unternehmensgröße auswählen --</b-form-select-option
+                >
+                <b-form-select-option
+                    v-for="size in companySizeOptions"
+                    :key="size"
+                    :value="size"
+                    >{{ size }}</b-form-select-option
+                >
+            </b-form-select>
+
             <label for="company-url">Webseite</label>
             <b-input-group>
                 <template v-slot:prepend>
@@ -258,7 +275,7 @@
                     :src="job.company.logoUrl"
                 />
             </div>
-            <h3 class="mt-4">Ansprechpartner</h3>
+            <h3 class="mt-4">Ansprechpartner für Bewerbungen</h3>
             <label for="contact-title">Titel</label>
             <b-form-select
                 id="contact-title"
@@ -346,7 +363,8 @@
         simpleApplicationOptions,
         contactTitleOptions,
         companyStateOptions,
-        companyCountryOptions
+        companyCountryOptions,
+        companySizeOptions
     } from "@/utils/jobDataConfig.json";
     import TipTapEditor from "@/components/utils/TipTapEditor.vue";
     import ImageUploader from "@/components/utils/ImageUploader.vue";
@@ -383,6 +401,7 @@
                         country: "Deutschland",
                         geoCodeLat: null,
                         geoCodeLng: null,
+                        size: null,
                         url: "",
                         logoUrl: ""
                     }
@@ -395,6 +414,7 @@
                 contactTitleOptions,
                 companyCountryOptions,
                 companyStateOptions,
+                companySizeOptions,
                 hereMaps: {
                     platform: null,
                     apikey: "n3GOlcV0Z6utqCKpJlDWH6lWYtJdvR0QomMzYs_EreM"
@@ -449,6 +469,7 @@
                                         country
                                         geoCodeLat
                                         geoCodeLng
+                                        size
                                         url
                                         logoUrl
                                     }
@@ -469,10 +490,11 @@
                             street: "",
                             location: "",
                             zipCode: "",
-                            state: "",
+                            state: null,
                             country: null,
                             geoCodeLat: null,
                             geoCodeLng: null,
+                            size: null,
                             url: "",
                             logoUrl: ""
                         };
@@ -498,6 +520,7 @@
                                     country
                                     geoCodeLat
                                     geoCodeLng
+                                    size
                                     url
                                     logoUrl
                                 }
@@ -560,6 +583,7 @@
                                 country: "${this.job.company.country}", 
                                 geoCodeLat: ${this.job.company.geoCodeLat}, 
                                 geoCodeLng: ${this.job.company.geoCodeLng}, 
+                                size: "${this.job.company.size}"
                                 url: "${this.job.company.url}"
                                 logoUrl: "${this.job.company.logoUrl}"
                             ) {
@@ -655,7 +679,8 @@
                     !this.job.company.location ||
                     !this.job.company.state ||
                     !this.job.company.street ||
-                    !this.job.company.zipCode
+                    !this.job.company.zipCode ||
+                    !this.job.company.size
                     ? false
                     : true;
             },
