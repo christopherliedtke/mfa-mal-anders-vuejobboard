@@ -31,6 +31,7 @@ router.post("/checkout-completed", async (req, res) => {
             req.body.data.object.payment_intent
         );
 
+        const status = "published";
         const paidAt = new Date();
         const paidExpiresAt = new Date();
         paidExpiresAt.setDate(
@@ -42,6 +43,7 @@ router.post("/checkout-completed", async (req, res) => {
                 Job.updateOne(
                     { _id: jobId, userId: userId },
                     {
+                        status,
                         paid: true,
                         paidAt,
                         paidExpiresAt,
