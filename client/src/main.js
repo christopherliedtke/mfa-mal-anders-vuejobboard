@@ -14,7 +14,10 @@ import {
     faMapMarker,
     faBuilding,
     faCalendarAlt,
-    faClock
+    faClock,
+    faExclamationCircle,
+    faHashtag,
+    faCalendarTimes
 } from "@fortawesome/free-solid-svg-icons";
 import { faUser as farUser } from "@fortawesome/free-regular-svg-icons";
 import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons";
@@ -25,6 +28,9 @@ library.add(
     faBuilding,
     faCalendarAlt,
     faClock,
+    faExclamationCircle,
+    faHashtag,
+    faCalendarTimes,
     farUser,
     faFacebookSquare
 );

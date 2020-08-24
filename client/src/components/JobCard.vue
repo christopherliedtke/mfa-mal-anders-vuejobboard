@@ -7,7 +7,10 @@
                         {{ job.title }}
                     </h4>
                     <div class="img-container">
-                        <b-img :src="job.company.logoUrl" />
+                        <b-img-lazy
+                            :src="job.company.logoUrl"
+                            blank-src="@/assets/logo.png"
+                        />
                     </div>
                 </div>
                 <div class="card-content">
@@ -63,6 +66,14 @@
                             )[0].text
                         }}
                     </div>
+                    <div v-if="job.simpleApplication">
+                        <b-badge pill variant="secondary"
+                            ><font-awesome-icon
+                                class="mr-1"
+                                :icon="['fas', 'hashtag']"
+                            />Einfach bewerben</b-badge
+                        >
+                    </div>
                 </div>
             </b-card-text>
         </b-card>
@@ -105,7 +116,7 @@
             display: flex;
             justify-content: space-between;
             align-items: stretch;
-            background-color: $primary;
+            background-color: lighten($primary, $amount: 0%);
             color: $light;
             border-radius: 5px 5px 0 0;
 
@@ -136,12 +147,20 @@
 
         .card-foot {
             display: flex;
+            align-items: center;
             flex-wrap: wrap;
             padding: 1rem;
 
             div {
                 margin-top: 0.5rem;
                 margin-right: 1rem;
+            }
+
+            .badge {
+                font-size: inherit;
+                font-weight: inherit;
+                color: $light;
+                padding: 0.3rem 0.7rem;
             }
         }
     }

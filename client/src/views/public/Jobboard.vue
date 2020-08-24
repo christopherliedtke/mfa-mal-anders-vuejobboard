@@ -1,122 +1,135 @@
 <template>
     <b-container class="jobboard py-5">
         <h2>Stellenangebote</h2>
-        <b-form id="job-filter" inline @submit.prevent>
-            <b-input-group class="my-1 mr-2">
-                <b-form-input
-                    type="text"
-                    v-model="filter.searchTerm"
-                    placeholder="Suchbegriff..."
-                    @change="setQuery"
-                />
-                <b-input-group-append>
-                    <b-button
-                        ><b-icon
-                            icon="x"
-                            @click.prevent="
-                                () => {
-                                    filter.searchTerm = '';
-                                    setQuery();
-                                }
+        <b-row class="mt-5">
+            <b-col cols="12" lg="4" class="pr-5 pr-lg-5">
+                <b-button-toolbar aria-label="Jobboard view toolbar">
+                    <b-button-group class="mb-3">
+                        <b-button
+                            :variant="
+                                jobboardView == 'list'
+                                    ? 'primary'
+                                    : 'outline-primary'
                             "
-                    /></b-button>
-                </b-input-group-append>
-            </b-input-group>
-            <b-form-select
-                class="my-1 mr-2"
-                v-model="filter.employmentType"
-                @change="setQuery"
-            >
-                <b-form-select-option :value="null"
-                    >Alle Anstellungsarten</b-form-select-option
-                >
-                <b-form-select-option
-                    v-for="type in employmentTypeOptions"
-                    :key="type.value"
-                    :value="type.value"
-                    >{{ type.text }}</b-form-select-option
-                >
-            </b-form-select>
-            <b-form-select
-                class="my-1 mr-2"
-                v-model="filter.specialization"
-                @change="setQuery"
-            >
-                <b-form-select-option :value="null"
-                    >Alle Fachrichtungen</b-form-select-option
-                >
-                <b-form-select-option
-                    v-for="specialization in specializationOptions"
-                    :key="specialization"
-                    :value="specialization"
-                    >{{ specialization }}</b-form-select-option
-                >
-            </b-form-select>
-            <b-input-group class="my-1 mr-2">
-                <b-form-input
-                    type="text"
-                    v-model="filter.location"
-                    list="location-list"
-                    placeholder="Ort..."
-                    @change="setQuery"
-                />
-                <b-input-group-append>
-                    <b-button
-                        ><b-icon
-                            icon="x"
-                            @click.prevent="
-                                () => {
-                                    filter.location = '';
-                                    setQuery();
-                                }
+                            @click.prevent="setJobboardView('list')"
+                            ><b-icon
+                                class="mr-2"
+                                icon="list-ul"
+                            />Liste</b-button
+                        >
+                        <b-button
+                            :variant="
+                                jobboardView == 'map'
+                                    ? 'primary'
+                                    : 'outline-primary'
                             "
-                    /></b-button>
-                </b-input-group-append>
-            </b-input-group>
-            <b-form-datalist
-                id="location-list"
-                :options="locationsList"
-            ></b-form-datalist>
-            <b-form-select
-                class="my-1 mr-2"
-                v-model="filter.state"
-                @change="setQuery"
-            >
-                <b-form-select-option :value="null"
-                    >Alle Bundesländer</b-form-select-option
-                >
-                <b-form-select-option
-                    v-for="state in companyStateOptions"
-                    :key="state"
-                    :value="state"
-                    >{{ state }}</b-form-select-option
-                >
-            </b-form-select>
-        </b-form>
-        <b-button-toolbar aria-label="Jobboard view toolbar">
-            <b-button-group class="mt-3">
-                <b-button
-                    :variant="
-                        jobboardView == 'list' ? 'primary' : 'outline-primary'
-                    "
-                    @click.prevent="setJobboardView('list')"
-                    ><b-icon class="mr-2" icon="list-ul" />Liste</b-button
-                >
-                <b-button
-                    :variant="
-                        jobboardView == 'map' ? 'primary' : 'outline-primary'
-                    "
-                    @click.prevent="setJobboardView('map')"
-                    ><b-icon class="mr-2" icon="map" />Karte</b-button
-                >
-            </b-button-group>
-        </b-button-toolbar>
-        <keep-alive>
-            <component
-                :jobs="filteredJobs"
-                :is="computedJobboardView"
-            ></component>
-        </keep-alive>
+                            @click.prevent="setJobboardView('map')"
+                            ><b-icon class="mr-2" icon="map" />Karte</b-button
+                        >
+                    </b-button-group>
+                </b-button-toolbar>
+                <b-form id="job-filter" inline @submit.prevent>
+                    <b-input-group class="mb-1 mr-2">
+                        <b-form-input
+                            type="text"
+                            v-model="filter.searchTerm"
+                            placeholder="Suchbegriff..."
+                            @change="setQuery"
+                        />
+                        <b-input-group-append>
+                            <b-button
+                                ><b-icon
+                                    icon="x"
+                                    @click.prevent="
+                                        () => {
+                                            filter.searchTerm = '';
+                                            setQuery();
+                                        }
+                                    "
+                            /></b-button>
+                        </b-input-group-append>
+                    </b-input-group>
+                    <b-form-select
+                        class="my-1 mr-2"
+                        v-model="filter.employmentType"
+                        @change="setQuery"
+                    >
+                        <b-form-select-option :value="null"
+                            >Alle Anstellungsarten</b-form-select-option
+                        >
+                        <b-form-select-option
+                            v-for="type in employmentTypeOptions"
+                            :key="type.value"
+                            :value="type.value"
+                            >{{ type.text }}</b-form-select-option
+                        >
+                    </b-form-select>
+                    <b-form-select
+                        class="my-1 mr-2"
+                        v-model="filter.specialization"
+                        @change="setQuery"
+                    >
+                        <b-form-select-option :value="null"
+                            >Alle Fachrichtungen</b-form-select-option
+                        >
+                        <b-form-select-option
+                            v-for="specialization in specializationOptions"
+                            :key="specialization"
+                            :value="specialization"
+                            >{{ specialization }}</b-form-select-option
+                        >
+                    </b-form-select>
+                    <b-input-group class="my-1 mr-2">
+                        <b-form-input
+                            type="text"
+                            v-model="filter.location"
+                            list="location-list"
+                            placeholder="Ort..."
+                            @change="setQuery"
+                        />
+                        <b-input-group-append>
+                            <b-button
+                                ><b-icon
+                                    icon="x"
+                                    @click.prevent="
+                                        () => {
+                                            filter.location = '';
+                                            setQuery();
+                                        }
+                                    "
+                            /></b-button>
+                        </b-input-group-append>
+                    </b-input-group>
+                    <b-form-datalist
+                        id="location-list"
+                        :options="locationsList"
+                    ></b-form-datalist>
+                    <b-form-select
+                        class="my-1 mr-2"
+                        v-model="filter.state"
+                        @change="setQuery"
+                    >
+                        <b-form-select-option :value="null"
+                            >Alle Bundesländer</b-form-select-option
+                        >
+                        <b-form-select-option
+                            v-for="state in companyStateOptions"
+                            :key="state"
+                            :value="state"
+                            >{{ state }}</b-form-select-option
+                        >
+                    </b-form-select>
+                </b-form>
+            </b-col>
+            <b-col>
+                <keep-alive>
+                    <component
+                        :jobs="filteredJobs"
+                        :is="computedJobboardView"
+                    ></component>
+                </keep-alive>
+            </b-col>
+        </b-row>
 
         <Head title="Jobboard" desc="This is the meta of jobboard..." img="" />
     </b-container>
@@ -182,6 +195,7 @@
                             description
                             employmentType
                             applicationDeadline
+                            simpleApplication
                             specialization
                             company {
                                 _id
@@ -324,4 +338,11 @@
     };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+    input,
+    .input-group,
+    select {
+        min-width: 100%;
+        max-width: 100%;
+    }
+</style>
