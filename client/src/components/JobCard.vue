@@ -1,6 +1,6 @@
 <template
     ><b-link :to="`/jobboard/job/${job._id}`">
-        <b-card no-body class="my-3">
+        <b-card no-body class="mb-3 mt-3 mt-lg-0">
             <b-card-text>
                 <div class="card-head">
                     <h4>
