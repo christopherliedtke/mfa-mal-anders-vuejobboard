@@ -1,6 +1,7 @@
 form {
     input,
     select,
+    textarea,
     .form-control,
     .custom-select {
         border-radius: $border-radius2;
@@ -10,6 +11,7 @@ form {
         &:active {
             outline: none !important;
             box-shadow: none !important;
+            border: 1px solid $secondary;
         }
     }
 

@@ -25,12 +25,12 @@ router.post("/send", async (req, res) => {
                 subject: `${form.subject}`,
                 html: `
                     <div>
-                        <strong>First Name:</strong> ${form.firstName} <br>
-                        <strong>Last Name:</strong> ${form.lastName} <br>
-                        <strong>Email Address:</strong> ${form.email} <br>
-                        <strong>Phone Number:</strong> ${form.phone} <br>
+                        <strong>Vorname:</strong> ${form.firstName} <br>
+                        <strong>Nachname:</strong> ${form.lastName} <br>
+                        <strong>E-Mail:</strong> ${form.email} <br>
+                        <strong>Telefon:</strong> ${form.phone} <br>
                         <hr>
-                        <h2>Subject: ${form.subject}</h2>
+                        <h2>Betreff: ${form.subject}</h2>
                         <p>${form.message}</p>
                     </div>
                 `,
