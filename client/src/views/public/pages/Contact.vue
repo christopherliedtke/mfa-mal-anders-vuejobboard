@@ -2,7 +2,7 @@
     <div>
         <h1 class="title">{{ title }}</h1>
         <b-container class="contact py-5">
-            <h2>Nimm Kontakt zu uns auf!</h2>
+            <h2>Nimm Kontakt auf!</h2>
             <p>
                 Hast Du Fragen, Anregungen oder Hinweise zur Webseite, suchst
                 Austausch zum Thema “Jobs und Karriere für MFAs” oder benötigst
@@ -36,4 +36,13 @@
     };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+    @import "@/styles/custom_bootstrap.scss";
+
+    .contact {
+        background: url("~@/assets/new_message.svg") center center no-repeat
+            transparentize($light, $amount: 0.3);
+        background-size: 50vh;
+        background-blend-mode: lighten;
+    }
+</style>
