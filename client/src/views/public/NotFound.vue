@@ -1,7 +1,8 @@
 <template>
-    <b-container class="my-5">
-        <h1>404</h1>
-    </b-container>
+    <div>
+        <h1 class="title">404</h1>
+        <b-container class="my-5"> </b-container>
+    </div>
 </template>
 
 <script>

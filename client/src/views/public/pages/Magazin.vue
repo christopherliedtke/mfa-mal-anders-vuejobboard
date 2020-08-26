@@ -1,10 +1,11 @@
 <template>
-    <b-container v-if="config.cms.active" class="privacy-policy py-5">
-        <h1>{{ title }}</h1>
-        <Articles :articles="articles" />
-
+    <div class="magazin">
+        <h1 class="title">{{ title }}</h1>
+        <b-container v-if="config.cms.active" class="py-5">
+            <Articles :articles="articles" />
+        </b-container>
         <Head :title="title" desc="This is the meta of Magazin..." img="" />
-    </b-container>
+    </div>
 </template>
 
 <script>

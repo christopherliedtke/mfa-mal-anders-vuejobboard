@@ -27,6 +27,17 @@ body::-webkit-scrollbar-thumb {
     border-radius: 10px;
 }
 
+h1.title {
+    text-align: center;
+    background-color: $primary;
+    color: $light;
+    padding: 1rem 0 2.5rem 0;
+}
+
+.bold {
+    font-weight: bold;
+}
+
 // #TipTapEditor
 .editor__content {
     &.is-invalid {

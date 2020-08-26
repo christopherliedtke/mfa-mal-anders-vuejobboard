@@ -100,10 +100,6 @@
 <style scoped lang="scss">
     @import "@/styles/custom_bootstrap.scss";
 
-    a:hover {
-        text-decoration: none;
-    }
-
     .card {
         // border: none;
         background-color: darken($light, $amount: 2%);

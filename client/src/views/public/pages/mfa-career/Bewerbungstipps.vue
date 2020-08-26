@@ -9,13 +9,13 @@
 <script>
     import Head from "@/components/utils/Head.vue";
     export default {
-        name: "Forschung",
+        name: "Bewerbungstipps",
         components: {
             Head
         },
         data() {
             return {
-                title: "Jobs in der Forschung"
+                title: "Bewerbungstipps für MFAs"
             };
         }
     };

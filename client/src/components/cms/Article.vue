@@ -1,22 +1,23 @@
 <template>
-    <b-container class="cms-page my-5">
-        <h1>{{ article.title }}</h1>
-        <b-img
-            v-if="article.featuredImage"
-            :src="article.featuredImage.url"
-            :alt="article.featuredImage.altText"
-            class="my-3"
-            fluid
-        ></b-img>
-        <div v-html="article.content"></div>
-
+    <div>
+        <h1 class="title d-none d-md-block">{{ article.title }}</h1>
+        <b-container class="cms-article my-5">
+            <b-img
+                v-if="article.featuredImage"
+                :src="article.featuredImage.url"
+                :alt="article.featuredImage.altText"
+                class="my-3"
+                fluid
+            ></b-img>
+            <div v-html="article.content"></div>
+        </b-container>
         <Head
             v-if="article.title"
             :title="article.title"
             :desc="article.excerpt"
             :img="article.featuredImage.url"
         />
-    </b-container>
+    </div>
 </template>
 
 <script>

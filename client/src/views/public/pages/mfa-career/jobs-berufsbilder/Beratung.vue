@@ -1,9 +1,9 @@
 <template>
-    <b-container class="py-5">
-        <h1>{{ title }}</h1>
-
+    <div>
+        <h1 class="title">{{ title }}</h1>
+        <b-container class="py-5"> </b-container>
         <Head :title="title" desc="This is the meta of..." img="" />
-    </b-container>
+    </div>
 </template>
 
 <script>

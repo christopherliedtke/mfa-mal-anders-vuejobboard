@@ -46,6 +46,10 @@
                                         >Gehalt
                                     </b-nav-item>
                                     <b-nav-item
+                                        to="/page/mfa-career/bewerbungstipps"
+                                        >Bewerbungstipps
+                                    </b-nav-item>
+                                    <b-nav-item
                                         to="/page/mfa-career/jobs-und-berufsbilder"
                                         @mouseover="
                                             showSub('sub-jobs-berufsbilder')

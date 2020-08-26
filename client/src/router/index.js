@@ -23,6 +23,7 @@ import NewsletterUnsubscriptionSuccess from "@/views/public/pages/NewsletterUnsu
 import MFACareer from "@/views/public/pages/MFACareer.vue";
 import MFACareerHome from "@/views/public/pages/mfa-career/MFACareerHome.vue";
 import Gehalt from "@/views/public/pages/mfa-career/Gehalt.vue";
+import Bewerbungstipps from "@/views/public/pages/mfa-career/Bewerbungstipps.vue";
 
 import JobsBerufsbilder from "@/views/public/pages/mfa-career/JobsBerufsbilder.vue";
 import JobsBerufsbilderHome from "@/views/public/pages/mfa-career/jobs-berufsbilder/JobsBerufsbilderHome.vue";
@@ -112,6 +113,10 @@ const routes = [
                     {
                         path: "gehalt",
                         component: Gehalt
+                    },
+                    {
+                        path: "bewerbungstipps",
+                        component: Bewerbungstipps
                     },
                     {
                         path: "jobs-und-berufsbilder",

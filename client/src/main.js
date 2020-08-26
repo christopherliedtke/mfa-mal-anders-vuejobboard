@@ -17,10 +17,15 @@ import {
     faClock,
     faExclamationCircle,
     faHashtag,
-    faCalendarTimes
+    faCalendarTimes,
+    faUsers,
+    faEnvelope
 } from "@fortawesome/free-solid-svg-icons";
 import { faUser as farUser } from "@fortawesome/free-regular-svg-icons";
-import { faFacebookSquare } from "@fortawesome/free-brands-svg-icons";
+import {
+    faFacebookSquare,
+    faWhatsapp
+} from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
 library.add(
@@ -31,8 +36,11 @@ library.add(
     faExclamationCircle,
     faHashtag,
     faCalendarTimes,
+    faUsers,
+    faEnvelope,
     farUser,
-    faFacebookSquare
+    faFacebookSquare,
+    faWhatsapp
 );
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);

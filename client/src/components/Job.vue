@@ -58,6 +58,15 @@
                     Bewerbungsfrist:
                     {{ new Date(job.applicationDeadline).toLocaleDateString() }}
                 </div>
+                <div>
+                    <font-awesome-icon
+                        class="mr-2"
+                        :icon="['fas', 'users']"
+                        size="lg"
+                    />
+
+                    {{ job.company.size }}
+                </div>
                 <div v-if="job.simpleApplication">
                     <b-badge pill variant="secondary"
                         ><font-awesome-icon
@@ -70,16 +79,71 @@
         </div>
         <b-img
             v-if="job.imageUrl"
-            class="mt-3 mb-5 title-img"
+            class="mt-3 title-img"
             :src="job.imageUrl"
             fluid
             :alt="`Image - ${job.company && job.company.name}`"
         />
-        <p v-html="job.description"></p>
+        <div class="mt-5" v-html="job.description"></div>
+        <div class="mt-3" v-if="job.company.url">
+            <a :href="job.company.url"
+                ><strong
+                    >Besuche unsere Homepage
+                    <b-icon icon="box-arrow-up-right"/></strong
+            ></a>
+        </div>
+        <div class="mt-4">
+            <b-button
+                size="lg"
+                :variant="job.simpleApplication ? 'secondary' : 'primary'"
+                :href="job.extJobUrl || `mailto:${job.applicationEmail}`"
+                target="_blank"
+                >Jetzt
+                {{ job.simpleApplication && "nur mit Lebenslauf" }}
+                bewerben</b-button
+            >
+        </div>
+        <div v-if="job.contactLastName" class="mt-4">
+            <h2>Ansprechpartner für Bewerbungen</h2>
+            <p>
+                {{ job.contactTitle && job.contactTitle + " " }}
+                {{ job.contactFirstName + " " + job.contactLastName }} <br />
+                {{ job.contactPhone && "Telefon: " }}
+                <a
+                    v-if="job.contactPhone"
+                    :href="`tel:${job.contactPhone}`"
+                    target="_blank"
+                    >{{ job.contactPhone }}</a
+                >
+                <br />
+                {{ job.contactEmail && "E-Mail: " }}
+                <a
+                    v-if="job.contactEmail"
+                    :href="`mailto:${job.contactEmail}`"
+                    target="_blank"
+                    >{{ job.contactEmail }}</a
+                >
+            </p>
+            <h2>Arbeitsort</h2>
+            <p>
+                {{ job.company.name }} <br />
+                {{ job.company.street }} <br />
+                {{ job.company.zipCode + " " + job.company.location }} <br />
+            </p>
+        </div>
         <HereMapSingleJob
             v-if="job.company && job.company.location"
             :job="job"
         />
+        <div class="d-flex flex-wrap flex-column flex-md-row align-items-start">
+            <FacebookShareBtn class="mr-2 mb-2" :sharePath="$route.fullPath" />
+            <WhatsAppShareBtn class="mr-2 mb-2" :sharePath="$route.fullPath" />
+            <EmailShareBtn
+                class="mr-2 mb-2"
+                :sharePath="$route.fullPath"
+                :subject="job.title"
+            />
+        </div>
 
         <b-alert
             v-if="error"
@@ -88,14 +152,15 @@
             dismissible
             variant="warning"
             style="z-index: 2000;"
-            >Oh, something went wrong. Please try again later ...</b-alert
+            >Oh, da ist leider etwas schief gelaufen. Bitte probiere es noch
+            einmal.</b-alert
         >
         <JobStructuredData :job="job" />
         <Head
             v-if="job.title"
             :title="job.title"
             :desc="
-                `${job.company.name} is looking for a ${job.title} in ${job.company.location}`
+                `${job.company.name} sucht nach ${job.title} in ${job.company.location}`
             "
             :img="job.imageUrl || job.company.logoUrl"
         />
@@ -111,11 +176,17 @@
     import JobStructuredData from "@/components/JobStructuredData.vue";
     import HereMapSingleJob from "@/components/hereMaps/HereMapSingleJob.vue";
     import Head from "@/components/utils/Head.vue";
+    import FacebookShareBtn from "@/components/utils/FacebookShareBtn.vue";
+    import WhatsAppShareBtn from "@/components/utils/WhatsAppShareBtn.vue";
+    import EmailShareBtn from "@/components/utils/EmailShareBtn.vue";
     export default {
         name: "Job",
         components: {
             HereMapSingleJob,
             JobStructuredData,
+            FacebookShareBtn,
+            WhatsAppShareBtn,
+            EmailShareBtn,
             Head
         },
         props: ["apiJobsSchema"],
@@ -161,6 +232,7 @@
                                         country
                                         geoCodeLat
                                         geoCodeLng
+                                        size
                                         url
                                         logoUrl
                                     }
