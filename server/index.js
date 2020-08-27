@@ -35,6 +35,9 @@ app.use((req, res, next) => {
     next();
 });
 
+// #Redirections
+app.use("*", require("./utils/middleware/redirect"));
+
 // #Cookie Session
 const cookieSession = require("cookie-session");
 app.use(
