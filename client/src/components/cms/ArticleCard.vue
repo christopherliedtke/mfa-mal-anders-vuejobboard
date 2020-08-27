@@ -30,6 +30,16 @@
 
 <style lang="scss">
     @import "@/styles/custom_bootstrap.scss";
+    @import "@/styles/_config.scss";
+
+    a {
+        color: $dark;
+        transition: $transition1;
+
+        &:hover {
+            color: $primary;
+        }
+    }
 
     .card {
         // border: none;

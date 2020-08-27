@@ -99,10 +99,26 @@
 
 <style scoped lang="scss">
     @import "@/styles/custom_bootstrap.scss";
+    @import "@/styles/_config.scss";
+
+    a {
+        color: $dark;
+        transition: $transition1;
+
+        &:hover {
+            color: $primary;
+        }
+    }
 
     .card {
-        // border: none;
+        border: none;
         background-color: darken($light, $amount: 2%);
+        box-shadow: $shadow1;
+        transition: $transition1;
+
+        &:hover {
+            box-shadow: $shadow2;
+        }
 
         hr {
             margin: 0;
@@ -150,6 +166,10 @@
             div {
                 margin-top: 0.5rem;
                 margin-right: 1rem;
+
+                svg {
+                    color: $primary;
+                }
             }
 
             .badge {
@@ -157,6 +177,10 @@
                 font-weight: inherit;
                 color: $light;
                 padding: 0.3rem 0.7rem;
+
+                svg {
+                    color: $light;
+                }
             }
         }
     }

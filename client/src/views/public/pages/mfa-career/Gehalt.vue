@@ -42,80 +42,92 @@
             <h2>
                 Gehaltstarifverträge
             </h2>
-            <p>
-                Der Verband medizinischer Fachberufe e.V. (VMF) ist die einzige
-                Organisation für medizinische Fachangestellte auf
-                Arbeitnehmerseite. Sie vertritt uns medizinische Fachangestellte
-                bei Tarifverhandlungen gegenüber der Arbeitsgemeinschaft zur
-                Regelung der Arbeitsbedingungen der
-                Arzthelferinnen/Medizinischen Fachangestellten (AAA). Die AAA
-                ist die Tarifpartei der Arbeitgeber, sprich der niedergelassenen
-                Ärzte.
-            </p>
-            <p>
-                Die niedergelassenen Ärzte sind nicht automatisch Mitglied in
-                der AAA. Deshalb kann man nicht zwingend davon ausgehen, dass
-                sich Praxen an die Gehälter im Tarifvertrag halten müssen.
-                Arbeitgeber sind nur dann dazu verpflichtet Gehälter nach
-                Tarifvertrag zu zahlen, wenn sowohl sie Mitglied im AAA als auch
-                die MFA Mitglied im VMF sind.
-            </p>
-            <p>
-                Ehrlich gesagt, kenne ich nicht viele MFAs, die Mitglied im VMF
-                sind. Daher wundert es auch nicht, dass so viele von uns
-                untertariflich verdienen, wie die Kollegin aus dem Forum im
-                obigen Beispiel.
-            </p>
-            <p>
-                Dennoch gibt es viele Ärzte, die sich freiwillig an den
-                aktuellen Tarifvertrag halten oder zumindest das Gehalt für ihre
-                medizinischen Fachangestellten daran anlehnen.
-            </p>
-            <p>
-                Neben dem offiziellen Tarifvertrag existieren zahlreiche
-                Gehaltstarifverträge von privaten Unternehmen, Krankenhäusern,
-                dem öffentlichen Dienst (z.B. wenn du bei der Kassenärztlichen
-                Vereinigung arbeitest) und kirchlichen Trägern (wie der Caritas,
-                der Diakonie oder der Johanniter).
-            </p>
-            <p>
-                Es kommt im privaten Bereich oftmals zu einer außertariflichen
-                Bezahlung. Das muss nicht unbedingt negativ für dich ausfallen.
-                Viele MFA werden dadurch übertariflich bezahlt.
-            </p>
-            <p>
-                Wenn dein Chef kein Mitglied im AAA ist, du aber darauf
-                bestehst, dass dein Gehalt nach Tarifvertrag bezahlt wird,
-                kannst du alternativ mit deinem Arbeitgeber vereinbaren, dass er
-                sich freiwillig daran hält. Hier ist es ratsam, eine
-                entsprechende Klausel im Arbeitsvertrag aufnehmen zu lassen, die
-                die Abmachung bindend macht.
-            </p>
-            <p>
-                Der Tarifvertrag hat natürlich auch einen ganz entscheidenden
-                Vorteil: er wird regelmäßig neu verhandelt. Das Gehalt wird
-                somit beinahe jährlich immer etwas angepasst und erhöht. Ist
-                dein Chef verpflichtet nach Tarifvertrag zu zahlen oder hält
-                sich freiwillig daran, musst du also keine Gehaltsverhandlungen
-                mit dem Chef führen.
-            </p>
-            <p>
-                Daneben bietet der Gehaltstarifvertrag für medizinische
-                Fachangestellte dir vor allem eine gute Orientierung, um deinen
-                Marktwert einzuschätzen, was Qualifikation und Erfahrung
-                angehen.
-            </p>
-            <p>
-                Den aktuellen Gehaltstarifvertrag für medizinische
-                Fachangestellte findest du
-                <a
-                    href="https://www.vmf-online.de/mfa/mfa-tarife"
-                    target="_blank"
-                    rel="noopener"
-                    >hier</a
-                >.
-            </p>
-            <Gehaltsrechner class="my-5" />
+            <b-row>
+                <b-col>
+                    <p>
+                        Der Verband medizinischer Fachberufe e.V. (VMF) ist die
+                        einzige Organisation für medizinische Fachangestellte
+                        auf Arbeitnehmerseite. Sie vertritt uns medizinische
+                        Fachangestellte bei Tarifverhandlungen gegenüber der
+                        Arbeitsgemeinschaft zur Regelung der Arbeitsbedingungen
+                        der Arzthelferinnen/Medizinischen Fachangestellten
+                        (AAA). Die AAA ist die Tarifpartei der Arbeitgeber,
+                        sprich der niedergelassenen Ärzte.
+                    </p>
+                    <p>
+                        Die niedergelassenen Ärzte sind nicht automatisch
+                        Mitglied in der AAA. Deshalb kann man nicht zwingend
+                        davon ausgehen, dass sich Praxen an die Gehälter im
+                        Tarifvertrag halten müssen. Arbeitgeber sind nur dann
+                        dazu verpflichtet Gehälter nach Tarifvertrag zu zahlen,
+                        wenn sowohl sie Mitglied im AAA als auch die MFA
+                        Mitglied im VMF sind.
+                    </p>
+                    <p>
+                        Ehrlich gesagt, kenne ich nicht viele MFAs, die Mitglied
+                        im VMF sind. Daher wundert es auch nicht, dass so viele
+                        von uns untertariflich verdienen, wie die Kollegin aus
+                        dem Forum im obigen Beispiel.
+                    </p>
+                    <p>
+                        Dennoch gibt es viele Ärzte, die sich freiwillig an den
+                        aktuellen Tarifvertrag halten oder zumindest das Gehalt
+                        für ihre medizinischen Fachangestellten daran anlehnen.
+                    </p>
+                    <p>
+                        Neben dem offiziellen Tarifvertrag existieren zahlreiche
+                        Gehaltstarifverträge von privaten Unternehmen,
+                        Krankenhäusern, dem öffentlichen Dienst (z.B. wenn du
+                        bei der Kassenärztlichen Vereinigung arbeitest) und
+                        kirchlichen Trägern (wie der Caritas, der Diakonie oder
+                        der Johanniter).
+                    </p>
+                    <p>
+                        Es kommt im privaten Bereich oftmals zu einer
+                        außertariflichen Bezahlung. Das muss nicht unbedingt
+                        negativ für dich ausfallen. Viele MFA werden dadurch
+                        übertariflich bezahlt.
+                    </p>
+                    <p>
+                        Wenn dein Chef kein Mitglied im AAA ist, du aber darauf
+                        bestehst, dass dein Gehalt nach Tarifvertrag bezahlt
+                        wird, kannst du alternativ mit deinem Arbeitgeber
+                        vereinbaren, dass er sich freiwillig daran hält. Hier
+                        ist es ratsam, eine entsprechende Klausel im
+                        Arbeitsvertrag aufnehmen zu lassen, die die Abmachung
+                        bindend macht.
+                    </p>
+                    <p>
+                        Der Tarifvertrag hat natürlich auch einen ganz
+                        entscheidenden Vorteil: er wird regelmäßig neu
+                        verhandelt. Das Gehalt wird somit beinahe jährlich immer
+                        etwas angepasst und erhöht. Ist dein Chef verpflichtet
+                        nach Tarifvertrag zu zahlen oder hält sich freiwillig
+                        daran, musst du also keine Gehaltsverhandlungen mit dem
+                        Chef führen.
+                    </p>
+                </b-col>
+                <b-col>
+                    <p>
+                        Daneben bietet der Gehaltstarifvertrag für medizinische
+                        Fachangestellte dir vor allem eine gute Orientierung, um
+                        deinen Marktwert einzuschätzen, was Qualifikation und
+                        Erfahrung angehen.
+                    </p>
+                    <p>
+                        Den aktuellen Gehaltstarifvertrag für medizinische
+                        Fachangestellte findest du
+                        <a
+                            href="https://www.vmf-online.de/mfa/mfa-tarife"
+                            target="_blank"
+                            rel="noopener"
+                            >hier</a
+                        >.
+                    </p>
+                    <Gehaltsrechner class="my-5" />
+                </b-col>
+            </b-row>
+
             <h2>
                 Anrechnung von Berufsjahren
             </h2>
@@ -134,13 +146,16 @@
                 Die Anrechnung deiner Berufsjahre startet ab dem 1. des Monats,
                 wo die Ausbildung beendet wurde.
             </p>
-            <p><strong>Beispiel:</strong></p>
-            <p class="pl-5">
-                <em>
-                    Ausbildung am 16.07. beendet -> Anrechnung der Berufsjahre
-                    beginnt ab 01.07.
-                </em>
-            </p>
+
+            <div class="example">
+                <p><strong>Beispiel:</strong></p>
+                <p class="pl-5">
+                    <em>
+                        Ausbildung am 16.07. beendet -> Anrechnung der
+                        Berufsjahre beginnt ab 01.07.
+                    </em>
+                </p>
+            </div>
             <p>
                 Bei Teilzeitbeschäftigten zählen die Berufsjahre genau wie bei
                 Vollzeitbeschäftigung und werden komplett angerechnet.
@@ -164,31 +179,45 @@
                 gerechnet.
             </p>
             <p>Zwei Beispiele zum besseren Verständnis.</p>
-            <p><strong>Beispiel 1:</strong></p>
-            <p class="pl-5">
-                <em>
-                    Eine MFA geht am 15. August 2016 bei errechnetem
-                    Geburtstermin am 30.09.2016 (6 Wochen vor dem errechneten
-                    Entbindungstermin) bis zum 25.11.2016 (8 Wochen nach der
-                    Entbindung) in den Mutterschutz und nimmt eine einjährige
-                    Elternzeit in Anspruch. Sie kehrt am 01.10.2017 in die
-                    berufliche Tätigkeit als MFA zurück. Die MFA bekommt für
-                    diese Zeit insgesamt 8,5 Monate als Berufsjahre angerechnet.
-                </em>
-            </p>
-            <p><strong>Beispiel 2:</strong></p>
-            <p class="pl-5">
-                <em>
-                    Eine MFA/AH geht am 15. August 2016 bei errechnetem
-                    Geburtstermin am 30.09.2016 in Mutterschutz bis zum
-                    25.11.2016 und nimmt anschließend eine einjährige Elternzeit
-                    in Anspruch. Ab dem 01.04.2017 arbeitet sie während der
-                    Elternzeit 8 Stunden wöchentlich in der Praxis. Sie kehrt am
-                    01.10.2017 aus der Elternzeit in die Praxis zurück. Die MFA
-                    bekommt für diese Zeit insgesamt 11,5 Monate als Berufsjahre
-                    angerechnet.
-                </em>
-            </p>
+            <b-row class="my-3">
+                <b-col class="mx-lg-4">
+                    <div class="example">
+                        <p><strong>Beispiel 1:</strong></p>
+                        <p class="pl-5">
+                            <em>
+                                Eine MFA geht am 15. August 2016 bei errechnetem
+                                Geburtstermin am 30.09.2016 (6 Wochen vor dem
+                                errechneten Entbindungstermin) bis zum
+                                25.11.2016 (8 Wochen nach der Entbindung) in den
+                                Mutterschutz und nimmt eine einjährige
+                                Elternzeit in Anspruch. Sie kehrt am 01.10.2017
+                                in die berufliche Tätigkeit als MFA zurück. Die
+                                MFA bekommt für diese Zeit insgesamt 8,5 Monate
+                                als Berufsjahre angerechnet.
+                            </em>
+                        </p>
+                    </div>
+                </b-col>
+                <b-col class="mx-lg-4">
+                    <div class="example">
+                        <p><strong>Beispiel 2:</strong></p>
+                        <p class="pl-5">
+                            <em>
+                                Eine MFA/AH geht am 15. August 2016 bei
+                                errechnetem Geburtstermin am 30.09.2016 in
+                                Mutterschutz bis zum 25.11.2016 und nimmt
+                                anschließend eine einjährige Elternzeit in
+                                Anspruch. Ab dem 01.04.2017 arbeitet sie während
+                                der Elternzeit 8 Stunden wöchentlich in der
+                                Praxis. Sie kehrt am 01.10.2017 aus der
+                                Elternzeit in die Praxis zurück. Die MFA bekommt
+                                für diese Zeit insgesamt 11,5 Monate als
+                                Berufsjahre angerechnet.
+                            </em>
+                        </p>
+                    </div>
+                </b-col>
+            </b-row>
             <h2>
                 Anrechnung der Berufsjahre bei berufsnahen Tätigkeiten
             </h2>
@@ -198,14 +227,16 @@
                 die Zeiten zur Hälfte angerechnet. Du musst allerdings deine
                 Prüfung zur MFA vor der Ärztekammer bestanden haben.
             </p>
-            <p><strong>Beispiel:</strong></p>
-            <p class="pl-5">
-                <em>
-                    Eine MFA arbeitet vor (oder nach) ihrer Ausbildung vier
-                    Jahre in einer Zahnarztpraxis. Hier werden 2 Berufsjahre
-                    angerechnet.
-                </em>
-            </p>
+            <div class="example">
+                <p><strong>Beispiel:</strong></p>
+                <p class="pl-5">
+                    <em>
+                        Eine MFA arbeitet vor (oder nach) ihrer Ausbildung vier
+                        Jahre in einer Zahnarztpraxis. Hier werden 2 Berufsjahre
+                        angerechnet.
+                    </em>
+                </p>
+            </div>
             <h2>
                 Tätigkeitsgruppen
             </h2>
@@ -729,6 +760,14 @@
 
 <style scoped lang="scss">
     @import "@/styles/custom_bootstrap.scss";
+    @import "@/styles/_config.scss";
+
+    .example {
+        border-radius: $border-radius1;
+        background-color: darken($light, $amount: 5%);
+        padding: 1rem;
+        margin: 1rem 0;
+    }
 
     .card-header {
         cursor: pointer;
