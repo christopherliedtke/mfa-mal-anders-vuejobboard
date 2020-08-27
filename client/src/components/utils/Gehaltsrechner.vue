@@ -4,7 +4,7 @@
             Gehaltsrechner
             <b-icon
                 v-b-popover.hover.top="
-                    'Der Gehaltsrechner gibt Dir eine erste grobe Richtung für Dein zu erwartendes Grundgehalt vor. Wichtige weitere Faktoren sind die tatsächliche Verantwortung, die du, der Standort (Bundesland etc.), aber beispielsweise auch die Größe der Praxis. Du erhältst weitere Informationen zur noch besseren Einschätzung im folgenden Text und im Gehaltstarifvertrag des AAA.'
+                    'Der Gehaltsrechner gibt Dir eine erste grobe Richtung für Dein zu erwartendes Grundgehalt vor. Wichtige weitere Faktoren sind die tatsächliche Verantwortung, die du übernimmst, der Standort (Bundesland etc.), aber beispielsweise auch die Größe der Praxis. Du erhältst weitere Informationen zur noch besseren Einschätzung im folgenden Text und im Gehaltstarifvertrag des AAA.'
                 "
                 icon="info"
                 font-size="1.2rem"

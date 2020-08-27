@@ -6,6 +6,7 @@
                 class="border-radius1 shadow mb-5"
                 fluid
                 src="@/assets/Gehalt-fuer-mfa.png"
+                alt="Banner - So viel verdienst Du wirklich"
             />
             <p>
                 Sobald es um das Thema Gehalt geht, fehlt vielen MFA das Gespür
@@ -702,9 +703,9 @@
             </p>
         </b-container>
         <Head
-            :title="title"
+            :title="'MFA Gehaltsrechner | ' + title"
             desc="Über Gehalt, Tarifvertrag, Tätigkeitsgruppen für MFA. Ermittle deinen Marktwert - Hier gehts zum Gehaltsrechner für MFAs/Arzthelferinnen."
-            img=""
+            img="@/assets/Gehalt-fuer-mfa.png"
         />
     </div>
 </template>

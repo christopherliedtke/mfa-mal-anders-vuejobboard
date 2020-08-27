@@ -359,8 +359,8 @@ const routes = [
         }
     },
     // #404
-    { path: "/404", component: NotFound, meta: { public: true } },
-    { path: "*", redirect: "/404" }
+    { path: "/404", component: NotFound, meta: { public: true } }
+    // { path: "*", redirect: "/404" }
 ];
 
 const router = new VueRouter({
