@@ -201,6 +201,7 @@
         methods: {
             toggleNavbar() {
                 this.$root.$emit("bv::toggle::collapse", "nav-collapse");
+                window.document.documentElement.scrollTop(0);
             },
             showSub(id) {
                 window.document.getElementById(id).classList.add("show");
@@ -213,6 +214,12 @@
                 let currentPositionY =
                     window.document.documentElement.scrollTop;
 
+                console.log(
+                    "this.previousScrollPositionY: ",
+                    this.previousScrollPositionY
+                );
+                console.log("currentPositionY: ", currentPositionY);
+
                 if (
                     currentPositionY >= this.previousScrollPositionY &&
                     currentPositionY > header.offsetHeight &&
@@ -220,7 +227,7 @@
                 ) {
                     header.classList.add("hide");
                 } else if (
-                    currentPositionY < this.previousScrollPositionY &&
+                    currentPositionY <= this.previousScrollPositionY &&
                     header.classList.contains("hide")
                 ) {
                     header.classList.remove("hide");
@@ -231,9 +238,9 @@
             }
         },
         mounted: function() {
-            window.addEventListener("scroll", () => {
-                this.showHeader();
-            });
+            // window.addEventListener("scroll", () => {
+            //     this.showHeader();
+            // });
         }
     };
 </script>

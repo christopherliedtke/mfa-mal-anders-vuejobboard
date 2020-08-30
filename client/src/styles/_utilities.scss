@@ -31,7 +31,11 @@ h1.title {
     text-align: center;
     background-color: $primary;
     color: $light;
-    padding: 1rem 0 2.5rem 0;
+    padding: 1rem 0.75rem 2.5rem 0.75rem;
+}
+
+.card {
+    border-radius: $border-radius1;
 }
 
 .blockquote {

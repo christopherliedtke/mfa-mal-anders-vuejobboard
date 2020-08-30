@@ -1,0 +1,15 @@
+.article-card {
+    a:not(.btn) {
+        color: $dark;
+        transition: $transition1;
+
+        &:hover {
+            color: $primary;
+        }
+    }
+
+    .card {
+        // border: none;
+        background-color: darken($light, $amount: 2%);
+    }
+}

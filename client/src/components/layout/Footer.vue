@@ -37,10 +37,10 @@
                                 werden können.
                             </p>
                         </div>
-                        <div class="mt-5">
+                        <!-- <div class="mt-5">
                             <h6><strong>Links</strong></h6>
                             <p><a href="https://de.jooble.org/">Jooble</a></p>
-                        </div>
+                        </div> -->
                     </div>
                 </b-col>
                 <b-col order="2" order-lg="2">
@@ -55,6 +55,37 @@
                 </b-col>
                 <b-col order="1" order-lg="3">
                     <b-nav vertical class="justify-content-end">
+                        <div>
+                            <div class="d-flex justify-content-center mb-4">
+                                <b-img
+                                    class="mx-3 shadow"
+                                    style="width: 35vw; max-width: 120px"
+                                    src="@/assets/Vorlage_Bewerbungsanschreiben.jpg"
+                                    alt="Bild von Mustervorlage für Motivationsschreiben"
+                                />
+                                <b-img
+                                    class="mx-3 shadow"
+                                    style="width: 35vw; max-width: 120px"
+                                    src="@/assets/Vorlage_Lebenslauf.jpg"
+                                    alt="Bild von Mustervorlage für Lebenslauf"
+                                />
+                            </div>
+
+                            <div class="d-flex justify-content-center mb-5">
+                                <b-button
+                                    href="/api/download/public/bewerbungsunterlagen"
+                                    variant="secondary"
+                                    >Download Bewerbungsunterlagen</b-button
+                                >
+                            </div>
+                        </div>
+                        <b-nav-item to="/page/mfa-career/bewerbungstipps"
+                            >Bewerbungstipps</b-nav-item
+                        >
+                        <b-nav-item to="/page/mfa-career/gehalt"
+                            >Gehaltsrechner</b-nav-item
+                        >
+                        <hr />
                         <b-nav-item to="/page/contact">Kontakt</b-nav-item>
                         <b-nav-item to="/page/privacy-policy"
                             >Datenschutzerklärung</b-nav-item

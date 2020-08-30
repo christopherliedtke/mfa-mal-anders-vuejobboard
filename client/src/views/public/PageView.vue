@@ -7,5 +7,3 @@
         name: "PageView"
     };
 </script>
-
-<style></style>

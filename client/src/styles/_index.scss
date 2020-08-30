@@ -19,10 +19,20 @@ h6 {
     // font-weight: 700;
 }
 
-a {
-    color: $tertiary;
+h1 {
+    font-size: calc(0.75em + 3vmax);
 }
 
-a:hover {
-    text-decoration: none;
+h2 {
+    font-size: calc(0.75em + 1.5vmax);
+}
+
+a {
+    color: $tertiary;
+    transition: $transition1;
+
+    &:hover {
+        color: $secondary;
+        text-decoration: none;
+    }
 }

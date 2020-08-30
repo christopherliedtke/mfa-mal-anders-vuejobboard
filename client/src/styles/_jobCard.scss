@@ -1,0 +1,85 @@
+.jobcard {
+    a {
+        color: $dark;
+        transition: $transition1;
+
+        &:hover {
+            color: $primary;
+        }
+    }
+
+    .card {
+        border: none;
+        background-color: darken($light, $amount: 2%);
+        box-shadow: $shadow1;
+        transition: $transition1;
+
+        &:hover {
+            box-shadow: $shadow2;
+        }
+
+        hr {
+            margin: 0;
+        }
+
+        .card-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            background-color: lighten($primary, $amount: 0%);
+            color: $light;
+            border-radius: 5px 5px 0 0;
+
+            h4 {
+                margin: 0;
+                padding: 1rem;
+            }
+
+            .img-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: darken($light, $amount: 1%);
+                padding: 1rem;
+                width: 150px;
+                border-radius: 0 5px 0 0;
+
+                img {
+                    max-height: 90%;
+                    max-width: 90%;
+                }
+            }
+        }
+
+        .card-content {
+            padding: 1rem;
+        }
+
+        .card-foot {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 1rem;
+
+            div {
+                margin-top: 0.5rem;
+                margin-right: 1rem;
+
+                svg {
+                    color: $primary;
+                }
+            }
+
+            .badge {
+                font-size: inherit;
+                font-weight: inherit;
+                color: $light;
+                padding: 0.3rem 0.7rem;
+
+                svg {
+                    color: $light;
+                }
+            }
+        }
+    }
+}

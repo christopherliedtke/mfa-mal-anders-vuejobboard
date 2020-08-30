@@ -20,7 +20,7 @@
         a {
             color: $light;
 
-            &:hover {
+            &:hover.nav-link {
                 color: transparentize($color: $light, $amount: 0.5);
             }
         }
