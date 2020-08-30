@@ -60,6 +60,7 @@
         { "value": false, "text": "Nein" },
         { "value": true, "text": "Ja" }
     ],
+    "contactGenderOptions": ["Frau", "Herr"],
     "contactTitleOptions": ["Dr.", "Prof.", "Dipl. med."],
     "companyCountryOptions": ["Deutschland"],
     "companyStateOptions": [

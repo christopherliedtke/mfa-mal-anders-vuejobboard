@@ -276,6 +276,22 @@
                 />
             </div>
             <h3 class="mt-4">Ansprechpartner für Bewerbungen</h3>
+            <label for="contact-gender">Anrede</label>
+            <b-form-select
+                id="contact-gender"
+                v-model="job.contactGender"
+                :state="validated ? (job.contactGender ? true : null) : null"
+            >
+                <b-form-select-option :value="null"
+                    >-- Titel auswählen --</b-form-select-option
+                >
+                <b-form-select-option
+                    v-for="title in contactGenderOptions"
+                    :key="title"
+                    :value="title"
+                    >{{ title }}</b-form-select-option
+                >
+            </b-form-select>
             <label for="contact-title">Titel</label>
             <b-form-select
                 id="contact-title"
@@ -361,6 +377,7 @@
         specializationOptions,
         employmentTypeOptions,
         simpleApplicationOptions,
+        contactGenderOptions,
         contactTitleOptions,
         companyStateOptions,
         companyCountryOptions,
@@ -411,6 +428,7 @@
                 specializationOptions,
                 employmentTypeOptions,
                 simpleApplicationOptions,
+                contactGenderOptions,
                 contactTitleOptions,
                 companyCountryOptions,
                 companyStateOptions,
@@ -454,6 +472,7 @@
                                     extJobUrl
                                     applicationEmail
                                     imageUrl
+                                    contactGender
                                     contactTitle
                                     contactFirstName
                                     contactLastName
@@ -628,6 +647,7 @@
                                 extJobUrl: "${this.job.extJobUrl}"
                                 applicationEmail: "${this.job.applicationEmail}"
                                 imageUrl: "${this.job.imageUrl}"
+                                contactGender: "${this.job.contactGender}"
                                 contactTitle: "${this.job.contactTitle}"
                                 contactFirstName: "${this.job.contactFirstName}"
                                 contactLastName: "${this.job.contactLastName}"

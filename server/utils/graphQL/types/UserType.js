@@ -13,6 +13,12 @@ const UserType = new GraphQLObjectType({
         updatedAt: {
             type: GraphQLFloat,
         },
+        gender: {
+            type: GraphQLString,
+        },
+        title: {
+            type: GraphQLString,
+        },
         firstName: {
             type: GraphQLString,
         },

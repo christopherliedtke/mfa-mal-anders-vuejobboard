@@ -46,6 +46,8 @@ const mutation = new GraphQLObjectType({
             type: UserType,
             args: {
                 _id: { type: new GraphQLNonNull(GraphQLString) },
+                gender: { type: GraphQLString },
+                title: { type: GraphQLString },
                 firstName: { type: new GraphQLNonNull(GraphQLString) },
                 lastName: { type: new GraphQLNonNull(GraphQLString) },
                 email: { type: new GraphQLNonNull(GraphQLString) },
@@ -59,6 +61,8 @@ const mutation = new GraphQLObjectType({
                 const response = await User.updateOne(
                     { _id: args._id },
                     {
+                        gender: sanitizeHtml(args.gender),
+                        title: sanitizeHtml(args.title),
                         firstName: sanitizeHtml(args.firstName),
                         lastName: sanitizeHtml(args.lastName),
                         email: sanitizeHtml(args.email),

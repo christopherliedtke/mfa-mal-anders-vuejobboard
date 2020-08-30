@@ -1,6 +1,38 @@
 <template>
     <div>
         <b-form>
+            <label for="gender">Anrede</label>
+            <b-form-select
+                id="gender"
+                v-model="form.gender"
+                :state="validated ? (form.gender ? true : null) : null"
+            >
+                <b-form-select-option :value="null"
+                    >-- Titel auswählen --</b-form-select-option
+                >
+                <b-form-select-option
+                    v-for="title in contactGenderOptions"
+                    :key="title"
+                    :value="title"
+                    >{{ title }}</b-form-select-option
+                >
+            </b-form-select>
+            <label for="title">Titel</label>
+            <b-form-select
+                id="title"
+                v-model="form.title"
+                :state="validated ? (form.title ? true : null) : null"
+            >
+                <b-form-select-option :value="null"
+                    >-- Titel auswählen --</b-form-select-option
+                >
+                <b-form-select-option
+                    v-for="title in contactTitleOptions"
+                    :key="title"
+                    :value="title"
+                    >{{ title }}</b-form-select-option
+                >
+            </b-form-select>
             <label for="firstName">Vorname *</label>
             <b-form-input
                 type="text"
@@ -109,6 +141,10 @@
 <script>
     import axios from "@/axios";
     import Overlay from "@/components/utils/Overlay";
+    import {
+        contactGenderOptions,
+        contactTitleOptions
+    } from "@/utils/jobDataConfig.json";
     export default {
         name: "ContactForm",
         components: {
@@ -117,6 +153,8 @@
         data() {
             return {
                 form: {
+                    gender: null,
+                    title: null,
                     firstName: "",
                     lastName: "",
                     email: "",
@@ -126,6 +164,8 @@
                     accepted: false,
                     honeypot: ""
                 },
+                contactGenderOptions,
+                contactTitleOptions,
                 validated: null,
                 showOverlay: false,
                 error: null,
@@ -170,7 +210,7 @@
                     }
                 } catch (err) {
                     this.error =
-                        "Oh, da ist leider etwas schief gelaufen. Bitte probiere es noch einmal.";
+                        "Oh, da ist leider etwas schief gelaufen. Bitte probiere es später noch einmal.";
                 }
 
                 this.showOverlay = false;
@@ -181,6 +221,8 @@
                             query {
                                 user {
                                     _id
+                                    gender
+                                    title
                                     firstName
                                     lastName
                                     email

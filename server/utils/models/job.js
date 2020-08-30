@@ -54,6 +54,9 @@ const JobSchema = new Schema(
         imageUrl: {
             type: String,
         },
+        contactGender: {
+            type: String,
+        },
         contactTitle: {
             type: String,
         },

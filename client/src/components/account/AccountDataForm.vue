@@ -2,6 +2,40 @@
     <div class="account-data-form position-relative mb-3">
         <Overlay :show="showOverlay" />
         <b-form id="account-data-form">
+            <label for="user-gender">Anrede</label>
+            <b-form-select
+                id="user-gender"
+                v-model="user.gender"
+                :state="validated ? (user.gender ? true : null) : null"
+                :disabled="disabled"
+            >
+                <b-form-select-option :value="null"
+                    >-- Titel auswählen --</b-form-select-option
+                >
+                <b-form-select-option
+                    v-for="title in contactGenderOptions"
+                    :key="title"
+                    :value="title"
+                    >{{ title }}</b-form-select-option
+                >
+            </b-form-select>
+            <label for="user-title">Titel</label>
+            <b-form-select
+                id="user-title"
+                v-model="user.title"
+                :state="validated ? (user.title ? true : null) : null"
+                :disabled="disabled"
+            >
+                <b-form-select-option :value="null"
+                    >-- Titel auswählen --</b-form-select-option
+                >
+                <b-form-select-option
+                    v-for="title in contactTitleOptions"
+                    :key="title"
+                    :value="title"
+                    >{{ title }}</b-form-select-option
+                >
+            </b-form-select>
             <label for="first-name">Vorname *</label>
             <b-form-input
                 type="text"
@@ -69,6 +103,10 @@
 <script>
     import axios from "@/axios";
     import Overlay from "@/components/utils/Overlay";
+    import {
+        contactGenderOptions,
+        contactTitleOptions
+    } from "@/utils/jobDataConfig.json";
     export default {
         name: "AccountDataForm",
         components: {
@@ -79,10 +117,14 @@
             return {
                 user: {
                     _id: "",
+                    gender: null,
+                    title: null,
                     firstName: "",
                     lastName: "",
                     email: ""
                 },
+                contactGenderOptions,
+                contactTitleOptions,
                 disabled: true,
                 validated: null,
                 showOverlay: false,
@@ -106,6 +148,8 @@
                                     }
                                         {
                                         _id
+                                        gender
+                                        title
                                         firstName
                                         lastName
                                         email
@@ -138,6 +182,8 @@
                                                 ? `_id: "${this.user._id}",`
                                                 : ""
                                         }
+                                        gender: "${this.user.gender}", 
+                                        title: "${this.user.title}", 
                                         firstName: "${this.user.firstName}", 
                                         lastName: "${this.user.lastName}", 
                                         email: "${this.user.email}", 

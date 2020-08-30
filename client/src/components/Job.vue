@@ -104,8 +104,9 @@
             >
         </div>
         <div v-if="job.contactLastName" class="mt-4">
-            <h2>Ansprechpartner für Bewerbungen</h2>
+            <h2>Kontakt für Bewerbungen</h2>
             <p>
+                {{ job.contactGender && job.contactGender + " " }}
                 {{ job.contactTitle && job.contactTitle + " " }}
                 {{ job.contactFirstName + " " + job.contactLastName }} <br />
                 {{ job.contactPhone && "Telefon: " }}
@@ -218,6 +219,7 @@
                                     extJobUrl
                                     applicationEmail
                                     imageUrl
+                                    contactGender
                                     contactTitle
                                     contactFirstName
                                     contactLastName

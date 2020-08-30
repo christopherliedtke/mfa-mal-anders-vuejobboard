@@ -3,6 +3,12 @@ const Schema = mongoose.Schema;
 
 const UserSchema = new Schema(
     {
+        gender: {
+            type: String,
+        },
+        title: {
+            type: String,
+        },
         firstName: {
             type: String,
             required: true,
