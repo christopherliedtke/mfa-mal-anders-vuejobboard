@@ -38,11 +38,35 @@ h1.title {
     border-radius: $border-radius1;
 }
 
-.blockquote {
-    margin: 1rem 0;
+a.icon-box {
+    color: $dark;
+
+    &:hover {
+        color: $tertiary;
+    }
+}
+
+.icon-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2.5rem;
+    margin: 1rem;
+    background-color: darken($light, $amount: 5%);
+    border-radius: $border-radius1;
+
+    svg {
+        color: $primary;
+        margin-bottom: 1rem;
+    }
+}
+
+blockquote {
+    margin: 2rem 0;
     padding-left: 1rem;
     border-left: 5px solid $primary;
-    font-size: 150%;
+    font-size: 1.5em;
 }
 
 .bold {

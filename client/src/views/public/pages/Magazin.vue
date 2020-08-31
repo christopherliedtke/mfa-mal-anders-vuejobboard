@@ -42,7 +42,7 @@
                                                 name
                                             }
                                         }
-                                        excerpt
+                                        excerpt(format: RAW)
                                         featuredImage {
                                             node {
                                                 title

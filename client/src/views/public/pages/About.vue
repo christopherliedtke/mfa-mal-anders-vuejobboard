@@ -40,7 +40,7 @@
                 </b-col>
             </b-row>
             <div>
-                <blockquote class="blockquote my-5">
+                <blockquote>
                     MFA mal anders hat die Mission, medizinische Fachangestellte
                     und Arztpraxen erfolgreich zusammen zu bringen.
                 </blockquote>

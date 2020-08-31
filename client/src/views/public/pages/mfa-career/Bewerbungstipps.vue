@@ -25,7 +25,7 @@
                 Mitarbeitern. Daher sollte der Bewerbungsprozess für Kandidaten
                 so einfach, wie möglich gemacht werden.
             </p>
-            <blockquote class="blockquote my-5">
+            <blockquote>
                 Bevor du dich nicht bewirbst und dir einen tollen Job entgehen
                 lässt, nutze unsere Vorlage für eine Top Bewerbung inklusive
                 Anschreiben und Lebenslauf.

@@ -34,6 +34,8 @@ import Verwaltung from "@/views/public/pages/mfa-career/jobs-berufsbilder/Verwal
 import Forschung from "@/views/public/pages/mfa-career/jobs-berufsbilder/Forschung.vue";
 
 import FortWeiterbildungen from "@/views/public/pages/mfa-career/FortWeiterbildungen.vue";
+import FortWeiterbildungenHome from "@/views/public/pages/mfa-career/fort-weiterbildungen/FortWeiterbildungenHome.vue";
+import FortWeiterbildung from "@/views/public/pages/mfa-career/fort-weiterbildungen/FortWeiterbildung.vue";
 
 import Magazin from "@/views/public/pages/Magazin.vue";
 
@@ -150,7 +152,17 @@ const routes = [
                     },
                     {
                         path: "fort-und-weiterbildungen",
-                        component: FortWeiterbildungen
+                        component: FortWeiterbildungen,
+                        children: [
+                            {
+                                path: "",
+                                component: FortWeiterbildungenHome
+                            },
+                            {
+                                path: ":title",
+                                component: FortWeiterbildung
+                            }
+                        ]
                     }
                 ]
             },

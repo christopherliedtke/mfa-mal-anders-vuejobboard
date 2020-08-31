@@ -39,7 +39,8 @@
                             property: "og:image",
                             content:
                                 this.img ||
-                                config.website.url + "/assets/logo.png"
+                                config.website.url +
+                                    "/assets/mfaMalAnders_Facebook_Banner.png"
                         },
                         {
                             property: "fb:app_id",
