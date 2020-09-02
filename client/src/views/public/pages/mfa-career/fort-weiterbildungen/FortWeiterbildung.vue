@@ -1,5 +1,5 @@
 <template>
-    <div v-if="training.title" class="fort-weiterbildung">
+    <div v-if="training" class="fort-weiterbildung">
         <h1 class="title">{{ training.title }}</h1>
         <b-container class="py-5">
             <b-row>
@@ -19,16 +19,16 @@
             </b-row>
         </b-container>
         <Head
-            :title="training.seo.title"
-            :desc="training.seo.metaDesc"
-            :img="training.featuredImage.node.sourceUrl"
+            :title="training.seo && training.seo.title"
+            :desc="training.seo && training.seo.metaDesc"
+            :img="
+                training.featuredImage && training.featuredImage.node.sourceUrl
+            "
         />
     </div>
 </template>
 
 <script>
-    import axios from "@/axios";
-    import config from "@/utils/config.json";
     import Head from "@/components/utils/Head.vue";
     import FortWeiterbildungenNav from "@/components/utils/FortWeiterbildungenNav.vue";
     export default {
@@ -37,49 +37,12 @@
             Head,
             FortWeiterbildungenNav
         },
-        data() {
-            return {
-                training: Array,
-                config
-            };
-        },
-        methods: {
-            async getTraining() {
-                const response = await axios.post(config.cms.url, {
-                    query: `
-                        query MyQuery {
-                            weiterbildungBy(slug: "${this.$route.params.title}") {
-                                id
-                                featuredImage {
-                                    node {
-                                        sourceUrl
-                                    }
-                                }
-                                content
-                                title
-                                seo {
-                                    metaDesc
-                                    title
-                                }
-                            }
-                        }
 
-                    `
-                });
-
-                this.training = response.data.data.weiterbildungBy;
-            }
-        },
-        created() {
-            if (config.cms.active) {
-                this.getTraining();
-            }
-        },
-        watch: {
-            $route(to, from) {
-                if (config.cms.active && to.params.title != from.params.title) {
-                    this.getTraining();
-                }
+        computed: {
+            training: function() {
+                return this.$store.state.trainings.trainings.find(
+                    training => training.slug === this.$route.params.title
+                );
             }
         }
     };

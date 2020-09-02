@@ -12,6 +12,7 @@
     import Header from "@/components/layout/Header";
     import Footer from "@/components/layout/Footer";
     import config from "@/utils/config.json";
+    import { mapActions } from "vuex";
 
     export default {
         components: {
@@ -19,6 +20,7 @@
             Footer
         },
         methods: {
+            ...mapActions(["getTrainings"]),
             track() {
                 this.$gtag.pageview({
                     page_title: this.$route.name,
@@ -36,9 +38,13 @@
                 }
             }
         },
-        created() {
+        created: function() {
             if (config.ga.active) {
                 this.track();
+            }
+
+            if (config.cms.active) {
+                this.getTrainings();
             }
         }
     };

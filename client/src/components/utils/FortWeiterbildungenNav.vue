@@ -1,5 +1,5 @@
 <template>
-    <b-list-group>
+    <b-list-group v-if="trainings">
         <b-list-group-item to="/page/mfa-career/fort-und-weiterbildungen">
             <h3 class="h5 bold">
                 Fort- und Weiterbildungen
@@ -16,48 +16,12 @@
 </template>
 
 <script>
-    import axios from "@/axios";
-    import config from "@/utils/config.json";
     export default {
         name: "FortWeiterbildungenNav",
-        data() {
-            return {
-                trainings: Array,
-                config
-            };
-        },
-        methods: {
-            async getTrainings() {
-                const response = await axios.post(config.cms.url, {
-                    query: `
-                        query MyQuery {
-                            weiterbildungen(where: {orderby: {field: TITLE, order: DESC}}) {
-                                edges {
-                                    node {
-                                        id
-                                        slug
-                                        title
-                                    }
-                                }
-                            }
-                        }
-                    `
-                });
 
-                this.trainings = response.data.data.weiterbildungen.edges.map(
-                    edge => {
-                        return {
-                            id: edge.node.id,
-                            title: edge.node.title,
-                            slug: edge.node.slug
-                        };
-                    }
-                );
-            }
-        },
-        created() {
-            if (config.cms.active) {
-                this.getTrainings();
+        computed: {
+            trainings: function() {
+                return this.$store.state.trainings.trainings;
             }
         }
     };
