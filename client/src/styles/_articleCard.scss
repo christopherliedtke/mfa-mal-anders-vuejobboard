@@ -9,7 +9,23 @@
     }
 
     .card {
-        // border: none;
+        border: none;
         background-color: darken($light, $amount: 2%);
+        box-shadow: $shadow1;
+        transition: $transition1;
+
+        &:hover {
+            box-shadow: $shadow2;
+        }
+
+        .badge {
+            color: $light;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 0.9rem;
+            font-weight: 400;
+            padding: 0.5rem 0.8rem;
+        }
     }
 }

@@ -14,7 +14,7 @@ const actions = {
         const response = await axios.post(config.cms.url, {
             query: `
                     query MyQuery {
-                        posts(where: {orderby: {field: DATE, order: ASC}}) {
+                        posts(where: {orderby: {field: MODIFIED, order: ASC}}) {
                             nodes {
                                 id
                                 title
@@ -30,6 +30,11 @@ const actions = {
                                 seo {
                                     metaDesc
                                     title
+                                }
+                                tags {
+                                    nodes {
+                                        name
+                                    }
                                 }
                             }
                         }

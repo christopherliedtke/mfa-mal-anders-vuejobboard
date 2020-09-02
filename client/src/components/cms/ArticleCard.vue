@@ -16,6 +16,12 @@
                 <b-button :to="'/article/' + article.slug" variant="primary"
                     >Weiterlesen</b-button
                 >
+                <b-badge
+                    v-if="article.tags.nodes.length > 0"
+                    pill
+                    variant="secondary"
+                    >{{ article.tags.nodes[0].name }}</b-badge
+                >
             </b-card>
         </b-link>
     </div>
