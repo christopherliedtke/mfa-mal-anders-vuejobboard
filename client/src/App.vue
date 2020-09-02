@@ -20,7 +20,7 @@
             Footer
         },
         methods: {
-            ...mapActions(["getTrainings"]),
+            ...mapActions(["getTrainings", "getArticles"]),
             track() {
                 this.$gtag.pageview({
                     page_title: this.$route.name,
@@ -45,6 +45,7 @@
 
             if (config.cms.active) {
                 this.getTrainings();
+                this.getArticles();
             }
         }
     };

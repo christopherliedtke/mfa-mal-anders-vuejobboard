@@ -41,7 +41,7 @@
         computed: {
             training: function() {
                 return this.$store.state.trainings.trainings.find(
-                    training => training.slug === this.$route.params.title
+                    training => training.slug === this.$route.params.slug
                 );
             }
         }

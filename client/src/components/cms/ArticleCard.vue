@@ -1,10 +1,10 @@
 <template>
     <div class="article-card">
-        <b-link :to="'/article' + article.path">
+        <b-link :to="'/article/' + article.slug">
             <b-card
                 :title="article.title"
-                :img-src="article.featuredImage.url"
-                :img-alt="article.featuredImage.altText"
+                :img-src="article.featuredImage.node.sourceUrl"
+                :img-alt="article.featuredImage.node.altText"
                 img-top
                 tag="article"
                 class="mb-2"
@@ -13,7 +13,7 @@
                     <div v-html="article.excerpt"></div>
                 </b-card-text>
 
-                <b-button :to="'/article' + article.path" variant="primary"
+                <b-button :to="'/article/' + article.slug" variant="primary"
                     >Weiterlesen</b-button
                 >
             </b-card>

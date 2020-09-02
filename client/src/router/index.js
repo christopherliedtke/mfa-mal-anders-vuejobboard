@@ -159,7 +159,7 @@ const routes = [
                                 component: FortWeiterbildungenHome
                             },
                             {
-                                path: ":title",
+                                path: ":slug",
                                 component: FortWeiterbildung
                             }
                         ]
@@ -205,7 +205,7 @@ const routes = [
         ]
     },
     {
-        path: "/article/:y/:m/:d/:title",
+        path: "/article/:slug",
         name: "ArticleView",
         component: ArticleView,
         meta: {
