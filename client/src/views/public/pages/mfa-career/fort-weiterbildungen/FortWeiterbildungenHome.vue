@@ -93,6 +93,7 @@
                     </p>
                 </b-col>
             </b-row>
+            <RandomTrainingsContainer />
         </b-container>
         <Head
             :title="title"
@@ -105,11 +106,14 @@
 <script>
     import Head from "@/components/utils/Head.vue";
     import FortWeiterbildungenNav from "@/components/utils/FortWeiterbildungenNav.vue";
+    import RandomTrainingsContainer from "@/components/utils/RandomTrainingsContainer.vue";
+
     export default {
         name: "FortWeiterbildungen",
         components: {
             Head,
-            FortWeiterbildungenNav
+            FortWeiterbildungenNav,
+            RandomTrainingsContainer
         },
         data() {
             return {

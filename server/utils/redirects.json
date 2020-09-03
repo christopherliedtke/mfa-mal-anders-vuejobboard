@@ -4,35 +4,83 @@
         "new": "/page/mfa-career/gehalt"
     },
     {
-        "old": "/2019/12/29/lebenslauf-und-anschreiben-erstelle-schnell-und-unkompliziert-eine-top-bewerbung-mit-unserer-vorlage/",
+        "old": "/2019/12/29/lebenslauf-und-anschreiben-erstelle-schnell-und-unkompliziert-eine-top-bewerbung-mit-unserer-vorlage",
         "new": "/page/mfa-career/bewerbungstipps"
     },
     {
-        "old": "/2019/10/27/1333/",
+        "old": "/blog",
+        "new": "/page/magazin"
+    },
+    {
+        "old": "/2019/10/27/1333",
         "new": "/article/es-weihnachtet-sehr"
     },
     {
-        "old": "/2020/01/29/in-6-schritten-zur-richtigen-weiterbildung/",
+        "old": "/2020/01/29/in-6-schritten-zur-richtigen-weiterbildung",
         "new": "/article/in-6-schritten-zur-richtigen-weiterbildung"
     },
     {
-        "old": "/2020/01/18/foerderung-und-finanzierung-von-weiterbildungen/",
+        "old": "/2020/01/18/foerderung-und-finanzierung-von-weiterbildungen",
         "new": "/article/foerderung-und-finanzierung-von-weiterbildungen"
     },
     {
-        "old": "/2020/01/26/warum-es-mfa-mal-anders-gibt/",
+        "old": "/2020/01/26/warum-es-mfa-mal-anders-gibt",
         "new": "/article/warum-es-mfa-mal-anders-gibt"
     },
     {
-        "old": "/2020/02/05/schwierige-patienten/",
+        "old": "/2020/02/05/schwierige-patienten",
         "new": "/article/souveraen-bei-schwierigen-patienten-chefs-kollegen"
     },
     {
-        "old": "/2020/02/12/5-coole-teamevents-fuer-euren-naechsten-praxisausflug/",
+        "old": "/2020/02/12/5-coole-teamevents-fuer-euren-naechsten-praxisausflug",
         "new": "/article/5-coole-teamevents-fuer-euren-naechsten-praxisausflug"
     },
     {
-        "old": "/2020/06/12/fortbildung-weiterbildung-oder-studium-das-ist-hier-die-frage/",
+        "old": "/2020/06/12/fortbildung-weiterbildung-oder-studium-das-ist-hier-die-frage",
         "new": "/article/in-6-schritten-zur-richtigen-weiterbildung"
+    },
+    {
+        "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen",
+        "new": "/page/mfa-career/fort-und-weiterbildungen"
+    },
+    {
+        "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/abrechnungsmanagerin",
+        "new": "/page/mfa-career/fort-und-weiterbildungen/abrechnungsmanagerin"
+    },
+    {
+        "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/ambulantes-operieren",
+        "new": "/page/mfa-career/fort-und-weiterbildungen/ambulantes-operieren"
+    },
+    {
+        "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/ambulantes-operieren-in-der-augenheilkunde",
+        "new": "/page/mfa-career/fort-und-weiterbildungen/ambulantes-operieren-in-der-augenheilkunde"
+    },
+    {
+        "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/fachwirt-im-gesundheitswesen",
+        "new": "/page/mfa-career/fort-und-weiterbildungen/fachwirtin-im-gesundheits-und-sozialwesen"
+    },
+    {
+        "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/gefaessassistentin",
+        "new": "/page/mfa-career/fort-und-weiterbildungen/gefaessassistentin"
+    },
+    {
+        "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/naepa-eva/",
+        "new": "/page/mfa-career/fort-und-weiterbildungen/naepa-und-eva"
+    },
+    {
+        "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/onkologische-fachassistentin",
+        "new": "/page/mfa-career/fort-und-weiterbildungen/onkologischer-fachassistentin"
+    },
+    {
+        "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/physician-assistant",
+        "new": "/page/mfa-career/fort-und-weiterbildungen/physician-assistant"
+    },
+    {
+        "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/praxismanagerin",
+        "new": "/page/mfa-career/fort-und-weiterbildungen/praxismanagerin"
+    },
+    {
+        "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/weiterbildung-studynurse",
+        "new": "/page/mfa-career/fort-und-weiterbildungen/study-nurse"
     }
 ]

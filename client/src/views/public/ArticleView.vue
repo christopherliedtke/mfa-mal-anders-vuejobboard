@@ -11,6 +11,9 @@
             ></b-img>
             <div v-html="article.content"></div>
         </b-container>
+        <b-container>
+            <RandomArticlesContainer />
+        </b-container>
         <Head
             v-if="article.title"
             :title="article.title"
@@ -22,10 +25,13 @@
 
 <script>
     import Head from "@/components/utils/Head.vue";
+    import RandomArticlesContainer from "@/components/utils/RandomArticlesContainer.vue";
+
     export default {
         name: "ArticleView",
         components: {
-            Head
+            Head,
+            RandomArticlesContainer
         },
         computed: {
             article: function() {

@@ -5,32 +5,24 @@
             md="6"
             lg="4"
             class="mb-4"
-            v-for="training in trainings"
-            :key="training.id"
+            v-for="article in articles"
+            :key="article.id"
         >
             <div class="article-card">
-                <b-link
-                    :to="
-                        '/page/mfa-career/fort-und-weiterbildungen/' +
-                            training.slug
-                    "
-                >
+                <b-link :to="'/article/' + article.slug">
                     <b-card
-                        :title="training.title"
-                        :img-src="training.featuredImage.node.sourceUrl"
-                        :img-alt="training.featuredImage.node.altText"
+                        :title="article.title"
+                        :img-src="article.featuredImage.node.sourceUrl"
+                        :img-alt="article.featuredImage.node.altText"
                         img-top
                         class="mb-2"
                     >
                         <b-card-text>
-                            <div v-html="training.excerpt"></div>
+                            <div v-html="article.excerpt"></div>
                         </b-card-text>
 
                         <b-button
-                            :to="
-                                '/page/mfa-career/fort-und-weiterbildungen/' +
-                                    training.slug
-                            "
+                            :to="'/article/' + article.slug"
                             variant="primary"
                             >Mehr</b-button
                         >
@@ -43,11 +35,11 @@
 
 <script>
     export default {
-        name: "RandomTrainingsContainer",
+        name: "RandomArticlesContainer",
         props: ["number"],
         data() {
             return {
-                trainings: Array
+                articles: Array
             };
         },
         methods: {
@@ -66,26 +58,26 @@
                 }
                 return result;
             },
-            getTrainings() {
-                if (this.$store.state.trainings.trainings.length > 0) {
-                    this.trainings = this.getRandom(
-                        this.$store.state.trainings.trainings,
+            getArticles() {
+                if (this.$store.state.articles.articles.length > 0) {
+                    this.articles = this.getRandom(
+                        this.$store.state.articles.articles,
                         this.number || 3
                     );
                 }
             }
         },
         mounted: function() {
-            this.getTrainings();
+            this.getArticles();
         },
         watch: {
             $route(to, from) {
                 if (to != from) {
-                    this.getTrainings();
+                    this.getArticles();
                 }
             },
-            "$store.state.trainings.trainings": function() {
-                this.getTrainings();
+            "$store.state.articles.articles": function() {
+                this.getArticles();
             }
         }
     };
