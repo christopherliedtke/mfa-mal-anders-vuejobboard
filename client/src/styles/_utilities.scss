@@ -74,6 +74,10 @@ a.icon-box {
     border-radius: $border-radius2;
 }
 
+.shadow1 {
+    box-shadow: $shadow1;
+}
+
 // #TipTapEditor
 .editor__content {
     &.is-invalid {
@@ -99,7 +103,7 @@ a.icon-box {
 // #Transitions
 .fade-enter-active,
 .fade-leave-active {
-    transition: linear 0.8s;
+    transition: $transition2;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
     opacity: 0;

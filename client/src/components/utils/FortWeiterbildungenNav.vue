@@ -9,7 +9,7 @@
             v-for="training in trainings"
             :key="training.id"
             :to="`/page/mfa-career/fort-und-weiterbildungen/${training.slug}`"
-            :active="training.slug === $route.params.title"
+            :active="training.slug === $route.params.slug"
             >{{ training.title }}</b-list-group-item
         >
     </b-list-group>
