@@ -66,23 +66,23 @@
                                         class="sub-menu"
                                     >
                                         <b-nav-item
-                                            to="/page/mfa-career/jobs-und-berufsbilder/medizinisch-technisch"
+                                            to="/page/mfa-career/jobs-und-berufsbilder/Medizinisch-Technisch"
                                             >Medizinisch-Technisch
                                         </b-nav-item>
                                         <b-nav-item
-                                            to="/page/mfa-career/jobs-und-berufsbilder/verwaltung"
+                                            to="/page/mfa-career/jobs-und-berufsbilder/Verwaltung"
                                             >Verwaltung
                                         </b-nav-item>
                                         <b-nav-item
-                                            to="/page/mfa-career/jobs-und-berufsbilder/management"
+                                            to="/page/mfa-career/jobs-und-berufsbilder/Management"
                                             >Management
                                         </b-nav-item>
                                         <b-nav-item
-                                            to="/page/mfa-career/jobs-und-berufsbilder/beratung"
+                                            to="/page/mfa-career/jobs-und-berufsbilder/Beratung"
                                             >Beratung
                                         </b-nav-item>
                                         <b-nav-item
-                                            to="/page/mfa-career/jobs-und-berufsbilder/forschung"
+                                            to="/page/mfa-career/jobs-und-berufsbilder/Forschung"
                                             >Forschung
                                         </b-nav-item>
                                     </div>

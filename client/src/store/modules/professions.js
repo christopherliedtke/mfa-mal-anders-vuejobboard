@@ -2,34 +2,29 @@ import axios from "@/axios";
 import config from "@/utils/config.json";
 
 const state = {
-    trainings: []
+    professions: []
 };
 
 const getters = {
-    trainings: state => state.trainings
+    professions: state => state.professions
 };
 
 const actions = {
-    async getTrainings({ commit }) {
+    async getProfessions({ commit }) {
         const response = await axios.post(config.cms.url, {
             query: `
                     query MyQuery {
-                        weiterbildungen(first: 100, where: {orderby: {field: TITLE, order: ASC}}) {
+                        berufsbilder(first: 100, where: {orderby: {field: TITLE, order: ASC}}) {
                             nodes {
                                 id
                                 title
                                 content
                                 excerpt
                                 slug
-                                featuredImage {
-                                    node {
-                                        sourceUrl
-                                        altText
+                                terms {
+                                    nodes {
+                                        name
                                     }
-                                }
-                                seo {
-                                    title
-                                    metaDesc
                                 }
                             }
                         }
@@ -37,13 +32,13 @@ const actions = {
                     `
         });
 
-        commit("setTrainings", response.data.data.weiterbildungen.nodes);
+        commit("setProfessions", response.data.data.berufsbilder.nodes);
     }
 };
 
 const mutations = {
-    setTrainings: (state, trainings) => {
-        state.trainings = trainings;
+    setProfessions: (state, professions) => {
+        state.professions = professions;
     }
 };
 
