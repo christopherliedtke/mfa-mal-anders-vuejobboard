@@ -1,17 +1,17 @@
 <template>
-    <div>
+    <div class="jobs-berufsbilder-home">
         <h1 class="title">{{ title }}</h1>
         <b-container class="py-5">
             <b-row>
-                <b-col md="4" class="mb-4">
+                <b-col md="4" class="mb-4" order="2" order-md="1">
                     <JobsBerufsbilderNav />
                 </b-col>
-                <b-col>
+                <b-col class="mb-4" order="1" order-md="2">
                     <b-img
                         class="border-radius1 shadow mb-5"
                         fluid
                         src="@/assets/jobsUndBerufsbilder_1024x535.png"
-                        alt="Banner - So viel verdienst Du wirklich"
+                        alt="Banner - Alternative Jobs für MFA / Artzhelfer"
                     />
                     <h2>
                         Mal was anderes – mit MFA mal anders

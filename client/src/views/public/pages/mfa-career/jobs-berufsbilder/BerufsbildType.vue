@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="berufsbild-type">
         <h1 class="title">{{ title }}</h1>
         <b-container class="py-5">
             <b-row>
@@ -15,13 +15,18 @@
                     >
                         <b-card-header
                             @click="setVisible(berufsbild.id)"
+                            style="cursor: pointer"
                             header-tag="header"
                             role="tab"
                             :header-bg-variant="
                                 visible === berufsbild.id ? 'primary' : ''
                             "
                             :header-text-variant="
-                                visible === berufsbild.id ? 'light' : ''
+                                visible === berufsbild.id
+                                    ? 'light'
+                                    : berufsbild.content
+                                    ? 'primary'
+                                    : ''
                             "
                         >
                             <div>
@@ -98,7 +103,11 @@
         },
         methods: {
             setVisible(id) {
-                this.visible = id;
+                if (this.visible === id) {
+                    this.visible = null;
+                } else {
+                    this.visible = id;
+                }
             }
         }
     };

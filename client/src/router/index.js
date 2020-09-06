@@ -28,11 +28,6 @@ import Bewerbungstipps from "@/views/public/pages/mfa-career/Bewerbungstipps.vue
 import JobsBerufsbilder from "@/views/public/pages/mfa-career/JobsBerufsbilder.vue";
 import JobsBerufsbilderHome from "@/views/public/pages/mfa-career/jobs-berufsbilder/JobsBerufsbilderHome.vue";
 import BerufsbildType from "@/views/public/pages/mfa-career/jobs-berufsbilder/BerufsbildType.vue";
-// import MedizinischTechnisch from "@/views/public/pages/mfa-career/jobs-berufsbilder/MedizinischTechnisch.vue";
-// import Management from "@/views/public/pages/mfa-career/jobs-berufsbilder/Management.vue";
-// import Beratung from "@/views/public/pages/mfa-career/jobs-berufsbilder/Beratung.vue";
-// import Verwaltung from "@/views/public/pages/mfa-career/jobs-berufsbilder/Verwaltung.vue";
-// import Forschung from "@/views/public/pages/mfa-career/jobs-berufsbilder/Forschung.vue";
 
 import FortWeiterbildungen from "@/views/public/pages/mfa-career/FortWeiterbildungen.vue";
 import FortWeiterbildungenHome from "@/views/public/pages/mfa-career/fort-weiterbildungen/FortWeiterbildungenHome.vue";
@@ -133,26 +128,6 @@ const routes = [
                                 path: ":slug",
                                 component: BerufsbildType
                             }
-                            // {
-                            //     path: "medizinisch-technisch",
-                            //     component: MedizinischTechnisch
-                            // },
-                            // {
-                            //     path: "management",
-                            //     component: Management
-                            // },
-                            // {
-                            //     path: "beratung",
-                            //     component: Beratung
-                            // },
-                            // {
-                            //     path: "verwaltung",
-                            //     component: Verwaltung
-                            // },
-                            // {
-                            //     path: "forschung",
-                            //     component: Forschung
-                            // }
                         ]
                     },
                     {

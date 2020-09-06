@@ -10,22 +10,24 @@
         >
             <div class="article-card">
                 <b-link :to="'/article/' + article.slug">
-                    <b-card
-                        :title="article.title"
-                        :img-src="article.featuredImage.node.sourceUrl"
-                        :img-alt="article.featuredImage.node.altText"
-                        img-top
-                        class="mb-2"
-                    >
-                        <b-card-text>
-                            <div v-html="article.excerpt"></div>
-                        </b-card-text>
+                    <b-card no-body>
+                        <b-card-img-lazy
+                            :src="article.featuredImage.node.sourceUrl"
+                            :alt="article.featuredImage.node.altText"
+                            top
+                        />
+                        <b-card-body>
+                            <b-card-title :title="article.title" />
+                            <b-card-text>
+                                <div v-html="article.excerpt"></div>
+                            </b-card-text>
 
-                        <b-button
-                            :to="'/article/' + article.slug"
-                            variant="primary"
-                            >Mehr</b-button
-                        >
+                            <b-button
+                                :to="'/article/' + article.slug"
+                                variant="primary"
+                                >Mehr</b-button
+                            >
+                        </b-card-body>
                     </b-card>
                 </b-link>
             </div>

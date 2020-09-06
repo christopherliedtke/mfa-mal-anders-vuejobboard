@@ -64,7 +64,7 @@
         "new": "/page/mfa-career/fort-und-weiterbildungen/gefaessassistentin"
     },
     {
-        "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/naepa-eva/",
+        "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/naepa-eva",
         "new": "/page/mfa-career/fort-und-weiterbildungen/naepa-und-eva"
     },
     {
@@ -82,5 +82,29 @@
     {
         "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/weiterbildung-studynurse",
         "new": "/page/mfa-career/fort-und-weiterbildungen/study-nurse"
+    },
+    {
+        "old": "/fuer-mfa/jobs-und-berufsbilder",
+        "new": "/page/mfa-career/jobs-und-berufsbilder"
+    },
+    {
+        "old": "/fuer-mfa/jobs-und-berufsbilder/medizinisch-technische-jobs",
+        "new": "/page/mfa-career/jobs-und-berufsbilder/Medizinisch-Technisch"
+    },
+    {
+        "old": "/fuer-mfa/jobs-und-berufsbilder/jobs-in-der-beratung",
+        "new": "/page/mfa-career/jobs-und-berufsbilder/Beratung"
+    },
+    {
+        "old": "/fuer-mfa/jobs-und-berufsbilder/jobs-in-der-verwaltung",
+        "new": "/page/mfa-career/jobs-und-berufsbilder/Verwaltung"
+    },
+    {
+        "old": "/fuer-mfa/jobs-und-berufsbilder/jobs-im-management",
+        "new": "/page/mfa-career/jobs-und-berufsbilder/Management"
+    },
+    {
+        "old": "/fuer-mfa/jobs-und-berufsbilder/jobs-in-der-forschung",
+        "new": "/page/mfa-career/jobs-und-berufsbilder/Forschung"
     }
 ]

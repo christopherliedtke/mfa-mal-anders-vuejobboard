@@ -15,25 +15,28 @@
                             training.slug
                     "
                 >
-                    <b-card
-                        :title="training.title"
-                        :img-src="training.featuredImage.node.sourceUrl"
-                        :img-alt="training.featuredImage.node.altText"
-                        img-top
-                        class="mb-2"
-                    >
-                        <b-card-text>
-                            <div v-html="training.excerpt"></div>
-                        </b-card-text>
+                    <b-card no-body>
+                        <b-card-img-lazy
+                            :src="training.featuredImage.node.sourceUrl"
+                            :alt="training.featuredImage.node.altText"
+                            top
+                        />
+                        <b-card-body>
+                            <b-card-title :title="training.title" />
 
-                        <b-button
-                            :to="
-                                '/page/mfa-career/fort-und-weiterbildungen/' +
-                                    training.slug
-                            "
-                            variant="primary"
-                            >Mehr</b-button
-                        >
+                            <b-card-text>
+                                <div v-html="training.excerpt"></div>
+                            </b-card-text>
+
+                            <b-button
+                                :to="
+                                    '/page/mfa-career/fort-und-weiterbildungen/' +
+                                        training.slug
+                                "
+                                variant="primary"
+                                >Mehr</b-button
+                            >
+                        </b-card-body>
                     </b-card>
                 </b-link>
             </div>
