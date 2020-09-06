@@ -21,7 +21,11 @@ import {
     faUsers,
     faEnvelope,
     faNewspaper,
-    faEnvelopeOpenText
+    faEnvelopeOpenText,
+    faStethoscope,
+    faComments,
+    faFlask,
+    faBriefcase
 } from "@fortawesome/free-solid-svg-icons";
 import { faUser as farUser } from "@fortawesome/free-regular-svg-icons";
 import {
@@ -43,6 +47,10 @@ library.add(
     faEnvelope,
     faNewspaper,
     faEnvelopeOpenText,
+    faStethoscope,
+    faComments,
+    faFlask,
+    faBriefcase,
     farUser,
     faFacebookSquare,
     faWhatsapp,

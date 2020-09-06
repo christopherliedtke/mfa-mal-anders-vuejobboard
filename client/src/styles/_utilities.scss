@@ -62,6 +62,17 @@ a.icon-box {
     }
 }
 
+.icon-box2 {
+    padding: 1.5rem;
+    margin: 1rem;
+    background-color: $tertiary;
+    border-radius: $border-radius1;
+
+    svg {
+        color: $light;
+    }
+}
+
 .bold {
     font-weight: bold;
 }

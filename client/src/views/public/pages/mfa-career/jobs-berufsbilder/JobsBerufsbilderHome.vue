@@ -43,6 +43,42 @@
                         Aufgaben erledigst oder dich lieber für einen
                         alternativen Job außerhalb der Arztpraxis interessierst.
                     </p>
+                    <b-row>
+                        <b-col
+                            class="my-3"
+                            v-for="card in cards"
+                            :key="card.title"
+                            cols="12"
+                            md="6"
+                        >
+                            <b-card align="center">
+                                <b-card-body>
+                                    <div class="d-flex justify-content-center">
+                                        <div class="icon-box2">
+                                            <font-awesome-icon
+                                                :icon="['fa', card.icon]"
+                                                size="3x"
+                                            />
+                                        </div>
+                                    </div>
+                                    <b-card-title :title="card.title" />
+                                    <b-card-text>
+                                        <p>
+                                            {{ card.desc }}
+                                        </p>
+                                    </b-card-text>
+                                    <b-button
+                                        :to="
+                                            `/page/mfa-career/jobs-und-berufsbilder/${card.title}`
+                                        "
+                                        variant="primary"
+                                        >Mehr</b-button
+                                    >
+                                </b-card-body>
+                            </b-card>
+                        </b-col>
+                    </b-row>
+                    <ToJobboardBanner />
                 </b-col>
             </b-row>
             <RandomTrainingsContainer />
@@ -59,16 +95,50 @@
     import Head from "@/components/utils/Head.vue";
     import JobsBerufsbilderNav from "@/components/utils/JobsBerufsbilderNav.vue";
     import RandomTrainingsContainer from "@/components/utils/RandomTrainingsContainer.vue";
+    import ToJobboardBanner from "@/components/utils/ToJobboardBanner.vue";
     export default {
         name: "JobsBerufsbilderHome",
         components: {
             Head,
             JobsBerufsbilderNav,
-            RandomTrainingsContainer
+            RandomTrainingsContainer,
+            ToJobboardBanner
         },
         data() {
             return {
-                title: "Jobs und Berufsbilder für medizinische Fachangestellte"
+                title: "Jobs und Berufsbilder für medizinische Fachangestellte",
+                cards: [
+                    {
+                        title: "Beratung",
+                        desc:
+                            "Jobs, bei denen du aufgrund deines Expertenwissens andere Menschen berätst.",
+                        icon: "comments"
+                    },
+                    {
+                        title: "Forschung",
+                        desc:
+                            "Jobs, bei denen du zum medizinischen Fortschritt beitragen kannst.",
+                        icon: "flask"
+                    },
+                    {
+                        title: "Management",
+                        desc:
+                            "Jobs, bei denen du betriebswirtschaftliche Aufgaben und Personalverantwortung übernehmen kannst.",
+                        icon: "briefcase"
+                    },
+                    {
+                        title: "Medizinisch-Technisch",
+                        desc:
+                            "Jobs, bei denen die medizinische Arbeit am bzw. mit dem Patienten im Mittelpunkt steht.",
+                        icon: "stethoscope"
+                    },
+                    {
+                        title: "Verwaltung",
+                        desc:
+                            "Jobs, bei denen deine administrativen und organisatorischen Fähigkeiten gefragt sind.",
+                        icon: "building"
+                    }
+                ]
             };
         }
     };
