@@ -51,9 +51,10 @@ a.icon-box {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     padding: 2.5rem;
     margin: 1rem;
-    background-color: darken($light, $amount: 5%);
+    background-color: darken($light, $amount: 3%);
     border-radius: $border-radius1;
 
     svg {
@@ -87,6 +88,12 @@ a.icon-box {
 
 .shadow1 {
     box-shadow: $shadow1;
+}
+
+.bg-logo {
+    background: url("~@/assets/logo.png") center center;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 // #TipTapEditor

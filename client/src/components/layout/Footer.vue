@@ -57,13 +57,13 @@
                     <b-nav vertical class="justify-content-end">
                         <div>
                             <div class="d-flex justify-content-center mb-4">
-                                <b-img
+                                <b-img-lazy
                                     class="mx-3 shadow"
                                     style="width: 35vw; max-width: 120px"
                                     src="@/assets/Vorlage_Bewerbungsanschreiben.jpg"
                                     alt="Bild von Mustervorlage für Motivationsschreiben"
                                 />
-                                <b-img
+                                <b-img-lazy
                                     class="mx-3 shadow"
                                     style="width: 35vw; max-width: 120px"
                                     src="@/assets/Vorlage_Lebenslauf.jpg"
