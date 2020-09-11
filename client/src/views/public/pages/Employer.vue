@@ -1,7 +1,9 @@
 <template>
     <div class="employer">
         <h1 class="title">{{ title }}</h1>
-        <b-container class="py-5"> </b-container>
+        <b-container class="py-5">
+            test
+        </b-container>
         <Head :title="title" desc="This is the meta of About..." img="" />
     </div>
 </template>

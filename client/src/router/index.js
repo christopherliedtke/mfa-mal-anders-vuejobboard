@@ -12,7 +12,6 @@ import PublicJobView from "@/views/public/PublicJobView.vue";
 
 import PageView from "@/views/public/PageView.vue";
 import About from "@/views/public/pages/About.vue";
-import Employer from "@/views/public/pages/Employer.vue";
 import PrivacyPolicy from "@/views/public/pages/PrivacyPolicy.vue";
 import Impressum from "@/views/public/pages/Impressum.vue";
 import AGBs from "@/views/public/pages/AGBs.vue";
@@ -36,6 +35,8 @@ import FortWeiterbildung from "@/views/public/pages/mfa-career/fort-weiterbildun
 import Magazin from "@/views/public/pages/Magazin.vue";
 
 import ArticleView from "@/views/public/ArticleView.vue";
+
+import Employer from "@/views/public/pages/Employer.vue";
 
 // Auth
 import Login from "@/views/auth/Login.vue";

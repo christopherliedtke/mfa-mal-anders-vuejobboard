@@ -199,6 +199,14 @@
                             Praxisalltag auf lange Sicht für alle Beteiligten
                             positiv gestaltet werden.
                         </p>
+                        <p>
+                            <b-link
+                                class="text-secondary"
+                                to="/article/warum-es-mfa-mal-anders-gibt"
+                                ><b-icon icon="caret-right-fill" /> Mehr über
+                                die Story dahinter</b-link
+                            >
+                        </p>
                     </b-col>
                 </b-row>
             </b-container>
@@ -240,7 +248,7 @@
         },
         data() {
             return {
-                searchTerm: null
+                searchTerm: ""
             };
         }
     };

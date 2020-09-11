@@ -150,7 +150,7 @@
                                 icon="kanban"
                                 font-scale="1.3"
                             ></b-icon
-                            >Dashboard</b-nav-item
+                            >Meine Anzeigen</b-nav-item
                         >
                         <b-nav-item to="/account" v-if="userId"
                             ><b-icon
