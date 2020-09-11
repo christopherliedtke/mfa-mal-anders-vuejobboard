@@ -25,7 +25,13 @@ import {
     faStethoscope,
     faComments,
     faFlask,
-    faBriefcase
+    faBriefcase,
+    faLightbulb,
+    faTasks,
+    faGift,
+    faDoorOpen,
+    faSyringe,
+    faHospital
 } from "@fortawesome/free-solid-svg-icons";
 import { faUser as farUser } from "@fortawesome/free-regular-svg-icons";
 import {
@@ -51,6 +57,12 @@ library.add(
     faComments,
     faFlask,
     faBriefcase,
+    faLightbulb,
+    faTasks,
+    faGift,
+    faDoorOpen,
+    faSyringe,
+    faHospital,
     farUser,
     faFacebookSquare,
     faWhatsapp,

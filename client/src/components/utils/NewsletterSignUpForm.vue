@@ -6,7 +6,7 @@
                 class="mt-2"
                 type="email"
                 v-model="form.email"
-                id="email"
+                id="email2"
                 placeholder="E-Mail Adresse eingeben..."
                 autocomplete="email"
                 required

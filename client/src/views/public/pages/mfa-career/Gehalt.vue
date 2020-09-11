@@ -764,7 +764,7 @@
 
     .example {
         border-radius: $border-radius1;
-        background-color: darken($light, $amount: 5%);
+        background-color: $light-shade;
         padding: 1rem;
         margin: 1rem 0;
     }
