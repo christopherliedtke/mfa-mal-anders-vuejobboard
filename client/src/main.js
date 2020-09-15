@@ -36,8 +36,11 @@ import {
 import { faUser as farUser } from "@fortawesome/free-regular-svg-icons";
 import {
     faFacebookSquare,
+    faFacebook,
     faWhatsapp,
-    faWpforms
+    faWpforms,
+    faGoogle,
+    faChrome
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
@@ -65,8 +68,11 @@ library.add(
     faHospital,
     farUser,
     faFacebookSquare,
+    faFacebook,
     faWhatsapp,
-    faWpforms
+    faWpforms,
+    faGoogle,
+    faChrome
 );
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);

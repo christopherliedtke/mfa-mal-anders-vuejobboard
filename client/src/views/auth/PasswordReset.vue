@@ -1,6 +1,6 @@
 <template>
-    <b-container class="password-reset py-5 position-relative">
-        <h2>{{ title }}</h2>
+    <b-container class="password-reset auth-container">
+        <h2 class="text-center">{{ title }}</h2>
         <PasswordResetForm />
     </b-container>
 </template>
@@ -19,15 +19,3 @@
         }
     };
 </script>
-
-<style scoped lang="scss">
-    .password-reset {
-        &.container {
-            width: 90%;
-            max-width: 450px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-    }
-</style>

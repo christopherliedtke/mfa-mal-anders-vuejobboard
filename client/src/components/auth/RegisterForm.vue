@@ -74,7 +74,7 @@
             </b-input-group-append>
         </b-input-group>
         <b-form-checkbox
-            class="mt-2"
+            class="mt-3"
             id="acceptance"
             v-model="acceptance"
             name="acceptance"
@@ -97,7 +97,7 @@
             Registrieren
         </button>
         <p>
-            Du bist bereits registriert? Jetzt
+            Sie sind bereits registriert? Jetzt
             <b-link to="/login">Anmelden</b-link>.
         </p>
         <div class="error mt-3" v-if="errors">

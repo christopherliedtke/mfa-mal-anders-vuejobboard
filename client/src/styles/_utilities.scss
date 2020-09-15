@@ -90,6 +90,14 @@ a.icon-box {
     box-shadow: $shadow1;
 }
 
+.shadow2 {
+    box-shadow: $shadow2;
+}
+
+.shadow3 {
+    box-shadow: $shadow3;
+}
+
 .bg-light-shade {
     background-color: $light-shade;
 }
@@ -106,6 +114,15 @@ a.icon-box {
     background-size: contain;
     background-repeat: no-repeat;
     opacity: 0.2;
+}
+
+.auth-container {
+    max-width: 500px;
+    background-color: $light-shade;
+    border-radius: $border-radius1;
+    box-shadow: $shadow1;
+    padding: 2.5rem;
+    margin: 2.5rem auto;
 }
 
 // #TipTapEditor

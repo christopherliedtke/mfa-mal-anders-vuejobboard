@@ -1,6 +1,13 @@
 <template>
-    <b-container class="register py-5 position-relative">
-        <h2>{{ title }}</h2>
+    <b-container class="register auth-container">
+        <h2 class="text-center mb-4">{{ title }}</h2>
+        <p class="bold">
+            Sie möchten eine Stellenanzeige bei uns schalten?
+        </p>
+        <p>
+            Dann registrieren Sie sich jetzt und starten Sie direkt mit der
+            Veröffentlichung Ihrer ersten Anzeige.
+        </p>
         <RegisterForm />
 
         <Head
@@ -22,20 +29,8 @@
         },
         data() {
             return {
-                title: "Registrieren"
+                title: "Registrieren als Arbeitgeber"
             };
         }
     };
 </script>
-
-<style scoped lang="scss">
-    .register {
-        &.container {
-            width: 90%;
-            max-width: 450px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-    }
-</style>

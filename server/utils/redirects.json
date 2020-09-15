@@ -106,5 +106,9 @@
     {
         "old": "/fuer-mfa/jobs-und-berufsbilder/jobs-in-der-forschung",
         "new": "/page/mfa-career/jobs-und-berufsbilder/Forschung"
+    },
+    {
+        "old": "/fuer-arbeitgeber",
+        "new": "/page/fuer-arbeitgeber"
     }
 ]

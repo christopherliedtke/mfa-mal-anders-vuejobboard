@@ -6,7 +6,7 @@
                 v-if="article.featuredImage"
                 :src="article.featuredImage.node.sourceUrl"
                 :alt="article.featuredImage.node.altText"
-                class="my-3"
+                class="mt-3 mb-4"
                 fluid
             ></b-img>
             <div v-html="article.content"></div>

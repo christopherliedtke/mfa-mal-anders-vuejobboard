@@ -123,7 +123,7 @@
         </b-container>
 
         <b-container class="mb-5 py-0 py-md-5">
-            <h2 class="mb-4">
+            <h2 class="mb-4 bold">
                 Unsere Preise nach dem “Pay What You Want”* Model
             </h2>
             <b-row cols="1" cols-md="2">
@@ -174,120 +174,80 @@
         </b-container>
 
         <b-container class="mb-5">
-            <h2 class="mb-4">Unsere Tipps für Ihre Stellenanzeige</h2>
-            <b-row cols="1" cols-md="2" cols-lg="3">
-                <b-col>
+            <h2 class="bold mb-4">
+                Tipps für Ihre Stellenanzeige
+            </h2>
+            <p>
+                Ihre Stellenanzeige ist eine Einladung für Bewerber*innen zum
+                Dialog – denn bestenfalls wird daraus ein Vorstellungsgespräch.
+                Eine gute Stellenanzeige beschreibt nicht nur die zu besetzende
+                Stelle, sondern geht auch auf die Bedürfnisse der Zielgruppe
+                ein. Machen Sie ein Angebot, dass so attraktiv ist, dass man
+                nicht anders kann, als sich zu bewerben!
+            </p>
+            <p>
+                Durch unsere Arbeit hatten wir die Gelegenheit eine Vielzahl von
+                Bewerbungsprozessen zu begleiten und aus erster Hand zu
+                erfahren, was bei potentiellen Bewerber*innen ankommt und was
+                nicht. Deshalb geben wir hier eine kleine Übersicht an Tipps.
+            </p>
+            <b-row>
+                <b-col
+                    v-for="jobAdTipp in jobAdTipps"
+                    :key="jobAdTipp.title"
+                    cols="12"
+                    md="6"
+                    lg="4"
+                >
                     <div class="icon-box shadow1">
-                        <font-awesome-icon
-                            class="mr-1"
-                            :icon="['fa', 'lightbulb']"
-                            size="3x"
-                        />
-                        <h3 class="bold">Präziser Stellentitel</h3>
+                        <div
+                            style="width: 75px; height: 75px"
+                            class=" border-radius1 shadow3 d-flex justify-content-center align-items-center mb-3"
+                        >
+                            <font-awesome-icon
+                                class="m-0"
+                                :icon="['fa', jobAdTipp.icon]"
+                                size="3x"
+                            />
+                        </div>
+                        <h3 class="bold">{{ jobAdTipp.title }}</h3>
                         <p class="mb-0">
-                            Beschreiben Sie die Stelle in wenigen Worten so
-                            konkret wie möglich. Heben Sie bereits hier die
-                            Vorteile für die Arbeit bei Ihnen hervor. Versuchen
-                            Sie bereits hier positiv aufzufallen!
+                            {{ jobAdTipp.desc }}
                         </p>
                     </div>
                 </b-col>
-                <b-col>
-                    <div class="icon-box shadow1">
-                        <font-awesome-icon
-                            class="mr-1"
-                            :icon="['fa', 'hospital']"
-                            size="3x"
-                        />
-                        <h3 class="bold">Interessanter Einstiegstext</h3>
-                        <p class="mb-0">
-                            Erzählen Sie ein wenig über die Praxis bzw. Ihr
-                            Unternehmen. Wie viele Mitarbeiter*innen gibt es?
-                            Seit wann gibt es die Praxis? Was zeichnet Sie aus?
-                            Wie ist die Arbeitskultur?
-                        </p>
+                <b-col cols="12" md="6" lg="8">
+                    <JobAdTippsBanner />
+                    <div class="icon-box shadow1 py-4">
+                        <h4 class="bold mb-3">Jetzt Stellenanzeige schalten</h4>
+                        <b-button to="/register" variant="secondary"
+                            >Zur Registrierung</b-button
+                        >
                     </div>
                 </b-col>
-                <b-col>
-                    <div class="icon-box shadow1">
-                        <font-awesome-icon
-                            class="mr-1"
-                            :icon="['fa', 'users']"
-                            size="3x"
-                        />
-                        <h3 class="bold">Sympathisches Teambild</h3>
-                        <p class="mb-0">
-                            Bilder sagen mehr als 1000 Worte. Das gilt auch hier
-                            und speziell in Zeiten von Social Media. Ein nettes
-                            Bild von Ihrem Praxisteam kann die Zahl der
-                            Bewerbungen um ein Vielfaches erhöhen.
-                        </p>
+            </b-row>
+        </b-container>
+
+        <b-container id="numbers-and-facts" class="mb-5 pt.md-5">
+            <h2 class="text-center bold mb-4">
+                Ein paar Zahlen und Fakten
+                <span style="font-size: 0.8rem">(08/2020)</span>
+            </h2>
+            <b-row cols="1" cols-md="3">
+                <b-col
+                    v-for="item in numbersAndFacts"
+                    :key="item.desc"
+                    class="text-center"
+                >
+                    <font-awesome-icon
+                        class="mt-3 mb-4 text-secondary"
+                        :icon="['fab', item.icon]"
+                        size="4x"
+                    />
+                    <div class="display-4 bold mb-3">
+                        {{ Math.floor(item.current).toLocaleString() }}+
                     </div>
-                </b-col>
-                <b-col>
-                    <div class="icon-box shadow1">
-                        <font-awesome-icon
-                            class="mr-1"
-                            :icon="['fa', 'tasks']"
-                            size="3x"
-                        />
-                        <h3 class="bold">Konkrete Aufgaben</h3>
-                        <p class="mb-0">
-                            Beschreiben Sie die konkreten und wichtigsten
-                            Aufgaben, sodass Bewerber*innen ein gutes Bild
-                            bekommen und wissen, was sie potentiell erwartet.
-                        </p>
-                    </div>
-                </b-col>
-                <b-col>
-                    <div class="icon-box shadow1">
-                        <font-awesome-icon
-                            class="mr-1"
-                            :icon="['fa', 'syringe']"
-                            size="3x"
-                        />
-                        <h3 class="bold">Adequates Profil</h3>
-                        <p class="mb-0">
-                            Werden Sie auch hier konkret und unterscheiden Sie
-                            zwischen erforderlichen und wünschenswerten
-                            Kenntnissen. Zu viele oder hohe Anforderungen können
-                            Bewerber*innen abschrecken, die eigentlich geeignet
-                            wären.
-                        </p>
-                    </div>
-                </b-col>
-                <b-col>
-                    <div class="icon-box shadow1">
-                        <font-awesome-icon
-                            class="mr-1"
-                            :icon="['fa', 'gift']"
-                            size="3x"
-                        />
-                        <h3 class="bold">Lukrative Benefits</h3>
-                        <p class="mb-0">
-                            Vergessen Sie nicht das wesentliche für die
-                            Kandidat*innen. Was macht einen Wechsel zu Ihnen
-                            lohnenswert? Neben Gehalt und Urlaub können auch
-                            Dinge wie Weiterbildungen, spezielle
-                            Arbeitszeitmodelle oder Zuschüsse attraktiv sein.
-                        </p>
-                    </div>
-                </b-col>
-                <b-col>
-                    <div class="icon-box shadow1">
-                        <font-awesome-icon
-                            class="mr-1"
-                            :icon="['fa', 'door-open']"
-                            size="3x"
-                        />
-                        <h3 class="bold">Einfaches Bewerben</h3>
-                        <p class="mb-0">
-                            Ermöglichen Sie das einfache Bewerben nur per
-                            Lebenslauf. So können Sie die innerliche Hürde für
-                            Bewerber*innen beträchtlich senken. Das persönliche
-                            Gespräch ist letztlich ohnehin entscheidend.
-                        </p>
-                    </div>
+                    <p>{{ item.desc }}</p>
                 </b-col>
             </b-row>
         </b-container>
@@ -303,16 +263,107 @@
 <script>
     import Head from "@/components/utils/Head.vue";
     import PayWhatYouWantSuggestion from "@/components/utils/PayWhatYouWantSuggestion.vue";
+    import JobAdTippsBanner from "@/components/utils/JobAdTippsBanner.vue";
     export default {
         name: "Employer",
         components: {
             Head,
-            PayWhatYouWantSuggestion
+            PayWhatYouWantSuggestion,
+            JobAdTippsBanner
         },
         data() {
             return {
-                title: "Für Arbeitgeber"
+                title: "Für Arbeitgeber",
+                jobAdTipps: [
+                    {
+                        icon: "lightbulb",
+                        title: "Präziser Stellentitel",
+                        desc:
+                            "Beschreiben Sie die Stelle in wenigen Worten so konkret wie möglich. Heben Sie bereits hier die Vorteile für die Arbeit bei Ihnen hervor. Versuchen Sie bereits hier positiv aufzufallen!"
+                    },
+                    {
+                        icon: "hospital",
+                        title: "Interessanter Einstiegstext",
+                        desc:
+                            "Erzählen Sie ein wenig über die Praxis bzw. Ihr Unternehmen. Wie viele Mitarbeiter*innen gibt es? Seit wann gibt es die Praxis? Was zeichnet Sie aus? Wie ist die Arbeitskultur?"
+                    },
+                    {
+                        icon: "tasks",
+                        title: "Konkrete Aufgaben",
+                        desc:
+                            "Beschreiben Sie die konkreten und wichtigsten Aufgaben, sodass Bewerber*innen ein gutes Bild bekommen und wissen, was sie potentiell erwartet."
+                    },
+                    {
+                        icon: "users",
+                        title: "Sympathisches Teambild",
+                        desc:
+                            "Bilder sagen mehr als 1000 Worte. Das gilt auch hier und speziell in Zeiten von Social Media. Ein nettes Bild von Ihrem Praxisteam kann die Zahl der Bewerbungen um ein Vielfaches erhöhen."
+                    },
+                    {
+                        icon: "syringe",
+                        title: "Adäquates Stellenprofil",
+                        desc:
+                            "Werden Sie auch hier konkret und unterscheiden Sie zwischen erforderlichen und wünschenswerten Kenntnissen. Zu viele oder hohe Anforderungen können Bewerber*innen abschrecken, die eigentlich geeignet wären."
+                    },
+                    {
+                        icon: "gift",
+                        title: "Lukrative Benefits",
+                        desc:
+                            "Vergessen Sie nicht das wesentliche für die Kandidat*innen. Was macht einen Wechsel zu Ihnen lohnenswert? Neben Gehalt und Urlaub können auch Dinge wie Weiterbildungen, spezielle Arbeitszeitmodelle oder Zuschüsse attraktiv sein."
+                    },
+                    {
+                        icon: "door-open",
+                        title: "Einfaches Bewerben",
+                        desc:
+                            "Ermöglichen Sie das einfache Bewerben nur per Lebenslauf. So können Sie die innerliche Hürde für Bewerber*innen beträchtlich senken. Das persönliche Gespräch ist letztlich ohnehin entscheidend."
+                    }
+                ],
+                numbersAndFacts: [
+                    {
+                        icon: "google",
+                        number: 441000,
+                        current: 0,
+                        desc: "Menschen sehen uns monatlich bei Google"
+                    },
+                    {
+                        icon: "facebook",
+                        number: 9000,
+                        current: 0,
+                        desc: "Monatliche Reichweite bei Facebook"
+                    },
+                    {
+                        icon: "chrome",
+                        number: 32000,
+                        current: 0,
+                        desc: "Monatliche Seitenaufrufe auf der Webseite"
+                    }
+                ]
             };
+        },
+        methods: {
+            startCounters() {
+                this.numbersAndFacts.forEach(element => {
+                    setInterval(() => {
+                        if (element.current < element.number) {
+                            element.current =
+                                element.current + element.number / 100;
+                        }
+                    }, 1);
+                });
+            }
+        },
+        mounted: function() {
+            const elem = window.document.getElementById("numbers-and-facts");
+
+            let intervalId = setInterval(() => {
+                if (
+                    elem.offsetTop <
+                    window.scrollY + window.innerHeight * 0.66
+                ) {
+                    clearInterval(intervalId);
+                    this.startCounters();
+                }
+            }, 500);
         }
     };
 </script>

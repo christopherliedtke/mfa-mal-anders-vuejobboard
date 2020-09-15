@@ -1,6 +1,6 @@
 <template>
-    <b-container class="login py-5">
-        <h2>{{ title }}</h2>
+    <b-container class="login auth-container">
+        <h2 class="text-center">{{ title }}</h2>
         <LoginForm />
 
         <Head :title="title" desc="Anmelden bei MFA mal anders" img="" />
@@ -20,15 +20,3 @@
         }
     };
 </script>
-
-<style scoped lang="scss">
-    .login {
-        &.container {
-            width: 90%;
-            max-width: 450px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-    }
-</style>
