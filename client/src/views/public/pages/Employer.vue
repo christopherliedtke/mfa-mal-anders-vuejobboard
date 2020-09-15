@@ -202,7 +202,7 @@
                     <div class="icon-box shadow1">
                         <div
                             style="width: 75px; height: 75px"
-                            class=" border-radius1 shadow3 d-flex justify-content-center align-items-center mb-3"
+                            class="bg-light border-radius1 shadow3 d-flex justify-content-center align-items-center mb-3"
                         >
                             <font-awesome-icon
                                 class="m-0"

@@ -403,7 +403,7 @@ router.beforeEach((to, from, next) => {
     }
 
     if (loggedIn && onlyWhenLoggedOut) {
-        return next("/");
+        return next("/dashboard");
     }
 
     next();

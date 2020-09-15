@@ -1,5 +1,9 @@
 [
     {
+        "old": "/ueber",
+        "new": "/page/about"
+    },
+    {
         "old": "/2020/03/16/gehalt-fuer-medizinische-fachangestellte",
         "new": "/page/mfa-career/gehalt"
     },
@@ -38,6 +42,10 @@
     {
         "old": "/2020/06/12/fortbildung-weiterbildung-oder-studium-das-ist-hier-die-frage",
         "new": "/article/in-6-schritten-zur-richtigen-weiterbildung"
+    },
+    {
+        "old": "/fuer-mfa",
+        "new": "/page/mfa-career"
     },
     {
         "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen",
@@ -110,5 +118,77 @@
     {
         "old": "/fuer-arbeitgeber",
         "new": "/page/fuer-arbeitgeber"
+    },
+    {
+        "old": "/ort/berlin",
+        "new": "/jobboard?state=Berlin"
+    },
+    {
+        "old": "/ort/bayern",
+        "new": "/jobboard?state=Bayern"
+    },
+    {
+        "old": "/ort/hamburg",
+        "new": "/jobboard?state=Hamburg"
+    },
+    {
+        "old": "/ort/niedersachsen",
+        "new": "/jobboard?state=Niedersachsen"
+    },
+    {
+        "old": "/ort/hessen",
+        "new": "/jobboard?state=Hessen"
+    },
+    {
+        "old": "/ort/rheinland-pfalz",
+        "new": "/jobboard?state=Rheinland-Pfalz"
+    },
+    {
+        "old": "/ort/brandenburg",
+        "new": "/jobboard?state=Brandenburg"
+    },
+    {
+        "old": "/ort/saarland",
+        "new": "/jobboard?state=Saarland"
+    },
+    {
+        "old": "/ort/thueringen",
+        "new": "/jobboard?state=Thüringen"
+    },
+    {
+        "old": "/ort/bremen",
+        "new": "/jobboard?state=Bremen"
+    },
+    {
+        "old": "/ort/mecklenburg-vorpommern",
+        "new": "/jobboard?state=Mecklenburg-Vorpommern"
+    },
+    {
+        "old": "/ort/sachsen",
+        "new": "/jobboard?state=Sachsen"
+    },
+    {
+        "old": "/ort/sachsen-anhalt",
+        "new": "/jobboard?state=Sachsen-Anhalt"
+    },
+    {
+        "old": "/ort/schleswig-holstein",
+        "new": "/jobboard?state=Schleswig-Holstein"
+    },
+    {
+        "old": "/ort/baden-wuerttemberg",
+        "new": "/jobboard?state=Baden-Württemberg"
+    },
+    {
+        "old": "/stadt/koeln",
+        "new": "/jobboard?location=Köln"
+    },
+    {
+        "old": "/anstellungsart/teilzeit",
+        "new": "/jobboard?employmentType=part"
+    },
+    {
+        "old": "/anstellungsart/vollzeit",
+        "new": "/jobboard?employmentType=full"
     }
 ]

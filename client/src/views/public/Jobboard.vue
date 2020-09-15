@@ -1,6 +1,6 @@
 <template>
     <div class="jobboard">
-        <h1 class="title">Stellenangebote</h1>
+        <h1 class="title">{{ title }}</h1>
         <b-container class=" py-5">
             <b-row class="mt-2">
                 <b-col cols="12" lg="4" class="px-2 pr-lg-5">
@@ -124,6 +124,13 @@
                             >
                         </b-form-select>
                     </b-form>
+                    <b-button
+                        to="/register"
+                        block
+                        variant="primary"
+                        class="my-1"
+                        >Stellenanzeige schalten</b-button
+                    >
                 </b-col>
                 <b-col>
                     <keep-alive>
@@ -135,7 +142,11 @@
                 </b-col>
             </b-row>
         </b-container>
-        <Head title="Jobboard" desc="This is the meta of jobboard..." img="" />
+        <Head
+            :title="title"
+            desc="Attraktive Stellenangebote nur für MFAs / Arzthelfer*innen"
+            img=""
+        />
     </div>
 </template>
 
@@ -158,6 +169,7 @@
         },
         data() {
             return {
+                title: "Stellenanzeigen",
                 filter: {
                     searchTerm: this.$route.query.searchTerm || "",
                     employmentType: this.$route.query.employmentType || null,

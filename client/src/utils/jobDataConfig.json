@@ -54,7 +54,8 @@
     "employmentTypeOptions": [
         { "value": "full", "text": "Vollzeit" },
         { "value": "part", "text": "Teilzeit" },
-        { "value": "part_full", "text": "Teil- oder Vollzeit" }
+        { "value": "part_full", "text": "Teil- oder Vollzeit" },
+        { "value": "training", "text": "Ausbildung" }
     ],
     "simpleApplicationOptions": [
         { "value": false, "text": "Nein" },
