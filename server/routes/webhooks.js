@@ -28,7 +28,7 @@ router.post("/checkout-completed", async (req, res) => {
 
     try {
         const intent = await stripe.paymentIntents.retrieve(
-            req.body.data.object.payment_intent
+            req.body.data.object["payment_intent"]
         );
 
         const status = "published";

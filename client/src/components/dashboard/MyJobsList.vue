@@ -249,6 +249,10 @@
                                     applicationDeadline
                                     paid
                                     title
+                                    company {
+                                        size
+                                    }
+
                                 }
                             }
                         `

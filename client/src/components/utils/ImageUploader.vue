@@ -10,6 +10,7 @@
                 accept="image/jpeg, image/png"
                 placeholder="Datei wählen/ablegen..."
                 drop-placeholder="Datei hier ablegen..."
+                browse-text="Durchsuchen"
                 @input="uploadImage"
             />
             <b-button

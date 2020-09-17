@@ -41,11 +41,11 @@
                 :state="validated ? (form.accepted ? true : false) : null"
             >
                 Ich habe die
-                <b-link to="/page/agbs">
-                    Nutzungsbedingungen
+                <b-link href="/page/agbs" target="_blank">
+                    AGBs
                 </b-link>
                 und
-                <b-link to="/page/privacy-policy">
+                <b-link href="/page/privacy-policy" target="_blank">
                     Datenschutzbestimmungen
                 </b-link>
 

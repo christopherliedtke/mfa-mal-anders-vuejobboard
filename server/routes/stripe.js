@@ -56,6 +56,10 @@ router.post("/validate-coupon", authenticateToken, async (req, res) => {
 // #access: Private
 router.post("/create-session-id", authenticateToken, async (req, res) => {
     try {
+        if (req.body.amount < 2500) {
+            throw new Error("Invalid amount entered for stripe checkout!");
+        }
+
         const user = await User.findOne(
             {
                 _id: req.userId,
@@ -95,12 +99,13 @@ router.post("/create-session-id", authenticateToken, async (req, res) => {
                         currency: config.stripe.currency,
                         product_data: {
                             name: req.body.job.title,
-                            description: `Publish ${req.body.job.title} on ${config.website.name}.`,
+                            description: `Veröffentlichung Ihrer Stellenanzeige auf ${config.website.name}.`,
                             images: [],
                         },
-                        unit_amount: Math.round(
-                            config.stripe.pricePerJob * (1 - discount)
-                        ),
+                        unit_amount: req.body.amount,
+                        // unit_amount: Math.round(
+                        //     config.stripe.pricePerJob * (1 - discount)
+                        // ),
                     },
                     quantity: 1,
                 },
@@ -112,6 +117,7 @@ router.post("/create-session-id", authenticateToken, async (req, res) => {
                 couponId: couponId,
                 couponCode: discount && req.body.code,
                 couponUsage: couponUsage,
+                accepted: req.body.accepted,
             },
             mode: "payment",
             success_url: `${req.body.url}?success=true&job_id=${req.body.job._id}`,
