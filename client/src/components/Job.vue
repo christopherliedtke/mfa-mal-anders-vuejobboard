@@ -47,7 +47,13 @@
                         size="lg"
                     />
                     Veröffentlicht:
-                    {{ new Date(parseInt(job.paidAt)).toLocaleDateString() }}
+                    {{
+                        job.paidAt
+                            ? new Date(
+                                  parseInt(job.paidAt)
+                              ).toLocaleDateString()
+                            : "-"
+                    }}
                 </div>
                 <div>
                     <font-awesome-icon
@@ -86,7 +92,7 @@
         />
         <div class="mt-5" v-html="job.description"></div>
         <div class="mt-3" v-if="job.company.url">
-            <a :href="job.company.url"
+            <a :href="job.company.url" target="_blank"
                 ><strong
                     >Besuche unsere Homepage
                     <b-icon icon="box-arrow-up-right"/></strong
@@ -106,8 +112,8 @@
         <div v-if="job.contactLastName" class="mt-4">
             <h2>Kontakt für Bewerbungen</h2>
             <p>
-                {{ job.contactGender && job.contactGender + " " }}
-                {{ job.contactTitle && job.contactTitle + " " }}
+                {{ job.contactGender != "null" ? job.contactGender + " " : "" }}
+                {{ job.contactTitle != "null" ? job.contactTitle + " " : "" }}
                 {{ job.contactFirstName + " " + job.contactLastName }} <br />
                 {{ job.contactPhone && "Telefon: " }}
                 <a
@@ -120,7 +126,9 @@
                 {{ job.contactEmail && "E-Mail: " }}
                 <a
                     v-if="job.contactEmail"
-                    :href="`mailto:${job.contactEmail}`"
+                    :href="
+                        `mailto:${job.contactEmail}?subject=Bewerbung - ${job.title} über ${config.website.name}`
+                    "
                     target="_blank"
                     >{{ job.contactEmail }}</a
                 >
@@ -174,6 +182,7 @@
         employmentTypeOptions,
         companySizeOptions
     } from "@/utils/jobDataConfig.json";
+    import config from "@/utils/config.json";
     import JobStructuredData from "@/components/JobStructuredData.vue";
     import HereMapSingleJob from "@/components/hereMaps/HereMapSingleJob.vue";
     import Head from "@/components/utils/Head.vue";
@@ -196,7 +205,8 @@
                 job: Object,
                 error: null,
                 employmentTypeOptions,
-                companySizeOptions
+                companySizeOptions,
+                config
             };
         },
         methods: {

@@ -15,5 +15,5 @@ $border-radius2: 35px;
 
 $break-menu: 1199px;
 
-$transition1: linear 0.3s;
-$transition2: transform 0.3s cubic-bezier(1, 0.5, 0.8, 1);
+$transition1: all linear 0.3s;
+$transition2: all cubic-bezier(1, 0.5, 0.8, 1) 0.3s;

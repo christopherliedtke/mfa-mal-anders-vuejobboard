@@ -124,13 +124,16 @@
                             >
                         </b-form-select>
                     </b-form>
-                    <b-button
+                    <!-- <b-button
                         to="/register"
                         block
                         variant="primary"
                         class="my-1"
                         >Stellenanzeige schalten</b-button
-                    >
+                    > -->
+                    <div class="small text-right pr-3 pt-1">
+                        <b-link to="/register">Stellenanzeige schalten</b-link>
+                    </div>
                 </b-col>
                 <b-col>
                     <keep-alive>

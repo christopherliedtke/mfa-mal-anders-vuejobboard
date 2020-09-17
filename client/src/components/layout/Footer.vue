@@ -85,6 +85,9 @@
                         <b-nav-item to="/page/mfa-career/gehalt"
                             >Gehaltsrechner</b-nav-item
                         >
+                        <b-nav-item to="/dashboard"
+                            >Stellenanzeige schalten</b-nav-item
+                        >
                         <hr />
                         <b-nav-item to="/page/contact">Kontakt</b-nav-item>
                         <b-nav-item to="/page/privacy-policy"

@@ -74,6 +74,9 @@ const mutation = new GraphQLObjectType({
                 imageUrl: {
                     type: GraphQLString,
                 },
+                contactGender: {
+                    type: GraphQLString,
+                },
                 contactTitle: {
                     type: GraphQLString,
                 },

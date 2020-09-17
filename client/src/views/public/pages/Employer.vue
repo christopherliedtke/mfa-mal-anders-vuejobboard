@@ -155,7 +155,7 @@
                         Stellenbörse und der Informationen rund um MFA mal
                         anders zahlen möchte. So können wir jedem Arbeitgeber
                         die Möglichkeit bieten, vergleichsweise kostengünstig
-                        eine Stellenanzeige zu schalten.
+                        eine Stellenanzeige für 60 Tage bei uns zu schalten.
                     </p>
                     <p class="small">
                         * Es fällt ein Mindestbeitrag von 25,- Euro pro
@@ -252,6 +252,8 @@
             </b-row>
         </b-container>
 
+        <FixedAddJobBtn />
+
         <Head
             title="Motivierte MFA / Arzthelfer*in gesucht?"
             desc="MFA mal anders ist das Jobportal speziell nur für medizinische Fachangestellte. Gesucht – Gefunden! Mit günstigen Stellenanzeigen, die wirklich ankommen."
@@ -264,12 +266,14 @@
     import Head from "@/components/utils/Head.vue";
     import PayWhatYouWantSuggestion from "@/components/utils/PayWhatYouWantSuggestion.vue";
     import JobAdTippsBanner from "@/components/utils/JobAdTippsBanner.vue";
+    import FixedAddJobBtn from "@/components/utils/FixedAddJobBtn.vue";
     export default {
         name: "Employer",
         components: {
             Head,
             PayWhatYouWantSuggestion,
-            JobAdTippsBanner
+            JobAdTippsBanner,
+            FixedAddJobBtn
         },
         data() {
             return {

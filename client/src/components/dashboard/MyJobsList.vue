@@ -1,6 +1,10 @@
 <template>
     <div>
         <h3>Meine Stellenanzeigen</h3>
+        <p>
+            Hier können Sie Ihre erstellten Stellenanzeigen bearbeiten, löschen,
+            veröffentlichen bzw. neue Anzeigen erstellen.
+        </p>
         <b-button to="/dashboard/new-job" variant="outline-primary"
             ><b-icon class="mr-2" scale="1" icon="plus-circle"></b-icon>Neue
             Stelle</b-button
@@ -60,24 +64,42 @@
                 </div>
                 <div class="my-3">
                     <div>
-                        Aktualisiert:
-                        {{ new Date(parseInt(job.updatedAt)).toLocaleString() }}
+                        Erstellt:
+                        <span class="text-muted">
+                            {{
+                                new Date(
+                                    parseInt(job.createdAt)
+                                ).toLocaleString()
+                            }}
+                        </span>
+                    </div>
+                    <div>
+                        Zuletzt aktualisiert:
+                        <span class="text-muted">
+                            {{
+                                new Date(
+                                    parseInt(job.updatedAt)
+                                ).toLocaleString()
+                            }}
+                        </span>
                     </div>
                     <div v-if="job.paidAt">
                         Bezahlt:
-                        {{ new Date(parseInt(job.paidAt)).toLocaleString() }}
+                        <span class="text-muted">
+                            {{
+                                new Date(parseInt(job.paidAt)).toLocaleString()
+                            }}
+                        </span>
                     </div>
                     <div v-if="job.paidExpiresAt">
                         Zahlung läuft ab:
-                        {{
-                            new Date(
-                                parseInt(job.paidExpiresAt)
-                            ).toLocaleString()
-                        }}
-                    </div>
-                    <div>
-                        Erstellt:
-                        {{ new Date(parseInt(job.createdAt)).toLocaleString() }}
+                        <span class="text-muted">
+                            {{
+                                new Date(
+                                    parseInt(job.paidExpiresAt)
+                                ).toLocaleString()
+                            }}
+                        </span>
                     </div>
                 </div>
                 <div class="d-flex justify-content-between align-items-end">

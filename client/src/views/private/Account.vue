@@ -3,6 +3,10 @@
         <h2>Account</h2>
         <b-tabs content-class="mt-3">
             <b-tab title="Profil" active>
+                <p>
+                    Hier können Sie Ihre Profil-Daten ändern bzw. Ihren Account
+                    löschen.
+                </p>
                 <AccountDataForm apiUsersSchema="private"/>
                 <DeleteAccountButton
             /></b-tab>

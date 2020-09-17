@@ -1,15 +1,26 @@
 <template>
     <div>
         <h3>Meine Unternehmen</h3>
+        <p>
+            Hier können Sie Ihre erstellten Unternehmen bearbeiten, löschen bzw.
+            neue Unternehmen erstellen.
+        </p>
+        <p>
+            Sie können das selbe Unternehmen mit unterschiedlichen Standorten
+            erstellen und diese gegebenenfalls für Ihre verschiedenen
+            Stellenanzeigen nutzen. Ein Unternehmen können Sie auch direkt
+            während des Erstellens einer Stellenanzeige im Reiter
+            "Stellenanzeigen" einrichten. Bearbeiten Sie hier einzelne
+            Unternehmen, wirkt sich dies direkt auf die verknüpften
+            Stellenanzeigen aus.
+        </p>
         <b-button to="/dashboard/new-company" variant="outline-primary"
             ><b-icon class="mr-2" scale="1" icon="plus-circle"></b-icon>Neues
             Unternehmen</b-button
         >
         <b-card v-for="company in myCompanies" :key="company._id" class="my-3">
             <b-card-text>
-                <h4>
-                    {{ company.name }}
-                </h4>
+                <h4>{{ company.name }} | {{ company.location }}</h4>
                 <div class="my-3">
                     <div>
                         Erstellt:
@@ -107,6 +118,7 @@
                                         createdAt
                                         updatedAt
                                         name
+                                        location
                                     }
                                 }
                             `
