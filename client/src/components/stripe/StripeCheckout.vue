@@ -61,7 +61,7 @@
                     <b-form-checkbox
                         class="mt-3 small"
                         v-model="accepted"
-                        :state="accepted"
+                        :state="accepted || null"
                         :value="true"
                         :unchecked-value="false"
                         switch

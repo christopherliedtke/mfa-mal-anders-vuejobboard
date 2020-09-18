@@ -70,7 +70,11 @@
                                 )[0].text
                             }}
                         </div>
-                        <div v-if="job.simpleApplication">
+                        <div
+                            v-if="job.simpleApplication"
+                            v-b-tooltip.bottom.hover
+                            title="Lebenslauf genügt für Bewerbung"
+                        >
                             <b-badge pill variant="secondary"
                                 ><font-awesome-icon
                                     class="mr-1"

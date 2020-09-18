@@ -99,7 +99,7 @@ router.post("/create-session-id", authenticateToken, async (req, res) => {
                         currency: config.stripe.currency,
                         product_data: {
                             name: req.body.job.title,
-                            description: `Veröffentlichung Ihrer Stellenanzeige auf ${config.website.name}.`,
+                            description: `Veröffentlichung Ihrer Stellenanzeige "${req.body.job.title}" auf ${config.website.name}.`,
                             images: [],
                         },
                         unit_amount: req.body.amount,
