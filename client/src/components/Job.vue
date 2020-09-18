@@ -106,7 +106,10 @@
             <b-button
                 size="lg"
                 :variant="job.simpleApplication ? 'secondary' : 'primary'"
-                :href="job.extJobUrl || `mailto:${job.applicationEmail}`"
+                :href="
+                    job.extJobUrl ||
+                        `mailto:${job.applicationEmail}?subject=Bewerbung - ${job.title} über ${config.website.name}`
+                "
                 target="_blank"
                 >Jetzt
                 {{ job.simpleApplication && "nur mit Lebenslauf" }}
