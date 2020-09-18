@@ -41,8 +41,14 @@
                 align-items: center;
                 background-color: darken($light, $amount: 1%);
                 padding: 1rem;
-                width: 150px;
+                width: 130px;
+                min-width: 130px;
                 border-radius: 0 5px 0 0;
+
+                @media screen and (max-width: $break-menu) {
+                    width: 100px;
+                    min-width: 100px;
+                }
 
                 img {
                     max-height: 90%;

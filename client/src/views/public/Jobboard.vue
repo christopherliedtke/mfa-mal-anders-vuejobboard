@@ -146,7 +146,7 @@
             </b-row>
         </b-container>
         <Head
-            :title="title"
+            :title="title + ' für MFAs/Arzthelfer*innen'"
             desc="Attraktive Stellenangebote nur für MFAs / Arzthelfer*innen"
             img=""
         />

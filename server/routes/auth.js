@@ -157,12 +157,53 @@ router.post("/register", async (req, res) => {
                 const data = {
                     from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
                     to: user.email,
-                    subject: `Your Activation Link for ${config.website.name}`,
+                    subject: `E-Mail bestätigen für ${config.website.name}`,
                     text: `
-                        Please use the following link within the next 10 minutes to activate your account on ${config.website.name}: ${baseUrl}/api/auth/verification/verify-account/${user._id}/${secretCode}
+                        Bitte nutzen Sie den folgenden Link innerhalb der nächsten 10 Minuten, um Ihren Account auf ${config.website.name} zu aktivieren:: ${baseUrl}/api/auth/verification/verify-account/${user._id}/${secretCode}
                     `,
                     html: emailTemplate.generate(`
-                        <p>Please use the following link within the next 10 minutes to activate your account on ${config.website.name}: <strong><a href="${baseUrl}/api/auth/verification/verify-account/${user._id}/${secretCode}" target="_blank">Verify Email</a></strong></p>
+                        <div 
+                            style="color: #000000; font-family: Montserrat, Verdana, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; line-height: 1.2; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px">
+                            <div style="line-height: 1.2; font-size: 12px; color: #000000; font-family: Montserrat, Verdana, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 14px">
+                                <h2>Aktivieren Sie Ihren Account bei ${config.website.name}</h2>
+                                <p>
+                                    Bitte nutzen Sie den folgenden Link innerhalb der nächsten 10 Minuten, um Ihren Account auf ${config.website.name} zu aktivieren: 
+                                </p>
+                            </div>
+                        </div>
+                        <div
+                            style="
+                                text-decoration: none;
+                                display: inline-block;
+                                color: #f8faf9;
+                                background-color: #fda225;
+                                border-radius: 50px;
+                                -webkit-border-radius: 50px;
+                                -moz-border-radius: 50px;
+                                width: auto;
+                                width: auto;
+                                border-top: 1px solid #fda225;
+                                border-right: 1px solid #fda225;
+                                border-bottom: 1px solid #fda225;
+                                border-left: 1px solid #fda225;
+                                padding-top: 5px;
+                                padding-bottom: 5px;
+                                font-family: Montserrat, Verdana, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;
+                                text-align: center;
+                                mso-border-alt: none;
+                                word-break: keep-all;
+                            "
+                        >
+                            <a 
+                                style="padding-left: 20px; padding-right: 20px; font-size: 16px; display: inline-block; cursor: pointer; border: none; color: #f8faf9; text-decoration: none" href="${baseUrl}/api/auth/verification/verify-account/${user._id}/${secretCode}" target="_blank"
+                            >
+                                <span 
+                                    style="font-size: 16px; line-height: 1.5; word-break: break-word; mso-line-height-alt: 24px"
+                                >
+                                    Account aktivieren
+                                </span>
+                            </a>
+                        </div>
                     `),
                 };
                 await emailService.sendMail(data);
@@ -213,12 +254,53 @@ router.get(
                 const data = {
                     from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
                     to: user.email,
-                    subject: `Your Activation Link for ${config.website.name}`,
+                    subject: `E-Mail bestätigen für ${config.website.name}`,
                     text: `
-                        Please use the following link within the next 10 minutes to activate your account on ${config.website.name}: ${baseUrl}/api/auth/verification/verify-account/${user._id}/${secretCode}
+                        Bitte nutzen Sie den folgenden Link innerhalb der nächsten 10 Minuten, um Ihren Account auf ${config.website.name} zu aktivieren:: ${baseUrl}/api/auth/verification/verify-account/${user._id}/${secretCode}
                     `,
                     html: emailTemplate.generate(`
-                        <p>Please use the following link within the next 10 minutes to activate your account on ${config.website.name}: <strong><a href="${baseUrl}/api/auth/verification/verify-account/${user._id}/${secretCode}" target="_blank">Email bestätigen</a></strong></p>
+                        <div 
+                            style="color: #000000; font-family: Montserrat, Verdana, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; line-height: 1.2; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px">
+                            <div style="line-height: 1.2; font-size: 12px; color: #000000; font-family: Montserrat, Verdana, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 14px">
+                                <h2>Aktivieren Sie Ihren Account bei ${config.website.name}</h2>
+                                <p>
+                                    Bitte nutzen Sie den folgenden Link innerhalb der nächsten 10 Minuten, um Ihren Account auf ${config.website.name} zu aktivieren: 
+                                </p>
+                            </div>
+                        </div>
+                        <div
+                            style="
+                                text-decoration: none;
+                                display: inline-block;
+                                color: #f8faf9;
+                                background-color: #fda225;
+                                border-radius: 50px;
+                                -webkit-border-radius: 50px;
+                                -moz-border-radius: 50px;
+                                width: auto;
+                                width: auto;
+                                border-top: 1px solid #fda225;
+                                border-right: 1px solid #fda225;
+                                border-bottom: 1px solid #fda225;
+                                border-left: 1px solid #fda225;
+                                padding-top: 5px;
+                                padding-bottom: 5px;
+                                font-family: Montserrat, Verdana, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;
+                                text-align: center;
+                                mso-border-alt: none;
+                                word-break: keep-all;
+                            "
+                        >
+                            <a 
+                                style="padding-left: 20px; padding-right: 20px; font-size: 16px; display: inline-block; cursor: pointer; border: none; color: #f8faf9; text-decoration: none" href="${baseUrl}/api/auth/verification/verify-account/${user._id}/${secretCode}" target="_blank"
+                            >
+                                <span 
+                                    style="font-size: 16px; line-height: 1.5; word-break: break-word; mso-line-height-alt: 24px"
+                                >
+                                    Account aktivieren
+                                </span>
+                            </a>
+                        </div>
                     `),
                 };
 
@@ -255,15 +337,7 @@ router.get(
                 );
                 await Code.deleteMany({ email: user.email });
 
-                let redirectPath;
-
-                if (process.env.NODE_ENV == "production") {
-                    redirectPath = `${req.protocol}://${req.get(
-                        "host"
-                    )}account/verified`;
-                } else {
-                    redirectPath = `http://127.0.0.1:8080/account/verified`;
-                }
+                let redirectPath = `${config.website.url}/account/verified`;
 
                 res.redirect(redirectPath);
             }

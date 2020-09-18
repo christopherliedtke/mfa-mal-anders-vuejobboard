@@ -8,25 +8,27 @@
         </p>
         <ul>
             <li>
-                Als <strong>kleine Praxis</strong> bis 2 Angestellte, die zum
-                ersten Mal in Jahren eine neue feste Stelle ausschreibt:
+                Als <strong>kleine Praxis</strong> bis 5 Mitarbeiter*innen, die
+                zum ersten Mal in Jahren eine neue feste Stelle ausschreibt:
                 <strong>25€ pro Stelle.</strong>
             </li>
             <li>
-                Als <strong>mittlere Praxis</strong> bis 6 Angestellte, die
-                gelegentlich eine neue Stelle ausschreibt:
+                Als <strong>mittlere Praxis</strong> mit 6 bis 10
+                Mitarbeiter*innen, die gelegentlich eine neue Stelle
+                ausschreibt:
                 <strong>50€ pro Stelle.</strong>
             </li>
             <li>
                 Als <strong>größere Praxis</strong> oder
                 <strong>kleinere bis mittlere Versorgungseinrichtung </strong
-                >bis 20 Angestellte, die regelmäßig Stellen ausschreibt:
+                >mit 11 bis 20 Mitarbeiter*innen, die regelmäßig Stellen
+                ausschreibt:
                 <strong>100€ pro Stelle.</strong>
             </li>
             <li>
                 Als
                 <strong>große Versorgungseinrichtung </strong>mit über 20
-                Angestellten, die regelmäßig mehrere Stellen ausschreibt:
+                Mitarbeiter*innen, die regelmäßig mehrere Stellen ausschreibt:
                 <strong>250€ pro Stelle.</strong>
             </li>
         </ul>

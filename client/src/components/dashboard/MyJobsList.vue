@@ -2,8 +2,8 @@
     <div>
         <h3>Meine Stellenanzeigen</h3>
         <p>
-            Hier können Sie Ihre erstellten Stellenanzeigen bearbeiten, löschen,
-            veröffentlichen bzw. neue Anzeigen erstellen.
+            Hier können Sie Stellenanzeigen erstellen, bearbeiten,
+            veröffentlichen oder löschen.
         </p>
         <b-button to="/dashboard/new-job" variant="outline-primary"
             ><b-icon class="mr-2" scale="1" icon="plus-circle"></b-icon>Neue
