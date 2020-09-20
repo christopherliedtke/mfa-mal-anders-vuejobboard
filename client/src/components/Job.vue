@@ -312,8 +312,10 @@
         created: function() {
             this.getJob(this.$route.params.jobId);
         },
-        updated: function() {
-            this.getJob(this.$route.params.jobId);
+        watch: {
+            "$route.params.jobId": function() {
+                this.getJob(this.$route.params.jobId);
+            }
         }
     };
 </script>
