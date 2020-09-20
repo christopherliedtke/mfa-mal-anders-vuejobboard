@@ -8,15 +8,16 @@
     import JobCard from "@/components/JobCard.vue";
     export default {
         name: "SimiarJobs",
-        props: ["location", "state", "zipCode", "excludeId", "number"],
+        props: ["jobs", "location", "state", "zipCode", "excludeId", "number"],
         components: {
             JobCard
         },
         computed: {
             similarJobs: function() {
-                let similarJobs = [...this.$store.state.jobs.jobs];
-                similarJobs = similarJobs
-                    .sort((a, b) => {
+                let similarJobs = [...this.jobs];
+
+                if (this.zipCode) {
+                    similarJobs = similarJobs.sort((a, b) => {
                         console.log(
                             Math.abs(
                                 parseInt(a.company.zipCode) -
@@ -38,20 +39,23 @@
                                     parseInt(this.zipCode)
                             )
                         );
-                    })
-                    .filter(job => job._id != this.excludeId);
+                    });
+                } else if (this.location || this.state) {
+                    similarJobs = similarJobs.filter(
+                        job =>
+                            job.company.location === this.location ||
+                            job.company.state === this.state
+                    );
+                }
 
-                // const similarJobs = this.$store.state.jobs.jobs.filter(
-                // job =>
-                //     (job.company.location === this.location ||
-                //         job.company.state === this.state) &&
-                //     job._id != this.excludeId
-                // );
+                if (this.excludeId) {
+                    similarJobs = similarJobs.filter(
+                        job => job._id != this.excludeId
+                    );
+                }
 
                 return similarJobs.slice(0, this.number);
             }
         }
     };
 </script>
-
-<style></style>
