@@ -606,6 +606,9 @@
                     </b-collapse>
                 </b-card>
             </div>
+
+            <ToJobboardBanner class="my-5 mx-auto" />
+
             <h2>Benefits und wenn das Gehalt nicht zufriedenstellend ist</h2>
             <p>
                 Neben einer fairen Bezahlung spielen auch weitere, sogenannte
@@ -744,11 +747,13 @@
 <script>
     import Head from "@/components/utils/Head.vue";
     import Gehaltsrechner from "@/components/utils/Gehaltsrechner.vue";
+    import ToJobboardBanner from "@/components/utils/ToJobboardBanner.vue";
     export default {
         name: "Gehalt",
         components: {
             Head,
-            Gehaltsrechner
+            Gehaltsrechner,
+            ToJobboardBanner
         },
         data() {
             return {

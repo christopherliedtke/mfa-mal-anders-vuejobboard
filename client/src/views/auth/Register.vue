@@ -1,13 +1,56 @@
 <template>
     <b-container class="register auth-container">
         <h2 class="text-center mb-4">{{ title }}</h2>
-        <p class="bold">
+        <p class="bold text-left text-md-center">
             Sie möchten eine Stellenanzeige bei uns schalten?
         </p>
-        <p>
-            Dann registrieren Sie sich jetzt und starten Sie direkt mit der
-            Veröffentlichung Ihrer ersten Anzeige.
+
+        <b-row cols-md="3" class="d-none d-md-flex my-4 text-center">
+            <b-col>
+                <div
+                    class="icon-box mx-auto bg-primary rounded-circle"
+                    style="width: 75px; height: 75px"
+                >
+                    <font-awesome-icon
+                        :icon="['fa', 'user-plus']"
+                        class="text-light m-0"
+                        size="2x"
+                    />
+                </div>
+                <h3 class="h6">Registrieren</h3>
+            </b-col>
+            <b-col>
+                <div
+                    class="icon-box mx-auto bg-primary rounded-circle"
+                    style="width: 75px; height: 75px"
+                >
+                    <font-awesome-icon
+                        :icon="['fa', 'drafting-compass']"
+                        class="text-light m-0"
+                        size="2x"
+                    />
+                </div>
+                <h3 class="h6">Stellenanzeige erstellen</h3>
+            </b-col>
+            <b-col>
+                <div
+                    class="icon-box mx-auto bg-primary rounded-circle"
+                    style="width: 75px; height: 75px"
+                >
+                    <font-awesome-icon
+                        :icon="['fa', 'paper-plane']"
+                        class="text-light m-0"
+                        size="2x"
+                    />
+                </div>
+                <h3 class="h6">Veröffentlichen</h3>
+            </b-col>
+        </b-row>
+        <p class="">
+            Registrieren Sie sich jetzt und veröffentlichen Sie noch heute Ihre
+            Stellenanzeige!
         </p>
+
         <RegisterForm />
 
         <Head
@@ -29,7 +72,7 @@
         },
         data() {
             return {
-                title: "Registrieren als Arbeitgeber"
+                title: "Registrierung für Arbeitgeber"
             };
         }
     };

@@ -31,7 +31,10 @@ import {
     faGift,
     faDoorOpen,
     faSyringe,
-    faHospital
+    faHospital,
+    faUserPlus,
+    faDraftingCompass,
+    faPaperPlane
 } from "@fortawesome/free-solid-svg-icons";
 import { faUser as farUser } from "@fortawesome/free-regular-svg-icons";
 import {
@@ -66,6 +69,9 @@ library.add(
     faDoorOpen,
     faSyringe,
     faHospital,
+    faUserPlus,
+    faDraftingCompass,
+    faPaperPlane,
     farUser,
     faFacebookSquare,
     faFacebook,
