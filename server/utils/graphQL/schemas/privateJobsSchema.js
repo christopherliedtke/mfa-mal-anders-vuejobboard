@@ -5,6 +5,7 @@ const {
     GraphQLSchema,
     GraphQLList,
     GraphQLNonNull,
+    GraphQLFloat,
 } = require("graphql");
 const JobType = require("../types/JobType");
 const { Job } = require("../../models/job");
@@ -54,6 +55,8 @@ const mutation = new GraphQLObjectType({
             type: JobType,
             args: {
                 title: { type: new GraphQLNonNull(GraphQLString) },
+                paidAt: { type: GraphQLFloat },
+                paidExpiresAt: { type: GraphQLFloat },
                 description: { type: new GraphQLNonNull(GraphQLString) },
                 employmentType: { type: new GraphQLNonNull(GraphQLString) },
                 applicationDeadline: {
@@ -99,6 +102,15 @@ const mutation = new GraphQLObjectType({
             async resolve(parentValue, args, req) {
                 const addObj = { ...args, userId: req.userId };
 
+                // ! temporary - only for admin
+                args.paidAt && req.userRole === "admin"
+                    ? (addObj.paidAt = new Date(args.paidAt))
+                    : delete addObj.paidAt;
+                args.paidExpiresAt && req.userRole === "admin"
+                    ? (addObj.paidExpiresAt = new Date(args.paidExpiresAt))
+                    : delete addObj.paidExpiresAt;
+                // !
+
                 for (const key in addObj) {
                     addObj[key] = sanitizeHtml(addObj[key]);
                 }
@@ -114,6 +126,8 @@ const mutation = new GraphQLObjectType({
             args: {
                 _id: { type: GraphQLString },
                 title: { type: new GraphQLNonNull(GraphQLString) },
+                paidAt: { type: GraphQLFloat },
+                paidExpiresAt: { type: GraphQLFloat },
                 description: { type: new GraphQLNonNull(GraphQLString) },
                 employmentType: { type: new GraphQLNonNull(GraphQLString) },
                 applicationDeadline: {
@@ -159,6 +173,15 @@ const mutation = new GraphQLObjectType({
             async resolve(parentValue, args, req) {
                 const updateObj = { ...args };
                 delete updateObj._id;
+
+                // !temporary - only for admin
+                args.paidAt && req.userRole === "admin"
+                    ? (updateObj.paidAt = new Date(args.paidAt))
+                    : delete updateObj.paidAt;
+                args.paidExpiresAt && req.userRole === "admin"
+                    ? (updateObj.paidExpiresAt = new Date(args.paidExpiresAt))
+                    : delete updateObj.paidExpiresAt;
+                // !
 
                 for (const key in updateObj) {
                     updateObj[key] = sanitizeHtml(updateObj[key]);

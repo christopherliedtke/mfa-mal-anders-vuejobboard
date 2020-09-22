@@ -11,6 +11,22 @@
                 placeholder="Titel der Stellenanzeige eingeben..."
                 required
             />
+            <div
+                v-if="$store.state.auth.userRole === 'admin'"
+                class="bg-light-shade border-radius1 p-3 mt-3"
+            >
+                <h6>ADMIN</h6>
+                <label for="created">paidAt</label>
+                <b-form-datepicker
+                    v-model="paidAt"
+                    placeholder="Bezahlt am..."
+                />
+                <label class="mt-2" for="created">paidExpiresAt</label>
+                <b-form-datepicker
+                    v-model="paidExpiresAt"
+                    placeholder="Zahlung läuft ab am..."
+                />
+            </div>
             <label for="specialization">Fachbereich</label>
             <b-form-select
                 id="specialization"
@@ -115,6 +131,14 @@
                 fit="inside"
                 @update-url="job.imageUrl = $event"
             />
+            <b-form-input
+                class="bg-light-shade mt-2"
+                v-if="$store.state.auth.userRole === 'admin'"
+                type="url"
+                v-model="job.imageUrl"
+                placeholder="ADMIN - URL to image (incl. https://)"
+            >
+            </b-form-input>
             <div>
                 <b-avatar
                     class="mt-2 d-flex align-items-center justify-content-center avatar"
@@ -265,6 +289,14 @@
                 fit="inside"
                 @update-url="job.company.logoUrl = $event"
             />
+            <b-form-input
+                class="bg-light-shade mt-2"
+                v-if="$store.state.auth.userRole === 'admin'"
+                type="url"
+                v-model="job.company.logoUrl"
+                placeholder="ADMIN - URL to image (incl. https://)"
+            >
+            </b-form-input>
             <div>
                 <b-avatar
                     class="mt-2 d-flex align-items-center justify-content-center"
@@ -275,6 +307,7 @@
                     :src="job.company.logoUrl"
                 />
             </div>
+
             <h3 class="mt-4">Ansprechpartner für Bewerbungen</h3>
             <label for="contact-gender">Anrede</label>
             <b-form-select
@@ -443,6 +476,24 @@
                 error: ""
             };
         },
+        computed: {
+            paidAt: {
+                get: function() {
+                    return new Date(this.job.paidAt);
+                },
+                set: function(value) {
+                    this.job.paidAt = new Date(value).getTime();
+                }
+            },
+            paidExpiresAt: {
+                get: function() {
+                    return new Date(this.job.paidExpiresAt);
+                },
+                set: function(value) {
+                    this.job.paidExpiresAt = new Date(value).getTime();
+                }
+            }
+        },
         created: function() {
             this.jobId ? this.getJob(this.jobId) : null;
             this.getCompanies();
@@ -463,6 +514,8 @@
                             query {
                                 job(_id: "${jobId}") {
                                     _id
+                                    paidAt
+                                    paidExpiresAt
                                     title
                                     description
                                     employmentType
@@ -633,7 +686,9 @@
                                         ? `_id: "${this.job._id}",`
                                         : ""
                                 } 
-                                title: "${this.job.title}", 
+                                title: "${this.job.title}",
+                                paidAt: ${this.job.paidAt},
+                                paidExpiresAt: ${this.job.paidExpiresAt},
                                 description: "${this.job.description.replace(
                                     /"/g,
                                     '\\"'

@@ -110,6 +110,14 @@
                 fit="inside"
                 @update-url="company.logoUrl = $event"
             />
+            <b-form-input
+                class="bg-light-shade mt-2"
+                v-if="$store.state.auth.userRole === 'admin'"
+                type="url"
+                v-model="company.logoUrl"
+                placeholder="ADMIN - URL to image (incl. https://)"
+            >
+            </b-form-input>
             <div>
                 <b-avatar
                     class="mt-2 d-flex align-items-center justify-content-center"

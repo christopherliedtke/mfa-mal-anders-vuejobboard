@@ -54,11 +54,11 @@ const mutation = new GraphQLObjectType({
             type: JobType,
             args: {
                 _id: { type: new GraphQLNonNull(GraphQLString) },
+                title: { type: GraphQLString },
                 status: { type: GraphQLString },
                 paid: { type: GraphQLBoolean },
                 paidAt: { type: GraphQLFloat },
                 paidExpiresAt: { type: GraphQLFloat },
-                title: { type: GraphQLString },
                 description: { type: GraphQLString },
                 employmentType: { type: GraphQLString },
                 applicationDeadline: { type: GraphQLString },
@@ -103,15 +103,22 @@ const mutation = new GraphQLObjectType({
                 const updateObj = { ...args };
                 delete updateObj._id;
 
-                const paidExpiresAt = new Date();
-                paidExpiresAt.setDate(
-                    paidExpiresAt.getDate() +
-                        config.stripe.paymentExpirationDays
-                );
+                if (args.paid || args.paidAt || args.paidExpiresAt) {
+                    const paidExpiresAt = new Date();
+                    paidExpiresAt.setDate(
+                        paidExpiresAt.getDate() +
+                            config.stripe.paymentExpirationDays
+                    );
 
-                if (updateObj.paid) {
-                    updateObj.paidAt = new Date();
-                    updateObj.paidExpiresAt = paidExpiresAt;
+                    args.paidAt
+                        ? (updateObj.paidAt = new Date(args.paidAt))
+                        : (updateObj.paidAt = new Date());
+
+                    args.paidExpiresAt
+                        ? (updateObj.paidExpiresAt = new Date(
+                              args.paidExpiresAt
+                          ))
+                        : (updateObj.paidExpiresAt = paidExpiresAt);
                 }
 
                 const response = await Job.updateOne(
@@ -129,9 +136,6 @@ const mutation = new GraphQLObjectType({
                         .populate("company");
 
                     if (config.googleIndexing.active) {
-                        //
-                        console.log("test");
-
                         googleIndexing(
                             config.website.url +
                                 config.googleIndexing.pathPrefix +

@@ -172,7 +172,7 @@
         },
         data() {
             return {
-                title: "Stellenanzeigen",
+                title: "Stellenangebote",
                 filter: {
                     searchTerm: this.$route.query.searchTerm || "",
                     employmentType: this.$route.query.employmentType || null,

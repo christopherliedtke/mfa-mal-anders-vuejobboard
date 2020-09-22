@@ -2,7 +2,7 @@
     <b-container class="new-job py-5">
         <h2>Neue Stellenanzeige</h2>
         <p>
-            Erstellen Sie hier eine neue Stellenanzeige.
+            Erstellen Sie hier eine neue Stellenanzeige. <strong>Tipps </strong>
             <b-icon
                 id="popover-job-ad-tipps"
                 class="position-relative"

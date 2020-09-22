@@ -1,5 +1,5 @@
 <template>
-    <b-container class="mt-5">
+    <b-container class="mt-5 px-0">
         <JobCard v-for="job in similarJobs" :key="job.id" :job="job" />
     </b-container>
 </template>
@@ -18,17 +18,6 @@
 
                 if (this.zipCode) {
                     similarJobs = similarJobs.sort((a, b) => {
-                        console.log(
-                            Math.abs(
-                                parseInt(a.company.zipCode) -
-                                    parseInt(this.zipCode)
-                            ) -
-                                Math.abs(
-                                    parseInt(b.company.zipCode) -
-                                        parseInt(this.zipCode)
-                                )
-                        );
-
                         return (
                             Math.abs(
                                 parseInt(a.company.zipCode) -

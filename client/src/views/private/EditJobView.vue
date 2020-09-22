@@ -2,7 +2,7 @@
     <b-container class="edit-job py-5">
         <h2>Stellenanzeige bearbeiten</h2>
         <p>
-            Bearbeiten Sie hier Ihre Stellenanzeige.
+            Bearbeiten Sie hier Ihre Stellenanzeige. <strong>Tipps </strong>
             <b-icon
                 id="popover-job-ad-tipps"
                 class="position-relative"

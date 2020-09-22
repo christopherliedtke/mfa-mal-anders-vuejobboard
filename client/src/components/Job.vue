@@ -99,6 +99,7 @@
                 class="mt-3 title-img"
                 :src="job.imageUrl"
                 fluid
+                center
                 :alt="`Image - ${job.company && job.company.name}`"
             />
             <div class="mt-5" v-html="job.description"></div>
