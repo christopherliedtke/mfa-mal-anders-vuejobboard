@@ -114,6 +114,7 @@
                 <b-button
                     size="lg"
                     :variant="job.simpleApplication ? 'secondary' : 'primary'"
+                    @click="trackEvent(job, 'Apply')"
                     :href="
                         job.extJobUrl ||
                             `mailto:${job.applicationEmail}?subject=Bewerbung - ${job.title} über ${config.website.name}`
@@ -140,6 +141,7 @@
                     {{ job.contactPhone && "Telefon: " }}
                     <a
                         v-if="job.contactPhone"
+                        @click="trackEvent(job, 'ContactPhone')"
                         :href="`tel:${job.contactPhone}`"
                         target="_blank"
                         >{{ job.contactPhone }}</a
@@ -148,8 +150,9 @@
                     {{ job.contactEmail && "E-Mail: " }}
                     <a
                         v-if="job.contactEmail"
+                        @click="trackEvent(job, 'ContactEmail')"
                         :href="
-                            `mailto:${job.contactEmail}?subject=Bewerbung - ${job.title} über ${config.website.name}`
+                            `mailto:${job.contactEmail}?subject=${job.title} über ${config.website.name}`
                         "
                         target="_blank"
                         >{{ job.contactEmail }}</a
@@ -308,6 +311,16 @@
             },
             updateHead: function() {
                 this.$emit("updateHead");
+            },
+            trackEvent: function(
+                job,
+                category,
+                action = "Outbound_Link_Click"
+            ) {
+                this.$gtag.event(action, {
+                    event_category: category,
+                    event_label: `${job.title} - ${job._id}`
+                });
             }
         },
         created: function() {

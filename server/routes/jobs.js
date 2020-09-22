@@ -15,6 +15,9 @@ router.use(
     expressGraphQL({
         schema: publicJobsSchema,
         graphiql: true,
+        customFormatErrorFn: (error) => {
+            console.log(error);
+        },
     })
 );
 
@@ -27,6 +30,9 @@ router.use(
     expressGraphQL({
         schema: privateJobsSchema,
         graphiql: true,
+        customFormatErrorFn: (error) => {
+            console.log(error);
+        },
     })
 );
 
@@ -40,6 +46,9 @@ router.use(
     expressGraphQL({
         schema: adminJobsSchema,
         graphiql: true,
+        customFormatErrorFn: (error) => {
+            console.log(error);
+        },
     })
 );
 

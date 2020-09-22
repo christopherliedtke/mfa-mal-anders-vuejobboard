@@ -15,6 +15,9 @@ router.use(
     expressGraphQL({
         schema: privateUsersSchema,
         graphiql: true,
+        customFormatErrorFn: (error) => {
+            console.log(error);
+        },
     })
 );
 
@@ -28,6 +31,9 @@ router.use(
     expressGraphQL({
         schema: adminUsersSchema,
         graphiql: true,
+        customFormatErrorFn: (error) => {
+            console.log(error);
+        },
     })
 );
 

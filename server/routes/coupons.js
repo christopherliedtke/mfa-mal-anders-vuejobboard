@@ -15,6 +15,9 @@ router.use(
     expressGraphQL({
         schema: adminCouponsSchema,
         graphiql: true,
+        customFormatErrorFn: (error) => {
+            console.log(error);
+        },
     })
 );
 
