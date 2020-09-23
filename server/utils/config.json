@@ -23,6 +23,7 @@
     },
     "newsletter": {
         "active": false,
-        "interval": "*/10 * * * * *"
+        "interval": "*/10 * * * * *",
+        "prodInterval": "0 0 18 * * 0"
     }
 }

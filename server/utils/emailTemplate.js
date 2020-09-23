@@ -1,5 +1,9 @@
 module.exports = {
-    generate: function (content, footer = "") {
+    generate: function (
+        content,
+        footer = "",
+        headerImg = "https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/09/mfaMalAnders_Facebook_Banner.png"
+    ) {
         // for templating https://beefree.io/
         return `
            <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -241,11 +245,11 @@ module.exports = {
 <tr>
 <td style="padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px">
 <!
-                                                                [endif]--><a href="https://www.mfa-mal-anders.de" style="padding-top: 10px; padding-bottom: 10px; padding-left: 10px; padding-right: 10px; display: inline; color: #ffffff; font-family: 'Montserrat', 'Verdana', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif; font-size: 12px; text-decoration: none">HOME</a>
+                                                                [endif]--><a href="https://www.mfa-mal-anders.de" style="padding-top: 10px; padding-bottom: 10px; padding-left: 10px; padding-right: 10px; display: inline; color: #ffffff; font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif; font-size: 12px; text-decoration: none">Home</a>
                                                                 <!--[if mso]></td><td style="padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px"><!
-                                                                [endif]--><a href="https://www.mfa-mal-anders.de/page/mfa-career" style="padding-top: 10px; padding-bottom: 10px; padding-left: 10px; padding-right: 10px; display: inline; color: #ffffff; font-family: 'Montserrat', 'Verdana', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif; font-size: 12px; text-decoration: none">MFA KARRIERE</a>
+                                                                [endif]--><a href="https://www.mfa-mal-anders.de/page/mfa-career" style="padding-top: 10px; padding-bottom: 10px; padding-left: 10px; padding-right: 10px; display: inline; color: #ffffff; font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif; font-size: 12px; text-decoration: none">MFA Karriere</a>
                                                                 <!--[if mso]></td><td style="padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px"><!
-                                                                [endif]--><a href="https://www.mfa-mal-anders.de/page/fuer-arbeitgeber" style="padding-top: 10px; padding-bottom: 10px; padding-left: 10px; padding-right: 10px; display: inline; color: #ffffff; font-family: 'Montserrat', 'Verdana', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif; font-size: 12px; text-decoration: none">ARBEITGEBER</a>
+                                                                [endif]--><a href="https://www.mfa-mal-anders.de/page/fuer-arbeitgeber" style="padding-top: 10px; padding-bottom: 10px; padding-left: 10px; padding-right: 10px; display: inline; color: #ffffff; font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif; font-size: 12px; text-decoration: none">Arbeitgeber</a>
                                                                 <!--[if mso]></td></tr></table><![endif]-->
                                                             </div>
                                                         </td>
@@ -263,7 +267,7 @@ module.exports = {
                         </div>
                         <div style="background-color: transparent">
                             <div class="block-grid" style="margin: 0 auto; min-width: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; background-color: #6d0230">
-                                <div style="border-collapse: collapse; display: table; width: 100%; background-color: #6d0230">
+                                <div style="border-collapse: collapse; display: table; width: 100%; background-color: #6d0230; padding: 1rem 0">
                                     <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px"><tr class="layout-full-width" style="background-color:#6d0230"><![endif]-->
                                     <!--[if (mso)|(IE)]><td align="center" width="600" style="background-color:#6d0230;width:600px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:0px; padding-bottom:0px;"><![endif]-->
                                     <div class="col num12" style="min-width: 320px; max-width: 600px; display: table-cell; vertical-align: top; width: 600px">
@@ -273,7 +277,7 @@ module.exports = {
                                                 <!--<![endif]-->
                                                 <div align="center" class="img-container center fixedwidth" style="padding-right: 0px; padding-left: 0px">
                                                     <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px"><td style="padding-right: 0px;padding-left: 0px;" align="center"><!
-                                                    [endif]--><a href="https://www.mfa-mal-anders.de" style="outline: none" tabindex="-1" target="_blank"> <img align="center" alt="The App" border="0" class="center fixedwidth" src="https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/09/mfaMalAnders_Facebook_Banner.png" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 480px; display: block" title="The App" width="480" /></a>
+                                                    [endif]--><a href="https://www.mfa-mal-anders.de" style="outline: none" tabindex="-1" target="_blank"> <img align="center" alt="The App" border="0" class="center fixedwidth" src="${headerImg}" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 480px; display: block" title="The App" width="480" /></a>
                                                     <!--[if mso]></td></tr></table><![endif]-->
                                                 </div>
                                                 <!--[if (!mso)&(!IE)]><!-->
@@ -312,8 +316,8 @@ module.exports = {
                                                     </tbody>
                                                 </table>
                                                 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 5px; padding-left: 5px; padding-top: 5px; padding-bottom: 5px; font-family: Tahoma, sans-serif"><![endif]-->
-                                                <div style="color: #000000; font-family: Montserrat, Verdana, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; line-height: 1.2; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px">
-                                                <div style="line-height: 1.2; font-size: 12px; color: #000000; font-family: Montserrat, Verdana, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 14px">
+                                                <div style="color: #000000; font-family: Montserrat, Open Sans, Helvetica Neue, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; line-height: 1.2; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px">
+                                                <div style="line-height: 1.2; font-size: 12px; color: #000000; font-family: Montserrat, Open Sans, Helvetica Neue, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 14px">
                                                         ${content}
                                                     </div>
                                                     
@@ -420,11 +424,11 @@ module.exports = {
 <tr>
 <td style="padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px">
 <!
-                                                                [endif]--><a href="https://www.mfa-mal-anders.de/page/about" style="padding-top: 10px; padding-bottom: 10px; padding-left: 10px; padding-right: 10px; display: inline; color: #f8faf9; font-family: Montserrat, Verdana, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; font-size: 12px; text-decoration: none">ÜBER</a>
+                                                                [endif]--><a href="https://www.mfa-mal-anders.de/page/about" style="padding-top: 10px; padding-bottom: 10px; padding-left: 10px; padding-right: 10px; display: inline; color: #f8faf9; font-family: Montserrat, Open Sans, Helvetica Neue, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; font-size: 12px; text-decoration: none">Über</a>
                                                                 <!--[if mso]></td><td style="padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px"><!
-                                                                [endif]--><a href="https://www.mfa-mal-anders.de/page/fuer-arbeitgeber" style="padding-top: 10px; padding-bottom: 10px; padding-left: 10px; padding-right: 10px; display: inline; color: #f8faf9; font-family: Montserrat, Verdana, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; font-size: 12px; text-decoration: none">ARBEITGEBER</a>
+                                                                [endif]--><a href="https://www.mfa-mal-anders.de/page/fuer-arbeitgeber" style="padding-top: 10px; padding-bottom: 10px; padding-left: 10px; padding-right: 10px; display: inline; color: #f8faf9; font-family: Montserrat, Open Sans, Helvetica Neue, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; font-size: 12px; text-decoration: none">Arbeitgeber</a>
                                                                 <!--[if mso]></td><td style="padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px"><!
-                                                                [endif]--><a href="https://www.mfa-mal-anders.de/page/contact" style="padding-top: 10px; padding-bottom: 10px; padding-left: 10px; padding-right: 10px; display: inline; color: #f8faf9; font-family: Montserrat, Verdana, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; font-size: 12px; text-decoration: none">KONTAKT</a>
+                                                                [endif]--><a href="https://www.mfa-mal-anders.de/page/contact" style="padding-top: 10px; padding-bottom: 10px; padding-left: 10px; padding-right: 10px; display: inline; color: #f8faf9; font-family: Montserrat, Open Sans, Helvetica Neue, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; font-size: 12px; text-decoration: none">Kontakt</a>
                                                                 <!--[if mso]></td></tr></table><![endif]-->
                                                             </div>
                                                         </td>
@@ -463,10 +467,15 @@ module.exports = {
                                                     </tbody>
                                                 </table>
                                                 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Tahoma, sans-serif"><![endif]-->
-                                                <div style="color: #f8faf9; font-family: Montserrat, Verdana, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; line-height: 1.2; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px">
-                                                    <div style="line-height: 1.2; font-size: 12px; color: #f8faf9; font-family: Montserrat, Verdana, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 14px">
+                                                <div style="color: #f8faf9; font-family: Montserrat, Open Sans, Helvetica Neue, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; line-height: 1.2; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px">
+                                                    <div style="line-height: 1.2; font-size: 12px; color: #f8faf9; font-family: Montserrat, Open Sans, Helvetica Neue, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 14px">
                                                         <p style="font-size: 10px; line-height: 1.2; word-break: break-word; text-align: center; mso-line-height-alt: 12px; margin: 0">
                                                             <span style="font-size: 10px">© 2020 MFA mal anders. <a href="https://www.mfa-mal-anders.de/page/privacy-policy" rel="noopener" style="text-decoration: underline; color: #f8faf9" target="_blank">Datenschutzerklärung</a> | <a href="https://www.mfa-mal-anders.de/page/agbs" rel="noopener" style="text-decoration: underline; color: #f8faf9" target="_blank">AGBs</a></span>
+                                                        </p>
+                                                        <p style="font-size: 10px; line-height: 1.2; word-break: break-word; text-align: center; mso-line-height-alt: 12px; margin: 0">
+                                                            <span style="font-size: 10px">
+                                                                ${footer}
+                                                            </span>
                                                         </p>
                                                     </div>
                                                 </div>

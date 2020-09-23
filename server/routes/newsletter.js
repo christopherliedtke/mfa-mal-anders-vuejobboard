@@ -39,8 +39,8 @@ router.post("/sign-up", async (req, res) => {
                         html: emailTemplate.generate(
                             `
                                 <div 
-                                    style="color: #000000; font-family: Montserrat, Verdana, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; line-height: 1.2; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px">
-                                    <div style="line-height: 1.2; font-size: 12px; color: #000000; font-family: Montserrat, Verdana, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 14px">
+                                    style="color: #000000; font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif; line-height: 1.2; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px">
+                                    <div style="line-height: 1.2; font-size: 12px; color: #000000; font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif; mso-line-height-alt: 14px">
                                         <h2>Deine Anmeldung zum Job-Newsletter auf ${config.website.name}</h2>
                                         <p>
                                             Bitte bestätige deine Anmeldung für den Job-Newsletter für ${form.state} auf ${config.website.name}:
@@ -64,7 +64,7 @@ router.post("/sign-up", async (req, res) => {
                                         border-left: 1px solid #fda225;
                                         padding-top: 5px;
                                         padding-bottom: 5px;
-                                        font-family: Montserrat, Verdana, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;
+                                        font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif;
                                         text-align: center;
                                         mso-border-alt: none;
                                         word-break: keep-all;
@@ -84,8 +84,6 @@ router.post("/sign-up", async (req, res) => {
                         ),
                     };
                     const email = await emailService.sendMail(data);
-
-                    console.log("email: ", email);
 
                     if (email.accepted.length > 0) {
                         success = true;

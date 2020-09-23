@@ -163,8 +163,8 @@ router.post("/register", async (req, res) => {
                     `,
                     html: emailTemplate.generate(`
                         <div 
-                            style="color: #000000; font-family: Montserrat, Verdana, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; line-height: 1.2; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px">
-                            <div style="line-height: 1.2; font-size: 12px; color: #000000; font-family: Montserrat, Verdana, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 14px">
+                            style="color: #000000; font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif; line-height: 1.2; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px">
+                            <div style="line-height: 1.2; font-size: 12px; color: #000000; font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif; mso-line-height-alt: 14px">
                                 <h2>Aktivieren Sie Ihren Account bei ${config.website.name}</h2>
                                 <p>
                                     Bitte nutzen Sie den folgenden Link innerhalb der nächsten 10 Minuten, um Ihren Account auf ${config.website.name} zu aktivieren: 
@@ -188,7 +188,7 @@ router.post("/register", async (req, res) => {
                                 border-left: 1px solid #fda225;
                                 padding-top: 5px;
                                 padding-bottom: 5px;
-                                font-family: Montserrat, Verdana, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;
+                                font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif;
                                 text-align: center;
                                 mso-border-alt: none;
                                 word-break: keep-all;
@@ -260,8 +260,8 @@ router.get(
                     `,
                     html: emailTemplate.generate(`
                         <div 
-                            style="color: #000000; font-family: Montserrat, Verdana, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; line-height: 1.2; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px">
-                            <div style="line-height: 1.2; font-size: 12px; color: #000000; font-family: Montserrat, Verdana, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 14px">
+                            style="color: #000000; font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif; line-height: 1.2; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px">
+                            <div style="line-height: 1.2; font-size: 12px; color: #000000; font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif; mso-line-height-alt: 14px">
                                 <h2>Aktivieren Sie Ihren Account bei ${config.website.name}</h2>
                                 <p>
                                     Bitte nutzen Sie den folgenden Link innerhalb der nächsten 10 Minuten, um Ihren Account auf ${config.website.name} zu aktivieren: 
@@ -285,7 +285,7 @@ router.get(
                                 border-left: 1px solid #fda225;
                                 padding-top: 5px;
                                 padding-bottom: 5px;
-                                font-family: Montserrat, Verdana, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;
+                                font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif;
                                 text-align: center;
                                 mso-border-alt: none;
                                 word-break: keep-all;
