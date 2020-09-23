@@ -3,12 +3,16 @@
         <h1 class="title">{{ title }}</h1>
         <b-container class="py-5">
             <p>
-                You have successfully unsubscribed from this newsletter.
+                Du hast dich erfolgreich von unserem Job-Newsletter abgemeldet.
             </p>
+            <b-button to="/jobboard" variant="secondary"
+                >Weiter zur Stellenbörse</b-button
+            >
+            <RandomArticlesContainer style="margin-top: 5rem" />
         </b-container>
         <Head
             :title="title"
-            desc="This is the meta of Newsletter Unsubscription Success..."
+            desc="Job-Newsletter Abmeldung erfolgreich"
             img=""
         />
     </div>
@@ -16,14 +20,17 @@
 
 <script>
     import Head from "@/components/utils/Head.vue";
+    import RandomArticlesContainer from "@/components/utils/RandomArticlesContainer.vue";
+
     export default {
         name: "NewsletterUnsubscriptionSuccess",
         components: {
-            Head
+            Head,
+            RandomArticlesContainer
         },
         data() {
             return {
-                title: "Unsubscribe from Newsletter"
+                title: "Job Newsletter Abmeldung erfolgreich"
             };
         }
     };

@@ -4,6 +4,8 @@ const config = require("../utils/config");
 const { Job } = require("../utils/models/job");
 const { Coupon } = require("../utils/models/coupon");
 const { UsedCoupon } = require("../utils/models/usedCoupon");
+const { googleIndexing } = require("../utils/middleware/googleJobIndexing");
+const { postToFacebook } = require("../utils/middleware/postToFacebook");
 
 let secrets;
 if (process.env.NODE_ENV == "production") {
@@ -59,6 +61,19 @@ router.post("/checkout-completed", async (req, res) => {
                     code: couponCode,
                 });
                 await newUsedCoupon.save();
+            }
+
+            if (config.googleIndexing.active) {
+                googleIndexing(
+                    config.website.url +
+                        config.googleIndexing.pathPrefix +
+                        jobId,
+                    "URL_UPDATED"
+                );
+            }
+
+            if (config.facebook.autoPost) {
+                postToFacebook();
             }
         }
 

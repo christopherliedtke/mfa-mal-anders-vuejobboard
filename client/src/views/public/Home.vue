@@ -217,8 +217,41 @@
         </b-container>
 
         <b-container>
-            <h2 class="h5">Informiere Dich über Fort- und Weiterbildungen</h2>
-            <RandomTrainingsContainer />
+            <b-row>
+                <b-col cols="12" md="4" class="mb-5">
+                    <h2 class="bold">
+                        Fort- und Weiterbildungen
+                    </h2>
+                    <h3 class="h4">Informiere Dich</h3>
+                    <p>
+                        Als medizinische Fachangestellte haben wir viele
+                        Möglichkeiten uns zu qualifizieren und im Job
+                        aufzusteigen oder sogar in anderen Bereichen des
+                        Gesundheitswesens Fuß zu fassen. Nur leider ist der
+                        Dschungel an Weiterbildungen für medizinische
+                        Fachangestellte so stark bewachsen und undurchdringlich,
+                        dass es nicht leicht fällt, den Durchblick zu behalten.
+                    </p>
+                    <p>
+                        Wir haben einige
+                        <b-link to="/page/mfa-career/fort-und-weiterbildungen"
+                            >Fort- und Weiterbildungen</b-link
+                        >
+                        speziell für MFAs / Arzthelfer*innen für dich
+                        zusammengestellt und erweitern die Auswahl stetig,
+                        sodass du dich ein wenig inspirieren lassen kannst.
+                        Schau doch gleich mal rein!
+                    </p>
+                    <b-button
+                        to="/page/mfa-career/fort-und-weiterbildungen"
+                        variant="primary"
+                        >Zu den Fort- und Weiterbildungen</b-button
+                    >
+                </b-col>
+                <b-col cols="12" md="8">
+                    <RandomTrainingsContainer :number="2" />
+                </b-col>
+            </b-row>
         </b-container>
 
         <Head

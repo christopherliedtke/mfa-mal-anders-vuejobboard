@@ -1,9 +1,9 @@
 <template>
-    <b-row class="mt-4">
+    <b-row>
         <b-col
             cols="12"
-            md="6"
-            lg="4"
+            :md="12 / 2"
+            :lg="12 / number"
             class="mb-4"
             v-for="training in trainings"
             :key="training.id"
@@ -47,7 +47,12 @@
 <script>
     export default {
         name: "RandomTrainingsContainer",
-        props: ["number"],
+        props: {
+            number: {
+                type: Number,
+                default: 3
+            }
+        },
         data() {
             return {
                 trainings: Array
@@ -73,7 +78,7 @@
                 if (this.$store.state.trainings.trainings.length > 0) {
                     this.trainings = this.getRandom(
                         this.$store.state.trainings.trainings,
-                        this.number || 3
+                        this.number
                     );
                 }
             }

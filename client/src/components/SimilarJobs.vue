@@ -1,6 +1,10 @@
 <template>
     <b-container class="mt-5 px-0">
-        <JobCard v-for="job in similarJobs" :key="job.id" :job="job" />
+        <JobCard
+            v-for="similarJob in similarJobs"
+            :key="similarJob.id"
+            :job="similarJob"
+        />
     </b-container>
 </template>
 
@@ -8,7 +12,7 @@
     import JobCard from "@/components/JobCard.vue";
     export default {
         name: "SimiarJobs",
-        props: ["jobs", "location", "state", "zipCode", "excludeId", "number"],
+        props: ["jobs", "job", "number"],
         components: {
             JobCard
         },
@@ -16,20 +20,30 @@
             similarJobs: function() {
                 let similarJobs = [...this.jobs];
 
-                if (this.zipCode) {
+                if (
+                    this.job.company.geoCodeLat &&
+                    this.job.company.geoCodeLng
+                ) {
                     similarJobs = similarJobs.sort((a, b) => {
                         return (
                             Math.abs(
-                                parseInt(a.company.zipCode) -
-                                    parseInt(this.zipCode)
+                                (a.company.geoCodeLat -
+                                    this.job.company.geoCodeLat) *
+                                    (a.company.geoCodeLng -
+                                        this.job.company.geoCodeLng)
                             ) -
                             Math.abs(
-                                parseInt(b.company.zipCode) -
-                                    parseInt(this.zipCode)
+                                (b.company.geoCodeLat -
+                                    this.job.company.geoCodeLat) *
+                                    (b.company.geoCodeLng -
+                                        this.job.company.geoCodeLng)
                             )
                         );
                     });
-                } else if (this.location || this.state) {
+                } else if (
+                    this.job.company.location ||
+                    this.job.company.state
+                ) {
                     similarJobs = similarJobs.filter(
                         job =>
                             job.company.location === this.location ||
@@ -37,9 +51,9 @@
                     );
                 }
 
-                if (this.excludeId) {
+                if (this.job._id) {
                     similarJobs = similarJobs.filter(
-                        job => job._id != this.excludeId
+                        job => job._id != this.job._id
                     );
                 }
 

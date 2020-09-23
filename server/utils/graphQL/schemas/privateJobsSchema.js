@@ -264,6 +264,15 @@ const mutation = new GraphQLObjectType({
                 });
 
                 if (response.n === 1) {
+                    if (config.googleIndexing.active) {
+                        googleIndexing(
+                            config.website.url +
+                                config.googleIndexing.pathPrefix +
+                                args._id,
+                            "URL_DELETED"
+                        );
+                    }
+
                     return { status: "deleted" };
                 } else {
                     return;

@@ -10,10 +10,11 @@ const { Subscriber } = require("../utils/models/subscriber");
 // #desc:   Sign up for newsletter
 // #access: Public
 router.post("/sign-up", async (req, res) => {
-    const form = { ...req.body };
-
-    form.email = sanitizeHtml(form.email);
-    form.state = sanitizeHtml(form.state);
+    const form = {
+        email: sanitizeHtml(req.body.email),
+        state: sanitizeHtml(req.body.state),
+        accepted: sanitizeHtml(req.body.accepted),
+    };
 
     let success = false;
 
@@ -29,22 +30,62 @@ router.post("/sign-up", async (req, res) => {
                     const baseUrl = req.protocol + "://" + req.get("host");
 
                     const data = {
-                        from: `${config.website.emailFrom} <${res.locals.secrets.EMAIL_USERNAME}>`,
+                        from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
                         to: response.email,
-                        subject: `Your Activation Link for the job newsletter on ${config.website.name}`,
+                        subject: `Anmeldung für Job Newsletter auf ${config.website.name}`,
                         text: `
-                            Please use the following link to activate your newsletter subscription on ${config.website.name}: ${baseUrl}/api/newsletter/verification/${response._id}
+                            Bitte bestätige deine Anmeldung für den Job-Newsletter für ${form.state} auf ${config.website.name}: ${baseUrl}/api/newsletter/verification/${response._id}
                         `,
                         html: emailTemplate.generate(
                             `
-                                <div>
-                                    <h2>Your Newsletter Subscription</h2>
-                                    <p>Please use the following link to activate your newsletter subscription on ${config.website.name}: <strong><a href="${baseUrl}/api/newsletter/verification/${response._id}" target="_blank">Verify Email</a></strong></p>
+                                <div 
+                                    style="color: #000000; font-family: Montserrat, Verdana, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; line-height: 1.2; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px">
+                                    <div style="line-height: 1.2; font-size: 12px; color: #000000; font-family: Montserrat, Verdana, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 14px">
+                                        <h2>Deine Anmeldung zum Job-Newsletter auf ${config.website.name}</h2>
+                                        <p>
+                                            Bitte bestätige deine Anmeldung für den Job-Newsletter für ${form.state} auf ${config.website.name}:
+                                        </p>
+                                    </div>
+                                </div>
+                                <div
+                                    style="
+                                        text-decoration: none;
+                                        display: inline-block;
+                                        color: #f8faf9;
+                                        background-color: #fda225;
+                                        border-radius: 50px;
+                                        -webkit-border-radius: 50px;
+                                        -moz-border-radius: 50px;
+                                        width: auto;
+                                        width: auto;
+                                        border-top: 1px solid #fda225;
+                                        border-right: 1px solid #fda225;
+                                        border-bottom: 1px solid #fda225;
+                                        border-left: 1px solid #fda225;
+                                        padding-top: 5px;
+                                        padding-bottom: 5px;
+                                        font-family: Montserrat, Verdana, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;
+                                        text-align: center;
+                                        mso-border-alt: none;
+                                        word-break: keep-all;
+                                    "
+                                >
+                                    <a 
+                                        style="padding-left: 20px; padding-right: 20px; font-size: 16px; display: inline-block; cursor: pointer; border: none; color: #f8faf9; text-decoration: none" href="${baseUrl}/api/newsletter/verification/${response._id}" target="_blank"
+                                    >
+                                        <span 
+                                            style="font-size: 16px; line-height: 1.5; word-break: break-word; mso-line-height-alt: 24px"
+                                        >
+                                            Anmeldung bestätigen
+                                        </span>
+                                    </a>
                                 </div>
                             `
                         ),
                     };
                     const email = await emailService.sendMail(data);
+
+                    console.log("email: ", email);
 
                     if (email.accepted.length > 0) {
                         success = true;

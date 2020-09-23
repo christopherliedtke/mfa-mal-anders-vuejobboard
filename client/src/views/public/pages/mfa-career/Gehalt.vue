@@ -767,13 +767,6 @@
     @import "@/styles/custom_bootstrap.scss";
     @import "@/styles/_config.scss";
 
-    .example {
-        border-radius: $border-radius1;
-        background-color: $light-shade;
-        padding: 1rem;
-        margin: 1rem 0;
-    }
-
     .card-header {
         cursor: pointer;
         background-color: transparentize($primary, $amount: 0.1);

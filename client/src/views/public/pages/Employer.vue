@@ -225,6 +225,9 @@
                         >
                     </div>
                 </b-col>
+                <b-col cols="12">
+                    <ApplicationProcessBanner />
+                </b-col>
             </b-row>
         </b-container>
 
@@ -266,6 +269,7 @@
     import Head from "@/components/utils/Head.vue";
     import PayWhatYouWantSuggestion from "@/components/utils/PayWhatYouWantSuggestion.vue";
     import JobAdTippsBanner from "@/components/utils/JobAdTippsBanner.vue";
+    import ApplicationProcessBanner from "@/components/utils/ApplicationProcessBanner.vue";
     import FixedAddJobBtn from "@/components/utils/FixedAddJobBtn.vue";
     export default {
         name: "Employer",
@@ -273,6 +277,7 @@
             Head,
             PayWhatYouWantSuggestion,
             JobAdTippsBanner,
+            ApplicationProcessBanner,
             FixedAddJobBtn
         },
         data() {
@@ -280,7 +285,7 @@
                 title: "Für Arbeitgeber",
                 jobAdTipps: [
                     {
-                        icon: "lightbulb",
+                        icon: "drafting-compass",
                         title: "Präziser Stellentitel",
                         desc:
                             "Beschreiben Sie die Stelle in wenigen Worten so konkret wie möglich. Heben Sie bereits hier die Vorteile für die Arbeit bei Ihnen hervor. Versuchen Sie bereits hier positiv aufzufallen!"

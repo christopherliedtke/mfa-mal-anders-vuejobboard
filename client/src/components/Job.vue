@@ -211,10 +211,7 @@
         <SimilarJobs
             v-if="job.title"
             :jobs="$store.state.jobs.jobs"
-            :location="job.company.location"
-            :state="job.company.state"
-            :zipCode="job.company.zipCode"
-            :excludeId="job._id"
+            :job="job"
             :number="5"
         />
     </div>

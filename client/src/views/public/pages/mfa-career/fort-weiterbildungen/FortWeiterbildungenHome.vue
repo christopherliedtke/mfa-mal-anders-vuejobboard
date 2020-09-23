@@ -93,7 +93,7 @@
                     </p>
                 </b-col>
             </b-row>
-            <RandomTrainingsContainer />
+            <RandomTrainingsContainer class="mt-5" />
         </b-container>
         <Head
             :title="title"

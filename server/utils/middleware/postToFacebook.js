@@ -7,8 +7,11 @@ if (process.env.NODE_ENV == "production") {
     secrets = require("../secrets"); // in dev they are in secrets.json which is listed in .gitignore
 }
 
-module.exports.postToFacebook = async function () {
+module.exports.postToFacebook = async function (message) {
     try {
+        // const response = await axios.get(
+        //     `https://graph.facebook.com/v8.0/${secrets.FACEBOOK_APP_ID}`
+        // );
         const response = await axios.post(
             `https://graph.facebook.com/v8.0/${secrets.FACEBOOK_APP_ID}/feed`,
             {
