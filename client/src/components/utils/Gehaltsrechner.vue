@@ -47,7 +47,11 @@
             <h4>Dein monatliches Grundgehalt (brutto)</h4>
 
             <b-input-group prepend="€">
-                <b-form-input type="number" v-model="salary"></b-form-input>
+                <b-form-input
+                    disabled
+                    type="number"
+                    v-model="salary"
+                ></b-form-input>
             </b-input-group>
         </b-form>
         <p class="small mt-4 source">
