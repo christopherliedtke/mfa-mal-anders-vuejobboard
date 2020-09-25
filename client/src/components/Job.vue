@@ -94,6 +94,9 @@
                     </div>
                 </div>
             </div>
+            <div>
+                <SubscribeNewsletterBtn :state="job.company.state" />
+            </div>
             <b-img
                 v-if="job.imageUrl"
                 class="mt-3 title-img"
@@ -102,11 +105,11 @@
                 center
                 :alt="`Image - ${job.company && job.company.name}`"
             />
-            <div class="mt-5" v-html="job.description"></div>
+            <div class="mt-4" v-html="job.description"></div>
             <div class="mt-3" v-if="job.company.url">
                 <a :href="job.company.url" target="_blank"
                     ><strong
-                        >Besuche unsere Homepage
+                        >Besuchen Sie unsere Homepage
                         <b-icon icon="box-arrow-up-right"/></strong
                 ></a>
             </div>
@@ -231,6 +234,7 @@
     import FacebookShareBtn from "@/components/utils/FacebookShareBtn.vue";
     import WhatsAppShareBtn from "@/components/utils/WhatsAppShareBtn.vue";
     import EmailShareBtn from "@/components/utils/EmailShareBtn.vue";
+    import SubscribeNewsletterBtn from "@/components/utils/SubscribeNewsletterBtn.vue";
     export default {
         name: "Job",
         components: {
@@ -240,6 +244,7 @@
             FacebookShareBtn,
             WhatsAppShareBtn,
             EmailShareBtn,
+            SubscribeNewsletterBtn,
             Head
         },
         props: ["apiJobsSchema"],

@@ -31,7 +31,6 @@
             </b-form-select>
             <b-form-checkbox
                 class="mt-3 small"
-                id="acceptance"
                 v-model="form.accepted"
                 name="acceptance"
                 :value="true"
@@ -79,6 +78,7 @@
     import Overlay from "@/components/utils/Overlay";
     export default {
         name: "NewsletterSignUpForm",
+        props: ["defaultState"],
         components: {
             Overlay
         },
@@ -142,8 +142,11 @@
                     ? false
                     : true;
             }
+        },
+        mounted() {
+            if (this.defaultState) {
+                this.form.state = this.defaultState;
+            }
         }
     };
 </script>
-
-<style scoped lang="scss"></style>
