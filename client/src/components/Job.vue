@@ -85,7 +85,10 @@
                         v-b-tooltip.bottom.hover
                         title="Lebenslauf genügt für Bewerbung"
                     >
-                        <b-badge pill variant="secondary"
+                        <b-badge
+                            style="cursor: pointer"
+                            pill
+                            variant="secondary"
                             ><font-awesome-icon
                                 class="mr-1"
                                 :icon="['fas', 'hashtag']"

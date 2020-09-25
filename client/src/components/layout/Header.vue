@@ -1,5 +1,5 @@
 <template>
-    <header class="" id="header">
+    <header id="header">
         <b-container class="px-0">
             <b-navbar toggleable="xl" type="dark">
                 <b-navbar-brand to="/">
@@ -211,36 +211,45 @@
             },
             showHeader() {
                 const header = document.getElementById("header");
+                const navCollapse = document.getElementById("nav-collapse");
                 let currentPositionY =
                     window.document.documentElement.scrollTop;
 
-                console.log(
-                    "this.previousScrollPositionY: ",
-                    this.previousScrollPositionY
-                );
-                console.log("currentPositionY: ", currentPositionY);
-
                 if (
-                    currentPositionY >= this.previousScrollPositionY &&
+                    currentPositionY > this.previousScrollPositionY &&
                     currentPositionY > header.offsetHeight &&
+                    !navCollapse.classList.contains("collapsing") &&
+                    !navCollapse.classList.contains("show") &&
                     !header.classList.contains("hide")
                 ) {
                     header.classList.add("hide");
+                    console.log("hide");
+                    console.log(
+                        "this.previousScrollPositionY: ",
+                        this.previousScrollPositionY
+                    );
+                    console.log("currentPositionY: ", currentPositionY);
                 } else if (
                     currentPositionY <= this.previousScrollPositionY &&
                     header.classList.contains("hide")
                 ) {
                     header.classList.remove("hide");
+                    console.log("show");
+                    console.log(
+                        "this.previousScrollPositionY: ",
+                        this.previousScrollPositionY
+                    );
+                    console.log("currentPositionY: ", currentPositionY);
                 }
 
                 this.previousScrollPositionY =
-                    document.documentElement.scrollTop;
+                    window.document.documentElement.scrollTop;
             }
         },
         mounted: function() {
-            // window.addEventListener("scroll", () => {
-            //     this.showHeader();
-            // });
+            window.addEventListener("scroll", () => {
+                this.showHeader();
+            });
         }
     };
 </script>

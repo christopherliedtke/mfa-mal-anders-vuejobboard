@@ -34,7 +34,7 @@
                                 :icon="['fas', 'map-marker']"
                                 size="lg"
                             />
-                            {{ job.company.location }}
+                            {{ job.company.location }}, {{ job.company.state }}
                         </div>
                         <div>
                             <font-awesome-icon
@@ -47,19 +47,6 @@
                         <div>
                             <font-awesome-icon
                                 class="mr-2"
-                                :icon="['fas', 'calendar-alt']"
-                                size="lg"
-                            />
-                            Veröffentlicht:
-                            {{
-                                new Date(
-                                    parseInt(job.paidAt)
-                                ).toLocaleDateString()
-                            }}
-                        </div>
-                        <div>
-                            <font-awesome-icon
-                                class="mr-2"
                                 :icon="['fas', 'clock']"
                                 size="lg"
                             />
@@ -68,6 +55,19 @@
                                     option =>
                                         option.value === job.employmentType
                                 )[0].text
+                            }}
+                        </div>
+                        <div>
+                            <font-awesome-icon
+                                class="mr-2"
+                                :icon="['fas', 'calendar-alt']"
+                                size="lg"
+                            />
+                            Veröffentlicht:
+                            {{
+                                new Date(
+                                    parseInt(job.paidAt)
+                                ).toLocaleDateString()
                             }}
                         </div>
                         <div
