@@ -1,7 +1,7 @@
 {
     "website": {
         "name": "MFA mal anders",
-        "url": "https://www.mfa-mal-anders.de",
+        "url": "https://mfa-mal-anders.herokuapp.com/",
         "contactEmail": "kontakt@mfa-mal-anders.de"
     },
     "cms": {
