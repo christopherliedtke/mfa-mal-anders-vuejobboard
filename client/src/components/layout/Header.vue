@@ -223,23 +223,11 @@
                     !header.classList.contains("hide")
                 ) {
                     header.classList.add("hide");
-                    console.log("hide");
-                    console.log(
-                        "this.previousScrollPositionY: ",
-                        this.previousScrollPositionY
-                    );
-                    console.log("currentPositionY: ", currentPositionY);
                 } else if (
                     currentPositionY <= this.previousScrollPositionY &&
                     header.classList.contains("hide")
                 ) {
                     header.classList.remove("hide");
-                    console.log("show");
-                    console.log(
-                        "this.previousScrollPositionY: ",
-                        this.previousScrollPositionY
-                    );
-                    console.log("currentPositionY: ", currentPositionY);
                 }
 
                 this.previousScrollPositionY =

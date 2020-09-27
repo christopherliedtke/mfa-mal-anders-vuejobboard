@@ -44,11 +44,34 @@
                     </div>
                 </b-col>
                 <b-col order="2" order-lg="2">
-                    <a :href="`https://www.facebook.com/${config.fb.path}`">
+                    <a
+                        :href="`https://www.facebook.com/${config.fb.path}`"
+                        target="_blank"
+                    >
                         <font-awesome-icon
-                            class="mb-4"
-                            :icon="['fab', 'facebook-square']"
-                            size="3x"
+                            class="mb-4 mr-3"
+                            :icon="['fab', 'facebook']"
+                            size="2x"
+                        />
+                    </a>
+                    <a
+                        :href="`https://twitter.com/${config.twitter.path}`"
+                        target="_blank"
+                    >
+                        <font-awesome-icon
+                            class="mb-4 mr-3"
+                            :icon="['fab', 'twitter']"
+                            size="2x"
+                        />
+                    </a>
+                    <a
+                        :href="`https://www.instagram.com/${config.ig.path}`"
+                        target="_blank"
+                    >
+                        <font-awesome-icon
+                            class="mb-4 mr-3"
+                            :icon="['fab', 'instagram']"
+                            size="2x"
                         />
                     </a>
                     <NewsletterSignUpForm />

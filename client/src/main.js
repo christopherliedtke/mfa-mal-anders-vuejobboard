@@ -40,6 +40,8 @@ import { faUser as farUser } from "@fortawesome/free-regular-svg-icons";
 import {
     faFacebookSquare,
     faFacebook,
+    faTwitter,
+    faInstagram,
     faWhatsapp,
     faWpforms,
     faGoogle,
@@ -75,6 +77,8 @@ library.add(
     farUser,
     faFacebookSquare,
     faFacebook,
+    faTwitter,
+    faInstagram,
     faWhatsapp,
     faWpforms,
     faGoogle,

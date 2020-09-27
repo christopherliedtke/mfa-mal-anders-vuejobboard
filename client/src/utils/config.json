@@ -11,8 +11,14 @@
         "postsPageTitle": "Magazin"
     },
     "fb": {
-        "appId": "0",
+        "appId": "509159293103491",
         "path": "MFAmalanders"
+    },
+    "twitter": {
+        "path": "MfaMalAnders"
+    },
+    "ig": {
+        "path": "MfaMalAnders"
     },
     "ga": {
         "active": true,
