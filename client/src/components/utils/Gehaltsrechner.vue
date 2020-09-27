@@ -12,8 +12,8 @@
         </h3>
         <p>
             Gib Deine Daten ein und erhalte Dein Gehalt entsprechend des
-            Gehaltstarifvertrag für Medizinische Fachangestellte/Arzthelferinnen
-            (Stand 2020).
+            Gehaltstarifvertrag* für Medizinische Fachangestellte /
+            Arzthelfer*innen (Stand 2020).
         </p>
         <b-form>
             <b-form-select
@@ -80,7 +80,7 @@
                 yearsOfExperienceOptions: [
                     {
                         value: null,
-                        text: "Wähle die Anzahl Deiner Berufsjahre..."
+                        text: "Anzahl Berufsjahre..."
                     },
                     {
                         value: 1970.19,
@@ -106,8 +106,7 @@
                 hoursOfEducationOptions: [
                     {
                         value: null,
-                        text:
-                            "Wähle deinen absolvierten Umfang an Fortbildungsmaßnahmen*..."
+                        text: "Absolvierter Umfang an Fortbildungsmaßnahmen*..."
                     },
                     {
                         value: 1,
