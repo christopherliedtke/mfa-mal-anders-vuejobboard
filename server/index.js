@@ -55,7 +55,7 @@ app.use("/api/webhooks", require("./routes/webhooks"));
 // #Middleware for production
 if (process.env.NODE_ENV == "production") {
     app.use(express.static(__dirname + "/public"));
-    app.use(csurf({ cookie: true }));
+    app.use(csurf());
 
     app.use((req, res, next) => {
         res.set("x-frame-options", "DENY");
