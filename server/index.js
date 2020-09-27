@@ -55,10 +55,11 @@ app.use("/api/webhooks", require("./routes/webhooks"));
 // #Middleware for production
 if (process.env.NODE_ENV == "production") {
     app.use(express.static(__dirname + "/public"));
-    app.use(csurf());
+    app.use(csurf({ cookie: true }));
+
     app.use((req, res, next) => {
         res.set("x-frame-options", "DENY");
-        res.cookie("mytoken", req.csrfToken());
+        res.cookie("XSRF-TOKEN", req.csrfToken());
         next();
     });
 }

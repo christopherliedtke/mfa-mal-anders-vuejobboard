@@ -67,7 +67,7 @@
                     </b-card>
                 </b-col>
             </b-row>
-            <RandomTrainingsContainer />
+            <RandomTrainingsContainer class="mt-5" />
         </b-container>
         <Head :title="title" desc="This is the meta of..." img="" />
     </div>
