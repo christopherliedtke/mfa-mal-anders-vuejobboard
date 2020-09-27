@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
 let mongoDB;
-if (process.env.DATABASE_URL) {
-    mongoDB = process.env.DATABASE_URL;
+if (process.env.MDB_URL) {
+    mongoDB = process.env.MDB_URL;
 } else {
     const { MDB_URL } = require("./secrets");
     mongoDB = MDB_URL;
