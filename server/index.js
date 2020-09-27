@@ -75,9 +75,9 @@ app.use("/api/coupons", require("./routes/coupons"));
 app.use("/api/images", require("./routes/images"));
 app.use("/api/stripe", require("./routes/stripe"));
 app.use("/api/download", require("./routes/download"));
-app.use("/", require("./routes/index"));
+// app.use("/", require("./routes/index"));
 
 // Serve the built static files in production
-app.get("*", (req, res) => res.sendFile(__dirname + "/public/index.html"));
+app.get("*", (req, res) => res.sendFile("/index.html"));
 
 app.listen(port, () => console.log(`Server listening on port ${port}`));
