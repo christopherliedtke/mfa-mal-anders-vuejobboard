@@ -75,10 +75,7 @@ app.use("/api/coupons", require("./routes/coupons"));
 app.use("/api/images", require("./routes/images"));
 app.use("/api/stripe", require("./routes/stripe"));
 app.use("/api/download", require("./routes/download"));
-app.get("/", (req, res) => {
-    res.cookie("XSRF-TOKEN", req.csrfToken());
-    res.sendFile("/server/public/index.html");
-});
+app.use("/", require("./routes/index"));
 
 // Serve the built static files in production
 app.get("*", (req, res) => res.sendFile(__dirname + "/public/index.html"));
