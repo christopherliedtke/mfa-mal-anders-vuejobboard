@@ -5,10 +5,14 @@ const redirect = (req, res, next) => {
     let foundRedirect = false;
 
     redirects.forEach((redirect) => {
-        if (req.originalUrl.includes(redirect.old)) {
+        if (req.originalUrl.startsWith(redirect.old)) {
             res.redirect(301, config.website.url + redirect.new);
             foundRedirect = true;
-            console.log(`Redirected from ${redirect.old} to ${redirect.new}`);
+            console.log(
+                `Redirected from ${req.originalUrl} to ${
+                    config.website.url + redirect.new
+                }`
+            );
 
             return;
         }
