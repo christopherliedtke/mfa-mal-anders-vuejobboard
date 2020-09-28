@@ -68,16 +68,16 @@ app.use(
 );
 
 // #Middleware for production
-// if (process.env.NODE_ENV == "production") {
-// }
-app.use(express.static(__dirname + "/public"));
+if (process.env.NODE_ENV == "production") {
+    app.use(express.static(__dirname + "/public"));
 
-app.use(csurf());
-app.use((req, res, next) => {
-    // res.set("x-frame-options", "DENY");
-    res.cookie("XSRF-TOKEN", req.csrfToken());
-    next();
-});
+    app.use(csurf());
+    app.use((req, res, next) => {
+        // res.set("x-frame-options", "DENY");
+        res.cookie("XSRF-TOKEN", req.csrfToken());
+        next();
+    });
+}
 
 // #Routes w csrf protection
 app.use("/api/auth", require("./routes/auth"));
