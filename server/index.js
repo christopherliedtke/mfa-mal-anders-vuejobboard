@@ -36,7 +36,7 @@ app.use((req, res, next) => {
 });
 
 // #Redirections
-app.use("*", require("./utils/middleware/redirect"));
+// app.use("*", require("./utils/middleware/redirect"));
 
 // #Routes w/o csrf protection
 app.use("/api/webhooks", require("./routes/webhooks"));
