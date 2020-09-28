@@ -1,5 +1,5 @@
 const redirects = require("../redirects.json");
-const config = require("../config.json");
+// const config = require("../config.json");
 
 const redirect = (req, res, next) => {
     let foundRedirect = false;
@@ -9,12 +9,10 @@ const redirect = (req, res, next) => {
             req.originalUrl === redirect.old ||
             req.originalUrl === redirect.old + "/"
         ) {
-            res.redirect(301, config.website.url + redirect.new);
+            res.redirect(301, redirect.new);
             foundRedirect = true;
             console.log(
-                `Redirected from ${req.originalUrl} to ${
-                    config.website.url + redirect.new
-                }`
+                `Redirected from ${req.originalUrl} to ${redirect.new}`
             );
 
             return;
