@@ -5,6 +5,7 @@ const cors = require("cors");
 const compression = require("compression");
 
 const csurf = require("csurf");
+const csrfProtection = csurf();
 
 let secrets, port;
 if (process.env.NODE_ENV == "production") {
@@ -56,7 +57,8 @@ app.use(
 if (process.env.NODE_ENV == "production") {
     app.use(express.static(__dirname + "/public"));
 
-    app.use(csurf());
+    app.use(csrfProtection);
+    console.log("csrfProtection running...");
 
     app.use((req, res, next) => {
         res.set("x-frame-options", "DENY");
