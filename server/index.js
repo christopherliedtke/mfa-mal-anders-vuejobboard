@@ -38,23 +38,25 @@ app.use((req, res, next) => {
 // #Redirections
 app.use("*", require("./utils/middleware/redirect"));
 
+// #Routes w/o csrf protection
+app.use("/api/webhooks", require("./routes/webhooks"));
+
 // #Cookie Session
 const cookieSession = require("cookie-session");
 app.use(
     cookieSession({
+        name: "session",
         secret: secrets.COOKIE_SESSION_SECRET,
         maxAge: 1000 * 60 * 60 * 24 * 14,
         httpOnly: true,
-        secure: false,
+        secure: true,
     })
 );
-
-// #Routes w/o csrf protection
-app.use("/api/webhooks", require("./routes/webhooks"));
 
 // #Middleware for production
 if (process.env.NODE_ENV == "production") {
     app.use(express.static(__dirname + "/public"));
+
     app.use(csurf());
 
     app.use((req, res, next) => {
@@ -78,11 +80,6 @@ app.use("/api/download", require("./routes/download"));
 app.use("/", require("./routes/index"));
 
 // Serve the built static files in production
-// app.get("*", (req, res) => res.sendFile(__dirname + "/public/index.html"));
-
-app.all("*", (req, res) => {
-    res.cookie("XSRF-TOKEN", req.csrfToken());
-    res.sendFile(__dirname + "/public/index.html");
-});
+app.get("*", (req, res) => res.sendFile(__dirname + "/public/index.html"));
 
 app.listen(port, () => console.log(`Server listening on port ${port}`));
