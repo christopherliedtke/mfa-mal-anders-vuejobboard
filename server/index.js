@@ -45,22 +45,22 @@ app.use("/api/webhooks", require("./routes/webhooks"));
 const cookieSession = require("cookie-session");
 app.use(
     cookieSession({
-        name: "session",
+        // name: "session",
         secret: secrets.COOKIE_SESSION_SECRET,
         maxAge: 1000 * 60 * 60 * 24 * 14,
-        httpOnly: true,
-        secure: false,
+        // httpOnly: true,
+        // secure: false,
     })
 );
 
 // #Middleware for production
 if (process.env.NODE_ENV == "production") {
-    app.use(express.static(__dirname + "/public"));
+    app.use(express.static("./public"));
 
     app.use(csurf());
 
     app.use((req, res, next) => {
-        res.set("x-frame-options", "DENY");
+        // res.set("x-frame-options", "DENY");
         res.cookie("XSRF-TOKEN", req.csrfToken());
         next();
     });
@@ -77,7 +77,11 @@ app.use("/api/coupons", require("./routes/coupons"));
 app.use("/api/images", require("./routes/images"));
 app.use("/api/stripe", require("./routes/stripe"));
 app.use("/api/download", require("./routes/download"));
-app.use("/", require("./routes/index"));
+// app.use("/", require("./routes/index"));
+
+app.get("/", (req, res) => {
+    res.sendFile(__dirname + "/public/index.html");
+});
 
 // Serve the built static files in production
 app.get("*", (req, res) => res.sendFile(__dirname + "/public/index.html"));
