@@ -5,7 +5,6 @@ const cors = require("cors");
 const compression = require("compression");
 
 const csurf = require("csurf");
-const csrfProtection = csurf();
 
 let secrets, port;
 if (process.env.NODE_ENV == "production") {
@@ -53,11 +52,13 @@ app.use(
     })
 );
 
+console.log(("process.env.NODE_ENV:", process.env.NODE_ENV));
+
 // #Middleware for production
 if (process.env.NODE_ENV == "production") {
     app.use(express.static(__dirname + "/public"));
 
-    app.use(csrfProtection);
+    app.use(csurf());
     console.log("csrfProtection running...");
 
     app.use((req, res, next) => {
