@@ -7,6 +7,7 @@ import VueSanitize from "vue-sanitize";
 import VueHead from "vue-head";
 import config from "@/utils/config.json";
 import VueGtag from "vue-gtag";
+import VueCookies from "vue-cookies";
 
 // FontAwesome Integration
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -94,6 +95,9 @@ Vue.use(VueHead, {
 Vue.use(BootstrapVue);
 Vue.use(BootstrapVueIcons);
 Vue.use(VueSanitize);
+
+Vue.use(VueCookies);
+Vue.$cookies.config("7d");
 
 // GA tracking -> tracking in App.vue
 Vue.use(VueGtag, {
