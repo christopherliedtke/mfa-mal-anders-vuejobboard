@@ -4,7 +4,7 @@ const app = express();
 const cors = require("cors");
 const compression = require("compression");
 
-const csurf = require("csurf");
+// const csurf = require("csurf");
 
 let secrets, port;
 if (process.env.NODE_ENV == "production") {
@@ -71,7 +71,7 @@ app.use(
 if (process.env.NODE_ENV == "production") {
     app.use(express.static(__dirname + "/public"));
 
-    app.use(csurf());
+    // app.use(csurf());
     // app.use((req, res, next) => {
     //     res.set("x-frame-options", "DENY");
     //     res.cookie("XSRF-TOKEN", req.csrfToken());
@@ -94,7 +94,6 @@ app.use("/api/download", require("./routes/download"));
 
 // Serve the built static files in production
 app.get("*", (req, res) => {
-    res.cookie("XSRF-TOKEN", req.csrfToken());
     res.sendFile(__dirname + "/public/index.html");
 });
 
