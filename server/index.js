@@ -3,7 +3,6 @@ const app = express();
 
 const cors = require("cors");
 const compression = require("compression");
-const cookieParser = require("cookie-parser");
 
 const csurf = require("csurf");
 
@@ -30,7 +29,6 @@ if (config.newsletter.active) {
 // #Middleware
 app.use(compression());
 app.use(cors());
-app.use(cookieParser());
 app.use(express.json());
 app.use((req, res, next) => {
     res.locals.secrets = secrets;
@@ -47,7 +45,6 @@ app.use("/api/webhooks", require("./routes/webhooks"));
 const cookieSession = require("cookie-session");
 app.use(
     cookieSession({
-        name: "session",
         secret: secrets.COOKIE_SESSION_SECRET,
         maxAge: 1000 * 60 * 60 * 24 * 14,
         // httpOnly: true,
@@ -59,7 +56,7 @@ app.use(
 if (process.env.NODE_ENV == "production") {
     app.use(express.static(__dirname + "/public"));
 
-    app.use(csurf({ cookie: true }));
+    app.use(csurf());
 
     app.use((req, res, next) => {
         res.set("x-frame-options", "DENY");
