@@ -57,12 +57,12 @@ const session = require("express-session");
 app.use(
     session({
         secret: secrets.COOKIE_SESSION_SECRET,
-        resave: false,
-        saveUninitialized: false,
+        // resave: false,
+        // saveUninitialized: false,
         cookie: {
             maxAge: 1000 * 60 * 60 * 24 * 14,
-            httpOnly: true,
-            secure: false,
+            httpOnly: process.env.NODE_ENV == "production",
+            secure: process.env.NODE_ENV == "production",
         },
     })
 );
