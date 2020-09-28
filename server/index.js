@@ -42,13 +42,28 @@ app.use(require("./utils/middleware/redirect"));
 app.use("/api/webhooks", require("./routes/webhooks"));
 
 // #Cookie Session
-const cookieSession = require("cookie-session");
+// const cookieSession = require("cookie-session");
+// app.use(
+//     cookieSession({
+//         secret: secrets.COOKIE_SESSION_SECRET,
+//         maxAge: 1000 * 60 * 60 * 24 * 14,
+//         // httpOnly: true,
+//         // secure: false,
+//     })
+// );
+
+// #Express Session
+const session = require("express-session");
 app.use(
-    cookieSession({
+    session({
         secret: secrets.COOKIE_SESSION_SECRET,
-        maxAge: 1000 * 60 * 60 * 24 * 14,
-        // httpOnly: true,
-        // secure: false,
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            maxAge: 1000 * 60 * 60 * 24 * 14,
+            httpOnly: true,
+            secure: false,
+        },
     })
 );
 
