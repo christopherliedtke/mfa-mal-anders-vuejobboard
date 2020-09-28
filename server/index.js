@@ -57,8 +57,8 @@ const session = require("express-session");
 app.use(
     session({
         secret: secrets.COOKIE_SESSION_SECRET,
-        // resave: false,
-        // saveUninitialized: false,
+        resave: false,
+        saveUninitialized: false,
         cookie: {
             maxAge: 1000 * 60 * 60 * 24 * 14,
             httpOnly: true,
@@ -79,6 +79,17 @@ if (process.env.NODE_ENV == "production") {
     });
 }
 
+// app.use((req, res, next) => {
+//     console.log("req.url: ", req.url);
+
+//     // if (req.originalUrl === "/") {
+//     //     console.log("redirect to /home");
+//     //     res.redirect("/home");
+//     // } else {
+//     //     next();
+//     // }
+// });
+
 // #Routes w csrf protection
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/user", require("./routes/user"));
@@ -91,10 +102,6 @@ app.use("/api/images", require("./routes/images"));
 app.use("/api/stripe", require("./routes/stripe"));
 app.use("/api/download", require("./routes/download"));
 // app.use("/", require("./routes/index"));
-
-app.get("/", (req, res) => {
-    res.redirect("/home");
-});
 
 // Serve the built static files in production
 app.get("*", (req, res) => {

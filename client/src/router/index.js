@@ -70,7 +70,7 @@ import NotFound from "@/views/public/NotFound.vue";
 const routes = [
     // #Public
     {
-        path: "/home",
+        path: "/",
         name: "Home",
         component: Home,
         meta: {
