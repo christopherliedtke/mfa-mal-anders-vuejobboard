@@ -12,7 +12,6 @@
         methods: {
             async onLogout() {
                 localStorage.clear();
-                this.$cookies.remove("connect.sid");
 
                 const response = await axios.get("/api/auth/logout");
 
