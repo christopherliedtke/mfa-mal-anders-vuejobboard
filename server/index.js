@@ -71,7 +71,7 @@ app.use(
 if (process.env.NODE_ENV == "production") {
     app.use(express.static(__dirname + "/public"));
 
-    // app.use(csurf());
+    app.use(csurf());
     app.use((req, res, next) => {
         // res.set("x-frame-options", "DENY");
         res.cookie("XSRF-TOKEN", req.csrfToken());
