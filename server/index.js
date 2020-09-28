@@ -49,7 +49,7 @@ app.use(
         secret: secrets.COOKIE_SESSION_SECRET,
         maxAge: 1000 * 60 * 60 * 24 * 14,
         httpOnly: true,
-        secure: true,
+        secure: false,
     })
 );
 
