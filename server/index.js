@@ -93,6 +93,10 @@ app.use("/api/download", require("./routes/download"));
 // app.use("/", require("./routes/index"));
 
 // Serve the built static files in production
-app.get("*", (req, res) => res.sendFile(__dirname + "/public/index.html"));
+app.get("*", (req, res) =>
+    res.sendFile(__dirname + "/public/index.html", {
+        csrfToken: req.csrfToken(),
+    })
+);
 
 app.listen(port, () => console.log(`Server listening on port ${port}`));
