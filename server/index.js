@@ -72,11 +72,11 @@ if (process.env.NODE_ENV == "production") {
     app.use(express.static(__dirname + "/public"));
 
     app.use(csurf());
-    app.use((req, res, next) => {
-        // res.set("x-frame-options", "DENY");
-        res.cookie("XSRF-TOKEN", req.csrfToken());
-        next();
-    });
+    // app.use((req, res, next) => {
+    //     // res.set("x-frame-options", "DENY");
+    //     res.cookie("XSRF-TOKEN", req.csrfToken());
+    //     next();
+    // });
 }
 
 // #Routes w csrf protection
@@ -94,6 +94,7 @@ app.use("/api/download", require("./routes/download"));
 
 // Serve the built static files in production
 app.get("*", (req, res) => {
+    res.cookie("XSRF-TOKEN", req.csrfToken());
     res.sendFile(__dirname + "/public/index.html");
 });
 
