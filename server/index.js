@@ -4,7 +4,7 @@ const app = express();
 const cors = require("cors");
 const compression = require("compression");
 
-// const csurf = require("csurf");
+const csurf = require("csurf");
 
 let secrets, port;
 if (process.env.NODE_ENV == "production") {
