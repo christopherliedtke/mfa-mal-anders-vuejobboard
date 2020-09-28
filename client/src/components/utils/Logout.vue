@@ -12,6 +12,9 @@
         methods: {
             async onLogout() {
                 localStorage.clear();
+                document.cookie =
+                    "cookiename=connect.sid ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+
                 const response = await axios.get("/api/auth/logout");
 
                 if (response.data.success) {
@@ -24,5 +27,3 @@
         }
     };
 </script>
-
-<style scoped lang="scss"></style>
