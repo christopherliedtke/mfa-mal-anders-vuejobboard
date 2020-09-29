@@ -24,6 +24,10 @@
                             id: "desc"
                         },
                         {
+                            property: "og:type",
+                            content: "website"
+                        },
+                        {
                             property: "og:title",
                             content: `${this.title} – ${config.website.name}`
                         },

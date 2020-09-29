@@ -28,6 +28,8 @@ router.post("/checkout-completed", async (req, res) => {
         couponUsage,
     } = req.body.data.object.metadata;
 
+    const { amount } = req.body.data.data.object["amount_total"];
+
     try {
         const intent = await stripe.paymentIntents.retrieve(
             req.body.data.object["payment_intent"]
@@ -49,6 +51,7 @@ router.post("/checkout-completed", async (req, res) => {
                         paid: true,
                         paidAt,
                         paidExpiresAt,
+                        paidAmount: amount,
                     }
                 ),
                 Coupon.deleteOne({ code: couponCode, usage: "single" }),
