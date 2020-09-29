@@ -48,6 +48,14 @@
                         {
                             property: "fb:app_id",
                             content: config.fb.appId
+                        },
+                        {
+                            property: "twitter:card",
+                            content: "summary"
+                        },
+                        {
+                            property: "twitter:site",
+                            content: "@MfaMalAnders"
                         }
                     ];
                 }

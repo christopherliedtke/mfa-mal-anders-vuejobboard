@@ -187,6 +187,11 @@
                     class="mr-2 mb-2"
                     :sharePath="$route.fullPath"
                 />
+                <TwitterShareBtn
+                    class="mr-2 mb-2"
+                    :sharePath="$route.fullPath"
+                    :title="job.title"
+                />
                 <EmailShareBtn
                     class="mr-2 mb-2"
                     :sharePath="$route.fullPath"
@@ -237,6 +242,7 @@
     import FacebookShareBtn from "@/components/utils/FacebookShareBtn.vue";
     import WhatsAppShareBtn from "@/components/utils/WhatsAppShareBtn.vue";
     import EmailShareBtn from "@/components/utils/EmailShareBtn.vue";
+    import TwitterShareBtn from "@/components/utils/TwitterShareBtn.vue";
     import SubscribeNewsletterBtn from "@/components/utils/SubscribeNewsletterBtn.vue";
     export default {
         name: "Job",
@@ -247,6 +253,7 @@
             FacebookShareBtn,
             WhatsAppShareBtn,
             EmailShareBtn,
+            TwitterShareBtn,
             SubscribeNewsletterBtn,
             Head
         },
