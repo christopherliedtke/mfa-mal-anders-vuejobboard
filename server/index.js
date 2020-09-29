@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+import sslRedirect from "heroku-ssl-redirect";
 
 const cors = require("cors");
 const compression = require("compression");
@@ -16,6 +17,9 @@ if (process.env.NODE_ENV == "production") {
 }
 
 const config = require("./utils/config");
+
+// # SSL redirect
+app.use(sslRedirect());
 
 // #mongoDB
 const mongoose = require("./utils/db");

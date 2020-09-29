@@ -210,7 +210,7 @@
             dismissible
         >
             Oh, da ist leider etwas schief gelaufen. Bitte probiere es noch
-            einmal.
+            einmal oder versuche Dich neu ein- und auszuloggen.
         </b-alert>
     </div>
 </template>
