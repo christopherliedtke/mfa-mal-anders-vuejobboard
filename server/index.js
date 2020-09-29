@@ -34,6 +34,7 @@ app.use((req, res, next) => {
     res.locals.secrets = secrets;
     next();
 });
+app.use(require("prerender-node"));
 
 // #Redirections
 app.use(require("./utils/middleware/redirect"));
