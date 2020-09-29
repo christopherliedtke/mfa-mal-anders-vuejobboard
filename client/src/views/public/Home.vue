@@ -257,7 +257,7 @@
         <Head
             title="Dein Karriereportal nur für MFAs"
             desc="Dein Job- und Karriereportal für medizinische Fachangestellte (MFA) | Attraktive Stellenangebote im Gesundheitswesen | Weiterbildungen | Alternative Jobs"
-            :img="require('@/assets/mfaMalAnders_Facebook_Banner.png')"
+            img=""
         />
     </div>
 </template>
