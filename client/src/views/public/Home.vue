@@ -257,25 +257,19 @@
         <Head
             title="Dein Karriereportal nur für MFAs"
             desc="Dein Job- und Karriereportal für medizinische Fachangestellte (MFA) | Attraktive Stellenangebote im Gesundheitswesen | Weiterbildungen | Alternative Jobs"
-            img=""
+            :img="require('@/assets/mfaMalAnders_Facebook_Banner.png')"
         />
     </div>
 </template>
 
 <script>
     import Head from "@/components/utils/Head.vue";
-    // import FacebookBtn from "@/components/utils/FacebookBtn.vue";
-    // import FacebookShareBtn from "@/components/utils/FacebookShareBtn.vue";
-    // import NewsletterSignUpForm from "@/components/utils/NewsletterSignUpForm.vue";
     import StellenanzeigeSchaltenBanner from "@/components/utils/StellenanzeigeSchaltenBanner.vue";
     import RandomTrainingsContainer from "@/components/utils/RandomTrainingsContainer.vue";
     export default {
         name: "Home",
         components: {
             Head,
-            // FacebookBtn,
-            // FacebookShareBtn,
-            // NewsletterSignUpForm,
             StellenanzeigeSchaltenBanner,
             RandomTrainingsContainer
         },

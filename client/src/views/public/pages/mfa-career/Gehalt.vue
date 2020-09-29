@@ -739,7 +739,7 @@
         <Head
             :title="'MFA Gehaltsrechner | ' + title"
             desc="Über Gehalt, Tarifvertrag, Tätigkeitsgruppen für MFA. Ermittle deinen Marktwert - Hier gehts zum Gehaltsrechner für MFAs/Arzthelferinnen."
-            img="@/assets/Gehalt-fuer-mfa.png"
+            :img="require('@/assets/Gehalt-fuer-mfa.png')"
         />
     </div>
 </template>
