@@ -24,3 +24,5 @@ mongoose.connection.on(
     "error",
     console.error.bind(console, "-----> mongoDB connection error")
 );
+
+module.exports = mongoose;

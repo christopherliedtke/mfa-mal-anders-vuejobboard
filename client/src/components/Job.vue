@@ -205,20 +205,20 @@
                 einmal.</b-alert
             >
             <JobStructuredData :job="job" />
-            <Head
-                v-if="job.title"
-                :title="job.title"
-                :desc="
-                    `${job.company.name} sucht nach ${job.title} in ${job.company.location}`
-                "
-                :img="job.imageUrl || job.company.logoUrl"
-            />
         </div>
         <SimilarJobs
             v-if="job.title"
             :jobs="$store.state.jobs.jobs"
             :job="job"
             :number="5"
+        />
+        <Head
+            v-if="job.title"
+            :title="job.title"
+            :desc="
+                `${job.company.name} sucht nach ${job.title} in ${job.company.location}`
+            "
+            :img="job.imageUrl || job.company.logoUrl || ''"
         />
     </div>
 </template>

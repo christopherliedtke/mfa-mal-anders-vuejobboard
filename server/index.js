@@ -18,7 +18,7 @@ if (process.env.NODE_ENV == "production") {
 const config = require("./utils/config");
 
 // #mongoDB
-require("./utils/db");
+const mongoose = require("./utils/db");
 
 // #Send Newsletter CRON job
 const { sendNewsletter } = require("./utils/sendNewsletter");
@@ -35,13 +35,11 @@ app.use((req, res, next) => {
     next();
 });
 
+// #Prerender w/o googlebot
 const prerender = require("prerender-node");
-console.log("prerender.crawlerUserAgents: ", prerender.crawlerUserAgents);
 prerender.crawlerUserAgents = prerender.crawlerUserAgents.filter(
     (item) => item != "googlebot"
 );
-console.log("prerender.crawlerUserAgents: ", prerender.crawlerUserAgents);
-
 app.use(prerender);
 
 // #Redirections
@@ -63,8 +61,10 @@ app.use("/api/webhooks", require("./routes/webhooks"));
 
 // #Express Session
 const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
 app.use(
     session({
+        store: new MongoStore({ mongooseConnection: mongoose.connection }),
         secret: secrets.COOKIE_SESSION_SECRET,
         resave: false,
         saveUninitialized: false,
