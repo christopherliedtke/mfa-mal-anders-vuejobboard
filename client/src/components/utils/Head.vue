@@ -6,7 +6,7 @@
     import config from "@/utils/config.json";
     export default {
         name: "Head",
-        props: ["title", "desc", "img"],
+        props: ["title", "desc", "img", "imgAlt"],
         head: {
             title: function() {
                 if (this.title) {
@@ -37,7 +37,13 @@
                         },
                         {
                             property: "og:image",
-                            content: this.img || require("@/assets/logo.png")
+                            content:
+                                this.img ||
+                                require("@/assets/mfaMalAnders_Facebook_Banner.png")
+                        },
+                        {
+                            property: "og:image:alt",
+                            content: this.imgAlt || this.title
                         },
                         {
                             property: "fb:app_id",

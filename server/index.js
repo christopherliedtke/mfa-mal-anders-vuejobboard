@@ -34,7 +34,15 @@ app.use((req, res, next) => {
     res.locals.secrets = secrets;
     next();
 });
-app.use(require("prerender-node"));
+
+const prerender = require("prerender-node");
+console.log("prerender.crawlerUserAgents: ", prerender.crawlerUserAgents);
+prerender.crawlerUserAgents = prerender.crawlerUserAgents.filter(
+    (item) => item != "googlebot"
+);
+console.log("prerender.crawlerUserAgents: ", prerender.crawlerUserAgents);
+
+app.use(prerender);
 
 // #Redirections
 app.use(require("./utils/middleware/redirect"));
