@@ -35,6 +35,7 @@ app.use(compression());
 app.use(cors());
 app.use(express.json());
 app.use((req, res, next) => {
+    console.log("Before secrets to res.locals");
     res.locals.secrets = secrets;
     next();
 });
@@ -81,16 +82,18 @@ app.use(
 );
 
 // #Middleware for production
-if (process.env.NODE_ENV == "production") {
-    app.use(express.static(__dirname + "/public"));
+// if (process.env.NODE_ENV == "production") {
+app.use(express.static(__dirname + "/public"));
 
-    app.use(csurf());
-    app.use((req, res, next) => {
-        // res.set("x-frame-options", "DENY");
-        res.cookie("XSRF-TOKEN", req.csrfToken());
-        next();
-    });
-}
+app.use(csurf());
+app.use((req, res, next) => {
+    // res.set("x-frame-options", "DENY");
+    console.log("before csrf");
+
+    res.cookie("XSRF-TOKEN", req.csrfToken());
+    next();
+});
+// }
 
 // #Routes w csrf protection
 app.use("/api/auth", require("./routes/auth"));
@@ -107,6 +110,8 @@ app.use("/api/download", require("./routes/download"));
 
 // Serve the built static files in production
 app.get("*", (req, res) => {
+    console.log('Serve "*"');
+
     res.sendFile(__dirname + "/public/index.html");
 });
 
