@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-import sslRedirect from "heroku-ssl-redirect";
+const sslRedirect = require("heroku-ssl-redirect");
 
 const cors = require("cors");
 const compression = require("compression");
