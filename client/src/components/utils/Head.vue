@@ -39,8 +39,9 @@
                             property: "og:image",
                             content:
                                 this.img ||
-                                config.website.url +
-                                    require("@/assets/mfaMalAnders_Facebook_Banner.png")
+                                `${
+                                    config.website.url
+                                }${require("@/assets/mfaMalAnders_Facebook_Banner.png")}`
                         },
                         {
                             property: "og:image:alt",
