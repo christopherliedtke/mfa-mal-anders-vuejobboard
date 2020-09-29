@@ -14,6 +14,7 @@
                         <b-card-img-lazy
                             :src="article.featuredImage.node.sourceUrl"
                             :alt="article.featuredImage.node.altText"
+                            offset="1000"
                             top
                         />
                         <b-card-body>

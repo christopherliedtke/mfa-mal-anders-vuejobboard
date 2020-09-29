@@ -19,6 +19,7 @@
                         <b-card-img-lazy
                             :src="training.featuredImage.node.sourceUrl"
                             :alt="training.featuredImage.node.altText"
+                            offset="1000"
                             top
                         />
                         <b-card-body>
