@@ -1,11 +1,11 @@
 const express = require("express");
 const app = express();
-const sslRedirect = require("heroku-ssl-redirect");
 
+const sslRedirect = require("heroku-ssl-redirect");
 const cors = require("cors");
 const compression = require("compression");
-
 const csurf = require("csurf");
+const config = require("./utils/config");
 
 let secrets, port;
 if (process.env.NODE_ENV == "production") {
@@ -15,8 +15,6 @@ if (process.env.NODE_ENV == "production") {
     secrets = require("./utils/secrets");
     port = 5000;
 }
-
-const config = require("./utils/config");
 
 // # SSL redirect
 app.use(sslRedirect());
@@ -30,12 +28,14 @@ if (config.newsletter.active) {
     sendNewsletter.start();
 }
 
+// #Redirects
+app.use(require("./utils/middleware/redirect"));
+
 // #Middleware
 app.use(compression());
 app.use(cors());
 app.use(express.json());
 app.use((req, res, next) => {
-    console.log("Before secrets to res.locals");
     res.locals.secrets = secrets;
     next();
 });
@@ -47,22 +47,8 @@ prerender.crawlerUserAgents = prerender.crawlerUserAgents.filter(
 );
 app.use(prerender);
 
-// #Redirections
-app.use(require("./utils/middleware/redirect"));
-
 // #Routes w/o csrf protection
 app.use("/api/webhooks", require("./routes/webhooks"));
-
-// #Cookie Session
-// const cookieSession = require("cookie-session");
-// app.use(
-//     cookieSession({
-//         secret: secrets.COOKIE_SESSION_SECRET,
-//         maxAge: 1000 * 60 * 60 * 24 * 14,
-//         // httpOnly: true,
-//         // secure: false,
-//     })
-// );
 
 // #Express Session
 const session = require("express-session");
@@ -81,19 +67,16 @@ app.use(
     })
 );
 
-app.use(csurf());
-app.use((req, res, next) => {
-    // res.set("x-frame-options", "DENY");
-    console.log("before csrf");
-
-    res.cookie("XSRF-TOKEN", req.csrfToken());
-    next();
-});
-// }
-
 // #Middleware for production
-// if (process.env.NODE_ENV == "production") {
-app.use(express.static(__dirname + "/public"));
+if (process.env.NODE_ENV == "production") {
+    app.use(csurf());
+    app.use((req, res, next) => {
+        res.set("x-frame-options", "DENY");
+        res.cookie("XSRF-TOKEN", req.csrfToken());
+        next();
+    });
+    app.use(express.static(__dirname + "/public"));
+}
 
 // #Routes w csrf protection
 app.use("/api/auth", require("./routes/auth"));
@@ -106,12 +89,9 @@ app.use("/api/coupons", require("./routes/coupons"));
 app.use("/api/images", require("./routes/images"));
 app.use("/api/stripe", require("./routes/stripe"));
 app.use("/api/download", require("./routes/download"));
-// app.use("/", require("./routes/index"));
 
-// Serve the built static files in production
+// #Serve the built static files in production
 app.get("*", (req, res) => {
-    console.log('Serve "*"');
-
     res.sendFile(__dirname + "/public/index.html");
 });
 
