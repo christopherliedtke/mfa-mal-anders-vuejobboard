@@ -28,7 +28,7 @@ router.post("/checkout-completed", async (req, res) => {
         couponUsage,
     } = req.body.data.object.metadata;
 
-    const { amount } = req.body.data.data.object["amount_total"];
+    const { amount } = req.body.data.object["amount_total"];
 
     try {
         const intent = await stripe.paymentIntents.retrieve(
