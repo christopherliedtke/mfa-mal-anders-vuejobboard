@@ -37,10 +37,7 @@
                         },
                         {
                             property: "og:image",
-                            content:
-                                this.img ||
-                                config.website.url +
-                                    "/assets/mfaMalAnders_Facebook_Banner.png"
+                            content: this.img || require("@/assets/logo.png")
                         },
                         {
                             property: "fb:app_id",
@@ -48,6 +45,19 @@
                         }
                     ];
                 }
+            },
+            script: function() {
+                return [
+                    {
+                        type: "application/ld+json",
+                        inner: `{
+                            "@context": "http://schema.org",
+                            "@type" : "Organization",
+                            "url": "${config.website.url}",
+                             "logo": "${require("@/assets/logo.png")}"
+                        }`
+                    }
+                ];
             }
         }
     };

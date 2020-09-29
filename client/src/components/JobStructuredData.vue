@@ -85,7 +85,7 @@
                                 "value": {
                                     "@type": "QuantitativeValue",
                                     "minValue": 0.00,
-                                    "maxValue": 50000.00,
+                                    "maxValue": 0.00,
                                     "value": 0,
                                     "unitText": "MONTH"
                                 }

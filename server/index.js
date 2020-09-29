@@ -79,17 +79,6 @@ if (process.env.NODE_ENV == "production") {
     });
 }
 
-// app.use((req, res, next) => {
-//     console.log("req.url: ", req.url);
-
-//     // if (req.originalUrl === "/") {
-//     //     console.log("redirect to /home");
-//     //     res.redirect("/home");
-//     // } else {
-//     //     next();
-//     // }
-// });
-
 // #Routes w csrf protection
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/user", require("./routes/user"));
