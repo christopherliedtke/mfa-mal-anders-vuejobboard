@@ -143,7 +143,7 @@
                             /></b-dropdown-item>
                         </b-nav-item-dropdown> -->
                     </b-navbar-nav>
-                    <b-navbar-nav>
+                    <b-navbar-nav @click="toggleNavbar">
                         <b-nav-item to="/dashboard" v-if="userId"
                             ><b-icon
                                 class="mr-1"
@@ -201,7 +201,9 @@
         methods: {
             toggleNavbar() {
                 this.$root.$emit("bv::toggle::collapse", "nav-collapse");
-                window.document.documentElement.scrollTop(0);
+                setTimeout(() => {
+                    window.scrollTo(0, 0);
+                }, 100);
             },
             showSub(id) {
                 window.document.getElementById(id).classList.add("show");

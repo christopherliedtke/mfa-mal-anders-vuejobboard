@@ -16,7 +16,7 @@
             type="text"
             v-model="lastName"
             id="lastName"
-            placeholder="Nachname eigeben..."
+            placeholder="Nachname eingeben..."
             autocomplete="family-name"
             trim
         ></b-form-input>
