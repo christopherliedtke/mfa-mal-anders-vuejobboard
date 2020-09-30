@@ -31,5 +31,13 @@
         "active": false,
         "interval": "*/10 * * * * *",
         "prodInterval": "0 0 18 * * 0"
+    },
+    "refreshJobs": {
+        "active": true,
+        "interval": "0 0 0 * * *"
+    },
+    "unpublishJobs": {
+        "active": true,
+        "interval": "0 0 0 * * *"
     }
 }

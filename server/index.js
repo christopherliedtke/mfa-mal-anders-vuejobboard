@@ -28,6 +28,18 @@ if (config.newsletter.active) {
     sendNewsletter.start();
 }
 
+// #Refresh jobs CRON job
+const { refreshJobs } = require("./utils/refreshJobs");
+if (config.refreshJobs.active) {
+    refreshJobs.start();
+}
+
+// #Unpublish jobs CRON job
+const { unpublishJobs } = require("./utils/unpublishJobs");
+if (config.unpublishJobs.active) {
+    unpublishJobs.start();
+}
+
 // #Redirects
 app.use(require("./utils/middleware/redirect"));
 
