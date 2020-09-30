@@ -62,6 +62,8 @@ router.post("/login", async (req, res) => {
                         userRole: user.role,
                         userId: user._id,
                         userStatus: user.status,
+                        userFirstName: user.firstName,
+                        userLastName: user.lastName,
                     });
                 }
             }
@@ -213,6 +215,8 @@ router.post("/register", async (req, res) => {
                     userRole: user.role,
                     userId: user._id,
                     userStatus: user.status,
+                    userFirstName: user.firstName,
+                    userLastName: user.lastName,
                 });
             }
         } catch (err) {

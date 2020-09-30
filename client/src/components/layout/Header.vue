@@ -143,7 +143,7 @@
                             /></b-dropdown-item>
                         </b-nav-item-dropdown> -->
                     </b-navbar-nav>
-                    <b-navbar-nav @click="toggleNavbar">
+                    <b-navbar-nav>
                         <b-nav-item to="/dashboard" v-if="userId"
                             ><b-icon
                                 class="mr-1"
@@ -154,10 +154,21 @@
                         >
                         <b-nav-item to="/account" v-if="userId"
                             ><b-icon
+                                class="mr-1"
                                 icon="person-circle"
                                 font-scale="1.3"
-                            ></b-icon
-                        ></b-nav-item>
+                            ></b-icon>
+                            {{
+                                $store.state.auth.userFirstName.substring(
+                                    0,
+                                    1
+                                ) +
+                                    $store.state.auth.userLastName.substring(
+                                        0,
+                                        1
+                                    )
+                            }}
+                        </b-nav-item>
                         <b-nav-item to="/admin" v-if="userRole === 'admin'"
                             ><b-icon
                                 icon="shield-lock"
@@ -165,7 +176,11 @@
                             ></b-icon
                         ></b-nav-item>
                         <b-nav-item v-if="userId"><Logout /></b-nav-item>
-                        <b-button variant="secondary" to="/login" v-if="!userId"
+                        <b-button
+                            @click="toggleNavbar"
+                            variant="secondary"
+                            to="/login"
+                            v-if="!userId"
                             >Login</b-button
                         >
                     </b-navbar-nav>

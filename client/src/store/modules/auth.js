@@ -4,13 +4,17 @@ import router from "@/router/index";
 const state = {
     userId: localStorage.getItem("userId") || null,
     userRole: localStorage.getItem("userRole") || null,
-    userStatus: localStorage.getItem("userStatus") || null
+    userStatus: localStorage.getItem("userStatus") || null,
+    userFirstName: localStorage.getItem("userFirstName") || null,
+    userLastName: localStorage.getItem("userLastName") || null
 };
 
 const getters = {
     userId: state => state.userId,
     userRole: state => state.userRole,
-    userStatus: state => state.userStatus
+    userStatus: state => state.userStatus,
+    userFirstName: state => state.userFirstName,
+    userLastName: state => state.userLastName
 };
 
 const actions = {
@@ -21,6 +25,8 @@ const actions = {
             commit("setUserId", response.data.userId);
             commit("setUserRole", response.data.userRole);
             commit("setUserStatus", response.data.userStatus);
+            commit("setUserFirstName", response.data.userFirstName);
+            commit("setUserLastName", response.data.userLastName);
 
             // Manage redirect after auth
             const redirectQuery = router.history.current.query.redirect;
@@ -50,6 +56,14 @@ const mutations = {
     setUserStatus: (state, userStatus) => {
         localStorage.setItem("userStatus", userStatus);
         state.userStatus = userStatus;
+    },
+    setUserFirstName: (state, userFirstName) => {
+        localStorage.setItem("userFirstName", userFirstName);
+        state.userFirstName = userFirstName;
+    },
+    setUserLastName: (state, userLastName) => {
+        localStorage.setItem("userLastName", userLastName);
+        state.userLastName = userLastName;
     }
 };
 
