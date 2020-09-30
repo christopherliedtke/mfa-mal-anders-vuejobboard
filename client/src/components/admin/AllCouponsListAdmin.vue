@@ -123,6 +123,10 @@
                         sortable: true
                     },
                     {
+                        key: "refreshFrequency",
+                        sortable: true
+                    },
+                    {
                         key: "userId._id",
                         label: "User ID",
                         sortable: false
@@ -210,6 +214,7 @@
                                     _id
                                     code
                                     discount
+                                    refreshFrequency
                                     usage
                                     createdAt
                                     updatedAt

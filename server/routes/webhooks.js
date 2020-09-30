@@ -42,20 +42,29 @@ router.post("/checkout-completed", async (req, res) => {
             paidExpiresAt.getDate() + config.stripe.paymentExpirationDays
         );
 
+        let refreshFrequency;
+        config.stripe.refreshFrequencies.forEach((frequency) => {
+            if (amount >= frequency.amount) {
+                refreshFrequency = frequency.refreshAfterDays;
+            }
+        });
+
         if (intent.status === "succeeded") {
-            await Promise.all([
-                Job.updateOne(
-                    { _id: jobId, userId: userId },
-                    {
-                        status,
-                        paid: true,
-                        paidAt,
-                        paidExpiresAt,
-                        paidAmount: amount,
-                    }
-                ),
-                Coupon.deleteOne({ code: couponCode, usage: "single" }),
-            ]);
+            await Job.updateOne(
+                { _id: jobId, userId: userId },
+                {
+                    status,
+                    paid: true,
+                    paidAt,
+                    paidExpiresAt,
+                    paidAmount: amount,
+                    refreshFrequency,
+                }
+            );
+
+            if (couponCode && couponUsage === "single") {
+                Coupon.deleteOne({ code: couponCode, usage: "single" });
+            }
 
             if (couponUsage === "singlePerUser") {
                 const newUsedCoupon = new UsedCoupon({

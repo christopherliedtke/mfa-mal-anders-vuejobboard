@@ -29,6 +29,9 @@ const JobType = new GraphQLObjectType({
         paidAmount: {
             type: GraphQLFloat,
         },
+        refreshFrequency: {
+            type: GraphQLFloat,
+        },
         createdAt: {
             type: GraphQLFloat,
         },

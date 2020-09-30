@@ -48,7 +48,8 @@ const mutation = new GraphQLObjectType({
             args: {
                 userId: { type: GraphQLString },
                 code: { type: new GraphQLNonNull(GraphQLString) },
-                discount: { type: new GraphQLNonNull(GraphQLFloat) },
+                discount: { type: GraphQLFloat },
+                refreshFrequency: { type: GraphQLFloat },
                 usage: { type: GraphQLString },
                 expireAt: { type: GraphQLFloat },
             },
@@ -79,6 +80,7 @@ const mutation = new GraphQLObjectType({
                 discount: {
                     type: GraphQLFloat,
                 },
+                refreshFrequency: { type: GraphQLFloat },
                 usage: {
                     type: GraphQLString,
                 },

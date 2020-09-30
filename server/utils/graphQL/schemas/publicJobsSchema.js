@@ -50,6 +50,7 @@ const RootQuery = new GraphQLObjectType({
                         paidAt: "desc",
                         createdAt: "desc",
                     });
+
                 return jobs;
             },
         },

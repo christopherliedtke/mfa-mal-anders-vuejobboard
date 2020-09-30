@@ -22,6 +22,7 @@ router.get("/get-price-per-ad", authenticateToken, (req, res) => {
     res.json({
         amount: config.stripe.pricePerJob,
         currency: config.stripe.currency,
+        duration: config.stripe.paymentExpirationDays,
     });
 });
 
@@ -40,7 +41,11 @@ router.post("/validate-coupon", authenticateToken, async (req, res) => {
             if (coupon.userId && coupon.userId != req.userId) {
                 res.json({ success: false });
             } else {
-                res.json({ success: true, discount: coupon.discount });
+                res.json({
+                    success: true,
+                    discount: coupon.discount,
+                    refreshFrequency: coupon.refreshFrequency,
+                });
             }
         } else {
             res.json({ success: false });
@@ -70,6 +75,7 @@ router.post("/create-session-id", authenticateToken, async (req, res) => {
         let discount = 0;
         let couponUsage = "";
         let couponId;
+        let couponRefreshFrequency;
 
         if (req.body.code) {
             const coupon = await Coupon.findOne({ code: req.body.code });
@@ -80,6 +86,7 @@ router.post("/create-session-id", authenticateToken, async (req, res) => {
 
             couponUsage = coupon.usage;
             couponId = coupon._id;
+            couponRefreshFrequency = coupon.refreshFrequency;
 
             if (coupon && !usedCoupon) {
                 if (coupon.userId && coupon.userId === req.userId) {
@@ -102,7 +109,9 @@ router.post("/create-session-id", authenticateToken, async (req, res) => {
                             description: `Veröffentlichung Ihrer Stellenanzeige "${req.body.job.title}" auf ${config.website.name}.`,
                             images: [],
                         },
-                        unit_amount: req.body.amount,
+                        unit_amount: Math.round(
+                            req.body.amount * (1 - discount)
+                        ),
                         // unit_amount: Math.round(
                         //     config.stripe.pricePerJob * (1 - discount)
                         // ),
@@ -115,7 +124,9 @@ router.post("/create-session-id", authenticateToken, async (req, res) => {
                 jobId: req.body.job._id,
                 userId: req.userId,
                 couponId: couponId,
-                couponCode: discount && req.body.code,
+                couponCode: req.body.code,
+                discount: discount,
+                refreshFrequency: refreshFrequency,
                 couponUsage: couponUsage,
                 accepted: req.body.accepted,
             },

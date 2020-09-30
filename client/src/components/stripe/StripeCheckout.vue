@@ -24,8 +24,7 @@
                 <p>
                     Bitte wählen Sie den gewünschten Betrag, den Sie nach
                     unserem <em>“Pay What You Want”*</em> Modell für die
-                    Veröffentlichung der Stellenanzeige für 60 Tage bezahlen
-                    möchten.
+                    Veröffentlichung der Stellenanzeige bezahlen möchten.
                     <b-icon
                         id="popover-payment-recommendation"
                         class="position-relative"
@@ -45,10 +44,12 @@
                 >
                     <PayWhatYouWantSuggestion class="mt-3" :minimum="true" />
                 </b-popover>
-                <p>
-                    <strong>Betrag:</strong> {{ amountComputed / 100 }}
+                <div class="mb-3">
+                    <strong>Betrag:</strong>
+                    {{ amountComputed / 100 }}
                     {{ currency }}
-                </p>
+                </div>
+
                 <b-form class="mb-4">
                     <b-form-input
                         type="range"
@@ -56,10 +57,51 @@
                         max="30000"
                         step="100"
                         v-model="amount"
-                    >
-                    </b-form-input>
+                    />
+                    <div class="my-3">
+                        <span>
+                            <strong>Laufzeit:</strong> {{ duration }} Tage
+                            <br />
+                        </span>
+                        <span
+                            v-if="coupon.refreshFrequency"
+                            class="text-success"
+                        >
+                            <strong>Aktualisierung:</strong>
+                            {{
+                                coupon.refreshFrequency
+                                    ? "alle " +
+                                      coupon.refreshFrequency +
+                                      " Tage"
+                                    : "-"
+                            }}
+                        </span>
+                    </div>
+                    <b-input-group class="mt-3">
+                        <b-form-input
+                            type="text"
+                            v-model="coupon.code"
+                            id="coupon"
+                            placeholder="Aktionscode eingeben..."
+                            trim
+                            :state="couponValidationState"
+                        ></b-form-input>
+                        <b-input-group-append>
+                            <b-button
+                                variant="primary"
+                                size="sm"
+                                @click.prevent="checkCouponCode"
+                                >Überprüfen</b-button
+                            >
+                        </b-input-group-append>
+                    </b-input-group>
+                    <b-form-invalid-feedback :state="couponValidationState">
+                        Ihr eingegebener Aktionscode ist nicht gültig oder wurde
+                        bereits benutzt.
+                    </b-form-invalid-feedback>
+
                     <b-form-checkbox
-                        class="mt-3 small"
+                        class="mt-4 small"
                         v-model="accepted"
                         :state="accepted || null"
                         :value="true"
@@ -79,42 +121,15 @@
                         gelesen und akzeptiere diese.
                     </b-form-checkbox>
                 </b-form>
-                <p>
+                <p v-if="accepted">
                     Sie können Ihre Zahlung nun abschließen. Dazu werden Sie auf
                     eine sichere Zahlungsplattform weitergeleitet.
                 </p>
                 <p class="small">
                     * Es fällt ein Mindestbeitrag von 25,- Euro pro
-                    Stellenanzeige à 60 Tage an, der für den Betrieb der
-                    IT-Infrastruktur und der Pflege des Portals unerlässlich
-                    ist.
+                    Stellenanzeige an, um den Betrieb des Portals aufrecht zu
+                    erhalten.
                 </p>
-                <!-- <p>
-                    <strong>Payment Amount:</strong> {{ amountComputed / 100 }}
-                    {{ currency }}
-                </p> -->
-                <!-- <b-form>
-                    <b-input-group class="mt-3">
-                        <b-form-input
-                            type="text"
-                            v-model="coupon.code"
-                            id="coupon"
-                            placeholder="Enter your coupon code..."
-                            trim
-                            :state="couponValidationState"
-                        ></b-form-input>
-                        <b-input-group-append>
-                            <b-button
-                                variant="primary"
-                                @click.prevent="checkCouponCode"
-                                >Apply</b-button
-                            >
-                        </b-input-group-append>
-                    </b-input-group>
-                    <b-form-invalid-feedback :state="couponValidationState">
-                        Your entered code is not valid or has been used already.
-                    </b-form-invalid-feedback>
-                </b-form> -->
             </div></b-modal
         >
         <b-alert
@@ -153,10 +168,12 @@
                 checkoutSessionId: null,
                 stripePk: STRIPE_PK,
                 amount: null,
+                duration: 14,
                 accepted: false,
                 coupon: {
                     code: null,
-                    discount: null
+                    discount: 0,
+                    refreshFrequency: 0
                 },
                 couponValidationState: null,
                 currency: null,
@@ -239,6 +256,7 @@
                 const price = await axios.get("/api/stripe/get-price-per-ad");
                 // this.amount = price.data.amount;
                 this.currency = price.data.currency.toUpperCase();
+                this.duration = price.data.duration;
             },
             calculatePrice() {
                 switch (this.job.company.size) {
@@ -268,6 +286,8 @@
 
                 if (response.data.success) {
                     this.coupon.discount = response.data.discount;
+                    this.coupon.refreshFrequency =
+                        response.data.refreshFrequency;
                 }
             }
         },

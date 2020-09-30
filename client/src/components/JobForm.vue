@@ -26,6 +26,15 @@
                     v-model="paidExpiresAt"
                     placeholder="Zahlung läuft ab am..."
                 />
+                <label class="mt-2" for="refresh-frequency"
+                    >refreshFrequency</label
+                >
+                <b-form-input
+                    type="number"
+                    number
+                    v-model="job.refreshFrequency"
+                    placeholder="Anzeige wird nach X Tagen aktualisiert..."
+                />
             </div>
             <label for="specialization">Fachbereich</label>
             <b-form-select
@@ -427,6 +436,9 @@
             return {
                 job: {
                     _id: "",
+                    paidAt: null,
+                    paidExpiresAt: null,
+                    refreshFrequency: 0,
                     title: "",
                     description: "",
                     specialization: null,
@@ -516,6 +528,7 @@
                                     _id
                                     paidAt
                                     paidExpiresAt
+                                    refreshFrequency
                                     title
                                     description
                                     employmentType
@@ -683,17 +696,18 @@
                             ${jobMutationType}(
                                 ${
                                     jobMutationType === "updateJob"
-                                        ? `_id: "${this.job._id}",`
+                                        ? `_id: "${this.job._id}"`
                                         : ""
                                 } 
-                                title: "${this.job.title}",
-                                paidAt: ${this.job.paidAt},
-                                paidExpiresAt: ${this.job.paidExpiresAt},
+                                title: "${this.job.title}"
+                                paidAt: ${this.job.paidAt}
+                                paidExpiresAt: ${this.job.paidExpiresAt}
+                                refreshFrequency: ${this.job.refreshFrequency}
                                 description: "${this.job.description.replace(
                                     /"/g,
                                     '\\"'
-                                )}", 
-                                employmentType: "${this.job.employmentType}", 
+                                )}"
+                                employmentType: "${this.job.employmentType}"
                                 applicationDeadline: "${
                                     this.job.applicationDeadline
                                 }"

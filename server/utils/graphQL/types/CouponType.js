@@ -23,6 +23,9 @@ const CouponType = new GraphQLObjectType({
         discount: {
             type: GraphQLFloat,
         },
+        refreshFrequency: {
+            type: GraphQLFloat,
+        },
         usage: {
             type: GraphQLString,
         },

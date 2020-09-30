@@ -12,7 +12,13 @@
         "paymentMethods": ["card", "giropay", "sofort"],
         "currency": "eur",
         "pricePerJob": 2500,
-        "paymentExpirationDays": 60
+        "paymentExpirationDays": 60,
+        "refreshFrequencies": [
+            {
+                "amount": 12000,
+                "refreshAfterDays": 14
+            }
+        ]
     },
     "googleIndexing": {
         "active": false,

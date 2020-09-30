@@ -14,6 +14,7 @@
             <label for="discount">Discount *</label>
             <b-form-input
                 type="number"
+                number
                 min="0"
                 max="1"
                 step="0.01"
@@ -23,13 +24,32 @@
                 placeholder="Enter discount ..."
                 required
             />
+            <label for="refresh-frequency">Refrech Frequency *</label>
+            <b-form-input
+                type="number"
+                number
+                min="0"
+                step="1"
+                v-model="coupon.refreshFrequency"
+                :state="
+                    validated ? (coupon.refreshFrequency ? true : false) : null
+                "
+                id="refresh-frequency"
+                placeholder="Refresh ad after X days..."
+                required
+            />
             <label for="usage">Usage</label>
             <b-form-select
                 id="usage"
                 v-model="coupon.usage"
                 :state="validated ? true : null"
             >
-                <b-form-select-option :value="null">--</b-form-select-option>
+                <b-form-select-option value="unlimited"
+                    >unlimited</b-form-select-option
+                >
+                <b-form-select-option value="single"
+                    >single</b-form-select-option
+                >
                 <b-form-select-option value="singlePerUser"
                     >Single per User</b-form-select-option
                 >
@@ -84,7 +104,8 @@
                     _id: "",
                     code: "",
                     discount: 0,
-                    usage: null,
+                    refreshFrequency: 0,
+                    usage: "unlimited",
                     expireAt: null,
                     userId: {
                         _id: null
@@ -112,6 +133,7 @@
                                     _id
                                     code
                                     discount
+                                    refreshFrequency
                                     usage
                                     expireAt
                                     userId {
@@ -160,22 +182,25 @@
                             ${mutationType}(
                                 ${
                                     mutationType === "updateCoupon"
-                                        ? `_id: "${this.couponId}",`
+                                        ? `_id: "${this.couponId}"`
                                         : ""
                                 }
-                                code: "${this.coupon.code}",
+                                code: "${this.coupon.code}"
                                 discount: ${this.coupon.discount}
-                                usage: "${this.coupon.usage}",
+                                refreshFrequency: ${
+                                    this.coupon.refreshFrequency
+                                }
+                                usage: "${this.coupon.usage}"
                                 ${
                                     this.coupon.expireAt
                                         ? `expireAt: ${Number(
                                               this.coupon.expireAt
-                                          )},`
+                                          )}`
                                         : ""
                                 }
                                 ${
                                     this.coupon.userId._id
-                                        ? `userId: "${this.coupon.userId._id}",`
+                                        ? `userId: "${this.coupon.userId._id}"`
                                         : ""
                                 }
                             ) {
@@ -207,7 +232,8 @@
             },
             formValidation() {
                 this.validated = true;
-                return !this.coupon.code || !this.coupon.discount
+                return !this.coupon.code ||
+                    (!this.coupon.discount && !this.coupon.refreshFrequency)
                     ? false
                     : true;
             },

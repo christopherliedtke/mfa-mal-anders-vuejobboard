@@ -158,16 +158,23 @@
                                 icon="person-circle"
                                 font-scale="1.3"
                             ></b-icon>
-                            {{
-                                $store.state.auth.userFirstName.substring(
-                                    0,
-                                    1
-                                ) +
-                                    $store.state.auth.userLastName.substring(
+                            <span
+                                v-if="
+                                    $store.state.auth.userFirstName &&
+                                        $store.state.auth.userLastName
+                                "
+                            >
+                                {{
+                                    $store.state.auth.userFirstName.substring(
                                         0,
                                         1
-                                    )
-                            }}
+                                    ) +
+                                        $store.state.auth.userLastName.substring(
+                                            0,
+                                            1
+                                        )
+                                }}
+                            </span>
                         </b-nav-item>
                         <b-nav-item to="/admin" v-if="userRole === 'admin'"
                             ><b-icon

@@ -57,6 +57,7 @@ const mutation = new GraphQLObjectType({
                 title: { type: new GraphQLNonNull(GraphQLString) },
                 paidAt: { type: GraphQLFloat },
                 paidExpiresAt: { type: GraphQLFloat },
+                refreshFrequency: { type: GraphQLFloat },
                 description: { type: new GraphQLNonNull(GraphQLString) },
                 employmentType: { type: new GraphQLNonNull(GraphQLString) },
                 applicationDeadline: {
@@ -109,6 +110,9 @@ const mutation = new GraphQLObjectType({
                 args.paidExpiresAt && req.userRole === "admin"
                     ? (addObj.paidExpiresAt = new Date(args.paidExpiresAt))
                     : delete addObj.paidExpiresAt;
+                if (args.refreshFrequency && req.userRole != "admin") {
+                    delete addObj.refreshFrequency;
+                }
                 // !
 
                 for (const key in addObj) {
@@ -128,6 +132,7 @@ const mutation = new GraphQLObjectType({
                 title: { type: new GraphQLNonNull(GraphQLString) },
                 paidAt: { type: GraphQLFloat },
                 paidExpiresAt: { type: GraphQLFloat },
+                refreshFrequency: { type: GraphQLFloat },
                 description: { type: new GraphQLNonNull(GraphQLString) },
                 employmentType: { type: new GraphQLNonNull(GraphQLString) },
                 applicationDeadline: {
@@ -184,6 +189,9 @@ const mutation = new GraphQLObjectType({
                 if (args.paidAt && req.userRole === "admin") {
                     updateObj.paid = true;
                     updateObj.status = "published";
+                }
+                if (args.refreshFrequency && req.userRole != "admin") {
+                    delete updateObj.refreshFrequency;
                 }
                 // !
 
