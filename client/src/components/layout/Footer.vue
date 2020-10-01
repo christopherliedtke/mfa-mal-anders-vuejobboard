@@ -9,10 +9,10 @@
                         alt="MFA mal anders - Logo"
                         class="mb-4"
                     />
-                    <h6>
+                    <h2 class="h6">
                         Das Job- und Karriereportal für medizinische
                         Fachangestellte.
-                    </h6>
+                    </h2>
                     <div class="small">
                         <div class="pt-5 mt-5">
                             <h6><strong>Hinweis</strong></h6>
@@ -44,41 +44,48 @@
                     </div>
                 </b-col>
                 <b-col order="2" order-lg="2">
-                    <a
-                        :href="`https://www.facebook.com/${config.fb.path}`"
-                        target="_blank"
-                    >
-                        <font-awesome-icon
-                            class="mb-4 mr-3"
-                            :icon="['fab', 'facebook']"
-                            size="2x"
-                        />
-                    </a>
-                    <a
-                        :href="`https://twitter.com/${config.twitter.path}`"
-                        target="_blank"
-                    >
-                        <font-awesome-icon
-                            class="mb-4 mr-3"
-                            :icon="['fab', 'twitter']"
-                            size="2x"
-                        />
-                    </a>
-                    <a
-                        :href="`https://www.instagram.com/${config.ig.path}`"
-                        target="_blank"
-                    >
-                        <font-awesome-icon
-                            class="mb-4 mr-3"
-                            :icon="['fab', 'instagram']"
-                            size="2x"
-                        />
-                    </a>
+                    <div class="mb-4">
+                        <b-link
+                            :href="`https://www.facebook.com/${config.fb.path}`"
+                            class="mr-3"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            <font-awesome-icon
+                                :icon="['fab', 'facebook']"
+                                size="2x"
+                            />
+                        </b-link>
+                        <b-link
+                            :href="`https://twitter.com/${config.twitter.path}`"
+                            class="mr-3"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            <font-awesome-icon
+                                :icon="['fab', 'twitter']"
+                                size="2x"
+                            />
+                        </b-link>
+                        <b-link
+                            :href="
+                                `https://www.instagram.com/${config.ig.path}`
+                            "
+                            class="mr-3"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            <font-awesome-icon
+                                :icon="['fab', 'instagram']"
+                                size="2x"
+                            />
+                        </b-link>
+                    </div>
                     <NewsletterSignUpForm />
                 </b-col>
                 <b-col order="1" order-lg="3">
                     <b-nav vertical class="justify-content-end">
-                        <div>
+                        <b-nav-item>
                             <div class="d-flex justify-content-center mb-4">
                                 <b-img-lazy
                                     class="mx-3 shadow"
@@ -101,7 +108,7 @@
                                     >Download Bewerbungsunterlagen</b-button
                                 >
                             </div>
-                        </div>
+                        </b-nav-item>
                         <b-nav-item to="/page/mfa-career/bewerbungstipps"
                             >Bewerbungstipps</b-nav-item
                         >
