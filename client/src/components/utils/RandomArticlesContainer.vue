@@ -9,7 +9,10 @@
             :key="article.id"
         >
             <div class="article-card">
-                <b-link :to="'/article/' + article.slug">
+                <b-link
+                    :to="'/article/' + article.slug"
+                    :aria-label="article.title"
+                >
                     <b-card no-body>
                         <b-card-img-lazy
                             :src="article.featuredImage.node.sourceUrl"

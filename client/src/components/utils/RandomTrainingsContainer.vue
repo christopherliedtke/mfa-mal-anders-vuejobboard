@@ -14,6 +14,7 @@
                         '/page/mfa-career/fort-und-weiterbildungen/' +
                             training.slug
                     "
+                    :aria-label="training.title"
                 >
                     <b-card no-body>
                         <b-card-img-lazy

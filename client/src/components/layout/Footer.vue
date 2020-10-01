@@ -15,7 +15,7 @@
                     </h2>
                     <div class="small">
                         <div class="pt-5 mt-5">
-                            <h6><strong>Hinweis</strong></h6>
+                            <h2 class="h6"><strong>Hinweis</strong></h2>
                             <p>
                                 Hinter den mit (*) gekennzeichneten Links
                                 stecken Affiliate-Links. Das heißt, wenn Du ein
@@ -50,6 +50,7 @@
                             class="mr-3"
                             target="_blank"
                             rel="noopener"
+                            aria-label="Facebook"
                         >
                             <font-awesome-icon
                                 :icon="['fab', 'facebook']"
@@ -61,6 +62,7 @@
                             class="mr-3"
                             target="_blank"
                             rel="noopener"
+                            aria-label="Twitter"
                         >
                             <font-awesome-icon
                                 :icon="['fab', 'twitter']"
@@ -74,6 +76,7 @@
                             class="mr-3"
                             target="_blank"
                             rel="noopener"
+                            aria-label="Instagram"
                         >
                             <font-awesome-icon
                                 :icon="['fab', 'instagram']"

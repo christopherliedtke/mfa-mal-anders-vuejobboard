@@ -23,8 +23,14 @@
                         $router.push(`/jobboard?searchTerm=${searchTerm}`)
                     "
                 >
+                    <label
+                        class="sr-only sr-only-focusable"
+                        for="landing-search"
+                        >Suchbegriff</label
+                    >
                     <b-input-group>
                         <b-form-input
+                            id="landing-search"
                             size="lg"
                             class="shadow1"
                             placeholder="Stellenangebot finden..."

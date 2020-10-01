@@ -2,7 +2,9 @@
     <div class="newsletter-signup">
         <h4 class="mb-4">Deine wöchentlichen Jobangebote</h4>
         <b-form>
-            <label class="d-none" for="email2">E-Mail Adresse</label>
+            <label class="sr-only sr-only-focusable" for="email2"
+                >E-Mail Adresse</label
+            >
             <b-form-input
                 class="mt-2"
                 type="email"
@@ -14,7 +16,9 @@
                 trim
                 :state="validated ? (form.email ? true : false) : null"
             ></b-form-input>
-            <label class="d-none" for="newsletter-state">Bundesland</label>
+            <label class="sr-only sr-only-focusable" for="newsletter-state"
+                >Bundesland</label
+            >
             <b-form-select
                 class="mt-2"
                 id="newsletter-state"
