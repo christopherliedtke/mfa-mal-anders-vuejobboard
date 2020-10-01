@@ -56,7 +56,7 @@
                         <b-img-lazy
                             class="mr-4 mb-4 ml-4"
                             src="@/assets/career_.svg"
-                            alt="MFA mach nächsten Schritt in der Jobsuche"
+                            alt="MFA macht nächsten Schritt in der Jobsuche"
                             height="130"
                         />
                         <h2 class="bold">Stellenbörse für MFAs</h2>
