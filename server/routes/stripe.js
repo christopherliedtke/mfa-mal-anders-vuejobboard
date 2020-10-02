@@ -15,6 +15,14 @@ if (process.env.NODE_ENV == "production") {
 
 const stripe = require("stripe")(secrets.STRIPE_SK);
 
+// #route:  GET /api/stripe/get-stripe-pk
+// #desc:   Provide stripe public key
+// #access: Private
+router.get("/get-stripe-pk", (req, res) => {
+    const stripePk = secrets.STRIPE_PK;
+    res.json({ stripePk });
+});
+
 // #route:  GET /api/stripe/get-price-per-ad
 // #desc:   Provide Price per job ad
 // #access: Private

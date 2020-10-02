@@ -162,7 +162,6 @@
     import axios from "@/axios";
     import Overlay from "@/components/utils/Overlay";
     import PayWhatYouWantSuggestion from "@/components/utils/PayWhatYouWantSuggestion";
-    import { STRIPE_PK } from "@/utils/stripeConfig";
     export default {
         name: "StripeCheckout",
         props: ["showStripeCheckoutModal", "job"],
@@ -180,7 +179,7 @@
                 stripe: null,
                 clientSecret: null,
                 checkoutSessionId: null,
-                stripePk: STRIPE_PK,
+                stripePk: null,
                 amount: null,
                 duration: 14,
                 accepted: false,
@@ -208,6 +207,12 @@
             },
             hideModal() {
                 this.$refs["stripeCheckoutModal"].hide();
+            },
+            async initStripe() {
+                const response = await axios.get("/api/stripe/get-stripe-pk");
+
+                this.stripePk = response.data.stripePk;
+                this.stripe = window.Stripe(this.stripePk);
             },
             async fetchCheckoutSessionId() {
                 let success;
@@ -320,7 +325,7 @@
             }
         },
         mounted() {
-            this.stripe = window.Stripe(this.stripePk);
+            this.initStripe();
             this.getPricePerAd();
             // this.calculatePrice();
 
