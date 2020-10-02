@@ -19,7 +19,7 @@ router.post("/send", async (req, res) => {
     } else {
         try {
             const data = {
-                from: `${form.firstName} ${form.lastName} <${res.locals.secrets.EMAIL_USERNAME}>`,
+                from: `${form.firstName} ${form.lastName} <${config.website.noreplyEmail}>`,
                 to: config.website.contactEmail,
                 replyTo: `${form.email}`,
                 subject: `${form.subject}`,

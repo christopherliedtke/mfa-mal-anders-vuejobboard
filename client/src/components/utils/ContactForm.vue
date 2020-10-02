@@ -233,6 +233,11 @@
 
                 this.form = { ...this.form, ...response.data.data.user };
             },
+            setSubject() {
+                if (this.$route.query.subject) {
+                    this.form.subject = this.$route.query.subject;
+                }
+            },
             resetForm() {
                 for (const key in this.form) {
                     this.form[key] = "";
@@ -242,6 +247,8 @@
         mounted() {
             if (this.$store.state.auth.userId) {
                 this.setUserData();
+                this.setSubject();
+                console.log("this.$route: ", this.$route);
             }
         }
     };

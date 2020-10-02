@@ -48,7 +48,10 @@
                     </b-input-group>
                 </b-form>
                 <div class="mt-2 text-right">
-                    <b-link class="mr-3 small" to="/page/fuer-arbeitgeber">
+                    <b-link
+                        class="pt-3 pb-4 px-3 small"
+                        to="/page/fuer-arbeitgeber"
+                    >
                         Stellenanzeige schalten
                     </b-link>
                 </div>

@@ -20,6 +20,13 @@
             }
         ]
     },
+    "redirect": {
+        "active": true
+    },
+    "prerender": {
+        "active": true,
+        "exclude": ["googlebot"]
+    },
     "googleIndexing": {
         "active": false,
         "pathPrefix": "/jobboard/job/"

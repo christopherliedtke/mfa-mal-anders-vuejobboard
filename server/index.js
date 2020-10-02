@@ -7,6 +7,17 @@ const compression = require("compression");
 const csurf = require("csurf");
 const config = require("./utils/config");
 
+// #mongoDB
+const mongoose = require("./utils/db");
+
+const prerender = require("prerender-node");
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
+
+const { sendNewsletter } = require("./utils/sendNewsletter");
+const { refreshJobs } = require("./utils/refreshJobs");
+const { unpublishJobs } = require("./utils/unpublishJobs");
+
 let secrets, port;
 if (process.env.NODE_ENV == "production") {
     secrets = process.env;
@@ -19,31 +30,34 @@ if (process.env.NODE_ENV == "production") {
 // # SSL redirect
 app.use(sslRedirect());
 
-// #mongoDB
-const mongoose = require("./utils/db");
-
 // #Send Newsletter CRON job
-const { sendNewsletter } = require("./utils/sendNewsletter");
 if (config.newsletter.active) {
     sendNewsletter.start();
 }
 
 // #Refresh jobs CRON job
-const { refreshJobs } = require("./utils/refreshJobs");
 if (config.refreshJobs.active) {
     refreshJobs.start();
 }
 
 // #Unpublish jobs CRON job
-const { unpublishJobs } = require("./utils/unpublishJobs");
 if (config.unpublishJobs.active) {
     unpublishJobs.start();
 }
 
 // #Redirects
-app.use(require("./utils/middleware/redirect"));
+if (config.redirect.active) {
+    app.use(require("./utils/middleware/redirect"));
+}
 
-// #Middleware
+// #Prerender w/o googlebot
+if (config.prerender.active && process.env.NODE_ENV == "production") {
+    prerender.crawlerUserAgents = prerender.crawlerUserAgents.filter(
+        (item) => config.prerender.exclude.indexOf(item) > -1
+    );
+    app.use(prerender);
+}
+
 app.use(compression());
 app.use(cors());
 app.use(express.json());
@@ -52,19 +66,10 @@ app.use((req, res, next) => {
     next();
 });
 
-// #Prerender w/o googlebot
-const prerender = require("prerender-node");
-prerender.crawlerUserAgents = prerender.crawlerUserAgents.filter(
-    (item) => item != "googlebot"
-);
-app.use(prerender);
-
 // #Routes w/o csrf protection
 app.use("/api/webhooks", require("./routes/webhooks"));
 
 // #Express Session
-const session = require("express-session");
-const MongoStore = require("connect-mongo")(session);
 app.use(
     session({
         store: new MongoStore({ mongooseConnection: mongoose.connection }),
@@ -75,6 +80,7 @@ app.use(
             maxAge: 1000 * 60 * 60 * 24 * 14,
             httpOnly: true,
             secure: false,
+            sameSite: "strict",
         },
     })
 );

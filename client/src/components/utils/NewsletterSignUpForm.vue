@@ -1,6 +1,6 @@
 <template>
     <div class="newsletter-signup">
-        <h4 class="mb-4">Deine wöchentlichen Jobangebote</h4>
+        <h2 class="mb-4 h4">Deine wöchentlichen Jobangebote</h2>
         <b-form>
             <label class="sr-only sr-only-focusable" for="email2"
                 >E-Mail Adresse</label

@@ -129,6 +129,20 @@
                     * Es fällt ein Mindestbeitrag von 25,- Euro pro
                     Stellenanzeige an, um den Betrieb des Portals aufrecht zu
                     erhalten.
+                    <br />
+                    ** Sollten Sie ausschließlich auf vorab ausgestellte
+                    Rechnung bezahlen können, kontaktieren Sie uns bitte per
+                    <b-link
+                        :href="
+                            `/page/contact?subject=Rechnungsanforderung+${job &&
+                                job.title}+[id:${job && job._id}]`
+                        "
+                        target="_blank"
+                        >Kontaktformular</b-link
+                    >
+                    unter Angabe Ihrer E-Mail Adresse, des Stellentitels und des
+                    Rechnungsbetrages. In dem Fall erhöht sich der Mindestbetrag
+                    auf 30,- Euro.
                 </p>
             </div></b-modal
         >
