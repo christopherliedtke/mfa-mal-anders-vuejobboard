@@ -83,14 +83,14 @@
                             }}
                         </span>
                     </div>
-                    <div v-if="job.paidAt">
+                    <!-- <div v-if="job.paidAt">
                         Bezahlt:
                         <span class="text-muted">
                             {{
                                 new Date(parseInt(job.paidAt)).toLocaleString()
                             }}
                         </span>
-                    </div>
+                    </div> -->
                     <div v-if="job.paidExpiresAt">
                         Anzeige läuft ab:
                         <span class="text-muted">

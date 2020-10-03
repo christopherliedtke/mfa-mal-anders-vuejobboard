@@ -30,6 +30,7 @@
         "defaultCenter": {
             "lat": 51.241,
             "lng": 10.528
-        }
+        },
+        "lang": "de"
     }
 }

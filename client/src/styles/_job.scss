@@ -21,6 +21,11 @@
             max-width: 120px;
             max-height: 120px;
             padding: 0.5rem;
+
+            @media screen and (max-width: 767px) {
+                max-width: 75px;
+                max-height: 75px;
+            }
         }
     }
 

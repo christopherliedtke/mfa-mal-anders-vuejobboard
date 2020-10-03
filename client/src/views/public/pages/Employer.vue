@@ -330,19 +330,19 @@
                 numbersAndFacts: [
                     {
                         icon: "google",
-                        number: 441000,
+                        number: 432000,
                         current: 0,
                         desc: "Menschen sehen uns monatlich bei Google"
                     },
                     {
                         icon: "facebook",
-                        number: 9000,
+                        number: 17500,
                         current: 0,
                         desc: "Monatliche Reichweite bei Facebook"
                     },
                     {
                         icon: "chrome",
-                        number: 32000,
+                        number: 41000,
                         current: 0,
                         desc: "Monatliche Seitenaufrufe auf der Webseite"
                     }

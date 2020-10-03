@@ -3,9 +3,11 @@
         <div v-if="job.title" class="job">
             <h1>{{ job.title }}</h1>
             <div
-                class="d-flex flex-wrap flex-lg-nowrap align-items-center my-3"
+                class="d-flex  flex-lg-nowrap align-items-start align-items-md-center my-3"
             >
-                <div class="logo-container mr-2 mb-3 mb-lg-0">
+                <div
+                    class="logo-container mr-2 mb-3 mb-lg-0 order-2 order-sm-1"
+                >
                     <b-img
                         v-if="job.company && job.company.logoUrl"
                         class="logo my-3"
@@ -14,7 +16,7 @@
                         :alt="`Logo - ${job.company.name}`"
                     />
                 </div>
-                <div class="d-flex flex-wrap head">
+                <div class="d-flex flex-wrap head order-1 order-sm-2">
                     <div>
                         <font-awesome-icon
                             class="mr-2"
@@ -103,6 +105,7 @@
             <b-img
                 v-if="job.imageUrl"
                 class="mt-3 title-img"
+                style="max-height: 800px"
                 :src="job.imageUrl"
                 fluid
                 center

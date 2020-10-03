@@ -75,7 +75,9 @@
 
                     const mapContainer = this.$refs.hereMap;
                     const H = window.H;
-                    const maptypes = this.platform.createDefaultLayers();
+                    const maptypes = this.platform.createDefaultLayers({
+                        lg: config.maps.lang
+                    });
 
                     this.map = new H.Map(
                         mapContainer,

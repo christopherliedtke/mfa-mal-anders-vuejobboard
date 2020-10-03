@@ -6,6 +6,7 @@
 </template>
 
 <script>
+    import config from "@/utils/config.json";
     export default {
         name: "HereMapSingleJob",
         props: {
@@ -39,7 +40,9 @@
                     if (geocode) {
                         const mapContainer = this.$refs.hereMap;
                         const H = window.H;
-                        const maptypes = this.platform.createDefaultLayers();
+                        const maptypes = this.platform.createDefaultLayers({
+                            lg: config.maps.lang
+                        });
 
                         const map = new H.Map(
                             mapContainer,
