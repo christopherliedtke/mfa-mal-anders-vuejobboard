@@ -23,7 +23,12 @@
                             :icon="['fas', 'map-marker']"
                             size="lg"
                         />
-                        {{ job.company.location + ", " + job.company.state }}
+                        {{ job.company.location
+                        }}{{
+                            job.company.state != job.company.location
+                                ? ", " + job.company.state
+                                : ""
+                        }}
                     </div>
                     <div>
                         <font-awesome-icon
