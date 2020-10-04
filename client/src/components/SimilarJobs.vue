@@ -62,7 +62,9 @@
         },
         methods: {
             calcDistance(xLat, xLng, yLat, yLng) {
-                return Math.sqrt((xLat - yLat) ^ (2 + (xLng - yLng)) ^ 2);
+                return Math.sqrt(
+                    Math.pow(xLat - yLat, 2) + Math.pow(xLng - yLng, 2)
+                );
             }
         }
     };

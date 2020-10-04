@@ -23,11 +23,10 @@
                             :icon="['fas', 'map-marker']"
                             size="lg"
                         />
-                        {{ job.company.location
-                        }}{{
+                        {{
                             job.company.state != job.company.location
-                                ? ", " + job.company.state
-                                : ""
+                                ? `${job.company.location}, ${job.company.state}`
+                                : job.company.location
                         }}
                     </div>
                     <div>
@@ -326,7 +325,7 @@
 
                     this.updateHead();
                 } catch (err) {
-                    console.log("err: ", err);
+                    console.log("Error on getJob(): ", err);
                 }
             },
             updateHead: function() {

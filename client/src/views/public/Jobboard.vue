@@ -296,6 +296,16 @@
                                     .toLowerCase()
                                     .includes(
                                         this.filter.searchTerm.toLowerCase()
+                                    ) ||
+                                job.company.state
+                                    .toLowerCase()
+                                    .includes(
+                                        this.filter.searchTerm.toLowerCase()
+                                    ) ||
+                                job.company.location
+                                    .toLowerCase()
+                                    .includes(
+                                        this.filter.searchTerm.toLowerCase()
                                     )
                             ) {
                                 return job;
