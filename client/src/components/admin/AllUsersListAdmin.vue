@@ -34,7 +34,6 @@
             <template v-slot:cell(updatedAt)="row">
                 {{ new Date(row.value).toLocaleString() }}
             </template>
-
             <template v-slot:cell(actions)="row">
                 <b-button
                     class="mr-2 mb-2"
@@ -221,5 +220,3 @@
         }
     };
 </script>
-
-<style></style>

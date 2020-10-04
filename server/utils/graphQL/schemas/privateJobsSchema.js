@@ -110,6 +110,13 @@ const mutation = new GraphQLObjectType({
                 args.paidExpiresAt && req.userRole === "admin"
                     ? (addObj.paidExpiresAt = new Date(args.paidExpiresAt))
                     : delete addObj.paidExpiresAt;
+                if (
+                    args.paidExpiresAt > new Date() &&
+                    req.userRole === "admin"
+                ) {
+                    addObj.paid = true;
+                    addObj.status = "published";
+                }
                 if (args.refreshFrequency && req.userRole != "admin") {
                     delete addObj.refreshFrequency;
                 }

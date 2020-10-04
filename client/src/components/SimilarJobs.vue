@@ -26,17 +26,17 @@
                 ) {
                     similarJobs = similarJobs.sort((a, b) => {
                         return (
-                            Math.abs(
-                                (a.company.geoCodeLat -
-                                    this.job.company.geoCodeLat) *
-                                    (a.company.geoCodeLng -
-                                        this.job.company.geoCodeLng)
+                            this.calcDistance(
+                                a.company.geoCodeLat,
+                                a.company.geoCodeLng,
+                                this.job.company.geoCodeLat,
+                                this.job.company.geoCodeLng
                             ) -
-                            Math.abs(
-                                (b.company.geoCodeLat -
-                                    this.job.company.geoCodeLat) *
-                                    (b.company.geoCodeLng -
-                                        this.job.company.geoCodeLng)
+                            this.calcDistance(
+                                b.company.geoCodeLat,
+                                b.company.geoCodeLng,
+                                this.job.company.geoCodeLat,
+                                this.job.company.geoCodeLng
                             )
                         );
                     });
@@ -58,6 +58,11 @@
                 }
 
                 return similarJobs.slice(0, this.number);
+            }
+        },
+        methods: {
+            calcDistance(xLat, xLng, yLat, yLng) {
+                return Math.sqrt((xLat - yLat) ^ (2 + (xLng - yLng)) ^ 2);
             }
         }
     };
