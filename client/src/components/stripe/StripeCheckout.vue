@@ -135,14 +135,19 @@
                     <b-link
                         :href="
                             `/page/contact?subject=Rechnungsanforderung+${job &&
-                                job.title}+[id:${job && job._id}]`
+                                job.title}+[id:${job &&
+                                job._id}]&message=Guten+Tag,%0A%0Aich+bitte+um+Zahlung+per+Rechnung+für+meine+Stellenanzeige.+Bitte+stellen+Sie+mir+eine+Rechnung+in+Höhe+von+${amountComputed /
+                                100}+Euro+per+E-Mail+mit+folgender+Rechnungsadresse+aus:%0A%0AUnternehmen:%0AName:%0AAdresse:%0A%0AMit+freundlichen+Grüßen%0A${
+                                $store.state.auth.userFirstName
+                            }+${$store.state.auth.userLastName}`
                         "
                         target="_blank"
                         >Kontaktformular</b-link
                     >
                     unter Angabe Ihrer E-Mail Adresse, des Stellentitels und des
                     Rechnungsbetrages. In dem Fall erhöht sich der Mindestbetrag
-                    auf 30,- Euro.
+                    um 5,- Euro. Ihre Stellenanzeige wird nach erfolgtem
+                    Geldeingang bei uns freigeschaltet.
                 </p>
             </div></b-modal
         >

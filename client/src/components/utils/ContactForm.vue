@@ -90,7 +90,7 @@
                 id="message"
                 v-model="form.message"
                 placeholder="Nachricht eingeben..."
-                rows="6"
+                rows="8"
                 :state="validated ? (form.message ? true : false) : null"
             ></b-form-textarea>
             <b-form-checkbox
@@ -238,6 +238,11 @@
                     this.form.subject = this.$route.query.subject;
                 }
             },
+            setMessage() {
+                if (this.$route.query.message) {
+                    this.form.message = this.$route.query.message;
+                }
+            },
             resetForm() {
                 for (const key in this.form) {
                     this.form[key] = "";
@@ -248,7 +253,7 @@
             if (this.$store.state.auth.userId) {
                 this.setUserData();
                 this.setSubject();
-                console.log("this.$route: ", this.$route);
+                this.setMessage();
             }
         }
     };
