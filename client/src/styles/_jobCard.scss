@@ -34,6 +34,11 @@
             h4 {
                 margin: 0;
                 padding: 1rem;
+                max-width: 75%;
+
+                @media screen and (max-width: $break-menu) {
+                    max-width: 75%;
+                }
             }
 
             .img-container {
@@ -41,7 +46,7 @@
                 justify-content: center;
                 align-items: center;
                 background-color: darken($light, $amount: 1%);
-                // padding: 1rem;
+                padding: 1rem 0;
                 width: 130px;
                 min-width: 130px;
                 border-radius: 0 5px 0 0;
@@ -52,7 +57,7 @@
                 }
 
                 img {
-                    max-height: 80%;
+                    max-height: 70px;
                     max-width: 80%;
                 }
             }

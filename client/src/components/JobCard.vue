@@ -7,7 +7,7 @@
                         <h4>
                             {{ job.title }}
                         </h4>
-                        <div class="img-container">
+                        <div v-if="job.company.logoUrl" class="img-container">
                             <b-img-lazy
                                 :src="job.company.logoUrl"
                                 blank-src="@/assets/logo.png"

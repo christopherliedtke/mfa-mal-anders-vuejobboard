@@ -7,7 +7,6 @@
             id="email"
             placeholder="E-Mail Adresse eingeben..."
             autocomplete="email"
-            autofocus
             trim
         ></b-form-input>
         <label for="password">Passwort</label>

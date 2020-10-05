@@ -8,7 +8,6 @@
             id="firstName"
             placeholder="Vorname eingeben..."
             autocomplete="given-name"
-            autofocus
             trim
         ></b-form-input>
         <label for="lastName">Nachname</label>

@@ -92,7 +92,7 @@
                         </span>
                     </div> -->
                     <div v-if="job.paidExpiresAt">
-                        Anzeige läuft ab:
+                        Zahlung für Anzeige läuft ab:
                         <span class="text-muted">
                             {{
                                 new Date(

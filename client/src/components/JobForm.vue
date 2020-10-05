@@ -448,6 +448,7 @@
                     extJobUrl: "",
                     applicationEmail: "",
                     imageUrl: "",
+                    contactGender: null,
                     contactTitle: null,
                     contactFirstName: "",
                     contactLastName: "",

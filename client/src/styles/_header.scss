@@ -41,7 +41,7 @@
             .nav-link {
                 display: flex;
                 align-items: center;
-                padding: 0.5rem 0.5rem;
+                padding: 0.4rem 0.5rem;
                 color: transparentize($color: $light, $amount: 0.3);
 
                 &:hover {
@@ -63,7 +63,7 @@
                 .sub-menu {
                     position: absolute;
                     top: 100%;
-                    padding: 0.7rem;
+                    padding: 0 0.7rem;
                     background-color: $primary;
                     border-radius: $border-radius1;
                     width: max-content;
@@ -76,7 +76,7 @@
                         position: relative;
                         max-height: none;
                         visibility: visible;
-                        margin: 0.5rem;
+                        margin: 0 0.5rem;
                         // background-color: transparentize(
                         //     $color: $dark,
                         //     $amount: 0.5

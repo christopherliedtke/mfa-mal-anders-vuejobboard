@@ -106,18 +106,23 @@
             <div>
                 <SubscribeNewsletterBtn :state="job.company.state" />
             </div>
-            <b-img
-                v-if="job.imageUrl"
-                class="mt-3 title-img"
-                style="max-height: 800px"
-                :src="job.imageUrl"
-                fluid
-                center
-                :alt="`Image - ${job.company && job.company.name}`"
-            />
+            <div
+                class="bg-light-shade border-radius1 mx-auto"
+                style="width: fit-content; min-width: 85%"
+            >
+                <b-img
+                    v-if="job.imageUrl"
+                    class="mt-3 title-img"
+                    style="max-height: 35vh"
+                    :src="job.imageUrl"
+                    fluid
+                    center
+                    :alt="`Image - ${job.company && job.company.name}`"
+                />
+            </div>
             <div class="mt-4" v-html="job.description"></div>
             <div class="mt-3" v-if="job.company.url">
-                <a :href="job.company.url" target="_blank"
+                <a :href="job.company.url" target="_blank" ref="nofollow"
                     ><strong
                         >Besuchen Sie unsere Homepage
                         <b-icon icon="box-arrow-up-right"/></strong
@@ -134,7 +139,7 @@
                     "
                     target="_blank"
                     >Jetzt
-                    {{ job.simpleApplication && "nur mit Lebenslauf" }}
+                    {{ job.simpleApplication ? "nur mit Lebenslauf" : "" }}
                     bewerben</b-button
                 >
             </div>
