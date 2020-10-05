@@ -2,11 +2,7 @@
     <b-button
         :disabled="!$route.meta.public"
         class="whatsapp-share-btn"
-        :href="
-            `https://wa.me/send?text=${config.website.url}${
-                sharePath ? sharePath : ''
-            }`
-        "
+        :href="`https://wa.me/send?text=${url}${sharePath ? sharePath : ''}`"
         target="_blank"
     >
         <font-awesome-icon class="mr-2" :icon="['fab', 'whatsapp']" size="lg" />
@@ -16,13 +12,12 @@
 </template>
 
 <script>
-    import config from "@/utils/config.json";
     export default {
         name: "WhatsAppShareBtn",
         props: ["sharePath"],
         data() {
             return {
-                config
+                url: window.location.origin
             };
         }
     };

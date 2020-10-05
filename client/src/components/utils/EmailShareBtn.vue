@@ -6,7 +6,7 @@
         :href="
             `mailto:?subject=${subject}&body=Stellenanzeige auf ${
                 config.website.name
-            }: ${config.website.url}${sharePath ? sharePath : ''}`
+            }: ${url}${sharePath ? sharePath : ''}`
         "
         target="_blank"
     >
@@ -23,10 +23,9 @@
         props: ["sharePath", "subject"],
         data() {
             return {
-                config
+                config,
+                url: window.location.origin
             };
         }
     };
 </script>
-
-<style lang="scss"></style>

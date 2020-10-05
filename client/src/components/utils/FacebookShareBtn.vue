@@ -4,9 +4,9 @@
         :disabled="!$route.meta.public"
         class="facebook-share-btn"
         :href="
-            `https://www.facebook.com/sharer/sharer.php?u=${
-                config.website.url
-            }${sharePath ? sharePath : ''}`
+            `https://www.facebook.com/sharer/sharer.php?u=${url}${
+                sharePath ? sharePath : ''
+            }`
         "
         target="_blank"
     >
@@ -21,16 +21,13 @@
 </template>
 
 <script>
-    import config from "@/utils/config.json";
     export default {
         name: "FacebookShareBtn",
         props: ["sharePath"],
         data() {
             return {
-                config
+                url: window.location.origin
             };
         }
     };
 </script>
-
-<style lang="scss"></style>

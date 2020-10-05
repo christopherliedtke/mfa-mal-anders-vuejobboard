@@ -37,7 +37,8 @@
             return {
                 error: false,
                 success: false,
-                showOverlay: false
+                showOverlay: false,
+                setIntervalId: null
             };
         },
         methods: {
@@ -57,7 +58,18 @@
                 } else {
                     this.success = response.data.success;
                 }
+            },
+            checkUserStatus() {
+                this.setIntervalId = setInterval(() => {
+                    if (localStorage.getItem("userStatus") === "active") {
+                        clearInterval(this.setIntervalId);
+                        this.$router.go();
+                    }
+                }, 5000);
             }
+        },
+        mounted() {
+            this.checkUserStatus();
         }
     };
 </script>

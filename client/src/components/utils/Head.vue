@@ -37,14 +37,14 @@
                         },
                         {
                             property: "og:url",
-                            content: config.website.url + this.$route.path
+                            content: window.location.origin + this.$route.path
                         },
                         {
                             property: "og:image",
                             content:
                                 this.img ||
                                 `${
-                                    config.website.url
+                                    window.location.origin
                                 }${require("@/assets/mfaMalAnders_Facebook_Banner.png")}`
                         },
                         {
@@ -73,7 +73,7 @@
                         inner: `{
                             "@context": "http://schema.org",
                             "@type" : "Organization",
-                            "url": "${config.website.url}",
+                            "url": "${window.location.origin}",
                             "logo": "${require("@/assets/logo.png")}"
                         }`
                     }
@@ -82,5 +82,3 @@
         }
     };
 </script>
-
-<style></style>

@@ -4,9 +4,7 @@
         class="twitter-share-btn"
         :href="
             `
-        https://twitter.com/share?text=${title}&url=%0A%0A${
-                config.website.url
-            }${
+        https://twitter.com/share?text=${title}&url=%0A%0A${url}${
                 sharePath ? sharePath : ''
             }%0A%0A&hashtags=mfa,arzthelfer,mfajobs`
         "
@@ -19,13 +17,12 @@
 </template>
 
 <script>
-    import config from "@/utils/config.json";
     export default {
         name: "TwitterShareBtn",
         props: ["sharePath", "title"],
         data() {
             return {
-                config
+                url: window.location.origin
             };
         }
     };

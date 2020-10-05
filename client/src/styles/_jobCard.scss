@@ -29,6 +29,7 @@
             background-color: lighten($primary, $amount: 0%);
             color: $light;
             border-radius: 5px 5px 0 0;
+            overflow: hidden;
 
             h4 {
                 margin: 0;
@@ -40,19 +41,19 @@
                 justify-content: center;
                 align-items: center;
                 background-color: darken($light, $amount: 1%);
-                padding: 1rem;
+                // padding: 1rem;
                 width: 130px;
                 min-width: 130px;
                 border-radius: 0 5px 0 0;
 
                 @media screen and (max-width: $break-menu) {
-                    width: 100px;
-                    min-width: 100px;
+                    width: 90px;
+                    min-width: 90px;
                 }
 
                 img {
-                    max-height: 90%;
-                    max-width: 90%;
+                    max-height: 80%;
+                    max-width: 80%;
                 }
             }
         }
