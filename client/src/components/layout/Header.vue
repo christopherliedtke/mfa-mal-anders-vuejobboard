@@ -223,9 +223,6 @@
         methods: {
             toggleNavbar() {
                 this.$root.$emit("bv::toggle::collapse", "nav-collapse");
-                setTimeout(() => {
-                    window.scrollTo(0, 0);
-                }, 100);
             },
             showSub(id) {
                 window.document.getElementById(id).classList.add("show");
