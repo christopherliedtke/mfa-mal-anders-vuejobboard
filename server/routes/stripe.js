@@ -134,7 +134,7 @@ router.post("/create-session-id", authenticateToken, async (req, res) => {
                 couponId: couponId,
                 couponCode: req.body.code,
                 discount: discount,
-                refreshFrequency: refreshFrequency,
+                refreshFrequency: couponRefreshFrequency,
                 couponUsage: couponUsage,
                 accepted: req.body.accepted,
             },
