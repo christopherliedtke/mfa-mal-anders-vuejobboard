@@ -1,7 +1,10 @@
 const jwt = require("jsonwebtoken");
 
 const authenticateToken = (req, res, next) => {
+    console.log("req: ", req);
+
     const token = req.session.token;
+    console.log("token: ", token);
 
     jwt.verify(token, res.locals.secrets.JWT_SECRET, (err, user) => {
         if (err || user.userStatus != "active") {
