@@ -22,6 +22,11 @@
     "redirect": {
         "active": true
     },
+    "sitemap": {
+        "active": true,
+        "interval": "0 0 0 * * *",
+        "cmsUrl": "https://wordpress.mfa-mal-anders.de/graphql"
+    },
     "prerender": {
         "active": true,
         "exclude": ["googlebot"]

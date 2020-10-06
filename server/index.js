@@ -14,6 +14,7 @@ const prerender = require("prerender-node");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 
+const { createSitemap } = require("./utils/createSitemap");
 const { sendNewsletter } = require("./utils/sendNewsletter");
 const { refreshJobs } = require("./utils/refreshJobs");
 const { unpublishJobs } = require("./utils/unpublishJobs");
@@ -29,6 +30,11 @@ if (process.env.NODE_ENV == "production") {
 
 // # SSL redirect
 app.use(sslRedirect());
+
+// #Create Sitemap CRON job
+if (config.sitemap.active) {
+    createSitemap.start();
+}
 
 // #Send Newsletter CRON job
 if (config.newsletter.active) {
