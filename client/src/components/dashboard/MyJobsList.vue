@@ -115,6 +115,7 @@
                         <b-button
                             class="mr-2 mb-2 mb-md-0"
                             :to="`/dashboard/jobs/preview/${job._id}`"
+                            target="_blank"
                             variant="info"
                             size="sm"
                             ><b-icon class="mr-2" scale="1" icon="eye"></b-icon>

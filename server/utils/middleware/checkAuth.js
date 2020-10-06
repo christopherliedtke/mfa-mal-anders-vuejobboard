@@ -5,6 +5,9 @@ const authenticateToken = (req, res, next) => {
 
     jwt.verify(token, res.locals.secrets.JWT_SECRET, (err, user) => {
         if (err || user.userStatus != "active") {
+            console.log("Error on jwt.verify(): ", err);
+            console.log("user.userStatus: ", user.userStatus);
+
             res.sendStatus(401);
         } else {
             req.userId = user.userId;
