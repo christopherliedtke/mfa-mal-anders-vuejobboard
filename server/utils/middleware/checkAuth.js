@@ -1,8 +1,7 @@
 const jwt = require("jsonwebtoken");
 
 const authenticateToken = (req, res, next) => {
-    console.log("req: ", req);
-
+    console.log("req.session: ", req.session);
     const token = req.session.token;
     console.log("token: ", token);
 

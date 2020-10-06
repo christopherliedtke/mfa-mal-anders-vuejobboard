@@ -78,7 +78,10 @@ app.use("/api/webhooks", require("./routes/webhooks"));
 // #Express Session
 app.use(
     session({
-        store: new MongoStore({ mongooseConnection: mongoose.connection }),
+        store: new MongoStore({
+            mongooseConnection: mongoose.connection,
+            touchAfter: 24 * 3600,
+        }),
         secret: secrets.COOKIE_SESSION_SECRET,
         resave: false,
         saveUninitialized: false,
