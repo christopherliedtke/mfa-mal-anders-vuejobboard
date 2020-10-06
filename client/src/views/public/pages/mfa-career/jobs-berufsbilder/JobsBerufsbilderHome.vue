@@ -18,8 +18,8 @@
                     </h2>
                     <p>
                         Sprechstundenhilfe sind wir schon lange nicht mehr. Als
-                        MFA und Arzthelfer*in sind wir Organisationstalente,
-                        medizinische Assistenten, Sekretär*innen, Seelsorger,
+                        MFA und ArzthelferIn sind wir Organisationstalente,
+                        medizinische Assistenten, SekretärInnen, Seelsorger,
                         Logistiker, Abrechnungsprofis und Aushängeschild der
                         gesamten Praxis. Du merkst schon: Die Aufgabenspektren
                         und Jobs für medizinische Fachangestellte sind
@@ -38,7 +38,7 @@
                         neuen Schwung geben oder beispielsweise dein Gehalt
                         aufbessern? Wenn du nicht weißt, welche Türen dir offen
                         stehen, informiere dich hier über deine Chancen als
-                        ausgebildete*r Arzthelfer*in. Ganz gleich, ob du den
+                        ausgebildeter ArzthelferIn. Ganz gleich, ob du den
                         direkten Patientenkontakt liebst, gerne organisatorische
                         Aufgaben erledigst oder dich lieber für einen
                         alternativen Job außerhalb der Arztpraxis interessierst.

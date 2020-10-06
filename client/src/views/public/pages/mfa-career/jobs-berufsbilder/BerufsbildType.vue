@@ -50,7 +50,7 @@
                                         weiteren Informationen.
                                     </p>
                                     <p class="bold">
-                                        Jobsuche auf unserer Stellelbörse:
+                                        Jobsuche auf unserer Stellenbörse:
                                         <b-link
                                             :to="
                                                 `/jobboard?searchTerm=${berufsbild.title.slice(

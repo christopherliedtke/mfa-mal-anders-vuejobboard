@@ -61,7 +61,7 @@ module.exports.sendNewsletter = new CronJob(
                                 <a 
                                     style="text-decoration: underline; color: #f8faf9" 
                                     target="_blank" rel="noopener" 
-                                    href="${config.website.url}/api/newsletter/delete/${subscriber._id}"
+                                    href="${res.locals.secrets.WEBSITE_URL}/api/newsletter/delete/${subscriber._id}"
                                 >
                                     Vom Newsletter abmelden
                                 </a>
@@ -92,7 +92,7 @@ const generateListOfJobs = (subscriber, jobs) => {
             outputStr += `
                 <a 
                     style="margin-bottom: 1rem; font-size: 16px; display: inline-block; cursor: pointer; border: none; color: #b94559; text-decoration: none" 
-                    href="${config.website.url}/jobboard/job/${job._id}"
+                    href="${res.locals.secrets.WEBSITE_URL}/jobboard/job/${job._id}"
                     target="_blank"
                     rel="noopener"
                 >

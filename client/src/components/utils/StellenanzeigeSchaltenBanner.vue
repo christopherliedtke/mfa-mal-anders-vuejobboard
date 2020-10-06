@@ -10,7 +10,7 @@
                 <b-img
                     class="p-3 w-100 h-100"
                     src="@/assets/health_2.svg"
-                    alt="Bewerbungsgespräch zwischen Arzt und MFA / Arzthelfer*in"
+                    alt="Bewerbungsgespräch zwischen Arzt und MFA / ArzthelferIn"
                 ></b-img>
             </b-col>
             <b-col md="8">
@@ -18,7 +18,7 @@
                     class="d-flex flex-column justify-content-center align-items-center h-100 p-4"
                 >
                     <h2 class="bold">
-                        <em>Schneller</em> motivierte MFAs und Arzthelfer*innen
+                        <em>Schneller</em> motivierte MFAs und ArzthelferInnen
                         finden!
                     </h2>
                     <p>

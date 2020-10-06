@@ -341,7 +341,7 @@ router.get(
                 );
                 await Code.deleteMany({ email: user.email });
 
-                let redirectPath = `${config.website.url}/account/verified`;
+                let redirectPath = `${res.locals.secrets.WEBSITE_URL}/account/verified`;
 
                 res.redirect(redirectPath);
             }

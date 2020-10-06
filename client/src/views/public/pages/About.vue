@@ -29,7 +29,7 @@
                     </p>
                     <p>
                         Das ist der Grund, weshalb ich mich von meinem
-                        ursprünglich erlernten Beruf als Arzthelferin entfernt
+                        ursprünglich erlernten Beruf als ArzthelferIn entfernt
                         und mich mehr und mehr auf das Thema Personalführung und
                         Human Ressources spezialisiert habe.
                     </p>

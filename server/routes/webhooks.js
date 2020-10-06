@@ -77,7 +77,7 @@ router.post("/checkout-completed", async (req, res) => {
 
             if (config.googleIndexing.active) {
                 googleIndexing(
-                    config.website.url +
+                    res.locals.secrets.WEBSITE_URL +
                         config.googleIndexing.pathPrefix +
                         jobId,
                     "URL_UPDATED"

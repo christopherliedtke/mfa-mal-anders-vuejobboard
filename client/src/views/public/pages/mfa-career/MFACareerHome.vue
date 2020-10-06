@@ -136,7 +136,7 @@
                 <li>Leistungsgerechte Bezahlung</li>
                 <li>
                     Tätigkeiten, die du mit einer Ausbildung zur medizinischen
-                    Fachangestellten bzw. Arzthelferin ausüben kannst – auch
+                    Fachangestellten bzw. ArzthelferIn ausüben kannst – auch
                     wenn der ausgeschriebene Job nicht immer der typische
                     MFA-Job ist
                 </li>

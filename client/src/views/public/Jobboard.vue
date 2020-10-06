@@ -1,7 +1,7 @@
 <template>
     <div class="jobboard">
         <h1 class="title">{{ title }}</h1>
-        <b-container class=" py-5">
+        <b-container class="py-5">
             <b-row class="mt-2">
                 <b-col cols="12" lg="4" class="px-2 pr-lg-5">
                     <b-button-toolbar aria-label="Jobboard view toolbar">
@@ -35,6 +35,9 @@
                     <b-form id="job-filter" inline @submit.prevent>
                         <b-input-group class="mb-1 mr-2">
                             <b-form-input
+                                :class="
+                                    filter.searchTerm ? 'border-secondary' : ''
+                                "
                                 type="text"
                                 v-model="filter.searchTerm"
                                 placeholder="Suchbegriff..."
@@ -85,6 +88,9 @@
                     </b-form-select> -->
                         <b-input-group class="my-1 mr-2">
                             <b-form-input
+                                :class="
+                                    filter.location ? 'border-secondary' : ''
+                                "
                                 type="text"
                                 v-model="filter.location"
                                 list="location-list"
@@ -146,8 +152,8 @@
             </b-row>
         </b-container>
         <Head
-            :title="title + ' für MFAs/Arzthelfer*innen'"
-            desc="Attraktive Stellenangebote nur für MFAs / Arzthelfer*innen"
+            :title="title + ' für MFAs/ArzthelferInnen'"
+            desc="Attraktive Stellenangebote nur für MFAs / ArzthelferInnen"
             img=""
         />
     </div>

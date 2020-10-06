@@ -1,7 +1,6 @@
 {
     "website": {
         "name": "MFA mal anders",
-        "url": "https://mfa-mal-anders.herokuapp.com",
         "noreplyEmail": "noreply@mfa-mal-anders.de",
         "contactEmail": "kontakt@mfa-mal-anders.de",
         "emailFrom": "Kristin Maurach",

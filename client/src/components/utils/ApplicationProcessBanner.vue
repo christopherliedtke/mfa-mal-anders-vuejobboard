@@ -9,7 +9,7 @@
                 <b-img
                     class="p-1 w-100 h-100"
                     src="@/assets/profiling_monochromatic.svg"
-                    alt="Tipps für einen effizienten Bewerbungsprozess für MFAs / Arzthelfer*innen"
+                    alt="Tipps für einen effizienten Bewerbungsprozess für MFAs / ArzthelferInnen"
                 ></b-img>
             </b-col>
             <b-col md="9">

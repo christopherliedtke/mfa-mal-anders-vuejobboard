@@ -72,7 +72,7 @@
                         <p>
                             Bist Du auf der Suche nach einer interessanten
                             Stelle, die genau zu Dir passt? Schau direkt in
-                            unserer Stellenbörse nur für MFAs / Arzthelfer*innen
+                            unserer Stellenbörse nur für MFAs / ArzthelferInnen
                             vorbei!
                         </p>
                         <b-button variant="primary">Zur Stellenbörse</b-button>
@@ -92,7 +92,7 @@
                         <h2 class="bold">Jobs und Berufsbilder</h2>
                         <p>
                             Schau Dir unsere 52 Jobs und Berufsbilder für MFAs /
-                            Arzthelfer*innen an! Deine Möglichkeiten sind größer
+                            ArzthelferInnen an! Deine Möglichkeiten sind größer
                             als Du denkst.
                         </p>
                         <b-button variant="primary"
@@ -115,7 +115,7 @@
                         <p>
                             Auf der Suche nach Deinem nächsten Karriereschritt?
                             Informiere Dich über verschiedene Fort- und
-                            Weiterbildungen für MFAs / Arzthelfer*innen!
+                            Weiterbildungen für MFAs / ArzthelferInnen!
                         </p>
                         <b-button variant="primary"
                             >Zu den Weiterbildungen</b-button
@@ -203,10 +203,10 @@
                             Arbeitnehmer und Arbeitgeber bzw. MFAs und Ärzte
                             zusammenzubringen. Am Ende des Tages ist
                             entscheidend, dass das Zusammenspiel zwischen MFAs /
-                            Arzthelfer*innen und Ärzten funktioniert und
-                            Kollegen gern zusammenarbeiten. Nur so kann der
-                            Praxisalltag auf lange Sicht für alle Beteiligten
-                            positiv gestaltet werden.
+                            ArzthelferInnen und Ärzten funktioniert und Kollegen
+                            gern zusammenarbeiten. Nur so kann der Praxisalltag
+                            auf lange Sicht für alle Beteiligten positiv
+                            gestaltet werden.
                         </p>
                         <p>
                             <b-link
@@ -246,7 +246,7 @@
                         <b-link to="/page/mfa-career/fort-und-weiterbildungen"
                             >Fort- und Weiterbildungen</b-link
                         >
-                        speziell für MFAs / Arzthelfer*innen für dich
+                        speziell für MFAs / ArzthelferInnen für dich
                         zusammengestellt und erweitern die Auswahl stetig,
                         sodass du dich ein wenig inspirieren lassen kannst.
                         Schau doch gleich mal rein!

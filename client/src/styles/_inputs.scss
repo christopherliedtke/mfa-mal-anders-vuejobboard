@@ -13,6 +13,10 @@ form {
             box-shadow: none !important;
             border: 1px solid $secondary;
         }
+
+        &::placeholder {
+            color: #999;
+        }
     }
 
     & > label {

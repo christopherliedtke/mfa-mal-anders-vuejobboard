@@ -117,7 +117,8 @@ router.get("/verification/:subscriberId", async (req, res) => {
             res.sendStatus(503);
         } else {
             res.redirect(
-                config.website.url + config.website.newsletterSuccessPath
+                res.locals.secrets.WEBSITE_URL +
+                    config.website.newsletterSuccessPath
             );
         }
     } catch (error) {
@@ -137,7 +138,7 @@ router.get("/delete/:subscriberId", async (req, res) => {
 
         if (deletedSubscriber.n === 1) {
             res.redirect(
-                config.website.url +
+                res.locals.secrets.WEBSITE_URL +
                     config.website.newsletterUnsubscribeSuccessPath
             );
         } else {

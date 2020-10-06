@@ -8,7 +8,7 @@
                 <div class="bg-logo"></div>
                 <b-col>
                     <h2 class="h1 bold mb-4">
-                        <em>Schneller</em> motivierte MFAs und Arzthelfer*innen
+                        <em>Schneller</em> motivierte MFAs und ArzthelferInnen
                         finden!
                     </h2>
                     <p>
@@ -39,7 +39,7 @@
         <b-container fluid class="bg-light-shade py-5 mb-5">
             <b-container>
                 <h2 class="bold mb-4">
-                    Ihre Jobbörse nur für MFAs und Arzthelfer*innen – MFA mal
+                    Ihre Jobbörse nur für MFAs und ArzthelferInnen – MFA mal
                     anders
                 </h2>
                 <b-row cols="1" cols-md="2">
@@ -65,7 +65,7 @@
                             Im Gegensatz zu anderen allgemeinen Stellenbörsen,
                             finden Sie hier ausschließlich die richtige
                             Zielgruppe für Ihr Unternehmen: medizinische
-                            Fachangestellte / Arzthelfer*innen.
+                            Fachangestellte / ArzthelferInnen.
                         </p>
                         <h3>Wo wir Ihre Stellenanzeige ausspielen</h3>
                         <p>
@@ -258,7 +258,7 @@
         <FixedAddJobBtn />
 
         <Head
-            title="Motivierte MFA / Arzthelfer*in gesucht?"
+            title="Motivierte MFA / ArzthelferIn gesucht?"
             desc="MFA mal anders ist das Jobportal speziell nur für medizinische Fachangestellte. Gesucht – Gefunden! Mit günstigen Stellenanzeigen, die wirklich ankommen."
             img=""
         />

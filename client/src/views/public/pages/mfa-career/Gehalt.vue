@@ -50,7 +50,7 @@
                         auf Arbeitnehmerseite. Sie vertritt uns medizinische
                         Fachangestellte bei Tarifverhandlungen gegenüber der
                         Arbeitsgemeinschaft zur Regelung der Arbeitsbedingungen
-                        der Arzthelferinnen/Medizinischen Fachangestellten
+                        der ArzthelferInnen/Medizinischen Fachangestellten
                         (AAA). Die AAA ist die Tarifpartei der Arbeitgeber,
                         sprich der niedergelassenen Ärzte.
                     </p>
@@ -738,7 +738,7 @@
         </b-container>
         <Head
             :title="'MFA Gehaltsrechner | ' + title"
-            desc="Über Gehalt, Tarifvertrag, Tätigkeitsgruppen für MFA. Ermittle deinen Marktwert - Hier gehts zum Gehaltsrechner für MFAs/Arzthelferinnen."
+            desc="Über Gehalt, Tarifvertrag, Tätigkeitsgruppen für MFA. Ermittle deinen Marktwert - Hier gehts zum Gehaltsrechner für MFAs/ArzthelferInnen."
             :img="require('@/assets/Gehalt-fuer-mfa.png')"
         />
     </div>
@@ -757,7 +757,7 @@
         },
         data() {
             return {
-                title: "Mein Gehalt als MFA / Arzthelfer*in"
+                title: "Mein Gehalt als MFA / ArzthelferIn"
             };
         }
     };
