@@ -69,8 +69,6 @@ app.use(cors());
 app.use(express.json());
 app.use((req, res, next) => {
     res.locals.secrets = secrets;
-    console.log("req.url: ", req.url);
-
     next();
 });
 
@@ -97,8 +95,6 @@ app.use(
 );
 
 app.get("/sitemap.xml", (req, res) => {
-    console.log("req.url: ", req.url);
-
     res.sendFile(__dirname + "/public/sitemap.xml");
 });
 
