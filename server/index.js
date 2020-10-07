@@ -69,6 +69,8 @@ app.use(cors());
 app.use(express.json());
 app.use((req, res, next) => {
     res.locals.secrets = secrets;
+    console.log("req.url: ", req.url);
+
     next();
 });
 
@@ -89,10 +91,16 @@ app.use(
             maxAge: 1000 * 60 * 60 * 24 * 14,
             httpOnly: true,
             secure: false,
-            sameSite: "strict",
+            sameSite: "lax",
         },
     })
 );
+
+app.get("/sitemap.xml", (req, res) => {
+    console.log("req.url: ", req.url);
+
+    res.sendFile(__dirname + "/public/sitemap.xml");
+});
 
 // #Middleware for production
 if (process.env.NODE_ENV == "production") {

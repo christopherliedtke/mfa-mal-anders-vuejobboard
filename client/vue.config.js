@@ -6,6 +6,9 @@ module.exports = {
         proxy: {
             "/api": {
                 target: "http://localhost:5000"
+            },
+            "/sitemap.xml": {
+                target: "http://localhost:5000"
             }
         }
     },
