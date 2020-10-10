@@ -47,22 +47,27 @@
                     let zoom = 6.3;
                     let geocode;
 
-                    geocode = await new Promise((resolve, reject) => {
-                        window.navigator.geolocation.getCurrentPosition(
-                            position => {
-                                if (position.coords) {
-                                    zoom = 8;
-                                    resolve({
-                                        lat: position.coords.latitude,
-                                        lng: position.coords.longitude
-                                    });
-                                } else {
-                                    reject("");
-                                }
-                            },
-                            () => resolve("")
-                        );
-                    });
+                    try {
+                        geocode = await new Promise((resolve, reject) => {
+                            window.navigator.geolocation.getCurrentPosition(
+                                position => {
+                                    if (position.coords) {
+                                        zoom = 8;
+                                        resolve({
+                                            lat: position.coords.latitude,
+                                            lng: position.coords.longitude
+                                        });
+                                    } else {
+                                        reject("");
+                                    }
+                                },
+                                () => resolve(config.maps.defaultCenter)
+                            );
+                        });
+                    } catch (err) {
+                        console.log("Error in getCurrentPosition(): ", err);
+                        geocode = config.maps.defaultCenter;
+                    }
 
                     if (!geocode) {
                         // const response = await service.geocode({
