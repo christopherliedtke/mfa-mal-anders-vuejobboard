@@ -121,28 +121,35 @@
                         gelesen und akzeptiere diese.
                     </b-form-checkbox>
                 </b-form>
-                <p v-if="accepted">
+                <p v-if="accepted" class="text-success">
                     Sie können Ihre Zahlung nun abschließen. Dazu werden Sie auf
-                    eine sichere Zahlungsplattform weitergeleitet.
+                    eine sichere Zahlungsplattform weitergeleitet. Dort können
+                    Sie per Überweisung (SOFORT/GiroPay) oder Kreditkarte
+                    zahlen.**
                 </p>
                 <p class="small">
-                    * Es fällt ein Mindestbeitrag von 25,- Euro pro
-                    Stellenanzeige an, um den Betrieb des Portals aufrecht zu
-                    erhalten.
+                    * Es fällt ein
+                    <strong
+                        >Mindestbeitrag von 25,- Euro pro Stellenanzeige</strong
+                    >
+                    an, um den Betrieb des Portals aufrecht zu erhalten.
                     <br />
                     ** Sollten Sie ausschließlich auf vorab ausgestellte
-                    Rechnung bezahlen können, kontaktieren Sie uns bitte per
-                    <b-link
-                        :href="
-                            `/page/contact?subject=Rechnungsanforderung+${job &&
-                                job.title}+[id:${job &&
-                                job._id}]&message=Guten+Tag,%0A%0Aich+bitte+um+Zahlung+per+Rechnung+für+meine+Stellenanzeige.+Bitte+stellen+Sie+mir+eine+Rechnung+in+Höhe+von+${amountComputed /
-                                100}+Euro+per+E-Mail+mit+folgender+Rechnungsadresse+aus:%0A%0AUnternehmen:%0AName:%0AAdresse:%0A%0AMit+freundlichen+Grüßen%0A${
-                                $store.state.auth.userFirstName
-                            }+${$store.state.auth.userLastName}`
-                        "
-                        target="_blank"
-                        >Kontaktformular</b-link
+                    <strong>Rechnung</strong> bezahlen können,
+                    <strong
+                        >kontaktieren Sie uns bitte per
+                        <b-link
+                            :href="
+                                `/page/contact?subject=Rechnungsanforderung+${job &&
+                                    job.title}+[id:${job &&
+                                    job._id}]&message=Guten+Tag,%0A%0Aich+bitte+um+Zahlung+per+Rechnung+für+meine+Stellenanzeige.+Bitte+stellen+Sie+mir+eine+Rechnung+in+Höhe+von+${amountComputed /
+                                    100}+Euro+per+E-Mail+mit+folgender+Rechnungsadresse+aus:%0A%0AUnternehmen:%0AName:%0AAdresse:%0A%0AMit+freundlichen+Grüßen%0A${
+                                    $store.state.auth.userFirstName
+                                }+${$store.state.auth.userLastName}`
+                            "
+                            target="_blank"
+                            >Kontaktformular</b-link
+                        ></strong
                     >
                     unter Angabe Ihrer E-Mail Adresse, des Stellentitels und des
                     Rechnungsbetrages. In dem Fall erhöht sich der Mindestbetrag

@@ -32,7 +32,7 @@
         "exclude": ["googlebot"]
     },
     "googleIndexing": {
-        "active": false,
+        "active": true,
         "pathPrefix": "/jobboard/job/"
     },
     "facebook": {

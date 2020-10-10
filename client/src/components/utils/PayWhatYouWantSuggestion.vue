@@ -32,7 +32,14 @@
                 <strong>250€ pro Stelle.</strong>
             </li>
         </ul>
-        <p class="small mt-5">
+        <p>
+            <strong>
+                Ab einem Betrag von 120,- Euro
+            </strong>
+            wird Ihre Stellenanzeige automatisch alle 14 Tage in der
+            Anzeigenliste an den Anfang versetzt.
+        </p>
+        <p class="small">
             Der Grundsatz
             <strong><em>“Pay What You Want”</em></strong
             >* bleibt natürlich bestehen. Sie bestimmen die Höhe in Abhängigkeit

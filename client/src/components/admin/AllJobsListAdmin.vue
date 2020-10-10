@@ -46,6 +46,9 @@
             <template v-slot:cell(paidExpiresAt)="row">
                 {{ row.value && new Date(row.value).toLocaleString() }}
             </template>
+            <template v-slot:cell(paidAmount)="row">
+                {{ row.value / 100 }}€
+            </template>
             <template v-slot:cell(location)="row">
                 {{
                     row.item.company.street +
@@ -207,6 +210,10 @@
                         sortable: true
                     },
                     {
+                        key: "paidAmount",
+                        sortable: true
+                    },
+                    {
                         key: "refreshFrequency",
                         sortable: true
                     },
@@ -302,6 +309,7 @@
                                     updatedAt
                                     paidAt
                                     paidExpiresAt
+                                    paidAmount
                                     refreshFrequency
                                     status
                                     applicationDeadline

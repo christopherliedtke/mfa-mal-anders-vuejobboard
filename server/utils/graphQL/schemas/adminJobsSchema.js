@@ -59,6 +59,7 @@ const mutation = new GraphQLObjectType({
                 paid: { type: GraphQLBoolean },
                 paidAt: { type: GraphQLFloat },
                 paidExpiresAt: { type: GraphQLFloat },
+                paidAmount: { type: GraphQLFloat },
                 refreshFrequency: { type: GraphQLFloat },
                 description: { type: GraphQLString },
                 employmentType: { type: GraphQLString },

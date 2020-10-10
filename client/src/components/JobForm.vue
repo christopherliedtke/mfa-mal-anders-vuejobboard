@@ -27,6 +27,15 @@
                     placeholder="Zahlung läuft ab am..."
                 />
                 <label class="mt-2" for="refresh-frequency"
+                    >paidAmount [Cents]</label
+                >
+                <b-form-input
+                    type="number"
+                    number
+                    v-model="job.paidAmount"
+                    placeholder="Gezahlter Betrag..."
+                />
+                <label class="mt-2" for="refresh-frequency"
                     >refreshFrequency</label
                 >
                 <b-form-input
@@ -440,6 +449,7 @@
                     _id: "",
                     paidAt: null,
                     paidExpiresAt: null,
+                    paidAmount: 0,
                     refreshFrequency: 0,
                     title: "",
                     description: "",
@@ -531,6 +541,7 @@
                                     _id
                                     paidAt
                                     paidExpiresAt
+                                    paidAmount
                                     refreshFrequency
                                     title
                                     description
@@ -705,6 +716,7 @@
                                 title: "${this.job.title}"
                                 paidAt: ${this.job.paidAt}
                                 paidExpiresAt: ${this.job.paidExpiresAt}
+                                paidAmount: ${this.job.paidAmount}
                                 refreshFrequency: ${this.job.refreshFrequency}
                                 description: "${this.job.description.replace(
                                     /"/g,

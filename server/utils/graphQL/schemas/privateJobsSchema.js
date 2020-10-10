@@ -57,6 +57,7 @@ const mutation = new GraphQLObjectType({
                 title: { type: new GraphQLNonNull(GraphQLString) },
                 paidAt: { type: GraphQLFloat },
                 paidExpiresAt: { type: GraphQLFloat },
+                paidAmount: { type: GraphQLFloat },
                 refreshFrequency: { type: GraphQLFloat },
                 description: { type: new GraphQLNonNull(GraphQLString) },
                 employmentType: { type: new GraphQLNonNull(GraphQLString) },
@@ -110,6 +111,9 @@ const mutation = new GraphQLObjectType({
                 args.paidExpiresAt && req.userRole === "admin"
                     ? (addObj.paidExpiresAt = new Date(args.paidExpiresAt))
                     : delete addObj.paidExpiresAt;
+                args.paidAmount && req.userRole === "admin"
+                    ? (addObj.paidAmount = args.paidAmount)
+                    : delete addObj.paidAmount;
                 if (
                     args.paidExpiresAt > new Date() &&
                     req.userRole === "admin"
@@ -139,6 +143,7 @@ const mutation = new GraphQLObjectType({
                 title: { type: new GraphQLNonNull(GraphQLString) },
                 paidAt: { type: GraphQLFloat },
                 paidExpiresAt: { type: GraphQLFloat },
+                paidAmount: { type: GraphQLFloat },
                 refreshFrequency: { type: GraphQLFloat },
                 description: { type: new GraphQLNonNull(GraphQLString) },
                 employmentType: { type: new GraphQLNonNull(GraphQLString) },
@@ -193,6 +198,9 @@ const mutation = new GraphQLObjectType({
                 args.paidExpiresAt && req.userRole === "admin"
                     ? (updateObj.paidExpiresAt = new Date(args.paidExpiresAt))
                     : delete updateObj.paidExpiresAt;
+                args.paidAmount && req.userRole === "admin"
+                    ? (updateObj.paidAmount = args.paidAmount)
+                    : delete updateObj.paidAmount;
                 if (
                     args.paidExpiresAt > new Date() &&
                     req.userRole === "admin"
