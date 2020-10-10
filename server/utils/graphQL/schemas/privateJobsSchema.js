@@ -230,6 +230,18 @@ const mutation = new GraphQLObjectType({
                         userId: req.userId,
                     }).populate("company");
 
+                    if (
+                        config.googleIndexing.active &&
+                        updatedJob.status === "published"
+                    ) {
+                        googleIndexing(
+                            req.res.locals.secrets.WEBSITE_URL +
+                                config.googleIndexing.pathPrefix +
+                                updatedJob._id,
+                            "URL_UPDATED"
+                        );
+                    }
+
                     return updatedJob;
                 }
             },
@@ -256,7 +268,7 @@ const mutation = new GraphQLObjectType({
 
                     if (config.googleIndexing.active) {
                         googleIndexing(
-                            res.locals.secrets.WEBSITE_URL +
+                            req.res.locals.secrets.WEBSITE_URL +
                                 config.googleIndexing.pathPrefix +
                                 args._id,
                             args.status === "published"
@@ -296,7 +308,7 @@ const mutation = new GraphQLObjectType({
                 if (response.n === 1) {
                     if (config.googleIndexing.active) {
                         googleIndexing(
-                            res.locals.secrets.WEBSITE_URL +
+                            req.res.locals.secrets.WEBSITE_URL +
                                 config.googleIndexing.pathPrefix +
                                 args._id,
                             "URL_DELETED"

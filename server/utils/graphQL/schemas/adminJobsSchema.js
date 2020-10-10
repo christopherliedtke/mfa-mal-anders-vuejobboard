@@ -101,7 +101,7 @@ const mutation = new GraphQLObjectType({
                     type: GraphQLString,
                 },
             },
-            async resolve(parentValue, args) {
+            async resolve(parentValue, args, req) {
                 const updateObj = { ...args };
                 delete updateObj._id;
 
@@ -139,7 +139,7 @@ const mutation = new GraphQLObjectType({
 
                     if (config.googleIndexing.active) {
                         googleIndexing(
-                            res.locals.secrets.WEBSITE_URL +
+                            req.res.locals.secrets.WEBSITE_URL +
                                 config.googleIndexing.pathPrefix +
                                 args._id,
                             args.status === "pusblished"
