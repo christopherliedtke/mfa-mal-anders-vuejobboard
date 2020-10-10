@@ -63,6 +63,7 @@ if (config.redirect.active) {
 // #Prerender w/o googlebot
 if (config.prerender.active && process.env.NODE_ENV == "production") {
     console.log("Prerender...");
+    console.log("prerender: ", prerender);
 
     app.use(prerender);
 }
