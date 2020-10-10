@@ -114,6 +114,14 @@
                         sortable: true
                     },
                     {
+                        key: "status",
+                        sortable: true
+                    },
+                    {
+                        key: "role",
+                        sortable: true
+                    },
+                    {
                         key: "actions",
                         sortable: false
                     }
@@ -176,6 +184,8 @@
                                     firstName
                                     lastName
                                     email
+                                    status
+                                    role
                                 }
                             }
                         `

@@ -32,6 +32,15 @@
                             <div>
                                 <h3 class="h5 p-1 m-0">
                                     {{ berufsbild.title }}
+                                    <b-icon
+                                        icon="caret-right-fill"
+                                        font-scale="0.8"
+                                        :class="
+                                            visible === berufsbild.id
+                                                ? 'animate rotate-90'
+                                                : 'animate'
+                                        "
+                                    />
                                 </h3>
                             </div>
                         </b-card-header>

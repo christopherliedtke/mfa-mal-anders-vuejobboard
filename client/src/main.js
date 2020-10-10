@@ -105,7 +105,8 @@ Vue.use(VueGtag, {
             send_page_view: false
         }
     },
-    enabled: config.ga.active && window.location.origin === config.website.url
+    enabled:
+        config.ga.active && window.location.origin.includes(config.website.url)
 });
 
 Vue.config.productionTip = false;

@@ -136,6 +136,14 @@ a.icon-box {
     margin: 2.5rem auto;
 }
 
+.animate {
+    transition: $transition1;
+}
+
+.rotate-90 {
+    transform: rotate(90deg);
+}
+
 // #TipTapEditor
 .editor__content {
     &.is-invalid {

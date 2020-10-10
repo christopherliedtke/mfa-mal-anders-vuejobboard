@@ -26,7 +26,12 @@
 
 <script>
     export default {
-        name: "NotFound"
+        name: "NotFound",
+        mounted() {
+            setTimeout(() => {
+                this.$router.push("/");
+            }, 3500);
+        }
     };
 </script>
 
