@@ -322,6 +322,11 @@
                                     .toLowerCase()
                                     .includes(
                                         this.filter.searchTerm.toLowerCase()
+                                    ) ||
+                                job.company.zipCode
+                                    .toLowerCase()
+                                    .includes(
+                                        this.filter.searchTerm.toLowerCase()
                                     )
                             ) {
                                 return job;
