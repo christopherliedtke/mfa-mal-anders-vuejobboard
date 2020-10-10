@@ -11,9 +11,9 @@ const config = require("./utils/config");
 const mongoose = require("./utils/db");
 
 const prerender = require("prerender-node");
-prerender.crawlerUserAgents = prerender.crawlerUserAgents.filter(
-    (item) => config.prerender.exclude.indexOf(item) > -1
-);
+// prerender.crawlerUserAgents = prerender.crawlerUserAgents.filter(
+//     (item) => config.prerender.exclude.indexOf(item) > -1
+// );
 
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
