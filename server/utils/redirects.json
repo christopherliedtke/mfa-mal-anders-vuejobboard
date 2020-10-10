@@ -184,6 +184,18 @@
         "new": "/jobboard?location=Köln"
     },
     {
+        "old": "/stadt/berlin",
+        "new": "/jobboard?location=Berlin"
+    },
+    {
+        "old": "/stadt/hamburg",
+        "new": "/jobboard?location=Hamburg"
+    },
+    {
+        "old": "/stadt/muenchen",
+        "new": "/jobboard?location=München"
+    },
+    {
         "old": "/anstellungsart/teilzeit",
         "new": "/jobboard?employmentType=part"
     },
