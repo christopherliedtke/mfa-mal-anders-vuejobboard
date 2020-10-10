@@ -4,7 +4,11 @@
             <b-card no-body class="mb-3 mt-3 mt-lg-0">
                 <b-card-text>
                     <div class="card-head">
-                        <h4>
+                        <h4
+                            :class="
+                                job.company.logoUrl ? 'mobile-max-width-75' : ''
+                            "
+                        >
                             {{ job.title }}
                         </h4>
                         <div v-if="job.company.logoUrl" class="img-container">

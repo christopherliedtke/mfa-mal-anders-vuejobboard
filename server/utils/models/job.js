@@ -70,9 +70,11 @@ const JobSchema = new Schema(
         },
         contactFirstName: {
             type: String,
+            default: "",
         },
         contactLastName: {
             type: String,
+            default: "",
         },
         contactEmail: {
             type: String,

@@ -210,8 +210,8 @@
             variant="warning"
             dismissible
         >
-            Oh, da ist leider etwas schief gelaufen. Bitte probiere es noch
-            einmal oder versuche Dich neu ein- und auszuloggen.
+            Beim Laden der Seite ist ein Fehler aufgetreten. Bitte probiere es
+            noch einmal oder versuche Dich neu ein- und auszuloggen.
         </b-alert>
     </div>
 </template>

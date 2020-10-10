@@ -207,6 +207,10 @@
                         sortable: true
                     },
                     {
+                        key: "refreshFrequency",
+                        sortable: true
+                    },
+                    {
                         key: "applicationDeadline",
                         sortable: true
                     },
@@ -298,6 +302,7 @@
                                     updatedAt
                                     paidAt
                                     paidExpiresAt
+                                    refreshFrequency
                                     status
                                     applicationDeadline
                                     paid

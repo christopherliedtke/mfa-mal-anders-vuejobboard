@@ -185,7 +185,7 @@
                 }
             },
             spreadMarker(val) {
-                const markerSpread = 0.0015;
+                const markerSpread = 0.0005;
                 return (
                     val +
                     Math.random() * markerSpread -

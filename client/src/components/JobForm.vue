@@ -130,7 +130,9 @@
                     placeholder="karriere@ihr-unternehmen.de"
                 />
             </b-input-group>
-            <label for="title-image">Title Bild (jpg, png | max. 5MB)</label>
+            <label for="title-image"
+                >Titel/Team Bild (jpg, png | max. 5MB)</label
+            >
             <ImageUploader
                 id="title-image"
                 :validated="validated"
@@ -317,7 +319,7 @@
                 />
             </div>
 
-            <h3 class="mt-4">Ansprechpartner für Bewerbungen</h3>
+            <h3 class="mt-4">Kontakt für Bewerbungen</h3>
             <label for="contact-gender">Anrede</label>
             <b-form-select
                 id="contact-gender"

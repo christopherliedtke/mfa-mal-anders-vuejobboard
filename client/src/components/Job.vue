@@ -143,39 +143,50 @@
                     bewerben</b-button
                 >
             </div>
-            <div v-if="job.contactLastName" class="mt-4">
+            <div
+                v-if="
+                    job.contactLastName || job.contactEmail || job.contactPhone
+                "
+                class="mt-4"
+            >
                 <h2>Kontakt für Bewerbungen</h2>
-                <p>
-                    {{
-                        job.contactGender != "null"
-                            ? job.contactGender + " "
-                            : ""
-                    }}
-                    {{
-                        job.contactTitle != "null" ? job.contactTitle + " " : ""
-                    }}
-                    {{ job.contactFirstName + " " + job.contactLastName }}
-                    <br />
-                    {{ job.contactPhone && "Telefon: " }}
-                    <a
-                        v-if="job.contactPhone"
-                        @click="trackEvent(job, 'ContactPhone')"
-                        :href="`tel:${job.contactPhone}`"
-                        target="_blank"
-                        >{{ job.contactPhone }}</a
-                    >
-                    <br />
-                    {{ job.contactEmail && "E-Mail: " }}
-                    <a
-                        v-if="job.contactEmail"
-                        @click="trackEvent(job, 'ContactEmail')"
-                        :href="
-                            `mailto:${job.contactEmail}?subject=${job.title} über ${config.website.name}`
-                        "
-                        target="_blank"
-                        >{{ job.contactEmail }}</a
-                    >
-                </p>
+                <div class="mb-3">
+                    <div v-if="job.contactLastName">
+                        {{
+                            job.contactGender != "null"
+                                ? job.contactGender + " "
+                                : ""
+                        }}
+                        {{
+                            job.contactTitle != "null"
+                                ? job.contactTitle + " "
+                                : ""
+                        }}
+                        {{ job.contactFirstName + " " + job.contactLastName }}
+                        <br />
+                    </div>
+                    <div v-if="job.contactPhone">
+                        Telefon:
+                        <a
+                            @click="trackEvent(job, 'ContactPhone')"
+                            :href="`tel:${job.contactPhone}`"
+                            target="_blank"
+                            >{{ job.contactPhone }}</a
+                        >
+                        <br />
+                    </div>
+                    <div v-if="job.contactEmail">
+                        E-Mail:
+                        <a
+                            @click="trackEvent(job, 'ContactEmail')"
+                            :href="
+                                `mailto:${job.contactEmail}?subject=${job.title} über ${config.website.name}`
+                            "
+                            target="_blank"
+                            >{{ job.contactEmail }}</a
+                        >
+                    </div>
+                </div>
                 <h2>Arbeitsort</h2>
                 <p>
                     {{ job.company.name }} <br />
