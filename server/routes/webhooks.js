@@ -91,7 +91,7 @@ router.post("/checkout-completed", async (req, res) => {
 
         res.json({ received: true });
     } catch (err) {
-        console.log("Error on /checkout-completed: ", err);
+        console.log("Error STRIPE on /checkout-completed: ", err);
         res.json({ received: false });
     }
 });

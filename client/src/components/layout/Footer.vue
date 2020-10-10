@@ -88,20 +88,22 @@
                 </b-col>
                 <b-col order="1" order-lg="3">
                     <b-nav vertical class="justify-content-end">
-                        <b-nav-item>
+                        <li>
                             <div class="d-flex justify-content-center mb-4">
-                                <b-img-lazy
-                                    class="mx-3 shadow"
-                                    style="width: 35vw; max-width: 120px"
-                                    src="@/assets/Vorlage_Bewerbungsanschreiben.jpg"
-                                    alt="Bild von Mustervorlage für Motivationsschreiben"
-                                />
-                                <b-img-lazy
-                                    class="mx-3 shadow"
-                                    style="width: 35vw; max-width: 120px"
-                                    src="@/assets/Vorlage_Lebenslauf.jpg"
-                                    alt="Bild von Mustervorlage für Lebenslauf"
-                                />
+                                <b-link to="/page/mfa-career/bewerbungstipps">
+                                    <b-img-lazy
+                                        class="mx-3 shadow"
+                                        style="width: 35vw; max-width: 120px"
+                                        src="@/assets/Vorlage_Bewerbungsanschreiben.jpg"
+                                        alt="Bild von Mustervorlage für Motivationsschreiben"
+                                    />
+                                    <b-img-lazy
+                                        class="mx-3 shadow"
+                                        style="width: 35vw; max-width: 120px"
+                                        src="@/assets/Vorlage_Lebenslauf.jpg"
+                                        alt="Bild von Mustervorlage für Lebenslauf"
+                                    />
+                                </b-link>
                             </div>
 
                             <div class="d-flex justify-content-center mb-5">
@@ -111,7 +113,7 @@
                                     >Download Bewerbungsunterlagen</b-button
                                 >
                             </div>
-                        </b-nav-item>
+                        </li>
                         <b-nav-item to="/page/mfa-career/bewerbungstipps"
                             >Bewerbungstipps</b-nav-item
                         >

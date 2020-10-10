@@ -59,7 +59,7 @@ router.post("/validate-coupon", authenticateToken, async (req, res) => {
             res.json({ success: false });
         }
     } catch (err) {
-        console.log("Error on /validate-coupon: ", err);
+        console.log("Error STRIPE  on /validate-coupon: ", err);
         res.json({ success: false });
     }
 });
@@ -70,7 +70,9 @@ router.post("/validate-coupon", authenticateToken, async (req, res) => {
 router.post("/create-session-id", authenticateToken, async (req, res) => {
     try {
         if (req.body.amount < 2500) {
-            throw new Error("Invalid amount entered for stripe checkout!");
+            throw new Error(
+                "Error STRIPE Invalid amount entered for stripe checkout!"
+            );
         }
 
         const user = await User.findOne(
@@ -148,7 +150,7 @@ router.post("/create-session-id", authenticateToken, async (req, res) => {
             sessionId: session.id,
         });
     } catch (err) {
-        console.log("Error on /create-session-id: ", err);
+        console.log("Error STRIPE on /create-session-id: ", err);
         res.json({ success: false });
     }
 });
