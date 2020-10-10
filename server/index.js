@@ -11,6 +11,10 @@ const config = require("./utils/config");
 const mongoose = require("./utils/db");
 
 const prerender = require("prerender-node");
+prerender.crawlerUserAgents = prerender.crawlerUserAgents.filter(
+    (item) => config.prerender.exclude.indexOf(item) > -1
+);
+
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 
@@ -58,9 +62,8 @@ if (config.redirect.active) {
 
 // #Prerender w/o googlebot
 if (config.prerender.active && process.env.NODE_ENV == "production") {
-    prerender.crawlerUserAgents = prerender.crawlerUserAgents.filter(
-        (item) => config.prerender.exclude.indexOf(item) > -1
-    );
+    console.log("Prerender...");
+
     app.use(prerender);
 }
 
