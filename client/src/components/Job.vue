@@ -354,7 +354,7 @@
             ) {
                 this.$gtag.event(action, {
                     event_category: category,
-                    event_label: `${job.title} - ${job._id}`
+                    event_label: `${job.title} | ${job.company.name} - ${job._id}`
                 });
             }
         },
