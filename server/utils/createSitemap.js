@@ -184,7 +184,7 @@ function writeFoot() {
 
 function writeUrl(url, lastmod = new Date().toISOString()) {
     return `
-        <loc>${url}</loc>
+        <url>${url}</url>
         <lastmod>${lastmod}</lastmod>
     `;
 }
