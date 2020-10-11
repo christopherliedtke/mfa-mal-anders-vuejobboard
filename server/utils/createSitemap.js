@@ -129,7 +129,7 @@ async function createSitemap() {
                                 secrets.WEBSITE_URL +
                                     "/page/mfa-career/fort-und-weiterbildungen/" +
                                     elem.slug,
-                                elem.modifiedGmt
+                                new Date(elem.modifiedGmt).toISOString()
                             )
                         )
                         .join(" ")
