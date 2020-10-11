@@ -108,7 +108,7 @@ async function createSitemap() {
                         .map((elem) =>
                             writeUrl(
                                 secrets.WEBSITE_URL + "/article/" + elem.slug,
-                                elem.modifiedGmt
+                                new Date(elem.modifiedGmt).toISOString()
                             )
                         )
                         .join(" ")
