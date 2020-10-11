@@ -12,99 +12,6 @@ if (process.env.NODE_ENV == "production") {
     secrets = require("./secrets");
 }
 
-module.exports.createSitemap = new CronJob(
-    config.sitemap.interval,
-    async function () {
-        try {
-            console.log("createSitemap() running...");
-            const head = writeHead();
-            const foot = writeFoot();
-
-            const lastBuild = getFileUpdatedDate(
-                __dirname + "/../public/index.html"
-            );
-
-            const root = writeUrl(secrets.WEBSITE_URL + "/", lastBuild);
-            const pages = pagesSitemap
-                .map((elem) => writeUrl(secrets.WEBSITE_URL + elem, lastBuild))
-                .join(" ");
-
-            const articles = await new Promise(async (resolve, reject) => {
-                const response = await getArticles();
-
-                if (Array.isArray(response) && response.length > 0) {
-                    resolve(
-                        response
-                            .map((elem) =>
-                                writeUrl(
-                                    secrets.WEBSITE_URL +
-                                        "/article/" +
-                                        elem.slug,
-                                    elem.modifiedGmt
-                                )
-                            )
-                            .join(" ")
-                    );
-                } else {
-                    resolve("");
-                }
-            });
-
-            const trainings = await new Promise(async (resolve, reject) => {
-                const response = await getTrainings();
-
-                if (Array.isArray(response) && response.length > 0) {
-                    resolve(
-                        response
-                            .map((elem) =>
-                                writeUrl(
-                                    secrets.WEBSITE_URL +
-                                        "/page/mfa-career/fort-und-weiterbildungen/" +
-                                        elem.slug,
-                                    elem.modifiedGmt
-                                )
-                            )
-                            .join(" ")
-                    );
-                } else {
-                    resolve("");
-                }
-            });
-
-            const jobs = await new Promise(async (resolve, reject) => {
-                const response = await getJobs();
-
-                if (Array.isArray(response) && response.length > 0) {
-                    resolve(
-                        response
-                            .map((elem) =>
-                                writeUrl(
-                                    secrets.WEBSITE_URL +
-                                        "/jobboard/job/" +
-                                        elem._id,
-                                    new Date(elem.updatedAt).toISOString()
-                                )
-                            )
-                            .join(" ")
-                    );
-                } else {
-                    resolve("");
-                }
-            });
-
-            const sitemap =
-                head + root + pages + articles + trainings + jobs + foot;
-
-            saveSitemap(__dirname + "/../public/sitemap.xml", sitemap);
-        } catch (error) {
-            console.log("Error on createSitemap CRON: ", error);
-        }
-    },
-    null, // onComplete
-    false, // start directly
-    "Europe/Berlin"
-);
-
 const getArticles = () =>
     new Promise(async (resolve, reject) => {
         try {
@@ -177,6 +84,91 @@ const getJobs = () =>
         }
     });
 
+async function createSitemap() {
+    try {
+        console.log("createSitemap() running...");
+        const head = writeHead();
+        const foot = writeFoot();
+
+        const lastBuild = getFileUpdatedDate(
+            __dirname + "/../public/index.html"
+        );
+
+        const root = writeUrl(secrets.WEBSITE_URL + "/", lastBuild);
+        const pages = pagesSitemap
+            .map((elem) => writeUrl(secrets.WEBSITE_URL + elem, lastBuild))
+            .join(" ");
+
+        const articles = await new Promise(async (resolve, reject) => {
+            const response = await getArticles();
+
+            if (Array.isArray(response) && response.length > 0) {
+                resolve(
+                    response
+                        .map((elem) =>
+                            writeUrl(
+                                secrets.WEBSITE_URL + "/article/" + elem.slug,
+                                elem.modifiedGmt
+                            )
+                        )
+                        .join(" ")
+                );
+            } else {
+                resolve("");
+            }
+        });
+
+        const trainings = await new Promise(async (resolve, reject) => {
+            const response = await getTrainings();
+
+            if (Array.isArray(response) && response.length > 0) {
+                resolve(
+                    response
+                        .map((elem) =>
+                            writeUrl(
+                                secrets.WEBSITE_URL +
+                                    "/page/mfa-career/fort-und-weiterbildungen/" +
+                                    elem.slug,
+                                elem.modifiedGmt
+                            )
+                        )
+                        .join(" ")
+                );
+            } else {
+                resolve("");
+            }
+        });
+
+        const jobs = await new Promise(async (resolve, reject) => {
+            const response = await getJobs();
+
+            if (Array.isArray(response) && response.length > 0) {
+                resolve(
+                    response
+                        .map((elem) =>
+                            writeUrl(
+                                secrets.WEBSITE_URL +
+                                    "/jobboard/job/" +
+                                    elem._id,
+                                new Date(elem.updatedAt).toISOString()
+                            )
+                        )
+                        .join(" ")
+                );
+            } else {
+                resolve("");
+            }
+        });
+
+        const sitemap =
+            head + root + pages + articles + trainings + jobs + foot;
+
+        saveSitemap(__dirname + "/../public/sitemap.xml", sitemap);
+    } catch (error) {
+        console.log("Error on createSitemap CRON: ", error);
+    }
+}
+
 function getFileUpdatedDate(path) {
     const stats = fs.statSync(path);
     return new Date(stats.mtime).toISOString();
@@ -200,3 +192,15 @@ function writeUrl(url, lastmod = new Date().toISOString()) {
 function saveSitemap(filename, data) {
     fs.writeFileSync(filename, data);
 }
+
+module.exports.createSitemap = new CronJob(
+    config.sitemap.interval,
+    function () {
+        createSitemap();
+    },
+    null, // onComplete
+    false, // start directly
+    "Europe/Berlin", // timezone
+    null, // context
+    true // run on init
+);
