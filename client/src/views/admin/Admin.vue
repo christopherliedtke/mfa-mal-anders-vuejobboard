@@ -1,5 +1,5 @@
 <template>
-    <b-container fluid class="dashboard py-5 px-5">
+    <b-container fluid class="dashboard py-5 px-3 px-md-5">
         <h2>Admin</h2>
         <b-tabs content-class="mt-3" :value="query.tab">
             <b-tab title="Jobs" @click="setQuery('tab', 0)">

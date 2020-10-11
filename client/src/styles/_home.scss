@@ -4,10 +4,10 @@
             url("~@/assets/hero_map.jpg") center center;
         background-size: cover;
         background-blend-mode: lighten;
-        min-height: 66vh;
+        min-height: 60vh;
 
         @media screen and (max-width: $break-menu) {
-            min-height: calc(100vh - 70px);
+            min-height: calc(85vh - 70px);
         }
     }
 }

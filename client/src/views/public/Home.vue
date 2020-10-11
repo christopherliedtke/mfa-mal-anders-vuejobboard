@@ -8,7 +8,8 @@
                 <div class="mb-5">
                     <h1>
                         <span class="bold display-2">
-                            MFA mal anders
+                            MFA <br class="d-md-none" />
+                            mal anders
                         </span>
                         <br />
                         <span
@@ -33,7 +34,7 @@
                             id="landing-search"
                             size="lg"
                             class="shadow1"
-                            placeholder="Stellenangebot finden..."
+                            placeholder="Stelle finden..."
                             v-model="searchTerm"
                         ></b-form-input>
                         <b-input-group-append>

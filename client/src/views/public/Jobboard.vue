@@ -313,6 +313,11 @@
                                     .includes(
                                         this.filter.searchTerm.toLowerCase()
                                     ) ||
+                                job.company.name
+                                    .toLowerCase()
+                                    .includes(
+                                        this.filter.searchTerm.toLowerCase()
+                                    ) ||
                                 job.company.state
                                     .toLowerCase()
                                     .includes(

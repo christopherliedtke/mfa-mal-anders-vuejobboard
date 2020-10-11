@@ -88,7 +88,7 @@
                 </b-col>
                 <b-col order="1" order-lg="3">
                     <b-nav vertical class="justify-content-end">
-                        <li>
+                        <b-nav-text>
                             <div class="d-flex justify-content-center mb-4">
                                 <b-link to="/page/mfa-career/bewerbungstipps">
                                     <b-img-lazy
@@ -113,7 +113,7 @@
                                     >Download Bewerbungsunterlagen</b-button
                                 >
                             </div>
-                        </li>
+                        </b-nav-text>
                         <b-nav-item to="/page/mfa-career/bewerbungstipps"
                             >Bewerbungstipps</b-nav-item
                         >

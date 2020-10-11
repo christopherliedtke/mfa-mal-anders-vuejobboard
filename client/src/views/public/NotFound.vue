@@ -8,15 +8,14 @@
                 src="@/assets/404_page_not_found_.svg"
                 style="max-height: 400px"
             />
-            <div class="text-center">
+            <div class="text-center mx-auto" style="max-width: 500px">
                 <p>
-                    Tut uns Leid, diese Seite existiert leider nicht.
+                    Tut uns Leid, diese Seite existiert leider nicht mehr oder
+                    ist während unseres Re-Launches umgezogen. Schau Dich doch
+                    auf unserer Seite einmal um.
                 </p>
-                <b-button
-                    class="mr-2"
-                    variant="secondary"
-                    @click="$router.go(-1)"
-                    >Zurück</b-button
+                <b-button to="/jobboard" class="mr-2" variant="secondary"
+                    >Zur Stellenbörse</b-button
                 >
                 <b-button variant="primary" to="/">Zur Startseite</b-button>
             </div>
@@ -26,13 +25,6 @@
 
 <script>
     export default {
-        name: "NotFound",
-        mounted() {
-            setTimeout(() => {
-                this.$router.push("/");
-            }, 3500);
-        }
+        name: "NotFound"
     };
 </script>
-
-<style></style>

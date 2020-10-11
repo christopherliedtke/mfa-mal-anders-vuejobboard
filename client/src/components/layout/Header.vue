@@ -56,14 +56,14 @@
                                         "
                                         >Jobs- und Berufsbilder
                                         <b-icon
-                                            class="ml-1"
+                                            class="ml-1 d-none d-md-block"
                                             icon="chevron-right"
                                             font-scale="0.9"
                                         ></b-icon
                                     ></b-nav-item>
                                     <div
                                         id="sub-jobs-berufsbilder"
-                                        class="sub-menu"
+                                        class="sub-menu d-none d-md-block"
                                     >
                                         <b-nav-item
                                             to="/page/mfa-career/jobs-und-berufsbilder/Medizinisch-Technisch"
@@ -143,7 +143,7 @@
                             /></b-dropdown-item>
                         </b-nav-item-dropdown> -->
                     </b-navbar-nav>
-                    <b-navbar-nav>
+                    <b-navbar-nav class="mt-3 mt-lg-0">
                         <b-nav-item to="/dashboard" v-if="userId"
                             ><b-icon
                                 class="mr-1"
