@@ -6,7 +6,7 @@
                 class="bg-primary text-light border-radius2 shadow1 w-100 p-3 p-md-5 mx-auto position-relative"
             >
                 <div class="bg-logo"></div>
-                <b-col>
+                <b-col cols="12" md="6">
                     <h2 class="h1 bold mb-4">
                         <em>Schneller</em> motivierte MFAs und ArzthelferInnen
                         finden!
@@ -25,7 +25,11 @@
                         >Jetzt Stellenanzeige schalten</b-button
                     >
                 </b-col>
-                <b-col class="d-flex justify-content-center align-items-center">
+                <b-col
+                    cols="12"
+                    md="6"
+                    class="d-flex justify-content-center align-items-center"
+                >
                     <b-img
                         class="p-4"
                         fluid
