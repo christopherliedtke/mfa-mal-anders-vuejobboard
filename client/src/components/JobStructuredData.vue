@@ -46,7 +46,10 @@
                             "@context": "http://schema.org",
                             "@type" : "JobPosting",
                             "title": "${this.job.title}",
-                            "description" : "${this.job.description}",
+                            "description" : "${this.$sanitize(
+                                this.job.description,
+                                { allowedTags: [] }
+                            )}",
                             "datePosted": "${new Date(
                                 this.job.createdAt
                             ).toISOString()}",

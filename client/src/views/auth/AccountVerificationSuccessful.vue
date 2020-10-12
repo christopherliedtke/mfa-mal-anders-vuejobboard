@@ -3,7 +3,7 @@
         <h2>E-Mail Adresse erfolgreich verifiziert</h2>
         <div class="success mt-3">
             <b-alert show dismissible variant="success"
-                >Deine E-Mail Adresse wurde erfolgreich verifiziert. Du wirst
+                >Ihre E-Mail Adresse wurde erfolgreich verifiziert. Sie werden
                 sofort weitergeleitet...
                 <b-spinner
                     style="width: 1.2rem; height: 1.2rem;"

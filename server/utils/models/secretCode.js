@@ -13,7 +13,7 @@ const secretCode = new Schema({
     dateCreated: {
         type: Date,
         default: Date.now(),
-        expires: 600,
+        expires: 3600,
     },
 });
 

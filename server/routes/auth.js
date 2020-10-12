@@ -161,7 +161,7 @@ router.post("/register", async (req, res) => {
                     to: user.email,
                     subject: `E-Mail bestätigen für ${config.website.name}`,
                     text: `
-                        Bitte nutzen Sie den folgenden Link innerhalb der nächsten 10 Minuten, um Ihren Account auf ${config.website.name} zu aktivieren:: ${baseUrl}/api/auth/verification/verify-account/${user._id}/${secretCode}
+                        Bitte nutzen Sie den folgenden Link innerhalb der nächsten 60 Minuten, um Ihren Account auf ${config.website.name} zu aktivieren:: ${baseUrl}/api/auth/verification/verify-account/${user._id}/${secretCode}
                     `,
                     html: emailTemplate.generate(`
                         <div 
@@ -169,7 +169,7 @@ router.post("/register", async (req, res) => {
                             <div style="line-height: 1.2; font-size: 12px; color: #000000; font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif; mso-line-height-alt: 14px">
                                 <h2>Aktivieren Sie Ihren Account bei ${config.website.name}</h2>
                                 <p>
-                                    Bitte nutzen Sie den folgenden Link innerhalb der nächsten 10 Minuten, um Ihren Account auf ${config.website.name} zu aktivieren: 
+                                    Bitte nutzen Sie den folgenden Link innerhalb der nächsten 60 Minuten, um Ihren Account auf ${config.website.name} zu aktivieren: 
                                 </p>
                             </div>
                         </div>
@@ -208,7 +208,9 @@ router.post("/register", async (req, res) => {
                         </div>
                     `),
                 };
-                await emailService.sendMail(data);
+                const email = await emailService.sendMail(data);
+
+                console.log("sendMail() after register: ", email);
 
                 res.json({
                     success: true,
@@ -260,7 +262,7 @@ router.get(
                     to: user.email,
                     subject: `E-Mail bestätigen für ${config.website.name}`,
                     text: `
-                        Bitte nutzen Sie den folgenden Link innerhalb der nächsten 10 Minuten, um Ihren Account auf ${config.website.name} zu aktivieren:: ${baseUrl}/api/auth/verification/verify-account/${user._id}/${secretCode}
+                        Bitte nutzen Sie den folgenden Link innerhalb der nächsten 60 Minuten, um Ihren Account auf ${config.website.name} zu aktivieren:: ${baseUrl}/api/auth/verification/verify-account/${user._id}/${secretCode}
                     `,
                     html: emailTemplate.generate(`
                         <div 
@@ -268,7 +270,7 @@ router.get(
                             <div style="line-height: 1.2; font-size: 12px; color: #000000; font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif; mso-line-height-alt: 14px">
                                 <h2>Aktivieren Sie Ihren Account bei ${config.website.name}</h2>
                                 <p>
-                                    Bitte nutzen Sie den folgenden Link innerhalb der nächsten 10 Minuten, um Ihren Account auf ${config.website.name} zu aktivieren: 
+                                    Bitte nutzen Sie den folgenden Link innerhalb der nächsten 60 Minuten, um Ihren Account auf ${config.website.name} zu aktivieren: 
                                 </p>
                             </div>
                         </div>
@@ -308,7 +310,8 @@ router.get(
                     `),
                 };
 
-                await emailService.sendMail(data);
+                const email = await emailService.sendMail(data);
+                console.log("sendMail() for additional email: ", email);
 
                 res.json({ success: true });
             }
@@ -325,6 +328,8 @@ router.get(
 router.get(
     "/verification/verify-account/:userId/:secretCode",
     async (req, res) => {
+        let redirectPath;
+
         try {
             const user = await User.findById(req.params.userId);
             const response = await Code.findOne({
@@ -333,7 +338,7 @@ router.get(
             });
 
             if (!user || !response) {
-                res.sendStatus(401);
+                redirectPath = `${res.locals.secrets.WEBSITE_URL}/account/verification?error=true`;
             } else {
                 await User.updateOne(
                     { email: user.email },
@@ -341,16 +346,18 @@ router.get(
                 );
                 await Code.deleteMany({ email: user.email });
 
-                let redirectPath = `${res.locals.secrets.WEBSITE_URL}/account/verified`;
-
-                res.redirect(redirectPath);
+                redirectPath = `${res.locals.secrets.WEBSITE_URL}/account/verified`;
             }
+
+            res.redirect(redirectPath);
         } catch (err) {
             console.log(
                 "Error on /api/auth/verification/verify-account: ",
                 err
             );
-            res.sendStatus(500);
+
+            redirectPath = `${res.locals.secrets.WEBSITE_URL}/account/verification?error=true`;
+            res.redirect(redirectPath);
         }
     }
 );
@@ -431,12 +438,12 @@ router.post("/password-reset/get-code", async (req, res) => {
                 const data = {
                     from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
                     to: email,
-                    subject: `Your Password Reset Code for ${config.website.name}`,
+                    subject: `Ihr Code für den Passwort Reset auf ${config.website.name}`,
                     text: `
-                        Please use the following code within the next 10 minutes to reset your password on ${config.website.name}: ${secretCode}
+                        Bitte nutzen Sie den folgenden Code innerhalb der nächsten 60 Minuten, um Ihr Passwort auf ${config.website.name} zu ändern: ${secretCode}
                     `,
                     html: emailTemplate.generate(`
-                        <p>Please use the following code within the next 10 minutes to reset your password on ${config.website.name}: <strong>${secretCode}</strong></p>
+                        <p>Bitte nutzen Sie den folgenden Code innerhalb der nächsten 60 Minuten, um Ihr Passwort auf ${config.website.name} zu ändern: <strong>${secretCode}</strong></p>
                         `),
                 };
                 await emailService.sendMail(data);

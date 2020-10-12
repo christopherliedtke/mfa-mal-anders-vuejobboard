@@ -8,6 +8,7 @@
             id="delete-account"
             title="Account löschen"
             ok-title="Jetzt löschen"
+            cancel-title="Abbrechen"
             centered
             ok-variant="danger"
             footer-class="d-flex justify-content-between"
@@ -78,7 +79,7 @@
                     this.$store.commit("setUserId", null);
                     this.$store.commit("setUserRole", null);
                     this.$store.commit("setUserStatus", null);
-                    this.$router.go({ path: "/login" });
+                    this.$router.push({ path: "/login" });
                 }
             },
             togglePasswordType() {

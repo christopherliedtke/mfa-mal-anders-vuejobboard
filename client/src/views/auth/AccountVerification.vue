@@ -3,18 +3,21 @@
         <Overlay :show="showOverlay"> </Overlay>
         <h2>E-Mail Adresse verifizieren</h2>
         <p>
-            Bitte überprüfe Dein E-Mail Postfach und bestätige Deine E-Mail
-            Adresse über den Aktivierungslink. Bitte überprüfe gegebenenfalls
-            auch Deinen Spam Ordner.
+            Bitte überprüfen Sie Ihr E-Mail Postfach und bestätigen Sie Ihre
+            E-Mail Adresse über den Aktivierungslink innerhalb der nächsten 60
+            Minuten.
+            <strong>
+                Bitte überprüfen Sie gegebenenfalls auch Ihren Spam Ordner.
+            </strong>
         </p>
         <p>Keine E-Mail erhalten?</p>
         <button class="btn btn-primary my-3" @click="onSubmit">
-            Neue E-Mail zur Aktivierung senden
+            Erneut E-Mail zur Aktivierung senden
         </button>
         <div class="error mt-3" v-if="error">
             <b-alert show dismissible variant="warning"
-                >Oh, da ist leider etwas schief gelaufen. Bitte probiere es noch
-                einmal.</b-alert
+                >Oh, da ist leider etwas schief gelaufen. Bitte probieren Sie es
+                noch einmal.</b-alert
             >
         </div>
         <div class="success mt-3" v-if="success">
@@ -66,10 +69,16 @@
                         this.$router.go();
                     }
                 }, 5000);
+            },
+            checkError() {
+                if (this.$route.query.error) {
+                    this.error = true;
+                }
             }
         },
         mounted() {
             this.checkUserStatus();
+            this.checkError();
         }
     };
 </script>

@@ -3,7 +3,7 @@
         "name": "MFA mal anders",
         "noreplyEmail": "noreply@mfa-mal-anders.de",
         "contactEmail": "kontakt@mfa-mal-anders.de",
-        "emailFrom": "Kristin Maurach",
+        "emailFrom": "MFA mal anders",
         "newsletterSuccessPath": "/page/subscription-successful",
         "newsletterUnsubscribeSuccessPath": "/page/unsubscribed-successful"
     },
