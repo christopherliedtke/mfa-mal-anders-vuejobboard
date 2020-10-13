@@ -258,5 +258,13 @@
     {
         "old": "/2020/01/24/mfa-arzthelferin-queereinsteiger-berufsanfaenger-m-w-d",
         "new": "/jobboard"
+    },
+    {
+        "old": "https://www.mfa-mal-anders.de/page/2",
+        "new": "/jobboard"
+    },
+    {
+        "old": "https://www.mfa-mal-anders.de/page/12",
+        "new": "/jobboard"
     }
 ]
