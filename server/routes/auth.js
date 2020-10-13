@@ -86,6 +86,9 @@ router.post("/register", async (req, res) => {
         password2,
         acceptance,
     } = req.body;
+
+    console.log("email: ", email);
+
     let errors = [];
 
     // Check if data is correctly provided
@@ -130,6 +133,8 @@ router.post("/register", async (req, res) => {
                     password: hashedPw,
                     accepted: true,
                 });
+
+                console.log("newUser: ", newUser);
 
                 const user = await newUser.save();
                 const token = jwt.sign(
@@ -208,9 +213,9 @@ router.post("/register", async (req, res) => {
                         </div>
                     `),
                 };
-                const email = await emailService.sendMail(data);
+                const emailSent = await emailService.sendMail(data);
 
-                console.log("sendMail() after register: ", email);
+                console.log("sendMail() after register: ", emailSent);
 
                 res.json({
                     success: true,
@@ -310,8 +315,8 @@ router.get(
                     `),
                 };
 
-                const email = await emailService.sendMail(data);
-                console.log("sendMail() for additional email: ", email);
+                const emailSent = await emailService.sendMail(data);
+                console.log("sendMail() for additional email: ", emailSent);
 
                 res.json({ success: true });
             }

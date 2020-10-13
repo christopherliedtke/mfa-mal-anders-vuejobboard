@@ -212,7 +212,7 @@ module.exports = {
                                                 <div align="left" class="img-container left fixedwidth fullwidthOnMobile" style="padding-right: 20px; padding-left: 20px">
                                                     <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px"><td style="padding-right: 20px;padding-left: 20px;" align="left"><![endif]-->
                                                     <div style="font-size: 1px; line-height: 15px"> </div>
-                                                    <a href="http://www.example.com" style="outline: none" tabindex="-1" target="_blank"> <img alt="Alternate text" border="0" class="left fixedwidth fullwidthOnMobile" src="https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/09/Logo_mfa-mal-anders-white.png" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 110px; display: block" title="Alternate text" width="110" /></a>
+                                                    <a href="https://www.mfa-mal-anders.de" style="outline: none" tabindex="-1" target="_blank"> <img alt="Alternate text" border="0" class="left fixedwidth fullwidthOnMobile" src="https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/09/Logo_mfa-mal-anders-white.png" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 110px; display: block" title="Alternate text" width="110" /></a>
                                                     <div style="font-size: 1px; line-height: 10px"> </div>
                                                     <!--[if mso]></td></tr></table><![endif]-->
                                                 </div>
@@ -396,7 +396,7 @@ module.exports = {
                                                 <div align="center" class="img-container center fixedwidth" style="padding-right: 5px; padding-left: 5px">
                                                     <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px"><td style="padding-right: 5px;padding-left: 5px;" align="center"><![endif]-->
                                                     <div style="font-size: 1px; line-height: 10px"> </div>
-                                                    <a href="http://www.example.com" style="outline: none" tabindex="-1" target="_blank"> <img align="center" alt="Your Logo" border="0" class="center fixedwidth" src="https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/09/Logo_mfa-mal-anders-white.png" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 210px; display: block" title="Your Logo" width="210" /></a>
+                                                    <a href="https://www.mfa-mal-anders.de" style="outline: none" tabindex="-1" target="_blank"> <img align="center" alt="Your Logo" border="0" class="center fixedwidth" src="https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/09/Logo_mfa-mal-anders-white.png" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 210px; display: block" title="Your Logo" width="210" /></a>
                                                     <div style="font-size: 1px; line-height: 10px"> </div>
                                                     <!--[if mso]></td></tr></table><![endif]-->
                                                 </div>
