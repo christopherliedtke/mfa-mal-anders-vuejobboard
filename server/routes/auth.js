@@ -87,8 +87,6 @@ router.post("/register", async (req, res) => {
         acceptance,
     } = req.body;
 
-    console.log("email: ", email);
-
     let errors = [];
 
     // Check if data is correctly provided
@@ -133,8 +131,6 @@ router.post("/register", async (req, res) => {
                     password: hashedPw,
                     accepted: true,
                 });
-
-                console.log("newUser: ", newUser);
 
                 const user = await newUser.save();
                 const token = jwt.sign(
@@ -251,7 +247,7 @@ router.get(
             if (!user) {
                 res.json({ success: false });
             } else {
-                await Code.deleteMany({ email: user.email });
+                // await Code.deleteMany({ email: user.email });
 
                 const secretCode = cryptoRandomString({
                     length: 6,
