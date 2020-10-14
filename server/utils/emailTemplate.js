@@ -212,7 +212,7 @@ module.exports = {
                                                 <div align="left" class="img-container left fixedwidth fullwidthOnMobile" style="padding-right: 20px; padding-left: 20px">
                                                     <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px"><td style="padding-right: 20px;padding-left: 20px;" align="left"><![endif]-->
                                                     <div style="font-size: 1px; line-height: 15px"> </div>
-                                                    <a href="https://www.mfa-mal-anders.de" style="outline: none" tabindex="-1" target="_blank"> <img alt="Alternate text" border="0" class="left fixedwidth fullwidthOnMobile" src="https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/09/Logo_mfa-mal-anders-white.png" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 110px; display: block" title="Alternate text" width="110" /></a>
+                                                    <a href="https://www.mfa-mal-anders.de" style="outline: none" tabindex="-1" target="_blank"> <img alt="MFA mal anders" border="0" class="left fixedwidth fullwidthOnMobile" src="https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/09/Logo_mfa-mal-anders-white.png" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 110px; display: block" title="MFA mal anders" width="110" /></a>
                                                     <div style="font-size: 1px; line-height: 10px"> </div>
                                                     <!--[if mso]></td></tr></table><![endif]-->
                                                 </div>
@@ -236,7 +236,7 @@ module.exports = {
                                                             <!--<![endif]-->
                                                             <div class="menu-trigger" style="display: none; max-height: 0px; max-width: 0px; font-size: 0px; overflow: hidden">
                                                                 <label class="menu-label" for="menuywrs1m" style="height: 36px; width: 36px; display: inline-block; cursor: pointer; mso-hide: all; user-select: none; align: right; text-align: center; color: #ffffff; text-decoration: none; background-color: transparent"
-                                                                    ><span class="menu-open" style="mso-hide: all; font-size: 26px; line-height: 36px">☰</span><span class="menu-close" style="display: none; mso-hide: all; font-size: 26px; line-height: 36px">✕</span></label
+                                                                    ><span class="menu-open" style="mso-hide: all; font-size: 26px; line-height: 36px"></span><span class="menu-close" style="display: none; mso-hide: all; font-size: 26px; line-height: 36px"></span></label
                                                                 >
                                                             </div>
                                                             <div class="menu-links">
