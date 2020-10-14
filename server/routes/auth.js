@@ -358,8 +358,6 @@ router.get(
 
                 redirectPath = `${res.locals.secrets.WEBSITE_URL}/account/verified`;
             }
-
-            res.redirect(redirectPath);
         } catch (err) {
             console.log(
                 "Error on /api/auth/verification/verify-account: ",
@@ -367,8 +365,9 @@ router.get(
             );
 
             redirectPath = `${res.locals.secrets.WEBSITE_URL}/account/verification?error=true`;
-            res.redirect(redirectPath);
         }
+
+        res.redirect(redirectPath);
     }
 );
 
