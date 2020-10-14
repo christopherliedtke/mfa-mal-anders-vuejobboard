@@ -8,16 +8,22 @@ if (process.env.NODE_ENV == "production") {
     secrets = require("../secrets"); // in dev they are in secrets.json which is listed in .gitignore
 }
 
-const jwtClient = new google.auth.JWT(
-    secrets.GOOGLE_API_CLIENT_EMAIL,
-    null,
-    secrets.GOOGLE_API_PRIVATE_KEY.replace(/\\n/gm, "\n"),
-    ["https://www.googleapis.com/auth/indexing"],
-    null
-);
+if (secrets.GOOGLE_API_CLIENT_EMAIL && secrets.GOOGLE_API_PRIVATE_KEY) {
+    const jwtClient = new google.auth.JWT(
+        secrets.GOOGLE_API_CLIENT_EMAIL,
+        null,
+        secrets.GOOGLE_API_PRIVATE_KEY.replace(/\\n/gm, "\n"),
+        ["https://www.googleapis.com/auth/indexing"],
+        null
+    );
+}
 
 module.exports.googleIndexing = function (url = "", type = "URL_UPDATED") {
-    if (secrets.GOOGLE_API_CLIENT_EMAIL) {
+    if (
+        secrets.GOOGLE_API_CLIENT_EMAIL &&
+        secrets.GOOGLE_API_CLIENT_EMAIL &&
+        secrets.GOOGLE_API_PRIVATE_KEY
+    ) {
         try {
             jwtClient.authorize(function (err, tokens) {
                 if (err) {
