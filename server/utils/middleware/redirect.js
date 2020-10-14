@@ -9,10 +9,10 @@ const redirect = (req, res, next) => {
             req.originalUrl === redirect.old ||
             req.originalUrl === redirect.old + "/"
         ) {
-            res.redirect(301, redirect.new);
+            res.redirect(redirect.statusCode, redirect.new);
             foundRedirect = true;
             console.log(
-                `Redirected from ${req.originalUrl} to ${redirect.new}`
+                `Redirected from ${req.originalUrl} to ${redirect.new} with statusCode ${redirect.statusCode}`
             );
 
             return;

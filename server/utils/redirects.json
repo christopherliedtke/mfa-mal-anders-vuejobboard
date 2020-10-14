@@ -1,270 +1,337 @@
 [
     {
         "old": "/ueber",
-        "new": "/page/about"
+        "new": "/page/about",
+        "statusCode": 301
     },
     {
         "old": "/2020/03/16/gehalt-fuer-medizinische-fachangestellte",
-        "new": "/page/mfa-career/gehalt"
+        "new": "/page/mfa-career/gehalt",
+        "statusCode": 301
     },
     {
         "old": "/2019/12/29/lebenslauf-und-anschreiben-erstelle-schnell-und-unkompliziert-eine-top-bewerbung-mit-unserer-vorlage",
-        "new": "/page/mfa-career/bewerbungstipps"
+        "new": "/page/mfa-career/bewerbungstipps",
+        "statusCode": 301
     },
     {
         "old": "/blog",
-        "new": "/page/magazin"
+        "new": "/page/magazin",
+        "statusCode": 301
     },
     {
         "old": "/2019/10/27/1333",
-        "new": "/article/es-weihnachtet-sehr"
+        "new": "/article/es-weihnachtet-sehr",
+        "statusCode": 301
     },
     {
         "old": "/2020/01/29/in-6-schritten-zur-richtigen-weiterbildung",
-        "new": "/article/in-6-schritten-zur-richtigen-weiterbildung"
+        "new": "/article/in-6-schritten-zur-richtigen-weiterbildung",
+        "statusCode": 301
     },
     {
         "old": "/2020/01/18/foerderung-und-finanzierung-von-weiterbildungen",
-        "new": "/article/foerderung-und-finanzierung-von-weiterbildungen"
+        "new": "/article/foerderung-und-finanzierung-von-weiterbildungen",
+        "statusCode": 301
     },
     {
         "old": "/2020/01/26/warum-es-mfa-mal-anders-gibt",
-        "new": "/article/warum-es-mfa-mal-anders-gibt"
+        "new": "/article/warum-es-mfa-mal-anders-gibt",
+        "statusCode": 301
     },
     {
         "old": "/2020/02/05/schwierige-patienten",
-        "new": "/article/souveraen-bei-schwierigen-patienten-chefs-kollegen"
+        "new": "/article/souveraen-bei-schwierigen-patienten-chefs-kollegen",
+        "statusCode": 301
     },
     {
         "old": "/2020/02/12/5-coole-teamevents-fuer-euren-naechsten-praxisausflug",
-        "new": "/article/5-coole-teamevents-fuer-euren-naechsten-praxisausflug"
+        "new": "/article/5-coole-teamevents-fuer-euren-naechsten-praxisausflug",
+        "statusCode": 301
     },
     {
         "old": "/2020/06/12/fortbildung-weiterbildung-oder-studium-das-ist-hier-die-frage",
-        "new": "/article/in-6-schritten-zur-richtigen-weiterbildung"
+        "new": "/article/in-6-schritten-zur-richtigen-weiterbildung",
+        "statusCode": 301
     },
     {
         "old": "/fuer-mfa",
-        "new": "/page/mfa-career"
+        "new": "/page/mfa-career",
+        "statusCode": 301
     },
     {
         "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen",
-        "new": "/page/mfa-career/fort-und-weiterbildungen"
+        "new": "/page/mfa-career/fort-und-weiterbildungen",
+        "statusCode": 301
     },
     {
         "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/abrechnungsmanagerin",
-        "new": "/page/mfa-career/fort-und-weiterbildungen/abrechnungsmanagerin"
+        "new": "/page/mfa-career/fort-und-weiterbildungen/abrechnungsmanagerin",
+        "statusCode": 301
     },
     {
         "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/ambulantes-operieren",
-        "new": "/page/mfa-career/fort-und-weiterbildungen/ambulantes-operieren"
+        "new": "/page/mfa-career/fort-und-weiterbildungen/ambulantes-operieren",
+        "statusCode": 301
     },
     {
         "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/ambulantes-operieren-in-der-augenheilkunde",
-        "new": "/page/mfa-career/fort-und-weiterbildungen/ambulantes-operieren-in-der-augenheilkunde"
+        "new": "/page/mfa-career/fort-und-weiterbildungen/ambulantes-operieren-in-der-augenheilkunde",
+        "statusCode": 301
     },
     {
         "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/fachwirt-im-gesundheitswesen",
-        "new": "/page/mfa-career/fort-und-weiterbildungen/fachwirtin-im-gesundheits-und-sozialwesen"
+        "new": "/page/mfa-career/fort-und-weiterbildungen/fachwirtin-im-gesundheits-und-sozialwesen",
+        "statusCode": 301
     },
     {
         "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/gefaessassistentin",
-        "new": "/page/mfa-career/fort-und-weiterbildungen/gefaessassistentin"
+        "new": "/page/mfa-career/fort-und-weiterbildungen/gefaessassistentin",
+        "statusCode": 301
     },
     {
         "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/naepa-eva",
-        "new": "/page/mfa-career/fort-und-weiterbildungen/naepa-und-eva"
+        "new": "/page/mfa-career/fort-und-weiterbildungen/naepa-und-eva",
+        "statusCode": 301
     },
     {
         "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/onkologische-fachassistentin",
-        "new": "/page/mfa-career/fort-und-weiterbildungen/onkologischer-fachassistentin"
+        "new": "/page/mfa-career/fort-und-weiterbildungen/onkologischer-fachassistentin",
+        "statusCode": 301
     },
     {
         "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/physician-assistant",
-        "new": "/page/mfa-career/fort-und-weiterbildungen/physician-assistant"
+        "new": "/page/mfa-career/fort-und-weiterbildungen/physician-assistant",
+        "statusCode": 301
     },
     {
         "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/praxismanagerin",
-        "new": "/page/mfa-career/fort-und-weiterbildungen/praxismanagerin"
+        "new": "/page/mfa-career/fort-und-weiterbildungen/praxismanagerin",
+        "statusCode": 301
     },
     {
         "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/weiterbildung-studynurse",
-        "new": "/page/mfa-career/fort-und-weiterbildungen/study-nurse"
+        "new": "/page/mfa-career/fort-und-weiterbildungen/study-nurse",
+        "statusCode": 301
     },
     {
         "old": "/fuer-mfa/jobs-und-berufsbilder",
-        "new": "/page/mfa-career/jobs-und-berufsbilder"
+        "new": "/page/mfa-career/jobs-und-berufsbilder",
+        "statusCode": 301
     },
     {
         "old": "/fuer-mfa/jobs-und-berufsbilder/medizinisch-technische-jobs",
-        "new": "/page/mfa-career/jobs-und-berufsbilder/Medizinisch-Technisch"
+        "new": "/page/mfa-career/jobs-und-berufsbilder/Medizinisch-Technisch",
+        "statusCode": 301
     },
     {
         "old": "/fuer-mfa/jobs-und-berufsbilder/jobs-in-der-beratung",
-        "new": "/page/mfa-career/jobs-und-berufsbilder/Beratung"
+        "new": "/page/mfa-career/jobs-und-berufsbilder/Beratung",
+        "statusCode": 301
     },
     {
         "old": "/fuer-mfa/jobs-und-berufsbilder/jobs-in-der-verwaltung",
-        "new": "/page/mfa-career/jobs-und-berufsbilder/Verwaltung"
+        "new": "/page/mfa-career/jobs-und-berufsbilder/Verwaltung",
+        "statusCode": 301
     },
     {
         "old": "/fuer-mfa/jobs-und-berufsbilder/jobs-im-management",
-        "new": "/page/mfa-career/jobs-und-berufsbilder/Management"
+        "new": "/page/mfa-career/jobs-und-berufsbilder/Management",
+        "statusCode": 301
     },
     {
         "old": "/fuer-mfa/jobs-und-berufsbilder/jobs-in-der-forschung",
-        "new": "/page/mfa-career/jobs-und-berufsbilder/Forschung"
+        "new": "/page/mfa-career/jobs-und-berufsbilder/Forschung",
+        "statusCode": 301
     },
     {
         "old": "/fuer-arbeitgeber",
-        "new": "/page/fuer-arbeitgeber"
+        "new": "/page/fuer-arbeitgeber",
+        "statusCode": 301
     },
     {
         "old": "/ort/berlin",
-        "new": "/jobboard?state=Berlin"
+        "new": "/jobboard?state=Berlin",
+        "statusCode": 301
     },
     {
         "old": "/ort/bayern",
-        "new": "/jobboard?state=Bayern"
+        "new": "/jobboard?state=Bayern",
+        "statusCode": 301
     },
     {
         "old": "/ort/hamburg",
-        "new": "/jobboard?state=Hamburg"
+        "new": "/jobboard?state=Hamburg",
+        "statusCode": 301
     },
     {
         "old": "/ort/niedersachsen",
-        "new": "/jobboard?state=Niedersachsen"
+        "new": "/jobboard?state=Niedersachsen",
+        "statusCode": 301
     },
     {
         "old": "/ort/hessen",
-        "new": "/jobboard?state=Hessen"
+        "new": "/jobboard?state=Hessen",
+        "statusCode": 301
     },
     {
         "old": "/ort/rheinland-pfalz",
-        "new": "/jobboard?state=Rheinland-Pfalz"
+        "new": "/jobboard?state=Rheinland-Pfalz",
+        "statusCode": 301
     },
     {
         "old": "/ort/brandenburg",
-        "new": "/jobboard?state=Brandenburg"
+        "new": "/jobboard?state=Brandenburg",
+        "statusCode": 301
     },
     {
         "old": "/ort/saarland",
-        "new": "/jobboard?state=Saarland"
+        "new": "/jobboard?state=Saarland",
+        "statusCode": 301
     },
     {
         "old": "/ort/thueringen",
-        "new": "/jobboard?state=Thüringen"
+        "new": "/jobboard?state=Thüringen",
+        "statusCode": 301
     },
     {
         "old": "/ort/bremen",
-        "new": "/jobboard?state=Bremen"
+        "new": "/jobboard?state=Bremen",
+        "statusCode": 301
     },
     {
         "old": "/ort/mecklenburg-vorpommern",
-        "new": "/jobboard?state=Mecklenburg-Vorpommern"
+        "new": "/jobboard?state=Mecklenburg-Vorpommern",
+        "statusCode": 301
     },
     {
         "old": "/ort/sachsen",
-        "new": "/jobboard?state=Sachsen"
+        "new": "/jobboard?state=Sachsen",
+        "statusCode": 301
     },
     {
         "old": "/ort/sachsen-anhalt",
-        "new": "/jobboard?state=Sachsen-Anhalt"
+        "new": "/jobboard?state=Sachsen-Anhalt",
+        "statusCode": 301
     },
     {
         "old": "/ort/schleswig-holstein",
-        "new": "/jobboard?state=Schleswig-Holstein"
+        "new": "/jobboard?state=Schleswig-Holstein",
+        "statusCode": 301
     },
     {
         "old": "/ort/baden-wuerttemberg",
-        "new": "/jobboard?state=Baden-Württemberg"
+        "new": "/jobboard?state=Baden-Württemberg",
+        "statusCode": 301
     },
     {
         "old": "/stadt/koeln",
-        "new": "/jobboard?location=Köln"
+        "new": "/jobboard?location=Köln",
+        "statusCode": 301
     },
     {
         "old": "/stadt/berlin",
-        "new": "/jobboard?location=Berlin"
+        "new": "/jobboard?location=Berlin",
+        "statusCode": 301
     },
     {
         "old": "/stadt/hamburg",
-        "new": "/jobboard?location=Hamburg"
+        "new": "/jobboard?location=Hamburg",
+        "statusCode": 301
     },
     {
         "old": "/stadt/muenchen",
-        "new": "/jobboard?location=München"
+        "new": "/jobboard?location=München",
+        "statusCode": 301
     },
     {
         "old": "/anstellungsart/teilzeit",
-        "new": "/jobboard?employmentType=part"
+        "new": "/jobboard?employmentType=part",
+        "statusCode": 301
     },
     {
         "old": "/anstellungsart/vollzeit",
-        "new": "/jobboard?employmentType=full"
+        "new": "/jobboard?employmentType=full",
+        "statusCode": 301
     },
     {
         "old": "/2020/09/07/mfa-m-w-d-wir-bieten-u-a-den-verdienten-corona-bonus-fuer-sie-praxis-fuer-orthopaedie-sport-und-schmerztherapie-linz-am-rhein",
-        "new": "/jobboard/job/5f7b3efa5f5d1f25ffe22a82"
+        "new": "/jobboard/job/5f7b3efa5f5d1f25ffe22a82",
+        "statusCode": 301
     },
     {
         "old": "/2020/03/23/unterstuetzungspersonal-krisenmanagement-m-w-d-in-der-funktion-containment-scout-dringend-gesucht-robert-koch-institut-berlin",
-        "new": "/jobboard"
+        "new": "/jobboard",
+        "statusCode": 301
     },
     {
         "old": "/2020/09/08/unterstuetzungspersonal-fuer-die-gesundheitsaemter-m-w-d-in-der-funktion-containment-scout-bundesweit",
-        "new": "/jobboard"
+        "new": "/jobboard",
+        "statusCode": 301
     },
     {
         "old": "/2020/06/24/medizinische-schreibkraft-im-homeoffice-m-w-alstertext-gmbh-co-kg-hamburg",
-        "new": "/jobboard"
+        "new": "/jobboard",
+        "statusCode": 301
     },
     {
         "old": "/2020/01/07/medizinische-fachangestellte-medizinischer-fachangestellter-im-gesundheitsamt",
-        "new": "/jobboard"
+        "new": "/jobboard",
+        "statusCode": 301
     },
     {
         "old": "/2020/07/28/gesundheitsaufsicht-im-gesundheitsamt-m-w-d-3-stellen-nach-tvoed-celle",
-        "new": "/jobboard"
+        "new": "/jobboard",
+        "statusCode": 301
     },
     {
         "old": "/2020/02/02/medizinische-schreibkraft-m-w-d-intern-und-im-homeoffice-muenchen",
-        "new": "/jobboard"
+        "new": "/jobboard",
+        "statusCode": 301
     },
     {
         "old": "/2020/09/05/medizinische-fachangestellte-m-w-d-gesundheitsamt-der-stadt-darmstadt",
-        "new": "/jobboard"
+        "new": "/jobboard",
+        "statusCode": 301
     },
     {
         "old": "/2019/08/11/wir-suchen-einen-virtuelle-assistenten-m-w-home-office-der-unser-virtuelles-buero-managed",
-        "new": "/jobboard"
+        "new": "/jobboard",
+        "statusCode": 301
     },
     {
         "old": "/2020/08/03/medizinische-fachangestellte-mfa-fuer-kinderarztpraxis-berlin",
-        "new": "/jobboard"
+        "new": "/jobboard",
+        "statusCode": 301
     },
     {
         "old": "/2020/03/29/coronavirus-personal-fuer-testzentren-gesucht-kassenaerztliche-vereinigung-hessen",
-        "new": "/jobboard"
+        "new": "/jobboard",
+        "statusCode": 301
     },
     {
         "old": "/2020/05/17/medizinische-fachangestellte-m-w-d-amedes-medizinische-dienstleistungen-gmbh-berlin",
-        "new": "/jobboard"
+        "new": "/jobboard",
+        "statusCode": 301
     },
     {
         "old": "/2020/08/01/mfa-arzthelferin-m-w-d-fuer-nette-hausarztpraxis-in-herne-gesucht-praxis-am-schloss-struenkede-herne",
-        "new": "/jobboard"
+        "new": "/jobboard",
+        "statusCode": 301
     },
     {
         "old": "/2020/01/24/mfa-arzthelferin-queereinsteiger-berufsanfaenger-m-w-d",
-        "new": "/jobboard"
+        "new": "/jobboard",
+        "statusCode": 301
     },
     {
-        "old": "https://www.mfa-mal-anders.de/page/2",
-        "new": "/jobboard"
+        "old": "/page/2",
+        "new": "/jobboard",
+        "statusCode": 404
     },
     {
-        "old": "https://www.mfa-mal-anders.de/page/12",
-        "new": "/jobboard"
+        "old": "/page/12",
+        "new": "/jobboard",
+        "statusCode": 404
     }
 ]
