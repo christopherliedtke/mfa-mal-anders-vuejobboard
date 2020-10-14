@@ -11,7 +11,7 @@ if (process.env.NODE_ENV == "production") {
 const jwtClient = new google.auth.JWT(
     secrets.GOOGLE_API_CLIENT_EMAIL,
     null,
-    secrets.GOOGLE_API_PRIVATE_KEY,
+    secrets.GOOGLE_API_PRIVATE_KEY.replace(/\\n/gm, "\n"),
     ["https://www.googleapis.com/auth/indexing"],
     null
 );
