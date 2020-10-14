@@ -345,7 +345,7 @@ router.get(
                     { email: user.email },
                     { status: "active" }
                 );
-                await Code.deleteMany({ email: user.email });
+                // await Code.deleteMany({ email: user.email });
 
                 redirectPath = `${res.locals.secrets.WEBSITE_URL}/account/verified`;
             }
