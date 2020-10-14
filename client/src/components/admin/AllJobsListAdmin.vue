@@ -43,6 +43,9 @@
             <template v-slot:cell(paidAt)="row">
                 {{ row.value && new Date(row.value).toLocaleString() }}
             </template>
+            <template v-slot:cell(applicationDeadline)="row">
+                {{ row.value && new Date(row.value).toLocaleString() }}
+            </template>
             <template v-slot:cell(paidExpiresAt)="row">
                 {{ row.value && new Date(row.value).toLocaleString() }}
             </template>
@@ -431,12 +434,11 @@
                     item.status === "published" &&
                     item.paid === true &&
                     item.paidExpiresAt > new Date() &&
-                    new Date(item.applicationDeadline) > new Date()
+                    new Date(item.applicationDeadline) >
+                        new Date(new Date().valueOf() - 1000 * 60 * 60 * 24)
                 )
                     return "table-success";
             }
         }
     };
 </script>
-
-<style></style>

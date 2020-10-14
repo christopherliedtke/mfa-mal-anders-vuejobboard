@@ -122,17 +122,31 @@
             </div>
             <div class="mt-4" v-html="job.description"></div>
             <div class="mt-3" v-if="job.company.url">
-                <a :href="job.company.url" target="_blank" ref="nofollow"
+                <b-link
+                    @click="
+                        trackEvent(
+                            `VisitHP: ${job.title} | ${job.company.name} - ${job._id}`,
+                            'CompanyHomepage'
+                        )
+                    "
+                    :href="job.company.url"
+                    target="_blank"
+                    ref="nofollow"
                     ><strong
                         >Besuchen Sie unsere Homepage
                         <b-icon icon="box-arrow-up-right"/></strong
-                ></a>
+                ></b-link>
             </div>
             <div class="mt-4">
                 <b-button
                     size="lg"
                     :variant="job.simpleApplication ? 'secondary' : 'primary'"
-                    @click="trackEvent(job, 'Apply')"
+                    @click="
+                        trackEvent(
+                            `Apply: ${job.title} | ${job.company.name} - ${job._id}`,
+                            'Apply'
+                        )
+                    "
                     :href="
                         job.extJobUrl ||
                             `mailto:${job.applicationEmail}?subject=Bewerbung - ${job.title} über ${config.website.name}`
@@ -167,23 +181,33 @@
                     </div>
                     <div v-if="job.contactPhone">
                         Telefon:
-                        <a
-                            @click="trackEvent(job, 'ContactPhone')"
+                        <b-link
+                            @click="
+                                trackEvent(
+                                    `Tel: ${job.title} | ${job.company.name} - ${job._id}`,
+                                    'ContactPhone'
+                                )
+                            "
                             :href="`tel:${job.contactPhone}`"
                             target="_blank"
-                            >{{ job.contactPhone }}</a
+                            >{{ job.contactPhone }}</b-link
                         >
                         <br />
                     </div>
                     <div v-if="job.contactEmail">
                         E-Mail:
-                        <a
-                            @click="trackEvent(job, 'ContactEmail')"
+                        <b-link
+                            @click="
+                                trackEvent(
+                                    `Email: ${job.title} | ${job.company.name} - ${job._id}`,
+                                    'ContactEmail'
+                                )
+                            "
                             :href="
                                 `mailto:${job.contactEmail}?subject=${job.title} über ${config.website.name}`
                             "
                             target="_blank"
-                            >{{ job.contactEmail }}</a
+                            >{{ job.contactEmail }}</b-link
                         >
                     </div>
                 </div>
@@ -293,10 +317,9 @@
         methods: {
             async getJob(jobId) {
                 try {
-                    const job = await axios.post(
-                        `/api/jobs/${this.apiJobsSchema}`,
-                        {
-                            query: `
+                    const job = await axios.get(
+                        `/api/jobs/${this.apiJobsSchema}?query=` +
+                            `
                             query {
                                 job(_id: "${jobId}") {
                                     _id
@@ -332,7 +355,6 @@
                                 }
                             }
                         `
-                        }
                     );
 
                     job.data.data.job
@@ -348,13 +370,13 @@
                 this.$emit("updateHead");
             },
             trackEvent: function(
-                job,
+                label,
                 category,
                 action = "Outbound_Link_Click"
             ) {
                 this.$gtag.event(action, {
                     event_category: category,
-                    event_label: `${job.title} | ${job.company.name} - ${job._id}`
+                    event_label: label
                 });
             }
         },

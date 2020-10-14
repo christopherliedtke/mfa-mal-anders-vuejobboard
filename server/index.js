@@ -113,6 +113,7 @@ if (process.env.NODE_ENV == "production") {
 // #Routes w csrf protection
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/user", require("./routes/user"));
+app.use("/api/subscriber", require("./routes/subscriber"));
 app.use("/api/jobs", require("./routes/jobs"));
 app.use("/api/companies", require("./routes/companies"));
 app.use("/api/contact", require("./routes/contact"));

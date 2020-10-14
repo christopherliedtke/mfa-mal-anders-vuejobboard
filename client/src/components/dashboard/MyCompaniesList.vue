@@ -72,7 +72,8 @@
             <b-modal
                 :id="company._id"
                 :title="`Delete ${company.name}`"
-                ok-title="Delete Company"
+                ok-title="Unternehmen löschen"
+                cancel-title="Abbrechen"
                 centered
                 ok-variant="danger"
                 footer-class="d-flex justify-content-between"

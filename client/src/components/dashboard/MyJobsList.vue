@@ -187,7 +187,8 @@
             <b-modal
                 :id="job._id"
                 :title="`Delete ${job.title}`"
-                ok-title="Delete Job"
+                ok-title="Stellenanzeige löschen"
+                cancel-title="Abbrechen"
                 centered
                 ok-variant="danger"
                 footer-class="d-flex justify-content-between"

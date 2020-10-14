@@ -6,7 +6,7 @@ const adminUsersSchema = require("../utils/graphQL/schemas/adminUsersSchema");
 const authenticateToken = require("../utils/middleware/checkAuth");
 const isAdmin = require("../utils/middleware/isAdmin");
 
-// #route:  POST /api/users/private
+// #route:  POST /api/user/private
 // #desc:   CRUD users to private
 // #access: Private
 router.use(
@@ -21,7 +21,7 @@ router.use(
     })
 );
 
-// #route:  POST /api/users/admin
+// #route:  POST /api/user/admin
 // #desc:   CRUD users to admin
 // #access: Private
 router.use(

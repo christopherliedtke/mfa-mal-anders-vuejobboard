@@ -14,7 +14,10 @@
             <b-tab title="Coupons" @click="setQuery('tab', 3)">
                 <AllCouponsListAdmin />
             </b-tab>
-            <b-tab title="Data Analytics" @click="setQuery('tab', 4)"> </b-tab>
+            <b-tab title="Subscribers" @click="setQuery('tab', 4)">
+                <AllSubscribersListAdmin />
+            </b-tab>
+            <b-tab title="Data Analytics" @click="setQuery('tab', 5)"> </b-tab>
         </b-tabs>
 
         <Head title="Admin" desc="" img="" />
@@ -26,6 +29,7 @@
     import AllCompaniesListAdmin from "@/components/admin/AllCompaniesListAdmin.vue";
     import AllUsersListAdmin from "@/components/admin/AllUsersListAdmin.vue";
     import AllCouponsListAdmin from "@/components/admin/AllCouponsListAdmin.vue";
+    import AllSubscribersListAdmin from "@/components/admin/AllSubscribersListAdmin.vue";
     import Head from "@/components/utils/Head.vue";
     export default {
         name: "Admin",
@@ -34,6 +38,7 @@
             AllCompaniesListAdmin,
             AllUsersListAdmin,
             AllCouponsListAdmin,
+            AllSubscribersListAdmin,
             Head
         },
         data() {
