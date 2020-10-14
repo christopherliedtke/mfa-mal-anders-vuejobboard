@@ -114,6 +114,7 @@
                                 >
                             </div>
                         </b-nav-text>
+                        <b-nav-item to="/jobboard">Stellenangebote</b-nav-item>
                         <b-nav-item to="/page/mfa-career/bewerbungstipps"
                             >Bewerbungstipps</b-nav-item
                         >
