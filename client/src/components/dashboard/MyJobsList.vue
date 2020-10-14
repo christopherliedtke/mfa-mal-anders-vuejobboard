@@ -5,9 +5,19 @@
             Hier können Sie Stellenanzeigen erstellen, bearbeiten,
             veröffentlichen oder löschen.
         </p>
-        <b-button to="/dashboard/new-job" variant="outline-primary"
+        <b-button
+            class="mr-2 mb-2"
+            to="/dashboard/new-job"
+            variant="outline-primary"
             ><b-icon class="mr-2" scale="1" icon="plus-circle"></b-icon>Neue
             Stelle</b-button
+        >
+        <b-button
+            class="mr-2 mb-2"
+            to="/article/7-tipps-fuer-attraktive-stellenanzeigen-fuer-mfas"
+            variant="outline-secondary"
+            target="_blank"
+            >Tipps für Stellenanzeigen</b-button
         >
         <b-card v-for="job in myJobs" :key="job._id" class="my-3">
             <b-card-text>

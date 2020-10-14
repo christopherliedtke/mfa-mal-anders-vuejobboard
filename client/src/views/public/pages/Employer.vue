@@ -12,7 +12,7 @@
                         finden!
                     </h2>
                     <p>
-                        Übersenden Sie uns noch heute Ihre Stellenanzeige und
+                        Erstellen Sie noch heute Ihre Stellenanzeige und
                         erreichen Sie unsere große Community von MFAs! Mit
                         unserem “Pay What You Want”* Modell zahlen sie nur das,
                         was Sie möchten.
@@ -292,19 +292,19 @@
                         icon: "drafting-compass",
                         title: "Präziser Stellentitel",
                         desc:
-                            "Beschreiben Sie die Stelle in wenigen Worten so konkret wie möglich. Heben Sie bereits hier die Vorteile für die Arbeit bei Ihnen hervor. Versuchen Sie bereits hier positiv aufzufallen!"
+                            "Beschreiben Sie die Stelle in wenigen Worten so konkret wie möglich. Heben Sie bereits hier die Vorteile für die Arbeit bei Ihnen hervor. Versuchen Sie hier positiv aufzufallen!"
                     },
                     {
                         icon: "hospital",
                         title: "Interessanter Einstiegstext",
                         desc:
-                            "Erzählen Sie ein wenig über die Praxis bzw. Ihr Unternehmen. Wie viele Mitarbeiter*innen gibt es? Seit wann gibt es die Praxis? Was zeichnet Sie aus? Wie ist die Arbeitskultur?"
+                            "Erzählen Sie ein wenig über die Praxis bzw. Ihr Unternehmen. Wie viele MitarbeiterInnen gibt es? Seit wann gibt es die Praxis? Was zeichnet Sie aus? Wie ist die Arbeitskultur?"
                     },
                     {
                         icon: "tasks",
                         title: "Konkrete Aufgaben",
                         desc:
-                            "Beschreiben Sie die konkreten und wichtigsten Aufgaben, sodass Bewerber*innen ein gutes Bild bekommen und wissen, was sie potentiell erwartet."
+                            "Beschreiben Sie die konkreten und wichtigsten Aufgaben, sodass BewerberInnen ein gutes Bild bekommen und wissen, was sie potentiell erwartet."
                     },
                     {
                         icon: "users",
@@ -316,7 +316,7 @@
                         icon: "syringe",
                         title: "Adäquates Stellenprofil",
                         desc:
-                            "Werden Sie auch hier konkret und unterscheiden Sie zwischen erforderlichen und wünschenswerten Kenntnissen. Zu viele oder hohe Anforderungen können Bewerber*innen abschrecken, die eigentlich geeignet wären."
+                            "Werden Sie auch hier konkret und unterscheiden Sie zwischen erforderlichen und wünschenswerten Kenntnissen. Zu viele oder hohe Anforderungen können BewerberInnen abschrecken, die eigentlich geeignet wären."
                     },
                     {
                         icon: "gift",
@@ -328,7 +328,7 @@
                         icon: "door-open",
                         title: "Einfaches Bewerben",
                         desc:
-                            "Ermöglichen Sie das einfache Bewerben nur per Lebenslauf. So können Sie die innerliche Hürde für Bewerber*innen beträchtlich senken. Das persönliche Gespräch ist letztlich ohnehin entscheidend."
+                            "Ermöglichen Sie das einfache Bewerben nur per Lebenslauf. So können Sie die innerliche Hürde für BewerberInnen beträchtlich senken. Das persönliche Gespräch ist letztlich ohnehin entscheidend."
                     }
                 ],
                 numbersAndFacts: [
@@ -380,5 +380,3 @@
         }
     };
 </script>
-
-<style scoped lang="scss"></style>

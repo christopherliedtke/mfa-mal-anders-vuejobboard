@@ -318,43 +318,47 @@
             async getJob(jobId) {
                 try {
                     const job = await axios.get(
-                        `/api/jobs/${this.apiJobsSchema}?query=` +
-                            `
-                            query {
-                                job(_id: "${jobId}") {
-                                    _id
-                                    createdAt
-                                    paidAt
-                                    title
-                                    description
-                                    employmentType
-                                    applicationDeadline
-                                    simpleApplication
-                                    extJobUrl
-                                    applicationEmail
-                                    imageUrl
-                                    contactGender
-                                    contactTitle
-                                    contactFirstName
-                                    contactLastName
-                                    contactEmail
-                                    contactPhone
-                                    company {
-                                        name
-                                        street
-                                        location
-                                        zipCode
-                                        state
-                                        country
-                                        geoCodeLat
-                                        geoCodeLng
-                                        size
-                                        url
-                                        logoUrl
+                        `/api/jobs/${this.apiJobsSchema}`,
+                        {
+                            params: {
+                                query: `
+                                    query {
+                                        job(_id: "${jobId}") {
+                                            _id
+                                            createdAt
+                                            paidAt
+                                            title
+                                            description
+                                            employmentType
+                                            applicationDeadline
+                                            simpleApplication
+                                            extJobUrl
+                                            applicationEmail
+                                            imageUrl
+                                            contactGender
+                                            contactTitle
+                                            contactFirstName
+                                            contactLastName
+                                            contactEmail
+                                            contactPhone
+                                            company {
+                                                name
+                                                street
+                                                location
+                                                zipCode
+                                                state
+                                                country
+                                                geoCodeLat
+                                                geoCodeLng
+                                                size
+                                                url
+                                                logoUrl
+                                            }
+                                        }
                                     }
-                                }
+                                `
                             }
-                        `
+                        }
                     );
 
                     job.data.data.job

@@ -44,7 +44,7 @@ module.exports.googleIndexing = function (url = "", type = "URL_UPDATED") {
                 };
                 request(options, function (error, response, body) {
                     // Handle the response
-                    console.log(body);
+                    console.log("googleIndexing response.body: ", body);
                 });
             });
         } catch (err) {

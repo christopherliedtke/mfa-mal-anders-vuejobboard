@@ -47,8 +47,42 @@
                             "@type" : "JobPosting",
                             "title": "${this.job.title}",
                             "description" : "${this.$sanitize(
-                                this.job.description,
-                                { allowedTags: [] }
+                                this.job.description +
+                                    `<div><h2>Kontakt für Bewerbungen</h2><p>${
+                                        this.job.contactGender
+                                            ? this.job.contactGender
+                                            : ""
+                                    } ${
+                                        this.job.contactTitle
+                                            ? this.job.contactTitle
+                                            : ""
+                                    } ${
+                                        this.job.contactFirstName
+                                            ? this.job.contactFirstName
+                                            : ""
+                                    } ${
+                                        this.job.contactLastName
+                                            ? this.job.contactLastName
+                                            : ""
+                                    }</p></div>`,
+                                {
+                                    allowedTags: [
+                                        "h1",
+                                        "h2",
+                                        "h3",
+                                        "h4",
+                                        "h5",
+                                        "h6",
+                                        "p",
+                                        "strong",
+                                        "em",
+                                        "span",
+                                        "ul",
+                                        "ol",
+                                        "li",
+                                        "div"
+                                    ]
+                                }
                             )}",
                             "datePosted": "${new Date(
                                 this.job.createdAt
