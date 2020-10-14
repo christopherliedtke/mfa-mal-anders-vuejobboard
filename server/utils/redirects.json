@@ -327,11 +327,11 @@
     {
         "old": "/page/2",
         "new": "/jobboard",
-        "statusCode": 404
+        "statusCode": 301
     },
     {
         "old": "/page/12",
         "new": "/jobboard",
-        "statusCode": 404
+        "statusCode": 301
     }
 ]
