@@ -53,7 +53,7 @@
         </b-table>
         <b-modal
             id="deleteUserModal"
-            :title="`Delete ${userToDelete.name}`"
+            :title="`Delete ${userToDelete.email}`"
             ok-title="Delete User"
             centered
             ok-variant="danger"

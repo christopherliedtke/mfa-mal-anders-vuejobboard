@@ -329,16 +329,25 @@ router.get(
 router.get(
     "/verification/verify-account/:userId/:secretCode",
     async (req, res) => {
-        let redirectPath;
+        let redirectPath, user, code;
 
         try {
-            const user = await User.findById(req.params.userId);
-            const response = await Code.findOne({
-                email: user.email,
-                code: req.params.secretCode,
-            });
+            user = await User.findById(req.params.userId);
 
-            if (!user || !response) {
+            if (!user) {
+                console.log("Error on /verify-account -> no user: ", user);
+            } else {
+                code = await Code.findOne({
+                    email: user.email,
+                    code: req.params.secretCode,
+                });
+            }
+
+            if (!code) {
+                console.log("Error on /verify-account -> no code: ", code);
+            }
+
+            if (!user || !code) {
                 redirectPath = `${res.locals.secrets.WEBSITE_URL}/account/verification?error=true`;
             } else {
                 await User.updateOne(
