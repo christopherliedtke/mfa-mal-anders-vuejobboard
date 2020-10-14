@@ -353,7 +353,7 @@ const routes = [
     },
     // #404
     { path: "/404", component: NotFound, meta: { public: true } },
-    { path: "*", redirect: "/404" }
+    { path: "*", redirect: "/jobboard" }
 ];
 
 const router = new VueRouter({
