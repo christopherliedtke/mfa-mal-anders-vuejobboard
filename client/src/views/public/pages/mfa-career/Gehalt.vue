@@ -132,6 +132,8 @@
                 </b-col>
             </b-row>
 
+            <ToJobboardBanner class="my-5 mx-auto" />
+
             <h2>
                 Anrechnung von Berufsjahren
             </h2>
@@ -611,8 +613,6 @@
                 </b-card>
             </div>
 
-            <ToJobboardBanner class="my-5 mx-auto" />
-
             <h2>Benefits und wenn das Gehalt nicht zufriedenstellend ist</h2>
             <p>
                 Neben einer fairen Bezahlung spielen auch weitere, sogenannte
@@ -703,6 +703,7 @@
                     </li>
                 </ul>
             </div>
+
             <p>
                 Ich hoffe, dir mit diesem Artikel ein besseres Gespür für die
                 Berechnung des Gehalts bei unterschiedlichen Stufen an
@@ -710,6 +711,9 @@
                 für dein Wissen und deine bisherige berufliche Erfahrung
                 einzustehen und ein angemessenes Gehalt zu verlangen.
             </p>
+
+            <ToJobboardBanner class="my-5 mx-auto" />
+
             <h2>Quellen</h2>
             <p>
                 <a
