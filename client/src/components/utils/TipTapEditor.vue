@@ -189,6 +189,9 @@
                 }
             }
         },
+        mounted() {
+            this.setContent(this.content);
+        },
         beforeDestroy() {
             this.editor.destroy();
         },
@@ -210,6 +213,7 @@
 
                 // HTML string is also supported
                 this.editor.setContent(content);
+
                 // this.editor.focus();
             }
         }

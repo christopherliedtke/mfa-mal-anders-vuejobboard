@@ -452,7 +452,15 @@
                     paidAmount: 0,
                     refreshFrequency: 0,
                     title: "",
-                    description: "",
+                    description: `
+                        <p>[Schreiben Sie eine kurze Einleitung zu Ihrem Unternehmen.]</p>
+                        <h3>Was wir Ihnen bieten</h3>
+                        <p>[Was bieten Sie potentiellen BewerberInnen?]</p>
+                        <h3>Ihre Aufgaben</h3>
+                        <p>[Welche Aufgaben sollen von potentiellen BewerberInnen durchgeführt werden?]</p>
+                        <h3>Ihr Profil</h3>
+                        <p>[Was sollen potentielle BewerberInnen mitbringen?]</p>
+                    `,
                     specialization: null,
                     employmentType: null,
                     applicationDeadline: "",
@@ -683,7 +691,13 @@
                                 geoCodeLat: ${this.job.company.geoCodeLat}, 
                                 geoCodeLng: ${this.job.company.geoCodeLng}, 
                                 size: "${this.job.company.size}"
-                                url: "${this.job.company.url}"
+                                url: "${
+                                    !/^https?:\/\//i.test(
+                                        this.job.company.url
+                                    ) && this.job.company.url
+                                        ? "https://" + this.job.company.url
+                                        : this.job.company.url
+                                }"
                                 logoUrl: "${this.job.company.logoUrl}"
                             ) {
                                 _id
@@ -728,7 +742,12 @@
                                 }"
                                 simpleApplication: ${this.job.simpleApplication}
                                 specialization: "${this.job.specialization}"
-                                extJobUrl: "${this.job.extJobUrl}"
+                                extJobUrl: "${
+                                    !/^https?:\/\//i.test(this.job.extJobUrl) &&
+                                    this.job.extJobUrl
+                                        ? "https://" + this.job.extJobUrl
+                                        : this.job.extJobUrl
+                                }"
                                 applicationEmail: "${this.job.applicationEmail}"
                                 imageUrl: "${this.job.imageUrl}"
                                 contactGender: "${this.job.contactGender}"
