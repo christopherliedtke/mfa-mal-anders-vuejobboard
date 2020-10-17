@@ -6,11 +6,11 @@
         target="_blank"
     >
         <font-awesome-icon
-            class="mr-2"
+            :class="content ? 'mr-2' : ''"
             :icon="['fab', 'facebook-square']"
             size="lg"
         />
-        Facebook
+        {{ content }}
     </b-button>
 </template>
 
@@ -18,6 +18,12 @@
     import config from "@/utils/config.json";
     export default {
         name: "FacebookBtn",
+        props: {
+            content: {
+                type: String,
+                default: "Facebook"
+            }
+        },
         data() {
             return {
                 config
@@ -25,5 +31,3 @@
         }
     };
 </script>
-
-<style scoped lang="scss"></style>

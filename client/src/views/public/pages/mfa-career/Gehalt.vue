@@ -124,7 +124,11 @@
                             >hier</a
                         >.
                     </p>
-                    <Gehaltsrechner class="my-5" />
+                    <Gehaltsrechner class="my-4" />
+                    <FacebookBtn
+                        class="mb-4"
+                        content="Folge uns auf Facebook"
+                    />
                 </b-col>
             </b-row>
 
@@ -747,12 +751,14 @@
 <script>
     import Head from "@/components/utils/Head.vue";
     import Gehaltsrechner from "@/components/utils/Gehaltsrechner.vue";
+    import FacebookBtn from "@/components/utils/FacebookBtn.vue";
     import ToJobboardBanner from "@/components/utils/ToJobboardBanner.vue";
     export default {
         name: "Gehalt",
         components: {
             Head,
             Gehaltsrechner,
+            FacebookBtn,
             ToJobboardBanner
         },
         data() {

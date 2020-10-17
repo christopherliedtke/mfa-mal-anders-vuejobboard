@@ -31,6 +31,7 @@
                                 />Karte</b-button
                             >
                         </b-button-group>
+                        <FacebookBtn class="d-lg-none mb-3 ml-1" content="" />
                     </b-button-toolbar>
                     <b-form id="job-filter" inline @submit.prevent>
                         <b-input-group class="mb-1 mr-2">
@@ -137,11 +138,15 @@
                         class="my-1"
                         >Stellenanzeige schalten</b-button
                     > -->
-                    <div class="small text-right pr-3 pt-1">
+                    <div class="small text-right mb-3 pr-3 pt-1">
                         <b-link to="/page/fuer-arbeitgeber"
                             >Stellenanzeige schalten</b-link
                         >
                     </div>
+                    <FacebookBtn
+                        class="d-none d-lg-inline-block mt-4"
+                        content="Folge uns auf Facebook"
+                    />
                 </b-col>
                 <b-col>
                     <keep-alive>
@@ -150,6 +155,10 @@
                             :is="computedJobboardView"
                         ></component>
                     </keep-alive>
+                    <FacebookBtn
+                        class="mt-3"
+                        content="Folge uns auf Facebook"
+                    />
                 </b-col>
             </b-row>
         </b-container>
@@ -174,12 +183,14 @@
     } from "@/utils/jobDataConfig.json";
     import HereMapMultiJobs from "@/components/hereMaps/HereMapMultiJobs.vue";
     import JobboardList from "@/components/JobboardList.vue";
+    import FacebookBtn from "@/components/utils/FacebookBtn.vue";
     import Head from "@/components/utils/Head.vue";
     export default {
         name: "Jobboard",
         components: {
             JobboardList,
             HereMapMultiJobs,
+            FacebookBtn,
             Head
         },
         data() {
