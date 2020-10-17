@@ -56,6 +56,7 @@ router.post("/login", async (req, res) => {
                     );
 
                     req.session.token = token;
+                    console.log("New Login: ", user);
 
                     res.json({
                         success: true,
@@ -212,6 +213,7 @@ router.post("/register", async (req, res) => {
                 const emailSent = await emailService.sendMail(data);
 
                 console.log("sendMail() after register: ", emailSent);
+                console.log("New Registration: ", user);
 
                 res.json({
                     success: true,
@@ -312,7 +314,10 @@ router.get(
                 };
 
                 const emailSent = await emailService.sendMail(data);
-                console.log("sendMail() for additional email: ", emailSent);
+                console.log(
+                    "sendMail() for additional activation email: ",
+                    emailSent
+                );
 
                 res.json({ success: true });
             }
@@ -335,7 +340,10 @@ router.get(
             user = await User.findById(req.params.userId);
 
             if (!user) {
-                console.log("Error on /verify-account -> no user: ", user);
+                console.log(
+                    `Error on /verify-account -> no user found for user._id ${req.params.userId}: `,
+                    user
+                );
             } else {
                 code = await Code.findOne({
                     email: user.email,
@@ -344,7 +352,10 @@ router.get(
             }
 
             if (!code) {
-                console.log("Error on /verify-account -> no code: ", code);
+                console.log(
+                    `Error on /verify-account -> no code found for user._id ${req.params.userId}: `,
+                    code
+                );
             }
 
             if (!user || !code) {

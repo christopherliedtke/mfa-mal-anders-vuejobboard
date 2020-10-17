@@ -140,7 +140,7 @@
                 />
             </b-input-group>
             <label for="title-image"
-                >Titel/Team Bild (jpg, png | max. 5MB)</label
+                >Team/Praxis Bild (jpg, png | max. 5MB)</label
             >
             <ImageUploader
                 id="title-image"
