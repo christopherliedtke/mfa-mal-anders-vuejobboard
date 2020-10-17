@@ -138,7 +138,9 @@
                         >Stellenanzeige schalten</b-button
                     > -->
                     <div class="small text-right pr-3 pt-1">
-                        <b-link to="/register">Stellenanzeige schalten</b-link>
+                        <b-link to="/page/fuer-arbeitgeber"
+                            >Stellenanzeige schalten</b-link
+                        >
                     </div>
                 </b-col>
                 <b-col>
