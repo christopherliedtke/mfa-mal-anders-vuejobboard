@@ -8,14 +8,17 @@
                 <div class="bg-logo"></div>
                 <b-col cols="12" md="6">
                     <h2 class="h1 bold mb-4">
-                        <em>Schneller</em> motivierte MFAs und ArzthelferInnen
-                        finden!
+                        <em>Motivierte</em> und <em>qualifizierte</em> MFAs und
+                        ArzthelferInnen gesucht!
                     </h2>
                     <p>
                         Erstellen Sie noch heute Ihre Stellenanzeige und
                         erreichen Sie unsere große Community von MFAs! Mit
-                        unserem “Pay What You Want”* Modell zahlen sie nur das,
-                        was Sie möchten.
+                        unserem
+                        <b-link class="text-secondary" href="#pay-what-you-want"
+                            >“Pay What You Want”*</b-link
+                        >
+                        Modell bestimmen Sie, wie viel Sie zahlen.
                     </p>
                     <b-button
                         to="/register"
