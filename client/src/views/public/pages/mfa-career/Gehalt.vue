@@ -126,9 +126,10 @@
                     </p>
                     <Gehaltsrechner class="my-4" />
                     <FacebookBtn
-                        class="mb-4"
-                        content="Folge uns auf Facebook"
+                        class="mb-4 mr-1"
+                        content="Folgen und keine Neuigkeiten verpassen"
                     />
+                    <FacebookShareBtn class="mb-4" />
                 </b-col>
             </b-row>
 
@@ -714,6 +715,15 @@
 
             <ToJobboardBanner class="my-5 mx-auto" />
 
+            <div class="row mb-4">
+                <div class="col">
+                    <BerufsbilderBanner />
+                </div>
+                <div class="col">
+                    <WeiterbildungenBanner />
+                </div>
+            </div>
+
             <h2>Quellen</h2>
             <p>
                 <a
@@ -756,14 +766,20 @@
     import Head from "@/components/utils/Head.vue";
     import Gehaltsrechner from "@/components/utils/Gehaltsrechner.vue";
     import FacebookBtn from "@/components/utils/FacebookBtn.vue";
+    import FacebookShareBtn from "@/components/utils/FacebookShareBtn.vue";
     import ToJobboardBanner from "@/components/utils/ToJobboardBanner.vue";
+    import BerufsbilderBanner from "@/components/utils/BerufsbilderBanner.vue";
+    import WeiterbildungenBanner from "@/components/utils/WeiterbildungenBanner.vue";
     export default {
         name: "Gehalt",
         components: {
             Head,
             Gehaltsrechner,
             FacebookBtn,
-            ToJobboardBanner
+            FacebookShareBtn,
+            ToJobboardBanner,
+            BerufsbilderBanner,
+            WeiterbildungenBanner
         },
         data() {
             return {

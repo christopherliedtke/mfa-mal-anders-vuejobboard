@@ -1,11 +1,10 @@
 <template>
     <b-button
         variant="primary"
-        :disabled="!$route.meta.public"
         class="facebook-share-btn"
         :href="
             `https://www.facebook.com/sharer/sharer.php?u=${url}${
-                sharePath ? sharePath : ''
+                sharePath ? sharePath : $route.fullPath
             }`
         "
         target="_blank"
@@ -15,7 +14,7 @@
             :icon="['fab', 'facebook-square']"
             size="lg"
         />
-        Facebook
+        {{ content }}
         <b-icon class="ml-2" icon="share-fill" font-scale="0.95"></b-icon>
     </b-button>
 </template>
@@ -23,7 +22,10 @@
 <script>
     export default {
         name: "FacebookShareBtn",
-        props: ["sharePath"],
+        props: {
+            sharePath: { type: String, default: "" },
+            content: { type: String, default: "Teilen" }
+        },
         data() {
             return {
                 url: window.location.origin
