@@ -42,7 +42,7 @@ router.post("/checkout-completed", async (req, res) => {
             paidExpiresAt.getDate() + config.stripe.paymentExpirationDays
         );
 
-        let refreshFrequency;
+        let refreshFrequency = 0;
         config.stripe.refreshFrequencies.forEach((frequency) => {
             if (amount >= frequency.amount) {
                 refreshFrequency = frequency.refreshAfterDays;
