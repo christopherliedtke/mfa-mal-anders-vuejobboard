@@ -26,6 +26,7 @@ router.post("/checkout-completed", async (req, res) => {
         couponId,
         couponCode,
         couponUsage,
+        refreshFrequency: couponRefreshFrequency,
     } = req.body.data.object.metadata;
 
     const amount = req.body.data.object["amount_total"];
@@ -42,12 +43,15 @@ router.post("/checkout-completed", async (req, res) => {
             paidExpiresAt.getDate() + config.stripe.paymentExpirationDays
         );
 
-        let refreshFrequency = 0;
-        config.stripe.refreshFrequencies.forEach((frequency) => {
-            if (amount >= frequency.amount) {
-                refreshFrequency = frequency.refreshAfterDays;
-            }
-        });
+        let refreshFrequency = couponRefreshFrequency || 0;
+
+        if (refreshFrequency === 0) {
+            config.stripe.refreshFrequencies.forEach((frequency) => {
+                if (amount >= frequency.amount) {
+                    refreshFrequency = frequency.refreshAfterDays;
+                }
+            });
+        }
 
         if (intent.status === "succeeded") {
             await Job.updateOne(

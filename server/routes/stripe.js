@@ -85,7 +85,7 @@ router.post("/create-session-id", authenticateToken, async (req, res) => {
         let discount = 0;
         let couponUsage = "";
         let couponId;
-        let couponRefreshFrequency;
+        let couponRefreshFrequency = 0;
 
         if (req.body.code) {
             const coupon = await Coupon.findOne({ code: req.body.code });
