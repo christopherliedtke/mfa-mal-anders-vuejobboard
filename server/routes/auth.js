@@ -434,7 +434,9 @@ router.post("/password-reset/get-code", async (req, res) => {
     let errors = [];
 
     if (!email) {
-        errors.push({ msg: "Please provide your registered email address!" });
+        errors.push({
+            msg: "Bitte gib deine registrierte E-Mail Adresse ein.",
+        });
         res.json({ success: false, errors });
     } else {
         try {
@@ -442,7 +444,7 @@ router.post("/password-reset/get-code", async (req, res) => {
 
             if (!user) {
                 errors.push({
-                    msg: "The provided email address is not registered!",
+                    msg: "Die angegebene E-Mail Adresse ist nicht registriert.",
                 });
                 res.json({ success: false, errors });
             } else {

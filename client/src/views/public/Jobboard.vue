@@ -32,6 +32,7 @@
                             >
                         </b-button-group>
                         <FacebookBtn class="d-lg-none mb-3 ml-1" content="" />
+                        <InstagramBtn class="d-lg-none mb-3 ml-1" content="" />
                     </b-button-toolbar>
                     <b-form id="job-filter" inline @submit.prevent>
                         <b-input-group class="mb-1 mr-2">
@@ -143,10 +144,15 @@
                             >Stellenanzeige schalten</b-link
                         >
                     </div>
-                    <FacebookBtn
-                        class="d-none d-lg-inline-block mt-4"
-                        content="Folge uns auf Facebook"
-                    />
+                    <div class="d-none d-lg-block mt-4">
+                        <p class="h5">
+                            Verpasse keine Neuigkeiten und folge uns auf
+                        </p>
+                        <FacebookBtn class="mt-2 mr-1" content="Facebook" />
+                        <InstagramBtn class="mt-2 mr-1" content="" />
+                        <TwitterBtn class="mt-2 mr-1" content="" />
+                        <BerufsbilderBanner class="mt-5" />
+                    </div>
                 </b-col>
                 <b-col>
                     <keep-alive>
@@ -155,10 +161,15 @@
                             :is="computedJobboardView"
                         ></component>
                     </keep-alive>
-                    <FacebookBtn
-                        class="mt-3"
-                        content="Folge uns auf Facebook"
-                    />
+                    <div class="mt-5">
+                        <b-link
+                            class="h2"
+                            to="/page/mfa-career/fort-und-weiterbildungen"
+                            >Fort- und Weiterbildungen</b-link
+                        >
+                        <RandomTrainingsContainer class="mt-3" :number="2" />
+                        <BerufsbilderBanner class="mt-3" />
+                    </div>
                 </b-col>
             </b-row>
         </b-container>
@@ -184,6 +195,10 @@
     import HereMapMultiJobs from "@/components/hereMaps/HereMapMultiJobs.vue";
     import JobboardList from "@/components/JobboardList.vue";
     import FacebookBtn from "@/components/utils/FacebookBtn.vue";
+    import InstagramBtn from "@/components/utils/InstagramBtn.vue";
+    import TwitterBtn from "@/components/utils/TwitterBtn.vue";
+    import RandomTrainingsContainer from "@/components/utils/RandomTrainingsContainer.vue";
+    import BerufsbilderBanner from "@/components/utils/BerufsbilderBanner.vue";
     import Head from "@/components/utils/Head.vue";
     export default {
         name: "Jobboard",
@@ -191,6 +206,10 @@
             JobboardList,
             HereMapMultiJobs,
             FacebookBtn,
+            InstagramBtn,
+            TwitterBtn,
+            RandomTrainingsContainer,
+            BerufsbilderBanner,
             Head
         },
         data() {

@@ -74,6 +74,7 @@
                             </b-card-body>
                         </b-collapse>
                     </b-card>
+                    <ToJobboardBanner class="mt-3" />
                 </b-col>
             </b-row>
             <RandomTrainingsContainer class="mt-5" />
@@ -86,12 +87,14 @@
     import Head from "@/components/utils/Head.vue";
     import JobsBerufsbilderNav from "@/components/utils/JobsBerufsbilderNav.vue";
     import RandomTrainingsContainer from "@/components/utils/RandomTrainingsContainer.vue";
+    import ToJobboardBanner from "@/components/utils/ToJobboardBanner.vue";
     export default {
         name: "BerufsbildType",
         components: {
             Head,
             JobsBerufsbilderNav,
-            RandomTrainingsContainer
+            RandomTrainingsContainer,
+            ToJobboardBanner
         },
         data() {
             return {
