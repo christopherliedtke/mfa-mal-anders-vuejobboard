@@ -144,14 +144,13 @@
                             >Stellenanzeige schalten</b-link
                         >
                     </div>
-                    <div class="d-none d-lg-block mt-4">
+                    <div class="d-none d-lg-block mt-5">
                         <p class="h5">
                             Verpasse keine Neuigkeiten und folge uns auf
                         </p>
                         <FacebookBtn class="mt-2 mr-1" content="Facebook" />
                         <InstagramBtn class="mt-2 mr-1" content="" />
                         <TwitterBtn class="mt-2 mr-1" content="" />
-                        <BerufsbilderBanner class="mt-5" />
                     </div>
                 </b-col>
                 <b-col>

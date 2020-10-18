@@ -40,7 +40,109 @@
             </b-row>
         </b-container>
 
-        <b-container fluid class="bg-light-shade py-5 mb-5">
+        <b-container class="my-5">
+            <h2 class="h5 text-center">
+                Stellenanzeige schalten bei MFA mal anders
+            </h2>
+            <h3 class="h1 bold text-center">Ihre Zielgruppe genau im Blick</h3>
+            <h4 class="h3 text-center">Ihre Vorteile</h4>
+
+            <b-row class="my-4 my-md-5">
+                <b-col>
+                    <div class="icon-box shadow py-5 px-4">
+                        <font-awesome-icon
+                            class="m-0"
+                            :icon="['fa', 'user-nurse']"
+                            size="3x"
+                        />
+                        <h3 class="h4 mt-4 mb-3">Genau Ihre Zielgruppe</h3>
+                        <p>
+                            Bei uns erreichen Sie genau Ihre
+                            <strong>Zielgruppe ohne</strong> die großen
+                            <strong>Streuverluste</strong>
+                            der allgemeinen Jobbörsen.
+                        </p>
+                    </div>
+                </b-col>
+                <b-col>
+                    <div class="icon-box shadow py-5 px-4">
+                        <font-awesome-icon
+                            class="m-0"
+                            :icon="['fa', 'credit-card']"
+                            size="3x"
+                        />
+                        <h3 class="h4 mt-4 mb-3">Niedrige Kosten</h3>
+                        <p>
+                            Veröffentlichen Sie Ihre Stellenanzeige nach unserem
+                            <b-link href="#pay-what-you-want">
+                                <strong>"Pay What Yout Want"</strong>
+                            </b-link>
+                            Modell ab 25€ für 60 Tage.
+                        </p>
+                    </div>
+                </b-col>
+                <b-col>
+                    <div class="icon-box shadow py-5 px-4">
+                        <font-awesome-icon
+                            class="m-0"
+                            :icon="['fa', 'paper-plane']"
+                            size="3x"
+                        />
+                        <h3 class="h4 mt-4 mb-3">Geringer Aufwand</h3>
+                        <p>
+                            <strong
+                                >Sie veröffentlichen, wir sorgen für
+                                Reichweite</strong
+                            >
+                            über unsere Webseite, Google Jobs, Facebook, Twitter
+                            und per Job Newsletter.
+                        </p>
+                    </div>
+                </b-col>
+            </b-row>
+            <div class="d-flex flex-wrap justify-content-center mt-4">
+                <b-button
+                    to="/dashboard"
+                    variant="primary"
+                    size="lg"
+                    class="mx-1 my-1"
+                    >Stellenanzeige schalten</b-button
+                >
+                <b-button
+                    href="#more-info"
+                    variant="secondary"
+                    size="lg"
+                    class="mx-1 my-1"
+                    >Weitere Informationen</b-button
+                >
+            </div>
+        </b-container>
+
+        <b-container id="numbers-and-facts" class="mb-5 pt.md-5">
+            <h2 class="text-center bold mb-4">
+                Ein paar Zahlen und Fakten
+                <span style="font-size: 0.8rem">(09/2020)</span>
+            </h2>
+            <b-row cols="1" cols-md="3">
+                <b-col
+                    v-for="item in numbersAndFacts"
+                    :key="item.desc"
+                    class="text-center"
+                >
+                    <font-awesome-icon
+                        class="mt-3 mb-4 text-secondary"
+                        :icon="['fab', item.icon]"
+                        size="4x"
+                    />
+                    <div class="display-4 bold mb-3">
+                        {{ Math.floor(item.current).toLocaleString() }}+
+                    </div>
+                    <p>{{ item.desc }}</p>
+                </b-col>
+            </b-row>
+        </b-container>
+
+        <b-container fluid class="bg-light-shade py-5 mb-5" id="more-info">
             <b-container>
                 <h2 class="bold mb-4">
                     Ihre Jobbörse nur für MFAs und ArzthelferInnen – MFA mal
@@ -126,7 +228,7 @@
             </b-container>
         </b-container>
 
-        <b-container class="mb-5 py-0 py-md-5">
+        <b-container class="mb-5 py-0 py-md-5" id="pay-what-you-want">
             <h2 class="mb-4 bold">
                 Unsere Preise nach dem “Pay What You Want”* Model
             </h2>
@@ -231,30 +333,6 @@
                 </b-col>
                 <b-col cols="12">
                     <ApplicationProcessBanner />
-                </b-col>
-            </b-row>
-        </b-container>
-
-        <b-container id="numbers-and-facts" class="mb-5 pt.md-5">
-            <h2 class="text-center bold mb-4">
-                Ein paar Zahlen und Fakten
-                <span style="font-size: 0.8rem">(08/2020)</span>
-            </h2>
-            <b-row cols="1" cols-md="3">
-                <b-col
-                    v-for="item in numbersAndFacts"
-                    :key="item.desc"
-                    class="text-center"
-                >
-                    <font-awesome-icon
-                        class="mt-3 mb-4 text-secondary"
-                        :icon="['fab', item.icon]"
-                        size="4x"
-                    />
-                    <div class="display-4 bold mb-3">
-                        {{ Math.floor(item.current).toLocaleString() }}+
-                    </div>
-                    <p>{{ item.desc }}</p>
                 </b-col>
             </b-row>
         </b-container>

@@ -34,7 +34,9 @@ import {
     faHospital,
     faUserPlus,
     faDraftingCompass,
-    faPaperPlane
+    faPaperPlane,
+    faUserNurse,
+    faCreditCard
 } from "@fortawesome/free-solid-svg-icons";
 import { faUser as farUser } from "@fortawesome/free-regular-svg-icons";
 import {
@@ -82,7 +84,9 @@ library.add(
     faWhatsapp,
     faWpforms,
     faGoogle,
-    faChrome
+    faChrome,
+    faUserNurse,
+    faCreditCard
 );
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
