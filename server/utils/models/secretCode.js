@@ -10,7 +10,7 @@ const secretCode = new Schema({
         type: String,
         required: true,
     },
-    dateCreated: {
+    createdAt: {
         type: Date,
         default: Date.now(),
         expires: 3600,

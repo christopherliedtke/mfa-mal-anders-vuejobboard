@@ -149,21 +149,21 @@ router.post("/register", async (req, res) => {
                 req.session.token = token;
 
                 const baseUrl = req.protocol + "://" + req.get("host");
-                const secretCode = cryptoRandomString({
-                    length: 6,
-                });
-                const newCode = new Code({
-                    code: secretCode,
-                    email: user.email,
-                });
-                await newCode.save();
+                // const secretCode = cryptoRandomString({
+                //     length: 6,
+                // });
+                // const newCode = new Code({
+                //     code: secretCode,
+                //     email: user.email,
+                // });
+                // await newCode.save();
 
                 const data = {
                     from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
                     to: user.email,
                     subject: `E-Mail bestätigen für ${config.website.name}`,
                     text: `
-                        Bitte nutzen Sie den folgenden Link innerhalb der nächsten 60 Minuten, um Ihren Account auf ${config.website.name} zu aktivieren:: ${baseUrl}/api/auth/verification/verify-account/${user._id}/${secretCode}
+                        Bitte nutzen Sie den folgenden Link innerhalb der nächsten 60 Minuten, um Ihren Account auf ${config.website.name} zu aktivieren:: ${baseUrl}/api/auth/verification/verify-account/${user._id}
                     `,
                     html: emailTemplate.generate(`
                         <div 
@@ -199,7 +199,7 @@ router.post("/register", async (req, res) => {
                             "
                         >
                             <a 
-                                style="padding-left: 20px; padding-right: 20px; font-size: 16px; display: inline-block; cursor: pointer; border: none; color: #f8faf9; text-decoration: none" href="${baseUrl}/api/auth/verification/verify-account/${user._id}/${secretCode}" target="_blank"
+                                style="padding-left: 20px; padding-right: 20px; font-size: 16px; display: inline-block; cursor: pointer; border: none; color: #f8faf9; text-decoration: none" href="${baseUrl}/api/auth/verification/verify-account/${user._id}" target="_blank"
                             >
                                 <span 
                                     style="font-size: 16px; line-height: 1.5; word-break: break-word; mso-line-height-alt: 24px"
@@ -251,21 +251,21 @@ router.get(
             } else {
                 // await Code.deleteMany({ email: user.email });
 
-                const secretCode = cryptoRandomString({
-                    length: 6,
-                });
-                const newCode = new Code({
-                    code: secretCode,
-                    email: user.email,
-                });
-                await newCode.save();
+                // const secretCode = cryptoRandomString({
+                //     length: 6,
+                // });
+                // const newCode = new Code({
+                //     code: secretCode,
+                //     email: user.email,
+                // });
+                // await newCode.save();
 
                 const data = {
                     from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
                     to: user.email,
                     subject: `E-Mail bestätigen für ${config.website.name}`,
                     text: `
-                        Bitte nutzen Sie den folgenden Link innerhalb der nächsten 60 Minuten, um Ihren Account auf ${config.website.name} zu aktivieren:: ${baseUrl}/api/auth/verification/verify-account/${user._id}/${secretCode}
+                        Bitte nutzen Sie den folgenden Link innerhalb der nächsten 60 Minuten, um Ihren Account auf ${config.website.name} zu aktivieren:: ${baseUrl}/api/auth/verification/verify-account/${user._id}
                     `,
                     html: emailTemplate.generate(`
                         <div 
@@ -301,7 +301,7 @@ router.get(
                             "
                         >
                             <a 
-                                style="padding-left: 20px; padding-right: 20px; font-size: 16px; display: inline-block; cursor: pointer; border: none; color: #f8faf9; text-decoration: none" href="${baseUrl}/api/auth/verification/verify-account/${user._id}/${secretCode}" target="_blank"
+                                style="padding-left: 20px; padding-right: 20px; font-size: 16px; display: inline-block; cursor: pointer; border: none; color: #f8faf9; text-decoration: none" href="${baseUrl}/api/auth/verification/verify-account/${user._id}" target="_blank"
                             >
                                 <span 
                                     style="font-size: 16px; line-height: 1.5; word-break: break-word; mso-line-height-alt: 24px"
@@ -331,56 +331,57 @@ router.get(
 // #route:  GET /verification/verify-account
 // #desc:   Verify user's email address
 // #access: Public
-router.get(
-    "/verification/verify-account/:userId/:secretCode",
-    async (req, res) => {
-        let redirectPath, user, code;
+router.get("/verification/verify-account/:userId", async (req, res) => {
+    let redirectPath, user, code;
 
-        try {
-            user = await User.findById(req.params.userId);
+    try {
+        user = await User.findById(req.params.userId);
 
-            if (!user) {
-                console.log(
-                    `Error on /verify-account -> no user found for user._id ${req.params.userId}: `,
-                    user
-                );
-            } else {
-                code = await Code.findOne({
-                    email: user.email,
-                    code: req.params.secretCode,
-                });
-            }
-
-            if (!code) {
-                console.log(
-                    `Error on /verify-account -> no code found for user._id ${req.params.userId}: `,
-                    code
-                );
-            }
-
-            if (!user || !code) {
-                redirectPath = `${res.locals.secrets.WEBSITE_URL}/account/verification?error=true`;
-            } else {
-                await User.updateOne(
-                    { email: user.email },
-                    { status: "active" }
-                );
-                // await Code.deleteMany({ email: user.email });
-
-                redirectPath = `${res.locals.secrets.WEBSITE_URL}/account/verified`;
-            }
-        } catch (err) {
+        if (!user) {
             console.log(
-                "Error on /api/auth/verification/verify-account: ",
-                err
+                `Error on /verify-account -> no user found for user._id ${req.params.userId}: `,
+                user
             );
-
             redirectPath = `${res.locals.secrets.WEBSITE_URL}/account/verification?error=true`;
-        }
+        } else {
+            await User.updateOne({ email: user.email }, { status: "active" });
 
-        res.redirect(redirectPath);
+            redirectPath = `${res.locals.secrets.WEBSITE_URL}/account/verified`;
+        }
+        // else {
+        //     code = await Code.findOne({
+        //         email: user.email,
+        //         code: req.params.secretCode,
+        //     });
+
+        //     if (!code) {
+        //         console.log(
+        //             `Error on /verify-account -> no code found for user._id ${req.params.userId}: `,
+        //             code
+        //         );
+        //     }
+        // }
+
+        // if (!user || !code) {
+        //     redirectPath = `${res.locals.secrets.WEBSITE_URL}/account/verification?error=true`;
+        // }
+        // else {
+        //     await User.updateOne(
+        //         { email: user.email },
+        //         { status: "active" }
+        //     );
+        //     // await Code.deleteMany({ email: user.email });
+
+        //     redirectPath = `${res.locals.secrets.WEBSITE_URL}/account/verified`;
+        // }
+    } catch (err) {
+        console.log("Error on /api/auth/verification/verify-account: ", err);
+
+        redirectPath = `${res.locals.secrets.WEBSITE_URL}/account/verification?error=true`;
     }
-);
+
+    res.redirect(redirectPath);
+});
 
 // #route:  GET /verification/update-user-status
 // #desc:   Verify user's email address
