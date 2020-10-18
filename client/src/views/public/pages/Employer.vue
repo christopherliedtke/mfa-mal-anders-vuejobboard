@@ -9,7 +9,7 @@
                 <b-col cols="12" md="6">
                     <h2 class="h1 bold mb-4">
                         <em>Motivierte</em> und <em>qualifizierte</em> MFAs und
-                        ArzthelferInnen gesucht!
+                        ArzthelferInnen gesucht?
                     </h2>
                     <p>
                         Erstellen Sie noch heute Ihre Stellenanzeige und
