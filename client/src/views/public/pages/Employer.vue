@@ -98,7 +98,7 @@
                                 Reichweite</strong
                             >
                             über unsere Webseite, Google Jobs, Facebook, Twitter
-                            und per Job Newsletter.
+                            und unseren Job Newsletter.
                         </p>
                     </div>
                 </b-col>

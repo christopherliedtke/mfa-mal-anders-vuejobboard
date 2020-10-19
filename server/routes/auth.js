@@ -265,7 +265,7 @@ router.get(
                     to: user.email,
                     subject: `E-Mail bestätigen für ${config.website.name}`,
                     text: `
-                        Bitte nutzen Sie den folgenden Link innerhalb der nächsten 60 Minuten, um Ihren Account auf ${config.website.name} zu aktivieren:: ${baseUrl}/api/auth/verification/verify-account/${user._id}
+                        Bitte nutzen Sie den folgenden Link innerhalb der nächsten 60 Minuten, um Ihren Account auf ${config.website.name} zu aktivieren: ${baseUrl}/api/auth/verification/verify-account/${user._id}
                     `,
                     html: emailTemplate.generate(`
                         <div 

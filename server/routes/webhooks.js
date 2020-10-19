@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const config = require("../utils/config");
+const emailService = require("../utils/nodemailer");
 const { Job } = require("../utils/models/job");
 const { Coupon } = require("../utils/models/coupon");
 const { UsedCoupon } = require("../utils/models/usedCoupon");
@@ -91,6 +92,21 @@ router.post("/checkout-completed", async (req, res) => {
             if (config.facebook.autoPost) {
                 postToFacebook();
             }
+
+            const data = {
+                from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
+                to: config.website.contactEmail,
+                subject: `Neue Stelle veröffentlicht auf ${config.website.name}`,
+                text: `
+                        Soeben wurde eine neue Stelle veröffentlicht: ${
+                            res.locals.secrets.WEBSITE_URL +
+                            config.googleIndexing.pathPrefix +
+                            jobId
+                        }
+                        `,
+            };
+
+            emailService.sendMail(data);
         }
 
         res.json({ received: true });
