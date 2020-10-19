@@ -10,7 +10,7 @@
                     <b-img
                         class="border-radius1 shadow mb-5"
                         fluid
-                        src="@/assets/jobsUndBerufsbilder_1024x535.png"
+                        src="@/assets/jobsUndBerufsbilder_1024x535.jpg"
                         alt="Banner - Alternative Jobs für MFA / Artzhelfer"
                     />
                     <h2>
@@ -86,7 +86,7 @@
         <Head
             :title="title"
             desc="Du brauchst Inspiration? – 52 Alternative Jobs für medizinische Fachangestellte (MFA) | Suche gleich nach passenden Stellen in unserer Jobbörse."
-            img="@/assets/jobsUndBerufsbilder_1024x535.png"
+            img="@/assets/jobsUndBerufsbilder_1024x535.jpg"
         />
     </div>
 </template>

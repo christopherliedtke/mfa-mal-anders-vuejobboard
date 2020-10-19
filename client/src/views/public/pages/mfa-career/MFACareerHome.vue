@@ -9,7 +9,7 @@
             <b-img
                 class="border-radius2 mb-4 mr-4"
                 left
-                src="@/assets/KristinMaurach_sitzendAufMauer.png"
+                src="@/assets/KristinMaurach_sitzendAufMauer.jpg"
                 style="width: 40vw; max-width: 250px"
             />
             <p>

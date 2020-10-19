@@ -5,7 +5,7 @@
             <b-img
                 class="border-radius1 shadow mb-5 w-100"
                 fluid
-                src="@/assets/SchnellUndEinfachEineTopbewerbungSchreiben2.png"
+                src="@/assets/SchnellUndEinfachEineTopbewerbungSchreiben2.jpg"
                 alt="Banner - Schnell und einfach eine Top-Bewerbung schreiben"
             />
             <p>
@@ -207,7 +207,7 @@
             desc="Bewerbungsunterlagen für medizinische
         Fachangestellte | kostenlose Vorlage | hinterlasse einen bleibenden
         Eindruck und sichere dir das Vorstellungsgespräch"
-            img="@/assets/SchnellUndEinfachEineTopbewerbungSchreiben2.png"
+            img="@/assets/SchnellUndEinfachEineTopbewerbungSchreiben2.jpg"
         />
     </div>
 </template>

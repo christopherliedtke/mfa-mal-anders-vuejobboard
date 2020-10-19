@@ -44,7 +44,7 @@
                         <b-card
                             style="max-width: 600px"
                             title="Die richtige Weiterbildung für dich?!"
-                            img-src="@/assets/Banner_In6SchrittenZurRichtigenWeiterbildung.png"
+                            img-src="@/assets/Banner_In6SchrittenZurRichtigenWeiterbildung.jpg"
                             img-alt="Banner - In 6 Schritten zur richtigen Weiterbildung für MFA und ArzthelferIn"
                             img-top
                             align="center"

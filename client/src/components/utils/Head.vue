@@ -45,7 +45,7 @@
                                 this.img ||
                                 `${
                                     window.location.origin
-                                }${require("@/assets/mfaMalAnders_Facebook_Banner.png")}`
+                                }${require("@/assets/mfaMalAnders_Facebook_Banner.jpg")}`
                         },
                         {
                             property: "og:image:alt",
