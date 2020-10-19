@@ -1,10 +1,13 @@
 const express = require("express");
 const router = express.Router();
+const authenticateToken = require("../utils/middleware/checkAuth");
+const isAdmin = require("../utils/middleware/isAdmin");
 const config = require("../utils/config");
 const sanitizeHtml = require("sanitize-html");
 const emailService = require("../utils/nodemailer");
 const emailTemplate = require("../utils/emailTemplate");
 const { Subscriber } = require("../utils/models/subscriber");
+const { sendNewsletter } = require("../utils/middleware/sendNewsletter");
 
 // #route:  POST /api/newsletter/sign-up
 // #desc:   Sign up for newsletter
@@ -148,6 +151,14 @@ router.get("/delete/:subscriberId", async (req, res) => {
         console.log("Error on /delete/:subscriberId: ", error);
         res.sendStatus(503);
     }
+});
+
+// #route:  POST /api/newsletter/send
+// #desc:   Send newsletter
+// #access: Admin
+router.post("/send", authenticateToken, isAdmin, async (req, res) => {
+    const success = await sendNewsletter();
+    res.json(success);
 });
 
 module.exports = router;

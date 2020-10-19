@@ -5,7 +5,7 @@
             Coupon</b-button
         >
         <b-form id="coupon-filter" inline @submit.prevent>
-            <b-input-group class="my-1 mr-2">
+            <b-input-group class="my-2 mr-2">
                 <b-form-input
                     type="text"
                     v-model="filter.searchTerm"

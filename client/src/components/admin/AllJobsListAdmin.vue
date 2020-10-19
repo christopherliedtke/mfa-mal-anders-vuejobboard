@@ -1,7 +1,7 @@
 <template>
     <div>
         <b-form id="job-filter" inline @submit.prevent>
-            <b-input-group class="my-1 mr-2">
+            <b-input-group class="my-2 mr-2">
                 <b-form-input
                     type="text"
                     v-model="filter.searchTerm"
@@ -15,6 +15,10 @@
                     /></b-button>
                 </b-input-group-append>
             </b-input-group>
+            <div class="inline-block ml-3">
+                Number of Jobs:
+                <strong>{{ computedJobs.length }}</strong>
+            </div>
         </b-form>
         <b-table
             responsive

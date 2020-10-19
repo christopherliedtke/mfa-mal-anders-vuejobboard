@@ -1,7 +1,7 @@
 <template>
     <div>
         <b-form id="subscriber-filter" inline @submit.prevent>
-            <b-input-group class="my-1 mr-2">
+            <b-input-group class="my-2 mr-3">
                 <b-form-input
                     type="text"
                     v-model="filter.searchTerm"
@@ -15,6 +15,19 @@
                     /></b-button>
                 </b-input-group-append>
             </b-input-group>
+            <div class="inline-block mr-5 ml-3 ml-lg-0 my-3 my-lg-0">
+                Number of Subscribers:
+                <strong>{{ computedSubscribers.length }}</strong>
+            </div>
+            <b-button
+                class="d-none d-lg-inline-block"
+                @click.prevent="sendNewsletter"
+                :variant="newsletterSent ? 'success' : 'danger'"
+                :disabled="newsletterSent"
+                size="sm"
+            >
+                {{ newsletterSent ? "Newsletter Sent" : "Send Newsletter now" }}
+            </b-button>
         </b-form>
         <b-table
             responsive
@@ -65,13 +78,19 @@
         >
             Oh, something went wrong. Please try again later.
         </b-alert>
+
+        <Overlay :show="showOverlay" />
     </div>
 </template>
 
 <script>
     import axios from "@/axios";
+    import Overlay from "@/components/utils/Overlay.vue";
     export default {
         name: "AllSubscribersListAdmin",
+        components: {
+            Overlay
+        },
         data() {
             return {
                 subscribers: [],
@@ -110,7 +129,9 @@
                         key: "actions",
                         sortable: false
                     }
-                ]
+                ],
+                showOverlay: false,
+                newsletterSent: false
             };
         },
         computed: {
@@ -211,6 +232,16 @@
                     this.error = true;
                     console.log("err: ", err);
                 }
+            },
+            async sendNewsletter() {
+                this.showOverlay = true;
+                const response = await axios.post("/api/newsletter/send", {});
+
+                console.log("response.data.success: ", response.data.success);
+
+                this.newsletterSent = response.data.success;
+
+                this.showOverlay = false;
             }
         }
     };

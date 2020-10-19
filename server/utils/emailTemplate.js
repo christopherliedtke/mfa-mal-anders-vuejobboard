@@ -277,7 +277,7 @@ module.exports = {
                                                 <!--<![endif]-->
                                                 <div align="center" class="img-container center fixedwidth" style="padding-right: 0px; padding-left: 0px">
                                                     <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px"><td style="padding-right: 0px;padding-left: 0px;" align="center"><!
-                                                    [endif]--><a href="https://www.mfa-mal-anders.de" style="outline: none" tabindex="-1" target="_blank"> <img align="center" alt="The App" border="0" class="center fixedwidth" src="${headerImg}" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 480px; display: block" title="The App" width="480" /></a>
+                                                    [endif]--><a href="https://www.mfa-mal-anders.de" style="outline: none" tabindex="-1" target="_blank"> <img align="center" alt="MFA mal anders" border="0" class="center fixedwidth" src="${headerImg}" style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 480px; display: block" title="MFA mal anders" width="480" /></a>
                                                     <!--[if mso]></td></tr></table><![endif]-->
                                                 </div>
                                                 <!--[if (!mso)&(!IE)]><!-->

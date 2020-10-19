@@ -19,7 +19,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 
 const { createSitemap } = require("./utils/createSitemap");
-const { sendNewsletter } = require("./utils/sendNewsletter");
+const { CRONNewsletter } = require("./utils/CRONNewsletter");
 const { refreshJobs } = require("./utils/refreshJobs");
 const { unpublishJobs } = require("./utils/unpublishJobs");
 
@@ -42,7 +42,7 @@ if (config.sitemap.active) {
 
 // #Send Newsletter CRON job
 if (config.newsletter.active) {
-    sendNewsletter.start();
+    CRONNewsletter.start();
 }
 
 // #Refresh jobs CRON job
