@@ -1,4 +1,5 @@
 import Vue from "vue";
+import config from "@/utils/config.json";
 
 import VueRouter from "vue-router";
 Vue.use(VueRouter);
@@ -156,7 +157,7 @@ const routes = [
                 component: Employer
             },
             {
-                path: "magazin",
+                path: config.cms.postsPath,
                 component: Magazin
             },
             {

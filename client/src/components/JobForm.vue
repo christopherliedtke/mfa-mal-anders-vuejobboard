@@ -152,7 +152,7 @@
                 @update-url="job.imageUrl = $event"
             />
             <b-form-input
-                class="bg-light-shade mt-2"
+                class="bg-light-shade mt-4"
                 v-if="$store.state.auth.userRole === 'admin'"
                 type="url"
                 v-model="job.imageUrl"
@@ -310,7 +310,7 @@
                 @update-url="job.company.logoUrl = $event"
             />
             <b-form-input
-                class="bg-light-shade mt-2"
+                class="bg-light-shade mt-4"
                 v-if="$store.state.auth.userRole === 'admin'"
                 type="url"
                 v-model="job.company.logoUrl"

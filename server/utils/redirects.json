@@ -16,7 +16,7 @@
     },
     {
         "old": "/blog",
-        "new": "/page/magazin",
+        "new": "/page/blog",
         "statusCode": 301
     },
     {

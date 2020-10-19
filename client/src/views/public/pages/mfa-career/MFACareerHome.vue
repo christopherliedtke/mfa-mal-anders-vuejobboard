@@ -24,7 +24,9 @@
                 <b-link to="/page/mfa-career/fort-und-weiterbildungen"
                     >Fort- und Weiterbildungsmöglichkeiten</b-link
                 >,
-                <b-link to="/page/magazin">Praxishacks</b-link>
+                <b-link :to="`/page/${config.cms.postsPath}`"
+                    >Praxishacks</b-link
+                >
                 und Informationen zur persönlichen sowie beruflichen
                 Weiterentwicklung.
             </p>

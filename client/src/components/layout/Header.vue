@@ -27,7 +27,7 @@
                             <b-nav-item
                                 to="/page/mfa-career"
                                 @mouseover="showSub('sub-career')"
-                                >MFA Karriere
+                                >Karriere
                                 <b-icon
                                     class="ml-1 icon"
                                     icon="chevron-down"
@@ -100,9 +100,10 @@
                             >{{ config.cms.postsPageTitle }}</b-nav-item
                         >
                         <b-nav-item to="/page/fuer-arbeitgeber"
-                            >Für Arbeitgeber</b-nav-item
+                            >Arbeitgeber</b-nav-item
                         >
                         <b-nav-item to="/page/about">Über</b-nav-item>
+                        <b-nav-item to="/page/contact">Kontakt</b-nav-item>
 
                         <!-- <b-nav-item to="/login" v-if="!userId"
                             >Anmelden</b-nav-item

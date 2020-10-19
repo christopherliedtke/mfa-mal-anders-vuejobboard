@@ -47,7 +47,9 @@ import {
     BIconChevronBarContract,
     BIconArrowReturnLeft,
     BIconArrowReturnRight,
-    BIconMap
+    BIconMap,
+    BIconCardImage,
+    BIconBox
 } from "bootstrap-vue";
 
 Vue.component("BIcon", BIcon);
@@ -89,6 +91,8 @@ Vue.component("BIconChevronBarContract", BIconChevronBarContract);
 Vue.component("BIconArrowReturnLeft", BIconArrowReturnLeft);
 Vue.component("BIconArrowReturnRight", BIconArrowReturnRight);
 Vue.component("BIconMap", BIconMap);
+Vue.component("BIconCardImage", BIconCardImage);
+Vue.component("BIconBox", BIconBox);
 
 import VueSanitize from "vue-sanitize";
 Vue.use(VueSanitize);

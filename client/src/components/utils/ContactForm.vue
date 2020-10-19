@@ -1,80 +1,105 @@
 <template>
-    <div>
+    <div style="max-width: 600px" class="mx-auto">
+        <h2 v-if="title">{{ title }}</h2>
+        <p v-if="intro">{{ intro }}</p>
         <b-form>
-            <label for="gender">Anrede</label>
-            <b-form-select
-                id="gender"
-                v-model="form.gender"
-                :state="validated ? (form.gender ? true : null) : null"
-            >
-                <b-form-select-option :value="null"
-                    >-- Titel auswählen --</b-form-select-option
-                >
-                <b-form-select-option
-                    v-for="title in contactGenderOptions"
-                    :key="title"
-                    :value="title"
-                    >{{ title }}</b-form-select-option
-                >
-            </b-form-select>
-            <label for="title">Titel</label>
-            <b-form-select
-                id="title"
-                v-model="form.title"
-                :state="validated ? (form.title ? true : null) : null"
-            >
-                <b-form-select-option :value="null"
-                    >-- Titel auswählen --</b-form-select-option
-                >
-                <b-form-select-option
-                    v-for="title in contactTitleOptions"
-                    :key="title"
-                    :value="title"
-                    >{{ title }}</b-form-select-option
-                >
-            </b-form-select>
-            <label for="firstName">Vorname *</label>
-            <b-form-input
-                type="text"
-                v-model="form.firstName"
-                id="firstName"
-                placeholder="Vorname eingeben..."
-                autocomplete="given-name"
-                required
-                trim
-                :state="validated ? (form.firstName ? true : false) : null"
-            ></b-form-input>
-            <label for="lastName">Nachname *</label>
-            <b-form-input
-                type="text"
-                v-model="form.lastName"
-                id="firstName"
-                placeholder="Nachname eingeben..."
-                autocomplete="family-name"
-                required
-                trim
-                :state="validated ? (form.lastName ? true : false) : null"
-            ></b-form-input>
-            <label for="email">E-Mail Adresse *</label>
-            <b-form-input
-                type="email"
-                v-model="form.email"
-                id="email"
-                placeholder="E-Mail Adresse eingeben..."
-                autocomplete="email"
-                required
-                trim
-                :state="validated ? (form.email ? true : false) : null"
-            ></b-form-input>
-            <label for="phone">Telefonnummer</label>
-            <b-form-input
-                type="tel"
-                v-model="form.phone"
-                id="phone"
-                placeholder="Telefonnummer eingeben..."
-                autocomplete="tel"
-                trim
-            ></b-form-input>
+            <b-row cols="1" cols-md="2">
+                <b-col>
+                    <label for="gender">Anrede</label>
+
+                    <b-form-select
+                        id="gender"
+                        v-model="form.gender"
+                        :state="validated ? (form.gender ? true : null) : null"
+                    >
+                        <b-form-select-option :value="null"
+                            >-- Titel auswählen --</b-form-select-option
+                        >
+                        <b-form-select-option
+                            v-for="title in contactGenderOptions"
+                            :key="title"
+                            :value="title"
+                            >{{ title }}</b-form-select-option
+                        >
+                    </b-form-select>
+                </b-col>
+                <b-col>
+                    <label for="title">Titel</label>
+                    <b-form-select
+                        id="title"
+                        v-model="form.title"
+                        :state="validated ? (form.title ? true : null) : null"
+                    >
+                        <b-form-select-option :value="null"
+                            >-- Titel auswählen --</b-form-select-option
+                        >
+                        <b-form-select-option
+                            v-for="title in contactTitleOptions"
+                            :key="title"
+                            :value="title"
+                            >{{ title }}</b-form-select-option
+                        >
+                    </b-form-select>
+                </b-col>
+            </b-row>
+            <b-row cols="1" cols-md="2">
+                <b-col>
+                    <label for="firstName">Vorname *</label>
+                    <b-form-input
+                        type="text"
+                        v-model="form.firstName"
+                        id="firstName"
+                        placeholder="Vorname eingeben..."
+                        autocomplete="given-name"
+                        required
+                        trim
+                        :state="
+                            validated ? (form.firstName ? true : false) : null
+                        "
+                    ></b-form-input>
+                </b-col>
+                <b-col>
+                    <label for="lastName">Nachname *</label>
+                    <b-form-input
+                        type="text"
+                        v-model="form.lastName"
+                        id="firstName"
+                        placeholder="Nachname eingeben..."
+                        autocomplete="family-name"
+                        required
+                        trim
+                        :state="
+                            validated ? (form.lastName ? true : false) : null
+                        "
+                    ></b-form-input>
+                </b-col>
+            </b-row>
+            <b-row cols="1" cols-md="2">
+                <b-col>
+                    <label for="email">E-Mail Adresse *</label>
+                    <b-form-input
+                        type="email"
+                        v-model="form.email"
+                        id="email"
+                        placeholder="E-Mail Adresse eingeben..."
+                        autocomplete="email"
+                        required
+                        trim
+                        :state="validated ? (form.email ? true : false) : null"
+                    ></b-form-input>
+                </b-col>
+                <b-col>
+                    <label for="phone">Telefonnummer</label>
+                    <b-form-input
+                        type="tel"
+                        v-model="form.phone"
+                        id="phone"
+                        placeholder="Telefonnummer eingeben..."
+                        autocomplete="tel"
+                        trim
+                    ></b-form-input>
+                </b-col>
+            </b-row>
             <label for="subject">Betreff *</label>
             <b-form-input
                 type="text"
@@ -112,7 +137,7 @@
                 <b-link to="/page/privacy-policy">
                     Datenschutzbestimmungen
                 </b-link>
-                für das Kontaktformular.
+                zur Nutzung des Kontaktformulars.
             </b-form-checkbox>
 
             <b-form-input
@@ -150,6 +175,7 @@
         components: {
             Overlay
         },
+        props: ["title", "intro"],
         data() {
             return {
                 form: {

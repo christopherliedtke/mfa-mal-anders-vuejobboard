@@ -31,7 +31,8 @@
                     </p>
                     <p>
                         Ob
-                        <b-link to="/page/magazin"
+                        <b-link
+                            to="/article/fortbildung-weiterbildung-oder-studium"
                             >Fortbildung, Weiterbildung oder Studium</b-link
                         >, finde deinen richtigen Weg.
                     </p>
