@@ -3,17 +3,26 @@
         <Overlay :show="showOverlay"> </Overlay>
         <h2>E-Mail Adresse verifizieren</h2>
         <p>
-            Bitte überprüfen Sie Ihr E-Mail Postfach und bestätigen Sie Ihre
-            E-Mail Adresse über den Aktivierungslink innerhalb der nächsten 60
-            Minuten.
+            Aus Datenschutzgründen müssen wir Ihre E-Mail Adresse verifizieren.
+        </p>
+        <p>
+            Bitte <strong>überprüfen Sie Ihr E-Mail Postfach</strong> und
+            bestätigen Sie Ihre E-Mail Adresse über den Aktivierungslink.
             <strong>
                 Bitte überprüfen Sie gegebenenfalls auch Ihren Spam Ordner.
             </strong>
         </p>
         <p>Keine E-Mail erhalten?</p>
-        <button class="btn btn-primary my-3" @click="onSubmit">
-            Erneut E-Mail zur Aktivierung senden
-        </button>
+        <b-button variant="primary" class="mt-3 mr-2" @click="onSubmit">
+            Neue E-Mail zur Aktivierung senden
+        </b-button>
+        <b-button
+            variant="secondary"
+            class="mt-3 mr-2"
+            to="/page/contact?subject=Probleme+bei+E-Mail-Verifizierung"
+        >
+            Probleme? Kontakt aufnehmen
+        </b-button>
         <div class="error mt-3" v-if="error">
             <b-alert show dismissible variant="warning"
                 >Oh, da ist leider etwas schief gelaufen. Bitte probieren Sie es

@@ -326,6 +326,7 @@
                                         job(_id: "${jobId}") {
                                             _id
                                             createdAt
+                                            updatedAt
                                             paidAt
                                             title
                                             description

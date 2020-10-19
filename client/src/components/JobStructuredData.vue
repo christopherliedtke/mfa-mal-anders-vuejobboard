@@ -47,24 +47,7 @@
                             "@type" : "JobPosting",
                             "title": "${this.job.title}",
                             "description" : "${this.$sanitize(
-                                this.job.description +
-                                    `<div><h2>Kontakt für Bewerbungen</h2><p>${
-                                        this.job.contactGender
-                                            ? this.job.contactGender
-                                            : ""
-                                    } ${
-                                        this.job.contactTitle
-                                            ? this.job.contactTitle
-                                            : ""
-                                    } ${
-                                        this.job.contactFirstName
-                                            ? this.job.contactFirstName
-                                            : ""
-                                    } ${
-                                        this.job.contactLastName
-                                            ? this.job.contactLastName
-                                            : ""
-                                    }</p></div>`,
+                                this.job.description,
                                 {
                                     allowedTags: [
                                         "h1",
@@ -81,11 +64,19 @@
                                         "ol",
                                         "li",
                                         "div"
-                                    ]
+                                    ],
+                                    transformTags: {
+                                        h1: "p",
+                                        h2: "p",
+                                        h3: "p",
+                                        h4: "p",
+                                        h5: "p",
+                                        h6: "p"
+                                    }
                                 }
                             )}",
                             "datePosted": "${new Date(
-                                this.job.createdAt
+                                this.job.updatedAt
                             ).toISOString()}",
                             "hiringOrganization": {
                                 "@type": "Organization",

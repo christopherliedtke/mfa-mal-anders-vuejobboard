@@ -19,6 +19,13 @@
             target="_blank"
             >Tipps für Stellenanzeigen</b-button
         >
+        <b-button
+            class="mr-2 mb-2"
+            to="/page/contact"
+            variant="outline-primary"
+            target="_blank"
+            >Fragen oder Hilfe benötigt?</b-button
+        >
         <b-card v-for="job in myJobs" :key="job._id" class="my-3">
             <b-card-text>
                 <h4>

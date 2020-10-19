@@ -216,22 +216,27 @@
                 this.showOverlay = false;
             },
             async setUserData() {
-                const response = await axios.post("/api/user/private", {
-                    query: `
-                            query {
-                                user {
-                                    _id
-                                    gender
-                                    title
-                                    firstName
-                                    lastName
-                                    email
+                if (this.$store.state.auth.userStatus === "active") {
+                    const response = await axios.post("/api/user/private", {
+                        query: `
+                                query {
+                                    user {
+                                        _id
+                                        gender
+                                        title
+                                        firstName
+                                        lastName
+                                        email
+                                    }
                                 }
-                            }
-                        `
-                });
+                            `
+                    });
 
-                this.form = { ...this.form, ...response.data.data.user };
+                    this.form = { ...this.form, ...response.data.data.user };
+                } else {
+                    this.form.firstName = this.$store.state.auth.userFirstName;
+                    this.form.lastName = this.$store.state.auth.userLastName;
+                }
             },
             setSubject() {
                 if (this.$route.query.subject) {
@@ -252,11 +257,9 @@
         mounted() {
             if (this.$store.state.auth.userId) {
                 this.setUserData();
-                this.setSubject();
-                this.setMessage();
             }
+            this.setSubject();
+            this.setMessage();
         }
     };
 </script>
-
-<style scoped lang="scss"></style>

@@ -106,17 +106,24 @@
             <div class="d-flex flex-wrap justify-content-center mt-4">
                 <b-button
                     to="/dashboard"
-                    variant="primary"
+                    variant="secondary"
                     size="lg"
                     class="mx-1 my-1"
                     >Stellenanzeige schalten</b-button
                 >
                 <b-button
                     href="#more-info"
-                    variant="secondary"
+                    variant="primary"
                     size="lg"
                     class="mx-1 my-1"
                     >Weitere Informationen</b-button
+                >
+                <b-button
+                    to="/page/contact"
+                    variant="outline-primary"
+                    size="lg"
+                    class="mx-1 my-1"
+                    >Fragen oder Hilfe benötigt?</b-button
                 >
             </div>
         </b-container>
@@ -287,7 +294,7 @@
                 Tipps für Ihre Stellenanzeige
             </h2>
             <p>
-                Ihre Stellenanzeige ist eine Einladung für Bewerber*innen zum
+                Ihre Stellenanzeige ist eine Einladung für BewerberInnen zum
                 Dialog – denn bestenfalls wird daraus ein Vorstellungsgespräch.
                 Eine gute Stellenanzeige beschreibt nicht nur die zu besetzende
                 Stelle, sondern geht auch auf die Bedürfnisse der Zielgruppe
@@ -297,7 +304,7 @@
             <p>
                 Durch unsere Arbeit hatten wir die Gelegenheit eine Vielzahl von
                 Bewerbungsprozessen zu begleiten und aus erster Hand zu
-                erfahren, was bei potentiellen Bewerber*innen ankommt und was
+                erfahren, was bei potentiellen BewerberInnen ankommt und was
                 nicht. Deshalb geben wir hier eine kleine Übersicht an Tipps.
             </p>
             <b-row>
@@ -340,7 +347,7 @@
             </b-row>
         </b-container>
 
-        <FixedAddJobBtn />
+        <!-- <FixedAddJobBtn /> -->
 
         <Head
             title="Motivierte MFA / ArzthelferIn gesucht?"
@@ -355,15 +362,15 @@
     import PayWhatYouWantSuggestion from "@/components/utils/PayWhatYouWantSuggestion.vue";
     import JobAdTippsBanner from "@/components/utils/JobAdTippsBanner.vue";
     import ApplicationProcessBanner from "@/components/utils/ApplicationProcessBanner.vue";
-    import FixedAddJobBtn from "@/components/utils/FixedAddJobBtn.vue";
+    // import FixedAddJobBtn from "@/components/utils/FixedAddJobBtn.vue";
     export default {
         name: "Employer",
         components: {
             Head,
             PayWhatYouWantSuggestion,
             JobAdTippsBanner,
-            ApplicationProcessBanner,
-            FixedAddJobBtn
+            ApplicationProcessBanner
+            // FixedAddJobBtn
         },
         data() {
             return {
@@ -403,7 +410,7 @@
                         icon: "gift",
                         title: "Lukrative Benefits",
                         desc:
-                            "Vergessen Sie nicht das wesentliche für die Kandidat*innen. Was macht einen Wechsel zu Ihnen lohnenswert? Neben Gehalt und Urlaub können auch Dinge wie Weiterbildungen, spezielle Arbeitszeitmodelle oder Zuschüsse attraktiv sein."
+                            "Vergessen Sie nicht das wesentliche für die KandidatInnen. Was macht einen Wechsel zu Ihnen lohnenswert? Neben Gehalt und Urlaub können auch Dinge wie Weiterbildungen, spezielle Arbeitszeitmodelle oder Zuschüsse attraktiv sein."
                     },
                     {
                         icon: "door-open",

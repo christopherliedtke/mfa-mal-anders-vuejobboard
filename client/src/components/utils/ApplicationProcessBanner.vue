@@ -20,8 +20,8 @@
                         Unsere Tipps für einen effizienten Bewerbungsprozess
                     </h4>
                     <p>
-                        Die Einstellung neuer Mitarbeiter*innen kostet viel
-                        Zeit, Geld und Mühe. Aus diesem Grund sollte ein
+                        Die Einstellung neuer MitarbeiterInnen kostet viel Zeit,
+                        Geld und Mühe. Aus diesem Grund sollte ein
                         Bewerbungsprozess so effizient und gründlich wie möglich
                         etabliert werden. Hier haben wir Ihnen einen kleinen
                         Leitfaden zusammengestellt.

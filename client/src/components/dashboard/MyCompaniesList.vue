@@ -14,9 +14,19 @@
             Unternehmen, wirkt sich dies direkt auf die verknüpften
             Stellenanzeigen aus.
         </p>
-        <b-button to="/dashboard/new-company" variant="outline-primary"
+        <b-button
+            class="mr-2 mb-2"
+            to="/dashboard/new-company"
+            variant="outline-primary"
             ><b-icon class="mr-2" scale="1" icon="plus-circle"></b-icon>Neues
             Unternehmen</b-button
+        >
+        <b-button
+            class="mr-2 mb-2"
+            to="/page/contact"
+            variant="outline-secondary"
+            target="_blank"
+            >Fragen oder Hilfe benötigt?</b-button
         >
         <b-card v-for="company in myCompanies" :key="company._id" class="my-3">
             <b-card-text>
