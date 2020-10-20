@@ -15,7 +15,11 @@
         data() {
             return {
                 platform: null,
-                apikey: "n3GOlcV0Z6utqCKpJlDWH6lWYtJdvR0QomMzYs_EreM"
+                apikey: "n3GOlcV0Z6utqCKpJlDWH6lWYtJdvR0QomMzYs_EreM",
+                mapContainer: null,
+                map: null,
+                mapTypes: null,
+                H: null
             };
         },
         async mounted() {
@@ -25,61 +29,84 @@
             this.platform = platform;
             this.initializeHereMap();
         },
+        watch: {
+            job() {
+                this.deleteMarkers();
+                this.setMapMarker(this.job, this.getGeoCode(this.job), this.H);
+                this.moveMap(this.getGeoCode(this.job));
+            }
+        },
         methods: {
+            getGeoCode(job) {
+                let geocode;
+
+                if (job.company) {
+                    geocode = {
+                        lat: job.company.geoCodeLat,
+                        lng: job.company.geoCodeLng
+                    };
+                }
+
+                return geocode;
+            },
+            setMapMarker(job, geocode, H) {
+                const outerElement = document.createElement("div");
+                outerElement.classList.add("icon-outer");
+
+                const innerElement = document.createElement("img");
+                innerElement.classList.add("icon-inner");
+                innerElement.src = job.company.logoUrl || "/favicon.ico";
+
+                outerElement.appendChild(innerElement);
+
+                const domIcon = new H.map.DomIcon(outerElement);
+
+                this.map.addObject(
+                    new window.H.map.DomMarker(geocode, {
+                        icon: domIcon
+                    })
+                );
+            },
+            deleteMarkers() {
+                if (this.map) {
+                    this.map.removeObjects(this.map.getObjects());
+                }
+            },
+            moveMap(geocode) {
+                this.map.setCenter(geocode);
+                this.map.setZoom(13);
+            },
             async initializeHereMap() {
                 try {
-                    let geocode;
-
-                    if (this.job.company) {
-                        geocode = {
-                            lat: this.job.company.geoCodeLat,
-                            lng: this.job.company.geoCodeLng
-                        };
-                    }
+                    const geocode = this.getGeoCode(this.job);
 
                     if (geocode) {
-                        const mapContainer = this.$refs.hereMap;
-                        const H = window.H;
-                        const maptypes = this.platform.createDefaultLayers({
+                        this.mapContainer = this.$refs.hereMap;
+                        this.H = window.H;
+                        this.maptypes = this.platform.createDefaultLayers({
                             lg: config.maps.lang
                         });
 
-                        const map = new H.Map(
-                            mapContainer,
-                            maptypes.vector.normal.map,
+                        this.map = new this.H.Map(
+                            this.mapContainer,
+                            this.maptypes.vector.normal.map,
                             {
                                 zoom: 13,
                                 center: geocode
                             }
                         );
 
-                        const outerElement = document.createElement("div");
-                        outerElement.classList.add("icon-outer");
-
-                        const innerElement = document.createElement("img");
-                        innerElement.classList.add("icon-inner");
-                        innerElement.src =
-                            this.job.company.logoUrl || "/favicon.ico";
-
-                        outerElement.appendChild(innerElement);
-
-                        const domIcon = new H.map.DomIcon(outerElement);
-
-                        map.addObject(
-                            new window.H.map.DomMarker(geocode, {
-                                icon: domIcon
-                            })
-                        );
+                        this.setMapMarker(this.job, geocode, this.H);
 
                         addEventListener("resize", () =>
-                            map.getViewPort().resize()
+                            this.map.getViewPort().resize()
                         );
 
-                        new H.mapevents.Behavior(
-                            new H.mapevents.MapEvents(map)
+                        new this.H.mapevents.Behavior(
+                            new this.H.mapevents.MapEvents(this.map)
                         );
 
-                        H.ui.UI.createDefault(map, maptypes);
+                        this.H.ui.UI.createDefault(this.map, this.maptypes);
                     }
                 } catch (err) {
                     console.log("Error on initializeHereMap(): ", err);
