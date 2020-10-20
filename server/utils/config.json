@@ -8,7 +8,7 @@
         "newsletterUnsubscribeSuccessPath": "/page/unsubscribed-successful"
     },
     "stripe": {
-        "paymentMethods": ["card", "giropay", "sofort"],
+        "paymentMethods": ["card", "giropay"],
         "currency": "eur",
         "pricePerJob": 2500,
         "paymentExpirationDays": 60,

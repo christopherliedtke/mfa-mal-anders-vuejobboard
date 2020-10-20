@@ -16,11 +16,11 @@
     .logo-container {
         background-color: darken($light, $amount: 2%);
         border-radius: $border-radius1;
+        min-width: 120px;
 
         .logo {
             max-width: 120px;
             max-height: 120px;
-            min-width: 100px;
             padding: 0.5rem;
 
             @media screen and (max-width: 767px) {

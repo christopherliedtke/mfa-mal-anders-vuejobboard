@@ -41,18 +41,22 @@
             <br />
             <b-row class="mb-4">
                 <b-col>
-                    <b-link to="/jobboard" class="icon-box">
+                    <b-link to="/jobboard" class="icon-box shadow1 py-4 px-3">
                         <font-awesome-icon
                             class="mr-1"
                             :icon="['fa', 'newspaper']"
                             size="3x"
                         />
                         <h4 class="h5 bold">Stellenangebote</h4>
+                        <p>
+                            Entdecke täglich neue Stellenangebote und finde das
+                            richtige für Dich
+                        </p>
                     </b-link>
                 </b-col>
                 <b-col>
                     <div
-                        class="icon-box"
+                        class="icon-box shadow1 py-4 px-3"
                         @click="$bvModal.show('newsletter')"
                         style="cursor: pointer"
                     >
@@ -62,6 +66,10 @@
                             size="3x"
                         />
                         <h4 class="h5 bold">Newsletter</h4>
+                        <p>
+                            Mit unserem wöchentlichen Job Newsletter keine
+                            Stellen in Deiner Region verpassen
+                        </p>
                     </div>
                     <b-modal centered hide.header hide-footer id="newsletter">
                         <NewsletterSignUpForm class="p-4" />
@@ -70,7 +78,7 @@
                 <b-col>
                     <b-link
                         :href="`https://www.facebook.com/${config.fb.path}`"
-                        class="icon-box"
+                        class="icon-box shadow1 py-4 px-3"
                     >
                         <font-awesome-icon
                             class="mr-1"
@@ -78,10 +86,16 @@
                             size="3x"
                         />
                         <h4 class="h5 bold">Facebook</h4>
+                        <p>
+                            Bleibe über Facebook auf dem Laufenden über alle
+                            Neuigkeiten auf der Seite
+                        </p>
                     </b-link>
                 </b-col>
             </b-row>
-            <h2>Wir helfen dir bei der Suche nach deinem Traumjob</h2>
+            <h2 class="my-4">
+                Wir helfen dir bei der Suche nach deinem Traumjob
+            </h2>
             <b-row>
                 <b-col>
                     <p>
@@ -120,7 +134,7 @@
                     </p>
                 </b-col>
             </b-row>
-            <h2>
+            <h2 class="my-4">
                 Wir helfen dir dabei einen Job zu finden, den du liebst. Und den
                 du verdienst.
             </h2>
@@ -153,7 +167,7 @@
             <div class="d-flex justify-content-center my-5">
                 <ToJobboardBanner />
             </div>
-            <h2>Bock auf Veränderung?</h2>
+            <h2 class="my-4">Bock auf Veränderung?</h2>
             <p>
                 Als MFA hast du einen anspruchsvollen Job in der Arztpraxis. Es
                 gibt aber auch viele Karrierechancen darüber hinaus.
@@ -197,7 +211,7 @@
                     <BerufsbilderBanner />
                 </b-col>
             </b-row>
-            <h2>MFAs sind vernetzt und halten zusammen</h2>
+            <h2 class="my-4">MFAs sind vernetzt und halten zusammen</h2>
             <p>
                 Um unseren Beruf zu stärken und weiter voran zu bringen, müssen
                 wir zusammenhalten.

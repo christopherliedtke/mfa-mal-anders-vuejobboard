@@ -124,7 +124,7 @@
                 <p v-if="accepted" class="text-success">
                     Sie können Ihre Zahlung nun abschließen. Dazu werden Sie auf
                     eine sichere Zahlungsplattform weitergeleitet. Dort können
-                    Sie per Überweisung (SOFORT/GiroPay) oder Kreditkarte
+                    Sie per Überweisung (GiroPay), GooglePay oder Kreditkarte
                     zahlen.**
                 </p>
                 <p class="small">
@@ -273,7 +273,7 @@
             async checkPaymentSuccess(query) {
                 if (query.success === "true") {
                     this.alert.msg =
-                        "Der Zahlungsvorgang wurde erfolgreich abgeschlossen. Ihre Anzeige ist ab sofort auf unserer Stellenbörse verfügbar.";
+                        "Der Zahlungsvorgang wurde erfolgreich abgeschlossen. Ihre Anzeige ist ab sofort auf unserer Stellenbörse verfügbar. Einen Beleg für Ihre Zahlung erhalten Sie auf Ihre angegebene E-Mail Adresse.";
                     this.alert.variant = "success";
                     this.alert.showAlert = true;
                 } else if (query.success === "false") {

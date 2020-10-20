@@ -37,24 +37,24 @@ router.post("/checkout-completed", async (req, res) => {
             req.body.data.object["payment_intent"]
         );
 
-        const status = "published";
-        const paidAt = new Date();
-        const paidExpiresAt = new Date();
-        paidExpiresAt.setDate(
-            paidExpiresAt.getDate() + config.stripe.paymentExpirationDays
-        );
-
-        let refreshFrequency = couponRefreshFrequency || 0;
-
-        if (refreshFrequency === 0) {
-            config.stripe.refreshFrequencies.forEach((frequency) => {
-                if (amount >= frequency.amount) {
-                    refreshFrequency = frequency.refreshAfterDays;
-                }
-            });
-        }
-
         if (intent.status === "succeeded") {
+            const status = "published";
+            const paidAt = new Date();
+            const paidExpiresAt = new Date();
+            paidExpiresAt.setDate(
+                paidExpiresAt.getDate() + config.stripe.paymentExpirationDays
+            );
+
+            let refreshFrequency = couponRefreshFrequency || 0;
+
+            if (refreshFrequency === 0) {
+                config.stripe.refreshFrequencies.forEach((frequency) => {
+                    if (amount >= frequency.amount) {
+                        refreshFrequency = frequency.refreshAfterDays;
+                    }
+                });
+            }
+
             await Job.updateOne(
                 { _id: jobId, userId: userId },
                 {
@@ -96,24 +96,25 @@ router.post("/checkout-completed", async (req, res) => {
             const data = {
                 from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
                 to: config.website.contactEmail,
-                subject: `Neue Stelle veröffentlicht auf ${config.website.name}`,
+                subject: `[Neue Stelle veröffentlicht] - ${amount / 100}€`,
                 text: `
-                        Soeben wurde eine neue Stelle veröffentlicht: ${
-                            res.locals.secrets.WEBSITE_URL +
-                            config.googleIndexing.pathPrefix +
-                            jobId
-                        }
+                        Soeben wurde eine neue Stelle für ${
+                            amount / 100
+                        }€ veröffentlicht: ${
+                    res.locals.secrets.WEBSITE_URL +
+                    config.googleIndexing.pathPrefix +
+                    jobId
+                }
                         `,
             };
 
             emailService.sendMail(data);
         }
-
-        res.json({ received: true });
     } catch (err) {
         console.log("Error STRIPE on /checkout-completed: ", err);
-        res.json({ received: false });
     }
+
+    res.json({ received: true });
 });
 
 module.exports = router;

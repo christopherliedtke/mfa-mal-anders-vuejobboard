@@ -119,7 +119,7 @@
                     >Weitere Informationen</b-button
                 >
                 <b-button
-                    to="/page/contact"
+                    href="#faq"
                     variant="outline-primary"
                     size="lg"
                     class="mx-1 my-1"
@@ -289,7 +289,7 @@
             </b-row>
         </b-container>
 
-        <b-container class="mb-5">
+        <b-container class="mb-5" id="tipps-stellenanzeigen">
             <h2 class="bold mb-4">
                 Tipps für Ihre Stellenanzeige
             </h2>
@@ -345,6 +345,124 @@
                     <ApplicationProcessBanner />
                 </b-col>
             </b-row>
+        </b-container>
+
+        <b-container id="faq">
+            <h2 class="h1 bold text-center mb-4">
+                Häufige Fragen
+            </h2>
+            <b-row cols="1" cols-md="2">
+                <b-col>
+                    <h3 class="h5 bold">
+                        Welche Zahlungsarten stehen zur Verfügung?
+                    </h3>
+                    <p>
+                        Für die Zahlung Ihrer Stellenanzeige können Sie eine
+                        Kreditkarte nutzen per GooglePay oder per GiroPay
+                        bezahlen. Sollten Sie ausschließlich per Rechnung zahlen
+                        können, gelangen Sie während des Zahlungsvorgangs zum
+                        Kontaktformular. Lesen dazu ** im Bezahlvorgang.
+                    </p>
+                    <h3 class="h5 bold">
+                        Wie lange dauert es bis zur Veröffentlichung meiner
+                        Stellenanzeige?
+                    </h3>
+                    <p>
+                        Je nach Zahlungsmethode ist Ihre Stellenanzeige sofort
+                        online (GiroPay, GooglePay, Kreditkarte) oder Zahlung
+                        auf Rechnung erst nach bei uns erfolgtem
+                        Zahlungseingang.
+                    </p>
+                    <h3 class="h5 bold">
+                        Kann ich auch per Rechnungs zahlen?
+                    </h3>
+                    <p>
+                        Ja, die Möglichkeit besteht. Lesen Sie dazu nach einem
+                        Klick auf "Jetzt bezahlen" die Anmerkung **. Da wir
+                        einen erhöhten Aufwand für die separate Rechnungslegung
+                        und Zahlungsabwicklung haben, erhöht sich der
+                        Mindestbetrag bei Zahlung per Rechnung um 5,- Euro. Ihre
+                        Stellenanzeige wird von uns freigeschaltet sobald wir
+                        einen Zahlungseingang von Ihnen verbuchen können.
+                    </p>
+                    <h3 class="h5 bold">
+                        Woher weiß ich, wie viel ich für meine Stellenanzeige
+                        zahlen soll?
+                    </h3>
+                    <p>
+                        Wir arbeiten grundsätzlich nach dem "Pay What You Want"
+                        Prinzip, d.h. Sie können selbst entscheiden, wie viel
+                        Sie für die Veröffentlichung Ihrer Stellenanzeige bei
+                        uns zahlen möchten. Um den Betrieb der Plattform zu
+                        sichern, erheben wir lediglich einen Mindestbetrag von
+                        25,- Euro. Wer heutzutage auf Personalsuche ist, weiß,
+                        dass die Veröffentlichung von Stellenanzeigen sehr
+                        schnell sehr teuer werden kann. Mit unserem
+                        Nischenportal möchten wir Ihnen eine maßgeschneiderte
+                        Alternative anbieten. Wir haben Ihnen
+                        <b-link href="#pay-what-you-want"
+                            >einige Vorschläge</b-link
+                        >, die weit unterhalb der großen Allgemein-Jobportale
+                        liegen, zusammengestellt.
+                    </p>
+                </b-col>
+                <b-col>
+                    <h3 class="h5 bold">
+                        Kann ich meine Stellenanzeige im Nachhinein ändern?
+                    </h3>
+                    <p>
+                        Über Ihren registrierten Account können Sie Ihre
+                        Stellenanzeige jederzeit anpassen. Die Änderungen werden
+                        sofort automatisch übernommen.
+                    </p>
+                    <h3 class="h5 bold">
+                        Wie lange ist meine Stellenanzeige online?
+                    </h3>
+                    <p>
+                        Nach bestätigter Zahlung ist Ihre Stellenanzeige für 60
+                        Tage freigeschaltet. Ihre Stelle ist so lange online,
+                        wie die 60 Tage sowie Ihre angegebene Bewerbungsfrist
+                        nicht abgelaufen sind. Über Ihren Account können Sie
+                        Ihre Stellenanzeige jederzeit selbst offline nehmen oder
+                        löschen.
+                    </p>
+                    <h3 class="h5 bold">
+                        Wo wird meine Stellenanzeige veröffentlicht?
+                    </h3>
+                    <p>
+                        Mit der Veröffentlichung Ihrer Stellenanzeige auf
+                        unserer Webseite wird diese automatisch bei Google Jobs
+                        gelistet (es kann ein wenig Zeit in Anspruch nehmen, bis
+                        Google Ihre Anzeige integriert). Darüber hinaus
+                        verteilen wir Ihre Stellenanzeige über unseren Jobs
+                        Newsletter sowie unsere Social Media Kanäle (Facebook,
+                        Twitter).
+                    </p>
+                    <h3 class="h5 bold">
+                        Ich benötige Hilfe bei der Erstellung einer attraktiven
+                        Stellenanzeige. Kann ich Unterstützung von Ihnen
+                        bekommen?
+                    </h3>
+                    <p>
+                        Mit unseren
+                        <b-link href="#tipps-stellenanzeigen"
+                            >Tipps für attraktive Stellenanzeigen</b-link
+                        >
+                        geben wir Ihnen unseren Erfahrungsschatz an die Hand.
+                        Benötigen Sie darüber hinaus Hilfe, melden Sie sich gern
+                        über das Kontaktformular bei uns.
+                    </p>
+                </b-col>
+            </b-row>
+            <div class="d-flex flex-wrap justify-content-center mt-4">
+                <b-button
+                    to="/page/contact"
+                    variant="primary"
+                    size="lg"
+                    class="mx-1 my-1"
+                    >Kontakt</b-button
+                >
+            </div>
         </b-container>
 
         <!-- <FixedAddJobBtn /> -->

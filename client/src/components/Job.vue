@@ -271,6 +271,13 @@
                 `${job.company.name} sucht nach ${job.title} in ${job.company.location}`
             "
             :img="job.imageUrl || job.company.logoUrl || ''"
+            :twitterCard="
+                job.imageUrl
+                    ? 'summary_large_image'
+                    : job.company.logoUrl
+                    ? 'summary'
+                    : ''
+            "
         />
     </div>
 </template>

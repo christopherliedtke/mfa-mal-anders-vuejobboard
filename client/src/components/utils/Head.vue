@@ -6,7 +6,7 @@
     import config from "@/utils/config.json";
     export default {
         name: "Head",
-        props: ["title", "desc", "img", "imgAlt"],
+        props: ["title", "desc", "img", "imgAlt", "twitterCard"],
         head: {
             title: function() {
                 if (this.title) {
@@ -57,7 +57,7 @@
                         },
                         {
                             property: "twitter:card",
-                            content: "summary_large_image"
+                            content: this.twitterCard || "summary_large_image"
                         },
                         {
                             property: "twitter:site",
