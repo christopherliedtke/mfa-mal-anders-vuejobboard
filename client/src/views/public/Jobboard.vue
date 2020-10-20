@@ -175,7 +175,7 @@
         <Head
             :title="
                 title +
-                    ' für MFAs/ArzthelferInnen' +
+                    ' für MFAs / ArzthelferInnen' +
                     (filter.state ? ` | ${filter.state}` : '')
             "
             desc="Attraktive Stellenangebote nur für MFAs / ArzthelferInnen"

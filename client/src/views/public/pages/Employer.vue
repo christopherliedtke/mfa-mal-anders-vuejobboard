@@ -361,7 +361,8 @@
                         Kreditkarte nutzen per GooglePay oder per GiroPay
                         bezahlen. Sollten Sie ausschließlich per Rechnung zahlen
                         können, gelangen Sie während des Zahlungsvorgangs zum
-                        Kontaktformular. Lesen dazu ** im Bezahlvorgang.
+                        Kontaktformular. Lesen Sie dazu die Anmerkung ** im
+                        Bezahlvorgang.
                     </p>
                     <h3 class="h5 bold">
                         Wie lange dauert es bis zur Veröffentlichung meiner
@@ -374,7 +375,7 @@
                         Zahlungseingang.
                     </p>
                     <h3 class="h5 bold">
-                        Kann ich auch per Rechnungs zahlen?
+                        Kann ich auch per Rechnung zahlen?
                     </h3>
                     <p>
                         Ja, die Möglichkeit besteht. Lesen Sie dazu nach einem
