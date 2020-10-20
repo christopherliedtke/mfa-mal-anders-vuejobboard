@@ -379,10 +379,12 @@
                 category,
                 action = "Outbound_Link_Click"
             ) {
-                this.$gtag.event(action, {
-                    event_category: category,
-                    event_label: label
-                });
+                if (this.apiJobsSchema === "public") {
+                    this.$gtag.event(action, {
+                        event_category: category,
+                        event_label: label
+                    });
+                }
             }
         },
         created: function() {

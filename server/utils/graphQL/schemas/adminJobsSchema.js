@@ -121,6 +121,9 @@ const mutation = new GraphQLObjectType({
                               args.paidExpiresAt
                           ))
                         : (updateObj.paidExpiresAt = paidExpiresAt);
+                    if (args.paidExpiresAt > new Date()) {
+                        updateObj.paid = true;
+                    }
                 }
 
                 const response = await Job.updateOne(
