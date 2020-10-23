@@ -23,7 +23,7 @@
                 class="d-none d-lg-inline-block"
                 @click.prevent="sendNewsletter"
                 :variant="newsletterSent ? 'success' : 'danger'"
-                :disabled="newsletterSent"
+                :disabled="!sendNewsletterActive"
                 size="sm"
             >
                 {{ newsletterSent ? "Newsletter Sent" : "Send Newsletter now" }}
@@ -41,6 +41,13 @@
                     <b-button variant="dark" size="sm">daysBack</b-button>
                 </b-input-group-append>
             </b-input-group>
+            <b-form-checkbox
+                v-model="sendNewsletterActive"
+                name="check-button"
+                switch
+            >
+                enabled
+            </b-form-checkbox>
         </b-form>
         <b-table
             responsive
@@ -113,6 +120,7 @@
                     searchTerm: ""
                 },
                 daysBack: 7,
+                sendNewsletterActive: false,
                 fields: [
                     {
                         key: "_id",
@@ -254,6 +262,7 @@
                 });
 
                 this.newsletterSent = response.data.success;
+                this.sendNewsletterActive = false;
 
                 this.showOverlay = false;
             }
