@@ -1,6 +1,30 @@
 <template>
     <b-form>
         <Overlay :show="showOverlay"></Overlay>
+        <label for="user-gender">Anrede</label>
+        <b-form-select id="user-gender" v-model="gender">
+            <b-form-select-option :value="null"
+                >-- Titel auswählen --</b-form-select-option
+            >
+            <b-form-select-option
+                v-for="title in contactGenderOptions"
+                :key="title"
+                :value="title"
+                >{{ title }}</b-form-select-option
+            >
+        </b-form-select>
+        <label for="user-title">Titel</label>
+        <b-form-select id="user-title" v-model="title">
+            <b-form-select-option :value="null"
+                >-- Titel auswählen --</b-form-select-option
+            >
+            <b-form-select-option
+                v-for="title in contactTitleOptions"
+                :key="title"
+                :value="title"
+                >{{ title }}</b-form-select-option
+            >
+        </b-form-select>
         <label for="firstName">Vorname</label>
         <b-form-input
             type="text"
@@ -115,6 +139,10 @@
 <script>
     import { mapActions } from "vuex";
     import Overlay from "@/components/utils/Overlay";
+    import {
+        contactGenderOptions,
+        contactTitleOptions
+    } from "@/utils/jobDataConfig.json";
     export default {
         name: "RegisterForm",
         components: {
@@ -122,6 +150,8 @@
         },
         data() {
             return {
+                gender: null,
+                title: null,
                 firstName: "",
                 lastName: "",
                 email: "",
@@ -129,6 +159,8 @@
                 password2: "",
                 passwordType: "password",
                 acceptance: "",
+                contactGenderOptions,
+                contactTitleOptions,
                 showOverlay: false,
                 errors: []
             };
@@ -141,6 +173,8 @@
                 const res = await this.userAuth({
                     url: "/api/auth/register",
                     userData: {
+                        gender: this.gender,
+                        title: this.title,
                         firstName: this.firstName,
                         lastName: this.lastName,
                         email: this.email,

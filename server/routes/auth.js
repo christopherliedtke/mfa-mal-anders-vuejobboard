@@ -80,6 +80,8 @@ router.post("/login", async (req, res) => {
 // #access: Public
 router.post("/register", async (req, res) => {
     const {
+        gender,
+        title,
         firstName,
         lastName,
         email,
@@ -126,6 +128,8 @@ router.post("/register", async (req, res) => {
                 const hashedPw = await hash(password);
 
                 const newUser = new User({
+                    gender,
+                    title,
                     firstName,
                     lastName,
                     email,

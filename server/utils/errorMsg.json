@@ -1,12 +1,12 @@
 {
     "general": "Oh, da ist leider etwas schief gelaufen. Bitte probiere es noch einmal.",
     "auth": {
-        "fillAll": "Bitte fülle die erforderlichen Felder aus!",
+        "fillAll": "Bitte füllen Sie die erforderlichen Felder aus!",
         "noMatch": "Diese E-Mail Adresse ist bisher nicht bei uns registriert oder passt nicht zum angegebenen Passwort.",
         "pwNoMatch": "Das angegebene Passwort ist nicht korrekt.",
         "pwsNoMatch": "Die angegebenen Passwörter stimmen nicht überein.",
         "pwRequirements": "Das Passwort muss mindestens 6 Zeichen inkl. jeweils ein Kleinbuchstabe, Großbuchstabe, Zahl und Sonderzeichen enthalten.",
-        "termsOfUse": "Du musst die Nutzungsbedingungen lesen und ihnen zustimmen.",
+        "termsOfUse": "Sie müssen die Nutzungsbedingungen lesen und ihnen zustimmen.",
         "emailRegistered": "Die angegebene E-Mail Adresse ist bereits registriert.",
         "codeIncorrect": "Der eingegebene Code ist nicht korrekt oder abgelaufen."
     }
