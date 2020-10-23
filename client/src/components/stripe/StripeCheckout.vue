@@ -127,6 +127,19 @@
                     Sie per Überweisung (GiroPay), GooglePay oder Kreditkarte
                     zahlen.**
                 </p>
+                <p>
+                    <b-link
+                        :to="
+                            `/page/contact?subject=Rechnungsanforderung+${job &&
+                                job.title}+[id:${job &&
+                                job._id}]&message=Guten+Tag,%0A%0Aich+bitte+um+Zahlung+per+Rechnung+für+meine+Stellenanzeige.+Bitte+stellen+Sie+mir+eine+Rechnung+in+Höhe+von+${amountComputed /
+                                100}+Euro+per+E-Mail+mit+folgender+Rechnungsadresse+aus:%0A%0AUnternehmen:%0AName:%0AAdresse:%0A%0AMit+freundlichen+Grüßen%0A${
+                                $store.state.auth.userFirstName
+                            }+${$store.state.auth.userLastName}`
+                        "
+                        >Per Rechnung zahlen **</b-link
+                    >
+                </p>
                 <p class="small">
                     * Es fällt ein
                     <strong
@@ -139,7 +152,7 @@
                     <strong
                         >kontaktieren Sie uns bitte per
                         <b-link
-                            :href="
+                            :to="
                                 `/page/contact?subject=Rechnungsanforderung+${job &&
                                     job.title}+[id:${job &&
                                     job._id}]&message=Guten+Tag,%0A%0Aich+bitte+um+Zahlung+per+Rechnung+für+meine+Stellenanzeige.+Bitte+stellen+Sie+mir+eine+Rechnung+in+Höhe+von+${amountComputed /
@@ -147,14 +160,14 @@
                                     $store.state.auth.userFirstName
                                 }+${$store.state.auth.userLastName}`
                             "
-                            target="_blank"
                             >Kontaktformular</b-link
                         ></strong
                     >
                     unter Angabe Ihrer E-Mail Adresse, des Stellentitels und des
-                    Rechnungsbetrages. In dem Fall erhöht sich der Mindestbetrag
-                    um 5,- Euro. Ihre Stellenanzeige wird nach erfolgtem
-                    Geldeingang bei uns freigeschaltet.
+                    Rechnungsbetrages. In dem Fall erhöht sich der Kostenbeitrag
+                    um 5,- Euro. Sie erhalten die Rechnung von uns per E-Mail.
+                    Ihre Stellenanzeige wird nach erfolgtem Geldeingang bei uns
+                    freigeschaltet.
                 </p>
             </div></b-modal
         >

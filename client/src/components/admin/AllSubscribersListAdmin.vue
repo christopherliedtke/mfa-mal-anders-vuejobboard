@@ -28,6 +28,19 @@
             >
                 {{ newsletterSent ? "Newsletter Sent" : "Send Newsletter now" }}
             </b-button>
+
+            <b-input-group class="d-none d-lg-flex my-2 mr-3">
+                <b-form-input
+                    style="width: 95px"
+                    class="ml-2"
+                    type="number"
+                    v-model="daysBack"
+                    placeholder="daysBack"
+                />
+                <b-input-group-append>
+                    <b-button variant="dark" size="sm">daysBack</b-button>
+                </b-input-group-append>
+            </b-input-group>
         </b-form>
         <b-table
             responsive
@@ -99,6 +112,7 @@
                 filter: {
                     searchTerm: ""
                 },
+                daysBack: 7,
                 fields: [
                     {
                         key: "_id",
@@ -235,9 +249,9 @@
             },
             async sendNewsletter() {
                 this.showOverlay = true;
-                const response = await axios.post("/api/newsletter/send", {});
-
-                console.log("response.data.success: ", response.data.success);
+                const response = await axios.post("/api/newsletter/send", {
+                    daysBack: this.daysBack
+                });
 
                 this.newsletterSent = response.data.success;
 

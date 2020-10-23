@@ -55,7 +55,7 @@ router.post("/checkout-completed", async (req, res) => {
                 });
             }
 
-            await Job.updateOne(
+            const updatedJob = await Job.findOneAndUpdate(
                 { _id: jobId, userId: userId },
                 {
                     status,
@@ -64,8 +64,9 @@ router.post("/checkout-completed", async (req, res) => {
                     paidExpiresAt,
                     paidAmount: amount,
                     refreshFrequency,
-                }
-            );
+                },
+                { new: true }
+            ).populate("company");
 
             if (couponCode && couponUsage === "single") {
                 Coupon.deleteOne({ code: couponCode, usage: "single" });
@@ -105,7 +106,56 @@ router.post("/checkout-completed", async (req, res) => {
                     config.googleIndexing.pathPrefix +
                     jobId
                 }
-                        `,
+                `,
+                html: `
+                    <h2>Veröffentlichung einer neuen Stelle</h2>
+                    <p>
+                    <strong>ID:</strong> ${updatedJob._id} <br>
+                    <strong>Stellentitel:</strong> ${updatedJob.title} <br>
+                    <strong>Unternehmen:</strong> ${
+                        updatedJob.company.name
+                    } <br>
+                    <strong>Webseite:</strong> <a href="${
+                        updatedJob.company.url
+                    }">${updatedJob.company.url}</a> <br>
+                    <strong>Ort:</strong> ${updatedJob.company.location}, ${
+                    updatedJob.company.state
+                } <br>
+                    <strong>Preis:</strong> ${
+                        updatedJob.paidAmount / 100
+                    } EURO <br>
+                    <strong>Link:</strong> <a href="${
+                        res.locals.secrets.WEBSITE_URL +
+                        config.googleIndexing.pathPrefix +
+                        jobId
+                    }">${
+                    res.locals.secrets.WEBSITE_URL +
+                    config.googleIndexing.pathPrefix +
+                    jobId
+                }</a>
+                </p>
+                <h3>Social Sharing</h3>
+                <p>
+                    <a href="https://www.facebook.com/MFAmalanders">Facebook</a><br>
+                    <a href="https://twitter.com/MfaMalAnders">Twitter</a>
+                </p>
+                <h4>Body</h4>
+                <p>
+                    ${updatedJob.title}
+                    <br>
+                    <br>
+                    ${
+                        res.locals.secrets.WEBSITE_URL +
+                        config.googleIndexing.pathPrefix +
+                        jobId
+                    }
+                    <br>
+                    <br>
+                    #mfamalanders #mfa #arzthelfer #arzthelferIn #mfajobs #${updatedJob.company.location
+                        .toLowerCase()
+                        .replace("-", "")}jobs
+                </p>
+                `,
             };
 
             emailService.sendMail(data);

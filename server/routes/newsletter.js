@@ -157,7 +157,7 @@ router.get("/delete/:subscriberId", async (req, res) => {
 // #desc:   Send newsletter
 // #access: Admin
 router.post("/send", authenticateToken, isAdmin, async (req, res) => {
-    const success = await sendNewsletter();
+    const success = await sendNewsletter(req.body.daysBack);
     res.json(success);
 });
 

@@ -15,7 +15,7 @@
                     /></b-button>
                 </b-input-group-append>
             </b-input-group>
-            <div class="inline-block ml-3">
+            <div class="inline-block ml-3 my-3 my-lg-0">
                 Number of Users:
                 <strong>{{ computedUsers.length }}</strong>
             </div>

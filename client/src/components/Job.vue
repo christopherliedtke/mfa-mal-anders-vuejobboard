@@ -6,10 +6,10 @@
                 class="d-flex  flex-lg-nowrap align-items-start align-items-md-center my-3"
             >
                 <div
+                    v-if="job.company && job.company.logoUrl"
                     class="logo-container mr-2 mb-3 mb-lg-0 order-2 order-sm-1"
                 >
                     <b-img
-                        v-if="job.company && job.company.logoUrl"
                         class="logo my-3"
                         :src="job.company.logoUrl"
                         fluid

@@ -11,7 +11,7 @@ if (process.env.NODE_ENV == "production") {
     secrets = require("../secrets");
 }
 
-module.exports.sendNewsletter = async () => {
+module.exports.sendNewsletter = async (daysBack = 7) => {
     console.log("sendNewsletter starting now...");
 
     try {
@@ -29,7 +29,9 @@ module.exports.sendNewsletter = async () => {
                 ).toISOString(),
             },
             paidAt: {
-                $gte: new Date(new Date().valueOf() - 1000 * 60 * 60 * 24 * 7),
+                $gte: new Date(
+                    new Date().valueOf() - 1000 * 60 * 60 * 24 * daysBack
+                ),
             },
         }).populate("company");
 
