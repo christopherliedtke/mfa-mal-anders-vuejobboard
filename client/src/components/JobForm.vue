@@ -104,7 +104,7 @@
                 @update-content="job.description = $event"
             />
             <label for="ext-job-url"
-                >URL zur Stellenanzeige auf Ihrer Webseite</label
+                >URL zu Ihrer Bewerberseite [wenn vorhanden]</label
             >
             <b-input-group>
                 <template v-slot:prepend>
@@ -284,7 +284,7 @@
                 >
             </b-form-select>
 
-            <label for="company-url">Webseite</label>
+            <label for="company-url">Unternehmenswebseite</label>
             <b-input-group>
                 <template v-slot:prepend>
                     <b-input-group-text
@@ -453,6 +453,7 @@
                     refreshFrequency: 0,
                     title: "",
                     description: `
+                        <p>[Für eine attraktive Stellenanzeige sollten Sie folgende Punkte berücksichtigen. Bitte ersetzen Sie den hier stehenden Text entsprechend.]</p>
                         <p>[Schreiben Sie eine kurze Einleitung zu Ihrem Unternehmen.]</p>
                         <h3>Was wir Ihnen bieten</h3>
                         <p>[Was bieten Sie potentiellen BewerberInnen?]</p>

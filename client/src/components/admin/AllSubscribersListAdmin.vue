@@ -42,6 +42,7 @@
                 </b-input-group-append>
             </b-input-group>
             <b-form-checkbox
+                class="d-none d-lg-flex"
                 v-model="sendNewsletterActive"
                 name="check-button"
                 switch

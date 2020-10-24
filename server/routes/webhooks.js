@@ -115,6 +115,9 @@ router.post("/checkout-completed", async (req, res) => {
                     <strong>Unternehmen:</strong> ${
                         updatedJob.company.name
                     } <br>
+                    <strong>Unternehmensgröße:</strong> ${
+                        updatedJob.company.size
+                    } <br>
                     <strong>Webseite:</strong> <a href="${
                         updatedJob.company.url
                     }">${updatedJob.company.url}</a> <br>

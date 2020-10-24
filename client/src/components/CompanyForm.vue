@@ -86,7 +86,7 @@
                     >{{ size }}</b-form-select-option
                 >
             </b-form-select>
-            <label for="company-url">Webseite</label>
+            <label for="company-url">Unternehmenswebseite</label>
             <b-input-group>
                 <template v-slot:prepend>
                     <b-input-group-text
