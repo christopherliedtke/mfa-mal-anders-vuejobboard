@@ -268,7 +268,7 @@
             v-if="job.title"
             :title="job.title"
             :desc="
-                `${job.company.name} sucht nach ${job.title} in ${job.company.location}`
+                `${job.title} | ${job.company.name} | ${job.company.location}, ${job.company.state}`
             "
             :img="job.imageUrl || job.company.logoUrl || ''"
             :twitterCard="

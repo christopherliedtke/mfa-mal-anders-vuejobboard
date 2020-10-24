@@ -144,7 +144,7 @@ router.post("/checkout-completed", async (req, res) => {
                 </p>
                 <h4>Body</h4>
                 <p>
-                    ${updatedJob.title}
+                    ${updatedJob.title} | ${updatedJob.company.location}
                     <br>
                     <br>
                     ${
@@ -154,9 +154,10 @@ router.post("/checkout-completed", async (req, res) => {
                     }
                     <br>
                     <br>
-                    #mfamalanders #mfa #arzthelfer #arzthelferIn #mfajobs #${updatedJob.company.location
+                    #mfamalanders #mfa #arzthelfer #arzthelferin #mfajobs #${updatedJob.company.location
                         .toLowerCase()
-                        .replace("-", "")}jobs
+                        .replace("-", "")
+                        .trim()}jobs
                 </p>
                 `,
             };
