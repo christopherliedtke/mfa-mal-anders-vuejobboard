@@ -35,21 +35,27 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
             },
         }).populate("company");
 
-        const states = [...new Set(jobs.map((job) => job.company.state))];
+        const states = [
+            ...new Set(jobs.map((job) => job.company.state.replace("ü", "ue"))),
+        ];
         const newsletterList = {};
 
         states.forEach((state) => {
-            newsletterList[state] = [];
+            newsletterList[state.replace("ü", "ue")] = [];
         });
 
         subscribers.forEach((subscriber) => {
-            newsletterList[subscriber.state].push(subscriber.email);
+            if (newsletterList[subscriber.state.replace("ü", "ue")]) {
+                newsletterList[subscriber.state.replace("ü", "ue")].push(
+                    subscriber.email
+                );
+            }
         });
 
         console.log("newsletterList: ", newsletterList);
 
         for (const key in newsletterList) {
-            const jobList = generateListOfJobs(key, jobs);
+            const jobList = generateListOfJobs(key.replace("ü", "ue"), jobs);
 
             if (jobList) {
                 const data = {
@@ -98,7 +104,7 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
 
         return { success: true };
     } catch (error) {
-        console.log("Error on sendNewsletter CRON: ", error);
+        console.log("Error on sendNewsletter: ", error);
         return { success: false };
     }
 };
@@ -107,7 +113,7 @@ const generateListOfJobs = (state, jobs) => {
     let outputStr = "";
 
     jobs.forEach((job) => {
-        if (job.company.state === state) {
+        if (job.company.state.replace("ü", "ue") === state) {
             outputStr += `
                 <a 
                     style="margin-bottom: 1rem; font-size: 16px; display: inline-block; cursor: pointer; border: none; color: #b94559; text-decoration: none" 
