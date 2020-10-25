@@ -18,6 +18,7 @@ import Impressum from "@/views/public/pages/Impressum.vue";
 import AGBs from "@/views/public/pages/AGBs.vue";
 import Contact from "@/views/public/pages/Contact.vue";
 import NewsletterSubscriptionSuccess from "@/views/public/pages/NewsletterSubscriptionSuccess.vue";
+import NewsletterUnsubscribe from "@/views/public/pages/NewsletterUnsubscribe.vue";
 import NewsletterUnsubscriptionSuccess from "@/views/public/pages/NewsletterUnsubscriptionSuccess.vue";
 
 import MFACareer from "@/views/public/pages/MFACareer.vue";
@@ -167,6 +168,10 @@ const routes = [
             {
                 path: "subscription-successful",
                 component: NewsletterSubscriptionSuccess
+            },
+            {
+                path: "unsubscribe",
+                component: NewsletterUnsubscribe
             },
             {
                 path: "unsubscribed-successful",

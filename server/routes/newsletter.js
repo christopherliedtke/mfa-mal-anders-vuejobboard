@@ -130,26 +130,23 @@ router.get("/verification/:subscriberId", async (req, res) => {
     }
 });
 
-// #route:  GET /api/newsletter/delete/:subscriberId
+// #route:  POST /api/newsletter/unsubscribe
 // #desc:   Delete Subscriber
 // #access: Public
-router.get("/delete/:subscriberId", async (req, res) => {
+router.post("/unsubscribe", async (req, res) => {
     try {
         const deletedSubscriber = await Subscriber.deleteOne({
-            _id: req.params.subscriberId,
+            email: req.body.email,
         });
 
         if (deletedSubscriber.n === 1) {
-            res.redirect(
-                res.locals.secrets.WEBSITE_URL +
-                    config.website.newsletterUnsubscribeSuccessPath
-            );
+            res.json({ success: true });
         } else {
-            res.sendStatus(503);
+            res.json({ success: false });
         }
     } catch (error) {
         console.log("Error on /delete/:subscriberId: ", error);
-        res.sendStatus(503);
+        res.json({ success: false });
     }
 });
 

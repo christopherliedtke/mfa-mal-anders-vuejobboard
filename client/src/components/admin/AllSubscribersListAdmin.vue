@@ -42,13 +42,20 @@
                 </b-input-group-append>
             </b-input-group>
             <b-form-checkbox
-                class="d-none d-lg-flex"
+                class="d-none d-lg-flex my-2 mr-3"
                 v-model="sendNewsletterActive"
                 name="check-button"
                 switch
             >
                 enabled
             </b-form-checkbox>
+            <b-button
+                @click="emailsToClipboard"
+                class="d-none d-lg-flex my-2 mr-3"
+                variant="primary"
+                size="sm"
+                >Copy all emails</b-button
+            >
         </b-form>
         <b-table
             responsive
@@ -266,6 +273,19 @@
                 this.sendNewsletterActive = false;
 
                 this.showOverlay = false;
+            },
+            emailsToClipboard() {
+                let el = document.createElement("textarea");
+
+                el.value = this.subscribers
+                    .map(subscriber => subscriber.email)
+                    .join("; ");
+
+                document.body.appendChild(el);
+                el.select();
+
+                document.execCommand("copy");
+                document.body.removeChild(el);
             }
         }
     };

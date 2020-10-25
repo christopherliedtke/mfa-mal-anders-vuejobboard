@@ -35,18 +35,32 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
             },
         }).populate("company");
 
+        const states = [...new Set(jobs.map((job) => job.company.state))];
+        const newsletterList = {};
+
+        states.forEach((state) => {
+            newsletterList[state] = [];
+        });
+
         subscribers.forEach((subscriber) => {
-            const jobList = generateListOfJobs(subscriber, jobs);
+            newsletterList[subscriber.state].push(subscriber.email);
+        });
+
+        console.log("newsletterList: ", newsletterList);
+
+        for (const key in newsletterList) {
+            const jobList = generateListOfJobs(key, jobs);
 
             if (jobList) {
                 const data = {
                     from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
-                    to: subscriber.email,
-                    subject: `Dein Job-Newsletter für ${subscriber.state} – ${config.website.name}`,
+                    to: config.website.noreplyEmail,
+                    bcc: newsletterList[key],
+                    subject: `Dein Job-Newsletter für ${key} – ${config.website.name}`,
                     html: emailTemplate.generate(
                         `
                                 <div>
-                                    <h2 style="color: #6d0230">Deine Stellenangebote der Woche für ${subscriber.state}</h2>
+                                    <h2 style="color: #6d0230">Deine Stellenangebote der Woche für ${key}</h2>
                                     <p>Es ist wieder soweit! Hier erhältst Du ausgewählte Jobs der aktuellen Woche.</p>
                                     <p>Wir hoffen, für Dich ist etwas dabei und drücken die Daumen für Bewerbung und Co. </p>
                                 </div>
@@ -55,10 +69,10 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
                                 </div>
                             `,
                         `
-                                <a 
-                                    style="text-decoration: underline; color: #f8faf9" 
-                                    target="_blank" rel="noopener" 
-                                    href="${secrets.WEBSITE_URL}/api/newsletter/delete/${subscriber._id}"
+                                <a
+                                    style="text-decoration: underline; color: #f8faf9"
+                                    target="_blank" rel="noopener"
+                                    href="${secrets.WEBSITE_URL}/page/unsubscribe"
                                 >
                                     Vom Newsletter abmelden
                                 </a>
@@ -66,16 +80,21 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
                         `
                                 ${
                                     secrets.WEBSITE_URL
-                                }/SocialCard_JobsDerWoche_${subscriber.state
+                                }/SocialCard_JobsDerWoche_${key
                             .replace(/\s+/g, "")
                             .replace("ü", "ue")}.png
                             `
                     ),
                 };
 
-                emailService.sendMail(data);
+                try {
+                    emailService.sendMail(data);
+                } catch (err) {
+                    console.log("Error on newsletter sendMail(): ", err);
+                }
             }
-        });
+        }
+
         return { success: true };
     } catch (error) {
         console.log("Error on sendNewsletter CRON: ", error);
@@ -83,11 +102,11 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
     }
 };
 
-const generateListOfJobs = (subscriber, jobs) => {
+const generateListOfJobs = (state, jobs) => {
     let outputStr = "";
 
     jobs.forEach((job) => {
-        if (job.company.state === subscriber.state) {
+        if (job.company.state === state) {
             outputStr += `
                 <a 
                     style="margin-bottom: 1rem; font-size: 16px; display: inline-block; cursor: pointer; border: none; color: #b94559; text-decoration: none" 
