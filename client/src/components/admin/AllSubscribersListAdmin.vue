@@ -19,36 +19,42 @@
                 Number of Subscribers:
                 <strong>{{ computedSubscribers.length }}</strong>
             </div>
-            <b-button
-                class="d-none d-lg-inline-block"
-                @click.prevent="sendNewsletter"
-                :variant="newsletterSent ? 'success' : 'danger'"
-                :disabled="!sendNewsletterActive"
-                size="sm"
-            >
-                {{ newsletterSent ? "Newsletter Sent" : "Send Newsletter now" }}
-            </b-button>
+            <div class="d-none">
+                <b-button
+                    class="d-none d-lg-inline-block"
+                    @click.prevent="sendNewsletter"
+                    :variant="newsletterSent ? 'success' : 'danger'"
+                    :disabled="!sendNewsletterActive"
+                    size="sm"
+                >
+                    {{
+                        newsletterSent
+                            ? "Newsletter Sent"
+                            : "Send Newsletter now"
+                    }}
+                </b-button>
 
-            <b-input-group class="d-none d-lg-flex my-2 mr-3">
-                <b-form-input
-                    style="width: 95px"
-                    class="ml-2"
-                    type="number"
-                    v-model="daysBack"
-                    placeholder="daysBack"
-                />
-                <b-input-group-append>
-                    <b-button variant="dark" size="sm">daysBack</b-button>
-                </b-input-group-append>
-            </b-input-group>
-            <b-form-checkbox
-                class="d-none d-lg-flex my-2 mr-3"
-                v-model="sendNewsletterActive"
-                name="check-button"
-                switch
-            >
-                enabled
-            </b-form-checkbox>
+                <b-input-group class="d-none d-lg-flex my-2 mr-3">
+                    <b-form-input
+                        style="width: 95px"
+                        class="ml-2"
+                        type="number"
+                        v-model="daysBack"
+                        placeholder="daysBack"
+                    />
+                    <b-input-group-append>
+                        <b-button variant="dark" size="sm">daysBack</b-button>
+                    </b-input-group-append>
+                </b-input-group>
+                <b-form-checkbox
+                    class="d-none d-lg-flex my-2 mr-3"
+                    v-model="sendNewsletterActive"
+                    name="check-button"
+                    switch
+                >
+                    enabled
+                </b-form-checkbox>
+            </div>
             <b-button
                 @click="emailsToClipboard"
                 class="d-none d-lg-flex my-2 mr-3"

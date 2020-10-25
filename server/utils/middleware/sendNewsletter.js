@@ -94,11 +94,11 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
                     ),
                 };
 
-                try {
-                    emailService.sendMail(data);
-                } catch (err) {
-                    console.log("Error on newsletter sendMail(): ", err);
-                }
+                // try {
+                //     emailService.sendMail(data);
+                // } catch (err) {
+                //     console.log("Error on newsletter sendMail(): ", err);
+                // }
             }
         }
 
