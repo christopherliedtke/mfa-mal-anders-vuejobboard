@@ -9,38 +9,41 @@
                 alt="Banner - So viel verdienst Du wirklich"
             />
             <p>
-                Sobald es um das Thema Gehalt geht, fehlt vielen MFA das Gespür
-                für eine konkrete Zahl. Ein typisches Beispiel, das du bestimmt
-                auch kennst: du hast dich gerade auf einen Job beworben und der
-                neue Chef fragt dich nach deinen Gehaltsvorstellungen. Natürlich
-                willst du nicht zu dreist sein und das potenzielle Jobangebot
-                durch zu hohe Gehaltswünsche in Gefahr bringen. Deshalb gehen
-                viele medizinische Fachangestellte lieber auf Nummer sicher und
-                verkaufen sich unter Wert.
+                Sobald es um das Thema Gehalt geht, fehlt vielen MFA bzw.
+                ArzthelferInnen das Gespür für eine konkrete Zahl. Ein typisches
+                Beispiel, das du bestimmt auch kennst: du hast dich gerade auf
+                einen Job beworben und der neue Chef fragt dich nach deinen
+                Gehaltsvorstellungen. Natürlich willst du nicht zu dreist sein
+                und das potenzielle Jobangebot durch zu hohe Gehaltswünsche in
+                Gefahr bringen. Deshalb gehen viele medizinische Fachangestellte
+                lieber auf Nummer sicher und verkaufen sich am Ende unter Wert.
             </p>
             <h2>
                 Wie ermittelt man eigentlich seinen Marktwert?
             </h2>
             <p>
                 In den vielen Gruppen und Foren kommen regelmäßig Fragen zur
-                Höhe des Gehalts für MFA auf. Wenn ich bei manchen Kommentaren
-                lese, dass eine MFA mit 15 Jahren Berufserfahrung in ein und
-                derselben Praxis mit 1.900 € brutto nach Hause geht, finde ich
-                das einfach nur traurig.
+                Höhe des Gehalts in Voll- und Teilzeit für MFA auf. Wenn ich bei
+                manchen Kommentaren lese, dass eine MFA mit 15 Jahren
+                Berufserfahrung in ein und derselben Praxis mit 1.900 € brutto
+                nach Hause geht, finde ich das einfach nur sehr schade und
+                traurig.
             </p>
             <p>
                 Damit dir das nicht passiert, bekommst du in diesem Artikel von
                 MFA mal anders Informationen über Gehalt, Tarifverträge und
-                Tätigkeitsgruppen. Mit diesem Wissen, kannst du deinen eigenen
-                Marktwert einordnen und für einen leistungsorientierten und
-                fairen Lohn einstehen.
+                Tätigkeitsgruppen für MFAs und ArzthelferInnen. Mit diesem
+                Wissen, kannst du deinen eigenen Marktwert einordnen und
+                selbstbewusst für einen leistungsorientierten und fairen Lohn
+                einstehen.
             </p>
             <p>
                 Vorweg klären wir zuerst ein paar Begrifflichkeiten und wie die
                 vertragliche Lage aussieht.
             </p>
             <h2>
-                Gehaltstarifverträge
+                Gehaltstarifvertrag {{ new Date().getFullYear() }} – MFA /
+                ArzthelferIn
             </h2>
             <b-row>
                 <b-col>
@@ -50,7 +53,7 @@
                         auf Arbeitnehmerseite. Sie vertritt uns medizinische
                         Fachangestellte bei Tarifverhandlungen gegenüber der
                         Arbeitsgemeinschaft zur Regelung der Arbeitsbedingungen
-                        der ArzthelferInnen/Medizinischen Fachangestellten
+                        der ArzthelferInnen / Medizinischen Fachangestellten
                         (AAA). Die AAA ist die Tarifpartei der Arbeitgeber,
                         sprich der niedergelassenen Ärzte.
                     </p>
@@ -147,7 +150,7 @@
                 Tätigkeitsgruppen vereinbart.
             </p>
             <p>
-                Schauen wir uns einmal an, wie man seine Berufsjahre ausrechnet.
+                Schauen wir uns einmal an, wie man seine Berufsjahre berechnet.
             </p>
             <p>
                 Die Anrechnung deiner Berufsjahre startet ab dem 1. des Monats,
@@ -164,8 +167,8 @@
                 </p>
             </div>
             <p>
-                Bei Teilzeitbeschäftigten zählen die Berufsjahre genau wie bei
-                Vollzeitbeschäftigung und werden komplett angerechnet.
+                Bei Beschäftigten in Teilzeit zählen die Berufsjahre genau wie
+                bei Vollzeitbeschäftigung und werden komplett angerechnet.
             </p>
             <h2>
                 Mutterschutz, Elternzeit und Erziehungsurlaub
@@ -182,8 +185,8 @@
             <p>
                 Zeiten für Erziehungsurlaub bzw. Elternzeit werden nur zur
                 Hälfte zu den Berufsjahren angerechnet. Arbeitest du während der
-                Elternzeit in Teilzeit, werden die Zeiten jedoch voll dazu
-                gerechnet.
+                Elternzeit in Teilzeit als MFA / ArzthelferIn, werden die Zeiten
+                jedoch voll dazu gerechnet.
             </p>
             <p>Zwei Beispiele zum besseren Verständnis.</p>
             <b-row class="my-3">
@@ -192,15 +195,15 @@
                         <p><strong>Beispiel 1:</strong></p>
                         <p class="pl-5">
                             <em>
-                                Eine MFA geht am 15. August 2016 bei errechnetem
-                                Geburtstermin am 30.09.2016 (6 Wochen vor dem
-                                errechneten Entbindungstermin) bis zum
-                                25.11.2016 (8 Wochen nach der Entbindung) in den
-                                Mutterschutz und nimmt eine einjährige
-                                Elternzeit in Anspruch. Sie kehrt am 01.10.2017
-                                in die berufliche Tätigkeit als MFA zurück. Die
-                                MFA bekommt für diese Zeit insgesamt 8,5 Monate
-                                als Berufsjahre angerechnet.
+                                Eine MFA / ArzthelferIn geht am 15. August 2016
+                                bei errechnetem Geburtstermin am 30.09.2016 (6
+                                Wochen vor dem errechneten Entbindungstermin)
+                                bis zum 25.11.2016 (8 Wochen nach der
+                                Entbindung) in den Mutterschutz und nimmt eine
+                                einjährige Elternzeit in Anspruch. Sie kehrt am
+                                01.10.2017 in die berufliche Tätigkeit als MFA
+                                zurück. Die MFA bekommt für diese Zeit insgesamt
+                                8,5 Monate als Berufsjahre angerechnet.
                             </em>
                         </p>
                     </div>
@@ -210,8 +213,8 @@
                         <p><strong>Beispiel 2:</strong></p>
                         <p class="pl-5">
                             <em>
-                                Eine MFA/AH geht am 15. August 2016 bei
-                                errechnetem Geburtstermin am 30.09.2016 in
+                                Eine MFA / ArzthelferIn geht am 15. August 2016
+                                bei errechnetem Geburtstermin am 30.09.2016 in
                                 Mutterschutz bis zum 25.11.2016 und nimmt
                                 anschließend eine einjährige Elternzeit in
                                 Anspruch. Ab dem 01.04.2017 arbeitet sie während
@@ -238,14 +241,14 @@
                 <p><strong>Beispiel:</strong></p>
                 <p class="pl-5">
                     <em>
-                        Eine MFA arbeitet vor (oder nach) ihrer Ausbildung vier
-                        Jahre in einer Zahnarztpraxis. Hier werden 2 Berufsjahre
-                        angerechnet.
+                        Eine MFA / ArzthelferIn arbeitet vor (oder nach) ihrer
+                        Ausbildung vier Jahre in einer Zahnarztpraxis. Hier
+                        werden 2 Berufsjahre angerechnet.
                     </em>
                 </p>
             </div>
             <h2>
-                Tätigkeitsgruppen
+                Tätigkeitsgruppen nach aktuellem Gehaltstarifvertrag
             </h2>
             <p>
                 Im Gehaltstarifvertrag für medizinische Fachangestellte werden
@@ -621,16 +624,16 @@
                 richtigen Arbeitgebers. Denn Geld alleine macht auch nicht
                 glücklich. Es muss das Gesamtpaket stimmen. Dazu zählen vor
                 allem das Klima im Team, die Arbeitszeiten, der Weg zur Arbeit,
-                interessante Aufgaben, die fordern und fördern (Stickwort
+                interessante Aufgaben, die fordern und fördern (Stichwort
                 Weiterbildungen und Fortbildungen) oder die Möglichkeit Home
                 Office zu machen.
             </p>
             <p>
                 Wenn das angebotene Gehalt auf den ersten Blick nicht besonders
-                reizvoll ist, erkundige dich nach den Benefits. Das können
-                monetäre oder nicht monetäre Sonderleistungen sein. Das
-                (unzufriedenstellende) Gehalt wird dadurch kompensiert und der
-                Job bzw. den Arbeitgeber attraktiver.
+                reizvoll ist, erkundige dich nach zusätzlich möglichen Benefits.
+                Das können monetäre oder nicht monetäre Sonderleistungen sein.
+                Das (unzufriedenstellende) Gehalt wird dadurch kompensiert und
+                der Job bzw. den Arbeitgeber attraktiver.
             </p>
             <p>
                 Inwiefern sich ein Benefit für dich wirklich lohnt, entscheidet
@@ -673,7 +676,7 @@
             </p>
             <div class="checklist border-radius1 shadow my-5">
                 <h3 class="h4 mb-4">
-                    Checkliste &ndash; MFA Gehalt einschätzen
+                    Checkliste &ndash; MFA / ArzthelferIn Gehalt einschätzen
                 </h3>
                 <ul>
                     <li>
@@ -707,10 +710,11 @@
 
             <p>
                 Ich hoffe, dir mit diesem Artikel ein besseres Gespür für die
-                Berechnung des Gehalts bei unterschiedlichen Stufen an
-                Erfahrungen und Tätigkeitsfelder vermitteln zu können. Trau dich
-                für dein Wissen und deine bisherige berufliche Erfahrung
-                einzustehen und ein angemessenes Gehalt zu verlangen.
+                Berechnung deines Gehalts als MFA / ArzthelferIn bei
+                unterschiedlichen Stufen an Erfahrungen und Tätigkeitsfelder
+                vermitteln zu können. Mein Appell: Trau dich, selbstbewusst für
+                dein Wissen und deine bisherige berufliche Erfahrung einzustehen
+                und ein angemessenes Gehalt zu verlangen.
             </p>
 
             <ToJobboardBanner class="my-5 mx-auto" />
@@ -755,9 +759,10 @@
             </p>
         </b-container>
         <Head
-            :title="'MFA Gehaltsrechner | ' + title"
+            :title="'Gehaltsrechner für MFA / ArzthelferIn'"
             desc="Über Gehalt, Tarifvertrag, Tätigkeitsgruppen für MFA. Ermittle deinen Marktwert - Hier gehts zum Gehaltsrechner für MFAs/ArzthelferInnen."
             :img="require('@/assets/Gehalt-fuer-mfa.jpg')"
+            :script="snippet"
         />
     </div>
 </template>
@@ -783,7 +788,53 @@
         },
         data() {
             return {
-                title: "Mein Gehalt als MFA / ArzthelferIn"
+                title: "Mein Gehalt als MFA / ArzthelferIn",
+                snippet: [
+                    {
+                        type: "application/ld+json",
+                        inner: `{
+                            "@context": "http://schema.org",
+                            "@type" : "FAQPage",
+                            "mainEntity": [{
+                                "@type": "Question",
+                                "name": "Wie viel Gehalt verdient eine MFA / ArzthelferIn?",
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": "Das Gehalt einer MFA / ArzthelferIn liegt bei Berufseinstieg laut aktuellen Gehaltstarifvertrag bei ca. 1.970 Euro / Monat für eine Vollzeitstelle. Mit zunehmender Berufserfahrung und abgeschlossenen Fortbildungen erhöht sich das Gehalt tariflich bis auf über 3.800 Euro / Monat. Im aktuellen Durchschnitt liegt der Verdienst einer MFA / ArzthelferIn bei ca. 2.500 Euro / Monat."
+                            }]
+                        }`
+                    },
+                    {
+                        type: "application/ld+json",
+                        inner: `{
+                            "@context": "https://schema.org/",
+                            "@type": "Occupation",
+                            "name": "Medizinische Fachangstellte (MFA) / ArzthelferIn",
+                            "mainEntityOfPage": {
+                                "@type": "WebPage",
+                                "lastReviewed": "2020-10-25T14:20:00-05:00"
+                            },
+                            "description": "Medizinische Fachangestellte (MFA) oder auch ArzthelferInnen arbeiten meist in Arztpraxen, aber auch Krankenhäusern und anderen Pflegeeinrichtungen und unterstützen Ärzte bei der Behandlung von Patienten sowie der Organisation des gesamten Betriebsablaufs.",
+                            "estimatedSalary": [
+                                {
+                                "@type": "MonetaryAmountDistribution",
+                                "name": "base",
+                                "currency": "EUR",
+                                "duration": "P1M",
+                                "percentile25": "2200",
+                                "median": "2500",
+                                "percentile75": "3000",
+                                }
+                            ],
+                            "occupationLocation": [
+                                {
+                                "@type": "Country",
+                                "name": "Germany"
+                                }
+                            ]
+                        }`
+                    }
+                ]
             };
         }
     };

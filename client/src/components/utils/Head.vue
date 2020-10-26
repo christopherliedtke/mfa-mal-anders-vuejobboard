@@ -6,7 +6,18 @@
     import config from "@/utils/config.json";
     export default {
         name: "Head",
-        props: ["title", "desc", "img", "imgAlt", "twitterCard"],
+        props: {
+            title: {
+                type: String
+            },
+            desc: {
+                type: String
+            },
+            img: { type: String },
+            imgAlt: { type: String },
+            twitterCard: { type: String },
+            script: { type: Array, default: () => [] }
+        },
         head: {
             title: function() {
                 if (this.title) {
@@ -68,6 +79,7 @@
             },
             script: function() {
                 return [
+                    ...this.script,
                     {
                         type: "application/ld+json",
                         inner: `{

@@ -12,8 +12,8 @@
         </h3>
         <p>
             Gib Deine Daten ein und erhalte Dein Gehalt entsprechend des
-            Gehaltstarifvertrag* für Medizinische Fachangestellte /
-            ArzthelferInnen (Stand 2020).
+            aktuellen Gehaltstarifvertrags* für Medizinische Fachangestellte
+            (MFA) / ArzthelferIn in Voll- oder Teilzeit (Stand 2020).
         </p>
         <b-form>
             <b-form-select
@@ -60,8 +60,8 @@
                 href="https://www.bundesaerztekammer.de/fileadmin/user_upload/downloads/pdf-Ordner/MFA/AAA-GTV-MFA-2019.pdf"
                 target="_blank"
                 rel="noopener"
-                >Gehaltstarifvertrag für Medizinische Fachangestellte /
-                ArzthelferInnen – AAA (2019)</a
+                >Aktueller Gehaltstarifvertrag für Medizinische Fachangestellte
+                (MFA) / ArzthelferInnen – AAA (2019)</a
             >
         </p>
     </div>
