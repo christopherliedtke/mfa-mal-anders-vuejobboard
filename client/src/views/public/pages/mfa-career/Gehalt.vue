@@ -824,7 +824,7 @@
                                 "duration": "P1M",
                                 "percentile25": "2200",
                                 "median": "2500",
-                                "percentile75": "3000",
+                                "percentile75": "3000"
                                 }
                             ],
                             "occupationLocation": [
