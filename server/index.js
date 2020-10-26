@@ -99,6 +99,9 @@ app.use(
 app.get("/sitemap.xml", (req, res) => {
     res.sendFile(__dirname + "/public/sitemap.xml");
 });
+app.get("/google01de2d715b667119.html", (req, res) => {
+    res.sendFile(__dirname + "/public/google01de2d715b667119.html");
+});
 
 // #Middleware for production
 if (process.env.NODE_ENV == "production") {
