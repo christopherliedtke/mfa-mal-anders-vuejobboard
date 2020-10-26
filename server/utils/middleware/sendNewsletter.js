@@ -1,6 +1,7 @@
 const config = require("../config.json");
-const emailService = require("../nodemailer");
+// const emailService = require("../nodemailer");
 const emailTemplate = require("../emailTemplate");
+
 const { Subscriber } = require("../models/subscriber");
 const { Job } = require("../models/job");
 
@@ -10,6 +11,12 @@ if (process.env.NODE_ENV == "production") {
 } else {
     secrets = require("../secrets");
 }
+
+const mg = require("mailgun-js")({
+    apiKey: secrets.MG_API_KEY,
+    domain: secrets.MG_DOMAIN,
+    host: "api.eu.mailgun.net",
+});
 
 module.exports.sendNewsletter = async (daysBack = 7) => {
     console.log("sendNewsletter starting now...");
@@ -59,9 +66,9 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
 
             if (jobList) {
                 const data = {
-                    from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
-                    to: config.website.noreplyEmail,
-                    bcc: newsletterList[key],
+                    from: `${config.website.emailFrom} <noreply@${secrets.MG_DOMAIN}>`,
+                    to: config.website.contactEmail,
+                    bcc: newsletterList[key].join(", "),
                     subject: `Dein Job-Newsletter für ${key} – ${config.website.name}`,
                     html: emailTemplate.generate(
                         `
@@ -69,6 +76,7 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
                                     <h2 style="color: #6d0230">Deine Stellenangebote der Woche für ${key}</h2>
                                     <p>Es ist wieder soweit! Hier erhältst Du unsere aktuellen Stellenanzeigen direkt in Dein Postfach.</p>
                                     <p>Wir hoffen, für Dich ist etwas dabei und drücken die Daumen für Bewerbung und Co. </p>
+                                    <p>Solltest Du diese E-Mail zum wiederholten Mal bekommen, tut es uns Leid. Unser E-Mail Provider hatte über das Wochenende kleinere Probleme mit dem Versand des Newsletters.</p>
                                 </div>
                                 <div style="margin: 2rem 0; padding: 1.5rem 0; border-top: solid 2px #6d0230">
                                     ${jobList}
@@ -92,6 +100,10 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
                             `
                     ),
                 };
+
+                mg.messages().send(data, (error, body) => {
+                    console.log("mailgun.messages() -> Body: ", body);
+                });
 
                 // try {
                 //     emailService.sendMail(data);

@@ -12,6 +12,8 @@ const emailService = nodemailer.createTransport({
     port: secrets.EMAIL_PORT,
     secure: false,
     pool: true,
+    maxConnections: 3,
+    maxMessages: 45,
     tls: {
         servername: secrets.EMAIL_HOST,
     },
