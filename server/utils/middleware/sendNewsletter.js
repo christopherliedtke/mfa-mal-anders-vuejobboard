@@ -142,7 +142,7 @@ const generateListOfJobs = (state, jobs) => {
                         secrets.WEBSITE_URL +
                         config.googleIndexing.pathPrefix +
                         job._id
-                    }"
+                    }?newsletter=true"
                     target="_blank"
                     rel="noopener"
                 >
