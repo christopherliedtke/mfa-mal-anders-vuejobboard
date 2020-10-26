@@ -103,23 +103,6 @@
                 :content="job.description"
                 @update-content="job.description = $event"
             />
-            <label for="ext-job-url"
-                >URL zu Ihrer Bewerberseite [wenn vorhanden]</label
-            >
-            <b-input-group>
-                <template v-slot:prepend>
-                    <b-input-group-text
-                        ><b-icon scale="1" icon="link45deg"
-                    /></b-input-group-text>
-                </template>
-                <b-form-input
-                    type="url"
-                    v-model="job.extJobUrl"
-                    :state="validated ? (job.extJobUrl ? true : null) : null"
-                    id="ext-job-url"
-                    placeholder="https://www.ihr-unternehmen.com/karriere/stelle"
-                />
-            </b-input-group>
             <label for="application-email"
                 >E-Mail Adresse für Bewerbungen</label
             >
@@ -137,6 +120,24 @@
                     "
                     id="application-email"
                     placeholder="karriere@ihr-unternehmen.de"
+                />
+            </b-input-group>
+            <label for="ext-job-url"
+                >URL zur Bewerbung auf Ihrem Bewerberportal [wenn
+                vorhanden]</label
+            >
+            <b-input-group>
+                <template v-slot:prepend>
+                    <b-input-group-text
+                        ><b-icon scale="1" icon="link45deg"
+                    /></b-input-group-text>
+                </template>
+                <b-form-input
+                    type="url"
+                    v-model="job.extJobUrl"
+                    :state="validated ? (job.extJobUrl ? true : null) : null"
+                    id="ext-job-url"
+                    placeholder="https://www.ihr-unternehmen.com/karriere/stelle/bewerben"
                 />
             </b-input-group>
             <label for="title-image"

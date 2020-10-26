@@ -648,7 +648,7 @@
                 <li>Jobticket für öffentliche Verkehrsmittel</li>
                 <li>Zuzahlung zu Kita-Gebühren oder hauseigene Kita</li>
                 <li>Übertarifliche Anzahl an Urlaubstagen</li>
-                <li>Monatsgehalt/ Urlaubsgeld</li>
+                <li>13. Monatsgehalt / Urlaubsgeld</li>
                 <li>
                     Zulage zur privaten Rentenversicherung, Betriebsrente,
                     Lebens-, Unfall-, Berufsunfähigkeitsversicherung etc.

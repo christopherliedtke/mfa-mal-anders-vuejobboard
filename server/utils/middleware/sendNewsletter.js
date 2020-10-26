@@ -102,7 +102,17 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
                 };
 
                 mg.messages().send(data, (error, body) => {
-                    console.log("mailgun.messages() -> Body: ", body);
+                    console.log(
+                        `mailgun.messages() -> Body for ${key}: `,
+                        body
+                    );
+
+                    if (error) {
+                        console.log(
+                            `Error on mailgun.messages() for ${key}: `,
+                            err
+                        );
+                    }
                 });
 
                 // try {
