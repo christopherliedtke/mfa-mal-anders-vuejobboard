@@ -68,7 +68,6 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
                                 <div>
                                     <h2 style="color: #6d0230">Deine Stellenangebote der Woche für ${key}</h2>
                                     <p>Es ist wieder soweit! Hier erhältst Du unsere aktuellen Stellenanzeigen direkt in Dein Postfach.</p>
-                                    <p>Solltest Du den Newsletter zum zweiten Mal bekommen, bitten wir um Entschuldigung. Unser E-Mail Service hatte heute leider kleinere Probleme beim Versand.</p>
                                     <p>Wir hoffen, für Dich ist etwas dabei und drücken die Daumen für Bewerbung und Co. </p>
                                 </div>
                                 <div style="margin: 2rem 0; padding: 1.5rem 0; border-top: solid 2px #6d0230">
