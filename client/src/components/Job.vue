@@ -157,6 +157,13 @@
                     bewerben</b-button
                 >
             </div>
+            <div class="my-3">
+                <b-button
+                    variant="outline-primary"
+                    @click="$router.push('/jobboard')"
+                    >Zurück zur Stellenbörse</b-button
+                >
+            </div>
             <div
                 v-if="
                     job.contactLastName || job.contactEmail || job.contactPhone
