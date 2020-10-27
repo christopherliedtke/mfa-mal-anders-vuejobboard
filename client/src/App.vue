@@ -20,7 +20,12 @@
             Footer
         },
         methods: {
-            ...mapActions(["getTrainings", "getArticles", "getProfessions"]),
+            ...mapActions([
+                "getTrainings",
+                "getArticles",
+                "getProfessions",
+                "getJobs"
+            ]),
             track() {
                 this.$gtag.pageview({
                     page_title: this.$route.name,
@@ -48,6 +53,37 @@
                 this.getArticles();
                 this.getProfessions();
             }
+
+            this.getJobs({
+                query: `
+                    query {
+                        jobs {
+                            _id
+                            createdAt
+                            paidAt
+                            title
+                            description
+                            employmentType
+                            applicationDeadline
+                            simpleApplication
+                            specialization
+                            company {
+                                _id
+                                name
+                                street
+                                location
+                                zipCode
+                                state
+                                country
+                                geoCodeLat
+                                geoCodeLng
+                                size
+                                logoUrl
+                            }
+                        }
+                    }
+                `
+            });
         }
     };
 </script>
