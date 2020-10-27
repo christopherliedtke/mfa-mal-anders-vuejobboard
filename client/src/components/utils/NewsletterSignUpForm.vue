@@ -1,6 +1,7 @@
 <template>
     <div class="newsletter-signup">
-        <h2 class="mb-4 h4">Deine wöchentlichen Jobangebote</h2>
+        <h2 class="mb-4 h4">{{ title }}</h2>
+        <p v-if="intro">{{ intro }}</p>
         <b-form>
             <label class="sr-only sr-only-focusable" for="email2"
                 >E-Mail Adresse</label
@@ -84,7 +85,20 @@
     import Overlay from "@/components/utils/Overlay";
     export default {
         name: "NewsletterSignUpForm",
-        props: ["defaultState"],
+        props: {
+            defaultState: {
+                type: String,
+                default: null
+            },
+            title: {
+                type: String,
+                default: "Deine wöchentlichen Jobangebote"
+            },
+            intro: {
+                type: String,
+                default: ""
+            }
+        },
         components: {
             Overlay
         },
@@ -125,6 +139,7 @@
 
                     if (response.data.success) {
                         this.success = true;
+                        localStorage.setItem("nl-pop", "false");
                     } else {
                         this.error =
                             "Bei der Anmeldung ist ein Fehler aufgetreten. Bitte probiere es noch einmal.";

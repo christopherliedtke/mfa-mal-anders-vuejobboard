@@ -5,19 +5,22 @@
             <router-view />
         </main>
         <Footer />
+        <NewsletterSignUpPopUp />
     </div>
 </template>
 
 <script>
     import Header from "@/components/layout/Header";
     import Footer from "@/components/layout/Footer";
+    import NewsletterSignUpPopUp from "@/components/utils/NewsletterSignUpPopUp.vue";
     import config from "@/utils/config.json";
     import { mapActions } from "vuex";
 
     export default {
         components: {
             Header,
-            Footer
+            Footer,
+            NewsletterSignUpPopUp
         },
         methods: {
             ...mapActions([
