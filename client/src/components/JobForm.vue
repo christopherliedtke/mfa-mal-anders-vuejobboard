@@ -10,6 +10,7 @@
                 id="title"
                 placeholder="Titel der Stellenanzeige eingeben..."
                 required
+                trim
             />
             <div
                 v-if="$store.state.auth.userRole === 'admin'"
@@ -206,6 +207,7 @@
                 id="company-name"
                 placeholder="Unternehmensname eingeben..."
                 required
+                trim
             />
             <label for="company-street">Straße und Hausnummer *</label>
             <b-form-input
@@ -215,6 +217,7 @@
                 id="company-street"
                 placeholder="Straße und Hausnummer eingeben..."
                 required
+                trim
             />
             <label for="company-location">Ort *</label>
             <b-form-input
@@ -226,6 +229,7 @@
                 id="company-location"
                 placeholder="Ort eingeben..."
                 required
+                trim
             />
             <label for="company-zip-code">PLZ *</label>
             <b-form-input
@@ -235,6 +239,7 @@
                 id="company-zip-code"
                 placeholder="PLZ eingeben..."
                 required
+                trim
             />
             <label for="company-state">Bundesland *</label>
             <b-form-select
@@ -369,6 +374,7 @@
                 :state="validated ? (job.contactFirstName ? true : null) : null"
                 id="contact-first-name"
                 placeholder="Vorname eingeben..."
+                trim
             />
             <label for="contact-last-name">Nachname</label>
             <b-form-input
@@ -377,6 +383,7 @@
                 :state="validated ? (job.contactLastName ? true : null) : null"
                 id="contact-last-name"
                 placeholder="Nachname eingeben..."
+                trim
             />
             <label for="contact-email">E-Mail Adresse</label>
             <b-input-group>
@@ -391,6 +398,7 @@
                     :state="validated ? (job.contactEmail ? true : null) : null"
                     id="contact-email"
                     placeholder="kontakt@ihr-unternehmen.de"
+                    trim
                 />
             </b-input-group>
             <label for="contact-phone">Telefon</label>

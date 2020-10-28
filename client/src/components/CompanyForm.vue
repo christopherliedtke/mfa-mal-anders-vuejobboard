@@ -10,6 +10,7 @@
                 id="company-name"
                 placeholder="Unternehmensname eingeben..."
                 required
+                trim
             />
             <label for="company-street">Straße und Hausnummer *</label>
             <b-form-input
@@ -19,6 +20,7 @@
                 id="company-street"
                 placeholder="Straße und Hausnummer eingeben..."
                 required
+                trim
             />
             <label for="company-location">Ort *</label>
             <b-form-input
@@ -28,6 +30,7 @@
                 id="company-location"
                 placeholder="Ort eingeben..."
                 required
+                trim
             />
             <label for="company-zip-code">PLZ *</label>
             <b-form-input
@@ -37,6 +40,7 @@
                 id="company-zip-code"
                 placeholder="PLZ eingeben..."
                 required
+                trim
             />
             <label for="company-state">Bundesland *</label>
             <b-form-select
