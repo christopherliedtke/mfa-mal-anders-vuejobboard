@@ -1,6 +1,6 @@
 <template>
     <b-container class="edit-job py-5">
-        <h2>Edit Job</h2>
+        <h2>Nutzer bearbeiten</h2>
         <AccountDataForm apiUsersSchema="admin" />
     </b-container>
 </template>
