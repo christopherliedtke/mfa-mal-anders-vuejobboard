@@ -7,6 +7,12 @@
                     <JobsBerufsbilderNav />
                 </b-col>
                 <b-col>
+                    <p>{{ intros[$route.params.slug] }}</p>
+                    <p class="mb-4">
+                        Vielleicht findest Du auch auf unserer
+                        <b-link to="/jobboard">Stellenbörse</b-link> das
+                        richtige für Dich.
+                    </p>
                     <b-card
                         v-for="berufsbild in berufsbilder"
                         :key="berufsbild.id"
@@ -79,7 +85,7 @@
             </b-row>
             <RandomTrainingsContainer class="mt-5" />
         </b-container>
-        <Head :title="title" desc="This is the meta of..." img="" />
+        <Head :title="title" :desc="intros[$route.params.slug]" img="" />
     </div>
 </template>
 
@@ -98,12 +104,24 @@
         },
         data() {
             return {
-                visible: null
+                visible: null,
+                intros: {
+                    "Medizinisch-Technisch":
+                        "Wenn Dich die Arbeit mit und am Patienten mit Freude erfüllt oder Dein Herz für die Medizin schlägt, ist ein medizinisch-technischer Job am Besten für Dich geeignet. Sieh Dir deine vielfältigen Möglichkeiten an.",
+                    Verwaltung:
+                        "Mit einem Job in der Verwaltung von Unternehmen im Gesundheitswesen übernimmst Du organisatorische Aufgaben, prüfst Sachverhalte und erledigst allgemeine Büroarbeiten.",
+                    Forschung:
+                        "Mit einem Job in der Forschung kannst Du zum medizinischen Fortschritt beitragen und so die Zukunft der Medizin mitgestalten.",
+                    Beratung:
+                        "Mit einem Job in der Beratung kannst Du dein Expertenwissen mit Patienten, Praxen und anderen Personen des Gesundheitswesens teilen. ",
+                    Management:
+                        "Jobs im Management eines Unternehmens im Gesundheitswesen gewinnen bei steigenden Herausforderungen im Gesundheitssystem immer mehr an Bedeutung. Es bietet Dir ein vielfältiges Aufgabenspektrum für medizinische Fachangestellte."
+                }
             };
         },
         computed: {
             title: function() {
-                return `Berufsbilder – ${this.$route.params.slug}`;
+                return `MFA Berufsbilder – ${this.$route.params.slug}`;
             },
             berufsbilder: function() {
                 return this.$store.state.professions.professions.filter(

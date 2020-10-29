@@ -1,7 +1,7 @@
 <template>
     <b-card
         title="Zu den Jobs und Berufsbildern"
-        img-src="@/assets/jobsUndBerufsbilder_1024x535.jpg"
+        img-src="@/assets/jobsUndBerufsbilder_1200x627.jpg"
         img-alt="Banner - Jobs und Berufsbilder für MFA und ArzthelferInnen"
         img-top
         align="center"

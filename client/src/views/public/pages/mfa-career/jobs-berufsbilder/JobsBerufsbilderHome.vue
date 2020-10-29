@@ -10,37 +10,37 @@
                     <b-img
                         class="border-radius1 shadow mb-5"
                         fluid
-                        src="@/assets/jobsUndBerufsbilder_1024x535.jpg"
-                        alt="Banner - Alternative Jobs für MFA / Artzhelfer"
+                        src="@/assets/jobsUndBerufsbilder_1200x627.jpg"
+                        alt="Banner - 50+ Alternative Jobs für MFA / Artzhelfer"
                     />
-                    <h2>
-                        Mal was anderes – mit MFA mal anders
+                    <h2 class="bold">
+                        Mal was anderes?
                     </h2>
                     <p>
                         Sprechstundenhilfe sind wir schon lange nicht mehr. Als
-                        MFA und ArzthelferIn sind wir Organisationstalente,
-                        medizinische Assistenten, SekretärInnen, Seelsorger,
-                        Logistiker, Abrechnungsprofis und Aushängeschild der
-                        gesamten Praxis. Du merkst schon: Die Aufgabenspektren
-                        und Jobs für medizinische Fachangestellte sind
-                        wahnsinnig vielfältig.
+                        medizinische Fachangestellte (MFA) und ArzthelferIn sind
+                        wir Organisationstalente, medizinische Assistenten,
+                        SekretärInnen, Seelsorger, Logistiker, Abrechnungsprofis
+                        und Aushängeschild der gesamten Praxis. Du merkst schon:
+                        Die Aufgabenspektren und Jobs für medizinische
+                        Fachangestellte sind wahnsinnig vielfältig.
                     </p>
                     <p>
-                        Weil wir so viele Kompetenzen mitbringen, sind MFA nicht
-                        nur in der Arztpraxis beliebt. Der Job bietet in viele
-                        Richtungen des Gesundheitswesens verschiedene
+                        Weil wir so viele Kompetenzen mitbringen, sind MFAs
+                        nicht nur in der Arztpraxis beliebt. Der Job bietet in
+                        viele Richtungen des Gesundheitswesens verschiedene
                         Aufstiegsmöglichkeiten. Auch alternative Jobs mit der
                         Ausbildung als medizinische Fachangestellte sind
                         möglich.
                     </p>
                     <p>
-                        Willst du deinem Job als medizinische Fachangestellte
-                        neuen Schwung geben oder beispielsweise dein Gehalt
+                        Willst Du Deinem Job als medizinische Fachangestellte
+                        neuen Schwung geben oder beispielsweise Dein Gehalt
                         aufbessern? Wenn du nicht weißt, welche Türen dir offen
-                        stehen, informiere dich hier über deine Chancen als
-                        ausgebildeter ArzthelferIn. Ganz gleich, ob du den
+                        stehen, informiere Dich hier über Deine Chancen als
+                        ausgebildete/r ArzthelferIn. Ganz gleich, ob Du den
                         direkten Patientenkontakt liebst, gerne organisatorische
-                        Aufgaben erledigst oder dich lieber für einen
+                        Aufgaben erledigst oder Dich lieber für einen
                         alternativen Job außerhalb der Arztpraxis interessierst.
                     </p>
                     <b-row>
@@ -51,17 +51,20 @@
                             cols="12"
                             md="6"
                         >
-                            <b-card align="center">
+                            <b-card align="center icon-box shadow1 p-0">
                                 <b-card-body>
                                     <div class="d-flex justify-content-center">
-                                        <div class="icon-box2">
+                                        <div class="icon-box2 shadow1">
                                             <font-awesome-icon
                                                 :icon="['fa', card.icon]"
                                                 size="3x"
                                             />
                                         </div>
                                     </div>
-                                    <b-card-title :title="card.title" />
+                                    <b-card-title
+                                        :title="card.title"
+                                        class="bold"
+                                    />
                                     <b-card-text>
                                         <p>
                                             {{ card.desc }}
@@ -85,8 +88,8 @@
         </b-container>
         <Head
             :title="title"
-            desc="Du brauchst Inspiration? – 52 Alternative Jobs für medizinische Fachangestellte (MFA) | Suche gleich nach passenden Stellen in unserer Jobbörse."
-            img="@/assets/jobsUndBerufsbilder_1024x535.jpg"
+            desc="Du brauchst Inspiration? – 50+ Alternative Jobs für medizinische Fachangestellte (MFA) | Suche gleich nach passenden Stellen in unserer Jobbörse."
+            img="@/assets/jobsUndBerufsbilder_1200x627.jpg"
         />
     </div>
 </template>
@@ -106,7 +109,7 @@
         },
         data() {
             return {
-                title: "Jobs und Berufsbilder für medizinische Fachangestellte",
+                title: "50+ Alternative Jobs für medizinische Fachangestellte",
                 cards: [
                     {
                         title: "Beratung",

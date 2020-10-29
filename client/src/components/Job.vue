@@ -137,6 +137,11 @@
                         <b-icon icon="box-arrow-up-right"/></strong
                 ></b-link>
             </div>
+            <div class="mt-3 small">
+                <p>
+                    Beziehe Dich in Deiner Bewerbung auf MFA mal anders.
+                </p>
+            </div>
             <div class="mt-4">
                 <b-button
                     size="lg"
@@ -159,14 +164,33 @@
             </div>
             <div class="my-3">
                 <b-button
+                    class="mr-2"
                     variant="outline-primary"
-                    @click="$router.push('/jobboard')"
+                    size="sm"
+                    to="/jobboard"
                     >Zurück zur Stellenbörse</b-button
+                >
+                <b-button
+                    class="mr-2"
+                    variant="outline-primary"
+                    size="sm"
+                    to="/page/mfa-career/gehalt"
+                    >Gehaltsrechner</b-button
+                >
+                <b-button
+                    class="mr-2"
+                    variant="outline-primary"
+                    size="sm"
+                    to="/page/mfa-career/bewerbungstipps"
+                    >Bewerbungsvorlage</b-button
                 >
             </div>
             <div
                 v-if="
-                    job.contactLastName || job.contactEmail || job.contactPhone
+                    job.contactLastName ||
+                        job.contactEmail ||
+                        job.contactPhone ||
+                        job.applicationEmail
                 "
                 class="mt-4"
             >
@@ -201,7 +225,7 @@
                         >
                         <br />
                     </div>
-                    <div v-if="job.contactEmail">
+                    <div v-if="job.contactEmail || job.applicationEmail">
                         E-Mail:
                         <b-link
                             @click="
@@ -211,10 +235,15 @@
                                 )
                             "
                             :href="
-                                `mailto:${job.contactEmail}?subject=${job.title} über ${config.website.name}`
+                                `mailto:${job.contactEmail ||
+                                    job.applicationEmail}?subject=${
+                                    job.title
+                                } über ${config.website.name}`
                             "
                             target="_blank"
-                            >{{ job.contactEmail }}</b-link
+                            >{{
+                                job.contactEmail || job.applicationEmail
+                            }}</b-link
                         >
                     </div>
                 </div>
