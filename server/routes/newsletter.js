@@ -135,7 +135,7 @@ router.get("/verification/:subscriberId", async (req, res) => {
 // #access: Public
 router.post("/unsubscribe", async (req, res) => {
     try {
-        const deletedSubscriber = await Subscriber.deleteOne({
+        const deletedSubscriber = await Subscriber.deleteMany({
             email: req.body.email,
         });
 
