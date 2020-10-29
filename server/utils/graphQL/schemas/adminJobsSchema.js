@@ -160,7 +160,7 @@ const mutation = new GraphQLObjectType({
             args: {
                 _id: { type: GraphQLString },
             },
-            async resolve(parentValue, args) {
+            async resolve(parentValue, args, req) {
                 try {
                     const { imageUrl } = await Job.findOne(
                         { _id: args._id },
