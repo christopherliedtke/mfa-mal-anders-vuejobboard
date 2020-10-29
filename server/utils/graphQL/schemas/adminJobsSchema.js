@@ -178,7 +178,7 @@ const mutation = new GraphQLObjectType({
                     if (response.n === 1) {
                         if (config.googleIndexing.active) {
                             googleIndexing(
-                                res.locals.secrets.WEBSITE_URL +
+                                req.res.locals.secrets.WEBSITE_URL +
                                     config.googleIndexing.pathPrefix +
                                     args._id,
                                 "URL_DELETED"
