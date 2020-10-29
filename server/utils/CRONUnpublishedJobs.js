@@ -5,7 +5,7 @@ const {
 } = require("./middleware/sendUnpublishedJobReminder");
 
 module.exports.CRONUnpublishedJobs = new CronJob(
-    config.newsletter.interval,
+    config.unpublishedJobsReminder.interval,
     () => sendUnpublishedJobReminder(),
     null, //onComplete
     false, // start directly
