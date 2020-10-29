@@ -221,6 +221,10 @@
                         sortable: true
                     },
                     {
+                        key: "sentReminder",
+                        sortable: true
+                    },
+                    {
                         key: "refreshFrequency",
                         sortable: true
                     },
@@ -323,6 +327,7 @@
                                     paid
                                     paidAt
                                     paidExpiresAt
+                                    sentReminder
                                     title
                                     company {
                                         name

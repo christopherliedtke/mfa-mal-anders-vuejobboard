@@ -22,6 +22,7 @@ const { createSitemap } = require("./utils/createSitemap");
 const { CRONNewsletter } = require("./utils/CRONNewsletter");
 const { refreshJobs } = require("./utils/refreshJobs");
 const { unpublishJobs } = require("./utils/unpublishJobs");
+const { CRONUnpublishedJobs } = require("./utils/CRONUnpublishedJobs");
 
 let secrets, port;
 if (process.env.NODE_ENV == "production") {
@@ -53,6 +54,11 @@ if (config.refreshJobs.active) {
 // #Unpublish jobs CRON job
 if (config.unpublishJobs.active) {
     unpublishJobs.start();
+}
+
+// #UnpublishedJobsReminder CRON job
+if (config.unpublishedJobsReminder.active) {
+    CRONUnpublishedJobs.start();
 }
 
 // #Redirects

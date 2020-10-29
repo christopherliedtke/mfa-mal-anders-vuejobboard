@@ -21,6 +21,10 @@ const JobSchema = new Schema(
             type: Number,
             default: 0,
         },
+        sentReminder: {
+            type: Boolean,
+            default: false,
+        },
         refreshFrequency: {
             type: Number,
             default: 0,
