@@ -66,7 +66,9 @@ router.post("/checkout-completed", async (req, res) => {
                     refreshFrequency,
                 },
                 { new: true }
-            ).populate("company");
+            )
+                .populate("company")
+                .populate("userId");
 
             if (couponCode && couponUsage === "single") {
                 Coupon.deleteOne({ code: couponCode, usage: "single" });
@@ -94,7 +96,7 @@ router.post("/checkout-completed", async (req, res) => {
                 postToFacebook();
             }
 
-            const data = {
+            const dataMailToMfa = {
                 from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
                 to: config.website.contactEmail,
                 subject: `[Neue Stelle veröffentlicht] - ${amount / 100}€`,
@@ -162,7 +164,71 @@ router.post("/checkout-completed", async (req, res) => {
                 `,
             };
 
-            emailService.sendMail(data);
+            emailService.sendMail(dataMailToMfa);
+
+            const dataMailToCustomer = {
+                from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
+                to: updatedJob.userId.email,
+                subject: `Veröffentlichung Ihrer Stellenanzeige auf 'MFA mal anders'`,
+                html: `
+                    <p>${
+                        updatedJob.userId.gender === "Herr"
+                            ? "Sehr geehrter Herr " +
+                              (updatedJob.userId.title != "null"
+                                  ? updatedJob.userId.title + " "
+                                  : "") +
+                              updatedJob.userId.lastName +
+                              ","
+                            : updatedJob.userId.gender === "Frau"
+                            ? "Sehr geehrte Frau " +
+                              (updatedJob.userId.title != "null"
+                                  ? updatedJob.userId.title + " "
+                                  : "") +
+                              updatedJob.userId.lastName +
+                              ","
+                            : "Sehr geehrte Damen und Herren,"
+                    }</p>
+                    <p>
+                        vielen Dank für die Veröffentlichung Ihrer Stellenanzeige <strong>'${
+                            updatedJob.title
+                        }'</strong> auf unserem Portal MFA mal anders. Ihre Stellenanzeige ist ab sofort für 60 Tage unter folgendem Link abrufbar:
+                    </p>
+                    <p>
+                        <a href="${
+                            res.locals.secrets.WEBSITE_URL +
+                            config.googleIndexing.pathPrefix +
+                            jobId
+                        }">${
+                    res.locals.secrets.WEBSITE_URL +
+                    config.googleIndexing.pathPrefix +
+                    jobId
+                }</a>
+                    </p>
+                    <p>
+                        Bitte beachten Sie, dass Ihre Stellenanzeige nur solange abrufbar ist, wie auch Ihre Bewerbungsfrist nicht überschritten ist. Über Ihre Zugangsdaten haben Sie weiterhin Zugriff auf Ihre Stellenanzeigen und können diese jederzeit anpassen.
+                    </p>
+                    <p>
+                        Sollten Sie noch Fragen, Anregungen oder weiteren Beratungsbedarf haben, melden Sie sich gern bei uns über unser <a href="${
+                            res.locals.secrets.WEBSITE_URL
+                        }/page/contact">Kontaktformular</a> oder direkt per Nachricht an <a href="mailto:${
+                    config.website.contactEmail
+                }">${config.website.contactEmail}</a>.
+                    </p>
+                    <p>
+                        Wir wünschen Ihnen viele qualifizierte BewerberInnen und verbleiben mit freundlichen Grüßen
+                    </p>
+                    <p>Kristin Maurach</p>
+                    <p>
+                        <img style="width: 60px" src="https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/09/logo.png" />
+                    </p>
+                    <p>
+                        MFA mal anders <br>
+                        Das Karriereportal für medizinische Fachangestellte
+                    </p>
+                `,
+            };
+
+            emailService.sendMail(dataMailToCustomer);
         }
     } catch (err) {
         console.log("Error STRIPE on /checkout-completed: ", err);

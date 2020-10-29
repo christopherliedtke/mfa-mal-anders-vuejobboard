@@ -167,7 +167,7 @@ router.post("/register", async (req, res) => {
                     to: user.email,
                     subject: `E-Mail bestätigen für ${config.website.name}`,
                     text: `
-                        Bitte nutzen Sie den folgenden Link innerhalb der nächsten 60 Minuten, um Ihren Account auf ${config.website.name} zu aktivieren:: ${baseUrl}/api/auth/verification/verify-account/${user._id}
+                        Bitte nutzen Sie den folgenden Link, um Ihren Account auf ${config.website.name} zu aktivieren:: ${baseUrl}/api/auth/verification/verify-account/${user._id}
                     `,
                     html: emailTemplate.generate(`
                         <div 
@@ -175,7 +175,7 @@ router.post("/register", async (req, res) => {
                             <div style="line-height: 1.2; font-size: 12px; color: #000000; font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif; mso-line-height-alt: 14px">
                                 <h2>Aktivieren Sie Ihren Account bei ${config.website.name}</h2>
                                 <p>
-                                    Bitte nutzen Sie den folgenden Link innerhalb der nächsten 60 Minuten, um Ihren Account auf ${config.website.name} zu aktivieren: 
+                                    Bitte nutzen Sie den folgenden Link, um Ihren Account auf ${config.website.name} zu aktivieren: 
                                 </p>
                             </div>
                         </div>
@@ -269,7 +269,7 @@ router.get(
                     to: user.email,
                     subject: `E-Mail bestätigen für ${config.website.name}`,
                     text: `
-                        Bitte nutzen Sie den folgenden Link innerhalb der nächsten 60 Minuten, um Ihren Account auf ${config.website.name} zu aktivieren: ${baseUrl}/api/auth/verification/verify-account/${user._id}
+                        Bitte nutzen Sie den folgenden Link, um Ihren Account auf ${config.website.name} zu aktivieren: ${baseUrl}/api/auth/verification/verify-account/${user._id}
                     `,
                     html: emailTemplate.generate(`
                         <div 
@@ -277,7 +277,7 @@ router.get(
                             <div style="line-height: 1.2; font-size: 12px; color: #000000; font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif; mso-line-height-alt: 14px">
                                 <h2>Aktivieren Sie Ihren Account bei ${config.website.name}</h2>
                                 <p>
-                                    Bitte nutzen Sie den folgenden Link innerhalb der nächsten 60 Minuten, um Ihren Account auf ${config.website.name} zu aktivieren: 
+                                    Bitte nutzen Sie den folgenden Link, um Ihren Account auf ${config.website.name} zu aktivieren: 
                                 </p>
                             </div>
                         </div>
