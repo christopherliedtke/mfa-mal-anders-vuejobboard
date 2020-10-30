@@ -164,21 +164,21 @@
             </div>
             <div class="my-3">
                 <b-button
-                    class="mr-2"
+                    class="mr-2 mt-2"
                     variant="outline-primary"
                     size="sm"
                     to="/jobboard"
                     >Zurück zur Stellenbörse</b-button
                 >
                 <b-button
-                    class="mr-2"
+                    class="mr-2 mt-2"
                     variant="outline-primary"
                     size="sm"
                     to="/page/mfa-career/gehalt"
                     >Gehaltsrechner</b-button
                 >
                 <b-button
-                    class="mr-2"
+                    class="mr-2 mt-2"
                     variant="outline-primary"
                     size="sm"
                     to="/page/mfa-career/bewerbungstipps"
@@ -282,18 +282,26 @@
                 />
             </div>
 
-            <b-alert
-                v-if="error"
-                class="position-fixed fixed-bottom m-0 rounded-0 mt-3"
-                show
-                dismissible
-                variant="warning"
-                style="z-index: 2000;"
-                >Oh, da ist leider etwas schief gelaufen. Bitte probiere es noch
-                einmal.</b-alert
-            >
             <JobStructuredData :job="job" />
         </div>
+        <div v-if="error">
+            <p class="h5">
+                Diese Stellenanzeige scheint nicht mehr zu existieren.
+            </p>
+            <b-button class="mt-3" variant="outline-primary" to="/jobboard"
+                >Zurück zur Stellenübersicht</b-button
+            >
+        </div>
+        <b-alert
+            v-if="error"
+            class="position-fixed fixed-bottom m-0 rounded-0 mt-3"
+            show
+            dismissible
+            variant="warning"
+            style="z-index: 2000;"
+            >Oh, da ist leider etwas schief gelaufen oder die Stellenanzeige
+            existiert nicht mehr.</b-alert
+        >
         <SimilarJobs
             v-if="job.title"
             :jobs="$store.state.jobs.jobs"
@@ -404,6 +412,8 @@
                             }
                         }
                     );
+
+                    console.log("job.data.data.job: ", job.data.data.job);
 
                     job.data.data.job
                         ? (this.job = job.data.data.job)

@@ -18,8 +18,8 @@
                     class="d-flex flex-column justify-content-center align-items-center h-100 p-4"
                 >
                     <h2 class="bold">
-                        <em>Schneller</em> motivierte MFAs und ArzthelferInnen
-                        finden!
+                        <em>Motivierte</em> und <em>qualifizierte</em> MFAs und
+                        ArzthelferInnen finden!
                     </h2>
                     <p>
                         Erstellen Sie noch heute Ihre Stellenanzeige und
