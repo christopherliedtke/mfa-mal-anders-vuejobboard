@@ -413,8 +413,6 @@
                         }
                     );
 
-                    console.log("job.data.data.job: ", job.data.data.job);
-
                     job.data.data.job
                         ? (this.job = job.data.data.job)
                         : (this.error = true);
