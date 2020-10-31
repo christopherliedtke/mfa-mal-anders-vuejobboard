@@ -1,5 +1,10 @@
 [
     {
+        "old": "/404",
+        "new": "/jobboard",
+        "statusCode": 301
+    },
+    {
         "old": "/ueber",
         "new": "/page/about",
         "statusCode": 301
