@@ -29,7 +29,24 @@
     },
     "prerender": {
         "active": true,
-        "exclude": ["googlebot"]
+        "exclude": [
+            "googlebot",
+            "bingbot",
+            "rogerbot",
+            "embedly",
+            "showyoubot",
+            "outbrain",
+            "vkShare",
+            "tumblr",
+            "Google Page Speed",
+            "Qwantify",
+            "yandex",
+            "Yahoo! Slurp",
+            "baiduspider",
+            "bitlybot",
+            "Bitrix link preview",
+            "Chrome-Lighthouse"
+        ]
     },
     "googleIndexing": {
         "active": true,
