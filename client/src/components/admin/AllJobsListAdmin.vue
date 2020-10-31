@@ -209,6 +209,14 @@
                         sortable: true
                     },
                     {
+                        key: "status",
+                        sortable: true
+                    },
+                    {
+                        key: "paid",
+                        sortable: true
+                    },
+                    {
                         key: "paidAt",
                         sortable: true
                     },

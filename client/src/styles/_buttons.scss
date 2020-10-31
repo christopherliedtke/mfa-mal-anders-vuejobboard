@@ -38,3 +38,13 @@
         color: $light;
     }
 }
+
+.btn-outline-secondary {
+    @extend .btn;
+
+    &:hover,
+    &:not(:disabled):not(.disabled):active,
+    &:focus {
+        color: $light;
+    }
+}

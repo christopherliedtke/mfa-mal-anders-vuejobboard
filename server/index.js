@@ -134,8 +134,13 @@ app.use("/api/stripe", require("./routes/stripe"));
 app.use("/api/download", require("./routes/download"));
 
 // #Serve the built static files in production
-app.get("*", (req, res) => {
+app.use("*", (req, res) => {
     res.sendFile(__dirname + "/public/index.html");
 });
 
-app.listen(port, () => console.log(`Server listening on port ${port}`));
+const server = app.listen(port, () =>
+    console.log(`Server listening on port ${port}`)
+);
+
+// #Set custom request timeout
+server.setTimeout(20000);

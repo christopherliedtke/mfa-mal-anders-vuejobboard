@@ -112,6 +112,13 @@
                     >Stellenanzeige schalten</b-button
                 >
                 <b-button
+                    href="#tipps-stellenanzeigen"
+                    variant="outline-secondary"
+                    size="lg"
+                    class="mx-1 my-1"
+                    >Tipps für Stellenanzeigen</b-button
+                >
+                <b-button
                     href="#more-info"
                     variant="primary"
                     size="lg"
@@ -122,7 +129,7 @@
                     href="#faq"
                     variant="outline-primary"
                     size="lg"
-                    class="mx-1 my-1"
+                    class="mx-1 my-3"
                     >Fragen oder Hilfe benötigt?</b-button
                 >
             </div>

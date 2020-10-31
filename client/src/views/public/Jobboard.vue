@@ -173,11 +173,7 @@
             </b-row>
         </b-container>
         <Head
-            :title="
-                title +
-                    ' für MFAs / ArzthelferInnen' +
-                    (filter.state ? ` | ${filter.state}` : '')
-            "
+            :title="title + (filter.state ? ` | ${filter.state}` : '')"
             desc="Attraktive Stellenangebote nur für MFAs / ArzthelferInnen"
             img=""
         />
@@ -213,7 +209,7 @@
         },
         data() {
             return {
-                title: "Stellenangebote",
+                title: "Stellenangebote für MFA / ArzthelferInnen",
                 filter: {
                     searchTerm:
                         this.$route.query.searchTerm ||
