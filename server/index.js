@@ -10,11 +10,6 @@ const config = require("./utils/config");
 // #mongoDB
 const mongoose = require("./utils/db");
 
-const prerender = require("prerender-node");
-prerender.crawlerUserAgents = prerender.crawlerUserAgents.filter(
-    (item) => config.prerender.exclude.indexOf(item) <= -1
-);
-
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 
@@ -32,6 +27,15 @@ if (process.env.NODE_ENV == "production") {
     secrets = require("./utils/secrets");
     port = 5000;
 }
+
+// #Set Up prerender.io
+const prerender = require("prerender-node").set(
+    "prerenderToken",
+    secrets.PRERENDER_TOKEN
+);
+prerender.crawlerUserAgents = prerender.crawlerUserAgents.filter(
+    (item) => config.prerender.exclude.indexOf(item) <= -1
+);
 
 // # SSL redirect
 app.use(sslRedirect());
@@ -67,7 +71,11 @@ if (config.redirect.active) {
 }
 
 // #Prerender w/o googlebot
-if (config.prerender.active && process.env.NODE_ENV == "production") {
+if (
+    config.prerender.active &&
+    process.env.NODE_ENV == "production" &&
+    secrets.WEBSITE_URL === "https://www.mfa-mal-anders.de"
+) {
     app.use(prerender);
 }
 
