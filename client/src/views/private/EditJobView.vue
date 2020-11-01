@@ -18,7 +18,7 @@
             >
                 <template v-slot:title>Tipps für Ihre Stellenanzeige</template>
                 <b-link
-                    href="/article/7-tipps-fuer-attraktive-stellenanzeigen-fuer-mfas"
+                    href="/article/8-tipps-fuer-attraktive-stellenanzeigen-fuer-mfas"
                     target="_blank"
                     >Hier</b-link
                 >

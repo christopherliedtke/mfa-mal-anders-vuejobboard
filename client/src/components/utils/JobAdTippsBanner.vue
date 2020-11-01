@@ -38,5 +38,3 @@
         name: "JobAdTippsBanner"
     };
 </script>
-
-<style></style>

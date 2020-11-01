@@ -14,7 +14,7 @@
         >
         <b-button
             class="mr-2 mb-2"
-            to="/article/7-tipps-fuer-attraktive-stellenanzeigen-fuer-mfas"
+            to="/article/8-tipps-fuer-attraktive-stellenanzeigen-fuer-mfas"
             variant="outline-secondary"
             target="_blank"
             >Tipps für Stellenanzeigen</b-button
