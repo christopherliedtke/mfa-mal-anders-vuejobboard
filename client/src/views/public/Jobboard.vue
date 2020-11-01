@@ -173,8 +173,11 @@
             </b-row>
         </b-container>
         <Head
-            :title="title + (filter.state ? ` | ${filter.state}` : '')"
-            desc="Attraktive Stellenangebote nur für MFAs / ArzthelferInnen"
+            :title="
+                'MFA / ArzthelferIn Jobs' +
+                    (filter.state ? ` | ${filter.state}` : '')
+            "
+            desc="Finde aktuelle Stellenangebote (Teilzeit | Vollzeit) für MFA / ArzthelferInnen auf 'MFA mal anders' – Dein Karriereportal nur für MFAs / ArzthelferInnen."
             img=""
         />
     </div>

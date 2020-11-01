@@ -142,7 +142,7 @@
                         localStorage.setItem("nl-pop", "false");
 
                         this.trackEvent(
-                            this.form.state,
+                            `Newsletter: ${this.form.state}`,
                             "Newsletter_Subscription"
                         );
                     } else {

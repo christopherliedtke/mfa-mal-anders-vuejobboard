@@ -189,7 +189,7 @@
                     this.errors = res.errors;
                 } else {
                     this.trackEvent(
-                        `${this.$store.state.auth.userId}`,
+                        `NewUser: ${this.$store.state.auth.userId}`,
                         "User",
                         "register"
                     );
