@@ -187,12 +187,24 @@
 
                 if (!res.success) {
                     this.errors = res.errors;
+                } else {
+                    this.trackEvent(
+                        `${this.$store.state.auth.userId}`,
+                        "User",
+                        "register"
+                    );
                 }
             },
             togglePasswordType() {
                 this.passwordType === "text"
                     ? (this.passwordType = "password")
                     : (this.passwordType = "text");
+            },
+            trackEvent: function(label, category, action) {
+                this.$gtag.event(action, {
+                    event_category: category,
+                    event_label: label
+                });
             }
         }
     };

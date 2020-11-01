@@ -37,7 +37,7 @@ const actions = {
                 .push({ path: redirectQuery || redirectPath })
                 .catch(err => err);
 
-            return { sucess: true };
+            return { success: true };
         } else {
             return response.data;
         }

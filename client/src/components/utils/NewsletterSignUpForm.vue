@@ -140,6 +140,11 @@
                     if (response.data.success) {
                         this.success = true;
                         localStorage.setItem("nl-pop", "false");
+
+                        this.trackEvent(
+                            this.form.state,
+                            "Newsletter_Subscription"
+                        );
                     } else {
                         this.error =
                             "Bei der Anmeldung ist ein Fehler aufgetreten. Bitte probiere es noch einmal.";
@@ -162,6 +167,12 @@
                     !this.form.accepted
                     ? false
                     : true;
+            },
+            trackEvent: function(label, category, action = "Success") {
+                this.$gtag.event(action, {
+                    event_category: category,
+                    event_label: label
+                });
             }
         },
         mounted() {

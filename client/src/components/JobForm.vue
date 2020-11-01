@@ -787,6 +787,12 @@
                     } else {
                         this.success = true;
 
+                        this.trackEvent(
+                            `${this.job.title} | ${this.job.company.state} - ${jobQueryResponse.data.data[jobMutationType]._id}`,
+                            "Job_Ad",
+                            jobMutationType
+                        );
+
                         setTimeout(() => {
                             this.hasHistory
                                 ? this.$router.go(-1)
@@ -830,6 +836,12 @@
             },
             hasHistory() {
                 return window.history.length > 2;
+            },
+            trackEvent: function(label, category, action) {
+                this.$gtag.event(action, {
+                    event_category: category,
+                    event_label: label
+                });
             }
         }
     };
