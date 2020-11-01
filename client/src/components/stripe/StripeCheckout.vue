@@ -25,6 +25,12 @@
                     Bitte wählen Sie den gewünschten Betrag, den Sie nach
                     unserem <em>“Pay What You Want”*</em> Modell für die
                     Veröffentlichung der Stellenanzeige bezahlen möchten.
+                </p>
+
+                <div class="mb-3">
+                    <strong>Betrag:</strong>
+                    {{ amountComputed / 100 }}
+                    {{ currency }}
                     <b-icon
                         id="popover-payment-recommendation"
                         class="position-relative"
@@ -33,8 +39,7 @@
                         scale="1"
                         variant="info"
                     />
-                </p>
-
+                </div>
                 <b-popover
                     target="popover-payment-recommendation"
                     triggers="hover"
@@ -44,11 +49,6 @@
                 >
                     <PayWhatYouWantSuggestion class="mt-3" :minimum="true" />
                 </b-popover>
-                <div class="mb-3">
-                    <strong>Betrag:</strong>
-                    {{ amountComputed / 100 }}
-                    {{ currency }}
-                </div>
 
                 <b-form class="mb-4">
                     <b-form-input

@@ -47,8 +47,10 @@
             <h2 class="h5 text-center">
                 Stellenanzeige schalten bei MFA mal anders
             </h2>
-            <h3 class="h1 bold text-center">Ihre Zielgruppe genau im Blick</h3>
-            <h4 class="h3 text-center">Ihre Vorteile</h4>
+            <p class="h1 bold text-center">Ihre Zielgruppe genau im Blick</p>
+            <h3 class="h3 text-center">
+                Stellenanzeigen nur für MFAs / ArzthelferInnen
+            </h3>
 
             <b-row class="my-4 my-md-5">
                 <b-col>
@@ -58,10 +60,13 @@
                             :icon="['fa', 'user-nurse']"
                             size="3x"
                         />
-                        <h3 class="h4 mt-4 mb-3">Genau Ihre Zielgruppe</h3>
+                        <h4 class="h4 mt-4 mb-3">Genau Ihre Zielgruppe</h4>
                         <p>
-                            Bei uns erreichen Sie genau Ihre
-                            <strong>Zielgruppe ohne</strong> die großen
+                            Bei uns erreichen Sie
+                            <strong
+                                >ausschließlich MFA / ArzthelferInnen</strong
+                            >
+                            ohne die großen
                             <strong>Streuverluste</strong>
                             der allgemeinen Jobbörsen.
                         </p>
@@ -74,7 +79,7 @@
                             :icon="['fa', 'credit-card']"
                             size="3x"
                         />
-                        <h3 class="h4 mt-4 mb-3">Niedrige Kosten</h3>
+                        <h4 class="h4 mt-4 mb-3">Niedrige Kosten</h4>
                         <p>
                             Veröffentlichen Sie Ihre Stellenanzeige nach unserem
                             <b-link href="#pay-what-you-want">
@@ -91,7 +96,7 @@
                             :icon="['fa', 'paper-plane']"
                             size="3x"
                         />
-                        <h3 class="h4 mt-4 mb-3">Geringer Aufwand</h3>
+                        <h4 class="h4 mt-4 mb-3">Geringer Aufwand</h4>
                         <p>
                             <strong
                                 >Sie veröffentlichen, wir sorgen für
@@ -339,14 +344,27 @@
                         </p>
                     </div>
                 </b-col>
-                <b-col cols="12" md="6" lg="8">
-                    <JobAdTippsBanner />
+                <b-col cols="12" md="6" lg="4">
                     <div class="icon-box shadow1 py-4">
                         <h4 class="bold mb-3">Jetzt Stellenanzeige schalten</h4>
+                        <p>
+                            Erstellen Sie jetzt Ihre attraktive Stellenanzeige
+                            und erreichen Sie unsere große Community von MFAs!
+                            Mit unserem
+                            <b-link
+                                class="text-secondary"
+                                href="#pay-what-you-want"
+                                >“Pay What You Want”*</b-link
+                            >
+                            Modell bestimmen Sie, wie viel Sie zahlen.
+                        </p>
                         <b-button to="/register" variant="secondary"
                             >Zur Registrierung</b-button
                         >
                     </div>
+                </b-col>
+                <b-col cols="12" md="6" lg="12">
+                    <JobAdTippsBanner />
                 </b-col>
                 <b-col cols="12">
                     <ApplicationProcessBanner />
@@ -506,7 +524,7 @@
                         icon: "drafting-compass",
                         title: "Präziser Stellentitel",
                         desc:
-                            "Beschreiben Sie die Stelle in wenigen Worten so konkret wie möglich. Heben Sie bereits hier die Vorteile für die Arbeit bei Ihnen hervor. Versuchen Sie hier positiv aufzufallen!"
+                            "Beschreiben Sie die Stelle in wenigen Worten so konkret wie möglich. Heben Sie bereits hier die Vorteile für die Arbeit bei Ihnen hervor. Versuchen Sie positiv aufzufallen!"
                     },
                     {
                         icon: "hospital",
@@ -543,6 +561,12 @@
                         title: "Einfaches Bewerben",
                         desc:
                             "Ermöglichen Sie das einfache Bewerben nur per Lebenslauf. So können Sie die innerliche Hürde für BewerberInnen beträchtlich senken. Das persönliche Gespräch ist letztlich ohnehin entscheidend."
+                    },
+                    {
+                        icon: "desktop",
+                        title: "Moderner Webauftritt",
+                        desc:
+                            "Platzieren Sie sich als moderner Arbeitgeber. Potentielle BewerberInnen informieren sich meist auf Ihrer Webseite über Ihr Unternehmen. Hier können Sie punkten und positiv herausstechen."
                     }
                 ],
                 numbersAndFacts: [

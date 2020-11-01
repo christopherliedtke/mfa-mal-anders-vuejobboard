@@ -131,7 +131,8 @@ import {
     faDraftingCompass,
     faPaperPlane,
     faUserNurse,
-    faCreditCard
+    faCreditCard,
+    faDesktop
 } from "@fortawesome/free-solid-svg-icons";
 import { faUser as farUser } from "@fortawesome/free-regular-svg-icons";
 import {
@@ -181,7 +182,8 @@ library.add(
     faGoogle,
     faChrome,
     faUserNurse,
-    faCreditCard
+    faCreditCard,
+    faDesktop
 );
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
