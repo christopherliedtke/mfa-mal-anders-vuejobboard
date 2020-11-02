@@ -69,8 +69,8 @@
         </b-form>
 
         <b-alert v-if="success" class="mt-3" show dismissible variant="success"
-            >Bitte überprüfe Dein E-Mail Postfach und bestätige Deine
-            Anmeldung.</b-alert
+            ><strong>Bitte überprüfe Dein E-Mail Postfach</strong> (ggfls. auch
+            dein Spam) und bestätige Deine Anmeldung.</b-alert
         >
         <b-alert v-if="error" class="mt-3" show dismissible variant="warning">{{
             error

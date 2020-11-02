@@ -12,6 +12,7 @@
         methods: {
             async onLogout() {
                 localStorage.clear();
+                localStorage.setItem("nl-pop", "false");
 
                 const response = await axios.get("/api/auth/logout");
 

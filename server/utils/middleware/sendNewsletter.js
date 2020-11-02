@@ -76,7 +76,6 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
                                     <h2 style="color: #6d0230">Deine Stellenangebote der Woche für ${key}</h2>
                                     <p>Es ist wieder soweit! Hier erhältst Du unsere aktuellen Stellenanzeigen direkt in Dein Postfach.</p>
                                     <p>Wir hoffen, für Dich ist etwas dabei und drücken die Daumen für Bewerbung und Co. </p>
-                                    <p>Solltest Du diese E-Mail zum wiederholten Mal bekommen, tut es uns Leid. Unser E-Mail Provider hatte über das Wochenende kleinere Probleme mit dem Versand des Newsletters.</p>
                                 </div>
                                 <div style="margin: 2rem 0; padding: 1.5rem 0; border-top: solid 2px #6d0230">
                                     ${jobList}
@@ -110,7 +109,7 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
                     if (error) {
                         console.log(
                             `Error on mailgun.messages() for ${key}: `,
-                            err
+                            error
                         );
                     }
                 });
@@ -146,7 +145,7 @@ const generateListOfJobs = (state, jobs) => {
                     target="_blank"
                     rel="noopener"
                 >
-                    ${job.title} | ${job.company.location}, ${job.company.state}
+                    ${job.title} | ${job.company.location}
                 </a>
                 <br>
             `;
