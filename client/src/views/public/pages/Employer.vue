@@ -1,6 +1,7 @@
 <template>
     <div class="employer">
         <h1 class="title">{{ title }}</h1>
+
         <b-container class="py-5 px-md-5">
             <b-row
                 class="bg-primary text-light border-radius2 shadow1 w-100 p-3 p-md-5 mx-auto position-relative"

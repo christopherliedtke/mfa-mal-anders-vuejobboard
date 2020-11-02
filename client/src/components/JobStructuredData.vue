@@ -45,7 +45,9 @@
                             inner: `{
                             "@context": "http://schema.org",
                             "@type" : "JobPosting",
-                            "title": "${this.job.title}",
+                            "title": "${this.job.title} | ${
+                                this.job.company.location
+                            }",
                             "description" : "${this.$sanitize(
                                 this.job.description,
                                 {
@@ -109,12 +111,9 @@
                             )},
                             "baseSalary": {
                                 "@type": "MonetaryAmount",
-                                "currency": "USD",
+                                "currency": "EUR",
                                 "value": {
                                     "@type": "QuantitativeValue",
-                                    "minValue": 0.00,
-                                    "maxValue": 0.00,
-                                    "value": 0,
                                     "unitText": "MONTH"
                                 }
                             }
