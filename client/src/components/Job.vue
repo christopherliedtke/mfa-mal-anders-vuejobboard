@@ -247,6 +247,8 @@
                         >
                     </div>
                 </div>
+            </div>
+            <div class="mt-4">
                 <h2>Arbeitsort</h2>
                 <p>
                     {{ job.company.name }} <br />
@@ -254,11 +256,11 @@
                     {{ job.company.zipCode + " " + job.company.location }}
                     <br />
                 </p>
+                <HereMapSingleJob
+                    v-if="job.company && job.company.location"
+                    :job="job"
+                />
             </div>
-            <HereMapSingleJob
-                v-if="job.company && job.company.location"
-                :job="job"
-            />
             <div
                 class="d-flex flex-wrap flex-column flex-md-row align-items-start"
             >
