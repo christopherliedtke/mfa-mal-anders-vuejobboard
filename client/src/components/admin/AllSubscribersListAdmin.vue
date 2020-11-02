@@ -278,6 +278,7 @@
                 let el = document.createElement("textarea");
 
                 el.value = this.subscribers
+                    .filter(subscriber => subscriber.status === "active")
                     .map(subscriber => subscriber.email)
                     .join("; ");
 
