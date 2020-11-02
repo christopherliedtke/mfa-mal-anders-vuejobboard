@@ -160,7 +160,7 @@ a.icon-box {
 
 .ProseMirror {
     @extend .form-control;
-    height: unset;
+    height: auto;
     min-height: 150px;
     padding-top: 0.8rem !important;
     padding-bottom: 0.8rem !important;

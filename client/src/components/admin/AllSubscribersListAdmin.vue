@@ -228,7 +228,7 @@
                     this.subscribers = response.data.data.subscribers;
                 } catch (err) {
                     this.error = true;
-                    console.log("err: ", err);
+                    // console.log("Error on getAllSubscribers(): ", err);
                 }
             },
             showDeleteSubscriberModal(subscriber) {
@@ -260,7 +260,7 @@
                     }
                 } catch (err) {
                     this.error = true;
-                    console.log("err: ", err);
+                    // console.log("Error on deleteSubscriber(): ", err);
                 }
             },
             async sendNewsletter() {
