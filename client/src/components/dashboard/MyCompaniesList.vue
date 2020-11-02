@@ -40,14 +40,14 @@
                             ).toLocaleString()
                         }}
                     </div>
-                    <div>
+                    <!-- <div>
                         Aktualisiert:
                         {{
                             new Date(
                                 parseInt(company.updatedAt)
                             ).toLocaleString()
                         }}
-                    </div>
+                    </div> -->
                 </div>
                 <div class="d-flex justify-content-between align-items-end">
                     <div>

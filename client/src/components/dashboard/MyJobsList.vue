@@ -91,6 +91,20 @@
                         </span>
                     </div>
                     <div>
+                        Bewerbungsfrist:
+                        <span class="text-muted">
+                            {{
+                                new Date(
+                                    new Date(
+                                        job.applicationDeadline
+                                    ).valueOf() +
+                                        1000 * 60 * 60 * 23 -
+                                        1
+                                ).toLocaleString()
+                            }}
+                        </span>
+                    </div>
+                    <!-- <div>
                         Zuletzt aktualisiert:
                         <span class="text-muted">
                             {{
@@ -99,7 +113,7 @@
                                 ).toLocaleString()
                             }}
                         </span>
-                    </div>
+                    </div> -->
                     <!-- <div v-if="job.paidAt">
                         Bezahlt:
                         <span class="text-muted">
