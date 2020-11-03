@@ -47,7 +47,7 @@ router.post("/checkout-completed", async (req, res) => {
 
             let refreshFrequency = couponRefreshFrequency || 0;
 
-            if (refreshFrequency === 0) {
+            if (refreshFrequency == 0) {
                 config.stripe.refreshFrequencies.forEach((frequency) => {
                     if (amount >= frequency.amount) {
                         refreshFrequency = frequency.refreshAfterDays;

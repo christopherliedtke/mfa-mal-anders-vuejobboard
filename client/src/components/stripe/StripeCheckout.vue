@@ -1,11 +1,10 @@
 <template>
     <div>
-        <Overlay :show="showOverlay"></Overlay>
         <b-modal
             ref="stripeCheckoutModal"
             title-tag="h4"
             :title="`Zahlung – Stellenanzeige veröffentlichen`"
-            ok-title="Weiter zur Zahlung"
+            ok-title="Jetzt bezahlen"
             cancel-title="Abbrechen"
             centered
             size="xl"
@@ -127,7 +126,7 @@
                     Sie per Überweisung (GiroPay), GooglePay oder Kreditkarte
                     zahlen.**
                 </p>
-                <p>
+                <!-- <p>
                     <b-link
                         :to="
                             `/page/contact?subject=Rechnungsanforderung+${job &&
@@ -139,38 +138,64 @@
                         "
                         >Per Rechnung zahlen **</b-link
                     >
-                </p>
-                <p class="small">
-                    * Es fällt ein
-                    <strong
-                        >Mindestbeitrag von 25,- Euro pro Stellenanzeige</strong
+                </p> -->
+                <div class="small">
+                    <div>
+                        * Es fällt ein
+                        <strong
+                            >Mindestbeitrag von 25,- Euro pro
+                            Stellenanzeige</strong
+                        >
+                        an, um den Betrieb des Portals aufrecht zu erhalten.
+                    </div>
+                    <div class="mt-1">
+                        ** Sollten Sie ausschließlich auf vorab ausgestellte
+                        <strong>Rechnung</strong> bezahlen können,
+                        <strong>werden Sie auf unser Kontaktformular</strong>
+                        weitergeleitet. Unter Angabe Ihrer E-Mail Adresse, des
+                        Stellentitels und des Rechnungsbetrages bearbeiten wir
+                        Ihre Stellenanzeige manuell. In dem Fall erhöht sich der
+                        Kostenbeitrag um 5,- Euro. Sie erhalten die Rechnung von
+                        uns per E-Mail.
+                        <strong
+                            >Ihre Stellenanzeige wird nach erfolgtem Geldeingang
+                            bei uns freigeschaltet.</strong
+                        >
+                    </div>
+                </div>
+            </div>
+            <template
+                v-slot:modal-footer
+                class="d-flex justify-content-between"
+            >
+                <b-button @click="$emit('close')" class="mb-2" variant="danger"
+                    >Abbrechen</b-button
+                >
+                <div>
+                    <b-button
+                        :to="
+                            `/page/contact?subject=Rechnungsanforderung+${job &&
+                                job.title}+[id:${job &&
+                                job._id}]&message=Guten+Tag,%0A%0Aich+bitte+um+Zahlung+per+Rechnung+für+meine+Stellenanzeige.+Bitte+stellen+Sie+mir+eine+Rechnung+in+Höhe+von+${amountComputed /
+                                100}+Euro+per+E-Mail+mit+folgender+Rechnungsadresse+aus:%0A%0AUnternehmen:%0AName:%0AAdresse:%0A%0AMit+freundlichen+Grüßen%0A${
+                                $store.state.auth.userFirstName
+                            }+${$store.state.auth.userLastName}`
+                        "
+                        class="mr-2 mb-2"
+                        variant="outline-primary"
+                        :disabled="!accepted"
+                        >Per Rechnung bezahlen**</b-button
                     >
-                    an, um den Betrieb des Portals aufrecht zu erhalten.
-                    <br />
-                    ** Sollten Sie ausschließlich auf vorab ausgestellte
-                    <strong>Rechnung</strong> bezahlen können,
-                    <strong
-                        >kontaktieren Sie uns bitte per
-                        <b-link
-                            :to="
-                                `/page/contact?subject=Rechnungsanforderung+${job &&
-                                    job.title}+[id:${job &&
-                                    job._id}]&message=Guten+Tag,%0A%0Aich+bitte+um+Zahlung+per+Rechnung+für+meine+Stellenanzeige.+Bitte+stellen+Sie+mir+eine+Rechnung+in+Höhe+von+${amountComputed /
-                                    100}+Euro+per+E-Mail+mit+folgender+Rechnungsadresse+aus:%0A%0AUnternehmen:%0AName:%0AAdresse:%0A%0AMit+freundlichen+Grüßen%0A${
-                                    $store.state.auth.userFirstName
-                                }+${$store.state.auth.userLastName}`
-                            "
-                            >Kontaktformular</b-link
-                        ></strong
+                    <b-button
+                        @click="fetchCheckoutSessionId()"
+                        class="mb-2"
+                        variant="success"
+                        :disabled="!accepted"
+                        >Jetzt bezahlen</b-button
                     >
-                    unter Angabe Ihrer E-Mail Adresse, des Stellentitels und des
-                    Rechnungsbetrages. In dem Fall erhöht sich der Kostenbeitrag
-                    um 5,- Euro. Sie erhalten die Rechnung von uns per E-Mail.
-                    Ihre Stellenanzeige wird nach erfolgtem Geldeingang bei uns
-                    freigeschaltet.
-                </p>
-            </div></b-modal
-        >
+                </div>
+            </template>
+        </b-modal>
         <b-alert
             v-model="alert.showAlert"
             class="position-fixed fixed-bottom m-0 rounded-0"
@@ -180,6 +205,7 @@
         >
             {{ alert.msg }}
         </b-alert>
+        <Overlay style="z-index:9999" :show="showOverlay"></Overlay>
     </div>
 </template>
 
