@@ -12,10 +12,28 @@
                 <b-card-text>
                     <div v-html="article.excerpt"></div>
                 </b-card-text>
+                <hr />
 
-                <b-button :to="'/article/' + article.slug" variant="primary"
-                    >Weiterlesen</b-button
-                >
+                <div class="d-flex justify-content-between">
+                    <div
+                        v-if="article.author.node.avatar"
+                        class="d-flex align-items-center"
+                    >
+                        <b-avatar
+                            variant="light"
+                            :src="article.author.node.avatar.url"
+                            :alt="article.author.node.name"
+                            class="mr-2"
+                        />
+                        <div v-if="article.author.node.name" class="mr-3">
+                            {{ article.author.node.name }}
+                        </div>
+                    </div>
+                    <b-button :to="'/article/' + article.slug" variant="primary"
+                        >Weiterlesen</b-button
+                    >
+                </div>
+
                 <b-badge
                     v-if="article.tags.nodes.length > 0"
                     pill

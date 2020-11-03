@@ -21,6 +21,14 @@ const actions = {
                                 content
                                 excerpt
                                 slug
+                                author {
+                                    node {
+                                        avatar {
+                                            url
+                                        }
+                                        name
+                                    }
+                                }
                                 featuredImage {
                                     node {
                                         altText

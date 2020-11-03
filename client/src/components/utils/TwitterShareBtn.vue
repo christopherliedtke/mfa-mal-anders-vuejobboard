@@ -6,7 +6,7 @@
             `
         https://twitter.com/share?text=${title}&url=%0A%0A${url}${
                 sharePath ? sharePath : ''
-            }%0A%0A&hashtags=mfa,arzthelferIn,mfajobs`
+            }%0A%0A&hashtags=mfa,arzthelferIn,mfamalanders`
         "
         target="_blank"
     >
