@@ -498,7 +498,7 @@ router.post("/password-reset/verify", async (req, res) => {
         errors.push({ msg: errorMsg.auth.fillAll });
     }
     if (password != password2) {
-        errors.push({ msg: errorMsg.auth.noMatch });
+        errors.push({ msg: errorMsg.auth.pwsNoMatch });
     }
     if (
         !password.match(
@@ -515,7 +515,7 @@ router.post("/password-reset/verify", async (req, res) => {
         try {
             const response = await Code.findOne({ email, code });
 
-            if (response.length === 0) {
+            if (!response) {
                 errors.push({
                     msg: errorMsg.auth.codeIncorrect,
                 });
