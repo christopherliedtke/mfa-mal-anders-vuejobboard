@@ -154,9 +154,9 @@
                         <strong>werden Sie auf unser Kontaktformular</strong>
                         weitergeleitet. Unter Angabe Ihrer E-Mail Adresse, des
                         Stellentitels und des Rechnungsbetrages bearbeiten wir
-                        Ihre Stellenanzeige manuell. In dem Fall erhöht sich der
-                        Kostenbeitrag um 5,- Euro. Sie erhalten die Rechnung von
-                        uns per E-Mail.
+                        Ihre Stellenanzeige manuell. In dem Fall erhöht sich Ihr
+                        gewählter Kostenbeitrag um 5,- Euro. Sie erhalten die
+                        Rechnung von uns per E-Mail.
                         <strong
                             >Ihre Stellenanzeige wird nach erfolgtem Geldeingang
                             bei uns freigeschaltet.</strong

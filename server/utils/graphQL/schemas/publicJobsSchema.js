@@ -36,6 +36,9 @@ const RootQuery = new GraphQLObjectType({
                 const jobs = await Job.find({
                     status: "published",
                     paid: true,
+                    paidAt: {
+                        $lte: new Date(),
+                    },
                     paidExpiresAt: {
                         $gte: new Date(),
                     },
