@@ -18,7 +18,7 @@
                         Möglichkeiten uns zu qualifizieren und im Job
                         aufzusteigen oder sogar in anderen Bereichen des
                         Gesundheitswesens Fuß zu fassen. Nur leider ist der
-                        Dschungel an Weiterbildungen für medizinische
+                        Dschungel an Fort- und Weiterbildungen für medizinische
                         Fachangestellte so stark bewachsen und undurchdringlich,
                         dass es nicht leicht fällt, den Durchblick zu behalten.
                     </p>
@@ -33,11 +33,12 @@
                         Ob
                         <b-link
                             to="/article/fortbildung-weiterbildung-oder-studium"
-                            >Fortbildung, Weiterbildung oder Studium</b-link
+                            >Fortbildung, Weiterbildung oder Studium für
+                            MFA</b-link
                         >, finde deinen richtigen Weg.
                     </p>
                     <p>
-                        In der Rubrik “Weiterbildung” kannst du dich
+                        In der Rubrik "Fort- und Weiterbildungen" kannst du dich
                         informieren, welche Möglichkeiten du als medizinische
                         Fachangestellte in und außerhalb der Arztpraxis hast.
                     </p>
@@ -118,7 +119,7 @@
         },
         data() {
             return {
-                title: "Fort- und Weiterbildungen für MFAs"
+                title: "Fort- und Weiterbildungen für MFA"
             };
         }
     };

@@ -11,10 +11,10 @@
                         class="border-radius1 shadow mb-5"
                         fluid
                         src="@/assets/jobsUndBerufsbilder_1200x627.jpg"
-                        alt="Banner - 50+ Alternative Jobs für MFA / Artzhelfer"
+                        alt="50+ Alternative Jobs für MFA / ArtzhelferInnen"
                     />
                     <h2 class="bold">
-                        Mal was anderes?
+                        Wo man als MFA überall arbeiten kann?
                     </h2>
                     <p>
                         Sprechstundenhilfe sind wir schon lange nicht mehr. Als
@@ -23,15 +23,16 @@
                         SekretärInnen, Seelsorger, Logistiker, Abrechnungsprofis
                         und Aushängeschild der gesamten Praxis. Du merkst schon:
                         Die Aufgabenspektren und Jobs für medizinische
-                        Fachangestellte sind wahnsinnig vielfältig.
+                        Fachangestellte und ArzthelferInnen sind wahnsinnig
+                        vielfältig.
                     </p>
                     <p>
                         Weil wir so viele Kompetenzen mitbringen, sind MFAs
                         nicht nur in der Arztpraxis beliebt. Der Job bietet in
                         viele Richtungen des Gesundheitswesens verschiedene
-                        Aufstiegsmöglichkeiten. Auch alternative Jobs mit der
-                        Ausbildung als medizinische Fachangestellte sind
-                        möglich.
+                        Aufstiegsmöglichkeiten. Auch verschiedenste alternative
+                        Jobs und Berufe mit der Ausbildung als medizinische
+                        Fachangestellte sind möglich.
                     </p>
                     <p>
                         Willst Du Deinem Job als medizinische Fachangestellte
@@ -88,7 +89,7 @@
         </b-container>
         <Head
             :title="title"
-            desc="Du brauchst Inspiration? – 50+ Alternative Jobs für medizinische Fachangestellte (MFA) | Suche gleich nach passenden Stellen in unserer Jobbörse."
+            desc="Du brauchst Inspiration? – 50+ Alternative Jobs / Berufe für medizinische Fachangestellte (MFA) und ArzthelferInnen | Finde passende Stellen..."
             img="@/assets/jobsUndBerufsbilder_1200x627.jpg"
         />
     </div>

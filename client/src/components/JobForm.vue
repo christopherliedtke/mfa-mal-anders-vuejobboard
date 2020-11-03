@@ -788,7 +788,7 @@
                         this.success = true;
 
                         this.trackEvent(
-                            `${this.job.title} | ${this.job.company.state} - ${jobQueryResponse.data.data[jobMutationType]._id}`,
+                            `NewJob: ${this.job.title} | ${this.job.company.state} - ${jobQueryResponse.data.data[jobMutationType]._id}`,
                             "Job_Ad",
                             jobMutationType
                         );

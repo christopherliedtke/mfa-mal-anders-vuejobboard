@@ -19,7 +19,7 @@
                         </span>
                     </h1>
                     <p
-                        class="mt-2 mt-md-3 border-radius1 px-2 py-1"
+                        class="lead mt-2 mt-md-3 border-radius1 px-2 py-1"
                         style="background-color:#f8faf9bb"
                     >
                         Informiere Dich über berufliche Perspektiven, Fort- und
