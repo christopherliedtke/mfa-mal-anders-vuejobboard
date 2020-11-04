@@ -153,14 +153,6 @@ router.post("/register", async (req, res) => {
                 req.session.token = token;
 
                 const baseUrl = req.protocol + "://" + req.get("host");
-                // const secretCode = cryptoRandomString({
-                //     length: 6,
-                // });
-                // const newCode = new Code({
-                //     code: secretCode,
-                //     email: user.email,
-                // });
-                // await newCode.save();
 
                 const data = {
                     from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
@@ -336,7 +328,7 @@ router.get(
 // #desc:   Verify user's email address
 // #access: Public
 router.get("/verification/verify-account/:userId", async (req, res) => {
-    let redirectPath, user, code;
+    let redirectPath, user;
 
     try {
         user = await User.findById(req.params.userId);
@@ -352,32 +344,6 @@ router.get("/verification/verify-account/:userId", async (req, res) => {
 
             redirectPath = `${res.locals.secrets.WEBSITE_URL}/account/verified`;
         }
-        // else {
-        //     code = await Code.findOne({
-        //         email: user.email,
-        //         code: req.params.secretCode,
-        //     });
-
-        //     if (!code) {
-        //         console.log(
-        //             `Error on /verify-account -> no code found for user._id ${req.params.userId}: `,
-        //             code
-        //         );
-        //     }
-        // }
-
-        // if (!user || !code) {
-        //     redirectPath = `${res.locals.secrets.WEBSITE_URL}/account/verification?error=true`;
-        // }
-        // else {
-        //     await User.updateOne(
-        //         { email: user.email },
-        //         { status: "active" }
-        //     );
-        //     // await Code.deleteMany({ email: user.email });
-
-        //     redirectPath = `${res.locals.secrets.WEBSITE_URL}/account/verified`;
-        // }
     } catch (err) {
         console.log("Error on /api/auth/verification/verify-account: ", err);
 

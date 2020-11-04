@@ -164,7 +164,7 @@
                         <b-link
                             class="h2"
                             to="/page/mfa-career/fort-und-weiterbildungen"
-                            >Fort- und Weiterbildungen</b-link
+                            >Fort- und Weiterbildungen für MFA</b-link
                         >
                         <RandomTrainingsContainer class="mt-3" :number="2" />
                         <BerufsbilderBanner class="mt-3" />

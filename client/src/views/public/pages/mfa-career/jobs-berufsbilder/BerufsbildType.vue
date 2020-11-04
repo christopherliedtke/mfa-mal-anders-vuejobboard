@@ -15,12 +15,12 @@
                     </p>
                     <b-card
                         v-for="berufsbild in berufsbilder"
-                        :key="berufsbild.id"
+                        :key="berufsbild.slug"
                         no-body
                         class="mb-2"
                     >
                         <b-card-header
-                            @click="setVisible(berufsbild.id)"
+                            @click="setVisible(berufsbild.slug)"
                             style="cursor: pointer"
                             header-tag="header"
                             role="tab"
@@ -42,7 +42,7 @@
                                         icon="caret-right-fill"
                                         font-scale="0.8"
                                         :class="
-                                            visible === berufsbild.id
+                                            visible === berufsbild.slug
                                                 ? 'animate rotate-90'
                                                 : 'animate'
                                         "
@@ -51,7 +51,7 @@
                             </div>
                         </b-card-header>
                         <b-collapse
-                            :visible="visible === berufsbild.id"
+                            :visible="visible === berufsbild.slug"
                             role="tabpanel"
                         >
                             <b-card-body>
@@ -104,7 +104,7 @@
         },
         data() {
             return {
-                visible: null,
+                visible: this.$route.query.id || null,
                 intros: {
                     "Medizinisch-Technisch":
                         "Wenn Dich die Arbeit mit und am Patienten mit Freude erfüllt oder Dein Herz für die Medizin schlägt, ist ein medizinisch-technischer Job am Besten für Dich geeignet. Sieh Dir deine vielfältigen Möglichkeiten an.",
@@ -135,8 +135,10 @@
             setVisible(id) {
                 if (this.visible === id) {
                     this.visible = null;
+                    this.$router.push({ query: null });
                 } else {
                     this.visible = id;
+                    this.$router.push({ query: { id } });
                 }
             }
         }

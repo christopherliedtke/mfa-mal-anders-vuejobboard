@@ -5,7 +5,7 @@
             class="hero d-flex justify-content-center align-items-center"
         >
             <b-container style="max-width: 850px">
-                <div class="my-3 my-lg-5">
+                <div class="hero-text my-3 my-lg-5 p-2 p-md-4">
                     <h1>
                         <span class="bold display-2">
                             MFA <br class="d-md-none" />
@@ -13,21 +13,18 @@
                         </span>
                         <br />
                         <span
-                            class="h1 bg-primary text-light p-2 mt-2 border-radius1 d-inline-block"
+                            class="h2 bg-primary text-light p-2 mt-2 border-radius1 d-inline-block"
                         >
                             Dein Karriereportal nur für MFAs
                         </span>
                     </h1>
-                    <p
-                        class="lead mt-2 mt-md-3 border-radius1 px-2 py-1"
-                        style="background-color:#f8faf9bb"
-                    >
+                    <p class="lead mt-2 mt-md-3 mb-0">
                         Informiere Dich über berufliche Perspektiven, Fort- und
                         Weiterbildungen, Stellenangebote und vieles mehr<span
                             class="d-none d-md-inline"
                         >
-                            &ndash; nur für medizinische Fachangestellte (MFA) /
-                            ArzthelferInnen</span
+                            &ndash; speziell für medizinische Fachangestellte
+                            (MFA) / ArzthelferInnen</span
                         >.
                     </p>
                 </div>

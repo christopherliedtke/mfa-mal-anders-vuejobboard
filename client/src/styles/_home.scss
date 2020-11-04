@@ -7,7 +7,12 @@
         min-height: 60vh;
 
         @media screen and (max-width: $break-menu) {
-            min-height: calc(85vh - 70px);
+            min-height: calc(82vh - 70px);
+        }
+
+        .hero-text {
+            border-radius: $border-radius2;
+            background-color: transparentize($light, $amount: 0.25);
         }
     }
 }
