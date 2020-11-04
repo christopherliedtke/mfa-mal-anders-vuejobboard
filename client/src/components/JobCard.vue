@@ -4,17 +4,20 @@
             <b-card no-body class="mb-3 mt-3 mt-lg-0">
                 <b-card-text>
                     <div class="card-head">
-                        <h4
+                        <h2
                             :class="
-                                job.company.logoUrl ? 'mobile-max-width-75' : ''
+                                job.company.logoUrl
+                                    ? 'mobile-max-width-75 h4'
+                                    : 'h4'
                             "
                         >
                             {{ job.title }}
-                        </h4>
+                        </h2>
                         <div v-if="job.company.logoUrl" class="img-container">
                             <b-img-lazy
                                 :src="job.company.logoUrl"
                                 blank-src="@/assets/logo.png"
+                                :alt="`Logo - ${job.company.name}`"
                             />
                         </div>
                     </div>

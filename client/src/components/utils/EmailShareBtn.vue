@@ -9,6 +9,7 @@
             }: ${url}${sharePath ? sharePath : ''}`
         "
         target="_blank"
+        aria-label="E-Mail"
     >
         <font-awesome-icon class="mr-2" :icon="['fa', 'envelope']" size="lg" />
         E-Mail

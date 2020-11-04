@@ -8,6 +8,7 @@
             }`
         "
         target="_blank"
+        aria-label="WhatsApp"
     >
         <font-awesome-icon class="mr-2" :icon="['fab', 'whatsapp']" size="lg" />
         WhatsApp

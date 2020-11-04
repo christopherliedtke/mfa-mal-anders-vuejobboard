@@ -4,6 +4,7 @@
         variant="primary"
         :href="`https://www.twitter.com/${config.twitter.path}`"
         target="_blank"
+        aria-label="Twitter"
     >
         <font-awesome-icon
             :class="content ? 'mr-2' : ''"

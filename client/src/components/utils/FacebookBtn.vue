@@ -4,6 +4,7 @@
         variant="primary"
         :href="`https://www.facebook.com/${config.fb.path}`"
         target="_blank"
+        aria-label="Facebook"
     >
         <font-awesome-icon
             :class="content ? 'mr-2' : ''"

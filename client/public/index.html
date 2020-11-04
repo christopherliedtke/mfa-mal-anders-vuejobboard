@@ -6,6 +6,59 @@
         <meta name="viewport" content="width=device-width,initial-scale=1.0" />
         <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
         <!-- <title><%= htmlWebpackPlugin.options.title %></title> -->
+        <link
+            rel="preconnect"
+            href="https://mfa-mal-anders-prod.s3.eu-central-1.amazonaws.com
+"
+        />
+        <link
+            rel="preconnect"
+            href="https://wordpress.mfa-mal-anders.de
+"
+        />
+        <link
+            rel="preconnect"
+            href="https://m.stripe.com
+"
+        />
+        <link
+            rel="preconnect"
+            href="https://www.google-analytics.com
+"
+        />
+        <!-- Stripe -->
+        <script defer src="https://js.stripe.com/v3/"></script>
+        <!-- Here assets start-->
+        <script
+            defer
+            type="text/javascript"
+            charset="UTF-8"
+            src="https://js.api.here.com/v3/3.1/mapsjs-core.js"
+        ></script>
+        <script
+            defer
+            type="text/javascript"
+            charset="UTF-8"
+            src="https://js.api.here.com/v3/3.1/mapsjs-service.js"
+        ></script>
+        <script
+            defer
+            type="text/javascript"
+            charset="UTF-8"
+            src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"
+        ></script>
+        <script
+            defer
+            type="text/javascript"
+            charset="UTF-8"
+            src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"
+        ></script>
+        <link
+            defer
+            rel="stylesheet"
+            type="text/css"
+            href="https://js.api.here.com/v3/3.1/mapsjs-ui.css"
+        />
     </head>
     <body>
         <noscript>
@@ -17,44 +70,16 @@
         </noscript>
         <div id="app"></div>
         <!-- built files will be auto injected -->
-        <!-- Here assets start-->
-        <script
-            type="text/javascript"
-            charset="UTF-8"
-            src="https://js.api.here.com/v3/3.1/mapsjs-core.js"
-        ></script>
-        <script
-            type="text/javascript"
-            charset="UTF-8"
-            src="https://js.api.here.com/v3/3.1/mapsjs-service.js"
-        ></script>
-        <script
-            type="text/javascript"
-            charset="UTF-8"
-            src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"
-        ></script>
-        <script
-            type="text/javascript"
-            charset="UTF-8"
-            src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"
-        ></script>
-        <script
+        <!-- <script
             type="text/javascript"
             charset="UTF-8"
             src="https://js.api.here.com/v3/3.1/mapsjs-clustering.js"
-        ></script>
-        <script
+        ></script> -->
+        <!-- <script
             type="text/javascript"
             charset="UTF-8"
             src="https://js.api.here.com/v3/3.1/mapsjs-data.js"
-        ></script>
-        <link
-            rel="stylesheet"
-            type="text/css"
-            href="https://js.api.here.com/v3/3.1/mapsjs-ui.css"
-        />
+        ></script> -->
         <!-- Here assets end-->
-        <!-- Stripe -->
-        <script src="https://js.stripe.com/v3/"></script>
     </body>
 </html>

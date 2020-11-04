@@ -34,13 +34,13 @@
                 <b-img
                     class="mx-3 shadow"
                     style="width: 35vw; max-width: 300px"
-                    src="@/assets/Vorlage_Bewerbungsanschreiben.jpg"
+                    src="@/assets/Vorlage_Bewerbungsanschreiben_300x.jpg"
                     alt="Bild von Mustervorlage für Motivationsschreiben"
                 />
                 <b-img
                     class="mx-3 shadow"
                     style="width: 35vw; max-width: 300px"
-                    src="@/assets/Vorlage_Lebenslauf.jpg"
+                    src="@/assets/Vorlage_Lebenslauf_300x.jpg"
                     alt="Bild von Mustervorlage für Lebenslauf"
                 />
             </div>

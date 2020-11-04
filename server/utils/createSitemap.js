@@ -13,22 +13,24 @@ if (process.env.NODE_ENV == "production") {
 }
 
 const getArticles = () =>
-    new Promise(async (resolve, reject) => {
+    new Promise((resolve, reject) => {
         try {
-            const response = await axios.post(config.sitemap.cmsUrl, {
-                query: `
-                query MyQuery {
-                    posts(first: 100, where: {orderby: {field: MODIFIED, order: DESC}}) {
-                        nodes {
-                            slug
-                            modifiedGmt
+            (async function () {
+                const response = await axios.post(config.sitemap.cmsUrl, {
+                    query: `
+                        query MyQuery {
+                            posts(first: 100, where: {orderby: {field: MODIFIED, order: DESC}}) {
+                                nodes {
+                                    slug
+                                    modifiedGmt
+                                }
+                            }
                         }
-                    }
-                }
-                `,
-            });
+                    `,
+                });
 
-            resolve(response.data.data.posts.nodes);
+                resolve(response.data.data.posts.nodes);
+            })();
         } catch (err) {
             console.log("Error on getArticles() for sitemap: ", err);
             reject(err);
@@ -36,22 +38,24 @@ const getArticles = () =>
     });
 
 const getTrainings = () =>
-    new Promise(async (resolve, reject) => {
+    new Promise((resolve, reject) => {
         try {
-            const response = await axios.post(config.sitemap.cmsUrl, {
-                query: `
-                query MyQuery {
-                    weiterbildungen(first: 100, where: {orderby: {field: MODIFIED, order: ASC}}) {
-                        nodes {
-                            slug
-                            modifiedGmt
+            (async function () {
+                const response = await axios.post(config.sitemap.cmsUrl, {
+                    query: `
+                        query MyQuery {
+                            weiterbildungen(first: 100, where: {orderby: {field: MODIFIED, order: ASC}}) {
+                                nodes {
+                                    slug
+                                    modifiedGmt
+                                }
+                            }
                         }
-                    }
-                }
-                `,
-            });
+                    `,
+                });
 
-            resolve(response.data.data.weiterbildungen.nodes);
+                resolve(response.data.data.weiterbildungen.nodes);
+            })();
         } catch (err) {
             console.log("Error on getTrainings() for sitemap: ", err);
             reject(err);
@@ -59,25 +63,27 @@ const getTrainings = () =>
     });
 
 const getJobs = () =>
-    new Promise(async (resolve, reject) => {
+    new Promise((resolve, reject) => {
         try {
-            const response = await Job.find(
-                {
-                    status: "published",
-                    paid: true,
-                    paidExpiresAt: {
-                        $gte: new Date(),
+            (async function () {
+                const response = await Job.find(
+                    {
+                        status: "published",
+                        paid: true,
+                        paidExpiresAt: {
+                            $gte: new Date(),
+                        },
+                        applicationDeadline: {
+                            $gte: new Date(
+                                new Date().valueOf() - 1000 * 60 * 60 * 24
+                            ).toISOString(),
+                        },
                     },
-                    applicationDeadline: {
-                        $gte: new Date(
-                            new Date().valueOf() - 1000 * 60 * 60 * 24
-                        ).toISOString(),
-                    },
-                },
-                "_id updatedAt"
-            );
+                    "_id updatedAt"
+                );
 
-            resolve(response);
+                resolve(response);
+            })();
         } catch (err) {
             console.log("Error on getTrainings() for sitemap: ", err);
             reject(err);
@@ -99,65 +105,73 @@ async function createSitemap() {
             .map((elem) => writeUrl(secrets.WEBSITE_URL + elem, lastBuild))
             .join(" ");
 
-        const articles = await new Promise(async (resolve, reject) => {
-            const response = await getArticles();
+        const articles = await new Promise((resolve) => {
+            (async function () {
+                const response = await getArticles();
 
-            if (Array.isArray(response) && response.length > 0) {
-                resolve(
-                    response
-                        .map((elem) =>
-                            writeUrl(
-                                secrets.WEBSITE_URL + "/article/" + elem.slug,
-                                new Date(elem.modifiedGmt).toISOString()
+                if (Array.isArray(response) && response.length > 0) {
+                    resolve(
+                        response
+                            .map((elem) =>
+                                writeUrl(
+                                    secrets.WEBSITE_URL +
+                                        "/article/" +
+                                        elem.slug,
+                                    new Date(elem.modifiedGmt).toISOString()
+                                )
                             )
-                        )
-                        .join(" ")
-                );
-            } else {
-                resolve("");
-            }
+                            .join(" ")
+                    );
+                } else {
+                    resolve("");
+                }
+            })();
         });
 
-        const trainings = await new Promise(async (resolve, reject) => {
-            const response = await getTrainings();
+        const trainings = await new Promise((resolve) => {
+            (async function () {
+                const response = await getTrainings();
 
-            if (Array.isArray(response) && response.length > 0) {
-                resolve(
-                    response
-                        .map((elem) =>
-                            writeUrl(
-                                secrets.WEBSITE_URL +
-                                    "/page/mfa-career/fort-und-weiterbildungen/" +
-                                    elem.slug,
-                                new Date(elem.modifiedGmt).toISOString()
+                if (Array.isArray(response) && response.length > 0) {
+                    resolve(
+                        response
+                            .map((elem) =>
+                                writeUrl(
+                                    secrets.WEBSITE_URL +
+                                        "/page/mfa-career/fort-und-weiterbildungen/" +
+                                        elem.slug,
+                                    new Date(elem.modifiedGmt).toISOString()
+                                )
                             )
-                        )
-                        .join(" ")
-                );
-            } else {
-                resolve("");
-            }
+                            .join(" ")
+                    );
+                } else {
+                    resolve("");
+                }
+            })();
         });
 
-        const jobs = await new Promise(async (resolve, reject) => {
-            const response = await getJobs();
+        const jobs = await new Promise((resolve) => {
+            (async function () {
+                const response = await getJobs();
 
-            if (Array.isArray(response) && response.length > 0) {
-                resolve(
-                    response
-                        .map((elem) =>
-                            writeUrl(
-                                secrets.WEBSITE_URL +
-                                    "/jobboard/job/" +
-                                    elem._id,
-                                new Date(elem.updatedAt).toISOString()
+                if (Array.isArray(response) && response.length > 0) {
+                    resolve(
+                        response
+                            .map((elem) =>
+                                writeUrl(
+                                    secrets.WEBSITE_URL +
+                                        "/jobboard/job/" +
+                                        elem._id,
+                                    new Date(elem.updatedAt).toISOString()
+                                )
                             )
-                        )
-                        .join(" ")
-                );
-            } else {
-                resolve("");
-            }
+                            .join(" ")
+                    );
+                } else {
+                    resolve("");
+                }
+            })();
         });
 
         const sitemap =

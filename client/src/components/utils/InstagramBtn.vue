@@ -4,6 +4,7 @@
         variant="primary"
         :href="`https://www.instagram.com/${config.ig.path}`"
         target="_blank"
+        aria-label="Instagram"
     >
         <font-awesome-icon
             :class="content ? 'mr-2' : ''"

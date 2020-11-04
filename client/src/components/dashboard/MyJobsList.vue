@@ -256,6 +256,16 @@
         components: {
             StripeCheckout
         },
+        // head: {
+        //     script: function() {
+        //         return [
+        //             {
+        //                 type: "text/javascript",
+        //                 src: "https://js.stripe.com/v3/"
+        //             }
+        //         ];
+        //     }
+        // },
         data() {
             return {
                 myJobs: [],

@@ -1,5 +1,5 @@
 <template>
-    <b-button variant="danger" @click="onLogout">
+    <b-button variant="danger" @click="onLogout" aria-label="Logout">
         <b-icon class="mr-1" icon="box-arrow-right" font-scale="1.3"></b-icon
         >Logout
     </b-button>

@@ -9,6 +9,7 @@
             }%0A%0A&hashtags=mfa,arzthelferIn,mfamalanders`
         "
         target="_blank"
+        aria-label="Twitter"
     >
         <font-awesome-icon class="mr-2" :icon="['fab', 'twitter']" size="lg" />
         Twitter
