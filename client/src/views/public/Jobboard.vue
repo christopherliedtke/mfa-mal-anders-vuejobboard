@@ -35,7 +35,7 @@
                         <InstagramBtn class="d-lg-none mb-3 ml-1" content="" />
                     </b-button-toolbar>
                     <b-form id="job-filter" inline @submit.prevent>
-                        <label for="searchTerm" class="sr-only"
+                        <label for="searchTerm-jobboard" class="sr-only"
                             >Suchbegriff *</label
                         >
                         <b-input-group class="mb-1 mr-2">
@@ -46,7 +46,7 @@
                                 type="text"
                                 v-model="filter.searchTerm"
                                 placeholder="Suchbegriff..."
-                                name="searchTerm"
+                                id="searchTerm-jobboard"
                                 @change="setQuery"
                             />
                             <b-input-group-append>
@@ -62,13 +62,13 @@
                                 /></b-button>
                             </b-input-group-append>
                         </b-input-group>
-                        <label for="employmentType" class="sr-only"
+                        <label for="employmentType-jobboard" class="sr-only"
                             >Anstellungsart *</label
                         >
                         <b-form-select
                             class="my-1 mr-2"
                             v-model="filter.employmentType"
-                            name="employmentType"
+                            id="employmentType-jobboard"
                             @change="setQuery"
                         >
                             <b-form-select-option :value="null"
@@ -96,7 +96,9 @@
                             >{{ specialization }}</b-form-select-option
                         >
                     </b-form-select> -->
-                        <label for="location" class="sr-only">Ort *</label>
+                        <label for="location-jobboard" class="sr-only"
+                            >Ort *</label
+                        >
                         <b-input-group class="my-1 mr-2">
                             <b-form-input
                                 :class="
@@ -106,7 +108,7 @@
                                 v-model="filter.location"
                                 list="location-list"
                                 placeholder="Ort..."
-                                name="location"
+                                id="location-jobboard"
                                 @change="setQuery"
                             />
                             <b-input-group-append>
@@ -126,11 +128,13 @@
                             id="location-list"
                             :options="locationsList"
                         ></b-form-datalist>
-                        <label for="state" class="sr-only">Bundesland *</label>
+                        <label for="state-jobboard" class="sr-only"
+                            >Bundesland *</label
+                        >
                         <b-form-select
                             class="my-1 mr-2"
                             v-model="filter.state"
-                            name="state"
+                            id="state-jobboard"
                             @change="setQuery"
                         >
                             <b-form-select-option :value="null"

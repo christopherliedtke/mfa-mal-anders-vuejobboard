@@ -19,7 +19,7 @@
                         <b-nav-item class="home" to="/">Home</b-nav-item>
                         <b-nav-item to="/jobboard">Stellenangebote</b-nav-item>
 
-                        <div
+                        <li
                             class="sub-container"
                             @mouseleave="hideSub('sub-career')"
                             @click="hideSub('sub-career')"
@@ -92,7 +92,7 @@
                                     >Fort- und Weiterbildungen
                                 </b-nav-item>
                             </div>
-                        </div>
+                        </li>
 
                         <b-nav-item
                             v-if="config.cms.active"
@@ -184,12 +184,14 @@
                             ></b-icon
                         ></b-nav-item>
                         <b-nav-item v-if="userId"><Logout /></b-nav-item>
-                        <b-button
-                            @click="toggleNavbar"
-                            variant="secondary"
-                            to="/login"
-                            v-if="!userId"
-                            >Login</b-button
+                        <b-nav-item v-if="!userId"
+                            ><b-button
+                                @click="toggleNavbar"
+                                variant="secondary"
+                                to="/login"
+                                v-if="!userId"
+                                >Login</b-button
+                            ></b-nav-item
                         >
                     </b-navbar-nav>
                 </b-collapse>
