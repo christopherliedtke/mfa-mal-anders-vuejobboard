@@ -68,12 +68,7 @@
                     anders geschaffen und entwickle dieses kontinuierlich
                     weiter!
                 </p>
-                <b-img
-                    class="my-3"
-                    src="@/assets/signature.png"
-                    alt="Zeichen Kristin Maurach"
-                    width="200"
-                />
+                <p class="h5 my-5">Kristin Maurach</p>
                 <div class="mt-3">
                     <b-link class="mr-3" to="/page/contact">
                         <font-awesome-icon
@@ -115,5 +110,3 @@
         }
     };
 </script>
-
-<style scoped lang="scss"></style>
