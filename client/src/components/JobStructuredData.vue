@@ -49,7 +49,7 @@
                                 this.job.company.location
                             }",
                             "description" : "${this.$sanitize(
-                                this.job.description,
+                                this.job.description.replace(/"/g, "'"),
                                 {
                                     allowedTags: [
                                         "h1",
