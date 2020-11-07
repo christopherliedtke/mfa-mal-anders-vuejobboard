@@ -159,7 +159,10 @@ router.post("/checkout-completed", async (req, res) => {
                     #mfamalanders #mfa #arzthelfer #arzthelferin #mfajobs #${updatedJob.company.location
                         .toLowerCase()
                         .replace("-", "")
-                        .trim()}jobs
+                        .trim()}jobs #${updatedJob.company.location
+                    .toLowerCase()
+                    .replace("-", "")
+                    .trim()}
                 </p>
                 `,
             };

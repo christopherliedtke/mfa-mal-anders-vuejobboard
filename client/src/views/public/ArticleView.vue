@@ -1,6 +1,6 @@
 <template>
     <div v-if="article">
-        <!-- <h1 class="title d-none d-md-block">{{ article.title }}</h1> -->
+        <h1 class="title d-none d-md-block">{{ article.title }}</h1>
         <b-container class="cms-article mt-3 mb-5">
             <div class="position-relative">
                 <b-img
@@ -31,29 +31,75 @@
             <div
                 class="d-flex flex-wrap justify-content-between align-items-center mt-5"
             >
-                <div
-                    v-if="article.author.node.avatar"
-                    class="d-flex align-items-center mb-4 mb-lg-0"
-                >
-                    <b-avatar
-                        variant="light"
-                        :src="article.author.node.avatar.url"
-                        :alt="article.author.node.name"
-                        size="60"
-                        class="mr-3"
-                    />
-                    <div class="h6">
-                        <span>
-                            Liebe Grüße,
-                        </span>
-                        <br />
-                        <span>{{ article.author.node.name }}</span>
+                <div class="mb-4 mb-lg-0">
+                    <div
+                        v-if="article.author.node.avatar"
+                        class="d-flex align-items-center mb-3"
+                    >
+                        <b-avatar
+                            variant="light"
+                            :src="article.author.node.avatar.url"
+                            :alt="article.author.node.name"
+                            size="60"
+                            class="mr-3"
+                        />
+                        <div class="h6">
+                            <span>
+                                Liebe Grüße,
+                            </span>
+                            <br />
+                            <span>{{ article.author.node.name }}</span>
+                        </div>
+                    </div>
+                    <div class="text-primary">
+                        <b-link
+                            v-if="article.author.node.url"
+                            class="mr-2"
+                            :href="article.author.node.url"
+                            target="blank"
+                        >
+                            <font-awesome-icon
+                                :icon="['fa', 'globe']"
+                                size="2x"
+                            />
+                        </b-link>
+                        <b-link
+                            v-if="article.author.node.seo.social.facebook"
+                            class="mr-2"
+                            :href="article.author.node.seo.social.facebook"
+                            target="blank"
+                        >
+                            <font-awesome-icon
+                                :icon="['fab', 'facebook-square']"
+                                size="2x"
+                            />
+                        </b-link>
+                        <b-link
+                            v-if="article.author.node.seo.social.instagram"
+                            class="mr-2"
+                            :href="article.author.node.seo.social.instagram"
+                            target="blank"
+                        >
+                            <font-awesome-icon
+                                :icon="['fab', 'instagram']"
+                                size="2x"
+                            />
+                        </b-link>
                     </div>
                 </div>
                 <div>
                     <FacebookShareBtn class="mb-2 mb-lg-0 mr-2" />
                     <TwitterShareBtn class="mb-2 mb-lg-0 mr-2" />
                     <WhatsAppShareBtn class="mb-2 mb-lg-0" />
+                </div>
+                <div
+                    class="small mt-4"
+                    v-if="article.tags.nodes[0].name === 'Erfahrungsbericht'"
+                >
+                    Wenn auch Du von einer interessanten Weiterbildung oder
+                    Deiner Arbeit als MFA berichten möchtest, melde Dich gern
+                    bei uns über das
+                    <b-link to="/page/contact">Kontaktformular</b-link>.
                 </div>
             </div>
         </b-container>

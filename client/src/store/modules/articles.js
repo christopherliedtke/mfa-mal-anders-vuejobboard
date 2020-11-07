@@ -27,6 +27,13 @@ const actions = {
                                             url
                                         }
                                         name
+                                        seo {
+                                            social {
+                                            facebook
+                                            instagram
+                                            }
+                                        }
+                                        url
                                     }
                                 }
                                 featuredImage {

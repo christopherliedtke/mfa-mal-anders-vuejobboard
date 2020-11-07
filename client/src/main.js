@@ -151,7 +151,8 @@ import {
     faPaperPlane,
     faUserNurse,
     faCreditCard,
-    faDesktop
+    faDesktop,
+    faGlobe
 } from "@fortawesome/free-solid-svg-icons";
 import { faUser as farUser } from "@fortawesome/free-regular-svg-icons";
 import {
@@ -202,7 +203,8 @@ library.add(
     faChrome,
     faUserNurse,
     faCreditCard,
-    faDesktop
+    faDesktop,
+    faGlobe
 );
 
 Vue.component("font-awesome-icon", FontAwesomeIcon);
