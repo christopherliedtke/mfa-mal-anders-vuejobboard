@@ -52,7 +52,8 @@
                         class="mr-1"
                         pill
                         :variant="
-                            job.status === 'draft'
+                            job.status === 'draft' ||
+                            job.status === 'invoice-pending'
                                 ? 'light'
                                 : job.status === 'published'
                                 ? 'success'
@@ -61,7 +62,8 @@
                         >{{
                             job.status === "published"
                                 ? "online"
-                                : job.status === "draft"
+                                : job.status === "draft" ||
+                                  job.status === "invoice-pending"
                                 ? "Entwurf"
                                 : "offline"
                         }}</b-badge
@@ -194,13 +196,28 @@
                             >
                         </b-dropdown>
                         <b-button
-                            v-if="!job.paid || job.paidExpiresAt < new Date()"
+                            v-if="
+                                (!job.paid || job.paidExpiresAt < new Date()) &&
+                                    job.status != 'invoice-pending'
+                            "
                             class="mr-2 mb-2 mb-md-0"
                             variant="success"
                             size="sm"
                             @click.prevent="showStripeCheckoutModal(job)"
                             ><b-icon class="mr-2" icon="cart2"></b-icon>Jetzt
                             bezahlen</b-button
+                        >
+                        <b-button
+                            v-if="
+                                job.status === 'invoice-pending' &&
+                                    (!job.paid ||
+                                        job.paidExpiresAt < new Date())
+                            "
+                            :disabled="true"
+                            class="mr-2 mb-2 mb-md-0"
+                            variant="light"
+                            size="sm"
+                            >Rechnung in Bearbeitung</b-button
                         >
                     </div>
                     <div>
@@ -234,6 +251,7 @@
             :showStripeCheckoutModal="stripe.showModal"
             :job="stripe.checkoutJob"
             @close="stripe.showModal = false"
+            @update="getJobsByUserId"
         />
         <b-alert
             v-model="error"
@@ -293,6 +311,11 @@
                                     paid
                                     title
                                     company {
+                                        name
+                                        street
+                                        zipCode
+                                        location
+                                        state
                                         size
                                     }
 

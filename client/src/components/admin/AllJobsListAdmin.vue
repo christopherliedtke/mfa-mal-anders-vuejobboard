@@ -106,6 +106,14 @@
                         >Draft</b-dropdown-item
                     >
                     <b-dropdown-item
+                        :active="row.item.status === 'invoice-pending'"
+                        variant="secondary"
+                        @click.prevent="
+                            updateJob(row.item._id, 'status', 'invoice-pending')
+                        "
+                        >Invoice pending</b-dropdown-item
+                    >
+                    <b-dropdown-item
                         :active="row.item.status === 'published'"
                         variant="success"
                         @click.prevent="
@@ -115,7 +123,7 @@
                     >
                     <b-dropdown-item
                         :active="row.item.status === 'unpublished'"
-                        variant="warning"
+                        variant="danger"
                         @click.prevent="
                             updateJob(row.item._id, 'status', 'unpublished')
                         "

@@ -140,7 +140,11 @@ const mutation = new GraphQLObjectType({
                         .populate("userId")
                         .populate("company");
 
-                    if (config.googleIndexing.active) {
+                    if (
+                        config.googleIndexing.active &&
+                        args.status != "draft" &&
+                        args.status != "invoice-pending"
+                    ) {
                         googleIndexing(
                             req.res.locals.secrets.WEBSITE_URL +
                                 config.googleIndexing.pathPrefix +
