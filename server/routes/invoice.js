@@ -65,12 +65,16 @@ router.post("/get-invoice", authenticateToken, async (req, res) => {
         await emailService.sendMail(emailData);
         await Job.updateOne(
             { _id: jobId, userId: userId },
-            { status: "invoice-pending" }
+            {
+                status: "invoice-pending",
+                paidAmount: amount,
+                refreshFrequency,
+            }
         );
         res.json({ success: true });
     } catch (err) {
         console.log(
-            "Error on sendEmail in POST /api/invoice/get-invoice: ",
+            "Error on sendEmail() || Job.updateOne() in POST /api/invoice/get-invoice: ",
             err
         );
         res.json({ success: false });

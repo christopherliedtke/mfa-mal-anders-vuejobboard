@@ -22,10 +22,65 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
-// import { BootstrapVue, BootstrapVueIcons } from "bootstrap-vue";
-import { BootstrapVue } from "bootstrap-vue";
-Vue.use(BootstrapVue);
-// Vue.use(BootstrapVueIcons);
+// import { BootstrapVue } from "bootstrap-vue";
+// Vue.use(BootstrapVue);
+
+import {
+    NavbarPlugin,
+    AlertPlugin,
+    AvatarPlugin,
+    BadgePlugin,
+    ButtonPlugin,
+    ButtonGroupPlugin,
+    ButtonToolbarPlugin,
+    CardPlugin,
+    FormPlugin,
+    FormCheckboxPlugin,
+    FormDatepickerPlugin,
+    FormFilePlugin,
+    FormGroupPlugin,
+    FormInputPlugin,
+    FormRadioPlugin,
+    FormSelectPlugin,
+    FormTextareaPlugin,
+    ImagePlugin,
+    InputGroupPlugin,
+    LayoutPlugin,
+    LinkPlugin,
+    ModalPlugin,
+    OverlayPlugin,
+    PopoverPlugin,
+    TablePlugin,
+    TabsPlugin,
+    TooltipPlugin
+} from "bootstrap-vue";
+Vue.use(NavbarPlugin);
+Vue.use(AlertPlugin);
+Vue.use(AvatarPlugin);
+Vue.use(BadgePlugin);
+Vue.use(ButtonPlugin);
+Vue.use(ButtonGroupPlugin);
+Vue.use(ButtonToolbarPlugin);
+Vue.use(CardPlugin);
+Vue.use(FormPlugin);
+Vue.use(FormCheckboxPlugin);
+Vue.use(FormDatepickerPlugin);
+Vue.use(FormFilePlugin);
+Vue.use(FormGroupPlugin);
+Vue.use(FormInputPlugin);
+Vue.use(FormRadioPlugin);
+Vue.use(FormSelectPlugin);
+Vue.use(FormTextareaPlugin);
+Vue.use(ImagePlugin);
+Vue.use(InputGroupPlugin);
+Vue.use(LayoutPlugin);
+Vue.use(LinkPlugin);
+Vue.use(ModalPlugin);
+Vue.use(OverlayPlugin);
+Vue.use(PopoverPlugin);
+Vue.use(TablePlugin);
+Vue.use(TabsPlugin);
+Vue.use(TooltipPlugin);
 
 import {
     BIcon,
