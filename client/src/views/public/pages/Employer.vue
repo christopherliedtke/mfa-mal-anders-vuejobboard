@@ -26,7 +26,7 @@
                         variant="secondary"
                         size="lg"
                         class="my-4"
-                        >Jetzt Stellenanzeige schalten</b-button
+                        >Jetzt Stellenanzeige erstellen</b-button
                     >
                 </b-col>
                 <b-col
@@ -115,7 +115,7 @@
                     variant="secondary"
                     size="lg"
                     class="mx-1 my-1"
-                    >Stellenanzeige schalten</b-button
+                    >Stellenanzeige erstellen</b-button
                 >
                 <b-button
                     href="#tipps-stellenanzeigen"
@@ -347,7 +347,9 @@
                 </b-col>
                 <b-col cols="12" md="6" lg="4">
                     <div class="icon-box shadow1 py-4">
-                        <h4 class="bold mb-3">Jetzt Stellenanzeige schalten</h4>
+                        <h4 class="bold mb-3">
+                            Jetzt Stellenanzeige erstellen
+                        </h4>
                         <p>
                             Erstellen Sie jetzt Ihre attraktive Stellenanzeige
                             und erreichen Sie unsere große Community von MFAs!

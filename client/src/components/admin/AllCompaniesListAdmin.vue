@@ -43,6 +43,11 @@
             <template v-slot:cell(updatedAt)="row">
                 {{ new Date(row.value).toLocaleString() }}
             </template>
+            <template v-slot:cell(numberOfJobs)="row">
+                {{
+                    jobs.filter(job => job.company._id === row.item._id).length
+                }}
+            </template>
             <template v-slot:cell(location)="row">
                 {{
                     row.item.street +
@@ -104,6 +109,7 @@
         data() {
             return {
                 companies: [],
+                jobs: [],
                 companyToDelete: Object,
                 error: false,
                 filter: {
@@ -129,6 +135,10 @@
                     },
                     {
                         key: "location",
+                        sortable: true
+                    },
+                    {
+                        key: "numberOfJobs",
                         sortable: true
                     },
                     {
@@ -184,6 +194,7 @@
         },
         created() {
             this.getAllCompanies();
+            this.getAllJobs();
         },
         methods: {
             checkForSearchTerm(arrOfValues, searchTerm) {
@@ -197,6 +208,26 @@
                     }
                 });
                 return result;
+            },
+            async getAllJobs() {
+                try {
+                    const response = await axios.post("/api/jobs/admin", {
+                        query: `
+                            query {
+                                jobs {
+                                    company {
+                                        _id
+                                    }
+                                }
+                            }
+                        `
+                    });
+
+                    this.jobs = response.data.data.jobs;
+                } catch (err) {
+                    this.error = true;
+                    console.log("err: ", err);
+                }
             },
             async getAllCompanies() {
                 try {
@@ -309,5 +340,3 @@
         }
     };
 </script>
-
-<style></style>

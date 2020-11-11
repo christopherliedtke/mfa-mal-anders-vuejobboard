@@ -4,6 +4,7 @@ const authenticateToken = require("../utils/middleware/checkAuth");
 const emailService = require("../utils/nodemailer");
 const config = require("../utils/config");
 const { Job } = require("../utils/models/job");
+const createInvoice = require("../utils/createInvoice");
 
 // #route:  POST /api/invoice/get-invoice
 // #desc:   Handle invoice request
@@ -61,6 +62,28 @@ router.post("/get-invoice", authenticateToken, async (req, res) => {
                 </p>
                 `,
         };
+
+        // const invoice = await createInvoice(
+        //     {
+        //         jobId,
+        //         jobTitle,
+        //         userId,
+        //         email,
+        //         amount,
+        //         paymentMethod,
+        //         couponCode,
+        //         discount,
+        //         refreshFrequency,
+        //         billingAddressCompany,
+        //         billingAddressName,
+        //         billingAddressStreet,
+        //         billingAddressZipCode,
+        //         billingAddressLocation,
+        //     },
+        //     "RE-0001",
+        //     __dirname + "/../invoices/"
+        // );
+        // console.log("invoice: ", invoice);
 
         await emailService.sendMail(emailData);
         await Job.updateOne(
