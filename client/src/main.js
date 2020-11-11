@@ -47,6 +47,7 @@ import {
     InputGroupPlugin,
     LayoutPlugin,
     LinkPlugin,
+    ListGroupPlugin,
     ModalPlugin,
     OverlayPlugin,
     PopoverPlugin,
@@ -75,6 +76,7 @@ Vue.use(ImagePlugin);
 Vue.use(InputGroupPlugin);
 Vue.use(LayoutPlugin);
 Vue.use(LinkPlugin);
+Vue.use(ListGroupPlugin);
 Vue.use(ModalPlugin);
 Vue.use(OverlayPlugin);
 Vue.use(PopoverPlugin);
