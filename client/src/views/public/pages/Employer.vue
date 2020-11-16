@@ -407,12 +407,15 @@
                     </h3>
                     <p>
                         Ja, die Möglichkeit besteht. Lesen Sie dazu nach einem
-                        Klick auf "Jetzt bezahlen" die Anmerkung **. Da wir
-                        einen erhöhten Aufwand für die separate Rechnungslegung
-                        und Zahlungsabwicklung haben, erhöht sich der
-                        Mindestbetrag bei Zahlung per Rechnung um 5,- Euro. Ihre
-                        Stellenanzeige wird von uns freigeschaltet sobald wir
-                        einen Zahlungseingang von Ihnen verbuchen können.
+                        Klick auf "Jetzt bezahlen" die Anmerkung **im
+                        Zahlungsprozess haben Sie die Auswahl zwischen
+                        verschiedenen Bezahlfunktionen und können dort unter
+                        anderem die "Zahlung per Rechnung" nutzen. Da wir einen
+                        erhöhten Aufwand für die separate Rechnungslegung und
+                        Zahlungsabwicklung haben, erhöht sich der
+                        Rechnungsbetrag bei Zahlung per Rechnung um 5,- Euro.
+                        Ihre Stellenanzeige wird von uns freigeschaltet sobald
+                        wir einen Zahlungseingang von Ihnen verbuchen können.
                     </p>
                     <h3 class="h5 bold">
                         Woher weiß ich, wie viel ich für meine Stellenanzeige

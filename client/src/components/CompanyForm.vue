@@ -6,6 +6,8 @@
             <b-form-input
                 type="text"
                 v-model="company.name"
+                lazy-formatter
+                :formatter="formatter"
                 :state="validated ? (company.name ? true : false) : null"
                 id="company-name"
                 placeholder="Unternehmensname eingeben..."
@@ -16,6 +18,8 @@
             <b-form-input
                 type="text"
                 v-model="company.street"
+                lazy-formatter
+                :formatter="formatter"
                 :state="validated ? (company.street ? true : false) : null"
                 id="company-street"
                 placeholder="Straße und Hausnummer eingeben..."
@@ -26,6 +30,8 @@
             <b-form-input
                 type="text"
                 v-model="company.location"
+                lazy-formatter
+                :formatter="formatter"
                 :state="validated ? (company.location ? true : false) : null"
                 id="company-location"
                 placeholder="Ort eingeben..."
@@ -100,6 +106,8 @@
                 <b-form-input
                     type="url"
                     v-model="company.url"
+                    lazy-formatter
+                    :formatter="formatter"
                     :state="validated ? (company.url ? true : null) : null"
                     id="company-url"
                     placeholder="https://www.ihr-unternehmen.de"
@@ -326,6 +334,9 @@
                 }
 
                 this.showOverlay = false;
+            },
+            formatter(value) {
+                return value.replace('"', "'");
             },
             formValidation() {
                 this.validated = true;

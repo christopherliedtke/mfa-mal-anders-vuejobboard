@@ -6,6 +6,8 @@
             <b-form-input
                 type="text"
                 v-model="job.title"
+                lazy-formatter
+                :formatter="formatter"
                 :state="validated ? (job.title ? true : false) : null"
                 id="title"
                 placeholder="Titel der Stellenanzeige eingeben..."
@@ -116,6 +118,8 @@
                 <b-form-input
                     type="email"
                     v-model="job.applicationEmail"
+                    lazy-formatter
+                    :formatter="formatter"
                     :state="
                         validated ? (job.applicationEmail ? true : null) : null
                     "
@@ -136,6 +140,8 @@
                 <b-form-input
                     type="url"
                     v-model="job.extJobUrl"
+                    lazy-formatter
+                    :formatter="formatter"
                     :state="validated ? (job.extJobUrl ? true : null) : null"
                     id="ext-job-url"
                     placeholder="https://www.ihr-unternehmen.com/karriere/stelle/bewerben"
@@ -203,6 +209,8 @@
             <b-form-input
                 type="text"
                 v-model="job.company.name"
+                lazy-formatter
+                :formatter="formatter"
                 :state="validated ? (job.company.name ? true : false) : null"
                 id="company-name"
                 placeholder="Unternehmensname eingeben..."
@@ -223,6 +231,8 @@
             <b-form-input
                 type="text"
                 v-model="job.company.location"
+                lazy-formatter
+                :formatter="formatter"
                 :state="
                     validated ? (job.company.location ? true : false) : null
                 "
@@ -300,6 +310,8 @@
                 <b-form-input
                     type="url"
                     v-model="job.company.url"
+                    lazy-formatter
+                    :formatter="formatter"
                     :state="validated ? (job.company.url ? true : null) : null"
                     id="company-url"
                     placeholder="https://www.ihr-unternehmen.de"
@@ -371,6 +383,8 @@
             <b-form-input
                 type="text"
                 v-model="job.contactFirstName"
+                lazy-formatter
+                :formatter="formatter"
                 :state="validated ? (job.contactFirstName ? true : null) : null"
                 id="contact-first-name"
                 placeholder="Vorname eingeben..."
@@ -380,6 +394,8 @@
             <b-form-input
                 type="text"
                 v-model="job.contactLastName"
+                lazy-formatter
+                :formatter="formatter"
                 :state="validated ? (job.contactLastName ? true : null) : null"
                 id="contact-last-name"
                 placeholder="Nachname eingeben..."
@@ -395,6 +411,8 @@
                 <b-form-input
                     type="email"
                     v-model="job.contactEmail"
+                    lazy-formatter
+                    :formatter="formatter"
                     :state="validated ? (job.contactEmail ? true : null) : null"
                     id="contact-email"
                     placeholder="kontakt@ihr-unternehmen.de"
@@ -806,6 +824,9 @@
                 }
 
                 this.showOverlay = false;
+            },
+            formatter(value) {
+                return value.replace('"', "'");
             },
             formValidation() {
                 this.validated = true;
