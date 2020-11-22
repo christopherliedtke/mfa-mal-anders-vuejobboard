@@ -19,13 +19,22 @@ router.post("/get-invoice", authenticateToken, async (req, res) => {
         paymentMethod,
         couponCode,
         discount,
-        refreshFrequency,
         billingAddressCompany,
         billingAddressName,
         billingAddressStreet,
         billingAddressZipCode,
         billingAddressLocation,
     } = req.body;
+
+    let refreshFrequency = req.body.refreshFrequency || 0;
+
+    if (refreshFrequency == 0) {
+        config.stripe.refreshFrequencies.forEach((frequency) => {
+            if (amount >= frequency.amount) {
+                refreshFrequency = frequency.refreshAfterDays;
+            }
+        });
+    }
 
     try {
         const emailData = {

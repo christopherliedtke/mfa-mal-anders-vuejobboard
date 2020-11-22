@@ -25,8 +25,15 @@ router.post("/sign-up", async (req, res) => {
         res.json({ success });
     } else {
         try {
-            const newSubscriber = new Subscriber(form);
-            const response = await newSubscriber.save();
+            let response = await Subscriber.findOne({
+                email: form.email,
+                state: form.state,
+            });
+
+            if (!response) {
+                const newSubscriber = new Subscriber(form);
+                response = await newSubscriber.save();
+            }
 
             if (response) {
                 try {
