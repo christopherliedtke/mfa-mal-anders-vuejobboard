@@ -58,7 +58,7 @@
                     this.$router.push("/page/unsubscribed-successful");
                 } else {
                     this.error =
-                        "Bei Deiner Newsletter Abmeldung ist ein Fehler aufgetreten. Bitte versuche es später noch einmal.";
+                        "Die angegebene E-Mail Adresse konnte nicht aus vom Newsletter abgemeldet werden. Bitte überprüfe die E-Mail Adresse und versuche es noch einmal.";
                 }
             }
         }

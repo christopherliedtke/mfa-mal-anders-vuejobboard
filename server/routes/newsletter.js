@@ -146,7 +146,7 @@ router.post("/unsubscribe", async (req, res) => {
             email: req.body.email,
         });
 
-        if (deletedSubscriber.n === 1) {
+        if (deletedSubscriber.n > 0) {
             res.json({ success: true });
         } else {
             res.json({ success: false });
