@@ -21,7 +21,7 @@
         computed: {
             berufsbilderTypes: function() {
                 let data = this.$store.state.professions.professions.map(
-                    profession => profession.terms.nodes[0].name
+                    profession => profession.berufsbildTypes.nodes[0].name
                 );
                 return data
                     .filter((value, index) => data.indexOf(value) === index)
@@ -30,5 +30,3 @@
         }
     };
 </script>
-
-<style></style>

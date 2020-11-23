@@ -126,7 +126,7 @@
             berufsbilder: function() {
                 return this.$store.state.professions.professions.filter(
                     berufsbild =>
-                        berufsbild.terms.nodes[0].name ===
+                        berufsbild.berufsbildTypes.nodes[0].name ===
                         this.$route.params.slug
                 );
             }

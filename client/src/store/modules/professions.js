@@ -21,7 +21,7 @@ const actions = {
                                 content
                                 excerpt
                                 slug
-                                terms {
+                                berufsbildTypes {
                                     nodes {
                                         name
                                     }
