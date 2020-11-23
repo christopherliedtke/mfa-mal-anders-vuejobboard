@@ -135,11 +135,11 @@
                     },
                     {
                         key: "location",
-                        sortable: true
+                        sortable: false
                     },
                     {
                         key: "numberOfJobs",
-                        sortable: true
+                        sortable: false
                     },
                     {
                         key: "userId._id",
@@ -148,7 +148,7 @@
                     },
                     {
                         key: "user",
-                        sortable: true
+                        sortable: false
                     },
                     {
                         key: "actions",

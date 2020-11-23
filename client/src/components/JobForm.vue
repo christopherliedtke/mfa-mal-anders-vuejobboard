@@ -826,7 +826,7 @@
                 this.showOverlay = false;
             },
             formatter(value) {
-                return value.replace('"', "'");
+                return value.replace('"', "'").replace("&", "+");
             },
             formValidation() {
                 this.validated = true;

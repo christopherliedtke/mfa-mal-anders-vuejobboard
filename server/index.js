@@ -120,6 +120,16 @@ app.get("/google01de2d715b667119.html", (req, res) => {
 // #Middleware for production
 if (process.env.NODE_ENV == "production") {
     app.use(csurf());
+    app.use(function (err, req, res, next) {
+        if (err.code !== "EBADCSRFTOKEN") return next(err);
+
+        // handle CSRF token errors here
+        res.sendStatus(403);
+        // res.redirect(
+        //     "/logout?error=Sie+werden+aus+Sicherheitsgründen+abgemeldet+und+können+sich+danach+erneut+anmelden"
+        // );
+    });
+
     app.use((req, res, next) => {
         res.set("x-frame-options", "DENY");
         res.cookie("XSRF-TOKEN", req.csrfToken());

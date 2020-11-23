@@ -42,6 +42,7 @@ import Employer from "@/views/public/pages/Employer.vue";
 
 // Auth
 import Login from "@/views/auth/Login.vue";
+import Logout from "@/views/auth/Logout.vue";
 import Register from "@/views/auth/Register.vue";
 import PasswordReset from "@/views/auth/PasswordReset.vue";
 import AccountVerification from "@/views/auth/AccountVerification.vue";
@@ -207,6 +208,14 @@ const routes = [
         meta: {
             public: true,
             onlyWhenLoggedOut: true
+        }
+    },
+    {
+        path: "/logout",
+        name: "Logout",
+        component: Logout,
+        meta: {
+            public: true
         }
     },
     {

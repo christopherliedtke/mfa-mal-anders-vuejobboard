@@ -53,7 +53,8 @@ import {
     PopoverPlugin,
     TablePlugin,
     TabsPlugin,
-    TooltipPlugin
+    TooltipPlugin,
+    SpinnerPlugin
 } from "bootstrap-vue";
 Vue.use(NavbarPlugin);
 Vue.use(AlertPlugin);
@@ -83,6 +84,7 @@ Vue.use(PopoverPlugin);
 Vue.use(TablePlugin);
 Vue.use(TabsPlugin);
 Vue.use(TooltipPlugin);
+Vue.use(SpinnerPlugin);
 
 import {
     BIcon,
