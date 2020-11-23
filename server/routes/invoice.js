@@ -36,6 +36,46 @@ router.post("/get-invoice", authenticateToken, async (req, res) => {
         });
     }
 
+    let { invoiceNo } = await Job.findOne({ _id: jobId });
+
+    if (invoiceNo === 0) {
+        const lastInvoiceNo = await Job.find({}, "invoiceNo")
+            .sort({ invoiceNo: -1 })
+            .limit(1);
+
+        console.log("lastInvoiceNo: ", lastInvoiceNo);
+
+        invoiceNo = lastInvoiceNo[0].invoiceNo + 1;
+    }
+
+    const invoiceNoLong =
+        "RE-" +
+        "000000".slice(0, 6 - invoiceNo.toString().length) +
+        invoiceNo.toString();
+
+    const invoice = await createInvoice(
+        {
+            jobId,
+            jobTitle,
+            userId,
+            email,
+            amount,
+            paymentMethod,
+            couponCode,
+            discount,
+            refreshFrequency,
+            billingAddressCompany,
+            billingAddressName,
+            billingAddressStreet,
+            billingAddressZipCode,
+            billingAddressLocation,
+        },
+        invoiceNoLong,
+        __dirname + "/../invoices/"
+    );
+
+    console.log("invoice: ", invoice);
+
     try {
         const emailData = {
             from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
@@ -69,38 +109,51 @@ router.post("/get-invoice", authenticateToken, async (req, res) => {
                     Ort: ${billingAddressLocation} <br>
                     E-Mail Adresse: ${email}
                 </p>
+                <hr>
+                <h1>E-Mail Text</h1>
+                <p>
+                    ${
+                        billingAddressName.includes("Herr")
+                            ? "Sehr geehrter"
+                            : billingAddressName.includes("Frau")
+                            ? "Sehr geehrte"
+                            : "Sehr geehrte/r"
+                    } ${billingAddressName},
+                </p>
+                <p>
+                    vielen Dank für die Erstellung Ihrer Stellenanzeige '${jobTitle}' auf unserem Portal 'MFA mal anders'. Wie gewünscht haben wir Ihnen die beigefügte Rechnung erstellt.
+                </p>
+                <p>
+                    Sobald Ihre Zahlung bei uns eingegangen ist, veröffentlichen wir Ihre Stellenanzeige und geben Ihnen noch einmal Bescheid. Anschließend haben Sie weiterhin die Möglichkeit, Ihre Stellenanzeige wie gewohnt selbst zu bearbeiten, offline zu nehmen oder zu löschen.
+                </p>
+                <p>
+                    Sollten Sie noch Fragen oder Anregungen haben, melden Sie sich gern bei uns.
+                </p>
+                <p>
+                    Mit freundlichen Grüßen
+                </p>
+                <p>
+                    Kristin Maurach
+                </p>
                 `,
+            attachments: [
+                {
+                    filename: invoice.fileName,
+                    path: invoice.path,
+                    contentType: "application/pdf",
+                },
+            ],
         };
 
-        // const invoice = await createInvoice(
-        //     {
-        //         jobId,
-        //         jobTitle,
-        //         userId,
-        //         email,
-        //         amount,
-        //         paymentMethod,
-        //         couponCode,
-        //         discount,
-        //         refreshFrequency,
-        //         billingAddressCompany,
-        //         billingAddressName,
-        //         billingAddressStreet,
-        //         billingAddressZipCode,
-        //         billingAddressLocation,
-        //     },
-        //     "RE-0001",
-        //     __dirname + "/../invoices/"
-        // );
-        // console.log("invoice: ", invoice);
-
         await emailService.sendMail(emailData);
+
         await Job.updateOne(
             { _id: jobId, userId: userId },
             {
                 status: "invoice-pending",
                 paidAmount: amount,
                 refreshFrequency,
+                invoiceNo,
             }
         );
         res.json({ success: true });

@@ -17,7 +17,11 @@ const createInvoice = (data, invoiceNo, path) => {
             doc.end();
             doc.pipe(fs.createWriteStream(path + invoiceNo + ".pdf"));
 
-            resolve(true);
+            resolve({
+                success: true,
+                fileName: invoiceNo + ".pdf",
+                path: path + invoiceNo + ".pdf",
+            });
         } catch (err) {
             console.log("Error on createInvoice(): ", err);
 

@@ -155,7 +155,7 @@
                             "
                         />
                         <label for="billing-address-name"
-                            >Rechnungsverantwortlicher</label
+                            >Rechnungsverantwortliche/r</label
                         >
                         <b-input
                             type="text"

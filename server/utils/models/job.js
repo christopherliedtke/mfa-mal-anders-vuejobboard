@@ -17,6 +17,10 @@ const JobSchema = new Schema(
         paidExpiresAt: {
             type: Date,
         },
+        invoiceNo: {
+            type: Number,
+            default: 0,
+        },
         paidAmount: {
             type: Number,
             default: 0,
