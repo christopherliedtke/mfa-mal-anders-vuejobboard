@@ -90,14 +90,19 @@
                     <b-nav vertical class="justify-content-end">
                         <b-nav-text>
                             <div class="d-flex justify-content-center mb-4">
-                                <b-link to="/page/mfa-career/bewerbungstipps">
+                                <b-link
+                                    to="/page/mfa-career/bewerbungstipps"
+                                    class="d-flex justify-content-center flex-nowrap"
+                                >
                                     <b-img-lazy
+                                        fluid
                                         class="mx-3 shadow"
                                         style="width: 35vw; max-width: 120px"
                                         src="@/assets/Vorlage_Bewerbungsanschreiben_150x.jpg"
                                         alt="Bild von Mustervorlage für Motivationsschreiben"
                                     />
                                     <b-img-lazy
+                                        fluid
                                         class="mx-3 shadow"
                                         style="width: 35vw; max-width: 120px"
                                         src="@/assets/Vorlage_Lebenslauf_150x.jpg"
