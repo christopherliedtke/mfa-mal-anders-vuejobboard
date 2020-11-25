@@ -234,7 +234,7 @@ function generateInvoiceTable(doc, data, position) {
         `Rechnungsbetrag`,
         "",
         ``,
-        `${(data.amount + 500) / 100},00€`
+        `${data.amount / 100 + 5},00€`
     );
 
     return invoiceTableTop + 110;
