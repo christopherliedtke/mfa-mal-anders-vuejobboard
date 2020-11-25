@@ -1,6 +1,5 @@
 <template>
     <b-button
-        :disabled="!$route.meta.public"
         variant="primary"
         class="facebook-share-btn"
         :href="

@@ -151,7 +151,7 @@ router.post("/get-invoice", authenticateToken, async (req, res) => {
             { _id: jobId, userId: userId },
             {
                 status: "invoice-pending",
-                paidAmount: amount,
+                paidAmount: amount + 500,
                 refreshFrequency,
                 invoiceNo,
             }
