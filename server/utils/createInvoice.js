@@ -45,7 +45,7 @@ function generateHeader(doc) {
         .strokeColor("#222222")
         .fontSize(8)
         .text(
-            "MFA mal anders - Kristin Maurach - Schreiberhauer Straße 9 - 10317 Berlin",
+            "MFA mal anders - Kristin Maurach - Wellbergstraße 62 - 49809 Lingen (Ems)",
             50,
             105,
             { align: "left", underline: true, oblique: true }
@@ -271,8 +271,8 @@ function generateFooter(doc) {
     doc.fontSize(8)
         .fillColor("#888888")
         .text("Kristin Maurach", 50, position)
-        .text("Schreiberhauer Straße 9", 50, position + 10)
-        .text("10317 Berlin", 50, position + 20)
+        .text("Wellbergstraße 62", 50, position + 10)
+        .text("49809 Lingen (Ems)", 50, position + 20)
         .text("kontakt@mfa-mal-anders.de", 50, position + 35)
         .moveDown();
 
