@@ -110,7 +110,8 @@ router.post("/get-invoice", authenticateToken, async (req, res) => {
                     E-Mail Adresse: ${email}
                 </p>
                 <hr>
-                <h1>E-Mail Text</h1>
+                <h1>E-Mail</h1>
+                <p>[Rechnung ${invoiceNoLong}] Veröffentlichung Ihrer Stellenanzeige '${jobTitle}'</p>
                 <p>
                     ${
                         billingAddressName.includes("Herr")
@@ -151,7 +152,7 @@ router.post("/get-invoice", authenticateToken, async (req, res) => {
             { _id: jobId, userId: userId },
             {
                 status: "invoice-pending",
-                paidAmount: amount + 500,
+                paidAmount: parseInt(amount) + 500,
                 refreshFrequency,
                 invoiceNo,
             }

@@ -102,7 +102,7 @@ function generateBody(doc, data, invoiceNo) {
             280
         )
         .text(
-            `vielen Dank für die Erstellung Ihrer Stellenanzeige auf unserem Portal 'MFA mal anders'. Wie gewünscht erhalten Sie hier Ihre gewünschte Rechnung:`,
+            `vielen Dank für die Erstellung Ihrer Stellenanzeige auf unserem Portal 'MFA mal anders'. Wie gewünscht erhalten Sie hier Ihre Rechnung:`,
             50,
             305,
             { width: 500 }
