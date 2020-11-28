@@ -65,15 +65,12 @@
                             <strong>Laufzeit:</strong> {{ duration }} Tage
                             <br />
                         </span>
-                        <span
-                            v-if="coupon.refreshFrequency"
-                            class="text-success"
-                        >
-                            <strong>Aktualisierung:</strong>
+                        <span>
+                            <strong>Automatische Aktualisierung:</strong>
                             {{
-                                coupon.refreshFrequency
+                                refreshFrequencyComputed != 0
                                     ? "alle " +
-                                      coupon.refreshFrequency +
+                                      refreshFrequencyComputed +
                                       " Tage"
                                     : "-"
                             }}
@@ -388,6 +385,16 @@
                 }
 
                 return text;
+            },
+            refreshFrequencyComputed: function() {
+                let value = 0;
+                if (this.coupon.refreshFrequency) {
+                    value = this.coupon.refreshFrequency;
+                } else if (this.amount >= 12000) {
+                    value = 14;
+                }
+
+                return value;
             }
         },
         methods: {
@@ -568,7 +575,7 @@
                                 paymentMethod: this.paymentMethod,
                                 couponCode: this.coupon.code,
                                 discount: this.coupon.discount,
-                                refreshFrequency: this.coupon.refreshFrequency,
+                                refreshFrequency: this.refreshFrequencyComputed,
                                 billingAddressCompany: this.billingAddress
                                     .company,
                                 billingAddressName: this.billingAddress.name,
