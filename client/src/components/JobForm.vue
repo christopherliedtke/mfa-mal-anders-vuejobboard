@@ -221,6 +221,8 @@
             <b-form-input
                 type="text"
                 v-model="job.company.street"
+                lazy-formatter
+                :formatter="formatter"
                 :state="validated ? (job.company.street ? true : false) : null"
                 id="company-street"
                 placeholder="Straße und Hausnummer eingeben..."
@@ -429,6 +431,8 @@
                 <b-form-input
                     type="tel"
                     v-model="job.contactPhone"
+                    lazy-formatter
+                    :formatter="formatter"
                     :state="validated ? (job.contactPhone ? true : null) : null"
                     id="contact-phone"
                     placeholder="Telefonnummer eingeben..."
