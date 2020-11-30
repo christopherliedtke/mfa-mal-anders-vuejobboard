@@ -10,7 +10,7 @@
                     <b-img
                         class="border-radius1 shadow mb-5"
                         fluid
-                        src="@/assets/Weiterbildungsdschungel-Fragen-ueber-Fragen-1024x535.jpg"
+                        src="@/assets/img/Weiterbildungsdschungel-Fragen-ueber-Fragen-1024x535.jpg"
                         alt="Banner - So viel verdienst Du wirklich"
                     />
                     <p>
@@ -46,7 +46,7 @@
                         <b-card
                             style="max-width: 600px"
                             title="Die richtige Weiterbildung für dich?!"
-                            img-src="@/assets/Banner_In6SchrittenZurRichtigenWeiterbildung.jpg"
+                            img-src="@/assets/img/Banner_In6SchrittenZurRichtigenWeiterbildung.jpg"
                             img-alt="Banner - In 6 Schritten zur richtigen Weiterbildung für MFA und ArzthelferIn"
                             img-top
                             align="center"
@@ -100,20 +100,18 @@
         <Head
             :title="title"
             desc="Finde heraus, welche Möglichkeiten zur Weiterbildung du als medizinische Fachangestellte im Gesundheitswesen hast und starte erfolgreich durch."
-            img="@/assets/Weiterbildungsdschungel-Fragen-ueber-Fragen-1024x535.jpg"
+            img="@/assets/img/Weiterbildungsdschungel-Fragen-ueber-Fragen-1024x535.jpg"
         />
     </div>
 </template>
 
 <script>
-    import Head from "@/components/utils/Head.vue";
-    import FortWeiterbildungenNav from "@/components/utils/FortWeiterbildungenNav.vue";
-    import RandomTrainingsContainer from "@/components/utils/RandomTrainingsContainer.vue";
+    import FortWeiterbildungenNav from "@/components/navs/FortWeiterbildungenNav.vue";
+    import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
 
     export default {
         name: "FortWeiterbildungen",
         components: {
-            Head,
             FortWeiterbildungenNav,
             RandomTrainingsContainer
         },

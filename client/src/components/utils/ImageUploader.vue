@@ -1,7 +1,6 @@
 <template>
     <div>
         <div class="d-flex">
-            <Overlay :show="showOverlay"></Overlay>
             <b-form-file
                 :id="id"
                 ref="file-input"
@@ -28,17 +27,12 @@
 
 <script>
     import axios from "@/axios";
-    import Overlay from "@/components/utils/Overlay";
     export default {
         name: "ImageUploader",
-        components: {
-            Overlay
-        },
         props: ["id", "validated", "imageUrl", "width", "height", "fit"],
         data() {
             return {
                 file: null,
-                showOverlay: false,
                 success: null
             };
         },
@@ -50,7 +44,7 @@
                     return;
                 }
 
-                this.showOverlay = true;
+                this.$store.dispatch("setOverlay", true);
 
                 try {
                     if (this.imageUrl) {
@@ -78,7 +72,7 @@
                     console.log("err: ", err);
                 }
 
-                this.showOverlay = false;
+                this.$store.dispatch("setOverlay", false);
             },
             async deleteImage() {
                 try {
@@ -90,7 +84,7 @@
                 }
             },
             resetFile() {
-                this.showOverlay = true;
+                this.$store.dispatch("setOverlay", true);
 
                 if (this.imageUrl) {
                     this.deleteImage();
@@ -99,10 +93,8 @@
                 this.$refs["file-input"].reset();
                 this.$emit("update-url", "");
 
-                this.showOverlay = false;
+                this.$store.dispatch("setOverlay", false);
             }
         }
     };
 </script>
-
-<style scoped lang="scss"></style>

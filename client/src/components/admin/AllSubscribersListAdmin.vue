@@ -106,19 +106,13 @@
         >
             Oh, something went wrong. Please try again later.
         </b-alert>
-
-        <Overlay :show="showOverlay" />
     </div>
 </template>
 
 <script>
     import axios from "@/axios";
-    import Overlay from "@/components/utils/Overlay.vue";
     export default {
         name: "AllSubscribersListAdmin",
-        components: {
-            Overlay
-        },
         data() {
             return {
                 subscribers: [],
@@ -160,7 +154,6 @@
                         sortable: false
                     }
                 ],
-                showOverlay: false,
                 newsletterSent: false
             };
         },
@@ -228,7 +221,6 @@
                     this.subscribers = response.data.data.subscribers;
                 } catch (err) {
                     this.error = true;
-                    // console.log("Error on getAllSubscribers(): ", err);
                 }
             },
             showDeleteSubscriberModal(subscriber) {
@@ -260,11 +252,11 @@
                     }
                 } catch (err) {
                     this.error = true;
-                    // console.log("Error on deleteSubscriber(): ", err);
                 }
             },
             async sendNewsletter() {
-                this.showOverlay = true;
+                this.$store.dispatch("setOverlay", true);
+
                 const response = await axios.post("/api/newsletter/send", {
                     daysBack: this.daysBack
                 });
@@ -272,7 +264,7 @@
                 this.newsletterSent = response.data.success;
                 this.sendNewsletterActive = false;
 
-                this.showOverlay = false;
+                this.$store.dispatch("setOverlay", false);
             },
             emailsToClipboard() {
                 let el = document.createElement("textarea");

@@ -9,14 +9,9 @@
 </template>
 
 <script>
-    import Head from "@/components/utils/Head.vue";
     import axios from "@/axios";
-    import config from "@/utils/config.json";
     export default {
         name: "AGBs",
-        components: {
-            Head
-        },
         data() {
             return {
                 title: "Allgemeine Geschäftsbedingungen",
@@ -26,7 +21,7 @@
         methods: {
             async getPage() {
                 try {
-                    const response = await axios.post(config.cms.url, {
+                    const response = await axios.post(this.$config.cms.url, {
                         query: `
                             query MyQuery {
                                 page(id: "allgemeine-geschaeftsbedingungen", idType: URI) {

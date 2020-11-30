@@ -9,7 +9,7 @@
             <b-img
                 class="border-radius2 mb-4 mr-4"
                 left
-                src="@/assets/KristinMaurach_sitzendAufMauer.jpg"
+                src="@/assets/img/KristinMaurach_sitzendAufMauer.jpg"
                 style="width: 40vw; max-width: 250px"
             />
             <p>
@@ -24,7 +24,7 @@
                 <b-link to="/page/mfa-career/fort-und-weiterbildungen"
                     >Fort- und Weiterbildungsmöglichkeiten</b-link
                 >,
-                <b-link :to="`/page/${config.cms.postsPath}`"
+                <b-link :to="`/page/${$config.cms.postsPath}`"
                     >Praxishacks</b-link
                 >
                 und Informationen zur persönlichen sowie beruflichen
@@ -42,7 +42,7 @@
             <b-row class="mb-4">
                 <b-col>
                     <b-link to="/jobboard" class="icon-box shadow1 py-4 px-3">
-                        <font-awesome-icon
+                        <Fa
                             class="mr-1"
                             :icon="['fa', 'newspaper']"
                             size="3x"
@@ -60,7 +60,7 @@
                         @click="$bvModal.show('newsletter')"
                         style="cursor: pointer"
                     >
-                        <font-awesome-icon
+                        <Fa
                             class="mr-1"
                             :icon="['fa', 'envelope-open-text']"
                             size="3x"
@@ -77,10 +77,10 @@
                 </b-col>
                 <b-col>
                     <b-link
-                        :href="`https://www.facebook.com/${config.fb.path}`"
+                        :href="`https://www.facebook.com/${$config.fb.path}`"
                         class="icon-box shadow1 py-4 px-3"
                     >
-                        <font-awesome-icon
+                        <Fa
                             class="mr-1"
                             :icon="['fab', 'facebook-square']"
                             size="3x"
@@ -263,21 +263,15 @@
             <p>Deine Kristin</p>
             <div class="mt-5">
                 <b-link class="mr-3" to="/page/contact">
-                    <font-awesome-icon
-                        class="mr-1"
-                        :icon="['fab', 'wpforms']"
-                    />
+                    <Fa class="mr-1" :icon="['fab', 'wpforms']" />
                     Kontaktformular
                 </b-link>
                 <b-link
                     class="mr-3"
-                    :href="`mailto:${config.website.contactEmail}`"
+                    :href="`mailto:${$config.website.contactEmail}`"
                 >
-                    <font-awesome-icon
-                        class="mr-1"
-                        :icon="['fa', 'envelope']"
-                    />
-                    {{ config.website.contactEmail }}
+                    <Fa class="mr-1" :icon="['fa', 'envelope']" />
+                    {{ $config.website.contactEmail }}
                 </b-link>
             </div>
         </b-container>
@@ -290,16 +284,13 @@
 </template>
 
 <script>
-    import NewsletterSignUpForm from "@/components/utils/NewsletterSignUpForm.vue";
-    import ToJobboardBanner from "@/components/utils/ToJobboardBanner.vue";
-    import WeiterbildungenBanner from "@/components/utils/WeiterbildungenBanner.vue";
-    import BerufsbilderBanner from "@/components/utils/BerufsbilderBanner.vue";
-    import Head from "@/components/utils/Head.vue";
-    import config from "@/utils/config.json";
+    import NewsletterSignUpForm from "@/components/forms/NewsletterSignUpForm.vue";
+    import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
+    import WeiterbildungenBanner from "@/components/banners/WeiterbildungenBanner.vue";
+    import BerufsbilderBanner from "@/components/banners/BerufsbilderBanner.vue";
     export default {
         name: "MFACareerHome",
         components: {
-            Head,
             NewsletterSignUpForm,
             ToJobboardBanner,
             WeiterbildungenBanner,
@@ -307,8 +298,7 @@
         },
         data() {
             return {
-                title: "Karriere machen als MFA",
-                config
+                title: "Karriere machen als MFA"
             };
         }
     };

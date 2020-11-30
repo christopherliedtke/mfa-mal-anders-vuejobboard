@@ -41,31 +41,31 @@ import ArticleView from "@/views/public/ArticleView.vue";
 import Employer from "@/views/public/pages/Employer.vue";
 
 // Auth
-import Login from "@/views/auth/Login.vue";
-import Logout from "@/views/auth/Logout.vue";
-import Register from "@/views/auth/Register.vue";
-import PasswordReset from "@/views/auth/PasswordReset.vue";
-import AccountVerification from "@/views/auth/AccountVerification.vue";
-import AccountVerificationSuccessful from "@/views/auth/AccountVerificationSuccessful.vue";
+import Auth from "@/views/auth/index.vue";
+import AuthLogin from "@/views/auth/AuthLogin.vue";
+import AuthRegister from "@/views/auth/AuthRegister.vue";
+import AuthLogout from "@/views/auth/AuthLogout.vue";
+import AuthPasswordReset from "@/views/auth/AuthPasswordReset.vue";
+import AuthAccountVerification from "@/views/auth/AuthAccountVerification.vue";
+import AuthAccountVerificationSuccessful from "@/views/auth/AuthAccountVerificationSuccessful.vue";
 
-// Private
-import Account from "@/views/private/Account.vue";
-import Dashboard from "@/views/private/Dashboard.vue";
-
-import NewJobView from "@/views/private/NewJobView.vue";
-import EditJobView from "@/views/private/EditJobView.vue";
-import PrivateJobView from "@/views/private/PrivateJobView.vue";
-
-import NewCompanyView from "@/views/private/NewCompanyView.vue";
-import EditCompanyView from "@/views/private/EditCompanyView.vue";
+// User
+import User from "@/views/user/index.vue";
+import UserAccount from "@/views/user/account/index.vue";
+import UserDashboard from "@/views/user/dashboard/index.vue";
+import UserDashboardHome from "@/views/user/dashboard/UserDashboardHome.vue";
+import UserDashboardJobPreview from "@/views/user/dashboard/jobs/preview/_jobId.vue";
+import UserDashboardEditJob from "@/views/user/dashboard/jobs/edit/_jobId.vue";
+import UserDashboardEditCompany from "@/views/user/dashboard/companies/edit/_companyId.vue";
 
 // Admin
-import Admin from "@/views/admin/Admin.vue";
-import AdminJobView from "@/views/admin/AdminJobView.vue";
-import AdminEditJobView from "@/views/admin/AdminEditJobView.vue";
-import AdminEditCompanyView from "@/views/admin/AdminEditCompanyView.vue";
-import AdminEditUserView from "@/views/admin/AdminEditUserView.vue";
-import AdminCouponView from "@/views/admin/AdminCouponView.vue";
+import Admin from "@/views/admin/index.vue";
+import AdminHome from "@/views/admin/AdminHome.vue";
+import AdminJobPreview from "@/views/admin/jobs/preview/_jobId.vue";
+import AdminEditJob from "@/views/admin/jobs/edit/_jobId.vue";
+import AdminEditCompany from "@/views/admin/companies/edit/_companyId.vue";
+import AdminEditUser from "@/views/admin/users/edit/_userId.vue";
+import AdminCoupon from "@/views/admin/coupons/edit/_couponId.vue";
 
 // 404
 import NotFound from "@/views/public/NotFound.vue";
@@ -202,169 +202,178 @@ const routes = [
     },
     // #Auth
     {
-        path: "/login",
-        name: "Login",
-        component: Login,
-        meta: {
-            public: true,
-            onlyWhenLoggedOut: true
-        }
+        path: "/auth",
+        name: "Auth",
+        component: Auth,
+        children: [
+            {
+                path: "login",
+                name: "AuthLogin",
+                component: AuthLogin,
+                meta: {
+                    public: true,
+                    onlyWhenLoggedOut: true
+                }
+            },
+            {
+                path: "register",
+                name: "AuthRegister",
+                component: AuthRegister,
+                meta: {
+                    public: true,
+                    onlyWhenLoggedOut: true
+                }
+            },
+            {
+                path: "logout",
+                name: "AuthLogout",
+                component: AuthLogout,
+                meta: {
+                    public: true
+                }
+            },
+            {
+                path: "password-reset",
+                name: "AuthPasswordReset",
+                component: AuthPasswordReset,
+                meta: {
+                    public: true,
+                    onlyWhenLoggedOut: true
+                }
+            },
+            {
+                path: "account/verification",
+                name: "AuthAccountVerification",
+                component: AuthAccountVerification,
+                meta: {
+                    public: false,
+                    onlyWhenPending: true
+                }
+            },
+            {
+                path: "account/verified",
+                name: "AuthAccountVerificationSuccessful",
+                component: AuthAccountVerificationSuccessful,
+                meta: {
+                    public: false,
+                    onlyWhenPending: true
+                }
+            }
+        ]
     },
+    // #User
     {
-        path: "/logout",
-        name: "Logout",
-        component: Logout,
-        meta: {
-            public: true
-        }
-    },
-    {
-        path: "/register",
-        name: "Register",
-        component: Register,
-        meta: {
-            public: true,
-            onlyWhenLoggedOut: true
-        }
-    },
-    {
-        path: "/password-reset",
-        name: "PasswordReset",
-        component: PasswordReset,
-        meta: {
-            public: true,
-            onlyWhenLoggedOut: true
-        }
-    },
-    {
-        path: "/account/verification",
-        name: "AccountVerification",
-        component: AccountVerification,
-        meta: {
-            public: false,
-            onlyWhenPending: true
-        }
-    },
-    {
-        path: "/account/verified",
-        name: "AccountVerificationSuccessful",
-        component: AccountVerificationSuccessful,
-        meta: {
-            public: false,
-            onlyWhenPending: true
-        }
-    },
-    // #Private
-    {
-        path: "/account",
-        name: "Account",
-        component: Account,
-        meta: {
-            public: false
-        }
-    },
-    {
-        path: "/dashboard",
-        name: "Dashboard",
-        component: Dashboard,
-        meta: {
-            public: false
-        }
-    },
-    {
-        path: "/dashboard/new-job",
-        name: "NewJobView",
-        component: NewJobView,
-        meta: {
-            public: false
-        }
-    },
-    {
-        path: "/dashboard/jobs/:jobId",
-        name: "EditJobView",
-        component: EditJobView,
-        meta: {
-            public: false
-        }
-    },
-    {
-        path: "/dashboard/jobs/preview/:jobId",
-        name: "PrivateJobView",
-        component: PrivateJobView,
-        meta: {
-            public: false
-        }
-    },
-    {
-        path: "/dashboard/new-company",
-        name: "NewCompanyView",
-        component: NewCompanyView,
-        meta: {
-            public: false
-        }
-    },
-    {
-        path: "/dashboard/companies/:companyId",
-        name: "EditCompanyView",
-        component: EditCompanyView,
-        meta: {
-            public: false
-        }
+        path: "/user",
+        component: User,
+        children: [
+            {
+                path: "account",
+                name: "UserAccount",
+                component: UserAccount,
+                meta: {
+                    public: false
+                }
+            },
+            {
+                path: "dashboard",
+                component: UserDashboard,
+                children: [
+                    {
+                        path: "",
+                        name: "UserDashboardHome",
+                        component: UserDashboardHome,
+                        meta: {
+                            public: false
+                        }
+                    },
+                    {
+                        path: "jobs/edit/:jobId",
+                        name: "UserDashboardEditJob",
+                        component: UserDashboardEditJob,
+                        meta: {
+                            public: false
+                        }
+                    },
+                    {
+                        path: "jobs/preview/:jobId",
+                        name: "UserDashboardJobPreview",
+                        component: UserDashboardJobPreview,
+                        meta: {
+                            public: false
+                        }
+                    },
+                    {
+                        path: "/user/dashboard/companies/edit/:companyId",
+                        name: "UserDashboardEditCompany",
+                        component: UserDashboardEditCompany,
+                        meta: {
+                            public: false
+                        }
+                    }
+                ]
+            }
+        ]
     },
     // #Admin
     {
         path: "/admin",
-        name: "Admin",
         component: Admin,
-        meta: {
-            public: false,
-            onlyAdmin: true
-        }
-    },
-    {
-        path: "/admin/jobs/preview/:jobId",
-        name: "AdminJobView",
-        component: AdminJobView,
-        meta: {
-            public: false,
-            onlyAdmin: true
-        }
-    },
-    {
-        path: "/admin/jobs/:jobId",
-        name: "AdminEditJobView",
-        component: AdminEditJobView,
-        meta: {
-            public: false,
-            onlyAdmin: true
-        }
-    },
-    {
-        path: "/admin/companies/:companyId",
-        name: "AdminEditCompanyView",
-        component: AdminEditCompanyView,
-        meta: {
-            public: false,
-            onlyAdmin: true
-        }
-    },
-    {
-        path: "/admin/users/:userId",
-        name: "AdminEditUserView",
-        component: AdminEditUserView,
-        meta: {
-            public: false,
-            onlyAdmin: true
-        }
-    },
-    {
-        path: "/admin/coupons/:couponId",
-        name: "AdminCouponView",
-        component: AdminCouponView,
-        meta: {
-            public: false,
-            onlyAdmin: true
-        }
+        children: [
+            {
+                path: "",
+                name: "AdminHome",
+                component: AdminHome,
+                meta: {
+                    public: false,
+                    onlyAdmin: true
+                }
+            },
+            {
+                path: "jobs/preview/:jobId",
+                name: "AdminJobPreview",
+                component: AdminJobPreview,
+                meta: {
+                    public: false,
+                    onlyAdmin: true
+                }
+            },
+            {
+                path: "jobs/edit/:jobId",
+                name: "AdminEditJob",
+                component: AdminEditJob,
+                meta: {
+                    public: false,
+                    onlyAdmin: true
+                }
+            },
+            {
+                path: "companies/edit/:companyId",
+                name: "AdminEditCompany",
+                component: AdminEditCompany,
+                meta: {
+                    public: false,
+                    onlyAdmin: true
+                }
+            },
+            {
+                path: "users/edit/:userId",
+                name: "AdminEditUser",
+                component: AdminEditUser,
+                meta: {
+                    public: false,
+                    onlyAdmin: true
+                }
+            },
+            {
+                path: "coupons/edit/:couponId",
+                name: "AdminCoupon",
+                component: AdminCoupon,
+                meta: {
+                    public: false,
+                    onlyAdmin: true
+                }
+            }
+        ]
     },
     // #404
     { path: "/404", component: NotFound, meta: { public: true } },
@@ -404,21 +413,21 @@ router.beforeEach((to, from, next) => {
 
     if (!isPublic && !loggedIn) {
         return next({
-            path: "/login",
+            path: "/auth/login",
             query: { redirect: to.fullPath }
         });
     }
 
     if (!isPublic && !onlyWhenPending && loggedIn && !userActivated) {
-        return next("/account/verification");
+        return next("/auth/account/verification");
     }
 
     if (!isPublic && onlyWhenPending && loggedIn && userActivated) {
-        return next("/dashboard");
+        return next("/user/dashboard");
     }
 
     if (loggedIn && onlyWhenLoggedOut) {
-        return next("/dashboard");
+        return next("/user/dashboard");
     }
 
     next();

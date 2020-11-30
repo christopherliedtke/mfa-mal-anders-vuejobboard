@@ -149,7 +149,7 @@
                         </b-form-select>
                     </b-form>
                     <!-- <b-button
-                        to="/register"
+                        to="/auth/register"
                         block
                         variant="primary"
                         class="my-1"
@@ -207,13 +207,12 @@
         specializationOptions
     } from "@/utils/jobDataConfig.json";
     import HereMapMultiJobs from "@/components/hereMaps/HereMapMultiJobs.vue";
-    import JobboardList from "@/components/JobboardList.vue";
-    import FacebookBtn from "@/components/utils/FacebookBtn.vue";
-    import InstagramBtn from "@/components/utils/InstagramBtn.vue";
-    import TwitterBtn from "@/components/utils/TwitterBtn.vue";
-    import RandomTrainingsContainer from "@/components/utils/RandomTrainingsContainer.vue";
-    import BerufsbilderBanner from "@/components/utils/BerufsbilderBanner.vue";
-    import Head from "@/components/utils/Head.vue";
+    import JobboardList from "@/components/ui/JobboardList.vue";
+    import FacebookBtn from "@/components/buttons/FacebookBtn.vue";
+    import InstagramBtn from "@/components/buttons/InstagramBtn.vue";
+    import TwitterBtn from "@/components/buttons/TwitterBtn.vue";
+    import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
+    import BerufsbilderBanner from "@/components/banners/BerufsbilderBanner.vue";
     export default {
         name: "Jobboard",
         components: {
@@ -223,8 +222,7 @@
             InstagramBtn,
             TwitterBtn,
             RandomTrainingsContainer,
-            BerufsbilderBanner,
-            Head
+            BerufsbilderBanner
         },
         data() {
             return {

@@ -6,7 +6,6 @@
 
 <script>
     import { companyCountryOptions } from "@/utils/jobDataConfig.json";
-    import config from "@/utils/config.json";
     export default {
         name: "HereMapMultiJobs",
         props: {
@@ -61,12 +60,12 @@
                                         reject("");
                                     }
                                 },
-                                () => resolve(config.maps.defaultCenter)
+                                () => resolve(this.$config.maps.defaultCenter)
                             );
                         });
                     } catch (err) {
                         console.log("Error in getCurrentPosition(): ", err);
-                        geocode = config.maps.defaultCenter;
+                        geocode = this.$config.maps.defaultCenter;
                     }
 
                     if (!geocode) {
@@ -75,13 +74,13 @@
                         // });
 
                         // geocode = response.items[0].position;
-                        geocode = config.maps.defaultCenter;
+                        geocode = this.$config.maps.defaultCenter;
                     }
 
                     const mapContainer = this.$refs.hereMap;
                     const H = window.H;
                     const maptypes = this.platform.createDefaultLayers({
-                        lg: config.maps.lang
+                        lg: this.$config.maps.lang
                     });
 
                     this.map = new H.Map(
@@ -200,5 +199,3 @@
         }
     };
 </script>
-
-<style lang="scss"></style>

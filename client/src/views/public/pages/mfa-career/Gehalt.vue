@@ -1,11 +1,11 @@
 <template>
-    <div>
+    <div class="salary">
         <h1 class="title">{{ title }}</h1>
         <b-container class="py-5">
             <b-img
                 class="border-radius1 shadow mb-5"
                 fluid
-                src="@/assets/Gehalt-fuer-mfa.jpg"
+                src="@/assets/img/Gehalt-fuer-mfa.jpg"
                 alt="Banner - So viel verdienst Du wirklich"
             />
             <p>
@@ -761,24 +761,22 @@
         <Head
             :title="'Gehaltsrechner (TZ/VZ) – MFA / ArzthelferIn'"
             desc="Über Gehalt, Tarifvertrag, Tätigkeitsgruppen für MFA / ArzthelferIn. Ermittle deinen Marktwert - Hier gehts zum Gehaltsrechner für MFAs/ArzthelferInnen."
-            :img="require('@/assets/Gehalt-fuer-mfa.jpg')"
+            :img="require('@/assets/img/Gehalt-fuer-mfa.jpg')"
             :script="snippet"
         />
     </div>
 </template>
 
 <script>
-    import Head from "@/components/utils/Head.vue";
-    import Gehaltsrechner from "@/components/utils/Gehaltsrechner.vue";
-    import FacebookBtn from "@/components/utils/FacebookBtn.vue";
-    import FacebookShareBtn from "@/components/utils/FacebookShareBtn.vue";
-    import ToJobboardBanner from "@/components/utils/ToJobboardBanner.vue";
-    import BerufsbilderBanner from "@/components/utils/BerufsbilderBanner.vue";
-    import WeiterbildungenBanner from "@/components/utils/WeiterbildungenBanner.vue";
+    import Gehaltsrechner from "@/components/containers/Gehaltsrechner.vue";
+    import FacebookBtn from "@/components/buttons/FacebookBtn.vue";
+    import FacebookShareBtn from "@/components/buttons/FacebookShareBtn.vue";
+    import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
+    import BerufsbilderBanner from "@/components/banners/BerufsbilderBanner.vue";
+    import WeiterbildungenBanner from "@/components/banners/WeiterbildungenBanner.vue";
     export default {
         name: "Gehalt",
         components: {
-            Head,
             Gehaltsrechner,
             FacebookBtn,
             FacebookShareBtn,
@@ -840,29 +838,3 @@
         }
     };
 </script>
-
-<style scoped lang="scss">
-    @import "@/styles/custom_bootstrap.scss";
-    @import "@/styles/_config.scss";
-
-    .card-header {
-        cursor: pointer;
-        background-color: transparentize($primary, $amount: 0.1);
-        color: $light;
-    }
-
-    .checklist {
-        background: url("~@/assets/money_motivation_.svg") 90% center no-repeat;
-        background-size: 270px;
-        background-color: $primary;
-        background-blend-mode: normal;
-        color: $light;
-        padding: 2rem;
-
-        ul {
-            list-style-type: none;
-            margin-bottom: 0;
-            padding-left: 1rem;
-        }
-    }
-</style>

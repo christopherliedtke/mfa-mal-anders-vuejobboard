@@ -4,7 +4,7 @@
             <b-navbar toggleable="xl" type="dark">
                 <b-navbar-brand to="/">
                     <b-img
-                        src="@/assets/Logo_mfa-mal-anders-white.png"
+                        src="@/assets/img/Logo_mfa-mal-anders-white.png"
                         height="70"
                         alt="MFA mal anders - Logo"
                     />
@@ -95,57 +95,18 @@
                         </li>
 
                         <b-nav-item
-                            v-if="config.cms.active"
-                            :to="`/page/${config.cms.postsPath}`"
-                            >{{ config.cms.postsPageTitle }}</b-nav-item
+                            v-if="$config.cms.active"
+                            :to="`/page/${$config.cms.postsPath}`"
+                            >{{ $config.cms.postsPageTitle }}</b-nav-item
                         >
                         <b-nav-item to="/page/fuer-arbeitgeber"
                             >Arbeitgeber</b-nav-item
                         >
                         <b-nav-item to="/page/about">Über</b-nav-item>
                         <b-nav-item to="/page/contact">Kontakt</b-nav-item>
-
-                        <!-- <b-nav-item to="/login" v-if="!userId"
-                            >Anmelden</b-nav-item
-                        > -->
-                        <!-- <b-nav-item to="/register" v-if="!userId"
-                            >Registrieren</b-nav-item
-                        > -->
-
-                        <!-- <b-nav-item-dropdown v-if="userId" text="User" right>
-                            <b-dropdown-item v-if="userId" to="/dashboard"
-                                ><b-icon
-                                    class="mr-1"
-                                    icon="kanban"
-                                    font-scale="1.45"
-                                ></b-icon
-                                >Dashboard</b-dropdown-item
-                            >
-                            <b-dropdown-item v-if="userId" to="/account"
-                                ><b-icon
-                                    class="mr-1"
-                                    icon="person-circle"
-                                    font-scale="1.45"
-                                ></b-icon
-                                >Account</b-dropdown-item
-                            >
-                            <b-dropdown-item
-                                v-if="userRole === 'admin'"
-                                to="/admin"
-                                ><b-icon
-                                    class="mr-1"
-                                    icon="shield-lock"
-                                    font-scale="1.45"
-                                ></b-icon
-                                >Admin</b-dropdown-item
-                            >
-                            <b-dropdown-item v-if="userId"
-                                ><Logout
-                            /></b-dropdown-item>
-                        </b-nav-item-dropdown> -->
                     </b-navbar-nav>
                     <b-navbar-nav class="mt-3 mt-lg-0">
-                        <b-nav-item to="/dashboard" v-if="userId"
+                        <b-nav-item to="/user/dashboard" v-if="userId"
                             ><b-icon
                                 class="mr-1"
                                 icon="kanban"
@@ -153,7 +114,7 @@
                             ></b-icon
                             >Meine Anzeigen</b-nav-item
                         >
-                        <b-nav-item to="/account" v-if="userId"
+                        <b-nav-item to="/user/account" v-if="userId"
                             ><b-icon
                                 class="mr-1"
                                 icon="person-circle"
@@ -183,12 +144,12 @@
                                 font-scale="1.3"
                             ></b-icon
                         ></b-nav-item>
-                        <b-nav-item v-if="userId"><Logout /></b-nav-item>
+                        <b-nav-item v-if="userId"><LogoutBtn /></b-nav-item>
                         <b-nav-item v-if="!userId"
                             ><b-button
                                 @click="toggleNavbar"
                                 variant="secondary"
-                                to="/login"
+                                to="/auth/login"
                                 v-if="!userId"
                                 >Login</b-button
                             ></b-nav-item
@@ -201,16 +162,14 @@
 </template>
 
 <script>
-    import config from "@/utils/config.json";
-    import Logout from "@/components/utils/Logout";
+    import LogoutBtn from "@/components/buttons/LogoutBtn";
     export default {
         name: "Header",
         components: {
-            Logout
+            LogoutBtn
         },
         data() {
             return {
-                config,
                 previousScrollPositionY:
                     window.document.documentElement.scrollTop
             };

@@ -338,16 +338,16 @@ router.get("/verification/verify-account/:userId", async (req, res) => {
                 `Error on /verify-account -> no user found for user._id ${req.params.userId}: `,
                 user
             );
-            redirectPath = `${res.locals.secrets.WEBSITE_URL}/account/verification?error=true`;
+            redirectPath = `${res.locals.secrets.WEBSITE_URL}/auth/account/verification?error=true`;
         } else {
             await User.updateOne({ email: user.email }, { status: "active" });
 
-            redirectPath = `${res.locals.secrets.WEBSITE_URL}/account/verified`;
+            redirectPath = `${res.locals.secrets.WEBSITE_URL}/auth/account/verified`;
         }
     } catch (err) {
         console.log("Error on /api/auth/verification/verify-account: ", err);
 
-        redirectPath = `${res.locals.secrets.WEBSITE_URL}/account/verification?error=true`;
+        redirectPath = `${res.locals.secrets.WEBSITE_URL}/auth/account/verification?error=true`;
     }
 
     res.redirect(redirectPath);

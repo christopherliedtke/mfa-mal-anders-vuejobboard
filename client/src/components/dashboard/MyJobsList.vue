@@ -7,7 +7,7 @@
         </p>
         <b-button
             class="mr-2 mb-2"
-            to="/dashboard/new-job"
+            to="/user/dashboard/jobs/edit/new"
             variant="outline-primary"
             ><b-icon class="mr-2" scale="1" icon="plus-circle"></b-icon>Neue
             Stelle</b-button
@@ -139,7 +139,7 @@
                     <div>
                         <b-button
                             class="mr-2 mb-2 mb-md-0"
-                            :to="`/dashboard/jobs/${job._id}`"
+                            :to="`/user/dashboard/jobs/edit/${job._id}`"
                             variant="primary"
                             size="sm"
                             ><b-icon class="mr-2" icon="pencil-square"></b-icon>
@@ -147,7 +147,7 @@
                         >
                         <b-button
                             class="mr-2 mb-2 mb-md-0"
-                            :to="`/dashboard/jobs/preview/${job._id}`"
+                            :to="`/user/dashboard/jobs/preview/${job._id}`"
                             target="_blank"
                             variant="info"
                             size="sm"
@@ -203,7 +203,7 @@
                             class="mr-2 mb-2 mb-md-0"
                             variant="success"
                             size="sm"
-                            @click.prevent="showStripeCheckoutModal(job)"
+                            @click.prevent="showCheckoutModal(job)"
                             ><b-icon class="mr-2" icon="cart2"></b-icon>Jetzt
                             bezahlen</b-button
                         >
@@ -247,10 +247,10 @@
                 </p></b-modal
             >
         </b-card>
-        <StripeCheckout
-            :showStripeCheckoutModal="stripe.showModal"
-            :job="stripe.checkoutJob"
-            @close="stripe.showModal = false"
+        <Checkout
+            :showCheckoutModal="checkout.showModal"
+            :job="checkout.checkoutJob"
+            @close="checkout.showModal = false"
             @update="getJobsByUserId"
         />
         <b-alert
@@ -268,26 +268,16 @@
 
 <script>
     import axios from "@/axios";
-    import StripeCheckout from "@/components/stripe/StripeCheckout.vue";
+    import Checkout from "@/components/checkout/Checkout.vue";
     export default {
         name: "MyJobsList",
         components: {
-            StripeCheckout
+            Checkout
         },
-        // head: {
-        //     script: function() {
-        //         return [
-        //             {
-        //                 type: "text/javascript",
-        //                 src: "https://js.stripe.com/v3/"
-        //             }
-        //         ];
-        //     }
-        // },
         data() {
             return {
                 myJobs: [],
-                stripe: {
+                checkout: {
                     showModal: false,
                     checkoutJob: null
                 },
@@ -391,9 +381,9 @@
                     console.log("err: ", err);
                 }
             },
-            showStripeCheckoutModal(job) {
-                this.stripe.checkoutJob = job;
-                this.stripe.showModal = true;
+            showCheckoutModal(job) {
+                this.checkout.checkoutJob = job;
+                this.checkout.showModal = true;
             }
         },
         created: function() {

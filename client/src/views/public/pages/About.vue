@@ -7,7 +7,7 @@
                     <b-img
                         class="border-radius2 my-3 my-md-0"
                         fluid
-                        src="@/assets/KristinMaurach_portrait-1541x2048.jpg"
+                        src="@/assets/img/KristinMaurach_portrait-1541x2048.jpg"
                         alt="Portrait Kristin Maurach"
                     />
                 </b-col>
@@ -71,21 +71,15 @@
                 <p class="h5 my-5">Kristin Maurach</p>
                 <div class="mt-3">
                     <b-link class="mr-3" to="/page/contact">
-                        <font-awesome-icon
-                            class="mr-1"
-                            :icon="['fab', 'wpforms']"
-                        />
+                        <Fa class="mr-1" :icon="['fab', 'wpforms']" />
                         Kontaktformular
                     </b-link>
                     <b-link
                         class="mr-3"
-                        :href="`mailto:${config.website.contactEmail}`"
+                        :href="`mailto:${$config.website.contactEmail}`"
                     >
-                        <font-awesome-icon
-                            class="mr-1"
-                            :icon="['fa', 'envelope']"
-                        />
-                        {{ config.website.contactEmail }}
+                        <Fa class="mr-1" :icon="['fa', 'envelope']" />
+                        {{ $config.website.contactEmail }}
                     </b-link>
                 </div>
             </div>
@@ -95,17 +89,11 @@
 </template>
 
 <script>
-    import Head from "@/components/utils/Head.vue";
-    import config from "@/utils/config.json";
     export default {
         name: "About",
-        components: {
-            Head
-        },
         data() {
             return {
-                title: "Über MFA mal anders",
-                config
+                title: "Über MFA mal anders"
             };
         }
     };

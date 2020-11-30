@@ -19,12 +19,10 @@
 </template>
 
 <script>
-    import Head from "@/components/utils/Head.vue";
-    import ContactForm from "@/components/utils/ContactForm.vue";
+    import ContactForm from "@/components/forms/ContactForm.vue";
     export default {
         name: "Contact",
         components: {
-            Head,
             ContactForm
         },
         data() {
@@ -34,14 +32,3 @@
         }
     };
 </script>
-
-<style scoped lang="scss">
-    @import "@/styles/custom_bootstrap.scss";
-
-    .contact {
-        background: url("~@/assets/new_message.svg") center center no-repeat
-            transparentize($light, $amount: 0.3);
-        background-size: 50vh;
-        background-blend-mode: lighten;
-    }
-</style>

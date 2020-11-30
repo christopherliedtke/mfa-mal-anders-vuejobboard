@@ -30,7 +30,7 @@ const actions = {
 
             // Manage redirect after auth
             const redirectQuery = router.history.current.query.redirect;
-            let redirectPath = "/dashboard";
+            let redirectPath = "/user/dashboard";
 
             // catch undefined error -> no harm, no display
             router

@@ -22,6 +22,9 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
+import config from "@/utils/config.json";
+Vue.prototype.$config = config;
+
 // import { BootstrapVue } from "bootstrap-vue";
 // Vue.use(BootstrapVue);
 
@@ -178,7 +181,6 @@ import VueSanitize from "vue-sanitize";
 Vue.use(VueSanitize);
 
 import VueHead from "vue-head";
-import config from "@/utils/config.json";
 import VueGtag from "vue-gtag";
 
 // FontAwesome Integration
@@ -266,7 +268,10 @@ library.add(
     faGlobe
 );
 
-Vue.component("font-awesome-icon", FontAwesomeIcon);
+Vue.component("Fa", FontAwesomeIcon);
+
+import Head from "@/components/utils/Head.vue";
+Vue.component("Head", Head);
 
 Vue.use(VueHead, {
     separator: "–",

@@ -5,7 +5,7 @@
             <b-img
                 class="p-5"
                 fluid
-                src="@/assets/404_page_not_found_.svg"
+                src="@/assets/img/404_page_not_found_.svg"
                 style="max-height: 400px"
             />
             <div class="text-center mx-auto" style="max-width: 500px">

@@ -22,7 +22,7 @@
                         Modell bestimmen Sie, wie viel Sie zahlen.
                     </p>
                     <b-button
-                        to="/register"
+                        to="/auth/register"
                         variant="secondary"
                         size="lg"
                         class="my-4"
@@ -37,7 +37,7 @@
                     <b-img
                         class="p-4"
                         fluid
-                        src="@/assets/handshake.svg"
+                        src="@/assets/img/handshake.svg"
                         alt="MFA trifft Arzt zum Bewerbungsgespräch"
                     />
                 </b-col>
@@ -56,7 +56,7 @@
             <b-row class="my-4 my-md-5">
                 <b-col>
                     <div class="icon-box shadow py-5 px-4">
-                        <font-awesome-icon
+                        <Fa
                             class="m-0"
                             :icon="['fa', 'user-nurse']"
                             size="3x"
@@ -75,7 +75,7 @@
                 </b-col>
                 <b-col>
                     <div class="icon-box shadow py-5 px-4">
-                        <font-awesome-icon
+                        <Fa
                             class="m-0"
                             :icon="['fa', 'credit-card']"
                             size="3x"
@@ -92,7 +92,7 @@
                 </b-col>
                 <b-col>
                     <div class="icon-box shadow py-5 px-4">
-                        <font-awesome-icon
+                        <Fa
                             class="m-0"
                             :icon="['fa', 'paper-plane']"
                             size="3x"
@@ -152,7 +152,7 @@
                     :key="item.desc"
                     class="text-center"
                 >
-                    <font-awesome-icon
+                    <Fa
                         class="mt-3 mb-4 text-secondary"
                         :icon="['fab', item.icon]"
                         size="4x"
@@ -220,7 +220,7 @@
                             class="p-2 p-md-4"
                             right
                             style="max-width: 50%"
-                            src="@/assets/marketing_.svg"
+                            src="@/assets/img/marketing_.svg"
                             alt="Stellenanzeige für MFA wird über verschiedene Kanäle veröffentlicht"
                         />
                         <p>
@@ -269,7 +269,7 @@
                     <b-img
                         class="p-2 p-md-4"
                         right
-                        src="@/assets/piggy_bank.svg"
+                        src="@/assets/img/piggy_bank.svg"
                         alt="Person zahlt Preis für MFA Stellenanzeige"
                         style="max-width: 45%"
                     />
@@ -333,7 +333,7 @@
                             style="width: 75px; height: 75px"
                             class="bg-light border-radius1 shadow3 d-flex justify-content-center align-items-center mb-3"
                         >
-                            <font-awesome-icon
+                            <Fa
                                 class="m-0"
                                 :icon="['fa', jobAdTipp.icon]"
                                 size="3x"
@@ -361,7 +361,7 @@
                             >
                             Modell bestimmen Sie, wie viel Sie zahlen.
                         </p>
-                        <b-button to="/register" variant="secondary"
+                        <b-button to="/auth/register" variant="secondary"
                             >Zur Registrierung</b-button
                         >
                     </div>
@@ -508,15 +508,13 @@
 </template>
 
 <script>
-    import Head from "@/components/utils/Head.vue";
-    import PayWhatYouWantSuggestion from "@/components/utils/PayWhatYouWantSuggestion.vue";
-    import JobAdTippsBanner from "@/components/utils/JobAdTippsBanner.vue";
-    import ApplicationProcessBanner from "@/components/utils/ApplicationProcessBanner.vue";
-    // import FixedAddJobBtn from "@/components/utils/FixedAddJobBtn.vue";
+    import PayWhatYouWantSuggestion from "@/components/containers/PayWhatYouWantSuggestion.vue";
+    import JobAdTippsBanner from "@/components/banners/JobAdTippsBanner.vue";
+    import ApplicationProcessBanner from "@/components/banners/ApplicationProcessBanner.vue";
+    // import FixedAddJobBtn from "@/components/buttons/FixedAddJobBtn.vue";
     export default {
         name: "Employer",
         components: {
-            Head,
             PayWhatYouWantSuggestion,
             JobAdTippsBanner,
             ApplicationProcessBanner

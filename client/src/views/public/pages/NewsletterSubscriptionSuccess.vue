@@ -19,12 +19,10 @@
 </template>
 
 <script>
-    import Head from "@/components/utils/Head.vue";
-    import RandomArticlesContainer from "@/components/utils/RandomArticlesContainer.vue";
+    import RandomArticlesContainer from "@/components/containers/RandomArticlesContainer.vue";
     export default {
         name: "NewsletterSubscriptionSuccess",
         components: {
-            Head,
             RandomArticlesContainer
         },
         data() {

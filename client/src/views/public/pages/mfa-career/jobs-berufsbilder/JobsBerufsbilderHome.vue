@@ -10,7 +10,7 @@
                     <b-img
                         class="border-radius1 shadow mb-5"
                         fluid
-                        src="@/assets/jobsUndBerufsbilder_1200x627.jpg"
+                        src="@/assets/img/jobsUndBerufsbilder_1200x627.jpg"
                         alt="50+ Alternative Jobs für MFA / ArtzhelferInnen"
                     />
                     <h2 class="bold">
@@ -56,7 +56,7 @@
                                 <b-card-body>
                                     <div class="d-flex justify-content-center">
                                         <div class="icon-box2 shadow1">
-                                            <font-awesome-icon
+                                            <Fa
                                                 :icon="['fa', card.icon]"
                                                 size="3x"
                                             />
@@ -90,20 +90,18 @@
         <Head
             :title="title"
             desc="Du brauchst Inspiration? – 50+ Alternative Jobs / Berufe für medizinische Fachangestellte (MFA) und ArzthelferInnen | Finde passende Stellen..."
-            img="@/assets/jobsUndBerufsbilder_1200x627.jpg"
+            img="@/assets/img/jobsUndBerufsbilder_1200x627.jpg"
         />
     </div>
 </template>
 
 <script>
-    import Head from "@/components/utils/Head.vue";
-    import JobsBerufsbilderNav from "@/components/utils/JobsBerufsbilderNav.vue";
-    import RandomTrainingsContainer from "@/components/utils/RandomTrainingsContainer.vue";
-    import ToJobboardBanner from "@/components/utils/ToJobboardBanner.vue";
+    import JobsBerufsbilderNav from "@/components/navs/JobsBerufsbilderNav.vue";
+    import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
+    import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
     export default {
         name: "JobsBerufsbilderHome",
         components: {
-            Head,
             JobsBerufsbilderNav,
             RandomTrainingsContainer,
             ToJobboardBanner

@@ -22,7 +22,7 @@
 </template>
 
 <script>
-    import NewsletterSignUpForm from "@/components/utils/NewsletterSignUpForm.vue";
+    import NewsletterSignUpForm from "@/components/forms/NewsletterSignUpForm.vue";
     export default {
         name: "SubscribeNewsletterBtn",
         components: {

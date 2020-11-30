@@ -5,7 +5,7 @@
 </template>
 
 <script>
-    import Job from "@/components/Job.vue";
+    import Job from "@/components/ui/Job.vue";
     export default {
         name: "PublicJobView",
         components: {

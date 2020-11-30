@@ -5,7 +5,7 @@
             <b-img
                 class="border-radius1 shadow mb-5 w-100"
                 fluid
-                src="@/assets/SchnellUndEinfachEineTopbewerbungSchreiben2.jpg"
+                src="@/assets/img/SchnellUndEinfachEineTopbewerbungSchreiben2.jpg"
                 alt="Banner - Schnell und einfach eine Top-Bewerbung schreiben"
             />
             <p>
@@ -34,13 +34,13 @@
                 <b-img
                     class="mx-3 shadow"
                     style="width: 35vw; max-width: 300px"
-                    src="@/assets/Vorlage_Bewerbungsanschreiben_300x.jpg"
+                    src="@/assets/img/Vorlage_Bewerbungsanschreiben_300x.jpg"
                     alt="Bild von Mustervorlage für Motivationsschreiben"
                 />
                 <b-img
                     class="mx-3 shadow"
                     style="width: 35vw; max-width: 300px"
-                    src="@/assets/Vorlage_Lebenslauf_300x.jpg"
+                    src="@/assets/img/Vorlage_Lebenslauf_300x.jpg"
                     alt="Bild von Mustervorlage für Lebenslauf"
                 />
             </div>
@@ -112,7 +112,7 @@
                 style="width: 50vw; max-width: 350px"
                 class="pr-3 pr-md-5 pb-3"
                 left
-                src="@/assets/innovation_.svg"
+                src="@/assets/img/innovation_.svg"
                 alt="Person bearbeitet Bewerbungsunterlagen am Schreibtisch"
             />
             <p>
@@ -159,7 +159,7 @@
                 style="width: 50vw; max-width: 350px"
                 class="p-2"
                 right
-                src="@/assets/personal_data__monochromatic.svg"
+                src="@/assets/img/personal_data__monochromatic.svg"
                 alt="Grafik von einem Lebenslauf"
             />
             <p>
@@ -207,18 +207,14 @@
             desc="Bewerbungsunterlagen für medizinische
         Fachangestellte | kostenlose Vorlage | hinterlasse einen bleibenden
         Eindruck und sichere dir das Vorstellungsgespräch"
-            img="@/assets/SchnellUndEinfachEineTopbewerbungSchreiben2.jpg"
+            img="@/assets/img/SchnellUndEinfachEineTopbewerbungSchreiben2.jpg"
         />
     </div>
 </template>
 
 <script>
-    import Head from "@/components/utils/Head.vue";
     export default {
         name: "Bewerbungstipps",
-        components: {
-            Head
-        },
         data() {
             return {
                 title: "Bewerbungstipps für MFAs"

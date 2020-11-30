@@ -93,7 +93,7 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
                         `
                                 ${
                                     secrets.WEBSITE_URL
-                                }/SocialCard_JobsDerWoche_${key
+                                }/img/SocialCard_JobsDerWoche_${key
                             .replace(/\s+/g, "")
                             .replace("ü", "ue")}.png
                             `

@@ -58,10 +58,7 @@
                             :href="article.author.node.url"
                             target="blank"
                         >
-                            <font-awesome-icon
-                                :icon="['fa', 'globe']"
-                                size="2x"
-                            />
+                            <Fa :icon="['fa', 'globe']" size="2x" />
                         </b-link>
                         <b-link
                             v-if="article.author.node.seo.social.facebook"
@@ -69,10 +66,7 @@
                             :href="article.author.node.seo.social.facebook"
                             target="blank"
                         >
-                            <font-awesome-icon
-                                :icon="['fab', 'facebook-square']"
-                                size="2x"
-                            />
+                            <Fa :icon="['fab', 'facebook-square']" size="2x" />
                         </b-link>
                         <b-link
                             v-if="article.author.node.seo.social.instagram"
@@ -80,10 +74,7 @@
                             :href="article.author.node.seo.social.instagram"
                             target="blank"
                         >
-                            <font-awesome-icon
-                                :icon="['fab', 'instagram']"
-                                size="2x"
-                            />
+                            <Fa :icon="['fab', 'instagram']" size="2x" />
                         </b-link>
                     </div>
                 </div>
@@ -116,16 +107,14 @@
 </template>
 
 <script>
-    import Head from "@/components/utils/Head.vue";
-    import RandomArticlesContainer from "@/components/utils/RandomArticlesContainer.vue";
-    import FacebookShareBtn from "@/components/utils/FacebookShareBtn.vue";
-    import TwitterShareBtn from "@/components/utils/TwitterShareBtn.vue";
-    import WhatsAppShareBtn from "@/components/utils/WhatsAppShareBtn.vue";
+    import RandomArticlesContainer from "@/components/containers/RandomArticlesContainer.vue";
+    import FacebookShareBtn from "@/components/buttons/FacebookShareBtn.vue";
+    import TwitterShareBtn from "@/components/buttons/TwitterShareBtn.vue";
+    import WhatsAppShareBtn from "@/components/buttons/WhatsAppShareBtn.vue";
 
     export default {
         name: "ArticleView",
         components: {
-            Head,
             RandomArticlesContainer,
             FacebookShareBtn,
             TwitterShareBtn,

@@ -6,7 +6,6 @@
 </template>
 
 <script>
-    import config from "@/utils/config.json";
     export default {
         name: "HereMapSingleJob",
         props: {
@@ -84,7 +83,7 @@
                         this.mapContainer = this.$refs.hereMap;
                         this.H = window.H;
                         this.maptypes = this.platform.createDefaultLayers({
-                            lg: config.maps.lang
+                            lg: this.$config.maps.lang
                         });
 
                         this.map = new this.H.Map(

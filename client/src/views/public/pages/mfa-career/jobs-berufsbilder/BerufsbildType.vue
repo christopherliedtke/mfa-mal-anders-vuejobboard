@@ -90,14 +90,12 @@
 </template>
 
 <script>
-    import Head from "@/components/utils/Head.vue";
-    import JobsBerufsbilderNav from "@/components/utils/JobsBerufsbilderNav.vue";
-    import RandomTrainingsContainer from "@/components/utils/RandomTrainingsContainer.vue";
-    import ToJobboardBanner from "@/components/utils/ToJobboardBanner.vue";
+    import JobsBerufsbilderNav from "@/components/navs/JobsBerufsbilderNav.vue";
+    import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
+    import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
     export default {
         name: "BerufsbildType",
         components: {
-            Head,
             JobsBerufsbilderNav,
             RandomTrainingsContainer,
             ToJobboardBanner

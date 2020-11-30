@@ -1,7 +1,7 @@
 <template>
     <div class="magazin">
         <h1 class="title">{{ title }}</h1>
-        <b-container v-if="config.cms.active && articles" class="py-5">
+        <b-container v-if="$config.cms.active && articles" class="py-5">
             <div class="grid">
                 <ArticleCard
                     v-for="article in articles"
@@ -19,19 +19,15 @@
 </template>
 
 <script>
-    import config from "@/utils/config.json";
-    import ArticleCard from "@/components/cms/ArticleCard.vue";
-    import Head from "@/components/utils/Head.vue";
+    import ArticleCard from "@/components/ui/ArticleCard.vue";
     export default {
         name: "Magazin",
         components: {
-            ArticleCard,
-            Head
+            ArticleCard
         },
         data() {
             return {
-                title: config.cms.postsPageTitle,
-                config
+                title: this.$config.cms.postsPageTitle
             };
         },
         computed: {

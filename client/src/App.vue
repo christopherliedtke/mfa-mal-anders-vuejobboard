@@ -5,6 +5,7 @@
             <router-view />
         </main>
         <Footer />
+        <Overlay />
         <NewsletterSignUpPopUp />
     </div>
 </template>
@@ -13,14 +14,15 @@
     import Header from "@/components/layout/Header";
     import Footer from "@/components/layout/Footer";
     import NewsletterSignUpPopUp from "@/components/utils/NewsletterSignUpPopUp.vue";
-    import config from "@/utils/config.json";
+    import Overlay from "@/components/utils/Overlay";
     import { mapActions } from "vuex";
 
     export default {
         components: {
             Header,
             Footer,
-            NewsletterSignUpPopUp
+            NewsletterSignUpPopUp,
+            Overlay
         },
         methods: {
             ...mapActions([
@@ -34,24 +36,24 @@
                     page_title: this.$route.name,
                     page_path: this.$route.fullPath,
                     page_location: window.location.href,
-                    anonymize_ip: config.ga.anonymizeIP,
-                    client_storage: config.ga.storage
+                    anonymize_ip: this.$config.ga.anonymizeIP,
+                    client_storage: this.$config.ga.storage
                 });
             }
         },
         watch: {
             $route(to, from) {
-                if (to.path != from.path && config.ga.active) {
+                if (to.path != from.path && this.$config.ga.active) {
                     this.track();
                 }
             }
         },
         created: function() {
-            if (config.ga.active) {
+            if (this.$config.ga.active) {
                 this.track();
             }
 
-            if (config.cms.active) {
+            if (this.$config.cms.active) {
                 this.getTrainings();
                 this.getArticles();
                 this.getProfessions();

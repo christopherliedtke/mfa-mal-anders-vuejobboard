@@ -1,6 +1,9 @@
 <template>
     <div>
-        <b-button class="mb-3" to="/admin/coupons/new" variant="outline-primary"
+        <b-button
+            class="mb-3"
+            to="/admin/coupons/edit/new"
+            variant="outline-primary"
             ><b-icon class="mr-2" scale="1" icon="plus-circle"></b-icon>New
             Coupon</b-button
         >

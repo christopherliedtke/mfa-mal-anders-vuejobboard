@@ -16,7 +16,7 @@
         </p>
         <b-button
             class="mr-2 mb-2"
-            to="/dashboard/new-company"
+            to="/user/dashboard/companies/edit/new"
             variant="outline-primary"
             ><b-icon class="mr-2" scale="1" icon="plus-circle"></b-icon>Neues
             Unternehmen</b-button
@@ -53,7 +53,9 @@
                     <div>
                         <b-button
                             class="mr-2 mb-2 mb-md-0"
-                            :to="`/dashboard/companies/${company._id}`"
+                            :to="
+                                `/user/dashboard/companies/edit/${company._id}`
+                            "
                             variant="primary"
                             size="sm"
                             ><b-icon

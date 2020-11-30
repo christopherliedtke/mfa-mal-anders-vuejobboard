@@ -33,7 +33,7 @@ const createInvoice = (data, invoiceNo, path) => {
 module.exports = createInvoice;
 
 function generateHeader(doc) {
-    doc.image(__dirname + "/../../client/public/" + "logo.png", 500, 40, {
+    doc.image(__dirname + "/../../client/public/img/" + "logo.png", 500, 40, {
         width: 50,
         align: "right",
     })

@@ -74,7 +74,7 @@
                     <b-link to="/jobboard" class="icon-box shadow1">
                         <b-img-lazy
                             class="mr-4 mb-4 ml-4"
-                            src="@/assets/career_.svg"
+                            src="@/assets/img/career_.svg"
                             alt="MFA macht nächsten Schritt in der Jobsuche"
                             height="130"
                         />
@@ -95,7 +95,7 @@
                     >
                         <b-img-lazy
                             class="mr-4 mb-4 ml-4"
-                            src="@/assets/health_.svg"
+                            src="@/assets/img/health_.svg"
                             alt="Medizinische Fachangestellte im Untersuchungsraum"
                             height="130"
                         />
@@ -117,7 +117,7 @@
                     >
                         <b-img-lazy
                             class="mr-4 mb-4 ml-4"
-                            src="@/assets/coach.svg"
+                            src="@/assets/img/coach.svg"
                             alt="MFA studiert bei Weiterbildung"
                             height="130"
                         />
@@ -145,7 +145,7 @@
                             left
                             class=" border-radius2 mr-3 mb-3"
                             style="max-width: 170px"
-                            src="@/assets/KristinMaurach_portrait-1541x2048.jpg"
+                            src="@/assets/img/KristinMaurach_portrait-1541x2048.jpg"
                             alt="Portrait Kristin Maurach"
                         />
                         <p>
@@ -282,13 +282,11 @@
 </template>
 
 <script>
-    import Head from "@/components/utils/Head.vue";
-    import StellenanzeigeSchaltenBanner from "@/components/utils/StellenanzeigeSchaltenBanner.vue";
-    import RandomTrainingsContainer from "@/components/utils/RandomTrainingsContainer.vue";
+    import StellenanzeigeSchaltenBanner from "@/components/banners/StellenanzeigeSchaltenBanner.vue";
+    import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
     export default {
         name: "Home",
         components: {
-            Head,
             StellenanzeigeSchaltenBanner,
             RandomTrainingsContainer
         },

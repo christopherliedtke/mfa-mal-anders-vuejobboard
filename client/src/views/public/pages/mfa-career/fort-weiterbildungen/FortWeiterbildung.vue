@@ -31,14 +31,12 @@
 </template>
 
 <script>
-    import Head from "@/components/utils/Head.vue";
-    import FortWeiterbildungenNav from "@/components/utils/FortWeiterbildungenNav.vue";
-    import RandomTrainingsContainer from "@/components/utils/RandomTrainingsContainer.vue";
-    import ToJobboardBanner from "@/components/utils/ToJobboardBanner.vue";
+    import FortWeiterbildungenNav from "@/components/navs/FortWeiterbildungenNav.vue";
+    import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
+    import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
     export default {
         name: "FortWeiterbildungen",
         components: {
-            Head,
             FortWeiterbildungenNav,
             RandomTrainingsContainer,
             ToJobboardBanner
