@@ -78,7 +78,7 @@
                     variant="success"
                     @click.prevent="onSubmit"
                 >
-                    <b-icon v-if="success" icon="check2" class="mr-2" />
+                    <Fa v-if="success" icon="check" class="mr-2" />
                     {{ success ? "Gespeichert" : "Speichern" }}
                 </b-button>
             </div>
@@ -100,7 +100,6 @@
 </template>
 
 <script>
-    import axios from "@/axios";
     import {
         contactGenderOptions,
         contactTitleOptions
@@ -130,7 +129,7 @@
         methods: {
             async getUserData() {
                 try {
-                    const userData = await axios.post(
+                    const userData = await this.$axios.post(
                         `/api/user/${this.apiUsersSchema}`,
                         {
                             query: `
@@ -165,7 +164,7 @@
                     try {
                         this.$store.dispatch("setOverlay", true);
 
-                        const response = await axios.post(
+                        const response = await this.$axios.post(
                             `/api/user/${this.apiUsersSchema}`,
                             {
                                 query: `
@@ -202,7 +201,7 @@
                                     "setUserStatus",
                                     response.data.data.updateUser.status
                                 );
-                                await axios.get(
+                                await this.$axios.get(
                                     "/api/auth/verification/get-activation-email"
                                 );
                             }

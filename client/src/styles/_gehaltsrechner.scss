@@ -1,0 +1,34 @@
+.gehaltsrechner {
+    background-color: $primary;
+    color: $light;
+
+    h3 > div {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $light;
+        color: $primary;
+        border-radius: 50%;
+        position: relative;
+        top: -10px;
+        width: 18px;
+        height: 18px;
+
+        svg {
+            font-size: 11px;
+        }
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+        background: $secondary;
+    }
+
+    hr {
+        margin-top: 3rem;
+        background-color: $light;
+    }
+
+    a {
+        color: transparentize($light, $amount: 0.2);
+    }
+}

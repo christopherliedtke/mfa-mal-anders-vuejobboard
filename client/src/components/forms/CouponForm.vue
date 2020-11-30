@@ -77,7 +77,7 @@
                     Cancel
                 </b-button>
                 <b-button variant="success" @click.prevent="onSubmit">
-                    <b-icon v-if="success" icon="check2" class="mr-2" />
+                    <Fa v-if="success" icon="check" class="mr-2" />
                     {{ success ? "Done" : "Save" }}
                 </b-button>
             </div>
@@ -89,7 +89,6 @@
 </template>
 
 <script>
-    import axios from "@/axios";
     export default {
         name: "CouponForm",
         props: ["couponId"],
@@ -120,8 +119,10 @@
         methods: {
             async getCoupon(couponId) {
                 try {
-                    const coupon = await axios.post("/api/coupons/admin", {
-                        query: `
+                    const coupon = await this.$axios.post(
+                        "/api/coupons/admin",
+                        {
+                            query: `
                             query {
                                 coupon(_id: "${couponId}") {
                                     _id
@@ -136,7 +137,8 @@
                                 }
                             }
                         `
-                    });
+                        }
+                    );
 
                     if (!coupon.data.data.coupon.userId) {
                         coupon.data.data.coupon.userId = { _id: null };
@@ -203,9 +205,12 @@
                         }
                     `;
 
-                    const response = await axios.post(`/api/coupons/admin`, {
-                        query
-                    });
+                    const response = await this.$axios.post(
+                        `/api/coupons/admin`,
+                        {
+                            query
+                        }
+                    );
 
                     if (!response.data.data[mutationType]) {
                         this.error =

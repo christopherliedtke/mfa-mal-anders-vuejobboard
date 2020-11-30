@@ -680,29 +680,29 @@
                 </h3>
                 <ul>
                     <li>
-                        <b-icon icon="check" font-size="1.5rem" /> Berufsjahre
+                        <Fa icon="check" size="sm" class="mr-2" /> Berufsjahre
                         berechnen
                     </li>
                     <li>
-                        <b-icon icon="check" font-size="1.5rem" />
+                        <Fa icon="check" size="sm" class="mr-2" />
                         Fortbildungsstunden berechnen
                     </li>
                     <li>
-                        <b-icon icon="check" font-size="1.5rem" /> Tätigkeiten
+                        <Fa icon="check" size="sm" class="mr-2" /> Tätigkeiten
                         aufschreiben, die du ausführst oder im neuen Job
                         ausführen sollst
                     </li>
                     <li>
-                        <b-icon icon="check" font-size="1.5rem" /> Deine
+                        <Fa icon="check" size="sm" class="mr-2" /> Deine
                         Gehaltsstufe in der Tabelle des Gehaltstarifvertrages
                         für medizinische Fachangestellte ablesen
                     </li>
                     <li>
-                        <b-icon icon="check" font-size="1.5rem" />
+                        <Fa icon="check" size="sm" class="mr-2" />
                         Tätigkeitsgruppe ermitteln
                     </li>
                     <li>
-                        <b-icon icon="check" font-size="1.5rem" />
+                        <Fa icon="check" size="sm" class="mr-2" />
                         Benefits und Zusatzleistungen mitbedenken
                     </li>
                 </ul>
@@ -775,7 +775,7 @@
     import BerufsbilderBanner from "@/components/banners/BerufsbilderBanner.vue";
     import WeiterbildungenBanner from "@/components/banners/WeiterbildungenBanner.vue";
     export default {
-        name: "Gehalt",
+        name: "CareerGehalt",
         components: {
             Gehaltsrechner,
             FacebookBtn,

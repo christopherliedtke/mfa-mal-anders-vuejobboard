@@ -9,8 +9,8 @@
                 />
                 <b-input-group-append>
                     <b-button
-                        ><b-icon
-                            icon="x"
+                        ><Fa
+                            icon="times"
                             @click.prevent="filter.searchTerm = ''"
                     /></b-button>
                 </b-input-group-append>
@@ -81,7 +81,7 @@
                     variant="danger"
                     @click="showDeleteSubscriberModal(row.item)"
                 >
-                    <b-icon class="mr-2" icon="trash"></b-icon>Delete
+                    <Fa class="mr-2" icon="trash-alt" />Delete
                 </b-button>
             </template>
         </b-table>
@@ -110,7 +110,6 @@
 </template>
 
 <script>
-    import axios from "@/axios";
     export default {
         name: "AllSubscribersListAdmin",
         data() {
@@ -203,8 +202,10 @@
             },
             async getAllSubscribers() {
                 try {
-                    const response = await axios.post("/api/subscriber/admin", {
-                        query: `
+                    const response = await this.$axios.post(
+                        "/api/subscriber/admin",
+                        {
+                            query: `
                             query {
                                 subscribers {
                                     _id
@@ -216,7 +217,8 @@
                                 }
                             }
                         `
-                    });
+                        }
+                    );
 
                     this.subscribers = response.data.data.subscribers;
                 } catch (err) {
@@ -229,15 +231,18 @@
             },
             async deleteSubscriber(subscriberId) {
                 try {
-                    const response = await axios.post("/api/subscriber/admin", {
-                        query: `
+                    const response = await this.$axios.post(
+                        "/api/subscriber/admin",
+                        {
+                            query: `
                             mutation {
                                 deleteSubscriber(_id: "${subscriberId}") {
                                     status
                                 }
                             }
                         `
-                    });
+                        }
+                    );
 
                     if (
                         response.data.data.deleteSubscriber.status === "deleted"
@@ -257,9 +262,12 @@
             async sendNewsletter() {
                 this.$store.dispatch("setOverlay", true);
 
-                const response = await axios.post("/api/newsletter/send", {
-                    daysBack: this.daysBack
-                });
+                const response = await this.$axios.post(
+                    "/api/newsletter/send",
+                    {
+                        daysBack: this.daysBack
+                    }
+                );
 
                 this.newsletterSent = response.data.success;
                 this.sendNewsletterActive = false;

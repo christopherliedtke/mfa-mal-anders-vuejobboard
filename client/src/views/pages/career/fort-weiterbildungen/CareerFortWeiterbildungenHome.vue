@@ -110,7 +110,7 @@
     import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
 
     export default {
-        name: "FortWeiterbildungen",
+        name: "CareerFortWeiterbildungen",
         components: {
             FortWeiterbildungenNav,
             RandomTrainingsContainer

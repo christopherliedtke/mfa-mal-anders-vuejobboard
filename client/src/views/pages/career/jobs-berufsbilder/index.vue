@@ -4,6 +4,6 @@
 
 <script>
     export default {
-        name: "FortWeiterbildungen"
+        name: "CareerJobsBerufsbilder"
     };
 </script>

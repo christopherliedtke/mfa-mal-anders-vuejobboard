@@ -37,7 +37,6 @@
 </template>
 
 <script>
-    import axios from "@/axios";
     export default {
         name: "AuthAccountVerification",
         data() {
@@ -53,7 +52,7 @@
                 this.error = false;
                 this.success = false;
 
-                const response = await axios.get(
+                const response = await this.$axios.get(
                     "/api/auth/verification/get-activation-email"
                 );
 

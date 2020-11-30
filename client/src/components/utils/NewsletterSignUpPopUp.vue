@@ -11,7 +11,7 @@
             class="position-absolute"
             style="right: 15px; top: 15px; cursor: pointer"
         >
-            <b-icon icon="x"></b-icon>
+            <Fa icon="times" />
         </span>
         <NewsletterSignUpForm
             class="p-3"

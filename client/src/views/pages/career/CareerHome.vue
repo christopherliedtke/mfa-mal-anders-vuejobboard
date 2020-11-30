@@ -289,7 +289,7 @@
     import WeiterbildungenBanner from "@/components/banners/WeiterbildungenBanner.vue";
     import BerufsbilderBanner from "@/components/banners/BerufsbilderBanner.vue";
     export default {
-        name: "MFACareerHome",
+        name: "CareerHome",
         components: {
             NewsletterSignUpForm,
             ToJobboardBanner,

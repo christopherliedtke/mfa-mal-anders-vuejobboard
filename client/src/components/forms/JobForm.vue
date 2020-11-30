@@ -110,9 +110,7 @@
             >
             <b-input-group>
                 <template v-slot:prepend>
-                    <b-input-group-text
-                        ><b-icon scale="1" icon="at"
-                    /></b-input-group-text>
+                    <b-input-group-text><Fa icon="at"/></b-input-group-text>
                 </template>
                 <b-form-input
                     type="email"
@@ -132,9 +130,7 @@
             >
             <b-input-group>
                 <template v-slot:prepend>
-                    <b-input-group-text
-                        ><b-icon scale="1" icon="link45deg"
-                    /></b-input-group-text>
+                    <b-input-group-text><Fa icon="link"/></b-input-group-text>
                 </template>
                 <b-form-input
                     type="url"
@@ -304,9 +300,7 @@
             <label for="company-url">Unternehmenswebseite</label>
             <b-input-group>
                 <template v-slot:prepend>
-                    <b-input-group-text
-                        ><b-icon scale="1" icon="link45deg"
-                    /></b-input-group-text>
+                    <b-input-group-text><Fa icon="link"/></b-input-group-text>
                 </template>
                 <b-form-input
                     type="url"
@@ -405,9 +399,7 @@
             <label for="contact-email">E-Mail Adresse</label>
             <b-input-group>
                 <template v-slot:prepend>
-                    <b-input-group-text
-                        ><b-icon scale="1" icon="at"></b-icon
-                    ></b-input-group-text>
+                    <b-input-group-text><Fa icon="at"/></b-input-group-text>
                 </template>
                 <b-form-input
                     type="email"
@@ -424,7 +416,7 @@
             <b-input-group>
                 <template v-slot:prepend>
                     <b-input-group-text
-                        ><b-icon scale="1" icon="phone"
+                        ><Fa icon="mobile-alt"
                     /></b-input-group-text>
                 </template>
                 <b-form-input
@@ -446,7 +438,7 @@
                     Abbrechen
                 </b-button>
                 <b-button variant="success" @click.prevent="onSubmit">
-                    <b-icon v-if="success" icon="check2" class="mr-2" />
+                    <Fa v-if="success" icon="check" class="mr-2" />
                     {{ success ? "Gespeichert" : "Speichern" }}
                 </b-button>
             </div>
@@ -458,7 +450,6 @@
 </template>
 
 <script>
-    import axios from "@/axios";
     import {
         specializationOptions,
         employmentTypeOptions,
@@ -578,7 +569,7 @@
         methods: {
             async getJob(jobId) {
                 try {
-                    const job = await axios.post(
+                    const job = await this.$axios.post(
                         `/api/jobs/${this.apiJobsSchema}`,
                         {
                             query: `
@@ -650,7 +641,7 @@
             },
             async getCompanies() {
                 try {
-                    const companies = await axios.post(
+                    const companies = await this.$axios.post(
                         `/api/companies/${this.apiJobsSchema}`,
                         {
                             query: `
@@ -743,7 +734,7 @@
                         }
                     `;
 
-                    const companyQueryResponse = await axios.post(
+                    const companyQueryResponse = await this.$axios.post(
                         `/api/companies/${this.apiJobsSchema}`,
                         { query: companyQuery }
                     );
@@ -802,7 +793,7 @@
                         }
                     `;
 
-                    const jobQueryResponse = await axios.post(
+                    const jobQueryResponse = await this.$axios.post(
                         `/api/jobs/${this.apiJobsSchema}`,
                         {
                             query: jobQuery

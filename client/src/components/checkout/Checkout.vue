@@ -30,13 +30,12 @@
                     <strong>Betrag:</strong>
                     {{ amountComputed / 100 }}
                     {{ currency }}
-                    <b-icon
+                    <Fa
                         id="popover-payment-recommendation"
-                        class="position-relative mr-2"
+                        class="position-relative text-info mr-2"
                         style="top: -5px; cursor: pointer"
-                        icon="info-circle-fill"
+                        icon="info-circle"
                         scale="1"
-                        variant="info"
                     />
                     <span class="small">
                         {{ amountCorelation }}
@@ -317,7 +316,6 @@
 </template>
 
 <script>
-    import axios from "@/axios";
     import PayWhatYouWantSuggestion from "@/components/containers/PayWhatYouWantSuggestion";
     export default {
         name: "Checkout",
@@ -401,7 +399,9 @@
                 this.$refs["checkoutModal"].hide();
             },
             async initStripe() {
-                const response = await axios.get("/api/stripe/get-stripe-pk");
+                const response = await this.$axios.get(
+                    "/api/stripe/get-stripe-pk"
+                );
 
                 this.stripePk = response.data.stripePk;
                 this.stripe = window.Stripe(this.stripePk);
@@ -411,7 +411,7 @@
                 this.$store.dispatch("setOverlay", true);
 
                 try {
-                    const response = await axios.post(
+                    const response = await this.$axios.post(
                         "/api/stripe/create-session-id",
                         {
                             job: this.job,
@@ -468,7 +468,9 @@
                 }
             },
             async getPricePerAd() {
-                const price = await axios.get("/api/stripe/get-price-per-ad");
+                const price = await this.$axios.get(
+                    "/api/stripe/get-price-per-ad"
+                );
                 // this.amount = price.data.amount;
                 this.currency = price.data.currency.toUpperCase();
                 this.duration = price.data.duration;
@@ -492,7 +494,7 @@
             async checkCouponCode() {
                 this.couponValidationState = null;
 
-                const response = await axios.post(
+                const response = await this.$axios.post(
                     "/api/stripe/validate-coupon",
                     { code: this.coupon.code }
                 );
@@ -508,8 +510,10 @@
 
             async setBillingAddress() {
                 try {
-                    const response = await axios.post("/api/user/private", {
-                        query: `
+                    const response = await this.$axios.post(
+                        "/api/user/private",
+                        {
+                            query: `
                                 query {
                                     user {
                                         _id
@@ -521,7 +525,8 @@
                                     }
                                 }
                             `
-                    });
+                        }
+                    );
 
                     const user = response.data.data.user;
 
@@ -560,7 +565,7 @@
                     this.resetAlert();
 
                     try {
-                        const response = await axios.post(
+                        const response = await this.$axios.post(
                             "/api/invoice/get-invoice",
                             {
                                 jobId: this.job._id,

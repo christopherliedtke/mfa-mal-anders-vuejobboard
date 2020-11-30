@@ -163,7 +163,6 @@
 </template>
 
 <script>
-    import axios from "@/axios";
     import {
         contactGenderOptions,
         contactTitleOptions
@@ -216,7 +215,7 @@
                 this.$store.dispatch("setOverlay", true);
 
                 try {
-                    const response = await axios.post(
+                    const response = await this.$axios.post(
                         "/api/contact/send",
                         this.form
                     );
@@ -237,8 +236,10 @@
             },
             async setUserData() {
                 if (this.$store.state.auth.userStatus === "active") {
-                    const response = await axios.post("/api/user/private", {
-                        query: `
+                    const response = await this.$axios.post(
+                        "/api/user/private",
+                        {
+                            query: `
                                 query {
                                     user {
                                         _id
@@ -250,7 +251,8 @@
                                     }
                                 }
                             `
-                    });
+                        }
+                    );
 
                     this.form = { ...this.form, ...response.data.data.user };
                 } else {

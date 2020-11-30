@@ -126,7 +126,10 @@
                     ref="nofollow"
                     ><strong
                         >Besuchen Sie unsere Homepage
-                        <b-icon icon="box-arrow-up-right"/></strong
+                        <Fa
+                            icon="external-link-alt"
+                            size="sm"
+                            style="position: relative; top: -5px"/></strong
                 ></b-link>
             </div>
             <div class="mt-3 small">
@@ -321,7 +324,6 @@
 </template>
 
 <script>
-    import axios from "@/axios";
     import SimilarJobsContainer from "@/components/containers/SimilarJobsContainer.vue";
     import {
         employmentTypeOptions,
@@ -358,7 +360,7 @@
         methods: {
             async getJob(jobId) {
                 try {
-                    const job = await axios.get(
+                    const job = await this.$axios.get(
                         `/api/jobs/${this.apiJobsSchema}`,
                         {
                             params: {

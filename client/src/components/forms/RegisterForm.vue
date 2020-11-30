@@ -62,13 +62,11 @@
                 aria-describedby="password-help-block"
             ></b-form-input>
             <b-input-group-append is-text>
-                <b-icon
-                    :icon="
-                        passwordType === 'text' ? 'eye-fill' : 'eye-slash-fill'
-                    "
-                    font-scale="1.2"
+                <Fa
+                    :icon="passwordType === 'text' ? 'eye' : 'eye-slash'"
+                    size="lg"
                     @click="togglePasswordType"
-                ></b-icon>
+                />
             </b-input-group-append>
         </b-input-group>
         <b-form-text id="password-help-block">
@@ -86,13 +84,11 @@
                 autocomplete="new-password"
             ></b-form-input>
             <b-input-group-append is-text>
-                <b-icon
-                    :icon="
-                        passwordType === 'text' ? 'eye-fill' : 'eye-slash-fill'
-                    "
-                    font-scale="1.2"
+                <Fa
+                    :icon="passwordType === 'text' ? 'eye' : 'eye-slash'"
+                    size="lg"
                     @click="togglePasswordType"
-                ></b-icon>
+                />
             </b-input-group-append>
         </b-input-group>
         <b-form-checkbox
@@ -206,7 +202,7 @@
 </script>
 
 <style scoped lang="scss">
-    .b-icon {
+    .svg-inline--fa {
         cursor: pointer;
     }
 </style>

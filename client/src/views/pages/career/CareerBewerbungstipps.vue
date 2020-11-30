@@ -214,7 +214,7 @@
 
 <script>
     export default {
-        name: "Bewerbungstipps",
+        name: "CareerBewerbungstipps",
         data() {
             return {
                 title: "Bewerbungstipps für MFAs"

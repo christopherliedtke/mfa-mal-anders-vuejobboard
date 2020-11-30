@@ -4,6 +4,6 @@
 
 <script>
     export default {
-        name: "PageView"
+        name: "Page"
     };
 </script>

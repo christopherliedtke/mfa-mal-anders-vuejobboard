@@ -8,7 +8,7 @@
                     :class="{ active: isActive.bold() }"
                     @click="commands.bold"
                 >
-                    <b-icon class="" scale="1" icon="type-bold"></b-icon>
+                    <strong>F</strong>
                 </b-button>
 
                 <b-button
@@ -17,7 +17,7 @@
                     :class="{ active: isActive.italic() }"
                     @click="commands.italic"
                 >
-                    <b-icon class="" scale="1" icon="type-italic"></b-icon>
+                    <em>K</em>
                 </b-button>
 
                 <b-button
@@ -26,7 +26,7 @@
                     :class="{ active: isActive.paragraph() }"
                     @click="commands.paragraph"
                 >
-                    <b-icon class="" scale="1" icon="type"></b-icon>
+                    Aa
                 </b-button>
 
                 <b-button
@@ -35,7 +35,7 @@
                     :class="{ active: isActive.heading({ level: 3 }) }"
                     @click="commands.heading({ level: 3 })"
                 >
-                    <b-icon class="" scale="1" icon="type-h1"></b-icon>
+                    <strong>Ü1</strong>
                 </b-button>
 
                 <b-button
@@ -44,7 +44,7 @@
                     :class="{ active: isActive.heading({ level: 4 }) }"
                     @click="commands.heading({ level: 4 })"
                 >
-                    <b-icon class="" scale="1" icon="type-h2"></b-icon>
+                    <strong>Ü2</strong>
                 </b-button>
 
                 <b-button
@@ -53,7 +53,7 @@
                     :class="{ active: isActive.heading({ level: 5 }) }"
                     @click="commands.heading({ level: 5 })"
                 >
-                    <b-icon class="" scale="1" icon="type-h3"></b-icon>
+                    <strong>Ü3</strong>
                 </b-button>
 
                 <b-button
@@ -62,7 +62,7 @@
                     :class="{ active: isActive.bullet_list() }"
                     @click="commands.bullet_list"
                 >
-                    <b-icon class="" scale="1" icon="list-ul"></b-icon>
+                    <Fa :icon="'list-ul'" />
                 </b-button>
 
                 <b-button
@@ -71,7 +71,7 @@
                     :class="{ active: isActive.ordered_list() }"
                     @click="commands.ordered_list"
                 >
-                    <b-icon class="" scale="1" icon="list-ol"></b-icon>
+                    <Fa :icon="'list-ol'" />
                 </b-button>
 
                 <b-button
@@ -79,12 +79,7 @@
                     class="menubar__button"
                     @click="commands.horizontal_rule"
                 >
-                    <b-icon
-                        class=""
-                        scale="1"
-                        icon="chevron-bar-contract
-"
-                    ></b-icon>
+                    <Fa :icon="'minus'" />
                 </b-button>
 
                 <b-button
@@ -92,11 +87,7 @@
                     class="menubar__button"
                     @click="commands.undo"
                 >
-                    <b-icon
-                        class=""
-                        scale="1"
-                        icon="arrow-return-left"
-                    ></b-icon>
+                    <Fa :icon="'undo'" />
                 </b-button>
 
                 <b-button
@@ -104,11 +95,7 @@
                     class="menubar__button"
                     @click="commands.redo"
                 >
-                    <b-icon
-                        class=""
-                        scale="1"
-                        icon="arrow-return-right"
-                    ></b-icon>
+                    <Fa :icon="'redo'" />
                 </b-button>
             </div>
         </editor-menu-bar>
@@ -227,5 +214,10 @@
         color: #777;
         pointer-events: none;
         height: 0;
+    }
+
+    .menubar {
+        display: flex;
+        flex-wrap: wrap;
     }
 </style>

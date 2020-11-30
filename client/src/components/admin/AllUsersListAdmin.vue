@@ -9,8 +9,8 @@
                 />
                 <b-input-group-append>
                     <b-button
-                        ><b-icon
-                            icon="x"
+                        ><Fa
+                            icon="times"
                             @click.prevent="filter.searchTerm = ''"
                     /></b-button>
                 </b-input-group-append>
@@ -44,14 +44,14 @@
                     :to="`/admin/users/edit/${row.item._id}`"
                     variant="primary"
                     size="sm"
-                    ><b-icon icon="pencil-square"></b-icon>
+                    ><Fa class="mr-2" icon="edit" />Edit
                 </b-button>
                 <b-button
                     size="sm"
                     variant="danger"
                     @click="showDeleteUserModal(row.item)"
                 >
-                    <b-icon class="mr-2" icon="trash"></b-icon>Delete
+                    <Fa class="mr-2" icon="trash-alt" />Delete
                 </b-button>
             </template>
         </b-table>
@@ -80,7 +80,6 @@
 </template>
 
 <script>
-    import axios from "@/axios";
     export default {
         name: "AllUsersListAdmin",
         data() {
@@ -178,7 +177,7 @@
             },
             async getAllUsers() {
                 try {
-                    const response = await axios.post("/api/user/admin", {
+                    const response = await this.$axios.post("/api/user/admin", {
                         query: `
                             query {
                                 users {
@@ -207,7 +206,7 @@
             },
             async deleteUser(userId) {
                 try {
-                    const response = await axios.post("/api/user/admin", {
+                    const response = await this.$axios.post("/api/user/admin", {
                         query: `
                             mutation {
                                 deleteUser(_id: "${userId}") {

@@ -7,7 +7,7 @@
 <script>
     import Job from "@/components/ui/Job.vue";
     export default {
-        name: "PublicJobView",
+        name: "JobView",
         components: {
             Job
         }

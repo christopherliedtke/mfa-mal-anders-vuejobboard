@@ -3,13 +3,12 @@
         <h2>Stellenanzeige bearbeiten</h2>
         <p>
             Bearbeiten Sie hier Ihre Stellenanzeige. <strong>Tipps </strong>
-            <b-icon
+            <Fa
                 id="popover-job-ad-tipps"
-                class="position-relative"
+                class="position-relative text-info"
                 style="top: -5px; cursor: pointer"
-                icon="info-circle-fill"
+                icon="info-circle"
                 scale="1"
-                variant="info"
             />
             <b-popover
                 target="popover-job-ad-tipps"

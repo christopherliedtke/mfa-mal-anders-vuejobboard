@@ -113,7 +113,7 @@
     import WhatsAppShareBtn from "@/components/buttons/WhatsAppShareBtn.vue";
 
     export default {
-        name: "ArticleView",
+        name: "Article",
         components: {
             RandomArticlesContainer,
             FacebookShareBtn,

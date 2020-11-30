@@ -9,7 +9,6 @@
 </template>
 
 <script>
-    import axios from "@/axios";
     export default {
         name: "AGBs",
         data() {
@@ -21,8 +20,10 @@
         methods: {
             async getPage() {
                 try {
-                    const response = await axios.post(this.$config.cms.url, {
-                        query: `
+                    const response = await this.$axios.post(
+                        this.$config.cms.url,
+                        {
+                            query: `
                             query MyQuery {
                                 page(id: "allgemeine-geschaeftsbedingungen", idType: URI) {
                                     content
@@ -30,7 +31,8 @@
                                 }
                             }
                         `
-                    });
+                        }
+                    );
 
                     this.title = response.data.data.page.title;
                     this.content = response.data.data.page.content;

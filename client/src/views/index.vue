@@ -52,7 +52,7 @@
                                 class="shadow1"
                                 variant="secondary"
                                 :to="`/jobboard?searchTerm=${searchTerm}`"
-                                ><b-icon icon="search"
+                                ><Fa icon="search"
                             /></b-button>
                         </b-input-group-append>
                     </b-input-group>
@@ -182,8 +182,7 @@
                                 class="text-secondary"
                                 to="/page/mfa-career/fort-und-weiterbildungen"
                                 >Weiterbildungsmöglichkeiten</b-link
-                            >
-                            ,
+                            >,
                             <b-link
                                 class="text-secondary"
                                 to="/page/mfa-career/jobs-und-berufsbilder"
@@ -222,8 +221,8 @@
                             <b-link
                                 class="text-secondary"
                                 to="/article/warum-es-mfa-mal-anders-gibt"
-                                ><b-icon icon="caret-right-fill" /> Mehr über
-                                die Story dahinter</b-link
+                                ><Fa icon="caret-right" /> Mehr über die Story
+                                dahinter</b-link
                             >
                         </p>
                     </b-col>

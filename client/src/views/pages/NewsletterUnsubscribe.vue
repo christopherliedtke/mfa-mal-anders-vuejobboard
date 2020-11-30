@@ -35,7 +35,6 @@
 </template>
 
 <script>
-    import axios from "@/axios";
     export default {
         name: "NewsletterUnsubscribe",
         data() {
@@ -49,7 +48,7 @@
         },
         methods: {
             async unsubscribe() {
-                const response = await axios.post(
+                const response = await this.$axios.post(
                     "/api/newsletter/unsubscribe",
                     { email: this.form.email }
                 );

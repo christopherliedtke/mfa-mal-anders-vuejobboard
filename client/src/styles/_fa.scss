@@ -1,0 +1,10 @@
+.svg-inline--fa
+    :not(.fa-xs)
+    :not(.fa-sm)
+    :not(.fa-lg)
+    :not(.fa-xl)
+    :not(.fa-1x)
+    :not(.fa-2x)
+    :not(.fa-3x) {
+    font-size: 1.05rem;
+}

@@ -63,7 +63,7 @@
                 :variant="success ? 'success' : 'secondary'"
                 @click.prevent="onSubmit"
             >
-                <b-icon v-if="success" icon="check2" class="mr-2" />
+                <Fa v-if="success" icon="check" class="mr-2" />
                 {{ success ? "Abonniert" : "Abonnieren" }}
             </b-button>
         </b-form>
@@ -82,7 +82,6 @@
 </template>
 
 <script>
-    import axios from "@/axios";
     import { companyStateOptions } from "@/utils/jobDataConfig.json";
     export default {
         name: "NewsletterSignUpForm",
@@ -125,7 +124,7 @@
                 this.$store.dispatch("setOverlay", true);
 
                 try {
-                    const response = await axios.post(
+                    const response = await this.$axios.post(
                         "/api/newsletter/sign-up",
                         {
                             email: this.form.email,

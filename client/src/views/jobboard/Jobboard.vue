@@ -13,7 +13,7 @@
                                         : 'outline-primary'
                                 "
                                 @click.prevent="setJobboardView('list')"
-                                ><b-icon
+                                ><Fa
                                     class="mr-2"
                                     icon="list-ul"
                                 />Liste</b-button
@@ -25,10 +25,7 @@
                                         : 'outline-primary'
                                 "
                                 @click.prevent="setJobboardView('map')"
-                                ><b-icon
-                                    class="mr-2"
-                                    icon="map"
-                                />Karte</b-button
+                                ><Fa class="mr-2" icon="map" />Karte</b-button
                             >
                         </b-button-group>
                         <FacebookBtn class="d-lg-none mb-3 ml-1" content="" />
@@ -51,8 +48,8 @@
                             />
                             <b-input-group-append>
                                 <b-button
-                                    ><b-icon
-                                        icon="x"
+                                    ><Fa
+                                        icon="times"
                                         @click.prevent="
                                             () => {
                                                 filter.searchTerm = '';
@@ -113,8 +110,8 @@
                             />
                             <b-input-group-append>
                                 <b-button
-                                    ><b-icon
-                                        icon="x"
+                                    ><Fa
+                                        icon="times"
                                         @click.prevent="
                                             () => {
                                                 filter.location = '';

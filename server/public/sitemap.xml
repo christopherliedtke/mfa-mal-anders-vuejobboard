@@ -175,12 +175,12 @@
         </url>
      
         <url>
-            <loc>http://localhost:8080/login/</loc>
+            <loc>http://localhost:8080/auth/login/</loc>
             <lastmod>2020-11-26T09:21:42.022Z</lastmod>
         </url>
      
         <url>
-            <loc>http://localhost:8080/register/</loc>
+            <loc>http://localhost:8080/auth/register/</loc>
             <lastmod>2020-11-26T09:21:42.022Z</lastmod>
         </url>
     
@@ -291,11 +291,11 @@
     
         <url>
             <loc>http://localhost:8080/jobboard/job/5f3966ce895c6716b8d8c0c4</loc>
-            <lastmod>2020-11-30T11:11:53.597Z</lastmod>
+            <lastmod>2020-11-30T14:39:52.563Z</lastmod>
         </url>
      
         <url>
             <loc>http://localhost:8080/jobboard/job/5f6348a4630115097bfcbd65</loc>
-            <lastmod>2020-11-30T11:05:45.713Z</lastmod>
+            <lastmod>2020-11-30T16:30:08.184Z</lastmod>
         </url>
     </urlset>

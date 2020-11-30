@@ -28,12 +28,11 @@
                                 to="/page/mfa-career"
                                 @mouseover="showSub('sub-career')"
                                 >Karriere
-                                <b-icon
+                                <Fa
                                     class="ml-1 icon"
                                     icon="chevron-down"
-                                    font-scale="0.9"
-                                ></b-icon
-                            ></b-nav-item>
+                                    size="xs"
+                            /></b-nav-item>
                             <div id="sub-career" class="sub-menu">
                                 <div
                                     class="sub-container"
@@ -55,12 +54,11 @@
                                             showSub('sub-jobs-berufsbilder')
                                         "
                                         >Jobs- und Berufsbilder
-                                        <b-icon
+                                        <Fa
                                             class="ml-1 d-none d-md-block"
                                             icon="chevron-right"
-                                            font-scale="0.9"
-                                        ></b-icon
-                                    ></b-nav-item>
+                                            size="xs"
+                                    /></b-nav-item>
                                     <div
                                         id="sub-jobs-berufsbilder"
                                         class="sub-menu d-none d-md-block"
@@ -107,19 +105,11 @@
                     </b-navbar-nav>
                     <b-navbar-nav class="mt-3 mt-lg-0">
                         <b-nav-item to="/user/dashboard" v-if="userId"
-                            ><b-icon
-                                class="mr-1"
-                                icon="kanban"
-                                font-scale="1.3"
-                            ></b-icon
-                            >Meine Anzeigen</b-nav-item
+                            ><Fa class="mr-1" icon="columns" size="lg" />Meine
+                            Anzeigen</b-nav-item
                         >
                         <b-nav-item to="/user/account" v-if="userId"
-                            ><b-icon
-                                class="mr-1"
-                                icon="person-circle"
-                                font-scale="1.3"
-                            ></b-icon>
+                            ><Fa class="mr-1" icon="user-circle" size="lg" />
                             <span
                                 v-if="
                                     $store.state.auth.userFirstName &&
@@ -139,11 +129,8 @@
                             </span>
                         </b-nav-item>
                         <b-nav-item to="/admin" v-if="userRole === 'admin'"
-                            ><b-icon
-                                icon="shield-lock"
-                                font-scale="1.3"
-                            ></b-icon
-                        ></b-nav-item>
+                            ><Fa icon="key" size="lg"
+                        /></b-nav-item>
                         <b-nav-item v-if="userId"><LogoutBtn /></b-nav-item>
                         <b-nav-item v-if="!userId"
                             ><b-button

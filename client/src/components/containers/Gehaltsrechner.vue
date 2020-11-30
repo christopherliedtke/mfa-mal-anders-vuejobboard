@@ -2,13 +2,14 @@
     <div class="gehaltsrechner p-4 border-radius2 shadow">
         <h3>
             Gehaltsrechner
-            <b-icon
-                v-b-popover.hover.top="
-                    'Der Gehaltsrechner gibt Dir eine erste grobe Richtung für Dein zu erwartendes Grundgehalt vor. Wichtige weitere Faktoren sind die tatsächliche Verantwortung, die du übernimmst, der Standort (Bundesland etc.), aber beispielsweise auch die Größe der Praxis. Du erhältst weitere Informationen zur noch besseren Einschätzung im folgenden Text und im Gehaltstarifvertrag des AAA.'
-                "
-                icon="info"
-                font-size="1.2rem"
-            />
+            <div>
+                <Fa
+                    v-b-popover.hover.top="
+                        'Der Gehaltsrechner gibt Dir eine erste grobe Richtung für Dein zu erwartendes Grundgehalt vor. Wichtige weitere Faktoren sind die tatsächliche Verantwortung, die du übernimmst, der Standort (Bundesland etc.), aber beispielsweise auch die Größe der Praxis. Du erhältst weitere Informationen zur noch besseren Einschätzung im folgenden Text und im Gehaltstarifvertrag des AAA.'
+                    "
+                    icon="info"
+                />
+            </div>
         </h3>
         <p>
             Gib Deine Daten ein und erhalte Dein Gehalt entsprechend des
@@ -152,33 +153,3 @@
         }
     };
 </script>
-
-<style lang="scss">
-    @import "@/styles/custom_bootstrap.scss";
-
-    .gehaltsrechner {
-        background-color: $primary;
-        color: $light;
-
-        h3 > svg {
-            background-color: $light;
-            color: $primary;
-            border-radius: 50%;
-            position: relative;
-            top: -10px;
-        }
-
-        input[type="range"]::-webkit-slider-thumb {
-            background: $secondary;
-        }
-
-        hr {
-            margin-top: 3rem;
-            background-color: $light;
-        }
-
-        a {
-            color: transparentize($light, $amount: 0.2);
-        }
-    }
-</style>

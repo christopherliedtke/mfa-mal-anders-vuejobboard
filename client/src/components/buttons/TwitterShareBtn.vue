@@ -13,7 +13,7 @@
     >
         <Fa class="mr-2" :icon="['fab', 'twitter']" size="lg" />
         Twitter
-        <b-icon class="ml-2" icon="share-fill" font-scale="0.95"></b-icon>
+        <Fa class="ml-2" icon="share-alt" />
     </b-button>
 </template>
 

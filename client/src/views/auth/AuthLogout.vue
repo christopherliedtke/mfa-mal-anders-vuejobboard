@@ -23,7 +23,6 @@
 </template>
 
 <script>
-    import axios from "@/axios";
     export default {
         name: "AuthLogout",
         data() {
@@ -40,7 +39,7 @@
                 localStorage.clear();
                 localStorage.setItem("nl-pop", "false");
 
-                const response = await axios.get("/api/auth/logout");
+                const response = await this.$axios.get("/api/auth/logout");
 
                 if (response.data.success) {
                     this.$store.commit("setUserId", "");

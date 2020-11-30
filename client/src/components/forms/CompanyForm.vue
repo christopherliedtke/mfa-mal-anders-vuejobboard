@@ -98,9 +98,7 @@
             <label for="company-url">Unternehmenswebseite</label>
             <b-input-group>
                 <template v-slot:prepend>
-                    <b-input-group-text
-                        ><b-icon scale="1" icon="link45deg"
-                    /></b-input-group-text>
+                    <b-input-group-text><Fa icon="link"/></b-input-group-text>
                 </template>
                 <b-form-input
                     type="url"
@@ -148,7 +146,7 @@
                     Abbrechen
                 </b-button>
                 <b-button variant="success" @click.prevent="onSubmit">
-                    <b-icon v-if="success" icon="check2" class="mr-2" />
+                    <Fa v-if="success" icon="check" class="mr-2" />
                     {{ success ? "Gespeichert" : "Speichern" }}
                 </b-button>
             </div>
@@ -160,7 +158,6 @@
 </template>
 
 <script>
-    import axios from "@/axios";
     import {
         companyStateOptions,
         companyCountryOptions,
@@ -215,7 +212,7 @@
         methods: {
             async getCompany(companyId) {
                 try {
-                    const company = await axios.post(
+                    const company = await this.$axios.post(
                         `/api/companies/${this.apiJobsSchema}`,
                         {
                             query: `
@@ -302,7 +299,7 @@
                         }
                     `;
 
-                    const response = await axios.post(
+                    const response = await this.$axios.post(
                         `/api/companies/${this.apiJobsSchema}`,
                         { query }
                     );

@@ -11,7 +11,7 @@
     >
         <Fa class="mr-2" :icon="['fab', 'facebook-square']" size="lg" />
         {{ content }}
-        <b-icon class="ml-2" icon="share-fill" font-scale="0.95"></b-icon>
+        <Fa class="ml-2" icon="share-alt" />
     </b-button>
 </template>
 

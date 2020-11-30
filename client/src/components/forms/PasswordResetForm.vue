@@ -43,15 +43,11 @@
                     aria-describedby="password-help-block"
                 ></b-form-input>
                 <b-input-group-append is-text>
-                    <b-icon
-                        :icon="
-                            passwordType === 'text'
-                                ? 'eye-fill'
-                                : 'eye-slash-fill'
-                        "
-                        font-scale="1.2"
+                    <Fa
+                        :icon="passwordType === 'text' ? 'eye' : 'eye-slash'"
+                        size="lg"
                         @click="togglePasswordType"
-                    ></b-icon>
+                    />
                 </b-input-group-append>
             </b-input-group>
             <b-form-text id="password-help-block">
@@ -69,15 +65,11 @@
                     autocomplete="new-password"
                 ></b-form-input>
                 <b-input-group-append is-text>
-                    <b-icon
-                        :icon="
-                            passwordType === 'text'
-                                ? 'eye-fill'
-                                : 'eye-slash-fill'
-                        "
-                        font-scale="1.2"
+                    <Fa
+                        :icon="passwordType === 'text' ? 'eye' : 'eye-slash'"
+                        size="lg"
                         @click="togglePasswordType"
-                    ></b-icon>
+                    />
                 </b-input-group-append>
             </b-input-group>
             <button class="btn btn-primary my-3" @click.prevent="onSubmitNewPw">
@@ -108,7 +100,6 @@
 </template>
 
 <script>
-    import axios from "@/axios";
     export default {
         name: "PasswordResetForm",
         data() {
@@ -128,7 +119,7 @@
                 this.$store.dispatch("setOverlay", true);
                 this.errors = [];
 
-                const res = await axios.post(
+                const res = await this.$axios.post(
                     "/api/auth/password-reset/get-code",
                     {
                         email: this.email
@@ -147,7 +138,7 @@
                 this.errors = [];
                 this.$store.dispatch("setOverlay", true);
 
-                const res = await axios.post(
+                const res = await this.$axios.post(
                     "/api/auth/password-reset/verify",
                     {
                         email: this.email,
@@ -180,7 +171,7 @@
 </script>
 
 <style scoped lang="scss">
-    .b-icon {
+    .svg-inline--fa {
         cursor: pointer;
     }
 </style>

@@ -21,7 +21,7 @@
 <script>
     import ArticleCard from "@/components/ui/ArticleCard.vue";
     export default {
-        name: "Magazin",
+        name: "Blog",
         components: {
             ArticleCard
         },

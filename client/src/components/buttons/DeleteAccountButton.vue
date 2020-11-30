@@ -1,8 +1,7 @@
 <template>
     <div>
         <b-button variant="danger" type="submit" v-b-modal.delete-account
-            ><b-icon class="mr-2" icon="trash"></b-icon>Account
-            löschen</b-button
+            ><Fa class="mr-2" icon="trash-alt"></Fa>Account löschen</b-button
         >
         <b-modal
             id="delete-account"
@@ -34,15 +33,15 @@
                             autocomplete="current-password"
                         ></b-form-input>
                         <b-input-group-append is-text>
-                            <b-icon
+                            <Fa
                                 :icon="
                                     passwordType === 'text'
-                                        ? 'eye-fill'
-                                        : 'eye-slash-fill'
+                                        ? 'eye'
+                                        : 'eye-slash'
                                 "
                                 font-scale="1.2"
                                 @click="togglePasswordType"
-                            ></b-icon>
+                            />
                         </b-input-group-append>
                     </b-input-group>
 
@@ -58,7 +57,6 @@
 </template>
 
 <script>
-    import axios from "@/axios";
     export default {
         name: "DeleteAccountButton",
         methods: {
@@ -67,9 +65,12 @@
                 this.showOverlay = true;
                 this.error = null;
 
-                const response = await axios.post("/api/auth/delete-account", {
-                    password: this.password
-                });
+                const response = await this.$axios.post(
+                    "/api/auth/delete-account",
+                    {
+                        password: this.password
+                    }
+                );
                 this.showOverlay = false;
 
                 if (!response.data.success) {
@@ -100,7 +101,7 @@
 </script>
 
 <style scoped lang="scss">
-    .b-icon {
+    .svg-inline--fa {
         cursor: pointer;
     }
 </style>

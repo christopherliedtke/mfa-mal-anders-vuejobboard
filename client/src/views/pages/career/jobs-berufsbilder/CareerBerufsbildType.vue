@@ -38,9 +38,9 @@
                             <div>
                                 <h3 class="h5 p-1 m-0">
                                     {{ berufsbild.title }}
-                                    <b-icon
-                                        icon="caret-right-fill"
-                                        font-scale="0.8"
+                                    <Fa
+                                        icon="caret-right"
+                                        size="xl"
                                         :class="
                                             visible === berufsbild.slug
                                                 ? 'animate rotate-90'
@@ -94,7 +94,7 @@
     import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
     import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
     export default {
-        name: "BerufsbildType",
+        name: "CareerBerufsbildType",
         components: {
             JobsBerufsbilderNav,
             RandomTrainingsContainer,

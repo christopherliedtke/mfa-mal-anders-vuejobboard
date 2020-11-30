@@ -35,7 +35,7 @@
     import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
     import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
     export default {
-        name: "FortWeiterbildungen",
+        name: "CareerFortWeiterbildung",
         components: {
             FortWeiterbildungenNav,
             RandomTrainingsContainer,

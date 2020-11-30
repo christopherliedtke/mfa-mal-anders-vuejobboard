@@ -16,7 +16,7 @@
                 class="ml-2"
                 variant="outline-danger"
                 @click.prevent="resetFile"
-                ><b-icon icon="trash"
+                ><Fa icon="trash-alt"
             /></b-button>
         </div>
         <b-form-invalid-feedback :state="success">
@@ -26,7 +26,6 @@
 </template>
 
 <script>
-    import axios from "@/axios";
     export default {
         name: "ImageUploader",
         props: ["id", "validated", "imageUrl", "width", "height", "fit"],
@@ -57,7 +56,7 @@
                     formData.append("height", this.height);
                     formData.append("fit", this.fit);
 
-                    const response = await axios.post(
+                    const response = await this.$axios.post(
                         "/api/images/upload",
                         formData
                     );
@@ -76,7 +75,7 @@
             },
             async deleteImage() {
                 try {
-                    await axios.post("/api/images/delete", {
+                    await this.$axios.post("/api/images/delete", {
                         imageUrl: this.imageUrl
                     });
                 } catch (err) {

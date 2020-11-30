@@ -33,6 +33,6 @@
     "/page/privacy-policy/",
     "/page/impressum/",
     "/page/agbs/",
-    "/login/",
-    "/register/"
+    "/auth/login/",
+    "/auth/register/"
 ]

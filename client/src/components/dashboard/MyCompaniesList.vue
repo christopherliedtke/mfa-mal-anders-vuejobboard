@@ -18,8 +18,7 @@
             class="mr-2 mb-2"
             to="/user/dashboard/companies/edit/new"
             variant="outline-primary"
-            ><b-icon class="mr-2" scale="1" icon="plus-circle"></b-icon>Neues
-            Unternehmen</b-button
+            ><Fa class="mr-2" icon="plus" />Neues Unternehmen</b-button
         >
         <b-button
             class="mr-2 mb-2"
@@ -58,11 +57,7 @@
                             "
                             variant="primary"
                             size="sm"
-                            ><b-icon
-                                class="mr-2"
-                                scale="1"
-                                icon="pencil-square"
-                            ></b-icon>
+                            ><Fa class="mr-2" icon="edit" />
                             Bearbeiten</b-button
                         >
                     </div>
@@ -71,11 +66,7 @@
                             variant="outline-danger"
                             size="sm"
                             @click.prevent="$bvModal.show(company._id)"
-                            ><b-icon
-                                class="mr-2"
-                                scale="1"
-                                icon="trash"
-                            ></b-icon>
+                            ><Fa class="mr-2" icon="trash-alt" />
                             Löschen</b-button
                         >
                     </div>
@@ -109,7 +100,6 @@
 </template>
 
 <script>
-    import axios from "@/axios";
     export default {
         name: "MyCompaniesList",
         data() {
@@ -121,7 +111,7 @@
         methods: {
             async getCompaniesByUserId() {
                 try {
-                    const response = await axios.post(
+                    const response = await this.$axios.post(
                         "/api/companies/private",
                         {
                             query: `
@@ -146,7 +136,7 @@
             },
             async deleteCompany(companyId) {
                 try {
-                    const response = await axios.post(
+                    const response = await this.$axios.post(
                         "/api/companies/private",
                         {
                             query: `

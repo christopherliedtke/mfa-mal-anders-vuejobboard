@@ -6,39 +6,41 @@ Vue.use(VueRouter);
 
 import store from "@/store";
 
-// Public
-import Home from "@/views/public/Home.vue";
-import Jobboard from "@/views/public/Jobboard.vue";
-import PublicJobView from "@/views/public/PublicJobView.vue";
+// Pages
+import Home from "@/views/index.vue";
 
-import PageView from "@/views/public/PageView.vue";
-import About from "@/views/public/pages/About.vue";
-import PrivacyPolicy from "@/views/public/pages/PrivacyPolicy.vue";
-import Impressum from "@/views/public/pages/Impressum.vue";
-import AGBs from "@/views/public/pages/AGBs.vue";
-import Contact from "@/views/public/pages/Contact.vue";
-import NewsletterSubscriptionSuccess from "@/views/public/pages/NewsletterSubscriptionSuccess.vue";
-import NewsletterUnsubscribe from "@/views/public/pages/NewsletterUnsubscribe.vue";
-import NewsletterUnsubscriptionSuccess from "@/views/public/pages/NewsletterUnsubscriptionSuccess.vue";
+import About from "@/views/pages/About.vue";
+import AGBs from "@/views/pages/AGBs.vue";
+import Contact from "@/views/pages/Contact.vue";
+import Employer from "@/views/pages/Employer.vue";
+import Impressum from "@/views/pages/Impressum.vue";
+import PrivacyPolicy from "@/views/pages/PrivacyPolicy.vue";
 
-import MFACareer from "@/views/public/pages/MFACareer.vue";
-import MFACareerHome from "@/views/public/pages/mfa-career/MFACareerHome.vue";
-import Gehalt from "@/views/public/pages/mfa-career/Gehalt.vue";
-import Bewerbungstipps from "@/views/public/pages/mfa-career/Bewerbungstipps.vue";
+import Blog from "@/views/pages/Blog.vue";
+import Article from "@/views/articles/_slug.vue";
 
-import JobsBerufsbilder from "@/views/public/pages/mfa-career/JobsBerufsbilder.vue";
-import JobsBerufsbilderHome from "@/views/public/pages/mfa-career/jobs-berufsbilder/JobsBerufsbilderHome.vue";
-import BerufsbildType from "@/views/public/pages/mfa-career/jobs-berufsbilder/BerufsbildType.vue";
+import Page from "@/views/pages/index.vue";
 
-import FortWeiterbildungen from "@/views/public/pages/mfa-career/FortWeiterbildungen.vue";
-import FortWeiterbildungenHome from "@/views/public/pages/mfa-career/fort-weiterbildungen/FortWeiterbildungenHome.vue";
-import FortWeiterbildung from "@/views/public/pages/mfa-career/fort-weiterbildungen/FortWeiterbildung.vue";
+import NewsletterSubscriptionSuccess from "@/views/pages/NewsletterSubscriptionSuccess.vue";
+import NewsletterUnsubscribe from "@/views/pages/NewsletterUnsubscribe.vue";
+import NewsletterUnsubscriptionSuccess from "@/views/pages/NewsletterUnsubscriptionSuccess.vue";
 
-import Magazin from "@/views/public/pages/Magazin.vue";
+import Career from "@/views/pages/career/index.vue";
+import CareerHome from "@/views/pages/career/CareerHome.vue";
+import CareerGehalt from "@/views/pages/career/CareerGehalt.vue";
+import CareerBewerbungstipps from "@/views/pages/career/CareerBewerbungstipps.vue";
 
-import ArticleView from "@/views/public/ArticleView.vue";
+import CareerJobsBerufsbilder from "@/views/pages/career/jobs-berufsbilder/index.vue";
+import CareerJobsBerufsbilderHome from "@/views/pages/career/jobs-berufsbilder/CareerJobsBerufsbilderHome.vue";
+import CareerBerufsbildType from "@/views/pages/career/jobs-berufsbilder/CareerBerufsbildType.vue";
 
-import Employer from "@/views/public/pages/Employer.vue";
+import CareerFortWeiterbildungen from "@/views/pages/career/fort-weiterbildungen/index.vue";
+import CareerFortWeiterbildungenHome from "@/views/pages/career/fort-weiterbildungen/CareerFortWeiterbildungenHome.vue";
+import CareerFortWeiterbildung from "@/views/pages/career/fort-weiterbildungen/CareerFortWeiterbildung.vue";
+
+// Jobboard
+import Jobboard from "@/views/jobboard/Jobboard.vue";
+import JobView from "@/views/jobboard/JobView.vue";
 
 // Auth
 import Auth from "@/views/auth/index.vue";
@@ -68,7 +70,7 @@ import AdminEditUser from "@/views/admin/users/edit/_userId.vue";
 import AdminCoupon from "@/views/admin/coupons/edit/_couponId.vue";
 
 // 404
-import NotFound from "@/views/public/NotFound.vue";
+import NotFound from "@/views/pages/NotFound.vue";
 
 const routes = [
     // #Public
@@ -90,61 +92,69 @@ const routes = [
     },
     {
         path: "/jobboard/job/:jobId",
-        name: "PublicJobView",
-        component: PublicJobView,
+        name: "JobView",
+        component: JobView,
+        meta: {
+            public: true
+        }
+    },
+    {
+        path: "/article/:slug",
+        name: "Article",
+        component: Article,
         meta: {
             public: true
         }
     },
     {
         path: "/page",
-        name: "PageView",
-        component: PageView,
+        name: "Page",
+        component: Page,
         meta: {
             public: true
         },
         children: [
             {
                 path: "mfa-career",
-                component: MFACareer,
+                component: Career,
                 children: [
                     {
                         path: "",
-                        component: MFACareerHome
+                        component: CareerHome
                     },
                     {
                         path: "gehalt",
-                        component: Gehalt
+                        component: CareerGehalt
                     },
                     {
                         path: "bewerbungstipps",
-                        component: Bewerbungstipps
+                        component: CareerBewerbungstipps
                     },
                     {
                         path: "jobs-und-berufsbilder",
-                        component: JobsBerufsbilder,
+                        component: CareerJobsBerufsbilder,
                         children: [
                             {
                                 path: "",
-                                component: JobsBerufsbilderHome
+                                component: CareerJobsBerufsbilderHome
                             },
                             {
                                 path: ":slug",
-                                component: BerufsbildType
+                                component: CareerBerufsbildType
                             }
                         ]
                     },
                     {
                         path: "fort-und-weiterbildungen",
-                        component: FortWeiterbildungen,
+                        component: CareerFortWeiterbildungen,
                         children: [
                             {
                                 path: "",
-                                component: FortWeiterbildungenHome
+                                component: CareerFortWeiterbildungenHome
                             },
                             {
                                 path: ":slug",
-                                component: FortWeiterbildung
+                                component: CareerFortWeiterbildung
                             }
                         ]
                     }
@@ -160,7 +170,7 @@ const routes = [
             },
             {
                 path: config.cms.postsPath,
-                component: Magazin
+                component: Blog
             },
             {
                 path: "contact",
@@ -192,14 +202,7 @@ const routes = [
             }
         ]
     },
-    {
-        path: "/article/:slug",
-        name: "ArticleView",
-        component: ArticleView,
-        meta: {
-            public: true
-        }
-    },
+
     // #Auth
     {
         path: "/auth",
@@ -376,7 +379,7 @@ const routes = [
         ]
     },
     // #404
-    { path: "/404", component: NotFound, meta: { public: true } },
+    { path: "/pages/404", component: NotFound, meta: { public: true } },
     { path: "*", redirect: "/jobboard" }
 ];
 

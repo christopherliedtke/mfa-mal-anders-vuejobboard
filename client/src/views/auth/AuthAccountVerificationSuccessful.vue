@@ -16,7 +16,6 @@
 </template>
 
 <script>
-    import axios from "@/axios";
     export default {
         name: "AccountVerificationSuccessful",
         mounted: function() {
@@ -24,13 +23,13 @@
         },
         methods: {
             async updateUserStatus() {
-                const response = await axios.get(
+                const response = await this.$axios.get(
                     "/api/auth/verification/update-user-status"
                 );
 
                 if (!response.data.success) {
                     localStorage.clear();
-                    const logout = await axios.get("/api/auth/logout");
+                    const logout = await this.$axios.get("/api/auth/logout");
                     if (logout.data.success) {
                         this.$router.push({ path: "/auth/login" });
                     }

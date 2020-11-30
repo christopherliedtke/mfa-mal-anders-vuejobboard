@@ -9,8 +9,7 @@
             class="mr-2 mb-2"
             to="/user/dashboard/jobs/edit/new"
             variant="outline-primary"
-            ><b-icon class="mr-2" scale="1" icon="plus-circle"></b-icon>Neue
-            Stelle</b-button
+            ><Fa class="mr-2" icon="plus" />Neue Stelle</b-button
         >
         <b-button
             class="mr-2 mb-2"
@@ -142,7 +141,7 @@
                             :to="`/user/dashboard/jobs/edit/${job._id}`"
                             variant="primary"
                             size="sm"
-                            ><b-icon class="mr-2" icon="pencil-square"></b-icon>
+                            ><Fa class="mr-2" icon="edit" />
                             Bearbeiten</b-button
                         >
                         <b-button
@@ -151,8 +150,7 @@
                             target="_blank"
                             variant="info"
                             size="sm"
-                            ><b-icon class="mr-2" scale="1" icon="eye"></b-icon>
-                            Vorschau</b-button
+                            ><Fa class="mr-2" icon="eye" /> Vorschau</b-button
                         >
                         <b-dropdown
                             v-if="
@@ -166,11 +164,7 @@
                             variant="secondary"
                         >
                             <template v-slot:button-content>
-                                <b-icon
-                                    class="mr-2"
-                                    icon="three-dots-vertical
-"
-                                ></b-icon>
+                                <Fa class="mr-2" icon="ellipsis-v" />
                                 Status ändern
                             </template>
                             <b-dropdown-item
@@ -204,7 +198,7 @@
                             variant="success"
                             size="sm"
                             @click.prevent="showCheckoutModal(job)"
-                            ><b-icon class="mr-2" icon="cart2"></b-icon>Jetzt
+                            ><Fa class="mr-2" icon="shopping-cart" />Jetzt
                             bezahlen</b-button
                         >
                         <b-button
@@ -226,7 +220,7 @@
                             variant="outline-danger"
                             size="sm"
                             @click.prevent="$bvModal.show(job._id)"
-                            ><b-icon class="mr-2" icon="trash"></b-icon>
+                            ><Fa class="mr-2" icon="trash-alt" />
                             Löschen</b-button
                         >
                     </div>
@@ -267,7 +261,6 @@
 </template>
 
 <script>
-    import axios from "@/axios";
     import Checkout from "@/components/checkout/Checkout.vue";
     export default {
         name: "MyJobsList",
@@ -287,8 +280,10 @@
         methods: {
             async getJobsByUserId() {
                 try {
-                    const response = await axios.post("/api/jobs/private", {
-                        query: `
+                    const response = await this.$axios.post(
+                        "/api/jobs/private",
+                        {
+                            query: `
                             query {
                                 jobs {
                                     _id
@@ -312,7 +307,8 @@
                                 }
                             }
                         `
-                    });
+                        }
+                    );
 
                     this.myJobs = response.data.data.jobs;
                 } catch (err) {
@@ -322,8 +318,10 @@
             },
             async updateJobStatus(jobId, status) {
                 try {
-                    const response = await axios.post("/api/jobs/private", {
-                        query: `
+                    const response = await this.$axios.post(
+                        "/api/jobs/private",
+                        {
+                            query: `
                             mutation {
                                 updateJobStatus(_id: "${jobId}", status: "${status}") {
                                     _id
@@ -337,7 +335,8 @@
                                 }
                             }
                         `
-                    });
+                        }
+                    );
 
                     if (response.data.data.updateJobStatus.status === status) {
                         this.myJobs.forEach((job, index) => {
@@ -357,15 +356,18 @@
             },
             async deleteJob(jobId) {
                 try {
-                    const response = await axios.post("/api/jobs/private", {
-                        query: `
+                    const response = await this.$axios.post(
+                        "/api/jobs/private",
+                        {
+                            query: `
                             mutation {
                                 deleteJob(_id: "${jobId}") {
                                     status
                                 }
                             }
                         `
-                    });
+                        }
+                    );
 
                     if (response.data.data.deleteJob.status === "deleted") {
                         this.myJobs.forEach((job, index) => {

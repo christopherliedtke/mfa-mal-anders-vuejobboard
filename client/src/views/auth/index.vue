@@ -1,4 +1,4 @@
-<template id="auth">
+<template>
     <router-view></router-view>
 </template>
 
