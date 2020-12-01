@@ -17,7 +17,7 @@
             JobCard
         },
         computed: {
-            similarJobs: function() {
+            similarJobs() {
                 let similarJobs = [...this.jobs];
 
                 if (

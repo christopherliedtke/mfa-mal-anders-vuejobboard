@@ -168,7 +168,7 @@
             };
         },
         watch: {
-            content: function() {
+            content() {
                 if (this.content && this.watchCounter === 0) {
                     this.watchCounter++;
                     this.setContent(this.content);

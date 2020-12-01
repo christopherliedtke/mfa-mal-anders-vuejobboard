@@ -30,7 +30,7 @@
             SgdBanner
         },
         computed: {
-            trainings: function() {
+            trainings() {
                 return this.$store.state.trainings.trainings;
             }
         }

@@ -121,7 +121,7 @@
             WhatsAppShareBtn
         },
         computed: {
-            article: function() {
+            article() {
                 return this.$store.state.articles.articles.find(
                     article => article.slug === this.$route.params.slug
                 );

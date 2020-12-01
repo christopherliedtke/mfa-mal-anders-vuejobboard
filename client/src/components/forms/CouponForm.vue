@@ -111,7 +111,7 @@
                 error: ""
             };
         },
-        created: function() {
+        created() {
             if (this.couponId) {
                 this.getCoupon(this.couponId);
             }
@@ -153,7 +153,16 @@
 
                     this.coupon = coupon.data.data.coupon;
                 } catch (err) {
-                    console.log("err: ", err);
+                    this.$root.$bvToast.toast(
+                        "Beim Laden des Coupons ist ein Fehler aufgetreten.",
+                        {
+                            title: `Fehler beim Laden`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 }
             },
             async onSubmit() {
@@ -213,18 +222,42 @@
                     );
 
                     if (!response.data.data[mutationType]) {
-                        this.error =
-                            "Oh, something went wrong. Please try again!";
+                        this.$root.$bvToast.toast(
+                            "Beim Speichern des Coupons ist ein Fehler aufgetreten.",
+                            {
+                                title: `Fehler beim Speichern`,
+                                variant: "danger",
+                                toaster: "b-toaster-bottom-right",
+                                solid: true,
+                                noAutoHide: true
+                            }
+                        );
                     } else {
                         this.success = true;
 
-                        setTimeout(() => {
-                            this.$router.go(-1);
-                        }, 1000);
+                        this.$root.$bvToast.toast(
+                            "Der Coupon wurde erfolgreich gespeichert.",
+                            {
+                                title: `Coupon gespeichert`,
+                                variant: "success",
+                                toaster: "b-toaster-bottom-right",
+                                solid: true
+                            }
+                        );
+
+                        this.$router.go(-1);
                     }
                 } catch (err) {
-                    this.error = "Oh, something went wrong. Please try again!";
-                    console.log("Error on update/save coupon: ", err);
+                    this.$root.$bvToast.toast(
+                        "Beim Speichern des Coupons ist ein Fehler aufgetreten.",
+                        {
+                            title: `Fehler beim Speichern`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 }
 
                 this.$store.dispatch("setOverlay", false);
@@ -247,5 +280,3 @@
         }
     };
 </script>
-
-<style lang="scss"></style>

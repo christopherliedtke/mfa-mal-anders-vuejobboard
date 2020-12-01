@@ -391,6 +391,33 @@
                 return value;
             }
         },
+        mounted() {
+            this.initStripe();
+            this.getPricePerAd();
+            // this.calculatePrice();
+
+            if (this.$route.query.success) {
+                this.checkPaymentSuccess(this.$route.query);
+            }
+        },
+        watch: {
+            showCheckoutModal() {
+                if (this.showCheckoutModal === true) {
+                    this.showModal();
+                } else {
+                    this.hideModal();
+                }
+            },
+            job() {
+                if (this.job.company.size) {
+                    this.calculatePrice();
+                }
+
+                if (this.job.company.name) {
+                    this.setBillingAddress();
+                }
+            }
+        },
         methods: {
             showModal() {
                 this.$refs["checkoutModal"].show();
@@ -429,9 +456,18 @@
                         this.checkoutSessionId = response.data.sessionId;
 
                         this.redirectToCheckout();
+                    } else {
+                        this.alert.msg =
+                            "Der Zahlungsprozess funktioniert leider im Moment nicht. Bitte versuchen Sie es später noch einmal oder kontaktieren Sie uns über unsere Kontaktdaten.";
+                        this.alert.variant = "danger";
+                        this.alert.showAlert = true;
                     }
                 } catch (err) {
-                    console.log("Error in fetchCheckoutSessionId(): ", err);
+                    this.alert.msg =
+                        "Der Zahlungsprozess funktioniert leider im Moment nicht. Bitte versuchen Sie es später noch einmal oder kontaktieren Sie uns über unsere Kontaktdaten.";
+                    this.alert.variant = "danger";
+                    this.alert.showAlert = true;
+
                     success = false;
                 }
 
@@ -452,19 +488,27 @@
             },
             async checkPaymentSuccess(query) {
                 if (query.success === "true") {
-                    this.alert = {
-                        msg:
-                            "Der Zahlungsvorgang wurde erfolgreich abgeschlossen. Ihre Anzeige ist ab sofort auf unserer Stellenbörse verfügbar. Einen Beleg für Ihre Zahlung erhalten Sie auf Ihre angegebene E-Mail Adresse.",
-                        variant: "success",
-                        showAlert: true
-                    };
+                    this.$root.$bvToast.toast(
+                        "Der Zahlungsvorgang wurde erfolgreich abgeschlossen. Ihre Anzeige ist ab sofort auf unserer Stellenbörse verfügbar. Einen Beleg für Ihre Zahlung erhalten Sie auf Ihre angegebene E-Mail Adresse.",
+                        {
+                            title: `Zahlung erfolgreich`,
+                            variant: "success",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 } else if (query.success === "false") {
-                    this.alert = {
-                        msg:
-                            "Ihre Zahlung konnte leider nicht verarbeitet werden. Bitte versuchen Sie es noch einmal oder kontaktieren Sie uns über unsere Kontaktdaten.",
-                        variant: "danger",
-                        showAlert: true
-                    };
+                    this.$root.$bvToast.toast(
+                        "Ihre Zahlung konnte leider nicht verarbeitet werden. Bitte versuchen Sie es noch einmal oder kontaktieren Sie uns über unsere Kontaktdaten.",
+                        {
+                            title: `Zahlung fehlgeschlagen`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 }
             },
             async getPricePerAd() {
@@ -545,7 +589,7 @@
                         location: this.job.company.location
                     };
                 } catch (err) {
-                    console.log("Error on getUserData(): ", err);
+                    //
                 }
             },
             validateBillingAddress() {
@@ -560,106 +604,81 @@
                     : true;
             },
             async sendInvoice() {
-                this.$store.dispatch("setOverlay", true);
-                if (this.validateBillingAddress()) {
-                    this.resetAlert();
+                this.resetAlert();
 
-                    try {
-                        const response = await this.$axios.post(
-                            "/api/invoice/get-invoice",
+                if (!this.validateBillingAddress()) {
+                    this.error = "Bitte fülle die erforderlichen Felder aus!";
+                    return null;
+                }
+
+                this.$store.dispatch("setOverlay", true);
+
+                try {
+                    const response = await this.$axios.post(
+                        "/api/invoice/get-invoice",
+                        {
+                            jobId: this.job._id,
+                            jobTitle: this.job.title,
+                            userId: this.billingAddress.userId,
+                            email: this.billingAddress.email,
+                            amount: this.amount,
+                            paymentMethod: this.paymentMethod,
+                            couponCode: this.coupon.code,
+                            discount: this.coupon.discount,
+                            refreshFrequency: this.refreshFrequencyComputed,
+                            billingAddressCompany: this.billingAddress.company,
+                            billingAddressName: this.billingAddress.name,
+                            billingAddressStreet: this.billingAddress.street,
+                            billingAddressZipCode: this.billingAddress.zipCode,
+                            billingAddressLocation: this.billingAddress.location
+                        }
+                    );
+
+                    if (response.data.success) {
+                        this.$root.$bvToast.toast(
+                            "Vielen Dank! Ihre Rechnung wurde erfolgreich angefordert. Innerhalb der nächsten 24 Stunden erhalten Sie die gewünschte Rechnung auf die angegebene E-Mail Adresse.",
                             {
-                                jobId: this.job._id,
-                                jobTitle: this.job.title,
-                                userId: this.billingAddress.userId,
-                                email: this.billingAddress.email,
-                                amount: this.amount,
-                                paymentMethod: this.paymentMethod,
-                                couponCode: this.coupon.code,
-                                discount: this.coupon.discount,
-                                refreshFrequency: this.refreshFrequencyComputed,
-                                billingAddressCompany: this.billingAddress
-                                    .company,
-                                billingAddressName: this.billingAddress.name,
-                                billingAddressStreet: this.billingAddress
-                                    .street,
-                                billingAddressZipCode: this.billingAddress
-                                    .zipCode,
-                                billingAddressLocation: this.billingAddress
-                                    .location
+                                title: `Rechnung angefordert`,
+                                variant: "success",
+                                toaster: "b-toaster-bottom-right",
+                                solid: true,
+                                noAutoHide: true
                             }
                         );
 
-                        if (response.data.success) {
-                            this.alert = {
-                                msg:
-                                    "Vielen Dank! Ihre Rechnung wurde erfolgreich angefordert. Innerhalb der nächsten 24 Stunden erhalten Sie die gewünschte Rechnung auf die angegebene E-Mail Adresse.",
-                                variant: "success",
-                                showAlert: true
-                            };
-                            this.$emit("update");
-
-                            setTimeout(() => {
-                                this.$emit("close");
-                            }, 1000);
-                        } else {
-                            this.alert = {
-                                msg:
-                                    "Bei der Verarbeitung Ihrer Daten ist leider ein Fehler aufgetreten. Bitte versuchen Sie es später noch einmal.",
+                        this.$emit("update");
+                        this.$emit("close");
+                    } else {
+                        this.$root.$bvToast.toast(
+                            "Bei der Verarbeitung Ihrer Daten ist leider ein Fehler aufgetreten. Bitte versuchen Sie es später noch einmal.",
+                            {
+                                title: `Fehler bei Rechnungsanforderung`,
                                 variant: "danger",
-                                showAlert: true
-                            };
-                        }
-                    } catch (err) {
-                        console.log("Error on sendInvoice(): ", err);
-
-                        this.alert = {
-                            msg:
-                                "Bei der Verarbeitung Ihrer Daten ist leider ein Fehler aufgetreten. Bitte versuchen Sie es später noch einmal.",
-                            variant: "danger",
-                            showAlert: true
-                        };
+                                toaster: "b-toaster-bottom-right",
+                                solid: true,
+                                noAutoHide: true
+                            }
+                        );
                     }
-                } else {
-                    this.alert = {
-                        msg:
-                            "Bitte geben Sie eine vollständige Rechnungsaddresse ein.",
-                        variant: "danger",
-                        showAlert: true
-                    };
+                } catch (err) {
+                    this.$root.$bvToast.toast(
+                        "Bei der Verarbeitung Ihrer Daten ist leider ein Fehler aufgetreten. Bitte versuchen Sie es später noch einmal.",
+                        {
+                            title: `Fehler bei Rechnungsanforderung`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 }
+
                 this.$store.dispatch("setOverlay", false);
             },
             resetAlert() {
                 this.alert.msg = "";
                 this.alert.variant = null;
                 this.alert.showAlert = false;
-            }
-        },
-        watch: {
-            showCheckoutModal: function() {
-                if (this.showCheckoutModal === true) {
-                    this.showModal();
-                } else {
-                    this.hideModal();
-                }
-            },
-            job: function() {
-                if (this.job.company.size) {
-                    this.calculatePrice();
-                }
-
-                if (this.job.company.name) {
-                    this.setBillingAddress();
-                }
-            }
-        },
-        mounted() {
-            this.initStripe();
-            this.getPricePerAd();
-            // this.calculatePrice();
-
-            if (this.$route.query.success) {
-                this.checkPaymentSuccess(this.$route.query);
             }
         }
     };

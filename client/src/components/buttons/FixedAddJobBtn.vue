@@ -1,7 +1,7 @@
 <template>
     <transition appear name="fade">
         <b-button
-            to="/register"
+            to="/auth/register"
             class="position-fixed shadow1 d-none d-lg-block"
             style="bottom: 5vw; right: 5vw; z-index: 999"
             variant="secondary"

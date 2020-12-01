@@ -57,7 +57,8 @@ import {
     TablePlugin,
     TabsPlugin,
     TooltipPlugin,
-    SpinnerPlugin
+    SpinnerPlugin,
+    ToastPlugin
 } from "bootstrap-vue";
 Vue.use(NavbarPlugin);
 Vue.use(AlertPlugin);
@@ -88,6 +89,7 @@ Vue.use(TablePlugin);
 Vue.use(TabsPlugin);
 Vue.use(TooltipPlugin);
 Vue.use(SpinnerPlugin);
+Vue.use(ToastPlugin);
 
 import VueSanitize from "vue-sanitize";
 Vue.use(VueSanitize);
@@ -156,7 +158,9 @@ import {
     faExternalLinkAlt,
     faSearch,
     faCaretRight,
-    faMap
+    faMap,
+    faImage,
+    faBoxOpen
 } from "@fortawesome/free-solid-svg-icons";
 // import { faUser as farUser } from "@fortawesome/free-regular-svg-icons";
 import {
@@ -239,7 +243,9 @@ library.add(
     faExternalLinkAlt,
     faSearch,
     faCaretRight,
-    faMap
+    faMap,
+    faImage,
+    faBoxOpen
 );
 
 Vue.component("Fa", FontAwesomeIcon);

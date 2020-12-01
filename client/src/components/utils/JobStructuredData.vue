@@ -7,15 +7,15 @@
         name: "JobStructuredData",
         props: ["job"],
         watch: {
-            job: function() {
+            job() {
                 this.updateHead();
             }
         },
         methods: {
-            updateHead: function() {
+            updateHead() {
                 this.$emit("updateHead");
             },
-            getEmploymentType: function(str) {
+            getEmploymentType(str) {
                 let output;
                 switch (str) {
                     case "full":
@@ -37,7 +37,7 @@
             }
         },
         head: {
-            script: function() {
+            script() {
                 if (this.job.title) {
                     return [
                         {

@@ -169,6 +169,11 @@
                 return this.$store.state.auth.userRole;
             }
         },
+        mounted() {
+            window.addEventListener("scroll", () => {
+                this.showHeader();
+            });
+        },
         methods: {
             toggleNavbar() {
                 this.$root.$emit("bv::toggle::collapse", "nav-collapse");
@@ -203,11 +208,6 @@
                 this.previousScrollPositionY =
                     window.document.documentElement.scrollTop;
             }
-        },
-        mounted: function() {
-            window.addEventListener("scroll", () => {
-                this.showHeader();
-            });
         }
     };
 </script>

@@ -82,19 +82,6 @@
                     {{ success ? "Gespeichert" : "Speichern" }}
                 </b-button>
             </div>
-            <b-alert v-if="verify" class="mt-3" show dismissible variant="info"
-                >Bitte überprüfe Dein E-Mail Postfach, um Deine E-Mail Adresse
-                zu bestätigen.</b-alert
-            >
-            <b-alert
-                v-if="error"
-                class="mt-3"
-                show
-                dismissible
-                variant="warning"
-                >Oh, da ist leider etwas schief gelaufen. Bitte probiere es noch
-                einmal.</b-alert
-            >
         </b-form>
     </div>
 </template>
@@ -120,11 +107,11 @@
                 contactGenderOptions,
                 contactTitleOptions,
                 disabled: true,
-                validated: null,
-                verify: null,
-                success: null,
-                error: null
+                validated: null
             };
+        },
+        created() {
+            this.getUserData();
         },
         methods: {
             async getUserData() {
@@ -156,14 +143,14 @@
                         this.user = userData.data.data.user;
                     }
                 } catch (err) {
-                    console.log("Error on getUserData(): ", err);
+                    //
                 }
             },
             async onSubmit() {
                 if (this.formValidation()) {
-                    try {
-                        this.$store.dispatch("setOverlay", true);
+                    this.$store.dispatch("setOverlay", true);
 
+                    try {
                         const response = await this.$axios.post(
                             `/api/user/${this.apiUsersSchema}`,
                             {
@@ -190,13 +177,22 @@
                         );
 
                         if (response.data.data.updateUser) {
-                            this.success = true;
+                            this.disabled = true;
+
+                            this.$root.$bvToast.toast(
+                                "Ihre Daten wurden erfolgreich gespeichert.",
+                                {
+                                    title: `Daten gespeichert`,
+                                    variant: "success",
+                                    toaster: "b-toaster-bottom-right",
+                                    solid: true
+                                }
+                            );
 
                             if (
                                 response.data.data.updateUser.status ===
                                 "pending"
                             ) {
-                                this.verify = true;
                                 this.$store.commit(
                                     "setUserStatus",
                                     response.data.data.updateUser.status
@@ -204,20 +200,44 @@
                                 await this.$axios.get(
                                     "/api/auth/verification/get-activation-email"
                                 );
+
+                                this.$root.$bvToast.toast(
+                                    "In den nächsten Minuten erhalten Sie eine E-Mail zur Verifizierung Ihrer E-Mail Adresse in Ihr Postfach. Bitte bestätigen Sie Ihre E-Mail Adresse über den dort enthaltenen Bestätigunglink.",
+                                    {
+                                        title: `E-Mail verifizieren`,
+                                        variant: "info",
+                                        toaster: "b-toaster-bottom-right",
+                                        solid: true,
+                                        noAutoHide: true
+                                    }
+                                );
                             }
-
-                            setTimeout(() => {
-                                this.disabled = true;
-                                this.success = null;
-                            }, 1000);
                         } else {
-                            this.error = true;
+                            this.$root.$bvToast.toast(
+                                "Beim Speichern Ihrer Daten ist ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal.",
+                                {
+                                    title: `Fehler beim Speichern`,
+                                    variant: "danger",
+                                    toaster: "b-toaster-bottom-right",
+                                    solid: true,
+                                    noAutoHide: true
+                                }
+                            );
                         }
-
-                        this.$store.dispatch("setOverlay", false);
                     } catch (err) {
-                        console.log("Error on onSubmit(): ", err);
+                        this.$root.$bvToast.toast(
+                            "Beim Speichern Ihrer Daten ist ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal.",
+                            {
+                                title: `Fehler beim Speichern`,
+                                variant: "danger",
+                                toaster: "b-toaster-bottom-right",
+                                solid: true,
+                                noAutoHide: true
+                            }
+                        );
                     }
+
+                    this.$store.dispatch("setOverlay", false);
                 }
             },
             formValidation() {
@@ -228,11 +248,6 @@
                     ? false
                     : true;
             }
-        },
-        created() {
-            this.getUserData();
         }
     };
 </script>
-
-<style></style>

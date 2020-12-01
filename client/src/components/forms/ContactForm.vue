@@ -155,10 +155,6 @@
         <b-alert v-if="error" class="mt-3" show dismissible variant="danger">{{
             error
         }}</b-alert>
-        <b-alert v-if="success" class="mt-3" show dismissible variant="success"
-            >Deine Nachricht wurde erfolgreich versandt. Wir melden uns
-            schnellstmöglich bei Dir zurück!</b-alert
-        >
     </div>
 </template>
 
@@ -187,9 +183,15 @@
                 contactGenderOptions,
                 contactTitleOptions,
                 validated: null,
-                error: null,
-                success: null
+                error: false
             };
+        },
+        mounted() {
+            if (this.$store.state.auth.userId) {
+                this.setUserData();
+            }
+            this.setSubject();
+            this.setMessage();
         },
         methods: {
             formValidation() {
@@ -221,15 +223,42 @@
                     );
 
                     if (response.data.success) {
-                        this.success = true;
                         this.validated = null;
                         this.resetForm();
+
+                        this.$root.$bvToast.toast(
+                            "Deine Nachricht wurde erfolgreich versandt. Wir melden uns schnellstmöglich bei Dir zurück!",
+                            {
+                                title: `Anfrage erfolgreich gesendet`,
+                                variant: "success",
+                                toaster: "b-toaster-bottom-right",
+                                solid: true,
+                                noAutoHide: true
+                            }
+                        );
                     } else {
-                        throw new Error("Email could not be sent.");
+                        this.$root.$bvToast.toast(
+                            "Beim Senden Ihrer Anfrage ist leider ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal.",
+                            {
+                                title: `Fehler beim Senden`,
+                                variant: "danger",
+                                toaster: "b-toaster-bottom-right",
+                                solid: true,
+                                noAutoHide: true
+                            }
+                        );
                     }
                 } catch (err) {
-                    this.error =
-                        "Oh, da ist leider etwas schief gelaufen. Bitte probiere es später noch einmal.";
+                    this.$root.$bvToast.toast(
+                        "Beim Senden Ihrer Anfrage ist leider ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal.",
+                        {
+                            title: `Fehler beim Senden`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 }
 
                 this.$store.dispatch("setOverlay", false);
@@ -275,13 +304,6 @@
                     this.form[key] = "";
                 }
             }
-        },
-        mounted() {
-            if (this.$store.state.auth.userId) {
-                this.setUserData();
-            }
-            this.setSubject();
-            this.setMessage();
         }
     };
 </script>

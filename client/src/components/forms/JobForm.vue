@@ -162,15 +162,13 @@
                 placeholder="ADMIN - URL to image (incl. https://)"
             >
             </b-form-input>
-            <div>
-                <b-avatar
-                    class="mt-2 d-flex align-items-center justify-content-center avatar"
-                    size="10rem"
-                    icon="card-image"
-                    variant="secondary"
-                    rounded
-                    :src="job.imageUrl"
-                />
+
+            <div
+                class="position-relative d-flex justify-content-center align-items-center bg-secondary rounded mt-2"
+                style="width: 150px; height: 150px"
+            >
+                <b-img v-if="job.imageUrl" :src="job.imageUrl" fluid />
+                <Fa v-else icon="image" size="5x" />
             </div>
 
             <h3 class="mt-4">Unternehmen</h3>
@@ -330,15 +328,16 @@
                 placeholder="ADMIN - URL to image (incl. https://)"
             >
             </b-form-input>
-            <div>
-                <b-avatar
-                    class="mt-2 d-flex align-items-center justify-content-center"
-                    size="lg"
-                    icon="box"
-                    variant="secondary"
-                    rounded
+            <div
+                class="position-relative d-flex justify-content-center align-items-center bg-secondary rounded mt-2"
+                style="width: 55px; height: 55px"
+            >
+                <b-img
+                    v-if="job.company.logoUrl"
                     :src="job.company.logoUrl"
+                    fluid
                 />
+                <Fa v-else icon="box-open" size="lg" />
             </div>
 
             <h3 class="mt-4">Kontakt für Bewerbungen</h3>
@@ -443,7 +442,7 @@
                 </b-button>
             </div>
         </b-form>
-        <b-alert v-if="error" class="mt-3" show dismissible variant="warning">{{
+        <b-alert v-if="error" class="mt-3" show dismissible variant="danger">{{
             error
         }}</b-alert>
     </div>
@@ -537,23 +536,23 @@
         },
         computed: {
             paidAt: {
-                get: function() {
+                get() {
                     return new Date(this.job.paidAt);
                 },
-                set: function(value) {
+                set(value) {
                     this.job.paidAt = new Date(value).getTime();
                 }
             },
             paidExpiresAt: {
-                get: function() {
+                get() {
                     return new Date(this.job.paidExpiresAt);
                 },
-                set: function(value) {
+                set(value) {
                     this.job.paidExpiresAt = new Date(value).getTime();
                 }
             }
         },
-        created: function() {
+        created() {
             if (this.jobId != "new") {
                 this.getJob(this.jobId);
             }
@@ -636,7 +635,16 @@
                         };
                     }
                 } catch (err) {
-                    console.log("Error on getJob(): ", err);
+                    this.$root.$bvToast.toast(
+                        "Beim Laden der Stellenanzeige ist ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal, indem Sie die Seite neu laden.",
+                        {
+                            title: `Fehler beim Laden`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 }
             },
             async getCompanies() {
@@ -667,14 +675,25 @@
 
                     this.companies = companies.data.data.companies;
                 } catch (err) {
-                    console.log("err: ", err);
+                    this.$root.$bvToast.toast(
+                        "Beim Laden Ihrer erstellten Unternehmen ist ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal, indem Sie die Seite neu laden.",
+                        {
+                            title: `Fehler beim Laden`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 }
             },
             async onSubmit() {
                 this.error = false;
 
                 if (!this.formValidation()) {
-                    this.error = "Bitte fülle die erforderlichen Felder aus!";
+                    this.error =
+                        "Bitte füllen Sie die erforderlichen Felder aus!";
+
                     return null;
                 }
 
@@ -801,8 +820,16 @@
                     );
 
                     if (!jobQueryResponse.data.data[jobMutationType]) {
-                        this.error =
-                            "Oh, da ist leider etwas schief gelaufen. Bitte probiere es noch einmal.";
+                        this.$root.$bvToast.toast(
+                            "Beim Speichern der Stellenanzeige ist ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal.",
+                            {
+                                title: `Fehler beim Speichern`,
+                                variant: "danger",
+                                toaster: "b-toaster-bottom-right",
+                                solid: true,
+                                noAutoHide: true
+                            }
+                        );
                     } else {
                         this.success = true;
 
@@ -812,16 +839,31 @@
                             jobMutationType
                         );
 
-                        setTimeout(() => {
-                            this.hasHistory
-                                ? this.$router.go(-1)
-                                : this.$router.push("/dashboard");
-                        }, 1000);
+                        this.$root.$bvToast.toast(
+                            "Die Stellenanzeige wurde erfolgreich gespeichert.",
+                            {
+                                title: `Stellenanzeige gespeichert`,
+                                variant: "success",
+                                toaster: "b-toaster-bottom-right",
+                                solid: true
+                            }
+                        );
+
+                        this.hasHistory
+                            ? this.$router.go(-1)
+                            : this.$router.push("/user/dashboard");
                     }
                 } catch (err) {
-                    this.error =
-                        "Oh, da ist leider etwas schief gelaufen. Bitte probiere es noch einmal.";
-                    console.log("err: ", err);
+                    this.$root.$bvToast.toast(
+                        "Beim Speichern der Stellenanzeige ist ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal.",
+                        {
+                            title: `Fehler beim Speichern`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 }
 
                 this.$store.dispatch("setOverlay", false);

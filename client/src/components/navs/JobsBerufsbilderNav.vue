@@ -19,7 +19,7 @@
     export default {
         name: "JobsBerufsbilderNav",
         computed: {
-            berufsbilderTypes: function() {
+            berufsbilderTypes() {
                 let data = this.$store.state.professions.professions.map(
                     profession => profession.berufsbildTypes.nodes[0].name
                 );

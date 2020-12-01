@@ -22,17 +22,6 @@
         >
             Probleme? Kontakt aufnehmen
         </b-button>
-        <div class="error mt-3" v-if="error">
-            <b-alert show dismissible variant="warning"
-                >Oh, da ist leider etwas schief gelaufen. Bitte probieren Sie es
-                noch einmal.</b-alert
-            >
-        </div>
-        <div class="success mt-3" v-if="success">
-            <b-alert show dismissible variant="success"
-                >Eine neue E-Mail mit Aktivierungslink wurde versandt.
-            </b-alert>
-        </div>
     </b-container>
 </template>
 
@@ -41,46 +30,81 @@
         name: "AuthAccountVerification",
         data() {
             return {
-                error: false,
-                success: false,
-                setIntervalId: null
+                intervalId: null
             };
+        },
+        mounted() {
+            this.checkUserStatus();
+            this.checkError();
         },
         methods: {
             async onSubmit() {
                 this.$store.dispatch("setOverlay", true);
-                this.error = false;
-                this.success = false;
 
                 const response = await this.$axios.get(
                     "/api/auth/verification/get-activation-email"
                 );
 
                 if (!response.data.success) {
-                    this.error = true;
+                    this.$root.$bvToast.toast(
+                        "Die E-Mail konnte leider nicht versandt werden. Bitte versuchen Sie es noch einmal oder melden sich ggfls. über unser Kontaktformular.",
+                        {
+                            title: `Fehler beim Versenden der E-Mail`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 } else {
-                    this.success = response.data.success;
+                    this.$root.$bvToast.toast(
+                        "Eine neue E-Mail mit Aktivierungslink wurde versandt und sollte innerhalb der nächsten Minuten in Ihrem Postfach ankommen. Bitte überprüfen Sie ggfls. auch Ihren Spam Ordner.",
+                        {
+                            title: `Aktivierungslink versandt`,
+                            variant: "success",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 }
 
                 this.$store.dispatch("setOverlay", false);
             },
             checkUserStatus() {
-                this.setIntervalId = setInterval(() => {
+                this.intervalId = setInterval(() => {
                     if (localStorage.getItem("userStatus") === "active") {
-                        clearInterval(this.setIntervalId);
+                        clearInterval(this.intervalId);
+
+                        this.$root.$bvToast.toast(
+                            "Sie haben Ihre E-Mail Adresse erfolgreich bestätigt. Ihr Account ist nun freigeschaltet.",
+                            {
+                                title: `Account aktiviert`,
+                                variant: "success",
+                                toaster: "b-toaster-bottom-right",
+                                solid: true,
+                                noAutoHide: true
+                            }
+                        );
+
                         this.$router.go();
                     }
                 }, 5000);
             },
             checkError() {
                 if (this.$route.query.error) {
-                    this.error = true;
+                    this.$root.$bvToast.toast(
+                        "Bei der Bestätigung Ihrer E-Mail Adresse ist ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal oder melden sich über unser Kontaktformular.",
+                        {
+                            title: `Fehler bei der Aktivierung`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 }
             }
-        },
-        mounted() {
-            this.checkUserStatus();
-            this.checkError();
         }
     };
 </script>

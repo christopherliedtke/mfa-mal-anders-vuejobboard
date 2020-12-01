@@ -595,19 +595,7 @@
                 ]
             };
         },
-        methods: {
-            startCounters() {
-                this.numbersAndFacts.forEach(element => {
-                    setInterval(() => {
-                        if (element.current < element.number) {
-                            element.current =
-                                element.current + element.number / 100;
-                        }
-                    }, 1);
-                });
-            }
-        },
-        mounted: function() {
+        mounted() {
             const elem = window.document.getElementById("numbers-and-facts");
 
             let intervalId = setInterval(() => {
@@ -619,6 +607,18 @@
                     this.startCounters();
                 }
             }, 500);
+        },
+        methods: {
+            startCounters() {
+                this.numbersAndFacts.forEach(element => {
+                    setInterval(() => {
+                        if (element.current < element.number) {
+                            element.current =
+                                element.current + element.number / 100;
+                        }
+                    }, 1);
+                });
+            }
         }
     };
 </script>

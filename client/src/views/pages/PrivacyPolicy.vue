@@ -17,6 +17,9 @@
                 content: ""
             };
         },
+        mounted() {
+            this.getPage();
+        },
         methods: {
             async getPage() {
                 try {
@@ -41,9 +44,6 @@
                     this.content = `Beim Laden der Seite ist ein Fehler aufgetreten. Bitte versuche es später noch einmal.`;
                 }
             }
-        },
-        mounted: function() {
-            this.getPage();
         }
     };
 </script>

@@ -79,21 +79,11 @@
                 <b-alert
                     show
                     dismissible
-                    variant="warning"
+                    variant="danger"
                     v-for="error in errors"
                     :key="error.msg"
                     >{{ error.msg }}</b-alert
                 >
-            </div>
-            <div class="success mt-3" v-if="success">
-                <b-alert show dismissible variant="success"
-                    >{{ success }}
-                    <b-spinner
-                        style="width: 1.2rem; height: 1.2rem;"
-                        variant="success"
-                        label="Spinning"
-                    ></b-spinner
-                ></b-alert>
             </div>
         </b-form>
     </div>
@@ -110,8 +100,7 @@
                 passwordType: "password",
                 secretCode: "",
                 state: 0,
-                errors: [],
-                success: ""
+                errors: []
             };
         },
         methods: {
@@ -151,12 +140,18 @@
                 if (!res.data.success) {
                     this.errors = res.data.errors;
                 } else {
-                    this.success =
-                        "Dein Passwort wurde erfolgreich gespeichert. Du wirst sofort weitergeleitet...";
+                    this.$root.$bvToast.toast(
+                        "Ihr neues Passwort wurde erfolgreich gespeichert. Bitte melden Sie sich mit dem neuen Passwort an.",
+                        {
+                            title: `Neues Passwort gespeichert`,
+                            variant: "success",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            autoHideDelay: 10000
+                        }
+                    );
 
-                    setTimeout(() => {
-                        this.$router.push({ path: "/auth/login" });
-                    }, 3500);
+                    this.$router.push({ path: "/auth/login" });
                 }
 
                 this.$store.dispatch("setOverlay", false);

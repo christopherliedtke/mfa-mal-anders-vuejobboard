@@ -42,7 +42,7 @@
             ToJobboardBanner
         },
         computed: {
-            training: function() {
+            training() {
                 return this.$store.state.trainings.trainings.find(
                     training => training.slug === this.$route.params.slug
                 );

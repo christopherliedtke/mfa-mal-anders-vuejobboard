@@ -24,7 +24,7 @@
 <script>
     import NewsletterSignUpForm from "@/components/forms/NewsletterSignUpForm.vue";
     export default {
-        name: "SubscribeNewsletterBtn",
+        name: "NewsletterSignUpPopUp",
         components: {
             NewsletterSignUpForm
         },
@@ -39,12 +39,6 @@
                 modalVisible: false
             };
         },
-        methods: {
-            closePopUp() {
-                localStorage.setItem("nl-pop", "false");
-                this.modalVisible = false;
-            }
-        },
         mounted() {
             if (
                 !localStorage.getItem("nl-pop") &&
@@ -53,6 +47,12 @@
                 setTimeout(() => {
                     this.modalVisible = true;
                 }, 10000);
+            }
+        },
+        methods: {
+            closePopUp() {
+                localStorage.setItem("nl-pop", "false");
+                this.modalVisible = false;
             }
         }
     };

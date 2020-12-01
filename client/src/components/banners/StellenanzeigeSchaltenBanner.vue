@@ -44,5 +44,3 @@
         name: "StellenanzeigeSchaltenBanner"
     };
 </script>
-
-<style></style>

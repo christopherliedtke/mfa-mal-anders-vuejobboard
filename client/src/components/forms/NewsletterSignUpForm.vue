@@ -60,22 +60,15 @@
 
             <b-button
                 class="mt-3"
-                :variant="success ? 'success' : 'secondary'"
+                variant="secondary"
+                :disabled="disabled"
                 @click.prevent="onSubmit"
             >
-                <Fa v-if="success" icon="check" class="mr-2" />
-                {{ success ? "Abonniert" : "Abonnieren" }}
+                Abonnieren
             </b-button>
         </b-form>
 
-        <b-alert v-if="success" class="mt-3" show dismissible variant="success"
-            ><strong
-                >Bitte überprüfe Dein E-Mail Postfach in den nächsten
-                Minuten</strong
-            >
-            (ggfls. auch dein Spam) und bestätige Deine Anmeldung.</b-alert
-        >
-        <b-alert v-if="error" class="mt-3" show dismissible variant="warning">{{
+        <b-alert v-if="error" class="mt-3" show dismissible variant="danger">{{
             error
         }}</b-alert>
     </div>
@@ -107,10 +100,15 @@
                     accepted: false
                 },
                 validated: null,
+                disabled: false,
                 error: null,
-                success: null,
                 companyStateOptions
             };
+        },
+        mounted() {
+            if (this.defaultState) {
+                this.form.state = this.defaultState;
+            }
         },
         methods: {
             async onSubmit() {
@@ -134,7 +132,18 @@
                     );
 
                     if (response.data.success) {
-                        this.success = true;
+                        this.$root.$bvToast.toast(
+                            "Du wurdest für den Job Newsletter registriert. Bitte überprüfe Dein E-Mail Postfach in den nächsten Minuten (ggfls. auch dein Spam) und bestätige Deine Anmeldung.",
+                            {
+                                title: `Newsletter Anmeldung`,
+                                variant: "success",
+                                toaster: "b-toaster-bottom-right",
+                                solid: true,
+                                noAutoHide: true
+                            }
+                        );
+
+                        this.disabled = true;
                         localStorage.setItem("nl-pop", "false");
 
                         this.trackEvent(
@@ -143,15 +152,11 @@
                         );
                     } else {
                         this.error =
-                            "Bei der Anmeldung ist ein Fehler aufgetreten. Bitte probiere es noch einmal.";
+                            "Bei der Anmeldung ist ein Fehler aufgetreten. Bitte versuche es noch einmal.";
                     }
                 } catch (err) {
-                    console.log(
-                        "Error on post to /api/newsletter/sign-up: ",
-                        err
-                    );
                     this.error =
-                        "Bei der Anmeldung ist ein Fehler aufgetreten. Bitte probiere es noch einmal.";
+                        "Bei der Anmeldung ist ein Fehler aufgetreten. Bitte versuche es noch einmal.";
                 }
 
                 this.$store.dispatch("setOverlay", false);
@@ -169,11 +174,6 @@
                     event_category: category,
                     event_label: label
                 });
-            }
-        },
-        mounted() {
-            if (this.defaultState) {
-                this.form.state = this.defaultState;
             }
         }
     };

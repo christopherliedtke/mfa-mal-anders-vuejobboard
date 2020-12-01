@@ -86,16 +86,6 @@
                 </p></b-modal
             >
         </b-card>
-        <b-alert
-            v-model="error"
-            class="position-fixed fixed-bottom m-0 rounded-0"
-            style="z-index: 2000;"
-            variant="warning"
-            dismissible
-        >
-            Oh, da ist leider etwas schief gelaufen. Bitte probiere es noch
-            einmal.
-        </b-alert>
     </div>
 </template>
 
@@ -104,9 +94,11 @@
         name: "MyCompaniesList",
         data() {
             return {
-                myCompanies: [],
-                error: false
+                myCompanies: []
             };
+        },
+        created() {
+            this.getCompaniesByUserId();
         },
         methods: {
             async getCompaniesByUserId() {
@@ -130,8 +122,16 @@
 
                     this.myCompanies = response.data.data.companies;
                 } catch (err) {
-                    this.error = true;
-                    console.log("err: ", err);
+                    this.$root.$bvToast.toast(
+                        "Ihre Unternehmen konnten nicht geladen werden. Bitte versuchen Sie es noch einmal, indem Sie die Seite neu laden.",
+                        {
+                            title: `Fehler beim Laden`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 }
             },
             async deleteCompany(companyId) {
@@ -155,17 +155,41 @@
                                 this.myCompanies.splice(index, 1);
                             }
                         });
+
+                        this.$root.$bvToast.toast(
+                            "Das Unternehmen wurde erfolgreich gelöscht.",
+                            {
+                                title: `Unternehmen gelöscht`,
+                                variant: "success",
+                                toaster: "b-toaster-bottom-right",
+                                solid: true
+                            }
+                        );
                     } else {
-                        this.error = true;
+                        this.$root.$bvToast.toast(
+                            "Das Unternehmen konnte nicht gelöscht werden. Bitte versuchen Sie es später noch einmal.",
+                            {
+                                title: `Fehler beim Löschen`,
+                                variant: "danger",
+                                toaster: "b-toaster-bottom-right",
+                                solid: true,
+                                noAutoHide: true
+                            }
+                        );
                     }
                 } catch (err) {
-                    this.error = true;
-                    console.log("err: ", err);
+                    this.$root.$bvToast.toast(
+                        "Das Unternehmen konnte nicht gelöscht werden. Bitte versuchen Sie es später noch einmal.",
+                        {
+                            title: `Fehler beim Löschen`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 }
             }
-        },
-        created: function() {
-            this.getCompaniesByUserId();
         }
     };
 </script>

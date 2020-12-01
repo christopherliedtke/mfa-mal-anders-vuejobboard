@@ -60,6 +60,19 @@
                 trainings: Array
             };
         },
+        mounted() {
+            this.getTrainings();
+        },
+        watch: {
+            $route(to, from) {
+                if (to != from) {
+                    this.getTrainings();
+                }
+            },
+            "$store.state.trainings.trainings"() {
+                this.getTrainings();
+            }
+        },
         methods: {
             getRandom(arr, n) {
                 var result = new Array(n),
@@ -83,19 +96,6 @@
                         this.number
                     );
                 }
-            }
-        },
-        mounted: function() {
-            this.getTrainings();
-        },
-        watch: {
-            $route(to, from) {
-                if (to != from) {
-                    this.getTrainings();
-                }
-            },
-            "$store.state.trainings.trainings": function() {
-                this.getTrainings();
             }
         }
     };

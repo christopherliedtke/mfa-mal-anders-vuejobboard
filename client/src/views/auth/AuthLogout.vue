@@ -34,6 +34,19 @@
                 }
             };
         },
+        mounted() {
+            if (this.$route.query.error) {
+                this.$root.$bvToast.toast(this.$route.query.error, {
+                    title: `Fehler`,
+                    variant: "danger",
+                    toaster: "b-toaster-bottom-right",
+                    solid: true,
+                    noAutoHide: true
+                });
+            }
+
+            this.logout();
+        },
         methods: {
             async logout() {
                 localStorage.clear();
@@ -48,19 +61,6 @@
                     this.$router.push({ path: "/auth/login" });
                 }
             }
-        },
-        mounted: function() {
-            let timeoutDuration = 0;
-
-            if (this.$route.query.error) {
-                timeoutDuration = 2000;
-                this.alert.show = true;
-                this.alert.msg = this.$route.query.error;
-            }
-
-            setTimeout(() => {
-                this.logout();
-            }, timeoutDuration);
         }
     };
 </script>

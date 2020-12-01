@@ -357,6 +357,14 @@
                 companySizeOptions
             };
         },
+        created() {
+            this.getJob(this.$route.params.jobId);
+        },
+        watch: {
+            "$route.params.jobId"() {
+                this.getJob(this.$route.params.jobId);
+            }
+        },
         methods: {
             async getJob(jobId) {
                 try {
@@ -405,13 +413,35 @@
                         }
                     );
 
-                    job.data.data.job
-                        ? (this.job = job.data.data.job)
-                        : (this.error = true);
+                    if (job.data.data.job) {
+                        this.job = job.data.data.job;
+                    } else {
+                        this.$root.$bvToast.toast(
+                            "Beim Laden der Stellenanzeige ist leider ein Fehler aufgetreten oder Sie ist abgelaufen.",
+                            {
+                                title: `Fehler beim Laden`,
+                                variant: "danger",
+                                toaster: "b-toaster-bottom-right",
+                                solid: true,
+                                noAutoHide: true
+                            }
+                        );
+
+                        this.$router.push("/jobboard");
+                    }
 
                     this.updateHead();
                 } catch (err) {
-                    console.log("Error on getJob(): ", err);
+                    this.$root.$bvToast.toast(
+                        "Beim Laden der Stellenanzeige ist leider ein Fehler aufgetreten. Bitte versuche es noch einmal, indem Du die Seite aktualisierst.",
+                        {
+                            title: `Fehler beim Laden`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 }
             },
             updateHead: function() {
@@ -428,14 +458,6 @@
                         event_label: label
                     });
                 }
-            }
-        },
-        created: function() {
-            this.getJob(this.$route.params.jobId);
-        },
-        watch: {
-            "$route.params.jobId": function() {
-                this.getJob(this.$route.params.jobId);
             }
         }
     };

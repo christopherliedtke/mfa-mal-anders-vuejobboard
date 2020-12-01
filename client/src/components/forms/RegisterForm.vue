@@ -122,7 +122,7 @@
             <b-alert
                 show
                 dismissible
-                variant="warning"
+                variant="danger"
                 v-for="error in errors"
                 :key="error.msg"
                 >{{ error.msg }}</b-alert
@@ -132,7 +132,6 @@
 </template>
 
 <script>
-    import { mapActions } from "vuex";
     import {
         contactGenderOptions,
         contactTitleOptions
@@ -156,11 +155,10 @@
             };
         },
         methods: {
-            ...mapActions(["userAuth"]),
             async onSubmit() {
                 this.$store.dispatch("setOverlay", true);
 
-                const res = await this.userAuth({
+                const res = await this.$store.dispatch("userAuth", {
                     url: "/api/auth/register",
                     userData: {
                         gender: this.gender,

@@ -40,11 +40,11 @@
                                     {{ berufsbild.title }}
                                     <Fa
                                         icon="caret-right"
-                                        size="xl"
+                                        size="1x"
                                         :class="
                                             visible === berufsbild.slug
-                                                ? 'animate rotate-90'
-                                                : 'animate'
+                                                ? 'animate rotate-90 ml-2'
+                                                : 'animate ml-2'
                                         "
                                     />
                                 </h3>
@@ -118,10 +118,10 @@
             };
         },
         computed: {
-            title: function() {
+            title() {
                 return `MFA Berufsbilder – ${this.$route.params.slug}`;
             },
-            berufsbilder: function() {
+            berufsbilder() {
                 return this.$store.state.professions.professions.filter(
                     berufsbild =>
                         berufsbild.berufsbildTypes.nodes[0].name ===

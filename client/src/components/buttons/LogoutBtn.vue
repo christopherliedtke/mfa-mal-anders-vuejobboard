@@ -1,6 +1,6 @@
 <template>
     <b-button variant="danger" @click="onLogout" aria-label="Logout">
-        <Fa class="mr-2" icon="sign-out-alt" size="lg" />Logout
+        <Fa class="mr-2" icon="sign-out-alt" size="1x" />Logout
     </b-button>
 </template>
 

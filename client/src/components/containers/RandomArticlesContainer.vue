@@ -53,6 +53,19 @@
                 articles: Array
             };
         },
+        mounted() {
+            this.getArticles();
+        },
+        watch: {
+            $route(to, from) {
+                if (to != from) {
+                    this.getArticles();
+                }
+            },
+            "$store.state.articles.articles"() {
+                this.getArticles();
+            }
+        },
         methods: {
             getRandom(arr, n) {
                 var result = new Array(n),
@@ -76,19 +89,6 @@
                         this.number
                     );
                 }
-            }
-        },
-        mounted: function() {
-            this.getArticles();
-        },
-        watch: {
-            $route(to, from) {
-                if (to != from) {
-                    this.getArticles();
-                }
-            },
-            "$store.state.articles.articles": function() {
-                this.getArticles();
             }
         }
     };

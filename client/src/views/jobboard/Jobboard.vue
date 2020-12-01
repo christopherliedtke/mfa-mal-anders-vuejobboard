@@ -197,7 +197,6 @@
 </template>
 
 <script>
-    import { mapActions, mapGetters } from "vuex";
     import {
         employmentTypeOptions,
         companyStateOptions,
@@ -245,64 +244,17 @@
                 jobboardView: this.$route.query.jobboardView || "list"
             };
         },
-        methods: {
-            ...mapActions(["getJobs"]),
-            setJobboardView(value) {
-                if (this.jobboardView != value) {
-                    this.jobboardView = value;
-                    this.setQuery();
-                }
-            },
-            setQuery() {
-                this.$router.push({
-                    query: { ...this.filter, jobboardView: this.jobboardView }
-                });
-            }
-        },
-        created: function() {
-            this.getJobs({
-                query: `
-                    query {
-                        jobs {
-                            _id
-                            createdAt
-                            paidAt
-                            title
-                            description
-                            employmentType
-                            applicationDeadline
-                            simpleApplication
-                            specialization
-                            company {
-                                _id
-                                name
-                                street
-                                location
-                                zipCode
-                                state
-                                country
-                                geoCodeLat
-                                geoCodeLng
-                                size
-                                logoUrl
-                            }
-                        }
-                    }
-                `
-            });
-        },
         computed: {
-            ...mapGetters(["jobs"]),
             computedJobboardView: {
-                get: function() {
+                get() {
                     return this.jobboardView === "map"
                         ? "HereMapMultiJobs"
                         : "JobboardList";
                 }
             },
             filteredJobs: {
-                get: function() {
-                    let jobs = [...this.jobs];
+                get() {
+                    let jobs = this.$store.state.jobs.jobs;
 
                     // filter country
 
@@ -416,7 +368,7 @@
                 }
             },
             locationsList: {
-                get: function() {
+                get() {
                     const locations = this.filteredJobs
                         .map(job => {
                             if (job.company) {
@@ -429,6 +381,22 @@
                         .filter((v, i) => locations.indexOf(v) === i)
                         .sort();
                 }
+            }
+        },
+        async created() {
+            this.$store.dispatch("getJobs");
+        },
+        methods: {
+            setJobboardView(value) {
+                if (this.jobboardView != value) {
+                    this.jobboardView = value;
+                    this.setQuery();
+                }
+            },
+            setQuery() {
+                this.$router.push({
+                    query: { ...this.filter, jobboardView: this.jobboardView }
+                });
             }
         }
     };

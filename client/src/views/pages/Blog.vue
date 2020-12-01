@@ -31,7 +31,7 @@
             };
         },
         computed: {
-            articles: function() {
+            articles() {
                 return this.$store.state.articles.articles;
             }
         }

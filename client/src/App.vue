@@ -13,10 +13,8 @@
 <script>
     import Header from "@/components/layout/Header";
     import Footer from "@/components/layout/Footer";
-    import NewsletterSignUpPopUp from "@/components/utils/NewsletterSignUpPopUp.vue";
+    import NewsletterSignUpPopUp from "@/components/popups/NewsletterSignUpPopUp.vue";
     import Overlay from "@/components/utils/Overlay";
-    import { mapActions } from "vuex";
-
     export default {
         components: {
             Header,
@@ -24,13 +22,26 @@
             NewsletterSignUpPopUp,
             Overlay
         },
+        created() {
+            if (this.$config.ga.active) {
+                this.track();
+            }
+
+            if (this.$config.cms.active) {
+                this.$store.dispatch("getArticles");
+                this.$store.dispatch("getTrainings");
+                this.$store.dispatch("getProfessions");
+            }
+            this.$store.dispatch("getJobs");
+        },
+        watch: {
+            $route(to, from) {
+                if (to.path != from.path && this.$config.ga.active) {
+                    this.track();
+                }
+            }
+        },
         methods: {
-            ...mapActions([
-                "getTrainings",
-                "getArticles",
-                "getProfessions",
-                "getJobs"
-            ]),
             track() {
                 this.$gtag.pageview({
                     page_title: this.$route.name,
@@ -40,55 +51,6 @@
                     client_storage: this.$config.ga.storage
                 });
             }
-        },
-        watch: {
-            $route(to, from) {
-                if (to.path != from.path && this.$config.ga.active) {
-                    this.track();
-                }
-            }
-        },
-        created: function() {
-            if (this.$config.ga.active) {
-                this.track();
-            }
-
-            if (this.$config.cms.active) {
-                this.getTrainings();
-                this.getArticles();
-                this.getProfessions();
-            }
-
-            this.getJobs({
-                query: `
-                    query {
-                        jobs {
-                            _id
-                            createdAt
-                            paidAt
-                            title
-                            description
-                            employmentType
-                            applicationDeadline
-                            simpleApplication
-                            specialization
-                            company {
-                                _id
-                                name
-                                street
-                                location
-                                zipCode
-                                state
-                                country
-                                geoCodeLat
-                                geoCodeLng
-                                size
-                                logoUrl
-                            }
-                        }
-                    }
-                `
-            });
         }
     };
 </script>

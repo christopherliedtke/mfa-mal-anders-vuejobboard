@@ -56,7 +56,7 @@
                                 ? 'light'
                                 : job.status === 'published'
                                 ? 'success'
-                                : 'warning'
+                                : 'danger'
                         "
                         >{{
                             job.status === "published"
@@ -168,7 +168,7 @@
                                 Status ändern
                             </template>
                             <b-dropdown-item
-                                variant="secondary"
+                                variant=""
                                 @click.prevent="
                                     updateJobStatus(job._id, 'draft')
                                 "
@@ -182,7 +182,7 @@
                                 >Online</b-dropdown-item
                             >
                             <b-dropdown-item
-                                variant="warning"
+                                variant="danger"
                                 @click.prevent="
                                     updateJobStatus(job._id, 'unpublished')
                                 "
@@ -247,16 +247,6 @@
             @close="checkout.showModal = false"
             @update="getJobsByUserId"
         />
-        <b-alert
-            v-model="error"
-            class="position-fixed fixed-bottom m-0 rounded-0"
-            style="z-index: 2000;"
-            variant="warning"
-            dismissible
-        >
-            Beim Laden der Seite ist ein Fehler aufgetreten. Bitte probiere es
-            noch einmal oder versuche Dich neu ein- und auszuloggen.
-        </b-alert>
     </div>
 </template>
 
@@ -273,9 +263,11 @@
                 checkout: {
                     showModal: false,
                     checkoutJob: null
-                },
-                error: false
+                }
             };
+        },
+        created() {
+            this.getJobsByUserId();
         },
         methods: {
             async getJobsByUserId() {
@@ -312,8 +304,16 @@
 
                     this.myJobs = response.data.data.jobs;
                 } catch (err) {
-                    this.error = true;
-                    console.log("err: ", err);
+                    this.$root.$bvToast.toast(
+                        "Ihre Stellenanzeigen konnten nicht geladen werden. Bitte versuchen Sie es noch einmal, indem Sie die Seite neu laden.",
+                        {
+                            title: `Fehler beim Laden`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 }
             },
             async updateJobStatus(jobId, status) {
@@ -346,12 +346,39 @@
                                     response.data.data.updateJobStatus.updatedAt;
                             }
                         });
+
+                        this.$root.$bvToast.toast(
+                            "Der Status der Stellenanzeige wurde erfolgreich aktualisiert.",
+                            {
+                                title: `Status aktualisiert`,
+                                variant: "success",
+                                toaster: "b-toaster-bottom-right",
+                                solid: true
+                            }
+                        );
                     } else {
-                        this.error = true;
+                        this.$root.$bvToast.toast(
+                            "Der Status der Stellenanzeige konnte nicht aktualisiert werden. Bitte versuchen Sie es später noch einmal.",
+                            {
+                                title: `Fehler beim Aktualisieren`,
+                                variant: "danger",
+                                toaster: "b-toaster-bottom-right",
+                                solid: true,
+                                noAutoHide: true
+                            }
+                        );
                     }
                 } catch (err) {
-                    this.error = true;
-                    console.log("err: ", err);
+                    this.$root.$bvToast.toast(
+                        "Der Status der Stellenanzeige konnte nicht aktualisiert werden. Bitte versuchen Sie es später noch einmal.",
+                        {
+                            title: `Fehler beim Aktualisieren`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 }
             },
             async deleteJob(jobId) {
@@ -375,21 +402,45 @@
                                 this.myJobs.splice(index, 1);
                             }
                         });
+
+                        this.$root.$bvToast.toast(
+                            "Die Stellenanzeige wurde erfolgreich gelöscht.",
+                            {
+                                title: `Stellenanzeige gelöscht`,
+                                variant: "success",
+                                toaster: "b-toaster-bottom-right",
+                                solid: true
+                            }
+                        );
                     } else {
-                        this.error = true;
+                        this.$root.$bvToast.toast(
+                            "Die Stellenanzeige konnte nicht gelöscht werden. Bitte versuchen Sie es später noch einmal.",
+                            {
+                                title: `Fehler beim Löschen`,
+                                variant: "danger",
+                                toaster: "b-toaster-bottom-right",
+                                solid: true,
+                                noAutoHide: true
+                            }
+                        );
                     }
                 } catch (err) {
-                    this.error = true;
-                    console.log("err: ", err);
+                    this.$root.$bvToast.toast(
+                        "Die Stellenanzeige konnte nicht gelöscht werden. Bitte versuchen Sie es später noch einmal.",
+                        {
+                            title: `Fehler beim Löschen`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 }
             },
             showCheckoutModal(job) {
                 this.checkout.checkoutJob = job;
                 this.checkout.showModal = true;
             }
-        },
-        created: function() {
-            this.getJobsByUserId();
         }
     };
 </script>

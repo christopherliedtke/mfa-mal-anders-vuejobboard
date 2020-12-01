@@ -127,15 +127,12 @@
                 placeholder="ADMIN - URL to image (incl. https://)"
             >
             </b-form-input>
-            <div>
-                <b-avatar
-                    class="mt-2 d-flex align-items-center justify-content-center"
-                    size="lg"
-                    icon="box"
-                    variant="secondary"
-                    rounded
-                    :src="company.logoUrl"
-                />
+            <div
+                class="position-relative d-flex justify-content-center align-items-center bg-secondary rounded mt-2"
+                style="width: 55px; height: 55px"
+            >
+                <b-img v-if="company.logoUrl" :src="company.logoUrl" fluid />
+                <Fa v-else icon="box-open" size="lg" />
             </div>
 
             <div class="d-flex justify-content-between my-4">
@@ -151,7 +148,7 @@
                 </b-button>
             </div>
         </b-form>
-        <b-alert v-if="error" class="mt-3" show dismissible variant="warning">{{
+        <b-alert v-if="error" class="mt-3" show dismissible variant="danger">{{
             error
         }}</b-alert>
     </div>
@@ -198,7 +195,7 @@
                 error: ""
             };
         },
-        created: function() {
+        created() {
             if (this.companyId != "new") {
                 this.getCompany(this.companyId);
             }
@@ -238,14 +235,24 @@
 
                     this.company = company.data.data.company;
                 } catch (err) {
-                    console.log("err: ", err);
+                    this.$root.$bvToast.toast(
+                        "Beim Laden des Unternehmens ist ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal, indem Sie die Seite neu laden.",
+                        {
+                            title: `Fehler beim Laden`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 }
             },
             async onSubmit() {
                 this.error = false;
 
                 if (!this.formValidation()) {
-                    this.error = "Bitte fülle die erforderlichen Felder aus!";
+                    this.error =
+                        "Bitte füllen Sie die erforderlichen Felder aus!";
                     return null;
                 }
 
@@ -310,16 +317,31 @@
                     } else {
                         this.success = true;
 
-                        setTimeout(() => {
-                            this.hasHistory && this.apiJobsSchema === "admin"
-                                ? this.$router.go(-1)
-                                : this.$router.push("/dashboard?tab=2");
-                        }, 1000);
+                        this.$root.$bvToast.toast(
+                            "Das Unternehmen wurde erfolgreich gespeichert.",
+                            {
+                                title: `Unternehmen gespeichert`,
+                                variant: "success",
+                                toaster: "b-toaster-bottom-right",
+                                solid: true
+                            }
+                        );
+
+                        this.hasHistory && this.apiJobsSchema === "admin"
+                            ? this.$router.go(-1)
+                            : this.$router.push("/user/dashboard?tab=2");
                     }
                 } catch (err) {
-                    this.error =
-                        "Oh, da ist leider etwas schief gelaufen. Bitte probiere es noch einmal.";
-                    console.log("Error on update/save company: ", err);
+                    this.$root.$bvToast.toast(
+                        "Beim Speichern des Unternehmens ist ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal.",
+                        {
+                            title: `Fehler beim Speichern`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 }
 
                 this.$store.dispatch("setOverlay", false);

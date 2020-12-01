@@ -9,9 +9,38 @@ const getters = {
 };
 
 const actions = {
-    async getJobs({ commit }, data) {
+    async getJobs({ commit }) {
         const response = await axios.get("/api/jobs/public", {
-            params: data
+            params: {
+                query: `
+                    query {
+                        jobs {
+                            _id
+                            createdAt
+                            paidAt
+                            title
+                            description
+                            employmentType
+                            applicationDeadline
+                            simpleApplication
+                            specialization
+                            company {
+                                _id
+                                name
+                                street
+                                location
+                                zipCode
+                                state
+                                country
+                                geoCodeLat
+                                geoCodeLng
+                                size
+                                logoUrl
+                            }
+                        }
+                    }
+                `
+            }
         });
         commit("setJobs", response.data.data.jobs);
     }

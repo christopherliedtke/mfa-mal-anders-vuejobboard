@@ -41,7 +41,7 @@
             <b-alert
                 show
                 dismissible
-                variant="warning"
+                variant="danger"
                 v-for="error in errors"
                 :key="error.msg"
                 >{{ error.msg }}</b-alert
@@ -51,7 +51,6 @@
 </template>
 
 <script>
-    import { mapActions } from "vuex";
     export default {
         name: "LoginForm",
         data() {
@@ -63,9 +62,10 @@
             };
         },
         methods: {
-            ...mapActions(["userAuth"]),
             async onSubmit() {
-                const res = await this.userAuth({
+                this.$store.dispatch("setOverlay", true);
+
+                const res = await this.$store.dispatch("userAuth", {
                     url: "/api/auth/login",
                     userData: {
                         email: this.email,
@@ -76,6 +76,8 @@
                 if (!res.success) {
                     this.errors = res.errors;
                 }
+
+                this.$store.dispatch("setOverlay", false);
             },
             togglePasswordType() {
                 this.passwordType === "text"
