@@ -49,7 +49,7 @@ const actions = {
             localStorage.removeItem("user");
             localStorage.removeItem("loggedIn");
 
-            router.push("/");
+            router.push("/").catch(() => {});
         }
     }
 };
