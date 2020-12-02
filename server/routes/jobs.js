@@ -4,7 +4,7 @@ const expressGraphQL = require("express-graphql");
 const publicJobsSchema = require("../utils/graphQL/schemas/publicJobsSchema");
 const privateJobsSchema = require("../utils/graphQL/schemas/privateJobsSchema");
 const adminJobsSchema = require("../utils/graphQL/schemas/adminJobsSchema");
-const authenticateToken = require("../utils/middleware/checkAuth");
+const verifyToken = require("../utils/middleware/verifyToken");
 const isAdmin = require("../utils/middleware/isAdmin");
 
 // #route:  POST /api/jobs/public
@@ -26,7 +26,7 @@ router.use(
 // #access: Private
 router.use(
     "/private",
-    authenticateToken,
+    verifyToken,
     expressGraphQL({
         schema: privateJobsSchema,
         graphiql: true,
@@ -41,7 +41,7 @@ router.use(
 // #access: Private
 router.use(
     "/admin",
-    authenticateToken,
+    verifyToken,
     isAdmin,
     expressGraphQL({
         schema: adminJobsSchema,

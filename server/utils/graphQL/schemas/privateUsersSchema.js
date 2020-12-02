@@ -17,7 +17,7 @@ const RootQuery = new GraphQLObjectType({
             args: {},
             async resolve(parentValue, args, req) {
                 const user = await User.findOne({
-                    _id: req.userId,
+                    _id: req.user._id,
                 });
                 return user;
             },
@@ -39,7 +39,7 @@ const mutation = new GraphQLObjectType({
                 email: { type: new GraphQLNonNull(GraphQLString) },
             },
             async resolve(parentValue, args, req) {
-                const oldUserData = await User.findOne({ _id: req.userId });
+                const oldUserData = await User.findOne({ _id: req.user._id });
 
                 const status =
                     args.email === oldUserData.email
@@ -47,7 +47,7 @@ const mutation = new GraphQLObjectType({
                         : "pending";
 
                 const response = await User.updateOne(
-                    { _id: req.userId },
+                    { _id: req.user._id },
                     {
                         gender: sanitizeHtml(args.gender),
                         title: sanitizeHtml(args.title),
@@ -62,7 +62,7 @@ const mutation = new GraphQLObjectType({
                     return;
                 } else {
                     const updatedUser = await User.findOne({
-                        _id: req.userId,
+                        _id: req.user._id,
                     });
 
                     return updatedUser;

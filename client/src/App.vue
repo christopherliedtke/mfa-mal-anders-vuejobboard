@@ -22,17 +22,25 @@
             NewsletterSignUpPopUp,
             Overlay
         },
-        created() {
+        async created() {
             if (this.$config.ga.active) {
                 this.track();
             }
+
+            if (this.$store.state.auth.loggedIn) {
+                const user = await this.$store.dispatch("fetchUser");
+                if (!user) {
+                    this.$store.dispatch("logout");
+                }
+            }
+
+            this.$store.dispatch("getJobs");
 
             if (this.$config.cms.active) {
                 this.$store.dispatch("getArticles");
                 this.$store.dispatch("getTrainings");
                 this.$store.dispatch("getProfessions");
             }
-            this.$store.dispatch("getJobs");
         },
         watch: {
             $route(to, from) {

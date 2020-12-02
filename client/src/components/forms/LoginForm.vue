@@ -65,9 +65,9 @@
             async onSubmit() {
                 this.$store.dispatch("setOverlay", true);
 
-                const res = await this.$store.dispatch("userAuth", {
-                    url: "/api/auth/login",
-                    userData: {
+                const res = await this.$store.dispatch("auth", {
+                    type: "login",
+                    creds: {
                         email: this.email,
                         password: this.password
                     }
@@ -75,6 +75,14 @@
 
                 if (!res.success) {
                     this.errors = res.errors;
+                } else {
+                    await this.$store.dispatch("fetchUser");
+
+                    if (this.$store.state.auth.user.status === "pending") {
+                        this.$router.push("/auth/account/verification");
+                    } else if (this.$store.state.auth.loggedIn) {
+                        this.$router.push("/user/dashboard");
+                    }
                 }
 
                 this.$store.dispatch("setOverlay", false);

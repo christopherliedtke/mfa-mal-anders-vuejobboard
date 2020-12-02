@@ -23,7 +23,7 @@ const RootQuery = new GraphQLObjectType({
             async resolve(parentValue, args, req) {
                 const company = await Company.findOne({
                     _id: args._id,
-                    userId: req.userId,
+                    userId: req.user._id,
                 });
                 return company;
             },
@@ -32,7 +32,7 @@ const RootQuery = new GraphQLObjectType({
             type: new GraphQLList(CompanyType),
             async resolve(parentValue, args, req) {
                 const companies = await Company.find({
-                    userId: req.userId,
+                    userId: req.user._id,
                 }).sort({
                     createdAt: "desc",
                 });
@@ -74,7 +74,7 @@ const mutation = new GraphQLObjectType({
                 },
             },
             async resolve(parentValue, args, req) {
-                const addObj = { ...args, userId: req.userId };
+                const addObj = { ...args, userId: req.user._id };
 
                 for (const key in addObj) {
                     addObj[key] = sanitizeHtml(addObj[key]);
@@ -123,7 +123,7 @@ const mutation = new GraphQLObjectType({
                 }
 
                 const response = await Company.updateOne(
-                    { _id: args._id, userId: req.userId },
+                    { _id: args._id, userId: req.user._id },
                     updateObj
                 );
 
@@ -132,7 +132,7 @@ const mutation = new GraphQLObjectType({
                 } else {
                     const updatedCompany = await Company.findOne({
                         _id: args._id,
-                        userId: req.userId,
+                        userId: req.user._id,
                     });
 
                     return updatedCompany;
@@ -146,7 +146,7 @@ const mutation = new GraphQLObjectType({
             },
             async resolve(parentValue, args, req) {
                 const { logoUrl } = await Company.findOne(
-                    { _id: args._id, userId: req.userId },
+                    { _id: args._id, userId: req.user._id },
                     "logoUrl"
                 );
 
@@ -156,7 +156,7 @@ const mutation = new GraphQLObjectType({
 
                 const response = await Company.deleteOne({
                     _id: args._id,
-                    userId: req.userId,
+                    userId: req.user._id,
                 });
 
                 if (response.n === 1) {

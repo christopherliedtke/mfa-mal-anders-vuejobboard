@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const authenticateToken = require("../utils/middleware/checkAuth");
+const verifyToken = require("../utils/middleware/verifyToken");
 const emailService = require("../utils/nodemailer");
 const config = require("../utils/config");
 const { Job } = require("../utils/models/job");
@@ -9,7 +9,7 @@ const createInvoice = require("../utils/createInvoice");
 // #route:  POST /api/invoice/get-invoice
 // #desc:   Handle invoice request
 // #access: Private
-router.post("/get-invoice", authenticateToken, async (req, res) => {
+router.post("/get-invoice", verifyToken, async (req, res) => {
     const {
         jobId,
         jobTitle,

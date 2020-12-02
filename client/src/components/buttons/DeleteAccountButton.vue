@@ -76,11 +76,7 @@
                 if (!response.data.success) {
                     this.error = response.data.error;
                 } else {
-                    localStorage.clear();
-                    this.$store.commit("setUserId", null);
-                    this.$store.commit("setUserRole", null);
-                    this.$store.commit("setUserStatus", null);
-                    this.$router.push({ path: "/login" });
+                    this.$store.dispatch("logout");
                 }
             },
             togglePasswordType() {

@@ -406,9 +406,9 @@ router.beforeEach((to, from, next) => {
     );
     const onlyAdmin = to.matched.some(record => record.meta.onlyAdmin);
 
-    const loggedIn = !!store.getters.userId;
-    const userActivated = localStorage.getItem("userStatus") != "pending";
-    const userRole = store.getters.userRole;
+    const loggedIn = store.getters.loggedIn;
+    const userActivate = store.getters.user.status === "active";
+    const userRole = store.getters.user.role;
 
     if (onlyAdmin && userRole !== "admin") {
         return next("/");
@@ -421,11 +421,11 @@ router.beforeEach((to, from, next) => {
         });
     }
 
-    if (!isPublic && !onlyWhenPending && loggedIn && !userActivated) {
+    if (!isPublic && !onlyWhenPending && loggedIn && !userActivate) {
         return next("/auth/account/verification");
     }
 
-    if (!isPublic && onlyWhenPending && loggedIn && userActivated) {
+    if (!isPublic && onlyWhenPending && loggedIn && userActivate) {
         return next("/user/dashboard");
     }
 

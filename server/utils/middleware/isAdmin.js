@@ -1,5 +1,5 @@
 const isAdmin = (req, res, next) => {
-    if (req.userRole != "admin") {
+    if (req.user.role != "admin") {
         res.sendStatus(401);
     } else {
         next();

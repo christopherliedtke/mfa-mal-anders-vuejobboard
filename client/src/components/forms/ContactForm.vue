@@ -187,7 +187,7 @@
             };
         },
         mounted() {
-            if (this.$store.state.auth.userId) {
+            if (this.$store.state.auth.loggedIn) {
                 this.setUserData();
             }
             this.setSubject();
@@ -263,31 +263,12 @@
 
                 this.$store.dispatch("setOverlay", false);
             },
-            async setUserData() {
-                if (this.$store.state.auth.userStatus === "active") {
-                    const response = await this.$axios.post(
-                        "/api/user/private",
-                        {
-                            query: `
-                                query {
-                                    user {
-                                        _id
-                                        gender
-                                        title
-                                        firstName
-                                        lastName
-                                        email
-                                    }
-                                }
-                            `
-                        }
-                    );
-
-                    this.form = { ...this.form, ...response.data.data.user };
-                } else {
-                    this.form.firstName = this.$store.state.auth.userFirstName;
-                    this.form.lastName = this.$store.state.auth.userLastName;
-                }
+            setUserData() {
+                this.form.title = this.$store.state.auth.user.title;
+                this.form.gender = this.$store.state.auth.user.gender;
+                this.form.firstName = this.$store.state.auth.user.firstName;
+                this.form.lastName = this.$store.state.auth.user.lastName;
+                this.form.email = this.$store.state.auth.user.email;
             },
             setSubject() {
                 if (this.$route.query.subject) {

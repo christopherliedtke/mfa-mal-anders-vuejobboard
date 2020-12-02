@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const authenticateToken = require("../utils/middleware/checkAuth");
+const verifyToken = require("../utils/middleware/verifyToken");
 const { User } = require("../utils/models/user");
 const { Coupon } = require("../utils/models/coupon");
 const { UsedCoupon } = require("../utils/models/usedCoupon");
@@ -26,7 +26,7 @@ router.get("/get-stripe-pk", (req, res) => {
 // #route:  GET /api/stripe/get-price-per-ad
 // #desc:   Provide Price per job ad
 // #access: Private
-router.get("/get-price-per-ad", authenticateToken, (req, res) => {
+router.get("/get-price-per-ad", verifyToken, (req, res) => {
     res.json({
         amount: config.stripe.pricePerJob,
         currency: config.stripe.currency,
@@ -37,7 +37,7 @@ router.get("/get-price-per-ad", authenticateToken, (req, res) => {
 // #route:  POST /api/stripe/validate-coupon
 // #desc:   Validate discount coupon
 // #access: Private
-router.post("/validate-coupon", authenticateToken, async (req, res) => {
+router.post("/validate-coupon", verifyToken, async (req, res) => {
     try {
         const coupon = await Coupon.findOne({ code: req.body.code });
         const usedCoupon = await UsedCoupon.findOne({
@@ -67,7 +67,7 @@ router.post("/validate-coupon", authenticateToken, async (req, res) => {
 // #route:  POST /api/stripe/create-session-id
 // #desc:   Create a session id for a user
 // #access: Private
-router.post("/create-session-id", authenticateToken, async (req, res) => {
+router.post("/create-session-id", verifyToken, async (req, res) => {
     try {
         if (req.body.amount < 2500) {
             throw new Error(

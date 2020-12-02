@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const path = require("path");
-// const authenticateToken = require("../utils/middleware/checkAuth");
+// const verifyToken = require("../utils/middleware/verifyToken");
 
 // #route:  GET /api/download/public/bewerbungsunterlagen
 // #desc:   download application documents

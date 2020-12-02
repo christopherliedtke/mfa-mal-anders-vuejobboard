@@ -104,40 +104,39 @@
                         <b-nav-item to="/page/contact">Kontakt</b-nav-item>
                     </b-navbar-nav>
                     <b-navbar-nav class="mt-3 mt-lg-0">
-                        <b-nav-item to="/user/dashboard" v-if="userId"
+                        <b-nav-item to="/user/dashboard" v-if="loggedIn"
                             ><Fa class="mr-1" icon="columns" size="lg" />Meine
                             Anzeigen</b-nav-item
                         >
-                        <b-nav-item to="/user/account" v-if="userId"
+                        <b-nav-item to="/user/account" v-if="loggedIn"
                             ><Fa class="mr-1" icon="user-circle" size="lg" />
                             <span
                                 v-if="
-                                    $store.state.auth.userFirstName &&
-                                        $store.state.auth.userLastName
+                                    $store.state.auth.user.firstName &&
+                                        $store.state.auth.user.lastName
                                 "
                             >
                                 {{
-                                    $store.state.auth.userFirstName.substring(
+                                    $store.state.auth.user.firstName.substring(
                                         0,
                                         1
                                     ) +
-                                        $store.state.auth.userLastName.substring(
+                                        $store.state.auth.user.lastName.substring(
                                             0,
                                             1
                                         )
                                 }}
                             </span>
                         </b-nav-item>
-                        <b-nav-item to="/admin" v-if="userRole === 'admin'"
+                        <b-nav-item to="/admin" v-if="user.role === 'admin'"
                             ><Fa icon="key" size="lg"
                         /></b-nav-item>
-                        <b-nav-item v-if="userId"><LogoutBtn /></b-nav-item>
-                        <b-nav-item v-if="!userId"
+                        <b-nav-item v-if="loggedIn"><LogoutBtn /></b-nav-item>
+                        <b-nav-item v-else
                             ><b-button
                                 @click="toggleNavbar"
                                 variant="secondary"
                                 to="/auth/login"
-                                v-if="!userId"
                                 >Login</b-button
                             ></b-nav-item
                         >
@@ -162,11 +161,11 @@
             };
         },
         computed: {
-            userId() {
-                return this.$store.state.auth.userId;
+            user() {
+                return this.$store.state.auth.user;
             },
-            userRole() {
-                return this.$store.state.auth.userRole;
+            loggedIn() {
+                return this.$store.state.auth.loggedIn;
             }
         },
         mounted() {

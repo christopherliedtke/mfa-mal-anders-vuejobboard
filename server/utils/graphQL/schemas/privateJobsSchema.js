@@ -27,7 +27,7 @@ const RootQuery = new GraphQLObjectType({
             async resolve(parentValue, args, req) {
                 const job = await Job.findOne({
                     _id: args._id,
-                    userId: req.userId,
+                    userId: req.user._id,
                 }).populate("company");
 
                 return job;
@@ -36,7 +36,7 @@ const RootQuery = new GraphQLObjectType({
         jobs: {
             type: new GraphQLList(JobType),
             async resolve(parentValue, args, req) {
-                const jobs = await Job.find({ userId: req.userId })
+                const jobs = await Job.find({ userId: req.user._id })
                     .populate("company")
                     .sort({
                         updatedAt: "desc",
@@ -102,7 +102,7 @@ const mutation = new GraphQLObjectType({
                 },
             },
             async resolve(parentValue, args, req) {
-                const addObj = { ...args, userId: req.userId };
+                const addObj = { ...args, userId: req.user._id };
 
                 // ! temporary - only for admin
                 args.paidAt && req.userRole === "admin"
@@ -218,7 +218,7 @@ const mutation = new GraphQLObjectType({
                 }
 
                 const response = await Job.updateOne(
-                    { _id: args._id, userId: req.userId },
+                    { _id: args._id, userId: req.user._id },
                     updateObj
                 );
 
@@ -227,7 +227,7 @@ const mutation = new GraphQLObjectType({
                 } else {
                     const updatedJob = await Job.findOne({
                         _id: args._id,
-                        userId: req.userId,
+                        userId: req.user._id,
                     }).populate("company");
 
                     if (
@@ -254,7 +254,7 @@ const mutation = new GraphQLObjectType({
             },
             async resolve(parentValue, args, req) {
                 const response = await Job.updateOne(
-                    { _id: args._id, userId: req.userId, paid: true },
+                    { _id: args._id, userId: req.user._id, paid: true },
                     { status: sanitizeHtml(args.status) }
                 );
 
@@ -263,7 +263,7 @@ const mutation = new GraphQLObjectType({
                 } else {
                     const updatedJob = await Job.findOne({
                         _id: args._id,
-                        userId: req.userId,
+                        userId: req.user._id,
                     }).populate("company");
 
                     if (
@@ -306,7 +306,7 @@ const mutation = new GraphQLObjectType({
 
                 const response = await Job.deleteOne({
                     _id: args._id,
-                    userId: req.userId,
+                    userId: req.user._id,
                 });
 
                 if (response.n === 1) {

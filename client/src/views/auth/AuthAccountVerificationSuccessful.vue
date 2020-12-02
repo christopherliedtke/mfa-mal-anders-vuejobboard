@@ -1,8 +1,8 @@
 <template>
     <b-container class="account-verification-successful position-relative py-5">
-        <h2>E-Mail Adresse erfolgreich verifiziert</h2>
+        <h2>E-Mail Adresse verifizieren</h2>
         <div class="success mt-3">
-            <b-alert show dismissible variant="success"
+            <b-alert :show="success" dismissible variant="success"
                 >Ihre E-Mail Adresse wurde erfolgreich verifiziert. Sie werden
                 sofort weitergeleitet...
                 <b-spinner
@@ -18,16 +18,23 @@
 <script>
     export default {
         name: "AccountVerificationSuccessful",
+        data() {
+            return {
+                success: false
+            };
+        },
         mounted() {
             this.updateUserStatus();
         },
         methods: {
             async updateUserStatus() {
-                const response = await this.$axios.get(
-                    "/api/auth/verification/update-user-status"
-                );
+                const res = await this.$axios.get("/api/auth/user-by-db");
 
-                if (!response.data.success) {
+                this.$store.commit("setToken", res.data.token);
+
+                const user = await this.$store.dispatch("fetchUser");
+
+                if (!user) {
                     this.$root.$bvToast.toast(
                         "Beim Aktivieren Ihres Accounts ist ein Fehler aufgetreten. Bitte loggen Sie sich erneut ein und versuchen es noch einmal. Sollten Sie weiterhin Probleme haben, melden Sie sich bitte über unser Kontaktformular.",
                         {
@@ -39,24 +46,9 @@
                         }
                     );
 
-                    localStorage.clear();
-                    const logout = await this.$axios.get("/api/auth/logout");
-                    if (logout.data.success) {
-                        this.$router.push({ path: "/auth/login" });
-                    }
+                    this.$store.dispatch("logout");
                 } else {
-                    localStorage.setItem("userId", response.data.userId);
-                    localStorage.setItem("userRole", response.data.userRole);
-                    localStorage.setItem(
-                        "userStatus",
-                        response.data.userStatus
-                    );
-
-                    this.$store.commit(
-                        "setUserStatus",
-                        response.data.userStatus
-                    );
-
+                    this.success = true;
                     this.$root.$bvToast.toast(
                         "Sie haben Ihre E-Mail Adresse erfolgreich bestätigt. Ihr Account ist nun freigeschaltet.",
                         {

@@ -3,7 +3,7 @@ const router = express.Router();
 const expressGraphQL = require("express-graphql");
 const privateCompaniesSchema = require("../utils/graphQL/schemas/privateCompaniesSchema");
 const adminCompaniesSchema = require("../utils/graphQL/schemas/adminCompaniesSchema");
-const authenticateToken = require("../utils/middleware/checkAuth");
+const verifyToken = require("../utils/middleware/verifyToken");
 const isAdmin = require("../utils/middleware/isAdmin");
 
 // #route:  POST /api/companies/private
@@ -11,7 +11,7 @@ const isAdmin = require("../utils/middleware/isAdmin");
 // #access: Private
 router.use(
     "/private",
-    authenticateToken,
+    verifyToken,
     expressGraphQL({
         schema: privateCompaniesSchema,
         graphiql: true,
@@ -26,7 +26,7 @@ router.use(
 // #access: Private
 router.use(
     "/admin",
-    authenticateToken,
+    verifyToken,
     isAdmin,
     expressGraphQL({
         schema: adminCompaniesSchema,

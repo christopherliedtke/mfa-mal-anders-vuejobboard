@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const authenticateToken = require("../utils/middleware/checkAuth");
+const verifyToken = require("../utils/middleware/verifyToken");
 const isAdmin = require("../utils/middleware/isAdmin");
 const config = require("../utils/config");
 const sanitizeHtml = require("sanitize-html");
@@ -160,7 +160,7 @@ router.post("/unsubscribe", async (req, res) => {
 // #route:  POST /api/newsletter/send
 // #desc:   Send newsletter
 // #access: Admin
-router.post("/send", authenticateToken, isAdmin, async (req, res) => {
+router.post("/send", verifyToken, isAdmin, async (req, res) => {
     const success = await sendNewsletter(req.body.daysBack);
     res.json(success);
 });

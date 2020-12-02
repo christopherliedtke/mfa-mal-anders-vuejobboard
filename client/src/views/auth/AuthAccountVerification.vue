@@ -30,7 +30,7 @@
         name: "AuthAccountVerification",
         data() {
             return {
-                intervalId: null
+                timeoutId: null
             };
         },
         mounted() {
@@ -72,10 +72,14 @@
                 this.$store.dispatch("setOverlay", false);
             },
             checkUserStatus() {
-                this.intervalId = setInterval(() => {
-                    if (localStorage.getItem("userStatus") === "active") {
-                        clearInterval(this.intervalId);
+                this.timeoutId = setTimeout(async () => {
+                    const res = await this.$axios.get("/api/auth/user-by-db");
 
+                    this.$store.commit("setToken", res.data.token);
+
+                    await this.$store.dispatch("fetchUser");
+
+                    if (this.$store.state.auth.user.status === "active") {
                         this.$root.$bvToast.toast(
                             "Sie haben Ihre E-Mail Adresse erfolgreich bestätigt. Ihr Account ist nun freigeschaltet.",
                             {
@@ -86,15 +90,16 @@
                                 noAutoHide: true
                             }
                         );
-
-                        this.$router.go();
+                        this.$router.push("/user/dashboard");
+                    } else {
+                        this.checkUserStatus();
                     }
                 }, 5000);
             },
             checkError() {
                 if (this.$route.query.error) {
                     this.$root.$bvToast.toast(
-                        "Bei der Bestätigung Ihrer E-Mail Adresse ist ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal oder melden sich über unser Kontaktformular.",
+                        "Bei der Bestätigung Ihrer E-Mail Adresse ist ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal, indem Sie einen neuen Aktivierungslink anfordern oder melden Sie sich über unser Kontaktformular.",
                         {
                             title: `Fehler bei der Aktivierung`,
                             variant: "danger",

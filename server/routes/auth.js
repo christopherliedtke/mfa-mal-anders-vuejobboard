@@ -8,14 +8,65 @@ const { Company } = require("../utils/models/company");
 const { Job } = require("../utils/models/job");
 const { hash, compare } = require("../utils/bcrypt");
 const emailService = require("../utils/nodemailer");
-const authenticateTokenWhilePending = require("../utils/middleware/checkAuthWhilePending");
-const authenticateToken = require("../utils/middleware/checkAuth");
+const verifyToken = require("../utils/middleware/verifyToken");
 const s3 = require("../utils/middleware/s3");
 const config = require("../utils/config");
 const errorMsg = require("../utils/errorMsg");
 const emailTemplate = require("../utils/emailTemplate");
 
-// #route:  POST /Login
+// #route:  Get /user-by-token
+// #desc:   Get user from token
+// #access: Public
+router.get("/user-by-token", verifyToken, (req, res) => {
+    res.json({ user: req.user });
+});
+
+// #route:  GET /user-by-db
+// #desc:   Get user from database
+// #access: Public
+router.get("/user-by-db", verifyToken, async (req, res) => {
+    try {
+        const user = await User.findById(req.user._id);
+
+        if (!user) {
+            res.json({ success: false, token: false });
+        } else {
+            const token = jwt.sign(
+                {
+                    user: {
+                        _id: user._id,
+                        role: user.role,
+                        status: user.status,
+                        gender: user.gender,
+                        title: user.title,
+                        firstName: user.firstName,
+                        lastName: user.lastName,
+                        email: user.email,
+                    },
+                },
+                res.locals.secrets.JWT_SECRET,
+                {
+                    expiresIn: 60 * 60 * 24 * 7,
+                }
+            );
+
+            req.session.token = token;
+
+            res.json({
+                success: true,
+                token,
+            });
+        }
+    } catch (err) {
+        console.log(
+            "Error on /api/auth/verification/update-user-status: ",
+            err
+        );
+        res.json({ success: false });
+    }
+});
+
+// #route:  POST /login
 // #desc:   Login a user
 // #access: Public
 router.post("/login", async (req, res) => {
@@ -33,7 +84,7 @@ router.post("/login", async (req, res) => {
                 errors.push({
                     msg: errorMsg.auth.noMatch,
                 });
-                res.json({ success: false, errors });
+                res.json({ success: false, token: false, errors });
             } else {
                 const pwCheckSuccess = await compare(password, user.password);
 
@@ -41,36 +92,38 @@ router.post("/login", async (req, res) => {
                     errors.push({
                         msg: errorMsg.auth.noMatch,
                     });
-                    res.json({ success: false, errors });
+                    res.json({ success: false, token: false, errors });
                 } else {
                     const token = jwt.sign(
                         {
-                            userId: user._id,
-                            userRole: user.role,
-                            userStatus: user.status,
+                            user: {
+                                _id: user._id,
+                                role: user.role,
+                                status: user.status,
+                                gender: user.gender,
+                                title: user.title,
+                                firstName: user.firstName,
+                                lastName: user.lastName,
+                                email: user.email,
+                            },
                         },
                         res.locals.secrets.JWT_SECRET,
                         {
-                            expiresIn: 60 * 60 * 24 * 14,
+                            expiresIn: 60 * 60 * 24 * 7,
                         }
                     );
 
                     req.session.token = token;
-                    console.log("New Login: ", user);
 
                     res.json({
                         success: true,
-                        userRole: user.role,
-                        userId: user._id,
-                        userStatus: user.status,
-                        userFirstName: user.firstName,
-                        userLastName: user.lastName,
+                        token,
                     });
                 }
             }
         } catch (err) {
             console.log("Error on /api/auth/login: ", err);
-            res.json({ success: false });
+            res.json({ success: false, token: false });
         }
     }
 });
@@ -113,7 +166,7 @@ router.post("/register", async (req, res) => {
     }
 
     if (errors.length > 0) {
-        res.json({ success: false, errors });
+        res.json({ success: false, token: false, errors });
     } else {
         try {
             // Check if user already exists
@@ -123,7 +176,7 @@ router.post("/register", async (req, res) => {
                 errors.push({
                     msg: errorMsg.auth.emailRegistered,
                 });
-                res.json({ success: false, errors });
+                res.json({ success: false, token: false, errors });
             } else {
                 const hashedPw = await hash(password);
 
@@ -140,84 +193,87 @@ router.post("/register", async (req, res) => {
                 const user = await newUser.save();
                 const token = jwt.sign(
                     {
-                        userId: user._id,
-                        userRole: user.role,
-                        userStatus: user.status,
+                        user: {
+                            _id: user._id,
+                            role: user.role,
+                            status: user.status,
+                            gender: user.gender,
+                            title: user.title,
+                            firstName: user.firstName,
+                            lastName: user.lastName,
+                            email: user.email,
+                        },
                     },
                     res.locals.secrets.JWT_SECRET,
                     {
-                        expiresIn: 60 * 60 * 24 * 14,
+                        expiresIn: 60 * 60 * 24 * 7,
                     }
                 );
 
                 req.session.token = token;
 
-                const baseUrl = req.protocol + "://" + req.get("host");
+                // const baseUrl = req.protocol + "://" + req.get("host");
 
-                const data = {
-                    from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
-                    to: user.email,
-                    subject: `E-Mail bestätigen für ${config.website.name}`,
-                    text: `
-                        Bitte nutzen Sie den folgenden Link, um Ihren Account auf ${config.website.name} zu aktivieren:: ${baseUrl}/api/auth/verification/verify-account/${user._id}
-                    `,
-                    html: emailTemplate.generate(`
-                        <div 
-                            style="color: #000000; font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif; line-height: 1.2; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px">
-                            <div style="line-height: 1.2; font-size: 12px; color: #000000; font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif; mso-line-height-alt: 14px">
-                                <h2>Aktivieren Sie Ihren Account bei ${config.website.name}</h2>
-                                <p>
-                                    Bitte nutzen Sie den folgenden Link, um Ihren Account auf ${config.website.name} zu aktivieren: 
-                                </p>
-                            </div>
-                        </div>
-                        <div
-                            style="
-                                text-decoration: none;
-                                display: inline-block;
-                                color: #f8faf9;
-                                background-color: #fda225;
-                                border-radius: 50px;
-                                -webkit-border-radius: 50px;
-                                -moz-border-radius: 50px;
-                                width: auto;
-                                width: auto;
-                                border-top: 1px solid #fda225;
-                                border-right: 1px solid #fda225;
-                                border-bottom: 1px solid #fda225;
-                                border-left: 1px solid #fda225;
-                                padding-top: 5px;
-                                padding-bottom: 5px;
-                                font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif;
-                                text-align: center;
-                                mso-border-alt: none;
-                                word-break: keep-all;
-                            "
-                        >
-                            <a 
-                                style="padding-left: 20px; padding-right: 20px; font-size: 16px; display: inline-block; cursor: pointer; border: none; color: #f8faf9; text-decoration: none" href="${baseUrl}/api/auth/verification/verify-account/${user._id}" target="_blank"
-                            >
-                                <span 
-                                    style="font-size: 16px; line-height: 1.5; word-break: break-word; mso-line-height-alt: 24px"
-                                >
-                                    Account aktivieren
-                                </span>
-                            </a>
-                        </div>
-                    `),
-                };
-                const emailSent = await emailService.sendMail(data);
+                // const data = {
+                //     from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
+                //     to: user.email,
+                //     subject: `E-Mail bestätigen für ${config.website.name}`,
+                //     text: `
+                //         Bitte nutzen Sie den folgenden Link, um Ihren Account auf ${config.website.name} zu aktivieren:: ${baseUrl}/api/auth/verification/verify-account/${user._id}
+                //     `,
+                //     html: emailTemplate.generate(`
+                //         <div
+                //             style="color: #000000; font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif; line-height: 1.2; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px">
+                //             <div style="line-height: 1.2; font-size: 12px; color: #000000; font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif; mso-line-height-alt: 14px">
+                //                 <h2>Aktivieren Sie Ihren Account bei ${config.website.name}</h2>
+                //                 <p>
+                //                     Bitte nutzen Sie den folgenden Link, um Ihren Account auf ${config.website.name} zu aktivieren:
+                //                 </p>
+                //             </div>
+                //         </div>
+                //         <div
+                //             style="
+                //                 text-decoration: none;
+                //                 display: inline-block;
+                //                 color: #f8faf9;
+                //                 background-color: #fda225;
+                //                 border-radius: 50px;
+                //                 -webkit-border-radius: 50px;
+                //                 -moz-border-radius: 50px;
+                //                 width: auto;
+                //                 width: auto;
+                //                 border-top: 1px solid #fda225;
+                //                 border-right: 1px solid #fda225;
+                //                 border-bottom: 1px solid #fda225;
+                //                 border-left: 1px solid #fda225;
+                //                 padding-top: 5px;
+                //                 padding-bottom: 5px;
+                //                 font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif;
+                //                 text-align: center;
+                //                 mso-border-alt: none;
+                //                 word-break: keep-all;
+                //             "
+                //         >
+                //             <a
+                //                 style="padding-left: 20px; padding-right: 20px; font-size: 16px; display: inline-block; cursor: pointer; border: none; color: #f8faf9; text-decoration: none" href="${baseUrl}/api/auth/verification/verify-account/${user._id}" target="_blank"
+                //             >
+                //                 <span
+                //                     style="font-size: 16px; line-height: 1.5; word-break: break-word; mso-line-height-alt: 24px"
+                //                 >
+                //                     Account aktivieren
+                //                 </span>
+                //             </a>
+                //         </div>
+                //     `),
+                // };
+                // const emailSent = await emailService.sendMail(data);
 
-                console.log("sendMail() after register: ", emailSent);
-                console.log("New Registration: ", user);
+                // console.log("sendMail() after register: ", emailSent);
+                // console.log("New Registration: ", user);
 
                 res.json({
                     success: true,
-                    userRole: user.role,
-                    userId: user._id,
-                    userStatus: user.status,
-                    userFirstName: user.firstName,
-                    userLastName: user.lastName,
+                    token,
                 });
             }
         } catch (err) {
@@ -225,7 +281,7 @@ router.post("/register", async (req, res) => {
             errors.push({
                 msg: errorMsg.general,
             });
-            res.json({ success: false, errors });
+            res.json({ success: false, token: false, errors });
         }
     }
 });
@@ -235,27 +291,18 @@ router.post("/register", async (req, res) => {
 // #access: Private
 router.get(
     "/verification/get-activation-email",
-    authenticateTokenWhilePending,
+    verifyToken,
     async (req, res) => {
+        console.log("get-activation-email");
+
         const baseUrl = req.protocol + "://" + req.get("host");
 
         try {
-            const user = await User.findById(req.userId);
+            const user = await User.findById(req.user._id);
 
             if (!user) {
                 res.json({ success: false });
             } else {
-                // await Code.deleteMany({ email: user.email });
-
-                // const secretCode = cryptoRandomString({
-                //     length: 6,
-                // });
-                // const newCode = new Code({
-                //     code: secretCode,
-                //     email: user.email,
-                // });
-                // await newCode.save();
-
                 const data = {
                     from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
                     to: user.email,
@@ -338,7 +385,7 @@ router.get("/verification/verify-account/:userId", async (req, res) => {
                 `Error on /verify-account -> no user found for user._id ${req.params.userId}: `,
                 user
             );
-            redirectPath = `${res.locals.secrets.WEBSITE_URL}/auth/account/verification?error=true`;
+            redirectPath = `${res.locals.secrets.WEBSITE_URL}/auth/account/verification?error=no-user`;
         } else {
             await User.updateOne({ email: user.email }, { status: "active" });
 
@@ -347,55 +394,11 @@ router.get("/verification/verify-account/:userId", async (req, res) => {
     } catch (err) {
         console.log("Error on /api/auth/verification/verify-account: ", err);
 
-        redirectPath = `${res.locals.secrets.WEBSITE_URL}/auth/account/verification?error=true`;
+        redirectPath = `${res.locals.secrets.WEBSITE_URL}/auth/account/verification?error=server-error`;
     }
 
     res.redirect(redirectPath);
 });
-
-// #route:  GET /verification/update-user-status
-// #desc:   Verify user's email address
-// #access: Public
-router.get(
-    "/verification/update-user-status",
-    authenticateTokenWhilePending,
-    async (req, res) => {
-        try {
-            const user = await User.findById(req.userId);
-
-            if (!user) {
-                res.json({ success: false });
-            } else {
-                const token = jwt.sign(
-                    {
-                        userId: user._id,
-                        userRole: user.role,
-                        userStatus: user.status,
-                    },
-                    res.locals.secrets.JWT_SECRET,
-                    {
-                        expiresIn: 60 * 60 * 24 * 14,
-                    }
-                );
-
-                req.session.token = token;
-
-                res.json({
-                    success: true,
-                    userRole: user.role,
-                    userId: user._id,
-                    userStatus: user.status,
-                });
-            }
-        } catch (err) {
-            console.log(
-                "Error on /api/auth/verification/update-user-status: ",
-                err
-            );
-            res.json({ success: false });
-        }
-    }
-);
 
 // #route:  POST /password-reset/get-code
 // #desc:   Reset password of user
@@ -506,21 +509,21 @@ router.post("/password-reset/verify", async (req, res) => {
 // #desc:   Logout a user
 // #access: Public
 router.get("/logout", (req, res) => {
-    req.session = null;
+    req.session.destroy();
     res.json({ success: true });
 });
 
 // #route:  POST /delete-account
 // #desc:   Logout a user
 // #access: Public
-router.post("/delete-account", authenticateToken, async (req, res) => {
+router.post("/delete-account", verifyToken, async (req, res) => {
     const { password } = req.body;
 
     if (!password) {
         res.json({ success: false, error: errorMsg.auth.fillAll });
     } else {
         try {
-            const user = await User.findById(req.userId);
+            const user = await User.findById(req.user._id);
 
             if (!user) {
                 res.json({
@@ -538,11 +541,11 @@ router.post("/delete-account", authenticateToken, async (req, res) => {
                 } else {
                     // delete images
                     const logoUrls = await Company.find(
-                        { userId: req.userId },
+                        { userId: req.user._id },
                         "logoUrl"
                     );
                     const imageUrls = await Job.find(
-                        { userId: req.userId },
+                        { userId: req.user._id },
                         "imageUrl"
                     );
 
@@ -564,16 +567,16 @@ router.post("/delete-account", authenticateToken, async (req, res) => {
                     // delete jobs and companies
                     await Promise.all([
                         Job.deleteMany({
-                            userId: req.userId,
+                            userId: req.user._id,
                         }),
                         Company.deleteMany({
-                            userId: req.userId,
+                            userId: req.user._id,
                         }),
                     ]);
 
                     // delete user
                     const deleted = await User.deleteOne({
-                        email: user.email,
+                        _id: req.user._id,
                     });
 
                     if (!deleted) {

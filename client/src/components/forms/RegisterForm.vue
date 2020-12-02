@@ -158,9 +158,9 @@
             async onSubmit() {
                 this.$store.dispatch("setOverlay", true);
 
-                const res = await this.$store.dispatch("userAuth", {
-                    url: "/api/auth/register",
-                    userData: {
+                const res = await this.$store.dispatch("auth", {
+                    type: "register",
+                    creds: {
                         gender: this.gender,
                         title: this.title,
                         firstName: this.firstName,
@@ -175,11 +175,20 @@
                 if (!res.success) {
                     this.errors = res.errors;
                 } else {
-                    this.trackEvent(
-                        `NewUser: ${this.$store.state.auth.userId}`,
-                        "User",
-                        "register"
+                    await this.$store.dispatch("fetchUser");
+                    await this.$axios.get(
+                        "/api/auth/verification/get-activation-email"
                     );
+
+                    if (this.$store.state.auth.loggedIn) {
+                        this.trackEvent(
+                            `NewUser: ${this.$store.state.auth.userId}`,
+                            "User",
+                            "register"
+                        );
+
+                        this.$router.push("/auth/account/verification");
+                    }
                 }
 
                 this.$store.dispatch("setOverlay", false);
