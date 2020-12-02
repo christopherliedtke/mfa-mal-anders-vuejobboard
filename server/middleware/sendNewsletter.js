@@ -1,15 +1,14 @@
-const config = require("../config.json");
-// const emailService = require("../nodemailer");
-const emailTemplate = require("../emailTemplate");
+const config = require("../config/config.json");
+const emailTemplate = require("../utils/emailTemplate");
 
-const { Subscriber } = require("../models/subscriber");
-const { Job } = require("../models/job");
+const { Subscriber } = require("../database/models/subscriber");
+const { Job } = require("../database/models/job");
 
 let secrets;
 if (process.env.NODE_ENV == "production") {
     secrets = process.env;
 } else {
-    secrets = require("../secrets");
+    secrets = require("../config/secrets.json");
 }
 
 const mg = require("mailgun-js")({
@@ -113,12 +112,6 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
                         );
                     }
                 });
-
-                // try {
-                //     emailService.sendMail(data);
-                // } catch (err) {
-                //     console.log("Error on newsletter sendMail(): ", err);
-                // }
             }
         }
 

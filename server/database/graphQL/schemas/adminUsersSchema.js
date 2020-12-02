@@ -10,7 +10,7 @@ const { User } = require("../../models/user");
 const { Company } = require("../../models/company");
 const { Job } = require("../../models/job");
 const sanitizeHtml = require("sanitize-html");
-const s3 = require("../../middleware/s3");
+const s3 = require("../../../middleware/s3");
 
 // #Root Query
 const RootQuery = new GraphQLObjectType({

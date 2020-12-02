@@ -4,8 +4,8 @@ const {
     GraphQLBoolean,
     GraphQLFloat,
 } = require("graphql");
-const CompanyType = require("../types/CompanyType");
-const UserType = require("../types/UserType");
+const CompanyType = require("./CompanyType");
+const UserType = require("./UserType");
 
 // #Job Type
 const JobType = new GraphQLObjectType({

@@ -6,7 +6,7 @@ const diskStorage = multer.diskStorage({
     // destination: function (req, file, callback) {
     //     callback(null, __dirname + "/../../uploads");
     // },
-    destination: __dirname + "/../../uploads",
+    destination: __dirname + "/../uploads",
     filename: function (req, file, callback) {
         uidSafe(24).then(function (uid) {
             callback(null, uid + path.extname(file.originalname));

@@ -1,15 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const verifyToken = require("../utils/middleware/verifyToken");
-const upload = require("../utils/middleware/upload");
-const sharpImg = require("../utils/middleware/sharpImg");
-const s3 = require("../utils/middleware/s3");
+const verifyToken = require("../middleware/verifyToken");
+const upload = require("../middleware/upload");
+const sharpImg = require("../middleware/sharpImg");
+const s3 = require("../middleware/s3");
 
 let secrets;
 if (process.env.NODE_ENV == "production") {
     secrets = process.env; // in prod the secrets are environment variables
 } else {
-    secrets = require("../utils/secrets"); // in dev they are in secrets.json which is listed in .gitignore
+    secrets = require("../config/secrets.json"); // in dev they are in secrets.json which is listed in .gitignore
 }
 
 // #route:  POST /api/images/upload

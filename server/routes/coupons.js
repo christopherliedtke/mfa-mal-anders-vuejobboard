@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const expressGraphQL = require("express-graphql");
-const adminCouponsSchema = require("../utils/graphQL/schemas/adminCouponsSchema");
-const verifyToken = require("../utils/middleware/verifyToken");
-const isAdmin = require("../utils/middleware/isAdmin");
+const adminCouponsSchema = require("../database/graphQL/schemas/adminCouponsSchema");
+const verifyToken = require("../middleware/verifyToken");
+const isAdmin = require("../middleware/isAdmin");
 
 // #route:  POST /api/coupons/admin
 // #desc:   CRUD coupons to admin

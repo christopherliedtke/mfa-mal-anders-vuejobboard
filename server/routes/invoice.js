@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const verifyToken = require("../utils/middleware/verifyToken");
+const verifyToken = require("../middleware/verifyToken");
 const emailService = require("../utils/nodemailer");
-const config = require("../utils/config");
-const { Job } = require("../utils/models/job");
-const createInvoice = require("../utils/createInvoice");
+const config = require("../config/config");
+const { Job } = require("../database/models/job");
+const createInvoice = require("../middleware/createInvoice");
 
 // #route:  POST /api/invoice/get-invoice
 // #desc:   Handle invoice request

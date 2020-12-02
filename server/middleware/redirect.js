@@ -1,4 +1,4 @@
-const redirects = require("../redirects.json");
+const redirects = require("../config/redirects.json");
 // const config = require("../config.json");
 
 const redirect = (req, res, next) => {

@@ -5,7 +5,7 @@ let secrets;
 if (process.env.NODE_ENV == "production") {
     secrets = process.env; // in prod the secrets are environment variables
 } else {
-    secrets = require("../secrets"); // in dev they are in secrets.json which is listed in .gitignore
+    secrets = require("../config/secrets.json"); // in dev they are in secrets.json which is listed in .gitignore
 }
 
 module.exports.googleIndexing = function (url = "", type = "URL_UPDATED") {

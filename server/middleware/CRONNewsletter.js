@@ -1,6 +1,6 @@
 const CronJob = require("cron").CronJob;
-const config = require("../utils/config");
-const { sendNewsletter } = require("./middleware/sendNewsletter");
+const config = require("../config/config");
+const { sendNewsletter } = require("./sendNewsletter");
 
 module.exports.CRONNewsletter = new CronJob(
     config.newsletter.interval,

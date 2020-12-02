@@ -1,15 +1,15 @@
 const fs = require("fs");
 const axios = require("axios");
 const CronJob = require("cron").CronJob;
-const config = require("../utils/config");
-const pagesSitemap = require("../utils/sitemap.json");
-const { Job } = require("../utils/models/job");
+const config = require("../config/config");
+const pagesSitemap = require("../config/sitemap.json");
+const { Job } = require("../database/models/job");
 
 let secrets;
 if (process.env.NODE_ENV == "production") {
     secrets = process.env;
 } else {
-    secrets = require("./secrets");
+    secrets = require("../config/secrets.json");
 }
 
 const getArticles = () =>

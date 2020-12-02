@@ -1,13 +1,13 @@
-const config = require("../config.json");
-const emailService = require("../nodemailer");
+const config = require("../config/config.json");
+const emailService = require("../utils/nodemailer");
 
-const { Job } = require("../models/job");
+const { Job } = require("../database/models/job");
 
 let secrets;
 if (process.env.NODE_ENV == "production") {
     secrets = process.env;
 } else {
-    secrets = require("../secrets");
+    secrets = require("../config/secrets.json");
 }
 
 module.exports.sendUnpublishedJobReminder = async () => {

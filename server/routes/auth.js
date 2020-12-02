@@ -2,16 +2,16 @@ const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 const cryptoRandomString = require("crypto-random-string");
-const { User } = require("../utils/models/user");
-const { Code } = require("../utils/models/secretCode");
-const { Company } = require("../utils/models/company");
-const { Job } = require("../utils/models/job");
+const { User } = require("../database/models/user");
+const { Code } = require("../database/models/secretCode");
+const { Company } = require("../database/models/company");
+const { Job } = require("../database/models/job");
 const { hash, compare } = require("../utils/bcrypt");
 const emailService = require("../utils/nodemailer");
-const verifyToken = require("../utils/middleware/verifyToken");
-const s3 = require("../utils/middleware/s3");
-const config = require("../utils/config");
-const errorMsg = require("../utils/errorMsg");
+const verifyToken = require("../middleware/verifyToken");
+const s3 = require("../middleware/s3");
+const config = require("../config/config");
+const errorMsg = require("../config/errorMsg");
 const emailTemplate = require("../utils/emailTemplate");
 
 // #route:  Get /user-by-token

@@ -9,7 +9,7 @@ const {
 const CompanyType = require("../types/CompanyType");
 const { Company } = require("../../models/company");
 const sanitizeHtml = require("sanitize-html");
-const s3 = require("../../middleware/s3");
+const s3 = require("../../../middleware/s3");
 
 // #Root Query
 const RootQuery = new GraphQLObjectType({

@@ -1,6 +1,6 @@
 const CronJob = require("cron").CronJob;
-const config = require("../utils/config");
-const { Job } = require("../utils/models/job");
+const config = require("../config/config");
+const { Job } = require("../database/models/job");
 
 module.exports.unpublishJobs = new CronJob(
     config.unpublishJobs.interval,
@@ -13,6 +13,7 @@ module.exports.unpublishJobs = new CronJob(
                     paidExpiresAt: {
                         $lt: new Date(),
                     },
+                    status: "published",
                 },
                 { paid: false, status: "unpublished" }
             );
@@ -23,6 +24,7 @@ module.exports.unpublishJobs = new CronJob(
                             new Date().valueOf() - 1000 * 60 * 60 * 24
                         ).toISOString(),
                     },
+                    status: "published",
                 },
                 { status: "unpublished" }
             );

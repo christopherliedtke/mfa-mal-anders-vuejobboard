@@ -133,10 +133,7 @@
                         /></b-nav-item>
                         <b-nav-item v-if="loggedIn"><LogoutBtn /></b-nav-item>
                         <b-nav-item v-else
-                            ><b-button
-                                @click="toggleNavbar"
-                                variant="secondary"
-                                to="/auth/login"
+                            ><b-button variant="secondary" to="/auth/login"
                                 >Login</b-button
                             ></b-nav-item
                         >

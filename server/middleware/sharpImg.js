@@ -14,7 +14,7 @@ const sharpImg = async (req, res, next) => {
     const newHeight = parseInt(req.body.height) || 1200;
     const newFit = req.body.fit || "inside";
     const newFilename = `${newWidth}x${newHeight}_${filename}`;
-    const newPath = __dirname + "/../../uploads/" + newFilename;
+    const newPath = __dirname + "/../uploads/" + newFilename;
 
     await sharp(path)
         .resize({ width: newWidth, height: newHeight, fit: newFit })

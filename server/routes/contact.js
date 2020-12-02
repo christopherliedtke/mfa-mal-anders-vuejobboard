@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const emailService = require("../utils/nodemailer");
-const config = require("../utils/config");
+const config = require("../config/config");
 const sanitizeHtml = require("sanitize-html");
 
 // #route:  POST /api/contact/send

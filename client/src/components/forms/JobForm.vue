@@ -14,7 +14,7 @@
                 trim
             />
             <div
-                v-if="$store.state.auth.userRole === 'admin'"
+                v-if="$store.state.auth.user.role === 'admin'"
                 class="bg-light-shade border-radius1 p-3 mt-3"
             >
                 <h6>ADMIN</h6>
@@ -156,7 +156,7 @@
             />
             <b-form-input
                 class="bg-light-shade mt-2"
-                v-if="$store.state.auth.userRole === 'admin'"
+                v-if="$store.state.auth.user.role === 'admin'"
                 type="url"
                 v-model="job.imageUrl"
                 placeholder="ADMIN - URL to image (incl. https://)"
@@ -322,7 +322,7 @@
             />
             <b-form-input
                 class="bg-light-shade mt-2"
-                v-if="$store.state.auth.userRole === 'admin'"
+                v-if="$store.state.auth.user.role === 'admin'"
                 type="url"
                 v-model="job.company.logoUrl"
                 placeholder="ADMIN - URL to image (incl. https://)"

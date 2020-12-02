@@ -1,6 +1,6 @@
 const CronJob = require("cron").CronJob;
-const config = require("../utils/config");
-const { Job } = require("../utils/models/job");
+const config = require("../config/config");
+const { Job } = require("../database/models/job");
 
 module.exports.refreshJobs = new CronJob(
     config.refreshJobs.interval,

@@ -10,9 +10,9 @@ const {
 const JobType = require("../types/JobType");
 const { Job } = require("../../models/job");
 // const sanitizeHtml = require("sanitize-html");
-const config = require("../../config.json");
-const s3 = require("../../middleware/s3");
-const { googleIndexing } = require("../../middleware/googleJobIndexing");
+const config = require("../../../config/config.json");
+const s3 = require("../../../middleware/s3");
+const { googleIndexing } = require("../../../middleware/googleJobIndexing");
 
 // #Root Query
 const RootQuery = new GraphQLObjectType({

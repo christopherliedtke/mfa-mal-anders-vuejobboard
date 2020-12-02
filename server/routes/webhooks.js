@@ -1,18 +1,18 @@
 const express = require("express");
 const router = express.Router();
-const config = require("../utils/config");
+const config = require("../config/config");
 const emailService = require("../utils/nodemailer");
-const { Job } = require("../utils/models/job");
-const { Coupon } = require("../utils/models/coupon");
-const { UsedCoupon } = require("../utils/models/usedCoupon");
-const { googleIndexing } = require("../utils/middleware/googleJobIndexing");
-const { postToFacebook } = require("../utils/middleware/postToFacebook");
+const { Job } = require("../database/models/job");
+const { Coupon } = require("../database/models/coupon");
+const { UsedCoupon } = require("../database/models/usedCoupon");
+const { googleIndexing } = require("../middleware/googleJobIndexing");
+const { postToFacebook } = require("../middleware/postToFacebook");
 
 let secrets;
 if (process.env.NODE_ENV == "production") {
     secrets = process.env;
 } else {
-    secrets = require("../utils/secrets");
+    secrets = require("../config/secrets.json");
 }
 
 const stripe = require("stripe")(secrets.STRIPE_SK);

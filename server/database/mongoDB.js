@@ -4,7 +4,7 @@ let mongoDB;
 if (process.env.MDB_URL) {
     mongoDB = process.env.MDB_URL;
 } else {
-    const { MDB_URL } = require("./secrets");
+    const { MDB_URL } = require("../config/secrets.json");
     mongoDB = MDB_URL;
 }
 

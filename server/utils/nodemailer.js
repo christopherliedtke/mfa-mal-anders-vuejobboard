@@ -4,7 +4,7 @@ let secrets;
 if (process.env.NODE_ENV == "production") {
     secrets = process.env;
 } else {
-    secrets = require("./secrets");
+    secrets = require("../config/secrets.json");
 }
 
 const emailService = nodemailer.createTransport({

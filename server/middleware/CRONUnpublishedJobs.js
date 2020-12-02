@@ -1,8 +1,6 @@
 const CronJob = require("cron").CronJob;
-const config = require("../utils/config");
-const {
-    sendUnpublishedJobReminder,
-} = require("./middleware/sendUnpublishedJobReminder");
+const config = require("../config/config");
+const { sendUnpublishedJobReminder } = require("./sendUnpublishedJobReminder");
 
 module.exports.CRONUnpublishedJobs = new CronJob(
     config.unpublishedJobsReminder.interval,

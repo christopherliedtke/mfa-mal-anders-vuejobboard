@@ -1,16 +1,16 @@
 const express = require("express");
 const router = express.Router();
-const verifyToken = require("../utils/middleware/verifyToken");
-const { User } = require("../utils/models/user");
-const { Coupon } = require("../utils/models/coupon");
-const { UsedCoupon } = require("../utils/models/usedCoupon");
-const config = require("../utils/config");
+const verifyToken = require("../middleware/verifyToken");
+const { User } = require("../database/models/user");
+const { Coupon } = require("../database/models/coupon");
+const { UsedCoupon } = require("../database/models/usedCoupon");
+const config = require("../config/config");
 
 let secrets;
 if (process.env.NODE_ENV == "production") {
     secrets = process.env;
 } else {
-    secrets = require("../utils/secrets");
+    secrets = require("../config/secrets.json");
 }
 
 const stripe = require("stripe")(secrets.STRIPE_SK);

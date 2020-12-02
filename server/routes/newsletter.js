@@ -1,13 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const verifyToken = require("../utils/middleware/verifyToken");
-const isAdmin = require("../utils/middleware/isAdmin");
-const config = require("../utils/config");
+const verifyToken = require("../middleware/verifyToken");
+const isAdmin = require("../middleware/isAdmin");
+const config = require("../config/config");
 const sanitizeHtml = require("sanitize-html");
 const emailService = require("../utils/nodemailer");
 const emailTemplate = require("../utils/emailTemplate");
-const { Subscriber } = require("../utils/models/subscriber");
-const { sendNewsletter } = require("../utils/middleware/sendNewsletter");
+const { Subscriber } = require("../database/models/subscriber");
+const { sendNewsletter } = require("../middleware/sendNewsletter");
 
 // #route:  POST /api/newsletter/sign-up
 // #desc:   Sign up for newsletter

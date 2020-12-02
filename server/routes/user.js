@@ -1,10 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const expressGraphQL = require("express-graphql");
-const privateUsersSchema = require("../utils/graphQL/schemas/privateUsersSchema");
-const adminUsersSchema = require("../utils/graphQL/schemas/adminUsersSchema");
-const verifyToken = require("../utils/middleware/verifyToken");
-const isAdmin = require("../utils/middleware/isAdmin");
+const privateUsersSchema = require("../database/graphQL/schemas/privateUsersSchema");
+const adminUsersSchema = require("../database/graphQL/schemas/adminUsersSchema");
+const verifyToken = require("../middleware/verifyToken");
+const isAdmin = require("../middleware/isAdmin");
 
 // #route:  POST /api/user/private
 // #desc:   CRUD users to private
