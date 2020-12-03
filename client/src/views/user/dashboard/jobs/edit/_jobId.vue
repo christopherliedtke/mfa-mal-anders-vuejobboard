@@ -1,6 +1,9 @@
 <template>
     <b-container class="edit-job py-5">
-        <h2>Stellenanzeige bearbeiten</h2>
+        <h2>
+            Stellenanzeige
+            {{ $route.params.jobId === "new" ? "erstellen" : "bearbeiten" }}
+        </h2>
         <p>
             Bearbeiten Sie hier Ihre Stellenanzeige. <strong>Tipps </strong>
             <Fa
@@ -25,7 +28,7 @@
                 attraktive Stellenanzeige zusammengestellt.
             </b-popover>
         </p>
-        <JobForm :jobId="$route.params.jobId" apiJobsSchema="private"></JobForm>
+        <JobForm apiJobsSchema="private"></JobForm>
     </b-container>
 </template>
 

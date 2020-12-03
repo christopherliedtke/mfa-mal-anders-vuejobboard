@@ -5,7 +5,7 @@
 </template>
 
 <script>
-    import { companyCountryOptions } from "@/utils/jobDataConfig.json";
+    import { companyCountryOptions } from "@/config/formDataConfig.json";
     export default {
         name: "HereMapMultiJobs",
         props: {

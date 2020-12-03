@@ -2,8 +2,6 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 
-console.log("process.env.PORT: ", process.env.PORT);
-
 const sslRedirect = require("heroku-ssl-redirect");
 const cors = require("cors");
 const compression = require("compression");

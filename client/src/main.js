@@ -22,7 +22,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
-import config from "@/utils/config.json";
+import config from "@/config/config.json";
 Vue.prototype.$config = config;
 
 import axios from "@/utils/axios.js";

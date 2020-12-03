@@ -13,6 +13,7 @@
                 required
                 trim
             />
+
             <label for="company-street">Straße und Hausnummer *</label>
             <b-form-input
                 type="text"
@@ -25,6 +26,7 @@
                 required
                 trim
             />
+
             <label for="company-location">Ort *</label>
             <b-form-input
                 type="text"
@@ -37,6 +39,7 @@
                 required
                 trim
             />
+
             <label for="company-zip-code">PLZ *</label>
             <b-form-input
                 type="number"
@@ -47,6 +50,7 @@
                 required
                 trim
             />
+
             <label for="company-state">Bundesland *</label>
             <b-form-select
                 id="company-state"
@@ -63,6 +67,7 @@
                     >{{ state }}</b-form-select-option
                 >
             </b-form-select>
+
             <label for="company-country">Land *</label>
             <b-form-select
                 id="company-country"
@@ -79,6 +84,7 @@
                     >{{ country }}</b-form-select-option
                 >
             </b-form-select>
+
             <label for="company-size">Unternehmensgröße *</label>
             <b-form-select
                 id="company-size"
@@ -95,6 +101,7 @@
                     >{{ size }}</b-form-select-option
                 >
             </b-form-select>
+
             <label for="company-url">Unternehmenswebseite</label>
             <b-input-group>
                 <template v-slot:prepend>
@@ -110,6 +117,7 @@
                     placeholder="https://www.ihr-unternehmen.de"
                 />
             </b-input-group>
+
             <label for="file">Logo (jpg, png | max. 5MB)</label>
             <ImageUploader
                 :validated="validated"
@@ -155,22 +163,25 @@
 </template>
 
 <script>
+    import { getGeocodeMixin } from "@/mixins/getGeocodeMixin";
+    import { saveCompanyMixin } from "@/mixins/saveCompanyMixin";
     import {
         companyStateOptions,
         companyCountryOptions,
         companySizeOptions
-    } from "@/utils/jobDataConfig.json";
+    } from "@/config/formDataConfig.json";
     import ImageUploader from "@/components/utils/ImageUploader.vue";
     export default {
         name: "CompanyForm",
         components: {
             ImageUploader
         },
-        props: ["companyId", "apiJobsSchema"],
+        mixins: [getGeocodeMixin, saveCompanyMixin],
+        props: ["apiJobsSchema"],
         data() {
             return {
                 company: {
-                    _id: "",
+                    _id: this.$route.params.companyId,
                     name: "",
                     street: "",
                     location: "",
@@ -186,35 +197,25 @@
                 companyCountryOptions,
                 companyStateOptions,
                 companySizeOptions,
-                hereMaps: {
-                    platform: null,
-                    apikey: "n3GOlcV0Z6utqCKpJlDWH6lWYtJdvR0QomMzYs_EreM"
-                },
                 validated: null,
                 success: "",
                 error: ""
             };
         },
         created() {
-            if (this.companyId != "new") {
-                this.getCompany(this.companyId);
+            if (this.$route.params.companyId != "new") {
+                this.getCompany(this.$route.params.companyId);
             }
-
-            // Initialize the platform object:
-            const platform = new window.H.service.Platform({
-                apikey: this.hereMaps.apikey
-            });
-            this.hereMaps.platform = platform;
         },
         methods: {
-            async getCompany(companyId) {
+            async getCompany(id) {
                 try {
                     const company = await this.$axios.post(
                         `/api/companies/${this.apiJobsSchema}`,
                         {
                             query: `
                             query {
-                                company(_id: "${companyId}") {
+                                company(_id: "${id}") {
                                     _id
                                     name
                                     street
@@ -258,91 +259,22 @@
 
                 this.$store.dispatch("setOverlay", true);
 
-                try {
-                    // get geocode
-                    const service = this.hereMaps.platform.getSearchService();
-                    const geocode = await service.geocode({
-                        q: `${this.company.street} ${this.company.location} ${this.company.state} ${this.company.country}`
-                    });
+                const data = await this.getGeocode(this.company);
+                this.company.geoCodeLat = data.lat;
+                this.company.geoCodeLng = data.lng;
 
-                    this.company.geoCodeLat = geocode.items[0].position.lat;
-                    this.company.geoCodeLng = geocode.items[0].position.lng;
-                } catch (err) {
-                    console.log("Error on getGeoCode(): ", err);
+                let mutationType;
+                this.company._id === "new"
+                    ? (mutationType = "addCompany")
+                    : (mutationType = "updateCompany");
 
-                    this.company.geoCodeLat = null;
-                    this.company.geoCodeLng = null;
-                }
-
-                try {
-                    // Save / Update company
-                    let mutationType;
-                    this.companyId
-                        ? (mutationType = "updateCompany")
-                        : (mutationType = "addCompany");
-
-                    const query = `
-                        mutation {
-                            ${mutationType}(
-                                ${
-                                    mutationType === "updateCompany"
-                                        ? `_id: "${this.companyId}",`
-                                        : ""
-                                } 
-                                name: "${this.company.name}", 
-                                street: "${this.company.street}"
-                                location: "${this.company.location}", 
-                                zipCode: "${this.company.zipCode}"
-                                state: "${this.company.state}", 
-                                country: "${this.company.country}", 
-                                geoCodeLat: ${this.company.geoCodeLat}, 
-                                geoCodeLng: ${this.company.geoCodeLng}, 
-                                size: "${this.company.size}"
-                                url: "${this.company.url}"
-                                logoUrl: "${this.company.logoUrl}"
-                            ) {
-                                _id
-                            }
-                        }
-                    `;
-
-                    const response = await this.$axios.post(
-                        `/api/companies/${this.apiJobsSchema}`,
-                        { query }
-                    );
-
-                    if (!response.data.data[mutationType]) {
-                        this.error =
-                            "Oh, da ist leider etwas schief gelaufen. Bitte probiere es noch einmal.";
-                    } else {
-                        this.success = true;
-
-                        this.$root.$bvToast.toast(
-                            "Das Unternehmen wurde erfolgreich gespeichert.",
-                            {
-                                title: `Unternehmen gespeichert`,
-                                variant: "success",
-                                toaster: "b-toaster-bottom-right",
-                                solid: true
-                            }
-                        );
-
-                        this.hasHistory && this.apiJobsSchema === "admin"
-                            ? this.$router.go(-1)
-                            : this.$router.push("/user/dashboard?tab=2");
-                    }
-                } catch (err) {
-                    this.$root.$bvToast.toast(
-                        "Beim Speichern des Unternehmens ist ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal.",
-                        {
-                            title: `Fehler beim Speichern`,
-                            variant: "danger",
-                            toaster: "b-toaster-bottom-right",
-                            solid: true,
-                            noAutoHide: true
-                        }
-                    );
-                }
+                // Save / Update company
+                await this.saveCompany(
+                    mutationType,
+                    this.apiJobsSchema,
+                    this.company,
+                    true
+                );
 
                 this.$store.dispatch("setOverlay", false);
             },

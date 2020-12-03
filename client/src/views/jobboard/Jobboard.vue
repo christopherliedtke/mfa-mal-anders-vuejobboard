@@ -201,7 +201,7 @@
         employmentTypeOptions,
         companyStateOptions,
         specializationOptions
-    } from "@/utils/jobDataConfig.json";
+    } from "@/config/formDataConfig.json";
     import HereMapMultiJobs from "@/components/hereMaps/HereMapMultiJobs.vue";
     import JobboardList from "@/components/ui/JobboardList.vue";
     import FacebookBtn from "@/components/buttons/FacebookBtn.vue";

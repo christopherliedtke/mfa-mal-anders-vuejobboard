@@ -1,10 +1,10 @@
 <template>
     <b-container class="edit-company py-5">
-        <h2>Unternehmen bearbeiten</h2>
-        <CompanyForm
-            :companyId="$route.params.companyId"
-            apiJobsSchema="private"
-        ></CompanyForm>
+        <h2>
+            Unternehmen
+            {{ $route.params.companyId === "new" ? "erstellen" : "bearbeiten" }}
+        </h2>
+        <CompanyForm apiJobsSchema="private"></CompanyForm>
     </b-container>
 </template>
 

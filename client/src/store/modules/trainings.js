@@ -1,5 +1,5 @@
 import axios from "@/utils/axios";
-import config from "@/utils/config.json";
+import config from "@/config/config.json";
 
 const state = {
     trainings: []

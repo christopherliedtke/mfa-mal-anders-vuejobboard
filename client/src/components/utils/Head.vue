@@ -18,14 +18,14 @@
             script: { type: Array, default: () => [] }
         },
         head: {
-            title: function() {
+            title() {
                 if (this.title) {
                     return {
                         inner: this.title
                     };
                 }
             },
-            meta: function() {
+            meta() {
                 if (this.desc) {
                     return [
                         {
@@ -76,7 +76,7 @@
                     ];
                 }
             },
-            script: function() {
+            script() {
                 return [
                     ...this.script,
                     {

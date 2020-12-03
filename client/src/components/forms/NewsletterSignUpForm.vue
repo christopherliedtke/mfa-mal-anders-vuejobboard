@@ -75,7 +75,7 @@
 </template>
 
 <script>
-    import { companyStateOptions } from "@/utils/jobDataConfig.json";
+    import { companyStateOptions } from "@/config/formDataConfig.json";
     export default {
         name: "NewsletterSignUpForm",
         props: {

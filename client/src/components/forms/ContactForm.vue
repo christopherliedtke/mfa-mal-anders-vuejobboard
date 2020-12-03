@@ -162,7 +162,7 @@
     import {
         contactGenderOptions,
         contactTitleOptions
-    } from "@/utils/jobDataConfig.json";
+    } from "@/config/formDataConfig.json";
     export default {
         name: "ContactForm",
         props: ["title", "intro"],

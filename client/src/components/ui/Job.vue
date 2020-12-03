@@ -328,7 +328,7 @@
     import {
         employmentTypeOptions,
         companySizeOptions
-    } from "@/utils/jobDataConfig.json";
+    } from "@/config/formDataConfig.json";
     import JobStructuredData from "@/components/utils/JobStructuredData.vue";
     import HereMapSingleJob from "@/components/hereMaps/HereMapSingleJob.vue";
     import FacebookShareBtn from "@/components/buttons/FacebookShareBtn.vue";

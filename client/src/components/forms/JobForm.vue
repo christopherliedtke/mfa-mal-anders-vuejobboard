@@ -13,6 +13,7 @@
                 required
                 trim
             />
+
             <div
                 v-if="$store.state.auth.user.role === 'admin'"
                 class="bg-light-shade border-radius1 p-3 mt-3"
@@ -47,6 +48,7 @@
                     placeholder="Anzeige wird nach X Tagen aktualisiert..."
                 />
             </div>
+
             <label for="specialization">Fachbereich</label>
             <b-form-select
                 id="specialization"
@@ -63,6 +65,7 @@
                     >{{ type }}</b-form-select-option
                 ></b-form-select
             >
+
             <label for="employment-type">Anstellungsart *</label>
             <b-form-select
                 id="employment-type"
@@ -79,6 +82,7 @@
                     >{{ type.text }}</b-form-select-option
                 ></b-form-select
             >
+
             <label for="application-deadline">Bewerbungsfrist *</label>
             <b-form-datepicker
                 :state="validated && job.applicationDeadline != ''"
@@ -86,6 +90,7 @@
                 v-model="job.applicationDeadline"
                 placeholder="Bewerbungsfrist wählen"
             />
+
             <label for="simple-applcation">Nur mit Lebenslauf bewerben</label>
             <b-form-select
                 id="simple-application"
@@ -99,12 +104,14 @@
                     >{{ type.text }}</b-form-select-option
                 ></b-form-select
             >
+
             <label for="description">Stellenbeschreibung *</label>
             <TipTapEditor
                 :validated="validated"
                 :content="job.description"
                 @update-content="job.description = $event"
             />
+
             <label for="application-email"
                 >E-Mail Adresse für Bewerbungen</label
             >
@@ -124,6 +131,7 @@
                     placeholder="karriere@ihr-unternehmen.de"
                 />
             </b-input-group>
+
             <label for="ext-job-url"
                 >URL zur Bewerbung auf Ihrem Bewerberportal [wenn
                 vorhanden]</label
@@ -142,6 +150,7 @@
                     placeholder="https://www.ihr-unternehmen.com/karriere/stelle/bewerben"
                 />
             </b-input-group>
+
             <label for="title-image"
                 >Team/Praxis Bild (jpg, png | max. 5MB)</label
             >
@@ -162,7 +171,6 @@
                 placeholder="ADMIN - URL to image (incl. https://)"
             >
             </b-form-input>
-
             <div
                 class="position-relative d-flex justify-content-center align-items-center bg-secondary rounded mt-2"
                 style="width: 150px; height: 150px"
@@ -170,6 +178,100 @@
                 <b-img v-if="job.imageUrl" :src="job.imageUrl" fluid />
                 <Fa v-else icon="image" size="5x" />
             </div>
+
+            <h3 class="mt-4">Kontakt für Bewerbungen</h3>
+            <label for="contact-gender">Anrede</label>
+            <b-form-select
+                id="contact-gender"
+                v-model="job.contactGender"
+                :state="validated ? (job.contactGender ? true : null) : null"
+            >
+                <b-form-select-option :value="null"
+                    >-- Titel auswählen --</b-form-select-option
+                >
+                <b-form-select-option
+                    v-for="title in contactGenderOptions"
+                    :key="title"
+                    :value="title"
+                    >{{ title }}</b-form-select-option
+                >
+            </b-form-select>
+
+            <label for="contact-title">Titel</label>
+            <b-form-select
+                id="contact-title"
+                v-model="job.contactTitle"
+                :state="validated ? (job.contactTitle ? true : null) : null"
+            >
+                <b-form-select-option :value="null"
+                    >-- Titel auswählen --</b-form-select-option
+                >
+                <b-form-select-option
+                    v-for="title in contactTitleOptions"
+                    :key="title"
+                    :value="title"
+                    >{{ title }}</b-form-select-option
+                >
+            </b-form-select>
+
+            <label for="contact-first-name">Vorname</label>
+            <b-form-input
+                type="text"
+                v-model="job.contactFirstName"
+                lazy-formatter
+                :formatter="formatter"
+                :state="validated ? (job.contactFirstName ? true : null) : null"
+                id="contact-first-name"
+                placeholder="Vorname eingeben..."
+                trim
+            />
+
+            <label for="contact-last-name">Nachname</label>
+            <b-form-input
+                type="text"
+                v-model="job.contactLastName"
+                lazy-formatter
+                :formatter="formatter"
+                :state="validated ? (job.contactLastName ? true : null) : null"
+                id="contact-last-name"
+                placeholder="Nachname eingeben..."
+                trim
+            />
+
+            <label for="contact-email">E-Mail Adresse</label>
+            <b-input-group>
+                <template v-slot:prepend>
+                    <b-input-group-text><Fa icon="at"/></b-input-group-text>
+                </template>
+                <b-form-input
+                    type="email"
+                    v-model="job.contactEmail"
+                    lazy-formatter
+                    :formatter="formatter"
+                    :state="validated ? (job.contactEmail ? true : null) : null"
+                    id="contact-email"
+                    placeholder="kontakt@ihr-unternehmen.de"
+                    trim
+                />
+            </b-input-group>
+
+            <label for="contact-phone">Telefon</label>
+            <b-input-group>
+                <template v-slot:prepend>
+                    <b-input-group-text
+                        ><Fa icon="mobile-alt"
+                    /></b-input-group-text>
+                </template>
+                <b-form-input
+                    type="tel"
+                    v-model="job.contactPhone"
+                    lazy-formatter
+                    :formatter="formatter"
+                    :state="validated ? (job.contactPhone ? true : null) : null"
+                    id="contact-phone"
+                    placeholder="Telefonnummer eingeben..."
+                />
+            </b-input-group>
 
             <h3 class="mt-4">Unternehmen</h3>
             <div class="mt-3 d-flex align-items-end">
@@ -198,6 +300,7 @@
                     >Zurücksetzen</b-button
                 >
             </div>
+
             <label for="company-name">Unternehmensname *</label>
             <b-form-input
                 type="text"
@@ -210,6 +313,7 @@
                 required
                 trim
             />
+
             <label for="company-street">Straße und Hausnummer *</label>
             <b-form-input
                 type="text"
@@ -222,6 +326,7 @@
                 required
                 trim
             />
+
             <label for="company-location">Ort *</label>
             <b-form-input
                 type="text"
@@ -236,6 +341,7 @@
                 required
                 trim
             />
+
             <label for="company-zip-code">PLZ *</label>
             <b-form-input
                 type="number"
@@ -246,6 +352,7 @@
                 required
                 trim
             />
+
             <label for="company-state">Bundesland *</label>
             <b-form-select
                 id="company-state"
@@ -262,6 +369,7 @@
                     >{{ state }}</b-form-select-option
                 >
             </b-form-select>
+
             <label for="company-country">Land *</label>
             <b-form-select
                 id="company-country"
@@ -278,6 +386,7 @@
                     >{{ country }}</b-form-select-option
                 >
             </b-form-select>
+
             <label for="company-size">Unternehmensgröße *</label>
             <b-form-select
                 id="company-size"
@@ -310,6 +419,7 @@
                     placeholder="https://www.ihr-unternehmen.de"
                 />
             </b-input-group>
+
             <label for="logo">Logo (jpg, png | max. 5MB)</label>
             <ImageUploader
                 id="logo"
@@ -340,95 +450,6 @@
                 <Fa v-else icon="box-open" size="lg" />
             </div>
 
-            <h3 class="mt-4">Kontakt für Bewerbungen</h3>
-            <label for="contact-gender">Anrede</label>
-            <b-form-select
-                id="contact-gender"
-                v-model="job.contactGender"
-                :state="validated ? (job.contactGender ? true : null) : null"
-            >
-                <b-form-select-option :value="null"
-                    >-- Titel auswählen --</b-form-select-option
-                >
-                <b-form-select-option
-                    v-for="title in contactGenderOptions"
-                    :key="title"
-                    :value="title"
-                    >{{ title }}</b-form-select-option
-                >
-            </b-form-select>
-            <label for="contact-title">Titel</label>
-            <b-form-select
-                id="contact-title"
-                v-model="job.contactTitle"
-                :state="validated ? (job.contactTitle ? true : null) : null"
-            >
-                <b-form-select-option :value="null"
-                    >-- Titel auswählen --</b-form-select-option
-                >
-                <b-form-select-option
-                    v-for="title in contactTitleOptions"
-                    :key="title"
-                    :value="title"
-                    >{{ title }}</b-form-select-option
-                >
-            </b-form-select>
-            <label for="contact-first-name">Vorname</label>
-            <b-form-input
-                type="text"
-                v-model="job.contactFirstName"
-                lazy-formatter
-                :formatter="formatter"
-                :state="validated ? (job.contactFirstName ? true : null) : null"
-                id="contact-first-name"
-                placeholder="Vorname eingeben..."
-                trim
-            />
-            <label for="contact-last-name">Nachname</label>
-            <b-form-input
-                type="text"
-                v-model="job.contactLastName"
-                lazy-formatter
-                :formatter="formatter"
-                :state="validated ? (job.contactLastName ? true : null) : null"
-                id="contact-last-name"
-                placeholder="Nachname eingeben..."
-                trim
-            />
-            <label for="contact-email">E-Mail Adresse</label>
-            <b-input-group>
-                <template v-slot:prepend>
-                    <b-input-group-text><Fa icon="at"/></b-input-group-text>
-                </template>
-                <b-form-input
-                    type="email"
-                    v-model="job.contactEmail"
-                    lazy-formatter
-                    :formatter="formatter"
-                    :state="validated ? (job.contactEmail ? true : null) : null"
-                    id="contact-email"
-                    placeholder="kontakt@ihr-unternehmen.de"
-                    trim
-                />
-            </b-input-group>
-            <label for="contact-phone">Telefon</label>
-            <b-input-group>
-                <template v-slot:prepend>
-                    <b-input-group-text
-                        ><Fa icon="mobile-alt"
-                    /></b-input-group-text>
-                </template>
-                <b-form-input
-                    type="tel"
-                    v-model="job.contactPhone"
-                    lazy-formatter
-                    :formatter="formatter"
-                    :state="validated ? (job.contactPhone ? true : null) : null"
-                    id="contact-phone"
-                    placeholder="Telefonnummer eingeben..."
-                />
-            </b-input-group>
-
             <div class="d-flex justify-content-between my-4">
                 <b-button
                     variant="outline-danger"
@@ -449,6 +470,9 @@
 </template>
 
 <script>
+    import { getGeocodeMixin } from "@/mixins/getGeocodeMixin";
+    import { saveCompanyMixin } from "@/mixins/saveCompanyMixin";
+    import { saveJobMixin } from "@/mixins/saveJobMixin";
     import {
         specializationOptions,
         employmentTypeOptions,
@@ -458,7 +482,7 @@
         companyStateOptions,
         companyCountryOptions,
         companySizeOptions
-    } from "@/utils/jobDataConfig.json";
+    } from "@/config/formDataConfig.json";
     import TipTapEditor from "@/components/utils/TipTapEditor.vue";
     import ImageUploader from "@/components/utils/ImageUploader.vue";
     export default {
@@ -467,11 +491,12 @@
             TipTapEditor,
             ImageUploader
         },
-        props: ["jobId", "apiJobsSchema"],
+        mixins: [getGeocodeMixin, saveCompanyMixin, saveJobMixin],
+        props: ["apiJobsSchema"],
         data() {
             return {
                 job: {
-                    _id: "",
+                    _id: this.$route.params.jobId,
                     paidAt: null,
                     paidExpiresAt: null,
                     paidAmount: 0,
@@ -525,10 +550,6 @@
                 companyCountryOptions,
                 companyStateOptions,
                 companySizeOptions,
-                hereMaps: {
-                    platform: null,
-                    apikey: "n3GOlcV0Z6utqCKpJlDWH6lWYtJdvR0QomMzYs_EreM"
-                },
                 validated: null,
                 success: "",
                 error: ""
@@ -553,27 +574,20 @@
             }
         },
         created() {
-            if (this.jobId != "new") {
-                this.getJob(this.jobId);
+            if (this.$route.params.jobId != "new") {
+                this.getJob(this.$route.params.jobId);
             }
-            // this.jobId  ? this.getJob(this.jobId) : null;
             this.getCompanies();
-
-            // Initialize the platform object:
-            const platform = new window.H.service.Platform({
-                apikey: this.hereMaps.apikey
-            });
-            this.hereMaps.platform = platform;
         },
         methods: {
-            async getJob(jobId) {
+            async getJob(id) {
                 try {
                     const job = await this.$axios.post(
                         `/api/jobs/${this.apiJobsSchema}`,
                         {
                             query: `
                             query {
-                                job(_id: "${jobId}") {
+                                job(_id: "${id}") {
                                     _id
                                     paidAt
                                     paidExpiresAt
@@ -699,172 +713,39 @@
 
                 this.$store.dispatch("setOverlay", true);
 
-                try {
-                    // get geocode
-                    const service = this.hereMaps.platform.getSearchService();
-                    const geocode = await service.geocode({
-                        q: `${this.job.company.street} ${this.job.company.location} ${this.job.company.state} ${this.job.company.country}`
-                    });
+                const data = await this.getGeocode(this.job.company);
+                this.job.company.geoCodeLat = data.lat;
+                this.job.company.geoCodeLng = data.lng;
 
-                    this.job.company.geoCodeLat = geocode.items[0].position.lat;
-                    this.job.company.geoCodeLng = geocode.items[0].position.lng;
-                } catch (err) {
-                    console.log("Error on getGeoCode(): ", err);
+                // Save / Update company
+                let companyMutationType;
+                this.job.company._id
+                    ? (companyMutationType = "updateCompany")
+                    : (companyMutationType = "addCompany");
 
-                    this.job.company.geoCodeLat = null;
-                    this.job.company.geoCodeLng = null;
+                const savedCompany = await this.saveCompany(
+                    companyMutationType,
+                    this.apiJobsSchema,
+                    this.job.company,
+                    false
+                );
+
+                if (savedCompany.success) {
+                    this.job.company._id = savedCompany.companyId;
                 }
 
-                try {
-                    // Save / Update company
-                    let companyMutationType;
-                    this.job.company._id
-                        ? (companyMutationType = "updateCompany")
-                        : (companyMutationType = "addCompany");
+                // Save / Update job
+                let jobMutationType;
+                this.job._id
+                    ? (jobMutationType = "updateJob")
+                    : (jobMutationType = "addJob");
 
-                    const companyQuery = `
-                        mutation {
-                            ${companyMutationType}(
-                                ${
-                                    companyMutationType === "updateCompany"
-                                        ? `_id: "${this.job.company._id}",`
-                                        : ""
-                                } 
-                                name: "${this.job.company.name}", 
-                                street: "${this.job.company.street}"
-                                location: "${this.job.company.location}", 
-                                zipCode: "${this.job.company.zipCode}"
-                                state: "${this.job.company.state}", 
-                                country: "${this.job.company.country}", 
-                                geoCodeLat: ${this.job.company.geoCodeLat}, 
-                                geoCodeLng: ${this.job.company.geoCodeLng}, 
-                                size: "${this.job.company.size}"
-                                url: "${
-                                    !/^https?:\/\//i.test(
-                                        this.job.company.url
-                                    ) && this.job.company.url
-                                        ? "https://" + this.job.company.url
-                                        : this.job.company.url
-                                }"
-                                logoUrl: "${this.job.company.logoUrl}"
-                            ) {
-                                _id
-                            }
-                        }
-                    `;
-
-                    const companyQueryResponse = await this.$axios.post(
-                        `/api/companies/${this.apiJobsSchema}`,
-                        { query: companyQuery }
-                    );
-
-                    const newCompanyId =
-                        companyQueryResponse.data.data[companyMutationType]._id;
-
-                    // Save / Update job
-                    let jobMutationType;
-                    this.job._id
-                        ? (jobMutationType = "updateJob")
-                        : (jobMutationType = "addJob");
-
-                    const jobQuery = `
-                        mutation {
-                            ${jobMutationType}(
-                                ${
-                                    jobMutationType === "updateJob"
-                                        ? `_id: "${this.job._id}"`
-                                        : ""
-                                } 
-                                title: "${this.job.title}"
-                                paidAt: ${this.job.paidAt}
-                                paidExpiresAt: ${this.job.paidExpiresAt}
-                                paidAmount: ${this.job.paidAmount}
-                                refreshFrequency: ${this.job.refreshFrequency}
-                                description: "${this.job.description.replace(
-                                    /"/g,
-                                    '\\"'
-                                )}"
-                                employmentType: "${this.job.employmentType}"
-                                applicationDeadline: "${
-                                    this.job.applicationDeadline
-                                }"
-                                simpleApplication: ${this.job.simpleApplication}
-                                specialization: "${this.job.specialization}"
-                                extJobUrl: "${
-                                    !/^https?:\/\//i.test(this.job.extJobUrl) &&
-                                    this.job.extJobUrl
-                                        ? "https://" + this.job.extJobUrl
-                                        : this.job.extJobUrl
-                                }"
-                                applicationEmail: "${this.job.applicationEmail}"
-                                imageUrl: "${this.job.imageUrl}"
-                                contactGender: "${this.job.contactGender}"
-                                contactTitle: "${this.job.contactTitle}"
-                                contactFirstName: "${this.job.contactFirstName}"
-                                contactLastName: "${this.job.contactLastName}"
-                                contactEmail: "${this.job.contactEmail}"
-                                contactPhone: "${this.job.contactPhone}"
-                                company: "${newCompanyId ||
-                                    this.job.company._id}"
-                            ) {
-                                _id
-                            }
-                        }
-                    `;
-
-                    const jobQueryResponse = await this.$axios.post(
-                        `/api/jobs/${this.apiJobsSchema}`,
-                        {
-                            query: jobQuery
-                        }
-                    );
-
-                    if (!jobQueryResponse.data.data[jobMutationType]) {
-                        this.$root.$bvToast.toast(
-                            "Beim Speichern der Stellenanzeige ist ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal.",
-                            {
-                                title: `Fehler beim Speichern`,
-                                variant: "danger",
-                                toaster: "b-toaster-bottom-right",
-                                solid: true,
-                                noAutoHide: true
-                            }
-                        );
-                    } else {
-                        this.success = true;
-
-                        this.trackEvent(
-                            `${jobMutationType}: ${this.job.title} | ${this.job.company.state} - ${jobQueryResponse.data.data[jobMutationType]._id}`,
-                            "Job_Ad",
-                            jobMutationType
-                        );
-
-                        this.$root.$bvToast.toast(
-                            "Die Stellenanzeige wurde erfolgreich gespeichert.",
-                            {
-                                title: `Stellenanzeige gespeichert`,
-                                variant: "success",
-                                toaster: "b-toaster-bottom-right",
-                                solid: true
-                            }
-                        );
-
-                        this.hasHistory
-                            ? this.$router.go(-1)
-                            : this.$router.push("/user/dashboard");
-                    }
-                } catch (err) {
-                    this.$root.$bvToast.toast(
-                        "Beim Speichern der Stellenanzeige ist ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal.",
-                        {
-                            title: `Fehler beim Speichern`,
-                            variant: "danger",
-                            toaster: "b-toaster-bottom-right",
-                            solid: true,
-                            noAutoHide: true
-                        }
-                    );
-                }
+                await this.saveJob(
+                    jobMutationType,
+                    this.apiJobsSchema,
+                    this.job,
+                    true
+                );
 
                 this.$store.dispatch("setOverlay", false);
             },
@@ -901,7 +782,7 @@
             hasHistory() {
                 return window.history.length > 2;
             },
-            trackEvent: function(label, category, action) {
+            trackEvent(label, category, action) {
                 this.$gtag.event(action, {
                     event_category: category,
                     event_label: label

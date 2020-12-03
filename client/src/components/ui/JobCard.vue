@@ -104,7 +104,7 @@
     import {
         employmentTypeOptions,
         companySizeOptions
-    } from "@/utils/jobDataConfig.json";
+    } from "@/config/formDataConfig.json";
     export default {
         name: "JobCard",
         props: ["job"],
