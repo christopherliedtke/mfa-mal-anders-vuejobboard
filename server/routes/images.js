@@ -5,18 +5,11 @@ const upload = require("../middleware/upload");
 const sharpImg = require("../middleware/sharpImg");
 const s3 = require("../middleware/s3");
 
-let secrets;
-if (process.env.NODE_ENV == "production") {
-    secrets = process.env; // in prod the secrets are environment variables
-} else {
-    secrets = require("../config/secrets.json"); // in dev they are in secrets.json which is listed in .gitignore
-}
-
 // #route:  POST /api/images/upload
 // #desc:   upload image to AWS
 // #access: Private
 router.use("/upload", verifyToken, upload, sharpImg, s3.upload, (req, res) => {
-    const url = secrets.S3_URL + req.file.filename;
+    const url = process.env.S3_URL + req.file.filename;
     res.json({ success: true, url });
 });
 

@@ -44,7 +44,7 @@ router.get("/user-by-db", verifyToken, async (req, res) => {
                         email: user.email,
                     },
                 },
-                res.locals.secrets.JWT_SECRET,
+                process.env.JWT_SECRET,
                 {
                     expiresIn: 60 * 60 * 24 * 7,
                 }
@@ -107,7 +107,7 @@ router.post("/login", async (req, res) => {
                                 email: user.email,
                             },
                         },
-                        res.locals.secrets.JWT_SECRET,
+                        process.env.JWT_SECRET,
                         {
                             expiresIn: 60 * 60 * 24 * 7,
                         }
@@ -204,72 +204,13 @@ router.post("/register", async (req, res) => {
                             email: user.email,
                         },
                     },
-                    res.locals.secrets.JWT_SECRET,
+                    process.env.JWT_SECRET,
                     {
                         expiresIn: 60 * 60 * 24 * 7,
                     }
                 );
 
                 req.session.token = token;
-
-                // const baseUrl = req.protocol + "://" + req.get("host");
-
-                // const data = {
-                //     from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
-                //     to: user.email,
-                //     subject: `E-Mail bestätigen für ${config.website.name}`,
-                //     text: `
-                //         Bitte nutzen Sie den folgenden Link, um Ihren Account auf ${config.website.name} zu aktivieren:: ${baseUrl}/api/auth/verification/verify-account/${user._id}
-                //     `,
-                //     html: emailTemplate.generate(`
-                //         <div
-                //             style="color: #000000; font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif; line-height: 1.2; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px">
-                //             <div style="line-height: 1.2; font-size: 12px; color: #000000; font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif; mso-line-height-alt: 14px">
-                //                 <h2>Aktivieren Sie Ihren Account bei ${config.website.name}</h2>
-                //                 <p>
-                //                     Bitte nutzen Sie den folgenden Link, um Ihren Account auf ${config.website.name} zu aktivieren:
-                //                 </p>
-                //             </div>
-                //         </div>
-                //         <div
-                //             style="
-                //                 text-decoration: none;
-                //                 display: inline-block;
-                //                 color: #f8faf9;
-                //                 background-color: #fda225;
-                //                 border-radius: 50px;
-                //                 -webkit-border-radius: 50px;
-                //                 -moz-border-radius: 50px;
-                //                 width: auto;
-                //                 width: auto;
-                //                 border-top: 1px solid #fda225;
-                //                 border-right: 1px solid #fda225;
-                //                 border-bottom: 1px solid #fda225;
-                //                 border-left: 1px solid #fda225;
-                //                 padding-top: 5px;
-                //                 padding-bottom: 5px;
-                //                 font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif;
-                //                 text-align: center;
-                //                 mso-border-alt: none;
-                //                 word-break: keep-all;
-                //             "
-                //         >
-                //             <a
-                //                 style="padding-left: 20px; padding-right: 20px; font-size: 16px; display: inline-block; cursor: pointer; border: none; color: #f8faf9; text-decoration: none" href="${baseUrl}/api/auth/verification/verify-account/${user._id}" target="_blank"
-                //             >
-                //                 <span
-                //                     style="font-size: 16px; line-height: 1.5; word-break: break-word; mso-line-height-alt: 24px"
-                //                 >
-                //                     Account aktivieren
-                //                 </span>
-                //             </a>
-                //         </div>
-                //     `),
-                // };
-                // const emailSent = await emailService.sendMail(data);
-
-                // console.log("sendMail() after register: ", emailSent);
-                // console.log("New Registration: ", user);
 
                 res.json({
                     success: true,
@@ -385,16 +326,16 @@ router.get("/verification/verify-account/:userId", async (req, res) => {
                 `Error on /verify-account -> no user found for user._id ${req.params.userId}: `,
                 user
             );
-            redirectPath = `${res.locals.secrets.WEBSITE_URL}/auth/account/verification?error=no-user`;
+            redirectPath = `${process.env.WEBSITE_URL}/auth/account/verification?error=no-user`;
         } else {
             await User.updateOne({ email: user.email }, { status: "active" });
 
-            redirectPath = `${res.locals.secrets.WEBSITE_URL}/auth/account/verified`;
+            redirectPath = `${process.env.WEBSITE_URL}/auth/account/verified`;
         }
     } catch (err) {
         console.log("Error on /api/auth/verification/verify-account: ", err);
 
-        redirectPath = `${res.locals.secrets.WEBSITE_URL}/auth/account/verification?error=server-error`;
+        redirectPath = `${process.env.WEBSITE_URL}/auth/account/verification?error=server-error`;
     }
 
     res.redirect(redirectPath);

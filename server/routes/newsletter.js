@@ -127,8 +127,7 @@ router.get("/verification/:subscriberId", async (req, res) => {
             res.sendStatus(503);
         } else {
             res.redirect(
-                res.locals.secrets.WEBSITE_URL +
-                    config.website.newsletterSuccessPath
+                process.env.WEBSITE_URL + config.website.newsletterSuccessPath
             );
         }
     } catch (error) {

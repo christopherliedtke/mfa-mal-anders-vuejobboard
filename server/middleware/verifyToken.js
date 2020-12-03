@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const authenticateToken = (req, res, next) => {
     const token = req.session.token;
 
-    jwt.verify(token, res.locals.secrets.JWT_SECRET, (err, data) => {
+    jwt.verify(token, process.env.JWT_SECRET, (err, data) => {
         if (err) {
             // console.log("req.url: ", req.url);
             // console.log("Error on jwt.verify(): ", err);

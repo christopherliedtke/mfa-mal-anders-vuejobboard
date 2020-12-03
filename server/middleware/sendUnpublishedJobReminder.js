@@ -3,13 +3,6 @@ const emailService = require("../utils/nodemailer");
 
 const { Job } = require("../database/models/job");
 
-let secrets;
-if (process.env.NODE_ENV == "production") {
-    secrets = process.env;
-} else {
-    secrets = require("../config/secrets.json");
-}
-
 module.exports.sendUnpublishedJobReminder = async () => {
     console.log("sendUnpublishedJobReminder()...");
 
@@ -61,14 +54,14 @@ module.exports.sendUnpublishedJobReminder = async () => {
                     </p>
                     <p>
                         Melden Sie sich gern bei uns über unser <a href="${
-                            secrets.WEBSITE_URL
+                            process.env.WEBSITE_URL
                         }/page/contact">Kontaktformular</a> oder direkt per Nachricht an <a href="mailto:${
                         config.website.contactEmail
                     }">${config.website.contactEmail}</a>.
                     </p>
                     <p>
                         Nach erfolgreichem <a href="${
-                            secrets.WEBSITE_URL
+                            process.env.WEBSITE_URL
                         }/login">Login</a> können Sie Ihre Stellenanzeige jederzeit weiter bearbeiten.
                     </p>
                     <p>

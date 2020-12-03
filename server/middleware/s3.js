@@ -1,16 +1,9 @@
 const aws = require("aws-sdk");
 const fs = require("fs");
 
-let secrets;
-if (process.env.NODE_ENV == "production") {
-    secrets = process.env; // in prod the secrets are environment variables
-} else {
-    secrets = require("../config/secrets.json"); // in dev they are in secrets.json which is listed in .gitignore
-}
-
 const s3 = new aws.S3({
-    accessKeyId: secrets.AWS_KEY,
-    secretAccessKey: secrets.AWS_SECRET,
+    accessKeyId: process.env.AWS_KEY,
+    secretAccessKey: process.env.AWS_SECRET,
 });
 
 module.exports.upload = function (req, res, next) {
@@ -24,7 +17,7 @@ module.exports.upload = function (req, res, next) {
 
     const promise = s3
         .putObject({
-            Bucket: secrets.S3_BUCKET,
+            Bucket: process.env.S3_BUCKET,
             ACL: "public-read",
             Key: filename,
             Body: fs.createReadStream(path),
@@ -47,7 +40,7 @@ module.exports.upload = function (req, res, next) {
 module.exports.delete = (filename) => {
     return s3
         .deleteObject({
-            Bucket: secrets.S3_BUCKET,
+            Bucket: process.env.S3_BUCKET,
             Key: filename,
         })
         .promise();

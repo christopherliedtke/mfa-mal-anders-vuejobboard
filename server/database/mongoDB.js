@@ -1,15 +1,10 @@
 const mongoose = require("mongoose");
 
-let mongoDB;
-if (process.env.MDB_URL) {
-    mongoDB = process.env.MDB_URL;
-} else {
-    const { MDB_URL } = require("../config/secrets.json");
-    mongoDB = MDB_URL;
-}
-
 mongoose
-    .connect(mongoDB, {
+    .connect(process.env.MDB_URI, {
+        dbName: process.env.MDB_NAME,
+        user: process.env.MDB_USER,
+        pass: process.env.MDB_PASSWORD,
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,

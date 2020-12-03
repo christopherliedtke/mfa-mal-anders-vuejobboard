@@ -5,13 +5,6 @@ const config = require("../config/config");
 const pagesSitemap = require("../config/sitemap.json");
 const { Job } = require("../database/models/job");
 
-let secrets;
-if (process.env.NODE_ENV == "production") {
-    secrets = process.env;
-} else {
-    secrets = require("../config/secrets.json");
-}
-
 const getArticles = () =>
     new Promise((resolve, reject) => {
         try {
@@ -100,9 +93,9 @@ async function createSitemap() {
             __dirname + "/../public/index.html"
         );
 
-        const root = writeUrl(secrets.WEBSITE_URL + "/", lastBuild);
+        const root = writeUrl(process.env.WEBSITE_URL + "/", lastBuild);
         const pages = pagesSitemap
-            .map((elem) => writeUrl(secrets.WEBSITE_URL + elem, lastBuild))
+            .map((elem) => writeUrl(process.env.WEBSITE_URL + elem, lastBuild))
             .join(" ");
 
         const articles = await new Promise((resolve) => {
@@ -114,7 +107,7 @@ async function createSitemap() {
                         response
                             .map((elem) =>
                                 writeUrl(
-                                    secrets.WEBSITE_URL +
+                                    process.env.WEBSITE_URL +
                                         "/article/" +
                                         elem.slug,
                                     new Date(elem.modifiedGmt).toISOString()
@@ -137,7 +130,7 @@ async function createSitemap() {
                         response
                             .map((elem) =>
                                 writeUrl(
-                                    secrets.WEBSITE_URL +
+                                    process.env.WEBSITE_URL +
                                         "/page/mfa-career/fort-und-weiterbildungen/" +
                                         elem.slug,
                                     new Date(elem.modifiedGmt).toISOString()
@@ -160,7 +153,7 @@ async function createSitemap() {
                         response
                             .map((elem) =>
                                 writeUrl(
-                                    secrets.WEBSITE_URL +
+                                    process.env.WEBSITE_URL +
                                         "/jobboard/job/" +
                                         elem._id,
                                     new Date(elem.updatedAt).toISOString()

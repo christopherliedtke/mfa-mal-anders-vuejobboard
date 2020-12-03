@@ -146,7 +146,7 @@ const mutation = new GraphQLObjectType({
                         args.status != "invoice-pending"
                     ) {
                         googleIndexing(
-                            req.res.locals.secrets.WEBSITE_URL +
+                            process.env.WEBSITE_URL +
                                 config.googleIndexing.pathPrefix +
                                 args._id,
                             args.status === "pusblished"
@@ -164,7 +164,7 @@ const mutation = new GraphQLObjectType({
             args: {
                 _id: { type: GraphQLString },
             },
-            async resolve(parentValue, args, req) {
+            async resolve(parentValue, args) {
                 try {
                     const { imageUrl } = await Job.findOne(
                         { _id: args._id },
@@ -182,7 +182,7 @@ const mutation = new GraphQLObjectType({
                     if (response.n === 1) {
                         if (config.googleIndexing.active) {
                             googleIndexing(
-                                req.res.locals.secrets.WEBSITE_URL +
+                                process.env.WEBSITE_URL +
                                     config.googleIndexing.pathPrefix +
                                     args._id,
                                 "URL_DELETED"

@@ -6,20 +6,13 @@ const { Coupon } = require("../database/models/coupon");
 const { UsedCoupon } = require("../database/models/usedCoupon");
 const config = require("../config/config");
 
-let secrets;
-if (process.env.NODE_ENV == "production") {
-    secrets = process.env;
-} else {
-    secrets = require("../config/secrets.json");
-}
-
-const stripe = require("stripe")(secrets.STRIPE_SK);
+const stripe = require("stripe")(process.env.STRIPE_SK);
 
 // #route:  GET /api/stripe/get-stripe-pk
 // #desc:   Provide stripe public key
 // #access: Private
 router.get("/get-stripe-pk", (req, res) => {
-    const stripePk = secrets.STRIPE_PK;
+    const stripePk = process.env.STRIPE_PK;
     res.json({ stripePk });
 });
 

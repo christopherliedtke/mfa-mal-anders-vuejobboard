@@ -4,16 +4,9 @@ const emailTemplate = require("../utils/emailTemplate");
 const { Subscriber } = require("../database/models/subscriber");
 const { Job } = require("../database/models/job");
 
-let secrets;
-if (process.env.NODE_ENV == "production") {
-    secrets = process.env;
-} else {
-    secrets = require("../config/secrets.json");
-}
-
 const mg = require("mailgun-js")({
-    apiKey: secrets.MG_API_KEY,
-    domain: secrets.MG_DOMAIN,
+    apiKey: process.env.MG_API_KEY,
+    domain: process.env.MG_DOMAIN,
     host: "api.eu.mailgun.net",
 });
 
@@ -65,7 +58,7 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
 
             if (jobList) {
                 const data = {
-                    from: `${config.website.emailFrom} <noreply@${secrets.MG_DOMAIN}>`,
+                    from: `${config.website.emailFrom} <noreply@${process.env.MG_DOMAIN}>`,
                     to: config.website.contactEmail,
                     bcc: newsletterList[key].join(", "),
                     subject: `Dein Job-Newsletter für ${key} – ${config.website.name}`,
@@ -84,14 +77,14 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
                                 <a
                                     style="text-decoration: underline; color: #f8faf9"
                                     target="_blank" rel="noopener"
-                                    href="${secrets.WEBSITE_URL}/page/unsubscribe"
+                                    href="${process.env.WEBSITE_URL}/page/unsubscribe"
                                 >
                                     Vom Newsletter abmelden
                                 </a>
                             `,
                         `
                                 ${
-                                    secrets.WEBSITE_URL
+                                    process.env.WEBSITE_URL
                                 }/img/SocialCard_JobsDerWoche_${key
                             .replace(/\s+/g, "")
                             .replace("ü", "ue")}.png
@@ -131,7 +124,7 @@ const generateListOfJobs = (state, jobs) => {
                 <a 
                     style="margin-bottom: 1rem; font-size: 16px; display: inline-block; cursor: pointer; border: none; color: #b94559; text-decoration: none" 
                     href="${
-                        secrets.WEBSITE_URL +
+                        process.env.WEBSITE_URL +
                         config.googleIndexing.pathPrefix +
                         job._id
                     }?newsletter=true"
