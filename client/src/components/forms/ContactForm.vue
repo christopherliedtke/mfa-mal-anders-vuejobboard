@@ -187,9 +187,7 @@
             };
         },
         mounted() {
-            if (this.$store.state.auth.loggedIn) {
-                this.setUserData();
-            }
+            this.setUserData();
             this.setSubject();
             this.setMessage();
         },
@@ -264,11 +262,13 @@
                 this.$store.dispatch("setOverlay", false);
             },
             setUserData() {
-                this.form.title = this.$store.state.auth.user.title;
-                this.form.gender = this.$store.state.auth.user.gender;
-                this.form.firstName = this.$store.state.auth.user.firstName;
-                this.form.lastName = this.$store.state.auth.user.lastName;
-                this.form.email = this.$store.state.auth.user.email;
+                if (this.$store.state.auth.loggedIn) {
+                    this.form.title = this.$store.state.auth.user.title;
+                    this.form.gender = this.$store.state.auth.user.gender;
+                    this.form.firstName = this.$store.state.auth.user.firstName;
+                    this.form.lastName = this.$store.state.auth.user.lastName;
+                    this.form.email = this.$store.state.auth.user.email;
+                }
             },
             setSubject() {
                 if (this.$route.query.subject) {

@@ -293,9 +293,4 @@
             <loc>http=//localhost=8080/jobboard/job/5f3966ce895c6716b8d8c0c4</loc>
             <lastmod>2020-12-01T10:23:00.642Z</lastmod>
         </url>
-     
-        <url>
-            <loc>http=//localhost=8080/jobboard/job/5f6348a4630115097bfcbd65</loc>
-            <lastmod>2020-12-03T16:25:10.086Z</lastmod>
-        </url>
     </urlset>

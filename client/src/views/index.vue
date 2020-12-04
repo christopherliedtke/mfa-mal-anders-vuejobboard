@@ -143,9 +143,9 @@
                         <b-img-lazy
                             fluid
                             left
-                            class=" border-radius2 mr-3 mb-3"
+                            class="border-radius2 mr-3 mb-2"
                             style="max-width: 170px"
-                            src="@/assets/img/KristinMaurach_portrait-1541x2048.jpg"
+                            src="@/assets/img/KristinMaurach_portrait_800x800.jpg"
                             alt="Portrait Kristin Maurach"
                         />
                         <p>

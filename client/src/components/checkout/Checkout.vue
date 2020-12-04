@@ -28,8 +28,13 @@
 
                 <div class="mb-3">
                     <strong>Betrag:</strong>
-                    {{ amountComputed / 100 }}
-                    {{ currency }}
+                    {{
+                        (amountComputed / 100)
+                            .toFixed(2)
+                            .toString()
+                            .replace(".", ",")
+                    }}
+                    {{ $config.payment.currency }}
                     <Fa
                         id="popover-payment-recommendation"
                         class="position-relative text-info mr-2"
@@ -54,14 +59,15 @@
                 <b-form class="mb-4">
                     <b-form-input
                         type="range"
-                        min="2500"
-                        max="30000"
+                        :min="$config.payment.minCost"
+                        :max="$config.payment.maxCost"
                         step="100"
                         v-model="amount"
                     />
                     <div class="my-3">
                         <span>
-                            <strong>Laufzeit:</strong> {{ duration }} Tage
+                            <strong>Laufzeit:</strong>
+                            {{ $config.payment.duration }} Tage
                             <br />
                         </span>
                         <span>
@@ -127,8 +133,14 @@
                                 GooglePay</b-form-radio
                             >
                             <b-form-radio value="invoice"
-                                >Rechnung** (+ 5,00
-                                {{ currency }})</b-form-radio
+                                >Rechnung** (+
+                                {{
+                                    ($config.payment.invoiceCost / 100)
+                                        .toFixed(2)
+                                        .toString()
+                                        .replace(".", ",")
+                                }}
+                                {{ $config.payment.currency }})</b-form-radio
                             >
                         </b-form-radio-group>
                     </b-form-group>
@@ -231,6 +243,15 @@
                                     : null
                             "
                         />
+
+                        <b-alert
+                            v-if="error"
+                            class="mt-3"
+                            show
+                            dismissible
+                            variant="danger"
+                            >{{ error }}</b-alert
+                        >
                     </b-form-group>
 
                     <b-form-checkbox
@@ -258,7 +279,14 @@
                     <div>
                         * Es fällt ein
                         <strong
-                            >Mindestbeitrag von 25,- {{ currency }} pro
+                            >Mindestbeitrag von
+                            {{
+                                ($config.payment.minCost / 100)
+                                    .toFixed(2)
+                                    .toString()
+                                    .replace(".", ",")
+                            }}
+                            {{ $config.payment.currency }} pro
                             Stellenanzeige</strong
                         >
                         an, um den Betrieb des Portals aufrecht zu erhalten.
@@ -267,8 +295,14 @@
                         ** Sollten Sie ausschließlich auf vorab ausgestellte
                         Rechnung bezahlen können, erhalten Sie diese nach
                         Anforderung auf Ihre angegebene E-Mail Adresse. In dem
-                        Fall erhöht sich Ihr gewählter Kostenbeitrag um 5,00
-                        {{ currency }}.
+                        Fall erhöht sich Ihr gewählter Kostenbeitrag um
+                        {{
+                            ($config.payment.invoiceCost / 100)
+                                .toFixed(2)
+                                .toString()
+                                .replace(".", ",")
+                        }}
+                        {{ $config.payment.currency }}.
                         <strong
                             >Ihre Stellenanzeige wird nach erfolgtem Geldeingang
                             bei uns freigeschaltet.</strong
@@ -294,7 +328,7 @@
                     >
                     <b-button
                         v-if="paymentMethod === 'stripe'"
-                        @click="fetchCheckoutSessionId()"
+                        @click="startStripeCheckout()"
                         class="mb-2"
                         variant="success"
                         :disabled="!accepted"
@@ -303,40 +337,24 @@
                 </div>
             </template>
         </b-modal>
-        <b-alert
-            v-model="alert.showAlert"
-            class="position-fixed fixed-bottom m-0 rounded-0"
-            style="z-index: 2000;"
-            :variant="alert.variant"
-            dismissible
-        >
-            {{ alert.msg }}
-        </b-alert>
     </div>
 </template>
 
 <script>
+    import { stripeCheckoutMixin } from "@/mixins/stripeCheckoutMixin";
     import PayWhatYouWantSuggestion from "@/components/containers/PayWhatYouWantSuggestion";
     export default {
         name: "Checkout",
+        mixins: [stripeCheckoutMixin],
         props: ["showCheckoutModal", "job"],
         components: {
             PayWhatYouWantSuggestion
         },
         data() {
             return {
-                alert: {
-                    showAlert: false,
-                    variant: null,
-                    msg: ""
-                },
                 paymentMethod: "stripe",
-                stripe: null,
                 clientSecret: null,
-                checkoutSessionId: null,
-                stripePk: null,
                 amount: null,
-                duration: 14,
                 accepted: false,
                 coupon: {
                     code: null,
@@ -344,7 +362,6 @@
                     refreshFrequency: 0
                 },
                 couponValidationState: null,
-                currency: null,
                 billingAddress: {
                     company: null,
                     name: null,
@@ -354,17 +371,18 @@
                     zipCode: null,
                     location: null
                 },
-                validated: false
+                validated: false,
+                error: false
             };
         },
         computed: {
-            amountComputed: function() {
+            amountComputed() {
                 return (
                     Math.round(this.amount * (1 - this.coupon.discount) * 100) /
                     100
                 );
             },
-            amountCorelation: function() {
+            amountCorelation() {
                 let text;
                 if (this.amount >= 25000) {
                     text =
@@ -380,7 +398,7 @@
 
                 return text;
             },
-            refreshFrequencyComputed: function() {
+            refreshFrequencyComputed() {
                 let value = 0;
                 if (this.coupon.refreshFrequency) {
                     value = this.coupon.refreshFrequency;
@@ -392,13 +410,7 @@
             }
         },
         mounted() {
-            this.initStripe();
-            this.getPricePerAd();
-            // this.calculatePrice();
-
-            if (this.$route.query.success) {
-                this.checkPaymentSuccess(this.$route.query);
-            }
+            this.checkPaymentSuccess(this.$route.query);
         },
         watch: {
             showCheckoutModal() {
@@ -425,66 +437,15 @@
             hideModal() {
                 this.$refs["checkoutModal"].hide();
             },
-            async initStripe() {
-                const response = await this.$axios.get(
-                    "/api/stripe/get-stripe-pk"
+            async startStripeCheckout() {
+                await this.initStripeCheckout(
+                    "job",
+                    this.job._id,
+                    this.job.title,
+                    this.coupon.code,
+                    this.amount,
+                    this.accepted
                 );
-
-                this.stripePk = response.data.stripePk;
-                this.stripe = window.Stripe(this.stripePk);
-            },
-            async fetchCheckoutSessionId() {
-                let success;
-                this.$store.dispatch("setOverlay", true);
-
-                try {
-                    const response = await this.$axios.post(
-                        "/api/stripe/create-session-id",
-                        {
-                            job: this.job,
-                            url:
-                                window.location.origin +
-                                window.location.pathname,
-                            code: this.coupon.code,
-                            amount: this.amount,
-                            accepted: this.accepted
-                        }
-                    );
-
-                    if (response.data.success) {
-                        success = true;
-                        this.checkoutSessionId = response.data.sessionId;
-
-                        this.redirectToCheckout();
-                    } else {
-                        this.alert.msg =
-                            "Der Zahlungsprozess funktioniert leider im Moment nicht. Bitte versuchen Sie es später noch einmal oder kontaktieren Sie uns über unsere Kontaktdaten.";
-                        this.alert.variant = "danger";
-                        this.alert.showAlert = true;
-                    }
-                } catch (err) {
-                    this.alert.msg =
-                        "Der Zahlungsprozess funktioniert leider im Moment nicht. Bitte versuchen Sie es später noch einmal oder kontaktieren Sie uns über unsere Kontaktdaten.";
-                    this.alert.variant = "danger";
-                    this.alert.showAlert = true;
-
-                    success = false;
-                }
-
-                this.$store.dispatch("setOverlay", false);
-                return success;
-            },
-            async redirectToCheckout() {
-                if (this.checkoutSessionId) {
-                    await this.stripe.redirectToCheckout({
-                        sessionId: this.checkoutSessionId
-                    });
-                } else {
-                    this.alert.msg =
-                        "Der Zahlungsprozess funktioniert leider im Moment nicht. Bitte versuchen Sie es später noch einmal oder kontaktieren Sie uns über unsere Kontaktdaten.";
-                    this.alert.variant = "danger";
-                    this.alert.showAlert = true;
-                }
             },
             async checkPaymentSuccess(query) {
                 if (query.success === "true") {
@@ -510,14 +471,6 @@
                         }
                     );
                 }
-            },
-            async getPricePerAd() {
-                const price = await this.$axios.get(
-                    "/api/stripe/get-price-per-ad"
-                );
-                // this.amount = price.data.amount;
-                this.currency = price.data.currency.toUpperCase();
-                this.duration = price.data.duration;
             },
             calculatePrice() {
                 switch (this.job.company.size) {
@@ -551,45 +504,31 @@
                         response.data.refreshFrequency;
                 }
             },
-
             async setBillingAddress() {
-                try {
-                    const response = await this.$axios.post(
-                        "/api/user/private",
-                        {
-                            query: `
-                                query {
-                                    user {
-                                        _id
-                                        gender
-                                        title
-                                        firstName
-                                        lastName
-                                        email
-                                    }
-                                }
-                            `
-                        }
-                    );
-
-                    const user = response.data.data.user;
-
+                if (
+                    this.$store.state.auth.loggedIn &&
+                    this.$store.state.auth.user
+                ) {
                     this.billingAddress = {
                         company: this.job.company.name,
-                        userId: user._id,
+                        userId: this.$store.state.auth.user._id,
                         name: `${
-                            user.gender != "null" ? user.gender + " " : ""
-                        }${user.title != "null" ? user.title + " " : ""}${
-                            user.firstName
-                        } ${user.lastName}`,
+                            this.$store.state.auth.user.gender != "null"
+                                ? this.$store.state.auth.user.gender + " "
+                                : ""
+                        }${
+                            this.$store.state.auth.user.title != "null"
+                                ? this.$store.state.auth.user.title + " "
+                                : ""
+                        }${this.$store.state.auth.user.firstName} ${
+                            this.$store.state.auth.user.lastName
+                        }`,
 
-                        email: user.email,
+                        email: this.$store.state.auth.user.email,
                         street: this.job.company.street,
                         zipCode: this.job.company.zipCode,
                         location: this.job.company.location
                     };
-                } catch (err) {
-                    //
                 }
             },
             validateBillingAddress() {
@@ -604,10 +543,9 @@
                     : true;
             },
             async sendInvoice() {
-                this.resetAlert();
-
                 if (!this.validateBillingAddress()) {
-                    this.error = "Bitte fülle die erforderlichen Felder aus!";
+                    this.error =
+                        "Bitte füllen Sie die erforderlichen Felder aus!";
                     return null;
                 }
 
@@ -674,11 +612,6 @@
                 }
 
                 this.$store.dispatch("setOverlay", false);
-            },
-            resetAlert() {
-                this.alert.msg = "";
-                this.alert.variant = null;
-                this.alert.showAlert = false;
             }
         }
     };

@@ -64,31 +64,31 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
                     subject: `Dein Job-Newsletter für ${key} – ${config.website.name}`,
                     html: emailTemplate.generate(
                         `
-                                <div>
-                                    <h2 style="color: #6d0230">Deine Stellenangebote der Woche für ${key}</h2>
-                                    <p>Es ist wieder soweit! Hier erhältst Du unsere aktuellen Stellenanzeigen direkt in Dein Postfach.</p>
-                                    <p>Wir hoffen, für Dich ist etwas dabei und drücken die Daumen für Bewerbung und Co. </p>
-                                </div>
-                                <div style="margin: 2rem 0; padding: 1.5rem 0; border-top: solid 2px #6d0230">
-                                    ${jobList}
-                                </div>
-                            `,
+                            <div>
+                                <h2 style="color: #6d0230">Deine Stellenangebote der Woche für ${key}</h2>
+                                <p>Es ist wieder soweit! Hier erhältst Du unsere aktuellen Stellenanzeigen direkt in Dein Postfach.</p>
+                                <p>Wir hoffen, für Dich ist etwas dabei und drücken die Daumen für Bewerbung und Co. </p>
+                            </div>
+                            <div style="margin: 2rem 0; padding: 1.5rem 0; border-top: solid 2px #6d0230">
+                                ${jobList}
+                            </div>
+                        `,
                         `
-                                <a
-                                    style="text-decoration: underline; color: #f8faf9"
-                                    target="_blank" rel="noopener"
-                                    href="${process.env.WEBSITE_URL}/page/unsubscribe"
-                                >
-                                    Vom Newsletter abmelden
-                                </a>
-                            `,
+                            <a
+                                style="text-decoration: underline; color: #f8faf9"
+                                target="_blank" rel="noopener"
+                                href="${process.env.WEBSITE_URL}/page/unsubscribe"
+                            >
+                                Vom Newsletter abmelden
+                            </a>
+                        `,
                         `
-                                ${
-                                    process.env.WEBSITE_URL
-                                }/img/SocialCard_JobsDerWoche_${key
+                            ${
+                                process.env.WEBSITE_URL
+                            }/img/SocialCard_JobsDerWoche_${key
                             .replace(/\s+/g, "")
                             .replace("ü", "ue")}.png
-                            `
+                        `
                     ),
                 };
 

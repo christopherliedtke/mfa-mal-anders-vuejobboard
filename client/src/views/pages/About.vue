@@ -5,9 +5,9 @@
             <b-row>
                 <b-col cols="12" md="3" order="2" order-md="1">
                     <b-img
-                        class="border-radius2 my-3 my-md-0"
+                        class="border-radius2 my-3 p-3 p-md-0 my-md-0"
                         fluid
-                        src="@/assets/img/KristinMaurach_portrait-1541x2048.jpg"
+                        src="@/assets/img/KristinMaurach_portrait_800x800.jpg"
                         alt="Portrait Kristin Maurach"
                     />
                 </b-col>
