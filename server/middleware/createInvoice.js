@@ -55,11 +55,11 @@ function generateHeader(doc) {
 
 function generateCustomerInformation(doc, data, invoiceNo, date = new Date()) {
     doc.fontSize(10)
-        .text(data.billingAddressCompany, 50, 140, { align: "left" })
-        .text(data.billingAddressName, 50, 155, { align: "left" })
-        .text(data.billingAddressStreet, 50, 170, { align: "left" })
+        .text(data.billingAddress.company, 50, 140, { align: "left" })
+        .text(data.billingAddress.name, 50, 155, { align: "left" })
+        .text(data.billingAddress.street, 50, 170, { align: "left" })
         .text(
-            data.billingAddressZipCode + " " + data.billingAddressLocation,
+            data.billingAddress.zipCode + " " + data.billingAddress.location,
             50,
             185,
             { align: "left" }
@@ -92,12 +92,12 @@ function generateBody(doc, data, invoiceNo) {
         .font("Helvetica")
         .text(
             `${
-                data.billingAddressName.includes("Herr")
+                data.billingAddress.name.includes("Herr")
                     ? "Sehr geehrter"
                     : data.billingAddressName.includes("Frau")
                     ? "Sehr geehrte"
                     : "Sehr geehrte/r"
-            } ${data.billingAddressName},`,
+            } ${data.billingAddress.name},`,
             50,
             280
         )
@@ -149,7 +149,7 @@ function generateBody(doc, data, invoiceNo) {
             oblique: true,
         })
         .text(
-            `Verwendungszweck: ${invoiceNo} / ${data.billingAddressCompany}`,
+            `Verwendungszweck: ${invoiceNo} / ${data.billingAddress.company}`,
             70,
             position + 48,
             {
@@ -209,8 +209,14 @@ function generateInvoiceTable(doc, data, position) {
         "1",
         `Veröffentlichung Stellenanzeige`,
         "1",
-        `${data.amount / 100},00€`,
-        `${data.amount / 100},00€`
+        `${((parseInt(data.amount) * (1 - data.discount)) / 100)
+            .toFixed(2)
+            .toString()
+            .replace(".", ",")}€`,
+        `${((parseInt(data.amount) * (1 - data.discount)) / 100)
+            .toFixed(2)
+            .toString()
+            .replace(".", ",")}€`
     );
 
     generateTableRow(
@@ -234,7 +240,10 @@ function generateInvoiceTable(doc, data, position) {
         `Rechnungsbetrag`,
         "",
         ``,
-        `${data.amount / 100 + 5},00€`
+        `${((parseInt(data.amount) * (1 - data.discount)) / 100 + 5)
+            .toFixed(2)
+            .toString()
+            .replace(".", ",")}€`
     );
 
     return invoiceTableTop + 110;

@@ -87,7 +87,7 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
                                 process.env.WEBSITE_URL
                             }/img/SocialCard_JobsDerWoche_${key
                             .replace(/\s+/g, "")
-                            .replace("ü", "ue")}.png
+                            .replace("ü", "ue")}.jpg
                         `
                     ),
                 };

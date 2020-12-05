@@ -366,7 +366,6 @@
                     company: null,
                     name: null,
                     email: null,
-                    userId: null,
                     street: null,
                     zipCode: null,
                     location: null
@@ -511,7 +510,6 @@
                 ) {
                     this.billingAddress = {
                         company: this.job.company.name,
-                        userId: this.$store.state.auth.user._id,
                         name: `${
                             this.$store.state.auth.user.gender != "null"
                                 ? this.$store.state.auth.user.gender + " "
@@ -557,18 +555,12 @@
                         {
                             jobId: this.job._id,
                             jobTitle: this.job.title,
-                            userId: this.billingAddress.userId,
                             email: this.billingAddress.email,
                             amount: this.amount,
                             paymentMethod: this.paymentMethod,
                             couponCode: this.coupon.code,
-                            discount: this.coupon.discount,
                             refreshFrequency: this.refreshFrequencyComputed,
-                            billingAddressCompany: this.billingAddress.company,
-                            billingAddressName: this.billingAddress.name,
-                            billingAddressStreet: this.billingAddress.street,
-                            billingAddressZipCode: this.billingAddress.zipCode,
-                            billingAddressLocation: this.billingAddress.location
+                            billingAddress: this.billingAddress
                         }
                     );
 

@@ -5,12 +5,10 @@ const config = require("../config/config");
 const pagesSitemap = require("../config/sitemap.json");
 const { Job } = require("../database/models/job");
 
-const getArticles = () =>
-    new Promise((resolve, reject) => {
-        try {
-            (async function () {
-                const response = await axios.post(config.sitemap.cmsUrl, {
-                    query: `
+const getArticles = async () => {
+    try {
+        const response = await axios.post(config.sitemap.cmsUrl, {
+            query: `
                         query MyQuery {
                             posts(first: 100, where: {orderby: {field: MODIFIED, order: DESC}}) {
                                 nodes {
@@ -20,68 +18,102 @@ const getArticles = () =>
                             }
                         }
                     `,
-                });
+        });
 
-                resolve(response.data.data.posts.nodes);
-            })();
-        } catch (err) {
-            console.log("Error on getArticles() for sitemap: ", err);
-            reject(err);
+        if (
+            Array.isArray(response.data.data.posts.nodes) &&
+            response.data.data.posts.nodes.length > 0
+        ) {
+            return response.data.data.posts.nodes
+                .map((elem) =>
+                    writeUrl(
+                        process.env.WEBSITE_URL + "/article/" + elem.slug,
+                        new Date(elem.modifiedGmt).toISOString()
+                    )
+                )
+                .join(" ");
+        } else {
+            return "";
         }
-    });
+    } catch (err) {
+        console.log("Error in getArticles() in createSitemap: ", err);
+        return "";
+    }
+};
 
-const getTrainings = () =>
-    new Promise((resolve, reject) => {
-        try {
-            (async function () {
-                const response = await axios.post(config.sitemap.cmsUrl, {
-                    query: `
-                        query MyQuery {
-                            weiterbildungen(first: 100, where: {orderby: {field: MODIFIED, order: ASC}}) {
-                                nodes {
-                                    slug
-                                    modifiedGmt
-                                }
+const getTrainings = async () => {
+    try {
+        const response = await axios.post(config.sitemap.cmsUrl, {
+            query: `
+                    query MyQuery {
+                        weiterbildungen(first: 100, where: {orderby: {field: MODIFIED, order: ASC}}) {
+                            nodes {
+                                slug
+                                modifiedGmt
                             }
                         }
-                    `,
-                });
+                    }
+                `,
+        });
 
-                resolve(response.data.data.weiterbildungen.nodes);
-            })();
-        } catch (err) {
-            console.log("Error on getTrainings() for sitemap: ", err);
-            reject(err);
+        if (
+            Array.isArray(response.data.data.weiterbildungen.nodes) &&
+            response.data.data.weiterbildungen.nodes.length > 0
+        ) {
+            return response.data.data.weiterbildungen.nodes
+                .map((elem) =>
+                    writeUrl(
+                        process.env.WEBSITE_URL +
+                            "/page/mfa-career/fort-und-weiterbildungen/" +
+                            elem.slug,
+                        new Date(elem.modifiedGmt).toISOString()
+                    )
+                )
+                .join(" ");
+        } else {
+            return "";
         }
-    });
+    } catch (err) {
+        console.log("Error on getTrainings() in createSitemap: ", err);
+        return "";
+    }
+};
 
-const getJobs = () =>
-    new Promise((resolve, reject) => {
-        try {
-            (async function () {
-                const response = await Job.find(
-                    {
-                        status: "published",
-                        paid: true,
-                        paidExpiresAt: {
-                            $gte: new Date(),
-                        },
-                        applicationDeadline: {
-                            $gte: new Date(
-                                new Date().valueOf() - 1000 * 60 * 60 * 24
-                            ).toISOString(),
-                        },
-                    },
-                    "_id updatedAt"
-                );
+const getJobs = async () => {
+    try {
+        const response = await Job.find(
+            {
+                status: "published",
+                paid: true,
+                paidExpiresAt: {
+                    $gte: new Date(),
+                },
+                applicationDeadline: {
+                    $gte: new Date(
+                        new Date().valueOf() - 1000 * 60 * 60 * 24
+                    ).toISOString(),
+                },
+            },
+            "_id updatedAt"
+        );
 
-                resolve(response);
-            })();
-        } catch (err) {
-            console.log("Error on getTrainings() for sitemap: ", err);
-            reject(err);
+        if (Array.isArray(response) && response.length > 0) {
+            return response
+                .map((elem) =>
+                    writeUrl(
+                        process.env.WEBSITE_URL + "/jobboard/job/" + elem._id,
+                        new Date(elem.updatedAt).toISOString()
+                    )
+                )
+                .join(" ");
+        } else {
+            return "";
         }
-    });
+    } catch (err) {
+        console.log("Error on getTrainings() in createSitemap: ", err);
+        return "";
+    }
+};
 
 async function createSitemap() {
     try {
@@ -98,74 +130,9 @@ async function createSitemap() {
             .map((elem) => writeUrl(process.env.WEBSITE_URL + elem, lastBuild))
             .join(" ");
 
-        const articles = await new Promise((resolve) => {
-            (async function () {
-                const response = await getArticles();
-
-                if (Array.isArray(response) && response.length > 0) {
-                    resolve(
-                        response
-                            .map((elem) =>
-                                writeUrl(
-                                    process.env.WEBSITE_URL +
-                                        "/article/" +
-                                        elem.slug,
-                                    new Date(elem.modifiedGmt).toISOString()
-                                )
-                            )
-                            .join(" ")
-                    );
-                } else {
-                    resolve("");
-                }
-            })();
-        });
-
-        const trainings = await new Promise((resolve) => {
-            (async function () {
-                const response = await getTrainings();
-
-                if (Array.isArray(response) && response.length > 0) {
-                    resolve(
-                        response
-                            .map((elem) =>
-                                writeUrl(
-                                    process.env.WEBSITE_URL +
-                                        "/page/mfa-career/fort-und-weiterbildungen/" +
-                                        elem.slug,
-                                    new Date(elem.modifiedGmt).toISOString()
-                                )
-                            )
-                            .join(" ")
-                    );
-                } else {
-                    resolve("");
-                }
-            })();
-        });
-
-        const jobs = await new Promise((resolve) => {
-            (async function () {
-                const response = await getJobs();
-
-                if (Array.isArray(response) && response.length > 0) {
-                    resolve(
-                        response
-                            .map((elem) =>
-                                writeUrl(
-                                    process.env.WEBSITE_URL +
-                                        "/jobboard/job/" +
-                                        elem._id,
-                                    new Date(elem.updatedAt).toISOString()
-                                )
-                            )
-                            .join(" ")
-                    );
-                } else {
-                    resolve("");
-                }
-            })();
-        });
+        const articles = await getArticles();
+        const trainings = await getTrainings();
+        const jobs = await getJobs();
 
         const sitemap =
             head + root + pages + articles + trainings + jobs + foot;

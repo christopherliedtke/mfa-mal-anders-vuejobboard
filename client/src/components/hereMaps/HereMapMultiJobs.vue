@@ -28,7 +28,7 @@
             this.initializeHereMap();
         },
         watch: {
-            jobs: function() {
+            jobs() {
                 if (this.map) {
                     this.deleteMarkers();
                     this.addMarkers();
@@ -41,8 +41,6 @@
             },
             async initializeHereMap() {
                 try {
-                    // const service = this.platform.getSearchService();
-
                     let zoom = 6.3;
                     let geocode;
 
@@ -69,11 +67,6 @@
                     }
 
                     if (!geocode) {
-                        // const response = await service.geocode({
-                        //     q: this.companyCountryOptions[0]
-                        // });
-
-                        // geocode = response.items[0].position;
                         geocode = this.$config.maps.defaultCenter;
                     }
 

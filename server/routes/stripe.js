@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const verifyToken = require("../middleware/verifyToken");
-const { Coupon } = require("../database/models/coupon");
-const { UsedCoupon } = require("../database/models/usedCoupon");
+const validateCoupon = require("../middleware/validateCoupon");
 const config = require("../config/config");
 
 const stripe = require("stripe")(process.env.STRIPE_SK);
@@ -30,33 +29,20 @@ router.get("/get-stripe-pk", (req, res) => {
 // #desc:   Validate discount coupon
 // #access: Private
 router.post("/validate-coupon", verifyToken, async (req, res) => {
-    try {
-        const coupon = await Coupon.findOne({ code: req.body.code });
-        const usedCoupon = await UsedCoupon.findOne({
-            userId: req.userId,
-            code: req.body.code,
-        });
+    const validatedCoupon = await validateCoupon(req.body.code, req.user._id);
 
-        if (coupon && !usedCoupon) {
-            if (coupon.userId && coupon.userId != req.userId) {
-                res.json({ success: false });
-            } else {
-                res.json({
-                    success: true,
-                    discount: coupon.discount,
-                    refreshFrequency: coupon.refreshFrequency,
-                });
-            }
-        } else {
-            res.json({ success: false });
-        }
-    } catch (err) {
-        console.log("Error STRIPE  on /validate-coupon: ", err);
+    if (validatedCoupon.success) {
+        res.json({
+            success: true,
+            discount: validatedCoupon.discount,
+            refreshFrequency: validatedCoupon.couponRefreshFrequency,
+        });
+    } else {
         res.json({ success: false });
     }
 });
 
-// #route:  POST /api/stripe/create-session-id
+// #route:  POST /api/stripe/job/create-session-id
 // #desc:   Create a session id for a user
 // #access: Private
 router.post("/job/create-session-id", verifyToken, async (req, res) => {
@@ -67,30 +53,17 @@ router.post("/job/create-session-id", verifyToken, async (req, res) => {
             );
         }
 
-        let discount = 0;
-        let couponUsage = "";
-        let couponId;
-        let couponRefreshFrequency = 0;
+        let validatedCoupon;
 
         if (req.body.code) {
-            const coupon = await Coupon.findOne({ code: req.body.code });
-            const usedCoupon = await UsedCoupon.findOne({
-                userId: req.user._id,
-                code: req.body.code,
-            });
-
-            couponUsage = coupon.usage;
-            couponId = coupon._id;
-            couponRefreshFrequency = coupon.refreshFrequency;
-
-            if (coupon && !usedCoupon) {
-                if (coupon.userId && coupon.userId === req.user._id) {
-                    discount = coupon.discount;
-                } else if (!coupon.userId) {
-                    discount = coupon.discount;
-                }
-            }
+            validatedCoupon = await validateCoupon(req.body.code, req.user._id);
         }
+
+        const discount = validatedCoupon.discount || 0;
+        const couponUsage = validatedCoupon.couponUsage || "";
+        const couponId = validatedCoupon.couponId || "";
+        const couponRefreshFrequency =
+            validatedCoupon.couponRefreshFrequency || 0;
 
         const session = await stripe.checkout.sessions.create({
             customer_email: req.user.email,
