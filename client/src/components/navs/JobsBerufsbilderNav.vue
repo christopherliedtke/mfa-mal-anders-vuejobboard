@@ -8,8 +8,10 @@
         <b-list-group-item
             v-for="berufsbilderType in berufsbilderTypes"
             :key="berufsbilderType"
-            :to="`/page/mfa-career/jobs-und-berufsbilder/${berufsbilderType}`"
-            :active="berufsbilderType === $route.params.slug"
+            :to="
+                `/page/mfa-career/jobs-und-berufsbilder/${berufsbilderType.toLowerCase()}`
+            "
+            :active="berufsbilderType.toLowerCase() === $route.params.slug"
             >{{ berufsbilderType }}</b-list-group-item
         >
     </b-list-group>

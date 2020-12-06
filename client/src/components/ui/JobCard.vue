@@ -16,7 +16,7 @@
                         <div v-if="job.company.logoUrl" class="img-container">
                             <b-img-lazy
                                 :src="job.company.logoUrl"
-                                blank-src="@/assets/img/logo.png"
+                                blank-src="@/assets/img/logo_800.png"
                                 :alt="`Logo - ${job.company.name}`"
                             />
                         </div>

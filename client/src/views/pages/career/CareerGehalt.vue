@@ -5,7 +5,7 @@
             <b-img
                 class="border-radius1 shadow mb-5"
                 fluid
-                src="@/assets/img/Gehalt-fuer-mfa.jpg"
+                src="@/assets/img/Gehalt-fuer-mfa_1200.jpg"
                 alt="Banner - So viel verdienst Du wirklich"
             />
             <p>
@@ -761,7 +761,7 @@
         <Head
             :title="'Gehaltsrechner (TZ/VZ) – MFA / ArzthelferIn'"
             desc="Über Gehalt, Tarifvertrag, Tätigkeitsgruppen für MFA / ArzthelferIn. Ermittle deinen Marktwert - Hier gehts zum Gehaltsrechner für MFAs/ArzthelferInnen."
-            :img="require('@/assets/img/Gehalt-fuer-mfa.jpg')"
+            :img="require('@/assets/img/Gehalt-fuer-mfa_1200.jpg')"
             :script="snippet"
         />
     </div>

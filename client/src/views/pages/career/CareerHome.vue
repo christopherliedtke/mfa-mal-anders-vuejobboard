@@ -9,7 +9,7 @@
             <b-img
                 class="border-radius2 mb-4 mr-4"
                 left
-                src="@/assets/img/KristinMaurach_sitzendAufMauer.jpg"
+                src="@/assets/img/KristinMaurach_sitzendAufMauer_500.jpg"
                 style="width: 40vw; max-width: 250px"
             />
             <p>
@@ -40,7 +40,7 @@
             </h3>
             <br />
             <b-row class="mb-4">
-                <b-col>
+                <b-col cols="12" md="4">
                     <b-link to="/jobboard" class="icon-box shadow1 py-4 px-3">
                         <Fa
                             class="mr-1"
@@ -54,7 +54,7 @@
                         </p>
                     </b-link>
                 </b-col>
-                <b-col>
+                <b-col cols="12" md="4">
                     <div
                         class="icon-box shadow1 py-4 px-3"
                         @click="$bvModal.show('newsletter')"
@@ -75,7 +75,7 @@
                         <NewsletterSignUpForm class="p-4" />
                     </b-modal>
                 </b-col>
-                <b-col>
+                <b-col cols="12" md="4">
                     <b-link
                         :href="`https://www.facebook.com/${$config.fb.path}`"
                         class="icon-box shadow1 py-4 px-3"
@@ -97,7 +97,7 @@
                 Wir helfen dir bei der Suche nach deinem Traumjob
             </h2>
             <b-row>
-                <b-col>
+                <b-col cols="12" md="6">
                     <p>
                         Auf MFA mal anders berichte ich über
                         Aufstiegsmöglichkeiten in der Arztpraxis, aber auch über
@@ -120,7 +120,7 @@
                         zu sein.
                     </p>
                 </b-col>
-                <b-col>
+                <b-col cols="12" md="6">
                     <p>
                         MFA mal anders ist ein Netzwerk unter Gleichgesinnten.
                         Um deinen beruflichen Weg im Gesundheitswesen zu finden
@@ -204,10 +204,10 @@
                 >, die zu dir und deinen Karrierezielen passt.
             </p>
             <b-row class="my-5">
-                <b-col>
+                <b-col class="my-2">
                     <WeiterbildungenBanner />
                 </b-col>
-                <b-col>
+                <b-col class="my-2">
                     <BerufsbilderBanner />
                 </b-col>
             </b-row>

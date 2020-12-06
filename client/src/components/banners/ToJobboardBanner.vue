@@ -35,7 +35,7 @@
 <style scoped lang="scss">
     .card {
         background: radial-gradient(closest-side, #f8faf9cc 0%, #f8faffff 100%),
-            url("~@/assets/img/hero_map.jpg") center center;
+            url("~@/assets/img/hero_map_1828.jpg") center center;
         background-size: cover;
         background-blend-mode: lighten;
 

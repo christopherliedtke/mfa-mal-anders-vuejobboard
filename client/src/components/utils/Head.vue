@@ -55,7 +55,7 @@
                                 this.img ||
                                 `${
                                     window.location.origin
-                                }${require("@/assets/img/mfaMalAnders_Facebook_Banner.jpg")}`
+                                }${require("@/assets/img/mfaMalAnders_Facebook_Banner_1200.jpg")}`
                         },
                         {
                             property: "og:image:alt",
@@ -85,7 +85,7 @@
                             "@context": "http://schema.org",
                             "@type" : "Organization",
                             "url": "${window.location.origin}",
-                            "logo": "${require("@/assets/img/logo.png")}"
+                            "logo": "${require("@/assets/img/logo_800.png")}"
                         }`
                     }
                 ];

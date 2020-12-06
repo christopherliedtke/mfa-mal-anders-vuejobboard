@@ -5,7 +5,7 @@
             <b-img
                 class="border-radius1 shadow mb-5 w-100"
                 fluid
-                src="@/assets/img/SchnellUndEinfachEineTopbewerbungSchreiben2.jpg"
+                src="@/assets/img/SchnellUndEinfachEineTopbewerbungSchreiben_1024.jpg"
                 alt="Banner - Schnell und einfach eine Top-Bewerbung schreiben"
             />
             <p>
@@ -34,13 +34,13 @@
                 <b-img
                     class="mx-3 shadow"
                     style="width: 35vw; max-width: 300px"
-                    src="@/assets/img/Vorlage_Bewerbungsanschreiben_300x.jpg"
+                    src="@/assets/img/Vorlage_Bewerbungsanschreiben_300.jpg"
                     alt="Bild von Mustervorlage für Motivationsschreiben"
                 />
                 <b-img
                     class="mx-3 shadow"
                     style="width: 35vw; max-width: 300px"
-                    src="@/assets/img/Vorlage_Lebenslauf_300x.jpg"
+                    src="@/assets/img/Vorlage_Lebenslauf_300.jpg"
                     alt="Bild von Mustervorlage für Lebenslauf"
                 />
             </div>
@@ -207,7 +207,7 @@
             desc="Bewerbungsunterlagen für medizinische
         Fachangestellte | kostenlose Vorlage | hinterlasse einen bleibenden
         Eindruck und sichere dir das Vorstellungsgespräch"
-            img="@/assets/img/SchnellUndEinfachEineTopbewerbungSchreiben2.jpg"
+            img="@/assets/img/SchnellUndEinfachEineTopbewerbungSchreiben_1024.jpg"
         />
     </div>
 </template>

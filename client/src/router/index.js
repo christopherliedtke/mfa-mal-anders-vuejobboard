@@ -6,7 +6,7 @@ Vue.use(VueRouter);
 
 import store from "@/store";
 
-// Pages
+// #Pages
 // import Home from "@/views/index.vue";
 const Home = () => import("@/views/index.vue");
 
@@ -201,8 +201,8 @@ const AdminCoupon = () =>
 // import NotFound from "@/views/pages/NotFound.vue";
 const NotFound = () => import("@/views/pages/NotFound.vue");
 
+// #Routes
 const routes = [
-    // #Public
     {
         path: "/",
         name: "Home",
@@ -331,8 +331,6 @@ const routes = [
             }
         ]
     },
-
-    // #Auth
     {
         path: "/auth",
         name: "Auth",
@@ -393,7 +391,6 @@ const routes = [
             }
         ]
     },
-    // #User
     {
         path: "/user",
         component: User,
@@ -446,7 +443,6 @@ const routes = [
             }
         ]
     },
-    // #Admin
     {
         path: "/admin",
         component: Admin,
@@ -507,7 +503,6 @@ const routes = [
             }
         ]
     },
-    // #404
     { path: "/pages/404", component: NotFound, meta: { public: true } },
     { path: "*", redirect: "/jobboard" }
 ];
@@ -524,7 +519,7 @@ const router = new VueRouter({
     }
 });
 
-// Checks before routes
+// #Checks before routes
 router.beforeEach((to, from, next) => {
     const isPublic = to.matched.some(record => record.meta.public);
     const onlyWhenLoggedOut = to.matched.some(

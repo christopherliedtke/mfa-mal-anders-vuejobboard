@@ -74,6 +74,7 @@
                 this.$store.dispatch("setOverlay", false);
             },
             async deleteImage() {
+                this.$store.dispatch("setOverlay", true);
                 try {
                     await this.$axios.post("/api/images/delete", {
                         imageUrl: this.imageUrl
@@ -81,6 +82,7 @@
                 } catch (err) {
                     console.log("err: ", err);
                 }
+                this.$store.dispatch("setOverlay", false);
             },
             resetFile() {
                 this.$store.dispatch("setOverlay", true);

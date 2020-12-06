@@ -17,6 +17,7 @@
             class="p-3"
             :defaultState="state"
             intro="Erhalte unsere aktuellen Stellenangebote wöchentlich direkt in Dein Postfach."
+            :social="true"
         />
     </b-modal>
 </template>

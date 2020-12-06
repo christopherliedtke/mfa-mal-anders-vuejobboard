@@ -145,7 +145,7 @@
                             left
                             class="border-radius2 mr-3 mb-2"
                             style="max-width: 170px"
-                            src="@/assets/img/KristinMaurach_portrait_800x800.jpg"
+                            src="@/assets/img/KristinMaurach_portrait_800.jpg"
                             alt="Portrait Kristin Maurach"
                         />
                         <p>

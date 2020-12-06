@@ -6,7 +6,7 @@
             <b-img
                 class="border-radius1"
                 fluid
-                src="@/assets/img/SGD_Banner_468x60.jpg"
+                src="@/assets/img/SGD_Banner_468.jpg"
                 alt="Banner - SGD Fernschule"
             />
         </b-link>

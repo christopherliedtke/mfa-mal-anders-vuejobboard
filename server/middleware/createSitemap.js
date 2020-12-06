@@ -5,6 +5,34 @@ const config = require("../config/config");
 const pagesSitemap = require("../config/sitemap.json");
 const { Job } = require("../database/models/job");
 
+async function createSitemap() {
+    try {
+        console.log("createSitemap() running...");
+        const head = writeHead();
+        const foot = writeFoot();
+
+        const lastBuild = getFileUpdatedDate(
+            __dirname + "/../public/index.html"
+        );
+
+        const root = writeUrl(process.env.WEBSITE_URL + "/", lastBuild);
+        const pages = pagesSitemap
+            .map((elem) => writeUrl(process.env.WEBSITE_URL + elem, lastBuild))
+            .join(" ");
+
+        const articles = await getArticles();
+        const trainings = await getTrainings();
+        const jobs = await getJobs();
+
+        const sitemap =
+            head + root + pages + articles + trainings + jobs + foot;
+
+        saveSitemap(__dirname + "/../public/sitemap.xml", sitemap);
+    } catch (error) {
+        console.log("Error on createSitemap CRON: ", error);
+    }
+}
+
 const getArticles = async () => {
     try {
         const response = await axios.post(config.sitemap.cmsUrl, {
@@ -114,34 +142,6 @@ const getJobs = async () => {
         return "";
     }
 };
-
-async function createSitemap() {
-    try {
-        console.log("createSitemap() running...");
-        const head = writeHead();
-        const foot = writeFoot();
-
-        const lastBuild = getFileUpdatedDate(
-            __dirname + "/../public/index.html"
-        );
-
-        const root = writeUrl(process.env.WEBSITE_URL + "/", lastBuild);
-        const pages = pagesSitemap
-            .map((elem) => writeUrl(process.env.WEBSITE_URL + elem, lastBuild))
-            .join(" ");
-
-        const articles = await getArticles();
-        const trainings = await getTrainings();
-        const jobs = await getJobs();
-
-        const sitemap =
-            head + root + pages + articles + trainings + jobs + foot;
-
-        saveSitemap(__dirname + "/../public/sitemap.xml", sitemap);
-    } catch (error) {
-        console.log("Error on createSitemap CRON: ", error);
-    }
-}
 
 function getFileUpdatedDate(path) {
     const stats = fs.statSync(path);

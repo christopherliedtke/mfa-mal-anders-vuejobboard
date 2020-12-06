@@ -33,10 +33,15 @@ const createInvoice = (data, invoiceNo, path) => {
 module.exports = createInvoice;
 
 function generateHeader(doc) {
-    doc.image(__dirname + "/../../client/public/img/" + "logo.png", 500, 40, {
-        width: 50,
-        align: "right",
-    })
+    doc.image(
+        __dirname + "/../../client/public/img/" + "logo_800.png",
+        500,
+        40,
+        {
+            width: 50,
+            align: "right",
+        }
+    )
         .strokeColor("#6d0230")
         .lineWidth(1)
         .moveTo(50, 100)

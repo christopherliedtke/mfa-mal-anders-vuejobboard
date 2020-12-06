@@ -10,7 +10,7 @@
                     <b-img
                         class="border-radius1 shadow mb-5"
                         fluid
-                        src="@/assets/img/jobsUndBerufsbilder_1200x627.jpg"
+                        src="@/assets/img/jobsUndBerufsbilder_1200.jpg"
                         alt="50+ Alternative Jobs für MFA / ArtzhelferInnen"
                     />
                     <h2 class="bold">
@@ -90,7 +90,7 @@
         <Head
             :title="title"
             desc="Du brauchst Inspiration? – 50+ Alternative Jobs / Berufe für medizinische Fachangestellte (MFA) und ArzthelferInnen | Finde passende Stellen..."
-            img="@/assets/img/jobsUndBerufsbilder_1200x627.jpg"
+            img="@/assets/img/jobsUndBerufsbilder_1200.jpg"
         />
     </div>
 </template>

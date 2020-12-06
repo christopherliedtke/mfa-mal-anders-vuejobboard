@@ -2,7 +2,17 @@
     <b-card no-body>
         <b-card-img-lazy
             top
-            src="@/assets/img/jobsUndBerufsbilder_1200x627.jpg"
+            src="@/assets/img/jobsUndBerufsbilder_1200.jpg"
+            :srcset="[
+                `${require('@/assets/img/jobsUndBerufsbilder_1200.jpg')} 1200w`,
+                `${require('@/assets/img/jobsUndBerufsbilder_800.jpg')} 800w`,
+                `${require('@/assets/img/jobsUndBerufsbilder_450.jpg')} 450w`
+            ]"
+            :sizes="[
+                `(min-width: 1200px) 1200px`,
+                `(min-width: 450px) 800px`,
+                `100vw`
+            ]"
             alt="Banner - Jobs und Berufsbilder für MFA und ArzthelferInnen"
         />
         <b-card-body align="center">

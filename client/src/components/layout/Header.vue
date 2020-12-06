@@ -4,7 +4,7 @@
             <b-navbar toggleable="xl" type="dark">
                 <b-navbar-brand to="/">
                     <b-img
-                        src="@/assets/img/Logo_mfa-mal-anders-white.png"
+                        src="@/assets/img/Logo_mfa-mal-anders-white_1200.png"
                         height="70"
                         alt="MFA mal anders - Logo"
                     />
@@ -64,23 +64,23 @@
                                         class="sub-menu d-none d-md-block"
                                     >
                                         <b-nav-item
-                                            to="/page/mfa-career/jobs-und-berufsbilder/Medizinisch-Technisch"
+                                            to="/page/mfa-career/jobs-und-berufsbilder/medizinisch-technisch"
                                             >Medizinisch-Technisch
                                         </b-nav-item>
                                         <b-nav-item
-                                            to="/page/mfa-career/jobs-und-berufsbilder/Verwaltung"
+                                            to="/page/mfa-career/jobs-und-berufsbilder/verwaltung"
                                             >Verwaltung
                                         </b-nav-item>
                                         <b-nav-item
-                                            to="/page/mfa-career/jobs-und-berufsbilder/Management"
+                                            to="/page/mfa-career/jobs-und-berufsbilder/management"
                                             >Management
                                         </b-nav-item>
                                         <b-nav-item
-                                            to="/page/mfa-career/jobs-und-berufsbilder/Beratung"
+                                            to="/page/mfa-career/jobs-und-berufsbilder/beratung"
                                             >Beratung
                                         </b-nav-item>
                                         <b-nav-item
-                                            to="/page/mfa-career/jobs-und-berufsbilder/Forschung"
+                                            to="/page/mfa-career/jobs-und-berufsbilder/forschung"
                                             >Forschung
                                         </b-nav-item>
                                     </div>

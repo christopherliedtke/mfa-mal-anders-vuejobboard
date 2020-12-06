@@ -1,5 +1,5 @@
 <template>
-    <div class="berufsbild-type">
+    <div v-if="berufsbilder" class="berufsbild-type">
         <h1 class="title">{{ title }}</h1>
         <b-container class="py-5">
             <b-row>
@@ -7,7 +7,7 @@
                     <JobsBerufsbilderNav />
                 </b-col>
                 <b-col>
-                    <p>{{ intros[$route.params.slug] }}</p>
+                    <p>{{ intros[$route.params.slug].desc }}</p>
                     <p class="mb-4">
                         Vielleicht findest Du auch auf unserer
                         <b-link to="/jobboard">Stellenbörse</b-link> das
@@ -85,7 +85,7 @@
             </b-row>
             <RandomTrainingsContainer class="mt-5" />
         </b-container>
-        <Head :title="title" :desc="intros[$route.params.slug]" img="" />
+        <Head :title="title" :desc="intros[$route.params.slug].desc" img="" />
     </div>
 </template>
 
@@ -104,28 +104,46 @@
             return {
                 visible: this.$route.query.id || null,
                 intros: {
-                    "Medizinisch-Technisch":
-                        "Wenn Dich die Arbeit mit und am Patienten mit Freude erfüllt oder Dein Herz für die Medizin schlägt, ist ein medizinisch-technischer Job am Besten für Dich geeignet. Sieh Dir deine vielfältigen Möglichkeiten an.",
-                    Verwaltung:
-                        "Mit einem Job in der Verwaltung von Unternehmen im Gesundheitswesen übernimmst Du organisatorische Aufgaben, prüfst Sachverhalte und erledigst allgemeine Büroarbeiten.",
-                    Forschung:
-                        "Mit einem Job in der Forschung kannst Du zum medizinischen Fortschritt beitragen und so die Zukunft der Medizin mitgestalten.",
-                    Beratung:
-                        "Mit einem Job in der Beratung kannst Du dein Expertenwissen mit Patienten, Praxen und anderen Personen des Gesundheitswesens teilen. ",
-                    Management:
-                        "Jobs im Management eines Unternehmens im Gesundheitswesen gewinnen bei steigenden Herausforderungen im Gesundheitssystem immer mehr an Bedeutung. Es bietet Dir ein vielfältiges Aufgabenspektrum für medizinische Fachangestellte."
+                    "medizinisch-technisch": {
+                        title: "Medizinisch-Technisch",
+                        desc:
+                            "Wenn Dich die Arbeit mit und am Patienten mit Freude erfüllt oder Dein Herz für die Medizin schlägt, ist ein medizinisch-technischer Job am Besten für Dich geeignet. Sieh Dir deine vielfältigen Möglichkeiten an."
+                    },
+
+                    verwaltung: {
+                        title: "Verwaltung",
+                        desc:
+                            "Mit einem Job in der Verwaltung von Unternehmen im Gesundheitswesen übernimmst Du organisatorische Aufgaben, prüfst Sachverhalte und erledigst allgemeine Büroarbeiten."
+                    },
+                    forschung: {
+                        title: "Forschung",
+                        desc:
+                            "Mit einem Job in der Forschung kannst Du zum medizinischen Fortschritt beitragen und so die Zukunft der Medizin mitgestalten."
+                    },
+                    beratung: {
+                        title: "Beratung",
+                        desc:
+                            "Mit einem Job in der Beratung kannst Du dein Expertenwissen mit Patienten, Praxen und anderen Personen des Gesundheitswesens teilen. "
+                    },
+                    management: {
+                        title: "Management",
+                        desc:
+                            "Jobs im Management eines Unternehmens im Gesundheitswesen gewinnen bei steigenden Herausforderungen im Gesundheitssystem immer mehr an Bedeutung. Es bietet Dir ein vielfältiges Aufgabenspektrum für medizinische Fachangestellte."
+                    }
                 }
             };
         },
         computed: {
             title() {
-                return `MFA Berufsbilder – ${this.$route.params.slug}`;
+                return `MFA Berufsbilder – ${
+                    this.intros[this.$route.params.slug].title
+                }`;
             },
             berufsbilder() {
                 return this.$store.state.professions.professions.filter(
                     berufsbild =>
-                        berufsbild.berufsbildTypes.nodes[0].name ===
-                        this.$route.params.slug
+                        berufsbild.berufsbildTypes.nodes[0].name.toLowerCase() ===
+                        this.$route.params.slug.toLowerCase()
                 );
             }
         },

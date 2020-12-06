@@ -68,6 +68,39 @@
             </b-button>
         </b-form>
 
+        <div v-if="social" class="mt-4">
+            <h2 class="h5">
+                Oder folge uns auf
+                <b-link
+                    :href="`https://www.facebook.com/${$config.fb.path}`"
+                    class="ml-2"
+                    target="_blank"
+                    rel="noopener"
+                    aria-label="Facebook"
+                >
+                    <Fa :icon="['fab', 'facebook']" size="lg" />
+                </b-link>
+                <b-link
+                    :href="`https://twitter.com/${$config.twitter.path}`"
+                    class="ml-2"
+                    target="_blank"
+                    rel="noopener"
+                    aria-label="Twitter"
+                >
+                    <Fa :icon="['fab', 'twitter']" size="lg" />
+                </b-link>
+                <b-link
+                    :href="`https://www.instagram.com/${$config.ig.path}`"
+                    class="ml-2"
+                    target="_blank"
+                    rel="noopener"
+                    aria-label="Instagram"
+                >
+                    <Fa :icon="['fab', 'instagram']" size="lg" />
+                </b-link>
+            </h2>
+        </div>
+
         <b-alert v-if="error" class="mt-3" show dismissible variant="danger">{{
             error
         }}</b-alert>
@@ -90,6 +123,10 @@
             intro: {
                 type: String,
                 default: ""
+            },
+            social: {
+                type: Boolean,
+                default: false
             }
         },
         data() {

@@ -4,7 +4,7 @@
             <b-row cols="1" cols-lg="3">
                 <b-col order="3" order-lg="1">
                     <b-img
-                        src="@/assets/img/Logo_mfa-mal-anders-white.png"
+                        src="@/assets/img/Logo_mfa-mal-anders-white_1200.png"
                         height="130"
                         alt="MFA mal anders - Logo"
                         class="mb-4"
@@ -93,14 +93,14 @@
                                         fluid
                                         class="mx-3 shadow"
                                         style="width: 35vw; max-width: 120px"
-                                        src="@/assets/img/Vorlage_Bewerbungsanschreiben_150x.jpg"
+                                        src="@/assets/img/Vorlage_Bewerbungsanschreiben_150.jpg"
                                         alt="Bild von Mustervorlage für Motivationsschreiben"
                                     />
                                     <b-img-lazy
                                         fluid
                                         class="mx-3 shadow"
                                         style="width: 35vw; max-width: 120px"
-                                        src="@/assets/img/Vorlage_Lebenslauf_150x.jpg"
+                                        src="@/assets/img/Vorlage_Lebenslauf_150.jpg"
                                         alt="Bild von Mustervorlage für Lebenslauf"
                                     />
                                 </b-link>
