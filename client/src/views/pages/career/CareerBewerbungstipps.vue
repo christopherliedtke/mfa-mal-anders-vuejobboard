@@ -208,6 +208,7 @@
         Fachangestellte | kostenlose Vorlage | hinterlasse einen bleibenden
         Eindruck und sichere dir das Vorstellungsgespräch"
             img="@/assets/img/SchnellUndEinfachEineTopbewerbungSchreiben_1024.jpg"
+            :script="snippet"
         />
     </div>
 </template>
@@ -217,7 +218,32 @@
         name: "CareerBewerbungstipps",
         data() {
             return {
-                title: "Bewerbungstipps für MFAs"
+                title: "Bewerbungstipps für MFAs",
+                snippet: [
+                    {
+                        type: "application/ld+json",
+                        inner: `{
+                            "@context": "http://schema.org",
+                            "@type" : "BreadcrumbList",
+                            "itemListElement": [{
+                                "@type": "ListItem",
+                                "position": 1,
+                                "name": "MFA mal anders",
+                                "item": "https://www.mfa-mal-anders.de"
+                            },{
+                                "@type": "ListItem",
+                                "position": 2,
+                                "name": "MFA Karriere",
+                                "item": "https://www.mfa-mal-anders.de/page/mfa-career"
+                            },{
+                                "@type": "ListItem",
+                                "position": 3,
+                                "name": "Bewerbungstipps",
+                                "item": "https://www.mfa-mal-anders.de/page/mfa-career/bewerbungstipps"
+                            }]
+                        }`
+                    }
+                ]
             };
         }
     };

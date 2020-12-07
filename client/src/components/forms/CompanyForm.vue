@@ -269,12 +269,14 @@
                     : (mutationType = "updateCompany");
 
                 // Save / Update company
-                await this.saveCompany(
+                const res = await this.saveCompany(
                     mutationType,
                     this.apiJobsSchema,
                     this.company,
                     true
                 );
+
+                this.success = res.success;
 
                 this.$store.dispatch("setOverlay", false);
             },

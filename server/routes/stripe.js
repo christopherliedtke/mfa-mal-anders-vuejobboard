@@ -53,7 +53,7 @@ router.post("/job/create-session-id", verifyToken, async (req, res) => {
             );
         }
 
-        let validatedCoupon;
+        let validatedCoupon = {};
 
         if (req.body.code) {
             validatedCoupon = await validateCoupon(req.body.code, req.user._id);

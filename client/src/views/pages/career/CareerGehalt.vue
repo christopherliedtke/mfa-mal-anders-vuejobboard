@@ -792,6 +792,29 @@
                         type: "application/ld+json",
                         inner: `{
                             "@context": "http://schema.org",
+                            "@type" : "BreadcrumbList",
+                            "itemListElement": [{
+                                "@type": "ListItem",
+                                "position": 1,
+                                "name": "MFA mal anders",
+                                "item": "https://www.mfa-mal-anders.de"
+                            },{
+                                "@type": "ListItem",
+                                "position": 2,
+                                "name": "MFA Karriere",
+                                "item": "https://www.mfa-mal-anders.de/page/mfa-career"
+                            },{
+                                "@type": "ListItem",
+                                "position": 3,
+                                "name": "Gehalt",
+                                "item": "https://www.mfa-mal-anders.de/page/mfa-career/gehalt"
+                            }]
+                        }`
+                    },
+                    {
+                        type: "application/ld+json",
+                        inner: `{
+                            "@context": "http://schema.org",
                             "@type" : "FAQPage",
                             "mainEntity": [{
                                 "@type": "Question",

@@ -141,7 +141,7 @@
             </div>
         </b-container>
 
-        <b-container id="numbers-and-facts" class="mb-5 pt.md-5">
+        <b-container id="numbers-and-facts" class="mb-5 py-md-5">
             <h2 class="text-center bold mb-4">
                 Ein paar Zahlen und Fakten
                 <span style="font-size: 0.8rem">(09/2020)</span>
@@ -163,6 +163,43 @@
                     <p>{{ item.desc }}</p>
                 </b-col>
             </b-row>
+        </b-container>
+
+        <b-container id="testimonials" class="mb-5 pb-md-5" fluid>
+            <h2 class="h4 text-center">Feedback</h2>
+            <h3 class="h1 text-center bold mb-4">Was unsere Kunden sagen</h3>
+            <b-container
+                style="max-width: 600px"
+                class="position-relative bg-light-shade border-radius2 p-5"
+            >
+                <Fa
+                    style="right: 15%; top: 25%"
+                    class="position-absolute text-primary icon-transparent"
+                    icon="quote-right"
+                    size="7x"
+                />
+                <b-row>
+                    <b-col cols="12" md="3" class="d-flex py-2 px-4">
+                        <b-img
+                            class="rounded-circle shadow1"
+                            height="100"
+                            src="@/assets/img/kinderarztpraxis_ostertor_200.jpg"
+                        />
+                    </b-col>
+                    <b-col cols="12" md="9" class="d-flex flex-column py-2">
+                        <p>
+                            Durch die Online-Suche haben wir deutlich mehr und
+                            auch besser qualifizierte Zuschriften erhalten.
+                            Vielen Dank noch einmal für Ihre Unterstützung und
+                            die wertvollen Tipps.
+                        </p>
+                        <p class="h6 mb-0">
+                            &ndash; Franziska Fritz |
+                            <em>Kinderarztpraxis Ostertor</em>
+                        </p>
+                    </b-col>
+                </b-row>
+            </b-container>
         </b-container>
 
         <b-container fluid class="bg-light-shade py-5 mb-5" id="more-info">
@@ -503,6 +540,7 @@
             title="Motivierte MFA / ArzthelferIn gesucht?"
             desc="MFA mal anders ist das Jobportal speziell nur für medizinische Fachangestellte. Gesucht – Gefunden! Mit günstigen Stellenanzeigen, die wirklich ankommen."
             img=""
+            :script="snippet"
         />
     </div>
 </template>
@@ -592,6 +630,26 @@
                         current: 0,
                         desc: "Monatliche Seitenaufrufe auf der Webseite"
                     }
+                ],
+                snippet: [
+                    {
+                        type: "application/ld+json",
+                        inner: `{
+                            "@context": "http://schema.org",
+                            "@type" : "BreadcrumbList",
+                            "itemListElement": [{
+                                "@type": "ListItem",
+                                "position": 1,
+                                "name": "MFA mal anders",
+                                "item": "https://www.mfa-mal-anders.de"
+                            },{
+                                "@type": "ListItem",
+                                "position": 2,
+                                "name": "Für Arbeitgeber",
+                                "item": "https://www.mfa-mal-anders.de/page/fuer-arbeitgeber"
+                            }]
+                        }`
+                    }
                 ]
             };
         },
@@ -622,3 +680,11 @@
         }
     };
 </script>
+
+<style lang="scss" scoped>
+    #testimonials {
+        .icon-transparent {
+            opacity: 0.1;
+        }
+    }
+</style>

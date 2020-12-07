@@ -101,6 +101,7 @@
             :title="title"
             desc="Finde heraus, welche Möglichkeiten zur Weiterbildung du als medizinische Fachangestellte im Gesundheitswesen hast und starte erfolgreich durch."
             img="@/assets/img/Weiterbildungsdschungel-Fragen-ueber-Fragen-1024.jpg"
+            :script="snippet"
         />
     </div>
 </template>
@@ -117,7 +118,32 @@
         },
         data() {
             return {
-                title: "Fort- und Weiterbildungen für MFA"
+                title: "Fort- und Weiterbildungen für MFA",
+                snippet: [
+                    {
+                        type: "application/ld+json",
+                        inner: `{
+                            "@context": "http://schema.org",
+                            "@type" : "BreadcrumbList",
+                            "itemListElement": [{
+                                "@type": "ListItem",
+                                "position": 1,
+                                "name": "MFA mal anders",
+                                "item": "https://www.mfa-mal-anders.de"
+                            },{
+                                "@type": "ListItem",
+                                "position": 2,
+                                "name": "MFA Karriere",
+                                "item": "https://www.mfa-mal-anders.de/page/mfa-career"
+                            },{
+                                "@type": "ListItem",
+                                "position": 3,
+                                "name": "Fort- und Weiterbildungen",
+                                "item": "https://www.mfa-mal-anders.de/page/mfa-career/fort-und-weiterbildungen"
+                            }]
+                        }`
+                    }
+                ]
             };
         }
     };

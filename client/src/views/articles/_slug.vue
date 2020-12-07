@@ -102,6 +102,7 @@
             :title="article.title"
             :desc="article.excerpt"
             :img="article.featuredImage.node.sourceUrl"
+            :script="snippet"
         />
     </div>
 </template>
@@ -111,7 +112,6 @@
     import FacebookShareBtn from "@/components/buttons/FacebookShareBtn.vue";
     import TwitterShareBtn from "@/components/buttons/TwitterShareBtn.vue";
     import WhatsAppShareBtn from "@/components/buttons/WhatsAppShareBtn.vue";
-
     export default {
         name: "Article",
         components: {
@@ -119,6 +119,44 @@
             FacebookShareBtn,
             TwitterShareBtn,
             WhatsAppShareBtn
+        },
+        data() {
+            return {
+                snippet: [
+                    {
+                        type: "application/ld+json",
+                        inner: `{
+                            "@context": "http://schema.org",
+                            "@type" : "BreadcrumbList",
+                            "itemListElement": [{
+                                "@type": "ListItem",
+                                "position": 1,
+                                "name": "MFA mal anders",
+                                "item": "https://www.mfa-mal-anders.de"
+                            },{
+                                "@type": "ListItem",
+                                "position": 2,
+                                "name": "Blog",
+                                "item": "https://www.mfa-mal-anders.de/page/blog"
+                            },{
+                                "@type": "ListItem",
+                                "position": 3,
+                                "name": "${this.$route.params.slug
+                                    .split("-")
+                                    .map(
+                                        elem =>
+                                            elem.charAt(0).toUpperCase() +
+                                            elem.slice(1)
+                                    )
+                                    .join(" ")}",
+                                "item": "https://www.mfa-mal-anders.de/article/${
+                                    this.$route.params.slug
+                                }"
+                            }]
+                        }`
+                    }
+                ]
+            };
         },
         computed: {
             article() {

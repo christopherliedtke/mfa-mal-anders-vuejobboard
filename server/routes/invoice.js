@@ -11,18 +11,24 @@ const createInvoice = require("../middleware/createInvoice");
 // #desc:   Handle invoice request
 // #access: Private
 router.post("/get-invoice", verifyToken, async (req, res) => {
-    const {
-        jobId,
-        jobTitle,
-        email,
-        amount,
-        paymentMethod,
-        couponCode,
-        billingAddress,
-    } = req.body;
-
     try {
-        let validatedCoupon;
+        if (req.body.amount < 2500) {
+            throw new Error(
+                "Error STRIPE Invalid amount entered for stripe checkout!"
+            );
+        }
+
+        const {
+            jobId,
+            jobTitle,
+            email,
+            amount,
+            paymentMethod,
+            couponCode,
+            billingAddress,
+        } = req.body;
+
+        let validatedCoupon = {};
 
         if (couponCode) {
             validatedCoupon = await validateCoupon(couponCode, req.user._id);

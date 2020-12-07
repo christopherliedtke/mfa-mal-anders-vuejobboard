@@ -5,8 +5,12 @@
             Aus Datenschutzgründen müssen wir Ihre E-Mail Adresse verifizieren.
         </p>
         <p>
-            Bitte <strong>überprüfen Sie Ihr E-Mail Postfach</strong> und
-            bestätigen Sie Ihre E-Mail Adresse über den Aktivierungslink.
+            Bitte
+            <strong
+                >überprüfen Sie in den nächsten Minuten Ihr E-Mail
+                Postfach</strong
+            >
+            und bestätigen Sie Ihre E-Mail Adresse über den Aktivierungslink.
             <strong>
                 Bitte überprüfen Sie gegebenenfalls auch Ihren Spam Ordner.
             </strong>

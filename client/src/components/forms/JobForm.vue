@@ -502,16 +502,8 @@
                     paidAmount: 0,
                     refreshFrequency: 0,
                     title: "",
-                    description: `
-                        <p>[Für eine attraktive Stellenanzeige sollten Sie folgende Punkte berücksichtigen. Bitte ersetzen Sie den hier stehenden Text entsprechend.]</p>
-                        <p>[Schreiben Sie eine kurze Einleitung zu Ihrem Unternehmen.]</p>
-                        <h3>Was wir Ihnen bieten</h3>
-                        <p>[Was bieten Sie potentiellen BewerberInnen?]</p>
-                        <h3>Ihre Aufgaben</h3>
-                        <p>[Welche Aufgaben sollen von potentiellen BewerberInnen durchgeführt werden?]</p>
-                        <h3>Ihr Profil</h3>
-                        <p>[Was sollen potentielle BewerberInnen mitbringen?]</p>
-                    `,
+                    description:
+                        "<p>[Für eine attraktive Stellenanzeige sollten Sie folgende Punkte berücksichtigen. Bitte ersetzen Sie den hier stehenden Text entsprechend.]</p><p>[Schreiben Sie eine kurze Einleitung zu Ihrem Unternehmen.]</p><h3>Was wir Ihnen bieten</h3><p>[Was bieten Sie potentiellen BewerberInnen?]</p><h3>Ihre Aufgaben</h3><p>[Welche Aufgaben sollen von potentiellen BewerberInnen durchgeführt werden?]</p><h3>Ihr Profil</h3><p>[Was sollen potentielle BewerberInnen mitbringen?]</p>",
                     specialization: null,
                     employmentType: null,
                     applicationDeadline: "",
@@ -732,20 +724,22 @@
 
                 if (savedCompany.success) {
                     this.job.company._id = savedCompany.companyId;
+
+                    // Save / Update job
+                    let jobMutationType;
+                    this.job._id === "new"
+                        ? (jobMutationType = "addJob")
+                        : (jobMutationType = "updateJob");
+
+                    const savedJob = await this.saveJob(
+                        jobMutationType,
+                        this.apiJobsSchema,
+                        this.job,
+                        true
+                    );
+
+                    this.success = savedJob.success;
                 }
-
-                // Save / Update job
-                let jobMutationType;
-                this.job._id
-                    ? (jobMutationType = "updateJob")
-                    : (jobMutationType = "addJob");
-
-                await this.saveJob(
-                    jobMutationType,
-                    this.apiJobsSchema,
-                    this.job,
-                    true
-                );
 
                 this.$store.dispatch("setOverlay", false);
             },

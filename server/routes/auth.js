@@ -298,10 +298,7 @@ router.get(
                 };
 
                 const emailSent = await emailService.sendMail(data);
-                console.log(
-                    "sendMail() for additional activation email: ",
-                    emailSent
-                );
+                console.log("sendMail() for activation email: ", emailSent);
 
                 res.json({ success: true });
             }

@@ -4,8 +4,8 @@
             fluid
             class="hero d-flex justify-content-center align-items-center"
         >
-            <b-container style="max-width: 850px">
-                <div class="hero-text my-3 my-lg-5 p-2 p-md-4">
+            <b-container style="max-width: 850px" class="p-0">
+                <div class="hero-text my-3 my-lg-5 p-4">
                     <h1>
                         <span class="bold display-2">
                             MFA <br class="d-md-none" />
@@ -276,6 +276,7 @@
             title="Dein Karriereportal nur für MFAs"
             desc="Dein Job- und Karriereportal für medizinische Fachangestellte (MFA) | Attraktive Stellenangebote im Gesundheitswesen | Weiterbildungen | Alternative Jobs"
             img=""
+            :script="snippet"
         />
     </div>
 </template>
@@ -291,7 +292,22 @@
         },
         data() {
             return {
-                searchTerm: ""
+                searchTerm: "",
+                snippet: [
+                    {
+                        type: "application/ld+json",
+                        inner: `{
+                            "@context": "http://schema.org",
+                            "@type" : "BreadcrumbList",
+                            "itemListElement": [{
+                                "@type": "ListItem",
+                                "position": 1,
+                                "name": "MFA mal anders",
+                                "item": "https://www.mfa-mal-anders.de"
+                            }]
+                        }`
+                    }
+                ]
             };
         }
     };

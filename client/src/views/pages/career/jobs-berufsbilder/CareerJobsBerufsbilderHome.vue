@@ -91,6 +91,7 @@
             :title="title"
             desc="Du brauchst Inspiration? – 50+ Alternative Jobs / Berufe für medizinische Fachangestellte (MFA) und ArzthelferInnen | Finde passende Stellen..."
             img="@/assets/img/jobsUndBerufsbilder_1200.jpg"
+            :script="snippet"
         />
     </div>
 </template>
@@ -139,6 +140,31 @@
                         desc:
                             "Jobs, bei denen deine administrativen und organisatorischen Fähigkeiten gefragt sind.",
                         icon: "building"
+                    }
+                ],
+                snippet: [
+                    {
+                        type: "application/ld+json",
+                        inner: `{
+                            "@context": "http://schema.org",
+                            "@type" : "BreadcrumbList",
+                            "itemListElement": [{
+                                "@type": "ListItem",
+                                "position": 1,
+                                "name": "MFA mal anders",
+                                "item": "https://www.mfa-mal-anders.de"
+                            },{
+                                "@type": "ListItem",
+                                "position": 2,
+                                "name": "MFA Karriere",
+                                "item": "https://www.mfa-mal-anders.de/page/mfa-career"
+                            },{
+                                "@type": "ListItem",
+                                "position": 3,
+                                "name": "Jobs und Berufsbilder",
+                                "item": "https://www.mfa-mal-anders.de/page/mfa-career/jobs-und-berufsbilder"
+                            }]
+                        }`
                     }
                 ]
             };

@@ -279,6 +279,7 @@
             :title="title"
             desc="Dein Karriereportal für medizinische Fachangestellte | Informationen über Karrieremöglichkeiten | Fortbildungen | Weiterbildungen"
             img=""
+            :script="snippet"
         />
     </div>
 </template>
@@ -298,7 +299,27 @@
         },
         data() {
             return {
-                title: "Karriere machen als MFA"
+                title: "Karriere machen als MFA",
+                snippet: [
+                    {
+                        type: "application/ld+json",
+                        inner: `{
+                            "@context": "http://schema.org",
+                            "@type" : "BreadcrumbList",
+                            "itemListElement": [{
+                                "@type": "ListItem",
+                                "position": 1,
+                                "name": "MFA mal anders",
+                                "item": "https://www.mfa-mal-anders.de"
+                            },{
+                                "@type": "ListItem",
+                                "position": 2,
+                                "name": "MFA Karriere",
+                                "item": "https://www.mfa-mal-anders.de/page/mfa-career"
+                            }]
+                        }`
+                    }
+                ]
             };
         }
     };

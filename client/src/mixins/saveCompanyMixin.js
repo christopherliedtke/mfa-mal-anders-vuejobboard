@@ -43,8 +43,6 @@ export const saveCompanyMixin = {
 
                     return { success: false };
                 } else {
-                    this.success = true;
-
                     this.$root.$bvToast.toast(
                         "Das Unternehmen wurde erfolgreich gespeichert.",
                         {
@@ -78,7 +76,7 @@ export const saveCompanyMixin = {
                     }
                 );
 
-                return false;
+                return { success: false };
             }
         }
     }

@@ -14,6 +14,7 @@
             :title="title"
             desc="Du hast ein Anliegen, dass Du mit uns besprechen möchtest? Nimm noch heute Kontakt zu uns auf."
             img=""
+            :script="snippet"
         />
     </div>
 </template>
@@ -27,7 +28,27 @@
         },
         data() {
             return {
-                title: "Kontakt"
+                title: "Kontakt",
+                snippet: [
+                    {
+                        type: "application/ld+json",
+                        inner: `{
+                            "@context": "http://schema.org",
+                            "@type" : "BreadcrumbList",
+                            "itemListElement": [{
+                                "@type": "ListItem",
+                                "position": 1,
+                                "name": "MFA mal anders",
+                                "item": "https://www.mfa-mal-anders.de"
+                            },{
+                                "@type": "ListItem",
+                                "position": 2,
+                                "name": "Kontakt",
+                                "item": "https://www.mfa-mal-anders.de/page/contact"
+                            }]
+                        }`
+                    }
+                ]
             };
         }
     };

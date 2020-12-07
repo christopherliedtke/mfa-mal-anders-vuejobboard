@@ -84,7 +84,12 @@
                 </div>
             </div>
         </b-container>
-        <Head :title="title" desc="This is the meta of About..." img="" />
+        <Head
+            :title="title"
+            desc="This is the meta of About..."
+            img=""
+            :script="snippet"
+        />
     </div>
 </template>
 
@@ -93,7 +98,27 @@
         name: "About",
         data() {
             return {
-                title: "Über MFA mal anders"
+                title: "Über MFA mal anders",
+                snippet: [
+                    {
+                        type: "application/ld+json",
+                        inner: `{
+                            "@context": "http://schema.org",
+                            "@type" : "BreadcrumbList",
+                            "itemListElement": [{
+                                "@type": "ListItem",
+                                "position": 1,
+                                "name": "MFA mal anders",
+                                "item": "https://www.mfa-mal-anders.de"
+                            },{
+                                "@type": "ListItem",
+                                "position": 2,
+                                "name": "Über MFA mal anders",
+                                "item": "https://www.mfa-mal-anders.de/page/about"
+                            }]
+                        }`
+                    }
+                ]
             };
         }
     };

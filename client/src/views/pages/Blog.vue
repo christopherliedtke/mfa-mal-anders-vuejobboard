@@ -14,6 +14,7 @@
             :title="title"
             desc="Im MFA-mal-anders Magazin schreibe ich über den Praxisalltag, Tipps zu Weiterbildung und Karriere, Persönlichkeitsentwicklung und vieles mehr..."
             img=""
+            :script="snippet"
         />
     </div>
 </template>
@@ -27,7 +28,27 @@
         },
         data() {
             return {
-                title: this.$config.cms.postsPageTitle
+                title: this.$config.cms.postsPageTitle,
+                snippet: [
+                    {
+                        type: "application/ld+json",
+                        inner: `{
+                            "@context": "http://schema.org",
+                            "@type" : "BreadcrumbList",
+                            "itemListElement": [{
+                                "@type": "ListItem",
+                                "position": 1,
+                                "name": "MFA mal anders",
+                                "item": "https://www.mfa-mal-anders.de"
+                            },{
+                                "@type": "ListItem",
+                                "position": 2,
+                                "name": "Blog",
+                                "item": "https://www.mfa-mal-anders.de/page/blog"
+                            }]
+                        }`
+                    }
+                ]
             };
         },
         computed: {

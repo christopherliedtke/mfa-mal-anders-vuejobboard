@@ -98,7 +98,7 @@
                             >{{ $config.cms.postsPageTitle }}</b-nav-item
                         >
                         <b-nav-item to="/page/fuer-arbeitgeber"
-                            >Arbeitgeber</b-nav-item
+                            >Für Arbeitgeber</b-nav-item
                         >
                         <b-nav-item to="/page/about">Über</b-nav-item>
                         <b-nav-item to="/page/contact">Kontakt</b-nav-item>

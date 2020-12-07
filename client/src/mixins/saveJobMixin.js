@@ -64,9 +64,9 @@ export const saveJobMixin = {
                             noAutoHide: true
                         }
                     );
-                } else {
-                    this.success = true;
 
+                    return { success: false };
+                } else {
                     this.trackEvent(
                         `${mutationType}: ${job.title} | ${job.company.state} - ${jobQueryResponse.data.data[mutationType]._id}`,
                         "Job_Ad",
@@ -88,6 +88,8 @@ export const saveJobMixin = {
                             ? this.$router.go(-1)
                             : this.$router.push("/user/dashboard");
                     }
+
+                    return { success: true };
                 }
             } catch (err) {
                 this.$root.$bvToast.toast(
@@ -100,6 +102,8 @@ export const saveJobMixin = {
                         noAutoHide: true
                     }
                 );
+
+                return { success: false };
             }
         }
     }

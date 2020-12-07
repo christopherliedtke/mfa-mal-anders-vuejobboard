@@ -85,7 +85,12 @@
             </b-row>
             <RandomTrainingsContainer class="mt-5" />
         </b-container>
-        <Head :title="title" :desc="intros[$route.params.slug].desc" img="" />
+        <Head
+            :title="title"
+            :desc="intros[$route.params.slug].desc"
+            img=""
+            :script="snippet"
+        />
     </div>
 </template>
 
@@ -130,7 +135,46 @@
                         desc:
                             "Jobs im Management eines Unternehmens im Gesundheitswesen gewinnen bei steigenden Herausforderungen im Gesundheitssystem immer mehr an Bedeutung. Es bietet Dir ein vielfältiges Aufgabenspektrum für medizinische Fachangestellte."
                     }
-                }
+                },
+                snippet: [
+                    {
+                        type: "application/ld+json",
+                        inner: `{
+                            "@context": "http://schema.org",
+                            "@type" : "BreadcrumbList",
+                            "itemListElement": [{
+                                "@type": "ListItem",
+                                "position": 1,
+                                "name": "MFA mal anders",
+                                "item": "https://www.mfa-mal-anders.de"
+                            },{
+                                "@type": "ListItem",
+                                "position": 2,
+                                "name": "MFA Karriere",
+                                "item": "https://www.mfa-mal-anders.de/page/mfa-career"
+                            },{
+                                "@type": "ListItem",
+                                "position": 3,
+                                "name": "Jobs und Berufsbilder",
+                                "item": "https://www.mfa-mal-anders.de/page/mfa-career/jobs-und-berufsbilder"
+                            },{
+                                "@type": "ListItem",
+                                "position": 4,
+                                "name": "${this.$route.params.slug
+                                    .split("-")
+                                    .map(
+                                        elem =>
+                                            elem.charAt(0).toUpperCase() +
+                                            elem.slice(1)
+                                    )
+                                    .join("-")}",
+                                "item": "https://www.mfa-mal-anders.de/page/mfa-career/jobs-und-berufsbilder/${
+                                    this.$route.params.slug
+                                }"
+                            }]
+                        }`
+                    }
+                ]
             };
         },
         computed: {

@@ -319,6 +319,7 @@
                     ? 'summary'
                     : ''
             "
+            :script="snippet"
         />
     </div>
 </template>
@@ -354,7 +355,27 @@
                 job: Object,
                 error: null,
                 employmentTypeOptions,
-                companySizeOptions
+                companySizeOptions,
+                snippet: [
+                    {
+                        type: "application/ld+json",
+                        inner: `{
+                            "@context": "http://schema.org",
+                            "@type" : "BreadcrumbList",
+                            "itemListElement": [{
+                                "@type": "ListItem",
+                                "position": 1,
+                                "name": "MFA mal anders",
+                                "item": "https://www.mfa-mal-anders.de"
+                            },{
+                                "@type": "ListItem",
+                                "position": 2,
+                                "name": "Stellenangebote",
+                                "item": "https://www.mfa-mal-anders.de/jobboard"
+                            }]
+                        }`
+                    }
+                ]
             };
         },
         created() {
