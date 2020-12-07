@@ -4,7 +4,7 @@
             <b-navbar toggleable="xl" type="dark">
                 <b-navbar-brand to="/">
                     <b-img
-                        src="@/assets/Logo_mfa-mal-anders-white.png"
+                        src="@/assets/img/Logo_mfa-mal-anders-white_1200.png"
                         height="70"
                         alt="MFA mal anders - Logo"
                     />
@@ -28,12 +28,11 @@
                                 to="/page/mfa-career"
                                 @mouseover="showSub('sub-career')"
                                 >Karriere
-                                <b-icon
+                                <Fa
                                     class="ml-1 icon"
                                     icon="chevron-down"
-                                    font-scale="0.9"
-                                ></b-icon
-                            ></b-nav-item>
+                                    size="xs"
+                            /></b-nav-item>
                             <div id="sub-career" class="sub-menu">
                                 <div
                                     class="sub-container"
@@ -55,34 +54,33 @@
                                             showSub('sub-jobs-berufsbilder')
                                         "
                                         >Jobs- und Berufsbilder
-                                        <b-icon
+                                        <Fa
                                             class="ml-1 d-none d-md-block"
                                             icon="chevron-right"
-                                            font-scale="0.9"
-                                        ></b-icon
-                                    ></b-nav-item>
+                                            size="xs"
+                                    /></b-nav-item>
                                     <div
                                         id="sub-jobs-berufsbilder"
                                         class="sub-menu d-none d-md-block"
                                     >
                                         <b-nav-item
-                                            to="/page/mfa-career/jobs-und-berufsbilder/Medizinisch-Technisch"
+                                            to="/page/mfa-career/jobs-und-berufsbilder/medizinisch-technisch"
                                             >Medizinisch-Technisch
                                         </b-nav-item>
                                         <b-nav-item
-                                            to="/page/mfa-career/jobs-und-berufsbilder/Verwaltung"
+                                            to="/page/mfa-career/jobs-und-berufsbilder/verwaltung"
                                             >Verwaltung
                                         </b-nav-item>
                                         <b-nav-item
-                                            to="/page/mfa-career/jobs-und-berufsbilder/Management"
+                                            to="/page/mfa-career/jobs-und-berufsbilder/management"
                                             >Management
                                         </b-nav-item>
                                         <b-nav-item
-                                            to="/page/mfa-career/jobs-und-berufsbilder/Beratung"
+                                            to="/page/mfa-career/jobs-und-berufsbilder/beratung"
                                             >Beratung
                                         </b-nav-item>
                                         <b-nav-item
-                                            to="/page/mfa-career/jobs-und-berufsbilder/Forschung"
+                                            to="/page/mfa-career/jobs-und-berufsbilder/forschung"
                                             >Forschung
                                         </b-nav-item>
                                     </div>
@@ -95,101 +93,47 @@
                         </li>
 
                         <b-nav-item
-                            v-if="config.cms.active"
-                            :to="`/page/${config.cms.postsPath}`"
-                            >{{ config.cms.postsPageTitle }}</b-nav-item
+                            v-if="$config.cms.active"
+                            :to="`/page/${$config.cms.postsPath}`"
+                            >{{ $config.cms.postsPageTitle }}</b-nav-item
                         >
                         <b-nav-item to="/page/fuer-arbeitgeber"
-                            >Arbeitgeber</b-nav-item
+                            >Für Arbeitgeber</b-nav-item
                         >
                         <b-nav-item to="/page/about">Über</b-nav-item>
                         <b-nav-item to="/page/contact">Kontakt</b-nav-item>
-
-                        <!-- <b-nav-item to="/login" v-if="!userId"
-                            >Anmelden</b-nav-item
-                        > -->
-                        <!-- <b-nav-item to="/register" v-if="!userId"
-                            >Registrieren</b-nav-item
-                        > -->
-
-                        <!-- <b-nav-item-dropdown v-if="userId" text="User" right>
-                            <b-dropdown-item v-if="userId" to="/dashboard"
-                                ><b-icon
-                                    class="mr-1"
-                                    icon="kanban"
-                                    font-scale="1.45"
-                                ></b-icon
-                                >Dashboard</b-dropdown-item
-                            >
-                            <b-dropdown-item v-if="userId" to="/account"
-                                ><b-icon
-                                    class="mr-1"
-                                    icon="person-circle"
-                                    font-scale="1.45"
-                                ></b-icon
-                                >Account</b-dropdown-item
-                            >
-                            <b-dropdown-item
-                                v-if="userRole === 'admin'"
-                                to="/admin"
-                                ><b-icon
-                                    class="mr-1"
-                                    icon="shield-lock"
-                                    font-scale="1.45"
-                                ></b-icon
-                                >Admin</b-dropdown-item
-                            >
-                            <b-dropdown-item v-if="userId"
-                                ><Logout
-                            /></b-dropdown-item>
-                        </b-nav-item-dropdown> -->
                     </b-navbar-nav>
                     <b-navbar-nav class="mt-3 mt-lg-0">
-                        <b-nav-item to="/dashboard" v-if="userId"
-                            ><b-icon
-                                class="mr-1"
-                                icon="kanban"
-                                font-scale="1.3"
-                            ></b-icon
-                            >Meine Anzeigen</b-nav-item
+                        <b-nav-item to="/user/dashboard" v-if="loggedIn"
+                            ><Fa class="mr-1" icon="columns" size="lg" />Meine
+                            Anzeigen</b-nav-item
                         >
-                        <b-nav-item to="/account" v-if="userId"
-                            ><b-icon
-                                class="mr-1"
-                                icon="person-circle"
-                                font-scale="1.3"
-                            ></b-icon>
+                        <b-nav-item to="/user/account" v-if="loggedIn"
+                            ><Fa class="mr-1" icon="user-circle" size="lg" />
                             <span
                                 v-if="
-                                    $store.state.auth.userFirstName &&
-                                        $store.state.auth.userLastName
+                                    $store.state.auth.user.firstName &&
+                                        $store.state.auth.user.lastName
                                 "
                             >
                                 {{
-                                    $store.state.auth.userFirstName.substring(
+                                    $store.state.auth.user.firstName.substring(
                                         0,
                                         1
                                     ) +
-                                        $store.state.auth.userLastName.substring(
+                                        $store.state.auth.user.lastName.substring(
                                             0,
                                             1
                                         )
                                 }}
                             </span>
                         </b-nav-item>
-                        <b-nav-item to="/admin" v-if="userRole === 'admin'"
-                            ><b-icon
-                                icon="shield-lock"
-                                font-scale="1.3"
-                            ></b-icon
-                        ></b-nav-item>
-                        <b-nav-item v-if="userId"><Logout /></b-nav-item>
-                        <b-nav-item v-if="!userId"
-                            ><b-button
-                                @click="toggleNavbar"
-                                variant="secondary"
-                                to="/login"
-                                v-if="!userId"
+                        <b-nav-item to="/admin" v-if="user.role === 'admin'"
+                            ><Fa icon="key" size="lg"
+                        /></b-nav-item>
+                        <b-nav-item v-if="loggedIn"><LogoutBtn /></b-nav-item>
+                        <b-nav-item v-else
+                            ><b-button variant="secondary" to="/auth/login"
                                 >Login</b-button
                             ></b-nav-item
                         >
@@ -201,27 +145,30 @@
 </template>
 
 <script>
-    import config from "@/utils/config.json";
-    import Logout from "@/components/utils/Logout";
+    import LogoutBtn from "@/components/buttons/LogoutBtn";
     export default {
         name: "Header",
         components: {
-            Logout
+            LogoutBtn
         },
         data() {
             return {
-                config,
                 previousScrollPositionY:
                     window.document.documentElement.scrollTop
             };
         },
         computed: {
-            userId() {
-                return this.$store.state.auth.userId;
+            user() {
+                return this.$store.state.auth.user;
             },
-            userRole() {
-                return this.$store.state.auth.userRole;
+            loggedIn() {
+                return this.$store.state.auth.loggedIn;
             }
+        },
+        mounted() {
+            window.addEventListener("scroll", () => {
+                this.showHeader();
+            });
         },
         methods: {
             toggleNavbar() {
@@ -257,11 +204,6 @@
                 this.previousScrollPositionY =
                     window.document.documentElement.scrollTop;
             }
-        },
-        mounted: function() {
-            window.addEventListener("scroll", () => {
-                this.showHeader();
-            });
         }
     };
 </script>

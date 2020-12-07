@@ -5,8 +5,7 @@
 </template>
 
 <script>
-    import { companyCountryOptions } from "@/utils/jobDataConfig.json";
-    import config from "@/utils/config.json";
+    import { companyCountryOptions } from "@/config/formDataConfig.json";
     export default {
         name: "HereMapMultiJobs",
         props: {
@@ -29,7 +28,7 @@
             this.initializeHereMap();
         },
         watch: {
-            jobs: function() {
+            jobs() {
                 if (this.map) {
                     this.deleteMarkers();
                     this.addMarkers();
@@ -42,8 +41,6 @@
             },
             async initializeHereMap() {
                 try {
-                    // const service = this.platform.getSearchService();
-
                     let zoom = 6.3;
                     let geocode;
 
@@ -61,27 +58,22 @@
                                         reject("");
                                     }
                                 },
-                                () => resolve(config.maps.defaultCenter)
+                                () => resolve(this.$config.maps.defaultCenter)
                             );
                         });
                     } catch (err) {
                         console.log("Error in getCurrentPosition(): ", err);
-                        geocode = config.maps.defaultCenter;
+                        geocode = this.$config.maps.defaultCenter;
                     }
 
                     if (!geocode) {
-                        // const response = await service.geocode({
-                        //     q: this.companyCountryOptions[0]
-                        // });
-
-                        // geocode = response.items[0].position;
-                        geocode = config.maps.defaultCenter;
+                        geocode = this.$config.maps.defaultCenter;
                     }
 
                     const mapContainer = this.$refs.hereMap;
                     const H = window.H;
                     const maptypes = this.platform.createDefaultLayers({
-                        lg: config.maps.lang
+                        lg: this.$config.maps.lang
                     });
 
                     this.map = new H.Map(
@@ -200,5 +192,3 @@
         }
     };
 </script>
-
-<style lang="scss"></style>

@@ -9,8 +9,8 @@
                 />
                 <b-input-group-append>
                     <b-button
-                        ><b-icon
-                            icon="x"
+                        ><Fa
+                            icon="times"
                             @click.prevent="filter.searchTerm = ''"
                     /></b-button>
                 </b-input-group-append>
@@ -64,17 +64,19 @@
             <template v-slot:cell(actions)="row">
                 <b-button
                     class="mr-2 mb-2"
-                    :to="`/admin/companies/${row.item._id}`"
+                    :to="`/admin/companies/edit/${row.item._id}`"
                     variant="primary"
                     size="sm"
-                    ><b-icon icon="pencil-square"></b-icon>
+                >
+                    <Fa icon="edit" class="mr-2" />Edit
                 </b-button>
                 <b-button
                     size="sm"
                     variant="danger"
                     @click="showDeleteCompanyModal(row.item)"
                 >
-                    <b-icon class="mr-2" icon="trash"></b-icon>Delete
+                    <Fa icon="trash-alt" class="mr-2" />
+                    Delete
                 </b-button>
             </template>
         </b-table>
@@ -103,7 +105,6 @@
 </template>
 
 <script>
-    import axios from "@/axios";
     export default {
         name: "AllCompaniesListAdmin",
         data() {
@@ -211,7 +212,7 @@
             },
             async getAllJobs() {
                 try {
-                    const response = await axios.post("/api/jobs/admin", {
+                    const response = await this.$axios.post("/api/jobs/admin", {
                         query: `
                             query {
                                 jobs {
@@ -231,8 +232,10 @@
             },
             async getAllCompanies() {
                 try {
-                    const response = await axios.post("/api/companies/admin", {
-                        query: `
+                    const response = await this.$axios.post(
+                        "/api/companies/admin",
+                        {
+                            query: `
                             query {
                                 companies {
                                     _id
@@ -254,7 +257,8 @@
                                 }
                             }
                         `
-                    });
+                        }
+                    );
 
                     this.companies = response.data.data.companies;
                 } catch (err) {
@@ -264,12 +268,14 @@
             },
             async updateCompany(id, key, value) {
                 try {
-                    const response = await axios.post("/api/companies/admin", {
-                        query: `
+                    const response = await this.$axios.post(
+                        "/api/companies/admin",
+                        {
+                            query: `
                             mutation {
                                 updateCompany (_id: "${id}", ${key}: ${
-                            typeof value === "string" ? `"${value}"` : value
-                        }) {
+                                typeof value === "string" ? `"${value}"` : value
+                            }) {
                                     _id
                                     createdAt
                                     updatedAt
@@ -289,7 +295,8 @@
                                 }
                             }
                         `
-                    });
+                        }
+                    );
 
                     if (response.data.data.updateCompany._id) {
                         this.companies = this.companies.map(company => {
@@ -313,15 +320,18 @@
             },
             async deleteCompany(companyId) {
                 try {
-                    const response = await axios.post("/api/companies/admin", {
-                        query: `
+                    const response = await this.$axios.post(
+                        "/api/companies/admin",
+                        {
+                            query: `
                             mutation {
                                 deleteCompany(_id: "${companyId}") {
                                     name
                                 }
                             }
                         `
-                    });
+                        }
+                    );
 
                     if (response.data.data.deleteCompany.name === "deleted") {
                         this.companies.forEach((company, index) => {

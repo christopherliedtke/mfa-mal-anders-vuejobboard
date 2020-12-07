@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 
@@ -5,33 +6,24 @@ const sslRedirect = require("heroku-ssl-redirect");
 const cors = require("cors");
 const compression = require("compression");
 const csurf = require("csurf");
-const config = require("./utils/config");
+const config = require("./config/config.json");
 
 // #mongoDB
-const mongoose = require("./utils/db");
+const mongoose = require("./database/mongoDB");
 
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 
-const { createSitemap } = require("./utils/createSitemap");
-const { CRONNewsletter } = require("./utils/CRONNewsletter");
-const { refreshJobs } = require("./utils/refreshJobs");
-const { unpublishJobs } = require("./utils/unpublishJobs");
-const { CRONUnpublishedJobs } = require("./utils/CRONUnpublishedJobs");
-
-let secrets, port;
-if (process.env.NODE_ENV == "production") {
-    secrets = process.env;
-    port = process.env.PORT;
-} else {
-    secrets = require("./utils/secrets");
-    port = 5000;
-}
+const { createSitemap } = require("./middleware/createSitemap");
+const { CRONNewsletter } = require("./middleware/CRONNewsletter");
+const { refreshJobs } = require("./middleware/refreshJobs");
+const { unpublishJobs } = require("./middleware/unpublishJobs");
+const { CRONUnpublishedJobs } = require("./middleware/CRONUnpublishedJobs");
 
 // #Set Up prerender.io
 const prerender = require("prerender-node").set(
     "prerenderToken",
-    secrets.PRERENDER_TOKEN
+    process.env.PRERENDER_TOKEN
 );
 prerender.crawlerUserAgents = prerender.crawlerUserAgents.filter(
     (item) => config.prerender.exclude.indexOf(item) <= -1
@@ -67,14 +59,14 @@ if (config.unpublishedJobsReminder.active) {
 
 // #Redirects
 if (config.redirect.active) {
-    app.use(require("./utils/middleware/redirect"));
+    app.use(require("./middleware/redirect"));
 }
 
 // #Prerender w/o googlebot
 if (
     config.prerender.active &&
     process.env.NODE_ENV == "production" &&
-    secrets.WEBSITE_URL === "https://www.mfa-mal-anders.de"
+    process.env.WEBSITE_URL === "https://www.mfa-mal-anders.de"
 ) {
     app.use(prerender);
 }
@@ -82,10 +74,6 @@ if (
 app.use(compression());
 app.use(cors());
 app.use(express.json());
-app.use((req, res, next) => {
-    res.locals.secrets = secrets;
-    next();
-});
 
 // #Routes w/o csrf protection
 app.use("/api/webhooks", require("./routes/webhooks"));
@@ -98,11 +86,11 @@ app.use(
             mongooseConnection: mongoose.connection,
             touchAfter: 24 * 3600,
         }),
-        secret: secrets.COOKIE_SESSION_SECRET,
+        secret: process.env.COOKIE_SESSION_SECRET,
         resave: false,
         saveUninitialized: false,
         cookie: {
-            maxAge: 1000 * 60 * 60 * 24 * 14,
+            maxAge: 1000 * 60 * 60 * 24 * 7,
             httpOnly: true,
             secure: false,
             sameSite: "lax",
@@ -157,8 +145,8 @@ app.use("*", (req, res) => {
     res.sendFile(__dirname + "/public/index.html");
 });
 
-const server = app.listen(port, () =>
-    console.log(`Server listening on port ${port}`)
+const server = app.listen(process.env.PORT, () =>
+    console.log(`Server listening on port ${process.env.PORT}`)
 );
 
 // #Set custom request timeout

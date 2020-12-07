@@ -9,8 +9,8 @@
                 />
                 <b-input-group-append>
                     <b-button
-                        ><b-icon
-                            icon="x"
+                        ><Fa
+                            icon="times"
                             @click.prevent="filter.searchTerm = ''"
                     /></b-button>
                 </b-input-group-append>
@@ -72,17 +72,17 @@
             <template v-slot:cell(actions)="row">
                 <b-button
                     class="mr-2 mb-2"
-                    :to="`/admin/jobs/${row.item._id}`"
+                    :to="`/admin/jobs/edit/${row.item._id}`"
                     variant="primary"
                     size="sm"
-                    ><b-icon icon="pencil-square"></b-icon>
+                    ><Fa icon="edit"></Fa>
                 </b-button>
                 <b-button
                     class="mr-2 mb-2"
                     :to="`/admin/jobs/preview/${row.item._id}`"
                     variant="info"
                     size="sm"
-                    ><b-icon scale="1" icon="eye"></b-icon>
+                    ><Fa scale="1" icon="eye" />
                 </b-button>
                 <b-dropdown
                     class="mr-2 mb-2"
@@ -91,10 +91,7 @@
                     variant="secondary"
                 >
                     <template v-slot:button-content>
-                        <b-icon
-                            class="mr-2"
-                            icon="three-dots-vertical"
-                        ></b-icon>
+                        <Fa class="mr-2" icon="ellipsis-v" />
                         Status
                     </template>
                     <b-dropdown-item
@@ -137,8 +134,7 @@
                     variant="secondary"
                 >
                     <template v-slot:button-content>
-                        <b-icon class="mr-2" icon="credit-card"></b-icon> Paid
-                        Status
+                        <Fa class="mr-2" icon="credit-card" /> Paid Status
                     </template>
                     <b-dropdown-item
                         :active="row.item.paid === false"
@@ -158,7 +154,7 @@
                     variant="danger"
                     @click="showDeleteJobModal(row.item)"
                 >
-                    <b-icon class="mr-2" icon="trash"></b-icon>Delete
+                    <Fa class="mr-2" icon="trash-alt" />Delete
                 </b-button>
             </template>
         </b-table>
@@ -187,7 +183,6 @@
 </template>
 
 <script>
-    import axios from "@/axios";
     export default {
         name: "AllJobsListAdmin",
         data() {
@@ -327,7 +322,7 @@
             },
             async getAllJobs() {
                 try {
-                    const response = await axios.post("/api/jobs/admin", {
+                    const response = await this.$axios.post("/api/jobs/admin", {
                         query: `
                             query {
                                 jobs {
@@ -373,7 +368,7 @@
             },
             async updateJob(id, key, value) {
                 try {
-                    const response = await axios.post("/api/jobs/admin", {
+                    const response = await this.$axios.post("/api/jobs/admin", {
                         query: `
                             mutation {
                                 updateJob (_id: "${id}", ${key}: ${
@@ -429,7 +424,7 @@
             },
             async deleteJob(jobId) {
                 try {
-                    const response = await axios.post("/api/jobs/admin", {
+                    const response = await this.$axios.post("/api/jobs/admin", {
                         query: `
                             mutation {
                                 deleteJob(_id: "${jobId}") {

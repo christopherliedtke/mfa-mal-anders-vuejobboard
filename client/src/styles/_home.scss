@@ -1,7 +1,7 @@
 .home {
     .hero {
         background: radial-gradient(closest-side, #f8faf977 0%, #f8faffee 100%),
-            url("~@/assets/hero_map.jpg") center center;
+            url("~@/assets/img/hero_map_1828.jpg") center center;
         background-size: cover;
         background-blend-mode: lighten;
         min-height: 60vh;
@@ -12,7 +12,8 @@
 
         .hero-text {
             border-radius: $border-radius2;
-            background-color: transparentize($light, $amount: 0.25);
+            background-color: transparentize($light, $amount: 0.15);
+            box-shadow: $shadow3;
         }
     }
 }

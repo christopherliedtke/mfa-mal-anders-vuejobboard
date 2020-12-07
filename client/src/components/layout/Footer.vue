@@ -4,7 +4,7 @@
             <b-row cols="1" cols-lg="3">
                 <b-col order="3" order-lg="1">
                     <b-img
-                        src="@/assets/Logo_mfa-mal-anders-white.png"
+                        src="@/assets/img/Logo_mfa-mal-anders-white_1200.png"
                         height="130"
                         alt="MFA mal anders - Logo"
                         class="mb-4"
@@ -46,42 +46,37 @@
                 <b-col order="2" order-lg="2">
                     <div class="mb-4">
                         <b-link
-                            :href="`https://www.facebook.com/${config.fb.path}`"
+                            :href="
+                                `https://www.facebook.com/${$config.fb.path}`
+                            "
                             class="mr-3"
                             target="_blank"
                             rel="noopener"
                             aria-label="Facebook"
                         >
-                            <font-awesome-icon
-                                :icon="['fab', 'facebook']"
-                                size="2x"
-                            />
+                            <Fa :icon="['fab', 'facebook']" size="2x" />
                         </b-link>
                         <b-link
-                            :href="`https://twitter.com/${config.twitter.path}`"
+                            :href="
+                                `https://twitter.com/${$config.twitter.path}`
+                            "
                             class="mr-3"
                             target="_blank"
                             rel="noopener"
                             aria-label="Twitter"
                         >
-                            <font-awesome-icon
-                                :icon="['fab', 'twitter']"
-                                size="2x"
-                            />
+                            <Fa :icon="['fab', 'twitter']" size="2x" />
                         </b-link>
                         <b-link
                             :href="
-                                `https://www.instagram.com/${config.ig.path}`
+                                `https://www.instagram.com/${$config.ig.path}`
                             "
                             class="mr-3"
                             target="_blank"
                             rel="noopener"
                             aria-label="Instagram"
                         >
-                            <font-awesome-icon
-                                :icon="['fab', 'instagram']"
-                                size="2x"
-                            />
+                            <Fa :icon="['fab', 'instagram']" size="2x" />
                         </b-link>
                     </div>
                     <NewsletterSignUpForm />
@@ -98,14 +93,14 @@
                                         fluid
                                         class="mx-3 shadow"
                                         style="width: 35vw; max-width: 120px"
-                                        src="@/assets/Vorlage_Bewerbungsanschreiben_150x.jpg"
+                                        src="@/assets/img/Vorlage_Bewerbungsanschreiben_150.jpg"
                                         alt="Bild von Mustervorlage für Motivationsschreiben"
                                     />
                                     <b-img-lazy
                                         fluid
                                         class="mx-3 shadow"
                                         style="width: 35vw; max-width: 120px"
-                                        src="@/assets/Vorlage_Lebenslauf_150x.jpg"
+                                        src="@/assets/img/Vorlage_Lebenslauf_150.jpg"
                                         alt="Bild von Mustervorlage für Lebenslauf"
                                     />
                                 </b-link>
@@ -152,17 +147,11 @@
 </template>
 
 <script>
-    import config from "@/utils/config.json";
-    import NewsletterSignUpForm from "@/components/utils/NewsletterSignUpForm.vue";
+    import NewsletterSignUpForm from "@/components/forms/NewsletterSignUpForm.vue";
     export default {
         name: "Footer",
         components: {
             NewsletterSignUpForm
-        },
-        data() {
-            return {
-                config
-            };
         }
     };
 </script>

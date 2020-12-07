@@ -5,6 +5,7 @@
             <router-view />
         </main>
         <Footer />
+        <Overlay />
         <NewsletterSignUpPopUp />
     </div>
 </template>
@@ -12,81 +13,52 @@
 <script>
     import Header from "@/components/layout/Header";
     import Footer from "@/components/layout/Footer";
-    import NewsletterSignUpPopUp from "@/components/utils/NewsletterSignUpPopUp.vue";
-    import config from "@/utils/config.json";
-    import { mapActions } from "vuex";
-
+    import NewsletterSignUpPopUp from "@/components/popups/NewsletterSignUpPopUp.vue";
+    import Overlay from "@/components/utils/Overlay";
     export default {
         components: {
             Header,
             Footer,
-            NewsletterSignUpPopUp
+            NewsletterSignUpPopUp,
+            Overlay
+        },
+        async created() {
+            if (this.$config.ga.active) {
+                this.track();
+            }
+
+            if (this.$store.state.auth.loggedIn) {
+                const user = await this.$store.dispatch("fetchUser");
+                if (!user) {
+                    this.$store.dispatch("logout");
+                }
+            }
+
+            this.$store.dispatch("getJobs");
+
+            if (this.$config.cms.active) {
+                this.$store.dispatch("getArticles");
+                this.$store.dispatch("getTrainings");
+                this.$store.dispatch("getProfessions");
+            }
+        },
+        watch: {
+            $route(to, from) {
+                if (to.path != from.path && this.$config.ga.active) {
+                    this.track();
+                }
+            }
         },
         methods: {
-            ...mapActions([
-                "getTrainings",
-                "getArticles",
-                "getProfessions",
-                "getJobs"
-            ]),
             track() {
                 this.$gtag.pageview({
                     page_title: this.$route.name,
                     page_path: this.$route.fullPath,
                     page_location: window.location.href,
-                    anonymize_ip: config.ga.anonymizeIP,
-                    client_storage: config.ga.storage
+                    anonymize_ip: this.$config.ga.anonymizeIP,
+                    client_storage: this.$config.ga.storage
                 });
             }
-        },
-        watch: {
-            $route(to, from) {
-                if (to.path != from.path && config.ga.active) {
-                    this.track();
-                }
-            }
-        },
-        created: function() {
-            if (config.ga.active) {
-                this.track();
-            }
-
-            if (config.cms.active) {
-                this.getTrainings();
-                this.getArticles();
-                this.getProfessions();
-            }
-
-            this.getJobs({
-                query: `
-                    query {
-                        jobs {
-                            _id
-                            createdAt
-                            paidAt
-                            title
-                            description
-                            employmentType
-                            applicationDeadline
-                            simpleApplication
-                            specialization
-                            company {
-                                _id
-                                name
-                                street
-                                location
-                                zipCode
-                                state
-                                country
-                                geoCodeLat
-                                geoCodeLng
-                                size
-                                logoUrl
-                            }
-                        }
-                    }
-                `
-            });
         }
     };
 </script>

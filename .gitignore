@@ -1,3 +1,8 @@
 node_modules
 # /client
-uploads
+**/uploads
+
+# /server
+secrets*
+**/invoices/*.pdf
+.env

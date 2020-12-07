@@ -1,69 +1,71 @@
-import axios from "@/axios";
-import router from "@/router/index";
+import axios from "@/utils/axios";
+import router from "@/router";
 
 const state = {
-    userId: localStorage.getItem("userId") || null,
-    userRole: localStorage.getItem("userRole") || null,
-    userStatus: localStorage.getItem("userStatus") || null,
-    userFirstName: localStorage.getItem("userFirstName") || null,
-    userLastName: localStorage.getItem("userLastName") || null
+    token: localStorage.getItem("token") || false,
+    user: localStorage.getItem("user")
+        ? JSON.parse(localStorage.getItem("user"))
+        : false,
+    loggedIn: localStorage.getItem("loggedIn")
+        ? JSON.parse(localStorage.getItem("loggedIn"))
+        : false
 };
 
 const getters = {
-    userId: state => state.userId,
-    userRole: state => state.userRole,
-    userStatus: state => state.userStatus,
-    userFirstName: state => state.userFirstName,
-    userLastName: state => state.userLastName
+    token: state => state.token,
+    user: state => state.user,
+    loggedIn: state => state.loggedIn
 };
 
 const actions = {
-    async userAuth({ commit }, data) {
-        const response = await axios.post(data.url, data.userData);
+    async auth({ commit }, data) {
+        const response = await axios.post("/api/auth/" + data.type, data.creds);
 
         if (response.data.success) {
-            commit("setUserId", response.data.userId);
-            commit("setUserRole", response.data.userRole);
-            commit("setUserStatus", response.data.userStatus);
-            commit("setUserFirstName", response.data.userFirstName);
-            commit("setUserLastName", response.data.userLastName);
+            commit("setToken", response.data.token);
+        }
 
-            // Manage redirect after auth
-            const redirectQuery = router.history.current.query.redirect;
-            let redirectPath = "/dashboard";
+        return response.data;
+    },
+    async fetchUser({ commit }) {
+        const response = await axios.get("/api/auth/user-by-token");
 
-            // catch undefined error -> no harm, no display
-            router
-                .push({ path: redirectQuery || redirectPath })
-                .catch(err => err);
+        if (response.data.user) {
+            commit("setUser", response.data.user);
+            commit("setLoggedIn", true);
+        }
 
-            return { success: true };
-        } else {
-            return response.data;
+        return response.data.user;
+    },
+    async logout({ commit }) {
+        const response = await axios.get("/api/auth/logout");
+
+        if (response.data.success) {
+            commit("setToken", false);
+            commit("setUser", false);
+            commit("setLoggedIn", false);
+
+            localStorage.removeItem("token");
+            localStorage.removeItem("user");
+            localStorage.removeItem("loggedIn");
+
+            router.push("/").catch(() => {});
         }
     }
 };
 
 const mutations = {
-    setUserId: (state, userId) => {
-        localStorage.setItem("userId", userId);
-        state.userId = userId;
+    setToken: (state, token) => {
+        localStorage.setItem("token", token);
+        state.token = token;
     },
-    setUserRole: (state, userRole) => {
-        localStorage.setItem("userRole", userRole);
-        state.userRole = userRole;
+    setUser: (state, user) => {
+        localStorage.setItem("user", JSON.stringify(user));
+        state.user = user;
     },
-    setUserStatus: (state, userStatus) => {
-        localStorage.setItem("userStatus", userStatus);
-        state.userStatus = userStatus;
-    },
-    setUserFirstName: (state, userFirstName) => {
-        localStorage.setItem("userFirstName", userFirstName);
-        state.userFirstName = userFirstName;
-    },
-    setUserLastName: (state, userLastName) => {
-        localStorage.setItem("userLastName", userLastName);
-        state.userLastName = userLastName;
+    setLoggedIn: (state, loggedIn) => {
+        localStorage.setItem("loggedIn", JSON.stringify(loggedIn));
+        state.loggedIn = loggedIn;
     }
 };
 

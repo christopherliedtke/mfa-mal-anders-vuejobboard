@@ -16,10 +16,9 @@
         </p>
         <b-button
             class="mr-2 mb-2"
-            to="/dashboard/new-company"
+            to="/user/dashboard/companies/edit/new"
             variant="outline-primary"
-            ><b-icon class="mr-2" scale="1" icon="plus-circle"></b-icon>Neues
-            Unternehmen</b-button
+            ><Fa class="mr-2" icon="plus" />Neues Unternehmen</b-button
         >
         <b-button
             class="mr-2 mb-2"
@@ -53,14 +52,12 @@
                     <div>
                         <b-button
                             class="mr-2 mb-2 mb-md-0"
-                            :to="`/dashboard/companies/${company._id}`"
+                            :to="
+                                `/user/dashboard/companies/edit/${company._id}`
+                            "
                             variant="primary"
                             size="sm"
-                            ><b-icon
-                                class="mr-2"
-                                scale="1"
-                                icon="pencil-square"
-                            ></b-icon>
+                            ><Fa class="mr-2" icon="edit" />
                             Bearbeiten</b-button
                         >
                     </div>
@@ -69,11 +66,7 @@
                             variant="outline-danger"
                             size="sm"
                             @click.prevent="$bvModal.show(company._id)"
-                            ><b-icon
-                                class="mr-2"
-                                scale="1"
-                                icon="trash"
-                            ></b-icon>
+                            ><Fa class="mr-2" icon="trash-alt" />
                             Löschen</b-button
                         >
                     </div>
@@ -93,33 +86,24 @@
                 </p></b-modal
             >
         </b-card>
-        <b-alert
-            v-model="error"
-            class="position-fixed fixed-bottom m-0 rounded-0"
-            style="z-index: 2000;"
-            variant="warning"
-            dismissible
-        >
-            Oh, da ist leider etwas schief gelaufen. Bitte probiere es noch
-            einmal.
-        </b-alert>
     </div>
 </template>
 
 <script>
-    import axios from "@/axios";
     export default {
         name: "MyCompaniesList",
         data() {
             return {
-                myCompanies: [],
-                error: false
+                myCompanies: []
             };
+        },
+        created() {
+            this.getCompaniesByUserId();
         },
         methods: {
             async getCompaniesByUserId() {
                 try {
-                    const response = await axios.post(
+                    const response = await this.$axios.post(
                         "/api/companies/private",
                         {
                             query: `
@@ -138,13 +122,21 @@
 
                     this.myCompanies = response.data.data.companies;
                 } catch (err) {
-                    this.error = true;
-                    console.log("err: ", err);
+                    this.$root.$bvToast.toast(
+                        "Ihre Unternehmen konnten nicht geladen werden. Bitte versuchen Sie es noch einmal, indem Sie die Seite neu laden.",
+                        {
+                            title: `Fehler beim Laden`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 }
             },
             async deleteCompany(companyId) {
                 try {
-                    const response = await axios.post(
+                    const response = await this.$axios.post(
                         "/api/companies/private",
                         {
                             query: `
@@ -163,17 +155,41 @@
                                 this.myCompanies.splice(index, 1);
                             }
                         });
+
+                        this.$root.$bvToast.toast(
+                            "Das Unternehmen wurde erfolgreich gelöscht.",
+                            {
+                                title: `Unternehmen gelöscht`,
+                                variant: "success",
+                                toaster: "b-toaster-bottom-right",
+                                solid: true
+                            }
+                        );
                     } else {
-                        this.error = true;
+                        this.$root.$bvToast.toast(
+                            "Das Unternehmen konnte nicht gelöscht werden. Bitte versuchen Sie es später noch einmal.",
+                            {
+                                title: `Fehler beim Löschen`,
+                                variant: "danger",
+                                toaster: "b-toaster-bottom-right",
+                                solid: true,
+                                noAutoHide: true
+                            }
+                        );
                     }
                 } catch (err) {
-                    this.error = true;
-                    console.log("err: ", err);
+                    this.$root.$bvToast.toast(
+                        "Das Unternehmen konnte nicht gelöscht werden. Bitte versuchen Sie es später noch einmal.",
+                        {
+                            title: `Fehler beim Löschen`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 }
             }
-        },
-        created: function() {
-            this.getCompaniesByUserId();
         }
     };
 </script>

@@ -1,25 +1,18 @@
 const nodemailer = require("nodemailer");
 
-let secrets;
-if (process.env.NODE_ENV == "production") {
-    secrets = process.env;
-} else {
-    secrets = require("./secrets");
-}
-
 const emailService = nodemailer.createTransport({
-    host: secrets.EMAIL_HOST,
-    port: secrets.EMAIL_PORT,
+    host: process.env.EMAIL_HOST,
+    port: process.env.EMAIL_PORT,
     secure: false,
     pool: true,
     maxConnections: 3,
     maxMessages: 45,
     tls: {
-        servername: secrets.EMAIL_HOST,
+        servername: process.env.EMAIL_HOST,
     },
     auth: {
-        user: secrets.EMAIL_USERNAME,
-        pass: secrets.EMAIL_PW,
+        user: process.env.EMAIL_USERNAME,
+        pass: process.env.EMAIL_PW,
     },
 });
 

@@ -3,7 +3,6 @@
 </template>
 
 <script>
-    import config from "@/utils/config.json";
     export default {
         name: "Head",
         props: {
@@ -19,14 +18,14 @@
             script: { type: Array, default: () => [] }
         },
         head: {
-            title: function() {
+            title() {
                 if (this.title) {
                     return {
                         inner: this.title
                     };
                 }
             },
-            meta: function() {
+            meta() {
                 if (this.desc) {
                     return [
                         {
@@ -40,7 +39,7 @@
                         },
                         {
                             property: "og:title",
-                            content: `${this.title} – ${config.website.name}`
+                            content: `${this.title} – ${this.$config.website.name}`
                         },
                         {
                             property: "og:description",
@@ -56,7 +55,7 @@
                                 this.img ||
                                 `${
                                     window.location.origin
-                                }${require("@/assets/mfaMalAnders_Facebook_Banner.jpg")}`
+                                }${require("@/assets/img/mfaMalAnders_Facebook_Banner_1200.jpg")}`
                         },
                         {
                             property: "og:image:alt",
@@ -64,7 +63,7 @@
                         },
                         {
                             property: "fb:app_id",
-                            content: config.fb.appId
+                            content: this.$config.fb.appId
                         },
                         {
                             property: "twitter:card",
@@ -77,7 +76,7 @@
                     ];
                 }
             },
-            script: function() {
+            script() {
                 return [
                     ...this.script,
                     {
@@ -86,7 +85,7 @@
                             "@context": "http://schema.org",
                             "@type" : "Organization",
                             "url": "${window.location.origin}",
-                            "logo": "${require("@/assets/logo.png")}"
+                            "logo": "${require("@/assets/img/logo_800.png")}"
                         }`
                     }
                 ];

@@ -1,21 +1,14 @@
 const express = require("express");
 const router = express.Router();
-const config = require("../utils/config");
+const config = require("../config/config");
 const emailService = require("../utils/nodemailer");
-const { Job } = require("../utils/models/job");
-const { Coupon } = require("../utils/models/coupon");
-const { UsedCoupon } = require("../utils/models/usedCoupon");
-const { googleIndexing } = require("../utils/middleware/googleJobIndexing");
-const { postToFacebook } = require("../utils/middleware/postToFacebook");
+const { Job } = require("../database/models/job");
+const { Coupon } = require("../database/models/coupon");
+const { UsedCoupon } = require("../database/models/usedCoupon");
+const { googleIndexing } = require("../middleware/googleJobIndexing");
+const { postToFacebook } = require("../middleware/postToFacebook");
 
-let secrets;
-if (process.env.NODE_ENV == "production") {
-    secrets = process.env;
-} else {
-    secrets = require("../utils/secrets");
-}
-
-const stripe = require("stripe")(secrets.STRIPE_SK);
+const stripe = require("stripe")(process.env.STRIPE_SK);
 
 // #route:  POST /api/webhooks/checkout-completed
 // #desc:   Check if payment is completed and update job.paid
@@ -85,7 +78,7 @@ router.post("/checkout-completed", async (req, res) => {
 
             if (config.googleIndexing.active) {
                 googleIndexing(
-                    res.locals.secrets.WEBSITE_URL +
+                    process.env.WEBSITE_URL +
                         config.googleIndexing.pathPrefix +
                         jobId,
                     "URL_UPDATED"
@@ -104,7 +97,7 @@ router.post("/checkout-completed", async (req, res) => {
                         Soeben wurde eine neue Stelle für ${
                             amount / 100
                         }€ veröffentlicht: ${
-                    res.locals.secrets.WEBSITE_URL +
+                    process.env.WEBSITE_URL +
                     config.googleIndexing.pathPrefix +
                     jobId
                 }
@@ -130,11 +123,11 @@ router.post("/checkout-completed", async (req, res) => {
                         updatedJob.paidAmount / 100
                     } EURO <br>
                     <strong>Link:</strong> <a href="${
-                        res.locals.secrets.WEBSITE_URL +
+                        process.env.WEBSITE_URL +
                         config.googleIndexing.pathPrefix +
                         jobId
                     }">${
-                    res.locals.secrets.WEBSITE_URL +
+                    process.env.WEBSITE_URL +
                     config.googleIndexing.pathPrefix +
                     jobId
                 }</a>
@@ -150,7 +143,7 @@ router.post("/checkout-completed", async (req, res) => {
                     <br>
                     <br>
                     ${
-                        res.locals.secrets.WEBSITE_URL +
+                        process.env.WEBSITE_URL +
                         config.googleIndexing.pathPrefix +
                         jobId
                     }
@@ -198,11 +191,11 @@ router.post("/checkout-completed", async (req, res) => {
                     </p>
                     <p>
                         <a href="${
-                            res.locals.secrets.WEBSITE_URL +
+                            process.env.WEBSITE_URL +
                             config.googleIndexing.pathPrefix +
                             jobId
                         }">${
-                    res.locals.secrets.WEBSITE_URL +
+                    process.env.WEBSITE_URL +
                     config.googleIndexing.pathPrefix +
                     jobId
                 }</a>
@@ -212,7 +205,7 @@ router.post("/checkout-completed", async (req, res) => {
                     </p>
                     <p>
                         Sollten Sie noch Fragen, Anregungen oder weiteren Beratungsbedarf haben, melden Sie sich gern bei uns über unser <a href="${
-                            res.locals.secrets.WEBSITE_URL
+                            process.env.WEBSITE_URL
                         }/page/contact">Kontaktformular</a> oder direkt per Nachricht an <a href="mailto:${
                     config.website.contactEmail
                 }">${config.website.contactEmail}</a>.

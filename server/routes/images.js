@@ -1,36 +1,22 @@
 const express = require("express");
 const router = express.Router();
-const authenticateToken = require("../utils/middleware/checkAuth");
-const upload = require("../utils/middleware/upload");
-const sharpImg = require("../utils/middleware/sharpImg");
-const s3 = require("../utils/middleware/s3");
-
-let secrets;
-if (process.env.NODE_ENV == "production") {
-    secrets = process.env; // in prod the secrets are environment variables
-} else {
-    secrets = require("../utils/secrets"); // in dev they are in secrets.json which is listed in .gitignore
-}
+const verifyToken = require("../middleware/verifyToken");
+const upload = require("../middleware/upload");
+const sharpImg = require("../middleware/sharpImg");
+const s3 = require("../middleware/s3");
 
 // #route:  POST /api/images/upload
 // #desc:   upload image to AWS
 // #access: Private
-router.use(
-    "/upload",
-    authenticateToken,
-    upload,
-    sharpImg,
-    s3.upload,
-    (req, res) => {
-        const url = secrets.S3_URL + req.file.filename;
-        res.json({ success: true, url });
-    }
-);
+router.use("/upload", verifyToken, upload, sharpImg, s3.upload, (req, res) => {
+    const url = process.env.S3_URL + req.file.filename;
+    res.json({ success: true, url });
+});
 
 // #route:  POST /api/images/delete
 // #desc:   delete image from AWS
 // #access: Private
-router.use("/delete", authenticateToken, async (req, res) => {
+router.use("/delete", verifyToken, async (req, res) => {
     const fileName = req.body.imageUrl.split("/").slice(-1).join("");
     try {
         await s3.delete(fileName);

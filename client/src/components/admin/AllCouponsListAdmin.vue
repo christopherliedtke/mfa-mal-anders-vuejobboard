@@ -1,8 +1,10 @@
 <template>
     <div>
-        <b-button class="mb-3" to="/admin/coupons/new" variant="outline-primary"
-            ><b-icon class="mr-2" scale="1" icon="plus-circle"></b-icon>New
-            Coupon</b-button
+        <b-button
+            class="mb-3"
+            to="/admin/coupons/edit/new"
+            variant="outline-primary"
+            ><Fa class="mr-2" :icon="'plus'"></Fa>New Coupon</b-button
         >
         <b-form id="coupon-filter" inline @submit.prevent>
             <b-input-group class="my-2 mr-2">
@@ -13,8 +15,8 @@
                 />
                 <b-input-group-append>
                     <b-button
-                        ><b-icon
-                            icon="x"
+                        ><Fa
+                            icon="times"
                             @click.prevent="filter.searchTerm = ''"
                     /></b-button>
                 </b-input-group-append>
@@ -57,14 +59,14 @@
                     :to="`/admin/coupons/${row.item._id}`"
                     variant="primary"
                     size="sm"
-                    ><b-icon icon="pencil-square"></b-icon>
+                    ><Fa icon="edit"></Fa>
                 </b-button>
                 <b-button
                     size="sm"
                     variant="danger"
                     @click="showDeleteCouponModal(row.item)"
                 >
-                    <b-icon class="mr-2" icon="trash"></b-icon>Delete
+                    <Fa class="mr-2" icon="trash-alt"></Fa>Delete
                 </b-button>
             </template>
         </b-table>
@@ -93,7 +95,6 @@
 </template>
 
 <script>
-    import axios from "@/axios";
     export default {
         name: "AllCouponsListAdmin",
         data() {
@@ -207,8 +208,10 @@
             },
             async getAllCoupons() {
                 try {
-                    const response = await axios.post("/api/coupons/admin", {
-                        query: `
+                    const response = await this.$axios.post(
+                        "/api/coupons/admin",
+                        {
+                            query: `
                             query {
                                 coupons {
                                     _id
@@ -228,7 +231,8 @@
                                 }
                             }
                         `
-                    });
+                        }
+                    );
 
                     this.coupons = response.data.data.coupons;
                 } catch (err) {
@@ -242,15 +246,18 @@
             },
             async deleteCoupon(couponId) {
                 try {
-                    const response = await axios.post("/api/coupons/admin", {
-                        query: `
+                    const response = await this.$axios.post(
+                        "/api/coupons/admin",
+                        {
+                            query: `
                             mutation {
                                 deleteCoupon(_id: "${couponId}") {
                                     code
                                 }
                             }
                         `
-                    });
+                        }
+                    );
 
                     if (response.data.data.deleteCoupon.code === "deleted") {
                         this.coupons.forEach((coupon, index) => {

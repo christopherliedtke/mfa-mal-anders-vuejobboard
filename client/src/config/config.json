@@ -1,0 +1,43 @@
+{
+    "website": {
+        "name": "MFA mal anders",
+        "url": "https://www.mfa-mal-anders.de",
+        "contactEmail": "kontakt@mfa-mal-anders.de"
+    },
+    "cms": {
+        "url": "https://wordpress.mfa-mal-anders.de/graphql",
+        "active": true,
+        "postsPath": "blog",
+        "postsPageTitle": "Blog"
+    },
+    "fb": {
+        "appId": "509159293103491",
+        "path": "MFAmalanders"
+    },
+    "twitter": {
+        "path": "MfaMalAnders"
+    },
+    "ig": {
+        "path": "MfaMalAnders"
+    },
+    "ga": {
+        "active": true,
+        "trackingCode": "UA-138281267-3",
+        "anonymizeIP": true,
+        "storage": "none"
+    },
+    "maps": {
+        "defaultCenter": {
+            "lat": 51.241,
+            "lng": 10.528
+        },
+        "lang": "de"
+    },
+    "payment": {
+        "minCost": 2500,
+        "maxCost": 30000,
+        "invoiceCost": 500,
+        "currency": "EUR",
+        "duration": 60
+    }
+}

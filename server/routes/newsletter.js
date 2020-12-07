@@ -1,13 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const authenticateToken = require("../utils/middleware/checkAuth");
-const isAdmin = require("../utils/middleware/isAdmin");
-const config = require("../utils/config");
+const verifyToken = require("../middleware/verifyToken");
+const isAdmin = require("../middleware/isAdmin");
+const config = require("../config/config");
 const sanitizeHtml = require("sanitize-html");
 const emailService = require("../utils/nodemailer");
 const emailTemplate = require("../utils/emailTemplate");
-const { Subscriber } = require("../utils/models/subscriber");
-const { sendNewsletter } = require("../utils/middleware/sendNewsletter");
+const { Subscriber } = require("../database/models/subscriber");
+const { sendNewsletter } = require("../middleware/sendNewsletter");
 
 // #route:  POST /api/newsletter/sign-up
 // #desc:   Sign up for newsletter
@@ -127,8 +127,7 @@ router.get("/verification/:subscriberId", async (req, res) => {
             res.sendStatus(503);
         } else {
             res.redirect(
-                res.locals.secrets.WEBSITE_URL +
-                    config.website.newsletterSuccessPath
+                process.env.WEBSITE_URL + config.website.newsletterSuccessPath
             );
         }
     } catch (error) {
@@ -160,7 +159,7 @@ router.post("/unsubscribe", async (req, res) => {
 // #route:  POST /api/newsletter/send
 // #desc:   Send newsletter
 // #access: Admin
-router.post("/send", authenticateToken, isAdmin, async (req, res) => {
+router.post("/send", verifyToken, isAdmin, async (req, res) => {
     const success = await sendNewsletter(req.body.daysBack);
     res.json(success);
 });

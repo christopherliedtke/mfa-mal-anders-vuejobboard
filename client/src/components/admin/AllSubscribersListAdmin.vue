@@ -9,8 +9,8 @@
                 />
                 <b-input-group-append>
                     <b-button
-                        ><b-icon
-                            icon="x"
+                        ><Fa
+                            icon="times"
                             @click.prevent="filter.searchTerm = ''"
                     /></b-button>
                 </b-input-group-append>
@@ -81,7 +81,7 @@
                     variant="danger"
                     @click="showDeleteSubscriberModal(row.item)"
                 >
-                    <b-icon class="mr-2" icon="trash"></b-icon>Delete
+                    <Fa class="mr-2" icon="trash-alt" />Delete
                 </b-button>
             </template>
         </b-table>
@@ -106,19 +106,12 @@
         >
             Oh, something went wrong. Please try again later.
         </b-alert>
-
-        <Overlay :show="showOverlay" />
     </div>
 </template>
 
 <script>
-    import axios from "@/axios";
-    import Overlay from "@/components/utils/Overlay.vue";
     export default {
         name: "AllSubscribersListAdmin",
-        components: {
-            Overlay
-        },
         data() {
             return {
                 subscribers: [],
@@ -160,7 +153,6 @@
                         sortable: false
                     }
                 ],
-                showOverlay: false,
                 newsletterSent: false
             };
         },
@@ -210,8 +202,10 @@
             },
             async getAllSubscribers() {
                 try {
-                    const response = await axios.post("/api/subscriber/admin", {
-                        query: `
+                    const response = await this.$axios.post(
+                        "/api/subscriber/admin",
+                        {
+                            query: `
                             query {
                                 subscribers {
                                     _id
@@ -223,12 +217,12 @@
                                 }
                             }
                         `
-                    });
+                        }
+                    );
 
                     this.subscribers = response.data.data.subscribers;
                 } catch (err) {
                     this.error = true;
-                    // console.log("Error on getAllSubscribers(): ", err);
                 }
             },
             showDeleteSubscriberModal(subscriber) {
@@ -237,15 +231,18 @@
             },
             async deleteSubscriber(subscriberId) {
                 try {
-                    const response = await axios.post("/api/subscriber/admin", {
-                        query: `
+                    const response = await this.$axios.post(
+                        "/api/subscriber/admin",
+                        {
+                            query: `
                             mutation {
                                 deleteSubscriber(_id: "${subscriberId}") {
                                     status
                                 }
                             }
                         `
-                    });
+                        }
+                    );
 
                     if (
                         response.data.data.deleteSubscriber.status === "deleted"
@@ -260,19 +257,22 @@
                     }
                 } catch (err) {
                     this.error = true;
-                    // console.log("Error on deleteSubscriber(): ", err);
                 }
             },
             async sendNewsletter() {
-                this.showOverlay = true;
-                const response = await axios.post("/api/newsletter/send", {
-                    daysBack: this.daysBack
-                });
+                this.$store.dispatch("setOverlay", true);
+
+                const response = await this.$axios.post(
+                    "/api/newsletter/send",
+                    {
+                        daysBack: this.daysBack
+                    }
+                );
 
                 this.newsletterSent = response.data.success;
                 this.sendNewsletterActive = false;
 
-                this.showOverlay = false;
+                this.$store.dispatch("setOverlay", false);
             },
             emailsToClipboard() {
                 let el = document.createElement("textarea");

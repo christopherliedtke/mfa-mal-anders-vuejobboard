@@ -1,7 +1,6 @@
 <template>
     <div>
         <div class="d-flex">
-            <Overlay :show="showOverlay"></Overlay>
             <b-form-file
                 :id="id"
                 ref="file-input"
@@ -17,7 +16,7 @@
                 class="ml-2"
                 variant="outline-danger"
                 @click.prevent="resetFile"
-                ><b-icon icon="trash"
+                ><Fa icon="trash-alt"
             /></b-button>
         </div>
         <b-form-invalid-feedback :state="success">
@@ -27,18 +26,12 @@
 </template>
 
 <script>
-    import axios from "@/axios";
-    import Overlay from "@/components/utils/Overlay";
     export default {
         name: "ImageUploader",
-        components: {
-            Overlay
-        },
         props: ["id", "validated", "imageUrl", "width", "height", "fit"],
         data() {
             return {
                 file: null,
-                showOverlay: false,
                 success: null
             };
         },
@@ -50,7 +43,7 @@
                     return;
                 }
 
-                this.showOverlay = true;
+                this.$store.dispatch("setOverlay", true);
 
                 try {
                     if (this.imageUrl) {
@@ -63,7 +56,7 @@
                     formData.append("height", this.height);
                     formData.append("fit", this.fit);
 
-                    const response = await axios.post(
+                    const response = await this.$axios.post(
                         "/api/images/upload",
                         formData
                     );
@@ -78,19 +71,21 @@
                     console.log("err: ", err);
                 }
 
-                this.showOverlay = false;
+                this.$store.dispatch("setOverlay", false);
             },
             async deleteImage() {
+                this.$store.dispatch("setOverlay", true);
                 try {
-                    await axios.post("/api/images/delete", {
+                    await this.$axios.post("/api/images/delete", {
                         imageUrl: this.imageUrl
                     });
                 } catch (err) {
                     console.log("err: ", err);
                 }
+                this.$store.dispatch("setOverlay", false);
             },
             resetFile() {
-                this.showOverlay = true;
+                this.$store.dispatch("setOverlay", true);
 
                 if (this.imageUrl) {
                     this.deleteImage();
@@ -99,10 +94,8 @@
                 this.$refs["file-input"].reset();
                 this.$emit("update-url", "");
 
-                this.showOverlay = false;
+                this.$store.dispatch("setOverlay", false);
             }
         }
     };
 </script>
-
-<style scoped lang="scss"></style>

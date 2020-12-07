@@ -5,6 +5,7 @@ import jobs from "@/store/modules/jobs";
 import articles from "@/store/modules/articles";
 import trainings from "@/store/modules/trainings";
 import professions from "@/store/modules/professions";
+import utils from "@/store/modules/utils";
 
 Vue.use(Vuex);
 
@@ -14,6 +15,7 @@ export default new Vuex.Store({
         jobs,
         articles,
         trainings,
-        professions
+        professions,
+        utils
     }
 });

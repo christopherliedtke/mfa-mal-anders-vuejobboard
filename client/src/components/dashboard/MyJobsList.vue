@@ -7,10 +7,9 @@
         </p>
         <b-button
             class="mr-2 mb-2"
-            to="/dashboard/new-job"
+            to="/user/dashboard/jobs/edit/new"
             variant="outline-primary"
-            ><b-icon class="mr-2" scale="1" icon="plus-circle"></b-icon>Neue
-            Stelle</b-button
+            ><Fa class="mr-2" icon="plus" />Neue Stelle</b-button
         >
         <b-button
             class="mr-2 mb-2"
@@ -57,7 +56,7 @@
                                 ? 'light'
                                 : job.status === 'published'
                                 ? 'success'
-                                : 'warning'
+                                : 'danger'
                         "
                         >{{
                             job.status === "published"
@@ -139,20 +138,19 @@
                     <div>
                         <b-button
                             class="mr-2 mb-2 mb-md-0"
-                            :to="`/dashboard/jobs/${job._id}`"
+                            :to="`/user/dashboard/jobs/edit/${job._id}`"
                             variant="primary"
                             size="sm"
-                            ><b-icon class="mr-2" icon="pencil-square"></b-icon>
+                            ><Fa class="mr-2" icon="edit" />
                             Bearbeiten</b-button
                         >
                         <b-button
                             class="mr-2 mb-2 mb-md-0"
-                            :to="`/dashboard/jobs/preview/${job._id}`"
+                            :to="`/user/dashboard/jobs/preview/${job._id}`"
                             target="_blank"
                             variant="info"
                             size="sm"
-                            ><b-icon class="mr-2" scale="1" icon="eye"></b-icon>
-                            Vorschau</b-button
+                            ><Fa class="mr-2" icon="eye" /> Vorschau</b-button
                         >
                         <b-dropdown
                             v-if="
@@ -166,15 +164,11 @@
                             variant="secondary"
                         >
                             <template v-slot:button-content>
-                                <b-icon
-                                    class="mr-2"
-                                    icon="three-dots-vertical
-"
-                                ></b-icon>
+                                <Fa class="mr-2" icon="ellipsis-v" />
                                 Status ändern
                             </template>
                             <b-dropdown-item
-                                variant="secondary"
+                                variant=""
                                 @click.prevent="
                                     updateJobStatus(job._id, 'draft')
                                 "
@@ -188,7 +182,7 @@
                                 >Online</b-dropdown-item
                             >
                             <b-dropdown-item
-                                variant="warning"
+                                variant="danger"
                                 @click.prevent="
                                     updateJobStatus(job._id, 'unpublished')
                                 "
@@ -203,8 +197,8 @@
                             class="mr-2 mb-2 mb-md-0"
                             variant="success"
                             size="sm"
-                            @click.prevent="showStripeCheckoutModal(job)"
-                            ><b-icon class="mr-2" icon="cart2"></b-icon>Jetzt
+                            @click.prevent="showCheckoutModal(job)"
+                            ><Fa class="mr-2" icon="shopping-cart" />Jetzt
                             bezahlen</b-button
                         >
                         <b-button
@@ -226,7 +220,7 @@
                             variant="outline-danger"
                             size="sm"
                             @click.prevent="$bvModal.show(job._id)"
-                            ><b-icon class="mr-2" icon="trash"></b-icon>
+                            ><Fa class="mr-2" icon="trash-alt" />
                             Löschen</b-button
                         >
                     </div>
@@ -247,58 +241,41 @@
                 </p></b-modal
             >
         </b-card>
-        <StripeCheckout
-            :showStripeCheckoutModal="stripe.showModal"
-            :job="stripe.checkoutJob"
-            @close="stripe.showModal = false"
+        <Checkout
+            :showCheckoutModal="checkout.showModal"
+            :job="checkout.checkoutJob"
+            @close="checkout.showModal = false"
             @update="getJobsByUserId"
         />
-        <b-alert
-            v-model="error"
-            class="position-fixed fixed-bottom m-0 rounded-0"
-            style="z-index: 2000;"
-            variant="warning"
-            dismissible
-        >
-            Beim Laden der Seite ist ein Fehler aufgetreten. Bitte probiere es
-            noch einmal oder versuche Dich neu ein- und auszuloggen.
-        </b-alert>
     </div>
 </template>
 
 <script>
-    import axios from "@/axios";
-    import StripeCheckout from "@/components/stripe/StripeCheckout.vue";
+    import Checkout from "@/components/checkout/Checkout.vue";
     export default {
         name: "MyJobsList",
         components: {
-            StripeCheckout
+            Checkout
         },
-        // head: {
-        //     script: function() {
-        //         return [
-        //             {
-        //                 type: "text/javascript",
-        //                 src: "https://js.stripe.com/v3/"
-        //             }
-        //         ];
-        //     }
-        // },
         data() {
             return {
                 myJobs: [],
-                stripe: {
+                checkout: {
                     showModal: false,
                     checkoutJob: null
-                },
-                error: false
+                }
             };
+        },
+        created() {
+            this.getJobsByUserId();
         },
         methods: {
             async getJobsByUserId() {
                 try {
-                    const response = await axios.post("/api/jobs/private", {
-                        query: `
+                    const response = await this.$axios.post(
+                        "/api/jobs/private",
+                        {
+                            query: `
                             query {
                                 jobs {
                                     _id
@@ -322,18 +299,29 @@
                                 }
                             }
                         `
-                    });
+                        }
+                    );
 
                     this.myJobs = response.data.data.jobs;
                 } catch (err) {
-                    this.error = true;
-                    console.log("err: ", err);
+                    this.$root.$bvToast.toast(
+                        "Ihre Stellenanzeigen konnten nicht geladen werden. Bitte versuchen Sie es noch einmal, indem Sie die Seite neu laden.",
+                        {
+                            title: `Fehler beim Laden`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 }
             },
             async updateJobStatus(jobId, status) {
                 try {
-                    const response = await axios.post("/api/jobs/private", {
-                        query: `
+                    const response = await this.$axios.post(
+                        "/api/jobs/private",
+                        {
+                            query: `
                             mutation {
                                 updateJobStatus(_id: "${jobId}", status: "${status}") {
                                     _id
@@ -347,7 +335,8 @@
                                 }
                             }
                         `
-                    });
+                        }
+                    );
 
                     if (response.data.data.updateJobStatus.status === status) {
                         this.myJobs.forEach((job, index) => {
@@ -357,25 +346,55 @@
                                     response.data.data.updateJobStatus.updatedAt;
                             }
                         });
+
+                        this.$root.$bvToast.toast(
+                            "Der Status der Stellenanzeige wurde erfolgreich aktualisiert.",
+                            {
+                                title: `Status aktualisiert`,
+                                variant: "success",
+                                toaster: "b-toaster-bottom-right",
+                                solid: true
+                            }
+                        );
                     } else {
-                        this.error = true;
+                        this.$root.$bvToast.toast(
+                            "Der Status der Stellenanzeige konnte nicht aktualisiert werden. Bitte versuchen Sie es später noch einmal.",
+                            {
+                                title: `Fehler beim Aktualisieren`,
+                                variant: "danger",
+                                toaster: "b-toaster-bottom-right",
+                                solid: true,
+                                noAutoHide: true
+                            }
+                        );
                     }
                 } catch (err) {
-                    this.error = true;
-                    console.log("err: ", err);
+                    this.$root.$bvToast.toast(
+                        "Der Status der Stellenanzeige konnte nicht aktualisiert werden. Bitte versuchen Sie es später noch einmal.",
+                        {
+                            title: `Fehler beim Aktualisieren`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 }
             },
             async deleteJob(jobId) {
                 try {
-                    const response = await axios.post("/api/jobs/private", {
-                        query: `
+                    const response = await this.$axios.post(
+                        "/api/jobs/private",
+                        {
+                            query: `
                             mutation {
                                 deleteJob(_id: "${jobId}") {
                                     status
                                 }
                             }
                         `
-                    });
+                        }
+                    );
 
                     if (response.data.data.deleteJob.status === "deleted") {
                         this.myJobs.forEach((job, index) => {
@@ -383,21 +402,45 @@
                                 this.myJobs.splice(index, 1);
                             }
                         });
+
+                        this.$root.$bvToast.toast(
+                            "Die Stellenanzeige wurde erfolgreich gelöscht.",
+                            {
+                                title: `Stellenanzeige gelöscht`,
+                                variant: "success",
+                                toaster: "b-toaster-bottom-right",
+                                solid: true
+                            }
+                        );
                     } else {
-                        this.error = true;
+                        this.$root.$bvToast.toast(
+                            "Die Stellenanzeige konnte nicht gelöscht werden. Bitte versuchen Sie es später noch einmal.",
+                            {
+                                title: `Fehler beim Löschen`,
+                                variant: "danger",
+                                toaster: "b-toaster-bottom-right",
+                                solid: true,
+                                noAutoHide: true
+                            }
+                        );
                     }
                 } catch (err) {
-                    this.error = true;
-                    console.log("err: ", err);
+                    this.$root.$bvToast.toast(
+                        "Die Stellenanzeige konnte nicht gelöscht werden. Bitte versuchen Sie es später noch einmal.",
+                        {
+                            title: `Fehler beim Löschen`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 }
             },
-            showStripeCheckoutModal(job) {
-                this.stripe.checkoutJob = job;
-                this.stripe.showModal = true;
+            showCheckoutModal(job) {
+                this.checkout.checkoutJob = job;
+                this.checkout.showModal = true;
             }
-        },
-        created: function() {
-            this.getJobsByUserId();
         }
     };
 </script>
