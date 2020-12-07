@@ -109,6 +109,7 @@
                             <div class="d-flex justify-content-center mb-5">
                                 <b-button
                                     href="/api/download/public/bewerbungsunterlagen"
+                                    target="_blank"
                                     variant="secondary"
                                     >Download Bewerbungsunterlagen</b-button
                                 >
