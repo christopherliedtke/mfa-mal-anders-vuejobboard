@@ -73,7 +73,7 @@
                                     </b-card-text>
                                     <b-button
                                         :to="
-                                            `/page/mfa-career/jobs-und-berufsbilder/${card.title}`
+                                            `/page/mfa-career/jobs-und-berufsbilder/${card.slug}`
                                         "
                                         variant="primary"
                                         >Mehr</b-button
@@ -113,30 +113,35 @@
                 cards: [
                     {
                         title: "Beratung",
+                        slug: "beratung",
                         desc:
                             "Jobs, bei denen du aufgrund deines Expertenwissens andere Menschen berätst.",
                         icon: "comments"
                     },
                     {
                         title: "Forschung",
+                        slug: "forschung",
                         desc:
                             "Jobs, bei denen du zum medizinischen Fortschritt beitragen kannst.",
                         icon: "flask"
                     },
                     {
                         title: "Management",
+                        slug: "management",
                         desc:
                             "Jobs, bei denen du betriebswirtschaftliche Aufgaben und Personalverantwortung übernehmen kannst.",
                         icon: "briefcase"
                     },
                     {
                         title: "Medizinisch-Technisch",
+                        slug: "medizinisch-technisch",
                         desc:
                             "Jobs, bei denen die medizinische Arbeit am bzw. mit dem Patienten im Mittelpunkt steht.",
                         icon: "stethoscope"
                     },
                     {
                         title: "Verwaltung",
+                        slug: "verwaltung",
                         desc:
                             "Jobs, bei denen deine administrativen und organisatorischen Fähigkeiten gefragt sind.",
                         icon: "building"

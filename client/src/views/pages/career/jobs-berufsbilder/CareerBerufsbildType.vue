@@ -16,6 +16,7 @@
                     <b-card
                         v-for="berufsbild in berufsbilder"
                         :key="berufsbild.slug"
+                        :id="berufsbild.slug"
                         no-body
                         class="mb-2"
                     >
@@ -107,7 +108,7 @@
         },
         data() {
             return {
-                visible: this.$route.query.id || null,
+                visible: null,
                 intros: {
                     "medizinisch-technisch": {
                         title: "Medizinisch-Technisch",
@@ -195,10 +196,8 @@
             setVisible(id) {
                 if (this.visible === id) {
                     this.visible = null;
-                    this.$router.push({ query: null });
                 } else {
                     this.visible = id;
-                    this.$router.push({ query: { id } });
                 }
             }
         }

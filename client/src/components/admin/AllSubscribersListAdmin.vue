@@ -201,6 +201,8 @@
                 return result;
             },
             async getAllSubscribers() {
+                this.$store.dispatch("setOverlay", true);
+
                 try {
                     const response = await this.$axios.post(
                         "/api/subscriber/admin",
@@ -224,12 +226,16 @@
                 } catch (err) {
                     this.error = true;
                 }
+
+                this.$store.dispatch("setOverlay", false);
             },
             showDeleteSubscriberModal(subscriber) {
                 this.subscriberToDelete = subscriber;
                 this.$bvModal.show("deleteSubscriberModal");
             },
             async deleteSubscriber(subscriberId) {
+                this.$store.dispatch("setOverlay", true);
+
                 try {
                     const response = await this.$axios.post(
                         "/api/subscriber/admin",
@@ -258,6 +264,8 @@
                 } catch (err) {
                     this.error = true;
                 }
+
+                this.$store.dispatch("setOverlay", false);
             },
             async sendNewsletter() {
                 this.$store.dispatch("setOverlay", true);

@@ -321,6 +321,8 @@
                 return result;
             },
             async getAllJobs() {
+                this.$store.dispatch("setOverlay", true);
+
                 try {
                     const response = await this.$axios.post("/api/jobs/admin", {
                         query: `
@@ -374,8 +376,12 @@
                         }
                     );
                 }
+
+                this.$store.dispatch("setOverlay", false);
             },
             async updateJob(id, key, value) {
+                this.$store.dispatch("setOverlay", true);
+
                 try {
                     const response = await this.$axios.post("/api/jobs/admin", {
                         query: `
@@ -435,12 +441,16 @@
                         }
                     );
                 }
+
+                this.$store.dispatch("setOverlay", false);
             },
             showDeleteJobModal(job) {
                 this.jobToDelete = job;
                 this.$bvModal.show("deleteJobModal");
             },
             async deleteJob(jobId) {
+                this.$store.dispatch("setOverlay", true);
+
                 try {
                     const response = await this.$axios.post("/api/jobs/admin", {
                         query: `
@@ -484,6 +494,8 @@
                         }
                     );
                 }
+
+                this.$store.dispatch("setOverlay", false);
             },
             rowClass(item, type) {
                 if (!item || type !== "row") return;

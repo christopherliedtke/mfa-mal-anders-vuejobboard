@@ -5,7 +5,7 @@
             class="hero d-flex justify-content-center align-items-center"
         >
             <b-container style="max-width: 850px" class="p-0">
-                <div class="hero-text my-3 my-lg-5 p-4">
+                <div class="hero-text mt-4 mb-5 my-lg-5 p-4">
                     <h1>
                         <span class="bold display-2">
                             MFA <br class="d-md-none" />

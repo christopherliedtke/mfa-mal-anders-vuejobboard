@@ -127,7 +127,7 @@ const generateListOfJobs = (state, jobs) => {
                         process.env.WEBSITE_URL +
                         config.googleIndexing.pathPrefix +
                         job._id
-                    }?newsletter=true"
+                    }?source=newsletter"
                     target="_blank"
                     rel="noopener"
                 >

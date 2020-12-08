@@ -207,6 +207,8 @@
                 return result;
             },
             async getAllCoupons() {
+                this.$store.dispatch("setOverlay", true);
+
                 try {
                     const response = await this.$axios.post(
                         "/api/coupons/admin",
@@ -248,12 +250,16 @@
                         }
                     );
                 }
+
+                this.$store.dispatch("setOverlay", false);
             },
             showDeleteCouponModal(user) {
                 this.couponToDelete = user;
                 this.$bvModal.show("deleteCouponModal");
             },
             async deleteCoupon(couponId) {
+                this.$store.dispatch("setOverlay", true);
+
                 try {
                     const response = await this.$axios.post(
                         "/api/coupons/admin",
@@ -300,6 +306,8 @@
                         }
                     );
                 }
+
+                this.$store.dispatch("setOverlay", false);
             }
         }
     };

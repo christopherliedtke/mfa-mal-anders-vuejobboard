@@ -176,6 +176,8 @@
                 return result;
             },
             async getAllUsers() {
+                this.$store.dispatch("setOverlay", true);
+
                 try {
                     const response = await this.$axios.post("/api/user/admin", {
                         query: `
@@ -208,12 +210,16 @@
                         }
                     );
                 }
+
+                this.$store.dispatch("setOverlay", false);
             },
             showDeleteUserModal(user) {
                 this.userToDelete = user;
                 this.$bvModal.show("deleteUserModal");
             },
             async deleteUser(userId) {
+                this.$store.dispatch("setOverlay", true);
+
                 try {
                     const response = await this.$axios.post("/api/user/admin", {
                         query: `
@@ -257,6 +263,8 @@
                         }
                     );
                 }
+
+                this.$store.dispatch("setOverlay", false);
             }
         }
     };
