@@ -24,7 +24,12 @@ export const saveCompanyMixin = {
                                 geoCodeLat: ${company.geoCodeLat}, 
                                 geoCodeLng: ${company.geoCodeLng}, 
                                 size: "${company.size}"
-                                url: "${company.url}"
+                                url: "${
+                                    !/^https?:\/\//i.test(company.url) &&
+                                    company.url
+                                        ? "https://" + company.url
+                                        : company.url
+                                }"
                                 logoUrl: "${company.logoUrl}"
                             ) {
                                 _id

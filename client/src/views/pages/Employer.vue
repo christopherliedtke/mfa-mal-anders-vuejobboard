@@ -88,12 +88,7 @@
                                 <strong>"Pay What Yout Want"</strong>
                             </b-link>
                             Modell ab
-                            {{
-                                ($config.payment.minCost / 100)
-                                    .toFixed(2)
-                                    .toString()
-                                    .replace(".", ",")
-                            }}
+                            {{ $config.payment.minCost / 100 }}
                             {{ $config.payment.currency }}
                             für {{ $config.payment.duration }} Tage.
                         </p>
