@@ -28,7 +28,7 @@
         </b-input-group>
 
         <button class="btn btn-primary my-3" @click.prevent="onSubmit">
-            Anmelden
+            Login
         </button>
         <p>
             Noch nicht registriert? Jetzt

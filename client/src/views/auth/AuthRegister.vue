@@ -11,11 +11,7 @@
                     class="icon-box mx-auto bg-primary rounded-circle"
                     style="width: 75px; height: 75px"
                 >
-                    <Fa
-                        :icon="['fa', 'user-plus']"
-                        class="text-light m-0"
-                        size="2x"
-                    />
+                    <Fa icon="user-plus" class="text-light m-0" size="2x" />
                 </div>
                 <h3 class="h6">Registrieren</h3>
             </b-col>
@@ -25,7 +21,7 @@
                     style="width: 75px; height: 75px"
                 >
                     <Fa
-                        :icon="['fa', 'drafting-compass']"
+                        icon="drafting-compass"
                         class="text-light m-0"
                         size="2x"
                     />
@@ -37,11 +33,7 @@
                     class="icon-box mx-auto bg-primary rounded-circle"
                     style="width: 75px; height: 75px"
                 >
-                    <Fa
-                        :icon="['fa', 'paper-plane']"
-                        class="text-light m-0"
-                        size="2x"
-                    />
+                    <Fa icon="paper-plane" class="text-light m-0" size="2x" />
                 </div>
                 <h3 class="h6">Veröffentlichen</h3>
             </b-col>

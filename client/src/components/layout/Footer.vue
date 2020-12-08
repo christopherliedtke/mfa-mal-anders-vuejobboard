@@ -44,6 +44,41 @@
                     </div>
                 </b-col>
                 <b-col order="2" order-lg="2">
+                    <NewsletterSignUpForm />
+                    <!-- <div class="mt-5">
+                        <div class="d-flex justify-content-center mb-4">
+                            <b-link
+                                to="/page/mfa-career/bewerbungstipps"
+                                class="d-flex justify-content-center flex-nowrap"
+                            >
+                                <b-img-lazy
+                                    fluid
+                                    class="mx-3 shadow"
+                                    style="width: 35vw; max-width: 120px"
+                                    src="@/assets/img/Vorlage_Bewerbungsanschreiben_150.jpg"
+                                    alt="Bild von Mustervorlage für Motivationsschreiben"
+                                />
+                                <b-img-lazy
+                                    fluid
+                                    class="mx-3 shadow"
+                                    style="width: 35vw; max-width: 120px"
+                                    src="@/assets/img/Vorlage_Lebenslauf_150.jpg"
+                                    alt="Bild von Mustervorlage für Lebenslauf"
+                                />
+                            </b-link>
+                        </div>
+
+                        <div class="d-flex justify-content-center mb-5">
+                            <b-button
+                                href="/api/download/public/bewerbungsunterlagen"
+                                target="_blank"
+                                variant="secondary"
+                                >Download Bewerbungsunterlagen</b-button
+                            >
+                        </div>
+                    </div> -->
+                </b-col>
+                <b-col order="1" order-lg="3">
                     <div class="mb-4">
                         <b-link
                             :href="
@@ -79,42 +114,7 @@
                             <Fa :icon="['fab', 'instagram']" size="2x" />
                         </b-link>
                     </div>
-                    <NewsletterSignUpForm />
-                </b-col>
-                <b-col order="1" order-lg="3">
                     <b-nav vertical class="justify-content-end">
-                        <b-nav-text>
-                            <div class="d-flex justify-content-center mb-4">
-                                <b-link
-                                    to="/page/mfa-career/bewerbungstipps"
-                                    class="d-flex justify-content-center flex-nowrap"
-                                >
-                                    <b-img-lazy
-                                        fluid
-                                        class="mx-3 shadow"
-                                        style="width: 35vw; max-width: 120px"
-                                        src="@/assets/img/Vorlage_Bewerbungsanschreiben_150.jpg"
-                                        alt="Bild von Mustervorlage für Motivationsschreiben"
-                                    />
-                                    <b-img-lazy
-                                        fluid
-                                        class="mx-3 shadow"
-                                        style="width: 35vw; max-width: 120px"
-                                        src="@/assets/img/Vorlage_Lebenslauf_150.jpg"
-                                        alt="Bild von Mustervorlage für Lebenslauf"
-                                    />
-                                </b-link>
-                            </div>
-
-                            <div class="d-flex justify-content-center mb-5">
-                                <b-button
-                                    href="/api/download/public/bewerbungsunterlagen"
-                                    target="_blank"
-                                    variant="secondary"
-                                    >Download Bewerbungsunterlagen</b-button
-                                >
-                            </div>
-                        </b-nav-text>
                         <b-nav-item to="/jobboard">Stellenangebote</b-nav-item>
                         <b-nav-item to="/page/mfa-career/bewerbungstipps"
                             >Bewerbungstipps</b-nav-item

@@ -161,7 +161,8 @@ import {
     faMap,
     faImage,
     faBoxOpen,
-    faQuoteRight
+    faQuoteRight,
+    faUnlockAlt
 } from "@fortawesome/free-solid-svg-icons";
 // import { faUser as farUser } from "@fortawesome/free-regular-svg-icons";
 import {
@@ -247,7 +248,8 @@ library.add(
     faMap,
     faImage,
     faBoxOpen,
-    faQuoteRight
+    faQuoteRight,
+    faUnlockAlt
 );
 
 Vue.component("Fa", FontAwesomeIcon);

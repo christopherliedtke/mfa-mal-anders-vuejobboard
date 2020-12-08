@@ -170,7 +170,7 @@
             <h3 class="h1 text-center bold mb-4">Was unsere Kunden sagen</h3>
             <b-container
                 style="max-width: 600px"
-                class="position-relative bg-light-shade border-radius2 p-5"
+                class="position-relative bg-light-shade border-radius2 shadow1 p-5"
             >
                 <Fa
                     style="right: 15%; top: 25%"

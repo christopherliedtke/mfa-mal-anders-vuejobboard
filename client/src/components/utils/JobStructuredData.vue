@@ -42,82 +42,73 @@
                     return [
                         {
                             type: "application/ld+json",
-                            inner: `{
-                            "@context": "http://schema.org",
-                            "@type" : "JobPosting",
-                            "title": "${this.job.title} | ${
-                                this.job.company.location
-                            }",
-                            "description" : "${this.$sanitize(
-                                this.job.description.replace(/"/g, "'"),
-                                {
-                                    allowedTags: [
-                                        "h1",
-                                        "h2",
-                                        "h3",
-                                        "h4",
-                                        "h5",
-                                        "h6",
-                                        "p",
-                                        "strong",
-                                        "em",
-                                        "span",
-                                        "ul",
-                                        "ol",
-                                        "li",
-                                        "div"
-                                    ],
-                                    transformTags: {
-                                        h1: "p",
-                                        h2: "p",
-                                        h3: "p",
-                                        h4: "p",
-                                        h5: "p",
-                                        h6: "p"
+                            inner: JSON.stringify({
+                                "@context": "http://schema.org",
+                                "@type": "JobPosting",
+                                title: `${this.job.title} | ${this.job.company.location}`,
+                                description: this.$sanitize(
+                                    this.job.description.replace(/"/g, "'"),
+                                    {
+                                        allowedTags: [
+                                            "h1",
+                                            "h2",
+                                            "h3",
+                                            "h4",
+                                            "h5",
+                                            "h6",
+                                            "p",
+                                            "strong",
+                                            "em",
+                                            "span",
+                                            "ul",
+                                            "ol",
+                                            "li",
+                                            "div"
+                                        ],
+                                        transformTags: {
+                                            h1: "p",
+                                            h2: "p",
+                                            h3: "p",
+                                            h4: "p",
+                                            h5: "p",
+                                            h6: "p"
+                                        }
+                                    }
+                                ),
+                                datePosted: new Date(
+                                    this.job.updatedAt
+                                ).toISOString(),
+                                hiringOrganization: {
+                                    "@type": "Organization",
+                                    name: this.job.company.name,
+                                    sameAs: this.job.company.url,
+                                    logo: this.job.company.logoUrl
+                                },
+                                jobLocation: {
+                                    "@type": "Place",
+                                    address: {
+                                        "@type": "PostalAddress",
+                                        streetAddress: this.job.company.street,
+                                        addressLocality: this.job.company
+                                            .location,
+                                        addressRegion: this.job.company.state,
+                                        postalCode: this.job.company.zipCode,
+                                        addressCountry: this.job.company.country
+                                    }
+                                },
+                                validThrough: this.job.applicationDeadline,
+                                employmentType: this.getEmploymentType(
+                                    this.job.employmentType
+                                ),
+                                baseSalary: {
+                                    "@type": "MonetaryAmount",
+                                    currency: "EUR",
+                                    value: {
+                                        "@type": "QuantitativeValue",
+                                        unitText: "MONTH"
                                     }
                                 }
-                            )}",
-                            "datePosted": "${new Date(
-                                this.job.updatedAt
-                            ).toISOString()}",
-                            "hiringOrganization": {
-                                "@type": "Organization",
-                                "name": "${this.job.company.name}",
-                                "sameAs": "${this.job.company.url}",
-                                "logo": "${this.job.company.logoUrl}"
-                            },
-                            "jobLocation": {
-                                "@type": "Place",
-                                "address": {
-                                    "@type": "PostalAddress",
-                                    "streetAddress": "${
-                                        this.job.company.street
-                                    }",
-                                    "addressLocality": "${
-                                        this.job.company.location
-                                    }",
-                                    "addressRegion": "${
-                                        this.job.company.state
-                                    }",
-                                    "postalCode": "${this.job.company.zipCode}",
-                                    "addressCountry": "${
-                                        this.job.company.country
-                                    }"
-                                }
-                            },
-                            "validThrough": "${this.job.applicationDeadline}",
-                            "employmentType": ${this.getEmploymentType(
-                                this.job.employmentType
-                            )},
-                            "baseSalary": {
-                                "@type": "MonetaryAmount",
-                                "currency": "EUR",
-                                "value": {
-                                    "@type": "QuantitativeValue",
-                                    "unitText": "MONTH"
-                                }
-                            }
-                        }`
+                            })
                         }
                     ];
                 }
