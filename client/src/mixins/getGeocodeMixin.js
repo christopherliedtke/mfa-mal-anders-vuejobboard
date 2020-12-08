@@ -27,8 +27,6 @@ export const getGeocodeMixin = {
                 lat = geocode.items[0].position.lat;
                 lng = geocode.items[0].position.lng;
             } catch (err) {
-                console.log("Error on getGeoCode(): ", err);
-
                 lat = null;
                 lng = null;
             }

@@ -227,7 +227,16 @@
                     this.jobs = response.data.data.jobs;
                 } catch (err) {
                     this.error = true;
-                    console.log("err: ", err);
+                    this.$root.$bvToast.toast(
+                        `Jobs konnten nicht geladen werden. Error: ${err}`,
+                        {
+                            title: `Fehler beim Laden`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 }
             },
             async getAllCompanies() {
@@ -263,7 +272,16 @@
                     this.companies = response.data.data.companies;
                 } catch (err) {
                     this.error = true;
-                    console.log("err: ", err);
+                    this.$root.$bvToast.toast(
+                        `Unternehmen konnten nicht geladen werden. Error: ${err}`,
+                        {
+                            title: `Fehler beim Laden`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 }
             },
             async updateCompany(id, key, value) {
@@ -311,7 +329,16 @@
                         });
                     }
                 } catch (err) {
-                    console.log("Error on updateJob(): ", err);
+                    this.$root.$bvToast.toast(
+                        `Unternehmen konnten nicht gespeichert werden. Error: ${err}`,
+                        {
+                            title: `Fehler beim Speichern`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 }
             },
             showDeleteCompanyModal(job) {
@@ -341,10 +368,29 @@
                         });
                     } else {
                         this.error = true;
+                        this.$root.$bvToast.toast(
+                            `Das Unternehmen konnte nicht gelöscht werden.`,
+                            {
+                                title: `Fehler beim Löschen`,
+                                variant: "danger",
+                                toaster: "b-toaster-bottom-right",
+                                solid: true,
+                                noAutoHide: true
+                            }
+                        );
                     }
                 } catch (err) {
                     this.error = true;
-                    console.log("err: ", err);
+                    this.$root.$bvToast.toast(
+                        `Das Unternehmen konnte nicht gelöscht werden. Error: ${err}`,
+                        {
+                            title: `Fehler beim Löschen`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 }
             }
         }

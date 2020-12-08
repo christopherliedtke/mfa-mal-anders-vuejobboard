@@ -108,7 +108,16 @@
                         this.H.ui.UI.createDefault(this.map, this.maptypes);
                     }
                 } catch (err) {
-                    console.log("Error on initializeHereMap(): ", err);
+                    this.$root.$bvToast.toast(
+                        `Die Karte konnten nicht geladen werden.`,
+                        {
+                            title: `Fehler beim Laden`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: false
+                        }
+                    );
                 }
             }
         }

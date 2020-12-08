@@ -40,7 +40,6 @@
                     this.title = response.data.data.page.title;
                     this.content = response.data.data.page.content;
                 } catch (err) {
-                    console.log("Error on getPage(): ", err);
                     this.content = `Beim Laden der Seite ist ein Fehler aufgetreten. Bitte versuche es später noch einmal.`;
                 }
             }

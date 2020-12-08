@@ -62,7 +62,6 @@
                             );
                         });
                     } catch (err) {
-                        console.log("Error in getCurrentPosition(): ", err);
                         geocode = this.$config.maps.defaultCenter;
                     }
 
@@ -97,7 +96,16 @@
 
                     this.addMarkers();
                 } catch (err) {
-                    console.log("Error on initializeHereMap(): ", err);
+                    this.$root.$bvToast.toast(
+                        `Die Karte konnten nicht geladen werden.`,
+                        {
+                            title: `Fehler beim Laden`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: false
+                        }
+                    );
                 }
             },
             async addMarkers() {

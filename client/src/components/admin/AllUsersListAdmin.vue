@@ -197,7 +197,16 @@
                     this.users = response.data.data.users;
                 } catch (err) {
                     this.error = true;
-                    console.log("err: ", err);
+                    this.$root.$bvToast.toast(
+                        `Users konnten nicht geladen werden. Error: ${err}`,
+                        {
+                            title: `Fehler beim Laden`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 }
             },
             showDeleteUserModal(user) {
@@ -224,10 +233,29 @@
                         });
                     } else {
                         this.error = true;
+                        this.$root.$bvToast.toast(
+                            `Der User konnte nicht gelöscht werden.`,
+                            {
+                                title: `Fehler beim Löschen`,
+                                variant: "danger",
+                                toaster: "b-toaster-bottom-right",
+                                solid: true,
+                                noAutoHide: true
+                            }
+                        );
                     }
                 } catch (err) {
                     this.error = true;
-                    console.log("err: ", err);
+                    this.$root.$bvToast.toast(
+                        `Der User konnte nicht gelöscht werden. Error: ${err}`,
+                        {
+                            title: `Fehler beim Löschen`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 }
             }
         }

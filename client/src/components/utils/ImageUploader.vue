@@ -68,7 +68,16 @@
                         this.$emit("update-url", "");
                     }
                 } catch (err) {
-                    console.log("err: ", err);
+                    this.$root.$bvToast.toast(
+                        `Das Bild konnte nicht gespeichert werden.`,
+                        {
+                            title: `Fehler beim Speichern`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: false
+                        }
+                    );
                 }
 
                 this.$store.dispatch("setOverlay", false);
@@ -80,7 +89,7 @@
                         imageUrl: this.imageUrl
                     });
                 } catch (err) {
-                    console.log("err: ", err);
+                    () => {};
                 }
                 this.$store.dispatch("setOverlay", false);
             },

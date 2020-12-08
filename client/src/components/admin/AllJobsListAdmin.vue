@@ -363,7 +363,16 @@
                     this.jobs = response.data.data.jobs;
                 } catch (err) {
                     this.error = true;
-                    console.log("err: ", err);
+                    this.$root.$bvToast.toast(
+                        `Jobs konnten nicht geladen werden. Error: ${err}`,
+                        {
+                            title: `Fehler beim Laden`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 }
             },
             async updateJob(id, key, value) {
@@ -415,7 +424,16 @@
                         });
                     }
                 } catch (err) {
-                    console.log("Error on updateJob(): ", err);
+                    this.$root.$bvToast.toast(
+                        `Der Job konnte nicht gespeichert werden. Error: ${err}`,
+                        {
+                            title: `Fehler beim Speichern`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 }
             },
             showDeleteJobModal(job) {
@@ -442,10 +460,29 @@
                         });
                     } else {
                         this.error = true;
+                        this.$root.$bvToast.toast(
+                            `Der Job konnte nicht gelöscht werden.`,
+                            {
+                                title: `Fehler beim Löschen`,
+                                variant: "danger",
+                                toaster: "b-toaster-bottom-right",
+                                solid: true,
+                                noAutoHide: true
+                            }
+                        );
                     }
                 } catch (err) {
                     this.error = true;
-                    console.log("err: ", err);
+                    this.$root.$bvToast.toast(
+                        `Der Job konnte nicht gelöscht werden. Error: ${err}`,
+                        {
+                            title: `Fehler beim Löschen`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 }
             },
             rowClass(item, type) {
