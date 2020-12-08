@@ -10,30 +10,43 @@
             <li>
                 Als <strong>kleine Praxis</strong> bis 5 MitarbeiterInnen, die
                 zum ersten Mal in Jahren eine neue feste Stelle ausschreibt:
-                <strong>25€ pro Stelle.</strong>
+                <strong
+                    >{{ $config.payment.minCost / 100 }}
+                    {{ $config.payment.currency }} pro Stelle.</strong
+                >
             </li>
             <li>
                 Als <strong>mittlere Praxis</strong> mit 6 bis 10
                 MitarbeiterInnen, die gelegentlich eine neue Stelle ausschreibt:
-                <strong>50€ pro Stelle.</strong>
+                <strong
+                    >{{ $config.payment.mediumCost / 100 }}
+                    {{ $config.payment.currency }} pro Stelle.</strong
+                >
             </li>
             <li>
                 Als <strong>größere Praxis</strong> oder
                 <strong>kleinere bis mittlere Versorgungseinrichtung </strong
                 >mit 11 bis 20 MitarbeiterInnen, die regelmäßig Stellen
                 ausschreibt:
-                <strong>100€ pro Stelle.</strong>
+                <strong
+                    >{{ $config.payment.largeCost / 100 }}
+                    {{ $config.payment.currency }} pro Stelle.</strong
+                >
             </li>
             <li>
                 Als
                 <strong>große Versorgungseinrichtung </strong>mit über 20
                 Mitarbeiter*innen, die regelmäßig mehrere Stellen ausschreibt:
-                <strong>250€ pro Stelle.</strong>
+                <strong
+                    >{{ $config.payment.xLargeCost / 100 }}
+                    {{ $config.payment.currency }} pro Stelle.</strong
+                >
             </li>
         </ul>
         <p>
             <strong>
-                Ab einem Betrag von 120,- Euro
+                Ab einem Betrag von {{ $config.payment.refreshCost / 100 }}
+                {{ $config.payment.currency }}
             </strong>
             wird Ihre Stellenanzeige automatisch alle 14 Tage in der
             Anzeigenliste an den Anfang versetzt.
@@ -45,9 +58,16 @@
             von Ihrer ganz individuellen Situation.
         </p>
         <p v-if="minimum" class="small">
-            * Es fällt ein Mindestbeitrag von 25,- Euro pro Stellenanzeige à 60
-            Tage an, der für den Betrieb der IT-Infrastruktur und der Pflege des
-            Portals unerlässlich ist.
+            * Es fällt ein Mindestbeitrag von
+            {{
+                ($config.payment.minCost / 100)
+                    .toFixed(2)
+                    .toString()
+                    .replace(".", ",")
+            }}
+            {{ $config.payment.currency }} pro Stellenanzeige à
+            {{ $config.payment.duration }} Tage an, der für den Betrieb der
+            IT-Infrastruktur und der Pflege des Portals unerlässlich ist.
         </p>
     </div>
 </template>

@@ -324,16 +324,29 @@
                         class="mr-2 mb-2"
                         variant="primary"
                         :disabled="!accepted"
-                        >Rechnung anfordern</b-button
-                    >
+                        >{{
+                            ((amountComputed + 500) / 100)
+                                .toFixed(2)
+                                .toString()
+                                .replace(".", ",")
+                        }}
+                        {{ $config.payment.currency }} | Rechnung anfordern
+                    </b-button>
                     <b-button
                         v-if="paymentMethod === 'stripe'"
                         @click="startStripeCheckout()"
                         class="mb-2"
                         variant="success"
                         :disabled="!accepted"
-                        >Jetzt bezahlen</b-button
                     >
+                        {{
+                            (amountComputed / 100)
+                                .toFixed(2)
+                                .toString()
+                                .replace(".", ",")
+                        }}
+                        {{ $config.payment.currency }} | Jetzt bezahlen
+                    </b-button>
                 </div>
             </template>
         </b-modal>
@@ -383,13 +396,13 @@
             },
             amountCorelation() {
                 let text;
-                if (this.amount >= 25000) {
+                if (this.amount >= this.$config.payment.xLargeCost) {
                     text =
                         "~ große Versorgungseinrichtung | 20+ MitarbeiterInnen";
-                } else if (this.amount >= 10000) {
+                } else if (this.amount >= this.$config.payment.largeCost) {
                     text =
                         "~ große Praxis oder kleinere bis mittlere Versorgungseinrichtung | 11 - 20 MitarbeiterInnen";
-                } else if (this.amount >= 5000) {
+                } else if (this.amount >= this.$config.payment.mediumCost) {
                     text = "~ mittlere Praxis | 6 - 10 MitarbeiterInnen";
                 } else {
                     text = "~ kleine Praxis | 1 - 5 MitarbeiterInnen";
@@ -401,7 +414,7 @@
                 let value = 0;
                 if (this.coupon.refreshFrequency) {
                     value = this.coupon.refreshFrequency;
-                } else if (this.amount >= 12000) {
+                } else if (this.amount >= this.$config.payment.refreshCost) {
                     value = 14;
                 }
 

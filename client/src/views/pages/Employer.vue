@@ -13,9 +13,10 @@
                         ArzthelferInnen gesucht?
                     </h2>
                     <p>
-                        Erstellen Sie noch heute Ihre Stellenanzeige und
-                        erreichen Sie unsere große Community von MFAs! Mit
-                        unserem
+                        Sie sind auf der Suche nach einer ausgebildeten MFA /
+                        ArzthelferIn? Erstellen Sie noch heute Ihre
+                        Stellenanzeige und erreichen Sie unsere große Community
+                        von MFAs! Mit unserem
                         <b-link class="text-secondary" href="#pay-what-you-want"
                             >“Pay What You Want”*</b-link
                         >
@@ -86,7 +87,15 @@
                             <b-link href="#pay-what-you-want">
                                 <strong>"Pay What Yout Want"</strong>
                             </b-link>
-                            Modell ab 25€ für 60 Tage.
+                            Modell ab
+                            {{
+                                ($config.payment.minCost / 100)
+                                    .toFixed(2)
+                                    .toString()
+                                    .replace(".", ",")
+                            }}
+                            {{ $config.payment.currency }}
+                            für {{ $config.payment.duration }} Tage.
                         </p>
                     </div>
                 </b-col>
@@ -321,13 +330,21 @@
                         Stellenbörse und der Informationen rund um MFA mal
                         anders zahlen möchte. So können wir jedem Arbeitgeber
                         die Möglichkeit bieten, vergleichsweise kostengünstig
-                        eine Stellenanzeige für 60 Tage bei uns zu schalten.
+                        eine Stellenanzeige für
+                        {{ $config.payment.duration }} Tage bei uns zu schalten.
                     </p>
                     <p class="small">
-                        * Es fällt ein Mindestbeitrag von 25,- Euro pro
-                        Stellenanzeige à 60 Tage an, der für den Betrieb der
-                        IT-Infrastruktur und der Pflege des Portals unerlässlich
-                        ist.
+                        * Es fällt ein Mindestbeitrag von
+                        {{
+                            ($config.payment.minCost / 100)
+                                .toFixed(2)
+                                .toString()
+                                .replace(".", ",")
+                        }}
+                        {{ $config.payment.currency }} pro Stellenanzeige à
+                        {{ $config.payment.duration }} Tage an, der für den
+                        Betrieb der IT-Infrastruktur und der Pflege des Portals
+                        unerlässlich ist.
                     </p>
                 </b-col>
                 <b-col>
@@ -464,11 +481,17 @@
                         Sie für die Veröffentlichung Ihrer Stellenanzeige bei
                         uns zahlen möchten. Um den Betrieb der Plattform zu
                         sichern, erheben wir lediglich einen Mindestbetrag von
-                        25,- Euro. Wer heutzutage auf Personalsuche ist, weiß,
-                        dass die Veröffentlichung von Stellenanzeigen sehr
-                        schnell sehr teuer werden kann. Mit unserem
-                        Nischenportal möchten wir Ihnen eine maßgeschneiderte
-                        Alternative anbieten. Wir haben Ihnen
+                        {{
+                            ($config.payment.minCost / 100)
+                                .toFixed(2)
+                                .toString()
+                                .replace(".", ",")
+                        }}
+                        {{ $config.payment.currency }}. Wer heutzutage auf
+                        Personalsuche ist, weiß, dass die Veröffentlichung von
+                        Stellenanzeigen sehr schnell sehr teuer werden kann. Mit
+                        unserem Nischenportal möchten wir Ihnen eine
+                        maßgeschneiderte Alternative anbieten. Wir haben Ihnen
                         <b-link href="#pay-what-you-want"
                             >einige Vorschläge</b-link
                         >, die weit unterhalb der großen Allgemein-Jobportale
@@ -488,12 +511,13 @@
                         Wie lange ist meine Stellenanzeige online?
                     </h3>
                     <p>
-                        Nach bestätigter Zahlung ist Ihre Stellenanzeige für 60
-                        Tage freigeschaltet. Ihre Stelle ist so lange online,
-                        wie die 60 Tage sowie Ihre angegebene Bewerbungsfrist
-                        nicht abgelaufen sind. Über Ihren Account können Sie
-                        Ihre Stellenanzeige jederzeit selbst offline nehmen oder
-                        löschen.
+                        Nach bestätigter Zahlung ist Ihre Stellenanzeige für
+                        {{ $config.payment.duration }} Tage freigeschaltet. Ihre
+                        Stelle ist so lange online, wie die
+                        {{ $config.payment.duration }} Tage sowie Ihre
+                        angegebene Bewerbungsfrist nicht abgelaufen sind. Über
+                        Ihren Account können Sie Ihre Stellenanzeige jederzeit
+                        selbst offline nehmen oder löschen.
                     </p>
                     <h3 class="h5 bold">
                         Wo wird meine Stellenanzeige veröffentlicht?

@@ -12,7 +12,7 @@ const createInvoice = require("../middleware/createInvoice");
 // #access: Private
 router.post("/get-invoice", verifyToken, async (req, res) => {
     try {
-        if (req.body.amount < 2500) {
+        if (req.body.amount < config.stripe.minPricePerJob) {
             throw new Error(
                 "Error STRIPE Invalid amount entered for stripe checkout!"
             );

@@ -36,7 +36,11 @@
     },
     "payment": {
         "minCost": 2500,
+        "mediumCost": 5000,
+        "largeCost": 10000,
+        "xLargeCost": 25000,
         "maxCost": 30000,
+        "refreshCost": 15000,
         "invoiceCost": 500,
         "currency": "EUR",
         "duration": 60

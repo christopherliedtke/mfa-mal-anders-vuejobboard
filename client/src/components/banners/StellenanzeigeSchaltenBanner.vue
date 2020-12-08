@@ -24,8 +24,16 @@
                     <p>
                         Erstellen Sie noch heute Ihre Stellenanzeige und
                         erreichen Sie unsere aktive Community von MFAs! Mit
-                        unserem “Pay What You Want” Modell veröffentlichen Sie
-                        Ihre Stellenanzeige bereits ab 25€ à 60 Tage.
+                        unserem “Pay What You Want”* Modell veröffentlichen Sie
+                        Ihre Stellenanzeige bereits ab
+                        {{
+                            ($config.payment.minCost / 100)
+                                .toFixed(2)
+                                .toString()
+                                .replace(".", ",")
+                        }}
+                        {{ $config.payment.currency }} à
+                        {{ $config.payment.duration }} Tage.
                     </p>
                     <b-button
                         to="/page/fuer-arbeitgeber"

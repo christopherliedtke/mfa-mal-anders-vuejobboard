@@ -10,11 +10,11 @@
     "stripe": {
         "paymentMethods": ["card", "giropay"],
         "currency": "eur",
-        "pricePerJob": 2500,
+        "minPricePerJob": 2500,
         "paymentExpirationDays": 60,
         "refreshFrequencies": [
             {
-                "amount": 12000,
+                "amount": 15000,
                 "refreshAfterDays": 14
             }
         ]

@@ -87,21 +87,21 @@
                             url: this.$config.website.url,
                             logo: require("@/assets/img/logo_800.png")
                         })
-                    },
-                    {
-                        type: "application/ld+json",
-                        inner: JSON.stringify({
-                            "@context": "http://schema.org",
-                            "@type": "WebSite",
-                            url: this.$config.website.url,
-                            potentialAction: {
-                                "@type": "SearchAction",
-                                target: `${this.$config.website.googleCustomSearchUrl}&q={search_term_string}`,
-                                "query-input":
-                                    "required name=search_term_string"
-                            }
-                        })
                     }
+                    // {
+                    //     type: "application/ld+json",
+                    //     inner: JSON.stringify({
+                    //         "@context": "http://schema.org",
+                    //         "@type": "WebSite",
+                    //         url: this.$config.website.url,
+                    //         potentialAction: {
+                    //             "@type": "SearchAction",
+                    //             target: `${this.$config.website.googleCustomSearchUrl}&q={search_term_string}`,
+                    //             "query-input":
+                    //                 "required name=search_term_string"
+                    //         }
+                    //     })
+                    // }
                 ];
             }
         }

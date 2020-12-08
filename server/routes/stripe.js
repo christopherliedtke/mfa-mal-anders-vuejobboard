@@ -19,7 +19,7 @@ router.get("/get-stripe-pk", (req, res) => {
 // #access: Private
 // router.get("/get-price-per-ad", verifyToken, (req, res) => {
 //     res.json({
-//         amount: config.stripe.pricePerJob,
+//         amount: config.stripe.minPricePerJob,
 //         currency: config.stripe.currency,
 //         duration: config.stripe.paymentExpirationDays,
 //     });
@@ -47,7 +47,7 @@ router.post("/validate-coupon", verifyToken, async (req, res) => {
 // #access: Private
 router.post("/job/create-session-id", verifyToken, async (req, res) => {
     try {
-        if (req.body.amount < 2500) {
+        if (req.body.amount < config.stripe.minPricePerJob) {
             throw new Error(
                 "Error STRIPE Invalid amount entered for stripe checkout!"
             );
