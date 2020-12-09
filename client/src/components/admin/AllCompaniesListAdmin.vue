@@ -211,8 +211,6 @@
                 return result;
             },
             async getAllJobs() {
-                this.$store.dispatch("setOverlay", true);
-
                 try {
                     const response = await this.$axios.post("/api/jobs/admin", {
                         query: `
@@ -240,12 +238,8 @@
                         }
                     );
                 }
-
-                this.$store.dispatch("setOverlay", false);
             },
             async getAllCompanies() {
-                this.$store.dispatch("setOverlay", true);
-
                 try {
                     const response = await this.$axios.post(
                         "/api/companies/admin",
@@ -289,12 +283,8 @@
                         }
                     );
                 }
-
-                this.$store.dispatch("setOverlay", false);
             },
             async updateCompany(id, key, value) {
-                this.$store.dispatch("setOverlay", true);
-
                 try {
                     const response = await this.$axios.post(
                         "/api/companies/admin",
@@ -350,16 +340,12 @@
                         }
                     );
                 }
-
-                this.$store.dispatch("setOverlay", false);
             },
             showDeleteCompanyModal(job) {
                 this.companyToDelete = job;
                 this.$bvModal.show("deleteCompanyModal");
             },
             async deleteCompany(companyId) {
-                this.$store.dispatch("setOverlay", true);
-
                 try {
                     const response = await this.$axios.post(
                         "/api/companies/admin",
@@ -406,8 +392,6 @@
                         }
                     );
                 }
-
-                this.$store.dispatch("setOverlay", false);
             }
         }
     };

@@ -37,14 +37,19 @@
                 this.$store.dispatch("getTrainings");
                 this.$store.dispatch("getProfessions");
             }
-
+        },
+        mounted() {
             if (this.$config.ga.active) {
                 this.track();
             }
         },
         watch: {
             $route(to, from) {
-                if (to.path != from.path && this.$config.ga.active) {
+                if (
+                    from.path &&
+                    to.path != from.path &&
+                    this.$config.ga.active
+                ) {
                     this.track();
                 }
             }

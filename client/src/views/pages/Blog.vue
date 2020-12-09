@@ -12,7 +12,7 @@
         </b-container>
         <Head
             :title="title"
-            desc="Im MFA-mal-anders Magazin schreibe ich über den Praxisalltag, Tipps zu Weiterbildung und Karriere, Persönlichkeitsentwicklung und vieles mehr..."
+            desc="Interessante Artikel rund Praxisalltag, Tipps zu Weiterbildung und Karriere, Persönlichkeitsentwicklung und vieles mehr..."
             img=""
             :script="snippet"
         />

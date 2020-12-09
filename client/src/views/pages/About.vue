@@ -86,7 +86,7 @@
         </b-container>
         <Head
             :title="title"
-            desc="This is the meta of About..."
+            desc="MFA mal anders ist ein Job- und Karriereportal für MFA / ArzthelferInnen sowie auf die Personalsuche für Arztpraxen und MVZs spezialisiert."
             img=""
             :script="snippet"
         />

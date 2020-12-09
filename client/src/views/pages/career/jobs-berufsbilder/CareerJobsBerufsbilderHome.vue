@@ -89,7 +89,7 @@
         </b-container>
         <Head
             :title="title"
-            desc="Du brauchst Inspiration? – 50+ Alternative Jobs / Berufe für medizinische Fachangestellte (MFA) und ArzthelferInnen | Finde passende Stellen..."
+            desc="50+ Alternative Jobs / Berufe für medizinische Fachangestellte (MFA) / ArzthelferIn || Stellenangebote | Fortbildungen | Weiterbildungen"
             img="@/assets/img/jobsUndBerufsbilder_1200.jpg"
             :script="snippet"
         />
@@ -109,7 +109,7 @@
         },
         data() {
             return {
-                title: "50+ Alternative Jobs für medizinische Fachangestellte",
+                title: "50+ Alternative Jobs für MFA / ArzthelferIn",
                 cards: [
                     {
                         title: "Beratung",

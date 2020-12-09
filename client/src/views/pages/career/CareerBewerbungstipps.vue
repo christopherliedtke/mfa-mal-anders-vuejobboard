@@ -204,9 +204,7 @@
         </b-container>
         <Head
             :title="title"
-            desc="Bewerbungsunterlagen für medizinische
-        Fachangestellte | kostenlose Vorlage | hinterlasse einen bleibenden
-        Eindruck und sichere dir das Vorstellungsgespräch"
+            desc="Bewerbungstipps für medizinische Fachangestellte (MFA) / ArzthelferIn || Kostenlose Bewerbungsvorlage | Tipps und mehr"
             img="@/assets/img/SchnellUndEinfachEineTopbewerbungSchreiben_1024.jpg"
             :script="snippet"
         />

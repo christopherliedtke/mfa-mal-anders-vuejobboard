@@ -98,8 +98,8 @@
             <RandomTrainingsContainer class="mt-5" />
         </b-container>
         <Head
-            :title="title"
-            desc="Finde heraus, welche Möglichkeiten zur Weiterbildung du als medizinische Fachangestellte im Gesundheitswesen hast und starte erfolgreich durch."
+            title="Fort- und Weiterbildung für MFA / ArzthelferIn"
+            desc="Fortbildungen und Weiterbildunger für medizinische Fachangestellte (MFA) / ArzthelferInnen im Gesundheitswesen || Karriere | Gehalt | Stellenangebote"
             img="@/assets/img/Weiterbildungsdschungel-Fragen-ueber-Fragen-1024.jpg"
             :script="snippet"
         />

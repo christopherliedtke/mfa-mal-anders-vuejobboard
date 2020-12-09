@@ -760,7 +760,7 @@
         </b-container>
         <Head
             :title="'Gehaltsrechner (TZ/VZ) – MFA / ArzthelferIn'"
-            desc="Über Gehalt, Tarifvertrag, Tätigkeitsgruppen für MFA / ArzthelferIn. Ermittle deinen Marktwert - Hier gehts zum Gehaltsrechner für MFAs/ArzthelferInnen."
+            desc="Gehalt | Tarifvertrag | Tätigkeitsgruppen für MFA / ArzthelferIn || Gehaltsrechner für Teilzeit / Vollzeit nach aktuellen Gehaltstarifvertrag."
             :img="require('@/assets/img/Gehalt-fuer-mfa_1200.jpg')"
             :script="snippet"
         />

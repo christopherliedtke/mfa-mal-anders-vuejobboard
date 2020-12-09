@@ -277,7 +277,7 @@
         </b-container>
         <Head
             :title="title"
-            desc="Dein Karriereportal für medizinische Fachangestellte | Informationen über Karrieremöglichkeiten | Fortbildungen | Weiterbildungen"
+            desc="Karriereportal für medizinische Fachangestellte (MFA) / ArzthelferIn || Jobperspektiven | Fortbildungen | Weiterbildungen | Gehalt | Bewerbung"
             img=""
             :script="snippet"
         />
