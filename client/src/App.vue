@@ -38,11 +38,11 @@
                 this.$store.dispatch("getProfessions");
             }
         },
-        mounted() {
-            if (this.$config.ga.active) {
-                this.track();
-            }
-        },
+        // mounted() {
+        //     if (this.$config.ga.active) {
+        //         this.track();
+        //     }
+        // },
         watch: {
             $route(to, from) {
                 if (
