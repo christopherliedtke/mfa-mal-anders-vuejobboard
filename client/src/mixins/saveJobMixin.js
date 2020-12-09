@@ -33,6 +33,8 @@ export const saveJobMixin = {
                                 }"
                                 applicationEmail: "${job.applicationEmail}"
                                 imageUrl: "${job.imageUrl}"
+                                salaryMin: "${job.salaryMin}"
+                                salaryMax: "${job.salaryMax}"
                                 contactGender: "${job.contactGender}"
                                 contactTitle: "${job.contactTitle}"
                                 contactFirstName: "${job.contactFirstName}"

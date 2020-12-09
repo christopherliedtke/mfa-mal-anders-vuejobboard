@@ -37,7 +37,8 @@
                 this.$store.dispatch("getTrainings");
                 this.$store.dispatch("getProfessions");
             }
-
+        },
+        mounted() {
             if (this.$config.ga.active) {
                 this.track();
             }

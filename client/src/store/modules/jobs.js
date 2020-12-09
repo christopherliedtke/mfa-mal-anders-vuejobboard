@@ -22,6 +22,8 @@ const actions = {
                             description
                             employmentType
                             applicationDeadline
+                            salaryMin
+                            salaryMax
                             simpleApplication
                             specialization
                             company {

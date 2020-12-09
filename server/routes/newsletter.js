@@ -21,7 +21,9 @@ router.post("/sign-up", async (req, res) => {
 
     let success = false;
 
-    if (!form.email || !form.state || !form.accepted) {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if (!form.email || !form.state || !form.accepted || !re.test(form.email)) {
         res.json({ success });
     } else {
         try {

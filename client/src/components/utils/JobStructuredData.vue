@@ -105,6 +105,12 @@
                                     currency: "EUR",
                                     value: {
                                         "@type": "QuantitativeValue",
+                                        minValue: this.job.salaryMin
+                                            ? parseInt(this.job.salaryMin)
+                                            : "",
+                                        maxValue: this.job.salaryMax
+                                            ? parseInt(this.job.salaryMax)
+                                            : "",
                                         unitText: "MONTH"
                                     }
                                 }

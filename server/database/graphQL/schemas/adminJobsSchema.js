@@ -79,6 +79,12 @@ const mutation = new GraphQLObjectType({
                 imageUrl: {
                     type: GraphQLString,
                 },
+                salaryMin: {
+                    type: GraphQLString,
+                },
+                salaryMax: {
+                    type: GraphQLString,
+                },
                 contactGender: {
                     type: GraphQLString,
                 },

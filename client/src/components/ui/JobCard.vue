@@ -81,6 +81,29 @@
                                 ).toLocaleDateString()
                             }}
                         </div>
+                        <div v-if="job.salaryMin || job.salaryMax">
+                            <Fa
+                                class="mr-2"
+                                icon="euro-sign"
+                                mask="calendar"
+                                transform="shrink-9 down-3"
+                                size="lg"
+                            />
+                            {{
+                                !job.salaryMax
+                                    ? `ab ${parseInt(job.salaryMin)}€`
+                                    : `${
+                                          job.salaryMin
+                                              ? parseInt(job.salaryMin) + " -"
+                                              : "bis"
+                                      }`
+                            }}
+                            {{
+                                job.salaryMax
+                                    ? `${parseInt(job.salaryMax)}€`
+                                    : ""
+                            }}
+                        </div>
                         <div
                             v-if="job.simpleApplication"
                             v-b-tooltip.bottom.hover

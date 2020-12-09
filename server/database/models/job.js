@@ -70,6 +70,14 @@ const JobSchema = new Schema(
         imageUrl: {
             type: String,
         },
+        salaryMin: {
+            type: String,
+            default: "",
+        },
+        salaryMax: {
+            type: String,
+            default: "",
+        },
         contactGender: {
             type: String,
         },

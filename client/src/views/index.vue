@@ -272,6 +272,17 @@
             </b-row>
         </b-container>
 
+        <b-container fluid class="bg-light-shade my-5 py-5">
+            <b-container>
+                <h2 class="h1 bold display-4 text-center">Blog</h2>
+                <h3 class="h5 text-center mb-4">
+                    Rund um Praxisalltag, Tipps zu Weiterbildung und Karriere,
+                    Persönlichkeitsentwicklung und vieles mehr...
+                </h3>
+                <RandomArticlesContainer />
+            </b-container>
+        </b-container>
+
         <Head
             title="Dein Karriereportal nur für MFAs"
             desc="Job- und Karriereportal für medizinische Fachangestellte (MFA) / ArzthelferIn | Stellenangebote | Weiterbildungen | Alternative Jobs | Gehalt | Bewerbung"
@@ -284,11 +295,13 @@
 <script>
     import StellenanzeigeSchaltenBanner from "@/components/banners/StellenanzeigeSchaltenBanner.vue";
     import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
+    import RandomArticlesContainer from "@/components/containers/RandomArticlesContainer.vue";
     export default {
         name: "Home",
         components: {
             StellenanzeigeSchaltenBanner,
-            RandomTrainingsContainer
+            RandomTrainingsContainer,
+            RandomArticlesContainer
         },
         data() {
             return {

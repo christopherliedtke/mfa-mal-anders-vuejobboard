@@ -133,7 +133,7 @@
             </b-input-group>
 
             <label for="ext-job-url"
-                >URL zur Bewerbung auf Ihrem Bewerberportal [wenn
+                >URL zur Bewerbung auf Ihrem Bewerberportal [optional, wenn
                 vorhanden]</label
             >
             <b-input-group>
@@ -178,6 +178,52 @@
                 <b-img v-if="job.imageUrl" :src="job.imageUrl" fluid />
                 <Fa v-else icon="image" size="5x" />
             </div>
+            <b-row cols="1" cols-md="2">
+                <b-col>
+                    <label for="min-salary"
+                        >Minimum Monatsgehalt [optional]</label
+                    >
+                    <b-input-group>
+                        <template v-slot:prepend>
+                            <b-input-group-text
+                                ><Fa icon="euro-sign"
+                            /></b-input-group-text>
+                        </template>
+                        <b-form-input
+                            type="number"
+                            step="1"
+                            v-model="job.salaryMin"
+                            :state="
+                                validated ? (job.salaryMin ? true : null) : null
+                            "
+                            id="min-salary"
+                            placeholder="Min. Monatsgehalt eingeben..."
+                        />
+                    </b-input-group>
+                </b-col>
+                <b-col>
+                    <label for="max-salary"
+                        >Maximum Monatsgehalt [optional]</label
+                    >
+                    <b-input-group>
+                        <template v-slot:prepend>
+                            <b-input-group-text
+                                ><Fa icon="euro-sign"
+                            /></b-input-group-text>
+                        </template>
+                        <b-form-input
+                            type="number"
+                            step="1"
+                            v-model="job.salaryMax"
+                            :state="
+                                validated ? (job.salaryMax ? true : null) : null
+                            "
+                            id="max-salary"
+                            placeholder="Max. Monatsgehalt eingeben..."
+                        />
+                    </b-input-group>
+                </b-col>
+            </b-row>
 
             <h3 class="mt-4">Kontakt für Bewerbungen</h3>
             <label for="contact-gender">Anrede</label>
@@ -511,6 +557,8 @@
                     extJobUrl: "",
                     applicationEmail: "",
                     imageUrl: "",
+                    salaryMin: "",
+                    salaryMax: "",
                     contactGender: null,
                     contactTitle: null,
                     contactFirstName: "",
@@ -594,6 +642,8 @@
                                     extJobUrl
                                     applicationEmail
                                     imageUrl
+                                    salaryMin
+                                    salaryMax
                                     contactGender
                                     contactTitle
                                     contactFirstName
