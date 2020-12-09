@@ -263,18 +263,23 @@ Vue.use(VueHead, {
 });
 
 // GA tracking -> tracking in App.vue
-Vue.use(VueGtag, {
-    config: {
-        id: config.ga.trackingCode,
-        params: {
-            anonymize_ip: config.ga.anonymizeIP,
-            client_storage: config.ga.storage,
-            send_page_view: false
-        }
+Vue.use(
+    VueGtag,
+    {
+        config: {
+            id: config.ga.trackingCode,
+            params: {
+                anonymize_ip: config.ga.anonymizeIP,
+                client_storage: config.ga.storage
+                // send_page_view: false
+            }
+        },
+        enabled:
+            config.ga.active &&
+            window.location.origin.includes(config.website.url)
     },
-    enabled:
-        config.ga.active && window.location.origin.includes(config.website.url)
-});
+    router
+);
 
 Vue.config.productionTip = false;
 

@@ -40,7 +40,7 @@
         },
         mounted() {
             if (this.$config.ga.active) {
-                this.track();
+                // this.track();
             }
         },
         watch: {
@@ -50,7 +50,7 @@
                     to.path != from.path &&
                     this.$config.ga.active
                 ) {
-                    this.track();
+                    // this.track();
                 }
             }
         },
