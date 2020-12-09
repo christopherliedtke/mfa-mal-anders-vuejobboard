@@ -23,10 +23,6 @@
             Overlay
         },
         async created() {
-            if (this.$config.ga.active) {
-                this.track();
-            }
-
             if (this.$store.state.auth.loggedIn) {
                 const user = await this.$store.dispatch("fetchUser");
                 if (!user) {
@@ -40,6 +36,10 @@
                 this.$store.dispatch("getArticles");
                 this.$store.dispatch("getTrainings");
                 this.$store.dispatch("getProfessions");
+            }
+
+            if (this.$config.ga.active) {
+                this.track();
             }
         },
         watch: {

@@ -99,7 +99,7 @@ function generateBody(doc, data, invoiceNo) {
             `${
                 data.billingAddress.name.includes("Herr")
                     ? "Sehr geehrter"
-                    : data.billingAddressName.includes("Frau")
+                    : data.billingAddress.name.includes("Frau")
                     ? "Sehr geehrte"
                     : "Sehr geehrte/r"
             } ${data.billingAddress.name},`,
