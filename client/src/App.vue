@@ -23,6 +23,8 @@
             Overlay
         },
         async created() {
+            this.setGaConfig();
+
             if (this.$store.state.auth.loggedIn) {
                 const user = await this.$store.dispatch("fetchUser");
                 if (!user) {
@@ -55,6 +57,15 @@
             }
         },
         methods: {
+            setGaConfig() {
+                this.$gtag.config({
+                    params: {
+                        anonymize_ip: this.$config.ga.anonymizeIP,
+                        client_storage: this.$config.ga.storage
+                        // send_page_view: false
+                    }
+                });
+            },
             track() {
                 this.$gtag.pageview({
                     page_title: this.$route.name,
