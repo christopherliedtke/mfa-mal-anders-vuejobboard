@@ -49,7 +49,7 @@
                 />
             </div>
 
-            <label for="specialization">Fachbereich</label>
+            <label for="specialization">Fachbereich Schwerpunkt</label>
             <b-form-select
                 id="specialization"
                 v-model="job.specialization"

@@ -138,6 +138,7 @@ app.use("/api/coupons", require("./routes/coupons"));
 app.use("/api/images", require("./routes/images"));
 app.use("/api/stripe", require("./routes/stripe"));
 app.use("/api/invoice", require("./routes/invoice"));
+app.use("/api/send-email", require("./routes/sendEmail"));
 app.use("/api/download", require("./routes/download"));
 
 // #Serve the built static files in production

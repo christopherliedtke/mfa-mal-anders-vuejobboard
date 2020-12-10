@@ -182,6 +182,7 @@
                                 >Online</b-dropdown-item
                             >
                             <b-dropdown-item
+                                class="mb-0"
                                 variant="danger"
                                 @click.prevent="
                                     updateJobStatus(job._id, 'unpublished')

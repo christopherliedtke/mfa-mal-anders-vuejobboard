@@ -119,6 +119,7 @@
                         >Published</b-dropdown-item
                     >
                     <b-dropdown-item
+                        class="mb-0"
                         :active="row.item.status === 'unpublished'"
                         variant="danger"
                         @click.prevent="
@@ -143,10 +144,22 @@
                         >Unpaid</b-dropdown-item
                     >
                     <b-dropdown-item
+                        class="mb-0"
                         :active="row.item.paid === true"
                         variant="success"
                         @click.prevent="updateJob(row.item._id, 'paid', true)"
                         >Paid</b-dropdown-item
+                    >
+                </b-dropdown>
+                <b-dropdown class="mr-2 mb-2" size="sm" left variant="info">
+                    <template v-slot:button-content>
+                        <Fa class="mr-2" icon="envelope" /> E-Mail
+                    </template>
+                    <b-dropdown-item
+                        class="mb-0"
+                        variant="info"
+                        @click.prevent="sendPublishedEmail(row.item._id)"
+                        >Send job published</b-dropdown-item
                     >
                 </b-dropdown>
                 <b-button
@@ -435,6 +448,53 @@
                         }
                     );
                 }
+            },
+            async sendPublishedEmail(jobId) {
+                this.$store.dispatch("setOverlay", true);
+
+                try {
+                    const sentEmail = await this.$axios.post(
+                        "/api/send-email/job-published",
+                        { jobId }
+                    );
+
+                    if (sentEmail.data.success) {
+                        this.$root.$bvToast.toast(
+                            `Die E-Mail wurde erfolgreich gesendet.`,
+                            {
+                                title: `E-Mail gesendet`,
+                                variant: "success",
+                                toaster: "b-toaster-bottom-right",
+                                solid: true,
+                                noAutoHide: true
+                            }
+                        );
+                    } else {
+                        this.$root.$bvToast.toast(
+                            `E-Mail konnte nicht gesendet werden.`,
+                            {
+                                title: `Fehler beim Senden`,
+                                variant: "danger",
+                                toaster: "b-toaster-bottom-right",
+                                solid: true,
+                                noAutoHide: true
+                            }
+                        );
+                    }
+                } catch (err) {
+                    this.$root.$bvToast.toast(
+                        `E-Mail konnte nicht gesendet werden. Error: ${err}`,
+                        {
+                            title: `Fehler beim Senden`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
+                }
+
+                this.$store.dispatch("setOverlay", false);
             },
             showDeleteJobModal(job) {
                 this.jobToDelete = job;
