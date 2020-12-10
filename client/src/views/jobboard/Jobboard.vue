@@ -283,7 +283,7 @@
             },
             filteredJobs: {
                 get() {
-                    let jobs = this.$store.state.jobs.jobs;
+                    let jobs = [...this.$store.state.jobs.jobs];
 
                     // filter country
 

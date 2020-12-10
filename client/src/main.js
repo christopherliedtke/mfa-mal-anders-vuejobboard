@@ -164,7 +164,8 @@ import {
     faQuoteRight,
     faUnlockAlt,
     faEuroSign,
-    faCalendar
+    faCalendar,
+    faBriefcaseMedical
 } from "@fortawesome/free-solid-svg-icons";
 // import { faUser as farUser } from "@fortawesome/free-regular-svg-icons";
 import {
@@ -253,7 +254,8 @@ library.add(
     faQuoteRight,
     faUnlockAlt,
     faEuroSign,
-    faCalendar
+    faCalendar,
+    faBriefcaseMedical
 );
 
 Vue.component("Fa", FontAwesomeIcon);

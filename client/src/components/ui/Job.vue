@@ -98,6 +98,14 @@
                         {{ job.salaryMax ? `${parseInt(job.salaryMax)}€` : "" }}
                     </div>
                     <div
+                        v-if="
+                            job.specialization && job.specialization != 'null'
+                        "
+                    >
+                        <Fa class="mr-2" icon="briefcase-medical" size="lg" />
+                        {{ job.specialization }}
+                    </div>
+                    <div
                         v-if="job.simpleApplication"
                         v-b-tooltip.bottom.hover
                         title="Lebenslauf genügt für Bewerbung"
@@ -429,6 +437,7 @@
                                             imageUrl
                                             salaryMin
                                             salaryMax
+                                            specialization
                                             contactGender
                                             contactTitle
                                             contactFirstName
