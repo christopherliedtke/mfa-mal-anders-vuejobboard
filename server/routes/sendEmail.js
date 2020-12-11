@@ -13,12 +13,9 @@ router.post("/job-published", verifyToken, isAdmin, async (req, res) => {
     try {
         const job = await Job.findOne({
             _id: req.body.jobId,
-            userId: req.user._id,
         })
             .populate("company")
             .populate("userId");
-
-        console.log("job: ", job);
 
         const emailData = {
             from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
@@ -84,6 +81,8 @@ router.post("/job-published", verifyToken, isAdmin, async (req, res) => {
         };
 
         const sentEmail = await emailService.sendMail(emailData);
+
+        console.log("sentEmail: ", sentEmail);
 
         res.json({ success: sentEmail.accepted.length > 0 });
     } catch (err) {
