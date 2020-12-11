@@ -162,6 +162,25 @@
                         >Send job published</b-dropdown-item
                     >
                 </b-dropdown>
+                <b-dropdown class="mr-2 mb-2" size="sm" left variant="primary">
+                    <template v-slot:button-content>
+                        <Fa class="mr-2" icon="share-alt" /> Share
+                    </template>
+                    <b-dropdown-item
+                        class="mb-0"
+                        variant="info"
+                        @click.prevent="socialShareToClipBoard(row.item._id)"
+                        >Copy Text</b-dropdown-item
+                    >
+                </b-dropdown>
+                <!-- <b-button
+                    class="mr-2 mb-2"
+                    size="sm"
+                    variant="info"
+                    @click="socialShareToClipBoard(row.item._id)"
+                >
+                    <Fa class="mr-2" icon="share-alt" />Copy
+                </b-button> -->
                 <b-button
                     size="sm"
                     variant="danger"
@@ -544,6 +563,23 @@
                         }
                     );
                 }
+            },
+            socialShareToClipBoard(jobId) {
+                let el = document.createElement("textarea");
+
+                const job = this.jobs.find(job => job._id === jobId);
+
+                el.value = `${job.title} | ${job.company.location}\n\n${
+                    this.$config.website.url
+                }/jobboard/job/${
+                    job._id
+                }\n\n#mfamalanders #mfa #arzthelfer #arzthelferin #mfajobs #${job.company.location.toLowerCase()}jobs #${job.company.location.toLowerCase()}`;
+
+                document.body.appendChild(el);
+                el.select();
+
+                document.execCommand("copy");
+                document.body.removeChild(el);
             },
             rowClass(item, type) {
                 if (!item || type !== "row") return;
