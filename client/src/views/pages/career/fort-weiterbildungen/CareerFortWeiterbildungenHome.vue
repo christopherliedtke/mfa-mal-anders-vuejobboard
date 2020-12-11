@@ -10,7 +10,7 @@
                     <b-img
                         class="border-radius1 shadow mb-5"
                         fluid
-                        src="@/assets/img/Banner_Weiterbildungsdschungel_1200.jpg"
+                        src="/img/Banner_Weiterbildungsdschungel_1200.jpg"
                         alt="Banner - So viel verdienst Du wirklich"
                     />
                     <p>
@@ -100,7 +100,7 @@
         <Head
             title="Fort- und Weiterbildung für MFA / ArzthelferIn"
             desc="Fortbildungen und Weiterbildunger für medizinische Fachangestellte (MFA) / ArzthelferInnen im Gesundheitswesen || Karriere | Gehalt | Stellenangebote"
-            img="@/assets/img/Banner_Weiterbildungsdschungel_1200.jpg"
+            img="/img/Banner_Weiterbildungsdschungel_1200.jpg"
             :script="snippet"
         />
     </div>

@@ -5,7 +5,7 @@
             <b-img
                 class="border-radius1 shadow mb-5 w-100"
                 fluid
-                src="@/assets/img/SchnellUndEinfachEineTopbewerbungSchreiben_1024.jpg"
+                src="/img/SchnellUndEinfachEineTopbewerbungSchreiben_1024.jpg"
                 alt="Banner - Schnell und einfach eine Top-Bewerbung schreiben"
             />
             <p>
@@ -205,7 +205,7 @@
         <Head
             :title="title"
             desc="Bewerbungstipps für medizinische Fachangestellte (MFA) / ArzthelferIn || Kostenlose Bewerbungsvorlage | Tipps und mehr"
-            img="@/assets/img/SchnellUndEinfachEineTopbewerbungSchreiben_1024.jpg"
+            img="/img/SchnellUndEinfachEineTopbewerbungSchreiben_1024.jpg"
             :script="snippet"
         />
     </div>

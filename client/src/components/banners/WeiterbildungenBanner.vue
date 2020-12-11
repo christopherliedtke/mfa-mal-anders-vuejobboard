@@ -2,7 +2,7 @@
     <b-card no-body>
         <b-card-img-lazy
             top
-            src="@/assets/img/Banner_Weiterbildungsdschungel_1200.jpg"
+            src="/img/Banner_Weiterbildungsdschungel_1200.jpg"
             alt="Banner - Fort- und Weiterbildungen für MFA"
         />
         <b-card-body align="center">

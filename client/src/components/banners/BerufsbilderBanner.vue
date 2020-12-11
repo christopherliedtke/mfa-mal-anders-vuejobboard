@@ -2,11 +2,11 @@
     <b-card no-body>
         <b-card-img-lazy
             top
-            src="@/assets/img/jobsUndBerufsbilder_1200.jpg"
+            src="/img/jobsUndBerufsbilder_1200.jpg"
             :srcset="[
-                `${require('@/assets/img/jobsUndBerufsbilder_1200.jpg')} 1200w`,
-                `${require('@/assets/img/jobsUndBerufsbilder_800.jpg')} 800w`,
-                `${require('@/assets/img/jobsUndBerufsbilder_450.jpg')} 450w`
+                `/img/jobsUndBerufsbilder_1200.jpg 1200w`,
+                `/img/jobsUndBerufsbilder_800.jpg 800w`,
+                `/img/jobsUndBerufsbilder_450.jpg 450w`
             ]"
             :sizes="[
                 `(min-width: 1200px) 1200px`,

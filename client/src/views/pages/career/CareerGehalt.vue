@@ -5,8 +5,8 @@
             <b-img
                 class="border-radius1 shadow mb-5"
                 fluid
-                src="@/assets/img/Gehalt-fuer-mfa_1200.jpg"
-                alt="Banner - So viel verdienst Du wirklich"
+                src="/img/gehaltFuerMfa_1200.jpg"
+                alt="MFA Gehalt - So viel verdienst Du wirklich"
             />
             <p>
                 Sobald es um das Thema Gehalt geht, fehlt vielen MFA bzw.
@@ -761,7 +761,7 @@
         <Head
             :title="'Gehaltsrechner (TZ/VZ) – MFA / ArzthelferIn'"
             desc="Gehalt | Tarifvertrag | Tätigkeitsgruppen für MFA / ArzthelferIn || Gehaltsrechner für Teilzeit / Vollzeit nach aktuellen Gehaltstarifvertrag."
-            :img="require('@/assets/img/Gehalt-fuer-mfa_1200.jpg')"
+            img="/img/gehaltFuerMfa_1200.jpg"
             :script="snippet"
         />
     </div>
