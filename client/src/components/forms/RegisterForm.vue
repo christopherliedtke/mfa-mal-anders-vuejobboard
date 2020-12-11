@@ -182,7 +182,7 @@
 
                     if (this.$store.state.auth.loggedIn) {
                         this.trackEvent(
-                            `NewUser: ${this.$store.state.auth.userId}`,
+                            `NewUser: ${this.$store.state.auth.user._id}`,
                             "User",
                             "register"
                         );
