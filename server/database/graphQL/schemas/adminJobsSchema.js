@@ -13,6 +13,7 @@ const { Job } = require("../../models/job");
 const config = require("../../../config/config.json");
 const s3 = require("../../../middleware/s3");
 const { googleIndexing } = require("../../../middleware/googleJobIndexing");
+const recachePrerender = require("../../../middleware/recachePrerender");
 
 // #Root Query
 const RootQuery = new GraphQLObjectType({
@@ -158,6 +159,18 @@ const mutation = new GraphQLObjectType({
                             args.status === "pusblished"
                                 ? "URL_UPDATED"
                                 : "URL_DELETED"
+                        );
+                    }
+
+                    if (
+                        updatedJob.paidAt &&
+                        updatedJob.paidExpiresAt > new Date() &&
+                        updatedJob.paid &&
+                        updatedJob.status === "published" &&
+                        updatedJob._id
+                    ) {
+                        recachePrerender(
+                            `${process.env.WEBSITE_URL}/jobboard/job/${updatedJob._id}`
                         );
                     }
 

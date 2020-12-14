@@ -13,6 +13,7 @@ const sanitizeHtml = require("sanitize-html");
 const s3 = require("../../../middleware/s3");
 const config = require("../../../config/config.json");
 const { googleIndexing } = require("../../../middleware/googleJobIndexing");
+const recachePrerender = require("../../../middleware/recachePrerender");
 const { postToFacebook } = require("../../../middleware/postToFacebook");
 
 // #Root Query
@@ -139,6 +140,20 @@ const mutation = new GraphQLObjectType({
                 const newJob = new Job(addObj);
                 const response = await newJob.save();
 
+                console.log("response: ", response);
+
+                if (
+                    response.paidAt &&
+                    response.paidExpiresAt > new Date() &&
+                    response.paid &&
+                    response.status === "published" &&
+                    response._id
+                ) {
+                    recachePrerender(
+                        `${process.env.WEBSITE_URL}/jobboard/job/${response._id}`
+                    );
+                }
+
                 return response;
             },
         },
@@ -254,6 +269,18 @@ const mutation = new GraphQLObjectType({
                         );
                     }
 
+                    if (
+                        updatedJob.paidAt &&
+                        updatedJob.paidExpiresAt > new Date() &&
+                        updatedJob.paid &&
+                        updatedJob.status === "published" &&
+                        updatedJob._id
+                    ) {
+                        recachePrerender(
+                            `${process.env.WEBSITE_URL}/jobboard/job/${updatedJob._id}`
+                        );
+                    }
+
                     return updatedJob;
                 }
             },
@@ -295,6 +322,18 @@ const mutation = new GraphQLObjectType({
 
                     if (config.facebook.autoPost) {
                         postToFacebook();
+                    }
+
+                    if (
+                        updatedJob.paidAt &&
+                        updatedJob.paidExpiresAt > new Date() &&
+                        updatedJob.paid &&
+                        updatedJob.status === "published" &&
+                        updatedJob._id
+                    ) {
+                        recachePrerender(
+                            `${process.env.WEBSITE_URL}/jobboard/job/${updatedJob._id}`
+                        );
                     }
 
                     return updatedJob;

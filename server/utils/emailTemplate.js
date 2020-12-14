@@ -2,7 +2,7 @@ module.exports = {
     generate: function (
         content,
         footer = "",
-        headerImg = "https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/09/mfaMalAnders_Facebook_Banner.png"
+        headerImg = "https://www.mfa-mal-anders.de/img/MfaMalAnders_Banner_1200.jpg"
     ) {
         // for templating https://beefree.io/
         return `

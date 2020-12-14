@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const config = require("../config/config");
+const recachePrerender = require("../middleware/recachePrerender");
 const emailService = require("../utils/nodemailer");
 const { Job } = require("../database/models/job");
 const { Coupon } = require("../database/models/coupon");
@@ -84,6 +85,10 @@ router.post("/checkout-completed", async (req, res) => {
                     "URL_UPDATED"
                 );
             }
+
+            recachePrerender(
+                `${process.env.WEBSITE_URL}/jobboard/job/${jobId}`
+            );
 
             if (config.facebook.autoPost) {
                 postToFacebook();
