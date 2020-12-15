@@ -108,7 +108,7 @@ const mutation = new GraphQLObjectType({
                     type: GraphQLString,
                 },
             },
-            async resolve(parentValue, args, req) {
+            async resolve(parentValue, args) {
                 const updateObj = { ...args };
                 delete updateObj._id;
 
@@ -128,6 +128,7 @@ const mutation = new GraphQLObjectType({
                               args.paidExpiresAt
                           ))
                         : (updateObj.paidExpiresAt = paidExpiresAt);
+
                     if (args.paidExpiresAt > new Date()) {
                         updateObj.paid = true;
                     }

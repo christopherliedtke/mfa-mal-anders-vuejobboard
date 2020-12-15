@@ -62,7 +62,7 @@ router.post("/job-published", verifyToken, isAdmin, async (req, res) => {
                 <br>
                 <hr>
                 <p>
-                    <img src="cid:mfa-mal-anders-logo" width=60/> <br>
+                    <img src="cid:mfa-mal-anders-logo" width="60"/> <br>
                     MFA mal anders <br>
                     Dein Karriereportal für medizinische Fachangestellte <br>
                     <br>

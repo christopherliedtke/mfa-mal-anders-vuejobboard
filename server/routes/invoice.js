@@ -76,7 +76,7 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
             __dirname + "/../invoices/"
         );
 
-        const emailData = {
+        const emailDataToAdmin = {
             from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
             to: config.website.contactEmail,
             replyTo: email,
@@ -145,7 +145,69 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
             ],
         };
 
-        await emailService.sendMail(emailData);
+        const emailDataToCustomer = {
+            from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
+            to: email,
+            replyTo: config.website.contactEmail,
+            bcc: config.website.contactEmail,
+            subject: `[Rechnung ${invoiceNoLong}] Veröffentlichung Ihrer Stellenanzeige '${jobTitle}'`,
+            html: `
+                <p>
+                    ${
+                        billingAddress.name.includes("Herr")
+                            ? "Sehr geehrter"
+                            : billingAddress.name.includes("Frau")
+                            ? "Sehr geehrte"
+                            : "Sehr geehrte/r"
+                    } ${billingAddress.name},
+                </p>
+                <p>
+                    vielen Dank für die Erstellung Ihrer Stellenanzeige '${jobTitle}' auf unserem Portal 'MFA mal anders'. Wie gewünscht haben wir Ihnen die beigefügte Rechnung erstellt.
+                </p>
+                <p>
+                    Sobald Ihre Zahlung bei uns eingegangen ist, veröffentlichen wir Ihre Stellenanzeige und geben Ihnen noch einmal Bescheid. Anschließend haben Sie weiterhin die Möglichkeit, Ihre Stellenanzeige wie gewohnt selbst zu bearbeiten, offline zu nehmen oder zu löschen.
+                </p>
+                <p>
+                    Sollten Sie noch Fragen oder Anregungen haben, melden Sie sich gern bei uns.
+                </p>
+                <p>
+                    Mit freundlichen Grüßen
+                </p>
+                <p>
+                    Kristin Maurach
+                </p>
+                <br>
+                <hr>
+                <p>
+                    <img src="cid:mfa-mal-anders-logo" width="60"/> <br>
+                    MFA mal anders <br>
+                    Dein Karriereportal für medizinische Fachangestellte <br>
+                    <br>
+                    Tel: 0176 63393957 <br>
+                    E-Mail: kontakt@mfa-mal-anders.de <br>
+                    Webseite: www.mfa-mal-anders.de
+                </p>
+                `,
+            attachments: [
+                {
+                    filename: invoice.fileName,
+                    path: invoice.path,
+                    contentType: "application/pdf",
+                },
+                {
+                    filename: "logo_800.png",
+                    path: __dirname + "/../../client/public/img/logo_800.png",
+                    cid: "mfa-mal-anders-logo", //same cid value as in the html img src
+                },
+            ],
+        };
+
+        const emailSent = await Promise.all([
+            emailService.sendMail(emailDataToCustomer),
+            emailService.sendMail(emailDataToAdmin),
+        ]);
+
+        console.log("emailSent: ", emailSent);
 
         await Job.updateOne(
             { _id: jobId, userId: req.user._id },
