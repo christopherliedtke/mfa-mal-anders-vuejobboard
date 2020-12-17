@@ -13,8 +13,9 @@
         </h3>
         <p>
             Gib Deine Daten ein und erhalte Dein Gehalt entsprechend des
-            aktuellen Gehaltstarifvertrags* für Medizinische Fachangestellte
-            (MFA) / ArzthelferIn in Voll- oder Teilzeit (Stand 2020).
+            Gehaltstarifvertrags* 2021 für Medizinische Fachangestellte (MFA) /
+            ArzthelferIn in Voll- oder Teilzeit. <br />
+            <span class="small">(Stand 2021 | gültig ab 01.01.2021) </span>
         </p>
         <b-form>
             <b-form-select
@@ -58,11 +59,11 @@
         <p class="small mt-4 source">
             *Quelle:
             <a
-                href="https://www.bundesaerztekammer.de/fileadmin/user_upload/downloads/pdf-Ordner/MFA/AAA-GTV-MFA-2019.pdf"
+                href="https://www.vmf-online.de/mfa/mfa-tarife"
                 target="_blank"
                 rel="noopener"
-                >Aktueller Gehaltstarifvertrag für Medizinische Fachangestellte
-                (MFA) / ArzthelferInnen – AAA (2019)</a
+                >Gehaltstarifvertrag 2021 für Medizinische Fachangestellte (MFA)
+                / ArzthelferInnen – AAA (2021)</a
             >
         </p>
     </div>
@@ -84,24 +85,36 @@
                         text: "Anzahl Berufsjahre..."
                     },
                     {
-                        value: 1970.19,
+                        value: 2088.4,
                         text: "1 bis 4"
                     },
                     {
-                        value: 2139.34,
+                        value: 2267.7,
                         text: "5 bis 8"
                     },
                     {
-                        value: 2275.42,
+                        value: 2411.95,
                         text: "9 bis 12"
                     },
                     {
-                        value: 2339.67,
+                        value: 2480.05,
                         text: "13 bis 16"
                     },
                     {
-                        value: 2588.41,
-                        text: "17 und mehr"
+                        value: 2743.71,
+                        text: "17 bis 20"
+                    },
+                    {
+                        value: 2793.71,
+                        text: "21 bis 24"
+                    },
+                    {
+                        value: 2843.71,
+                        text: "25 bis 28"
+                    },
+                    {
+                        value: 2893.71,
+                        text: "29 und mehr"
                     }
                 ],
                 hoursOfEducationOptions: [
@@ -131,7 +144,7 @@
                             ">= 360h (eine Fortbildung mind. à 120h und weitere mind. à 40h in den letzten 5 Jahren)"
                     },
                     {
-                        value: 1.5,
+                        value: 1.45,
                         text: "Eine Fortbildungsmaßnahme mind. à 600h"
                     }
                 ]

@@ -5,7 +5,7 @@
             <b-img
                 class="border-radius1 shadow mb-5"
                 fluid
-                src="/img/gehaltFuerMfa_1200.jpg"
+                src="/img/MfaMalAnders_Gehalt_1200.jpg"
                 alt="MFA Gehalt - So viel verdienst Du wirklich"
             />
             <p>
@@ -759,9 +759,9 @@
             </p>
         </b-container>
         <Head
-            :title="'Gehaltsrechner (TZ/VZ) – MFA / ArzthelferIn'"
-            desc="Gehalt | Tarifvertrag | Tätigkeitsgruppen für MFA / ArzthelferIn || Gehaltsrechner für Teilzeit / Vollzeit nach aktuellen Gehaltstarifvertrag."
-            img="/img/gehaltFuerMfa_1200.jpg"
+            :title="'MFA Tarifvertrag 2021 | Gehaltsrechner'"
+            desc="Gehaltsrechner | Tarifvertrag | Tätigkeitsgruppen für MFA / ArzthelferIn || Gehaltsrechner für Teilzeit / Vollzeit nach aktuellen Gehaltstarifvertrag."
+            img="/img/gMfaMalAnders_Gehalt_1200.jpg"
             :script="snippet"
         />
     </div>
