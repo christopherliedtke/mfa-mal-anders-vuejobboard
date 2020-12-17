@@ -16,92 +16,61 @@
 
                 <b-collapse id="nav-collapse" is-nav @click="toggleNavbar">
                     <b-navbar-nav class="m-auto">
-                        <b-nav-item class="home" to="/">Home</b-nav-item>
-                        <b-nav-item to="/jobboard">Stellenangebote</b-nav-item>
-
-                        <li
-                            class="sub-container"
-                            @mouseleave="hideSub('sub-career')"
-                            @click="hideSub('sub-career')"
-                        >
-                            <b-nav-item
-                                to="/page/mfa-career"
-                                @mouseover="showSub('sub-career')"
-                                >Karriere
-                                <Fa
-                                    class="ml-1 icon"
-                                    icon="chevron-down"
-                                    size="xs"
-                            /></b-nav-item>
-                            <div id="sub-career" class="sub-menu">
-                                <div
-                                    class="sub-container"
-                                    @mouseleave="
-                                        hideSub('sub-jobs-berufsbilder')
+                        <b-nav-item
+                            v-for="link in headerLinks"
+                            :key="link.title"
+                            :to="link.path"
+                            @mouseover="link.children && showSub(link.title)"
+                            @mouseleave="link.children && hideSub(link.title)"
+                            >{{ link.title }}
+                            <Fa
+                                v-if="link.icon"
+                                class="ml-1 icon"
+                                :icon="link.icon"
+                                size="xs"
+                            />
+                            <div
+                                v-if="link.children"
+                                :id="link.title"
+                                class="sub-menu"
+                            >
+                                <b-nav-item
+                                    v-for="subLink in link.children"
+                                    :key="subLink.title"
+                                    :to="subLink.path"
+                                    @mouseover="
+                                        subLink.children &&
+                                            showSub(subLink.title)
                                     "
-                                    @click="hideSub('sub-jobs-berufsbilder')"
-                                >
-                                    <b-nav-item to="/page/mfa-career/gehalt"
-                                        >Gehalt
-                                    </b-nav-item>
-                                    <b-nav-item
-                                        to="/page/mfa-career/bewerbungstipps"
-                                        >Bewerbungstipps
-                                    </b-nav-item>
-                                    <b-nav-item
-                                        to="/page/mfa-career/jobs-und-berufsbilder"
-                                        @mouseover="
-                                            showSub('sub-jobs-berufsbilder')
-                                        "
-                                        >Jobs- und Berufsbilder
-                                        <Fa
-                                            class="ml-1 d-none d-md-block"
-                                            icon="chevron-right"
-                                            size="xs"
-                                    /></b-nav-item>
+                                    @mouseleave="
+                                        subLink.children &&
+                                            hideSub(subLink.title)
+                                    "
+                                    >{{ subLink.title }}
+                                    <Fa
+                                        v-if="subLink.icon"
+                                        class="ml-1 icon"
+                                        :icon="subLink.icon"
+                                        size="xs"/>
                                     <div
-                                        id="sub-jobs-berufsbilder"
-                                        class="sub-menu d-none d-md-block"
+                                        v-if="subLink.children"
+                                        :id="subLink.title"
+                                        class="sub-menu"
                                     >
                                         <b-nav-item
-                                            to="/page/mfa-career/jobs-und-berufsbilder/medizinisch-technisch"
-                                            >Medizinisch-Technisch
-                                        </b-nav-item>
-                                        <b-nav-item
-                                            to="/page/mfa-career/jobs-und-berufsbilder/verwaltung"
-                                            >Verwaltung
-                                        </b-nav-item>
-                                        <b-nav-item
-                                            to="/page/mfa-career/jobs-und-berufsbilder/management"
-                                            >Management
-                                        </b-nav-item>
-                                        <b-nav-item
-                                            to="/page/mfa-career/jobs-und-berufsbilder/beratung"
-                                            >Beratung
-                                        </b-nav-item>
-                                        <b-nav-item
-                                            to="/page/mfa-career/jobs-und-berufsbilder/forschung"
-                                            >Forschung
-                                        </b-nav-item>
-                                    </div>
-                                </div>
-                                <b-nav-item
-                                    to="/page/mfa-career/fort-und-weiterbildungen"
-                                    >Fort- und Weiterbildungen
-                                </b-nav-item>
+                                            v-for="subSubLink in subLink.children"
+                                            :key="subSubLink.title"
+                                            :to="subSubLink.path"
+                                            >{{ subSubLink.title }}
+                                            <Fa
+                                                v-if="subSubLink.icon"
+                                                class="ml-1 icon"
+                                                :icon="subSubLink.icon"
+                                                size="xs"
+                                        /></b-nav-item></div
+                                ></b-nav-item>
                             </div>
-                        </li>
-
-                        <b-nav-item
-                            v-if="$config.cms.active"
-                            :to="`/page/${$config.cms.postsPath}`"
-                            >{{ $config.cms.postsPageTitle }}</b-nav-item
-                        >
-                        <b-nav-item to="/page/fuer-arbeitgeber"
-                            >Für Arbeitgeber</b-nav-item
-                        >
-                        <b-nav-item to="/page/about">Über</b-nav-item>
-                        <b-nav-item to="/page/contact">Kontakt</b-nav-item>
+                        </b-nav-item>
                     </b-navbar-nav>
                     <b-navbar-nav class="mt-3 mt-lg-0">
                         <b-nav-item to="/user/dashboard" v-if="loggedIn"
@@ -153,6 +122,84 @@
         },
         data() {
             return {
+                headerLinks: [
+                    {
+                        title: "Home",
+                        path: "/"
+                    },
+                    {
+                        title: "Stellenangebote",
+                        path: "/jobboard"
+                    },
+                    {
+                        title: "Karriere",
+                        path: "/page/mfa-career",
+                        icon: "chevron-down",
+                        children: [
+                            {
+                                title: "Gehalt",
+                                path: "/page/mfa-career/gehalt"
+                            },
+                            {
+                                title: "Bewerbungstipps",
+                                path: "/page/mfa-career/bewerbungstipps"
+                            },
+                            {
+                                title: "Jobs und Berufsbilder",
+                                path: "/page/mfa-career/jobs-und-berufsbilder",
+                                icon: "chevron-right",
+                                children: [
+                                    {
+                                        title: "Medizinisch-Technisch",
+                                        path:
+                                            "/page/mfa-career/jobs-und-berufsbilder/medizinisch-technisch"
+                                    },
+                                    {
+                                        title: "Verwaltung",
+                                        path:
+                                            "/page/mfa-career/jobs-und-berufsbilder/verwaltung"
+                                    },
+                                    {
+                                        title: "Management",
+                                        path:
+                                            "/page/mfa-career/jobs-und-berufsbilder/management"
+                                    },
+                                    {
+                                        title: "Beratung",
+                                        path:
+                                            "/page/mfa-career/jobs-und-berufsbilder/beratung"
+                                    },
+                                    {
+                                        title: "Forschung",
+                                        path:
+                                            "/page/mfa-career/jobs-und-berufsbilder/forschung"
+                                    }
+                                ]
+                            },
+                            {
+                                title: "Fort- und Weiterbildungen",
+                                path:
+                                    "/page/mfa-career/fort-und-weiterbildungen"
+                            }
+                        ]
+                    },
+                    {
+                        title: "Blog",
+                        path: "/page/blog"
+                    },
+                    {
+                        title: "Für Arbeitgeber",
+                        path: "/page/fuer-arbeitgeber"
+                    },
+                    {
+                        title: "Über",
+                        path: "/page/about"
+                    },
+                    {
+                        title: "Kontakt",
+                        path: "/page/contact"
+                    }
+                ],
                 previousScrollPositionY:
                     window.document.documentElement.scrollTop
             };
