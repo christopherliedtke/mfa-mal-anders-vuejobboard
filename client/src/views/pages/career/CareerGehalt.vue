@@ -761,7 +761,7 @@
         <Head
             :title="'MFA Tarifvertrag 2021 | Gehaltsrechner'"
             desc="Gehaltsrechner | Tarifvertrag | Tätigkeitsgruppen für MFA / ArzthelferIn || Gehaltsrechner für Teilzeit / Vollzeit nach aktuellen Gehaltstarifvertrag."
-            img="/img/gMfaMalAnders_Gehalt_1200.jpg"
+            img="/img/MfaMalAnders_Gehalt_1200.jpg"
             :script="snippet"
         />
     </div>
