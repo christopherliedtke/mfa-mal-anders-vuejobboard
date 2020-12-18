@@ -31,6 +31,7 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
                 $gte: new Date(
                     new Date().valueOf() - 1000 * 60 * 60 * 24 * daysBack
                 ),
+                $lte: new Date().toISOString(),
             },
         }).populate("company");
 
