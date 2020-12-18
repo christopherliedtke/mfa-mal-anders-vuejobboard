@@ -10,7 +10,7 @@
                         class="mb-4"
                     />
                     <h2 class="h6">
-                        Das Job- und Karriereportal für medizinische
+                        Das Job- und Karriereportal für Medizinische
                         Fachangestellte.
                     </h2>
                     <div class="small">

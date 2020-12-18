@@ -224,7 +224,7 @@ router.post("/checkout-completed", async (req, res) => {
                     </p>
                     <p>
                         MFA mal anders <br>
-                        Das Karriereportal für medizinische Fachangestellte
+                        Das Karriereportal für Medizinische Fachangestellte
                     </p>
                 `,
             };

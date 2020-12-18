@@ -30,7 +30,7 @@ $marker-size: 34px;
             width: $marker-size;
             height: $marker-size;
             position: relative;
-            background: url("/marker.svg") no-repeat center center;
+            background: url("/img/marker.svg") no-repeat center center;
             background-size: contain;
             cursor: pointer;
             margin-top: -$marker-size;

@@ -557,7 +557,7 @@
 
         <Head
             title="Motivierte MFA / ArzthelferIn gesucht?"
-            desc="MFA mal anders ist das Jobportal speziell nur für medizinische Fachangestellte. Gesucht – Gefunden! Mit günstigen Stellenanzeigen, die wirklich ankommen."
+            desc="MFA mal anders ist das Jobportal speziell nur für Medizinische Fachangestellte. Gesucht – Gefunden! Mit günstigen Stellenanzeigen, die wirklich ankommen."
             img=""
             :script="snippet"
         />

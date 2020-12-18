@@ -18,11 +18,11 @@
                     </h2>
                     <p>
                         Sprechstundenhilfe sind wir schon lange nicht mehr. Als
-                        medizinische Fachangestellte (MFA) und ArzthelferIn sind
-                        wir Organisationstalente, medizinische Assistenten,
+                        Medizinische Fachangestellte (MFA) und ArzthelferIn sind
+                        wir Organisationstalente, Medizinische Assistenten,
                         SekretärInnen, Seelsorger, Logistiker, Abrechnungsprofis
                         und Aushängeschild der gesamten Praxis. Du merkst schon:
-                        Die Aufgabenspektren und Jobs für medizinische
+                        Die Aufgabenspektren und Jobs für Medizinische
                         Fachangestellte und ArzthelferInnen sind wahnsinnig
                         vielfältig.
                     </p>
@@ -31,11 +31,11 @@
                         nicht nur in der Arztpraxis beliebt. Der Job bietet in
                         viele Richtungen des Gesundheitswesens verschiedene
                         Aufstiegsmöglichkeiten. Auch verschiedenste alternative
-                        Jobs und Berufe mit der Ausbildung als medizinische
+                        Jobs und Berufe mit der Ausbildung als Medizinische
                         Fachangestellte sind möglich.
                     </p>
                     <p>
-                        Willst Du Deinem Job als medizinische Fachangestellte
+                        Willst Du Deinem Job als Medizinische Fachangestellte
                         neuen Schwung geben oder beispielsweise Dein Gehalt
                         aufbessern? Wenn du nicht weißt, welche Türen dir offen
                         stehen, informiere Dich hier über Deine Chancen als
@@ -89,7 +89,7 @@
         </b-container>
         <Head
             :title="title"
-            desc="50+ Alternative Jobs / Berufe für medizinische Fachangestellte (MFA) / ArzthelferIn || Stellenangebote | Fortbildungen | Weiterbildungen"
+            desc="50+ Alternative Jobs / Berufe für Medizinische Fachangestellte (MFA) / ArzthelferIn || Stellenangebote | Fortbildungen | Weiterbildungen"
             img="/img/jobsUndBerufsbilder_1200.jpg"
             :script="snippet"
         />

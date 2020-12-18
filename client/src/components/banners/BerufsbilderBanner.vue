@@ -20,7 +20,7 @@
 
             <b-card-text>
                 Hier findest du eine Auswahl von ganz unterschiedlichen Jobs und
-                Berufen inklusive vieler Alternativen für medizinische
+                Berufen inklusive vieler Alternativen für Medizinische
                 Fachangestellte / ArzthelferInnen!
             </b-card-text>
 

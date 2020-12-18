@@ -14,11 +14,11 @@
                         alt="Banner - So viel verdienst Du wirklich"
                     />
                     <p>
-                        Als medizinische Fachangestellte haben wir viele
+                        Als Medizinische Fachangestellte haben wir viele
                         Möglichkeiten uns zu qualifizieren und im Job
                         aufzusteigen oder sogar in anderen Bereichen des
                         Gesundheitswesens Fuß zu fassen. Nur leider ist der
-                        Dschungel an Fort- und Weiterbildungen für medizinische
+                        Dschungel an Fort- und Weiterbildungen für Medizinische
                         Fachangestellte so stark bewachsen und undurchdringlich,
                         dass es nicht leicht fällt, den Durchblick zu behalten.
                     </p>
@@ -39,7 +39,7 @@
                     </p>
                     <p>
                         In der Rubrik "Fort- und Weiterbildungen" kannst du dich
-                        informieren, welche Möglichkeiten du als medizinische
+                        informieren, welche Möglichkeiten du als Medizinische
                         Fachangestellte in und außerhalb der Arztpraxis hast.
                     </p>
                     <div class="d-flex justify-content-center">
@@ -99,7 +99,7 @@
         </b-container>
         <Head
             title="Fort- und Weiterbildung für MFA / ArzthelferIn"
-            desc="Fortbildungen und Weiterbildunger für medizinische Fachangestellte (MFA) / ArzthelferInnen im Gesundheitswesen || Karriere | Gehalt | Stellenangebote"
+            desc="Fortbildungen und Weiterbildunger für Medizinische Fachangestellte (MFA) / ArzthelferInnen im Gesundheitswesen || Karriere | Gehalt | Stellenangebote"
             img="/img/Banner_Weiterbildungsdschungel_1200.jpg"
             :script="snippet"
         />

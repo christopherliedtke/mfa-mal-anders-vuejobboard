@@ -13,7 +13,7 @@
                 </b-col>
                 <b-col order="1" order-md="2">
                     <p class="lead bold mb-4">
-                        MFA mal anders ist ein Karriereportal für medizinische
+                        MFA mal anders ist ein Karriereportal für Medizinische
                         Fachangestellte sowie auf die professionelle
                         Personalsuche für Arztpraxen und Medizinische
                         Versorgungszentren spezialisiert.
@@ -41,7 +41,7 @@
             </b-row>
             <div>
                 <blockquote>
-                    MFA mal anders hat die Mission, medizinische Fachangestellte
+                    MFA mal anders hat die Mission, Medizinische Fachangestellte
                     und Arztpraxen erfolgreich zusammen zu bringen.
                 </blockquote>
                 <p>

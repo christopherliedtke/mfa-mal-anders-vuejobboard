@@ -73,7 +73,7 @@ module.exports.sendUnpublishedJobReminder = async () => {
                     </p>
                     <p>
                         MFA mal anders <br>
-                        Das Karriereportal für medizinische Fachangestellte
+                        Das Karriereportal für Medizinische Fachangestellte
                     </p>
                 `,
                 };

@@ -9,7 +9,7 @@
             <b-card-title title="Fort- und Weiterbildungen für MFA" />
             <b-card-text>
                 Hier findest du eine Übersicht von verschiedenen Fortbildungen
-                und Weiterbildungen für medizinische Fachangestellte /
+                und Weiterbildungen für Medizinische Fachangestellte /
                 ArzthelferInnen!
             </b-card-text>
 

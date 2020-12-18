@@ -3,7 +3,7 @@
         <h1 class="title">{{ title }}</h1>
         <b-container class="py-5">
             <h2 class="mb-4">
-                Verliebt in meinen Beruf - Dein Karriereportal für medizinische
+                Verliebt in meinen Beruf - Dein Karriereportal für Medizinische
                 Fachangestellte
             </h2>
             <b-img
@@ -13,7 +13,7 @@
                 style="width: 40vw; max-width: 250px"
             />
             <p>
-                MFA mal anders ist ein Karriereportal speziell für medizinische
+                MFA mal anders ist ein Karriereportal speziell für Medizinische
                 Fachangestellte, die sich beruflich wie persönlich
                 weiterentwickeln wollen, um mehr aus ihrem Beruf und Leben raus
                 zu holen.
@@ -101,7 +101,7 @@
                     <p>
                         Auf MFA mal anders berichte ich über
                         Aufstiegsmöglichkeiten in der Arztpraxis, aber auch über
-                        Karrierechancen, die du als medizinische Fachangestellte
+                        Karrierechancen, die du als Medizinische Fachangestellte
                         außerhalb der Praxis hast.
                     </p>
                     <p>
@@ -194,7 +194,7 @@
             <p>
                 Auf Mfa mal anders findest du deshalb auch viele alternative
                 Jobmöglichkeiten, die du mit deinen Kenntnissen und Fähigkeiten
-                als medizinische Fachangestellte ausüben kannst.
+                als Medizinische Fachangestellte ausüben kannst.
             </p>
             <p>
                 Vielleicht möchtest du dich aber auch in deiner Fachrichtung
@@ -249,7 +249,7 @@
                 eure Stellenanzeige veröffentlichen.
             </p>
             <p>
-                Wenn du bereit bist, deiner Karriere als medizinische
+                Wenn du bereit bist, deiner Karriere als Medizinische
                 Fachangestellte neuen Aufschwung zu geben, reiche ich dir die
                 Hand und begleite dich auf deinem Weg.
             </p>
@@ -277,7 +277,7 @@
         </b-container>
         <Head
             :title="title"
-            desc="Karriereportal für medizinische Fachangestellte (MFA) / ArzthelferIn || Jobperspektiven | Fortbildungen | Weiterbildungen | Gehalt | Bewerbung"
+            desc="Karriereportal für Medizinische Fachangestellte (MFA) / ArzthelferIn || Jobperspektiven | Fortbildungen | Weiterbildungen | Gehalt | Bewerbung"
             img=""
             :script="snippet"
         />

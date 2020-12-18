@@ -64,7 +64,7 @@ router.post("/job-published", verifyToken, isAdmin, async (req, res) => {
                 <p>
                     <img src="cid:mfa-mal-anders-logo" width="60"/> <br>
                     MFA mal anders <br>
-                    Dein Karriereportal für medizinische Fachangestellte <br>
+                    Dein Karriereportal für Medizinische Fachangestellte <br>
                     <br>
                     Tel: 0176 63393957 <br>
                     E-Mail: kontakt@mfa-mal-anders.de <br>

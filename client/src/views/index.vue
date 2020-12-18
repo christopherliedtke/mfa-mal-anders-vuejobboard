@@ -23,7 +23,7 @@
                         Weiterbildungen, Stellenangebote und vieles mehr<span
                             class="d-none d-md-inline"
                         >
-                            &ndash; speziell für medizinische Fachangestellte
+                            &ndash; speziell für Medizinische Fachangestellte
                             (MFA) / ArzthelferInnen</span
                         >.
                     </p>
@@ -242,11 +242,11 @@
                     </h2>
                     <h3 class="h4">Informiere Dich</h3>
                     <p>
-                        Als medizinische Fachangestellte haben wir viele
+                        Als Medizinische Fachangestellte haben wir viele
                         Möglichkeiten uns zu qualifizieren und im Job
                         aufzusteigen oder sogar in anderen Bereichen des
                         Gesundheitswesens Fuß zu fassen. Nur leider ist der
-                        Dschungel an Weiterbildungen für medizinische
+                        Dschungel an Weiterbildungen für Medizinische
                         Fachangestellte so stark bewachsen und undurchdringlich,
                         dass es nicht leicht fällt, den Durchblick zu behalten.
                     </p>
@@ -285,7 +285,7 @@
 
         <Head
             title="Dein Karriereportal nur für MFAs"
-            desc="Job- und Karriereportal für medizinische Fachangestellte (MFA) / ArzthelferIn | Stellenangebote | Weiterbildungen | Alternative Jobs | Gehalt | Bewerbung"
+            desc="Job- und Karriereportal für Medizinische Fachangestellte (MFA) / ArzthelferIn | Stellenangebote | Weiterbildungen | Alternative Jobs | Gehalt | Bewerbung"
             img=""
             :script="snippet"
         />

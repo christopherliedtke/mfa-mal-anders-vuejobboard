@@ -15,7 +15,7 @@
                 einen Job beworben und der neue Chef fragt dich nach deinen
                 Gehaltsvorstellungen. Natürlich willst du nicht zu dreist sein
                 und das potenzielle Jobangebot durch zu hohe Gehaltswünsche in
-                Gefahr bringen. Deshalb gehen viele medizinische Fachangestellte
+                Gefahr bringen. Deshalb gehen viele Medizinische Fachangestellte
                 lieber auf Nummer sicher und verkaufen sich am Ende unter Wert.
             </p>
             <h2>
@@ -49,8 +49,8 @@
                 <b-col>
                     <p>
                         Der Verband medizinischer Fachberufe e.V. (VMF) ist die
-                        einzige Organisation für medizinische Fachangestellte
-                        auf Arbeitnehmerseite. Sie vertritt uns medizinische
+                        einzige Organisation für Medizinische Fachangestellte
+                        auf Arbeitnehmerseite. Sie vertritt uns Medizinische
                         Fachangestellte bei Tarifverhandlungen gegenüber der
                         Arbeitsgemeinschaft zur Regelung der Arbeitsbedingungen
                         der ArzthelferInnen / Medizinischen Fachangestellten
@@ -112,13 +112,13 @@
                 </b-col>
                 <b-col>
                     <p>
-                        Daneben bietet der Gehaltstarifvertrag für medizinische
+                        Daneben bietet der Gehaltstarifvertrag für Medizinische
                         Fachangestellte dir vor allem eine gute Orientierung, um
                         deinen Marktwert einzuschätzen, was Qualifikation und
                         Erfahrung angehen.
                     </p>
                     <p>
-                        Den aktuellen Gehaltstarifvertrag für medizinische
+                        Den aktuellen Gehaltstarifvertrag für Medizinische
                         Fachangestellte findest du
                         <a
                             href="https://www.vmf-online.de/mfa/mfa-tarife"
@@ -251,7 +251,7 @@
                 Tätigkeitsgruppen nach aktuellem Gehaltstarifvertrag
             </h2>
             <p>
-                Im Gehaltstarifvertrag für medizinische Fachangestellte werden
+                Im Gehaltstarifvertrag für Medizinische Fachangestellte werden
                 vorhandene Kenntnisse und Qualifikationen in Tätigkeitsgruppen
                 eingeordnet und entsprechend im Gehalt wiedergespiegelt. Die
                 Tätigkeiten werden nach Grad der Selbstständigkeit, Anzahl der
@@ -555,7 +555,7 @@
                                 </p>
                                 <ul>
                                     <li>
-                                        Fachwirtin für ambulante medizinische
+                                        Fachwirtin für ambulante Medizinische
                                         Versorgung/Arztfachhelferin gemäß § 54
                                         BBiG
                                     </li>
@@ -695,7 +695,7 @@
                     <li>
                         <Fa icon="check" size="sm" class="mr-2" /> Deine
                         Gehaltsstufe in der Tabelle des Gehaltstarifvertrages
-                        für medizinische Fachangestellte ablesen
+                        für Medizinische Fachangestellte ablesen
                     </li>
                     <li>
                         <Fa icon="check" size="sm" class="mr-2" />
