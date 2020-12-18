@@ -234,7 +234,7 @@
                             Ihre Stellenanzeige ist bei uns bestens platziert.
                             Im Gegensatz zu anderen allgemeinen Stellenbörsen,
                             finden Sie hier ausschließlich die richtige
-                            Zielgruppe für Ihr Unternehmen: medizinische
+                            Zielgruppe für Ihr Unternehmen: Medizinische
                             Fachangestellte / ArzthelferInnen.
                         </p>
                         <h3>Wo wir Ihre Stellenanzeige ausspielen</h3>

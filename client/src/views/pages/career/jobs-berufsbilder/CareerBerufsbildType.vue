@@ -142,7 +142,7 @@
                     management: {
                         title: "Management",
                         desc:
-                            "Jobs im Management eines Unternehmens im Gesundheitswesen gewinnen bei steigenden Herausforderungen im Gesundheitssystem immer mehr an Bedeutung. Es bietet Dir ein vielfältiges Aufgabenspektrum für medizinische Fachangestellte.",
+                            "Jobs im Management eines Unternehmens im Gesundheitswesen gewinnen bei steigenden Herausforderungen im Gesundheitssystem immer mehr an Bedeutung. Es bietet Dir ein vielfältiges Aufgabenspektrum für Medizinische Fachangestellte.",
                         seoDesc:
                             "Alternative Jobs und Berufsbilder für MFA / ArzthelferIn im Management in- und außerhalb der Arztpraxis || Stellenangebote"
                     }
