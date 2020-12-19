@@ -15,8 +15,16 @@
                 >
                     <b-card no-body>
                         <b-card-img-lazy
-                            :src="article.featuredImage.node.sourceUrl"
-                            :alt="article.featuredImage.node.altText"
+                            :src="
+                                article.featuredImage
+                                    ? article.featuredImage.node.sourceUrl
+                                    : ''
+                            "
+                            :alt="
+                                article.featuredImage
+                                    ? article.featuredImage.node.altText
+                                    : ''
+                            "
                             offset="1000"
                             top
                         />

@@ -3,8 +3,16 @@
         <b-link :to="'/article/' + article.slug" :aria-label="article.title">
             <b-card
                 :title="article.title"
-                :img-src="article.featuredImage.node.sourceUrl"
-                :img-alt="article.featuredImage.node.altText"
+                :img-src="
+                    article.featuredImage
+                        ? article.featuredImage.node.sourceUrl
+                        : ''
+                "
+                :img-alt="
+                    article.featuredImage
+                        ? article.featuredImage.node.altText
+                        : ''
+                "
                 img-top
                 tag="article"
                 class="mb-2"

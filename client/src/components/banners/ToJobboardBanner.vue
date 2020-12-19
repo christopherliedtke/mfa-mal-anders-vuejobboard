@@ -1,10 +1,10 @@
 <template>
-    <b-card no-body class="overflow-hidden p-3" align="center">
+    <b-card no-body class="overflow-hidden shadow1 p-3" align="center">
         <b-row no-gutters>
             <b-col md="3">
                 <b-img
                     class="p-4 w-100 h-100"
-                    src="@/assets/img/success_.svg"
+                    src="@/assets/img/search_engine__monochromatic.svg"
                     alt="Karriereschritt für MFA"
                 ></b-img>
             </b-col>
@@ -12,13 +12,15 @@
                 <b-card-body
                     class="d-flex flex-column justify-content-center align-items-center h-100 p-4"
                 >
-                    <h3 class="bold">Zu den Stellenangeboten</h3>
+                    <h3 class="h2 bold">Unzufrieden im Job?</h3>
                     <p>
-                        Sieh dir unsere Stellenbörse an und schau, ob das
-                        Richtige für dich dabei ist!
+                        Bist du auf der Suche nach einer
+                        <strong>neuen Herausforderung?</strong> <br />
+                        Möchtest du einfach mal schauen, was es sonst noch für
+                        Möglichkeiten gibt?
                     </p>
-                    <b-button to="/jobboard" variant="primary"
-                        >Los geht's!</b-button
+                    <b-button to="/jobboard" variant="secondary"
+                        >Zu den Stellenangeboten</b-button
                     >
                 </b-card-body>
             </b-col>

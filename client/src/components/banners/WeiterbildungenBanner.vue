@@ -1,5 +1,5 @@
 <template>
-    <b-card no-body>
+    <b-card no-body class="shadow1">
         <b-card-img-lazy
             top
             src="/img/Banner_Weiterbildungsdschungel_1200.jpg"

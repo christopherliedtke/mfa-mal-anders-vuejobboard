@@ -5,13 +5,21 @@
             <div class="position-relative">
                 <b-img
                     v-if="article.featuredImage"
-                    :src="article.featuredImage.node.sourceUrl"
-                    :alt="article.featuredImage.node.altText"
+                    :src="
+                        article.featuredImage
+                            ? article.featuredImage.node.sourceUrl
+                            : ''
+                    "
+                    :alt="
+                        article.featuredImage
+                            ? article.featuredImage.node.altText
+                            : ''
+                    "
                     class="mt-3 mb-4"
                     fluid
                 />
                 <div
-                    v-if="article.author.node.avatar"
+                    v-if="article.author.node.avatar && article.featuredImage"
                     class="position-absolute d-flex align-items-center bg-light-shade border-radius2 px-3 py-1"
                     style="bottom: 0; right: 5%"
                 >
@@ -101,7 +109,11 @@
             v-if="article.title"
             :title="article.title"
             :desc="article.excerpt"
-            :img="article.featuredImage.node.sourceUrl"
+            :img="
+                article.featuredImage
+                    ? article.featuredImage.node.sourceUrl
+                    : ''
+            "
             :script="snippet"
         />
     </div>

@@ -1,7 +1,7 @@
 <template>
     <b-card
         no-body
-        class="overflow-hidden"
+        class="overflow-hidden shadow1"
         align="center"
         style="max-width: 840px;"
     >
