@@ -13,10 +13,14 @@
                 ArzthelferInnen das Gespür für eine konkrete Zahl. Ein typisches
                 Beispiel, das du bestimmt auch kennst: du hast dich gerade auf
                 einen Job beworben und der neue Chef fragt dich nach deinen
-                Gehaltsvorstellungen. Natürlich willst du nicht zu dreist sein
-                und das potenzielle Jobangebot durch zu hohe Gehaltswünsche in
-                Gefahr bringen. Deshalb gehen viele Medizinische Fachangestellte
-                lieber auf Nummer sicher und verkaufen sich am Ende unter Wert.
+                <b-link
+                    to="/article/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
+                    >Gehaltsvorstellungen</b-link
+                >
+                . Natürlich willst du nicht zu dreist sein und das potenzielle
+                Jobangebot durch zu hohe Gehaltswünsche in Gefahr bringen.
+                Deshalb gehen viele Medizinische Fachangestellte lieber auf
+                Nummer sicher und verkaufen sich am Ende unter Wert.
             </p>
             <h2>
                 Wie ermittelt man eigentlich seinen Marktwert?
@@ -35,7 +39,13 @@
                 Tätigkeitsgruppen für MFAs und ArzthelferInnen. Mit diesem
                 Wissen, kannst du deinen eigenen Marktwert einordnen und
                 selbstbewusst für einen leistungsorientierten und fairen Lohn
-                einstehen.
+                einstehen. In unserem Artikel über
+                <b-link
+                    to="/article/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
+                    >Gehaltsvorstellungen</b-link
+                >
+                geben wir dir 9 zusätzliche Tipps, wie du dein Wunschgehalt
+                erzielst.
             </p>
             <p>
                 Vorweg klären wir zuerst ein paar Begrifflichkeiten und wie die
@@ -625,8 +635,10 @@
                 glücklich. Es muss das Gesamtpaket stimmen. Dazu zählen vor
                 allem das Klima im Team, die Arbeitszeiten, der Weg zur Arbeit,
                 interessante Aufgaben, die fordern und fördern (Stichwort
-                Weiterbildungen und Fortbildungen) oder die Möglichkeit Home
-                Office zu machen.
+                <b-link to="/page/mfa-career/fort-und-weiterbildungen"
+                    >Weiterbildungen und Fortbildungen</b-link
+                >
+                ) oder die Möglichkeit Home Office zu machen.
             </p>
             <p>
                 Wenn das angebotene Gehalt auf den ersten Blick nicht besonders
@@ -639,8 +651,12 @@
                 Inwiefern sich ein Benefit für dich wirklich lohnt, entscheidet
                 oft die individuelle Lebenslage. Prüfe deshalb die angebotenen
                 Zusatzleistungen eines Arbeitgebers und gehe zur Not auch in die
-                Nachverhandlung und frage, ob man sich über bestimmte
-                Zusatzleistungen einigen kann.
+                <b-link
+                    to="/article/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
+                    >Verhandlung</b-link
+                >
+                und frage, ob man sich über bestimmte Zusatzleistungen einigen
+                kann.
             </p>
             <p>Einige Beispiele für Benefits</p>
             <ul>
@@ -714,7 +730,11 @@
                 unterschiedlichen Stufen an Erfahrungen und Tätigkeitsfelder
                 vermitteln zu können. Mein Appell: Trau dich, selbstbewusst für
                 dein Wissen und deine bisherige berufliche Erfahrung einzustehen
-                und ein angemessenes Gehalt zu verlangen.
+                und ein
+                <b-link
+                    to="/article/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
+                    >angemessenes Gehalt zu verlangen</b-link
+                >.
             </p>
 
             <ToJobboardBanner class="my-5 mx-auto" />

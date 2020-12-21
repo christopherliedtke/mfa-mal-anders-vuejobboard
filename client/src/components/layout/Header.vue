@@ -141,6 +141,11 @@
                                 path: "/page/mfa-career/gehalt"
                             },
                             {
+                                title: "Gehaltsverhandlung 2021",
+                                path:
+                                    "/article/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
+                            },
+                            {
                                 title: "Bewerbungstipps",
                                 path: "/page/mfa-career/bewerbungstipps"
                             },
