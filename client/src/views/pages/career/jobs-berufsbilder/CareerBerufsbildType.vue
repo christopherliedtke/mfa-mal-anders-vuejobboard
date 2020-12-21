@@ -26,10 +26,10 @@
                             header-tag="header"
                             role="tab"
                             :header-bg-variant="
-                                visible === berufsbild.id ? 'primary' : ''
+                                visible === berufsbild.slug ? 'primary' : ''
                             "
                             :header-text-variant="
-                                visible === berufsbild.id
+                                visible === berufsbild.slug
                                     ? 'light'
                                     : berufsbild.content
                                     ? 'primary'
