@@ -203,7 +203,6 @@
             </div>
 
             <ToJobboardBanner class="my-5 mx-auto" />
-
             <RandomArticlesContainer class="my-5 mx-auto" />
         </b-container>
 
