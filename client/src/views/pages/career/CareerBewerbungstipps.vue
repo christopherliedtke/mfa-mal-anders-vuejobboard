@@ -201,7 +201,12 @@
                     >Download Bewerbungsunterlagen</b-button
                 >
             </div>
+
+            <ToJobboardBanner class="my-5 mx-auto" />
+
+            <RandomArticlesContainer class="my-5 mx-auto" />
         </b-container>
+
         <Head
             :title="title"
             desc="Bewerbungstipps für Medizinische Fachangestellte (MFA) / ArzthelferIn || Kostenlose Bewerbungsvorlage | Tipps und mehr"
@@ -212,8 +217,15 @@
 </template>
 
 <script>
+    import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
+    import RandomArticlesContainer from "@/components/containers/RandomArticlesContainer.vue";
+
     export default {
         name: "CareerBewerbungstipps",
+        components: {
+            ToJobboardBanner,
+            RandomArticlesContainer
+        },
         data() {
             return {
                 title: "Bewerbungstipps für MFAs",
