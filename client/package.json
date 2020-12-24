@@ -1,7 +1,11 @@
 {
-    "name": "vue_jobboard",
-    "version": "0.1.0",
+    "name": "mfa-mal-anders-vue",
+    "version": "1.0.0",
     "private": true,
+    "engines": {
+        "node": "12.x",
+        "npm": ">=5.3.0"
+    },
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",

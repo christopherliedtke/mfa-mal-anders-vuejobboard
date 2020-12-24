@@ -1,14 +1,17 @@
 {
-    "name": "vue_jobboard",
+    "name": "mfa-mal-anders",
     "version": "1.0.0",
+    "private": true,
     "engines": {
-        "node": "12.x"
+        "node": "12.x",
+        "npm": ">=5.3.0"
     },
     "description": "",
     "main": "index.js",
     "scripts": {
         "start": "node server/index.js",
-        "dev": "nodemon server/index.js"
+        "dev": "nodemon server/index.js",
+        "postinstall": "npm run build --prefix client"
     },
     "author": "Christopher Liedtke",
     "license": "MIT",
