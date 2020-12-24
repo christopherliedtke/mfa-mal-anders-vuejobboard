@@ -11,7 +11,7 @@
     "scripts": {
         "start": "node server/index.js",
         "dev": "nodemon server/index.js",
-        "postinstall": "npm install --save --prefix ./client && npm run build --prefix ./client"
+        "postinstall": "npm install --save --production=false --prefix ./client && npm run build --prefix ./client"
     },
     "author": "Christopher Liedtke",
     "license": "MIT",
