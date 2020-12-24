@@ -29,7 +29,7 @@
                 In den vielen Gruppen und Foren kommen regelmäßig Fragen zur
                 Höhe des Gehalts in Voll- und Teilzeit für MFA auf. Wenn ich bei
                 manchen Kommentaren lese, dass eine MFA mit 15 Jahren
-                Berufserfahrung in ein und derselben Praxis mit 1.900 € brutto
+                Berufserfahrung in ein und derselben Praxis mit 1.900€ brutto
                 nach Hause geht, finde ich das einfach nur sehr schade und
                 traurig.
             </p>
