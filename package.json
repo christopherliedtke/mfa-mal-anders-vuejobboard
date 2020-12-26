@@ -10,9 +10,7 @@
     "main": "index.js",
     "scripts": {
         "start": "node server/index.js",
-        "dev": "nodemon server/index.js",
-        "deploy-dev": "npm run build --prefix client && git push origin master",
-        "deploy-prod": "npm run build --prefix client && git push origin HEAD:prod"
+        "dev": "nodemon server/index.js"
     },
     "author": "Christopher Liedtke",
     "license": "MIT",
