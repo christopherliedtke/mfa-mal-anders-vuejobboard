@@ -80,6 +80,7 @@
                 <b-button
                     class="mr-2 mb-2"
                     :to="`/admin/jobs/preview/${row.item._id}`"
+                    target="_blank"
                     variant="info"
                     size="sm"
                     ><Fa scale="1" icon="eye" />
@@ -301,39 +302,41 @@
             };
         },
         computed: {
-            computedJobs: function() {
-                let jobs = [...this.jobs];
+            computedJobs: {
+                get() {
+                    let jobs = [...this.jobs];
 
-                // filter search term
-                if (this.filter.searchTerm) {
-                    jobs = jobs.filter(job => {
-                        if (
-                            this.checkForSearchTerm(
-                                [
-                                    job._id,
-                                    job.title,
-                                    job.company.name,
-                                    job.company.street,
-                                    job.company.location,
-                                    job.company.zipCode,
-                                    job.company.state,
-                                    job.company.country,
-                                    job.userId._id,
-                                    job.userId.lastName,
-                                    job.userId.firstName,
-                                    job.userId.email
-                                ],
-                                this.filter.searchTerm
-                            )
-                        ) {
-                            return job;
-                        } else {
-                            return;
-                        }
-                    });
+                    // filter search term
+                    if (this.filter.searchTerm) {
+                        jobs = jobs.filter(job => {
+                            if (
+                                this.checkForSearchTerm(
+                                    [
+                                        job._id,
+                                        job.title,
+                                        job.company.name,
+                                        job.company.street,
+                                        job.company.location,
+                                        job.company.zipCode,
+                                        job.company.state,
+                                        job.company.country,
+                                        job.userId._id,
+                                        job.userId.lastName,
+                                        job.userId.firstName,
+                                        job.userId.email
+                                    ],
+                                    this.filter.searchTerm
+                                )
+                            ) {
+                                return job;
+                            } else {
+                                return;
+                            }
+                        });
+                    }
+
+                    return jobs;
                 }
-
-                return jobs;
             }
         },
         created() {

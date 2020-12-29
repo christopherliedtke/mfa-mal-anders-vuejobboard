@@ -14,7 +14,7 @@ const actions = {
         const response = await axios.post(config.cms.url, {
             query: `
                     query MyQuery {
-                        posts(first: 100, where: {orderby: {field: MODIFIED, order: DESC}}) {
+                        posts(first: 100, where: {orderby: {field: DATE, order: DESC}}) {
                             nodes {
                                 id
                                 title

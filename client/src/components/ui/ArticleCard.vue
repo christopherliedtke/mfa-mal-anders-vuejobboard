@@ -37,9 +37,7 @@
                             {{ article.author.node.name }}
                         </div>
                     </div>
-                    <b-button :to="'/article/' + article.slug" variant="primary"
-                        >Weiterlesen</b-button
-                    >
+                    <b-button variant="primary">Weiterlesen</b-button>
                 </div>
 
                 <b-badge
