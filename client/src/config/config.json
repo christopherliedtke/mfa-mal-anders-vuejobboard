@@ -35,9 +35,9 @@
         "lang": "de"
     },
     "payment": {
-        "minCost": 2500,
-        "mediumCost": 5000,
-        "largeCost": 10000,
+        "minCost": 3900,
+        "mediumCost": 6500,
+        "largeCost": 12000,
         "xLargeCost": 25000,
         "maxCost": 30000,
         "refreshCost": 15000,

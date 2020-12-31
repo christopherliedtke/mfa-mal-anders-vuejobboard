@@ -487,16 +487,16 @@
             calculatePrice() {
                 switch (this.job.company.size) {
                     case "1 - 5 Mitarbeiter":
-                        this.amount = 2500;
+                        this.amount = this.$config.payment.minCost;
                         break;
                     case "6 - 10 Mitarbeiter":
-                        this.amount = 5000;
+                        this.amount = this.$config.payment.mediumCost;
                         break;
                     case "11 - 20 Mitarbeiter":
-                        this.amount = 10000;
+                        this.amount = this.$config.payment.largeCost;
                         break;
                     case "20+ Mitarbeiter":
-                        this.amount = 25000;
+                        this.amount = this.$config.payment.xLargeCost;
                         break;
                 }
             },
