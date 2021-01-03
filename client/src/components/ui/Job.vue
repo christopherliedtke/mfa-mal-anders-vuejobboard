@@ -338,7 +338,11 @@
             :desc="
                 `${job.title} | ${job.company.name} | ${job.company.location}, ${job.company.state}`
             "
-            :img="job.imageUrl || job.company.logoUrl || ''"
+            :img="
+                job.imageUrl ||
+                    job.company.logoUrl ||
+                    '/img/MfaMalAnders_NeuesStellenangebot_1200.jpg'
+            "
             :twitterCard="
                 job.imageUrl
                     ? 'summary_large_image'

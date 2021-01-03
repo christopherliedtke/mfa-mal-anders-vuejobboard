@@ -47,13 +47,12 @@
                         },
                         {
                             property: "og:url",
-                            content: window.location.origin + this.$route.path
+                            content: this.$route.path
                         },
                         {
                             property: "og:image",
                             content:
-                                this.img ||
-                                `${window.location.origin}/img/MfaMalAnders_Banner_1200.jpg`
+                                this.img || `/img/MfaMalAnders_Banner_1200.jpg`
                         },
                         {
                             property: "og:image:alt",
