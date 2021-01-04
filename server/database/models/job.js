@@ -14,6 +14,9 @@ const JobSchema = new Schema(
         paidAt: {
             type: Date,
         },
+        paymentReceivedAt: {
+            type: Date,
+        },
         paidExpiresAt: {
             type: Date,
         },

@@ -47,6 +47,29 @@
             <template v-slot:cell(paidAt)="row">
                 {{ row.value && new Date(row.value).toLocaleString() }}
             </template>
+            <template v-slot:cell(paymentReceivedAt)="row">
+                {{ row.value ? new Date(row.value).toLocaleString() : "" }}
+                <b-button
+                    v-if="!row.value"
+                    @click="
+                        updateJob(
+                            row.item._id,
+                            'paymentReceivedAt',
+                            new Date().getTime()
+                        )
+                    "
+                    variant="danger"
+                    size="sm"
+                    >SetToday</b-button
+                >
+                <b-button
+                    v-else
+                    @click="updateJob(row.item._id, 'paymentReceivedAt', 0)"
+                    variant="outline-danger"
+                    size="sm"
+                    ><Fa icon="trash-alt"
+                /></b-button>
+            </template>
             <template v-slot:cell(applicationDeadline)="row">
                 {{ row.value && new Date(row.value).toLocaleString() }}
             </template>
@@ -257,6 +280,10 @@
                         sortable: true
                     },
                     {
+                        key: "paymentReceivedAt",
+                        sortable: true
+                    },
+                    {
                         key: "paidExpiresAt",
                         sortable: true
                     },
@@ -365,6 +392,7 @@
                                     createdAt
                                     updatedAt
                                     paidAt
+                                    paymentReceivedAt
                                     paidExpiresAt
                                     paidAmount
                                     refreshFrequency
@@ -422,6 +450,7 @@
                                     createdAt
                                     updatedAt
                                     paidAt
+                                    paymentReceivedAt
                                     paidExpiresAt
                                     status
                                     applicationDeadline
@@ -567,6 +596,29 @@
                     );
                 }
             },
+            // async setPaymentReceivedAt(jobId) {
+            //     //
+            //     this.$store.dispatch("setOverlay", true);
+
+            //     try {
+            //        const response = await this.$axios.post('/api/jobs/admin', {
+            //             query: `
+            //                 mutation {
+            //                     updateJob(_id: "${jobId}") {
+            //                         paymentReceivedAt
+            //                     }
+            //                 }
+            //             `
+            //         })
+            //     } catch (err) {
+
+            //     }
+
+            //     this.$store.dispatch("setOverlay", false);
+            // },
+            // async deletePaymentReceivedAt() {
+            //     //
+            // },
             socialShareToClipBoard(jobId) {
                 let el = document.createElement("textarea");
 
