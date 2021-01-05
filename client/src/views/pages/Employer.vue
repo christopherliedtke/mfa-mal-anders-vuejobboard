@@ -512,7 +512,10 @@
                         {{ $config.payment.duration }} Tage sowie Ihre
                         angegebene Bewerbungsfrist nicht abgelaufen sind. Über
                         Ihren Account können Sie Ihre Stellenanzeige jederzeit
-                        selbst offline nehmen oder löschen.
+                        selbst offline nehmen oder löschen. Für individuelle
+                        Stellenpakete können Sie uns direkt über das
+                        <b-link to="/page/contact">Kontaktformular</b-link>
+                        kontaktieren.
                     </p>
                     <h3 class="h5 bold">
                         Wo wird meine Stellenanzeige veröffentlicht?
@@ -538,7 +541,9 @@
                         >
                         geben wir Ihnen unseren Erfahrungsschatz an die Hand.
                         Benötigen Sie darüber hinaus Hilfe, melden Sie sich gern
-                        über das Kontaktformular bei uns.
+                        über das
+                        <b-link to="/page/contact">Kontaktformular</b-link> bei
+                        uns.
                     </p>
                 </b-col>
             </b-row>
