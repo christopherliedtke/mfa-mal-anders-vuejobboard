@@ -164,18 +164,45 @@
                 if (this.filter.searchTerm) {
                     coupons = coupons.filter(coupon => {
                         if (
-                            this.checkForSearchTerm(
-                                [
-                                    coupon._id,
-                                    coupon.code,
-                                    coupon.discount,
-                                    coupon.userId && coupon.userId._id,
-                                    coupon.userId && coupon.userId.firstName,
-                                    coupon.userId && coupon.userId.lastName,
-                                    coupon.userId && coupon.userId.email
-                                ],
-                                this.filter.searchTerm
-                            )
+                            coupon._id
+                                .toLowerCase()
+                                .includes(
+                                    this.filter.searchTerm.toLowerCase()
+                                ) ||
+                            coupon.code
+                                .toLowerCase()
+                                .includes(
+                                    this.filter.searchTerm.toLowerCase()
+                                ) ||
+                            coupon.discount
+                                .toString()
+                                .includes(
+                                    this.filter.searchTerm.toLowerCase()
+                                ) ||
+                            (coupon.userId &&
+                                coupon.userId._id
+                                    .toLowerCase()
+                                    .includes(
+                                        this.filter.searchTerm.toLowerCase()
+                                    )) ||
+                            (coupon.userId &&
+                                coupon.userId.firstName
+                                    .toLowerCase()
+                                    .includes(
+                                        this.filter.searchTerm.toLowerCase()
+                                    )) ||
+                            (coupon.userId &&
+                                coupon.userId.lastName
+                                    .toLowerCase()
+                                    .includes(
+                                        this.filter.searchTerm.toLowerCase()
+                                    )) ||
+                            (coupon.userId &&
+                                coupon.userId.email
+                                    .toLowerCase()
+                                    .includes(
+                                        this.filter.searchTerm.toLowerCase()
+                                    ))
                         ) {
                             return coupon;
                         } else {
@@ -191,21 +218,6 @@
             this.getAllCoupons();
         },
         methods: {
-            checkForSearchTerm(arrOfValues, searchTerm) {
-                let result = false;
-                arrOfValues.forEach(value => {
-                    if (
-                        value &&
-                        value
-                            .toString()
-                            .toLowerCase()
-                            .includes(searchTerm.toLowerCase())
-                    ) {
-                        result = true;
-                    }
-                });
-                return result;
-            },
             async getAllCoupons() {
                 try {
                     const response = await this.$axios.post(

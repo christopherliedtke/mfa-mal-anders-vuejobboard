@@ -337,23 +337,66 @@
                     if (this.filter.searchTerm) {
                         jobs = jobs.filter(job => {
                             if (
-                                this.checkForSearchTerm(
-                                    [
-                                        job._id,
-                                        job.title,
-                                        job.company.name,
-                                        job.company.street,
-                                        job.company.location,
-                                        job.company.zipCode,
-                                        job.company.state,
-                                        job.company.country,
-                                        job.userId._id,
-                                        job.userId.lastName,
-                                        job.userId.firstName,
-                                        job.userId.email
-                                    ],
-                                    this.filter.searchTerm
-                                )
+                                job._id
+                                    .toLowerCase()
+                                    .includes(
+                                        this.filter.searchTerm.toLowerCase()
+                                    ) ||
+                                job.title
+                                    .toLowerCase()
+                                    .includes(
+                                        this.filter.searchTerm.toLowerCase()
+                                    ) ||
+                                job.company.name
+                                    .toLowerCase()
+                                    .includes(
+                                        this.filter.searchTerm.toLowerCase()
+                                    ) ||
+                                job.company.street
+                                    .toLowerCase()
+                                    .includes(
+                                        this.filter.searchTerm.toLowerCase()
+                                    ) ||
+                                job.company.location
+                                    .toLowerCase()
+                                    .includes(
+                                        this.filter.searchTerm.toLowerCase()
+                                    ) ||
+                                job.company.state
+                                    .toLowerCase()
+                                    .includes(
+                                        this.filter.searchTerm.toLowerCase()
+                                    ) ||
+                                job.company.zipCode
+                                    .toLowerCase()
+                                    .includes(
+                                        this.filter.searchTerm.toLowerCase()
+                                    ) ||
+                                job.company.country
+                                    .toLowerCase()
+                                    .includes(
+                                        this.filter.searchTerm.toLowerCase()
+                                    ) ||
+                                job.userId._id
+                                    .toLowerCase()
+                                    .includes(
+                                        this.filter.searchTerm.toLowerCase()
+                                    ) ||
+                                job.userId.lastName
+                                    .toLowerCase()
+                                    .includes(
+                                        this.filter.searchTerm.toLowerCase()
+                                    ) ||
+                                job.userId.firstName
+                                    .toLowerCase()
+                                    .includes(
+                                        this.filter.searchTerm.toLowerCase()
+                                    ) ||
+                                job.userId.email
+                                    .toLowerCase()
+                                    .includes(
+                                        this.filter.searchTerm.toLowerCase()
+                                    )
                             ) {
                                 return job;
                             } else {
@@ -370,18 +413,6 @@
             this.getAllJobs();
         },
         methods: {
-            checkForSearchTerm(arrOfValues, searchTerm) {
-                let result = false;
-                arrOfValues.forEach(value => {
-                    if (
-                        value &&
-                        value.toLowerCase().includes(searchTerm.toLowerCase())
-                    ) {
-                        result = true;
-                    }
-                });
-                return result;
-            },
             async getAllJobs() {
                 try {
                     const response = await this.$axios.post("/api/jobs/admin", {

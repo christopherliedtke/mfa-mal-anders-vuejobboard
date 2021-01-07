@@ -164,15 +164,24 @@
                 if (this.filter.searchTerm) {
                     subscribers = subscribers.filter(subscriber => {
                         if (
-                            this.checkForSearchTerm(
-                                [
-                                    subscriber._id,
-                                    subscriber.lastName,
-                                    subscriber.firstName,
-                                    subscriber.email
-                                ],
-                                this.filter.searchTerm
-                            )
+                            subscriber._id
+                                .toLowerCase()
+                                .includes(
+                                    this.filter.searchTerm.toLowerCase()
+                                ) ||
+                            subscriber.state
+                                .toLowerCase()
+                                .includes(
+                                    this.filter.searchTerm.toLowerCase()
+                                ) ||
+                            subscriber.status
+                                .toString()
+                                .includes(
+                                    this.filter.searchTerm.toLowerCase()
+                                ) ||
+                            subscriber.email
+                                .toLowerCase()
+                                .includes(this.filter.searchTerm.toLowerCase())
                         ) {
                             return subscriber;
                         } else {
@@ -188,18 +197,6 @@
             this.getAllSubscribers();
         },
         methods: {
-            checkForSearchTerm(arrOfValues, searchTerm) {
-                let result = false;
-                arrOfValues.forEach(value => {
-                    if (
-                        value &&
-                        value.toLowerCase().includes(searchTerm.toLowerCase())
-                    ) {
-                        result = true;
-                    }
-                });
-                return result;
-            },
             async getAllSubscribers() {
                 try {
                     const response = await this.$axios.post(

@@ -139,15 +139,29 @@
                 if (this.filter.searchTerm) {
                     users = users.filter(user => {
                         if (
-                            this.checkForSearchTerm(
-                                [
-                                    user._id,
-                                    user.lastName,
-                                    user.firstName,
-                                    user.email
-                                ],
-                                this.filter.searchTerm
-                            )
+                            user._id
+                                .toLowerCase()
+                                .includes(
+                                    this.filter.searchTerm.toLowerCase()
+                                ) ||
+                            user.firstName
+                                .toLowerCase()
+                                .includes(
+                                    this.filter.searchTerm.toLowerCase()
+                                ) ||
+                            user.lastName
+                                .toString()
+                                .includes(
+                                    this.filter.searchTerm.toLowerCase()
+                                ) ||
+                            user.email
+                                .toLowerCase()
+                                .includes(
+                                    this.filter.searchTerm.toLowerCase()
+                                ) ||
+                            user.status
+                                .toLowerCase()
+                                .includes(this.filter.searchTerm.toLowerCase())
                         ) {
                             return user;
                         } else {
@@ -163,18 +177,6 @@
             this.getAllUsers();
         },
         methods: {
-            checkForSearchTerm(arrOfValues, searchTerm) {
-                let result = false;
-                arrOfValues.forEach(value => {
-                    if (
-                        value &&
-                        value.toLowerCase().includes(searchTerm.toLowerCase())
-                    ) {
-                        result = true;
-                    }
-                });
-                return result;
-            },
             async getAllUsers() {
                 try {
                     const response = await this.$axios.post("/api/user/admin", {
