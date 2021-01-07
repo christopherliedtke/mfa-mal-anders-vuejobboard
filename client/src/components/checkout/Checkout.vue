@@ -524,10 +524,12 @@
                     this.billingAddress = {
                         company: this.job.company.name,
                         name: `${
+                            this.$store.state.auth.user.gender &&
                             this.$store.state.auth.user.gender != "null"
                                 ? this.$store.state.auth.user.gender + " "
                                 : ""
                         }${
+                            this.$store.state.auth.user.title &&
                             this.$store.state.auth.user.title != "null"
                                 ? this.$store.state.auth.user.title + " "
                                 : ""

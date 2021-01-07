@@ -340,15 +340,15 @@
             "
             :img="
                 job.imageUrl ||
-                    job.company.logoUrl ||
+                    setLogoUrl() ||
                     '/img/MfaMalAnders_NeuesStellenangebot_1200.jpg'
             "
             :twitterCard="
                 job.imageUrl
                     ? 'summary_large_image'
-                    : job.company.logoUrl
+                    : setLogoUrl()
                     ? 'summary'
-                    : ''
+                    : 'summary_large_image'
             "
             :script="snippet"
         />
@@ -384,6 +384,10 @@
         data() {
             return {
                 job: Object,
+                logo: {
+                    width: Number,
+                    height: Number
+                },
                 error: null,
                 employmentTypeOptions,
                 companySizeOptions,
@@ -470,6 +474,12 @@
 
                     if (job.data.data.job) {
                         this.job = job.data.data.job;
+
+                        if (job.data.data.job.company.logoUrl) {
+                            this.setLogoDimensions(
+                                job.data.data.job.company.logoUrl
+                            );
+                        }
                     } else {
                         this.$root.$bvToast.toast(
                             "Beim Laden der Stellenanzeige ist leider ein Fehler aufgetreten oder Sie ist abgelaufen.",
@@ -497,6 +507,26 @@
                             noAutoHide: true
                         }
                     );
+                }
+            },
+            setLogoDimensions(src) {
+                if (src) {
+                    const img = new Image();
+                    img.src = src;
+
+                    this.logo.width = img.width;
+                    this.logo.height = img.height;
+                }
+            },
+            setLogoUrl() {
+                if (
+                    this.job.company.logoUrl &&
+                    this.logo.width > 200 &&
+                    this.logo.height > 200
+                ) {
+                    return this.job.company.logoUrl;
+                } else {
+                    return false;
                 }
             },
             updateHead: function() {
