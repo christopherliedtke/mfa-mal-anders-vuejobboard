@@ -190,7 +190,11 @@
                 'MFA / ArzthelferIn Jobs' +
                     (filter.state ? ` | ${filter.state}` : '')
             "
-            desc="Finde aktuelle Stellenangebote (Teilzeit | Vollzeit) für MFA / ArzthelferInnen auf 'MFA mal anders' – Dein Karriereportal nur für MFAs / ArzthelferInnen."
+            :desc="
+                `Aktuelle Stellenangebote (Teilzeit | Vollzeit) für MFA / ArzthelferInnen ${
+                    filter.state ? filter.state + ' ' : ''
+                }– Dein Karriereportal nur für MFAs / ArzthelferInnen.`
+            "
             img=""
             :script="snippet"
         />
