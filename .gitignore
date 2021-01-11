@@ -1,6 +1,6 @@
 node_modules
 # /client
-**/uploads
+**/uploads/*
 
 # /server
 secrets*

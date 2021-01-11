@@ -1,11 +1,14 @@
 <template>
     <b-container class="dashboard py-5">
-        <h2>Dashboard</h2>
+        <h2>Mein Konto</h2>
         <b-tabs content-class="mt-3" :value="parseInt(query.tab)">
-            <b-tab title="Stellenanzeigen" @click="setQuery('tab', 0)">
+            <b-tab title="Profil" @click="setQuery('tab', 0)">
+                <MyProfile />
+            </b-tab>
+            <b-tab title="Stellenanzeigen" @click="setQuery('tab', 1)">
                 <MyJobsList></MyJobsList>
             </b-tab>
-            <b-tab title="Unternehmen" @click="setQuery('tab', 1)">
+            <b-tab title="Unternehmen" @click="setQuery('tab', 2)">
                 <MyCompaniesList></MyCompaniesList>
             </b-tab>
         </b-tabs>
@@ -17,11 +20,13 @@
 <script>
     import MyJobsList from "@/components/dashboard/MyJobsList.vue";
     import MyCompaniesList from "@/components/dashboard/MyCompaniesList.vue";
+    import MyProfile from "@/components/dashboard/MyProfile.vue";
     export default {
         name: "UserDashboardHome",
         components: {
             MyJobsList,
-            MyCompaniesList
+            MyCompaniesList,
+            MyProfile
         },
         data() {
             return {
@@ -32,6 +37,11 @@
         },
         mounted() {
             this.query.tab = this.$route.query.tab;
+        },
+        watch: {
+            "$route.query.tab"() {
+                this.query.tab = this.$route.query.tab;
+            }
         },
         methods: {
             setQuery(key, value) {

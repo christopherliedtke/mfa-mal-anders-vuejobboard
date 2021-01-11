@@ -178,5 +178,5 @@ module.exports.createSitemap = new CronJob(
     false, // start directly
     "Europe/Berlin", // timezone
     null, // context
-    true // run on init
+    config.sitemap.active // run on init
 );

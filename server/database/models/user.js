@@ -30,6 +30,10 @@ const UserSchema = new Schema(
             type: String,
             default: "basic",
         },
+        isAdmin: {
+            type: Boolean,
+            default: false,
+        },
         status: {
             type: String,
             default: "pending",

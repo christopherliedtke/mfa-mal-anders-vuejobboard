@@ -135,7 +135,6 @@ const AuthAccountVerificationSuccessful = () =>
 
 // User
 // import User from "@/views/user/index.vue";
-// import UserAccount from "@/views/user/account/index.vue";
 // import UserDashboard from "@/views/user/dashboard/index.vue";
 // import UserDashboardHome from "@/views/user/dashboard/UserDashboardHome.vue";
 // import UserDashboardJobPreview from "@/views/user/dashboard/jobs/preview/_jobId.vue";
@@ -143,8 +142,6 @@ const AuthAccountVerificationSuccessful = () =>
 // import UserDashboardEditCompany from "@/views/user/dashboard/companies/edit/_companyId.vue";
 const User = () =>
     import(/* webpackChunkName: "user" */ "@/views/user/index.vue");
-const UserAccount = () =>
-    import(/* webpackChunkName: "user" */ "@/views/user/account/index.vue");
 const UserDashboard = () =>
     import(/* webpackChunkName: "user" */ "@/views/user/dashboard/index.vue");
 const UserDashboardHome = () =>
@@ -396,14 +393,6 @@ const routes = [
         component: User,
         children: [
             {
-                path: "account",
-                name: "UserAccount",
-                component: UserAccount,
-                meta: {
-                    public: false
-                }
-            },
-            {
                 path: "dashboard",
                 component: UserDashboard,
                 children: [
@@ -538,9 +527,9 @@ router.beforeEach((to, from, next) => {
 
     const loggedIn = store.getters.loggedIn;
     const userActivate = store.getters.user.status === "active";
-    const userRole = store.getters.user.role;
+    const isAdmin = store.getters.user.isAdmin;
 
-    if (onlyAdmin && userRole !== "admin") {
+    if (onlyAdmin && !isAdmin) {
         return next("/");
     }
 

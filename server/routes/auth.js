@@ -36,6 +36,7 @@ router.get("/user-by-db", verifyToken, async (req, res) => {
                     user: {
                         _id: user._id,
                         role: user.role,
+                        isAdmin: user.isAdmin,
                         status: user.status,
                         gender: user.gender,
                         title: user.title,
@@ -99,6 +100,7 @@ router.post("/login", async (req, res) => {
                             user: {
                                 _id: user._id,
                                 role: user.role,
+                                isAdmin: user.isAdmin,
                                 status: user.status,
                                 gender: user.gender,
                                 title: user.title,
@@ -196,6 +198,7 @@ router.post("/register", async (req, res) => {
                         user: {
                             _id: user._id,
                             role: user.role,
+                            isAdmin: user.isAdmin,
                             status: user.status,
                             gender: user.gender,
                             title: user.title,

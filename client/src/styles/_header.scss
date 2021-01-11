@@ -51,7 +51,8 @@
                     }
                 }
 
-                &.router-link-exact-active {
+                &.router-link-exact-active,
+                &.active {
                     color: transparentize($color: $light, $amount: 0);
                 }
 

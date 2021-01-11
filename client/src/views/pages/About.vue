@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1 class="title">{{ title }}</h1>
-        <b-container class="privacy-policy py-5">
+        <b-container class="about py-5">
             <b-row>
                 <b-col cols="12" md="3" order="2" order-md="1">
                     <b-img

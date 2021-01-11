@@ -1,6 +1,10 @@
 <template>
     <div>
-        <b-button variant="danger" type="submit" v-b-modal.delete-account
+        <b-button
+            variant="danger"
+            size="sm"
+            type="submit"
+            v-b-modal.delete-account
             ><Fa class="mr-2" icon="trash-alt"></Fa>Account löschen</b-button
         >
         <b-modal

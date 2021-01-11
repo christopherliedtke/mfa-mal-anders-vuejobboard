@@ -73,31 +73,67 @@
                         </b-nav-item>
                     </b-navbar-nav>
                     <b-navbar-nav class="mt-3 mt-lg-0">
-                        <b-nav-item to="/user/dashboard" v-if="loggedIn"
-                            ><Fa class="mr-1" icon="columns" size="lg" />Meine
-                            Anzeigen</b-nav-item
+                        <b-nav-item
+                            to="/user/dashboard"
+                            v-if="loggedIn"
+                            @mouseover="showSub('account')"
+                            @mouseleave="hideSub('account')"
                         >
-                        <b-nav-item to="/user/account" v-if="loggedIn"
-                            ><Fa class="mr-1" icon="user-circle" size="lg" />
-                            <span
-                                v-if="
-                                    $store.state.auth.user.firstName &&
-                                        $store.state.auth.user.lastName
-                                "
-                            >
-                                {{
-                                    $store.state.auth.user.firstName.substring(
-                                        0,
-                                        1
-                                    ) +
-                                        $store.state.auth.user.lastName.substring(
-                                            0,
-                                            1
-                                        )
-                                }}
-                            </span>
+                            <b-avatar
+                                class="mr-1 text-primary"
+                                variant="light"
+                                size="sm"
+                                :src="user.image"
+                            />Mein Konto
+                            <Fa class="ml-1" icon="chevron-down" size="xs" />
+                            <div id="account" class="sub-menu">
+                                <b-nav-item
+                                    to="/user/dashboard?tab=0"
+                                    :active="!$route.query.tab"
+                                    :active-class="
+                                        $route.query.tab == 0
+                                            ? 'router-link-active'
+                                            : ''
+                                    "
+                                    :exact-active-class="
+                                        $route.query.tab == 0
+                                            ? 'router-link-active'
+                                            : ''
+                                    "
+                                    >Profil</b-nav-item
+                                >
+                                <b-nav-item
+                                    to="/user/dashboard?tab=1"
+                                    :active-class="
+                                        $route.query.tab == 1
+                                            ? 'router-link-active'
+                                            : ''
+                                    "
+                                    :exact-active-class="
+                                        $route.query.tab == 1
+                                            ? 'router-link-active'
+                                            : ''
+                                    "
+                                    >Stellenanzeigen</b-nav-item
+                                >
+                                <b-nav-item
+                                    to="/user/dashboard?tab=2"
+                                    :active-class="
+                                        $route.query.tab == 2
+                                            ? 'router-link-active'
+                                            : ''
+                                    "
+                                    :exact-active-class="
+                                        $route.query.tab == 2
+                                            ? 'router-link-active'
+                                            : ''
+                                    "
+                                    >Unternehmen</b-nav-item
+                                >
+                            </div>
                         </b-nav-item>
-                        <b-nav-item to="/admin" v-if="user.role === 'admin'"
+
+                        <b-nav-item to="/admin" v-if="user.isAdmin"
                             ><Fa icon="key" size="lg"
                         /></b-nav-item>
                         <b-nav-item v-if="loggedIn"><LogoutBtn /></b-nav-item>

@@ -68,7 +68,7 @@
                             <strong
                                 >ausschließlich MFA / ArzthelferInnen</strong
                             >
-                            ohne die großen
+                            ohne die teuren
                             <strong>Streuverluste</strong>
                             der allgemeinen Jobbörsen.
                         </p>
@@ -169,7 +169,7 @@
             </b-row>
         </b-container>
 
-        <b-container id="testimonials" class="mb-5 pb-md-5" fluid>
+        <!-- <b-container id="testimonials" class="mb-5 pb-md-5" fluid>
             <h2 class="h4 text-center">Feedback</h2>
             <h3 class="h1 text-center bold mb-4">Was unsere Kunden sagen</h3>
             <b-container
@@ -204,7 +204,7 @@
                     </b-col>
                 </b-row>
             </b-container>
-        </b-container>
+        </b-container> -->
 
         <b-container fluid class="bg-light-shade py-5 mb-5" id="more-info">
             <b-container>

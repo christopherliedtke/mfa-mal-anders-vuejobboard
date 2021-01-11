@@ -68,14 +68,16 @@
 
             <div class="d-flex justify-content-between my-4">
                 <b-button
-                    :variant="disabled ? 'primary' : 'outline-secondary'"
+                    :variant="disabled ? 'primary' : 'outline-danger'"
+                    size="sm"
                     @click="disabled = !disabled"
-                >
+                    ><Fa v-if="disabled" class="mr-2" icon="edit" />
                     {{ disabled ? "Bearbeiten" : "Abbrechen" }}
                 </b-button>
                 <b-button
                     v-if="!disabled"
                     variant="success"
+                    size="sm"
                     @click.prevent="onSubmit"
                 >
                     <Fa v-if="success" icon="check" class="mr-2" />

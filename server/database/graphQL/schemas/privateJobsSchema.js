@@ -112,23 +112,20 @@ const mutation = new GraphQLObjectType({
                 const addObj = { ...args, userId: req.user._id };
 
                 // ! temporary - only for admin
-                args.paidAt && req.user.role === "admin"
+                args.paidAt && req.user.isAdmin
                     ? (addObj.paidAt = new Date(args.paidAt))
                     : delete addObj.paidAt;
-                args.paidExpiresAt && req.user.role === "admin"
+                args.paidExpiresAt && req.user.isAdmin
                     ? (addObj.paidExpiresAt = new Date(args.paidExpiresAt))
                     : delete addObj.paidExpiresAt;
-                args.paidAmount && req.user.role === "admin"
+                args.paidAmount && req.user.isAdmin
                     ? (addObj.paidAmount = args.paidAmount)
                     : delete addObj.paidAmount;
-                if (
-                    args.paidExpiresAt > new Date() &&
-                    req.user.role === "admin"
-                ) {
+                if (args.paidExpiresAt > new Date() && req.user.isAdmin) {
                     addObj.paid = true;
                     addObj.status = "published";
                 }
-                if (args.refreshFrequency && req.user.role != "admin") {
+                if (args.refreshFrequency && req.user.isAdmin) {
                     delete addObj.refreshFrequency;
                 }
                 // !
@@ -219,23 +216,20 @@ const mutation = new GraphQLObjectType({
                 delete updateObj._id;
 
                 // !temporary - only for admin
-                args.paidAt && req.user.role === "admin"
+                args.paidAt && req.user.isAdmin
                     ? (updateObj.paidAt = new Date(args.paidAt))
                     : delete updateObj.paidAt;
-                args.paidExpiresAt && req.user.role === "admin"
+                args.paidExpiresAt && req.user.isAdmin
                     ? (updateObj.paidExpiresAt = new Date(args.paidExpiresAt))
                     : delete updateObj.paidExpiresAt;
-                args.paidAmount && req.user.role === "admin"
+                args.paidAmount && req.user.isAdmin
                     ? (updateObj.paidAmount = args.paidAmount)
                     : delete updateObj.paidAmount;
-                if (
-                    args.paidExpiresAt > new Date() &&
-                    req.user.role === "admin"
-                ) {
+                if (args.paidExpiresAt > new Date() && req.user.isAdmin) {
                     updateObj.paid = true;
                     updateObj.status = "published";
                 }
-                if (args.refreshFrequency && req.user.role != "admin") {
+                if (args.refreshFrequency && req.user.isAdmin) {
                     delete updateObj.refreshFrequency;
                 }
                 // !

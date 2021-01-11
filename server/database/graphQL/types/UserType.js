@@ -1,4 +1,9 @@
-const { GraphQLObjectType, GraphQLString, GraphQLFloat } = require("graphql");
+const {
+    GraphQLObjectType,
+    GraphQLString,
+    GraphQLFloat,
+    GraphQLBoolean,
+} = require("graphql");
 
 // #User Type
 const UserType = new GraphQLObjectType({
@@ -34,11 +39,14 @@ const UserType = new GraphQLObjectType({
         role: {
             type: GraphQLString,
         },
+        isAdmin: {
+            type: GraphQLBoolean,
+        },
         status: {
             type: GraphQLString,
         },
         accepted: {
-            type: GraphQLString,
+            type: GraphQLBoolean,
         },
     }),
 });

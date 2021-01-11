@@ -129,7 +129,7 @@
             />
             <b-form-input
                 class="bg-light-shade mt-2"
-                v-if="$store.state.auth.user.role === 'admin'"
+                v-if="$store.state.auth.user.isAdmin"
                 type="url"
                 v-model="company.logoUrl"
                 placeholder="ADMIN - URL to image (incl. https://)"
