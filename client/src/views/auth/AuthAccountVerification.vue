@@ -94,7 +94,7 @@
                                 noAutoHide: true
                             }
                         );
-                        this.$router.push("/user/dashboard");
+                        this.$router.push("/user/dashboard?tab=1");
                     } else {
                         this.checkUserStatus();
                     }

@@ -545,11 +545,11 @@ router.beforeEach((to, from, next) => {
     }
 
     if (!isPublic && onlyWhenPending && loggedIn && userActivate) {
-        return next("/user/dashboard");
+        return next("/user/dashboard?tab=1");
     }
 
     if (loggedIn && onlyWhenLoggedOut) {
-        return next("/user/dashboard");
+        return next("/user/dashboard?tab=1");
     }
 
     next();

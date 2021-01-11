@@ -115,7 +115,7 @@
             </b-row>
             <div class="d-flex flex-wrap justify-content-center mt-4">
                 <b-button
-                    to="/dashboard"
+                    to="/auth/register"
                     variant="secondary"
                     size="lg"
                     class="mx-1 my-1"

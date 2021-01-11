@@ -60,7 +60,7 @@
                         }
                     );
 
-                    this.$router.push({ path: "/user/dashboard" });
+                    this.$router.push({ path: "/user/dashboard?tab=1" });
                 }
             }
         }

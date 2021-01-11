@@ -81,7 +81,7 @@
                     if (this.$store.state.auth.user.status === "pending") {
                         this.$router.push("/auth/account/verification");
                     } else if (this.$store.state.auth.loggedIn) {
-                        this.$router.push("/user/dashboard");
+                        this.$router.push("/user/dashboard?tab=1");
                     }
                 }
 
