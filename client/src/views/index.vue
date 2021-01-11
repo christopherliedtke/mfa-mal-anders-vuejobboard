@@ -284,7 +284,7 @@
         </b-container>
 
         <Head
-            title="Dein Karriereportal nur für MFAs"
+            title="Das Karriereportal nur für MFAs"
             desc="Job- und Karriereportal für Medizinische Fachangestellte (MFA) / ArzthelferIn | Stellenangebote | Weiterbildungen | Alternative Jobs | Gehalt | Bewerbung"
             img=""
             :script="snippet"

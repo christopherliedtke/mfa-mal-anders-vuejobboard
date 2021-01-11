@@ -89,7 +89,10 @@
                             <div id="account" class="sub-menu">
                                 <b-nav-item
                                     to="/user/dashboard?tab=0"
-                                    :active="!$route.query.tab"
+                                    :active="
+                                        $route.path == '/user/dashboard' &&
+                                            !$route.query.tab
+                                    "
                                     :active-class="
                                         $route.query.tab == 0
                                             ? 'router-link-active'
