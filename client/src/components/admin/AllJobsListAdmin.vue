@@ -676,11 +676,21 @@
                 if (
                     item.status === "published" &&
                     item.paid === true &&
+                    item.paidAt <= new Date() &&
                     item.paidExpiresAt > new Date() &&
                     new Date(item.applicationDeadline) >
                         new Date(new Date().valueOf() - 1000 * 60 * 60 * 24)
-                )
+                ) {
                     return "table-success";
+                }
+                if (
+                    item.status === "unpublished" ||
+                    new Date(item.applicationDeadline) <
+                        new Date(new Date().valueOf() - 1000 * 60 * 60 * 24) ||
+                    item.paidExpiresAt < new Date()
+                ) {
+                    return "table-danger";
+                }
             }
         }
     };

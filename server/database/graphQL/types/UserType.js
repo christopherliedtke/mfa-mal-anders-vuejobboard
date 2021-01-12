@@ -39,6 +39,9 @@ const UserType = new GraphQLObjectType({
         role: {
             type: GraphQLString,
         },
+        isEmployer: {
+            type: GraphQLBoolean,
+        },
         isAdmin: {
             type: GraphQLBoolean,
         },

@@ -30,6 +30,10 @@ const UserSchema = new Schema(
             type: String,
             default: "basic",
         },
+        isEmployer: {
+            type: Boolean,
+            default: false,
+        },
         isAdmin: {
             type: Boolean,
             default: false,

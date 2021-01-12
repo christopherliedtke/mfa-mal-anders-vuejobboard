@@ -36,6 +36,7 @@ router.get("/user-by-db", verifyToken, async (req, res) => {
                     user: {
                         _id: user._id,
                         role: user.role,
+                        isEmployer: user.isEmployer,
                         isAdmin: user.isAdmin,
                         status: user.status,
                         gender: user.gender,
@@ -100,6 +101,7 @@ router.post("/login", async (req, res) => {
                             user: {
                                 _id: user._id,
                                 role: user.role,
+                                isEmployer: user.isEmployer,
                                 isAdmin: user.isAdmin,
                                 status: user.status,
                                 gender: user.gender,
@@ -188,6 +190,7 @@ router.post("/register", async (req, res) => {
                     firstName,
                     lastName,
                     email,
+                    isEmployer: true,
                     password: hashedPw,
                     accepted: true,
                 });
@@ -198,6 +201,7 @@ router.post("/register", async (req, res) => {
                         user: {
                             _id: user._id,
                             role: user.role,
+                            isEmployer: user.isEmployer,
                             isAdmin: user.isAdmin,
                             status: user.status,
                             gender: user.gender,

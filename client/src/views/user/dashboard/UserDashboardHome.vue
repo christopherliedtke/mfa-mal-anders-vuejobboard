@@ -5,10 +5,18 @@
             <b-tab title="Profil" @click="setQuery('tab', 0)">
                 <MyProfile />
             </b-tab>
-            <b-tab title="Stellenanzeigen" @click="setQuery('tab', 1)">
+            <b-tab
+                v-if="$store.state.auth.user.isEmployer"
+                title="Stellenanzeigen"
+                @click="setQuery('tab', 1)"
+            >
                 <MyJobsList></MyJobsList>
             </b-tab>
-            <b-tab title="Unternehmen" @click="setQuery('tab', 2)">
+            <b-tab
+                v-if="$store.state.auth.user.isEmployer"
+                title="Unternehmen"
+                @click="setQuery('tab', 2)"
+            >
                 <MyCompaniesList></MyCompaniesList>
             </b-tab>
         </b-tabs>
