@@ -118,6 +118,8 @@
         methods: {
             async getUserData() {
                 try {
+                    this.$store.dispatch("setOverlay", true);
+
                     const userData = await this.$axios.post(
                         `/api/user/${this.apiUsersSchema}`,
                         {
@@ -147,6 +149,8 @@
                 } catch (err) {
                     //
                 }
+
+                this.$store.dispatch("setOverlay", false);
             },
             async onSubmit() {
                 if (this.formValidation()) {

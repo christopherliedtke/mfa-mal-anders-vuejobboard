@@ -102,6 +102,8 @@
         },
         methods: {
             async getCompaniesByUserId() {
+                this.$store.dispatch("setOverlay", true);
+
                 try {
                     const response = await this.$axios.post(
                         "/api/companies/private",
@@ -133,6 +135,8 @@
                         }
                     );
                 }
+
+                this.$store.dispatch("setOverlay", false);
             },
             async deleteCompany(companyId) {
                 try {

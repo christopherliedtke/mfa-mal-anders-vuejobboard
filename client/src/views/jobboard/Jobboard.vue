@@ -145,13 +145,6 @@
                             >
                         </b-form-select>
                     </b-form>
-                    <!-- <b-button
-                        to="/auth/register"
-                        block
-                        variant="primary"
-                        class="my-1"
-                        >Stellenanzeige schalten</b-button
-                    > -->
                     <div class="small text-right mb-3 pr-3 pt-1">
                         <b-link to="/page/fuer-arbeitgeber"
                             >Stellenanzeige schalten</b-link

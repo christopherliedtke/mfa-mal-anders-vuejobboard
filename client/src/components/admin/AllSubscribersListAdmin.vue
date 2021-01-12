@@ -198,6 +198,8 @@
         },
         methods: {
             async getAllSubscribers() {
+                this.$store.dispatch("setOverlay", true);
+
                 try {
                     const response = await this.$axios.post(
                         "/api/subscriber/admin",
@@ -221,6 +223,8 @@
                 } catch (err) {
                     this.error = true;
                 }
+
+                this.$store.dispatch("setOverlay", false);
             },
             showDeleteSubscriberModal(subscriber) {
                 this.subscriberToDelete = subscriber;

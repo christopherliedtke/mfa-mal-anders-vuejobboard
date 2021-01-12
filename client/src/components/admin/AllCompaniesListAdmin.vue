@@ -236,6 +236,8 @@
         },
         methods: {
             async getAllJobs() {
+                this.$store.dispatch("setOverlay", true);
+
                 try {
                     const response = await this.$axios.post("/api/jobs/admin", {
                         query: `
@@ -263,6 +265,8 @@
                         }
                     );
                 }
+
+                this.$store.dispatch("setOverlay", false);
             },
             async getAllCompanies() {
                 try {

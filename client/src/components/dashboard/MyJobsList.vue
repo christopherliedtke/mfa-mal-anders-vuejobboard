@@ -272,6 +272,8 @@
         },
         methods: {
             async getJobsByUserId() {
+                this.$store.dispatch("setOverlay", true);
+
                 try {
                     const response = await this.$axios.post(
                         "/api/jobs/private",
@@ -316,6 +318,8 @@
                         }
                     );
                 }
+
+                this.$store.dispatch("setOverlay", false);
             },
             async updateJobStatus(jobId, status) {
                 try {
