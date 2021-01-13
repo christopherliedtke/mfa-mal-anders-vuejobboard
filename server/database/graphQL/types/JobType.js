@@ -17,13 +17,13 @@ const JobType = new GraphQLObjectType({
         status: {
             type: GraphQLString,
         },
+        publishedAt: {
+            type: GraphQLFloat,
+        },
         paid: {
             type: GraphQLBoolean,
         },
         paidAt: {
-            type: GraphQLFloat,
-        },
-        paymentReceivedAt: {
             type: GraphQLFloat,
         },
         paidExpiresAt: {

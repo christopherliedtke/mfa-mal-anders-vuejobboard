@@ -55,7 +55,7 @@
                         {{
                             job.paidAt
                                 ? new Date(
-                                      parseInt(job.paidAt)
+                                      parseInt(job.publishedAt || job.paidAt)
                                   ).toLocaleDateString()
                                 : "-"
                         }}
@@ -434,6 +434,7 @@
                                             _id
                                             createdAt
                                             updatedAt
+                                            publishedAt
                                             paidAt
                                             title
                                             description

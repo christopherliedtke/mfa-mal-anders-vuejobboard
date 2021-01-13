@@ -33,8 +33,8 @@ router.post("/checkout-completed", async (req, res) => {
 
         if (intent.status === "succeeded") {
             const status = "published";
+            const publishedAt = new Date();
             const paidAt = new Date();
-            const paymentReceivedAt = new Date();
             const paidExpiresAt = new Date();
             paidExpiresAt.setDate(
                 paidExpiresAt.getDate() + config.stripe.paymentExpirationDays
@@ -54,9 +54,9 @@ router.post("/checkout-completed", async (req, res) => {
                 { _id: jobId, userId: userId },
                 {
                     status,
+                    publishedAt,
                     paid: true,
                     paidAt,
-                    paymentReceivedAt,
                     paidExpiresAt,
                     paidAmount: amount,
                     refreshFrequency,

@@ -11,6 +11,7 @@ export const saveJobMixin = {
                                         : ""
                                 } 
                                 title: "${job.title}"
+                                publishedAt: ${job.publishedAt}
                                 paidAt: ${job.paidAt}
                                 paidExpiresAt: ${job.paidExpiresAt}
                                 paidAmount: ${job.paidAmount}

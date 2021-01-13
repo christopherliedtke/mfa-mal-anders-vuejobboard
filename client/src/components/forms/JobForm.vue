@@ -19,6 +19,11 @@
                 class="bg-light-shade border-radius1 p-3 mt-3"
             >
                 <h6>ADMIN</h6>
+                <label for="created">publishedAt</label>
+                <b-form-datepicker
+                    v-model="publishedAt"
+                    placeholder="Veröffentlicht am..."
+                />
                 <label for="created">paidAt</label>
                 <b-form-datepicker
                     v-model="paidAt"
@@ -543,6 +548,7 @@
             return {
                 job: {
                     _id: this.$route.params.jobId,
+                    publishedAt: null,
                     paidAt: null,
                     paidExpiresAt: null,
                     paidAmount: 0,
@@ -596,6 +602,14 @@
             };
         },
         computed: {
+            publishedAt: {
+                get() {
+                    return new Date(this.job.publishedAt);
+                },
+                set(value) {
+                    this.job.publishedAt = new Date(value).getTime();
+                }
+            },
             paidAt: {
                 get() {
                     return new Date(this.job.paidAt);
@@ -629,6 +643,7 @@
                             query {
                                 job(_id: "${id}") {
                                     _id
+                                    publishedAt
                                     paidAt
                                     paidExpiresAt
                                     paidAmount

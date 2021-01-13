@@ -7,14 +7,14 @@ const JobSchema = new Schema(
             type: String,
             default: "draft",
         },
+        publishedAt: {
+            type: Date,
+        },
         paid: {
             type: Boolean,
             default: false,
         },
         paidAt: {
-            type: Date,
-        },
-        paymentReceivedAt: {
             type: Date,
         },
         paidExpiresAt: {

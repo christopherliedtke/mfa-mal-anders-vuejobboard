@@ -77,7 +77,7 @@
                             Veröffentlicht:
                             {{
                                 new Date(
-                                    parseInt(job.paidAt)
+                                    parseInt(job.publishedAt || job.paidAt)
                                 ).toLocaleDateString()
                             }}
                         </div>

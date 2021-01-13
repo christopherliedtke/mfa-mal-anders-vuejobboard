@@ -37,7 +37,7 @@ module.exports.refreshJobs = new CronJob(
             console.log("Refreshing Jobs: ", jobsToRefresh);
             await Job.updateMany(
                 { _id: { $in: jobsToRefresh } },
-                { paidAt: new Date() }
+                { publishedAt: new Date() }
             );
         } catch (error) {
             console.log("Error on refreshJobs CRON: ", error);

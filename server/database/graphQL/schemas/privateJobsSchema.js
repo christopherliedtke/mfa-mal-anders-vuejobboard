@@ -56,6 +56,7 @@ const mutation = new GraphQLObjectType({
             type: JobType,
             args: {
                 title: { type: new GraphQLNonNull(GraphQLString) },
+                publishedAt: { type: GraphQLFloat },
                 paidAt: { type: GraphQLFloat },
                 paidExpiresAt: { type: GraphQLFloat },
                 paidAmount: { type: GraphQLFloat },
@@ -112,6 +113,9 @@ const mutation = new GraphQLObjectType({
                 const addObj = { ...args, userId: req.user._id };
 
                 // ! temporary - only for admin
+                args.publishedAt && req.user.isAdmin
+                    ? (addObj.publishedAt = new Date(args.publishedAt))
+                    : delete addObj.publishedAt;
                 args.paidAt && req.user.isAdmin
                     ? (addObj.paidAt = new Date(args.paidAt))
                     : delete addObj.paidAt;
@@ -125,7 +129,7 @@ const mutation = new GraphQLObjectType({
                     addObj.paid = true;
                     addObj.status = "published";
                 }
-                if (args.refreshFrequency && req.user.isAdmin) {
+                if (args.refreshFrequency && !req.user.isAdmin) {
                     delete addObj.refreshFrequency;
                 }
                 // !
@@ -159,6 +163,7 @@ const mutation = new GraphQLObjectType({
             args: {
                 _id: { type: GraphQLString },
                 title: { type: new GraphQLNonNull(GraphQLString) },
+                publishedAt: { type: GraphQLFloat },
                 paidAt: { type: GraphQLFloat },
                 paidExpiresAt: { type: GraphQLFloat },
                 paidAmount: { type: GraphQLFloat },
@@ -216,6 +221,9 @@ const mutation = new GraphQLObjectType({
                 delete updateObj._id;
 
                 // !temporary - only for admin
+                args.publishedAt && req.user.isAdmin
+                    ? (updateObj.publishedAt = new Date(args.publishedAt))
+                    : delete updateObj.publishedAt;
                 args.paidAt && req.user.isAdmin
                     ? (updateObj.paidAt = new Date(args.paidAt))
                     : delete updateObj.paidAt;
@@ -229,7 +237,7 @@ const mutation = new GraphQLObjectType({
                     updateObj.paid = true;
                     updateObj.status = "published";
                 }
-                if (args.refreshFrequency && req.user.isAdmin) {
+                if (args.refreshFrequency && !req.user.isAdmin) {
                     delete updateObj.refreshFrequency;
                 }
                 // !

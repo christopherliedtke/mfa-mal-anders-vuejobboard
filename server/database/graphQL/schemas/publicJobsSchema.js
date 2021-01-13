@@ -36,9 +36,9 @@ const RootQuery = new GraphQLObjectType({
                 const jobs = await Job.find({
                     status: "published",
                     paid: true,
-                    paidAt: {
-                        $lte: new Date(),
-                    },
+                    // publishedAt: {
+                    //     $lte: new Date(),
+                    // },
                     paidExpiresAt: {
                         $gte: new Date(),
                     },
@@ -50,11 +50,16 @@ const RootQuery = new GraphQLObjectType({
                 })
                     .populate("company")
                     .sort({
+                        publishedAt: "desc",
                         paidAt: "desc",
                         createdAt: "desc",
                     });
 
-                return jobs;
+                return jobs.filter((job) =>
+                    job.publishedAt && job.publishedAt > new Date()
+                        ? false
+                        : true
+                );
             },
         },
     },

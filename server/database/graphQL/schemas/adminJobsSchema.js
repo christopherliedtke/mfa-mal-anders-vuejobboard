@@ -57,9 +57,9 @@ const mutation = new GraphQLObjectType({
                 _id: { type: new GraphQLNonNull(GraphQLString) },
                 title: { type: GraphQLString },
                 status: { type: GraphQLString },
+                publishedAt: { type: GraphQLFloat },
                 paid: { type: GraphQLBoolean },
                 paidAt: { type: GraphQLFloat },
-                paymentReceivedAt: { type: GraphQLFloat },
                 paidExpiresAt: { type: GraphQLFloat },
                 paidAmount: { type: GraphQLFloat },
                 refreshFrequency: { type: GraphQLFloat },
@@ -133,6 +133,14 @@ const mutation = new GraphQLObjectType({
                     if (args.paidExpiresAt > new Date()) {
                         updateObj.paid = true;
                     }
+                }
+
+                if (args.publishedAt) {
+                    updateObj.publishedAt = new Date(args.publishedAt);
+                }
+
+                if (args.status === "published" && !args.publishedAt) {
+                    updateObj.publishedAt = new Date();
                 }
 
                 const response = await Job.updateOne(

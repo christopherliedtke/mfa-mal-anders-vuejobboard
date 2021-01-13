@@ -17,6 +17,7 @@ const actions = {
                         jobs {
                             _id
                             createdAt
+                            publishedAt
                             paidAt
                             title
                             description

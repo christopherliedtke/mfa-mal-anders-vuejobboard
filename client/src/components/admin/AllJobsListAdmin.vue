@@ -44,31 +44,11 @@
             <template v-slot:cell(updatedAt)="row">
                 {{ new Date(row.value).toLocaleString() }}
             </template>
-            <template v-slot:cell(paidAt)="row">
+            <template v-slot:cell(publishedAt)="row">
                 {{ row.value && new Date(row.value).toLocaleString() }}
             </template>
-            <template v-slot:cell(paymentReceivedAt)="row">
-                {{ row.value ? new Date(row.value).toLocaleString() : "" }}
-                <b-button
-                    v-if="!row.value"
-                    @click="
-                        updateJob(
-                            row.item._id,
-                            'paymentReceivedAt',
-                            new Date().getTime()
-                        )
-                    "
-                    variant="danger"
-                    size="sm"
-                    >SetToday</b-button
-                >
-                <b-button
-                    v-else
-                    @click="updateJob(row.item._id, 'paymentReceivedAt', 0)"
-                    variant="outline-danger"
-                    size="sm"
-                    ><Fa icon="trash-alt"
-                /></b-button>
+            <template v-slot:cell(paidAt)="row">
+                {{ row.value && new Date(row.value).toLocaleString() }}
             </template>
             <template v-slot:cell(applicationDeadline)="row">
                 {{ row.value && new Date(row.value).toLocaleString() }}
@@ -272,15 +252,15 @@
                         sortable: true
                     },
                     {
+                        key: "publishedAt",
+                        sortable: true
+                    },
+                    {
                         key: "paid",
                         sortable: true
                     },
                     {
                         key: "paidAt",
-                        sortable: true
-                    },
-                    {
-                        key: "paymentReceivedAt",
                         sortable: true
                     },
                     {
@@ -424,14 +404,13 @@
                                     _id
                                     createdAt
                                     updatedAt
-                                    paidAt
-                                    paymentReceivedAt
                                     paidExpiresAt
                                     paidAmount
                                     refreshFrequency
                                     status
                                     applicationDeadline
                                     paid
+                                    publishedAt
                                     paidAt
                                     paidExpiresAt
                                     sentReminder
@@ -484,12 +463,11 @@
                                     _id
                                     createdAt
                                     updatedAt
-                                    paidAt
-                                    paymentReceivedAt
                                     paidExpiresAt
                                     status
                                     applicationDeadline
                                     paid
+                                    publishedAt
                                     paidAt
                                     paidExpiresAt
                                     title
@@ -631,29 +609,6 @@
                     );
                 }
             },
-            // async setPaymentReceivedAt(jobId) {
-            //     //
-            //     this.$store.dispatch("setOverlay", true);
-
-            //     try {
-            //        const response = await this.$axios.post('/api/jobs/admin', {
-            //             query: `
-            //                 mutation {
-            //                     updateJob(_id: "${jobId}") {
-            //                         paymentReceivedAt
-            //                     }
-            //                 }
-            //             `
-            //         })
-            //     } catch (err) {
-
-            //     }
-
-            //     this.$store.dispatch("setOverlay", false);
-            // },
-            // async deletePaymentReceivedAt() {
-            //     //
-            // },
             socialShareToClipBoard(jobId) {
                 let el = document.createElement("textarea");
 
@@ -676,7 +631,7 @@
                 if (
                     item.status === "published" &&
                     item.paid === true &&
-                    item.paidAt <= new Date() &&
+                    item.publishedAt <= new Date() &&
                     item.paidExpiresAt > new Date() &&
                     new Date(item.applicationDeadline) >
                         new Date(new Date().valueOf() - 1000 * 60 * 60 * 24)
