@@ -5,12 +5,13 @@ module.exports = {
     devServer: {
         proxy: {
             "/api": {
-                target: "http://localhost:5000"
+                target: "http://localhost:5001"
             },
             "/sitemap.xml": {
-                target: "http://localhost:5000"
+                target: "http://localhost:5001"
             }
-        }
+        },
+        port: 8081
     },
     chainWebpack: config => {
         config.module

@@ -340,13 +340,13 @@
             "
             :img="
                 job.imageUrl ||
-                    setLogoUrl() ||
+                    job.company.logoUrl ||
                     '/img/MfaMalAnders_NeuesStellenangebot_1200.jpg'
             "
             :twitterCard="
                 job.imageUrl
                     ? 'summary_large_image'
-                    : setLogoUrl()
+                    : job.company.logoUrl
                     ? 'summary'
                     : 'summary_large_image'
             "
@@ -517,17 +517,6 @@
 
                     this.logo.width = img.width;
                     this.logo.height = img.height;
-                }
-            },
-            setLogoUrl() {
-                if (
-                    this.job.company.logoUrl &&
-                    this.logo.width > 200 &&
-                    this.logo.height > 200
-                ) {
-                    return this.job.company.logoUrl;
-                } else {
-                    return false;
                 }
             },
             updateHead: function() {

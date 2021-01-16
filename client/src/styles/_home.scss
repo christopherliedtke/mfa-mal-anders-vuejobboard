@@ -1,10 +1,10 @@
 .home {
     .hero {
-        background: radial-gradient(closest-side, #f8faf977 0%, #f8faffee 100%),
+        background: radial-gradient(closest-side, #f8faf977 50%, #f8faffff 100%),
             url("~@/assets/img/hero_map_1828.jpg") center center;
         background-size: cover;
         background-blend-mode: lighten;
-        min-height: 60vh;
+        min-height: 70vh;
 
         @media screen and (max-width: $break-menu) {
             min-height: calc(82vh - 70px);
