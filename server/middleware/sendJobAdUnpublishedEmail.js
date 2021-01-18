@@ -13,14 +13,16 @@ const sendJobAdUnpublishedEmail = async () => {
 
     console.log("jobs: ", jobs);
 
-    const emailData = jobs.map((job) => {
-        return {
-            from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
-            to: job.userId.email,
-            replyTo: config.website.contactEmail,
-            bcc: config.website.contactEmail,
-            subject: `Ihre Stellenanzeige ist abgelaufen – '${job.title}'`,
-            html: `
+    const emailData = jobs
+        .filter((job) => !job.userId.admin)
+        .map((job) => {
+            return {
+                from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
+                to: job.userId.email,
+                replyTo: config.website.contactEmail,
+                bcc: config.website.contactEmail,
+                subject: `Ihre Stellenanzeige ist abgelaufen – '${job.title}'`,
+                html: `
                 <p>
                     ${
                         job.userId.gender === "Herr"
@@ -29,10 +31,10 @@ const sendJobAdUnpublishedEmail = async () => {
                             ? "Sehr geehrte Frau"
                             : "Sehr geehrte/r Frau/Herr"
                     } ${
-                job.userId.title && job.userId.title != "null"
-                    ? job.userId.title + " "
-                    : ""
-            }${job.userId.lastName},
+                    job.userId.title && job.userId.title != "null"
+                        ? job.userId.title + " "
+                        : ""
+                }${job.userId.lastName},
                 </p>
                 <p>
                     wir möchten uns noch einmal für die Schaltung Ihrer Stellenanzeige '${
@@ -62,15 +64,16 @@ const sendJobAdUnpublishedEmail = async () => {
                     Webseite: www.mfa-mal-anders.de
                 </p>
                 `,
-            attachments: [
-                {
-                    filename: "logo_800.png",
-                    path: __dirname + "/../../client/public/img/logo_800.png",
-                    cid: "mfa-mal-anders-logo", //same cid value as in the html img src
-                },
-            ],
-        };
-    });
+                attachments: [
+                    {
+                        filename: "logo_800.png",
+                        path:
+                            __dirname + "/../../client/public/img/logo_800.png",
+                        cid: "mfa-mal-anders-logo", //same cid value as in the html img src
+                    },
+                ],
+            };
+        });
 
     const emailSent = await Promise.all(
         emailData.map((data) => emailService.sendMail(data))
