@@ -48,14 +48,13 @@
                             />
                             <b-input-group-append>
                                 <b-button
-                                    ><Fa
-                                        icon="times"
-                                        @click.prevent="
-                                            () => {
-                                                filter.searchTerm = '';
-                                                setQuery();
-                                            }
-                                        "
+                                    @click.prevent="
+                                        () => {
+                                            filter.searchTerm = '';
+                                            setQuery();
+                                        }
+                                    "
+                                    ><Fa icon="times"
                                 /></b-button>
                             </b-input-group-append>
                         </b-input-group>
@@ -110,14 +109,13 @@
                             />
                             <b-input-group-append>
                                 <b-button
-                                    ><Fa
-                                        icon="times"
-                                        @click.prevent="
-                                            () => {
-                                                filter.location = '';
-                                                setQuery();
-                                            }
-                                        "
+                                    @click.prevent="
+                                        () => {
+                                            filter.location = '';
+                                            setQuery();
+                                        }
+                                    "
+                                    ><Fa icon="times"
                                 /></b-button>
                             </b-input-group-append>
                         </b-input-group>
