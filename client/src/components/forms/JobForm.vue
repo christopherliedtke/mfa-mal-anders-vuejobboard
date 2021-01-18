@@ -378,6 +378,17 @@
                 trim
             />
 
+            <label for="company-zip-code">PLZ *</label>
+            <b-form-input
+                type="number"
+                v-model="job.company.zipCode"
+                :state="validated ? (job.company.zipCode ? true : false) : null"
+                id="company-zip-code"
+                placeholder="PLZ eingeben..."
+                required
+                trim
+            />
+
             <label for="company-location">Ort *</label>
             <b-form-input
                 type="text"
@@ -389,17 +400,6 @@
                 "
                 id="company-location"
                 placeholder="Ort eingeben..."
-                required
-                trim
-            />
-
-            <label for="company-zip-code">PLZ *</label>
-            <b-form-input
-                type="number"
-                v-model="job.company.zipCode"
-                :state="validated ? (job.company.zipCode ? true : false) : null"
-                id="company-zip-code"
-                placeholder="PLZ eingeben..."
                 required
                 trim
             />
