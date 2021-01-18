@@ -11,8 +11,6 @@ const sendJobAdUnpublishedEmail = async () => {
         status: "published",
     }).populate("userId");
 
-    console.log("jobs: ", jobs);
-
     const emailData = jobs
         .filter((job) => !job.userId.admin)
         .map((job) => {
