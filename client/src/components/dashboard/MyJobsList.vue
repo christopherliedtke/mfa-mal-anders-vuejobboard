@@ -284,6 +284,7 @@
                                     _id
                                     createdAt
                                     updatedAt
+                                    publishedAt
                                     paidAt
                                     paidExpiresAt
                                     status
