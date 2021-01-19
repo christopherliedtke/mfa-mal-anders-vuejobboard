@@ -62,7 +62,7 @@
         { "value": true, "text": "Ja" }
     ],
     "contactGenderOptions": ["Frau", "Herr"],
-    "contactTitleOptions": ["Dr.", "Prof.", "Dipl. med."],
+    "contactTitleOptions": ["Dr.", "Prof.", "Prof. Dr.", "Dipl. med."],
     "companyCountryOptions": ["Deutschland"],
     "companyStateOptions": [
         "Baden-Württemberg",

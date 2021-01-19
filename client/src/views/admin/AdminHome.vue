@@ -17,7 +17,9 @@
             <b-tab title="Subscribers" @click="setQuery('tab', 4)">
                 <AllSubscribersListAdmin />
             </b-tab>
-            <b-tab title="Data Analytics" @click="setQuery('tab', 5)"> </b-tab>
+            <b-tab title="Data Analytics" @click="setQuery('tab', 5)">
+                <DataAnalyticsDashboard />
+            </b-tab>
         </b-tabs>
 
         <Head title="Admin" desc="" img="" />
@@ -30,6 +32,7 @@
     import AllUsersListAdmin from "@/components/admin/AllUsersListAdmin.vue";
     import AllCouponsListAdmin from "@/components/admin/AllCouponsListAdmin.vue";
     import AllSubscribersListAdmin from "@/components/admin/AllSubscribersListAdmin.vue";
+    import DataAnalyticsDashboard from "@/components/admin/DataAnalyticsDashboard.vue";
     export default {
         name: "AdminHome",
         components: {
@@ -37,7 +40,8 @@
             AllCompaniesListAdmin,
             AllUsersListAdmin,
             AllCouponsListAdmin,
-            AllSubscribersListAdmin
+            AllSubscribersListAdmin,
+            DataAnalyticsDashboard
         },
         data() {
             return {
