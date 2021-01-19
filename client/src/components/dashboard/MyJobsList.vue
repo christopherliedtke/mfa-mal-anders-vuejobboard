@@ -105,16 +105,16 @@
                             }}
                         </span>
                     </div>
-                    <!-- <div>
-                        Zuletzt aktualisiert:
+                    <div v-if="job.publishedAt">
+                        Zuletzt veröffentlicht:
                         <span class="text-muted">
                             {{
                                 new Date(
-                                    parseInt(job.updatedAt)
+                                    parseInt(job.publishedAt)
                                 ).toLocaleString()
                             }}
                         </span>
-                    </div> -->
+                    </div>
                     <!-- <div v-if="job.paidAt">
                         Bezahlt:
                         <span class="text-muted">
