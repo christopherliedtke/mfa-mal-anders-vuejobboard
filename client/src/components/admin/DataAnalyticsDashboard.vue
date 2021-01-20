@@ -39,7 +39,17 @@
                                     ticks: {
                                         min: 0,
                                         // max: 3000,
-                                        stepSize: 200
+                                        stepSize: 200,
+                                        callback: function(value) {
+                                            return (
+                                                value
+                                                    .toString()
+                                                    .replace(
+                                                        /\B(?=(\d{3})+(?!\d))/g,
+                                                        "."
+                                                    ) + "€"
+                                            );
+                                        }
                                     }
                                 },
                                 {

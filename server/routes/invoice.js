@@ -81,7 +81,7 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
             to: config.website.contactEmail,
             replyTo: email,
             subject: `[Rechnungsanforderung] - ${
-                (parseInt(amount) * (1 - discount)) / 100
+                (parseInt(amount) * (1 - discount) + 500) / 100
             }€ | ${jobTitle} | ${jobId}`,
             html: `
                 <h1>Rechnungsanforderung</h1>
@@ -90,7 +90,10 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
                     Job ID: ${jobId} <br>
                     Job Title: ${jobTitle} <br>
                     Zahlungsmethode: ${paymentMethod} <br>
-                    Betrag: ${parseInt(amount) * (1 - discount)} <br>
+                    Betrag: ${
+                        (parseInt(amount) * (1 - discount) + 500) / 100
+                    } EUR <br>
+                    InvoiceNo: ${invoiceNoLong} EUR <br>
                     Aktionscode: ${couponCode} <br>
                     Discount: ${discount} <br>
                     Refresh Frequency: ${refreshFrequency}
