@@ -272,6 +272,10 @@
                         sortable: true
                     },
                     {
+                        key: "invoiceNo",
+                        sortable: true
+                    },
+                    {
                         key: "sentReminder",
                         sortable: true
                     },
@@ -413,6 +417,7 @@
                                     publishedAt
                                     paidAt
                                     paidExpiresAt
+                                    invoiceNo
                                     sentReminder
                                     title
                                     company {

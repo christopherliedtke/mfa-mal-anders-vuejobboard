@@ -12,7 +12,7 @@ const sendJobAdUnpublishedEmail = async () => {
     }).populate("userId");
 
     const emailData = jobs
-        .filter((job) => !job.userId.admin)
+        .filter((job) => !job.userId.isAdmin)
         .map((job) => {
             return {
                 from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,

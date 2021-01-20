@@ -178,7 +178,9 @@
 
                     numbers.push(number);
 
-                    amountPerJob.push(amount / number || 1);
+                    amountPerJob.push(
+                        Math.round((amount / number || 1) * 100) / 100
+                    );
                 }
 
                 return {
