@@ -21,6 +21,9 @@
                     case "full":
                         output = `"FULL_TIME"`;
                         break;
+                    case "training":
+                        output = `"FULL_TIME"`;
+                        break;
                     case "part":
                         output = `"PART_TIME"`;
                         break;
