@@ -38,7 +38,7 @@
                                     position: "left",
                                     ticks: {
                                         min: 0,
-                                        // max: 3000,
+                                        suggestedMax: 2000,
                                         stepSize: 200,
                                         callback: function(value) {
                                             return (
@@ -51,6 +51,10 @@
                                             );
                                         }
                                     }
+                                    // scaleLabel: {
+                                    //     display: true,
+                                    //     labelString: "EUR"
+                                    // }
                                 },
                                 {
                                     id: "B",
@@ -58,9 +62,13 @@
                                     position: "right",
                                     ticks: {
                                         min: 0,
-                                        // max: 30,
+                                        suggestedMax: 20,
                                         stepSize: 2
                                     }
+                                    // scaleLabel: {
+                                    //     display: true,
+                                    //     labelString: "# of Jobs"
+                                    // }
                                 }
                             ]
                         }
@@ -199,23 +207,28 @@
                         {
                             label: "Monthly Income",
                             yAxisID: "A",
-                            backgroundColor: "#6d023099",
-                            data: amounts.reverse()
+                            backgroundColor: "#6d0230cc",
+                            data: amounts.reverse(),
+                            type: "line",
+                            order: 3
                         },
                         {
                             label: "# of Paid Jobs",
                             yAxisID: "B",
-                            backgroundColor: "#fda22577",
-                            data: numbers.reverse()
+                            backgroundColor: "#fda22544",
+                            data: numbers.reverse(),
+                            order: 2,
+                            barPercentage: 0.5
                         },
                         {
                             label: " Ave. Amount Paid per Job",
                             yAxisID: "A",
-                            backgroundColor: "#b9455944",
-                            borderColor: "#b9455944",
+                            backgroundColor: "#17a2b888",
+                            borderColor: "#17a2b888",
                             borderWidth: 1,
                             data: amountPerJob.reverse(),
                             type: "line",
+                            order: 1,
                             borderDash: [5]
                         }
                     ]
