@@ -2,7 +2,7 @@ const CronJob = require("cron").CronJob;
 const config = require("../config/config");
 const { Job } = require("../database/models/job");
 
-module.exports.refreshJobs = new CronJob(
+module.exports.CRONRefreshJobs = new CronJob(
     config.refreshJobs.interval,
     async function () {
         try {
@@ -26,7 +26,7 @@ module.exports.refreshJobs = new CronJob(
             jobs.forEach((job) => {
                 if (
                     new Date(
-                        new Date(job.paidAt).valueOf() +
+                        new Date(job.publishedAt).valueOf() +
                             1000 * 60 * 60 * 24 * job.refreshFrequency
                     ) < new Date()
                 ) {

@@ -16,7 +16,7 @@ const MongoStore = require("connect-mongo")(session);
 
 const { createSitemap } = require("./middleware/createSitemap");
 const { CRONNewsletter } = require("./middleware/CRONNewsletter");
-const { refreshJobs } = require("./middleware/refreshJobs");
+const { CRONRefreshJobs } = require("./middleware/CRONRefreshJobs");
 const { unpublishJobs } = require("./middleware/unpublishJobs");
 const { CRONUnpublishedJobs } = require("./middleware/CRONUnpublishedJobs");
 
@@ -44,7 +44,7 @@ if (config.newsletter.active) {
 
 // #Refresh jobs CRON job
 if (config.refreshJobs.active) {
-    refreshJobs.start();
+    CRONRefreshJobs.start();
 }
 
 // #Unpublish jobs CRON job
