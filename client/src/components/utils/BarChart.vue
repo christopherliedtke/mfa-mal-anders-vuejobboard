@@ -1,4 +1,7 @@
 <script>
+    import Chart from "chart.js";
+    Chart.defaults.global.defaultFontFamily = "'Montserrat', sans-serif";
+
     import { Bar, mixins } from "vue-chartjs";
     const { reactiveProp } = mixins;
 

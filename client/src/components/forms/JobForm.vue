@@ -837,15 +837,6 @@
                 this.job.company = this.companies.find(
                     company => company._id === this.selectedCompanyId
                 );
-            },
-            hasHistory() {
-                return window.history.length > 2;
-            },
-            trackEvent(label, category, action) {
-                this.$gtag.event(action, {
-                    event_category: category,
-                    event_label: label
-                });
             }
         }
     };

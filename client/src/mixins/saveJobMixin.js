@@ -108,6 +108,17 @@ export const saveJobMixin = {
 
                 return { success: false };
             }
+        },
+        hasHistory() {
+            return window.history.length > 2;
+        },
+        trackEvent(label, category, action) {
+            if (!this.$store.state.auth.user.isAdmin) {
+                this.$gtag.event(action, {
+                    event_category: category,
+                    event_label: label
+                });
+            }
         }
     }
 };
