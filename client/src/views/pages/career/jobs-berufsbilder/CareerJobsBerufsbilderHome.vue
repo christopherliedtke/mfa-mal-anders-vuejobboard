@@ -8,7 +8,7 @@
                 </b-col>
                 <b-col class="mb-4" order="1" order-md="2">
                     <b-img
-                        class="border-radius1 shadow mb-5"
+                        class="border-radius1 shadow1 mb-5"
                         fluid
                         src="/img/MfaMalAnders_50+Jobmoeglichkeiten_1200.jpg"
                         alt="50+ Alternative Jobs für MFA / ArtzhelferInnen"

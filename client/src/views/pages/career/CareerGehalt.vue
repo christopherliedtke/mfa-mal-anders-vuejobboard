@@ -3,7 +3,7 @@
         <h1 class="title">{{ title }}</h1>
         <b-container class="py-5">
             <b-img
-                class="border-radius1 shadow mb-5"
+                class="border-radius1 shadow1 mb-5"
                 fluid
                 src="/img/MfaMalAnders_Gehalt_1200.jpg"
                 alt="MFA Gehalt - So viel verdienst Du wirklich"
@@ -690,7 +690,7 @@
                 Bauchschmerzen bereiten und jeden Arbeitstag zur Zumutung werden
                 lassen.
             </p>
-            <div class="checklist border-radius1 shadow my-5">
+            <div class="checklist border-radius1 shadow1 my-5">
                 <h3 class="h4 mb-4">
                     Checkliste &ndash; MFA / ArzthelferIn Gehalt einschätzen
                 </h3>

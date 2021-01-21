@@ -53,14 +53,14 @@
                             >
                                 <b-img-lazy
                                     fluid
-                                    class="mx-3 shadow"
+                                    class="mx-3 shadow1"
                                     style="width: 35vw; max-width: 120px"
                                     src="@/assets/img/Vorlage_Bewerbungsanschreiben_150.jpg"
                                     alt="Bild von Mustervorlage für Motivationsschreiben"
                                 />
                                 <b-img-lazy
                                     fluid
-                                    class="mx-3 shadow"
+                                    class="mx-3 shadow1"
                                     style="width: 35vw; max-width: 120px"
                                     src="@/assets/img/Vorlage_Lebenslauf_150.jpg"
                                     alt="Bild von Mustervorlage für Lebenslauf"

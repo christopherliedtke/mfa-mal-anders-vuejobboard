@@ -56,7 +56,7 @@
 
             <b-row class="my-4 my-md-5">
                 <b-col>
-                    <div class="icon-box shadow py-5 px-4">
+                    <div class="icon-box shadow1 py-5 px-4">
                         <Fa
                             class="m-0"
                             :icon="['fa', 'user-nurse']"
@@ -75,7 +75,7 @@
                     </div>
                 </b-col>
                 <b-col>
-                    <div class="icon-box shadow py-5 px-4">
+                    <div class="icon-box shadow1 py-5 px-4">
                         <Fa
                             class="m-0"
                             :icon="['fa', 'credit-card']"
@@ -95,7 +95,7 @@
                     </div>
                 </b-col>
                 <b-col>
-                    <div class="icon-box shadow py-5 px-4">
+                    <div class="icon-box shadow1 py-5 px-4">
                         <Fa
                             class="m-0"
                             :icon="['fa', 'paper-plane']"

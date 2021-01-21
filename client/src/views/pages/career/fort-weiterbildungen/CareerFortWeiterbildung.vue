@@ -9,7 +9,7 @@
                 <b-col class="mb-4" order="1" order-md="2">
                     <b-img
                         v-if="training.featuredImage"
-                        class="border-radius1 shadow mb-5"
+                        class="border-radius1 shadow1 mb-5"
                         fluid
                         :src="training.featuredImage.node.sourceUrl"
                         :alt="`Banner - ${training.title}`"

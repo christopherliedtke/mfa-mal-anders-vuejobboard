@@ -3,7 +3,7 @@
         <h1 class="title">{{ title }}</h1>
         <b-container class="py-5">
             <b-img
-                class="border-radius1 shadow mb-5 w-100"
+                class="border-radius1 shadow1 mb-5 w-100"
                 fluid
                 src="/img/MfaMalAnders_Bewerbungstipps_1200.jpg"
                 alt="Banner - Schnell und einfach eine Top-Bewerbung schreiben"
@@ -32,13 +32,13 @@
             </blockquote>
             <div class="d-flex justify-content-center mb-5">
                 <b-img
-                    class="mx-3 shadow"
+                    class="mx-3 shadow1"
                     style="width: 35vw; max-width: 300px"
                     src="@/assets/img/Vorlage_Bewerbungsanschreiben_300.jpg"
                     alt="Bild von Mustervorlage für Motivationsschreiben"
                 />
                 <b-img
-                    class="mx-3 shadow"
+                    class="mx-3 shadow1"
                     style="width: 35vw; max-width: 300px"
                     src="@/assets/img/Vorlage_Lebenslauf_300.jpg"
                     alt="Bild von Mustervorlage für Lebenslauf"

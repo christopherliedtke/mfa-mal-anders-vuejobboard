@@ -33,15 +33,16 @@ const createInvoice = (data, invoiceNo, path) => {
 module.exports = createInvoice;
 
 function generateHeader(doc) {
-    doc.image(
-        __dirname + "/../../client/public/img/" + "logo_800.png",
-        500,
-        40,
-        {
-            width: 50,
-            align: "right",
-        }
-    )
+    doc
+        // .image(
+        //     __dirname + "/../../client/public/img/" + "logo_800.png",
+        //     500,
+        //     40,
+        //     {
+        //         width: 50,
+        //         align: "right",
+        //     }
+        // )
         .strokeColor("#6d0230")
         .lineWidth(1)
         .moveTo(50, 100)
@@ -176,16 +177,16 @@ function generateBody(doc, data, invoiceNo) {
     position += 65;
 
     doc.text("Mit freundlichen Grüßen", 50, position)
-        .image(
-            __dirname + "/../invoices/" + "KMaurach_signature.png",
-            50,
-            position + 15,
-            {
-                height: 45,
-                align: "left",
-            }
-        )
-        .text("Kristin Maurach", 50, position + 70)
+        // .image(
+        //     __dirname + "/../invoices/" + "KMaurach_signature.png",
+        //     50,
+        //     position + 15,
+        //     {
+        //         height: 45,
+        //         align: "left",
+        //     }
+        // )
+        .text("Kristin Maurach", 50, position + 35)
         .moveDown();
 }
 

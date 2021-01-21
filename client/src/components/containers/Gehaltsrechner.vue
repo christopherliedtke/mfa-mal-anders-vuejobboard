@@ -1,5 +1,5 @@
 <template>
-    <div class="gehaltsrechner p-4 border-radius2 shadow">
+    <div class="gehaltsrechner p-4 border-radius2 shadow1">
         <h3>
             Gehaltsrechner
             <div>
