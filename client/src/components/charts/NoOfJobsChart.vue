@@ -44,7 +44,7 @@
         data() {
             return {
                 options: {
-                    endDate: new Date().valueOf(),
+                    endDate: new Date(),
                     numberOfDays: 365,
                     type: "createdAt",
                     inclAdmin: false
@@ -53,6 +53,7 @@
                     data: null,
                     options: {
                         responsive: true,
+                        maintainAspectRatio: false,
                         scales: {
                             yAxes: [
                                 {
@@ -73,9 +74,12 @@
                             xAxes: [
                                 {
                                     id: "x1",
-                                    ticks: {
-                                        maxRotation: Math.round(365 / 7),
-                                        minRotation: Math.round(365 / 7)
+                                    type: "time",
+                                    time: {
+                                        displayFormats: {
+                                            day: "dddd, DD.MM.YYYY"
+                                        },
+                                        tooltipFormat: "dddd, DD.MM.YYYY"
                                     },
                                     gridLines: {
                                         color: "#eeefff",
@@ -97,12 +101,6 @@
         },
         methods: {
             fillChartData() {
-                this.chart.options.scales.xAxes[0].ticks.maxRotation = Math.round(
-                    this.options.numberOfDays / 7
-                );
-                this.chart.options.scales.xAxes[0].ticks.minRotation = Math.round(
-                    this.options.numberOfDays / 7
-                );
                 this.chart.data = this.makeData();
             },
             makeData() {
@@ -116,28 +114,17 @@
                 ) {
                     let date = this.options.endDate - i;
 
-                    dates.push(
-                        `${new Date(date).toLocaleDateString("de-DE", {
-                            weekday: "long",
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric"
-                        })}`
-                    );
+                    dates.push(new Date(date).setHours(0, 0, 0, 0));
 
-                    let number = this.jobs
-                        .filter(
-                            job =>
-                                new Date(job[this.options.type])
-                                    .setHours(0, 0, 0, 0)
-                                    .valueOf() ===
-                                    new Date(date)
-                                        .setHours(0, 0, 0, 0)
-                                        .valueOf() &&
-                                job.userId.isAdmin === this.options.inclAdmin
-                        )
-                        .map(job => job.paidAmount)
-                        .reduce(currentValue => 1 + currentValue, 0);
+                    let number = this.jobs.filter(
+                        job =>
+                            job[this.options.type] &&
+                            new Date(job[this.options.type])
+                                .setHours(0, 0, 0, 0)
+                                .valueOf() ===
+                                new Date(date).setHours(0, 0, 0, 0).valueOf() &&
+                            job.userId.isAdmin === this.options.inclAdmin
+                    ).length;
 
                     numbers.push(number);
                 }

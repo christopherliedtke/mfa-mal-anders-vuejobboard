@@ -1,14 +1,16 @@
 <template>
     <div class="shadow1 border-radius1 p-3">
         <h2 class="h5 text-center">Payment Overview</h2>
-        <b-input-group prepend="# of Months" size="sm" class="mt-3 px-5">
-            <b-form-input v-model="options.numberOfMonths"></b-form-input>
-            <b-input-group-append>
-                <b-button @click="fillChartData" variant="success"
-                    >Apply</b-button
-                >
-            </b-input-group-append>
-        </b-input-group>
+        <b-form>
+            <b-input-group prepend="# of Months" size="sm" class="mt-3 px-5">
+                <b-form-input v-model="options.numberOfMonths"></b-form-input>
+                <b-input-group-append>
+                    <b-button @click="fillChartData" variant="success"
+                        >Apply</b-button
+                    >
+                </b-input-group-append>
+            </b-input-group>
+        </b-form>
         <bar-chart
             v-if="chart.data"
             :chartData="chart.data"
@@ -30,13 +32,14 @@
         data() {
             return {
                 options: {
-                    endDate: new Date().valueOf(),
+                    endDate: new Date(),
                     numberOfMonths: 12
                 },
                 chart: {
                     data: null,
                     options: {
                         responsive: true,
+                        maintainAspectRatio: false,
                         scales: {
                             yAxes: [
                                 {
@@ -80,6 +83,11 @@
                             ],
                             xAxes: [
                                 {
+                                    type: "time",
+                                    time: {
+                                        unit: "month",
+                                        tooltipFormat: "MMMM YYYY"
+                                    },
                                     gridLines: {
                                         color: "#eeefff",
                                         zeroLineColor: "#eeefff"
@@ -121,9 +129,7 @@
                     let year = date.getFullYear();
 
                     dates.push(
-                        `${new Date(date).toLocaleString("default", {
-                            month: "long"
-                        })} - ${year}`
+                        new Date(new Date(date).setHours(0, 0, 0, 0)).setDate(1)
                     );
 
                     let amount =

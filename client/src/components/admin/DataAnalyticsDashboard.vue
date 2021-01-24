@@ -1,6 +1,13 @@
 <template>
     <div>
-        <PaymentOverviewChart :jobs="jobs" class="mb-4" />
+        <PaymentOverviewChart
+            :jobs="
+                jobs
+                    .filter(job => job.paidAmount > 0 && job.paidAt)
+                    .sort((a, b) => a.paidAt - b.paidAt)
+            "
+            class="mb-4"
+        />
         <NoOfJobsChart :jobs="jobs" class="mb-4" />
     </div>
 </template>
@@ -65,9 +72,7 @@
                         `
                     });
 
-                    this.jobs = response.data.data.jobs
-                        .filter(job => job.paidAmount > 0 && job.paidAt)
-                        .sort((a, b) => a.paidAt - b.paidAt);
+                    this.jobs = response.data.data.jobs;
                 } catch (err) {
                     this.error = true;
                     this.$root.$bvToast.toast(
