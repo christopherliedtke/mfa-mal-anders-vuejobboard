@@ -741,10 +741,10 @@
 
             <div class="row mb-4">
                 <div class="col">
-                    <BerufsbilderBanner />
+                    <BerufsbilderBanner class="mb-3" />
                 </div>
                 <div class="col">
-                    <WeiterbildungenBanner />
+                    <WeiterbildungenBanner class="mb-3" />
                 </div>
             </div>
 

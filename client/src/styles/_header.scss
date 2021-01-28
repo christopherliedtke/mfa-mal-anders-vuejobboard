@@ -87,7 +87,7 @@
 
                 &.show {
                     max-height: 300px;
-                    overflow: visible;
+                    // overflow: visible;
                     visibility: visible;
 
                     @media screen and (max-width: $break-menu) {
