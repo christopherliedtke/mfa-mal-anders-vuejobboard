@@ -66,16 +66,16 @@
                                         weiteren Informationen.
                                     </p>
                                     <p class="bold">
-                                        Jobsuche auf unserer Stellenbörse:
-                                        <b-link
-                                            :to="
-                                                `/jobboard?searchTerm=${berufsbild.title.slice(
-                                                    0,
-                                                    5
-                                                )}`
-                                            "
-                                            >{{ berufsbild.title }}</b-link
-                                        >
+                                        <b-link :to="`/jobboard`"
+                                            >Finde einen passenden Job in
+                                            unserer Stellenbörse
+                                            <Fa
+                                                class="position-relative"
+                                                style="top: -5px"
+                                                icon="external-link-alt"
+                                                size="xs"
+                                            />
+                                        </b-link>
                                     </p>
                                 </b-card-text>
                             </b-card-body>

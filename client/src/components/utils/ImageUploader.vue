@@ -20,7 +20,8 @@
             /></b-button>
         </div>
         <b-form-invalid-feedback :state="success">
-            The image must be *.jpg or *.png and maximum 5MB.
+            Das Bild muss im Format *.jpg oder *.png hochgeladen werden und darf
+            maximal 5MB groß sein.
         </b-form-invalid-feedback>
     </div>
 </template>

@@ -49,13 +49,15 @@
         "Thoraxchirurgie",
         "Urologie",
         "Viszeralchirurgie",
+        "Zahnheilkunde",
         "Sonstige"
     ],
     "employmentTypeOptions": [
         { "value": "full", "text": "Vollzeit" },
         { "value": "part", "text": "Teilzeit" },
         { "value": "part_full", "text": "Teil- oder Vollzeit" },
-        { "value": "training", "text": "Ausbildung" }
+        { "value": "training", "text": "Ausbildung" },
+        { "value": "mini", "text": "Minijob" }
     ],
     "simpleApplicationOptions": [
         { "value": false, "text": "Nein" },

@@ -19,8 +19,8 @@
                     { text: 'Published At', value: 'publishedAt' }
                 ]"
             ></b-form-radio-group>
-            <b-form-checkbox v-model="options.inclAdmin" switch>
-                incl. Admin
+            <b-form-checkbox v-model="options.onlyAdmin" switch>
+                Admin only
             </b-form-checkbox>
         </b-form>
         <bar-chart
@@ -47,7 +47,7 @@
                     endDate: new Date(),
                     numberOfDays: 365,
                     type: "createdAt",
-                    inclAdmin: false
+                    onlyAdmin: false
                 },
                 chart: {
                     data: null,
@@ -123,7 +123,7 @@
                                 .setHours(0, 0, 0, 0)
                                 .valueOf() ===
                                 new Date(date).setHours(0, 0, 0, 0).valueOf() &&
-                            job.userId.isAdmin === this.options.inclAdmin
+                            job.userId.isAdmin === this.options.onlyAdmin
                     ).length;
 
                     numbers.push(number);
