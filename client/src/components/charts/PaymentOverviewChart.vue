@@ -32,7 +32,7 @@
         data() {
             return {
                 options: {
-                    endDate: new Date(),
+                    endDate: new Date().setDate(1),
                     numberOfMonths: 12
                 },
                 chart: {
@@ -116,11 +116,7 @@
                 let numbers = [];
                 let amountPerJob = [];
 
-                for (
-                    let i = new Date(this.options.endDate).getMonth();
-                    i < this.options.numberOfMonths;
-                    i++
-                ) {
+                for (let i = 0; i < this.options.numberOfMonths; i++) {
                     let date = new Date(
                         new Date(this.options.endDate).setMonth(-i)
                     );
