@@ -9,6 +9,9 @@ module.exports = {
             },
             "/sitemap.xml": {
                 target: "http://localhost:5001"
+            },
+            "/graphql": {
+                target: "http://localhost:5001/graphql"
             }
         },
         port: 8081

@@ -1,5 +1,5 @@
 const { gql } = require("apollo-server-express");
-const { Job } = require("../models/job");
+const Job = require("../models/job");
 
 // Construct a schema, using GraphQL schema language
 module.exports.typeDefs = gql`

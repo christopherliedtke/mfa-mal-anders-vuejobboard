@@ -2,12 +2,14 @@ require("dotenv").config();
 const express = require("express");
 const apolloVerifyToken = require("./middleware/apolloVerifyToken");
 const { ApolloServer } = require("apollo-server-express");
-const { typeDefs, resolvers } = require("./database/apollo/schema");
+// const { typeDefs, resolvers } = require("./database/apollo/schema");
+
+const application = require("./database/apollo/application");
+const apolloSchema = application.createSchemaForApollo();
 
 const app = express();
 const apolloServer = new ApolloServer({
-    typeDefs,
-    resolvers,
+    schema: apolloSchema,
     context: ({ req }) => {
         // Note! This example uses the `req` object to access headers,
         // but the arguments received by `context` vary by integration.
@@ -21,7 +23,7 @@ const apolloServer = new ApolloServer({
 
         const user = req.user;
 
-        console.log("user: ", user);
+        // console.log("user: ", user);
 
         // console.log("req.user: ", req.user);
 
