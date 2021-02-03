@@ -1,15 +1,17 @@
 const jwt = require("jsonwebtoken");
 
-const apolloVerifyToken = (req) => {
-    const token = req.session && req.session.token ? req.session.token : "";
+const apolloVerifyToken = (token) => {
+    let user = null;
 
     jwt.verify(token, process.env.JWT_SECRET, (err, data) => {
         if (err) {
-            req.user = false;
+            user = null;
         } else {
-            req.user = data.user;
+            user = data.user;
         }
     });
+
+    return user;
 };
 
 module.exports = apolloVerifyToken;

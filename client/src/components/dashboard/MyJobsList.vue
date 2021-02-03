@@ -7,7 +7,11 @@
         </p>
         <b-button
             class="mr-2 mb-2"
-            to="/user/dashboard/jobs/edit/new"
+            :to="
+                `/${
+                    $store.state.auth.user.isAdmin ? 'admin' : 'user/dashboard'
+                }/jobs/edit/new`
+            "
             variant="outline-primary"
             ><Fa class="mr-2" icon="plus" />Neue Stelle</b-button
         >

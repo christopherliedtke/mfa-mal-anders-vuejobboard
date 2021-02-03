@@ -3,8 +3,39 @@ const { gql } = require("graphql-modules");
 const UserType = gql`
     extend type Query {
         me: User
+        meFromToken: User
         adminUser(_id: ID!): User
         adminUsers: [User]
+    }
+
+    extend type Mutation {
+        login(email: String, password: String): User
+        register(
+            accepted: Boolean
+            gender: String
+            title: String
+            firstName: String!
+            lastName: String!
+            email: String!
+            password: String!
+        ): User
+        updateMe(
+            gender: String
+            title: String
+            firstName: String!
+            lastName: String!
+            email: String!
+        ): User
+        deleteMe(password: String): User
+        adminUpdateUser(
+            _id: ID!
+            gender: String
+            title: String
+            firstName: String!
+            lastName: String!
+            email: String!
+        ): User
+        adminDeleteUser(_id: ID!): User
     }
 
     type User {
@@ -20,8 +51,9 @@ const UserType = gql`
         title: String
         firstName: String!
         lastName: String!
-        password: String!
         email: String!
+        password: String!
+        token: String
     }
 
     extend type Job {

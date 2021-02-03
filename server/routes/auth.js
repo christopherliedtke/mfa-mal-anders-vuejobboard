@@ -60,10 +60,7 @@ router.get("/user-by-db", verifyToken, async (req, res) => {
             });
         }
     } catch (err) {
-        console.log(
-            "Error on /api/auth/verification/update-user-status: ",
-            err
-        );
+        console.log("Error on /api/auth/user-by-db: ", err);
         res.json({ success: false });
     }
 });

@@ -2,41 +2,11 @@ require("dotenv").config();
 const express = require("express");
 const apolloVerifyToken = require("./middleware/apolloVerifyToken");
 const { ApolloServer } = require("apollo-server-express");
-// const { typeDefs, resolvers } = require("./database/apollo/schema");
 
 const application = require("./database/apollo/application");
 const apolloSchema = application.createSchemaForApollo();
 
 const app = express();
-const apolloServer = new ApolloServer({
-    schema: apolloSchema,
-    context: ({ req }) => {
-        // Note! This example uses the `req` object to access headers,
-        // but the arguments received by `context` vary by integration.
-        // This means they will vary for Express, Koa, Lambda, etc.!
-        //
-        // To find out the correct arguments for a specific integration,
-        // see the `context` option in the API reference for `apollo-server`:
-        // https://www.apollographql.com/docs/apollo-server/api/apollo-server/
-
-        apolloVerifyToken(req);
-
-        const user = req.user;
-
-        // console.log("user: ", user);
-
-        // console.log("req.user: ", req.user);
-
-        // Get the user token from the headers.
-        // const token = req.headers.authorization || "";
-
-        // try to retrieve a user with the token
-        // const user = getUser(token);
-
-        // add the user to the context
-        return { user };
-    },
-});
 
 const sslRedirect = require("heroku-ssl-redirect");
 const cors = require("cors");
@@ -163,6 +133,27 @@ if (process.env.NODE_ENV == "production") {
 }
 
 // #ApolloServer
+const apolloServer = new ApolloServer({
+    schema: apolloSchema,
+    context: ({ req }) => {
+        // Note! This example uses the `req` object to access headers,
+        // but the arguments received by `context` vary by integration.
+        // This means they will vary for Express, Koa, Lambda, etc.!
+        //
+        // To find out the correct arguments for a specific integration,
+        // see the `context` option in the API reference for `apollo-server`:
+        // https://www.apollographql.com/docs/apollo-server/api/apollo-server/
+
+        // Get the user token from the headers.
+        const token = req.session && req.session.token ? req.session.token : "";
+
+        // try to retrieve a user with the token
+        const user = apolloVerifyToken(token);
+
+        // add the user to the context
+        return { user, session: req.session };
+    },
+});
 apolloServer.applyMiddleware({ app });
 
 // #Routes w csrf protection
