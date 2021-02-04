@@ -148,7 +148,7 @@
         <b-container id="numbers-and-facts" class="mb-5 py-md-5">
             <h2 class="text-center bold mb-4">
                 Ein paar Zahlen und Fakten
-                <span style="font-size: 0.8rem">(09/2020)</span>
+                <span style="font-size: 0.8rem">(01/2021)</span>
             </h2>
             <b-row cols="1" cols-md="3">
                 <b-col
@@ -638,19 +638,19 @@
                 numbersAndFacts: [
                     {
                         icon: "google",
-                        number: 432000,
+                        number: 423000,
                         current: 0,
                         desc: "Menschen sehen uns monatlich bei Google"
                     },
                     {
                         icon: "facebook",
-                        number: 17500,
+                        number: 28000,
                         current: 0,
                         desc: "Monatliche Reichweite bei Facebook"
                     },
                     {
                         icon: "chrome",
-                        number: 41000,
+                        number: 53000,
                         current: 0,
                         desc: "Monatliche Seitenaufrufe auf der Webseite"
                     }
