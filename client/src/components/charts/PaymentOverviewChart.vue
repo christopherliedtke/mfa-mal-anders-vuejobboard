@@ -118,7 +118,9 @@
 
                 for (let i = 0; i < this.options.numberOfMonths; i++) {
                     let date = new Date(
-                        new Date(this.options.endDate).setMonth(-i)
+                        new Date(this.options.endDate).setMonth(
+                            new Date(this.options.endDate).getMonth() - i
+                        )
                     );
 
                     let month = date.getMonth();
