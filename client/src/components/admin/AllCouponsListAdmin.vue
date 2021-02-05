@@ -56,7 +56,7 @@
             <template v-slot:cell(actions)="row">
                 <b-button
                     class="mr-2 mb-2"
-                    :to="`/admin/coupons/${row.item._id}`"
+                    :to="`/admin/coupons/edit/${row.item._id}`"
                     variant="primary"
                     size="sm"
                     ><Fa icon="edit"></Fa>

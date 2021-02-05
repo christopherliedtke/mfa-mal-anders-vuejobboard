@@ -45,9 +45,9 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
             });
         }
 
-        let { invoiceNo } = await Job.findOne({ _id: jobId });
+        let { invoiceNo, paidExpiresAt } = await Job.findOne({ _id: jobId });
 
-        if (invoiceNo === 0) {
+        if (invoiceNo === 0 || paidExpiresAt < new Date()) {
             const lastInvoiceNo = await Job.find({}, "invoiceNo")
                 .sort({ invoiceNo: -1 })
                 .limit(1);
