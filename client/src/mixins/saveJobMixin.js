@@ -1,12 +1,13 @@
 export const saveJobMixin = {
     methods: {
-        async saveJob(mutationType, apiJobsSchema, job, redirect = false) {
+        async saveJob(mutationType, job, redirect = false) {
             try {
                 const jobQuery = `
                         mutation {
                             ${mutationType}(
                                 ${
-                                    mutationType === "updateJob"
+                                    mutationType === "updateJob" ||
+                                    mutationType === "adminUpdateJob"
                                         ? `_id: "${job._id}"`
                                         : ""
                                 } 
@@ -49,12 +50,9 @@ export const saveJobMixin = {
                         }
                     `;
 
-                const jobQueryResponse = await this.$axios.post(
-                    `/api/jobs/${apiJobsSchema}`,
-                    {
-                        query: jobQuery
-                    }
-                );
+                const jobQueryResponse = await this.$axios.post(`/graphql`, {
+                    query: jobQuery
+                });
 
                 if (!jobQueryResponse.data.data[mutationType]) {
                     this.$root.$bvToast.toast(

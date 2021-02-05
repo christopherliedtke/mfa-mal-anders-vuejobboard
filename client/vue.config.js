@@ -11,7 +11,7 @@ module.exports = {
                 target: "http://localhost:5001"
             },
             "/graphql": {
-                target: "http://localhost:5001/graphql"
+                target: "http://localhost:5001"
             }
         },
         port: 8081

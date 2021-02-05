@@ -1,9 +1,14 @@
 const sanitizeHtml = require("sanitize-html");
+const config = require("../../../config/config");
 const errorMsg = require("../../../config/errorMsg.json");
 const jwt = require("jsonwebtoken");
+const cryptoRandomString = require("crypto-random-string");
+const emailTemplate = require("../../../utils/emailTemplate");
+const emailService = require("../../../utils/nodemailer");
 const { hash, compare } = require("../../../utils/bcrypt");
 const { UserInputError, ApolloError } = require("apollo-server-express");
 const { User } = require("../../models/user");
+const { Code } = require("../../models/secretCode");
 
 const UserResolvers = {
     Query: {
@@ -61,7 +66,9 @@ const UserResolvers = {
                 return null;
             }
 
-            const users = await User.find();
+            const users = await User.find().sort({
+                createdAt: "desc",
+            });
 
             return users;
         },
@@ -115,6 +122,232 @@ const UserResolvers = {
 
             return user;
         },
+        register: async (root, args, context) => {
+            if (
+                !args.firstName ||
+                !args.lastName ||
+                !args.email ||
+                !args.password ||
+                !args.password2
+            ) {
+                throw new UserInputError(errorMsg.auth.fillAll);
+            }
+            if (args.password != args.password2) {
+                throw new UserInputError(errorMsg.auth.pwsNoMatch);
+            }
+            if (
+                !args.password.match(
+                    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{6,}$/
+                )
+            ) {
+                throw new UserInputError(errorMsg.auth.pwRequirements);
+            }
+            if (!args.email.test(/\S+@\S+\.\S+/)) {
+                throw new UserInputError(errorMsg.auth.notValidEmail);
+            }
+            if (args.acceptance != "accepted") {
+                throw new UserInputError(errorMsg.auth.termsOfUse);
+            }
+
+            const existingUser = await User.findOne({ email: args.email });
+
+            if (existingUser) {
+                throw new UserInputError(errorMsg.auth.emailRegistered);
+            }
+
+            const hashedPw = await hash(args.password);
+
+            const newUserObj = new User({
+                gender: args.gender,
+                title: args.title,
+                firstName: args.firstName,
+                lastName: args.lastName,
+                email: args.email,
+                role: "basic",
+                isEmployer: true,
+                password: hashedPw,
+                accepted: true,
+                status: "pending",
+            });
+
+            const user = await newUserObj.save();
+
+            const token = jwt.sign(
+                {
+                    user: {
+                        _id: user._id,
+                        role: user.role,
+                        isEmployer: user.isEmployer,
+                        isAdmin: user.isAdmin,
+                        status: user.status,
+                        gender: user.gender,
+                        title: user.title,
+                        firstName: user.firstName,
+                        lastName: user.lastName,
+                        email: user.email,
+                    },
+                },
+                process.env.JWT_SECRET,
+                {
+                    expiresIn: 60 * 60 * 24 * 7,
+                }
+            );
+
+            context.session.token = token;
+            user.token = token;
+
+            return user;
+        },
+        logout: (root, args, context) => {
+            context.session.destroy();
+            return context.user;
+        },
+        resetPasswordGetCode: async (root, args) => {
+            if (!args.email) {
+                throw new UserInputError(errorMsg.auth.provideRegisteredEmail);
+            }
+
+            const user = await User.findOne({ email: args.email });
+
+            if (!user) {
+                throw new ApolloError(errorMsg.auth.noMatch);
+            }
+
+            const secretCode = cryptoRandomString({
+                length: 6,
+            });
+
+            const newCode = new Code({
+                code: secretCode,
+                email: args.email,
+            });
+
+            await newCode.save();
+
+            const emailData = {
+                from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
+                to: args.email,
+                subject: `Ihr Code für den Passwort Reset auf ${config.website.name}`,
+                text: `
+                        Bitte nutzen Sie den folgenden Code innerhalb der nächsten 60 Minuten, um Ihr Passwort auf ${config.website.name} zu ändern: ${secretCode}
+                    `,
+                html: emailTemplate.generate(`
+                        <p>Bitte nutzen Sie den folgenden Code innerhalb der nächsten 60 Minuten, um Ihr Passwort auf ${config.website.name} zu ändern: <strong>${secretCode}</strong></p>
+                        `),
+            };
+            await emailService.sendMail(emailData);
+
+            return { _id: user._id };
+        },
+        resetPasswordVerify: async (root, args) => {
+            if (
+                !args.email ||
+                !args.password ||
+                !args.password2 ||
+                !args.code
+            ) {
+                throw new UserInputError(errorMsg.auth.fillAll);
+            }
+            if (args.password != args.password2) {
+                throw new UserInputError(errorMsg.auth.pwsNoMatch);
+            }
+            if (
+                !args.password.match(
+                    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{6,}$/
+                )
+            ) {
+                throw new UserInputError(errorMsg.auth.pwRequirements);
+            }
+
+            const code = await Code.findOne({
+                email: args.email,
+                code: args.code,
+            });
+
+            if (!code) {
+                throw new UserInputError(errorMsg.auth.codeIncorrect);
+            }
+
+            const newHashedPw = await hash(args.password);
+
+            const user = await User.findOneAndUpdate(
+                { email: args.email },
+                { password: newHashedPw },
+                { new: true }
+            );
+            await Code.deleteOne({ email: args.email, code: args.code });
+
+            return { _id: user._id };
+        },
+        accountVerificationGetEmail: async (root, args, context) => {
+            if (!context.user._id) {
+                throw new ApolloError(errorMsg.general);
+            }
+
+            const user = await User.findById(context.user._id);
+
+            if (!user) {
+                throw new ApolloError(errorMsg.general);
+            }
+
+            const emailData = {
+                from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
+                to: user.email,
+                subject: `E-Mail bestätigen für ${config.website.name}`,
+                text: `
+                        Bitte nutzen Sie den folgenden Link, um Ihren Account auf ${config.website.name} zu aktivieren: ${process.env.WEBSITE_URL}/auth/account/verification/${user._id}
+                    `,
+                html: emailTemplate.generate(`
+                        <div 
+                            style="color: #000000; font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif; line-height: 1.2; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px">
+                            <div style="line-height: 1.2; font-size: 12px; color: #000000; font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif; mso-line-height-alt: 14px">
+                                <h2>Aktivieren Sie Ihren Account bei ${config.website.name}</h2>
+                                <p>
+                                    Bitte nutzen Sie den folgenden Link, um Ihren Account auf ${config.website.name} zu aktivieren: 
+                                </p>
+                            </div>
+                        </div>
+                        <div
+                            style="
+                                text-decoration: none;
+                                display: inline-block;
+                                color: #f8faf9;
+                                background-color: #fda225;
+                                border-radius: 50px;
+                                -webkit-border-radius: 50px;
+                                -moz-border-radius: 50px;
+                                width: auto;
+                                width: auto;
+                                border-top: 1px solid #fda225;
+                                border-right: 1px solid #fda225;
+                                border-bottom: 1px solid #fda225;
+                                border-left: 1px solid #fda225;
+                                padding-top: 5px;
+                                padding-bottom: 5px;
+                                font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif;
+                                text-align: center;
+                                mso-border-alt: none;
+                                word-break: keep-all;
+                            "
+                        >
+                            <a 
+                                style="padding-left: 20px; padding-right: 20px; font-size: 16px; display: inline-block; cursor: pointer; border: none; color: #f8faf9; text-decoration: none" href="${process.env.WEBSITE_URL}/auth/account/verification/${user._id}" target="_blank"
+                            >
+                                <span 
+                                    style="font-size: 16px; line-height: 1.5; word-break: break-word; mso-line-height-alt: 24px"
+                                >
+                                    Account aktivieren
+                                </span>
+                            </a>
+                        </div>
+                    `),
+            };
+
+            const emailSent = await emailService.sendMail(emailData);
+            console.log("sendMail() for activation email: ", emailSent);
+
+            return { _id: user._id };
+        },
         updateMe: async (root, args, context) => {
             const oldUserData = await User.findOne({ _id: context.user._id });
 
@@ -123,7 +356,7 @@ const UserResolvers = {
                     ? oldUserData.status
                     : "pending";
 
-            const user = User.findByIdAndUpdate(
+            const user = User.findOneAndUpdate(
                 { _id: context.user._id },
                 {
                     gender: sanitizeHtml(args.gender),
@@ -149,7 +382,7 @@ const UserResolvers = {
                 });
             }
 
-            const user = await User.findById(context.user._id);
+            const user = await User.findOne({ _id: context.user._id });
 
             if (!user) {
                 throw new ApolloError(errorMsg.general);
@@ -158,7 +391,7 @@ const UserResolvers = {
             const pwCheckSuccess = await compare(args.password, user.password);
 
             if (!pwCheckSuccess) {
-                throw new ApolloError(errorMsg.auth.pwNoMatch);
+                throw new UserInputError(errorMsg.auth.pwNoMatch);
             }
 
             const deletedUser = await User.findOneAndDelete({

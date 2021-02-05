@@ -10,15 +10,25 @@ const UserType = gql`
 
     extend type Mutation {
         login(email: String, password: String): User
+        logout: User
         register(
-            accepted: Boolean
+            acceptance: String
             gender: String
             title: String
-            firstName: String!
-            lastName: String!
-            email: String!
-            password: String!
+            firstName: String
+            lastName: String
+            email: String
+            password: String
+            password2: String
         ): User
+        resetPasswordGetCode(email: String): User
+        resetPasswordVerify(
+            email: String
+            password: String
+            password2: String
+            code: String
+        ): User
+        accountVerificationGetEmail: User
         updateMe(
             gender: String
             title: String

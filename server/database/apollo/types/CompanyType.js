@@ -6,6 +6,52 @@ const CompanyType = gql`
         companies: [Company]
     }
 
+    extend type Mutation {
+        addCompany(
+            name: String
+            street: String
+            zipCode: String
+            location: String
+            state: String
+            country: String
+            geoCodeLat: Float
+            geoCodeLng: Float
+            url: String
+            logoUrl: String
+            size: String
+        ): Company
+        updateCompany(
+            id: ID!
+            name: String
+            street: String
+            zipCode: String
+            location: String
+            state: String
+            country: String
+            geoCodeLat: Float
+            geoCodeLng: Float
+            url: String
+            logoUrl: String
+            size: String
+        ): Company
+        deleteCompany(_id: ID!): Company
+        adminUpdateCompany(
+            id: ID!
+            name: String
+            street: String
+            zipCode: String
+            location: String
+            state: String
+            country: String
+            geoCodeLat: Float
+            geoCodeLng: Float
+            url: String
+            logoUrl: String
+            size: String
+        ): Company
+        adminDeleteCompany(_id: ID!): Company
+    }
+
     type Company {
         _id: ID!
         createdAt: Float
@@ -24,7 +70,7 @@ const CompanyType = gql`
     }
 
     extend type Job {
-        company: Company!
+        company: Company
     }
 
     extend type User {

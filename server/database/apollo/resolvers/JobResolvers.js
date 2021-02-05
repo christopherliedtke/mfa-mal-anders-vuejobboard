@@ -60,6 +60,8 @@ const JobResolvers = {
                 status: {
                     $ne: "deleted",
                 },
+            }).sort({
+                updatedAt: "desc",
             });
 
             return jobs;
@@ -67,27 +69,33 @@ const JobResolvers = {
         adminJob: async (root, args, context) => {
             if (!context.user.isAdmin) {
                 return null;
-            } else {
-                const job = await Job.findOne({
-                    _id: args._id,
-                });
-
-                return job;
             }
+
+            const job = await Job.findOne({
+                _id: args._id,
+            });
+
+            return job;
         },
         adminJobs: async (root, args, context) => {
             if (!context.user.isAdmin) {
                 return null;
-            } else {
-                const jobs = await Job.find();
-
-                return jobs;
             }
+
+            const jobs = await Job.find().sort({
+                createdAt: "desc",
+            });
+
+            return jobs;
         },
     },
 
     Mutation: {
         addJob: async (root, args, context) => {
+            if (!context.user._id) {
+                return null;
+            }
+
             let addObj = { ...args, userId: context.user._id };
 
             addObj = cleanUpJob(addObj, context.user);
@@ -101,6 +109,10 @@ const JobResolvers = {
             return newJob;
         },
         updateJob: async (root, args, context) => {
+            if (!context.user._id) {
+                return null;
+            }
+
             let updateObj = { ...args };
             delete updateObj._id;
 
@@ -118,69 +130,70 @@ const JobResolvers = {
             return updatedJob;
         },
         deleteJob: async (root, args, context) => {
-            if (args._id !== context.user._id) {
+            if (!context.user._id) {
                 return null;
-            } else {
-                const updatedJob = await Job.findOneAndUpdate(
-                    { _id: args._id, userId: context.user._id },
-                    { status: "deleted" }
-                );
-
-                return updatedJob;
             }
+
+            const updatedJob = await Job.findOneAndUpdate(
+                { _id: args._id, userId: context.user._id },
+                { status: "deleted" },
+                { new: true }
+            );
+
+            return updatedJob;
         },
         adminAddJob: async (root, args, context) => {
             if (!context.user.isAdmin) {
                 return null;
-            } else {
-                let addObj = { ...args, userId: context.user._id };
-
-                addObj = cleanUpJob(addObj, context.user);
-
-                const newJobObj = new Job(addObj);
-                const newJob = await newJobObj.save();
-
-                indexing(newJob);
-                recaching(newJob);
-
-                return newJob;
             }
+
+            let addObj = { ...args, userId: context.user._id };
+
+            addObj = cleanUpJob(addObj, context.user);
+
+            const newJobObj = new Job(addObj);
+            const newJob = await newJobObj.save();
+
+            indexing(newJob);
+            recaching(newJob);
+
+            return newJob;
         },
         adminUpdateJob: async (root, args, context) => {
             if (!context.user.isAdmin) {
                 return null;
-            } else {
-                let updateObj = { ...args };
-                delete updateObj._id;
-
-                updateObj = cleanUpJob(updateObj, context.user);
-
-                const updatedJob = await Job.findOneAndUpdate(
-                    { _id: args._id },
-                    updateObj,
-                    { new: true }
-                );
-
-                indexing(updatedJob);
-                recaching(updatedJob);
-
-                return updatedJob;
             }
+
+            let updateObj = { ...args };
+            delete updateObj._id;
+
+            updateObj = cleanUpJob(updateObj, context.user);
+
+            const updatedJob = await Job.findOneAndUpdate(
+                { _id: args._id },
+                updateObj,
+                { new: true }
+            );
+
+            indexing(updatedJob);
+            recaching(updatedJob);
+
+            return updatedJob;
         },
         adminDeleteJob: async (root, args, context) => {
             if (!context.user.isAdmin) {
                 return null;
-            } else {
-                const deletedJob = await Job.findOneAndDelete({
-                    _id: args._id,
-                });
-
-                if (deletedJob.imageUrl) {
-                    await s3.delete(deletedJob.imageUrl);
-                }
-
-                return deletedJob;
             }
+
+            const deletedJob = await Job.findOneAndDelete({
+                _id: args._id,
+            });
+
+            if (deletedJob.imageUrl) {
+                await s3.delete(deletedJob.imageUrl);
+            }
+
+            return deletedJob;
         },
     },
 
@@ -188,10 +201,10 @@ const JobResolvers = {
         jobs: async (user, args, context) => {
             if (!user._id === context.user._id || !context.user.isAdmin) {
                 return null;
-            } else {
-                const jobs = await Job.find({ userId: user._id });
-                return jobs;
             }
+
+            const jobs = await Job.find({ userId: user._id });
+            return jobs;
         },
     },
 
@@ -199,10 +212,10 @@ const JobResolvers = {
         jobs: async (company, args, context) => {
             if (!company.userId === context.user._id || !context.user.isAdmin) {
                 return null;
-            } else {
-                const jobs = await Job.find({ company: company._id });
-                return jobs;
             }
+
+            const jobs = await Job.find({ company: company._id });
+            return jobs;
         },
         publicJobs: async (company) => {
             const jobs = await Job.find({

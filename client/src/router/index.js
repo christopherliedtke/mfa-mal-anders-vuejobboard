@@ -369,7 +369,7 @@ const routes = [
                 }
             },
             {
-                path: "account/verification",
+                path: "account/verification/:userId",
                 name: "AuthAccountVerification",
                 component: AuthAccountVerification,
                 meta: {

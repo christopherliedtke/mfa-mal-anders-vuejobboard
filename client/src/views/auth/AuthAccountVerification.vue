@@ -38,6 +38,7 @@
             };
         },
         mounted() {
+            this.activateUser();
             this.checkUserStatus();
             this.checkError();
         },
@@ -74,6 +75,15 @@
                 }
 
                 this.$store.dispatch("setOverlay", false);
+            },
+            async activateUser() {
+                if (this.$route.params.userId) {
+                    // const user = await this.axios.post("/graphql", {
+                    //     query: `
+                    //         mutation
+                    //     `
+                    // });
+                }
             },
             checkUserStatus() {
                 this.timeoutId = setTimeout(async () => {

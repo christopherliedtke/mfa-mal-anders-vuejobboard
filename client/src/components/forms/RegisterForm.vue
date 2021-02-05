@@ -165,7 +165,7 @@
                         title: this.title,
                         firstName: this.firstName,
                         lastName: this.lastName,
-                        email: this.email,
+                        email: this.email.toLowerCase(),
                         password: this.password,
                         password2: this.password2,
                         acceptance: this.acceptance

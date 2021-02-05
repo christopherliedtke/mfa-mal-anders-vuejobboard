@@ -111,7 +111,7 @@
                 const res = await this.$axios.post(
                     "/api/auth/password-reset/get-code",
                     {
-                        email: this.email
+                        email: this.email.toLowerCase()
                     }
                 );
 
@@ -130,7 +130,7 @@
                 const res = await this.$axios.post(
                     "/api/auth/password-reset/verify",
                     {
-                        email: this.email,
+                        email: this.email.toLowerCase(),
                         password: this.password,
                         password2: this.password2,
                         code: this.secretCode

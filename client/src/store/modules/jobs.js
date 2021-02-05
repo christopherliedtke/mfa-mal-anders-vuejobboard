@@ -10,11 +10,11 @@ const getters = {
 
 const actions = {
     async getJobs({ commit }) {
-        const response = await axios.get("/api/jobs/public", {
+        const response = await axios.get("/graphql", {
             params: {
                 query: `
                     query {
-                        jobs {
+                        publicJobs {
                             _id
                             createdAt
                             publishedAt
@@ -40,12 +40,13 @@ const actions = {
                                 size
                                 logoUrl
                             }
-                        }
+                        }  
                     }
                 `
             }
         });
-        commit("setJobs", response.data.data.jobs);
+
+        commit("setJobs", response.data.data.publicJobs);
     }
 };
 

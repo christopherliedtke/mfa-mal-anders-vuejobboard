@@ -279,38 +279,37 @@
                 this.$store.dispatch("setOverlay", true);
 
                 try {
-                    const response = await this.$axios.post(
-                        "/api/jobs/private",
-                        {
+                    const response = await this.$axios.get("graphql", {
+                        params: {
                             query: `
-                            query {
-                                jobs {
-                                    _id
-                                    createdAt
-                                    updatedAt
-                                    publishedAt
-                                    paidAt
-                                    paidExpiresAt
-                                    status
-                                    applicationDeadline
-                                    paid
-                                    title
-                                    company {
-                                        name
-                                        street
-                                        zipCode
-                                        location
-                                        state
-                                        size
+                                query {
+                                    myJobs {
+                                        _id
+                                        createdAt
+                                        updatedAt
+                                        publishedAt
+                                        paidAt
+                                        paidExpiresAt
+                                        status
+                                        applicationDeadline
+                                        paid
+                                        title
+                                        company {
+                                            name
+                                            street
+                                            zipCode
+                                            location
+                                            state
+                                            size
+                                        }
+
                                     }
-
                                 }
-                            }
-                        `
+                            `
                         }
-                    );
+                    });
 
-                    this.myJobs = response.data.data.jobs;
+                    this.myJobs = response.data.data.myJobs;
                 } catch (err) {
                     this.$root.$bvToast.toast(
                         "Ihre Stellenanzeigen konnten nicht geladen werden. Bitte versuchen Sie es noch einmal, indem Sie die Seite neu laden.",
@@ -328,32 +327,29 @@
             },
             async updateJobStatus(jobId, status) {
                 try {
-                    const response = await this.$axios.post(
-                        "/api/jobs/private",
-                        {
-                            query: `
-                            mutation {
-                                updateJobStatus(_id: "${jobId}", status: "${status}") {
-                                    _id
-                                    createdAt
-                                    updatedAt
-                                    paidAt
-                                    paidExpiresAt
-                                    status
-                                    paid
-                                    title
+                    const response = await this.$axios.post("/graphql", {
+                        query: `
+                                mutation {
+                                    updateJob(_id: "${jobId}", status: "${status}") {
+                                        _id
+                                        createdAt
+                                        updatedAt
+                                        paidAt
+                                        paidExpiresAt
+                                        status
+                                        paid
+                                        title
+                                    }
                                 }
-                            }
-                        `
-                        }
-                    );
+                            `
+                    });
 
-                    if (response.data.data.updateJobStatus.status === status) {
+                    if (response.data.data.updateJob.status === status) {
                         this.myJobs.forEach((job, index) => {
                             if (job._id === jobId) {
                                 this.myJobs[index].status = status;
                                 this.myJobs[index].updatedAt =
-                                    response.data.data.updateJobStatus.updatedAt;
+                                    response.data.data.updateJob.updatedAt;
                             }
                         });
 
@@ -393,18 +389,16 @@
             },
             async deleteJob(jobId) {
                 try {
-                    const response = await this.$axios.post(
-                        "/api/jobs/private",
-                        {
-                            query: `
-                            mutation {
-                                deleteJob(_id: "${jobId}") {
-                                    status
+                    const response = await this.$axios.post("graphql", {
+                        query: `
+                                mutation {
+                                    deleteJob(_id: "${jobId}") {
+                                        _id
+                                        status
+                                    }
                                 }
-                            }
-                        `
-                        }
-                    );
+                            `
+                    });
 
                     if (response.data.data.deleteJob.status === "deleted") {
                         this.myJobs.forEach((job, index) => {

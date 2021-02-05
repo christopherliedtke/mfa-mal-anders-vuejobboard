@@ -131,6 +131,15 @@
                         "
                         >Unpublished</b-dropdown-item
                     >
+                    <b-dropdown-item
+                        class="mb-0"
+                        :active="row.item.status === 'deleted'"
+                        variant="danger"
+                        @click.prevent="
+                            updateJob(row.item._id, 'status', 'deleted')
+                        "
+                        >Deleted</b-dropdown-item
+                    >
                 </b-dropdown>
                 <b-dropdown
                     class="mr-2 mb-2"
@@ -401,46 +410,48 @@
                 this.$store.dispatch("setOverlay", true);
 
                 try {
-                    const response = await this.$axios.post("/api/jobs/admin", {
-                        query: `
-                            query {
-                                jobs {
-                                    _id
-                                    createdAt
-                                    updatedAt
-                                    paidExpiresAt
-                                    paidAmount
-                                    refreshFrequency
-                                    status
-                                    applicationDeadline
-                                    paid
-                                    publishedAt
-                                    paidAt
-                                    paidExpiresAt
-                                    invoiceNo
-                                    sentReminder
-                                    title
-                                    company {
-                                        name
-                                        street
-                                        location
-                                        state
-                                        zipCode
-                                        country
-                                    }
-                                    userId {
+                    const response = await this.$axios.get("graphql", {
+                        params: {
+                            query: `
+                                query {
+                                    adminJobs {
                                         _id
                                         createdAt
-                                        firstName
-                                        lastName
-                                        email
+                                        updatedAt
+                                        paidExpiresAt
+                                        paidAmount
+                                        refreshFrequency
+                                        status
+                                        applicationDeadline
+                                        paid
+                                        publishedAt
+                                        paidAt
+                                        paidExpiresAt
+                                        invoiceNo
+                                        sentReminder
+                                        title
+                                        company {
+                                            name
+                                            street
+                                            location
+                                            state
+                                            zipCode
+                                            country
+                                        }
+                                        userId {
+                                            _id
+                                            createdAt
+                                            firstName
+                                            lastName
+                                            email
+                                        }
                                     }
                                 }
-                            }
-                        `
+                            `
+                        }
                     });
 
-                    this.jobs = response.data.data.jobs;
+                    this.jobs = response.data.data.adminJobs;
                 } catch (err) {
                     this.error = true;
                     this.$root.$bvToast.toast(
@@ -459,10 +470,10 @@
             },
             async updateJob(id, key, value) {
                 try {
-                    const response = await this.$axios.post("/api/jobs/admin", {
+                    const response = await this.$axios.post("/graphql", {
                         query: `
                             mutation {
-                                updateJob (_id: "${id}", ${key}: ${
+                                adminUpdateJob (_id: "${id}", ${key}: ${
                             typeof value === "string" ? `"${value}"` : value
                         }) {
                                     _id
@@ -496,10 +507,13 @@
                         `
                     });
 
-                    if (response.data.data.updateJob._id) {
+                    if (response.data.data.adminUpdateJob._id) {
                         this.jobs = this.jobs.map(job => {
-                            if (job._id === response.data.data.updateJob._id) {
-                                return response.data.data.updateJob;
+                            if (
+                                job._id ===
+                                response.data.data.adminUpdateJob._id
+                            ) {
+                                return response.data.data.adminUpdateJob;
                             } else {
                                 return job;
                             }
@@ -571,23 +585,18 @@
             },
             async deleteJob(jobId) {
                 try {
-                    const response = await this.$axios.post("/api/jobs/admin", {
+                    const response = await this.$axios.post("/graphql", {
                         query: `
                             mutation {
-                                deleteJob(_id: "${jobId}") {
+                                adminDeleteJob(_id: "${jobId}") {
+                                    _id
                                     status
                                 }
                             }
                         `
                     });
 
-                    if (response.data.data.deleteJob.status === "deleted") {
-                        this.jobs.forEach((job, index) => {
-                            if (job._id === jobId) {
-                                this.jobs.splice(index, 1);
-                            }
-                        });
-                    } else {
+                    if (!response.data.data.adminDeleteJob._id) {
                         this.error = true;
                         this.$root.$bvToast.toast(
                             `Der Job konnte nicht gelöscht werden.`,
@@ -600,6 +609,12 @@
                             }
                         );
                     }
+
+                    this.jobs.forEach((job, index) => {
+                        if (job._id === jobId) {
+                            this.jobs.splice(index, 1);
+                        }
+                    });
                 } catch (err) {
                     this.error = true;
                     this.$root.$bvToast.toast(

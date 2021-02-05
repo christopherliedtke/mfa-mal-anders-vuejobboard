@@ -2,20 +2,15 @@ const { gql } = require("graphql-modules");
 
 const JobType = gql`
     type Query {
-        _empty: String
-    }
-
-    extend type Query {
         publicJob(_id: ID!): Job
         publicJobs: [Job]
-        myJob: Job
+        myJob(_id: ID!): Job
         myJobs: [Job]
-        adminJob: Job
+        adminJob(_id: ID!): Job
         adminJobs: [Job]
     }
 
     type Mutation {
-        _empty: String
         addJob(
             title: String
             description: String
@@ -34,10 +29,12 @@ const JobType = gql`
             contactLastName: String
             contactEmail: String
             contactPhone: String
+            company: ID
             publishedAt: Float
             paidAt: Float
             paidExpiresAt: Float
             paidAmount: Float
+            refreshFrequency: Float
         ): Job
         updateJob(
             _id: ID!
@@ -59,10 +56,12 @@ const JobType = gql`
             contactLastName: String
             contactEmail: String
             contactPhone: String
+            company: ID
             publishedAt: Float
             paidAt: Float
             paidExpiresAt: Float
             paidAmount: Float
+            refreshFrequency: Float
         ): Job
         deleteJob(_id: ID!): Job
         adminAddJob(
@@ -84,10 +83,12 @@ const JobType = gql`
             contactLastName: String
             contactEmail: String
             contactPhone: String
+            company: ID
             publishedAt: Float
             paidAt: Float
             paidExpiresAt: Float
             paidAmount: Float
+            refreshFrequency: Float
         ): Job
         adminUpdateJob(
             _id: ID!
@@ -109,10 +110,13 @@ const JobType = gql`
             contactLastName: String
             contactEmail: String
             contactPhone: String
+            company: ID
             publishedAt: Float
+            paid: Boolean
             paidAt: Float
             paidExpiresAt: Float
             paidAmount: Float
+            refreshFrequency: Float
         ): Job
         adminDeleteJob(_id: ID!): Job
     }

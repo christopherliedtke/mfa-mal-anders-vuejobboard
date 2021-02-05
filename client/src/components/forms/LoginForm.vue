@@ -68,7 +68,7 @@
                 const res = await this.$store.dispatch("auth", {
                     type: "login",
                     creds: {
-                        email: this.email,
+                        email: this.email.toLowerCase(),
                         password: this.password
                     }
                 });

@@ -1,3 +1,5 @@
+const sanitizeHtml = require("sanitize-html");
+const s3 = require("../../../middleware/s3");
 const { Company } = require("../../models/company");
 
 const CompanyResolvers = {
@@ -9,8 +11,94 @@ const CompanyResolvers = {
             return company;
         },
         companies: async () => {
-            const companies = await Company.find();
+            const companies = await Company.find().sort({
+                createdAt: "desc",
+            });
             return companies;
+        },
+    },
+
+    Mutation: {
+        addCompany: async (root, args, context) => {
+            if (!context.user._id) {
+                return null;
+            }
+
+            let addObj = { ...args, userId: context.user._id };
+
+            addObj = cleanUpCompany(addObj);
+
+            const newCompanyObj = new Company(addObj);
+            const company = await newCompanyObj.save();
+
+            return company;
+        },
+        updateCompany: async (root, args, context) => {
+            if (!context.user._id) {
+                return null;
+            }
+
+            let updateObj = { ...args };
+            delete updateObj._id;
+
+            updateObj = cleanUpCompany(updateObj);
+
+            const company = await Company.findOneAndUpdate(
+                { _id: args._id, userId: context.user._id },
+                updateObj,
+                { new: true }
+            );
+
+            return company;
+        },
+        deleteCompany: async (root, args, context) => {
+            if (!context.user._id) {
+                return null;
+            }
+
+            const company = await Company.findOneAndDelete({
+                _id: args._id,
+                userId: context.user._id,
+            });
+
+            if (company.logoUrl) {
+                await s3.delete(company.logoUrl);
+            }
+
+            return company;
+        },
+        adminUpdateCompany: async (root, args, context) => {
+            if (!context.user.isAdmin) {
+                return null;
+            }
+
+            let updateObj = { ...args };
+            delete updateObj._id;
+
+            updateObj = cleanUpCompany(updateObj);
+
+            const company = await Company.findOneAndUpdate(
+                { _id: args._id },
+                updateObj,
+                { new: true }
+            );
+
+            return company;
+        },
+        adminDeleteCompany: async (root, args, context) => {
+            if (!context.user.isAdmin) {
+                return null;
+            }
+
+            const company = await Company.findOneAndDelete({
+                _id: args._id,
+            });
+
+            if (company.logoUrl) {
+                await s3.delete(company.logoUrl);
+            }
+
+            return company;
         },
     },
 
@@ -28,5 +116,13 @@ const CompanyResolvers = {
         },
     },
 };
+
+function cleanUpCompany(company) {
+    for (const key in company) {
+        company[key] = sanitizeHtml(company[key]);
+    }
+
+    return company;
+}
 
 module.exports = CompanyResolvers;

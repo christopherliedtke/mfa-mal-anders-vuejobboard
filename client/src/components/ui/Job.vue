@@ -413,6 +413,15 @@
                 ]
             };
         },
+        computed: {
+            jobQuery: function() {
+                return this.apiJobsSchema === "admin"
+                    ? "adminJob"
+                    : this.apiJobsSchema === "private"
+                    ? "myJob"
+                    : "publicJob";
+            }
+        },
         created() {
             this.getJob(this.$route.params.jobId);
         },
@@ -424,13 +433,11 @@
         methods: {
             async getJob(jobId) {
                 try {
-                    const job = await this.$axios.get(
-                        `/api/jobs/${this.apiJobsSchema}`,
-                        {
-                            params: {
-                                query: `
+                    const job = await this.$axios.get(`/graphql`, {
+                        params: {
+                            query: `
                                     query {
-                                        job(_id: "${jobId}") {
+                                        ${this.jobQuery}(_id: "${jobId}") {
                                             _id
                                             createdAt
                                             updatedAt
@@ -469,16 +476,15 @@
                                         }
                                     }
                                 `
-                            }
                         }
-                    );
+                    });
 
-                    if (job.data.data.job) {
-                        this.job = job.data.data.job;
+                    if (job.data.data[this.jobQuery]) {
+                        this.job = job.data.data[this.jobQuery];
 
-                        if (job.data.data.job.company.logoUrl) {
+                        if (job.data.data[this.jobQuery].company.logoUrl) {
                             this.setLogoDimensions(
-                                job.data.data.job.company.logoUrl
+                                job.data.data[this.jobQuery].company.logoUrl
                             );
                         }
                     } else {

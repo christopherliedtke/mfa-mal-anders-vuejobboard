@@ -497,6 +497,7 @@
                     v-if="job.company.logoUrl"
                     :src="job.company.logoUrl"
                     fluid
+                    style="max-height: 100%; max-width: 100%"
                 />
                 <Fa v-else icon="box-open" size="lg" />
             </div>
@@ -625,6 +626,9 @@
                 set(value) {
                     this.job.paidExpiresAt = new Date(value).getTime();
                 }
+            },
+            jobQuery: function() {
+                return this.apiJobsSchema === "admin" ? "adminJob" : "myJob";
             }
         },
         created() {
@@ -636,56 +640,55 @@
         methods: {
             async getJob(id) {
                 try {
-                    const job = await this.$axios.post(
-                        `/api/jobs/${this.apiJobsSchema}`,
-                        {
+                    const job = await this.$axios.get(`/graphql`, {
+                        params: {
                             query: `
-                            query {
-                                job(_id: "${id}") {
-                                    _id
-                                    publishedAt
-                                    paidAt
-                                    paidExpiresAt
-                                    paidAmount
-                                    refreshFrequency
-                                    title
-                                    description
-                                    employmentType
-                                    applicationDeadline
-                                    simpleApplication
-                                    specialization
-                                    extJobUrl
-                                    applicationEmail
-                                    imageUrl
-                                    salaryMin
-                                    salaryMax
-                                    contactGender
-                                    contactTitle
-                                    contactFirstName
-                                    contactLastName
-                                    contactEmail
-                                    contactPhone
-                                    company {
+                                query {
+                                    ${this.jobQuery}(_id: "${id}") {
                                         _id
-                                        name
-                                        street
-                                        location
-                                        zipCode
-                                        state
-                                        country
-                                        geoCodeLat
-                                        geoCodeLng
-                                        size
-                                        url
-                                        logoUrl
+                                        publishedAt
+                                        paidAt
+                                        paidExpiresAt
+                                        paidAmount
+                                        refreshFrequency
+                                        title
+                                        description
+                                        employmentType
+                                        applicationDeadline
+                                        simpleApplication
+                                        specialization
+                                        extJobUrl
+                                        applicationEmail
+                                        imageUrl
+                                        salaryMin
+                                        salaryMax
+                                        contactGender
+                                        contactTitle
+                                        contactFirstName
+                                        contactLastName
+                                        contactEmail
+                                        contactPhone
+                                        company {
+                                            _id
+                                            name
+                                            street
+                                            location
+                                            zipCode
+                                            state
+                                            country
+                                            geoCodeLat
+                                            geoCodeLng
+                                            size
+                                            url
+                                            logoUrl
+                                        }
                                     }
                                 }
-                            }
-                        `
+                            `
                         }
-                    );
+                    });
 
-                    this.job = job.data.data.job;
+                    this.job = job.data.data[this.jobQuery];
 
                     this.selectedCompanyId = this.job.company._id;
 
@@ -792,13 +795,19 @@
 
                     // Save / Update job
                     let jobMutationType;
-                    this.job._id === "new"
-                        ? (jobMutationType = "addJob")
-                        : (jobMutationType = "updateJob");
+
+                    if (this.job._id === "new") {
+                        this.apiJobsSchema === "private"
+                            ? (jobMutationType = "addJob")
+                            : (jobMutationType = "adminAddJob");
+                    } else {
+                        this.apiJobsSchema === "private"
+                            ? (jobMutationType = "updateJob")
+                            : (jobMutationType = "adminUpdateJob");
+                    }
 
                     const savedJob = await this.saveJob(
                         jobMutationType,
-                        this.apiJobsSchema,
                         this.job,
                         true
                     );
