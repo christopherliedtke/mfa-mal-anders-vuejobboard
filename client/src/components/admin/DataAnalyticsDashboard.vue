@@ -34,10 +34,10 @@
                 this.$store.dispatch("setOverlay", true);
 
                 try {
-                    const response = await this.$axios.post("/api/jobs/admin", {
+                    const response = await this.$axios.post("/graphql", {
                         query: `
                             query {
-                                jobs {
+                                adminJobs {
                                     _id
                                     createdAt
                                     updatedAt
@@ -72,7 +72,7 @@
                         `
                     });
 
-                    this.jobs = response.data.data.jobs;
+                    this.jobs = response.data.data.adminJobs;
                 } catch (err) {
                     this.error = true;
                     this.$root.$bvToast.toast(

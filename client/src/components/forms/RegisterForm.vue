@@ -124,8 +124,8 @@
                 dismissible
                 variant="danger"
                 v-for="error in errors"
-                :key="error.msg"
-                >{{ error.msg }}</b-alert
+                :key="error.message"
+                >{{ error.message }}</b-alert
             >
         </div>
     </b-form>
@@ -172,13 +172,10 @@
                     }
                 });
 
-                if (!res.success) {
+                if (res.errors) {
                     this.errors = res.errors;
                 } else {
-                    await this.$store.dispatch("fetchUser");
-                    await this.$axios.get(
-                        "/api/auth/verification/get-activation-email"
-                    );
+                    await this.$store.dispatch("getActivationEmail");
 
                     if (this.$store.state.auth.loggedIn) {
                         this.trackEvent(

@@ -83,7 +83,6 @@ app.use(express.json());
 
 // #Routes w/o csrf protection
 app.use("/api/webhooks", require("./routes/webhooks"));
-// app.use("/api/add-bulk-subscribers", require("./routes/addBulkSubscribers"));
 
 // #Express Session
 app.use(
@@ -154,17 +153,18 @@ const apolloServer = new ApolloServer({
         return { user, session: req.session };
     },
 });
-apolloServer.applyMiddleware({ app });
+apolloServer.applyMiddleware({ app, cors: true, path: "/graphql" });
 
 // #Routes w csrf protection
-app.use("/api/auth", require("./routes/auth"));
-app.use("/api/user", require("./routes/user"));
-app.use("/api/subscriber", require("./routes/subscriber"));
-app.use("/api/jobs", require("./routes/jobs"));
-app.use("/api/companies", require("./routes/companies"));
+// app.use("/api/auth", require("./routes/auth"));
+// app.use("/api/user", require("./routes/user"));
+// app.use("/api/subscriber", require("./routes/subscriber"));
+// app.use("/api/jobs", require("./routes/jobs"));
+// app.use("/api/companies", require("./routes/companies"));
+// app.use("/api/coupons", require("./routes/coupons"));
+
 app.use("/api/contact", require("./routes/contact"));
 app.use("/api/newsletter", require("./routes/newsletter"));
-app.use("/api/coupons", require("./routes/coupons"));
 app.use("/api/images", require("./routes/images"));
 app.use("/api/stripe", require("./routes/stripe"));
 app.use("/api/invoice", require("./routes/invoice"));

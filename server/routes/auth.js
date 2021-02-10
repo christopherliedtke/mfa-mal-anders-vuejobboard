@@ -316,31 +316,31 @@ router.get(
 // #route:  GET /verification/verify-account
 // #desc:   Verify user's email address
 // #access: Public
-router.get("/verification/verify-account/:userId", async (req, res) => {
-    let redirectPath, user;
+// router.get("/verification/verify-account/:userId", async (req, res) => {
+//     let redirectPath, user;
 
-    try {
-        user = await User.findById(req.params.userId);
+//     try {
+//         user = await User.findById(req.params.userId);
 
-        if (!user) {
-            console.log(
-                `Error on /verify-account -> no user found for user._id ${req.params.userId}: `,
-                user
-            );
-            redirectPath = `${process.env.WEBSITE_URL}/auth/account/verification?error=no-user`;
-        } else {
-            await User.updateOne({ email: user.email }, { status: "active" });
+//         if (!user) {
+//             console.log(
+//                 `Error on /verify-account -> no user found for user._id ${req.params.userId}: `,
+//                 user
+//             );
+//             redirectPath = `${process.env.WEBSITE_URL}/auth/account/verification?error=no-user`;
+//         } else {
+//             await User.updateOne({ email: user.email }, { status: "active" });
 
-            redirectPath = `${process.env.WEBSITE_URL}/auth/account/verified`;
-        }
-    } catch (err) {
-        console.log("Error on /api/auth/verification/verify-account: ", err);
+//             redirectPath = `${process.env.WEBSITE_URL}/auth/account/verified`;
+//         }
+//     } catch (err) {
+//         console.log("Error on /api/auth/verification/verify-account: ", err);
 
-        redirectPath = `${process.env.WEBSITE_URL}/auth/account/verification?error=server-error`;
-    }
+//         redirectPath = `${process.env.WEBSITE_URL}/auth/account/verification?error=server-error`;
+//     }
 
-    res.redirect(redirectPath);
-});
+//     res.redirect(redirectPath);
+// });
 
 // #route:  POST /password-reset/get-code
 // #desc:   Reset password of user

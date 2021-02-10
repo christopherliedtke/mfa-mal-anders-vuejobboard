@@ -181,24 +181,30 @@
                 this.$store.dispatch("setOverlay", true);
 
                 try {
-                    const response = await this.$axios.post("/api/user/admin", {
-                        query: `
-                            query {
-                                users {
-                                    _id
-                                    createdAt
-                                    updatedAt
-                                    firstName
-                                    lastName
-                                    email
-                                    status
-                                    role
+                    const users = await this.$axios.get("/graphql", {
+                        params: {
+                            query: `
+                                query {
+                                    adminUsers {
+                                        _id
+                                        createdAt
+                                        updatedAt
+                                        firstName
+                                        lastName
+                                        email
+                                        status
+                                        role
+                                    }
                                 }
-                            }
-                        `
+                            `
+                        }
                     });
 
-                    this.users = response.data.data.users;
+                    if (!users.data.data.adminUsers) {
+                        throw new Error("Users could not be loaded!");
+                    }
+
+                    this.users = users.data.data.adminUsers;
                 } catch (err) {
                     this.error = true;
                     this.$root.$bvToast.toast(
@@ -221,35 +227,28 @@
             },
             async deleteUser(userId) {
                 try {
-                    const response = await this.$axios.post("/api/user/admin", {
+                    const deletedUser = await this.$axios.post("/graphql", {
                         query: `
                             mutation {
-                                deleteUser(_id: "${userId}") {
-                                    firstName
+                                adminDeleteUser(_id: "${userId}") {
+                                    _id
                                 }
                             }
                         `
                     });
 
-                    if (response.data.data.deleteUser.firstName === "deleted") {
-                        this.users.forEach((user, index) => {
-                            if (user._id === userId) {
-                                this.users.splice(index, 1);
-                            }
-                        });
-                    } else {
-                        this.error = true;
-                        this.$root.$bvToast.toast(
-                            `Der User konnte nicht gelöscht werden.`,
-                            {
-                                title: `Fehler beim Löschen`,
-                                variant: "danger",
-                                toaster: "b-toaster-bottom-right",
-                                solid: true,
-                                noAutoHide: true
-                            }
-                        );
+                    if (!deletedUser.data.data.adminDeleteUser) {
+                        throw new Error("User could not be deleted!");
                     }
+
+                    this.users.forEach((user, index) => {
+                        if (
+                            user._id ===
+                            deletedUser.data.data.adminDeleteUser._id
+                        ) {
+                            this.users.splice(index, 1);
+                        }
+                    });
                 } catch (err) {
                     this.error = true;
                     this.$root.$bvToast.toast(

@@ -48,16 +48,21 @@
         },
         methods: {
             async unsubscribe() {
-                const response = await this.$axios.post(
-                    "/api/newsletter/unsubscribe",
-                    { email: this.form.email }
-                );
+                const subscriber = await this.$axios.post("/graphql", {
+                    query: `
+                        mutation {
+                            deleteSubscriber (email: "${this.form.email}") {
+                                email
+                            }
+                        }
+                    `
+                });
 
-                if (response.data.success) {
-                    this.$router.push("/page/unsubscribed-successful");
-                } else {
+                if (subscriber.data.errors) {
                     this.error =
-                        "Die angegebene E-Mail Adresse konnte nicht aus vom Newsletter abgemeldet werden. Bitte überprüfe die E-Mail Adresse und versuche es noch einmal.";
+                        "Die angegebene E-Mail Adresse konnte nicht vom Newsletter abgemeldet werden. Bitte überprüfe die E-Mail Adresse und versuche es noch einmal. Achte gegebenenfalls auch auf Groß- und Keinschreibung.";
+                } else {
+                    this.$router.push("/page/unsubscribed-successful");
                 }
             }
         }

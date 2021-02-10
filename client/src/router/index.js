@@ -38,6 +38,10 @@ const NewsletterSubscriptionSuccess = () =>
     import(
         /* webpackChunkName: "newsletter" */ "@/views/pages/NewsletterSubscriptionSuccess.vue"
     );
+const NewsletterSubscriptionActivation = () =>
+    import(
+        /* webpackChunkName: "newsletter" */ "@/views/pages/NewsletterSubscriptionActivation.vue"
+    );
 const NewsletterUnsubscribe = () =>
     import(
         /* webpackChunkName: "newsletter" */ "@/views/pages/NewsletterUnsubscribe.vue"
@@ -128,10 +132,10 @@ const AuthAccountVerification = () =>
     import(
         /* webpackChunkName: "auth" */ "@/views/auth/AuthAccountVerification.vue"
     );
-const AuthAccountVerificationSuccessful = () =>
-    import(
-        /* webpackChunkName: "auth" */ "@/views/auth/AuthAccountVerificationSuccessful.vue"
-    );
+// const AuthAccountVerificationSuccessful = () =>
+//     import(
+//         /* webpackChunkName: "auth" */ "@/views/auth/AuthAccountVerificationSuccessful.vue"
+//     );
 
 // User
 // import User from "@/views/user/index.vue";
@@ -307,6 +311,10 @@ const routes = [
                 component: NewsletterSubscriptionSuccess
             },
             {
+                path: "subscription-activation/:subscriberId",
+                component: NewsletterSubscriptionActivation
+            },
+            {
                 path: "unsubscribe",
                 component: NewsletterUnsubscribe
             },
@@ -369,7 +377,7 @@ const routes = [
                 }
             },
             {
-                path: "account/verification/:userId",
+                path: "account/verification",
                 name: "AuthAccountVerification",
                 component: AuthAccountVerification,
                 meta: {
@@ -378,14 +386,23 @@ const routes = [
                 }
             },
             {
-                path: "account/verified",
-                name: "AuthAccountVerificationSuccessful",
-                component: AuthAccountVerificationSuccessful,
+                path: "account/verification/:userId",
+                name: "AuthAccountVerificationWUserId",
+                component: AuthAccountVerification,
                 meta: {
                     public: false,
                     onlyWhenPending: true
                 }
             }
+            // {
+            //     path: "account/verified",
+            //     name: "AuthAccountVerificationSuccessful",
+            //     component: AuthAccountVerificationSuccessful,
+            //     meta: {
+            //         public: false,
+            //         onlyWhenPending: true
+            //     }
+            // }
         ]
     },
     {
@@ -526,7 +543,7 @@ router.beforeEach((to, from, next) => {
     const onlyAdmin = to.matched.some(record => record.meta.onlyAdmin);
 
     const loggedIn = store.getters.loggedIn;
-    const userActivate = store.getters.user.status === "active";
+    const userActive = store.getters.user.status === "active";
     const isAdmin = store.getters.user.isAdmin;
 
     if (onlyAdmin && !isAdmin) {
@@ -540,11 +557,11 @@ router.beforeEach((to, from, next) => {
         });
     }
 
-    if (!isPublic && !onlyWhenPending && loggedIn && !userActivate) {
+    if (!isPublic && !onlyWhenPending && loggedIn && !userActive) {
         return next("/auth/account/verification");
     }
 
-    if (!isPublic && onlyWhenPending && loggedIn && userActivate) {
+    if (!isPublic && onlyWhenPending && loggedIn && userActive) {
         return next("/user/dashboard?tab=1");
     }
 

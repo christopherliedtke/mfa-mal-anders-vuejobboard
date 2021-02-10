@@ -64,13 +64,20 @@
             />
 
             <label for="expire-at">Expiration Date</label>
-            <b-form-datepicker
-                :value-as-date="true"
-                :state="validated && coupon.expireAt ? true : null"
-                id="expire-at"
-                v-model="coupon.expireAt"
-                placeholder="Choose a date"
-            />
+            <b-input-group>
+                <b-form-datepicker
+                    :value-as-date="true"
+                    :state="validated && coupon.expireAt ? true : null"
+                    id="expire-at"
+                    v-model="coupon.expireAt"
+                    placeholder="Choose a date"
+                />
+                <b-input-group-append>
+                    <b-button @click.prevent="coupon.expireAt = null"
+                        ><Fa icon="times"
+                    /></b-button>
+                </b-input-group-append>
+            </b-input-group>
 
             <div class="d-flex justify-content-between my-4">
                 <b-button variant="outline-danger" :to="`/admin?tab=3`">
@@ -119,39 +126,38 @@
         methods: {
             async getCoupon(couponId) {
                 try {
-                    const coupon = await this.$axios.post(
-                        "/api/coupons/admin",
-                        {
+                    const coupon = await this.$axios.get("/graphql", {
+                        params: {
                             query: `
-                            query {
-                                coupon(_id: "${couponId}") {
-                                    _id
-                                    code
-                                    discount
-                                    refreshFrequency
-                                    usage
-                                    expireAt
-                                    userId {
+                                query {
+                                    adminCoupon(_id: "${couponId}") {
                                         _id
+                                        code
+                                        discount
+                                        refreshFrequency
+                                        usage
+                                        expireAt
+                                        userId {
+                                            _id
+                                        }
                                     }
                                 }
-                            }
-                        `
+                            `
                         }
-                    );
+                    });
 
-                    if (!coupon.data.data.coupon.userId) {
-                        coupon.data.data.coupon.userId = { _id: null };
+                    if (!coupon.data.data.adminCoupon.userId) {
+                        coupon.data.data.adminCoupon.userId = { _id: null };
                     }
-                    if (coupon.data.data.coupon.expireAt) {
-                        coupon.data.data.coupon.expireAt = new Date(
-                            coupon.data.data.coupon.expireAt
+                    if (coupon.data.data.adminCoupon.expireAt) {
+                        coupon.data.data.adminCoupon.expireAt = new Date(
+                            coupon.data.data.adminCoupon.expireAt
                         );
                     } else {
-                        coupon.data.data.coupon.expireAt = null;
+                        coupon.data.data.adminCoupon.expireAt = null;
                     }
 
-                    this.coupon = coupon.data.data.coupon;
+                    this.coupon = coupon.data.data.adminCoupon;
                 } catch (err) {
                     this.$root.$bvToast.toast(
                         "Beim Laden des Coupons ist ein Fehler aufgetreten.",
@@ -201,7 +207,7 @@
                                         ? `expireAt: ${Number(
                                               this.coupon.expireAt
                                           )}`
-                                        : ""
+                                        : `expireAt: ${null}`
                                 }
                                 ${
                                     this.coupon.userId._id
@@ -214,14 +220,11 @@
                         }
                     `;
 
-                    const response = await this.$axios.post(
-                        `/api/coupons/admin`,
-                        {
-                            query
-                        }
-                    );
+                    const coupon = await this.$axios.post(`/graphql`, {
+                        query
+                    });
 
-                    if (!response.data.data[mutationType]) {
+                    if (coupon.data.errors) {
                         this.$root.$bvToast.toast(
                             "Beim Speichern des Coupons ist ein Fehler aufgetreten.",
                             {
@@ -232,21 +235,22 @@
                                 noAutoHide: true
                             }
                         );
-                    } else {
-                        this.success = true;
-
-                        this.$root.$bvToast.toast(
-                            "Der Coupon wurde erfolgreich gespeichert.",
-                            {
-                                title: `Coupon gespeichert`,
-                                variant: "success",
-                                toaster: "b-toaster-bottom-right",
-                                solid: true
-                            }
-                        );
-
-                        this.$router.go(-1);
+                        throw new Error("Coupon could not be saved!");
                     }
+
+                    this.success = true;
+
+                    this.$root.$bvToast.toast(
+                        "Der Coupon wurde erfolgreich gespeichert.",
+                        {
+                            title: `Coupon gespeichert`,
+                            variant: "success",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true
+                        }
+                    );
+
+                    this.$router.go(-1);
                 } catch (err) {
                     this.$root.$bvToast.toast(
                         "Beim Speichern des Coupons ist ein Fehler aufgetreten.",

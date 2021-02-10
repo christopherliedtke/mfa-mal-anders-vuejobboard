@@ -80,8 +80,7 @@
                     size="sm"
                     @click.prevent="onSubmit"
                 >
-                    <Fa v-if="success" icon="check" class="mr-2" />
-                    {{ success ? "Gespeichert" : "Speichern" }}
+                    Speichern
                 </b-button>
             </div>
         </b-form>
@@ -112,6 +111,11 @@
                 validated: null
             };
         },
+        computed: {
+            userQuery: function() {
+                return this.apiUsersSchema === "admin" ? "adminUser" : "me";
+            }
+        },
         created() {
             this.getUserData();
         },
@@ -120,16 +124,15 @@
                 try {
                     this.$store.dispatch("setOverlay", true);
 
-                    const userData = await this.$axios.post(
-                        `/api/user/${this.apiUsersSchema}`,
-                        {
+                    const user = await this.$axios.get(`/graphql`, {
+                        params: {
                             query: `
                                 query {
-                                    user ${
-                                        this.apiUsersSchema === "admin"
-                                            ? `(_id: "${this.$route.params.userId}")`
-                                            : ""
-                                    }
+                                    ${this.userQuery} ${
+                                this.apiUsersSchema === "admin"
+                                    ? `(_id: "${this.$route.params.userId}")`
+                                    : ""
+                            }
                                         {
                                         _id
                                         gender
@@ -141,10 +144,10 @@
                                 }
                             `
                         }
-                    );
+                    });
 
-                    if (userData.data.data.user) {
-                        this.user = userData.data.data.user;
+                    if (user.data.data[this.userQuery]) {
+                        this.user = user.data.data[this.userQuery];
                     }
                 } catch (err) {
                     //
@@ -157,32 +160,33 @@
                     this.$store.dispatch("setOverlay", true);
 
                     try {
-                        const response = await this.$axios.post(
-                            `/api/user/${this.apiUsersSchema}`,
-                            {
-                                query: `
-                                mutation {
-                                    updateUser (
-                                        ${
-                                            this.apiUsersSchema === "admin"
-                                                ? `_id: "${this.user._id}",`
-                                                : ""
+                        const mutationType =
+                            this.apiUsersSchema === "admin"
+                                ? "adminUpdateUser"
+                                : "updateMe";
+                        const response = await this.$axios.post(`/graphql`, {
+                            query: `
+                                    mutation {
+                                        ${mutationType} (
+                                            ${
+                                                this.apiUsersSchema === "admin"
+                                                    ? `_id: "${this.user._id}",`
+                                                    : ""
+                                            }
+                                            gender: "${this.user.gender}",
+                                            title: "${this.user.title}",
+                                            firstName: "${this.user.firstName}",
+                                            lastName: "${this.user.lastName}",
+                                            email: "${this.user.email.toLowerCase()}",
+                                        ) {
+                                            _id
+                                            status
                                         }
-                                        gender: "${this.user.gender}", 
-                                        title: "${this.user.title}", 
-                                        firstName: "${this.user.firstName}", 
-                                        lastName: "${this.user.lastName}", 
-                                        email: "${this.user.email}", 
-                                    ) {
-                                        _id
-                                        status
                                     }
-                                }
-                            `
-                            }
-                        );
+                                `
+                        });
 
-                        if (response.data.data.updateUser) {
+                        if (response.data.data[mutationType]) {
                             this.disabled = true;
 
                             this.$root.$bvToast.toast(
@@ -196,12 +200,12 @@
                             );
 
                             if (
-                                response.data.data.updateUser.status ===
+                                response.data.data[mutationType].status ===
                                 "pending"
                             ) {
                                 this.$store.commit(
                                     "setUserStatus",
-                                    response.data.data.updateUser.status
+                                    response.data.data[mutationType].status
                                 );
                                 await this.$axios.get(
                                     "/api/auth/verification/get-activation-email"

@@ -19,28 +19,155 @@ const getters = {
 
 const actions = {
     async auth({ commit }, data) {
-        const response = await axios.post("/api/auth/" + data.type, data.creds);
-
-        if (response.data.success) {
-            commit("setToken", response.data.token);
+        let args = "";
+        for (const key in data.creds) {
+            args += `${key}: "${data.creds[key]}"`;
         }
 
-        return response.data;
-    },
-    async fetchUser({ commit }) {
-        const response = await axios.get("/api/auth/user-by-token");
+        const user = await axios.post("/graphql", {
+            query: `
+                mutation {
+                    ${data.type}(
+                        ${args} 
+                    ) {
+                        _id
+                        gender
+                        title
+                        firstName
+                        lastName
+                        email
+                        status
+                        role
+                        isAdmin
+                        isEmployer
+                        token
+                    }
+                }
+            `
+        });
 
-        if (response.data.user) {
-            commit("setUser", response.data.user);
+        if (user.data.data[data.type]) {
+            commit("setToken", user.data.data[data.type].token);
+            commit("setUser", user.data.data[data.type]);
             commit("setLoggedIn", true);
         }
 
-        return response.data.user;
+        return user.data;
+    },
+    async fetchUserFromDb({ commit }) {
+        const user = axios.get("/graphql", {
+            params: {
+                query: `
+                    query {
+                        me {
+                            _id
+                            gender
+                            title
+                            firstName
+                            lastName
+                            email
+                            status
+                            role
+                            isAdmin
+                            isEmployer
+                            token
+                        }
+                    }
+                `
+            }
+        });
+
+        if (user.data.data.me) {
+            commit("setToken", user.data.data.me.token);
+            commit("setUser", user.data.data.me);
+            commit("setLoggedIn", true);
+        }
+
+        return user.data;
+    },
+    async getActivationEmail() {
+        const user = await axios.post("/graphql", {
+            query: `
+                mutation {
+                    accountVerificationGetEmail {
+                        _id
+                    }
+                }
+        `
+        });
+
+        return user.data.data.accountVerificationGetEmail._id ? true : false;
+    },
+    async activateUser({ commit }, id) {
+        const user = await axios.post("/graphql", {
+            query: `
+                mutation {
+                    activateUser (_id: "${id}") {
+                        _id
+                        gender
+                        title
+                        firstName
+                        lastName
+                        email
+                        status
+                        role
+                        isAdmin
+                        isEmployer
+                        token
+                    }
+                }
+            `
+        });
+
+        if (user.data.data.activateUser) {
+            commit("setToken", user.data.data.activateUser.token);
+            commit("setUser", user.data.data.activateUser);
+            commit("setLoggedIn", true);
+        }
+
+        return user.data.data.activateUser ? true : false;
+    },
+    async fetchUserFromToken({ commit }) {
+        const user = await axios.get("/graphql", {
+            params: {
+                query: `
+                    query {
+                        meFromToken {
+                            _id
+                            gender
+                            title
+                            firstName
+                            lastName
+                            email
+                            status
+                            role
+                            isAdmin
+                            isEmployer
+                        }
+                    }
+                `
+            }
+        });
+
+        if (user.data.data.meFromToken) {
+            commit("setUser", user.data.data.meFromToken);
+            commit("setLoggedIn", true);
+        }
+
+        return user;
     },
     async logout({ commit }) {
-        const response = await axios.get("/api/auth/logout");
+        const response = await axios.post("/graphql", {
+            query: `
+                mutation {
+                    logout {
+                        _id
+                    }
+                }
+        `
+        });
 
-        if (response.data.success) {
+        if (response.data.data.logout) {
             commit("setToken", false);
             commit("setUser", false);
             commit("setLoggedIn", false);

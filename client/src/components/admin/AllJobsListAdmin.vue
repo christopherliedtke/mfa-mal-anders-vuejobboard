@@ -32,9 +32,16 @@
         >
             <template v-slot:cell(user)="row">
                 {{
-                    row.item.userId.lastName + ", " + row.item.userId.firstName
+                    row.item.userId
+                        ? row.item.userId.lastName +
+                          ", " +
+                          row.item.userId.firstName
+                        : ""
                 }}
-                <a :href="`mailto:${row.item.userId.email}`">
+                <a
+                    v-if="row.item.userId && row.item.userId.email"
+                    :href="`mailto:${row.item.userId.email}`"
+                >
                     {{ row.item.userId.email }}</a
                 >
             </template>
@@ -61,15 +68,17 @@
             </template>
             <template v-slot:cell(location)="row">
                 {{
-                    row.item.company.street +
-                        " " +
-                        row.item.company.location +
-                        " " +
-                        row.item.company.zipCode +
-                        " " +
-                        row.item.company.state +
-                        " " +
-                        row.item.company.country
+                    row.item.company
+                        ? row.item.company.street +
+                          " " +
+                          row.item.company.location +
+                          " " +
+                          row.item.company.zipCode +
+                          " " +
+                          row.item.company.state +
+                          " " +
+                          row.item.company.country
+                        : ""
                 }}
             </template>
             <template v-slot:cell(actions)="row">
@@ -340,56 +349,66 @@
                                     .includes(
                                         this.filter.searchTerm.toLowerCase()
                                     ) ||
-                                job.company.name
-                                    .toLowerCase()
-                                    .includes(
-                                        this.filter.searchTerm.toLowerCase()
-                                    ) ||
-                                job.company.street
-                                    .toLowerCase()
-                                    .includes(
-                                        this.filter.searchTerm.toLowerCase()
-                                    ) ||
-                                job.company.location
-                                    .toLowerCase()
-                                    .includes(
-                                        this.filter.searchTerm.toLowerCase()
-                                    ) ||
-                                job.company.state
-                                    .toLowerCase()
-                                    .includes(
-                                        this.filter.searchTerm.toLowerCase()
-                                    ) ||
-                                job.company.zipCode
-                                    .toLowerCase()
-                                    .includes(
-                                        this.filter.searchTerm.toLowerCase()
-                                    ) ||
-                                job.company.country
-                                    .toLowerCase()
-                                    .includes(
-                                        this.filter.searchTerm.toLowerCase()
-                                    ) ||
-                                job.userId._id
-                                    .toLowerCase()
-                                    .includes(
-                                        this.filter.searchTerm.toLowerCase()
-                                    ) ||
-                                job.userId.lastName
-                                    .toLowerCase()
-                                    .includes(
-                                        this.filter.searchTerm.toLowerCase()
-                                    ) ||
-                                job.userId.firstName
-                                    .toLowerCase()
-                                    .includes(
-                                        this.filter.searchTerm.toLowerCase()
-                                    ) ||
-                                job.userId.email
-                                    .toLowerCase()
-                                    .includes(
-                                        this.filter.searchTerm.toLowerCase()
-                                    )
+                                (job.company.name &&
+                                    job.company.name
+                                        .toLowerCase()
+                                        .includes(
+                                            this.filter.searchTerm.toLowerCase()
+                                        )) ||
+                                (job.company.street &&
+                                    job.company.street
+                                        .toLowerCase()
+                                        .includes(
+                                            this.filter.searchTerm.toLowerCase()
+                                        )) ||
+                                (job.company.location &&
+                                    job.company.location
+                                        .toLowerCase()
+                                        .includes(
+                                            this.filter.searchTerm.toLowerCase()
+                                        )) ||
+                                (job.company.state &&
+                                    job.company.state
+                                        .toLowerCase()
+                                        .includes(
+                                            this.filter.searchTerm.toLowerCase()
+                                        )) ||
+                                (job.company.zipCode &&
+                                    job.company.zipCode
+                                        .toLowerCase()
+                                        .includes(
+                                            this.filter.searchTerm.toLowerCase()
+                                        )) ||
+                                (job.company.country &&
+                                    job.company.country
+                                        .toLowerCase()
+                                        .includes(
+                                            this.filter.searchTerm.toLowerCase()
+                                        )) ||
+                                (job.userId._id &&
+                                    job.userId._id
+                                        .toLowerCase()
+                                        .includes(
+                                            this.filter.searchTerm.toLowerCase()
+                                        )) ||
+                                (job.userId.lastName &&
+                                    job.userId.lastName
+                                        .toLowerCase()
+                                        .includes(
+                                            this.filter.searchTerm.toLowerCase()
+                                        )) ||
+                                (job.userId.firstName &&
+                                    job.userId.firstName
+                                        .toLowerCase()
+                                        .includes(
+                                            this.filter.searchTerm.toLowerCase()
+                                        )) ||
+                                (job.userId.email &&
+                                    job.userId.email
+                                        .toLowerCase()
+                                        .includes(
+                                            this.filter.searchTerm.toLowerCase()
+                                        ))
                             ) {
                                 return job;
                             } else {
@@ -410,7 +429,7 @@
                 this.$store.dispatch("setOverlay", true);
 
                 try {
-                    const response = await this.$axios.get("graphql", {
+                    const jobs = await this.$axios.get("graphql", {
                         params: {
                             query: `
                                 query {
@@ -451,7 +470,11 @@
                         }
                     });
 
-                    this.jobs = response.data.data.adminJobs;
+                    if (!jobs.data.data.adminJobs) {
+                        throw new Error("Jobs could not be loaded!");
+                    }
+
+                    this.jobs = jobs.data.data.adminJobs;
                 } catch (err) {
                     this.error = true;
                     this.$root.$bvToast.toast(
@@ -470,7 +493,7 @@
             },
             async updateJob(id, key, value) {
                 try {
-                    const response = await this.$axios.post("/graphql", {
+                    const job = await this.$axios.post("/graphql", {
                         query: `
                             mutation {
                                 adminUpdateJob (_id: "${id}", ${key}: ${
@@ -507,18 +530,17 @@
                         `
                     });
 
-                    if (response.data.data.adminUpdateJob._id) {
-                        this.jobs = this.jobs.map(job => {
-                            if (
-                                job._id ===
-                                response.data.data.adminUpdateJob._id
-                            ) {
-                                return response.data.data.adminUpdateJob;
-                            } else {
-                                return job;
-                            }
-                        });
+                    if (!job.data.data.adminUpdateJob) {
+                        throw new Error("Job could not be saved!");
                     }
+
+                    this.jobs = this.jobs.map(job => {
+                        if (job._id === job.data.data.adminUpdateJob._id) {
+                            return job.data.data.adminUpdateJob;
+                        } else {
+                            return job;
+                        }
+                    });
                 } catch (err) {
                     this.$root.$bvToast.toast(
                         `Der Job konnte nicht gespeichert werden. Error: ${err}`,
@@ -597,17 +619,7 @@
                     });
 
                     if (!response.data.data.adminDeleteJob._id) {
-                        this.error = true;
-                        this.$root.$bvToast.toast(
-                            `Der Job konnte nicht gelöscht werden.`,
-                            {
-                                title: `Fehler beim Löschen`,
-                                variant: "danger",
-                                toaster: "b-toaster-bottom-right",
-                                solid: true,
-                                noAutoHide: true
-                            }
-                        );
+                        throw new Error("Job could not be deleted.");
                     }
 
                     this.jobs.forEach((job, index) => {

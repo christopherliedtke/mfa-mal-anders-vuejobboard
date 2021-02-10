@@ -1,3 +1,4 @@
+const { AuthenticationError } = require("apollo-server-express");
 const sanitizeHtml = require("sanitize-html");
 const s3 = require("../../../middleware/s3");
 const { Company } = require("../../models/company");
@@ -16,12 +17,20 @@ const CompanyResolvers = {
             });
             return companies;
         },
+        myCompanies: async (root, args, context) => {
+            const companies = await Company.find({
+                userId: context.user._id,
+            }).sort({
+                createdAt: "desc",
+            });
+            return companies;
+        },
     },
 
     Mutation: {
         addCompany: async (root, args, context) => {
             if (!context.user._id) {
-                return null;
+                throw new AuthenticationError("Must be logged in!");
             }
 
             let addObj = { ...args, userId: context.user._id };
@@ -35,7 +44,7 @@ const CompanyResolvers = {
         },
         updateCompany: async (root, args, context) => {
             if (!context.user._id) {
-                return null;
+                throw new AuthenticationError("Must be logged in!");
             }
 
             let updateObj = { ...args };
@@ -53,7 +62,7 @@ const CompanyResolvers = {
         },
         deleteCompany: async (root, args, context) => {
             if (!context.user._id) {
-                return null;
+                throw new AuthenticationError("Must be logged in!");
             }
 
             const company = await Company.findOneAndDelete({
@@ -69,7 +78,7 @@ const CompanyResolvers = {
         },
         adminUpdateCompany: async (root, args, context) => {
             if (!context.user.isAdmin) {
-                return null;
+                throw new AuthenticationError("Missing permission!");
             }
 
             let updateObj = { ...args };
@@ -87,7 +96,7 @@ const CompanyResolvers = {
         },
         adminDeleteCompany: async (root, args, context) => {
             if (!context.user.isAdmin) {
-                return null;
+                throw new AuthenticationError("Missing permission!");
             }
 
             const company = await Company.findOneAndDelete({

@@ -24,8 +24,9 @@
         },
         async created() {
             if (this.$store.state.auth.loggedIn) {
-                const user = await this.$store.dispatch("fetchUser");
-                if (!user) {
+                const user = await this.$store.dispatch("fetchUserFromToken");
+
+                if (!user.data.data.meFromToken) {
                     this.$store.dispatch("logout");
                 }
             }

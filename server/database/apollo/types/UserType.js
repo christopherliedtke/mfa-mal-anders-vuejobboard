@@ -21,6 +21,7 @@ const UserType = gql`
             password: String
             password2: String
         ): User
+        activateUser(_id: ID!): User
         resetPasswordGetCode(email: String): User
         resetPasswordVerify(
             email: String
@@ -71,6 +72,10 @@ const UserType = gql`
     }
 
     extend type Company {
+        userId: User
+    }
+
+    extend type Coupon {
         userId: User
     }
 `;

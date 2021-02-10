@@ -43,8 +43,8 @@
                 dismissible
                 variant="danger"
                 v-for="error in errors"
-                :key="error.msg"
-                >{{ error.msg }}</b-alert
+                :key="error.message"
+                >{{ error.message }}</b-alert
             >
         </div>
     </b-form>
@@ -73,11 +73,9 @@
                     }
                 });
 
-                if (!res.success) {
+                if (res.errors) {
                     this.errors = res.errors;
                 } else {
-                    await this.$store.dispatch("fetchUser");
-
                     if (this.$store.state.auth.user.status === "pending") {
                         this.$router.push("/auth/account/verification");
                     } else if (this.$store.state.auth.loggedIn) {

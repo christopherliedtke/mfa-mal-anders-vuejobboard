@@ -6,7 +6,11 @@ const cryptoRandomString = require("crypto-random-string");
 const emailTemplate = require("../../../utils/emailTemplate");
 const emailService = require("../../../utils/nodemailer");
 const { hash, compare } = require("../../../utils/bcrypt");
-const { UserInputError, ApolloError } = require("apollo-server-express");
+const {
+    UserInputError,
+    ApolloError,
+    AuthenticationError,
+} = require("apollo-server-express");
 const { User } = require("../../models/user");
 const { Code } = require("../../models/secretCode");
 
@@ -54,7 +58,7 @@ const UserResolvers = {
         },
         adminUser: async (root, args, context) => {
             if (!context.user.isAdmin) {
-                return null;
+                throw new AuthenticationError("Missing permission!");
             }
 
             const user = await User.findOne({ _id: args._id });
@@ -63,7 +67,7 @@ const UserResolvers = {
         },
         adminUsers: async (root, args, context) => {
             if (!context.user.isAdmin) {
-                return null;
+                throw new AuthenticationError("Missing permission!");
             }
 
             const users = await User.find().sort({
@@ -142,7 +146,7 @@ const UserResolvers = {
             ) {
                 throw new UserInputError(errorMsg.auth.pwRequirements);
             }
-            if (!args.email.test(/\S+@\S+\.\S+/)) {
+            if (!args.email.match(/\S+@\S+\.\S+/)) {
                 throw new UserInputError(errorMsg.auth.notValidEmail);
             }
             if (args.acceptance != "accepted") {
@@ -158,11 +162,11 @@ const UserResolvers = {
             const hashedPw = await hash(args.password);
 
             const newUserObj = new User({
-                gender: args.gender,
-                title: args.title,
-                firstName: args.firstName,
-                lastName: args.lastName,
-                email: args.email,
+                gender: sanitizeHtml(args.gender),
+                title: sanitizeHtml(args.title),
+                firstName: sanitizeHtml(args.firstName),
+                lastName: sanitizeHtml(args.lastName),
+                email: sanitizeHtml(args.email),
                 role: "basic",
                 isEmployer: true,
                 password: hashedPw,
@@ -171,6 +175,42 @@ const UserResolvers = {
             });
 
             const user = await newUserObj.save();
+            delete user.password;
+
+            const token = jwt.sign(
+                {
+                    user: {
+                        _id: user._id,
+                        role: user.role,
+                        isEmployer: user.isEmployer,
+                        isAdmin: user.isAdmin,
+                        status: user.status,
+                        gender: user.gender,
+                        title: user.title,
+                        firstName: user.firstName,
+                        lastName: user.lastName,
+                        email: user.email,
+                    },
+                },
+                process.env.JWT_SECRET,
+                {
+                    expiresIn: 60 * 60 * 24 * 7,
+                }
+            );
+
+            context.session.token = token;
+            user.token = token;
+
+            return user;
+        },
+        activateUser: async (root, args, context) => {
+            const user = await User.findOneAndUpdate(
+                { _id: args._id },
+                { status: "active" },
+                { new: true }
+            );
+
+            delete user.password;
 
             const token = jwt.sign(
                 {
@@ -210,7 +250,7 @@ const UserResolvers = {
             const user = await User.findOne({ email: args.email });
 
             if (!user) {
-                throw new ApolloError(errorMsg.auth.noMatch);
+                throw new ApolloError(errorMsg.auth.emailNotExist);
             }
 
             const secretCode = cryptoRandomString({
@@ -235,7 +275,13 @@ const UserResolvers = {
                         <p>Bitte nutzen Sie den folgenden Code innerhalb der nächsten 60 Minuten, um Ihr Passwort auf ${config.website.name} zu ändern: <strong>${secretCode}</strong></p>
                         `),
             };
-            await emailService.sendMail(emailData);
+            const email = await emailService.sendMail(emailData);
+
+            if (email.accepted.length === 0) {
+                throw new ApolloError(
+                    "Die E-Mail konnte nicht versandt werden, bitte versuchen Sie es noch einmal."
+                );
+            }
 
             return { _id: user._id };
         },
@@ -344,15 +390,19 @@ const UserResolvers = {
             };
 
             const emailSent = await emailService.sendMail(emailData);
-            console.log("sendMail() for activation email: ", emailSent);
+            console.log("sendMail() for user activation email: ", emailSent);
 
             return { _id: user._id };
         },
         updateMe: async (root, args, context) => {
+            if (!context.user._id) {
+                throw new AuthenticationError("Must be logged in!");
+            }
+
             const oldUserData = await User.findOne({ _id: context.user._id });
 
             const status =
-                args.email === oldUserData.email
+                args.email.toLowerCase() === oldUserData.email.toLowerCase()
                     ? oldUserData.status
                     : "pending";
 
@@ -373,7 +423,7 @@ const UserResolvers = {
         },
         deleteMe: async (root, args, context) => {
             if (!context.user._id) {
-                return null;
+                throw new AuthenticationError("Must be logged in!");
             }
 
             if (!args.password) {
@@ -406,7 +456,7 @@ const UserResolvers = {
         },
         adminUpdateUser: async (root, args, context) => {
             if (!context.user.isAdmin) {
-                return null;
+                throw new AuthenticationError("Missing permission!");
             }
 
             const user = User.findOneAndUpdate(
@@ -425,7 +475,7 @@ const UserResolvers = {
         },
         adminDeleteUser: async (root, args, context) => {
             if (!context.user.isAdmin) {
-                return null;
+                throw new AuthenticationError("Missing permission!");
             }
 
             const user = User.findOneAndDelete({ _id: args._id });
@@ -456,6 +506,20 @@ const UserResolvers = {
             }
             const user = await User.findOne({
                 _id: company.userId,
+            });
+            delete user.password;
+
+            return user;
+        },
+    },
+
+    Coupon: {
+        userId: async (coupon, args, context) => {
+            if (!context.user.isAdmin) {
+                return coupon.userId;
+            }
+            const user = await User.findOne({
+                _id: coupon.userId,
             });
             delete user.password;
 

@@ -279,7 +279,7 @@
                 this.$store.dispatch("setOverlay", true);
 
                 try {
-                    const response = await this.$axios.get("graphql", {
+                    const response = await this.$axios.get("/graphql", {
                         params: {
                             query: `
                                 query {

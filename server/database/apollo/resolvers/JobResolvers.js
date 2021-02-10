@@ -1,3 +1,4 @@
+const { AuthenticationError } = require("apollo-server-express");
 const config = require("../../../config/config.json");
 const { googleIndexing } = require("../../../middleware/googleJobIndexing");
 const recachePrerender = require("../../../middleware/recachePrerender");
@@ -44,6 +45,10 @@ const JobResolvers = {
             );
         },
         myJob: async (root, args, context) => {
+            if (!context.user._id) {
+                throw new AuthenticationError("Must be logged in!");
+            }
+
             const job = await Job.findOne({
                 _id: args._id,
                 userId: context.user._id,
@@ -55,6 +60,10 @@ const JobResolvers = {
             return job;
         },
         myJobs: async (root, args, context) => {
+            if (!context.user._id) {
+                throw new AuthenticationError("Must be logged in!");
+            }
+
             const jobs = await Job.find({
                 userId: context.user._id,
                 status: {
@@ -68,7 +77,7 @@ const JobResolvers = {
         },
         adminJob: async (root, args, context) => {
             if (!context.user.isAdmin) {
-                return null;
+                throw new AuthenticationError("Missing permission!");
             }
 
             const job = await Job.findOne({
@@ -79,7 +88,7 @@ const JobResolvers = {
         },
         adminJobs: async (root, args, context) => {
             if (!context.user.isAdmin) {
-                return null;
+                throw new AuthenticationError("Missing permission!");
             }
 
             const jobs = await Job.find().sort({
@@ -93,7 +102,7 @@ const JobResolvers = {
     Mutation: {
         addJob: async (root, args, context) => {
             if (!context.user._id) {
-                return null;
+                throw new AuthenticationError("Must be logged in!");
             }
 
             let addObj = { ...args, userId: context.user._id };
@@ -110,7 +119,7 @@ const JobResolvers = {
         },
         updateJob: async (root, args, context) => {
             if (!context.user._id) {
-                return null;
+                throw new AuthenticationError("Must be logged in!");
             }
 
             let updateObj = { ...args };
@@ -131,7 +140,7 @@ const JobResolvers = {
         },
         deleteJob: async (root, args, context) => {
             if (!context.user._id) {
-                return null;
+                throw new AuthenticationError("Must be logged in!");
             }
 
             const updatedJob = await Job.findOneAndUpdate(
@@ -144,7 +153,7 @@ const JobResolvers = {
         },
         adminAddJob: async (root, args, context) => {
             if (!context.user.isAdmin) {
-                return null;
+                throw new AuthenticationError("Missing permission!");
             }
 
             let addObj = { ...args, userId: context.user._id };
@@ -161,7 +170,7 @@ const JobResolvers = {
         },
         adminUpdateJob: async (root, args, context) => {
             if (!context.user.isAdmin) {
-                return null;
+                throw new AuthenticationError("Missing permission!");
             }
 
             let updateObj = { ...args };
@@ -182,7 +191,7 @@ const JobResolvers = {
         },
         adminDeleteJob: async (root, args, context) => {
             if (!context.user.isAdmin) {
-                return null;
+                throw new AuthenticationError("Missing permission!");
             }
 
             const deletedJob = await Job.findOneAndDelete({
@@ -200,7 +209,7 @@ const JobResolvers = {
     User: {
         jobs: async (user, args, context) => {
             if (!user._id === context.user._id || !context.user.isAdmin) {
-                return null;
+                throw new AuthenticationError("Missing permission!");
             }
 
             const jobs = await Job.find({ userId: user._id });
@@ -211,7 +220,7 @@ const JobResolvers = {
     Company: {
         jobs: async (company, args, context) => {
             if (!company.userId === context.user._id || !context.user.isAdmin) {
-                return null;
+                throw new AuthenticationError("Missing permission!");
             }
 
             const jobs = await Job.find({ company: company._id });

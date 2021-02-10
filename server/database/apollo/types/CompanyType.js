@@ -4,6 +4,7 @@ const CompanyType = gql`
     extend type Query {
         company(_id: ID!): Company
         companies: [Company]
+        myCompanies: [Company]
     }
 
     extend type Mutation {
@@ -21,7 +22,7 @@ const CompanyType = gql`
             size: String
         ): Company
         updateCompany(
-            id: ID!
+            _id: ID!
             name: String
             street: String
             zipCode: String
@@ -36,7 +37,7 @@ const CompanyType = gql`
         ): Company
         deleteCompany(_id: ID!): Company
         adminUpdateCompany(
-            id: ID!
+            _id: ID!
             name: String
             street: String
             zipCode: String

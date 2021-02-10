@@ -10,6 +10,14 @@
         "emailRegistered": "Die angegebene E-Mail Adresse ist bereits registriert.",
         "codeIncorrect": "Der eingegebene Code ist nicht korrekt oder abgelaufen.",
         "notValidEmail": "Bitte geben sie eine korrekte E-Mail Adresse an.",
-        "provideRegisteredEmail": "Bitte geben Sie Ihre registrierte E-Mail Adresse an."
+        "provideRegisteredEmail": "Bitte geben Sie Ihre registrierte E-Mail Adresse an.",
+        "emailNotExist": "Die angegebene E-Mail Adresse ist bisher nicht registriert."
+    },
+    "subscriber": {
+        "noMatch": "Es konnte kein Abonnent gefunden werden",
+        "fillAll": "Bitte füllen Sie die erforderlichen Felder aus!",
+        "termsOfUse": "Sie müssen die Nutzungsbedingungen lesen und ihnen zustimmen.",
+        "notValidEmail": "Bitte geben sie eine korrekte E-Mail Adresse an.",
+        "subscriberExists": "Eine Newsletteranmeldung ist bereits für diese E-Mail-Bundesland Kombination vorhanden."
     }
 }

@@ -210,9 +210,8 @@
         methods: {
             async getCompany(id) {
                 try {
-                    const company = await this.$axios.post(
-                        `/api/companies/${this.apiJobsSchema}`,
-                        {
+                    const company = await this.$axios.get(`/graphql`, {
+                        params: {
                             query: `
                             query {
                                 company(_id: "${id}") {
@@ -232,7 +231,7 @@
                             }
                         `
                         }
-                    );
+                    });
 
                     this.company = company.data.data.company;
                 } catch (err) {
@@ -264,14 +263,18 @@
                 this.company.geoCodeLng = data.lng;
 
                 let mutationType;
-                this.company._id === "new"
-                    ? (mutationType = "addCompany")
-                    : (mutationType = "updateCompany");
+
+                if (this.company._id === "new") {
+                    mutationType = "addCompany";
+                } else {
+                    this.apiJobsSchema === "admin"
+                        ? (mutationType = "adminUpdateCompany")
+                        : (mutationType = "updateCompany");
+                }
 
                 // Save / Update company
                 const res = await this.saveCompany(
                     mutationType,
-                    this.apiJobsSchema,
                     this.company,
                     true
                 );

@@ -201,25 +201,28 @@
                 this.$store.dispatch("setOverlay", true);
 
                 try {
-                    const response = await this.$axios.post(
-                        "/api/subscriber/admin",
-                        {
+                    const subscribers = await this.$axios.get("/graphql", {
+                        params: {
                             query: `
-                            query {
-                                subscribers {
-                                    _id
-                                    createdAt
-                                    updatedAt
-                                    email
-                                    state
-                                    status
+                                query {
+                                    subscribers {
+                                        _id
+                                        createdAt
+                                        updatedAt
+                                        email
+                                        state
+                                        status
+                                    }
                                 }
-                            }
-                        `
+                            `
                         }
-                    );
+                    });
 
-                    this.subscribers = response.data.data.subscribers;
+                    if (subscribers.data.errors) {
+                        throw new Error("Subscribers could not be loaded!");
+                    }
+
+                    this.subscribers = subscribers.data.data.subscribers;
                 } catch (err) {
                     this.error = true;
                 }
@@ -232,30 +235,25 @@
             },
             async deleteSubscriber(subscriberId) {
                 try {
-                    const response = await this.$axios.post(
-                        "/api/subscriber/admin",
-                        {
-                            query: `
-                            mutation {
-                                deleteSubscriber(_id: "${subscriberId}") {
-                                    status
+                    const subscriber = await this.$axios.post("/graphql", {
+                        query: `
+                                mutation {
+                                    adminDeleteSubscriber(_id: "${subscriberId}") {
+                                        _id
+                                    }
                                 }
-                            }
-                        `
-                        }
-                    );
+                            `
+                    });
 
-                    if (
-                        response.data.data.deleteSubscriber.status === "deleted"
-                    ) {
-                        this.subscribers.forEach((subscriber, index) => {
-                            if (subscriber._id === subscriberId) {
-                                this.subscribers.splice(index, 1);
-                            }
-                        });
-                    } else {
-                        this.error = true;
+                    if (subscriber.data.errors) {
+                        throw new Error("User could not be deleted!");
                     }
+
+                    this.subscribers.forEach((subscriber, index) => {
+                        if (subscriber._id === subscriberId) {
+                            this.subscribers.splice(index, 1);
+                        }
+                    });
                 } catch (err) {
                     this.error = true;
                 }

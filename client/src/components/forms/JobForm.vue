@@ -688,12 +688,8 @@
                         }
                     });
 
-                    this.job = job.data.data[this.jobQuery];
-
-                    this.selectedCompanyId = this.job.company._id;
-
-                    if (!this.job.company) {
-                        this.job.company = {
+                    if (!job.data.data[this.jobQuery].company) {
+                        job.data.data[this.jobQuery].company = {
                             _id: "",
                             name: "",
                             street: "",
@@ -708,6 +704,10 @@
                             logoUrl: ""
                         };
                     }
+
+                    this.job = job.data.data[this.jobQuery];
+
+                    this.selectedCompanyId = this.job.company._id;
                 } catch (err) {
                     this.$root.$bvToast.toast(
                         "Beim Laden der Stellenanzeige ist ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal, indem Sie die Seite neu laden.",
@@ -723,31 +723,30 @@
             },
             async getCompanies() {
                 try {
-                    const companies = await this.$axios.post(
-                        `/api/companies/${this.apiJobsSchema}`,
-                        {
+                    const companies = await this.$axios.get(`/graphql`, {
+                        params: {
                             query: `
-                            query {
-                                companies {
-                                    _id
-                                    name
-                                    street
-                                    location
-                                    zipCode
-                                    state
-                                    country
-                                    geoCodeLat
-                                    geoCodeLng
-                                    size
-                                    url
-                                    logoUrl
+                                query {
+                                    myCompanies {
+                                        _id
+                                        name
+                                        street
+                                        location
+                                        zipCode
+                                        state
+                                        country
+                                        geoCodeLat
+                                        geoCodeLng
+                                        size
+                                        url
+                                        logoUrl
+                                    }
                                 }
-                            }
-                        `
+                            `
                         }
-                    );
+                    });
 
-                    this.companies = companies.data.data.companies;
+                    this.companies = companies.data.data.myCompanies;
                 } catch (err) {
                     this.$root.$bvToast.toast(
                         "Beim Laden Ihrer erstellten Unternehmen ist ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal, indem Sie die Seite neu laden.",
@@ -779,13 +778,17 @@
 
                 // Save / Update company
                 let companyMutationType;
-                this.job.company._id
-                    ? (companyMutationType = "updateCompany")
-                    : (companyMutationType = "addCompany");
+
+                if (!this.job.company._id) {
+                    companyMutationType = "addCompany";
+                } else {
+                    this.apiJobsSchema === "admin"
+                        ? (companyMutationType = "adminUpdateCompany")
+                        : (companyMutationType = "updateCompany");
+                }
 
                 const savedCompany = await this.saveCompany(
                     companyMutationType,
-                    this.apiJobsSchema,
                     this.job.company,
                     false
                 );
