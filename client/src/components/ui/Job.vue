@@ -436,46 +436,46 @@
                     const job = await this.$axios.get(`/graphql`, {
                         params: {
                             query: `
-                                    query {
-                                        ${this.jobQuery}(_id: "${jobId}") {
-                                            _id
-                                            createdAt
-                                            updatedAt
-                                            publishedAt
-                                            paidAt
-                                            title
-                                            description
-                                            employmentType
-                                            applicationDeadline
-                                            simpleApplication
-                                            extJobUrl
-                                            applicationEmail
-                                            imageUrl
-                                            salaryMin
-                                            salaryMax
-                                            specialization
-                                            contactGender
-                                            contactTitle
-                                            contactFirstName
-                                            contactLastName
-                                            contactEmail
-                                            contactPhone
-                                            company {
-                                                name
-                                                street
-                                                location
-                                                zipCode
-                                                state
-                                                country
-                                                geoCodeLat
-                                                geoCodeLng
-                                                size
-                                                url
-                                                logoUrl
-                                            }
+                                query {
+                                    ${this.jobQuery}(_id: "${jobId}") {
+                                        _id
+                                        createdAt
+                                        updatedAt
+                                        publishedAt
+                                        paidAt
+                                        title
+                                        description
+                                        employmentType
+                                        applicationDeadline
+                                        simpleApplication
+                                        extJobUrl
+                                        applicationEmail
+                                        imageUrl
+                                        salaryMin
+                                        salaryMax
+                                        specialization
+                                        contactGender
+                                        contactTitle
+                                        contactFirstName
+                                        contactLastName
+                                        contactEmail
+                                        contactPhone
+                                        company {
+                                            name
+                                            street
+                                            location
+                                            zipCode
+                                            state
+                                            country
+                                            geoCodeLat
+                                            geoCodeLng
+                                            size
+                                            url
+                                            logoUrl
                                         }
                                     }
-                                `
+                                }
+                            `
                         }
                     });
 

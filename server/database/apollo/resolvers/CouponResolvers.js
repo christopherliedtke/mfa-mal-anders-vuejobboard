@@ -1,16 +1,24 @@
-const { AuthenticationError } = require("apollo-server-express");
+const { AuthenticationError, ApolloError } = require("apollo-server-express");
+const validateCoupon = require("../../../middleware/validateCoupon");
 const { Coupon } = require("../../models/coupon");
 
 const CouponResolvers = {
     Query: {
-        coupon: async (root, args, context) => {
+        validateCoupon: async (root, args, context) => {
             if (!context.user._id) {
                 throw new AuthenticationError("Must be logged in!");
             }
 
-            const coupon = await Coupon.findOne({ code: args.code });
+            const validatedCoupon = await validateCoupon(
+                args.code,
+                context.user._id
+            );
 
-            return coupon;
+            if (!validatedCoupon) {
+                throw new ApolloError("No valid coupon found!");
+            }
+
+            return validatedCoupon;
         },
         adminCoupon: async (root, args, context) => {
             if (!context.user.isAdmin) {

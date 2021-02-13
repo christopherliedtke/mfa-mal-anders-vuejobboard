@@ -526,6 +526,20 @@ const UserResolvers = {
             return user;
         },
     },
+
+    Payment: {
+        user: async (payment, args, context) => {
+            if (!context.user.isAdmin) {
+                throw new AuthenticationError("Missing permission!");
+            }
+
+            const user = await User.findOne({ _id: payment.user });
+
+            delete user.password;
+
+            return user;
+        },
+    },
 };
 
 module.exports = UserResolvers;

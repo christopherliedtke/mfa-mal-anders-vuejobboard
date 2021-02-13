@@ -54,7 +54,7 @@ const JobSchema = new Schema(
             required: true,
         },
         applicationDeadline: {
-            type: String,
+            type: Date,
             required: true,
         },
         simpleApplication: {

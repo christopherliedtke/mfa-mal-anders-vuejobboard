@@ -2,7 +2,7 @@ const { gql } = require("graphql-modules");
 
 const CouponType = gql`
     extend type Query {
-        coupon(code: String): Coupon
+        validateCoupon(code: String): Coupon
         adminCoupon(_id: ID!): Coupon
         adminCoupons: [Coupon]
     }

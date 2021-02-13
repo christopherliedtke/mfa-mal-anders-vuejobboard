@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Stripe: Webhooks listen",
+            "type": "stripe",
+            "request": "launch",
+            "command": "listen",
+            "forwardTo": "http://localhost:5001/api/webhooks/checkout-completed",
+            "forwardConnectTo": "http://localhost:5001",
+            "events": ["checkout.session.completed"]
+        }
+    ]
+}

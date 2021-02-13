@@ -36,48 +36,50 @@
                 </h4>
                 <div>
                     <b-badge
-                        v-if="
-                            job.paidExpiresAt && job.paidExpiresAt < new Date()
+                        v-if="job.paidExpiresAt >= new Date() && job.paid"
+                        class="mr-1"
+                        pill
+                        variant="success
                         "
+                        >bezahlt</b-badge
+                    >
+                    <b-badge
+                        v-if="!job.paid"
+                        class="mr-1"
+                        pill
+                        variant="warning"
+                        >unbezahlt</b-badge
+                    >
+                    <b-badge
+                        v-if="
+                            job.status === 'published' &&
+                                job.paidExpiresAt >= new Date() &&
+                                job.applicationDeadline >=
+                                    new Date().setHours(24) &&
+                                job.paid
+                        "
+                        class="mr-1"
+                        pill
+                        variant="success"
+                        >online</b-badge
+                    >
+                    <b-badge
+                        v-if="job.status === 'draft'"
+                        class="mr-1"
+                        pill
+                        variant="light"
+                        >Entwurf</b-badge
+                    >
+                    <b-badge
+                        v-if="job.status === 'unpublished'"
                         class="mr-1"
                         pill
                         variant="danger"
-                        >Zahlung abgelaufen</b-badge
+                        >offline</b-badge
                     >
+
                     <b-badge
-                        v-else
-                        class="mr-1"
-                        pill
-                        :variant="job.paid ? 'success' : 'warning'"
-                        >{{ job.paid ? "bezahlt" : "unbezahlt" }}</b-badge
-                    >
-                    <b-badge
-                        class="mr-1"
-                        pill
-                        :variant="
-                            job.status === 'draft' ||
-                            job.status === 'invoice-pending'
-                                ? 'light'
-                                : job.status === 'published'
-                                ? 'success'
-                                : 'danger'
-                        "
-                        >{{
-                            job.status === "published"
-                                ? "online"
-                                : job.status === "draft" ||
-                                  job.status === "invoice-pending"
-                                ? "Entwurf"
-                                : "offline"
-                        }}</b-badge
-                    >
-                    <b-badge
-                        v-if="
-                            job.applicationDeadline <
-                                new Date(
-                                    new Date().valueOf() - 1000 * 60 * 60 * 24
-                                ).toISOString()
-                        "
+                        v-if="job.applicationDeadline < new Date().setHours(24)"
                         class="mr-1"
                         pill
                         variant="danger"
@@ -109,7 +111,11 @@
                             }}
                         </span>
                     </div>
-                    <div v-if="job.publishedAt">
+                    <div
+                        v-if="
+                            job.publishedAt && job.paidExpiresAt >= new Date()
+                        "
+                    >
                         Zuletzt veröffentlicht:
                         <span class="text-muted">
                             {{
@@ -119,15 +125,28 @@
                             }}
                         </span>
                     </div>
-                    <!-- <div v-if="job.paidAt">
+                    <div
+                        v-if="
+                            job.paidExpiresAt >= new Date() &&
+                                job.payment &&
+                                job.payment.status === 'paid'
+                        "
+                    >
                         Bezahlt:
                         <span class="text-muted">
                             {{
-                                new Date(parseInt(job.paidAt)).toLocaleString()
+                                new Date(
+                                    parseInt(job.payment.paidAt)
+                                ).toLocaleString()
                             }}
                         </span>
-                    </div> -->
-                    <div v-if="job.paidExpiresAt">
+                    </div>
+                    <div
+                        v-if="
+                            job.paidExpiresAt >= new Date() &&
+                                job.status != 'invoice-pending'
+                        "
+                    >
                         Zahlung für Anzeige läuft ab:
                         <span class="text-muted">
                             {{
@@ -157,11 +176,7 @@
                             ><Fa class="mr-2" icon="eye" /> Vorschau</b-button
                         >
                         <b-dropdown
-                            v-if="
-                                job.paid &&
-                                    job.paidExpiresAt &&
-                                    job.paidExpiresAt > new Date()
-                            "
+                            v-if="job.paid && job.paidExpiresAt >= new Date()"
                             class="mr-2 mb-2 mb-md-0"
                             size="sm"
                             left
@@ -196,8 +211,7 @@
                         </b-dropdown>
                         <b-button
                             v-if="
-                                (!job.paid || job.paidExpiresAt < new Date()) &&
-                                    job.status != 'invoice-pending'
+                                job.paidExpiresAt < new Date() && !job.payment
                             "
                             class="mr-2 mb-2 mb-md-0"
                             variant="success"
@@ -208,9 +222,9 @@
                         >
                         <b-button
                             v-if="
-                                job.status === 'invoice-pending' &&
-                                    (!job.paid ||
-                                        job.paidExpiresAt < new Date())
+                                job.status === 'invoice-pending' ||
+                                    (job.payment &&
+                                        job.payment.status === 'pending')
                             "
                             :disabled="true"
                             class="mr-2 mb-2 mb-md-0"
@@ -279,7 +293,7 @@
                 this.$store.dispatch("setOverlay", true);
 
                 try {
-                    const response = await this.$axios.get("/graphql", {
+                    const jobs = await this.$axios.get("/graphql", {
                         params: {
                             query: `
                                 query {
@@ -288,11 +302,10 @@
                                         createdAt
                                         updatedAt
                                         publishedAt
-                                        paidAt
-                                        paidExpiresAt
                                         status
-                                        applicationDeadline
                                         paid
+                                        paidExpiresAt
+                                        applicationDeadline
                                         title
                                         company {
                                             name
@@ -302,14 +315,18 @@
                                             state
                                             size
                                         }
-
+                                        payment {
+                                            status
+                                            paidAt
+                                            paymentExpiresAt
+                                        }
                                     }
                                 }
                             `
                         }
                     });
 
-                    this.myJobs = response.data.data.myJobs;
+                    this.myJobs = jobs.data.data.myJobs;
                 } catch (err) {
                     this.$root.$bvToast.toast(
                         "Ihre Stellenanzeigen konnten nicht geladen werden. Bitte versuchen Sie es noch einmal, indem Sie die Seite neu laden.",
@@ -334,11 +351,25 @@
                                         _id
                                         createdAt
                                         updatedAt
-                                        paidAt
-                                        paidExpiresAt
+                                        publishedAt
                                         status
                                         paid
+                                        paidExpiresAt
+                                        applicationDeadline
                                         title
+                                        company {
+                                            name
+                                            street
+                                            zipCode
+                                            location
+                                            state
+                                            size
+                                        }
+                                        payment {
+                                            status
+                                            paidAt
+                                            paymentExpiresAt
+                                        }
                                     }
                                 }
                             `

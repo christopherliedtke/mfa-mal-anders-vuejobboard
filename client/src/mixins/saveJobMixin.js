@@ -13,18 +13,16 @@ export const saveJobMixin = {
                                 } 
                                 title: "${job.title}"
                                 publishedAt: ${job.publishedAt}
-                                paidAt: ${job.paidAt}
                                 paidExpiresAt: ${job.paidExpiresAt}
-                                paidAmount: ${job.paidAmount}
                                 refreshFrequency: ${job.refreshFrequency}
                                 description: "${job.description.replace(
                                     /"/g,
                                     '\\"'
                                 )}"
                                 employmentType: "${job.employmentType}"
-                                applicationDeadline: "${
+                                applicationDeadline: ${new Date(
                                     job.applicationDeadline
-                                }"
+                                ).setHours(24)}
                                 simpleApplication: ${job.simpleApplication}
                                 specialization: "${job.specialization}"
                                 extJobUrl: "${
@@ -54,44 +52,33 @@ export const saveJobMixin = {
                     query: jobQuery
                 });
 
-                if (!jobQueryResponse.data.data[mutationType]) {
-                    this.$root.$bvToast.toast(
-                        "Beim Speichern der Stellenanzeige ist ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal.",
-                        {
-                            title: `Fehler beim Speichern`,
-                            variant: "danger",
-                            toaster: "b-toaster-bottom-right",
-                            solid: true,
-                            noAutoHide: true
-                        }
-                    );
-
-                    return { success: false };
-                } else {
-                    this.trackEvent(
-                        `${mutationType}: ${job.title} | ${job.company.state} - ${jobQueryResponse.data.data[mutationType]._id}`,
-                        "Job_Ad",
-                        mutationType
-                    );
-
-                    this.$root.$bvToast.toast(
-                        "Die Stellenanzeige wurde erfolgreich gespeichert.",
-                        {
-                            title: `Stellenanzeige gespeichert`,
-                            variant: "success",
-                            toaster: "b-toaster-bottom-right",
-                            solid: true
-                        }
-                    );
-
-                    if (redirect) {
-                        this.hasHistory
-                            ? this.$router.go(-1)
-                            : this.$router.push("/user/dashboard");
-                    }
-
-                    return { success: true };
+                if (jobQueryResponse.data.errors) {
+                    throw new Error("Error on saving the job!");
                 }
+
+                this.trackEvent(
+                    `${mutationType}: ${job.title} | ${job.company.state} - ${jobQueryResponse.data.data[mutationType]._id}`,
+                    "Job_Ad",
+                    mutationType
+                );
+
+                this.$root.$bvToast.toast(
+                    "Die Stellenanzeige wurde erfolgreich gespeichert.",
+                    {
+                        title: `Stellenanzeige gespeichert`,
+                        variant: "success",
+                        toaster: "b-toaster-bottom-right",
+                        solid: true
+                    }
+                );
+
+                if (redirect) {
+                    this.hasHistory
+                        ? this.$router.go(-1)
+                        : this.$router.push("/user/dashboard");
+                }
+
+                return { success: true };
             } catch (err) {
                 this.$root.$bvToast.toast(
                     "Beim Speichern der Stellenanzeige ist ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal.",

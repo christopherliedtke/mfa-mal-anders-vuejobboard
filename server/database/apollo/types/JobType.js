@@ -15,7 +15,7 @@ const JobType = gql`
             title: String
             description: String
             employmentType: String
-            applicationDeadline: String
+            applicationDeadline: Float
             simpleApplication: Boolean
             specialization: String
             extJobUrl: String
@@ -42,7 +42,7 @@ const JobType = gql`
             title: String
             description: String
             employmentType: String
-            applicationDeadline: String
+            applicationDeadline: Float
             simpleApplication: Boolean
             specialization: String
             extJobUrl: String
@@ -69,7 +69,7 @@ const JobType = gql`
             title: String
             description: String
             employmentType: String
-            applicationDeadline: String
+            applicationDeadline: Float
             simpleApplication: Boolean
             specialization: String
             extJobUrl: String
@@ -96,7 +96,7 @@ const JobType = gql`
             title: String
             description: String
             employmentType: String
-            applicationDeadline: String
+            applicationDeadline: Float
             simpleApplication: Boolean
             specialization: String
             extJobUrl: String
@@ -137,7 +137,7 @@ const JobType = gql`
         title: String!
         description: String!
         employmentType: String!
-        applicationDeadline: String!
+        applicationDeadline: Float!
         simpleApplication: Boolean!
         specialization: String
         extJobUrl: String
@@ -160,6 +160,10 @@ const JobType = gql`
     extend type Company {
         jobs: [Job]
         publicJobs: [Job]
+    }
+
+    extend type Payment {
+        job: Job
     }
 `;
 

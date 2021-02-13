@@ -3,10 +3,6 @@ const Schema = mongoose.Schema;
 
 const UsedCouponSchema = new Schema(
     {
-        code: {
-            type: String,
-            required: true,
-        },
         couponId: {
             type: Schema.Types.ObjectId,
             ref: "Coupon",

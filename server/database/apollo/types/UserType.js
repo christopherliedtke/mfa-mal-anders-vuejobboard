@@ -78,6 +78,10 @@ const UserType = gql`
     extend type Coupon {
         userId: User
     }
+
+    extend type Payment {
+        user: User
+    }
 `;
 
 module.exports = UserType;

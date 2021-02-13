@@ -117,7 +117,7 @@ const mutation = new GraphQLObjectType({
                     const paidExpiresAt = new Date();
                     paidExpiresAt.setDate(
                         paidExpiresAt.getDate() +
-                            config.stripe.paymentExpirationDays
+                            config.payment.paymentExpirationDays
                     );
 
                     args.paidAt

@@ -24,24 +24,10 @@
                     v-model="publishedAt"
                     placeholder="Veröffentlicht am..."
                 />
-                <label for="created">paidAt</label>
-                <b-form-datepicker
-                    v-model="paidAt"
-                    placeholder="Bezahlt am..."
-                />
                 <label class="mt-2" for="created">paidExpiresAt</label>
                 <b-form-datepicker
                     v-model="paidExpiresAt"
                     placeholder="Zahlung läuft ab am..."
-                />
-                <label class="mt-2" for="refresh-frequency"
-                    >paidAmount [Cents]</label
-                >
-                <b-form-input
-                    type="number"
-                    number
-                    v-model="job.paidAmount"
-                    placeholder="Gezahlter Betrag..."
                 />
                 <label class="mt-2" for="refresh-frequency"
                     >refreshFrequency</label
@@ -90,9 +76,9 @@
 
             <label for="application-deadline">Bewerbungsfrist *</label>
             <b-form-datepicker
-                :state="validated && job.applicationDeadline != ''"
+                :state="validated && applicationDeadline != ''"
                 id="application-deadline"
-                v-model="job.applicationDeadline"
+                v-model="applicationDeadline"
                 placeholder="Bewerbungsfrist wählen"
             />
 
@@ -549,17 +535,15 @@
             return {
                 job: {
                     _id: this.$route.params.jobId,
-                    publishedAt: null,
-                    paidAt: null,
-                    paidExpiresAt: null,
-                    paidAmount: 0,
+                    publishedAt: 0,
+                    paidExpiresAt: 0,
                     refreshFrequency: 0,
                     title: "",
                     description:
                         "<p>[Für eine attraktive Stellenanzeige sollten Sie folgende Punkte berücksichtigen. Bitte ersetzen Sie den hier stehenden Text entsprechend.]</p><p>[Schreiben Sie eine kurze Einleitung zu Ihrem Unternehmen.]</p><h3>Was wir Ihnen bieten</h3><p>[Was bieten Sie potentiellen BewerberInnen?]</p><h3>Ihre Aufgaben</h3><p>[Welche Aufgaben sollen von potentiellen BewerberInnen durchgeführt werden?]</p><h3>Ihr Profil</h3><p>[Was sollen potentielle BewerberInnen mitbringen?]</p>",
                     specialization: null,
                     employmentType: null,
-                    applicationDeadline: "",
+                    applicationDeadline: 0,
                     simpleApplication: false,
                     extJobUrl: "",
                     applicationEmail: "",
@@ -611,20 +595,20 @@
                     this.job.publishedAt = new Date(value).getTime();
                 }
             },
-            paidAt: {
-                get() {
-                    return new Date(this.job.paidAt);
-                },
-                set(value) {
-                    this.job.paidAt = new Date(value).getTime();
-                }
-            },
             paidExpiresAt: {
                 get() {
                     return new Date(this.job.paidExpiresAt);
                 },
                 set(value) {
                     this.job.paidExpiresAt = new Date(value).getTime();
+                }
+            },
+            applicationDeadline: {
+                get() {
+                    return new Date(this.job.applicationDeadline);
+                },
+                set(value) {
+                    this.job.applicationDeadline = new Date(value).getTime();
                 }
             },
             jobQuery: function() {
@@ -647,9 +631,7 @@
                                     ${this.jobQuery}(_id: "${id}") {
                                         _id
                                         publishedAt
-                                        paidAt
                                         paidExpiresAt
-                                        paidAmount
                                         refreshFrequency
                                         title
                                         description

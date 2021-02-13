@@ -19,35 +19,35 @@ router.get("/get-stripe-pk", (req, res) => {
 // #access: Private
 // router.get("/get-price-per-ad", verifyToken, (req, res) => {
 //     res.json({
-//         amount: config.stripe.minPricePerJob,
-//         currency: config.stripe.currency,
-//         duration: config.stripe.paymentExpirationDays,
+//         amount: config.payment.minPricePerJob,
+//         currency: config.payment.currency,
+//         duration: config.payment.paymentExpirationDays,
 //     });
 // });
 
 // #route:  POST /api/stripe/validate-coupon
 // #desc:   Validate discount coupon
 // #access: Private
-router.post("/validate-coupon", verifyToken, async (req, res) => {
-    const validatedCoupon = await validateCoupon(req.body.code, req.user._id);
+// router.post("/validate-coupon", verifyToken, async (req, res) => {
+//     const validatedCoupon = await validateCoupon(req.body.code, req.user._id);
 
-    if (validatedCoupon.success) {
-        res.json({
-            success: true,
-            discount: validatedCoupon.discount,
-            refreshFrequency: validatedCoupon.couponRefreshFrequency,
-        });
-    } else {
-        res.json({ success: false });
-    }
-});
+//     if (validatedCoupon.success) {
+//         res.json({
+//             success: true,
+//             discount: validatedCoupon.discount,
+//             refreshFrequency: validatedCoupon.couponRefreshFrequency,
+//         });
+//     } else {
+//         res.json({ success: false });
+//     }
+// });
 
 // #route:  POST /api/stripe/job/create-session-id
 // #desc:   Create a session id for a user
 // #access: Private
 router.post("/job/create-session-id", verifyToken, async (req, res) => {
     try {
-        if (req.body.amount < config.stripe.minPricePerJob) {
+        if (req.body.amount < config.payment.minPricePerJob) {
             throw new Error(
                 "Error STRIPE Invalid amount entered for stripe checkout!"
             );
@@ -59,11 +59,10 @@ router.post("/job/create-session-id", verifyToken, async (req, res) => {
             validatedCoupon = await validateCoupon(req.body.code, req.user._id);
         }
 
+        const couponId = validatedCoupon._id || "";
         const discount = validatedCoupon.discount || 0;
-        const couponUsage = validatedCoupon.couponUsage || "";
-        const couponId = validatedCoupon.couponId || "";
-        const couponRefreshFrequency =
-            validatedCoupon.couponRefreshFrequency || 0;
+        const couponUsage = validatedCoupon.usage || "";
+        const couponRefreshFrequency = validatedCoupon.refreshFrequency || 0;
 
         const session = await stripe.checkout.sessions.create({
             customer_email: req.user.email,
@@ -71,7 +70,7 @@ router.post("/job/create-session-id", verifyToken, async (req, res) => {
             line_items: [
                 {
                     price_data: {
-                        currency: config.stripe.currency,
+                        currency: config.payment.currency,
                         product_data: {
                             name: req.body.title,
                             description: `Veröffentlichung Ihrer Stellenanzeige "${req.body.title}" auf ${config.website.name}.`,
@@ -89,7 +88,7 @@ router.post("/job/create-session-id", verifyToken, async (req, res) => {
                 type: req.body.type,
                 jobId: req.body.id,
                 userId: req.user._id,
-                couponId: couponId,
+                couponId: couponId ? toString(couponId) : "",
                 couponCode: req.body.code,
                 discount: discount,
                 refreshFrequency: couponRefreshFrequency,

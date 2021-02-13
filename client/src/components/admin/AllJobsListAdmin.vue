@@ -8,10 +8,8 @@
                     placeholder="Enter search term ..."
                 />
                 <b-input-group-append>
-                    <b-button
-                        ><Fa
-                            icon="times"
-                            @click.prevent="filter.searchTerm = ''"
+                    <b-button @click.prevent="filter.searchTerm = ''"
+                        ><Fa icon="times"
                     /></b-button>
                 </b-input-group-append>
             </b-input-group>
@@ -55,16 +53,36 @@
                 {{ row.value && new Date(row.value).toLocaleString() }}
             </template>
             <template v-slot:cell(paidAt)="row">
-                {{ row.value && new Date(row.value).toLocaleString() }}
+                {{
+                    row.item.payment &&
+                        row.item.payment.paidAt &&
+                        new Date(row.item.payment.paidAt).toLocaleString()
+                }}
             </template>
             <template v-slot:cell(applicationDeadline)="row">
                 {{ row.value && new Date(row.value).toLocaleString() }}
             </template>
+            <template v-slot:cell(paymentExpiresAt)="row">
+                {{
+                    row.item.payment &&
+                        row.item.payment.paymentExpiresAt &&
+                        new Date(
+                            row.item.payment.paymentExpiresAt
+                        ).toLocaleString()
+                }}
+            </template>
             <template v-slot:cell(paidExpiresAt)="row">
-                {{ row.value && new Date(row.value).toLocaleString() }}
+                {{
+                    row.item.paidExpiresAt &&
+                        new Date(row.item.paidExpiresAt).toLocaleString()
+                }}
             </template>
             <template v-slot:cell(paidAmount)="row">
-                {{ row.value / 100 }}€
+                {{
+                    row.item.payment &&
+                        row.item.payment.amount &&
+                        row.item.payment.amount / 100
+                }}€
             </template>
             <template v-slot:cell(location)="row">
                 {{
@@ -115,14 +133,14 @@
                         "
                         >Draft</b-dropdown-item
                     >
-                    <b-dropdown-item
+                    <!-- <b-dropdown-item
                         :active="row.item.status === 'invoice-pending'"
                         variant="secondary"
                         @click.prevent="
                             updateJob(row.item._id, 'status', 'invoice-pending')
                         "
                         >Invoice pending</b-dropdown-item
-                    >
+                    > -->
                     <b-dropdown-item
                         :active="row.item.status === 'published'"
                         variant="success"
@@ -191,7 +209,7 @@
                     <b-dropdown-item
                         class="mb-0"
                         variant="info"
-                        @click.prevent="socialShareToClipBoard(row.item._id)"
+                        @click.prevent="socialShareToClipBoard(row.item)"
                         >Copy Text</b-dropdown-item
                     >
                 </b-dropdown>
@@ -270,15 +288,7 @@
                         sortable: true
                     },
                     {
-                        key: "publishedAt",
-                        sortable: true
-                    },
-                    {
                         key: "paid",
-                        sortable: true
-                    },
-                    {
-                        key: "paidAt",
                         sortable: true
                     },
                     {
@@ -286,11 +296,7 @@
                         sortable: true
                     },
                     {
-                        key: "paidAmount",
-                        sortable: true
-                    },
-                    {
-                        key: "invoiceNo",
+                        key: "publishedAt",
                         sortable: true
                     },
                     {
@@ -303,6 +309,33 @@
                     },
                     {
                         key: "applicationDeadline",
+                        sortable: true
+                    },
+                    {
+                        key: "payment._id",
+                        label: "Payment ID",
+                        sortable: false
+                    },
+                    {
+                        key: "payment.status",
+                        label: "Paid Status",
+                        sortable: true
+                    },
+                    {
+                        key: "paidAt",
+                        sortable: true
+                    },
+                    {
+                        key: "paymentExpiresAt",
+                        sortable: true
+                    },
+                    {
+                        key: "paidAmount",
+                        sortable: true
+                    },
+                    {
+                        key: "payment.invoiceNo",
+                        label: "Invoice No",
                         sortable: true
                     },
                     {
@@ -437,16 +470,12 @@
                                         _id
                                         createdAt
                                         updatedAt
-                                        paidExpiresAt
-                                        paidAmount
                                         refreshFrequency
                                         status
                                         applicationDeadline
                                         paid
-                                        publishedAt
-                                        paidAt
                                         paidExpiresAt
-                                        invoiceNo
+                                        publishedAt
                                         sentReminder
                                         title
                                         company {
@@ -464,6 +493,14 @@
                                             lastName
                                             email
                                         }
+                                        payment {
+                                            _id
+                                            status
+                                            amount
+                                            paidAt
+                                            paymentExpiresAt
+                                            invoiceNo
+                                        }
                                     }
                                 }
                             `
@@ -478,7 +515,7 @@
                 } catch (err) {
                     this.error = true;
                     this.$root.$bvToast.toast(
-                        `Jobs konnten nicht geladen werden. Error: ${err}`,
+                        `Jobs konnten nicht geladen werden. Error: ${err.message}`,
                         {
                             title: `Fehler beim Laden`,
                             variant: "danger",
@@ -502,13 +539,12 @@
                                     _id
                                     createdAt
                                     updatedAt
-                                    paidExpiresAt
+                                    refreshFrequency
                                     status
                                     applicationDeadline
                                     paid
-                                    publishedAt
-                                    paidAt
                                     paidExpiresAt
+                                    publishedAt
                                     title
                                     company {
                                         name
@@ -525,25 +561,33 @@
                                         lastName
                                         email
                                     }
+                                    payment {
+                                            _id
+                                            status
+                                            amount
+                                            paidAt
+                                            paymentExpiresAt
+                                            invoiceNo
+                                        }
                                 }
                             }
                         `
                     });
 
-                    if (!job.data.data.adminUpdateJob) {
+                    if (job.data.errors) {
                         throw new Error("Job could not be saved!");
                     }
 
-                    this.jobs = this.jobs.map(job => {
-                        if (job._id === job.data.data.adminUpdateJob._id) {
+                    this.jobs = this.jobs.map(jobOld => {
+                        if (jobOld._id === job.data.data.adminUpdateJob._id) {
                             return job.data.data.adminUpdateJob;
                         } else {
-                            return job;
+                            return jobOld;
                         }
                     });
                 } catch (err) {
                     this.$root.$bvToast.toast(
-                        `Der Job konnte nicht gespeichert werden. Error: ${err}`,
+                        `Der Job konnte nicht gespeichert werden. Error: ${err.message}`,
                         {
                             title: `Fehler beim Speichern`,
                             variant: "danger",
@@ -563,29 +607,20 @@
                         { jobId }
                     );
 
-                    if (sentEmail.data.success) {
-                        this.$root.$bvToast.toast(
-                            `Die E-Mail wurde erfolgreich gesendet.`,
-                            {
-                                title: `E-Mail gesendet`,
-                                variant: "success",
-                                toaster: "b-toaster-bottom-right",
-                                solid: true,
-                                noAutoHide: true
-                            }
-                        );
-                    } else {
-                        this.$root.$bvToast.toast(
-                            `E-Mail konnte nicht gesendet werden.`,
-                            {
-                                title: `Fehler beim Senden`,
-                                variant: "danger",
-                                toaster: "b-toaster-bottom-right",
-                                solid: true,
-                                noAutoHide: true
-                            }
-                        );
+                    if (!sentEmail.data.success) {
+                        throw new Error();
                     }
+
+                    this.$root.$bvToast.toast(
+                        `Die E-Mail wurde erfolgreich gesendet.`,
+                        {
+                            title: `E-Mail gesendet`,
+                            variant: "success",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 } catch (err) {
                     this.$root.$bvToast.toast(
                         `E-Mail konnte nicht gesendet werden. Error: ${err}`,
@@ -618,7 +653,7 @@
                         `
                     });
 
-                    if (!response.data.data.adminDeleteJob._id) {
+                    if (response.data.errors) {
                         throw new Error("Job could not be deleted.");
                     }
 
@@ -630,7 +665,7 @@
                 } catch (err) {
                     this.error = true;
                     this.$root.$bvToast.toast(
-                        `Der Job konnte nicht gelöscht werden. Error: ${err}`,
+                        `Der Job konnte nicht gelöscht werden. Error: ${err.message}`,
                         {
                             title: `Fehler beim Löschen`,
                             variant: "danger",
@@ -641,16 +676,18 @@
                     );
                 }
             },
-            socialShareToClipBoard(jobId) {
+            socialShareToClipBoard(job) {
                 let el = document.createElement("textarea");
-
-                const job = this.jobs.find(job => job._id === jobId);
 
                 el.value = `${job.title} | ${job.company.location}\n\n${
                     this.$config.website.url
                 }/jobboard/job/${
                     job._id
-                }\n\n#mfamalanders #mfa #arzthelfer #arzthelferin #mfajobs #${job.company.location.toLowerCase()}jobs #${job.company.location.toLowerCase()}`;
+                }\n\n#mfamalanders #mfa #arzthelfer #arzthelferin #mfajobs #${job.company.location
+                    .replace("-", "")
+                    .toLowerCase()}jobs #${job.company.location
+                    .replace("-", "")
+                    .toLowerCase()}`;
 
                 document.body.appendChild(el);
                 el.select();
@@ -664,16 +701,21 @@
                     item.status === "published" &&
                     item.paid === true &&
                     item.publishedAt <= new Date() &&
-                    item.paidExpiresAt > new Date() &&
+                    (item.paidExpiresAt >= new Date() ||
+                        (item.payment &&
+                            item.payment.paymentExpiresAt >= new Date())) &&
                     new Date(item.applicationDeadline) >
-                        new Date(new Date().valueOf() - 1000 * 60 * 60 * 24)
+                        new Date(new Date().setHours(24))
                 ) {
                     return "table-success";
+                }
+                if (item.status === "invoice-pending") {
+                    return "table-warning";
                 }
                 if (
                     item.status === "unpublished" ||
                     new Date(item.applicationDeadline) <
-                        new Date(new Date().valueOf() - 1000 * 60 * 60 * 24) ||
+                        new Date(new Date().setHours(24)) ||
                     item.paidExpiresAt < new Date()
                 ) {
                     return "table-danger";

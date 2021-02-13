@@ -13,12 +13,15 @@ const JobResolvers = {
                 _id: args._id,
                 status: "published",
                 paid: true,
-                applicationDeadline: {
-                    $gte: new Date(
-                        new Date().valueOf() - 1000 * 60 * 60 * 24
-                    ).toISOString(),
-                },
+                paidExpiresAt: { $gte: new Date() },
+                // applicationDeadline: {
+                //     $gte: new Date().setHours(24),
+                // },
             });
+
+            if (job.applicationDeadline < new Date().setHours(24)) {
+                return null;
+            }
 
             return job;
         },
@@ -26,22 +29,18 @@ const JobResolvers = {
             const jobs = await Job.find({
                 status: "published",
                 paid: true,
-                paidExpiresAt: {
-                    $gte: new Date(),
-                },
-                applicationDeadline: {
-                    $gte: new Date(
-                        new Date().valueOf() - 1000 * 60 * 60 * 24
-                    ).toISOString(),
-                },
+                paidExpiresAt: { $gte: new Date() },
+                // applicationDeadline: {
+                //     $gte: new Date().setHours(24),
+                // },
             }).sort({
                 publishedAt: "desc",
                 paidAt: "desc",
                 createdAt: "desc",
             });
 
-            return jobs.filter((job) =>
-                job.publishedAt && job.publishedAt > new Date() ? false : true
+            return jobs.filter(
+                (job) => job.applicationDeadline >= new Date().setHours(24)
             );
         },
         myJob: async (root, args, context) => {
@@ -243,38 +242,43 @@ const JobResolvers = {
             return jobs;
         },
     },
+
+    Payment: {
+        job: async (payment, args, context) => {
+            if (!context.user.isAdmin) {
+                throw new AuthenticationError("Missing permission!");
+            }
+
+            const job = await Job.findOne({ _id: payment.job });
+
+            return job;
+        },
+    },
 };
 
 function cleanUpJob(job, user) {
     if (user.isAdmin) {
         if (job.publishedAt) {
-            job.publishedAt = new Date(job.publishedAt);
-        }
-        if (job.paidAt) {
-            job.paidAt = new Date(job.paidAt);
+            job.publishedAt = new Date(job.publishedAt).setHours(0);
         }
         if (job.paidExpiresAt) {
-            job.paidExpiresAt = new Date(job.paidExpiresAt);
+            job.paidExpiresAt = new Date(job.paidExpiresAt).setHours(24);
         }
-        if (job.paidExpiresAt && job.paidExpiresAt > new Date()) {
+        if (job.paidExpiresAt && job.paidExpiresAt >= new Date()) {
             job.paid = true;
             job.status = "published";
         }
         if (job.status === "published" && !job.publishedAt) {
-            job.publishedAt = new Date();
+            job.publishedAt = new Date().setHours(0);
         }
-        if (job.paid && (!job.paidAt || !job.paidExpiresAt)) {
-            job.paidAt = job.paidAt || new Date();
+        if (job.paid && !job.paidExpiresAt) {
             job.paidExpiresAt =
                 job.paidExpiresAt ||
-                new Date(
-                    new Date().valueOf() +
-                        1000 *
-                            60 *
-                            60 *
-                            24 *
-                            config.stripe.paymentExpirationDays
-                );
+                new Date().setHours(24) +
+                    1000 * 60 * 60 * 24 * config.payment.paymentExpirationDays;
+        }
+        if (job.paid === false) {
+            job.paidExpiresAt = 0;
         }
     }
 

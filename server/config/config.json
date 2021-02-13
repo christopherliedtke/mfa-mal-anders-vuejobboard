@@ -7,17 +7,22 @@
         "newsletterSuccessPath": "/page/subscription-successful",
         "newsletterUnsubscribeSuccessPath": "/page/unsubscribed-successful"
     },
-    "stripe": {
-        "paymentMethods": ["card", "giropay"],
+    "payment": {
         "currency": "eur",
-        "minPricePerJob": 3900,
+        "tax": 0,
         "paymentExpirationDays": 60,
+        "minPricePerJob": 3900,
         "refreshFrequencies": [
             {
                 "amount": 15000,
                 "refreshAfterDays": 14
             }
         ]
+    },
+    "stripe": {
+        "paymentMethods": ["card", "giropay"],
+        "feeFix": 25,
+        "feeVar": 0.014
     },
     "redirect": {
         "active": true
