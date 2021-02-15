@@ -46,7 +46,7 @@
                 v-model="job.specialization"
                 :state="validated ? true : null"
             >
-                <b-form-select-option :value="null"
+                <b-form-select-option value=""
                     >-- Fachbereich wählen --</b-form-select-option
                 >
                 <b-form-select-option
@@ -63,7 +63,7 @@
                 v-model="job.employmentType"
                 :state="validated ? (job.employmentType ? true : false) : null"
             >
-                <b-form-select-option :value="null" disabled
+                <b-form-select-option value="" disabled
                     >-- Anstellungsart wählen --</b-form-select-option
                 >
                 <b-form-select-option
@@ -223,7 +223,7 @@
                 v-model="job.contactGender"
                 :state="validated ? (job.contactGender ? true : null) : null"
             >
-                <b-form-select-option :value="null"
+                <b-form-select-option value=""
                     >-- Titel auswählen --</b-form-select-option
                 >
                 <b-form-select-option
@@ -240,7 +240,7 @@
                 v-model="job.contactTitle"
                 :state="validated ? (job.contactTitle ? true : null) : null"
             >
-                <b-form-select-option :value="null"
+                <b-form-select-option value=""
                     >-- Titel auswählen --</b-form-select-option
                 >
                 <b-form-select-option
@@ -396,7 +396,7 @@
                 v-model="job.company.state"
                 :state="validated ? (job.company.state ? true : false) : null"
             >
-                <b-form-select-option :value="null" disabled
+                <b-form-select-option value="" disabled
                     >-- Bundesland auswählen --</b-form-select-option
                 >
                 <b-form-select-option
@@ -413,7 +413,7 @@
                 v-model="job.company.country"
                 :state="validated ? (job.company.country ? true : false) : null"
             >
-                <b-form-select-option :value="null" disabled
+                <b-form-select-option value="" disabled
                     >-- Land auswählen --</b-form-select-option
                 >
                 <b-form-select-option
@@ -430,7 +430,7 @@
                 v-model="job.company.size"
                 :state="validated ? (job.company.size ? true : false) : null"
             >
-                <b-form-select-option :value="null" disabled
+                <b-form-select-option value="" disabled
                     >-- Unternehmensgröße auswählen --</b-form-select-option
                 >
                 <b-form-select-option
@@ -541,8 +541,8 @@
                     title: "",
                     description:
                         "<p>[Für eine attraktive Stellenanzeige sollten Sie folgende Punkte berücksichtigen. Bitte ersetzen Sie den hier stehenden Text entsprechend.]</p><p>[Schreiben Sie eine kurze Einleitung zu Ihrem Unternehmen.]</p><h3>Was wir Ihnen bieten</h3><p>[Was bieten Sie potentiellen BewerberInnen?]</p><h3>Ihre Aufgaben</h3><p>[Welche Aufgaben sollen von potentiellen BewerberInnen durchgeführt werden?]</p><h3>Ihr Profil</h3><p>[Was sollen potentielle BewerberInnen mitbringen?]</p>",
-                    specialization: null,
-                    employmentType: null,
+                    specialization: "",
+                    employmentType: "",
                     applicationDeadline: 0,
                     simpleApplication: false,
                     extJobUrl: "",
@@ -550,8 +550,8 @@
                     imageUrl: "",
                     salaryMin: "",
                     salaryMax: "",
-                    contactGender: null,
-                    contactTitle: null,
+                    contactGender: "",
+                    contactTitle: "",
                     contactFirstName: "",
                     contactLastName: "",
                     contactEmail: "",
@@ -562,11 +562,11 @@
                         street: "",
                         location: "",
                         zipCode: "",
-                        state: null,
+                        state: "",
                         country: "Deutschland",
                         geoCodeLat: null,
                         geoCodeLng: null,
-                        size: null,
+                        size: "",
                         url: "",
                         logoUrl: ""
                     }
@@ -623,6 +623,8 @@
         },
         methods: {
             async getJob(id) {
+                this.$store.dispatch("setOverlay", true);
+
                 try {
                     const job = await this.$axios.get(`/graphql`, {
                         params: {
@@ -702,6 +704,8 @@
                         }
                     );
                 }
+
+                this.$store.dispatch("setOverlay", false);
             },
             async getCompanies() {
                 try {

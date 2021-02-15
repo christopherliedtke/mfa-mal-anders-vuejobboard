@@ -17,6 +17,14 @@
                 Number of Payments:
                 <strong>{{ computedPayments.length }}</strong>
             </div>
+
+            <b-button
+                class="ml-4 my-2"
+                :to="`/admin/payments/edit/new`"
+                variant="outline-primary"
+                size="sm"
+                ><Fa class="mr-2" icon="plus" />Neue Zahlung</b-button
+            >
         </b-form>
         <b-table
             responsive
@@ -437,7 +445,7 @@
                     });
 
                     if (payment.data.errors) {
-                        throw new Error("Job could not be deleted.");
+                        throw new Error("Payment could not be deleted.");
                     }
 
                     this.payments.forEach((payment, index) => {
@@ -448,7 +456,7 @@
                 } catch (err) {
                     this.error = true;
                     this.$root.$bvToast.toast(
-                        `Der Job konnte nicht gelöscht werden. Error: ${err.message}`,
+                        `Die Zahlung konnte nicht gelöscht werden. Error: ${err.message}`,
                         {
                             title: `Fehler beim Löschen`,
                             variant: "danger",
@@ -512,8 +520,10 @@
                     payment.job._id
                 }\n\n#mfamalanders #mfa #arzthelfer #arzthelferin #mfajobs #${payment.job.company.location
                     .replace("-", "")
+                    .replace(" ", "")
                     .toLowerCase()}jobs #${payment.job.company.location
                     .replace("-", "")
+                    .replace(" ", "")
                     .toLowerCase()}`;
 
                 document.body.appendChild(el);

@@ -164,7 +164,7 @@
                             "
                         >
                             <b-form-select-option :value="null"
-                                >-- Titel auswählen --</b-form-select-option
+                                >-- Anrede auswählen --</b-form-select-option
                             >
                             <b-form-select-option
                                 v-for="title in contactGenderOptions"
@@ -655,32 +655,23 @@
                         }
                     );
 
-                    if (response.data.success) {
-                        this.$root.$bvToast.toast(
-                            "Vielen Dank! Ihre Rechnung wurde erfolgreich angefordert. Innerhalb der nächsten 24 Stunden erhalten Sie die gewünschte Rechnung auf die angegebene E-Mail Adresse.",
-                            {
-                                title: `Rechnung angefordert`,
-                                variant: "success",
-                                toaster: "b-toaster-bottom-right",
-                                solid: true,
-                                noAutoHide: true
-                            }
-                        );
-
-                        this.$emit("update");
-                        this.$emit("close");
-                    } else {
-                        this.$root.$bvToast.toast(
-                            "Bei der Verarbeitung Ihrer Daten ist leider ein Fehler aufgetreten. Bitte versuchen Sie es später noch einmal.",
-                            {
-                                title: `Fehler bei Rechnungsanforderung`,
-                                variant: "danger",
-                                toaster: "b-toaster-bottom-right",
-                                solid: true,
-                                noAutoHide: true
-                            }
-                        );
+                    if (!response.data.success) {
+                        throw new Error("Invoice could not be sent!");
                     }
+
+                    this.$root.$bvToast.toast(
+                        "Vielen Dank! Ihre Rechnung wurde erfolgreich angefordert. Innerhalb der nächsten 24 Stunden erhalten Sie die gewünschte Rechnung auf die angegebene E-Mail Adresse.",
+                        {
+                            title: `Rechnung angefordert`,
+                            variant: "success",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
+
+                    this.$emit("update");
+                    this.$emit("close");
                 } catch (err) {
                     this.$root.$bvToast.toast(
                         "Bei der Verarbeitung Ihrer Daten ist leider ein Fehler aufgetreten. Bitte versuchen Sie es später noch einmal.",

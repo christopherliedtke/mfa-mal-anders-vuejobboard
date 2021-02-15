@@ -9,7 +9,7 @@
                 :disabled="disabled"
             >
                 <b-form-select-option :value="null"
-                    >-- Titel auswählen --</b-form-select-option
+                    >-- Anrede auswählen --</b-form-select-option
                 >
                 <b-form-select-option
                     v-for="title in contactGenderOptions"

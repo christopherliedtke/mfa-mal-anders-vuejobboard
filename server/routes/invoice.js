@@ -28,6 +28,16 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
             billingAddress,
         } = req.body;
 
+        billingAddress.fullName = `${
+            billingAddress.gender && billingAddress.gender != "null"
+                ? billingAddress.gender + " "
+                : ""
+        }${
+            billingAddress.title && billingAddress.title != "null"
+                ? billingAddress.title + " "
+                : ""
+        }${billingAddress.firstName} ${billingAddress.lastName}`;
+
         let validatedCoupon = {};
 
         if (couponCode) {
@@ -46,41 +56,19 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
             });
         }
 
-        // let { invoiceNo } = await Job.findOne({ _id: jobId });
-
-        // if (invoiceNo === 0) {
-        //     const lastInvoiceNo = await Job.find({}, "invoiceNo")
-        //         .sort({ invoiceNo: -1 })
-        //         .limit(1);
-
-        //     invoiceNo = lastInvoiceNo[0].invoiceNo + 1;
-        // }
-
         const lastInvoiceNo = await Payment.find({}, "invoiceNo")
             .sort({ invoiceNo: -1 })
             .limit(1);
 
         const invoiceNo = lastInvoiceNo[0].invoiceNo + 1;
 
-        const invoiceNoLong =
-            "RE-" +
-            "000000".slice(0, 6 - invoiceNo.toString().length) +
-            invoiceNo.toString();
-
-        // !Check nd update
         const invoice = await createInvoice(
             {
-                jobId,
-                jobTitle,
-                email: billingAddress.email,
+                invoiceNo,
                 amount,
-                paymentMethod,
-                couponCode,
                 discount,
-                refreshFrequency,
                 billingAddress,
             },
-            invoiceNoLong,
             __dirname + "/../invoices/"
         );
 
@@ -101,7 +89,7 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
                     Betrag: ${
                         (parseInt(amount) * (1 - discount) + 500) / 100
                     } EUR <br>
-                    InvoiceNo: ${invoiceNoLong} EUR <br>
+                    InvoiceNo: ${invoiceNo} <br>
                     Aktionscode: ${couponCode} <br>
                     Discount: ${discount} <br>
                     Refresh Frequency: ${refreshFrequency}
@@ -113,7 +101,7 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
                 <h2>Rechnungsadresse</h2>
                 <p>
                     Unternehmen: ${billingAddress.company} <br>
-                    Name: ${billingAddress.name} <br>
+                    Name: ${billingAddress.fullName} <br>
                     Straße und Hausnummer: ${billingAddress.street} <br>
                     PLZ: ${billingAddress.zipCode} <br>
                     Ort: ${billingAddress.location} <br>
@@ -121,15 +109,19 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
                 </p>
                 <hr>
                 <h1>E-Mail</h1>
-                <p>[Rechnung ${invoiceNoLong}] Veröffentlichung Ihrer Stellenanzeige '${jobTitle}'</p>
+                <p>[Rechnung ${
+                    "RE-" +
+                    "000000".slice(0, 6 - invoiceNo.toString().length) +
+                    invoiceNo.toString()
+                }] Veröffentlichung Ihrer Stellenanzeige '${jobTitle}'</p>
                 <p>
                     ${
-                        billingAddress.name.includes("Herr")
+                        billingAddress.gender === "Herr"
                             ? "Sehr geehrter"
-                            : billingAddress.name.includes("Frau")
+                            : billingAddress.gender === "Frau"
                             ? "Sehr geehrte"
                             : "Sehr geehrte/r"
-                    } ${billingAddress.name},
+                    } ${billingAddress.fullName},
                 </p>
                 <p>
                     vielen Dank für die Erstellung Ihrer Stellenanzeige '${jobTitle}' auf unserem Portal 'MFA mal anders'. Wie gewünscht haben wir Ihnen die beigefügte Rechnung erstellt.
@@ -161,16 +153,20 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
             to: billingAddress.email,
             replyTo: config.website.contactEmail,
             bcc: config.website.contactEmail,
-            subject: `[Rechnung ${invoiceNoLong}] Veröffentlichung Ihrer Stellenanzeige '${jobTitle}'`,
+            subject: `[Rechnung ${
+                "RE-" +
+                "000000".slice(0, 6 - invoiceNo.toString().length) +
+                invoiceNo.toString()
+            }] Veröffentlichung Ihrer Stellenanzeige '${jobTitle}'`,
             html: `
                 <p>
                     ${
-                        billingAddress.name.includes("Herr")
+                        billingAddress.fullName.includes("Herr")
                             ? "Sehr geehrter"
-                            : billingAddress.name.includes("Frau")
+                            : billingAddress.fullName.includes("Frau")
                             ? "Sehr geehrte"
                             : "Sehr geehrte/r"
-                    } ${billingAddress.name},
+                    } ${billingAddress.fullName},
                 </p>
                 <p>
                     vielen Dank für die Erstellung Ihrer Stellenanzeige '${jobTitle}' auf unserem Portal 'MFA mal anders'. Wie gewünscht haben wir Ihnen die beigefügte Rechnung erstellt.
@@ -222,15 +218,16 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
 
         const paymentObj = {
             status: "pending",
-            paymentType: "invoice",
-            amount: parseInt(amount) * (1 - discount) + 500,
-            fee: config.stripe.feeFix + config.stripe.feeVar * amount,
+            paymentType: paymentMethod,
+            amount: parseInt(amount) * (1 - discount) + config.invoice.feeFix,
+            fee: 0,
             taxes: config.payment.tax * amount,
             billingEmail: billingAddress.email,
             paymentExpiresAt: new Date(
                 new Date().setHours(24) +
                     1000 * 60 * 60 * 24 * config.payment.paymentExpirationDays
             ),
+            invoiceNo,
             job: jobId,
             user: req.user._id,
         };

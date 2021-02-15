@@ -81,6 +81,18 @@ const CouponResolvers = {
             return coupon;
         },
     },
+
+    Payment: {
+        coupon: async (payment, args, context) => {
+            if (!context.user.isAdmin) {
+                throw new AuthenticationError("Missing permission!");
+            }
+
+            const coupon = await Coupon.findOne({ _id: payment.coupon });
+
+            return coupon;
+        },
+    },
 };
 
 module.exports = CouponResolvers;

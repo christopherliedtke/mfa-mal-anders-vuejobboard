@@ -26,7 +26,7 @@
                 v-model="form.state"
                 :state="validated ? (form.state ? true : false) : null"
             >
-                <b-form-select-option :value="null" disabled
+                <b-form-select-option value="" disabled
                     >-- Bundesland auswählen --</b-form-select-option
                 >
                 <b-form-select-option
@@ -139,7 +139,7 @@
             return {
                 form: {
                     email: "",
-                    state: null,
+                    state: "",
                     accepted: false
                 },
                 validated: null,

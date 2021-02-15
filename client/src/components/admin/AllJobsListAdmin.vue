@@ -150,7 +150,6 @@
                         >Published</b-dropdown-item
                     >
                     <b-dropdown-item
-                        class="mb-0"
                         :active="row.item.status === 'unpublished'"
                         variant="danger"
                         @click.prevent="
@@ -685,8 +684,10 @@
                     job._id
                 }\n\n#mfamalanders #mfa #arzthelfer #arzthelferin #mfajobs #${job.company.location
                     .replace("-", "")
+                    .replace(" ", "")
                     .toLowerCase()}jobs #${job.company.location
                     .replace("-", "")
+                    .replace(" ", "")
                     .toLowerCase()}`;
 
                 document.body.appendChild(el);

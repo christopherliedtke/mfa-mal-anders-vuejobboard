@@ -2,8 +2,8 @@
     <b-form>
         <label for="user-gender">Anrede</label>
         <b-form-select id="user-gender" v-model="gender">
-            <b-form-select-option :value="null"
-                >-- Titel auswählen --</b-form-select-option
+            <b-form-select-option value=""
+                >-- Anrede auswählen --</b-form-select-option
             >
             <b-form-select-option
                 v-for="title in contactGenderOptions"
@@ -14,7 +14,7 @@
         </b-form-select>
         <label for="user-title">Titel</label>
         <b-form-select id="user-title" v-model="title">
-            <b-form-select-option :value="null"
+            <b-form-select-option value=""
                 >-- Titel auswählen --</b-form-select-option
             >
             <b-form-select-option
@@ -140,8 +140,8 @@
         name: "RegisterForm",
         data() {
             return {
-                gender: null,
-                title: null,
+                gender: "",
+                title: "",
                 firstName: "",
                 lastName: "",
                 email: "",

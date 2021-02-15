@@ -12,7 +12,7 @@
                         v-model="form.gender"
                         :state="validated ? (form.gender ? true : null) : null"
                     >
-                        <b-form-select-option :value="null"
+                        <b-form-select-option value=""
                             >-- Titel auswählen --</b-form-select-option
                         >
                         <b-form-select-option
@@ -30,7 +30,7 @@
                         v-model="form.title"
                         :state="validated ? (form.title ? true : null) : null"
                     >
-                        <b-form-select-option :value="null"
+                        <b-form-select-option value=""
                             >-- Titel auswählen --</b-form-select-option
                         >
                         <b-form-select-option
@@ -169,8 +169,8 @@
         data() {
             return {
                 form: {
-                    gender: null,
-                    title: null,
+                    gender: "",
+                    title: "",
                     firstName: "",
                     lastName: "",
                     email: "",

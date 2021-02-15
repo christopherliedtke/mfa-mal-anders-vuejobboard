@@ -19,7 +19,7 @@ const PaymentResolvers = {
                 throw new AuthenticationError("Missing permission!");
             }
 
-            const payments = await Payment.find().sort({ paidAt: "desc" });
+            const payments = await Payment.find().sort({ updatedAt: "desc" });
 
             return payments;
         },
@@ -30,6 +30,71 @@ const PaymentResolvers = {
             if (!context.user.isAdmin) {
                 throw new AuthenticationError("Missing permission!");
             }
+
+            let addObj = { ...args };
+
+            if (addObj.status && !addObj.paymentExpiresAt) {
+                if (addObj.status === "paid") {
+                    addObj.paidAt = new Date();
+                    addObj.paymentExpiresAt = new Date(
+                        new Date().setHours(24) +
+                            1000 *
+                                60 *
+                                60 *
+                                24 *
+                                config.payment.paymentExpirationDays
+                    );
+                }
+                if (addObj.status === "cancelled") {
+                    addObj.paymentExpiresAt = undefined;
+                    addObj.paidAt = undefined;
+                }
+                if (addObj.status === "pending") {
+                    addObj.paymentExpiresAt = new Date(
+                        new Date().setHours(24) +
+                            1000 *
+                                60 *
+                                60 *
+                                24 *
+                                config.payment.paymentExpirationDays
+                    );
+                    addObj.paidAt = undefined;
+                }
+            }
+
+            const newPaymentObj = new Payment(addObj);
+            const payment = await newPaymentObj.save();
+
+            if (payment) {
+                await Job.findOneAndUpdate(
+                    { _id: payment.job },
+                    {
+                        paid:
+                            payment.status === "paid" &&
+                            payment.paymentExpiresAt >= new Date()
+                                ? true
+                                : false,
+                        paidExpiresAt:
+                            payment.paymentExpiresAt >= new Date()
+                                ? payment.paymentExpiresAt
+                                : undefined,
+                        status:
+                            payment.status === "paid"
+                                ? "published"
+                                : payment.status === "pending"
+                                ? "invoice-pending"
+                                : "draft",
+                        publishedAt:
+                            payment.status === "paid" &&
+                            payment.paymentExpiresAt >= new Date()
+                                ? new Date()
+                                : undefined,
+                    },
+                    { new: true }
+                );
+            }
+
+            return payment;
         },
         updatePayment: async (root, args, context) => {
             if (!context.user.isAdmin) {
@@ -78,8 +143,15 @@ const PaymentResolvers = {
                 await Job.findOneAndUpdate(
                     { _id: updatedPayment.job },
                     {
-                        paid: updatedPayment.status === "paid" ? true : false,
-                        paidExpiresAt: updatedPayment.paymentExpiresAt,
+                        paid:
+                            updatedPayment.status === "paid" &&
+                            updatedPayment.paymentExpiresAt >= new Date()
+                                ? true
+                                : false,
+                        paidExpiresAt:
+                            updatedPayment.paymentExpiresAt >= new Date()
+                                ? updatedPayment.paymentExpiresAt
+                                : undefined,
                         status:
                             updatedPayment.status === "paid"
                                 ? "published"
@@ -87,7 +159,8 @@ const PaymentResolvers = {
                                 ? "invoice-pending"
                                 : "draft",
                         publishedAt:
-                            updatedPayment.status === "paid"
+                            updatedPayment.status === "paid" &&
+                            updatedPayment.paymentExpiresAt >= new Date()
                                 ? new Date()
                                 : undefined,
                     },

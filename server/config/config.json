@@ -19,6 +19,27 @@
             }
         ]
     },
+    "invoice": {
+        "sender": {
+            "company": "MFA mal anders",
+            "name": "Kristin Maurach",
+            "address": {
+                "street": "Wellbergstraße 62",
+                "zipCode": "49809",
+                "location": "Lingen (Ems)"
+            },
+            "email": "kontakt@mfa-mal-anders.de",
+            "taxNum": "32/437/01653"
+        },
+        "bankAccount": {
+            "receiver": "Kristin Maurach",
+            "bank": "Holvi Payment Services",
+            "iban": "DE40 1001 7997 3020 6852 06",
+            "bic": "HOLVDEB1"
+        },
+        "feeFix": 500,
+        "feeVar": 0
+    },
     "stripe": {
         "paymentMethods": ["card", "giropay"],
         "feeFix": 25,

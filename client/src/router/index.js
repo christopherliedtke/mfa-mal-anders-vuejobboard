@@ -193,9 +193,13 @@ const AdminEditUser = () =>
     import(
         /* webpackChunkName: "admin" */ "@/views/admin/users/edit/_userId.vue"
     );
-const AdminCoupon = () =>
+const AdminEditCoupon = () =>
     import(
         /* webpackChunkName: "admin" */ "@/views/admin/coupons/edit/_couponId.vue"
+    );
+const AdminEditPayment = () =>
+    import(
+        /* webpackChunkName: "admin" */ "@/views/admin/payments/edit/_paymentId.vue"
     );
 
 // 404
@@ -500,8 +504,17 @@ const routes = [
             },
             {
                 path: "coupons/edit/:couponId",
-                name: "AdminCoupon",
-                component: AdminCoupon,
+                name: "AdminEditCoupon",
+                component: AdminEditCoupon,
+                meta: {
+                    public: false,
+                    onlyAdmin: true
+                }
+            },
+            {
+                path: "payments/edit/:paymentId",
+                name: "AdminEditPayment",
+                component: AdminEditPayment,
                 meta: {
                     public: false,
                     onlyAdmin: true

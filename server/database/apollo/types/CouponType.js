@@ -38,6 +38,10 @@ const CouponType = gql`
         createdAt: Float
         updatedAt: Float
     }
+
+    extend type Payment {
+        coupon: Coupon
+    }
 `;
 
 module.exports = CouponType;

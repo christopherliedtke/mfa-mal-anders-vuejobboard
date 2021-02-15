@@ -57,7 +57,7 @@
                 v-model="company.state"
                 :state="validated ? (company.state ? true : false) : null"
             >
-                <b-form-select-option :value="null" disabled
+                <b-form-select-option value="" disabled
                     >-- Bundesland auswählen --</b-form-select-option
                 >
                 <b-form-select-option
@@ -74,7 +74,7 @@
                 v-model="company.country"
                 :state="validated ? (company.country ? true : false) : null"
             >
-                <b-form-select-option :value="null" disabled
+                <b-form-select-option value="" disabled
                     >-- Land auswählen --</b-form-select-option
                 >
                 <b-form-select-option
@@ -91,7 +91,7 @@
                 v-model="company.size"
                 :state="validated ? (company.size ? true : false) : null"
             >
-                <b-form-select-option :value="null" disabled
+                <b-form-select-option value="" disabled
                     >-- Unternehmensgröße auswählen --</b-form-select-option
                 >
                 <b-form-select-option
@@ -185,12 +185,12 @@
                     name: "",
                     street: "",
                     location: "",
-                    zipCode: null,
-                    state: null,
-                    country: null,
+                    zipCode: "",
+                    state: "",
+                    country: "",
                     geoCodeLat: null,
                     geoCodeLng: null,
-                    size: null,
+                    size: "",
                     url: "",
                     logoUrl: ""
                 },

@@ -1,9 +1,15 @@
 const fs = require("fs");
 const PDFDocument = require("pdfkit");
+const config = require("../config/config.json");
 
-const createInvoice = (data, invoiceNo, path) => {
+const createInvoice = (data, pathToSave) => {
     return new Promise((resolve, reject) => {
         try {
+            const invoiceNo =
+                "RE-" +
+                "000000".slice(0, 6 - data.invoiceNo.toString().length) +
+                data.invoiceNo.toString();
+
             let doc = new PDFDocument({
                 size: "A4",
                 margins: { top: 50, bottom: 15, left: 50, right: 50 },
@@ -15,12 +21,12 @@ const createInvoice = (data, invoiceNo, path) => {
             generateFooter(doc);
 
             doc.end();
-            doc.pipe(fs.createWriteStream(path + invoiceNo + ".pdf"));
+            doc.pipe(fs.createWriteStream(pathToSave + invoiceNo + ".pdf"));
 
             resolve({
                 success: true,
                 fileName: invoiceNo + ".pdf",
-                path: path + invoiceNo + ".pdf",
+                path: pathToSave + invoiceNo + ".pdf",
             });
         } catch (err) {
             console.log("Error on createInvoice(): ", err);
@@ -51,10 +57,14 @@ function generateHeader(doc) {
         .strokeColor("#222222")
         .fontSize(8)
         .text(
-            "MFA mal anders - Kristin Maurach - Wellbergstraße 62 - 49809 Lingen (Ems)",
+            `${config.invoice.sender.company} - ${config.invoice.sender.name} - ${config.invoice.sender.address.street} - ${config.invoice.sender.address.zipCode} ${config.invoice.sender.address.location}`,
             50,
             105,
-            { align: "left", underline: true, oblique: true }
+            {
+                align: "left",
+                underline: true,
+                oblique: true,
+            }
         )
         .moveDown();
 }
@@ -62,7 +72,7 @@ function generateHeader(doc) {
 function generateCustomerInformation(doc, data, invoiceNo, date = new Date()) {
     doc.fontSize(10)
         .text(data.billingAddress.company, 50, 140, { align: "left" })
-        .text(data.billingAddress.name, 50, 155, { align: "left" })
+        .text(data.billingAddress.fullName, 50, 155, { align: "left" })
         .text(data.billingAddress.street, 50, 170, { align: "left" })
         .text(
             data.billingAddress.zipCode + " " + data.billingAddress.location,
@@ -98,12 +108,12 @@ function generateBody(doc, data, invoiceNo) {
         .font("Helvetica")
         .text(
             `${
-                data.billingAddress.name.includes("Herr")
+                data.billingAddress.fullName.includes("Herr")
                     ? "Sehr geehrter"
-                    : data.billingAddress.name.includes("Frau")
+                    : data.billingAddress.fullName.includes("Frau")
                     ? "Sehr geehrte"
                     : "Sehr geehrte/r"
-            } ${data.billingAddress.name},`,
+            } ${data.billingAddress.fullName},`,
             50,
             280
         )
@@ -138,19 +148,24 @@ function generateBody(doc, data, invoiceNo) {
 
     position += 65;
 
-    doc.text(`Empfängerin: Kristin Maurach`, 70, position, {
-        width: 500,
-        oblique: true,
-    })
-        .text(`Bank: Holvi Payment Services`, 70, position + 12, {
+    doc.text(
+        "Empfängerin: " + config.invoice.bankAccount.receiver,
+        70,
+        position,
+        {
+            width: 500,
+            oblique: true,
+        }
+    )
+        .text("Bank: " + config.invoice.bankAccount.bank, 70, position + 12, {
             width: 500,
             oblique: true,
         })
-        .text(`IBAN: DE40 1001 7997 3020 6852 06`, 70, position + 24, {
+        .text("IBAN: " + config.invoice.bankAccount.iban, 70, position + 24, {
             width: 500,
             oblique: true,
         })
-        .text(`BIC: HOLVDEB1`, 70, position + 36, {
+        .text("BIC: " + config.invoice.bankAccount.bic, 70, position + 36, {
             width: 500,
             oblique: true,
         })
@@ -229,10 +244,16 @@ function generateInvoiceTable(doc, data, position) {
         doc,
         invoiceTableTop + 45,
         "2",
-        `Bearbeitungsgebühr - separate Rechnungsausstellung`,
+        `Bearbeitungsgebühr - separate Rechnungsverarbeitung`,
         "1",
-        `5,00€`,
-        `5,00€`
+        `${(config.invoice.feeFix / 100)
+            .toFixed(2)
+            .toString()
+            .replace(".", ",")}€`,
+        `${(config.invoice.feeFix / 100)
+            .toFixed(2)
+            .toString()
+            .replace(".", ",")}€`
     );
 
     generateHr(doc, invoiceTableTop + 75);
@@ -246,7 +267,10 @@ function generateInvoiceTable(doc, data, position) {
         `Rechnungsbetrag`,
         "",
         ``,
-        `${((parseInt(data.amount) * (1 - data.discount)) / 100 + 5)
+        `${(
+            (parseInt(data.amount) * (1 - data.discount)) / 100 +
+            config.invoice.feeFix / 100
+        )
             .toFixed(2)
             .toString()
             .replace(".", ",")}€`
@@ -285,17 +309,27 @@ function generateFooter(doc) {
     let position = 780;
     doc.fontSize(8)
         .fillColor("#888888")
-        .text("Kristin Maurach", 50, position)
-        .text("Wellbergstraße 62", 50, position + 10)
-        .text("49809 Lingen (Ems)", 50, position + 20)
-        .text("kontakt@mfa-mal-anders.de", 50, position + 35)
+        .text(config.invoice.sender.name, 50, position)
+        .text(config.invoice.sender.address.street, 50, position + 10)
+        .text(
+            config.invoice.sender.address.zipCode +
+                " " +
+                config.invoice.sender.address.location,
+            50,
+            position + 20
+        )
+        .text(config.invoice.sender.email, 50, position + 35)
         .moveDown();
 
     doc.fontSize(8)
         .fillColor("#888888")
-        .text("Holvi Payment Services", 400, position)
-        .text("IBAN: DE40 1001 7997 3020 6852 06", 400, position + 10)
-        .text("BIC: HOLVDEB1", 400, position + 20)
-        .text("Steuernummer: 32/437/01653", 400, position + 30)
+        .text(config.invoice.bankAccount.bank, 400, position)
+        .text("IBAN: " + config.invoice.bankAccount.iban, 400, position + 10)
+        .text("BIC: " + config.invoice.bankAccount.bic, 400, position + 20)
+        .text(
+            "Steuernummer: " + config.invoice.sender.taxNum,
+            400,
+            position + 30
+        )
         .moveDown();
 }

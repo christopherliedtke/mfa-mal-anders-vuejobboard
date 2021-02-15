@@ -8,17 +8,31 @@ const PaymentType = gql`
 
     extend type Mutation {
         addPayment(
+            user: ID!
+            job: ID!
+            coupon: ID
             status: String
             invoiceNo: Float
             paymentType: String
             amount: Float
+            fee: Float
+            taxes: Float
+            billingEmail: String
+            billingCompany: String
+            billingGender: String
+            billingTitle: String
+            billingFirstName: String
+            billingLastName: String
+            billingStreet: String
+            billingZipCode: String
+            billingLocation: String
             paidAt: Float
             paymentExpiresAt: Float
         ): Payment
         updatePayment(
             _id: ID!
-            job: ID
             user: ID
+            job: ID
             coupon: ID
             status: String
             invoiceNo: Float
