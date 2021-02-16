@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const path = require("path");
 const verifyToken = require("../middleware/verifyToken");
 const validateCoupon = require("../middleware/validateCoupon");
 const emailService = require("../utils/nodemailer");
@@ -28,16 +29,6 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
             billingAddress,
         } = req.body;
 
-        billingAddress.fullName = `${
-            billingAddress.gender && billingAddress.gender != "null"
-                ? billingAddress.gender + " "
-                : ""
-        }${
-            billingAddress.title && billingAddress.title != "null"
-                ? billingAddress.title + " "
-                : ""
-        }${billingAddress.firstName} ${billingAddress.lastName}`;
-
         let validatedCoupon = {};
 
         if (couponCode) {
@@ -62,22 +53,66 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
 
         const invoiceNo = lastInvoiceNo[0].invoiceNo + 1;
 
-        const invoice = await createInvoice(
+        const paymentObj = {
+            status: "pending",
+            paymentType: paymentMethod,
+            invoiceNo,
+            amount: parseInt(amount) * (1 - discount) + config.invoice.feeFix,
+            fee: 0,
+            taxes: config.payment.tax * amount,
+            paymentExpiresAt: new Date(
+                new Date().setHours(24) +
+                    1000 * 60 * 60 * 24 * config.payment.paymentExpirationDays
+            ),
+            job: jobId,
+            user: req.user._id,
+            billingEmail: billingAddress.email,
+            billingCompany: billingAddress.company,
+            billingGender: billingAddress.gender,
+            billingFirstName: billingAddress.firstName,
+            billingLastName: billingAddress.lastName,
+            billingStreet: billingAddress.street,
+            billingZipCode: billingAddress.zipCode,
+            billingLocation: billingAddress.location,
+        };
+
+        if (couponId) {
+            paymentObj.coupon = couponId;
+        }
+
+        const newPaymentObj = new Payment(paymentObj);
+        const payment = await newPaymentObj.save();
+        console.log("payment: ", payment);
+
+        payment.billingFullName = `${
+            payment.billingGender && payment.billingGender != "null"
+                ? payment.billingGender + " "
+                : ""
+        }${
+            payment.billingTitle && payment.billingTitle != "null"
+                ? payment.billingTitle + " "
+                : ""
+        }${payment.billingFirstName} ${payment.billingLastName}`;
+
+        await Job.updateOne(
+            { _id: jobId, userId: req.user._id },
             {
-                invoiceNo,
-                amount,
-                discount,
-                billingAddress,
-            },
+                status: "invoice-pending",
+                refreshFrequency,
+            }
+        );
+
+        const invoice = await createInvoice(
+            payment,
             __dirname + "/../invoices/"
         );
 
         const emailDataToAdmin = {
             from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
             to: config.website.contactEmail,
-            replyTo: billingAddress.email,
+            replyTo: payment.billingEmail,
             subject: `[Rechnungsanforderung] - ${
-                (parseInt(amount) * (1 - discount) + 500) / 100
+                (parseInt(payment.amount) * (1 - payment.discount)) / 100
             }€ | ${jobTitle} | ${jobId}`,
             html: `
                 <h1>Rechnungsanforderung</h1>
@@ -85,13 +120,14 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
                 <p>
                     Job ID: ${jobId} <br>
                     Job Title: ${jobTitle} <br>
-                    Zahlungsmethode: ${paymentMethod} <br>
+                    Zahlungsmethode: ${payment.paymentType} <br>
                     Betrag: ${
-                        (parseInt(amount) * (1 - discount) + 500) / 100
+                        (parseInt(payment.amount) * (1 - payment.discount)) /
+                        100
                     } EUR <br>
-                    InvoiceNo: ${invoiceNo} <br>
-                    Aktionscode: ${couponCode} <br>
-                    Discount: ${discount} <br>
+                    InvoiceNo: ${payment.invoiceNo} <br>
+                    Aktionscode: ${payment.coupon} <br>
+                    Discount: ${payment.discount} <br>
                     Refresh Frequency: ${refreshFrequency}
                 </p>
                 <h2>User</h2>
@@ -100,28 +136,28 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
                 </p>
                 <h2>Rechnungsadresse</h2>
                 <p>
-                    Unternehmen: ${billingAddress.company} <br>
-                    Name: ${billingAddress.fullName} <br>
-                    Straße und Hausnummer: ${billingAddress.street} <br>
-                    PLZ: ${billingAddress.zipCode} <br>
-                    Ort: ${billingAddress.location} <br>
-                    E-Mail Adresse: ${billingAddress.email}
+                    Unternehmen: ${payment.billingCompany} <br>
+                    Name: ${payment.billingFullName} <br>
+                    Straße und Hausnummer: ${payment.billingStreet} <br>
+                    PLZ: ${payment.billingZipCode} <br>
+                    Ort: ${payment.billingLocation} <br>
+                    E-Mail Adresse: ${payment.billingEmail}
                 </p>
                 <hr>
                 <h1>E-Mail</h1>
                 <p>[Rechnung ${
                     "RE-" +
-                    "000000".slice(0, 6 - invoiceNo.toString().length) +
-                    invoiceNo.toString()
+                    "000000".slice(0, 6 - payment.invoiceNo.toString().length) +
+                    payment.invoiceNo.toString()
                 }] Veröffentlichung Ihrer Stellenanzeige '${jobTitle}'</p>
                 <p>
                     ${
-                        billingAddress.gender === "Herr"
+                        payment.billingFullName.includes("Herr")
                             ? "Sehr geehrter"
-                            : billingAddress.gender === "Frau"
+                            : payment.billingFullName.includes("Frau")
                             ? "Sehr geehrte"
                             : "Sehr geehrte/r"
-                    } ${billingAddress.fullName},
+                    } ${payment.billingFullName},
                 </p>
                 <p>
                     vielen Dank für die Erstellung Ihrer Stellenanzeige '${jobTitle}' auf unserem Portal 'MFA mal anders'. Wie gewünscht haben wir Ihnen die beigefügte Rechnung erstellt.
@@ -150,23 +186,23 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
 
         const emailDataToCustomer = {
             from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
-            to: billingAddress.email,
+            to: payment.billingEmail,
             replyTo: config.website.contactEmail,
             bcc: config.website.contactEmail,
             subject: `[Rechnung ${
                 "RE-" +
-                "000000".slice(0, 6 - invoiceNo.toString().length) +
-                invoiceNo.toString()
+                "000000".slice(0, 6 - payment.invoiceNo.toString().length) +
+                payment.invoiceNo.toString()
             }] Veröffentlichung Ihrer Stellenanzeige '${jobTitle}'`,
             html: `
                 <p>
                     ${
-                        billingAddress.fullName.includes("Herr")
+                        payment.billingFullName.includes("Herr")
                             ? "Sehr geehrter"
-                            : billingAddress.fullName.includes("Frau")
+                            : payment.billingFullName.includes("Frau")
                             ? "Sehr geehrte"
                             : "Sehr geehrte/r"
-                    } ${billingAddress.fullName},
+                    } ${payment.billingFullName},
                 </p>
                 <p>
                     vielen Dank für die Erstellung Ihrer Stellenanzeige '${jobTitle}' auf unserem Portal 'MFA mal anders'. Wie gewünscht haben wir Ihnen die beigefügte Rechnung erstellt.
@@ -216,46 +252,47 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
 
         console.log("emailSent: ", emailSent);
 
-        const paymentObj = {
-            status: "pending",
-            paymentType: paymentMethod,
-            amount: parseInt(amount) * (1 - discount) + config.invoice.feeFix,
-            fee: 0,
-            taxes: config.payment.tax * amount,
-            billingEmail: billingAddress.email,
-            paymentExpiresAt: new Date(
-                new Date().setHours(24) +
-                    1000 * 60 * 60 * 24 * config.payment.paymentExpirationDays
-            ),
-            invoiceNo,
-            job: jobId,
-            user: req.user._id,
-        };
-
-        if (couponId) {
-            paymentObj.coupon = couponId;
-        }
-
-        const newPaymentObj = new Payment(paymentObj);
-        const payment = await newPaymentObj.save();
-        console.log("payment: ", payment);
-
-        await Job.updateOne(
-            { _id: jobId, userId: req.user._id },
-            {
-                status: "invoice-pending",
-                refreshFrequency,
-                // paidAmount: parseInt(amount) * (1 - discount) + 500,
-                // invoiceNo,
-            }
-        );
-
         res.json({ success: true });
     } catch (err) {
         console.log(
             "Error on sendEmail() || Job.updateOne() in POST /api/invoice/get-invoice: ",
             err
         );
+        res.json({ success: false });
+    }
+});
+
+// #route:  POST /api/invoice/download
+// #desc:   Handle invoice request
+// #access: Private
+router.get("/download/:paymentId", verifyToken, async (req, res) => {
+    try {
+        if (!req.user.isAdmin) {
+            throw new Error("Missing permission!");
+        }
+
+        const payment = await Payment.findOne({ _id: req.params.paymentId });
+
+        if (!payment) {
+            throw new Error("No payment found!");
+        }
+
+        const invoice = await createInvoice(
+            payment,
+            __dirname + "/../invoices/"
+        );
+
+        const downloadPath = path.resolve(
+            __dirname + "/../invoices/",
+            invoice.fileName
+        );
+
+        res.sendFile(downloadPath, {
+            headers: { "content-type": "application/pdf" },
+        });
+    } catch (err) {
+        console.log("Error on /api/invoice/download: ", err);
+
         res.json({ success: false });
     }
 });

@@ -305,6 +305,16 @@
         </url>
     
         <url>
+            <loc>http://localhost:8081/jobboard/job/5f6348a4630115097bfcbd65</loc>
+            <lastmod>2021-02-13T13:43:34.621Z</lastmod>
+        </url>
+     
+        <url>
+            <loc>http://localhost:8081/jobboard/job/5fce34724a5cd81f6b4c5ce4</loc>
+            <lastmod>2021-02-15T10:19:27.804Z</lastmod>
+        </url>
+     
+        <url>
             <loc>http://localhost:8081/jobboard/job/6023a90f44c92b483091d599</loc>
             <lastmod>2021-02-12T11:23:56.481Z</lastmod>
         </url>

@@ -8,11 +8,6 @@ module.exports.CRONRefreshJobs = new CronJob(
         try {
             const jobs = await Job.find({
                 paid: true,
-                applicationDeadline: {
-                    $gte: new Date(
-                        new Date().valueOf() - 1000 * 60 * 60 * 24
-                    ).toISOString(),
-                },
                 paidExpiresAt: {
                     $gte: new Date(),
                 },
@@ -35,6 +30,7 @@ module.exports.CRONRefreshJobs = new CronJob(
             });
 
             console.log("Refreshing Jobs: ", jobsToRefresh);
+
             await Job.updateMany(
                 { _id: { $in: jobsToRefresh } },
                 { publishedAt: new Date() }

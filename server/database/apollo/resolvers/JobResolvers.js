@@ -278,7 +278,7 @@ function cleanUpJob(job, user) {
                     1000 * 60 * 60 * 24 * config.payment.paymentExpirationDays;
         }
         if (job.paid === false) {
-            job.paidExpiresAt = 0;
+            job.paidExpiresAt = new Date(0);
         }
     }
 

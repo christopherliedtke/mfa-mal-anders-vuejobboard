@@ -22,16 +22,14 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
         const jobs = await Job.find({
             paid: true,
             status: "published",
-            applicationDeadline: {
-                $gte: new Date(
-                    new Date().valueOf() - 1000 * 60 * 60 * 24
-                ).toISOString(),
+            paidExpiresAt: {
+                $gte: new Date(),
             },
-            paidAt: {
+            publishedAt: {
                 $gte: new Date(
                     new Date().valueOf() - 1000 * 60 * 60 * 24 * daysBack
                 ),
-                $lte: new Date().toISOString(),
+                $lte: new Date(),
             },
         }).populate("company");
 

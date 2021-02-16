@@ -10,9 +10,15 @@ module.exports.sendUnpublishedJobReminder = async () => {
         const jobs = await Job.find({
             paid: false,
             status: "draft",
-            paidAmount: 0,
             createdAt: {
-                $lt: new Date(new Date().valueOf() - 1000 * 60 * 60 * 24 * 4),
+                $lt: new Date(
+                    new Date().valueOf() -
+                        1000 *
+                            60 *
+                            60 *
+                            24 *
+                            config.unpublishedJobsReminder.afterDays
+                ),
             },
         })
             .populate("company")

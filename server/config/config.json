@@ -88,6 +88,7 @@
     },
     "unpublishedJobsReminder": {
         "active": true,
+        "afterDays": 4,
         "interval": "0 0 17 * * *",
         "prodInterval": "0 0 17 * * 1-5"
     },

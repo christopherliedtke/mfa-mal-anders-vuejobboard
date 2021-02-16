@@ -128,7 +128,9 @@
                     class="mr-2 mb-2"
                     size="sm"
                     variant="info"
-                    @click="downloadInvoice(row.item)"
+                    :href="`/api/invoice/download/${row.item._id}`"
+                    target="_blank"
+                    :disabled="row.item.paymentType != 'invoice'"
                 >
                     <Fa class="mr-2" icon="download" />Invoice
                 </b-button>
@@ -507,10 +509,14 @@
 
                 this.$store.dispatch("setOverlay", false);
             },
-            downloadInvoice(payment) {
-                //
-                console.log("payment: ", payment);
-            },
+            // async downloadInvoice(payment) {
+            //     //
+            //     console.log("payment: ", payment);
+
+            //     await this.$axios.post("/api/invoice/download", {
+            //         paymentId: payment._id
+            //     });
+            // },
             socialShareToClipBoard(payment) {
                 let el = document.createElement("textarea");
 
