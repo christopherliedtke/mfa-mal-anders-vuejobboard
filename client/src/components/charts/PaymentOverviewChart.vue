@@ -141,12 +141,7 @@
                             )
                             .map(
                                 payment =>
-                                    Math.round(
-                                        (payment.amount -
-                                            payment.fee -
-                                            payment.taxes) *
-                                            100
-                                    ) / 100
+                                    payment.amount - payment.fee - payment.taxes
                             )
                             .reduce(
                                 (accumulator, currentValue) =>
@@ -154,7 +149,7 @@
                                 0
                             ) / 100;
 
-                    amounts.push(amount);
+                    amounts.push(Math.round(amount * 100) / 100);
 
                     let number = this.payments
                         .filter(

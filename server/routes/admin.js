@@ -37,10 +37,10 @@ router.get("/jobs-to-payments", verifyToken, async (req, res) => {
         };
     });
 
-    // res.json(payments);
+    res.json(payments);
 
-    const insertedPayments = await Payment.insertMany(payments);
-    res.json(insertedPayments);
+    // const insertedPayments = await Payment.insertMany(payments);
+    // res.json(insertedPayments);
 });
 
 module.exports = router;
