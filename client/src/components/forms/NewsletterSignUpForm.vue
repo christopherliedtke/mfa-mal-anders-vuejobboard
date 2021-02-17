@@ -26,7 +26,7 @@
                 v-model="form.state"
                 :state="validated ? (form.state ? true : false) : null"
             >
-                <b-form-select-option :value="null" disabled
+                <b-form-select-option value="" disabled
                     >-- Bundesland auswählen --</b-form-select-option
                 >
                 <b-form-select-option
@@ -101,9 +101,15 @@
             </h2>
         </div>
 
-        <b-alert v-if="error" class="mt-3" show dismissible variant="danger">{{
-            error
-        }}</b-alert>
+        <b-alert
+            v-for="error in errors"
+            :key="error.message"
+            class="mt-3"
+            show
+            dismissible
+            variant="danger"
+            >{{ error.message }}</b-alert
+        >
     </div>
 </template>
 
@@ -133,12 +139,12 @@
             return {
                 form: {
                     email: "",
-                    state: null,
+                    state: "",
                     accepted: false
                 },
                 validated: null,
                 disabled: false,
-                error: null,
+                errors: null,
                 companyStateOptions
             };
         },
@@ -149,51 +155,60 @@
         },
         methods: {
             async onSubmit() {
-                this.error = false;
+                this.errors = false;
 
                 if (!this.formValidation()) {
-                    this.error = "Bitte fülle die erforderlichen Felder aus!";
+                    this.errors = [
+                        {
+                            message:
+                                "Bitte fülle die erforderlichen Felder aus!"
+                        }
+                    ];
                     return null;
                 }
 
                 this.$store.dispatch("setOverlay", true);
 
                 try {
-                    const response = await this.$axios.post(
-                        "/api/newsletter/sign-up",
+                    const subscriber = await this.$axios.post("/graphql", {
+                        query: `
+                            mutation {
+                                addSubscriber (
+                                    email: "${this.form.email}",
+                                    state: "${this.form.state}",
+                                    accepted: ${this.form.accepted}
+                                ) {
+                                    _id
+                                }
+                            }
+                        `
+                    });
+
+                    if (subscriber.data.errors) {
+                        this.errors = subscriber.data.errors;
+                        throw new Error();
+                    }
+
+                    this.$root.$bvToast.toast(
+                        "Du wurdest für den Job Newsletter registriert. Bitte überprüfe Dein E-Mail Postfach in den nächsten Minuten (ggfls. auch dein Spam) und bestätige Deine Anmeldung.",
                         {
-                            email: this.form.email,
-                            state: this.form.state,
-                            accepted: this.form.accepted
+                            title: `Newsletter Anmeldung`,
+                            variant: "success",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
                         }
                     );
 
-                    if (response.data.success) {
-                        this.$root.$bvToast.toast(
-                            "Du wurdest für den Job Newsletter registriert. Bitte überprüfe Dein E-Mail Postfach in den nächsten Minuten (ggfls. auch dein Spam) und bestätige Deine Anmeldung.",
-                            {
-                                title: `Newsletter Anmeldung`,
-                                variant: "success",
-                                toaster: "b-toaster-bottom-right",
-                                solid: true,
-                                noAutoHide: true
-                            }
-                        );
+                    this.disabled = true;
+                    localStorage.setItem("nl-pop", "false");
 
-                        this.disabled = true;
-                        localStorage.setItem("nl-pop", "false");
-
-                        this.trackEvent(
-                            `Newsletter: ${this.form.state}`,
-                            "Newsletter_Subscription"
-                        );
-                    } else {
-                        this.error =
-                            "Bei der Anmeldung ist ein Fehler aufgetreten. Bitte versuche es noch einmal.";
-                    }
+                    this.trackEvent(
+                        `Newsletter: ${this.form.state}`,
+                        "Newsletter_Subscription"
+                    );
                 } catch (err) {
-                    this.error =
-                        "Bei der Anmeldung ist ein Fehler aufgetreten. Bitte versuche es noch einmal.";
+                    // this.error = err.message;
                 }
 
                 this.$store.dispatch("setOverlay", false);

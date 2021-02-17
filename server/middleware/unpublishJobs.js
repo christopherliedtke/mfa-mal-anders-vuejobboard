@@ -24,9 +24,16 @@ module.exports.unpublishJobs = new CronJob(
             await Job.updateMany(
                 {
                     applicationDeadline: {
-                        $lt: new Date(
-                            new Date().valueOf() - 1000 * 60 * 60 * 24
-                        ).toISOString(),
+                        $lt: new Date(new Date().setHours(23)).toISOString(),
+                    },
+                    status: "published",
+                },
+                { status: "unpublished" }
+            );
+            await Job.updateMany(
+                {
+                    applicationDeadline: {
+                        $lt: new Date(new Date().setHours(23)),
                     },
                     status: "published",
                 },

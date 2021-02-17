@@ -37,7 +37,8 @@
                 timeoutId: null
             };
         },
-        mounted() {
+        async mounted() {
+            await this.activateUser();
             this.checkUserStatus();
             this.checkError();
         },
@@ -45,11 +46,11 @@
             async onSubmit() {
                 this.$store.dispatch("setOverlay", true);
 
-                const response = await this.$axios.get(
-                    "/api/auth/verification/get-activation-email"
+                const success = await await this.$store.dispatch(
+                    "getActivationEmail"
                 );
 
-                if (!response.data.success) {
+                if (!success) {
                     this.$root.$bvToast.toast(
                         "Die E-Mail konnte leider nicht versandt werden. Bitte versuchen Sie es noch einmal oder melden sich ggfls. über unser Kontaktformular.",
                         {
@@ -75,30 +76,38 @@
 
                 this.$store.dispatch("setOverlay", false);
             },
-            checkUserStatus() {
-                this.timeoutId = setTimeout(async () => {
-                    const res = await this.$axios.get("/api/auth/user-by-db");
+            async activateUser() {
+                if (this.$route.params.userId) {
+                    const success = await this.$store.dispatch(
+                        "activateUser",
+                        this.$route.params.userId
+                    );
 
-                    this.$store.commit("setToken", res.data.token);
-
-                    await this.$store.dispatch("fetchUser");
-
-                    if (this.$store.state.auth.user.status === "active") {
-                        this.$root.$bvToast.toast(
-                            "Sie haben Ihre E-Mail Adresse erfolgreich bestätigt. Ihr Account ist nun freigeschaltet.",
-                            {
-                                title: `Account aktiviert`,
-                                variant: "success",
-                                toaster: "b-toaster-bottom-right",
-                                solid: true,
-                                noAutoHide: true
-                            }
-                        );
-                        this.$router.push("/user/dashboard?tab=1");
-                    } else {
+                    if (!success) {
                         this.checkUserStatus();
                     }
-                }, 5000);
+                }
+            },
+            async checkUserStatus() {
+                await this.$store.dispatch("fetchUserFromToken");
+
+                if (this.$store.state.auth.user.status === "active") {
+                    this.$root.$bvToast.toast(
+                        "Sie haben Ihre E-Mail Adresse erfolgreich bestätigt. Ihr Account ist nun freigeschaltet.",
+                        {
+                            title: `Account aktiviert`,
+                            variant: "success",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
+                    this.$router.push("/user/dashboard?tab=1");
+                } else {
+                    this.timeoutId = setTimeout(async () => {
+                        this.checkUserStatus();
+                    }, 5000);
+                }
             },
             checkError() {
                 if (this.$route.query.error) {

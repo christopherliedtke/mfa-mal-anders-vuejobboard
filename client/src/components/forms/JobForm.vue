@@ -24,24 +24,10 @@
                     v-model="publishedAt"
                     placeholder="Veröffentlicht am..."
                 />
-                <label for="created">paidAt</label>
-                <b-form-datepicker
-                    v-model="paidAt"
-                    placeholder="Bezahlt am..."
-                />
                 <label class="mt-2" for="created">paidExpiresAt</label>
                 <b-form-datepicker
                     v-model="paidExpiresAt"
                     placeholder="Zahlung läuft ab am..."
-                />
-                <label class="mt-2" for="refresh-frequency"
-                    >paidAmount [Cents]</label
-                >
-                <b-form-input
-                    type="number"
-                    number
-                    v-model="job.paidAmount"
-                    placeholder="Gezahlter Betrag..."
                 />
                 <label class="mt-2" for="refresh-frequency"
                     >refreshFrequency</label
@@ -60,7 +46,7 @@
                 v-model="job.specialization"
                 :state="validated ? true : null"
             >
-                <b-form-select-option :value="null"
+                <b-form-select-option value=""
                     >-- Fachbereich wählen --</b-form-select-option
                 >
                 <b-form-select-option
@@ -77,7 +63,7 @@
                 v-model="job.employmentType"
                 :state="validated ? (job.employmentType ? true : false) : null"
             >
-                <b-form-select-option :value="null" disabled
+                <b-form-select-option value="" disabled
                     >-- Anstellungsart wählen --</b-form-select-option
                 >
                 <b-form-select-option
@@ -90,9 +76,9 @@
 
             <label for="application-deadline">Bewerbungsfrist *</label>
             <b-form-datepicker
-                :state="validated && job.applicationDeadline != ''"
+                :state="validated && applicationDeadline != ''"
                 id="application-deadline"
-                v-model="job.applicationDeadline"
+                v-model="applicationDeadline"
                 placeholder="Bewerbungsfrist wählen"
             />
 
@@ -237,7 +223,7 @@
                 v-model="job.contactGender"
                 :state="validated ? (job.contactGender ? true : null) : null"
             >
-                <b-form-select-option :value="null"
+                <b-form-select-option value=""
                     >-- Titel auswählen --</b-form-select-option
                 >
                 <b-form-select-option
@@ -254,7 +240,7 @@
                 v-model="job.contactTitle"
                 :state="validated ? (job.contactTitle ? true : null) : null"
             >
-                <b-form-select-option :value="null"
+                <b-form-select-option value=""
                     >-- Titel auswählen --</b-form-select-option
                 >
                 <b-form-select-option
@@ -410,7 +396,7 @@
                 v-model="job.company.state"
                 :state="validated ? (job.company.state ? true : false) : null"
             >
-                <b-form-select-option :value="null" disabled
+                <b-form-select-option value="" disabled
                     >-- Bundesland auswählen --</b-form-select-option
                 >
                 <b-form-select-option
@@ -427,7 +413,7 @@
                 v-model="job.company.country"
                 :state="validated ? (job.company.country ? true : false) : null"
             >
-                <b-form-select-option :value="null" disabled
+                <b-form-select-option value="" disabled
                     >-- Land auswählen --</b-form-select-option
                 >
                 <b-form-select-option
@@ -444,7 +430,7 @@
                 v-model="job.company.size"
                 :state="validated ? (job.company.size ? true : false) : null"
             >
-                <b-form-select-option :value="null" disabled
+                <b-form-select-option value="" disabled
                     >-- Unternehmensgröße auswählen --</b-form-select-option
                 >
                 <b-form-select-option
@@ -497,6 +483,7 @@
                     v-if="job.company.logoUrl"
                     :src="job.company.logoUrl"
                     fluid
+                    style="max-height: 100%; max-width: 100%"
                 />
                 <Fa v-else icon="box-open" size="lg" />
             </div>
@@ -548,25 +535,26 @@
             return {
                 job: {
                     _id: this.$route.params.jobId,
-                    publishedAt: null,
-                    paidAt: null,
-                    paidExpiresAt: null,
-                    paidAmount: 0,
+                    publishedAt: 0,
+                    paidExpiresAt: 0,
                     refreshFrequency: 0,
                     title: "",
                     description:
                         "<p>[Für eine attraktive Stellenanzeige sollten Sie folgende Punkte berücksichtigen. Bitte ersetzen Sie den hier stehenden Text entsprechend.]</p><p>[Schreiben Sie eine kurze Einleitung zu Ihrem Unternehmen.]</p><h3>Was wir Ihnen bieten</h3><p>[Was bieten Sie potentiellen BewerberInnen?]</p><h3>Ihre Aufgaben</h3><p>[Welche Aufgaben sollen von potentiellen BewerberInnen durchgeführt werden?]</p><h3>Ihr Profil</h3><p>[Was sollen potentielle BewerberInnen mitbringen?]</p>",
-                    specialization: null,
-                    employmentType: null,
-                    applicationDeadline: "",
+                    specialization: "",
+                    employmentType: "",
+                    applicationDeadline: new Date(
+                        new Date().valueOf() +
+                            1000 * 60 * 60 * 24 * this.$config.payment.duration
+                    ),
                     simpleApplication: false,
                     extJobUrl: "",
                     applicationEmail: "",
                     imageUrl: "",
                     salaryMin: "",
                     salaryMax: "",
-                    contactGender: null,
-                    contactTitle: null,
+                    contactGender: "",
+                    contactTitle: "",
                     contactFirstName: "",
                     contactLastName: "",
                     contactEmail: "",
@@ -577,11 +565,11 @@
                         street: "",
                         location: "",
                         zipCode: "",
-                        state: null,
-                        country: "Deutschland",
+                        state: "",
+                        country: companyCountryOptions[0],
                         geoCodeLat: null,
                         geoCodeLng: null,
-                        size: null,
+                        size: "",
                         url: "",
                         logoUrl: ""
                     }
@@ -610,14 +598,6 @@
                     this.job.publishedAt = new Date(value).getTime();
                 }
             },
-            paidAt: {
-                get() {
-                    return new Date(this.job.paidAt);
-                },
-                set(value) {
-                    this.job.paidAt = new Date(value).getTime();
-                }
-            },
             paidExpiresAt: {
                 get() {
                     return new Date(this.job.paidExpiresAt);
@@ -625,47 +605,128 @@
                 set(value) {
                     this.job.paidExpiresAt = new Date(value).getTime();
                 }
+            },
+            applicationDeadline: {
+                get() {
+                    return new Date(this.job.applicationDeadline);
+                },
+                set(value) {
+                    this.job.applicationDeadline = new Date(value).getTime();
+                }
+            },
+            jobQuery: function() {
+                return this.apiJobsSchema === "admin" ? "adminJob" : "myJob";
             }
         },
         created() {
+            this.setAdminDates();
             if (this.$route.params.jobId != "new") {
                 this.getJob(this.$route.params.jobId);
             }
             this.getCompanies();
         },
         methods: {
+            setAdminDates() {
+                if (this.$store.state.auth.user.isAdmin) {
+                    this.publishedAt = new Date();
+                    this.paidExpiresAt = new Date(
+                        new Date().valueOf() +
+                            1000 * 60 * 60 * 24 * this.$config.payment.duration
+                    );
+                }
+            },
             async getJob(id) {
+                this.$store.dispatch("setOverlay", true);
+
                 try {
-                    const job = await this.$axios.post(
-                        `/api/jobs/${this.apiJobsSchema}`,
-                        {
+                    const job = await this.$axios.get(`/graphql`, {
+                        params: {
                             query: `
-                            query {
-                                job(_id: "${id}") {
-                                    _id
-                                    publishedAt
-                                    paidAt
-                                    paidExpiresAt
-                                    paidAmount
-                                    refreshFrequency
-                                    title
-                                    description
-                                    employmentType
-                                    applicationDeadline
-                                    simpleApplication
-                                    specialization
-                                    extJobUrl
-                                    applicationEmail
-                                    imageUrl
-                                    salaryMin
-                                    salaryMax
-                                    contactGender
-                                    contactTitle
-                                    contactFirstName
-                                    contactLastName
-                                    contactEmail
-                                    contactPhone
-                                    company {
+                                query {
+                                    ${this.jobQuery}(_id: "${id}") {
+                                        _id
+                                        publishedAt
+                                        paidExpiresAt
+                                        refreshFrequency
+                                        title
+                                        description
+                                        employmentType
+                                        applicationDeadline
+                                        simpleApplication
+                                        specialization
+                                        extJobUrl
+                                        applicationEmail
+                                        imageUrl
+                                        salaryMin
+                                        salaryMax
+                                        contactGender
+                                        contactTitle
+                                        contactFirstName
+                                        contactLastName
+                                        contactEmail
+                                        contactPhone
+                                        company {
+                                            _id
+                                            name
+                                            street
+                                            location
+                                            zipCode
+                                            state
+                                            country
+                                            geoCodeLat
+                                            geoCodeLng
+                                            size
+                                            url
+                                            logoUrl
+                                        }
+                                    }
+                                }
+                            `
+                        }
+                    });
+
+                    if (!job.data.data[this.jobQuery].company) {
+                        job.data.data[this.jobQuery].company = {
+                            _id: "",
+                            name: "",
+                            street: "",
+                            location: "",
+                            zipCode: "",
+                            state: "",
+                            country: this.companyCountryOptions[0],
+                            geoCodeLat: null,
+                            geoCodeLng: null,
+                            size: "",
+                            url: "",
+                            logoUrl: ""
+                        };
+                    }
+
+                    this.job = job.data.data[this.jobQuery];
+
+                    this.selectedCompanyId = this.job.company._id;
+                } catch (err) {
+                    this.$root.$bvToast.toast(
+                        "Beim Laden der Stellenanzeige ist ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal, indem Sie die Seite neu laden.",
+                        {
+                            title: `Fehler beim Laden`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
+                }
+
+                this.$store.dispatch("setOverlay", false);
+            },
+            async getCompanies() {
+                try {
+                    const companies = await this.$axios.get(`/graphql`, {
+                        params: {
+                            query: `
+                                query {
+                                    myCompanies {
                                         _id
                                         name
                                         street
@@ -680,71 +741,11 @@
                                         logoUrl
                                     }
                                 }
-                            }
-                        `
+                            `
                         }
-                    );
+                    });
 
-                    this.job = job.data.data.job;
-
-                    this.selectedCompanyId = this.job.company._id;
-
-                    if (!this.job.company) {
-                        this.job.company = {
-                            _id: "",
-                            name: "",
-                            street: "",
-                            location: "",
-                            zipCode: "",
-                            state: null,
-                            country: null,
-                            geoCodeLat: null,
-                            geoCodeLng: null,
-                            size: null,
-                            url: "",
-                            logoUrl: ""
-                        };
-                    }
-                } catch (err) {
-                    this.$root.$bvToast.toast(
-                        "Beim Laden der Stellenanzeige ist ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal, indem Sie die Seite neu laden.",
-                        {
-                            title: `Fehler beim Laden`,
-                            variant: "danger",
-                            toaster: "b-toaster-bottom-right",
-                            solid: true,
-                            noAutoHide: true
-                        }
-                    );
-                }
-            },
-            async getCompanies() {
-                try {
-                    const companies = await this.$axios.post(
-                        `/api/companies/${this.apiJobsSchema}`,
-                        {
-                            query: `
-                            query {
-                                companies {
-                                    _id
-                                    name
-                                    street
-                                    location
-                                    zipCode
-                                    state
-                                    country
-                                    geoCodeLat
-                                    geoCodeLng
-                                    size
-                                    url
-                                    logoUrl
-                                }
-                            }
-                        `
-                        }
-                    );
-
-                    this.companies = companies.data.data.companies;
+                    this.companies = companies.data.data.myCompanies;
                 } catch (err) {
                     this.$root.$bvToast.toast(
                         "Beim Laden Ihrer erstellten Unternehmen ist ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal, indem Sie die Seite neu laden.",
@@ -776,13 +777,17 @@
 
                 // Save / Update company
                 let companyMutationType;
-                this.job.company._id
-                    ? (companyMutationType = "updateCompany")
-                    : (companyMutationType = "addCompany");
+
+                if (!this.job.company._id) {
+                    companyMutationType = "addCompany";
+                } else {
+                    this.apiJobsSchema === "admin"
+                        ? (companyMutationType = "adminUpdateCompany")
+                        : (companyMutationType = "updateCompany");
+                }
 
                 const savedCompany = await this.saveCompany(
                     companyMutationType,
-                    this.apiJobsSchema,
                     this.job.company,
                     false
                 );
@@ -792,13 +797,19 @@
 
                     // Save / Update job
                     let jobMutationType;
-                    this.job._id === "new"
-                        ? (jobMutationType = "addJob")
-                        : (jobMutationType = "updateJob");
+
+                    if (this.job._id === "new") {
+                        this.apiJobsSchema === "private"
+                            ? (jobMutationType = "addJob")
+                            : (jobMutationType = "adminAddJob");
+                    } else {
+                        this.apiJobsSchema === "private"
+                            ? (jobMutationType = "updateJob")
+                            : (jobMutationType = "adminUpdateJob");
+                    }
 
                     const savedJob = await this.saveJob(
                         jobMutationType,
-                        this.apiJobsSchema,
                         this.job,
                         true
                     );

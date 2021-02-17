@@ -105,12 +105,11 @@
                 this.$store.dispatch("setOverlay", true);
 
                 try {
-                    const response = await this.$axios.post(
-                        "/api/companies/private",
-                        {
+                    const companies = await this.$axios.get("/graphql", {
+                        params: {
                             query: `
                                 query {
-                                    companies {
+                                    myCompanies {
                                         _id
                                         createdAt
                                         updatedAt
@@ -120,9 +119,9 @@
                                 }
                             `
                         }
-                    );
+                    });
 
-                    this.myCompanies = response.data.data.companies;
+                    this.myCompanies = companies.data.data.myCompanies;
                 } catch (err) {
                     this.$root.$bvToast.toast(
                         "Ihre Unternehmen konnten nicht geladen werden. Bitte versuchen Sie es noch einmal, indem Sie die Seite neu laden.",
@@ -140,20 +139,17 @@
             },
             async deleteCompany(companyId) {
                 try {
-                    const response = await this.$axios.post(
-                        "/api/companies/private",
-                        {
-                            query: `
+                    const company = await this.$axios.post("/graphql", {
+                        query: `
                                 mutation {
                                     deleteCompany(_id: "${companyId}") {
-                                        name
+                                        _id
                                     }
                                 }
                             `
-                        }
-                    );
+                    });
 
-                    if (response.data.data.deleteCompany.name === "deleted") {
+                    if (company.data.data.deleteCompany._id) {
                         this.myCompanies.forEach((company, index) => {
                             if (company._id === companyId) {
                                 this.myCompanies.splice(index, 1);

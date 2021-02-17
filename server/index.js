@@ -1,5 +1,11 @@
 require("dotenv").config();
 const express = require("express");
+const apolloVerifyToken = require("./middleware/apolloVerifyToken");
+const { ApolloServer } = require("apollo-server-express");
+
+const application = require("./database/apollo/application");
+const apolloSchema = application.createSchemaForApollo();
+
 const app = express();
 
 const sslRedirect = require("heroku-ssl-redirect");
@@ -77,7 +83,6 @@ app.use(express.json());
 
 // #Routes w/o csrf protection
 app.use("/api/webhooks", require("./routes/webhooks"));
-// app.use("/api/add-bulk-subscribers", require("./routes/addBulkSubscribers"));
 
 // #Express Session
 app.use(
@@ -113,9 +118,6 @@ if (process.env.NODE_ENV == "production") {
 
         // handle CSRF token errors here
         res.sendStatus(403);
-        // res.redirect(
-        //     "/logout?error=Sie+werden+aus+Sicherheitsgründen+abgemeldet+und+können+sich+danach+erneut+anmelden"
-        // );
     });
 
     app.use((req, res, next) => {
@@ -126,20 +128,28 @@ if (process.env.NODE_ENV == "production") {
     app.use(express.static(__dirname + "/public"));
 }
 
+// #ApolloServer
+const apolloServer = new ApolloServer({
+    schema: apolloSchema,
+    context: ({ req }) => {
+        const token = req.session && req.session.token ? req.session.token : "";
+
+        const user = apolloVerifyToken(token);
+
+        return { user, session: req.session };
+    },
+});
+apolloServer.applyMiddleware({ app, cors: true, path: "/graphql" });
+
 // #Routes w csrf protection
-app.use("/api/auth", require("./routes/auth"));
-app.use("/api/user", require("./routes/user"));
-app.use("/api/subscriber", require("./routes/subscriber"));
-app.use("/api/jobs", require("./routes/jobs"));
-app.use("/api/companies", require("./routes/companies"));
 app.use("/api/contact", require("./routes/contact"));
 app.use("/api/newsletter", require("./routes/newsletter"));
-app.use("/api/coupons", require("./routes/coupons"));
 app.use("/api/images", require("./routes/images"));
 app.use("/api/stripe", require("./routes/stripe"));
 app.use("/api/invoice", require("./routes/invoice"));
 app.use("/api/send-email", require("./routes/sendEmail"));
 app.use("/api/download", require("./routes/download"));
+app.use("/api/admin", require("./routes/admin"));
 
 // #Serve the built static files in production
 app.use("*", (req, res) => {

@@ -1,9 +1,11 @@
 <template>
     <div>
         <PaymentOverviewChart
-            :jobs="
-                jobs
-                    .filter(job => job.paidAmount > 0 && job.paidAt)
+            :payments="
+                payments
+                    .filter(
+                        payment => payment.status === 'paid' && payment.paidAt
+                    )
                     .sort((a, b) => a.paidAt - b.paidAt)
             "
             class="mb-4"
@@ -23,33 +25,35 @@
         },
         data() {
             return {
-                jobs: []
+                jobs: [],
+                payments: []
             };
         },
         async mounted() {
+            this.$store.dispatch("setOverlay", true);
+
             await this.getAllJobs();
+            await this.getAllPayments();
+
+            this.$store.dispatch("setOverlay", false);
         },
         methods: {
             async getAllJobs() {
-                this.$store.dispatch("setOverlay", true);
-
                 try {
-                    const response = await this.$axios.post("/api/jobs/admin", {
-                        query: `
+                    const jobs = await this.$axios.get("/graphql", {
+                        params: {
+                            query: `
                             query {
-                                jobs {
+                                adminJobs {
                                     _id
                                     createdAt
                                     updatedAt
+                                    paid
                                     paidExpiresAt
-                                    paidAmount
+                                    publishedAt
                                     refreshFrequency
                                     status
                                     applicationDeadline
-                                    paid
-                                    publishedAt
-                                    paidAt
-                                    sentReminder
                                     title
                                     company {
                                         name
@@ -70,13 +74,18 @@
                                 }
                             }
                         `
+                        }
                     });
 
-                    this.jobs = response.data.data.jobs;
+                    if (jobs.data.errors) {
+                        throw new Error("Jobs could not be loaded!");
+                    }
+
+                    this.jobs = jobs.data.data.adminJobs;
                 } catch (err) {
                     this.error = true;
                     this.$root.$bvToast.toast(
-                        `Jobs konnten nicht geladen werden. Error: ${err}`,
+                        `Jobs konnten nicht geladen werden. Error: ${err.message}`,
                         {
                             title: `Fehler beim Laden`,
                             variant: "danger",
@@ -86,8 +95,46 @@
                         }
                     );
                 }
+            },
+            async getAllPayments() {
+                try {
+                    const payments = await this.$axios.get("/graphql", {
+                        params: {
+                            query: `
+                                query {
+                                    payments {
+                                        _id
+                                        createdAt
+                                        updatedAt
+                                        paidAt
+                                        paymentExpiresAt
+                                        status
+                                        amount
 
-                this.$store.dispatch("setOverlay", false);
+                                    }
+                                }
+                            `
+                        }
+                    });
+
+                    if (payments.data.errors) {
+                        throw new Error("Payments could not be loaded!");
+                    }
+
+                    this.payments = payments.data.data.payments;
+                } catch (err) {
+                    this.error = true;
+                    this.$root.$bvToast.toast(
+                        `Zahlungen konnten nicht geladen werden. Error: ${err.message}`,
+                        {
+                            title: `Fehler beim Laden`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
+                }
             }
         }
     };

@@ -413,6 +413,15 @@
                 ]
             };
         },
+        computed: {
+            jobQuery: function() {
+                return this.apiJobsSchema === "admin"
+                    ? "adminJob"
+                    : this.apiJobsSchema === "private"
+                    ? "myJob"
+                    : "publicJob";
+            }
+        },
         created() {
             this.getJob(this.$route.params.jobId);
         },
@@ -424,61 +433,58 @@
         methods: {
             async getJob(jobId) {
                 try {
-                    const job = await this.$axios.get(
-                        `/api/jobs/${this.apiJobsSchema}`,
-                        {
-                            params: {
-                                query: `
-                                    query {
-                                        job(_id: "${jobId}") {
-                                            _id
-                                            createdAt
-                                            updatedAt
-                                            publishedAt
-                                            paidAt
-                                            title
-                                            description
-                                            employmentType
-                                            applicationDeadline
-                                            simpleApplication
-                                            extJobUrl
-                                            applicationEmail
-                                            imageUrl
-                                            salaryMin
-                                            salaryMax
-                                            specialization
-                                            contactGender
-                                            contactTitle
-                                            contactFirstName
-                                            contactLastName
-                                            contactEmail
-                                            contactPhone
-                                            company {
-                                                name
-                                                street
-                                                location
-                                                zipCode
-                                                state
-                                                country
-                                                geoCodeLat
-                                                geoCodeLng
-                                                size
-                                                url
-                                                logoUrl
-                                            }
+                    const job = await this.$axios.get(`/graphql`, {
+                        params: {
+                            query: `
+                                query {
+                                    ${this.jobQuery}(_id: "${jobId}") {
+                                        _id
+                                        createdAt
+                                        updatedAt
+                                        publishedAt
+                                        paidAt
+                                        title
+                                        description
+                                        employmentType
+                                        applicationDeadline
+                                        simpleApplication
+                                        extJobUrl
+                                        applicationEmail
+                                        imageUrl
+                                        salaryMin
+                                        salaryMax
+                                        specialization
+                                        contactGender
+                                        contactTitle
+                                        contactFirstName
+                                        contactLastName
+                                        contactEmail
+                                        contactPhone
+                                        company {
+                                            name
+                                            street
+                                            location
+                                            zipCode
+                                            state
+                                            country
+                                            geoCodeLat
+                                            geoCodeLng
+                                            size
+                                            url
+                                            logoUrl
                                         }
                                     }
-                                `
-                            }
+                                }
+                            `
                         }
-                    );
+                    });
 
-                    if (job.data.data.job) {
-                        this.job = job.data.data.job;
+                    if (job.data.data[this.jobQuery]) {
+                        this.job = job.data.data[this.jobQuery];
 
-                        if (job.data.data.job.company.logoUrl) {
+                        if (job.data.data[this.jobQuery].company.logoUrl) {
                             this.setLogoDimensions(
-                                job.data.data.job.company.logoUrl
+                                job.data.data[this.jobQuery].company.logoUrl
                             );
                         }
                     } else {

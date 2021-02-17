@@ -32,7 +32,7 @@ export const stripeCheckoutMixin = {
                         type,
                         id,
                         title,
-                        url: window.location.origin + window.location.pathname,
+                        url: window.location.origin + this.$route.fullPath,
                         code,
                         amount,
                         accepted

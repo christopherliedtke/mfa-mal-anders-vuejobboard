@@ -44,9 +44,7 @@
                 {{ new Date(row.value).toLocaleString() }}
             </template>
             <template v-slot:cell(numberOfJobs)="row">
-                {{
-                    jobs.filter(job => job.company._id === row.item._id).length
-                }}
+                {{ row.item.jobs.length }}
             </template>
             <template v-slot:cell(location)="row">
                 {{
@@ -232,71 +230,41 @@
         },
         created() {
             this.getAllCompanies();
-            this.getAllJobs();
         },
         methods: {
-            async getAllJobs() {
-                this.$store.dispatch("setOverlay", true);
-
-                try {
-                    const response = await this.$axios.post("/api/jobs/admin", {
-                        query: `
-                            query {
-                                jobs {
-                                    company {
-                                        _id
-                                    }
-                                }
-                            }
-                        `
-                    });
-
-                    this.jobs = response.data.data.jobs;
-                } catch (err) {
-                    this.error = true;
-                    this.$root.$bvToast.toast(
-                        `Jobs konnten nicht geladen werden. Error: ${err}`,
-                        {
-                            title: `Fehler beim Laden`,
-                            variant: "danger",
-                            toaster: "b-toaster-bottom-right",
-                            solid: true,
-                            noAutoHide: true
-                        }
-                    );
-                }
-
-                this.$store.dispatch("setOverlay", false);
-            },
             async getAllCompanies() {
                 try {
-                    const response = await this.$axios.post(
-                        "/api/companies/admin",
-                        {
+                    const response = await this.$axios.get("graphql", {
+                        params: {
                             query: `
-                            query {
-                                companies {
-                                    _id
-                                    createdAt
-                                    updatedAt
-                                    name
-                                    street
-                                    location
-                                    state
-                                    zipCode
-                                    country
-                                    userId {
+                                query {
+                                    companies {
                                         _id
                                         createdAt
-                                        firstName
-                                        lastName
-                                        email
+                                        updatedAt
+                                        name
+                                        street
+                                        zipCode
+                                        location
+                                        state
+                                        country
+                                        userId {
+                                            _id
+                                            createdAt
+                                            firstName
+                                            lastName
+                                            email
+                                        }
+                                        jobs {
+                                            _id
+                                        }
+                                        
                                     }
                                 }
-                            }
-                        `
+                            
+                            `
                         }
-                    );
+                    });
 
                     this.companies = response.data.data.companies;
                 } catch (err) {
@@ -313,83 +281,23 @@
                     );
                 }
             },
-            async updateCompany(id, key, value) {
-                try {
-                    const response = await this.$axios.post(
-                        "/api/companies/admin",
-                        {
-                            query: `
-                            mutation {
-                                updateCompany (_id: "${id}", ${key}: ${
-                                typeof value === "string" ? `"${value}"` : value
-                            }) {
-                                    _id
-                                    createdAt
-                                    updatedAt
-                                    name
-                                    street
-                                    location
-                                    state
-                                    zipCode
-                                    country                         
-                                    userId {
-                                        _id
-                                        createdAt
-                                        firstName
-                                        lastName
-                                        email
-                                    }
-                                }
-                            }
-                        `
-                        }
-                    );
-
-                    if (response.data.data.updateCompany._id) {
-                        this.companies = this.companies.map(company => {
-                            if (
-                                company._id ===
-                                response.data.data.updateCompany._id
-                            ) {
-                                return response.data.data.updateCompany;
-                            } else {
-                                return company;
-                            }
-                        });
-                    }
-                } catch (err) {
-                    this.$root.$bvToast.toast(
-                        `Unternehmen konnten nicht gespeichert werden. Error: ${err}`,
-                        {
-                            title: `Fehler beim Speichern`,
-                            variant: "danger",
-                            toaster: "b-toaster-bottom-right",
-                            solid: true,
-                            noAutoHide: true
-                        }
-                    );
-                }
-            },
             showDeleteCompanyModal(job) {
                 this.companyToDelete = job;
                 this.$bvModal.show("deleteCompanyModal");
             },
             async deleteCompany(companyId) {
                 try {
-                    const response = await this.$axios.post(
-                        "/api/companies/admin",
-                        {
-                            query: `
-                            mutation {
-                                deleteCompany(_id: "${companyId}") {
-                                    name
+                    const response = await this.$axios.post("graphql", {
+                        query: `
+                                mutation {
+                                    adminDeleteCompany(_id: "${companyId}") {
+                                        _id
+                                    }
                                 }
-                            }
-                        `
-                        }
-                    );
+                            `
+                    });
 
-                    if (response.data.data.deleteCompany.name === "deleted") {
+                    if (response.data.data.adminDeleteCompany._id) {
                         this.companies.forEach((company, index) => {
                             if (company._id === companyId) {
                                 this.companies.splice(index, 1);

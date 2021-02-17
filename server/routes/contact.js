@@ -11,7 +11,9 @@ router.post("/send", async (req, res) => {
     const form = { ...req.body };
 
     for (const key in form) {
-        form[key] = sanitizeHtml(form[key]);
+        if (typeof form[key] === "string") {
+            form[key] = sanitizeHtml(form[key]);
+        }
     }
 
     if (form.honeypot) {

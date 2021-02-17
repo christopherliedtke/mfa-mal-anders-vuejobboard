@@ -50,7 +50,9 @@
                 {{ new Date(row.value).toLocaleString() }}
             </template>
             <template v-slot:cell(expireAt)="row">
-                {{ new Date(row.value).toLocaleString() }}
+                {{
+                    row.value ? new Date(row.value).toLocaleString() : row.value
+                }}
             </template>
 
             <template v-slot:cell(actions)="row">
@@ -222,33 +224,32 @@
                 this.$store.dispatch("setOverlay", true);
 
                 try {
-                    const response = await this.$axios.post(
-                        "/api/coupons/admin",
-                        {
+                    const coupons = await this.$axios.get("/graphql", {
+                        params: {
                             query: `
-                            query {
-                                coupons {
-                                    _id
-                                    code
-                                    discount
-                                    refreshFrequency
-                                    usage
-                                    createdAt
-                                    updatedAt
-                                    expireAt
-                                    userId {
+                                query {
+                                    adminCoupons {
                                         _id
-                                        firstName
-                                        lastName
-                                        email
+                                        code
+                                        discount
+                                        refreshFrequency
+                                        usage
+                                        createdAt
+                                        updatedAt
+                                        expireAt
+                                        userId {
+                                            _id
+                                            firstName
+                                            lastName
+                                            email
+                                        }
                                     }
                                 }
-                            }
-                        `
+                            `
                         }
-                    );
+                    });
 
-                    this.coupons = response.data.data.coupons;
+                    this.coupons = coupons.data.data.adminCoupons;
                 } catch (err) {
                     this.error = true;
                     this.$root.$bvToast.toast(
@@ -271,38 +272,25 @@
             },
             async deleteCoupon(couponId) {
                 try {
-                    const response = await this.$axios.post(
-                        "/api/coupons/admin",
-                        {
-                            query: `
-                            mutation {
-                                deleteCoupon(_id: "${couponId}") {
-                                    code
+                    const coupon = await this.$axios.post("/graphql", {
+                        query: `
+                                mutation {
+                                    deleteCoupon(_id: "${couponId}") {
+                                        _id
+                                    }
                                 }
-                            }
-                        `
-                        }
-                    );
+                            `
+                    });
 
-                    if (response.data.data.deleteCoupon.code === "deleted") {
-                        this.coupons.forEach((coupon, index) => {
-                            if (coupon._id === couponId) {
-                                this.coupons.splice(index, 1);
-                            }
-                        });
-                    } else {
-                        this.error = true;
-                        this.$root.$bvToast.toast(
-                            `Der Code konnte nicht gelöscht werden.`,
-                            {
-                                title: `Fehler beim Löschen`,
-                                variant: "danger",
-                                toaster: "b-toaster-bottom-right",
-                                solid: true,
-                                noAutoHide: true
-                            }
-                        );
+                    if (coupon.data.errors) {
+                        throw new Error("Coupon could not be saved!");
                     }
+
+                    this.coupons.forEach((coupon, index) => {
+                        if (coupon._id === couponId) {
+                            this.coupons.splice(index, 1);
+                        }
+                    });
                 } catch (err) {
                     this.error = true;
                     this.$root.$bvToast.toast(

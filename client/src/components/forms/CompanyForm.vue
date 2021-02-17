@@ -57,7 +57,7 @@
                 v-model="company.state"
                 :state="validated ? (company.state ? true : false) : null"
             >
-                <b-form-select-option :value="null" disabled
+                <b-form-select-option value="" disabled
                     >-- Bundesland auswählen --</b-form-select-option
                 >
                 <b-form-select-option
@@ -74,7 +74,7 @@
                 v-model="company.country"
                 :state="validated ? (company.country ? true : false) : null"
             >
-                <b-form-select-option :value="null" disabled
+                <b-form-select-option value="" disabled
                     >-- Land auswählen --</b-form-select-option
                 >
                 <b-form-select-option
@@ -91,7 +91,7 @@
                 v-model="company.size"
                 :state="validated ? (company.size ? true : false) : null"
             >
-                <b-form-select-option :value="null" disabled
+                <b-form-select-option value="" disabled
                     >-- Unternehmensgröße auswählen --</b-form-select-option
                 >
                 <b-form-select-option
@@ -185,12 +185,12 @@
                     name: "",
                     street: "",
                     location: "",
-                    zipCode: null,
-                    state: null,
-                    country: null,
+                    zipCode: "",
+                    state: "",
+                    country: "",
                     geoCodeLat: null,
                     geoCodeLng: null,
-                    size: null,
+                    size: "",
                     url: "",
                     logoUrl: ""
                 },
@@ -210,9 +210,8 @@
         methods: {
             async getCompany(id) {
                 try {
-                    const company = await this.$axios.post(
-                        `/api/companies/${this.apiJobsSchema}`,
-                        {
+                    const company = await this.$axios.get(`/graphql`, {
+                        params: {
                             query: `
                             query {
                                 company(_id: "${id}") {
@@ -232,7 +231,7 @@
                             }
                         `
                         }
-                    );
+                    });
 
                     this.company = company.data.data.company;
                 } catch (err) {
@@ -264,14 +263,18 @@
                 this.company.geoCodeLng = data.lng;
 
                 let mutationType;
-                this.company._id === "new"
-                    ? (mutationType = "addCompany")
-                    : (mutationType = "updateCompany");
+
+                if (this.company._id === "new") {
+                    mutationType = "addCompany";
+                } else {
+                    this.apiJobsSchema === "admin"
+                        ? (mutationType = "adminUpdateCompany")
+                        : (mutationType = "updateCompany");
+                }
 
                 // Save / Update company
                 const res = await this.saveCompany(
                     mutationType,
-                    this.apiJobsSchema,
                     this.company,
                     true
                 );

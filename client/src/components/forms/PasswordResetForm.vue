@@ -21,8 +21,8 @@
         </b-form>
         <b-form v-if="state === 1">
             <p class="mt-4">
-                Bitte überprüfe Dein E-Mail Postfach und gib den erhaltenen Code
-                ein.
+                Bitte überprüfen Sie Ihr E-Mail Postfach und geben Sie den
+                erhaltenen Code ein.
             </p>
             <label for="secretCode">Code</label>
             <b-form-input
@@ -75,17 +75,17 @@
             <button class="btn btn-primary my-3" @click.prevent="onSubmitNewPw">
                 Neues Passwort speichern
             </button>
-            <div class="error mt-3" v-if="errors">
-                <b-alert
-                    show
-                    dismissible
-                    variant="danger"
-                    v-for="error in errors"
-                    :key="error.msg"
-                    >{{ error.msg }}</b-alert
-                >
-            </div>
         </b-form>
+        <div class="error mt-3" v-if="errors">
+            <b-alert
+                show
+                dismissible
+                variant="danger"
+                v-for="error in errors"
+                :key="error.message"
+                >{{ error.message }}</b-alert
+            >
+        </div>
     </div>
 </template>
 
@@ -108,15 +108,18 @@
                 this.$store.dispatch("setOverlay", true);
                 this.errors = [];
 
-                const res = await this.$axios.post(
-                    "/api/auth/password-reset/get-code",
-                    {
-                        email: this.email
-                    }
-                );
+                const user = await this.$axios.post("/graphql", {
+                    query: `
+                            mutation {
+                                resetPasswordGetCode (email: "${this.email.toLowerCase()}") {
+                                    _id
+                                }
+                            }
+                        `
+                });
 
-                if (!res.data.success) {
-                    this.errors = res.data.errors;
+                if (user.data.errors) {
+                    this.errors = user.data.errors;
                 } else {
                     this.state = 1;
                 }
@@ -127,18 +130,24 @@
                 this.errors = [];
                 this.$store.dispatch("setOverlay", true);
 
-                const res = await this.$axios.post(
-                    "/api/auth/password-reset/verify",
-                    {
-                        email: this.email,
-                        password: this.password,
-                        password2: this.password2,
-                        code: this.secretCode
-                    }
-                );
+                const user = await this.$axios.post("/graphql", {
+                    query: `
+                        mutation {
+                            resetPasswordVerify(
+                                email: "${this.email.toLowerCase()}",
+                                password: "${this.password}",
+                                password2: "${this.password2}",
+                                code: "${this.secretCode}"
 
-                if (!res.data.success) {
-                    this.errors = res.data.errors;
+                            ) {
+                                _id
+                            }
+                        }
+                    `
+                });
+
+                if (user.data.errors) {
+                    this.errors = user.data.errors;
                 } else {
                     this.$root.$bvToast.toast(
                         "Ihr neues Passwort wurde erfolgreich gespeichert. Bitte melden Sie sich mit dem neuen Passwort an.",

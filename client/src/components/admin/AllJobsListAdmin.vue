@@ -8,10 +8,8 @@
                     placeholder="Enter search term ..."
                 />
                 <b-input-group-append>
-                    <b-button
-                        ><Fa
-                            icon="times"
-                            @click.prevent="filter.searchTerm = ''"
+                    <b-button @click.prevent="filter.searchTerm = ''"
+                        ><Fa icon="times"
                     /></b-button>
                 </b-input-group-append>
             </b-input-group>
@@ -32,9 +30,16 @@
         >
             <template v-slot:cell(user)="row">
                 {{
-                    row.item.userId.lastName + ", " + row.item.userId.firstName
+                    row.item.userId
+                        ? row.item.userId.lastName +
+                          ", " +
+                          row.item.userId.firstName
+                        : ""
                 }}
-                <a :href="`mailto:${row.item.userId.email}`">
+                <a
+                    v-if="row.item.userId && row.item.userId.email"
+                    :href="`mailto:${row.item.userId.email}`"
+                >
                     {{ row.item.userId.email }}</a
                 >
             </template>
@@ -48,28 +53,50 @@
                 {{ row.value && new Date(row.value).toLocaleString() }}
             </template>
             <template v-slot:cell(paidAt)="row">
-                {{ row.value && new Date(row.value).toLocaleString() }}
+                {{
+                    row.item.payment &&
+                        row.item.payment.paidAt &&
+                        new Date(row.item.payment.paidAt).toLocaleString()
+                }}
             </template>
             <template v-slot:cell(applicationDeadline)="row">
                 {{ row.value && new Date(row.value).toLocaleString() }}
             </template>
+            <template v-slot:cell(paymentExpiresAt)="row">
+                {{
+                    row.item.payment &&
+                        row.item.payment.paymentExpiresAt &&
+                        new Date(
+                            row.item.payment.paymentExpiresAt
+                        ).toLocaleString()
+                }}
+            </template>
             <template v-slot:cell(paidExpiresAt)="row">
-                {{ row.value && new Date(row.value).toLocaleString() }}
+                {{
+                    row.item.paidExpiresAt &&
+                        new Date(row.item.paidExpiresAt).toLocaleString()
+                }}
             </template>
             <template v-slot:cell(paidAmount)="row">
-                {{ row.value / 100 }}€
+                {{
+                    row.item.payment &&
+                        row.item.payment.amount &&
+                        row.item.payment.amount / 100
+                }}€
             </template>
             <template v-slot:cell(location)="row">
                 {{
-                    row.item.company.street +
-                        " " +
-                        row.item.company.location +
-                        " " +
-                        row.item.company.zipCode +
-                        " " +
-                        row.item.company.state +
-                        " " +
-                        row.item.company.country
+                    row.item.company
+                        ? row.item.company.street +
+                          " " +
+                          row.item.company.location +
+                          " " +
+                          row.item.company.zipCode +
+                          " " +
+                          row.item.company.state +
+                          " " +
+                          row.item.company.country
+                        : ""
                 }}
             </template>
             <template v-slot:cell(actions)="row">
@@ -106,14 +133,14 @@
                         "
                         >Draft</b-dropdown-item
                     >
-                    <b-dropdown-item
+                    <!-- <b-dropdown-item
                         :active="row.item.status === 'invoice-pending'"
                         variant="secondary"
                         @click.prevent="
                             updateJob(row.item._id, 'status', 'invoice-pending')
                         "
                         >Invoice pending</b-dropdown-item
-                    >
+                    > -->
                     <b-dropdown-item
                         :active="row.item.status === 'published'"
                         variant="success"
@@ -123,13 +150,21 @@
                         >Published</b-dropdown-item
                     >
                     <b-dropdown-item
-                        class="mb-0"
                         :active="row.item.status === 'unpublished'"
                         variant="danger"
                         @click.prevent="
                             updateJob(row.item._id, 'status', 'unpublished')
                         "
                         >Unpublished</b-dropdown-item
+                    >
+                    <b-dropdown-item
+                        class="mb-0"
+                        :active="row.item.status === 'deleted'"
+                        variant="danger"
+                        @click.prevent="
+                            updateJob(row.item._id, 'status', 'deleted')
+                        "
+                        >Deleted</b-dropdown-item
                     >
                 </b-dropdown>
                 <b-dropdown
@@ -173,7 +208,7 @@
                     <b-dropdown-item
                         class="mb-0"
                         variant="info"
-                        @click.prevent="socialShareToClipBoard(row.item._id)"
+                        @click.prevent="socialShareToClipBoard(row.item)"
                         >Copy Text</b-dropdown-item
                     >
                 </b-dropdown>
@@ -252,15 +287,7 @@
                         sortable: true
                     },
                     {
-                        key: "publishedAt",
-                        sortable: true
-                    },
-                    {
                         key: "paid",
-                        sortable: true
-                    },
-                    {
-                        key: "paidAt",
                         sortable: true
                     },
                     {
@@ -268,11 +295,7 @@
                         sortable: true
                     },
                     {
-                        key: "paidAmount",
-                        sortable: true
-                    },
-                    {
-                        key: "invoiceNo",
+                        key: "publishedAt",
                         sortable: true
                     },
                     {
@@ -285,6 +308,33 @@
                     },
                     {
                         key: "applicationDeadline",
+                        sortable: true
+                    },
+                    {
+                        key: "payment._id",
+                        label: "Payment ID",
+                        sortable: false
+                    },
+                    {
+                        key: "payment.status",
+                        label: "Paid Status",
+                        sortable: true
+                    },
+                    {
+                        key: "paidAt",
+                        sortable: true
+                    },
+                    {
+                        key: "paymentExpiresAt",
+                        sortable: true
+                    },
+                    {
+                        key: "paidAmount",
+                        sortable: true
+                    },
+                    {
+                        key: "payment.invoiceNo",
+                        label: "Invoice No",
                         sortable: true
                     },
                     {
@@ -331,56 +381,66 @@
                                     .includes(
                                         this.filter.searchTerm.toLowerCase()
                                     ) ||
-                                job.company.name
-                                    .toLowerCase()
-                                    .includes(
-                                        this.filter.searchTerm.toLowerCase()
-                                    ) ||
-                                job.company.street
-                                    .toLowerCase()
-                                    .includes(
-                                        this.filter.searchTerm.toLowerCase()
-                                    ) ||
-                                job.company.location
-                                    .toLowerCase()
-                                    .includes(
-                                        this.filter.searchTerm.toLowerCase()
-                                    ) ||
-                                job.company.state
-                                    .toLowerCase()
-                                    .includes(
-                                        this.filter.searchTerm.toLowerCase()
-                                    ) ||
-                                job.company.zipCode
-                                    .toLowerCase()
-                                    .includes(
-                                        this.filter.searchTerm.toLowerCase()
-                                    ) ||
-                                job.company.country
-                                    .toLowerCase()
-                                    .includes(
-                                        this.filter.searchTerm.toLowerCase()
-                                    ) ||
-                                job.userId._id
-                                    .toLowerCase()
-                                    .includes(
-                                        this.filter.searchTerm.toLowerCase()
-                                    ) ||
-                                job.userId.lastName
-                                    .toLowerCase()
-                                    .includes(
-                                        this.filter.searchTerm.toLowerCase()
-                                    ) ||
-                                job.userId.firstName
-                                    .toLowerCase()
-                                    .includes(
-                                        this.filter.searchTerm.toLowerCase()
-                                    ) ||
-                                job.userId.email
-                                    .toLowerCase()
-                                    .includes(
-                                        this.filter.searchTerm.toLowerCase()
-                                    )
+                                (job.company.name &&
+                                    job.company.name
+                                        .toLowerCase()
+                                        .includes(
+                                            this.filter.searchTerm.toLowerCase()
+                                        )) ||
+                                (job.company.street &&
+                                    job.company.street
+                                        .toLowerCase()
+                                        .includes(
+                                            this.filter.searchTerm.toLowerCase()
+                                        )) ||
+                                (job.company.location &&
+                                    job.company.location
+                                        .toLowerCase()
+                                        .includes(
+                                            this.filter.searchTerm.toLowerCase()
+                                        )) ||
+                                (job.company.state &&
+                                    job.company.state
+                                        .toLowerCase()
+                                        .includes(
+                                            this.filter.searchTerm.toLowerCase()
+                                        )) ||
+                                (job.company.zipCode &&
+                                    job.company.zipCode
+                                        .toLowerCase()
+                                        .includes(
+                                            this.filter.searchTerm.toLowerCase()
+                                        )) ||
+                                (job.company.country &&
+                                    job.company.country
+                                        .toLowerCase()
+                                        .includes(
+                                            this.filter.searchTerm.toLowerCase()
+                                        )) ||
+                                (job.userId._id &&
+                                    job.userId._id
+                                        .toLowerCase()
+                                        .includes(
+                                            this.filter.searchTerm.toLowerCase()
+                                        )) ||
+                                (job.userId.lastName &&
+                                    job.userId.lastName
+                                        .toLowerCase()
+                                        .includes(
+                                            this.filter.searchTerm.toLowerCase()
+                                        )) ||
+                                (job.userId.firstName &&
+                                    job.userId.firstName
+                                        .toLowerCase()
+                                        .includes(
+                                            this.filter.searchTerm.toLowerCase()
+                                        )) ||
+                                (job.userId.email &&
+                                    job.userId.email
+                                        .toLowerCase()
+                                        .includes(
+                                            this.filter.searchTerm.toLowerCase()
+                                        ))
                             ) {
                                 return job;
                             } else {
@@ -401,50 +461,60 @@
                 this.$store.dispatch("setOverlay", true);
 
                 try {
-                    const response = await this.$axios.post("/api/jobs/admin", {
-                        query: `
-                            query {
-                                jobs {
-                                    _id
-                                    createdAt
-                                    updatedAt
-                                    paidExpiresAt
-                                    paidAmount
-                                    refreshFrequency
-                                    status
-                                    applicationDeadline
-                                    paid
-                                    publishedAt
-                                    paidAt
-                                    paidExpiresAt
-                                    invoiceNo
-                                    sentReminder
-                                    title
-                                    company {
-                                        name
-                                        street
-                                        location
-                                        state
-                                        zipCode
-                                        country
-                                    }
-                                    userId {
+                    const jobs = await this.$axios.get("graphql", {
+                        params: {
+                            query: `
+                                query {
+                                    adminJobs {
                                         _id
                                         createdAt
-                                        firstName
-                                        lastName
-                                        email
+                                        updatedAt
+                                        refreshFrequency
+                                        status
+                                        applicationDeadline
+                                        paid
+                                        paidExpiresAt
+                                        publishedAt
+                                        sentReminder
+                                        title
+                                        company {
+                                            name
+                                            street
+                                            location
+                                            state
+                                            zipCode
+                                            country
+                                        }
+                                        userId {
+                                            _id
+                                            createdAt
+                                            firstName
+                                            lastName
+                                            email
+                                        }
+                                        payment {
+                                            _id
+                                            status
+                                            amount
+                                            paidAt
+                                            paymentExpiresAt
+                                            invoiceNo
+                                        }
                                     }
                                 }
-                            }
-                        `
+                            `
+                        }
                     });
 
-                    this.jobs = response.data.data.jobs;
+                    if (!jobs.data.data.adminJobs) {
+                        throw new Error("Jobs could not be loaded!");
+                    }
+
+                    this.jobs = jobs.data.data.adminJobs;
                 } catch (err) {
                     this.error = true;
                     this.$root.$bvToast.toast(
-                        `Jobs konnten nicht geladen werden. Error: ${err}`,
+                        `Jobs konnten nicht geladen werden. Error: ${err.message}`,
                         {
                             title: `Fehler beim Laden`,
                             variant: "danger",
@@ -459,22 +529,21 @@
             },
             async updateJob(id, key, value) {
                 try {
-                    const response = await this.$axios.post("/api/jobs/admin", {
+                    const job = await this.$axios.post("/graphql", {
                         query: `
                             mutation {
-                                updateJob (_id: "${id}", ${key}: ${
+                                adminUpdateJob (_id: "${id}", ${key}: ${
                             typeof value === "string" ? `"${value}"` : value
                         }) {
                                     _id
                                     createdAt
                                     updatedAt
-                                    paidExpiresAt
+                                    refreshFrequency
                                     status
                                     applicationDeadline
                                     paid
-                                    publishedAt
-                                    paidAt
                                     paidExpiresAt
+                                    publishedAt
                                     title
                                     company {
                                         name
@@ -491,23 +560,33 @@
                                         lastName
                                         email
                                     }
+                                    payment {
+                                            _id
+                                            status
+                                            amount
+                                            paidAt
+                                            paymentExpiresAt
+                                            invoiceNo
+                                        }
                                 }
                             }
                         `
                     });
 
-                    if (response.data.data.updateJob._id) {
-                        this.jobs = this.jobs.map(job => {
-                            if (job._id === response.data.data.updateJob._id) {
-                                return response.data.data.updateJob;
-                            } else {
-                                return job;
-                            }
-                        });
+                    if (job.data.errors) {
+                        throw new Error("Job could not be saved!");
                     }
+
+                    this.jobs = this.jobs.map(jobOld => {
+                        if (jobOld._id === job.data.data.adminUpdateJob._id) {
+                            return job.data.data.adminUpdateJob;
+                        } else {
+                            return jobOld;
+                        }
+                    });
                 } catch (err) {
                     this.$root.$bvToast.toast(
-                        `Der Job konnte nicht gespeichert werden. Error: ${err}`,
+                        `Der Job konnte nicht gespeichert werden. Error: ${err.message}`,
                         {
                             title: `Fehler beim Speichern`,
                             variant: "danger",
@@ -527,29 +606,20 @@
                         { jobId }
                     );
 
-                    if (sentEmail.data.success) {
-                        this.$root.$bvToast.toast(
-                            `Die E-Mail wurde erfolgreich gesendet.`,
-                            {
-                                title: `E-Mail gesendet`,
-                                variant: "success",
-                                toaster: "b-toaster-bottom-right",
-                                solid: true,
-                                noAutoHide: true
-                            }
-                        );
-                    } else {
-                        this.$root.$bvToast.toast(
-                            `E-Mail konnte nicht gesendet werden.`,
-                            {
-                                title: `Fehler beim Senden`,
-                                variant: "danger",
-                                toaster: "b-toaster-bottom-right",
-                                solid: true,
-                                noAutoHide: true
-                            }
-                        );
+                    if (!sentEmail.data.success) {
+                        throw new Error();
                     }
+
+                    this.$root.$bvToast.toast(
+                        `Die E-Mail wurde erfolgreich gesendet.`,
+                        {
+                            title: `E-Mail gesendet`,
+                            variant: "success",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
                 } catch (err) {
                     this.$root.$bvToast.toast(
                         `E-Mail konnte nicht gesendet werden. Error: ${err}`,
@@ -571,39 +641,30 @@
             },
             async deleteJob(jobId) {
                 try {
-                    const response = await this.$axios.post("/api/jobs/admin", {
+                    const response = await this.$axios.post("/graphql", {
                         query: `
                             mutation {
-                                deleteJob(_id: "${jobId}") {
+                                adminDeleteJob(_id: "${jobId}") {
+                                    _id
                                     status
                                 }
                             }
                         `
                     });
 
-                    if (response.data.data.deleteJob.status === "deleted") {
-                        this.jobs.forEach((job, index) => {
-                            if (job._id === jobId) {
-                                this.jobs.splice(index, 1);
-                            }
-                        });
-                    } else {
-                        this.error = true;
-                        this.$root.$bvToast.toast(
-                            `Der Job konnte nicht gelöscht werden.`,
-                            {
-                                title: `Fehler beim Löschen`,
-                                variant: "danger",
-                                toaster: "b-toaster-bottom-right",
-                                solid: true,
-                                noAutoHide: true
-                            }
-                        );
+                    if (response.data.errors) {
+                        throw new Error("Job could not be deleted.");
                     }
+
+                    this.jobs.forEach((job, index) => {
+                        if (job._id === jobId) {
+                            this.jobs.splice(index, 1);
+                        }
+                    });
                 } catch (err) {
                     this.error = true;
                     this.$root.$bvToast.toast(
-                        `Der Job konnte nicht gelöscht werden. Error: ${err}`,
+                        `Der Job konnte nicht gelöscht werden. Error: ${err.message}`,
                         {
                             title: `Fehler beim Löschen`,
                             variant: "danger",
@@ -614,16 +675,20 @@
                     );
                 }
             },
-            socialShareToClipBoard(jobId) {
+            socialShareToClipBoard(job) {
                 let el = document.createElement("textarea");
-
-                const job = this.jobs.find(job => job._id === jobId);
 
                 el.value = `${job.title} | ${job.company.location}\n\n${
                     this.$config.website.url
                 }/jobboard/job/${
                     job._id
-                }\n\n#mfamalanders #mfa #arzthelfer #arzthelferin #mfajobs #${job.company.location.toLowerCase()}jobs #${job.company.location.toLowerCase()}`;
+                }\n\n#mfamalanders #mfa #arzthelfer #arzthelferin #mfajobs #${job.company.location
+                    .replace("-", "")
+                    .replace(" ", "")
+                    .toLowerCase()}jobs #${job.company.location
+                    .replace("-", "")
+                    .replace(" ", "")
+                    .toLowerCase()}`;
 
                 document.body.appendChild(el);
                 el.select();
@@ -637,16 +702,21 @@
                     item.status === "published" &&
                     item.paid === true &&
                     item.publishedAt <= new Date() &&
-                    item.paidExpiresAt > new Date() &&
+                    (item.paidExpiresAt >= new Date() ||
+                        (item.payment &&
+                            item.payment.paymentExpiresAt >= new Date())) &&
                     new Date(item.applicationDeadline) >
-                        new Date(new Date().valueOf() - 1000 * 60 * 60 * 24)
+                        new Date(new Date().setHours(24))
                 ) {
                     return "table-success";
+                }
+                if (item.status === "invoice-pending") {
+                    return "table-warning";
                 }
                 if (
                     item.status === "unpublished" ||
                     new Date(item.applicationDeadline) <
-                        new Date(new Date().valueOf() - 1000 * 60 * 60 * 24) ||
+                        new Date(new Date().setHours(24)) ||
                     item.paidExpiresAt < new Date()
                 ) {
                     return "table-danger";

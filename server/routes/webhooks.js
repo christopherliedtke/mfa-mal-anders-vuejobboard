@@ -4,7 +4,7 @@ const config = require("../config/config");
 const recachePrerender = require("../middleware/recachePrerender");
 const emailService = require("../utils/nodemailer");
 const { Job } = require("../database/models/job");
-const { Coupon } = require("../database/models/coupon");
+const { Payment } = require("../database/models/payment");
 const { UsedCoupon } = require("../database/models/usedCoupon");
 const { googleIndexing } = require("../middleware/googleJobIndexing");
 const { postToFacebook } = require("../middleware/postToFacebook");
@@ -12,18 +12,13 @@ const { postToFacebook } = require("../middleware/postToFacebook");
 const stripe = require("stripe")(process.env.STRIPE_SK);
 
 // #route:  POST /api/webhooks/checkout-completed
-// #desc:   Check if payment is completed and update job.paid
+// #desc:   Check if payment is completed and update job
 // #access: Private
 router.post("/checkout-completed", async (req, res) => {
-    const {
-        jobId,
-        userId,
-        couponId,
-        couponCode,
-        couponUsage,
-        refreshFrequency: couponRefreshFrequency,
-    } = req.body.data.object.metadata;
+    const { jobId, userId, couponId } = req.body.data.object.metadata;
 
+    let { refreshFrequency } = req.body.data.object.metadata;
+    const billingEmail = req.body.data.object["customer_email"];
     const amount = req.body.data.object["amount_total"];
 
     try {
@@ -32,33 +27,48 @@ router.post("/checkout-completed", async (req, res) => {
         );
 
         if (intent.status === "succeeded") {
-            const status = "published";
-            const publishedAt = new Date();
-            const paidAt = new Date();
-            const paidExpiresAt = new Date();
-            paidExpiresAt.setDate(
-                paidExpiresAt.getDate() + config.stripe.paymentExpirationDays
+            const paidExpiresAt = new Date(
+                new Date().setHours(24) +
+                    1000 * 60 * 60 * 24 * config.payment.paymentExpirationDays
             );
 
-            let refreshFrequency = couponRefreshFrequency || 0;
-
             if (refreshFrequency == 0) {
-                config.stripe.refreshFrequencies.forEach((frequency) => {
+                config.payment.refreshFrequencies.forEach((frequency) => {
                     if (amount >= frequency.amount) {
                         refreshFrequency = frequency.refreshAfterDays;
                     }
                 });
             }
 
+            const paymentObj = {
+                status: "paid",
+                paymentType: "stripe",
+                amount,
+                fee: config.stripe.feeFix + config.stripe.feeVar * amount,
+                taxes: config.payment.tax * amount,
+                billingEmail,
+                paidAt: new Date(),
+                paymentExpiresAt: paidExpiresAt,
+                job: jobId,
+                user: userId,
+            };
+
+            if (couponId) {
+                paymentObj.coupon = couponId;
+            }
+
+            const newPaymentObj = new Payment(paymentObj);
+            const payment = await newPaymentObj.save();
+            console.log("payment: ", payment);
+
             const updatedJob = await Job.findOneAndUpdate(
                 { _id: jobId, userId: userId },
                 {
-                    status,
-                    publishedAt,
+                    status: "published",
+                    publishedAt: new Date().setHours(0),
                     paid: true,
-                    paidAt,
+                    // paidAt,
                     paidExpiresAt,
-                    paidAmount: amount,
                     refreshFrequency,
                 },
                 { new: true }
@@ -66,15 +76,10 @@ router.post("/checkout-completed", async (req, res) => {
                 .populate("company")
                 .populate("userId");
 
-            if (couponCode && couponUsage === "single") {
-                Coupon.deleteOne({ code: couponCode, usage: "single" });
-            }
-
-            if (couponUsage === "singlePerUser") {
+            if (couponId) {
                 const newUsedCoupon = new UsedCoupon({
                     userId: userId,
                     couponId: couponId,
-                    code: couponCode,
                 });
                 await newUsedCoupon.save();
             }

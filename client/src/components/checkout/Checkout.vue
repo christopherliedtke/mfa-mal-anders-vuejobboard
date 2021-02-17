@@ -145,8 +145,89 @@
                         </b-form-radio-group>
                     </b-form-group>
 
-                    <b-form-group v-if="paymentMethod === 'invoice'">
-                        <div class="h5 mt-3 mb-0">Rechnungsadresse</div>
+                    <b-form-group
+                        v-if="paymentMethod === 'invoice'"
+                        class="mt-4"
+                    >
+                        <h5>Rechnungsadresse</h5>
+
+                        <label for="billingAddress-gender">Anrede</label>
+                        <b-form-select
+                            id="billingAddress-gender"
+                            v-model="billingAddress.gender"
+                            :state="
+                                validated
+                                    ? billingAddress.gender
+                                        ? true
+                                        : null
+                                    : null
+                            "
+                        >
+                            <b-form-select-option :value="null"
+                                >-- Anrede auswählen --</b-form-select-option
+                            >
+                            <b-form-select-option
+                                v-for="title in contactGenderOptions"
+                                :key="title"
+                                :value="title"
+                                >{{ title }}</b-form-select-option
+                            >
+                        </b-form-select>
+
+                        <label for="billingAddress-title">Titel</label>
+                        <b-form-select
+                            id="billingAddress-title"
+                            v-model="billingAddress.title"
+                            :state="
+                                validated
+                                    ? billingAddress.title
+                                        ? true
+                                        : null
+                                    : null
+                            "
+                        >
+                            <b-form-select-option :value="null"
+                                >-- Titel auswählen --</b-form-select-option
+                            >
+                            <b-form-select-option
+                                v-for="title in contactTitleOptions"
+                                :key="title"
+                                :value="title"
+                                >{{ title }}</b-form-select-option
+                            >
+                        </b-form-select>
+
+                        <label for="billingAddress-first-name">Vorname *</label>
+                        <b-form-input
+                            type="text"
+                            v-model="billingAddress.firstName"
+                            :state="
+                                validated
+                                    ? billingAddress.firstName
+                                        ? true
+                                        : false
+                                    : null
+                            "
+                            id="billingAddress-first-name"
+                            placeholder="Vorname eingeben..."
+                            required
+                        />
+                        <label for="billingAddress-last-name">Nachname *</label>
+                        <b-form-input
+                            type="text"
+                            v-model="billingAddress.lastName"
+                            :state="
+                                validated
+                                    ? billingAddress.lastName
+                                        ? true
+                                        : false
+                                    : null
+                            "
+                            id="billingAddress-last-name"
+                            placeholder="Nachname eingeben..."
+                            required
+                        />
+
                         <label for="billing-address-company">Unternehmen</label>
                         <b-input
                             type="text"
@@ -162,23 +243,7 @@
                                     : null
                             "
                         />
-                        <label for="billing-address-name"
-                            >Rechnungsverantwortliche/r</label
-                        >
-                        <b-input
-                            type="text"
-                            id="billing-address-name"
-                            v-model="billingAddress.name"
-                            placeholder="Name für Rechnungsausstellung angeben..."
-                            trim
-                            :state="
-                                validated
-                                    ? billingAddress.name
-                                        ? true
-                                        : false
-                                    : null
-                            "
-                        />
+
                         <label for="billing-address-email"
                             >E-Mail Adresse</label
                         >
@@ -356,6 +421,10 @@
 <script>
     import { stripeCheckoutMixin } from "@/mixins/stripeCheckoutMixin";
     import PayWhatYouWantSuggestion from "@/components/containers/PayWhatYouWantSuggestion";
+    import {
+        contactGenderOptions,
+        contactTitleOptions
+    } from "@/config/formDataConfig.json";
     export default {
         name: "Checkout",
         mixins: [stripeCheckoutMixin],
@@ -376,13 +445,18 @@
                 },
                 couponValidationState: null,
                 billingAddress: {
+                    gender: null,
+                    title: null,
+                    firstName: "",
+                    lastName: "",
                     company: null,
-                    name: null,
                     email: null,
                     street: null,
                     zipCode: null,
                     location: null
                 },
+                contactGenderOptions,
+                contactTitleOptions,
                 validated: false,
                 error: false
             };
@@ -503,17 +577,29 @@
             async checkCouponCode() {
                 this.couponValidationState = null;
 
-                const response = await this.$axios.post(
-                    "/api/stripe/validate-coupon",
-                    { code: this.coupon.code }
-                );
+                const coupon = await this.$axios.get("/graphql", {
+                    params: {
+                        query: `
+                            query {
+                                validateCoupon (code: "${this.coupon.code}") {
+                                    _id
+                                    code
+                                    discount
+                                    refreshFrequency
+                                }
+                            }
+                        `
+                    }
+                });
 
-                this.couponValidationState = response.data.success;
-
-                if (response.data.success) {
-                    this.coupon.discount = response.data.discount;
+                if (coupon.data.errors) {
+                    this.couponValidationState = false;
+                } else {
+                    this.couponValidationState = true;
+                    this.coupon.discount =
+                        coupon.data.data.validateCoupon.discount;
                     this.coupon.refreshFrequency =
-                        response.data.refreshFrequency;
+                        coupon.data.data.validateCoupon.refreshFrequency;
                 }
             },
             async setBillingAddress() {
@@ -522,21 +608,11 @@
                     this.$store.state.auth.user
                 ) {
                     this.billingAddress = {
+                        gender: this.$store.state.auth.user.gender || null,
+                        title: this.$store.state.auth.user.title || null,
+                        firstName: this.$store.state.auth.user.firstName || "",
+                        lastName: this.$store.state.auth.user.lastName || "",
                         company: this.job.company.name,
-                        name: `${
-                            this.$store.state.auth.user.gender &&
-                            this.$store.state.auth.user.gender != "null"
-                                ? this.$store.state.auth.user.gender + " "
-                                : ""
-                        }${
-                            this.$store.state.auth.user.title &&
-                            this.$store.state.auth.user.title != "null"
-                                ? this.$store.state.auth.user.title + " "
-                                : ""
-                        }${this.$store.state.auth.user.firstName} ${
-                            this.$store.state.auth.user.lastName
-                        }`,
-
                         email: this.$store.state.auth.user.email,
                         street: this.job.company.street,
                         zipCode: this.job.company.zipCode,
@@ -547,7 +623,8 @@
             validateBillingAddress() {
                 this.validated = true;
                 return !this.billingAddress.company ||
-                    !this.billingAddress.name ||
+                    !this.billingAddress.firstName ||
+                    !this.billingAddress.lastName ||
                     !this.billingAddress.email ||
                     !this.billingAddress.street ||
                     !this.billingAddress.zipCode ||
@@ -570,7 +647,6 @@
                         {
                             jobId: this.job._id,
                             jobTitle: this.job.title,
-                            email: this.billingAddress.email,
                             amount: this.amount,
                             paymentMethod: this.paymentMethod,
                             couponCode: this.coupon.code,
@@ -579,32 +655,23 @@
                         }
                     );
 
-                    if (response.data.success) {
-                        this.$root.$bvToast.toast(
-                            "Vielen Dank! Ihre Rechnung wurde erfolgreich angefordert. Innerhalb der nächsten 24 Stunden erhalten Sie die gewünschte Rechnung auf die angegebene E-Mail Adresse.",
-                            {
-                                title: `Rechnung angefordert`,
-                                variant: "success",
-                                toaster: "b-toaster-bottom-right",
-                                solid: true,
-                                noAutoHide: true
-                            }
-                        );
-
-                        this.$emit("update");
-                        this.$emit("close");
-                    } else {
-                        this.$root.$bvToast.toast(
-                            "Bei der Verarbeitung Ihrer Daten ist leider ein Fehler aufgetreten. Bitte versuchen Sie es später noch einmal.",
-                            {
-                                title: `Fehler bei Rechnungsanforderung`,
-                                variant: "danger",
-                                toaster: "b-toaster-bottom-right",
-                                solid: true,
-                                noAutoHide: true
-                            }
-                        );
+                    if (!response.data.success) {
+                        throw new Error("Invoice could not be sent!");
                     }
+
+                    this.$root.$bvToast.toast(
+                        "Vielen Dank! Ihre Rechnung wurde erfolgreich angefordert. Innerhalb der nächsten 24 Stunden erhalten Sie die gewünschte Rechnung auf die angegebene E-Mail Adresse.",
+                        {
+                            title: `Rechnung angefordert`,
+                            variant: "success",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
+
+                    this.$emit("update");
+                    this.$emit("close");
                 } catch (err) {
                     this.$root.$bvToast.toast(
                         "Bei der Verarbeitung Ihrer Daten ist leider ein Fehler aufgetreten. Bitte versuchen Sie es später noch einmal.",

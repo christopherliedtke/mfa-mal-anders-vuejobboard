@@ -27,7 +27,7 @@
             BarChart
         },
         props: {
-            jobs: Array
+            payments: Array
         },
         data() {
             return {
@@ -100,8 +100,8 @@
             };
         },
         watch: {
-            jobs() {
-                if (this.jobs) {
+            payments() {
+                if (this.payments) {
                     this.fillChartData();
                 }
             }
@@ -114,7 +114,7 @@
                 let dates = [];
                 let amounts = [];
                 let numbers = [];
-                let amountPerJob = [];
+                let amountPerPayment = [];
 
                 for (let i = 0; i < this.options.numberOfMonths; i++) {
                     let date = new Date(
@@ -131,13 +131,15 @@
                     );
 
                     let amount =
-                        this.jobs
+                        this.payments
                             .filter(
-                                job =>
-                                    new Date(job.paidAt).getMonth() === month &&
-                                    new Date(job.paidAt).getFullYear() === year
+                                payment =>
+                                    new Date(payment.paidAt).getMonth() ===
+                                        month &&
+                                    new Date(payment.paidAt).getFullYear() ===
+                                        year
                             )
-                            .map(job => job.paidAmount)
+                            .map(payment => payment.amount)
                             .reduce(
                                 (accumulator, currentValue) =>
                                     accumulator + currentValue,
@@ -146,18 +148,18 @@
 
                     amounts.push(amount);
 
-                    let number = this.jobs
+                    let number = this.payments
                         .filter(
-                            job =>
-                                new Date(job.paidAt).getMonth() === month &&
-                                new Date(job.paidAt).getFullYear() === year
+                            payment =>
+                                new Date(payment.paidAt).getMonth() === month &&
+                                new Date(payment.paidAt).getFullYear() === year
                         )
-                        .map(job => job.paidAmount)
+                        .map(payment => payment.amount)
                         .reduce(currentValue => 1 + currentValue, 0);
 
                     numbers.push(number);
 
-                    amountPerJob.push(
+                    amountPerPayment.push(
                         Math.round((amount / number || 1) * 100) / 100
                     );
                 }
@@ -175,7 +177,7 @@
                             cubicInterpolationMode: "monotone"
                         },
                         {
-                            label: "# of Paid Jobs",
+                            label: "# of Payments",
                             yAxisID: "B",
                             backgroundColor: "#fda22544",
                             data: numbers.reverse(),
@@ -183,12 +185,12 @@
                             barPercentage: 0.5
                         },
                         {
-                            label: "Ave. Amount Paid per Job",
+                            label: "Ave. Amount Paid per Payment",
                             yAxisID: "A",
                             backgroundColor: "#17a2b888",
                             borderColor: "#17a2b888",
                             borderWidth: 1,
-                            data: amountPerJob.reverse(),
+                            data: amountPerPayment.reverse(),
                             type: "line",
                             order: 1,
                             borderDash: [5],

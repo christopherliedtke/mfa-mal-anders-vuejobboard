@@ -1,17 +1,13 @@
 export const saveCompanyMixin = {
     methods: {
-        async saveCompany(
-            mutationType,
-            apiCompaniesSchema,
-            company,
-            redirect = false
-        ) {
+        async saveCompany(mutationType, company, redirect = false) {
             try {
-                const query = `
+                const companyQuery = `
                         mutation {
                             ${mutationType}(
                                 ${
-                                    mutationType === "updateCompany"
+                                    mutationType === "updateCompany" ||
+                                    mutationType === "adminUpdateCompany"
                                         ? `_id: "${company._id}",`
                                         : ""
                                 } 
@@ -37,12 +33,11 @@ export const saveCompanyMixin = {
                         }
                     `;
 
-                const response = await this.$axios.post(
-                    `/api/companies/${apiCompaniesSchema}`,
-                    { query }
-                );
+                const response = await this.$axios.post(`/graphql`, {
+                    query: companyQuery
+                });
 
-                if (!response.data.data[mutationType]) {
+                if (!response.data.data[mutationType]._id) {
                     this.error =
                         "Oh, da ist leider etwas schief gelaufen. Bitte versuchen Sie es noch einmal.";
 
@@ -59,7 +54,7 @@ export const saveCompanyMixin = {
                     );
 
                     if (redirect) {
-                        this.hasHistory && this.apiCompaniesSchema === "admin"
+                        this.hasHistory && this.apiJobsSchema === "admin"
                             ? this.$router.go(-1)
                             : this.$router.push("/user/dashboard?tab=2");
                     }

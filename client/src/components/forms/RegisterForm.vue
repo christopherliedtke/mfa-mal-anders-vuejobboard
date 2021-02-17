@@ -2,8 +2,8 @@
     <b-form>
         <label for="user-gender">Anrede</label>
         <b-form-select id="user-gender" v-model="gender">
-            <b-form-select-option :value="null"
-                >-- Titel auswählen --</b-form-select-option
+            <b-form-select-option value=""
+                >-- Anrede auswählen --</b-form-select-option
             >
             <b-form-select-option
                 v-for="title in contactGenderOptions"
@@ -14,7 +14,7 @@
         </b-form-select>
         <label for="user-title">Titel</label>
         <b-form-select id="user-title" v-model="title">
-            <b-form-select-option :value="null"
+            <b-form-select-option value=""
                 >-- Titel auswählen --</b-form-select-option
             >
             <b-form-select-option
@@ -124,8 +124,8 @@
                 dismissible
                 variant="danger"
                 v-for="error in errors"
-                :key="error.msg"
-                >{{ error.msg }}</b-alert
+                :key="error.message"
+                >{{ error.message }}</b-alert
             >
         </div>
     </b-form>
@@ -140,8 +140,8 @@
         name: "RegisterForm",
         data() {
             return {
-                gender: null,
-                title: null,
+                gender: "",
+                title: "",
                 firstName: "",
                 lastName: "",
                 email: "",
@@ -165,20 +165,17 @@
                         title: this.title,
                         firstName: this.firstName,
                         lastName: this.lastName,
-                        email: this.email,
+                        email: this.email.toLowerCase(),
                         password: this.password,
                         password2: this.password2,
                         acceptance: this.acceptance
                     }
                 });
 
-                if (!res.success) {
+                if (res.errors) {
                     this.errors = res.errors;
                 } else {
-                    await this.$store.dispatch("fetchUser");
-                    await this.$axios.get(
-                        "/api/auth/verification/get-activation-email"
-                    );
+                    await this.$store.dispatch("getActivationEmail");
 
                     if (this.$store.state.auth.loggedIn) {
                         this.trackEvent(
