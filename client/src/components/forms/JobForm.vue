@@ -543,7 +543,10 @@
                         "<p>[Für eine attraktive Stellenanzeige sollten Sie folgende Punkte berücksichtigen. Bitte ersetzen Sie den hier stehenden Text entsprechend.]</p><p>[Schreiben Sie eine kurze Einleitung zu Ihrem Unternehmen.]</p><h3>Was wir Ihnen bieten</h3><p>[Was bieten Sie potentiellen BewerberInnen?]</p><h3>Ihre Aufgaben</h3><p>[Welche Aufgaben sollen von potentiellen BewerberInnen durchgeführt werden?]</p><h3>Ihr Profil</h3><p>[Was sollen potentielle BewerberInnen mitbringen?]</p>",
                     specialization: "",
                     employmentType: "",
-                    applicationDeadline: 0,
+                    applicationDeadline: new Date(
+                        new Date().valueOf() +
+                            1000 * 60 * 60 * 24 * this.$config.payment.duration
+                    ),
                     simpleApplication: false,
                     extJobUrl: "",
                     applicationEmail: "",
@@ -563,7 +566,7 @@
                         location: "",
                         zipCode: "",
                         state: "",
-                        country: "Deutschland",
+                        country: companyCountryOptions[0],
                         geoCodeLat: null,
                         geoCodeLng: null,
                         size: "",
@@ -616,12 +619,22 @@
             }
         },
         created() {
+            this.setAdminDates();
             if (this.$route.params.jobId != "new") {
                 this.getJob(this.$route.params.jobId);
             }
             this.getCompanies();
         },
         methods: {
+            setAdminDates() {
+                if (this.$store.state.auth.user.isAdmin) {
+                    this.publishedAt = new Date();
+                    this.paidExpiresAt = new Date(
+                        new Date().valueOf() +
+                            1000 * 60 * 60 * 24 * this.$config.payment.duration
+                    );
+                }
+            },
             async getJob(id) {
                 this.$store.dispatch("setOverlay", true);
 
@@ -679,11 +692,11 @@
                             street: "",
                             location: "",
                             zipCode: "",
-                            state: null,
-                            country: null,
+                            state: "",
+                            country: this.companyCountryOptions[0],
                             geoCodeLat: null,
                             geoCodeLng: null,
-                            size: null,
+                            size: "",
                             url: "",
                             logoUrl: ""
                         };

@@ -59,7 +59,7 @@
                     >stripe</b-form-select-option
                 >
             </b-form-select>
-            <label for="amount">Amount</label>
+            <label for="amount">Amount [Cents]</label>
             <b-form-input
                 type="number"
                 min="0"
@@ -67,7 +67,7 @@
                 id="amount"
                 placeholder="Amount eingeben..."
             />
-            <label for="fee">Fee</label>
+            <label for="fee">Fee [Cents]</label>
             <b-form-input
                 type="number"
                 min="0"
@@ -75,7 +75,7 @@
                 id="fee"
                 placeholder="Fee eingeben..."
             />
-            <label for="taxes">Taxes</label>
+            <label for="taxes">Taxes [Cents]</label>
             <b-form-input
                 type="number"
                 min="0"

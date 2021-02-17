@@ -8,6 +8,7 @@ const config = require("../config/config");
 const { Job } = require("../database/models/job");
 const { Payment } = require("../database/models/payment");
 const createInvoice = require("../middleware/createInvoice");
+const sanitizeHtml = require("sanitize-html");
 
 // #route:  POST /api/invoice/get-invoice
 // #desc:   Handle invoice request
@@ -66,14 +67,14 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
             ),
             job: jobId,
             user: req.user._id,
-            billingEmail: billingAddress.email,
-            billingCompany: billingAddress.company,
-            billingGender: billingAddress.gender,
-            billingFirstName: billingAddress.firstName,
-            billingLastName: billingAddress.lastName,
-            billingStreet: billingAddress.street,
-            billingZipCode: billingAddress.zipCode,
-            billingLocation: billingAddress.location,
+            billingEmail: sanitizeHtml(billingAddress.email),
+            billingCompany: sanitizeHtml(billingAddress.company),
+            billingGender: sanitizeHtml(billingAddress.gender),
+            billingFirstName: sanitizeHtml(billingAddress.firstName),
+            billingLastName: sanitizeHtml(billingAddress.lastName),
+            billingStreet: sanitizeHtml(billingAddress.street),
+            billingZipCode: sanitizeHtml(billingAddress.zipCode),
+            billingLocation: sanitizeHtml(billingAddress.location),
         };
 
         if (couponId) {

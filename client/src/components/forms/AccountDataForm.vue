@@ -8,7 +8,7 @@
                 :state="validated ? (user.gender ? true : null) : null"
                 :disabled="disabled"
             >
-                <b-form-select-option :value="null"
+                <b-form-select-option :value="''"
                     >-- Anrede auswählen --</b-form-select-option
                 >
                 <b-form-select-option
@@ -25,7 +25,7 @@
                 :state="validated ? (user.title ? true : null) : null"
                 :disabled="disabled"
             >
-                <b-form-select-option :value="null"
+                <b-form-select-option :value="''"
                     >-- Titel auswählen --</b-form-select-option
                 >
                 <b-form-select-option
