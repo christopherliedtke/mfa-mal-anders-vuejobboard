@@ -139,7 +139,7 @@ const apolloServer = new ApolloServer({
         return { user, session: req.session };
     },
 });
-apolloServer.applyMiddleware({ app, cors: true, path: "/graphql" });
+apolloServer.applyMiddleware({ app, path: "/graphql", cors: true });
 
 // #Routes w csrf protection
 app.use("/api/contact", require("./routes/contact"));
