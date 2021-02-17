@@ -110,6 +110,8 @@
                                         paymentExpiresAt
                                         status
                                         amount
+                                        fee
+                                        taxes
 
                                     }
                                 }

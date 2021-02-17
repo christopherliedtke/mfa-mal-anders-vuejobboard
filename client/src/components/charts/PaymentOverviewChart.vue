@@ -139,7 +139,10 @@
                                     new Date(payment.paidAt).getFullYear() ===
                                         year
                             )
-                            .map(payment => payment.amount)
+                            .map(
+                                payment =>
+                                    payment.amount - payment.fee - payment.taxes
+                            )
                             .reduce(
                                 (accumulator, currentValue) =>
                                     accumulator + currentValue,

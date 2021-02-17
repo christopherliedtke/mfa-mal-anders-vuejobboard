@@ -15,7 +15,6 @@
                 :options="[
                     { text: 'Created At', value: 'createdAt' },
                     { text: 'Updated At', value: 'updatedAt' },
-                    { text: 'Paid At', value: 'paidAt' },
                     { text: 'Published At', value: 'publishedAt' }
                 ]"
             ></b-form-radio-group>
