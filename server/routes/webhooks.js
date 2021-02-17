@@ -104,10 +104,12 @@ router.post("/checkout-completed", async (req, res) => {
             const dataMailToMfa = {
                 from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
                 to: config.website.contactEmail,
-                subject: `[Neue Stelle veröffentlicht] - ${amount / 100}€`,
+                subject: `[Neue Stelle veröffentlicht] - ${
+                    payment.amount / 100
+                }€`,
                 text: `
                         Soeben wurde eine neue Stelle für ${
-                            amount / 100
+                            payment.amount / 100
                         }€ veröffentlicht: ${
                     process.env.WEBSITE_URL +
                     config.googleIndexing.pathPrefix +
@@ -131,9 +133,7 @@ router.post("/checkout-completed", async (req, res) => {
                     <strong>Ort:</strong> ${updatedJob.company.location}, ${
                     updatedJob.company.state
                 } <br>
-                    <strong>Preis:</strong> ${
-                        updatedJob.paidAmount / 100
-                    } EURO <br>
+                    <strong>Preis:</strong> ${payment.amount / 100} EURO <br>
                     <strong>Link:</strong> <a href="${
                         process.env.WEBSITE_URL +
                         config.googleIndexing.pathPrefix +
