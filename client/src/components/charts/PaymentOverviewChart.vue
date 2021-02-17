@@ -141,7 +141,12 @@
                             )
                             .map(
                                 payment =>
-                                    payment.amount - payment.fee - payment.taxes
+                                    Math.round(
+                                        (payment.amount -
+                                            payment.fee -
+                                            payment.taxes) *
+                                            100
+                                    ) / 100
                             )
                             .reduce(
                                 (accumulator, currentValue) =>

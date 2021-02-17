@@ -26,7 +26,9 @@ router.get("/jobs-to-payments", verifyToken, async (req, res) => {
             invoiceNo: job.invoiceNo || undefined,
             paymentType: job.invoiceNo ? "invoice" : "stripe",
             amount: job.paidAmount,
-            fee: !job.invoiceNo ? 25 + 0.014 * job.paidAmount : 0,
+            fee: !job.invoiceNo
+                ? Math.round((25 + 0.014 * job.paidAmount) * 100) / 100
+                : 0,
             taxes: 0,
             paidAt: job.paidAt || undefined,
             paymentExpiresAt: job.paidExpiresAt,
@@ -35,10 +37,10 @@ router.get("/jobs-to-payments", verifyToken, async (req, res) => {
         };
     });
 
-    res.json(payments);
+    // res.json(payments);
 
-    // const insertedPayments = await Payment.insertMany(payments);
-    // res.json(insertedPayments);
+    const insertedPayments = await Payment.insertMany(payments);
+    res.json(insertedPayments);
 });
 
 module.exports = router;
