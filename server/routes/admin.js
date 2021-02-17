@@ -1,10 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const { Job } = require("../database/models/job");
+const { Payment } = require("../database/models/payment");
 const verifyToken = require("../middleware/verifyToken");
 
 // #route:  GET /api/admin/jobs-to-payments
-// #desc:   Transfer paid jobs into payments.json
+// #desc:   Transfer paid jobs into payments
 // #access: Admin
 router.get("/jobs-to-payments", verifyToken, async (req, res) => {
     if (process.env.NODE_ENV === "production" && !req.user.isAdmin) {
@@ -34,7 +35,9 @@ router.get("/jobs-to-payments", verifyToken, async (req, res) => {
         };
     });
 
-    res.json(payments);
+    const insertedPayments = await Payment.insertMany(payments);
+
+    res.json(insertedPayments);
 });
 
 module.exports = router;
