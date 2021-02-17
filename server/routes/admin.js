@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const { Job } = require("../database/models/job");
+const verifyToken = require("../middleware/verifyToken");
 
 // #route:  GET /api/admin/jobs-to-payments
 // #desc:   Transfer paid jobs into payments.json
 // #access: Admin
-router.get("/jobs-to-payments", async (req, res) => {
+router.get("/jobs-to-payments", verifyToken, async (req, res) => {
     if (process.env.NODE_ENV === "production" && !req.user.isAdmin) {
         res.json({ success: false });
     }
