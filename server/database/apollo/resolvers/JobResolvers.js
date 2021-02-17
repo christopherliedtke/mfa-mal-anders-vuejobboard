@@ -121,16 +121,24 @@ const JobResolvers = {
                 throw new AuthenticationError("Must be logged in!");
             }
 
+            console.log("args: ", args);
+
             let updateObj = { ...args };
             delete updateObj._id;
 
             updateObj = cleanUpJob(updateObj, context.user);
+
+            console.log("updateObj: ", updateObj);
+
+            console.log("context.user._id: ", context.user._id);
 
             const updatedJob = await Job.findOneAndUpdate(
                 { _id: args._id, userId: context.user._id },
                 updateObj,
                 { new: true }
             );
+
+            console.log("updatedJob: ", updatedJob);
 
             indexing(updatedJob);
             recaching(updatedJob);
@@ -291,7 +299,9 @@ function cleanUpJob(job, user) {
     }
 
     for (const key in job) {
-        job[key] = sanitizeHtml(job[key]);
+        if (typeof job[key] === "string") {
+            job[key] = sanitizeHtml(job[key]);
+        }
     }
 
     return job;

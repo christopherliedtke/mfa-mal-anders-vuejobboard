@@ -128,7 +128,9 @@ const CompanyResolvers = {
 
 function cleanUpCompany(company) {
     for (const key in company) {
-        company[key] = sanitizeHtml(company[key]);
+        if (typeof company[key] === "string") {
+            company[key] = sanitizeHtml(company[key]);
+        }
     }
 
     return company;

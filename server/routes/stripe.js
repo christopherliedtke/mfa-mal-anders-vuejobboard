@@ -14,34 +14,6 @@ router.get("/get-stripe-pk", (req, res) => {
     res.json({ stripePk });
 });
 
-// #route:  GET /api/stripe/get-price-per-ad
-// #desc:   Provide Price per job ad
-// #access: Private
-// router.get("/get-price-per-ad", verifyToken, (req, res) => {
-//     res.json({
-//         amount: config.payment.minPricePerJob,
-//         currency: config.payment.currency,
-//         duration: config.payment.paymentExpirationDays,
-//     });
-// });
-
-// #route:  POST /api/stripe/validate-coupon
-// #desc:   Validate discount coupon
-// #access: Private
-// router.post("/validate-coupon", verifyToken, async (req, res) => {
-//     const validatedCoupon = await validateCoupon(req.body.code, req.user._id);
-
-//     if (validatedCoupon.success) {
-//         res.json({
-//             success: true,
-//             discount: validatedCoupon.discount,
-//             refreshFrequency: validatedCoupon.couponRefreshFrequency,
-//         });
-//     } else {
-//         res.json({ success: false });
-//     }
-// });
-
 // #route:  POST /api/stripe/job/create-session-id
 // #desc:   Create a session id for a user
 // #access: Private
