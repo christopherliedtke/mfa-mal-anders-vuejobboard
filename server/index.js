@@ -149,6 +149,7 @@ app.use("/api/stripe", require("./routes/stripe"));
 app.use("/api/invoice", require("./routes/invoice"));
 app.use("/api/send-email", require("./routes/sendEmail"));
 app.use("/api/download", require("./routes/download"));
+app.use("/api/admin", require("./routes/admin"));
 
 // #Serve the built static files in production
 app.use("*", (req, res) => {
