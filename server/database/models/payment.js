@@ -27,6 +27,12 @@ const PaymentSchema = new Schema(
         paymentType: {
             type: String,
         },
+        stripePaymentIntent: {
+            type: String,
+        },
+        stripeReceiptNumber: {
+            type: String,
+        },
         amount: {
             type: Number,
         },

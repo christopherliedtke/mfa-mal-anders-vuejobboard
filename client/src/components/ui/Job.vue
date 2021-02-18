@@ -279,7 +279,11 @@
                     <br />
                 </p>
                 <HereMapSingleJob
-                    v-if="job.company && job.company.location"
+                    v-if="
+                        job.company &&
+                            job.company.geoCodeLat &&
+                            job.company.geoCodeLng
+                    "
                     :job="job"
                 />
             </div>

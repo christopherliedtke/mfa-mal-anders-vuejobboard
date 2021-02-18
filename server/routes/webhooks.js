@@ -51,6 +51,7 @@ router.post("/checkout-completed", async (req, res) => {
                 paymentExpiresAt: paidExpiresAt,
                 job: jobId,
                 user: userId,
+                stripePaymentIntent: intent.id || "",
             };
 
             if (couponId) {

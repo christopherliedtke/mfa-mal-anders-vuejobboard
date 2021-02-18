@@ -366,7 +366,7 @@
 
             <label for="company-zip-code">PLZ *</label>
             <b-form-input
-                type="number"
+                type="text"
                 v-model="job.company.zipCode"
                 :state="validated ? (job.company.zipCode ? true : false) : null"
                 id="company-zip-code"

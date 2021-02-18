@@ -29,7 +29,7 @@
 
             <label for="company-zip-code">PLZ *</label>
             <b-form-input
-                type="number"
+                type="text"
                 v-model="company.zipCode"
                 :state="validated ? (company.zipCode ? true : false) : null"
                 id="company-zip-code"

@@ -99,7 +99,9 @@
                                         addressCountry: this.job.company.country
                                     }
                                 },
-                                validThrough: this.job.applicationDeadline,
+                                validThrough: new Date(
+                                    this.job.applicationDeadline
+                                ).toISOString(),
                                 employmentType: this.getEmploymentType(
                                     this.job.employmentType
                                 ),
