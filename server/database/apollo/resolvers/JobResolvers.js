@@ -14,6 +14,7 @@ const JobResolvers = {
                 status: "published",
                 paid: true,
                 paidExpiresAt: { $gte: new Date() },
+                publishedAt: { $lte: new Date() },
                 // applicationDeadline: {
                 //     $gte: new Date().setHours(24),
                 // },
@@ -30,6 +31,7 @@ const JobResolvers = {
                 status: "published",
                 paid: true,
                 paidExpiresAt: { $gte: new Date() },
+                publishedAt: { $lte: new Date() },
                 // applicationDeadline: {
                 //     $gte: new Date().setHours(24),
                 // },

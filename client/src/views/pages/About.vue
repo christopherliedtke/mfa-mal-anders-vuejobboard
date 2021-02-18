@@ -45,23 +45,34 @@
                     und Arztpraxen erfolgreich zusammen zu bringen.
                 </blockquote>
                 <p>
+                    Auf MFA mal anders veröffentliche ich Informationen über die
+                    berufliche Weiterbildung und Karrieremöglichkeiten für
+                    medizinische Fachangestellte. Unser Portal soll ein Ort
+                    sein, der Informationen über den MFA-Beruf vereint. Wir
+                    stehen für Wertschätzung, Respekt und faire
+                    Arbeitsbedingungen für medizinische Fachangestellte.
+                </p>
+                <p>
                     Jobsuchende MFAs finden bei uns eine große Auswahl an freien
                     Stellen in Arztpraxen und MVZs. Den Arbeitgebern bieten wir
                     eine kostengünstige Möglichkeit ihre Stellenanzeige effektiv
-                    an ihre Zielgruppe auszuspielen.
+                    an ihre Zielgruppe auszuspielen. Dafür erwarten wir, dass
+                    die Arbeitgeber dieselben Werte, wie wir in ihrer täglichen
+                    Arbeit mit den MFAs teilen.
                 </p>
                 <h2>
                     Mein Arbeitsstil
                 </h2>
                 <p>
-                    …ist in erster Linie ein menschlicher. Im Human Ressource
-                    Bereich arbeite ich täglich mit Menschen, ihren Emotionen,
-                    Wünschen und Ängsten. Daher spielen in meiner täglichen
-                    Arbeit Werte wie Respekt und Wertschätzung genauso eine
-                    wichtige Rolle wie Verlässlichkeit, Ehrgeiz und Anspruch.
-                    Grundlage dafür sind meine Berufs- und Lebenserfahrung,
-                    ständige Weiterbildung sowie meine unternehmerische
-                    Denkweise.
+                    …ist in erster Linie selbst sehr nah an den MFAs. Im Human
+                    Ressource Bereich arbeite ich täglich mit Menschen, ihren
+                    Emotionen, Wünschen und Ängsten. Daher spielen in meiner
+                    täglichen Arbeit Werte wie Respekt und Wertschätzung genauso
+                    eine wichtige Rolle wie Verlässlichkeit, Ehrgeiz und
+                    Anspruch. Vor diesem Hintergrund habe ich das Angebot von
+                    MFA mal anders geschaffen und entwickle dieses
+                    kontinuierlich weiter, um den MFA Beruf wieder attraktiver
+                    werden zu lassen!
                 </p>
                 <p>
                     Vor diesem Hintergrund habe ich das Angebot von MFA mal
