@@ -18,16 +18,19 @@
         </b-list-group>
         <div>
             <SgdBanner class="my-2" />
+            <!-- <DelstBanner class="my-2" /> -->
         </div>
     </div>
 </template>
 
 <script>
     import SgdBanner from "@/components/banners/SgdBanner.vue";
+    // import DelstBanner from "@/components/banners/DelstBanner.vue";
     export default {
         name: "FortWeiterbildungenNav",
         components: {
             SgdBanner
+            // DelstBanner
         },
         computed: {
             trainings() {
