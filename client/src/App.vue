@@ -23,7 +23,10 @@
             Overlay
         },
         async created() {
-            if (this.$store.state.auth.loggedIn) {
+            if (
+                this.$store.state.auth.loggedIn &&
+                this.$store.state.auth.token
+            ) {
                 const user = await this.$store.dispatch("fetchUserFromToken");
 
                 if (!user.data.data.meFromToken) {

@@ -172,9 +172,11 @@ const actions = {
             commit("setUser", false);
             commit("setLoggedIn", false);
 
-            localStorage.removeItem("token");
-            localStorage.removeItem("user");
-            localStorage.removeItem("loggedIn");
+            // localStorage.removeItem("token");
+            // localStorage.removeItem("user");
+            // localStorage.removeItem("loggedIn");
+            localStorage.clear();
+            localStorage.setItem("nl-pop", "false");
 
             router.push("/").catch(() => {});
         }
