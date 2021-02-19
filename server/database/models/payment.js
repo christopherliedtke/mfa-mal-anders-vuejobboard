@@ -24,6 +24,9 @@ const PaymentSchema = new Schema(
             type: Number,
             default: 0,
         },
+        invoiceDate: {
+            type: Date,
+        },
         paymentType: {
             type: String,
         },

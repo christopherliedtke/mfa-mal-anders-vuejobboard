@@ -50,6 +50,13 @@
                 placeholder="Invoice No eingeben..."
                 trim
             />
+            <label for="invoice-date">Invoice Date</label>
+            <b-form-datepicker
+                v-model="invoiceDate"
+                id="invoice-date"
+                placeholder="Invoice Date eingeben..."
+                :value-as-date="true"
+            />
             <label for="payment-type">Payment Status</label>
             <b-form-select id="payment-type" v-model="payment.paymentType">
                 <b-form-select-option :value="'invoice'"
@@ -216,6 +223,7 @@
                     coupon: null,
                     status: "",
                     invoiceNo: 0,
+                    invoiceDate: new Date(),
                     paymentType: "invoice",
                     amount: 0,
                     fee: 0,
@@ -239,6 +247,14 @@
             };
         },
         computed: {
+            invoiceDate: {
+                get() {
+                    return new Date(this.payment.invoiceDate);
+                },
+                set(value) {
+                    this.payment.invoiceDate = new Date(value).valueOf();
+                }
+            },
             paidAt: {
                 get() {
                     return new Date(this.payment.paidAt);
@@ -283,6 +299,7 @@
 
                                         status
                                         invoiceNo
+                                        invoiceDate
                                         paymentType
                                         amount
                                         fee
@@ -355,6 +372,7 @@
                                 }
                                 status: "${this.payment.status}"
                                 invoiceNo: ${this.payment.invoiceNo}
+                                invoiceDate: ${this.payment.invoiceDate}
                                 paymentType: "${this.payment.paymentType}"
                                 amount: ${this.payment.amount}
                                 fee: ${this.payment.fee}

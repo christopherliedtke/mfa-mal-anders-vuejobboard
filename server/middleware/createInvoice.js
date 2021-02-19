@@ -89,7 +89,9 @@ function generateHeader(doc) {
         .moveDown();
 }
 
-function generateCustomerInformation(doc, payment, date = new Date()) {
+function generateCustomerInformation(doc, payment) {
+    const date = payment.invoiceDate || new Date();
+
     doc.fontSize(10)
         .text(payment.billingCompany, 50, 140, { align: "left" })
         .text(payment.billingFullName, 50, 155, { align: "left" })

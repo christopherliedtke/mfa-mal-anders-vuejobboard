@@ -42,6 +42,9 @@
             <template v-slot:cell(updatedAt)="row">
                 {{ new Date(row.value).toLocaleString() }}
             </template>
+            <template v-slot:cell(invoiceDate)="row">
+                {{ row.value && new Date(row.value).toLocaleString() }}
+            </template>
             <template v-slot:cell(paidAt)="row">
                 {{ row.value && new Date(row.value).toLocaleString() }}
             </template>
@@ -212,6 +215,10 @@
                         sortable: true
                     },
                     {
+                        key: "invoiceDate",
+                        sortable: true
+                    },
+                    {
                         key: "paymentType",
                         sortable: true
                     },
@@ -324,6 +331,7 @@
                                         paidAt
                                         paymentExpiresAt
                                         invoiceNo
+                                        invoiceDate
                                         paymentType
                                         amount
                                         fee
@@ -378,6 +386,7 @@
                                     paidAt
                                     paymentExpiresAt
                                     invoiceNo
+                                    invoiceDate
                                     paymentType
                                     amount
                                     fee
@@ -509,14 +518,6 @@
 
                 this.$store.dispatch("setOverlay", false);
             },
-            // async downloadInvoice(payment) {
-            //     //
-            //     console.log("payment: ", payment);
-
-            //     await this.$axios.post("/api/invoice/download", {
-            //         paymentId: payment._id
-            //     });
-            // },
             socialShareToClipBoard(payment) {
                 let el = document.createElement("textarea");
 

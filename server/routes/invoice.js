@@ -58,6 +58,7 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
             status: "pending",
             paymentType: paymentMethod,
             invoiceNo,
+            invoiceDate: new Date(),
             amount: parseInt(amount) * (1 - discount) + config.invoice.feeFix,
             fee: 0,
             taxes: config.payment.tax * amount,
@@ -288,9 +289,11 @@ router.get("/download/:paymentId", verifyToken, async (req, res) => {
             invoice.fileName
         );
 
-        res.sendFile(downloadPath, {
-            headers: { "content-type": "application/pdf" },
-        });
+        // res.sendFile(downloadPath, {
+        //     headers: { "content-type": "application/pdf" },
+        // });
+
+        res.download(downloadPath, invoice.FileName);
     } catch (err) {
         console.log("Error on /api/invoice/download: ", err);
 

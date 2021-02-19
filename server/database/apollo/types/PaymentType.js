@@ -13,6 +13,7 @@ const PaymentType = gql`
             coupon: ID
             status: String
             invoiceNo: Float
+            invoiceDate: Float
             paymentType: String
             amount: Float
             fee: Float
@@ -36,6 +37,7 @@ const PaymentType = gql`
             coupon: ID
             status: String
             invoiceNo: Float
+            invoiceDate: Float
             paymentType: String
             amount: Float
             fee: Float
@@ -59,7 +61,9 @@ const PaymentType = gql`
         _id: ID!
         status: String
         invoiceNo: Float
+        invoiceDate: Float
         paymentType: String
+        stripePaymentIntent: String
         amount: Float
         fee: Float
         taxes: Float
