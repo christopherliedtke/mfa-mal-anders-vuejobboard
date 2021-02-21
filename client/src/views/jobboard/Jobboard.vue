@@ -286,7 +286,7 @@
         },
         data() {
             return {
-                title: "Stellenangebote für MFA / ArzthelferInnen",
+                title: "Stellenangebote für MFA / ArzthelferIn & ZFA",
                 filter: {
                     searchTerm:
                         this.$route.query.searchTerm ||
