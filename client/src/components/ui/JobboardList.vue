@@ -5,6 +5,7 @@
             <div>
                 <b-pagination
                     v-model="currentPage"
+                    @change="scrollToTop"
                     class="mt-4"
                     :total-rows="noOfJobs"
                     :per-page="perPage"
@@ -82,6 +83,11 @@
                     this.currentPage * this.perPage - this.perPage,
                     this.currentPage * this.perPage
                 );
+            }
+        },
+        methods: {
+            scrollToTop() {
+                window.scrollTo({ top: 0, behavior: "smooth" });
             }
         }
     };
