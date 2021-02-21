@@ -1,7 +1,7 @@
 <template>
     <div class="magazin">
         <h1 class="title">{{ title }}</h1>
-        <b-container v-if="$config.cms.active && articles" class="py-5">
+        <b-container v-if="$config.cms.active && articles" class="py-3 py-lg-5">
             <div class="grid">
                 <ArticleCard
                     v-for="article in articles"

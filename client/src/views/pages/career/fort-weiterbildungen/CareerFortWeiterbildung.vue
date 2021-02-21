@@ -1,7 +1,7 @@
 <template>
     <div v-if="training" class="fort-weiterbildung">
         <h1 class="title">{{ training.title }}</h1>
-        <b-container class="py-5">
+        <b-container class="py-3 py-lg-5">
             <b-row>
                 <b-col md="4" order="2" order-md="1">
                     <FortWeiterbildungenNav />

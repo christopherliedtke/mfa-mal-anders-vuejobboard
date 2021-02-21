@@ -1,7 +1,7 @@
 <template>
     <div class="newsletter-unsubscribe-success">
         <h1 class="title">{{ title }}</h1>
-        <b-container class="py-5">
+        <b-container class="py-3 py-lg-5">
             <p>
                 Du hast dich erfolgreich von unserem Job-Newsletter abgemeldet.
             </p>

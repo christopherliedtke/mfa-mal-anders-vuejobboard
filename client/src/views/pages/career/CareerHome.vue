@@ -1,7 +1,7 @@
 <template>
     <div class="mfa-career">
         <h1 class="title">{{ title }}</h1>
-        <b-container class="py-5">
+        <b-container class="py-3 py-lg-5">
             <h2 class="mb-4">
                 Verliebt in meinen Beruf - Dein Karriereportal für Medizinische
                 Fachangestellte

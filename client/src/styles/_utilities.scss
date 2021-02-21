@@ -32,6 +32,10 @@ h1.title {
     background-color: $primary;
     color: $light;
     padding: 1rem 0.75rem 2.5rem 0.75rem;
+
+    @media screen and (max-width: $break-menu) {
+        padding: 0.5rem 0.75rem 1.5rem 0.75rem;
+    }
 }
 
 .lead {

@@ -1,7 +1,7 @@
 <template>
     <div class="jobboard">
         <h1 class="title">{{ title }}</h1>
-        <b-container class="py-5">
+        <b-container class="py-3 py-lg-5">
             <b-row class="mt-2">
                 <b-col cols="12" lg="4" class="px-2 pr-lg-5">
                     <b-button-toolbar aria-label="Jobboard view toolbar">
@@ -202,7 +202,7 @@
                             </b-form-group>
                         </b-collapse>
                     </b-form>
-                    <div class="small text-right mb-3 pr-3 pt-1">
+                    <div class="small text-right mb-2 pr-3 pt-1">
                         <b-link to="/page/fuer-arbeitgeber"
                             >Stellenanzeige schalten</b-link
                         >
