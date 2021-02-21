@@ -52,6 +52,13 @@
         "Zahnheilkunde",
         "Sonstige"
     ],
+    "professionOptions": [
+        {
+            "value": "Medizinische Fachangestellte",
+            "text": "Medizinische Fachangestellte"
+        },
+        { "value": "Zahnheilkunde", "text": "Zahnmedizinische Fachangestellte" }
+    ],
     "employmentTypeOptions": [
         { "value": "full", "text": "Vollzeit" },
         { "value": "part", "text": "Teilzeit" },

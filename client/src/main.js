@@ -58,7 +58,8 @@ import {
     TabsPlugin,
     TooltipPlugin,
     SpinnerPlugin,
-    ToastPlugin
+    ToastPlugin,
+    PaginationPlugin
 } from "bootstrap-vue";
 Vue.use(NavbarPlugin);
 Vue.use(AlertPlugin);
@@ -90,6 +91,7 @@ Vue.use(TabsPlugin);
 Vue.use(TooltipPlugin);
 Vue.use(SpinnerPlugin);
 Vue.use(ToastPlugin);
+Vue.use(PaginationPlugin);
 
 import VueSanitize from "vue-sanitize";
 Vue.use(VueSanitize);

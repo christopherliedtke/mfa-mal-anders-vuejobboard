@@ -31,7 +31,7 @@
                         <FacebookBtn class="d-lg-none mb-3 ml-1" content="" />
                         <InstagramBtn class="d-lg-none mb-3 ml-1" content="" />
                     </b-button-toolbar>
-                    <b-form id="job-filter" inline @submit.prevent>
+                    <b-form id="job-filter" @submit.prevent>
                         <label for="searchTerm-jobboard" class="sr-only"
                             >Suchbegriff *</label
                         >
@@ -77,21 +77,7 @@
                                 >{{ type.text }}</b-form-select-option
                             >
                         </b-form-select>
-                        <!-- <b-form-select
-                        class="my-1 mr-2"
-                        v-model="filter.specialization"
-                        @change="setQuery"
-                    >
-                        <b-form-select-option :value="null"
-                            >Alle Fachrichtungen</b-form-select-option
-                        >
-                        <b-form-select-option
-                            v-for="specialization in specializationOptions"
-                            :key="specialization"
-                            :value="specialization"
-                            >{{ specialization }}</b-form-select-option
-                        >
-                    </b-form-select> -->
+
                         <label for="location-jobboard" class="sr-only"
                             >Ort *</label
                         >
@@ -142,6 +128,79 @@
                                 >{{ state }}</b-form-select-option
                             >
                         </b-form-select>
+                        <label for="profession-jobboard" class="mb-2 pl-2"
+                            >Berufe
+                        </label>
+                        <b-form-group id="profession-jobboard" class="pl-2">
+                            <b-form-checkbox-group
+                                class="ml-1"
+                                v-model="profession.active"
+                                :options="professionOptions"
+                                size="sm"
+                                stacked
+                            ></b-form-checkbox-group>
+                        </b-form-group>
+                        <label
+                            @click="
+                                specialization.visible = !specialization.visible
+                            "
+                            for="specialization-jobboard"
+                            style="cursor: pointer"
+                            class="mt-0 mb-2 pl-2"
+                            >Fachgebiete
+                            <Fa
+                                icon="caret-right"
+                                size="1x"
+                                :class="
+                                    specialization.visible === true
+                                        ? 'animate rotate-90 ml-2'
+                                        : 'animate ml-2'
+                                "
+                        /></label>
+                        <b-collapse
+                            :visible="specialization.visible === true"
+                            role="tabpanel"
+                        >
+                            <b-form-group
+                                id="specialization-jobboard"
+                                class="pl-2"
+                            >
+                                <template #label>
+                                    <b-form-checkbox
+                                        v-model="specialization.allSelected"
+                                        :indeterminate="
+                                            specialization.indeterminate
+                                        "
+                                        @change="toggleAll"
+                                        size="sm"
+                                        stacked
+                                    >
+                                        {{
+                                            specialization.allSelected
+                                                ? "Alle Abwählen"
+                                                : "Alle Auswählen"
+                                        }}
+                                    </b-form-checkbox>
+                                </template>
+
+                                <b-form-checkbox-group
+                                    class="ml-1"
+                                    v-model="specialization.active"
+                                    :options="
+                                        specializationOptions.map(
+                                            specialization => {
+                                                return {
+                                                    text: specialization,
+                                                    value: specialization
+                                                };
+                                            }
+                                        )
+                                    "
+                                    size="sm"
+                                    stacked
+                                ></b-form-checkbox-group>
+                            </b-form-group>
+                        </b-collapse>
                     </b-form>
                     <div class="small text-right mb-3 pr-3 pt-1">
                         <b-link to="/page/fuer-arbeitgeber"
@@ -173,6 +232,14 @@
                         <RandomTrainingsContainer class="mt-3" :number="2" />
                         <BerufsbilderBanner class="mt-3" />
                     </div>
+                    <div class="mt-5">
+                        <p class="small">
+                            Stellenangebote, Stellen, Jobs, Jobangebote für
+                            Medizinische Fachangestellte (MFA), Arzthelferin,
+                            Zahnmedizinische Fachangestellte (ZFA), ZMF, ZMV,
+                            MTRA in {{ companyStateOptions.join(", ") }}.
+                        </p>
+                    </div>
                 </b-col>
             </b-row>
         </b-container>
@@ -196,7 +263,8 @@
     import {
         employmentTypeOptions,
         companyStateOptions,
-        specializationOptions
+        specializationOptions,
+        professionOptions
     } from "@/config/formDataConfig.json";
     import HereMapMultiJobs from "@/components/hereMaps/HereMapMultiJobs.vue";
     import JobboardList from "@/components/ui/JobboardList.vue";
@@ -229,14 +297,25 @@
                         this.$route.query.employmenttype ||
                         null,
                     location: this.$route.query.location || "",
-                    state: this.$route.query.state || null,
-                    specialization: this.$route.query.specialization || null
+                    state: this.$route.query.state || null
+                },
+                specialization: {
+                    active: specializationOptions,
+                    visible: false,
+                    allSelected: true,
+                    indeterminate: false
+                },
+                profession: {
+                    active: professionOptions.map(
+                        profession => profession.value
+                    )
                 },
                 employmentTypeOptions: employmentTypeOptions.filter(
                     type => type.value != "part_full"
                 ),
                 companyStateOptions,
                 specializationOptions,
+                professionOptions,
                 jobboardView: this.$route.query.jobboardView || "list",
                 snippet: [
                     {
@@ -374,11 +453,16 @@
                     }
 
                     // filter specialization
-                    if (this.filter.specialization) {
+                    if (
+                        this.specialization.active &&
+                        this.specialization.active.length > 0 &&
+                        this.specialization.active.length !=
+                            this.specializationOptions.length
+                    ) {
                         jobs = jobs.filter(job => {
                             if (
-                                job.specialization.includes(
-                                    this.filter.specialization
+                                this.specialization.active.some(element =>
+                                    job.specialization.includes(element)
                                 )
                             ) {
                                 return job;
@@ -386,6 +470,30 @@
                                 return;
                             }
                         });
+                    }
+
+                    // filter profession
+                    if (
+                        this.profession.active &&
+                        this.profession.active.length === 1
+                    ) {
+                        if (
+                            this.profession.active.some(
+                                element => element === "Zahnheilkunde"
+                            )
+                        ) {
+                            jobs = jobs.filter(
+                                job => job.specialization === "Zahnheilkunde"
+                            );
+                        } else if (
+                            this.profession.active.every(
+                                element => element != "Zahnheilkunde"
+                            )
+                        ) {
+                            jobs = jobs.filter(
+                                job => job.specialization != "Zahnheilkunde"
+                            );
+                        }
                     }
 
                     return jobs;
@@ -410,6 +518,23 @@
         async created() {
             this.$store.dispatch("getJobs");
         },
+        watch: {
+            "specialization.active"(newValue) {
+                // Handle changes in individual flavour checkboxes
+                if (newValue.length === 0) {
+                    this.specialization.indeterminate = false;
+                    this.specialization.allSelected = false;
+                } else if (
+                    newValue.length === this.specializationOptions.length
+                ) {
+                    this.specialization.indeterminate = false;
+                    this.specialization.allSelected = true;
+                } else {
+                    this.specialization.indeterminate = true;
+                    this.specialization.allSelected = false;
+                }
+            }
+        },
         methods: {
             setJobboardView(value) {
                 if (this.jobboardView != value) {
@@ -419,9 +544,27 @@
             },
             setQuery() {
                 this.$router.push({
-                    query: { ...this.filter, jobboardView: this.jobboardView }
+                    query: {
+                        ...this.filter,
+                        jobboardView: this.jobboardView
+                    }
                 });
+            },
+            toggleAll(checked) {
+                this.specialization.active = checked
+                    ? this.specializationOptions.slice()
+                    : [];
             }
         }
     };
 </script>
+
+<style lang="scss">
+    #specialization-jobboard,
+    #profession-jobboard {
+        & .custom-control-label {
+            justify-content: flex-start;
+            margin-top: 0;
+        }
+    }
+</style>
