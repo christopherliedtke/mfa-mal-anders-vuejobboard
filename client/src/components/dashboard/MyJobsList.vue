@@ -12,13 +12,13 @@
                     $store.state.auth.user.isAdmin ? 'admin' : 'user/dashboard'
                 }/jobs/edit/new`
             "
-            variant="outline-primary"
+            variant="primary"
             ><Fa class="mr-2" icon="plus" />Neue Stelle</b-button
         >
         <b-button
             class="mr-2 mb-2"
             to="/article/8-tipps-fuer-attraktive-stellenanzeigen-fuer-mfas"
-            variant="outline-secondary"
+            variant="secondary"
             target="_blank"
             >Tipps für Stellenanzeigen</b-button
         >

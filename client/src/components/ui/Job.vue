@@ -128,7 +128,7 @@
             <div
                 v-if="job.imageUrl"
                 style="overflow: hidden"
-                class="position-relative  border-radius1 mx-auto mt-3"
+                class="position-relative border-radius1 mx-auto mt-3"
             >
                 <b-img
                     fluid
