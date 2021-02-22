@@ -3,7 +3,7 @@
         <h1 class="title">{{ title }}</h1>
         <b-container class="py-3 py-lg-5">
             <b-img
-                class="border-radius1 shadow1 mb-5"
+                class="border-radius1 shadow1 mb-3 mb-lg-5"
                 fluid
                 src="/img/MfaMalAnders_Gehalt_1200.jpg"
                 alt="MFA Gehalt - So viel verdienst Du wirklich"

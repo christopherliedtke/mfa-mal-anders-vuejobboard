@@ -176,6 +176,11 @@
                         icon: "chevron-down",
                         children: [
                             {
+                                title: "Ausbildung und Berufsbild",
+                                path:
+                                    "/page/mfa-career/mfa-ausbildung-berufsbild"
+                            },
+                            {
                                 title: "Gehalt",
                                 path: "/page/mfa-career/gehalt"
                             },
@@ -190,35 +195,35 @@
                             },
                             {
                                 title: "Jobs und Berufsbilder",
-                                path: "/page/mfa-career/jobs-und-berufsbilder",
-                                icon: "chevron-right",
-                                children: [
-                                    {
-                                        title: "Medizinisch-Technisch",
-                                        path:
-                                            "/page/mfa-career/jobs-und-berufsbilder/medizinisch-technisch"
-                                    },
-                                    {
-                                        title: "Verwaltung",
-                                        path:
-                                            "/page/mfa-career/jobs-und-berufsbilder/verwaltung"
-                                    },
-                                    {
-                                        title: "Management",
-                                        path:
-                                            "/page/mfa-career/jobs-und-berufsbilder/management"
-                                    },
-                                    {
-                                        title: "Beratung",
-                                        path:
-                                            "/page/mfa-career/jobs-und-berufsbilder/beratung"
-                                    },
-                                    {
-                                        title: "Forschung",
-                                        path:
-                                            "/page/mfa-career/jobs-und-berufsbilder/forschung"
-                                    }
-                                ]
+                                path: "/page/mfa-career/jobs-und-berufsbilder"
+                                // icon: "chevron-right"
+                                // children: [
+                                //     {
+                                //         title: "Medizinisch-Technisch",
+                                //         path:
+                                //             "/page/mfa-career/jobs-und-berufsbilder/medizinisch-technisch"
+                                //     },
+                                //     {
+                                //         title: "Verwaltung",
+                                //         path:
+                                //             "/page/mfa-career/jobs-und-berufsbilder/verwaltung"
+                                //     },
+                                //     {
+                                //         title: "Management",
+                                //         path:
+                                //             "/page/mfa-career/jobs-und-berufsbilder/management"
+                                //     },
+                                //     {
+                                //         title: "Beratung",
+                                //         path:
+                                //             "/page/mfa-career/jobs-und-berufsbilder/beratung"
+                                //     },
+                                //     {
+                                //         title: "Forschung",
+                                //         path:
+                                //             "/page/mfa-career/jobs-und-berufsbilder/forschung"
+                                //     }
+                                // ]
                             },
                             {
                                 title: "Fort- und Weiterbildungen",

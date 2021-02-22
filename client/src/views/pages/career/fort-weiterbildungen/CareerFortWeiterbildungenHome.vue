@@ -8,7 +8,7 @@
                 </b-col>
                 <b-col>
                     <b-img
-                        class="border-radius1 shadow1 mb-5"
+                        class="border-radius1 shadow1 mb-3 mb-lg-5"
                         fluid
                         src="/img/Banner_Weiterbildungsdschungel_1200.jpg"
                         alt="Banner - So viel verdienst Du wirklich"

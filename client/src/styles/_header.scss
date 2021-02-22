@@ -72,7 +72,7 @@
                 border-radius: $border-radius1;
                 width: max-content;
                 max-height: 0;
-                overflow: hidden;
+                overflow-y: hidden;
                 visibility: hidden;
                 transition: linear 0.3s;
 
@@ -87,7 +87,7 @@
 
                 &.show {
                     max-height: 300px;
-                    // overflow: visible;
+                    overflow-y: visible;
                     visibility: visible;
 
                     @media screen and (max-width: $break-menu) {

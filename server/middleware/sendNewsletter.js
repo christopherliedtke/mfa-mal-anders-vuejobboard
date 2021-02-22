@@ -27,7 +27,8 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
             },
             publishedAt: {
                 $gte: new Date(
-                    new Date().valueOf() - 1000 * 60 * 60 * 24 * daysBack
+                    new Date().setHours(0) -
+                        1000 * 60 * 60 * 24 * (daysBack + 1 / 24)
                 ),
                 $lte: new Date(),
             },

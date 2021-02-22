@@ -61,6 +61,10 @@ const CareerHome = () =>
     import(
         /* webpackChunkName: "career" */ "@/views/pages/career/CareerHome.vue"
     );
+const CareerMfaAusbildung = () =>
+    import(
+        /* webpackChunkName: "career" */ "@/views/pages/career/CareerMfaAusbildung.vue"
+    );
 const CareerGehalt = () =>
     import(
         /* webpackChunkName: "career" */ "@/views/pages/career/CareerGehalt.vue"
@@ -255,6 +259,10 @@ const routes = [
                     {
                         path: "",
                         component: CareerHome
+                    },
+                    {
+                        path: "mfa-ausbildung-berufsbild",
+                        component: CareerMfaAusbildung
                     },
                     {
                         path: "gehalt",

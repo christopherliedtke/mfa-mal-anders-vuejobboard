@@ -3,7 +3,7 @@
         <h1 class="title">{{ title }}</h1>
         <b-container class="py-3 py-lg-5">
             <b-img
-                class="border-radius1 shadow1 mb-5 w-100"
+                class="border-radius1 shadow1 mb-3 mb-lg-5 w-100"
                 fluid
                 src="/img/MfaMalAnders_Bewerbungstipps_1200.jpg"
                 alt="Banner - Schnell und einfach eine Top-Bewerbung schreiben"

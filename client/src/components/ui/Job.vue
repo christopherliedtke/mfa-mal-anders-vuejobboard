@@ -126,12 +126,19 @@
                 <SubscribeNewsletterBtn :state="job.company.state" />
             </div>
             <div
-                class="bg-light-shade border-radius1 mx-auto"
-                style="width: fit-content; min-width: 85%"
+                v-if="job.imageUrl"
+                style="overflow: hidden"
+                class="position-relative  border-radius1 mx-auto mt-3"
             >
                 <b-img
-                    v-if="job.imageUrl"
-                    class="mt-3 title-img"
+                    fluid
+                    center
+                    style="object-fit: fill; z-index: -1"
+                    class="blur position-absolute"
+                    :src="job.imageUrl"
+                />
+                <b-img
+                    class="title-img"
                     style="max-height: 35vh"
                     :src="job.imageUrl"
                     fluid

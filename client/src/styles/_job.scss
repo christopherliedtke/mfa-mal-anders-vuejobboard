@@ -54,4 +54,8 @@
     .title-img {
         border-radius: $border-radius1;
     }
+
+    .blur {
+        filter: blur(4px) opacity(0.4);
+    }
 }
