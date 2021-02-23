@@ -4,8 +4,8 @@
             <b-navbar toggleable="xl" type="dark">
                 <b-navbar-brand to="/">
                     <b-img
+                        class="header-logo"
                         src="@/assets/img/Logo_mfa-mal-anders-white_1200.png"
-                        height="70"
                         alt="MFA mal anders - Logo"
                     />
                 </b-navbar-brand>

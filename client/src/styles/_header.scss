@@ -1,6 +1,7 @@
 #header {
     background: $primary;
     font-family: $font-family-headlines;
+    box-shadow: $shadow1;
     position: sticky;
     top: 0;
     left: 0;
@@ -22,6 +23,14 @@
 
         .navbar {
             padding: 0 0.75rem;
+
+            .header-logo {
+                height: 70px;
+
+                @media screen and (max-width: $break-menu) {
+                    height: 55px;
+                }
+            }
 
             .navbar-nav {
                 display: flex;
