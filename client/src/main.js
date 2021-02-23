@@ -169,9 +169,10 @@ import {
     faEuroSign,
     faCalendar,
     faBriefcaseMedical,
-    faDownload
+    faDownload,
+    faStar
 } from "@fortawesome/free-solid-svg-icons";
-// import { faUser as farUser } from "@fortawesome/free-regular-svg-icons";
+import { faStar as farStar } from "@fortawesome/free-regular-svg-icons";
 import {
     faFacebookSquare,
     faFacebook,
@@ -261,7 +262,9 @@ library.add(
     faEuroSign,
     faCalendar,
     faBriefcaseMedical,
-    faDownload
+    faDownload,
+    faStar,
+    farStar
 );
 
 Vue.component("Fa", FontAwesomeIcon);

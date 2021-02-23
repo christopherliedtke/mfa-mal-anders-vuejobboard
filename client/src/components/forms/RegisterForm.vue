@@ -115,7 +115,7 @@
             Registrieren
         </button>
         <p>
-            Sie sind bereits registriert? Jetzt
+            Bereits registriert? Jetzt
             <b-link to="/auth/login">Anmelden</b-link>.
         </p>
         <div class="error mt-3" v-if="errors">
@@ -154,6 +154,14 @@
                 errors: []
             };
         },
+        computed: {
+            isEmployer: function() {
+                return this.$route.query.role != "employee";
+            },
+            isEmployee: function() {
+                return this.$route.query.role === "employee";
+            }
+        },
         methods: {
             async onSubmit() {
                 this.$store.dispatch("setOverlay", true);
@@ -168,6 +176,8 @@
                         email: this.email.toLowerCase(),
                         password: this.password,
                         password2: this.password2,
+                        isEmployer: this.isEmployer,
+                        isEmployee: this.isEmployee,
                         acceptance: this.acceptance
                     }
                 });

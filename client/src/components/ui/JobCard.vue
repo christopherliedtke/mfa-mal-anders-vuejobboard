@@ -1,9 +1,15 @@
 <template>
     <div class="jobcard">
+        <div
+            v-if="disabled"
+            class="disabled-jobcard d-flex justify-content-center align-items-center"
+        >
+            <span class="h2 bold text-danger">Abgelaufen</span>
+        </div>
         <b-link :to="`/jobboard/job/${job._id}`">
             <b-card no-body class="mb-3 mt-3 mt-lg-0">
                 <b-card-text>
-                    <div class="card-head">
+                    <div class="card-head position-relative">
                         <h2
                             :class="
                                 job.company.logoUrl
@@ -13,6 +19,7 @@
                         >
                             {{ job.title }}
                         </h2>
+                        <StarJob :jobId="job._id" />
                         <div v-if="job.company.logoUrl" class="img-container">
                             <b-img-lazy
                                 :src="job.company.logoUrl"
@@ -141,14 +148,25 @@
         employmentTypeOptions,
         companySizeOptions
     } from "@/config/formDataConfig.json";
+    import StarJob from "@/components/utils/starJob";
     export default {
         name: "JobCard",
         props: ["job"],
+        components: { StarJob },
         data() {
             return {
                 employmentTypeOptions,
                 companySizeOptions
             };
+        },
+        computed: {
+            disabled() {
+                return (
+                    new Date(this.job.applicationDeadline) < new Date() ||
+                    this.job.status != "published" ||
+                    this.job.paidExpiresAt < new Date()
+                );
+            }
         }
     };
 </script>

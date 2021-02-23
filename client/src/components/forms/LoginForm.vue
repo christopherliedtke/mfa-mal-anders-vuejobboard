@@ -79,9 +79,15 @@
                     if (this.$store.state.auth.user.status === "pending") {
                         this.$router.push("/auth/account/verification");
                     } else if (this.$store.state.auth.loggedIn) {
-                        this.$router.push("/user/dashboard?tab=1");
+                        if (this.$store.state.auth.user.isEmployee) {
+                            this.$router.push("/user/dashboard?tab=3");
+                        } else {
+                            this.$router.push("/user/dashboard?tab=1");
+                        }
                     }
                 }
+
+                this.$store.dispatch("getStarredJobs");
 
                 this.$store.dispatch("setOverlay", false);
             },

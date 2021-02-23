@@ -21,7 +21,11 @@ const actions = {
     async auth({ commit }, data) {
         let args = "";
         for (const key in data.creds) {
-            args += `${key}: "${data.creds[key]}"`;
+            if (typeof data.creds[key] === "string") {
+                args += `${key}: "${data.creds[key]}"`;
+            } else {
+                args += `${key}: ${data.creds[key]}`;
+            }
         }
 
         const user = await axios.post("/graphql", {
@@ -40,6 +44,7 @@ const actions = {
                         role
                         isAdmin
                         isEmployer
+                        isEmployee
                         token
                     }
                 }
@@ -70,6 +75,7 @@ const actions = {
                             role
                             isAdmin
                             isEmployer
+                            isEmployee
                             token
                         }
                     }
@@ -113,6 +119,7 @@ const actions = {
                         role
                         isAdmin
                         isEmployer
+                        isEmployee
                         token
                     }
                 }
@@ -143,6 +150,7 @@ const actions = {
                             role
                             isAdmin
                             isEmployer
+                            isEmployee
                         }
                     }
                 `
@@ -171,6 +179,7 @@ const actions = {
             commit("setToken", false);
             commit("setUser", false);
             commit("setLoggedIn", false);
+            commit("emptyStarredJobs");
 
             // localStorage.removeItem("token");
             // localStorage.removeItem("user");

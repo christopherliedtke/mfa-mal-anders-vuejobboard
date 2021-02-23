@@ -20,6 +20,8 @@ const UserType = gql`
             email: String
             password: String
             password2: String
+            isEmployer: Boolean
+            isEmployee: Boolean
         ): User
         activateUser(_id: ID!): User
         resetPasswordGetCode(email: String): User
@@ -57,6 +59,7 @@ const UserType = gql`
         status: String
         role: String
         isEmployer: Boolean
+        isEmployee: Boolean
         isAdmin: Boolean
         gender: String
         title: String

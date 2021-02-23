@@ -165,6 +165,10 @@ const JobType = gql`
     extend type Payment {
         job: Job
     }
+
+    extend type StarredJob {
+        job: Job
+    }
 `;
 
 module.exports = JobType;

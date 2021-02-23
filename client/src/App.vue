@@ -35,6 +35,7 @@
             }
 
             this.$store.dispatch("getJobs");
+            this.$store.dispatch("getStarredJobs");
 
             if (this.$config.cms.active) {
                 this.$store.dispatch("getArticles");

@@ -1,6 +1,10 @@
 <template>
     <b-modal
         id="subscribe-newsletter-modal"
+        content-class="border-0"
+        body-class="shadow1 border-radius1"
+        no-close-on-backdrop
+        no-close-on-esc
         hide-footer
         hide-header
         centered

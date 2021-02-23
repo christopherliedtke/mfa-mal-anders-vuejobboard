@@ -1,7 +1,8 @@
 <template>
     <div>
-        <div v-if="job.title" class="job">
+        <div v-if="job.title" class="job position-relative">
             <h1>{{ job.title }}</h1>
+
             <div
                 class="d-flex  flex-lg-nowrap align-items-start align-items-md-center my-3"
             >
@@ -122,7 +123,13 @@
                     </div>
                 </div>
             </div>
-            <div>
+            <div class="position-relative d-flex align-items-center">
+                <StarJob
+                    :jobId="job._id"
+                    position="relative"
+                    padding="0 20px 0 0"
+                    size="2x"
+                />
                 <SubscribeNewsletterBtn :state="job.company.state" />
             </div>
             <div
@@ -372,6 +379,7 @@
         employmentTypeOptions,
         companySizeOptions
     } from "@/config/formDataConfig.json";
+    import StarJob from "@/components/utils/starJob";
     import JobStructuredData from "@/components/utils/JobStructuredData.vue";
     import HereMapSingleJob from "@/components/hereMaps/HereMapSingleJob.vue";
     import FacebookShareBtn from "@/components/buttons/FacebookShareBtn.vue";
@@ -389,7 +397,8 @@
             WhatsAppShareBtn,
             EmailShareBtn,
             TwitterShareBtn,
-            SubscribeNewsletterBtn
+            SubscribeNewsletterBtn,
+            StarJob
         },
         props: ["apiJobsSchema"],
         data() {

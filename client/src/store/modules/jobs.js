@@ -19,6 +19,8 @@ const actions = {
                             createdAt
                             publishedAt
                             paidAt
+                            paidExpiresAt
+                            status
                             title
                             description
                             employmentType

@@ -106,6 +106,7 @@
                                     >Profil</b-nav-item
                                 >
                                 <b-nav-item
+                                    v-if="$store.state.auth.user.isEmployer"
                                     to="/user/dashboard?tab=1"
                                     :active-class="
                                         $route.query.tab == 1
@@ -120,6 +121,7 @@
                                     >Stellenanzeigen</b-nav-item
                                 >
                                 <b-nav-item
+                                    v-if="$store.state.auth.user.isEmployer"
                                     to="/user/dashboard?tab=2"
                                     :active-class="
                                         $route.query.tab == 2
@@ -133,6 +135,25 @@
                                     "
                                     >Unternehmen</b-nav-item
                                 >
+                                <b-nav-item
+                                    v-if="
+                                        $store.state.starredJobs.starredJobs &&
+                                            $store.state.starredJobs.starredJobs
+                                                .length > 0
+                                    "
+                                    to="/user/dashboard?tab=3"
+                                    :active-class="
+                                        $route.query.tab == 3
+                                            ? 'router-link-active'
+                                            : ''
+                                    "
+                                    :exact-active-class="
+                                        $route.query.tab == 3
+                                            ? 'router-link-active'
+                                            : ''
+                                    "
+                                    >Gespeicherte Jobs</b-nav-item
+                                >
                             </div>
                         </b-nav-item>
 
@@ -140,11 +161,26 @@
                             ><Fa icon="key" size="lg"
                         /></b-nav-item>
                         <b-nav-item v-if="loggedIn"><LogoutBtn /></b-nav-item>
-                        <b-nav-item v-else
-                            ><b-button variant="secondary" to="/auth/login"
+                        <b-nav-item v-else>
+                            <b-button
+                                class="mr-1"
+                                variant="secondary"
+                                size="sm"
+                                to="/auth/login"
                                 >Login</b-button
-                            ></b-nav-item
-                        >
+                            >
+                            <b-button
+                                class="px-3"
+                                variant="secondary"
+                                size="lg"
+                                to="/auth/register"
+                                ><Fa
+                                    style="margin: 0.1rem"
+                                    icon="user-plus"
+                                    size="sm"
+                                />
+                            </b-button>
+                        </b-nav-item>
                     </b-navbar-nav>
                 </b-collapse>
             </b-navbar>

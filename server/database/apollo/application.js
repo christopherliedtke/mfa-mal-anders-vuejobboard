@@ -5,6 +5,7 @@ const CompanyModule = require("./modules/CompanyModule");
 const SubscriberModule = require("./modules/SubscriberModule");
 const CouponModule = require("./modules/CouponModule");
 const PaymentModule = require("./modules/PaymentModule");
+const StarredJobModule = require("./modules/StarredJobModule");
 
 const application = createApplication({
     modules: [
@@ -14,6 +15,7 @@ const application = createApplication({
         SubscriberModule,
         CouponModule,
         PaymentModule,
+        StarredJobModule,
     ],
 });
 
