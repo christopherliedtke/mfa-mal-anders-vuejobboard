@@ -89,14 +89,27 @@
                         />
                         {{
                             !job.salaryMax
-                                ? `ab ${parseInt(job.salaryMin)}€`
+                                ? `ab ${parseInt(job.salaryMin)
+                                      .toString()
+                                      .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}€`
                                 : `${
                                       job.salaryMin
-                                          ? parseInt(job.salaryMin) + " -"
+                                          ? parseInt(job.salaryMin)
+                                                .toString()
+                                                .replace(
+                                                    /\B(?=(\d{3})+(?!\d))/g,
+                                                    "."
+                                                ) + " -"
                                           : "bis"
                                   }`
                         }}
-                        {{ job.salaryMax ? `${parseInt(job.salaryMax)}€` : "" }}
+                        {{
+                            job.salaryMax
+                                ? `${parseInt(job.salaryMax)
+                                      .toString()
+                                      .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}€`
+                                : ""
+                        }}
                     </div>
                     <div
                         v-if="
@@ -459,6 +472,8 @@
         },
         methods: {
             async getJob(jobId) {
+                this.$store.dispatch("setOverlay", true);
+
                 try {
                     const job = await this.$axios.get(`/graphql`, {
                         params: {
@@ -542,6 +557,8 @@
                         }
                     );
                 }
+
+                this.$store.dispatch("setOverlay", false);
             },
             setLogoDimensions(src) {
                 if (src) {

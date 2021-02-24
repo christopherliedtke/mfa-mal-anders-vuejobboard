@@ -124,7 +124,6 @@
     .star {
         top: 0;
         right: 0;
-        // align-self: flex-start;
         cursor: pointer;
         z-index: 6;
     }

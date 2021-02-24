@@ -98,16 +98,31 @@
                             />
                             {{
                                 !job.salaryMax
-                                    ? `ab ${parseInt(job.salaryMin)}€`
+                                    ? `ab ${parseInt(job.salaryMin)
+                                          .toString()
+                                          .replace(
+                                              /\B(?=(\d{3})+(?!\d))/g,
+                                              "."
+                                          )}€`
                                     : `${
                                           job.salaryMin
-                                              ? parseInt(job.salaryMin) + " -"
+                                              ? parseInt(job.salaryMin)
+                                                    .toString()
+                                                    .replace(
+                                                        /\B(?=(\d{3})+(?!\d))/g,
+                                                        "."
+                                                    ) + " -"
                                               : "bis"
                                       }`
                             }}
                             {{
                                 job.salaryMax
-                                    ? `${parseInt(job.salaryMax)}€`
+                                    ? `${parseInt(job.salaryMax)
+                                          .toString()
+                                          .replace(
+                                              /\B(?=(\d{3})+(?!\d))/g,
+                                              "."
+                                          )}€`
                                     : ""
                             }}
                         </div>

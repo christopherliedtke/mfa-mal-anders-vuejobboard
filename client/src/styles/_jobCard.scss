@@ -62,7 +62,7 @@
                 justify-content: center;
                 align-items: center;
                 background-color: darken($light, $amount: 1%);
-                padding: 1rem 0;
+                padding: 1rem 1rem;
                 width: 130px;
                 min-width: 130px;
                 border-radius: 0 5px 0 0;
@@ -70,6 +70,7 @@
                 @media screen and (max-width: $break-menu) {
                     width: 90px;
                     min-width: 90px;
+                    padding: 2rem 0;
                 }
 
                 img {
