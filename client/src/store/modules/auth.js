@@ -22,9 +22,9 @@ const actions = {
         let args = "";
         for (const key in data.creds) {
             if (typeof data.creds[key] === "string") {
-                args += `${key}: "${data.creds[key]}"`;
+                args += `${key}: "${data.creds[key]}" `;
             } else {
-                args += `${key}: ${data.creds[key]}`;
+                args += `${key}: ${data.creds[key]} `;
             }
         }
 
@@ -60,7 +60,7 @@ const actions = {
         return user.data;
     },
     async fetchUserFromDb({ commit }) {
-        const user = axios.get("/graphql", {
+        const user = await axios.get("/graphql", {
             params: {
                 query: `
                     query {
@@ -188,7 +188,11 @@ const actions = {
             localStorage.setItem("nl-pop", "false");
 
             router.push("/").catch(() => {});
+
+            return true;
         }
+
+        return false;
     }
 };
 

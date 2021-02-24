@@ -390,7 +390,7 @@
                 trim
             />
 
-            <label for="company-state">Bundesland *</label>
+            <!-- <label for="company-state">Bundesland *</label>
             <b-form-select
                 id="company-state"
                 v-model="job.company.state"
@@ -405,7 +405,7 @@
                     :value="state"
                     >{{ state }}</b-form-select-option
                 >
-            </b-form-select>
+            </b-form-select> -->
 
             <label for="company-country">Land *</label>
             <b-form-select
@@ -508,7 +508,6 @@
 </template>
 
 <script>
-    import { getGeocodeMixin } from "@/mixins/getGeocodeMixin";
     import { saveCompanyMixin } from "@/mixins/saveCompanyMixin";
     import { saveJobMixin } from "@/mixins/saveJobMixin";
     import {
@@ -529,7 +528,7 @@
             TipTapEditor,
             ImageUploader
         },
-        mixins: [getGeocodeMixin, saveCompanyMixin, saveJobMixin],
+        mixins: [saveCompanyMixin, saveJobMixin],
         props: ["apiJobsSchema"],
         data() {
             return {
@@ -771,10 +770,6 @@
 
                 this.$store.dispatch("setOverlay", true);
 
-                const data = await this.getGeocode(this.job.company);
-                this.job.company.geoCodeLat = data.lat;
-                this.job.company.geoCodeLng = data.lng;
-
                 // Save / Update company
                 let companyMutationType;
 
@@ -831,7 +826,7 @@
                     !this.job.company.name ||
                     !this.job.company.country ||
                     !this.job.company.location ||
-                    !this.job.company.state ||
+                    // !this.job.company.state ||
                     !this.job.company.street ||
                     !this.job.company.zipCode ||
                     !this.job.company.size

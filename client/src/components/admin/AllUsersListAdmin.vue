@@ -121,7 +121,11 @@
                         sortable: true
                     },
                     {
-                        key: "role",
+                        key: "isEmployer",
+                        sortable: true
+                    },
+                    {
+                        key: "isEmployee",
                         sortable: true
                     },
                     {
@@ -193,7 +197,8 @@
                                         lastName
                                         email
                                         status
-                                        role
+                                        isEmployer
+                                        isEmployee
                                     }
                                 }
                             `

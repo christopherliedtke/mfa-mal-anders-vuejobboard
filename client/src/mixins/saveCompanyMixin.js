@@ -1,7 +1,14 @@
+import { getGeocodeMixin } from "@/mixins/getGeocodeMixin";
 export const saveCompanyMixin = {
+    mixins: [getGeocodeMixin],
     methods: {
         async saveCompany(mutationType, company, redirect = false) {
             try {
+                const data = await this.getGeocode(company);
+                company.geoCodeLat = data.lat;
+                company.geoCodeLng = data.lng;
+                company.state = data.state;
+
                 const companyQuery = `
                         mutation {
                             ${mutationType}(

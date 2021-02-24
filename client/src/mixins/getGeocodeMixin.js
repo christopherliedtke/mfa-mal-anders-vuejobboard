@@ -17,21 +17,28 @@ export const getGeocodeMixin = {
             });
         },
         async getGeocode(company) {
-            let lat, lng;
+            const data = {
+                lat: null,
+                lng: null,
+                state: ""
+            };
+
             try {
                 const service = this.hereMaps.platform.getSearchService();
                 const geocode = await service.geocode({
-                    q: `${company.street} ${company.location} ${company.state} ${company.country}`
+                    q: `${company.street} ${company.location} ${company.zipCode} ${company.country}`
                 });
 
-                lat = geocode.items[0].position.lat;
-                lng = geocode.items[0].position.lng;
+                console.log("geocode: ", geocode);
+
+                data.lat = geocode.items[0].position.lat;
+                data.lng = geocode.items[0].position.lng;
+                data.state = geocode.items[0].address.state;
             } catch (err) {
-                lat = null;
-                lng = null;
+                //
             }
 
-            return { lat, lng };
+            return data;
         }
     }
 };

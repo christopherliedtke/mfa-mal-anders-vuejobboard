@@ -97,6 +97,8 @@
                     )
                 ) {
                     this.active = true;
+                } else {
+                    this.active = false;
                 }
             },
             async toggleStar() {

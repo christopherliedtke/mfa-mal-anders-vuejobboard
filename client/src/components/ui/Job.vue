@@ -302,23 +302,30 @@
                 />
             </div>
             <div
-                class="d-flex flex-wrap flex-column flex-md-row align-items-start"
+                class="d-flex flex-wrap flex-column flex-md-row align-items-center"
             >
+                <StarJob
+                    class="ml-3 ml-md-0 mb-2"
+                    :jobId="job._id"
+                    position="relative"
+                    padding="0 20px 0 0"
+                    size="2x"
+                />
                 <FacebookShareBtn
-                    class="mr-2 mb-2"
+                    class="mr-0 mr-md-2 mb-2"
                     :sharePath="$route.fullPath"
                 />
                 <WhatsAppShareBtn
-                    class="mr-2 mb-2"
+                    class="mr-0 mr-md-2 mb-2"
                     :sharePath="$route.fullPath"
                 />
                 <TwitterShareBtn
-                    class="mr-2 mb-2"
+                    class="mr-0 mr-md-2 mb-2"
                     :sharePath="$route.fullPath"
                     :title="job.title"
                 />
                 <EmailShareBtn
-                    class="mr-2 mb-2"
+                    class="mr-0 mr-md-2 mb-2"
                     :sharePath="$route.fullPath"
                     :subject="job.title"
                 />

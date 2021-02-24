@@ -420,6 +420,8 @@ const UserResolvers = {
                     lastName: sanitizeHtml(args.lastName),
                     email: sanitizeHtml(args.email),
                     status: status,
+                    isEmployer: args.isEmployer,
+                    isEmployee: args.isEmployee,
                 },
                 { new: true }
             );
@@ -472,6 +474,8 @@ const UserResolvers = {
                     firstName: sanitizeHtml(args.firstName),
                     lastName: sanitizeHtml(args.lastName),
                     email: sanitizeHtml(args.email),
+                    isEmployer: args.isEmployer,
+                    isEmployee: args.isEmployee,
                 },
                 { new: true }
             );

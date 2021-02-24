@@ -137,9 +137,11 @@
                                 >
                                 <b-nav-item
                                     v-if="
-                                        $store.state.starredJobs.starredJobs &&
-                                            $store.state.starredJobs.starredJobs
-                                                .length > 0
+                                        $store.state.auth.user.isEmployee ||
+                                            ($store.state.starredJobs
+                                                .starredJobs &&
+                                                $store.state.starredJobs
+                                                    .starredJobs.length > 0)
                                     "
                                     to="/user/dashboard?tab=3"
                                     :active-class="

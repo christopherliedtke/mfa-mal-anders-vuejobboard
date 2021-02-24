@@ -77,6 +77,8 @@
                 this.$store.dispatch("setOverlay", false);
             },
             async activateUser() {
+                this.$store.dispatch("setOverlay", true);
+
                 if (this.$route.params.userId) {
                     const success = await this.$store.dispatch(
                         "activateUser",
@@ -87,6 +89,8 @@
                         this.checkUserStatus();
                     }
                 }
+
+                this.$store.dispatch("setOverlay", false);
             },
             async checkUserStatus() {
                 await this.$store.dispatch("fetchUserFromToken");

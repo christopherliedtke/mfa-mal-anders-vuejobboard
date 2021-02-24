@@ -1,5 +1,5 @@
 <template>
-    <b-button variant="danger" @click="logout" aria-label="Logout">
+    <b-button variant="danger" size="sm" @click="logout" aria-label="Logout">
         <Fa class="mr-2" icon="sign-out-alt" size="1x" />Logout
     </b-button>
 </template>
@@ -9,7 +9,11 @@
         name: "LogoutBtn",
         methods: {
             async logout() {
+                this.$store.dispatch("setOverlay", true);
+
                 await this.$store.dispatch("logout");
+
+                this.$store.dispatch("setOverlay", false);
             }
         }
     };

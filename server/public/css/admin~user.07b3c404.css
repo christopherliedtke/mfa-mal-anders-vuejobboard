@@ -1,0 +1,1 @@
+.editor p.is-editor-empty:first-child:before{content:attr(data-empty-text);float:left;color:#777;pointer-events:none;height:0}.menubar{display:flex;flex-wrap:wrap}.b-avatar .b-avatar-img img{width:auto;height:auto;border-radius:0}label[for=is-employee],label[for=is-employer]{margin-top:0}.b-avatar-img>img{max-width:100%;max-height:100%}

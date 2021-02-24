@@ -65,6 +65,27 @@
                 required
                 :disabled="disabled"
             />
+            <label for="role" class="d-block">Rolle</label>
+            <b-form-checkbox
+                id="is-employer"
+                v-model="user.isEmployer"
+                :value="true"
+                :unchecked-value="false"
+                :disabled="disabled"
+                inline
+            >
+                Arbeitgeber
+            </b-form-checkbox>
+            <b-form-checkbox
+                id="is-employee"
+                v-model="user.isEmployee"
+                :value="true"
+                :unchecked-value="false"
+                :disabled="disabled"
+                inline
+            >
+                MFA / ZFA
+            </b-form-checkbox>
 
             <div class="d-flex justify-content-between my-4">
                 <b-button
@@ -103,7 +124,9 @@
                     title: null,
                     firstName: "",
                     lastName: "",
-                    email: ""
+                    email: "",
+                    isEmployer: false,
+                    isEmployee: false
                 },
                 contactGenderOptions,
                 contactTitleOptions,
@@ -140,6 +163,8 @@
                                         firstName
                                         lastName
                                         email
+                                        isEmployer
+                                        isEmployee
                                     }
                                 }
                             `
@@ -178,6 +203,8 @@
                                             firstName: "${this.user.firstName}",
                                             lastName: "${this.user.lastName}",
                                             email: "${this.user.email.toLowerCase()}",
+                                            isEmployer: ${this.user.isEmployer},
+                                            isEmployee: ${this.user.isEmployee},
                                         ) {
                                             _id
                                             status
@@ -188,6 +215,8 @@
 
                         if (response.data.data[mutationType]) {
                             this.disabled = true;
+
+                            await this.$store.dispatch("fetchUserFromDb");
 
                             this.$root.$bvToast.toast(
                                 "Ihre Daten wurden erfolgreich gespeichert.",
@@ -223,15 +252,8 @@
                                 );
                             }
                         } else {
-                            this.$root.$bvToast.toast(
-                                "Beim Speichern Ihrer Daten ist ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal.",
-                                {
-                                    title: `Fehler beim Speichern`,
-                                    variant: "danger",
-                                    toaster: "b-toaster-bottom-right",
-                                    solid: true,
-                                    noAutoHide: true
-                                }
+                            throw new Error(
+                                "Beim Speichern ist ein Fehler aufgetreten."
                             );
                         }
                     } catch (err) {
@@ -261,3 +283,10 @@
         }
     };
 </script>
+
+<style lang="scss">
+    label[for="is-employer"],
+    label[for="is-employee"] {
+        margin-top: 0;
+    }
+</style>
