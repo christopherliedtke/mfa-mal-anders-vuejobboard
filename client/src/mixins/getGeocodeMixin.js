@@ -29,8 +29,6 @@ export const getGeocodeMixin = {
                     q: `${company.street} ${company.location} ${company.zipCode} ${company.country}`
                 });
 
-                console.log("geocode: ", geocode);
-
                 data.lat = geocode.items[0].position.lat;
                 data.lng = geocode.items[0].position.lng;
                 data.state = geocode.items[0].address.state;
