@@ -1,5 +1,5 @@
 <template>
-    <div class="jobcard">
+    <div class="jobcard" v-if="job">
         <div
             v-if="disabled"
             class="disabled-jobcard d-flex justify-content-center align-items-center"
