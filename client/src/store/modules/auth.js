@@ -164,8 +164,8 @@ const actions = {
 
         return user;
     },
-    async logout({ commit }) {
-        const response = await axios.post("/graphql", {
+    logout({ commit }) {
+        axios.post("/graphql", {
             query: `
                 mutation {
                     logout {
@@ -175,24 +175,15 @@ const actions = {
         `
         });
 
-        if (response.data.data.logout) {
-            commit("setToken", false);
-            commit("setUser", false);
-            commit("setLoggedIn", false);
-            commit("emptyStarredJobs");
+        commit("setToken", false);
+        commit("setUser", false);
+        commit("setLoggedIn", false);
+        commit("emptyStarredJobs");
 
-            // localStorage.removeItem("token");
-            // localStorage.removeItem("user");
-            // localStorage.removeItem("loggedIn");
-            localStorage.clear();
-            localStorage.setItem("nl-pop", "false");
+        localStorage.clear();
+        localStorage.setItem("nl-pop", "false");
 
-            router.push("/").catch(() => {});
-
-            return true;
-        }
-
-        return false;
+        router.push("/").catch(() => {});
     }
 };
 

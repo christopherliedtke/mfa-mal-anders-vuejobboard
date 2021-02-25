@@ -245,7 +245,7 @@ const UserResolvers = {
         },
         logout: (root, args, context) => {
             context.session.destroy();
-            return context.user;
+            return { _id: "" };
         },
         resetPasswordGetCode: async (root, args) => {
             if (!args.email) {

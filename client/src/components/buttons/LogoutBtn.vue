@@ -11,7 +11,7 @@
             async logout() {
                 this.$store.dispatch("setOverlay", true);
 
-                await this.$store.dispatch("logout");
+                this.$store.dispatch("logout");
 
                 this.$store.dispatch("setOverlay", false);
             }
