@@ -162,7 +162,9 @@
                         <b-nav-item to="/admin" v-if="user.isAdmin"
                             ><Fa icon="key" size="lg"
                         /></b-nav-item>
-                        <b-nav-item v-if="loggedIn"><LogoutBtn /></b-nav-item>
+                        <b-nav-item v-if="loggedIn"
+                            ><LogoutBtn v-on:done="toggleNavbar"
+                        /></b-nav-item>
                         <b-nav-item v-else>
                             <b-button
                                 class="mr-1"
