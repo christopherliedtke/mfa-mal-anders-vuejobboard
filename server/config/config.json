@@ -54,7 +54,6 @@
         "cmsUrl": "https://wordpress.mfa-mal-anders.de/graphql"
     },
     "prerender": {
-        "active": true,
         "exclude": [
             "googlebot",
             "bingbot",

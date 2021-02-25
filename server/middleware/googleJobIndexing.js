@@ -3,6 +3,7 @@ const { google } = require("googleapis");
 
 module.exports.googleIndexing = function (url = "", type = "URL_UPDATED") {
     if (
+        process.env.GOOGLE_INDEXING_ACTIVE === "on" &&
         process.env.GOOGLE_API_CLIENT_EMAIL &&
         process.env.GOOGLE_API_PRIVATE_KEY
     ) {

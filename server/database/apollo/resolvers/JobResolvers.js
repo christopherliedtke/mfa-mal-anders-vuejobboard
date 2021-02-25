@@ -314,7 +314,7 @@ function cleanUpJob(job, user) {
 }
 
 function indexing(job) {
-    if (config.googleIndexing.active && job.status === "published") {
+    if (job.status === "published") {
         googleIndexing(
             process.env.WEBSITE_URL +
                 config.googleIndexing.pathPrefix +

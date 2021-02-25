@@ -13,10 +13,12 @@
                         ArzthelferInnen gesucht?
                     </h2>
                     <p>
-                        Sie sind auf der Suche nach einer ausgebildeten MFA /
-                        ArzthelferIn? Erstellen Sie noch heute Ihre
-                        Stellenanzeige und erreichen Sie unsere große Community
-                        von MFAs! Mit unserem
+                        Erstellen Sie
+                        <span class="text-secondary"
+                            >in wenigen Minuten Ihre Stellenanzeige</span
+                        >
+                        und erreichen Sie noch heute unsere große Community von
+                        MFAs! Mit unserem
                         <b-link class="text-secondary" href="#pay-what-you-want"
                             >“Pay What You Want”*</b-link
                         >
@@ -66,11 +68,10 @@
                         <p>
                             Bei uns erreichen Sie
                             <strong
-                                >ausschließlich MFA / ArzthelferInnen</strong
+                                >exklusiv motivierte MFA / ArzthelferInnen und
+                                ZFA</strong
                             >
-                            ohne die teuren
-                            <strong>Streuverluste</strong>
-                            der allgemeinen Jobbörsen.
+                            und damit genau Ihre Zielgruppe.
                         </p>
                     </div>
                 </b-col>
@@ -87,10 +88,13 @@
                             <b-link href="#pay-what-you-want">
                                 <strong>"Pay What Yout Want"</strong>
                             </b-link>
-                            Modell ab
-                            {{ $config.payment.minCost / 100 }}
-                            {{ $config.payment.currency }}
-                            für {{ $config.payment.duration }} Tage.
+                            Modell
+                            <strong>
+                                ab
+                                {{ $config.payment.minCost / 100 }}
+                                {{ $config.payment.currency }}
+                                für {{ $config.payment.duration }} Tage.
+                            </strong>
                         </p>
                     </div>
                 </b-col>
@@ -101,47 +105,59 @@
                             :icon="['fa', 'paper-plane']"
                             size="3x"
                         />
-                        <h4 class="h4 mt-4 mb-3">Geringer Aufwand</h4>
+                        <h4 class="h4 mt-4 mb-3">Einfach und bequem</h4>
                         <p>
                             <strong
-                                >Sie veröffentlichen, wir sorgen für
-                                Reichweite</strong
+                                >Sie erstellen Ihre Anzeige, wir sorgen für den
+                                Rest</strong
                             >
-                            über unsere Webseite, Google Jobs, Facebook, Twitter
-                            und unseren Job Newsletter.
+                            - Reichweite auf MFA mal anders, Google Jobs,
+                            Facebook und
+                            <b-link to="#more-info">mehr...</b-link>
                         </p>
                     </div>
                 </b-col>
             </b-row>
-            <div class="d-flex flex-wrap justify-content-center mt-4">
-                <b-button
-                    to="/auth/register"
-                    variant="secondary"
-                    size="lg"
-                    class="mx-1 my-1"
-                    >Stellenanzeige erstellen</b-button
-                >
-                <b-button
-                    href="#tipps-stellenanzeigen"
-                    variant="outline-secondary"
-                    size="lg"
-                    class="mx-1 my-1"
-                    >Tipps für Stellenanzeigen</b-button
-                >
-                <b-button
-                    href="#more-info"
-                    variant="primary"
-                    size="lg"
-                    class="mx-1 my-1"
-                    >Weitere Informationen</b-button
-                >
-                <b-button
-                    href="#faq"
-                    variant="outline-primary"
-                    size="lg"
-                    class="mx-1 my-3"
-                    >Fragen oder Hilfe benötigt?</b-button
-                >
+            <div class="d-flex flex-column align-items-center mt-4">
+                <div class="mb-3">
+                    <b-button
+                        to="/auth/register"
+                        variant="secondary"
+                        size="lg"
+                        class="d-block d-lg-inline-block mx-1 my-1"
+                        >Stellenanzeige erstellen</b-button
+                    >
+                    <b-button
+                        href="#pay-what-you-want"
+                        variant="primary"
+                        size="lg"
+                        class="d-block d-lg-inline-block mx-1 my-1"
+                        >Preise</b-button
+                    >
+                </div>
+                <div>
+                    <b-button
+                        href="#tipps-stellenanzeigen"
+                        variant="outline-secondary"
+                        size="lg"
+                        class="d-block d-lg-inline-block mx-1 my-1"
+                        >Tipps für Stellenanzeigen</b-button
+                    >
+                    <b-button
+                        href="#more-info"
+                        variant="outline-primary"
+                        size="lg"
+                        class="d-block d-lg-inline-block mx-1 my-1"
+                        >Weitere Informationen</b-button
+                    >
+                    <b-button
+                        href="#faq"
+                        variant="outline-primary"
+                        size="lg"
+                        class="d-block d-lg-inline-block mx-1 my-1"
+                        >Fragen oder Hilfe benötigt?</b-button
+                    >
+                </div>
             </div>
         </b-container>
 
@@ -205,6 +221,65 @@
                 </b-row>
             </b-container>
         </b-container> -->
+
+        <b-container class="mb-5 py-0 py-md-5" id="pay-what-you-want">
+            <h2 class="mb-4 bold">
+                Unsere Preise nach dem “Pay What You Want”* Model
+            </h2>
+            <b-row cols="1" cols-md="2">
+                <b-col class="mb-4">
+                    <p>
+                        Mit MFA mal anders möchten wir medizinischen
+                        Fachangestellten die Möglichkeit geben, einen
+                        attraktiven Job zu finden. Aber auch Ihnen als
+                        Arbeitgeber eine alternative Plattform bereitstellen,
+                        die Ihre Stellenangebote an die richtige Zielgruppe
+                        ausspielt und so Ihre Chancen erhöht, qualifizierte
+                        Bewerbungen zu erhalten.
+                    </p>
+                    <b-img
+                        class="p-2 p-md-4"
+                        right
+                        src="@/assets/img/piggy_bank.svg"
+                        alt="Person zahlt Preis für MFA Stellenanzeige"
+                        style="max-width: 45%"
+                    />
+                    <p>
+                        Bei uns finden Sie keine überteuerten Angebote, um Ihre
+                        Stellenanzeige zu veröffentlichen.
+                    </p>
+                    <p>
+                        Die Idee ist ganz einfach: Nach dem Prinzip
+                        <strong>“Pay What You Want”</strong>* entscheidet jede*r
+                        selbst, was sie/er als Beitrag für die Nutzung der
+                        Stellenbörse und der Informationen rund um MFA mal
+                        anders zahlen möchte. So können wir jedem Arbeitgeber
+                        die Möglichkeit bieten, vergleichsweise kostengünstig
+                        eine Stellenanzeige für
+                        {{ $config.payment.duration }} Tage bei uns zu schalten.
+                    </p>
+                    <p class="small">
+                        * Es fällt ein Mindestbeitrag von
+                        {{
+                            ($config.payment.minCost / 100)
+                                .toFixed(2)
+                                .toString()
+                                .replace(".", ",")
+                        }}
+                        {{ $config.payment.currency }} pro Stellenanzeige à
+                        {{ $config.payment.duration }} Tage an, der für den
+                        Betrieb der IT-Infrastruktur und der Pflege des Portals
+                        unerlässlich ist.
+                    </p>
+                </b-col>
+                <b-col>
+                    <PayWhatYouWantSuggestion
+                        class="bg-light-shade border-radius1 p-4"
+                        :minimum="false"
+                    />
+                </b-col>
+            </b-row>
+        </b-container>
 
         <b-container fluid class="bg-light-shade py-5 mb-5" id="more-info">
             <b-container>
@@ -290,65 +365,6 @@
                     </b-col>
                 </b-row>
             </b-container>
-        </b-container>
-
-        <b-container class="mb-5 py-0 py-md-5" id="pay-what-you-want">
-            <h2 class="mb-4 bold">
-                Unsere Preise nach dem “Pay What You Want”* Model
-            </h2>
-            <b-row cols="1" cols-md="2">
-                <b-col class="mb-4">
-                    <p>
-                        Mit MFA mal anders möchten wir medizinischen
-                        Fachangestellten die Möglichkeit geben, einen
-                        attraktiven Job zu finden. Aber auch Ihnen als
-                        Arbeitgeber eine alternative Plattform bereitstellen,
-                        die Ihre Stellenangebote an die richtige Zielgruppe
-                        ausspielt und so Ihre Chancen erhöht, qualifizierte
-                        Bewerbungen zu erhalten.
-                    </p>
-                    <b-img
-                        class="p-2 p-md-4"
-                        right
-                        src="@/assets/img/piggy_bank.svg"
-                        alt="Person zahlt Preis für MFA Stellenanzeige"
-                        style="max-width: 45%"
-                    />
-                    <p>
-                        Bei uns finden Sie keine überteuerten Angebote, um Ihre
-                        Stellenanzeige zu veröffentlichen.
-                    </p>
-                    <p>
-                        Die Idee ist ganz einfach: Nach dem Prinzip
-                        <strong>“Pay What You Want”</strong>* entscheidet jede*r
-                        selbst, was sie/er als Beitrag für die Nutzung der
-                        Stellenbörse und der Informationen rund um MFA mal
-                        anders zahlen möchte. So können wir jedem Arbeitgeber
-                        die Möglichkeit bieten, vergleichsweise kostengünstig
-                        eine Stellenanzeige für
-                        {{ $config.payment.duration }} Tage bei uns zu schalten.
-                    </p>
-                    <p class="small">
-                        * Es fällt ein Mindestbeitrag von
-                        {{
-                            ($config.payment.minCost / 100)
-                                .toFixed(2)
-                                .toString()
-                                .replace(".", ",")
-                        }}
-                        {{ $config.payment.currency }} pro Stellenanzeige à
-                        {{ $config.payment.duration }} Tage an, der für den
-                        Betrieb der IT-Infrastruktur und der Pflege des Portals
-                        unerlässlich ist.
-                    </p>
-                </b-col>
-                <b-col>
-                    <PayWhatYouWantSuggestion
-                        class="bg-light-shade border-radius1 p-4"
-                        :minimum="false"
-                    />
-                </b-col>
-            </b-row>
         </b-container>
 
         <b-container class="mb-5" id="tipps-stellenanzeigen">

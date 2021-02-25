@@ -8,8 +8,8 @@
         <b-row class="p-4">
             <b-col md="4">
                 <b-img
-                    class="p-3 w-100 h-100"
-                    src="@/assets/img/health_2.svg"
+                    class="p-3 pl-md-3 pr-md-0 w-100 h-100"
+                    src="@/assets/img/medical_research.svg"
                     alt="Bewerbungsgespräch zwischen Arzt und MFA / ArzthelferIn"
                 ></b-img>
             </b-col>
@@ -19,13 +19,16 @@
                 >
                     <h2 class="bold">
                         <em>Motivierte</em> und <em>qualifizierte</em> MFAs und
-                        ArzthelferInnen finden!
+                        ArzthelferInnen gesucht?
                     </h2>
                     <p>
-                        Erstellen Sie noch heute Ihre Stellenanzeige und
-                        erreichen Sie unsere aktive Community von MFAs! Mit
-                        unserem “Pay What You Want”* Modell veröffentlichen Sie
-                        Ihre Stellenanzeige bereits ab
+                        Erstellen Sie
+                        <strong class="text-primary"
+                            >in wenigen Minuten Ihre Stellenanzeige</strong
+                        >
+                        und erreichen Sie noch heute unsere große Community von
+                        MFAs! Mit unserem “Pay What You Want”* Modell
+                        veröffentlichen Sie Ihre Stellenanzeige bereits ab
                         {{
                             ($config.payment.minCost / 100)
                                 .toFixed(2)

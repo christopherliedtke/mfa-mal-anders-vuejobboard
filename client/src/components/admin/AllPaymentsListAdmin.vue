@@ -527,10 +527,10 @@
                     payment.job._id
                 }\n\n#mfamalanders #mfa #arzthelfer #arzthelferin #mfajobs #${payment.job.company.location
                     .replace("-", "")
-                    .replace(" ", "")
+                    .replace(/\s/g, "")
                     .toLowerCase()}jobs #${payment.job.company.location
                     .replace("-", "")
-                    .replace(" ", "")
+                    .replace(/\s/g, "")
                     .toLowerCase()}`;
 
                 document.body.appendChild(el);

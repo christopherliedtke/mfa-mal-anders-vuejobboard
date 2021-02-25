@@ -684,10 +684,10 @@
                     job._id
                 }\n\n#mfamalanders #mfa #arzthelfer #arzthelferin #mfajobs #${job.company.location
                     .replace("-", "")
-                    .replace(" ", "")
+                    .replace(/\s/g, "")
                     .toLowerCase()}jobs #${job.company.location
                     .replace("-", "")
-                    .replace(" ", "")
+                    .replace(/\s/g, "")
                     .toLowerCase()}`;
 
                 document.body.appendChild(el);

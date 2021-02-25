@@ -85,14 +85,12 @@ router.post("/checkout-completed", async (req, res) => {
                 await newUsedCoupon.save();
             }
 
-            if (config.googleIndexing.active) {
-                googleIndexing(
-                    process.env.WEBSITE_URL +
-                        config.googleIndexing.pathPrefix +
-                        jobId,
-                    "URL_UPDATED"
-                );
-            }
+            googleIndexing(
+                process.env.WEBSITE_URL +
+                    config.googleIndexing.pathPrefix +
+                    jobId,
+                "URL_UPDATED"
+            );
 
             recachePrerender(
                 `${process.env.WEBSITE_URL}/jobboard/job/${jobId}`

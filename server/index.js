@@ -69,11 +69,7 @@ if (config.redirect.active) {
 }
 
 // #Prerender w/o googlebot
-if (
-    config.prerender.active &&
-    process.env.NODE_ENV == "production" &&
-    process.env.WEBSITE_URL === "https://www.mfa-mal-anders.de"
-) {
+if (process.env.PRERENDER_ACTIVE === "on") {
     app.use(prerender);
 }
 

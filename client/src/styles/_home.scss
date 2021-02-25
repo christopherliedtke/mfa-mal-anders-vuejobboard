@@ -1,16 +1,15 @@
 .home {
     .hero {
         // background: url("~@/assets/img/MfaMalAnders_Hero_1500.jpg") top right;
-        background: radial-gradient(closest-side, #f8faf977 50%, #f8faffff 100%),
-            url("~@/assets/img/hero_map_1828.jpg") center center;
-        // background: linear-gradient(
-        //         0deg,
-        //         #f8faff 0%,
-        //         #f8faff66 50%,
-        //         #6d023077 100%
-        //     ),
-        //     url("https://as1.ftcdn.net/jpg/02/69/49/12/240_F_269491208_KOzY8VE66dtkqx08pNuvhtvZgzeIh56r.jpg")
-        //         center center;
+        // background: radial-gradient(closest-side, #f8faf977 50%, #f8faffff 100%),
+        //     url("~@/assets/img/hero_map_1828.jpg") center center;
+        background: linear-gradient(
+                0deg,
+                #f8faff 0%,
+                #f8faff66 50%,
+                #6d023077 100%
+            ),
+            url("~@/assets/img/medizinischesPersonal2.jpg") center center;
         // radial-gradient(closest-side, #f8faf900 50%, #f8faffff 100%), url("https://as1.ftcdn.net/jpg/02/69/49/12/240_F_269491208_KOzY8VE66dtkqx08pNuvhtvZgzeIh56r.jpg") center center;
 
         background-size: cover;
