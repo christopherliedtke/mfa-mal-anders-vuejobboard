@@ -103,7 +103,7 @@
                                             ? 'router-link-active'
                                             : ''
                                     "
-                                    >Profil</b-nav-item
+                                    >Account</b-nav-item
                                 >
                                 <b-nav-item
                                     v-if="$store.state.auth.user.isEmployer"

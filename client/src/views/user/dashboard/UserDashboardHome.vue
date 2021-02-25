@@ -2,8 +2,8 @@
     <b-container class="dashboard py-5">
         <h2>Mein Konto</h2>
         <b-tabs content-class="mt-3" :value="parseInt(query.tab)" lazy>
-            <b-tab title="Profil" @click="setQuery('tab', 0)">
-                <MyProfile />
+            <b-tab title="Account" @click="setQuery('tab', 0)">
+                <MyAccount />
             </b-tab>
             <b-tab
                 v-if="$store.state.auth.user.isEmployer"
@@ -39,14 +39,14 @@
 <script>
     import MyJobsList from "@/components/dashboard/MyJobsList.vue";
     import MyCompaniesList from "@/components/dashboard/MyCompaniesList.vue";
-    import MyProfile from "@/components/dashboard/MyProfile.vue";
+    import MyAccount from "@/components/dashboard/MyAccount.vue";
     import MyStarredJobs from "@/components/dashboard/MyStarredJobs.vue";
     export default {
         name: "UserDashboardHome",
         components: {
             MyJobsList,
             MyCompaniesList,
-            MyProfile,
+            MyAccount,
             MyStarredJobs
         },
         data() {

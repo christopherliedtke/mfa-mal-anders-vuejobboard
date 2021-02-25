@@ -1,8 +1,9 @@
 <template>
     <div>
-        <h3>Mein Profil</h3>
+        <h3>Mein Account</h3>
         <p>
-            Hier können Sie Ihre Profil-Daten ändern bzw. Ihren Account löschen.
+            Hier können Sie Ihre Account-Daten ändern bzw. Ihren Account
+            löschen.
         </p>
         <AccountDataForm apiUsersSchema="private" />
         <DeleteAccountButton />
@@ -13,7 +14,7 @@
     import DeleteAccountButton from "@/components/buttons/DeleteAccountButton.vue";
     import AccountDataForm from "@/components/forms/AccountDataForm.vue";
     export default {
-        name: "MyProfile",
+        name: "MyAccount",
         components: {
             DeleteAccountButton,
             AccountDataForm
