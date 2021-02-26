@@ -377,14 +377,16 @@
                 `${job.title} | ${job.company.name} | ${job.company.location}, ${job.company.state}`
             "
             :img="
-                job.imageUrl ||
-                    job.company.logoUrl ||
+                (job.imageUrl && !job.imageUrl.includes('.svg')) ||
+                    (job.company.logoUrl &&
+                        !job.company.logoUrl.includes('.svg')) ||
                     '/img/MfaMalAnders_NeuesStellenangebot_1200.jpg'
             "
             :twitterCard="
-                job.imageUrl
+                job.imageUrl && !job.imageUrl.includes('.svg')
                     ? 'summary_large_image'
-                    : job.company.logoUrl
+                    : job.company.logoUrl &&
+                      !job.company.logoUrl.includes('.svg')
                     ? 'summary'
                     : 'summary_large_image'
             "
@@ -424,10 +426,6 @@
         data() {
             return {
                 job: Object,
-                logo: {
-                    width: Number,
-                    height: Number
-                },
                 error: null,
                 employmentTypeOptions,
                 companySizeOptions,
@@ -523,12 +521,6 @@
 
                     if (job.data.data[this.jobQuery]) {
                         this.job = job.data.data[this.jobQuery];
-
-                        if (job.data.data[this.jobQuery].company.logoUrl) {
-                            this.setLogoDimensions(
-                                job.data.data[this.jobQuery].company.logoUrl
-                            );
-                        }
                     } else {
                         this.$root.$bvToast.toast(
                             "Beim Laden der Stellenanzeige ist leider ein Fehler aufgetreten oder Sie ist abgelaufen.",
@@ -559,15 +551,6 @@
                 }
 
                 this.$store.dispatch("setOverlay", false);
-            },
-            setLogoDimensions(src) {
-                if (src) {
-                    const img = new Image();
-                    img.src = src;
-
-                    this.logo.width = img.width;
-                    this.logo.height = img.height;
-                }
             },
             updateHead: function() {
                 this.$emit("updateHead");

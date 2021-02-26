@@ -25,6 +25,7 @@
             striped
             hover
             sticky-header="80vh"
+            :tbody-tr-class="rowClass"
             :items="computedUsers"
             :fields="fields"
             primary-key="_id"
@@ -266,6 +267,18 @@
                             noAutoHide: true
                         }
                     );
+                }
+            },
+            rowClass(item, type) {
+                if (!item || type !== "row") return;
+                if (item.status === "pending") {
+                    return "table-warning";
+                }
+                if (item.status === "active" && item.isEmployer) {
+                    return "table-success";
+                }
+                if (item.status === "active") {
+                    return "table-info";
                 }
             }
         }

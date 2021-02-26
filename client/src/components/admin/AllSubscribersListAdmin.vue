@@ -62,6 +62,7 @@
             striped
             hover
             sticky-header="80vh"
+            :tbody-tr-class="rowClass"
             :items="computedSubscribers"
             :fields="fields"
             primary-key="_id"
@@ -282,6 +283,15 @@
 
                 document.execCommand("copy");
                 document.body.removeChild(el);
+            },
+            rowClass(item, type) {
+                if (!item || type !== "row") return;
+                if (item.status === "pending") {
+                    return "table-warning";
+                }
+                if (item.status === "active") {
+                    return "table-success";
+                }
             }
         }
     };
