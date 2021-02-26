@@ -103,7 +103,7 @@
             }
         },
         watch: {
-            "$route.fullPath"() {
+            title() {
                 this.$emit("updateHead");
             }
         }
