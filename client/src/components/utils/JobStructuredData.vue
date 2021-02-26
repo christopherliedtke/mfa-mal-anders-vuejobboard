@@ -6,15 +6,7 @@
     export default {
         name: "JobStructuredData",
         props: ["job"],
-        watch: {
-            job() {
-                this.updateHead();
-            }
-        },
         methods: {
-            updateHead() {
-                this.$emit("updateHead");
-            },
             getEmploymentType(str) {
                 let output;
                 switch (str) {

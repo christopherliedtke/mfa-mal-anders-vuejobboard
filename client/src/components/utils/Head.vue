@@ -101,6 +101,11 @@
                     // }
                 ];
             }
+        },
+        watch: {
+            "$route.fullPath"() {
+                this.$emit("updateHead");
+            }
         }
     };
 </script>

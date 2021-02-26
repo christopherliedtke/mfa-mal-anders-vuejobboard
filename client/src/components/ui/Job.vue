@@ -377,9 +377,12 @@
                 `${job.title} | ${job.company.name} | ${job.company.location}, ${job.company.state}`
             "
             :img="
-                (job.imageUrl && !job.imageUrl.includes('.svg')) ||
+                (job.imageUrl &&
+                    !job.imageUrl.includes('.svg') &&
+                    job.imageUrl) ||
                     (job.company.logoUrl &&
-                        !job.company.logoUrl.includes('.svg')) ||
+                        !job.company.logoUrl.includes('.svg') &&
+                        job.company.logoUrl) ||
                     '/img/MfaMalAnders_NeuesStellenangebot_1200.jpg'
             "
             :twitterCard="
@@ -535,8 +538,6 @@
 
                         this.$router.push("/jobboard");
                     }
-
-                    this.updateHead();
                 } catch (err) {
                     this.$root.$bvToast.toast(
                         "Beim Laden der Stellenanzeige ist leider ein Fehler aufgetreten. Bitte versuche es noch einmal, indem Du die Seite aktualisierst.",
@@ -551,9 +552,6 @@
                 }
 
                 this.$store.dispatch("setOverlay", false);
-            },
-            updateHead: function() {
-                this.$emit("updateHead");
             },
             trackEvent: function(
                 label,
