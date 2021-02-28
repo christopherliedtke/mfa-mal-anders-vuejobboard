@@ -1,7 +1,6 @@
 {
     "website": {
         "name": "MFA mal anders",
-        "noreplyEmail": "noreply@mfa-mal-anders.de",
         "contactEmail": "kontakt@mfa-mal-anders.de",
         "emailFrom": "MFA mal anders",
         "newsletterSuccessPath": "/page/subscription-successful",
