@@ -15,7 +15,7 @@ const sendJobAdUnpublishedEmail = async () => {
         .filter((job) => !job.userId.isAdmin)
         .map((job) => {
             return {
-                from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
+                from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
                 to: job.userId.email,
                 replyTo: config.website.contactEmail,
                 bcc: config.website.contactEmail,

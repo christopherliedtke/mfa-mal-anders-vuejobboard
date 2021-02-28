@@ -110,7 +110,7 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
         );
 
         const emailDataToAdmin = {
-            from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
+            from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
             to: config.website.contactEmail,
             replyTo: payment.billingEmail,
             subject: `[Rechnungsanforderung] - ${
@@ -187,7 +187,7 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
         };
 
         const emailDataToCustomer = {
-            from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
+            from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
             to: payment.billingEmail,
             replyTo: config.website.contactEmail,
             bcc: config.website.contactEmail,

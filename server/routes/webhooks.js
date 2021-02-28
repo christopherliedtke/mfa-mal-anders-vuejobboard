@@ -101,7 +101,7 @@ router.post("/checkout-completed", async (req, res) => {
             }
 
             const dataMailToMfa = {
-                from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
+                from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
                 to: config.website.contactEmail,
                 subject: `[Neue Stelle veröffentlicht] - ${
                     payment.amount / 100
@@ -174,7 +174,7 @@ router.post("/checkout-completed", async (req, res) => {
             emailService.sendMail(dataMailToMfa);
 
             const dataMailToCustomer = {
-                from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
+                from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
                 to: updatedJob.userId.email,
                 subject: `Veröffentlichung Ihrer Stellenanzeige auf 'MFA mal anders'`,
                 html: `

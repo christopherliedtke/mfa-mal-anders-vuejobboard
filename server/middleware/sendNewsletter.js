@@ -58,7 +58,7 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
 
             if (jobList) {
                 const data = {
-                    from: `${config.website.emailFrom} <noreply@${process.env.MG_DOMAIN}>`,
+                    from: `${config.website.emailFrom} <kontakt@${process.env.MG_DOMAIN}>`,
                     to: config.website.contactEmail,
                     bcc: newsletterList[key].join(", "),
                     subject: `Dein Job-Newsletter für ${key} – ${config.website.name}`,

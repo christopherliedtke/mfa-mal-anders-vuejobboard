@@ -270,7 +270,7 @@ const UserResolvers = {
             await newCode.save();
 
             const emailData = {
-                from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
+                from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
                 to: args.email,
                 subject: `Ihr Code für den Passwort Reset auf ${config.website.name}`,
                 text: `
@@ -342,7 +342,7 @@ const UserResolvers = {
             }
 
             const emailData = {
-                from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
+                from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
                 to: user.email,
                 subject: `E-Mail bestätigen für ${config.website.name}`,
                 text: `

@@ -29,7 +29,7 @@ module.exports.sendUnpublishedJobReminder = async () => {
                 console.log("Sending unpublishedJobReminder for : ", job._id);
 
                 const emailData = {
-                    from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
+                    from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
                     to: job.userId.email,
                     subject: `Ihre Stellenanzeige bei 'MFA mal anders'`,
                     html: `

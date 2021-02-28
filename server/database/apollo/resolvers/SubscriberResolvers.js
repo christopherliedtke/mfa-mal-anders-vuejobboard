@@ -58,7 +58,7 @@ const SubscriberResolvers = {
             }
 
             const emailData = {
-                from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
+                from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
                 to: args.email,
                 subject: `Anmeldung für Job Newsletter auf ${config.website.name}`,
                 text: `

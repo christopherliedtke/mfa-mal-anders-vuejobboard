@@ -209,7 +209,7 @@
                 } else {
                     await this.$store.dispatch("getActivationEmail");
 
-                    if (this.$store.state.auth.loggedIn) {
+                    if (this.$store.state.auth.user._id) {
                         this.trackEvent(
                             `NewUser: ${this.$store.state.auth.user._id}`,
                             "User",

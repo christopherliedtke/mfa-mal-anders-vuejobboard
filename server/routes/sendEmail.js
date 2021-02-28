@@ -18,7 +18,7 @@ router.post("/job-published", verifyToken, isAdmin, async (req, res) => {
             .populate("userId");
 
         const emailData = {
-            from: `${config.website.emailFrom} <${config.website.noreplyEmail}>`,
+            from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
             to: job.userId.email,
             subject: `Veröffentlichung Ihrer Stellenanzeige auf 'MFA mal anders'`,
             html: `
