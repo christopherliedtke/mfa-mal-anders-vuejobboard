@@ -157,6 +157,7 @@
                     class="blur position-absolute"
                     :src="job.imageUrl"
                 />
+
                 <b-img
                     class="title-img"
                     style="max-height: 35vh"
