@@ -54,7 +54,7 @@
                         />
                         Veröffentlicht:
                         {{
-                            job.paidAt
+                            job.paid
                                 ? new Date(
                                       parseInt(job.publishedAt || job.paidAt)
                                   ).toLocaleDateString()
@@ -377,13 +377,12 @@
                 `${job.title} | ${job.company.name} | ${job.company.location}, ${job.company.state}`
             "
             :img="
-                (job.imageUrl &&
-                    !job.imageUrl.includes('.svg') &&
-                    job.imageUrl) ||
-                    (job.company.logoUrl &&
-                        !job.company.logoUrl.includes('.svg') &&
-                        job.company.logoUrl) ||
-                    '/img/MfaMalAnders_NeuesStellenangebot_1200.jpg'
+                job.imageUrl && !job.imageUrl.includes('.svg')
+                    ? job.imageUrl
+                    : job.company.logoUrl &&
+                      !job.company.logoUrl.includes('.svg')
+                    ? job.company.logoUrl
+                    : '/img/MfaMalAnders_NeuesStellenangebot_1200.jpg'
             "
             :twitterCard="
                 job.imageUrl && !job.imageUrl.includes('.svg')
@@ -486,6 +485,7 @@
                                         updatedAt
                                         publishedAt
                                         paidAt
+                                        paid
                                         title
                                         description
                                         employmentType
