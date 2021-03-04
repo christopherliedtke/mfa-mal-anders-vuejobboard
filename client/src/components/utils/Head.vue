@@ -73,6 +73,12 @@
                     ];
                 }
             },
+            link: [
+                {
+                    rel: "canonical",
+                    href: `${this.$config.website.url + this.$route.path}`
+                }
+            ],
             script() {
                 return [
                     ...this.script,

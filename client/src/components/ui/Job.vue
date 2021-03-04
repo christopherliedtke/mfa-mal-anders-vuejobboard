@@ -438,17 +438,26 @@
                         inner: `{
                             "@context": "http://schema.org",
                             "@type" : "BreadcrumbList",
-                            "itemListElement": [{
-                                "@type": "ListItem",
-                                "position": 1,
-                                "name": "MFA mal anders",
-                                "item": "https://www.mfa-mal-anders.de"
-                            },{
-                                "@type": "ListItem",
-                                "position": 2,
-                                "name": "Stellenangebote",
-                                "item": "https://www.mfa-mal-anders.de/jobboard"
-                            }]
+                            "itemListElement": [
+                                {
+                                    "@type": "ListItem",
+                                    "position": 1,
+                                    "name": "MFA mal anders",
+                                    "item": "https://www.mfa-mal-anders.de"
+                                },
+                                {
+                                    "@type": "ListItem",
+                                    "position": 2,
+                                    "name": "Stellenangebote",
+                                    "item": "https://www.mfa-mal-anders.de/jobboard"
+                                },
+                                {
+                                    "@type": "ListItem",
+                                    "position": 3,
+                                    "name": "Stellenangebot",
+                                    "item": "https://www.mfa-mal-anders.de/jobboard/job/${this.job._id}"
+                                }
+                            ]
                         }`
                     }
                 ]

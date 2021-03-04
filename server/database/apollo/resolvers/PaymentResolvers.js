@@ -2,6 +2,7 @@ const { AuthenticationError, ApolloError } = require("apollo-server-express");
 const config = require("../../../config/config.json");
 const { Payment } = require("../../models/payment");
 const { Job } = require("../../models/job");
+const { googleIndexing } = require("../../../middleware/googleJobIndexing");
 
 const PaymentResolvers = {
     Query: {
@@ -140,7 +141,7 @@ const PaymentResolvers = {
             );
 
             if (updatedPayment) {
-                await Job.findOneAndUpdate(
+                const job = await Job.findOneAndUpdate(
                     { _id: updatedPayment.job },
                     {
                         paid:
@@ -166,6 +167,8 @@ const PaymentResolvers = {
                     },
                     { new: true }
                 );
+
+                indexing(job);
             }
 
             return updatedPayment;
@@ -198,5 +201,16 @@ const PaymentResolvers = {
         },
     },
 };
+
+function indexing(job) {
+    if (job.status === "published") {
+        googleIndexing(
+            process.env.WEBSITE_URL +
+                config.googleIndexing.pathPrefix +
+                job._id,
+            "URL_UPDATED"
+        );
+    }
+}
 
 module.exports = PaymentResolvers;
