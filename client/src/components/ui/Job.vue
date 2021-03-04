@@ -455,7 +455,7 @@
                                     "@type": "ListItem",
                                     "position": 3,
                                     "name": "Stellenangebot",
-                                    "item": "https://www.mfa-mal-anders.de/jobboard/job/${this.job._id}"
+                                    "item": "https://www.mfa-mal-anders.de${this.$route.fullPath}"
                                 }
                             ]
                         }`
