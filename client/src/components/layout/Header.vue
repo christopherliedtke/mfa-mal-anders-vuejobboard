@@ -302,9 +302,9 @@
             }
         },
         mounted() {
-            window.addEventListener("scroll", () => {
+            setInterval(() => {
                 this.showHeader();
-            });
+            }, 100);
         },
         methods: {
             toggleNavbar() {
@@ -331,7 +331,7 @@
                 ) {
                     header.classList.add("hide");
                 } else if (
-                    currentPositionY <= this.previousScrollPositionY &&
+                    currentPositionY < this.previousScrollPositionY &&
                     header.classList.contains("hide")
                 ) {
                     header.classList.remove("hide");
