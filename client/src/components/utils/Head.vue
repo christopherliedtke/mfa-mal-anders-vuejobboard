@@ -75,7 +75,6 @@
             },
             link() {
                 return [
-                    ...this.link,
                     {
                         rel: "canonical",
                         href: `${this.$config.website.url + this.$route.path}`
