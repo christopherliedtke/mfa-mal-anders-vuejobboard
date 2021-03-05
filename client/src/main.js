@@ -98,6 +98,7 @@ Vue.use(VueSanitize);
 
 import VueHead from "vue-head";
 import VueGtag from "vue-gtag";
+import VueMatomo from "vue-matomo";
 
 // FontAwesome Integration
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -289,6 +290,24 @@ Vue.use(VueGtag, {
     },
     enabled:
         config.ga.active && window.location.origin.includes(config.website.url)
+});
+
+Vue.use(VueMatomo, {
+    host: "https://matomo.mfa-mal-anders.de",
+    siteId: 1,
+    trackerFileName: "matomo",
+    router: router,
+    enableLinkTracking: true,
+    requireConsent: false,
+    trackInitialView: true,
+    disableCookies: true,
+    enableHeartBeatTimer: true,
+    heartBeatTimerInterval: 15,
+    debug: false,
+    userId: store.auth.user._id,
+    cookieDomain: undefined,
+    domains: "*.mfa-mal-anders.de",
+    preInitActions: []
 });
 
 Vue.config.productionTip = false;
