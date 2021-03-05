@@ -304,7 +304,7 @@ Vue.use(VueMatomo, {
     enableHeartBeatTimer: true,
     heartBeatTimerInterval: 15,
     debug: false,
-    userId: store.auth.user._id,
+    userId: undefined,
     cookieDomain: undefined,
     domains: "*.mfa-mal-anders.de",
     preInitActions: []
