@@ -85,6 +85,11 @@
                             this.$router.push("/user/dashboard?tab=1");
                         }
                     }
+
+                    this.$gtag.event("login", {
+                        method: "local",
+                        event_label: this.$store.state.auth.user._id
+                    });
                 }
 
                 this.$store.dispatch("getStarredJobs");

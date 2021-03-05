@@ -234,17 +234,10 @@
                                 noAutoHide: true
                             }
                         );
+
+                        this.$gtag.event("contact_send_email");
                     } else {
-                        this.$root.$bvToast.toast(
-                            "Beim Senden Ihrer Anfrage ist leider ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal.",
-                            {
-                                title: `Fehler beim Senden`,
-                                variant: "danger",
-                                toaster: "b-toaster-bottom-right",
-                                solid: true,
-                                noAutoHide: true
-                            }
-                        );
+                        throw new Error();
                     }
                 } catch (err) {
                     this.$root.$bvToast.toast(

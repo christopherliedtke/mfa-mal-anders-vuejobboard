@@ -173,14 +173,6 @@
                 errors: []
             };
         },
-        // computed: {
-        //     isEmployer: function() {
-        //         return this.$route.query.role != "employee";
-        //     },
-        //     isEmployee: function() {
-        //         return this.$route.query.role === "employee";
-        //     }
-        // },
         mounted() {
             this.toggleRole(this.$route.query.role);
         },
@@ -210,11 +202,10 @@
                     await this.$store.dispatch("getActivationEmail");
 
                     if (this.$store.state.auth.user._id) {
-                        this.trackEvent(
-                            `NewUser: ${this.$store.state.auth.user._id}`,
-                            "User",
-                            "register"
-                        );
+                        this.$gtag.event("sign_up", {
+                            method: "local",
+                            event_label: this.$store.state.auth.user._id
+                        });
 
                         this.$router.push("/auth/account/verification");
                     }
@@ -239,12 +230,6 @@
                     this.isEmployer = true;
                     this.isEmployee = false;
                 }
-            },
-            trackEvent: function(label, category, action) {
-                this.$gtag.event(action, {
-                    event_category: category,
-                    event_label: label
-                });
             }
         }
     };

@@ -56,11 +56,9 @@ export const saveJobMixin = {
                     throw new Error("Error on saving the job!");
                 }
 
-                this.trackEvent(
-                    `${mutationType}: ${job.title} | ${job.company.state} - ${jobQueryResponse.data.data[mutationType]._id}`,
-                    "Job_Ad",
-                    mutationType
-                );
+                this.$gtag.event(mutationType, {
+                    event_label: `${job.title} | ${job.company.state} - ${jobQueryResponse.data.data[mutationType]._id}`
+                });
 
                 this.$root.$bvToast.toast(
                     "Die Stellenanzeige wurde erfolgreich gespeichert.",
@@ -96,14 +94,6 @@ export const saveJobMixin = {
         },
         hasHistory() {
             return window.history.length > 2;
-        },
-        trackEvent(label, category, action) {
-            if (!this.$store.state.auth.user.isAdmin) {
-                this.$gtag.event(action, {
-                    event_category: category,
-                    event_label: label
-                });
-            }
         }
     }
 };

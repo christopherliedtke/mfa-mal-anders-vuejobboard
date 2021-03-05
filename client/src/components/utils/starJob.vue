@@ -111,9 +111,15 @@
                 if (!this.active) {
                     this.active = true;
                     await this.$store.dispatch("addStarredJob", this.jobId);
+                    this.$gtag.event("add_starred_job", {
+                        event_label: this.jobId
+                    });
                 } else {
                     this.active = false;
                     await this.$store.dispatch("deleteStarredJob", this.jobId);
+                    this.$gtag.event("delete_starred_job", {
+                        event_label: this.jobId
+                    });
                 }
             }
         }

@@ -87,6 +87,10 @@
                 if (response.data.errors) {
                     this.errors = response.data.errors;
                 } else {
+                    this.$gtag.event("delete_account", {
+                        event_label: this.$store.state.auth.user._id
+                    });
+
                     this.$store.dispatch("logout");
                 }
 

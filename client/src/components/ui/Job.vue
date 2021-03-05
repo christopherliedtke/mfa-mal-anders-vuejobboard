@@ -171,10 +171,9 @@
             <div class="mt-3" v-if="job.company.url">
                 <b-link
                     @click="
-                        trackEvent(
-                            `VisitHP: ${job.title} | ${job.company.name} - ${job._id}`,
-                            'CompanyHomepage'
-                        )
+                        $gtag.event('apply_visit_hp', {
+                            event_label: `${job.title} | ${job.company.name} - ${job._id}`
+                        })
                     "
                     :href="job.company.url"
                     target="_blank"
@@ -197,10 +196,9 @@
                     size="lg"
                     :variant="job.simpleApplication ? 'secondary' : 'primary'"
                     @click="
-                        trackEvent(
-                            `Apply: ${job.title} | ${job.company.name} - ${job._id}`,
-                            'Apply'
-                        )
+                        $gtag.event('apply_now', {
+                            event_label: `${job.title} | ${job.company.name} - ${job._id}`
+                        })
                     "
                     :href="
                         job.extJobUrl ||
@@ -264,10 +262,9 @@
                         Telefon:
                         <b-link
                             @click="
-                                trackEvent(
-                                    `Tel: ${job.title} | ${job.company.name} - ${job._id}`,
-                                    'ContactPhone'
-                                )
+                                $gtag.event('apply_phone', {
+                                    event_label: `${job.title} | ${job.company.name} - ${job._id}`
+                                })
                             "
                             :href="`tel:${job.contactPhone}`"
                             target="_blank"
@@ -279,10 +276,9 @@
                         E-Mail:
                         <b-link
                             @click="
-                                trackEvent(
-                                    `Email: ${job.title} | ${job.company.name} - ${job._id}`,
-                                    'ContactEmail'
-                                )
+                                $gtag.event('apply_email', {
+                                    event_label: `${job.title} | ${job.company.name} - ${job._id}`
+                                })
                             "
                             :href="
                                 `mailto:${job.contactEmail ||
@@ -535,18 +531,8 @@
                     if (job.data.data[this.jobQuery]) {
                         this.job = job.data.data[this.jobQuery];
                     } else {
-                        this.$root.$bvToast.toast(
-                            "Beim Laden der Stellenanzeige ist leider ein Fehler aufgetreten oder Sie ist abgelaufen.",
-                            {
-                                title: `Fehler beim Laden`,
-                                variant: "danger",
-                                toaster: "b-toaster-bottom-right",
-                                solid: true,
-                                noAutoHide: true
-                            }
-                        );
-
                         this.$router.push("/jobboard");
+                        throw new Error();
                     }
                 } catch (err) {
                     this.$root.$bvToast.toast(
@@ -562,18 +548,6 @@
                 }
 
                 this.$store.dispatch("setOverlay", false);
-            },
-            trackEvent: function(
-                label,
-                category,
-                action = "Outbound_Link_Click"
-            ) {
-                if (this.apiJobsSchema === "public") {
-                    this.$gtag.event(action, {
-                        event_category: category,
-                        event_label: label
-                    });
-                }
             }
         }
     };

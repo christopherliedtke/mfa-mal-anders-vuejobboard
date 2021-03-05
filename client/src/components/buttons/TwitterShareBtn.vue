@@ -9,6 +9,12 @@
             }%0A%0A&hashtags=mfa,arzthelferIn,mfamalanders`
         "
         target="_blank"
+        @click="
+            $gtag.event('share', {
+                method: 'twitter',
+                content_id: sharePath
+            })
+        "
         aria-label="Twitter"
     >
         <Fa class="mr-2" :icon="['fab', 'twitter']" size="lg" />

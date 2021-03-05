@@ -8,6 +8,12 @@
             }`
         "
         target="_blank"
+        @click="
+            $gtag.event('share', {
+                method: 'facebook',
+                content_id: sharePath ? sharePath : $route.fullPath
+            })
+        "
     >
         <Fa class="mr-2" :icon="['fab', 'facebook-square']" size="lg" />
         {{ content }}

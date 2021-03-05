@@ -9,6 +9,12 @@
             }: ${url}${sharePath ? sharePath : ''}`
         "
         target="_blank"
+        @click="
+            $gtag.event('share', {
+                method: 'email',
+                content_id: sharePath
+            })
+        "
         aria-label="E-Mail"
     >
         <Fa class="mr-2" :icon="['fa', 'envelope']" size="lg" />

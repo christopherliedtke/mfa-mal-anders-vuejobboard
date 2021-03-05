@@ -48,6 +48,11 @@
             <div class="d-flex justify-content-center mb-5">
                 <b-button
                     href="/api/download/public/bewerbungsunterlagen"
+                    @click="
+                        $gtag.event('download', {
+                            event_label: 'bewerbungsunterlagen'
+                        })
+                    "
                     variant="primary"
                     size="lg"
                     >Download</b-button
@@ -196,6 +201,11 @@
             <div class="d-flex justify-content-center my-5">
                 <b-button
                     href="/api/download/public/bewerbungsunterlagen"
+                    @click="
+                        $gtag.event('download', {
+                            event_label: 'bewerbungsunterlagen'
+                        })
+                    "
                     variant="primary"
                     size="lg"
                     >Download Bewerbungsunterlagen</b-button

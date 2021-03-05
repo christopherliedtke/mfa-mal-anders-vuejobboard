@@ -41,17 +41,22 @@ export const stripeCheckoutMixin = {
                 if (response.data.success) {
                     this.checkoutSessionId = response.data.sessionId;
                     await this.redirectToCheckout(this.checkoutSessionId);
+
+                    this.$gtag.event("begin_checkout", {
+                        value: amount,
+                        currency: "EUR",
+                        items: [
+                            {
+                                id: id,
+                                name: title,
+                                coupon: code,
+                                price: amount,
+                                category: type
+                            }
+                        ]
+                    });
                 } else {
-                    this.$root.$bvToast.toast(
-                        "Der Zahlungsprozess funktioniert leider im Moment nicht. Bitte versuchen Sie es später noch einmal oder kontaktieren Sie uns über unsere Kontaktdaten.",
-                        {
-                            title: `Fehler beim Laden`,
-                            variant: "danger",
-                            toaster: "b-toaster-bottom-right",
-                            solid: true,
-                            noAutoHide: true
-                        }
-                    );
+                    throw new Error();
                 }
             } catch (err) {
                 this.$root.$bvToast.toast(

@@ -203,10 +203,9 @@
                     this.disabled = true;
                     localStorage.setItem("nl-pop", "false");
 
-                    this.trackEvent(
-                        `Newsletter: ${this.form.state}`,
-                        "Newsletter_Subscription"
-                    );
+                    this.$gtag.event("newsletter_subscription", {
+                        event_label: this.form.state
+                    });
                 } catch (err) {
                     // this.error = err.message;
                 }
@@ -220,12 +219,6 @@
                     !this.form.accepted
                     ? false
                     : true;
-            },
-            trackEvent: function(label, category, action = "Success") {
-                this.$gtag.event(action, {
-                    event_category: category,
-                    event_label: label
-                });
             }
         }
     };

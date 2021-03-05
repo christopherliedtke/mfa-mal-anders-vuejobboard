@@ -670,6 +670,20 @@
                         }
                     );
 
+                    this.$gtag.event("begin_checkout", {
+                        value: this.amount,
+                        currency: "EUR",
+                        items: [
+                            {
+                                id: this.job._id,
+                                name: this.job.title,
+                                coupon: this.coupon.code,
+                                price: this.amount,
+                                category: this.paymentMethod
+                            }
+                        ]
+                    });
+
                     this.$emit("update");
                     this.$emit("close");
                 } catch (err) {

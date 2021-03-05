@@ -8,6 +8,12 @@
             }`
         "
         target="_blank"
+        @click="
+            $gtag.event('share', {
+                method: 'whatsapp',
+                content_id: sharePath ? sharePath : $route.fullPath
+            })
+        "
         aria-label="WhatsApp"
     >
         <Fa class="mr-2" :icon="['fab', 'whatsapp']" size="lg" />
