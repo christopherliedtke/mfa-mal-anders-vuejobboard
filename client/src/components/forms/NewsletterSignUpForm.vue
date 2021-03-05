@@ -206,6 +206,13 @@
                     this.$gtag.event("newsletter_subscription", {
                         event_label: this.form.state
                     });
+
+                    this.$matomo &&
+                        this.$matomo.trackEvent(
+                            "engagement",
+                            "newsletter_subscription",
+                            this.form.state
+                        );
                 } catch (err) {
                     // this.error = err.message;
                 }

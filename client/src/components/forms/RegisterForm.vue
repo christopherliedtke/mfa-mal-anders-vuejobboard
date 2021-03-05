@@ -207,6 +207,18 @@
                             event_label: this.$store.state.auth.user._id
                         });
 
+                        this.$matomo &&
+                            this.$matomo.trackEvent(
+                                "engagement",
+                                "sign_up",
+                                this.$store.state.auth.user._id
+                            );
+
+                        this.$matomo &&
+                            this.$matomo.setUserId(
+                                this.$store.state.auth.user._id
+                            );
+
                         this.$router.push("/auth/account/verification");
                     }
                 }
