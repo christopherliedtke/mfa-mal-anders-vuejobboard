@@ -304,10 +304,3 @@
         }
     };
 </script>
-
-<style lang="scss">
-    .b-avatar-img > img {
-        max-width: 100%;
-        max-height: 100%;
-    }
-</style>

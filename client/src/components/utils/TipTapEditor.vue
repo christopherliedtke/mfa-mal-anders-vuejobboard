@@ -1,5 +1,5 @@
 <template>
-    <div class="editor">
+    <div class="tip-tap-editor">
         <editor-menu-bar :editor="editor" v-slot="{ commands, isActive }">
             <div class="menubar my-2">
                 <b-button
@@ -208,16 +208,18 @@
 </script>
 
 <style lang="scss">
-    .editor p.is-editor-empty:first-child::before {
-        content: attr(data-empty-text);
-        float: left;
-        color: #777;
-        pointer-events: none;
-        height: 0;
-    }
+    .tip-tap-editor {
+        p.is-editor-empty:first-child::before {
+            content: attr(data-empty-text);
+            float: left;
+            color: #777;
+            pointer-events: none;
+            height: 0;
+        }
 
-    .menubar {
-        display: flex;
-        flex-wrap: wrap;
+        .menubar {
+            display: flex;
+            flex-wrap: wrap;
+        }
     }
 </style>

@@ -236,6 +236,12 @@
                         );
 
                         this.$gtag.event("contact_send_email");
+
+                        this.$matomo &&
+                            this.$matomo.trackEvent(
+                                "engagement",
+                                "contact_send_email"
+                            );
                     } else {
                         throw new Error();
                     }

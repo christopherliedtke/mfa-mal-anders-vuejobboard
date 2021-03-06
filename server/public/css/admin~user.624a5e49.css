@@ -1,0 +1,1 @@
+.tip-tap-editor p.is-editor-empty:first-child:before{content:attr(data-empty-text);float:left;color:#777;pointer-events:none;height:0}.tip-tap-editor .menubar{display:flex;flex-wrap:wrap}

@@ -55,6 +55,14 @@ export const stripeCheckoutMixin = {
                             }
                         ]
                     });
+
+                    this.$matomo &&
+                        this.$matomo.trackEvent(
+                            "commerce",
+                            "begin_checkout",
+                            id,
+                            amount
+                        );
                 } else {
                     throw new Error();
                 }

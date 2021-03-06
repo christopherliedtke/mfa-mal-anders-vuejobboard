@@ -684,6 +684,14 @@
                         ]
                     });
 
+                    this.$matomo &&
+                        this.$matomo.trackEvent(
+                            "commerce",
+                            "begin_checkout",
+                            this.job._id,
+                            this.amount
+                        );
+
                     this.$emit("update");
                     this.$emit("close");
                 } catch (err) {

@@ -847,11 +847,3 @@
         }
     };
 </script>
-
-<style lang="scss">
-    .b-avatar .b-avatar-img img {
-        width: auto;
-        height: auto;
-        border-radius: 0;
-    }
-</style>

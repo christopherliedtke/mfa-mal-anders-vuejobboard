@@ -283,10 +283,3 @@
         }
     };
 </script>
-
-<style lang="scss">
-    label[for="is-employer"],
-    label[for="is-employee"] {
-        margin-top: 0;
-    }
-</style>

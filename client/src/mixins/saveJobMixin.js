@@ -60,6 +60,13 @@ export const saveJobMixin = {
                     event_label: `${job.title} | ${job.company.state} - ${jobQueryResponse.data.data[mutationType]._id}`
                 });
 
+                this.$matomo &&
+                    this.$matomo.trackEvent(
+                        "engagement",
+                        mutationType,
+                        `${job.title} | ${job.company.state} - ${jobQueryResponse.data.data[mutationType]._id}`
+                    );
+
                 this.$root.$bvToast.toast(
                     "Die Stellenanzeige wurde erfolgreich gespeichert.",
                     {
