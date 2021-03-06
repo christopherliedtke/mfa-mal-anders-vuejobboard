@@ -144,6 +144,14 @@
                     size="2x"
                 />
                 <SubscribeNewsletterBtn :state="job.company.state" />
+                <Fa
+                    v-if="$store.state.auth.user.isAdmin"
+                    @click="socialShareToClipBoard(job)"
+                    style="cursor: pointer"
+                    class="ml-3 text-muted"
+                    icon="share-alt"
+                    size="2x"
+                />
             </div>
             <div
                 v-if="job.imageUrl"
@@ -548,6 +556,27 @@
                 }
 
                 this.$store.dispatch("setOverlay", false);
+            },
+            socialShareToClipBoard(job) {
+                let el = document.createElement("textarea");
+
+                el.value = `${job.title} | ${job.company.location}\n\n${
+                    this.$config.website.url
+                }/jobboard/job/${
+                    job._id
+                }\n\n#mfamalanders #mfa #arzthelfer #arzthelferin #mfajobs #${job.company.location
+                    .replace("-", "")
+                    .replace(/\s/g, "")
+                    .toLowerCase()}jobs #${job.company.location
+                    .replace("-", "")
+                    .replace(/\s/g, "")
+                    .toLowerCase()}`;
+
+                document.body.appendChild(el);
+                el.select();
+
+                document.execCommand("copy");
+                document.body.removeChild(el);
             }
         }
     };
