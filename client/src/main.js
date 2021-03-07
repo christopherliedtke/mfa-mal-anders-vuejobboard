@@ -293,8 +293,8 @@ Vue.use(VueGtag, {
 });
 
 Vue.use(VueMatomo, {
-    host: "https://matomo.mfa-mal-anders.de",
-    siteId: 1,
+    host: config.matomo.host,
+    siteId: config.matomo.siteId,
     trackerFileName: "matomo",
     router: router,
     enableLinkTracking: true,
@@ -306,7 +306,7 @@ Vue.use(VueMatomo, {
     debug: false,
     userId: undefined,
     cookieDomain: undefined,
-    domains: "*.mfa-mal-anders.de",
+    domains: config.matomo.domains,
     preInitActions: []
 });
 
