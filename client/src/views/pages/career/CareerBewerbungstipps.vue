@@ -48,11 +48,7 @@
             <div class="d-flex justify-content-center mb-5">
                 <b-button
                     href="/api/download/public/bewerbungsunterlagen"
-                    @click="
-                        $gtag.event('download', {
-                            event_label: 'bewerbungsunterlagen'
-                        })
-                    "
+                    @click="track('download', 'bewerbungsunterlagen')"
                     variant="primary"
                     size="lg"
                     >Download</b-button
@@ -201,11 +197,7 @@
             <div class="d-flex justify-content-center my-5">
                 <b-button
                     href="/api/download/public/bewerbungsunterlagen"
-                    @click="
-                        $gtag.event('download', {
-                            event_label: 'bewerbungsunterlagen'
-                        })
-                    "
+                    @click="track('download', 'bewerbungsunterlagen')"
                     variant="primary"
                     size="lg"
                     >Download Bewerbungsunterlagen</b-button
@@ -264,6 +256,20 @@
                     }
                 ]
             };
+        },
+        methods: {
+            track(eventAction, eventLabel) {
+                this.$gtag.event(eventAction, {
+                    event_label: eventLabel
+                });
+
+                this.$matomo &&
+                    this.$matomo.trackEvent(
+                        "engagement",
+                        eventAction,
+                        eventLabel
+                    );
+            }
         }
     };
 </script>
