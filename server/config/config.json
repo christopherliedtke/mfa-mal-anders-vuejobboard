@@ -6,6 +6,14 @@
         "newsletterSuccessPath": "/page/subscription-successful",
         "newsletterUnsubscribeSuccessPath": "/page/unsubscribed-successful"
     },
+    "social": {
+        "fb": {
+            "path": "MFAmalanders"
+        },
+        "ig": {
+            "path": "mfa.mal.anders"
+        }
+    },
     "payment": {
         "currency": "eur",
         "tax": 0,

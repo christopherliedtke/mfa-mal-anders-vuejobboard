@@ -1,8 +1,12 @@
+const config = require("../config/config.json");
+
 module.exports = {
     generate: function (
         content,
         footer = "",
-        headerImg = "https://www.mfa-mal-anders.de/img/MfaMalAnders_Banner_1200.jpg"
+        headerImg = `${process.env.WEBSITE_URL}/img/MfaMalAnders_Banner_1200.jpg`,
+        lightColor = "#f8faf9",
+        primaryColor = "#6d0230"
     ) {
         // for templating https://beefree.io/
         return `
@@ -161,12 +165,12 @@ module.exports = {
                         margin: 0;
                         padding: 0;
                         -webkit-text-size-adjust: 100%;
-                        background-color: #f8faf9;
+                        background-color: ${lightColor};
                     "
                 >
                     <!--[if IE]><div class="ie-browser"><![endif]-->
                     <table
-                        bgcolor="#f8faf9"
+                        lightColor="${lightColor}"
                         cellpadding="0"
                         cellspacing="0"
                         class="nl-container"
@@ -179,7 +183,7 @@ module.exports = {
                             border-collapse: collapse;
                             mso-table-lspace: 0pt;
                             mso-table-rspace: 0pt;
-                            background-color: #f8faf9;
+                            background-color: ${lightColor};
                             width: 100%;
                         "
                         valign="top"
@@ -191,7 +195,7 @@ module.exports = {
                                     style="word-break: break-word; vertical-align: top"
                                     valign="top"
                                 >
-                                    <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" style="background-color:#f8faf9"><![endif]-->
+                                    <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td align="center" style="background-color:${lightColor}"><![endif]-->
                                     <div style="background-color: transparent">
                                         <div
                                             class="block-grid"
@@ -257,7 +261,7 @@ module.exports = {
                                                             >
                                                                 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px"><td style="padding-right: 0px;padding-left: 0px;" align="center"><!
                                                                 [endif]--><a
-                                                                    href="https://www.mfa-mal-anders.de"
+                                                                    href="${process.env.WEBSITE_URL}"
                                                                     style="outline: none"
                                                                     tabindex="-1"
                                                                     target="_blank"
@@ -378,7 +382,7 @@ module.exports = {
                                                 word-wrap: break-word;
                                                 word-break: break-word;
                                                 margin: 0 auto;
-                                                background-color: #6d0230;
+                                                background-color: ${primaryColor};
                                             "
                                         >
                                             <div
@@ -386,11 +390,11 @@ module.exports = {
                                                     border-collapse: collapse;
                                                     display: table;
                                                     width: 100%;
-                                                    background-color: #6d0230;
+                                                    background-color: ${primaryColor};
                                                 "
                                             >
-                                                <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:500px"><tr class="layout-full-width" style="background-color:#6d0230"><![endif]-->
-                                                <!--[if (mso)|(IE)]><td align="center" width="500" style="background-color:#6d0230;width:500px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"><![endif]-->
+                                                <!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:500px"><tr class="layout-full-width" style="background-color:${primaryColor}"><![endif]-->
+                                                <!--[if (mso)|(IE)]><td align="center" width="500" style="background-color:${primaryColor};width:500px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:5px; padding-bottom:5px;"><![endif]-->
                                                 <div
                                                     class="col num12"
                                                     style="
@@ -441,7 +445,7 @@ module.exports = {
                                                                      
                                                                 </div>
                                                                 <a
-                                                                    href="https://www.mfa-mal-anders.de"
+                                                                    href="${process.env.WEBSITE_URL}"
                                                                     style="outline: none"
                                                                     tabindex="-1"
                                                                     target="_blank"
@@ -449,7 +453,7 @@ module.exports = {
                                                                         align="center"
                                                                         border="0"
                                                                         class="center fixedwidth"
-                                                                        src="https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/09/Logo_mfa-mal-anders-white.png"
+                                                                        src="${process.env.WEBSITE_URL}/img/Logo_mfa-mal-anders-white_1200.png"
                                                                         style="
                                                                             text-decoration: none;
                                                                             -ms-interpolation-mode: bicubic;
@@ -576,9 +580,9 @@ module.exports = {
                                                                 >
                                                                     <div>
                                                                         <a
-                                                                            href="https://www.mfa-mal-anders.de/jobboard"
+                                                                            href="${process.env.WEBSITE_URL}/jobboard"
                                                                             style="
-                                                                                color: #f8faf9;
+                                                                                color: ${lightColor};
                                                                                 text-decoration: none;
                                                                                 margin: 0
                                                                                     0.5rem;
@@ -586,9 +590,9 @@ module.exports = {
                                                                             >Stellenangebote</a
                                                                         >
                                                                         <a
-                                                                            href="https://www.mfa-mal-anders.de/page/fuer-arbeitgeber"
+                                                                            href="${process.env.WEBSITE_URL}/page/fuer-arbeitgeber"
                                                                             style="
-                                                                                color: #f8faf9;
+                                                                                color: ${lightColor};
                                                                                 text-decoration: none;
                                                                                 margin: 0
                                                                                     0.5rem;
@@ -597,9 +601,9 @@ module.exports = {
                                                                             Arbeitgeber</a
                                                                         >
                                                                         <a
-                                                                            href="https://www.mfa-mal-anders.de/page/contact"
+                                                                            href="${process.env.WEBSITE_URL}/page/contact"
                                                                             style="
-                                                                                color: #f8faf9;
+                                                                                color: ${lightColor};
                                                                                 text-decoration: none;
                                                                                 margin: 0
                                                                                     0.5rem;
@@ -717,9 +721,9 @@ module.exports = {
                                                                 >
                                                                     <div>
                                                                         <a
-                                                                            href="https://www.facebook.com/MFAmalanders"
+                                                                            href="https://www.facebook.com/${config.social.fb.path}"
                                                                             ><img
-                                                                                src="https://wordpress.mfa-mal-anders.de/wp-content/uploads/2021/03/facebook-brands.png"
+                                                                                src="${process.env.WEBSITE_URL}/img/facebook-brands.png"
                                                                                 style="
                                                                                     margin: 0
                                                                                         0.5rem;
@@ -727,9 +731,9 @@ module.exports = {
                                                                                 width="25"
                                                                         /></a>
                                                                         <a
-                                                                            href="https://www.instagram.com/mfa.mal.anders"
+                                                                            href="https://www.instagram.com/${config.social.ig.path}"
                                                                             ><img
-                                                                                src="https://wordpress.mfa-mal-anders.de/wp-content/uploads/2021/03/instagram-brands.png"
+                                                                                src="${process.env.WEBSITE_URL}/img/instagram-brands.png"
                                                                                 style="
                                                                                     margin: 0
                                                                                         0.5rem;
@@ -753,25 +757,25 @@ module.exports = {
                                                                     class="our-class"
                                                                     style="
                                                                         font-size: 12px;
-                                                                        color: #f8faf9;
+                                                                        color: ${lightColor};
                                                                         text-decoration: none;
                                                                         padding: 1rem 0;
                                                                     "
                                                                 >
                                                                     © 2020 MFA mal anders.
                                                                     <a
-                                                                        href="https://www.mfa-mal-anders.de/page/agbs"
+                                                                        href="${process.env.WEBSITE_URL}/page/agbs"
                                                                         style="
-                                                                            color: #f8faf9;
+                                                                            color: ${lightColor};
                                                                             text-decoration: none;
                                                                         "
                                                                         >Datenschutzerklärung</a
                                                                     >
                                                                     |
                                                                     <a
-                                                                        href="https://www.mfa-mal-anders.de/page/privacy-policy"
+                                                                        href="${process.env.WEBSITE_URL}/page/privacy-policy"
                                                                         style="
-                                                                            color: #f8faf9;
+                                                                            color: ${lightColor};
                                                                             text-decoration: none;
                                                                         "
                                                                         >AGBs</a
