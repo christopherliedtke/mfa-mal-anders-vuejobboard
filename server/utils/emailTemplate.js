@@ -762,7 +762,7 @@ module.exports = {
                                                                         padding: 1rem 0;
                                                                     "
                                                                 >
-                                                                    © 2020 MFA mal anders.
+                                                                    © 2020 ${config.website.name}.
                                                                     <a
                                                                         href="${process.env.WEBSITE_URL}/page/agbs"
                                                                         style="
