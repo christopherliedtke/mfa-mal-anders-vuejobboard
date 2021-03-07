@@ -9,10 +9,7 @@
         "
         target="_blank"
         @click="
-            $gtag.event('share', {
-                method: 'whatsapp',
-                content_id: sharePath ? sharePath : $route.fullPath
-            })
+            track('share', 'whatsapp', sharePath ? sharePath : $route.fullPath)
         "
         aria-label="WhatsApp"
     >
@@ -30,6 +27,21 @@
             return {
                 url: window.location.origin
             };
+        },
+        methods: {
+            track(eventAction, method, path) {
+                this.$gtag.event(eventAction, {
+                    method: method,
+                    content_id: path
+                });
+
+                this.$matomo &&
+                    this.$matomo.trackEvent(
+                        "engagement",
+                        eventAction,
+                        `method: ${method}; path: ${path}`
+                    );
+            }
         }
     };
 </script>

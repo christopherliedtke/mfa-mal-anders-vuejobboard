@@ -179,9 +179,10 @@
             <div class="mt-3" v-if="job.company.url">
                 <b-link
                     @click="
-                        $gtag.event('apply_visit_hp', {
-                            event_label: `${job.title} | ${job.company.name} - ${job._id}`
-                        })
+                        track(
+                            'apply_visit_hp',
+                            `${job.title} | ${job.company.name} - ${job._id}`
+                        )
                     "
                     :href="job.company.url"
                     target="_blank"
@@ -204,9 +205,10 @@
                     size="lg"
                     :variant="job.simpleApplication ? 'secondary' : 'primary'"
                     @click="
-                        $gtag.event('apply_now', {
-                            event_label: `${job.title} | ${job.company.name} - ${job._id}`
-                        })
+                        track(
+                            'apply_now',
+                            `${job.title} | ${job.company.name} - ${job._id}`
+                        )
                     "
                     :href="
                         job.extJobUrl ||
@@ -270,9 +272,10 @@
                         Telefon:
                         <b-link
                             @click="
-                                $gtag.event('apply_phone', {
-                                    event_label: `${job.title} | ${job.company.name} - ${job._id}`
-                                })
+                                track(
+                                    'apply_phone',
+                                    `${job.title} | ${job.company.name} - ${job._id}`
+                                )
                             "
                             :href="`tel:${job.contactPhone}`"
                             target="_blank"
@@ -284,9 +287,10 @@
                         E-Mail:
                         <b-link
                             @click="
-                                $gtag.event('apply_email', {
-                                    event_label: `${job.title} | ${job.company.name} - ${job._id}`
-                                })
+                                track(
+                                    'apply_email',
+                                    `${job.title} | ${job.company.name} - ${job._id}`
+                                )
                             "
                             :href="
                                 `mailto:${job.contactEmail ||
@@ -556,6 +560,18 @@
                 }
 
                 this.$store.dispatch("setOverlay", false);
+            },
+            track(eventAction, eventLabel) {
+                this.$gtag.event(eventAction, {
+                    event_label: eventLabel
+                });
+
+                this.$matomo &&
+                    this.$matomo.trackEvent(
+                        "engagement",
+                        eventAction,
+                        eventLabel
+                    );
             },
             socialShareToClipBoard(job) {
                 let el = document.createElement("textarea");

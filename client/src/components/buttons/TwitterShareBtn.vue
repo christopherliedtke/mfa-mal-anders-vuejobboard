@@ -9,12 +9,7 @@
             }%0A%0A&hashtags=mfa,arzthelferIn,mfamalanders`
         "
         target="_blank"
-        @click="
-            $gtag.event('share', {
-                method: 'twitter',
-                content_id: sharePath
-            })
-        "
+        @click="track('share', 'twitter', sharePath)"
         aria-label="Twitter"
     >
         <Fa class="mr-2" :icon="['fab', 'twitter']" size="lg" />
@@ -31,6 +26,21 @@
             return {
                 url: window.location.origin
             };
+        },
+        methods: {
+            track(eventAction, method, path) {
+                this.$gtag.event(eventAction, {
+                    method: method,
+                    content_id: path
+                });
+
+                this.$matomo &&
+                    this.$matomo.trackEvent(
+                        "engagement",
+                        eventAction,
+                        `method: ${method}; path: ${path}`
+                    );
+            }
         }
     };
 </script>

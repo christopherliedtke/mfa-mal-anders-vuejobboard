@@ -9,12 +9,7 @@
             }: ${url}${sharePath ? sharePath : ''}`
         "
         target="_blank"
-        @click="
-            $gtag.event('share', {
-                method: 'email',
-                content_id: sharePath
-            })
-        "
+        @click="track('share', 'email', sharePath)"
         aria-label="E-Mail"
     >
         <Fa class="mr-2" :icon="['fa', 'envelope']" size="lg" />
@@ -31,6 +26,21 @@
             return {
                 url: window.location.origin
             };
+        },
+        methods: {
+            track(eventAction, method, path) {
+                this.$gtag.event(eventAction, {
+                    method: method,
+                    content_id: path
+                });
+
+                this.$matomo &&
+                    this.$matomo.trackEvent(
+                        "engagement",
+                        eventAction,
+                        `method: ${method}; path: ${path}`
+                    );
+            }
         }
     };
 </script>

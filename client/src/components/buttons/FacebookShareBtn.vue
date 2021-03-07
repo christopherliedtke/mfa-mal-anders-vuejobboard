@@ -9,10 +9,7 @@
         "
         target="_blank"
         @click="
-            $gtag.event('share', {
-                method: 'facebook',
-                content_id: sharePath ? sharePath : $route.fullPath
-            })
+            track('share', 'facebook', sharePath ? sharePath : $route.fullPath)
         "
     >
         <Fa class="mr-2" :icon="['fab', 'facebook-square']" size="lg" />
@@ -32,6 +29,21 @@
             return {
                 url: window.location.origin
             };
+        },
+        methods: {
+            track(eventAction, method, path) {
+                this.$gtag.event(eventAction, {
+                    method: method,
+                    content_id: path
+                });
+
+                this.$matomo &&
+                    this.$matomo.trackEvent(
+                        "engagement",
+                        eventAction,
+                        `method: ${method}; path: ${path}`
+                    );
+            }
         }
     };
 </script>

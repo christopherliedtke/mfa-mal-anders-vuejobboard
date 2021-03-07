@@ -204,14 +204,22 @@
                     if (this.$store.state.auth.user._id) {
                         this.$gtag.event("sign_up", {
                             method: "local",
-                            event_label: this.$store.state.auth.user._id
+                            event_label: `id: ${
+                                this.$store.state.auth.user._id
+                            }; type: ${
+                                this.isEmployer ? "employer" : "employee"
+                            }`
                         });
 
                         this.$matomo &&
                             this.$matomo.trackEvent(
                                 "engagement",
                                 "sign_up",
-                                this.$store.state.auth.user._id
+                                `id: ${
+                                    this.$store.state.auth.user._id
+                                }; type: ${
+                                    this.isEmployer ? "employer" : "employee"
+                                }`
                             );
 
                         this.$matomo &&
