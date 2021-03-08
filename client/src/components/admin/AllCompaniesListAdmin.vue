@@ -163,60 +163,27 @@
                 // filter search term
                 if (this.filter.searchTerm) {
                     companies = companies.filter(company => {
-                        if (
-                            company._id
-                                .toLowerCase()
-                                .includes(
-                                    this.filter.searchTerm.toLowerCase()
-                                ) ||
-                            company.name
-                                .toLowerCase()
-                                .includes(
-                                    this.filter.searchTerm.toLowerCase()
-                                ) ||
-                            company.street
-                                .toLowerCase()
-                                .includes(
-                                    this.filter.searchTerm.toLowerCase()
-                                ) ||
-                            company.location
-                                .toLowerCase()
-                                .includes(
-                                    this.filter.searchTerm.toLowerCase()
-                                ) ||
-                            company.state
-                                .toLowerCase()
-                                .includes(
-                                    this.filter.searchTerm.toLowerCase()
-                                ) ||
-                            company.zipCode
-                                .toLowerCase()
-                                .includes(
-                                    this.filter.searchTerm.toLowerCase()
-                                ) ||
-                            company.country
-                                .toLowerCase()
-                                .includes(
-                                    this.filter.searchTerm.toLowerCase()
-                                ) ||
-                            company.userId._id
-                                .toLowerCase()
-                                .includes(
-                                    this.filter.searchTerm.toLowerCase()
-                                ) ||
-                            company.userId.lastName
-                                .toLowerCase()
-                                .includes(
-                                    this.filter.searchTerm.toLowerCase()
-                                ) ||
-                            company.userId.firstName
-                                .toLowerCase()
-                                .includes(
-                                    this.filter.searchTerm.toLowerCase()
-                                ) ||
+                        const searchTerm = this.filter.searchTerm
+                            .toLowerCase()
+                            .split(" ");
+                        const searchProp = [
+                            company._id,
+                            company.name,
+                            company.street,
+                            company.location,
+                            company.state,
+                            company.zipCode,
+                            company.country,
+                            company.userId._id,
+                            company.userId.firstName,
+                            company.userId.lastName,
                             company.userId.email
-                                .toLowerCase()
-                                .includes(this.filter.searchTerm.toLowerCase())
+                        ]
+                            .join(" ")
+                            .toLowerCase();
+
+                        if (
+                            searchTerm.every(term => searchProp.includes(term))
                         ) {
                             return company;
                         } else {

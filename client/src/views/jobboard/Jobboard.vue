@@ -446,37 +446,24 @@
                     // filter search term
                     if (this.filter.searchTerm) {
                         jobs = jobs.filter(job => {
-                            if (
-                                job.title
-                                    .toLowerCase()
-                                    .includes(
-                                        this.filter.searchTerm.toLowerCase()
-                                    ) ||
-                                job.description
-                                    .toLowerCase()
-                                    .includes(
-                                        this.filter.searchTerm.toLowerCase()
-                                    ) ||
-                                job.company.name
-                                    .toLowerCase()
-                                    .includes(
-                                        this.filter.searchTerm.toLowerCase()
-                                    ) ||
-                                job.company.state
-                                    .toLowerCase()
-                                    .includes(
-                                        this.filter.searchTerm.toLowerCase()
-                                    ) ||
-                                job.company.location
-                                    .toLowerCase()
-                                    .includes(
-                                        this.filter.searchTerm.toLowerCase()
-                                    ) ||
+                            const searchTerm = this.filter.searchTerm
+                                .toLowerCase()
+                                .split(" ");
+                            const searchProp = [
+                                job.title,
+                                job.description,
+                                job.company.name,
+                                job.company.state,
+                                job.company.location,
                                 job.company.zipCode
-                                    .toLowerCase()
-                                    .includes(
-                                        this.filter.searchTerm.toLowerCase()
-                                    )
+                            ]
+                                .join(" ")
+                                .toLowerCase();
+
+                            if (
+                                searchTerm.every(term =>
+                                    searchProp.includes(term)
+                                )
                             ) {
                                 return job;
                             } else {

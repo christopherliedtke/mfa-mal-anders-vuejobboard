@@ -143,30 +143,21 @@
                 // filter search term
                 if (this.filter.searchTerm) {
                     users = users.filter(user => {
-                        if (
-                            user._id
-                                .toLowerCase()
-                                .includes(
-                                    this.filter.searchTerm.toLowerCase()
-                                ) ||
-                            user.firstName
-                                .toLowerCase()
-                                .includes(
-                                    this.filter.searchTerm.toLowerCase()
-                                ) ||
-                            user.lastName
-                                .toString()
-                                .includes(
-                                    this.filter.searchTerm.toLowerCase()
-                                ) ||
-                            user.email
-                                .toLowerCase()
-                                .includes(
-                                    this.filter.searchTerm.toLowerCase()
-                                ) ||
+                        const searchTerm = this.filter.searchTerm
+                            .toLowerCase()
+                            .split(" ");
+                        const searchProp = [
+                            user._id,
+                            user.firstName,
+                            user.lastName,
+                            user.email,
                             user.status
-                                .toLowerCase()
-                                .includes(this.filter.searchTerm.toLowerCase())
+                        ]
+                            .join(" ")
+                            .toLowerCase();
+
+                        if (
+                            searchTerm.every(term => searchProp.includes(term))
                         ) {
                             return user;
                         } else {

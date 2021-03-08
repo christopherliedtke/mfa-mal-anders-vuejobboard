@@ -265,40 +265,27 @@
                 get() {
                     let payments = [...this.payments];
 
+                    // filter search term
                     if (this.filter.searchTerm) {
                         payments = payments.filter(payment => {
-                            if (
-                                payment._id
-                                    .toLowerCase()
-                                    .includes(
-                                        this.filter.searchTerm.toLowerCase()
-                                    ) ||
-                                (payment.status &&
-                                    payment.status
-                                        .toLowerCase()
-                                        .includes(
-                                            this.filter.searchTerm.toLowerCase()
-                                        )) ||
-                                payment.user._id
-                                    .toLowerCase()
-                                    .includes(
-                                        this.filter.searchTerm.toLowerCase()
-                                    ) ||
-                                payment.user.email
-                                    .toLowerCase()
-                                    .includes(
-                                        this.filter.searchTerm.toLowerCase()
-                                    ) ||
-                                payment.job._id
-                                    .toLowerCase()
-                                    .includes(
-                                        this.filter.searchTerm.toLowerCase()
-                                    ) ||
+                            const searchTerm = this.filter.searchTerm
+                                .toLowerCase()
+                                .split(" ");
+                            const searchProp = [
+                                payment._id,
+                                payment.status ? payment.status : "",
+                                payment.user._id,
+                                payment.user._email,
+                                payment.job._id,
                                 payment.job.title
-                                    .toLowerCase()
-                                    .includes(
-                                        this.filter.searchTerm.toLowerCase()
-                                    )
+                            ]
+                                .join(" ")
+                                .toLowerCase();
+
+                            if (
+                                searchTerm.every(term =>
+                                    searchProp.includes(term)
+                                )
                             ) {
                                 return payment;
                             } else {

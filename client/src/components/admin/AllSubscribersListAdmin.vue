@@ -164,25 +164,20 @@
                 // filter search term
                 if (this.filter.searchTerm) {
                     subscribers = subscribers.filter(subscriber => {
-                        if (
-                            subscriber._id
-                                .toLowerCase()
-                                .includes(
-                                    this.filter.searchTerm.toLowerCase()
-                                ) ||
-                            subscriber.state
-                                .toLowerCase()
-                                .includes(
-                                    this.filter.searchTerm.toLowerCase()
-                                ) ||
-                            subscriber.status
-                                .toString()
-                                .includes(
-                                    this.filter.searchTerm.toLowerCase()
-                                ) ||
+                        const searchTerm = this.filter.searchTerm
+                            .toLowerCase()
+                            .split(" ");
+                        const searchProp = [
+                            subscriber._id,
+                            subscriber.state,
+                            subscriber.status,
                             subscriber.email
-                                .toLowerCase()
-                                .includes(this.filter.searchTerm.toLowerCase())
+                        ]
+                            .join(" ")
+                            .toLowerCase();
+
+                        if (
+                            searchTerm.every(term => searchProp.includes(term))
                         ) {
                             return subscriber;
                         } else {
