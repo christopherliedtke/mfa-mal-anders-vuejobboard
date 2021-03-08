@@ -125,6 +125,10 @@ const UserDashboardEditCompany = () =>
     import(
         /* webpackChunkName: "user" */ "@/views/user/dashboard/companies/edit/_companyId.vue"
     );
+const UserDashboardCheckoutJob = () =>
+    import(
+        /* webpackChunkName: "user" */ "@/views/user/dashboard/checkout/_jobId.vue"
+    );
 
 // #Admin
 const Admin = () =>
@@ -393,6 +397,14 @@ const routes = [
                         path: "companies/edit/:companyId",
                         name: "UserDashboardEditCompany",
                         component: UserDashboardEditCompany,
+                        meta: {
+                            public: false
+                        }
+                    },
+                    {
+                        path: "checkout/:jobId",
+                        name: "UserDashboardCheckoutJob",
+                        component: UserDashboardCheckoutJob,
                         meta: {
                             public: false
                         }
