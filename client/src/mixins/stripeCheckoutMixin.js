@@ -40,7 +40,6 @@ export const stripeCheckoutMixin = {
                 );
                 if (response.data.success) {
                     this.checkoutSessionId = response.data.sessionId;
-                    await this.redirectToCheckout(this.checkoutSessionId);
 
                     this.$gtag.event("begin_checkout", {
                         value: amount,
@@ -63,6 +62,8 @@ export const stripeCheckoutMixin = {
                             id,
                             amount
                         );
+
+                    await this.redirectToCheckout(this.checkoutSessionId);
                 } else {
                     throw new Error();
                 }
