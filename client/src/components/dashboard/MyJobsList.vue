@@ -216,7 +216,7 @@
                             class="mr-2 mb-2 mb-md-0"
                             variant="success"
                             size="sm"
-                            @click.prevent="showCheckoutModal(job)"
+                            :to="`/user/dashboard/checkout/${job._id}`"
                             ><Fa class="mr-2" icon="shopping-cart" />Jetzt
                             bezahlen</b-button
                         >
