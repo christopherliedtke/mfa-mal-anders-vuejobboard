@@ -420,15 +420,15 @@
             },
             async deleteJob(jobId) {
                 try {
-                    const response = await this.$axios.post("graphql", {
+                    const response = await this.$axios.post("/graphql", {
                         query: `
-                                mutation {
-                                    deleteJob(_id: "${jobId}") {
-                                        _id
-                                        status
-                                    }
+                            mutation {
+                                deleteJob(_id: "${jobId}") {
+                                    _id
+                                    status
                                 }
-                            `
+                            }
+                        `
                     });
 
                     if (response.data.data.deleteJob.status === "deleted") {
