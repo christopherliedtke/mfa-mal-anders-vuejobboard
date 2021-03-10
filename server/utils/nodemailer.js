@@ -14,6 +14,11 @@ const emailService = nodemailer.createTransport({
         user: process.env.EMAIL_USERNAME,
         pass: process.env.EMAIL_PW,
     },
+    dkim: {
+        domainName: "mfa-mal-anders.de",
+        keySelector: "webgo",
+        privateKey: process.env.WEBGO_PRIVATE_KEY,
+    },
 });
 
 module.exports = emailService;
