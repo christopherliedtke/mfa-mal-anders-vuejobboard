@@ -46,11 +46,12 @@ const UserType = gql`
             _id: ID!
             gender: String
             title: String
-            firstName: String!
-            lastName: String!
-            email: String!
-            isEmployer: Boolean!
-            isEmployee: Boolean!
+            firstName: String
+            lastName: String
+            email: String
+            isEmployer: Boolean
+            isEmployee: Boolean
+            status: String
         ): User
         adminDeleteUser(_id: ID!): User
     }

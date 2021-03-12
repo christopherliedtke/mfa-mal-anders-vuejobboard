@@ -47,6 +47,32 @@
                     size="sm"
                     ><Fa class="mr-2" icon="edit" />Edit
                 </b-button>
+                <b-dropdown
+                    class="mr-2 mb-2"
+                    size="sm"
+                    left
+                    variant="secondary"
+                >
+                    <template v-slot:button-content>
+                        <Fa class="mr-2" icon="ellipsis-v" /> Status
+                    </template>
+                    <b-dropdown-item
+                        class="mb-0"
+                        variant="success"
+                        @click.prevent="
+                            updateUserStatus(row.item._id, 'active')
+                        "
+                        >active</b-dropdown-item
+                    >
+                    <b-dropdown-item
+                        class="mb-0"
+                        variant="warning"
+                        @click.prevent="
+                            updateUserStatus(row.item._id, 'pending')
+                        "
+                        >pending</b-dropdown-item
+                    >
+                </b-dropdown>
                 <b-button
                     size="sm"
                     variant="danger"
@@ -252,6 +278,54 @@
                         `Der User konnte nicht gelöscht werden. Error: ${err}`,
                         {
                             title: `Fehler beim Löschen`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
+                }
+            },
+            async updateUserStatus(userId, status) {
+                try {
+                    const updatedUser = await this.$axios.post("/graphql", {
+                        query: `
+                                mutation {
+                                    adminUpdateUser(_id: "${userId}" status: "${status}") {
+                                        _id
+                                        createdAt
+                                        updatedAt
+                                        firstName
+                                        lastName
+                                        email
+                                        status
+                                        isEmployer
+                                        isEmployee
+                                    }
+                                }
+                            `
+                    });
+
+                    if (updatedUser.data.errors) {
+                        throw new Error("User could not be updated!");
+                    }
+
+                    this.users = this.users.map(userOld => {
+                        if (
+                            userOld._id ===
+                            updatedUser.data.data.adminUpdateUser._id
+                        ) {
+                            return updatedUser.data.data.adminUpdateUser;
+                        } else {
+                            return userOld;
+                        }
+                    });
+                } catch (err) {
+                    this.error = true;
+                    this.$root.$bvToast.toast(
+                        `Der User konnte nicht aktualisiert werden. Error: ${err}`,
+                        {
+                            title: `Fehler beim Aktualisieren`,
                             variant: "danger",
                             toaster: "b-toaster-bottom-right",
                             solid: true,

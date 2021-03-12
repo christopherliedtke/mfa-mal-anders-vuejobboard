@@ -18,6 +18,8 @@ const emailService = nodemailer.createTransport({
         domainName: "mfa-mal-anders.de",
         keySelector: "webgo",
         privateKey: process.env.WEBGO_PRIVATE_KEY,
+        // cacheDir: "/tmp",
+        // cacheTreshold: 100 * 1024,
     },
 });
 

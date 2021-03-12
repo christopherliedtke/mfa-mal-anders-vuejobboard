@@ -144,14 +144,26 @@
                     size="2x"
                 />
                 <SubscribeNewsletterBtn :state="job.company.state" />
-                <Fa
+                <div
                     v-if="$store.state.auth.user.isAdmin"
-                    @click="socialShareToClipBoard(job)"
-                    style="cursor: pointer"
-                    class="ml-3 text-muted"
-                    icon="share-alt"
-                    size="2x"
-                />
+                    class="border-radius1 bg-light-shade ml-3 py-2 px-3"
+                >
+                    <Fa
+                        @click="socialShareToClipBoard(job)"
+                        style="cursor: pointer"
+                        class="text-info"
+                        icon="share-alt"
+                        size="lg"
+                    />
+                    <b-link :to="`/admin/jobs/edit/${job._id}`">
+                        <Fa
+                            style="cursor: pointer"
+                            class="text-info ml-3"
+                            icon="edit"
+                            size="lg"
+                        />
+                    </b-link>
+                </div>
             </div>
             <div
                 v-if="job.imageUrl"

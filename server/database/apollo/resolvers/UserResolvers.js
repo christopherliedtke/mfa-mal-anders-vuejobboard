@@ -466,19 +466,17 @@ const UserResolvers = {
                 throw new AuthenticationError("Missing permission!");
             }
 
-            const user = User.findOneAndUpdate(
-                { _id: args._id },
-                {
-                    gender: sanitizeHtml(args.gender),
-                    title: sanitizeHtml(args.title),
-                    firstName: sanitizeHtml(args.firstName),
-                    lastName: sanitizeHtml(args.lastName),
-                    email: sanitizeHtml(args.email),
-                    isEmployer: args.isEmployer,
-                    isEmployee: args.isEmployee,
-                },
-                { new: true }
-            );
+            const updateObj = { ...args };
+
+            for (const key in updateObj) {
+                if (typeof updateObj[key] === "string") {
+                    updateObj[key] = sanitizeHtml(updateObj[key]);
+                }
+            }
+
+            const user = User.findOneAndUpdate({ _id: args._id }, updateObj, {
+                new: true,
+            });
 
             return user;
         },

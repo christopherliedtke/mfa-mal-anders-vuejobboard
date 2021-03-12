@@ -230,12 +230,10 @@
 
                             if (
                                 response.data.data[mutationType].status ===
-                                "pending"
+                                    "pending" &&
+                                !this.$store.state.auth.user.isAdmin
                             ) {
-                                this.$store.commit(
-                                    "setUserStatus",
-                                    response.data.data[mutationType].status
-                                );
+                                await this.$store.dispatch("fetchUserFromDb");
                                 await this.$axios.get(
                                     "/api/auth/verification/get-activation-email"
                                 );
