@@ -60,7 +60,7 @@ export const stripeCheckoutMixin = {
                             "commerce",
                             "begin_checkout",
                             id,
-                            amount
+                            amount / 100
                         );
 
                     await this.redirectToCheckout(this.checkoutSessionId);

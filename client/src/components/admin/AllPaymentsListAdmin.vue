@@ -51,6 +51,11 @@
             <template v-slot:cell(paymentExpiresAt)="row">
                 {{ row.value && new Date(row.value).toLocaleString() }}
             </template>
+            <template v-slot:cell(receiptUrl)="row">
+                <b-link v-if="row.value" :href="row.value" target="_blank"
+                    >Link</b-link
+                >
+            </template>
             <template v-slot:cell(amount)="row">
                 {{ row.value / 100 }}€
             </template>

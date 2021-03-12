@@ -689,7 +689,7 @@
                             "commerce",
                             "begin_checkout",
                             this.job._id,
-                            this.amount
+                            this.amount / 100
                         );
 
                     this.$emit("update");
