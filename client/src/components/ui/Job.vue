@@ -174,7 +174,7 @@
                     fluid
                     center
                     style="object-fit: fill; z-index: -1"
-                    class="blur position-absolute"
+                    class="blur position-absolute w-100"
                     :src="job.imageUrl"
                 />
 
