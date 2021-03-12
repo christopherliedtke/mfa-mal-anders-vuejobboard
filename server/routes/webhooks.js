@@ -40,6 +40,10 @@ router.post("/checkout-completed", async (req, res) => {
                 });
             }
 
+            const succeededCharge = intent.charges.data.filter(
+                (charge) => charge.paid
+            )[0];
+
             const paymentObj = {
                 status: "paid",
                 paymentType: "stripe",
@@ -52,6 +56,8 @@ router.post("/checkout-completed", async (req, res) => {
                 job: jobId,
                 user: userId,
                 stripePaymentIntent: intent.id || "",
+                receiptUrl: succeededCharge["receipt_url"],
+                receiptNumber: succeededCharge["receipt_number"],
             };
 
             if (couponId) {
@@ -71,6 +77,7 @@ router.post("/checkout-completed", async (req, res) => {
                     // paidAt,
                     paidExpiresAt,
                     refreshFrequency,
+                    payment: payment._id,
                 },
                 { new: true }
             )

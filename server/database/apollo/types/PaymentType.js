@@ -64,6 +64,8 @@ const PaymentType = gql`
         invoiceDate: Float
         paymentType: String
         stripePaymentIntent: String
+        receiptUrl: String
+        receiptNumber: String
         amount: Float
         fee: Float
         taxes: Float

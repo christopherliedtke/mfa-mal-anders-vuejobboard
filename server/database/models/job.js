@@ -105,6 +105,10 @@ const JobSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: "Company",
         },
+        payment: {
+            type: Schema.Types.ObjectId,
+            ref: "Payment",
+        },
     },
     { timestamps: true }
 );

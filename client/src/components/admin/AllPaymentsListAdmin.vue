@@ -223,6 +223,18 @@
                         sortable: true
                     },
                     {
+                        key: "stripePaymentIntent",
+                        sortable: true
+                    },
+                    {
+                        key: "receiptUrl",
+                        sortable: true
+                    },
+                    {
+                        key: "receiptNumber",
+                        sortable: true
+                    },
+                    {
                         key: "amount",
                         sortable: true
                     },
@@ -317,6 +329,9 @@
                                         updatedAt
                                         paidAt
                                         paymentExpiresAt
+                                        stripePaymentIntent
+                                        receiptUrl
+                                        receiptNumber
                                         invoiceNo
                                         invoiceDate
                                         paymentType
@@ -372,6 +387,9 @@
                                     updatedAt
                                     paidAt
                                     paymentExpiresAt
+                                    stripePaymentIntent
+                                    receiptUrl
+                                    receiptNumber
                                     invoiceNo
                                     invoiceDate
                                     paymentType
