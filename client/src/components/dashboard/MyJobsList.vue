@@ -260,33 +260,22 @@
                 </p></b-modal
             >
         </b-card>
-        <Checkout
-            :showCheckoutModal="checkout.showModal"
-            :job="checkout.checkoutJob"
-            @close="checkout.showModal = false"
-            @update="getJobsByUserId"
-        />
     </div>
 </template>
 
 <script>
-    import Checkout from "@/components/checkout/Checkout.vue";
     export default {
         name: "MyJobsList",
-        components: {
-            Checkout
-        },
         data() {
             return {
-                myJobs: [],
-                checkout: {
-                    showModal: false,
-                    checkoutJob: null
-                }
+                myJobs: []
             };
         },
         created() {
             this.getJobsByUserId();
+        },
+        mounted() {
+            this.checkPaymentSuccess(this.$route.query);
         },
         methods: {
             async getJobsByUserId() {
@@ -472,9 +461,30 @@
                     );
                 }
             },
-            showCheckoutModal(job) {
-                this.checkout.checkoutJob = job;
-                this.checkout.showModal = true;
+            async checkPaymentSuccess(query) {
+                if (query.success === "true") {
+                    this.$root.$bvToast.toast(
+                        "Der Zahlungsvorgang wurde erfolgreich abgeschlossen. Ihre Anzeige ist ab sofort auf unserer Stellenbörse verfügbar. Einen Beleg für Ihre Zahlung erhalten Sie auf Ihre angegebene E-Mail Adresse.",
+                        {
+                            title: `Zahlung erfolgreich`,
+                            variant: "success",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
+                } else if (query.success === "false") {
+                    this.$root.$bvToast.toast(
+                        "Ihre Zahlung konnte leider nicht verarbeitet werden. Bitte versuchen Sie es noch einmal oder kontaktieren Sie uns über unsere Kontaktdaten.",
+                        {
+                            title: `Zahlung fehlgeschlagen`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
+                }
             }
         }
     };

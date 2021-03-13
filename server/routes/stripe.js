@@ -68,8 +68,8 @@ router.post("/job/create-session-id", verifyToken, async (req, res) => {
                 accepted: req.body.accepted,
             },
             mode: "payment",
-            success_url: `${req.body.url}?success=true&job_id=${req.body.id}`,
-            cancel_url: `${req.body.url}?success=false`,
+            success_url: `${process.env.WEBSITE_URL}${req.body.url}?success=true&job_id=${req.body.id}`,
+            cancel_url: `${process.env.WEBSITE_URL}${req.body.url}?success=false&job_id=${req.body.id}`,
         });
 
         res.json({

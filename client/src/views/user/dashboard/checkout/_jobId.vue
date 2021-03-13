@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1 class="title">Zahlung – Stellenanzeige veröffentlichen</h1>
+        <h1 class="title">{{ title }}</h1>
         <b-container class="checkout py-3 py-lg-5">
             <div>
                 <h5 class="mb-4">
@@ -364,11 +364,8 @@
                     </div>
                 </div>
             </div>
-            <template
-                v-slot:modal-footer
-                class="d-flex justify-content-between"
-            >
-                <b-button @click="$emit('close')" class="mb-2" variant="danger"
+            <div class="d-flex justify-content-between mt-5">
+                <b-button @click="$router.go(-1)" class="mb-2" variant="danger"
                     >Abbrechen</b-button
                 >
                 <div>
@@ -402,7 +399,7 @@
                         {{ $config.payment.currency }} | Jetzt bezahlen
                     </b-button>
                 </div>
-            </template>
+            </div>
         </b-container>
     </div>
 </template>
@@ -422,6 +419,7 @@
         },
         data() {
             return {
+                title: "Zahlung – Stellenanzeige veröffentlichen",
                 job: Object,
                 checkout: {
                     paymentMethod: "stripe",
@@ -496,6 +494,14 @@
         },
         async mounted() {
             await this.getJob();
+
+            if (this.job.company.size) {
+                this.calculatePrice();
+            }
+
+            if (this.job.company.name) {
+                this.setBillingAddress();
+            }
         },
         methods: {
             async getJob() {
@@ -554,6 +560,170 @@
                 }
 
                 this.$store.dispatch("setOverlay", false);
+            },
+            calculatePrice() {
+                switch (this.job.company.size) {
+                    case "1 - 5 Mitarbeiter":
+                        this.checkout.amount = this.$config.payment.minCost;
+                        break;
+                    case "6 - 10 Mitarbeiter":
+                        this.checkout.amount = this.$config.payment.mediumCost;
+                        break;
+                    case "11 - 20 Mitarbeiter":
+                        this.checkout.amount = this.$config.payment.largeCost;
+                        break;
+                    case "20+ Mitarbeiter":
+                        this.checkout.amount = this.$config.payment.xLargeCost;
+                        break;
+                }
+            },
+            async setBillingAddress() {
+                if (
+                    this.$store.state.auth.loggedIn &&
+                    this.$store.state.auth.user
+                ) {
+                    this.checkout.billingAddress = {
+                        gender: this.$store.state.auth.user.gender || null,
+                        title: this.$store.state.auth.user.title || null,
+                        firstName: this.$store.state.auth.user.firstName || "",
+                        lastName: this.$store.state.auth.user.lastName || "",
+                        company: this.job.company.name,
+                        email: this.$store.state.auth.user.email,
+                        street: this.job.company.street,
+                        zipCode: this.job.company.zipCode,
+                        location: this.job.company.location
+                    };
+                }
+            },
+            validateBillingAddress() {
+                this.checkout.error = null;
+                this.checkout.validated = true;
+                return !this.checkout.billingAddress.company ||
+                    !this.checkout.billingAddress.firstName ||
+                    !this.checkout.billingAddress.lastName ||
+                    !this.checkout.billingAddress.email ||
+                    !this.checkout.billingAddress.street ||
+                    !this.checkout.billingAddress.zipCode ||
+                    !this.checkout.billingAddress.location
+                    ? false
+                    : true;
+            },
+            async sendInvoice() {
+                if (!this.validateBillingAddress()) {
+                    this.checkout.error =
+                        "Bitte füllen Sie die erforderlichen Felder aus!";
+                    return null;
+                }
+
+                this.$store.dispatch("setOverlay", true);
+
+                try {
+                    const response = await this.$axios.post(
+                        "/api/invoice/get-invoice",
+                        {
+                            jobId: this.job._id,
+                            jobTitle: this.job.title,
+                            amount: this.checkout.amount,
+                            paymentMethod: this.checkout.paymentMethod,
+                            couponCode: this.checkout.coupon.code,
+                            refreshFrequency: this.refreshFrequencyComputed,
+                            billingAddress: this.checkout.billingAddress
+                        }
+                    );
+
+                    if (!response.data.success) {
+                        throw new Error("Invoice could not be sent!");
+                    }
+
+                    this.$root.$bvToast.toast(
+                        "Vielen Dank! Ihre Rechnung wurde erfolgreich angefordert. Innerhalb der nächsten 24 Stunden erhalten Sie die gewünschte Rechnung auf die angegebene E-Mail Adresse.",
+                        {
+                            title: `Rechnung angefordert`,
+                            variant: "success",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
+
+                    this.$gtag.event("begin_checkout", {
+                        value: this.checkout.amount,
+                        currency: "EUR",
+                        items: [
+                            {
+                                id: this.job._id,
+                                name: this.job.title,
+                                coupon: this.checkout.coupon.code,
+                                price: this.checkout.amount,
+                                category: this.checkout.paymentMethod
+                            }
+                        ]
+                    });
+
+                    this.$matomo &&
+                        this.$matomo.trackEvent(
+                            "commerce",
+                            "begin_checkout",
+                            this.job._id,
+                            this.checkout.amount
+                        );
+
+                    this.$router.push("/user/dashboard?tab=1");
+                } catch (err) {
+                    this.$root.$bvToast.toast(
+                        "Bei der Verarbeitung Ihrer Daten ist leider ein Fehler aufgetreten. Bitte versuchen Sie es später noch einmal.",
+                        {
+                            title: `Fehler bei Rechnungsanforderung`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
+                }
+
+                this.$store.dispatch("setOverlay", false);
+            },
+            async startStripeCheckout() {
+                await this.initStripeCheckout(
+                    "job",
+                    this.job._id,
+                    this.job.title,
+                    this.checkout.coupon.code,
+                    this.checkout.amount,
+                    this.checkout.accepted,
+                    "/user/dashboard?tab=1"
+                );
+            },
+            async checkCouponCode() {
+                this.checkout.couponValidationState = null;
+
+                const coupon = await this.$axios.get("/graphql", {
+                    params: {
+                        query: `
+                            query {
+                                validateCoupon (code: "${this.checkout.coupon.code}") {
+                                    _id
+                                    code
+                                    discount
+                                    refreshFrequency
+                                }
+                            }
+                        `
+                    }
+                });
+
+                if (coupon.data.errors) {
+                    this.checkout.couponValidationState = false;
+                    this.checkout.coupon.discount = 0;
+                    this.checkout.coupon.refreshFrequency = 0;
+                } else {
+                    this.checkout.couponValidationState = true;
+                    this.checkout.coupon.discount =
+                        coupon.data.data.validateCoupon.discount;
+                    this.checkout.coupon.refreshFrequency =
+                        coupon.data.data.validateCoupon.refreshFrequency;
+                }
             }
         }
     };

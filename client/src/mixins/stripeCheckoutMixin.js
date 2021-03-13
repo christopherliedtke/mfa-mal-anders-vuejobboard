@@ -6,7 +6,7 @@ export const stripeCheckoutMixin = {
             checkoutSessionId: null
         };
     },
-    async created() {
+    async mounted() {
         await this.initStripe();
     },
     methods: {
@@ -21,7 +21,8 @@ export const stripeCheckoutMixin = {
             title = "",
             code = null,
             amount,
-            accepted = false
+            accepted = false,
+            returnPath = ""
         ) {
             this.$store.dispatch("setOverlay", true);
 
@@ -32,7 +33,7 @@ export const stripeCheckoutMixin = {
                         type,
                         id,
                         title,
-                        url: window.location.origin + this.$route.fullPath,
+                        url: returnPath,
                         code,
                         amount,
                         accepted
