@@ -1,5 +1,5 @@
 <template>
-    <b-container class="edit-job py-5">
+    <b-container class="edit-job py-3 py-lg-5">
         <h2>
             Stellenanzeige
             {{ $route.params.jobId === "new" ? "erstellen" : "bearbeiten" }}

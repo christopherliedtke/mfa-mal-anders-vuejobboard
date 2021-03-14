@@ -128,6 +128,15 @@
                                 "item": "https://www.mfa-mal-anders.de/page/about"
                             }]
                         }`
+                    },
+                    {
+                        type: "application/ld+json",
+                        inner: JSON.stringify({
+                            "@context": "http://schema.org",
+                            "@type": "Organization",
+                            url: this.$config.website.url,
+                            logo: "/img/logo_800.png"
+                        })
                     }
                 ]
             };
