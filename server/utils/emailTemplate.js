@@ -261,7 +261,11 @@ module.exports = {
                                                             >
                                                                 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px"><td style="padding-right: 0px;padding-left: 0px;" align="center"><!
                                                                 [endif]--><a
-                                                                    href="${process.env.WEBSITE_URL}"
+                                                                    href="${
+                                                                        process
+                                                                            .env
+                                                                            .WEBSITE_URL
+                                                                    }"
                                                                     style="outline: none"
                                                                     tabindex="-1"
                                                                     target="_blank"
@@ -445,7 +449,11 @@ module.exports = {
                                                                      
                                                                 </div>
                                                                 <a
-                                                                    href="${process.env.WEBSITE_URL}"
+                                                                    href="${
+                                                                        process
+                                                                            .env
+                                                                            .WEBSITE_URL
+                                                                    }"
                                                                     style="outline: none"
                                                                     tabindex="-1"
                                                                     target="_blank"
@@ -453,7 +461,11 @@ module.exports = {
                                                                         align="center"
                                                                         border="0"
                                                                         class="center fixedwidth"
-                                                                        src="${process.env.WEBSITE_URL}/img/Logo_mfa-mal-anders-white_1200.png"
+                                                                        src="${
+                                                                            process
+                                                                                .env
+                                                                                .WEBSITE_URL
+                                                                        }/img/Logo_mfa-mal-anders-white_1200.png"
                                                                         style="
                                                                             text-decoration: none;
                                                                             -ms-interpolation-mode: bicubic;
@@ -580,7 +592,11 @@ module.exports = {
                                                                 >
                                                                     <div>
                                                                         <a
-                                                                            href="${process.env.WEBSITE_URL}/jobboard"
+                                                                            href="${
+                                                                                process
+                                                                                    .env
+                                                                                    .WEBSITE_URL
+                                                                            }/jobboard"
                                                                             style="
                                                                                 color: ${lightColor};
                                                                                 text-decoration: none;
@@ -590,7 +606,11 @@ module.exports = {
                                                                             >Stellenangebote</a
                                                                         >
                                                                         <a
-                                                                            href="${process.env.WEBSITE_URL}/page/fuer-arbeitgeber"
+                                                                            href="${
+                                                                                process
+                                                                                    .env
+                                                                                    .WEBSITE_URL
+                                                                            }/page/fuer-arbeitgeber"
                                                                             style="
                                                                                 color: ${lightColor};
                                                                                 text-decoration: none;
@@ -601,7 +621,11 @@ module.exports = {
                                                                             Arbeitgeber</a
                                                                         >
                                                                         <a
-                                                                            href="${process.env.WEBSITE_URL}/page/contact"
+                                                                            href="${
+                                                                                process
+                                                                                    .env
+                                                                                    .WEBSITE_URL
+                                                                            }/page/contact"
                                                                             style="
                                                                                 color: ${lightColor};
                                                                                 text-decoration: none;
@@ -721,9 +745,18 @@ module.exports = {
                                                                 >
                                                                     <div>
                                                                         <a
-                                                                            href="https://www.facebook.com/${config.social.fb.path}"
+                                                                            href="https://www.facebook.com/${
+                                                                                config
+                                                                                    .social
+                                                                                    .fb
+                                                                                    .path
+                                                                            }"
                                                                             ><img
-                                                                                src="${process.env.WEBSITE_URL}/img/facebook-brands.png"
+                                                                                src="${
+                                                                                    process
+                                                                                        .env
+                                                                                        .WEBSITE_URL
+                                                                                }/img/facebook-brands.png"
                                                                                 style="
                                                                                     margin: 0
                                                                                         0.5rem;
@@ -731,9 +764,18 @@ module.exports = {
                                                                                 width="25"
                                                                         /></a>
                                                                         <a
-                                                                            href="https://www.instagram.com/${config.social.ig.path}"
+                                                                            href="https://www.instagram.com/${
+                                                                                config
+                                                                                    .social
+                                                                                    .ig
+                                                                                    .path
+                                                                            }"
                                                                             ><img
-                                                                                src="${process.env.WEBSITE_URL}/img/instagram-brands.png"
+                                                                                src="${
+                                                                                    process
+                                                                                        .env
+                                                                                        .WEBSITE_URL
+                                                                                }/img/instagram-brands.png"
                                                                                 style="
                                                                                     margin: 0
                                                                                         0.5rem;
@@ -762,9 +804,15 @@ module.exports = {
                                                                         padding: 1rem 0;
                                                                     "
                                                                 >
-                                                                    © 2020 ${config.website.name}.
+                                                                    © ${new Date().getFullYear()} ${
+            config.website.name
+        }.
                                                                     <a
-                                                                        href="${process.env.WEBSITE_URL}/page/agbs"
+                                                                        href="${
+                                                                            process
+                                                                                .env
+                                                                                .WEBSITE_URL
+                                                                        }/page/agbs"
                                                                         style="
                                                                             color: ${lightColor};
                                                                             text-decoration: none;
@@ -773,7 +821,11 @@ module.exports = {
                                                                     >
                                                                     |
                                                                     <a
-                                                                        href="${process.env.WEBSITE_URL}/page/privacy-policy"
+                                                                        href="${
+                                                                            process
+                                                                                .env
+                                                                                .WEBSITE_URL
+                                                                        }/page/privacy-policy"
                                                                         style="
                                                                             color: ${lightColor};
                                                                             text-decoration: none;
