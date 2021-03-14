@@ -36,40 +36,49 @@
                         },
                         {
                             property: "og:type",
-                            content: "website"
+                            content: "website",
+                            id: "og-type"
                         },
                         {
                             property: "og:title",
-                            content: `${this.title} – ${this.$config.website.name}`
+                            content: `${this.title} – ${this.$config.website.name}`,
+                            id: "og-title"
                         },
                         {
                             property: "og:description",
-                            content: this.desc
+                            content: this.desc,
+                            id: "og-description"
                         },
                         {
                             property: "og:url",
-                            content: this.$route.path
+                            content: this.$route.path,
+                            id: "og-url"
                         },
                         {
                             property: "og:image",
                             content:
-                                this.img || `/img/MfaMalAnders_Banner_1200.jpg`
+                                this.img || `/img/MfaMalAnders_Banner_1200.jpg`,
+                            id: "og-image"
                         },
                         {
                             property: "og:image:alt",
-                            content: this.imgAlt || this.title
+                            content: this.imgAlt || this.title,
+                            id: "og-image-alt"
                         },
                         {
                             property: "fb:app_id",
-                            content: this.$config.fb.appId
+                            content: this.$config.fb.appId,
+                            id: "fb-app-id"
                         },
                         {
                             property: "twitter:card",
-                            content: this.twitterCard || "summary_large_image"
+                            content: this.twitterCard || "summary_large_image",
+                            id: "twitter-card"
                         },
                         {
                             property: "twitter:site",
-                            content: "@MfaMalAnders"
+                            content: "@MfaMalAnders",
+                            id: "twitter-site"
                         }
                     ];
                 }
@@ -79,41 +88,35 @@
                     ...this.link,
                     {
                         rel: "canonical",
-                        href: `${this.$config.website.url + this.$route.path}`
+                        href: `${this.$config.website.url + this.$route.path}`,
+                        id: "canonical"
                     }
                 ];
             },
             script() {
-                return [
-                    ...this.script
-                    // {
-                    //     type: "application/ld+json",
-                    //     inner: JSON.stringify({
-                    //         "@context": "http://schema.org",
-                    //         "@type": "Organization",
-                    //         url: this.$config.website.url,
-                    //         logo: require("@/assets/img/logo_800.png")
-                    //     })
-                    // }
-                    // {
-                    //     type: "application/ld+json",
-                    //     inner: JSON.stringify({
-                    //         "@context": "http://schema.org",
-                    //         "@type": "WebSite",
-                    //         url: this.$config.website.url,
-                    //         potentialAction: {
-                    //             "@type": "SearchAction",
-                    //             target: `${this.$config.website.googleCustomSearchUrl}&q={search_term_string}`,
-                    //             "query-input":
-                    //                 "required name=search_term_string"
-                    //         }
-                    //     })
-                    // }
-                ];
+                return [...this.script];
             }
         },
         watch: {
             title() {
+                this.$emit("updateHead");
+            },
+            desc() {
+                this.$emit("updateHead");
+            },
+            img() {
+                this.$emit("updateHead");
+            },
+            imgAlt() {
+                this.$emit("updateHead");
+            },
+            twitterCard() {
+                this.$emit("updateHead");
+            },
+            script() {
+                this.$emit("updateHead");
+            },
+            link() {
                 this.$emit("updateHead");
             }
         }
