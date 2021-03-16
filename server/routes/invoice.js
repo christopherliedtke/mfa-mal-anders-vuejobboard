@@ -255,7 +255,11 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
 
         console.log("emailSent: ", emailSent);
 
-        res.json({ success: true });
+        res.json({
+            success: true,
+            paymentId: payment._id,
+            invoiceNo: payment.invoiceNo,
+        });
     } catch (err) {
         console.log(
             "Error on sendEmail() || Job.updateOne() in POST /api/invoice/get-invoice: ",
@@ -265,19 +269,19 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
     }
 });
 
-// #route:  POST /api/invoice/download
+// #route:  GET /api/invoice/download
 // #desc:   Handle invoice request
 // #access: Private
 router.get("/download/:paymentId", verifyToken, async (req, res) => {
     try {
-        if (!req.user.isAdmin) {
-            throw new Error("Missing permission!");
-        }
-
         const payment = await Payment.findOne({ _id: req.params.paymentId });
 
         if (!payment) {
             throw new Error("No payment found!");
+        }
+
+        if (!req.user.isAdmin && !req.user._id === payment.user) {
+            throw new Error("Missing permission!");
         }
 
         const invoice = await createInvoice(
@@ -289,10 +293,6 @@ router.get("/download/:paymentId", verifyToken, async (req, res) => {
             __dirname + "/../invoices/",
             invoice.fileName
         );
-
-        // res.sendFile(downloadPath, {
-        //     headers: { "content-type": "application/pdf" },
-        // });
 
         res.download(downloadPath, invoice.FileName);
     } catch (err) {

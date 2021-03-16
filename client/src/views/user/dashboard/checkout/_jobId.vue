@@ -645,7 +645,7 @@
                     }
 
                     this.$root.$bvToast.toast(
-                        "Vielen Dank! Ihre Rechnung wurde erfolgreich angefordert. Innerhalb der nächsten 24 Stunden erhalten Sie die gewünschte Rechnung auf die angegebene E-Mail Adresse.",
+                        "Vielen Dank! Ihre Rechnung wurde erfolgreich angefordert. Sie erhalten die gewünschte Rechnung in Kürze auf die angegebene E-Mail Adresse.",
                         {
                             title: `Rechnung angefordert`,
                             variant: "success",
@@ -655,8 +655,13 @@
                         }
                     );
 
+                    await this.downloadInvoice(
+                        response.data.paymentId,
+                        response.data.invoiceNo
+                    );
+
                     this.$gtag.event("begin_checkout", {
-                        value: this.checkout.amount,
+                        value: this.checkout.amount / 100,
                         currency: "EUR",
                         items: [
                             {
@@ -692,6 +697,34 @@
                 }
 
                 this.$store.dispatch("setOverlay", false);
+            },
+            async downloadInvoice(paymentId, invoiceNo) {
+                if (!paymentId || !invoiceNo) {
+                    return;
+                }
+
+                const invoice = await this.$axios.get(
+                    `/api/invoice/download/${paymentId}`,
+                    { responseType: "blob" }
+                );
+
+                const fileURL = window.URL.createObjectURL(
+                    new Blob([invoice.data])
+                );
+                const fileLink = document.createElement("a");
+
+                fileLink.href = fileURL;
+                fileLink.setAttribute(
+                    "download",
+                    `${"RE-" +
+                        "000000".slice(0, 6 - invoiceNo.toString().length) +
+                        invoiceNo.toString()}.pdf`
+                );
+                fileLink.setAttribute("target", "_blank");
+                fileLink.classList.add("d-none");
+                document.body.appendChild(fileLink);
+
+                fileLink.click();
             },
             async startStripeCheckout() {
                 await this.initStripeCheckout(
