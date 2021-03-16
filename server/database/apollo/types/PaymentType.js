@@ -4,6 +4,7 @@ const PaymentType = gql`
     extend type Query {
         payment(_id: ID!): Payment
         payments: [Payment]
+        myPayments: [Payment]
     }
 
     extend type Mutation {

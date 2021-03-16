@@ -217,7 +217,7 @@
                                     $store.state.starredJobs.starredJobs
                                         .length > 0
                             "
-                            to="/user/dashboard?tab=3"
+                            to="/user/dashboard?tab=4"
                             variant="secondary"
                             size="sm"
                             >Meine gespeicherten Jobs</b-button

@@ -136,13 +136,7 @@
                                     >Unternehmen</b-nav-item
                                 >
                                 <b-nav-item
-                                    v-if="
-                                        $store.state.auth.user.isEmployee ||
-                                            ($store.state.starredJobs
-                                                .starredJobs &&
-                                                $store.state.starredJobs
-                                                    .starredJobs.length > 0)
-                                    "
+                                    v-if="$store.state.auth.user.isEmployer"
                                     to="/user/dashboard?tab=3"
                                     :active-class="
                                         $route.query.tab == 3
@@ -151,6 +145,27 @@
                                     "
                                     :exact-active-class="
                                         $route.query.tab == 3
+                                            ? 'router-link-active'
+                                            : ''
+                                    "
+                                    >Zahlungen</b-nav-item
+                                >
+                                <b-nav-item
+                                    v-if="
+                                        $store.state.auth.user.isEmployee ||
+                                            ($store.state.starredJobs
+                                                .starredJobs &&
+                                                $store.state.starredJobs
+                                                    .starredJobs.length > 0)
+                                    "
+                                    to="/user/dashboard?tab=4"
+                                    :active-class="
+                                        $route.query.tab == 4
+                                            ? 'router-link-active'
+                                            : ''
+                                    "
+                                    :exact-active-class="
+                                        $route.query.tab == 4
                                             ? 'router-link-active'
                                             : ''
                                     "

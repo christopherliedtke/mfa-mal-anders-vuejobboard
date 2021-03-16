@@ -44,13 +44,33 @@ router.post("/checkout-completed", async (req, res) => {
                 (charge) => charge.paid
             )[0];
 
+            const job = await Job.findOne({ _id: jobId }).populate("company");
+
+            const lastInvoiceNo = await Payment.find({}, "invoiceNo")
+                .sort({ invoiceNo: -1 })
+                .limit(1);
+
+            const invoiceNo = lastInvoiceNo[0].invoiceNo + 1;
+
             const paymentObj = {
                 status: "paid",
+                invoiceNo,
+                invoiceDate: new Date(),
                 paymentType: "stripe",
                 amount,
                 fee: config.stripe.feeFix + config.stripe.feeVar * amount,
                 taxes: config.payment.tax * amount,
-                billingEmail,
+                billingEmail: succeededCharge["billing_details"].email,
+                billingCompany: job ? job.company.name : "",
+                billingLastName: succeededCharge["billing_details"].name,
+                billingStreet:
+                    succeededCharge["billing_details"].address.line1 +
+                    " " +
+                    succeededCharge["billing_details"].address.line2,
+                billingZipCode:
+                    succeededCharge["billing_details"].address["postal_code"],
+                billingLocation:
+                    succeededCharge["billing_details"].address.city,
                 paidAt: new Date(),
                 paymentExpiresAt: paidExpiresAt,
                 job: jobId,
@@ -222,6 +242,9 @@ router.post("/checkout-completed", async (req, res) => {
                         Bitte beachten Sie, dass Ihre Stellenanzeige nur solange abrufbar ist, wie auch Ihre Bewerbungsfrist nicht überschritten ist. Über Ihre Zugangsdaten haben Sie weiterhin Zugriff auf Ihre Stellenanzeigen und können diese jederzeit anpassen.
                     </p>
                     <p>
+                        Die zugehörige Rechnung zur getätigten Zahlung finden Sie in Ihrem Account unter MEIN KONTO -> ZAHLUNGEN. Diese können Sie dort herunterladen.
+                    </p>
+                    <p>
                         Sollten Sie noch Fragen, Anregungen oder weiteren Beratungsbedarf haben, melden Sie sich gern bei uns über unser <a href="${
                             process.env.WEBSITE_URL
                         }/page/contact">Kontaktformular</a> oder direkt per Nachricht an <a href="mailto:${
@@ -249,8 +272,7 @@ router.post("/checkout-completed", async (req, res) => {
                     {
                         filename: "logo_800.png",
                         path:
-                            __dirname +
-                            "/../../../../client/public/img/logo_800.png",
+                            __dirname + "/../../client/public/img/logo_800.png",
                         cid: "mfa-mal-anders-logo", //same cid value as in the html img src
                     },
                 ],

@@ -24,6 +24,17 @@ const PaymentResolvers = {
 
             return payments;
         },
+        myPayments: async (root, args, context) => {
+            if (!context.user._id) {
+                throw new AuthenticationError("Must be logged in!");
+            }
+
+            const payments = await Payment.find({
+                user: context.user._id,
+            }).sort({ createdAt: "desc" });
+
+            return payments;
+        },
     },
 
     Mutation: {

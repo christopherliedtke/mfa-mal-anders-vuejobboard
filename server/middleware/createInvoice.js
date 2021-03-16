@@ -13,7 +13,15 @@ const createInvoice = (payment, pathToSave) => {
                 payment.billingTitle && payment.billingTitle != "null"
                     ? payment.billingTitle + " "
                     : ""
-            }${payment.billingFirstName} ${payment.billingLastName}`;
+            }${
+                payment.billingFirstName && payment.billingFirstName != "null"
+                    ? payment.billingFirstName + " "
+                    : ""
+            }${
+                payment.billingLastName && payment.billingLastName != "null"
+                    ? payment.billingLastName
+                    : ""
+            }`;
 
             payment.discount = payment.discount || 0;
 
@@ -90,15 +98,22 @@ function generateHeader(doc) {
 }
 
 function generateCustomerInformation(doc, payment) {
-    const date = payment.invoiceDate || new Date();
+    const date = payment.invoiceDate || payment.createdAt || new Date();
 
     doc.fontSize(10)
         .text(payment.billingCompany, 50, 140, { align: "left" })
         .text(payment.billingFullName, 50, 155, { align: "left" })
-        .text(payment.billingStreet, 50, 170, { align: "left" })
-        .text(payment.billingZipCode + " " + payment.billingLocation, 50, 185, {
-            align: "left",
-        })
+        .text(payment.billingStreet || "", 50, 170, { align: "left" })
+        .text(
+            (payment.billingZipCode || "") +
+                " " +
+                (payment.billingLocation || ""),
+            50,
+            185,
+            {
+                align: "left",
+            }
+        )
         .font("Helvetica-Bold")
         .text("Rechnungsnummer:", 340, 140, { align: "left" })
         .text("Rechnungsdatum:", 340, 155, { align: "left" })
@@ -128,11 +143,13 @@ function generateBody(doc, payment) {
         .text(
             `${
                 payment.billingFullName.includes("Herr")
-                    ? "Sehr geehrter"
+                    ? "Sehr geehrter "
                     : payment.billingFullName.includes("Frau")
-                    ? "Sehr geehrte"
-                    : "Sehr geehrte/r"
-            } ${payment.billingFullName},`,
+                    ? "Sehr geehrte "
+                    : payment.billingFullName
+                    ? "Sehr geehrte/r "
+                    : "Sehr geehrte Damen und Herren"
+            }${payment.billingFullName},`,
             50,
             280
         )
@@ -189,7 +206,9 @@ function generateBody(doc, payment) {
             oblique: true,
         })
         .text(
-            `Verwendungszweck: ${payment.invoiceNoLong} / ${payment.billingCompany}`,
+            `Verwendungszweck: ${payment.invoiceNoLong} / ${
+                payment.billingCompany || ""
+            }`,
             70,
             position + 48,
             {
@@ -250,7 +269,12 @@ function generateInvoiceTable(doc, payment, position) {
         `Veröffentlichung Stellenanzeige`,
         "1",
         `${(
-            (parseInt(payment.amount - config.invoice.feeFix) *
+            (parseInt(
+                payment.amount -
+                    (payment.paymentType === "invoice"
+                        ? config.invoice.feeFix
+                        : 0)
+            ) *
                 (1 - payment.discount)) /
             100
         )
@@ -258,7 +282,12 @@ function generateInvoiceTable(doc, payment, position) {
             .toString()
             .replace(".", ",")}€`,
         `${(
-            (parseInt(payment.amount - config.invoice.feeFix) *
+            (parseInt(
+                payment.amount -
+                    (payment.paymentType === "invoice"
+                        ? config.invoice.feeFix
+                        : 0)
+            ) *
                 (1 - payment.discount)) /
             100
         )
@@ -267,21 +296,23 @@ function generateInvoiceTable(doc, payment, position) {
             .replace(".", ",")}€`
     );
 
-    generateTableRow(
-        doc,
-        invoiceTableTop + 45,
-        "2",
-        `Bearbeitungsgebühr - separate Rechnungsverarbeitung`,
-        "1",
-        `${(config.invoice.feeFix / 100)
-            .toFixed(2)
-            .toString()
-            .replace(".", ",")}€`,
-        `${(config.invoice.feeFix / 100)
-            .toFixed(2)
-            .toString()
-            .replace(".", ",")}€`
-    );
+    if (payment.paymentType === "invoice") {
+        generateTableRow(
+            doc,
+            invoiceTableTop + 45,
+            "2",
+            `Bearbeitungsgebühr - separate Rechnungsverarbeitung`,
+            "1",
+            `${(config.invoice.feeFix / 100)
+                .toFixed(2)
+                .toString()
+                .replace(".", ",")}€`,
+            `${(config.invoice.feeFix / 100)
+                .toFixed(2)
+                .toString()
+                .replace(".", ",")}€`
+        );
+    }
 
     generateHr(doc, invoiceTableTop + 75);
 

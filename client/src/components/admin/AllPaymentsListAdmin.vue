@@ -138,7 +138,6 @@
                     variant="info"
                     :href="`/api/invoice/download/${row.item._id}`"
                     target="_blank"
-                    :disabled="row.item.paymentType != 'invoice'"
                 >
                     <Fa class="mr-2" icon="download" />Invoice
                 </b-button>

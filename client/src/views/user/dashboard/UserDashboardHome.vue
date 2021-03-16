@@ -20,13 +20,20 @@
                 <MyCompaniesList />
             </b-tab>
             <b-tab
+                v-if="$store.state.auth.user.isEmployer"
+                title="Zahlungen"
+                @click="setQuery('tab', 3)"
+            >
+                <MyPaymentsList />
+            </b-tab>
+            <b-tab
                 v-if="
                     $store.state.auth.user.isAdmin ||
                         $store.state.auth.user.isEmployee ||
                         $store.state.starredJobs.starredJobs.length > 0
                 "
                 title="Meine gespeicherten Stellenanzeigen"
-                @click="setQuery('tab', 3)"
+                @click="setQuery('tab', 4)"
             >
                 <MyStarredJobs />
             </b-tab>
@@ -37,16 +44,18 @@
 </template>
 
 <script>
+    import MyAccount from "@/components/dashboard/MyAccount.vue";
     import MyJobsList from "@/components/dashboard/MyJobsList.vue";
     import MyCompaniesList from "@/components/dashboard/MyCompaniesList.vue";
-    import MyAccount from "@/components/dashboard/MyAccount.vue";
+    import MyPaymentsList from "@/components/dashboard/MyPaymentsList.vue";
     import MyStarredJobs from "@/components/dashboard/MyStarredJobs.vue";
     export default {
         name: "UserDashboardHome",
         components: {
+            MyAccount,
             MyJobsList,
             MyCompaniesList,
-            MyAccount,
+            MyPaymentsList,
             MyStarredJobs
         },
         data() {
