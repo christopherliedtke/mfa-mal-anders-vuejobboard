@@ -9,7 +9,7 @@
                 <p>
                     Bitte wählen Sie den gewünschten Betrag, den Sie nach
                     unserem
-                    <em>“Pay What You Want”*</em> Modell für die
+                    <em>“Pay What You Want”**</em> Modell für die
                     Veröffentlichung der Stellenanzeige bezahlen möchten.
                 </p>
 
@@ -119,18 +119,24 @@
                                     src="@/assets/img/Google_Pay_(GPay)_Logo.svg"
                                     height="16"
                                 />
-                                GooglePay</b-form-radio
-                            >
+                                GooglePay <br />
+                                <span class="small"
+                                    >Sofortige Veröffentlichung</span
+                                >
+                            </b-form-radio>
                             <b-form-radio value="invoice"
-                                >Rechnung** (+
+                                >Rechnung*** (+
                                 {{
                                     ($config.payment.invoiceCost / 100)
                                         .toFixed(2)
                                         .toString()
                                         .replace(".", ",")
                                 }}
-                                {{ $config.payment.currency }})</b-form-radio
-                            >
+                                {{ $config.payment.currency }}) <br />
+                                <span class="small"
+                                    >Veröffentlichung nach Geldeingang</span
+                                >
+                            </b-form-radio>
                         </b-form-radio-group>
                     </b-form-group>
 
@@ -331,7 +337,7 @@
                 </b-form>
                 <div class="small">
                     <div>
-                        * Es fällt ein
+                        ** Es fällt ein
                         <strong
                             >Mindestbeitrag von
                             {{
@@ -346,7 +352,7 @@
                         an, um den Betrieb des Portals aufrecht zu erhalten.
                     </div>
                     <div class="mt-1">
-                        ** Sollten Sie ausschließlich auf vorab ausgestellte
+                        *** Sollten Sie ausschließlich auf vorab ausgestellte
                         Rechnung bezahlen können, erhalten Sie diese nach
                         Anforderung auf Ihre angegebene E-Mail Adresse. In dem
                         Fall erhöht sich Ihr gewählter Kostenbeitrag um
@@ -364,8 +370,11 @@
                     </div>
                 </div>
             </div>
-            <div class="d-flex justify-content-between mt-5">
-                <b-button @click="$router.go(-1)" class="mb-2" variant="danger"
+            <div class="d-flex justify-content-between align-items-start mt-5">
+                <b-button
+                    @click="$router.go(-1)"
+                    class="mr-2 mb-2"
+                    variant="danger"
                     >Abbrechen</b-button
                 >
                 <div>
@@ -373,7 +382,7 @@
                         v-if="checkout.paymentMethod === 'invoice'"
                         @click.prevent="sendInvoice"
                         class="mr-2 mb-2"
-                        variant="primary"
+                        variant="success"
                         :disabled="!checkout.accepted"
                         >{{
                             ((amountComputed + 500) / 100)
