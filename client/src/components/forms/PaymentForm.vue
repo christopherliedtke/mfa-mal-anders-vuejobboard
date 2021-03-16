@@ -312,6 +312,7 @@
                                         billingLastName
                                         billingStreet
                                         billingZipCode
+                                        billingLocation
                                         paidAt
                                         paymentExpiresAt
                                     }
