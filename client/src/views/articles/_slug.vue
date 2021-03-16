@@ -96,8 +96,8 @@
                     v-if="article.tags.nodes[0].name === 'Erfahrungsbericht'"
                 >
                     Wenn auch Du von einer interessanten Weiterbildung oder
-                    Deiner Arbeit als MFA berichten möchtest, melde Dich gern
-                    bei uns über das
+                    Deiner Arbeit als MFA / ZFA berichten möchtest, melde Dich
+                    gern bei uns über das
                     <b-link to="/page/contact">Kontaktformular</b-link>.
                 </div>
             </div>

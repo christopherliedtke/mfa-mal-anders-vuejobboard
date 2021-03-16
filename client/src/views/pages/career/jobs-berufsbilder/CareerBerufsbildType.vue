@@ -115,7 +115,7 @@
                         desc:
                             "Wenn Dich die Arbeit mit und am Patienten mit Freude erfüllt oder Dein Herz für die Medizin schlägt, ist ein medizinisch-technischer Job am Besten für Dich geeignet. Sieh Dir deine vielfältigen Möglichkeiten an.",
                         seoDesc:
-                            "Alternative Jobs und Berufsbilder für MFA / ArzthelferIn im medizinisch-technischen Bereich in- und außerhalb der Arztpraxis || Stellenangebote"
+                            "Alternative Jobs und Berufsbilder für MFA / ZFA / ArzthelferIn im medizinisch-technischen Bereich in- und außerhalb der Arztpraxis || Stellenangebote"
                     },
 
                     verwaltung: {
@@ -123,28 +123,28 @@
                         desc:
                             "Mit einem Job in der Verwaltung von Unternehmen im Gesundheitswesen übernimmst Du organisatorische Aufgaben, prüfst Sachverhalte und erledigst allgemeine Büroarbeiten.",
                         seoDesc:
-                            "Alternative Jobs und Berufsbilder für MFA / ArzthelferIn in der Verwaltung in- und außerhalb der Arztpraxis || Stellenangebote"
+                            "Alternative Jobs und Berufsbilder für MFA / ZFA / ArzthelferIn in der Verwaltung in- und außerhalb der Arztpraxis || Stellenangebote"
                     },
                     forschung: {
                         title: "Forschung",
                         desc:
                             "Mit einem Job in der Forschung kannst Du zum medizinischen Fortschritt beitragen und so die Zukunft der Medizin mitgestalten.",
                         seoDesc:
-                            "Alternative Jobs und Berufsbilder für MFA / ArzthelferIn in der Forschung in- und außerhalb der Arztpraxis || Stellenangebote"
+                            "Alternative Jobs und Berufsbilder für MFA / ZFA / ArzthelferIn in der Forschung in- und außerhalb der Arztpraxis || Stellenangebote"
                     },
                     beratung: {
                         title: "Beratung",
                         desc:
                             "Mit einem Job in der Beratung kannst Du dein Expertenwissen mit Patienten, Praxen und anderen Personen des Gesundheitswesens teilen. ",
                         seoDesc:
-                            "Alternative Jobs und Berufsbilder für MFA / ArzthelferIn in der Beratung in- und außerhalb der Arztpraxis || Stellenangebote"
+                            "Alternative Jobs und Berufsbilder für MFA / ZFA / ArzthelferIn in der Beratung in- und außerhalb der Arztpraxis || Stellenangebote"
                     },
                     management: {
                         title: "Management",
                         desc:
-                            "Jobs im Management eines Unternehmens im Gesundheitswesen gewinnen bei steigenden Herausforderungen im Gesundheitssystem immer mehr an Bedeutung. Es bietet Dir ein vielfältiges Aufgabenspektrum für Medizinische Fachangestellte.",
+                            "Jobs im Management eines Unternehmens im Gesundheitswesen gewinnen bei steigenden Herausforderungen im Gesundheitssystem immer mehr an Bedeutung. Es bietet Dir ein vielfältiges Aufgabenspektrum für Medizinische / Zahnmedizinische Fachangestellte.",
                         seoDesc:
-                            "Alternative Jobs und Berufsbilder für MFA / ArzthelferIn im Management in- und außerhalb der Arztpraxis || Stellenangebote"
+                            "Alternative Jobs und Berufsbilder für MFA / ZFA / ArzthelferIn im Management in- und außerhalb der Arztpraxis || Stellenangebote"
                     }
                 },
                 snippet: [
@@ -161,7 +161,7 @@
                             },{
                                 "@type": "ListItem",
                                 "position": 2,
-                                "name": "MFA Karriere",
+                                "name": "MFA / ZFA Karriere",
                                 "item": "https://www.mfa-mal-anders.de/page/mfa-career"
                             },{
                                 "@type": "ListItem",
@@ -190,7 +190,7 @@
         },
         computed: {
             title() {
-                return `MFA Berufsbilder – ${
+                return `MFA / ZFA Berufsbilder – ${
                     this.intros[this.$route.params.slug].title
                 }`;
             },

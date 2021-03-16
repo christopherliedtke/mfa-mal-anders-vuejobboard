@@ -13,10 +13,10 @@
                 </b-col>
                 <b-col order="1" order-md="2">
                     <p class="lead bold mb-4">
-                        MFA mal anders ist ein Karriereportal für Medizinische
-                        Fachangestellte sowie auf die professionelle
-                        Personalsuche für Arztpraxen und Medizinische
-                        Versorgungszentren spezialisiert.
+                        MFA mal anders ist ein Karriereportal für Medizinische /
+                        Zahnmedizinische Fachangestellte sowie auf die
+                        professionelle Personalsuche für Arztpraxen und
+                        Medizinische Versorgungszentren spezialisiert.
                     </p>
                     <p>
                         Als Praxismanagerin mit Führungsverantwortung, als
@@ -41,8 +41,9 @@
             </b-row>
             <div>
                 <blockquote>
-                    MFA mal anders hat die Mission, Medizinische Fachangestellte
-                    und Arztpraxen erfolgreich zusammen zu bringen.
+                    MFA mal anders hat die Mission, Medizinische /
+                    Zahnmedizinische Fachangestellte und Arztpraxen erfolgreich
+                    zusammen zu bringen.
                 </blockquote>
                 <p>
                     Auf MFA mal anders veröffentliche ich Informationen über die
@@ -53,12 +54,13 @@
                     Arbeitsbedingungen für medizinische Fachangestellte.
                 </p>
                 <p>
-                    Jobsuchende MFAs finden bei uns eine große Auswahl an freien
-                    Stellen in Arztpraxen und MVZs. Den Arbeitgebern bieten wir
-                    eine kostengünstige Möglichkeit ihre Stellenanzeige effektiv
-                    an ihre Zielgruppe auszuspielen. Dafür erwarten wir, dass
-                    die Arbeitgeber dieselben Werte, wie wir in ihrer täglichen
-                    Arbeit mit den MFAs teilen.
+                    Jobsuchende MFAs / ZFAs finden bei uns eine große Auswahl an
+                    freien Stellen in Arztpraxen und MVZs. Den Arbeitgebern
+                    bieten wir eine kostengünstige Möglichkeit ihre
+                    Stellenanzeige effektiv an ihre Zielgruppe auszuspielen.
+                    Dafür erwarten wir, dass die Arbeitgeber dieselben Werte,
+                    wie wir in ihrer täglichen Arbeit mit den MFAs / ZFAs
+                    teilen.
                 </p>
                 <h2>
                     Mein Arbeitsstil
@@ -71,8 +73,8 @@
                     eine wichtige Rolle wie Verlässlichkeit, Ehrgeiz und
                     Anspruch. Vor diesem Hintergrund habe ich das Angebot von
                     MFA mal anders geschaffen und entwickle dieses
-                    kontinuierlich weiter, um den MFA Beruf wieder attraktiver
-                    werden zu lassen!
+                    kontinuierlich weiter, um den MFA / ZFA Beruf wieder
+                    attraktiver werden zu lassen!
                 </p>
                 <p>
                     Vor diesem Hintergrund habe ich das Angebot von MFA mal
@@ -97,7 +99,7 @@
         </b-container>
         <Head
             :title="title"
-            desc="MFA mal anders ist ein Job- und Karriereportal für MFA / ArzthelferInnen sowie auf die Personalsuche für Arztpraxen und MVZs spezialisiert."
+            desc="MFA mal anders ist ein Job- und Karriereportal für MFA / ZFA / ArzthelferInnen sowie auf die Personalsuche für Arztpraxen und MVZs spezialisiert."
             img=""
             :script="snippet"
         />

@@ -461,6 +461,81 @@ const UserResolvers = {
 
             return deletedUser;
         },
+        adminUserActivationConfirmation: async (root, args, context) => {
+            if (!context.user.isAdmin) {
+                throw new AuthenticationError("Missing permission!");
+            }
+
+            const user = await User.findOne({
+                _id: args._id,
+            });
+
+            console.log("user: ", user);
+
+            const emailData = {
+                from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
+                to: user.email,
+                subject: `Aktivierung Ihres Accounts für ${config.website.name}`,
+                html: `
+                    <p>
+                        Sehr ${
+                            !user.gender || user.gender === "null"
+                                ? "geehrte/r Frau/Herr"
+                                : user.gender === "Frau"
+                                ? "geehrte Frau"
+                                : "geehrter Herr"
+                        }${
+                    user.title && user.title != "null" ? " " + user.title : ""
+                } ${user.lastName},
+                    </p>
+                    <p>
+                        Ihr Account für '${
+                            config.website.name
+                        }' wurde erfolgreich aktiviert. Ab sofort können Sie sich unter ${
+                    process.env.WEBSITE_URL
+                }/auth/login mit Ihrer registrierten E-Mail Adresse anmelden.
+                    </p>
+                    <p>
+                    Sollten Sie Fragen zur Nutzung unseres Portals haben, melden Sie sich bitte jederzeit gern z.B. über unser <a href="${
+                        process.env.WEBSITE_URL
+                    }/page/contact">Kontaktformular</a>.
+                    </p>
+                    <p>Mit freundlichen Grüßen</p>
+                    <p>
+                        Kristin Maurach
+                    </p>
+                    <p>__</p>
+                    <p>
+                        <img src="cid:mfa-mal-anders-logo" width="60" style="margin-bottom: 1rem"/> <br>
+                        <strong>MFA mal anders</strong> <br>
+                        Das Karriereportal für Medizinische / Zahnmedizinische Fachangestellte <br>
+                        <br>
+                        Tel: <a href="tel:017663393957">0176 633 939 57</a> <br>
+                        E-Mail: <a href="mailto:kontakt@mfa-mal-anders.de">kontakt@mfa-mal-anders.de</a> <br>
+                        Webseite: <a href="${process.env.WEBSITE_URL}">${
+                    process.env.WEBSITE_URL
+                }</a>
+                    </p>
+                `,
+                attachments: [
+                    {
+                        filename: "logo_800.png",
+                        path:
+                            __dirname +
+                            "/../../../../client/public/img/logo_800.png",
+                        cid: "mfa-mal-anders-logo", //same cid value as in the html img src
+                    },
+                ],
+            };
+
+            const emailSent = await emailService.sendMail(emailData);
+            console.log(
+                "sendMail() for user activation confirmation: ",
+                emailSent
+            );
+
+            return { _id: user._id };
+        },
         adminUpdateUser: async (root, args, context) => {
             if (!context.user.isAdmin) {
                 throw new AuthenticationError("Missing permission!");
@@ -485,7 +560,7 @@ const UserResolvers = {
                 throw new AuthenticationError("Missing permission!");
             }
 
-            const user = User.findOneAndDelete({ _id: args._id });
+            const user = await User.findOneAndDelete({ _id: args._id });
 
             return user;
         },

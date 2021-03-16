@@ -9,7 +9,7 @@
                 <b-img
                     class="p-1 w-100 h-100"
                     src="@/assets/img/presentation.svg"
-                    alt="Weitere Tipps für Stellenanzeigen für MFAs"
+                    alt="Weitere Tipps für Stellenanzeigen für MFA / ZFA"
                 ></b-img>
             </b-col>
             <b-col md="9">

@@ -293,13 +293,13 @@
         </b-container>
         <Head
             :title="
-                'MFA / ArzthelferIn Jobs' +
+                'MFA / ZFA / ArzthelferIn Jobs' +
                     (filter.state ? ` | ${filter.state}` : '')
             "
             :desc="
-                `Aktuelle Stellenangebote (Teilzeit | Vollzeit) für MFA / ArzthelferInnen ${
+                `Aktuelle Stellenangebote (Teilzeit | Vollzeit) für MFA / ZFA / ArzthelferInnen ${
                     filter.state ? filter.state + ' ' : ''
-                }– Dein Karriereportal nur für MFAs / ArzthelferInnen.`
+                }– Dein Karriereportal nur für MFAs / ZFAs / ArzthelferInnen.`
             "
             img=""
             :script="snippet"

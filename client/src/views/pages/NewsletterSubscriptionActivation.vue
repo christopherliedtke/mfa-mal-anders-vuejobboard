@@ -10,7 +10,7 @@
         </b-container>
         <Head
             :title="title"
-            desc="Aktivierung Job-Newsletter für MFAs / ArzthelferInnen."
+            desc="Aktivierung Job-Newsletter für MFAs / ZFAs / ArzthelferInnen."
             img=""
         />
     </div>

@@ -3,14 +3,14 @@
         <b-card-img-lazy
             top
             src="/img/Banner_Weiterbildungsdschungel_1200.jpg"
-            alt="Banner - Fort- und Weiterbildungen für MFA"
+            alt="Banner - Fort- und Weiterbildungen für MFA / ZFA"
         />
         <b-card-body align="center">
-            <b-card-title title="Fort- und Weiterbildungen für MFA" />
+            <b-card-title title="Fort- und Weiterbildungen für MFA / ZFA" />
             <b-card-text>
                 Hier findest du eine Übersicht von verschiedenen Fortbildungen
-                und Weiterbildungen für Medizinische Fachangestellte /
-                ArzthelferInnen!
+                und Weiterbildungen für Medizinische / Zahnmedizinische
+                Fachangestellte / ArzthelferInnen!
             </b-card-text>
 
             <b-button

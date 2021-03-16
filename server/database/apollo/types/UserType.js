@@ -42,6 +42,7 @@ const UserType = gql`
             isEmployee: Boolean!
         ): User
         deleteMe(password: String): User
+        adminUserActivationConfirmation(_id: ID!): User
         adminUpdateUser(
             _id: ID!
             gender: String

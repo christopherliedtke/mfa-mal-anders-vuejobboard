@@ -58,7 +58,7 @@
                             },{
                                 "@type": "ListItem",
                                 "position": 2,
-                                "name": "MFA Karriere",
+                                "name": "MFA / ZFA Karriere",
                                 "item": "https://www.mfa-mal-anders.de/page/mfa-career"
                             },{
                                 "@type": "ListItem",

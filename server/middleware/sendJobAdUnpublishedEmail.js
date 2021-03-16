@@ -51,15 +51,17 @@ const sendJobAdUnpublishedEmail = async () => {
                 <p>
                     Kristin Maurach
                 </p>
-                <br>
+                <p>__</p>
                 <p>
-                    <img src="cid:mfa-mal-anders-logo" width="60"/> <br>
-                    MFA mal anders <br>
-                    Dein Karriereportal für Medizinische Fachangestellte <br>
+                    <img src="cid:mfa-mal-anders-logo" width="60" style="margin-bottom: 1rem"/> <br>
+                    <strong>MFA mal anders</strong> <br>
+                    Das Karriereportal für Medizinische / Zahnmedizinische Fachangestellte <br>
                     <br>
-                    Tel: 0176 63393957 <br>
-                    E-Mail: kontakt@mfa-mal-anders.de <br>
-                    Webseite: www.mfa-mal-anders.de
+                    Tel: <a href="tel:017663393957">0176 633 939 57</a> <br>
+                    E-Mail: <a href="mailto:kontakt@mfa-mal-anders.de">kontakt@mfa-mal-anders.de</a> <br>
+                    Webseite: <a href="${process.env.WEBSITE_URL}">${
+                    process.env.WEBSITE_URL
+                }</a>
                 </p>
                 `,
                 attachments: [

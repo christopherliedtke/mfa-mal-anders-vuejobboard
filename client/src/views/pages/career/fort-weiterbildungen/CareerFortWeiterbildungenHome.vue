@@ -14,9 +14,9 @@
                         alt="Banner - So viel verdienst Du wirklich"
                     />
                     <p>
-                        Als Medizinische Fachangestellte haben wir viele
-                        Möglichkeiten uns zu qualifizieren und im Job
-                        aufzusteigen oder sogar in anderen Bereichen des
+                        Als Medizinische / Zahnmedizinische Fachangestellte
+                        haben wir viele Möglichkeiten uns zu qualifizieren und
+                        im Job aufzusteigen oder sogar in anderen Bereichen des
                         Gesundheitswesens Fuß zu fassen. Nur leider ist der
                         Dschungel an Fort- und Weiterbildungen für Medizinische
                         Fachangestellte so stark bewachsen und undurchdringlich,
@@ -33,8 +33,8 @@
                         Ob
                         <b-link
                             to="/article/fortbildung-weiterbildung-oder-studium"
-                            >Fortbildung, Weiterbildung oder Studium für
-                            MFA</b-link
+                            >Fortbildung, Weiterbildung oder Studium für MFA /
+                            ZFA</b-link
                         >, finde deinen richtigen Weg.
                     </p>
                     <p>
@@ -47,7 +47,7 @@
                             style="max-width: 600px"
                             title="Die richtige Weiterbildung für dich?!"
                             img-src="@/assets/img/Banner_In6SchrittenZurRichtigenWeiterbildung_1200.jpg"
-                            img-alt="Banner - In 6 Schritten zur richtigen Weiterbildung für MFA und ArzthelferIn"
+                            img-alt="Banner - In 6 Schritten zur richtigen Weiterbildung für MFA / ZFA und ArzthelferIn"
                             img-top
                             align="center"
                             class="my-5"
@@ -68,8 +68,8 @@
                         Wir beschreiben anerkannte Fortbildungen der
                         Ärztekammer, zertifizierte Weiterbildungen, Lehrgänge,
                         Studiengänge und andere Weiterentwicklungsmöglichkeiten
-                        für MFA. Die Eckdaten wie Kosten, Dauer, Inhalte und
-                        Lernkonzepte werden für dich übersichtlich und
+                        für MFA / ZFA. Die Eckdaten wie Kosten, Dauer, Inhalte
+                        und Lernkonzepte werden für dich übersichtlich und
                         verständlich dargestellt. Daneben zeigen wir dir vor
                         allem auch, was du mit welchem Abschluss anschließend
                         anfangen kannst. Und natürlich auch wo. Das
@@ -84,7 +84,7 @@
                     <p>Also bleib dran!</p>
                     <p>
                         PS: Wenn du interessiert an einer bestimmten
-                        Weiterbildung für MFA bist, die wir noch nicht
+                        Weiterbildung für MFA / ZFA bist, die wir noch nicht
                         aufgeführt haben, schreib uns doch. Oder vielleicht hast
                         du schon eine Fortbildung gemacht von der deine
                         Kolleginnen unbedingt wissen sollten?!
@@ -98,8 +98,8 @@
             <RandomTrainingsContainer class="mt-5" />
         </b-container>
         <Head
-            title="Fort- und Weiterbildung für MFA / ArzthelferIn"
-            desc="Fortbildungen und Weiterbildunger für Medizinische Fachangestellte (MFA) / ArzthelferInnen im Gesundheitswesen || Karriere | Gehalt | Stellenangebote"
+            title="Fort- und Weiterbildung für MFA / ZFA / ArzthelferIn"
+            desc="Fortbildungen und Weiterbildunger für Medizinische Fachangestellte (MFA / ZFA) / ArzthelferInnen im Gesundheitswesen || Karriere | Gehalt | Stellenangebote"
             img="/img/Banner_Weiterbildungsdschungel_1200.jpg"
             :script="snippet"
         />
@@ -118,7 +118,7 @@
         },
         data() {
             return {
-                title: "Fort- und Weiterbildungen für MFA",
+                title: "Fort- und Weiterbildungen für MFA / ZFA",
                 snippet: [
                     {
                         type: "application/ld+json",
@@ -133,7 +133,7 @@
                             },{
                                 "@type": "ListItem",
                                 "position": 2,
-                                "name": "MFA Karriere",
+                                "name": "MFA / ZFA Karriere",
                                 "item": "https://www.mfa-mal-anders.de/page/mfa-career"
                             },{
                                 "@type": "ListItem",

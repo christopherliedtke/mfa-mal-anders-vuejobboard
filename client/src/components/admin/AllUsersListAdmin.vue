@@ -73,6 +73,19 @@
                         >pending</b-dropdown-item
                     >
                 </b-dropdown>
+                <b-dropdown class="mr-2 mb-2" size="sm" left variant="info">
+                    <template v-slot:button-content>
+                        <Fa class="mr-2" icon="envelope" /> Email
+                    </template>
+                    <b-dropdown-item
+                        class="mb-0"
+                        variant="success"
+                        @click.prevent="
+                            sendActivationConfirmation(row.item._id)
+                        "
+                        >confirm activation</b-dropdown-item
+                    >
+                </b-dropdown>
                 <b-button
                     size="sm"
                     variant="danger"
@@ -333,6 +346,50 @@
                         }
                     );
                 }
+            },
+            async sendActivationConfirmation(userId) {
+                this.$store.dispatch("setOverlay", true);
+
+                try {
+                    const response = await this.$axios.post("/graphql", {
+                        query: `
+                            mutation {
+                                adminUserActivationConfirmation (_id: "${userId}") {
+                                    _id
+                                }
+                            }
+                        `
+                    });
+
+                    if (response.data.errors) {
+                        throw new Error("Email could not be sent!");
+                    }
+
+                    this.$root.$bvToast.toast(
+                        `Die Bestätigung zur Aktivierung des User Accounts konnte erfolgreich gesendet werden.`,
+                        {
+                            title: `E-Mail erfolgreich gesendet.`,
+                            variant: "success",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: false
+                        }
+                    );
+                } catch (err) {
+                    this.error = true;
+                    this.$root.$bvToast.toast(
+                        `E-Mail konnte nicht gesendet werden. Error: ${err}`,
+                        {
+                            title: `Fehler beim Senden der E-Mail`,
+                            variant: "danger",
+                            toaster: "b-toaster-bottom-right",
+                            solid: true,
+                            noAutoHide: true
+                        }
+                    );
+                }
+
+                this.$store.dispatch("setOverlay", false);
             },
             rowClass(item, type) {
                 if (!item || type !== "row") return;

@@ -11,18 +11,19 @@
                         class="border-radius1 shadow1 mb-3 mb-lg-5"
                         fluid
                         src="/img/MfaMalAnders_50+Jobmoeglichkeiten_1200.jpg"
-                        alt="50+ Alternative Jobs für MFA / ArtzhelferInnen"
+                        alt="50+ Alternative Jobs für MFA / ZFA / ArtzhelferInnen"
                     />
                     <h2 class="bold">
-                        Wo man als MFA überall arbeiten kann?
+                        Wo man als MFA / ZFA überall arbeiten kann?
                     </h2>
                     <p>
                         Sprechstundenhilfe sind wir schon lange nicht mehr. Als
-                        Medizinische Fachangestellte (MFA) und ArzthelferIn sind
-                        wir Organisationstalente, Medizinische Assistenten,
-                        SekretärInnen, Seelsorger, Logistiker, Abrechnungsprofis
-                        und Aushängeschild der gesamten Praxis. Du merkst schon:
-                        Die Aufgabenspektren und Jobs für Medizinische
+                        Medizinische / Zahnmedizinische Fachangestellte (MFA /
+                        ZFA) und ArzthelferIn sind wir Organisationstalente,
+                        Medizinische Assistenten, SekretärInnen, Seelsorger,
+                        Logistiker, Abrechnungsprofis und Aushängeschild der
+                        gesamten Praxis. Du merkst schon: Die Aufgabenspektren
+                        und Jobs für Medizinische / Zahnmedizinische
                         Fachangestellte und ArzthelferInnen sind wahnsinnig
                         vielfältig.
                     </p>
@@ -35,14 +36,15 @@
                         Fachangestellte sind möglich.
                     </p>
                     <p>
-                        Willst Du Deinem Job als Medizinische Fachangestellte
-                        neuen Schwung geben oder beispielsweise Dein Gehalt
-                        aufbessern? Wenn du nicht weißt, welche Türen dir offen
-                        stehen, informiere Dich hier über Deine Chancen als
-                        ausgebildete/r ArzthelferIn. Ganz gleich, ob Du den
-                        direkten Patientenkontakt liebst, gerne organisatorische
-                        Aufgaben erledigst oder Dich lieber für einen
-                        alternativen Job außerhalb der Arztpraxis interessierst.
+                        Willst Du Deinem Job als Medizinische / Zahnmedizinische
+                        Fachangestellte neuen Schwung geben oder beispielsweise
+                        Dein Gehalt aufbessern? Wenn du nicht weißt, welche
+                        Türen dir offen stehen, informiere Dich hier über Deine
+                        Chancen als ausgebildete/r ArzthelferIn. Ganz gleich, ob
+                        Du den direkten Patientenkontakt liebst, gerne
+                        organisatorische Aufgaben erledigst oder Dich lieber für
+                        einen alternativen Job außerhalb der Arztpraxis
+                        interessierst.
                     </p>
                     <b-row>
                         <b-col
@@ -89,7 +91,7 @@
         </b-container>
         <Head
             :title="title"
-            desc="50+ Alternative Jobs / Berufe für Medizinische Fachangestellte (MFA) / ArzthelferIn || Stellenangebote | Fortbildungen | Weiterbildungen"
+            desc="50+ Alternative Jobs / Berufe für Medizinische Fachangestellte (MFA / ZFA) / ArzthelferIn || Stellenangebote | Fortbildungen | Weiterbildungen"
             img="/img/MfaMalAnders_50+Jobmoeglichkeiten_1200.jpg"
             :script="snippet"
         />
@@ -109,7 +111,7 @@
         },
         data() {
             return {
-                title: "50+ Alternative Jobs für MFA / ArzthelferIn",
+                title: "50+ Alternative Jobs für MFA / ZFA / ArzthelferIn",
                 cards: [
                     {
                         title: "Beratung",
@@ -161,7 +163,7 @@
                             },{
                                 "@type": "ListItem",
                                 "position": 2,
-                                "name": "MFA Karriere",
+                                "name": "MFA / ZFA Karriere",
                                 "item": "https://www.mfa-mal-anders.de/page/mfa-career"
                             },{
                                 "@type": "ListItem",

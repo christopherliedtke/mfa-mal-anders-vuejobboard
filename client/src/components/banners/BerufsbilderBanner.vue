@@ -3,10 +3,12 @@
         <b-card-img-lazy
             top
             src="/img/MfaMalAnders_50+Jobmoeglichkeiten_1200.jpg"
-            alt="Banner - Jobs und Berufsbilder für MFA und ArzthelferInnen"
+            alt="Banner - Jobs und Berufsbilder für MFA / ZFA und ArzthelferInnen"
         />
         <b-card-body align="center">
-            <b-card-title title="Alternative Jobs und Berufsbilder für MFA" />
+            <b-card-title
+                title="Alternative Jobs und Berufsbilder für MFA / ZFA"
+            />
 
             <b-card-text>
                 Hier findest du eine Auswahl von ganz unterschiedlichen Jobs und

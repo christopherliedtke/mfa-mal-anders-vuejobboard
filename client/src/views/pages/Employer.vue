@@ -9,8 +9,8 @@
                 <div class="bg-logo"></div>
                 <b-col cols="12" md="6">
                     <h2 class="h1 bold mb-4">
-                        <em>Motivierte</em> und <em>qualifizierte</em> MFAs und
-                        ArzthelferInnen gesucht?
+                        <em>Motivierte</em> und <em>qualifizierte</em> MFAs /
+                        ZFAs und ArzthelferInnen gesucht?
                     </h2>
                     <p>
                         Erstellen Sie
@@ -18,7 +18,7 @@
                             >in wenigen Minuten Ihre Stellenanzeige</span
                         >
                         und erreichen Sie noch heute unsere große Community von
-                        MFAs! Mit unserem
+                        MFAs / ZFAs! Mit unserem
                         <b-link class="text-secondary" href="#pay-what-you-want"
                             >“Pay What You Want”*</b-link
                         >
@@ -41,7 +41,7 @@
                         class="p-4"
                         fluid
                         src="@/assets/img/handshake.svg"
-                        alt="MFA trifft Arzt zum Bewerbungsgespräch"
+                        alt="MFA / ZFA trifft Arzt zum Bewerbungsgespräch"
                     />
                 </b-col>
             </b-row>
@@ -53,7 +53,7 @@
             </h2>
             <p class="h1 bold text-center">Ihre Zielgruppe genau im Blick</p>
             <h3 class="h3 text-center">
-                Stellenanzeigen nur für MFAs / ArzthelferInnen
+                Stellenanzeigen nur für MFAs / ZFAs / ArzthelferInnen
             </h3>
 
             <b-row class="my-4 my-md-5">
@@ -68,8 +68,8 @@
                         <p>
                             Bei uns erreichen Sie
                             <strong
-                                >exklusiv motivierte MFA / ArzthelferInnen und
-                                ZFA</strong
+                                >exklusiv motivierte MFA / ZFA / ArzthelferInnen
+                                und ZFA</strong
                             >
                             und damit genau Ihre Zielgruppe.
                         </p>
@@ -241,7 +241,7 @@
                         class="p-2 p-md-4"
                         right
                         src="@/assets/img/piggy_bank.svg"
-                        alt="Person zahlt Preis für MFA Stellenanzeige"
+                        alt="Person zahlt Preis für MFA / ZFA Stellenanzeige"
                         style="max-width: 45%"
                     />
                     <p>
@@ -284,8 +284,8 @@
         <b-container fluid class="bg-light-shade py-5 mb-5" id="more-info">
             <b-container>
                 <h2 class="bold mb-4">
-                    Ihre Jobbörse nur für MFAs und ArzthelferInnen – MFA mal
-                    anders
+                    Ihre Jobbörse nur für MFAs / ZFAs und ArzthelferInnen – MFA
+                    mal anders
                 </h2>
                 <b-row cols="1" cols-md="2">
                     <b-col>
@@ -337,7 +337,7 @@
                             right
                             style="max-width: 50%"
                             src="@/assets/img/marketing_.svg"
-                            alt="Stellenanzeige für MFA wird über verschiedene Kanäle veröffentlicht"
+                            alt="Stellenanzeige für MFA / ZFA wird über verschiedene Kanäle veröffentlicht"
                         />
                         <p>
                             Damit grenzen wir uns gezielt von allgemeinen
@@ -347,7 +347,7 @@
                             <strong>mehr als eine reine Jobbörse</strong> sind,
                             erreichen wir mit unserem Angebot zudem eine
                             deutlich größere Anzahl von wirklich motivierten
-                            MFAs.
+                            MFAs / ZFAs.
                         </p>
                         <p>
                             Wir arbeiten
@@ -417,8 +417,8 @@
                         </h4>
                         <p>
                             Erstellen Sie jetzt Ihre attraktive Stellenanzeige
-                            und erreichen Sie unsere große Community von MFAs!
-                            Mit unserem
+                            und erreichen Sie unsere große Community von MFAs /
+                            ZFAs! Mit unserem
                             <b-link
                                 class="text-secondary"
                                 href="#pay-what-you-want"
@@ -577,7 +577,7 @@
         <!-- <FixedAddJobBtn /> -->
 
         <Head
-            title="Motivierte MFA / ArzthelferIn gesucht?"
+            title="Motivierte MFA / ZFA / ArzthelferIn gesucht?"
             desc="MFA mal anders ist das Jobportal speziell nur für Medizinische Fachangestellte. Gesucht – Gefunden! Mit günstigen Stellenanzeigen, die wirklich ankommen."
             img=""
             :script="snippet"

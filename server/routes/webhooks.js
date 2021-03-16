@@ -107,7 +107,7 @@ router.post("/checkout-completed", async (req, res) => {
                 postToFacebook();
             }
 
-            const dataMailToMfa = {
+            const dataMailToAdmin = {
                 from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
                 to: config.website.contactEmail,
                 subject: `[Neue Stelle veröffentlicht] - ${
@@ -178,7 +178,7 @@ router.post("/checkout-completed", async (req, res) => {
                 `,
             };
 
-            emailService.sendMail(dataMailToMfa);
+            emailService.sendMail(dataMailToAdmin);
 
             const dataMailToCustomer = {
                 from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
@@ -232,14 +232,28 @@ router.post("/checkout-completed", async (req, res) => {
                         Wir wünschen Ihnen viele qualifizierte BewerberInnen und verbleiben mit freundlichen Grüßen
                     </p>
                     <p>Kristin Maurach</p>
+                    <p>__</p>
                     <p>
-                        <img style="width: 60px" src="https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/09/logo.png" />
-                    </p>
-                    <p>
-                        MFA mal anders <br>
-                        Das Karriereportal für Medizinische Fachangestellte
+                        <img src="cid:mfa-mal-anders-logo" width="60" style="margin-bottom: 1rem"/> <br>
+                        <strong>MFA mal anders</strong> <br>
+                        Das Karriereportal für Medizinische / Zahnmedizinische Fachangestellte <br>
+                        <br>
+                        Tel: <a href="tel:017663393957">0176 633 939 57</a> <br>
+                        E-Mail: <a href="mailto:kontakt@mfa-mal-anders.de">kontakt@mfa-mal-anders.de</a> <br>
+                        Webseite: <a href="${process.env.WEBSITE_URL}">${
+                    process.env.WEBSITE_URL
+                }</a>
                     </p>
                 `,
+                attachments: [
+                    {
+                        filename: "logo_800.png",
+                        path:
+                            __dirname +
+                            "/../../../../client/public/img/logo_800.png",
+                        cid: "mfa-mal-anders-logo", //same cid value as in the html img src
+                    },
+                ],
             };
 
             emailService.sendMail(dataMailToCustomer);

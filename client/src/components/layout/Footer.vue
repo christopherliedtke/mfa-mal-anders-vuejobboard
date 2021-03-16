@@ -10,8 +10,8 @@
                         class="mb-4"
                     />
                     <h2 class="h6">
-                        Das Job- und Karriereportal für Medizinische
-                        Fachangestellte.
+                        Das Job- und Karriereportal für Medizinische /
+                        Zahnmedizinische Fachangestellte.
                     </h2>
                     <div class="small">
                         <div class="pt-5 mt-5">

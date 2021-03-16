@@ -4,7 +4,7 @@
         <b-container class="py-3 py-lg-5">
             <h2 class="mb-4">
                 Verliebt in meinen Beruf - Dein Karriereportal für Medizinische
-                Fachangestellte
+                / Zahnmedizinische Fachangestellte
             </h2>
             <b-img
                 class="border-radius2 mb-4 mr-4"
@@ -31,8 +31,8 @@
                 Weiterentwicklung.
             </p>
             <blockquote class="d-inline-block">
-                Unser Ziel: Den Beruf der MFA stärken und wieder attraktiver
-                machen!
+                Unser Ziel: Den Beruf der MFA / ZFA stärken und wieder
+                attraktiver machen!
             </blockquote>
             <h3 class="h5 bold">
                 Unsere Stellenangebote findest du über verschiedene Wege. Wir
@@ -140,9 +140,9 @@
             </h2>
 
             <p>
-                Viele Praxen haben zum Glück erkannt, dass ohne uns MFAs nichts
-                läuft. Und das zeigen die Chefs in einem wertschätzenden Umgang,
-                familienfreundlichen Arbeitsbedingungen und einer guten
+                Viele Praxen haben zum Glück erkannt, dass ohne uns MFAs / ZFAs
+                nichts läuft. Und das zeigen die Chefs in einem wertschätzenden
+                Umgang, familienfreundlichen Arbeitsbedingungen und einer guten
                 Bezahlung. In der Regel trennt sich die Spreu vom Weizen von
                 ganz allein. Wir sind trotzdem sehr bemüht, bei den
                 veröffentlichten Stellenanzeigen auf unserer Plattform einen
@@ -169,11 +169,12 @@
             </div>
             <h2 class="my-4">Bock auf Veränderung?</h2>
             <p>
-                Als MFA hast du einen anspruchsvollen Job in der Arztpraxis. Es
-                gibt aber auch viele Karrierechancen darüber hinaus.
+                Als MFA / ZFA hast du einen anspruchsvollen Job in der
+                Arztpraxis. Es gibt aber auch viele Karrierechancen darüber
+                hinaus.
             </p>
             <p>
-                Durch deine Ausbildung als MFA und mit wachsender
+                Durch deine Ausbildung als MFA / ZFA und mit wachsender
                 Berufserfahrung hast du dir eine Vielzahl an Fähigkeiten und
                 Kompetenzen angeeignet.
             </p>
@@ -277,7 +278,7 @@
         </b-container>
         <Head
             :title="title"
-            desc="Karriereportal für Medizinische Fachangestellte (MFA) / ArzthelferIn || Jobperspektiven | Fortbildungen | Weiterbildungen | Gehalt | Bewerbung"
+            desc="Karriereportal für Medizinische Fachangestellte (MFA / ZFA) / ArzthelferIn || Jobperspektiven | Fortbildungen | Weiterbildungen | Gehalt | Bewerbung"
             img=""
             :script="snippet"
         />
@@ -299,7 +300,7 @@
         },
         data() {
             return {
-                title: "Karriere machen als MFA",
+                title: "Karriere machen als MFA / ZFA",
                 snippet: [
                     {
                         type: "application/ld+json",
@@ -314,7 +315,7 @@
                             },{
                                 "@type": "ListItem",
                                 "position": 2,
-                                "name": "MFA Karriere",
+                                "name": "MFA / ZFA Karriere",
                                 "item": "https://www.mfa-mal-anders.de/page/mfa-career"
                             }]
                         }`

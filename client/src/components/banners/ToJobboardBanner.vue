@@ -5,7 +5,7 @@
                 <b-img
                     class="p-4 w-100 h-100"
                     src="@/assets/img/search_engine__monochromatic.svg"
-                    alt="Karriereschritt für MFA"
+                    alt="Karriereschritt für MFA / ZFA"
                 ></b-img>
             </b-col>
             <b-col md="9">
