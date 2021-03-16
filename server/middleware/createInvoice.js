@@ -85,7 +85,7 @@ function generateHeader(doc) {
         .strokeColor("#222222")
         .fontSize(8)
         .text(
-            `${config.invoice.sender.company} - ${config.invoice.sender.name} - ${config.invoice.sender.address.street} - ${config.invoice.sender.address.zipCode} ${config.invoice.sender.address.location}`,
+            `${config.invoice.sender.company} - ${config.invoice.sender.address.street} - ${config.invoice.sender.address.zipCode} ${config.invoice.sender.address.location}`,
             50,
             105,
             {
@@ -369,7 +369,7 @@ function generateFooter(doc) {
     let position = 780;
     doc.fontSize(8)
         .fillColor("#888888")
-        .text(config.invoice.sender.name, 50, position)
+        .text(config.invoice.sender.company, 50, position)
         .text(config.invoice.sender.address.street, 50, position + 10)
         .text(
             config.invoice.sender.address.zipCode +

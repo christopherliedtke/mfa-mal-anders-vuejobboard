@@ -252,7 +252,7 @@
                     return new Date(this.payment.invoiceDate);
                 },
                 set(value) {
-                    this.payment.invoiceDate = new Date(value).valueOf();
+                    this.payment.invoiceDate = new Date(value).setHours(12);
                 }
             },
             paidAt: {
@@ -414,7 +414,7 @@
                     this.$root.$bvToast.toast(
                         "Die Zahlung wurde erfolgreich gespeichert.",
                         {
-                            title: `Stellenanzeige gespeichert`,
+                            title: `Zahlung gespeichert`,
                             variant: "success",
                             toaster: "b-toaster-bottom-right",
                             solid: true
