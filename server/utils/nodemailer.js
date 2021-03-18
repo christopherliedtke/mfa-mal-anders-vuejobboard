@@ -15,11 +15,11 @@ const emailService = nodemailer.createTransport({
         pass: process.env.EMAIL_PW,
     },
     dkim: {
-        domainName: "mfa-mal-anders.de",
-        keySelector: "webgo",
-        privateKey: process.env.WEBGO_PRIVATE_KEY,
-        // cacheDir: "/tmp",
-        // cacheTreshold: 100 * 1024,
+        domainName: process.env.WEBGO_DKIM_DOMAIN,
+        keySelector: process.env.WEBGO_DKIM_SELCTOR,
+        privateKey: process.env.WEBGO_DKIM_PRIVATE_KEY,
+        // cacheDir: path.resolve(__dirname + "../tmp"),
+        // cacheTreshold: 1 * 1024,
     },
 });
 
