@@ -18,8 +18,8 @@ const emailService = nodemailer.createTransport({
         domainName: process.env.WEBGO_DKIM_DOMAIN,
         keySelector: process.env.WEBGO_DKIM_SELCTOR,
         privateKey: process.env.WEBGO_DKIM_PRIVATE_KEY,
-        // cacheDir: path.resolve(__dirname + "../tmp"),
-        // cacheTreshold: 1 * 1024,
+        cacheDir: "/tmp",
+        cacheTreshold: 100 * 1024,
     },
 });
 
