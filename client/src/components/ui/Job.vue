@@ -518,6 +518,7 @@
                                         paid
                                         title
                                         description
+                                        profession
                                         employmentType
                                         applicationDeadline
                                         simpleApplication

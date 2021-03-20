@@ -14,6 +14,7 @@ const JobType = gql`
         addJob(
             title: String
             description: String
+            profession: String
             employmentType: String
             applicationDeadline: Float
             simpleApplication: Boolean
@@ -41,6 +42,7 @@ const JobType = gql`
             status: String
             title: String
             description: String
+            profession: String
             employmentType: String
             applicationDeadline: Float
             simpleApplication: Boolean
@@ -68,6 +70,7 @@ const JobType = gql`
             status: String
             title: String
             description: String
+            profession: String
             employmentType: String
             applicationDeadline: Float
             simpleApplication: Boolean
@@ -95,6 +98,7 @@ const JobType = gql`
             status: String
             title: String
             description: String
+            profession: String
             employmentType: String
             applicationDeadline: Float
             simpleApplication: Boolean
@@ -136,6 +140,7 @@ const JobType = gql`
         updatedAt: Float
         title: String!
         description: String!
+        profession: String
         employmentType: String!
         applicationDeadline: Float!
         simpleApplication: Boolean!

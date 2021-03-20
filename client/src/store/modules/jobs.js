@@ -23,6 +23,7 @@ const actions = {
                             status
                             title
                             description
+                            profession
                             employmentType
                             applicationDeadline
                             salaryMin

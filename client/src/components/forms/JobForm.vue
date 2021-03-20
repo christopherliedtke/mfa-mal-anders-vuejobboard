@@ -40,6 +40,22 @@
                 />
             </div>
 
+            <label for="profession">Berufsgruppe</label>
+            <b-form-select
+                id="profession"
+                v-model="job.profession"
+                :state="validated ? true : null"
+            >
+                <b-form-select-option value=""
+                    >-- Berufsgruppe wählen --</b-form-select-option
+                >
+                <b-form-select-option
+                    v-for="type in professionOptions"
+                    :key="type.value"
+                    :value="type.value"
+                    >{{ type.text }}</b-form-select-option
+                ></b-form-select
+            >
             <label for="specialization">Fachbereich Schwerpunkt</label>
             <b-form-select
                 id="specialization"
@@ -511,6 +527,7 @@
     import { saveCompanyMixin } from "@/mixins/saveCompanyMixin";
     import { saveJobMixin } from "@/mixins/saveJobMixin";
     import {
+        professionOptions,
         specializationOptions,
         employmentTypeOptions,
         simpleApplicationOptions,
@@ -540,6 +557,7 @@
                     title: "",
                     description:
                         "<p>[Für eine attraktive Stellenanzeige sollten Sie mindestens folgende Punkte berücksichtigen. Bitte ersetzen Sie den hier stehenden Text entsprechend.]</p><p>[Schreiben Sie eine kurze Einleitung zu Ihrem Unternehmen.]</p><h3>Was wir Ihnen bieten</h3><p>[Was bieten Sie potentiellen BewerberInnen?]</p><h3>Ihre Aufgaben</h3><p>[Welche Aufgaben sollen von potentiellen BewerberInnen durchgeführt werden?]</p><h3>Ihr Profil</h3><p>[Was sollen potentielle BewerberInnen mitbringen?]</p>",
+                    profession: "",
                     specialization: "",
                     employmentType: "",
                     applicationDeadline: new Date(
@@ -575,6 +593,7 @@
                 },
                 companies: [],
                 selectedCompanyId: "",
+                professionOptions,
                 specializationOptions,
                 employmentTypeOptions,
                 simpleApplicationOptions,
@@ -649,6 +668,7 @@
                                         refreshFrequency
                                         title
                                         description
+                                        profession
                                         employmentType
                                         applicationDeadline
                                         simpleApplication
@@ -826,7 +846,6 @@
                     !this.job.company.name ||
                     !this.job.company.country ||
                     !this.job.company.location ||
-                    // !this.job.company.state ||
                     !this.job.company.street ||
                     !this.job.company.zipCode ||
                     !this.job.company.size

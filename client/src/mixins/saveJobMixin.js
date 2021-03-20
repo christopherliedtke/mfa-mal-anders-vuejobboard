@@ -19,6 +19,7 @@ export const saveJobMixin = {
                                     /"/g,
                                     '\\"'
                                 )}"
+                                profession: "${job.profession}"
                                 employmentType: "${job.employmentType}"
                                 applicationDeadline: ${new Date(
                                     new Date(

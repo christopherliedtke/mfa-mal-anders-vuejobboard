@@ -510,25 +510,36 @@
                     // filter profession
                     if (
                         this.profession.active &&
-                        this.profession.active.length === 1
+                        this.profession.active.length > 0
                     ) {
-                        if (
-                            this.profession.active.some(
-                                element => element === "Zahnheilkunde"
-                            )
-                        ) {
-                            jobs = jobs.filter(
-                                job => job.specialization === "Zahnheilkunde"
-                            );
-                        } else if (
-                            this.profession.active.every(
-                                element => element != "Zahnheilkunde"
-                            )
-                        ) {
-                            jobs = jobs.filter(
-                                job => job.specialization != "Zahnheilkunde"
-                            );
-                        }
+                        jobs = jobs.filter(job => {
+                            if (
+                                this.profession.active.some(
+                                    element => job.profession === element
+                                )
+                            ) {
+                                return job;
+                            } else {
+                                return;
+                            }
+                        });
+                        // if (
+                        //     this.profession.active.some(
+                        //         element => element === "Zahnheilkunde"
+                        //     )
+                        // ) {
+                        //     jobs = jobs.filter(
+                        //         job => job.specialization === "Zahnheilkunde"
+                        //     );
+                        // } else if (
+                        //     this.profession.active.every(
+                        //         element => element != "Zahnheilkunde"
+                        //     )
+                        // ) {
+                        //     jobs = jobs.filter(
+                        //         job => job.specialization != "Zahnheilkunde"
+                        //     );
+                        // }
                     }
 
                     return jobs;
