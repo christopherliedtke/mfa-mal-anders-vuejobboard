@@ -33,7 +33,7 @@ module.exports.CRONRefreshJobs = new CronJob(
 
             await Job.updateMany(
                 { _id: { $in: jobsToRefresh } },
-                { publishedAt: new Date() }
+                { publishedAt: new Date().setHours(6) }
             );
         } catch (error) {
             console.log("Error on refreshJobs CRON: ", error);
