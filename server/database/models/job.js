@@ -51,7 +51,7 @@ const JobSchema = new Schema(
         },
         profession: {
             type: String,
-            default: "MFA",
+            default: "",
         },
         employmentType: {
             type: String,

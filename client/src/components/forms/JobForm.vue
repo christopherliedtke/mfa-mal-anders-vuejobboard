@@ -46,9 +46,7 @@
                 v-model="job.profession"
                 :state="validated ? true : null"
             >
-                <b-form-select-option value=""
-                    >-- Berufsgruppe wählen --</b-form-select-option
-                >
+                <b-form-select-option value="">-- Alle --</b-form-select-option>
                 <b-form-select-option
                     v-for="type in professionOptions"
                     :key="type.value"

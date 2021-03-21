@@ -510,12 +510,14 @@
                     // filter profession
                     if (
                         this.profession.active &&
-                        this.profession.active.length > 0
+                        this.profession.active.length > 0 &&
+                        this.profession.active.length <
+                            this.professionOptions.length
                     ) {
                         jobs = jobs.filter(job => {
                             if (
-                                this.profession.active.some(
-                                    element => job.profession === element
+                                this.profession.active.some(element =>
+                                    element.includes(job.profession)
                                 )
                             ) {
                                 return job;
