@@ -92,7 +92,7 @@ module.exports.sendUnpublishedJobReminder = async () => {
                             filename: "logo_800.png",
                             path:
                                 __dirname +
-                                "/../../../../client/public/img/logo_800.png",
+                                "/../../client/public/img/logo_800.png",
                             cid: "mfa-mal-anders-logo", //same cid value as in the html img src
                         },
                     ],
