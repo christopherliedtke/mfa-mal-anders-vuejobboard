@@ -161,6 +161,51 @@
             </div>
         </b-container>
 
+        <b-container fluid class="pt-3 bg-light-shade">
+            <b-container class="my-4 my-md-5">
+                <h2 class="text-center bold">Wir kooperieren mit</h2>
+                <div>
+                    <b-carousel
+                        id="carousel-partners"
+                        :interval="4000"
+                        :img-height="20"
+                        :img-width="100"
+                    >
+                        <b-carousel-slide
+                            img-blank
+                            v-for="partner in partners"
+                            :key="partner.name"
+                        >
+                            <template #img>
+                                <div
+                                    class="d-flex flex-column justify-content-center align-items-center my-4"
+                                >
+                                    <div
+                                        style="min-height: 175px"
+                                        class="d-flex flex-column justify-content-center align-items-center"
+                                    >
+                                        <b-link
+                                            :href="partner.url"
+                                            target="_blank"
+                                        >
+                                            <img
+                                                fluid
+                                                :src="partner.img"
+                                                :alt="`Logo - ${partner.name}`"
+                                                style="max-height: 150px; max-width: 250px"
+                                                class="mb-4"
+                                            />
+                                        </b-link>
+                                    </div>
+                                    <!-- <p class="h5 m-0">{{ partner.name }}</p> -->
+                                </div>
+                            </template>
+                        </b-carousel-slide>
+                    </b-carousel>
+                </div>
+            </b-container>
+        </b-container>
+
         <b-container id="numbers-and-facts" class="mb-5 py-md-5">
             <h2 class="text-center bold mb-4">
                 Ein paar Zahlen und Fakten
@@ -649,6 +694,24 @@
                         title: "Moderner Webauftritt",
                         desc:
                             "Platzieren Sie sich als moderner Arbeitgeber. Potentielle BewerberInnen informieren sich meist auf Ihrer Webseite über Ihr Unternehmen. Hier können Sie punkten und positiv herausstechen."
+                    }
+                ],
+                partners: [
+                    {
+                        name: "Landarzt sein.",
+                        img: "/img/landarztSein_logo.png",
+                        url:
+                            "https://www.landarzt-sein.de/?utm_source=mfa-mal-anders&utm_medium=linkref&utm_campaign=other"
+                    },
+                    {
+                        name: "Hausärzteverband HH",
+                        img: "/img/hzv-logo-hamburg2.png",
+                        url: "https://www.hausaerzteverband-hamburg.de/"
+                    },
+                    {
+                        name: "Ihre „gesunde“ Arztpraxis",
+                        img: "/img/ihreGesundeArztpraxis_logo2.png",
+                        url: "https://www.facebook.com/ihregesundearztpraxis/"
                     }
                 ],
                 numbersAndFacts: [
