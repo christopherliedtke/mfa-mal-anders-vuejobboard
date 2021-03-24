@@ -86,7 +86,7 @@
                         <p>
                             Veröffentlichen Sie Ihre Stellenanzeige nach unserem
                             <b-link href="#pay-what-you-want">
-                                <strong>"Pay What Yout Want"</strong>
+                                <strong>"Pay What You Want"</strong>
                             </b-link>
                             Modell
                             <strong>
@@ -163,8 +163,27 @@
 
         <b-container fluid class="pt-3 bg-light-shade">
             <b-container class="my-4 my-md-5">
-                <h2 class="text-center bold">Wir kooperieren mit</h2>
-                <div>
+                <h2 class="text-center bold">
+                    Unsere Kooperationspartner
+                </h2>
+                <b-row class="py-4">
+                    <b-col
+                        v-for="partner in partners"
+                        :key="partner.name"
+                        class="d-flex flex-column justify-content-center align-items-center"
+                    >
+                        <b-link :href="partner.url" target="_blank">
+                            <img
+                                fluid
+                                :src="partner.img"
+                                :alt="`Logo - ${partner.name}`"
+                                style="max-height: 130px; max-width: 220px"
+                                class="m-5 blend"
+                            />
+                        </b-link>
+                    </b-col>
+                </b-row>
+                <!-- <div>
                     <b-carousel
                         id="carousel-partners"
                         :interval="4000"
@@ -197,12 +216,11 @@
                                             />
                                         </b-link>
                                     </div>
-                                    <!-- <p class="h5 m-0">{{ partner.name }}</p> -->
                                 </div>
                             </template>
                         </b-carousel-slide>
                     </b-carousel>
-                </div>
+                </div> -->
             </b-container>
         </b-container>
 
@@ -788,6 +806,15 @@
     #testimonials {
         .icon-transparent {
             opacity: 0.1;
+        }
+    }
+
+    .blend {
+        filter: grayscale(0.5);
+        transition: linear 0.3s;
+
+        &:hover {
+            filter: grayscale(0);
         }
     }
 </style>
