@@ -15,10 +15,10 @@ $table-breakpoint: 750px;
                 vertical-align: top;
                 padding-top: 1rem;
 
-                &:first-child {
-                    font-family: $font-family-headlines;
-                    font-size: 115%;
-                }
+                // &:first-child {
+                //     font-family: $font-family-headlines;
+                //     font-size: 115%;
+                // }
 
                 &:nth-child(2) {
                     padding-left: 2rem;

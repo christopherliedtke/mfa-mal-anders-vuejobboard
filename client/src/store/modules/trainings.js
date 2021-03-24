@@ -31,6 +31,11 @@ const actions = {
                                     title
                                     metaDesc
                                 }
+                                categories {
+                                    nodes {
+                                        name
+                                    }
+                                }
                             }
                         }
                     }
