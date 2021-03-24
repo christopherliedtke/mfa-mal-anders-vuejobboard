@@ -247,8 +247,8 @@ const JobResolvers = {
 
     Payment: {
         job: async (payment, args, context) => {
-            if (!context.user.isAdmin) {
-                throw new AuthenticationError("Missing permission!");
+            if (!context.user._id) {
+                throw new AuthenticationError("Must be logged in!");
             }
 
             const job = await Job.findOne({ _id: payment.job });

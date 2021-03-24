@@ -12,70 +12,75 @@
             target="_blank"
             >Fragen oder Hilfe benötigt?</b-button
         >
-        <b-card v-for="payment in myPayments" :key="payment._id" class="my-3">
-            <b-card-text>
-                <h4>
-                    {{ payment.job.title }} | {{ payment.job.company.name }}
-                </h4>
-                <div>
-                    <b-badge
-                        v-if="payment.status === 'paid'"
-                        class="mr-1"
-                        pill
-                        variant="success
-                        "
-                        >bezahlt</b-badge
-                    >
-                    <b-badge
-                        v-if="payment.status === 'pending'"
-                        class="mr-1"
-                        pill
-                        variant="warning
-                        "
-                        >ausstehend</b-badge
-                    >
-                    <b-badge
-                        v-if="payment.status === 'cancelled'"
-                        class="mr-1"
-                        pill
-                        variant="danger
-                        "
-                        >verworfen</b-badge
-                    >
-                </div>
-                <div class="my-3">
+        <div v-if="myPayments.length > 0">
+            <b-card
+                v-for="payment in myPayments"
+                :key="payment._id"
+                class="my-3"
+            >
+                <b-card-text>
+                    <h4>
+                        {{ payment.job.title }} | {{ payment.job.company.name }}
+                    </h4>
                     <div>
-                        Rechnungsdatum:
-                        {{
-                            new Date(
-                                parseInt(
-                                    payment.invoiceDate || payment.createdAt
-                                )
-                            ).toLocaleDateString("de-DE")
-                        }}
-                    </div>
-                    <div v-if="payment.paidAt">
-                        Zahlung eingegangen am:
-                        {{
-                            new Date(
-                                parseInt(payment.paidAt)
-                            ).toLocaleDateString("de-DE")
-                        }}
-                    </div>
-                    <div
-                        v-if="
-                            payment.paymentExpiresAt &&
-                                payment.status === 'paid'
+                        <b-badge
+                            v-if="payment.status === 'paid'"
+                            class="mr-1"
+                            pill
+                            variant="success
                         "
-                    >
-                        Zahlung läuft ab am:
-                        {{
-                            new Date(
-                                parseInt(payment.paymentExpiresAt)
-                            ).toLocaleDateString("de-DE")
-                        }}
+                            >bezahlt</b-badge
+                        >
+                        <b-badge
+                            v-if="payment.status === 'pending'"
+                            class="mr-1"
+                            pill
+                            variant="warning
+                        "
+                            >ausstehend</b-badge
+                        >
+                        <b-badge
+                            v-if="payment.status === 'cancelled'"
+                            class="mr-1"
+                            pill
+                            variant="danger
+                        "
+                            >verworfen</b-badge
+                        >
                     </div>
-                    <!-- <div>
+                    <div class="my-3">
+                        <div>
+                            Rechnungsdatum:
+                            {{
+                                new Date(
+                                    parseInt(
+                                        payment.invoiceDate || payment.createdAt
+                                    )
+                                ).toLocaleDateString("de-DE")
+                            }}
+                        </div>
+                        <div v-if="payment.paidAt">
+                            Zahlung eingegangen am:
+                            {{
+                                new Date(
+                                    parseInt(payment.paidAt)
+                                ).toLocaleDateString("de-DE")
+                            }}
+                        </div>
+                        <div
+                            v-if="
+                                payment.paymentExpiresAt &&
+                                    payment.status === 'paid'
+                            "
+                        >
+                            Zahlung läuft ab am:
+                            {{
+                                new Date(
+                                    parseInt(payment.paymentExpiresAt)
+                                ).toLocaleDateString("de-DE")
+                            }}
+                        </div>
+                        <!-- <div>
                         Aktualisiert:
                         {{
                             new Date(
@@ -83,34 +88,34 @@
                             ).toLocaleString()
                         }}
                     </div> -->
-                </div>
-                <div class="d-flex justify-content-start align-items-end">
-                    <div>
-                        <b-button
-                            class="mr-2 mb-2 mb-md-0"
-                            :href="`/api/invoice/download/${payment._id}`"
-                            target="_blank"
-                            variant="secondary"
-                            size="sm"
-                            ><Fa class="mr-2" icon="download" /> Rechnung
-                            herunterladen</b-button
-                        >
                     </div>
-                    <div>
-                        <b-button
-                            v-if="payment.receiptUrl"
-                            class="mr-2 mb-2 mb-md-0"
-                            :href="`${payment.receiptUrl}`"
-                            target="_blank"
-                            variant="info"
-                            size="sm"
-                            ><Fa
-                                class="mr-2"
-                                icon="external-link-alt"
-                            />Zahlungsbeleg abrufen</b-button
-                        >
-                    </div>
-                    <!-- <div>
+                    <div class="d-flex justify-content-start align-items-end">
+                        <div>
+                            <b-button
+                                class="mr-2 mb-2 mb-md-0"
+                                :href="`/api/invoice/download/${payment._id}`"
+                                target="_blank"
+                                variant="secondary"
+                                size="sm"
+                                ><Fa class="mr-2" icon="download" /> Rechnung
+                                herunterladen</b-button
+                            >
+                        </div>
+                        <div>
+                            <b-button
+                                v-if="payment.receiptUrl"
+                                class="mr-2 mb-2 mb-md-0"
+                                :href="`${payment.receiptUrl}`"
+                                target="_blank"
+                                variant="info"
+                                size="sm"
+                                ><Fa
+                                    class="mr-2"
+                                    icon="external-link-alt"
+                                />Zahlungsbeleg abrufen</b-button
+                            >
+                        </div>
+                        <!-- <div>
                         <b-button
                             variant="outline-danger"
                             size="sm"
@@ -119,9 +124,10 @@
                             Löschen</b-button
                         >
                     </div> -->
-                </div>
-            </b-card-text>
-        </b-card>
+                    </div>
+                </b-card-text>
+            </b-card>
+        </div>
     </div>
 </template>
 
