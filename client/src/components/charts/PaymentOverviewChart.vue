@@ -33,7 +33,7 @@
             return {
                 options: {
                     endDate: new Date().setDate(1),
-                    numberOfMonths: 12
+                    numberOfMonths: 6
                 },
                 chart: {
                     data: null,
@@ -48,7 +48,7 @@
                                     position: "left",
                                     ticks: {
                                         min: 0,
-                                        suggestedMax: 2000,
+                                        suggestedMax: 3000,
                                         stepSize: 200,
                                         callback: function(value) {
                                             return (
@@ -72,7 +72,7 @@
                                     position: "right",
                                     ticks: {
                                         min: 0,
-                                        suggestedMax: 20,
+                                        suggestedMax: 30,
                                         stepSize: 2
                                     },
                                     gridLines: {
