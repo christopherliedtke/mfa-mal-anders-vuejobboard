@@ -19,6 +19,9 @@
                     case "part":
                         output = `"PART_TIME"`;
                         break;
+                    case "mini":
+                        output = `"PART_TIME"`;
+                        break;
                     case "part_full":
                         output = `["PART_TIME", "FULL_TIME"]`;
                         break;
