@@ -163,10 +163,10 @@
 
         <b-container fluid class="pt-3 bg-light-shade">
             <b-container class="my-4 my-md-5">
-                <h2 class="text-center bold">
+                <h2 class="h1 text-center bold">
                     Unsere Kooperationspartner
                 </h2>
-                <b-row class="py-4">
+                <b-row cols="1" cols-lg="4" class="py-4">
                     <b-col
                         v-for="partner in partners"
                         :key="partner.name"
@@ -225,7 +225,7 @@
         </b-container>
 
         <b-container id="numbers-and-facts" class="mb-5 py-md-5">
-            <h2 class="text-center bold mb-4">
+            <h2 class="h1 text-center bold mb-4">
                 Ein paar Zahlen und Fakten
                 <span style="font-size: 0.8rem">(01/2021)</span>
             </h2>
@@ -725,6 +725,11 @@
                         name: "Hausärzteverband HH",
                         img: "/img/hzv-logo-hamburg2.png",
                         url: "https://www.hausaerzteverband-hamburg.de/"
+                    },
+                    {
+                        name: "Hausärzteverband Westfalen-Lippe",
+                        img: "/img/hvwl_logo.png",
+                        url: "https://www.hausaerzteverband-wl.de/"
                     },
                     {
                         name: "Ihre „gesunde“ Arztpraxis",
