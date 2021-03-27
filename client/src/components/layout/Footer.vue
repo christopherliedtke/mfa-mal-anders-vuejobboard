@@ -4,8 +4,8 @@
             <b-row cols="1" cols-lg="3">
                 <b-col order="3" order-lg="1">
                     <b-img
-                        src="@/assets/img/Logo_mfa-mal-anders-white_1200.png"
-                        height="130"
+                        src="/img/MfaMalAnders_Logo_white.svg"
+                        height="110"
                         alt="MFA mal anders - Logo"
                         class="mb-4"
                     />

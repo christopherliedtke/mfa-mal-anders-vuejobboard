@@ -137,7 +137,7 @@
                             "@context": "http://schema.org",
                             "@type": "Organization",
                             url: this.$config.website.url,
-                            logo: "/img/logo_800.png"
+                            logo: "/img/MfaMalAnders_logo_circle_dark.svg"
                         })
                     }
                 ]

@@ -241,8 +241,10 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
                     contentType: "application/pdf",
                 },
                 {
-                    filename: "logo_800.png",
-                    path: __dirname + "/../../client/public/img/logo_800.png",
+                    filename: "MfaMalAnders_logo_circle_dark.png",
+                    path:
+                        __dirname +
+                        "/../../client/public/img/MfaMalAnders_logo_circle_dark.png",
                     cid: "mfa-mal-anders-logo", //same cid value as in the html img src
                 },
             ],

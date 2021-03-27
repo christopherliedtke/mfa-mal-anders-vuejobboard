@@ -66,9 +66,10 @@ const sendJobAdUnpublishedEmail = async () => {
                 `,
                 attachments: [
                     {
-                        filename: "logo_800.png",
+                        filename: "MfaMalAnders_logo_circle_dark.png",
                         path:
-                            __dirname + "/../../client/public/img/logo_800.png",
+                            __dirname +
+                            "/../../client/public/img/MfaMalAnders_logo_circle_dark.png",
                         cid: "mfa-mal-anders-logo", //same cid value as in the html img src
                     },
                 ],

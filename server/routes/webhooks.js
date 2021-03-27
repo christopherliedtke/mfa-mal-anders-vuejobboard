@@ -18,7 +18,7 @@ router.post("/checkout-completed", async (req, res) => {
     const { jobId, userId, couponId } = req.body.data.object.metadata;
 
     let { refreshFrequency } = req.body.data.object.metadata;
-    const billingEmail = req.body.data.object["customer_email"];
+    // const billingEmail = req.body.data.object["customer_email"];
     const amount = req.body.data.object["amount_total"];
 
     try {
@@ -270,9 +270,10 @@ router.post("/checkout-completed", async (req, res) => {
                 `,
                 attachments: [
                     {
-                        filename: "logo_800.png",
+                        filename: "MfaMalAnders_logo_circle_dark.png",
                         path:
-                            __dirname + "/../../client/public/img/logo_800.png",
+                            __dirname +
+                            "/../../client/public/img/MfaMalAnders_logo_circle_dark.png",
                         cid: "mfa-mal-anders-logo", //same cid value as in the html img src
                     },
                 ],

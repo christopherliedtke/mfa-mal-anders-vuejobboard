@@ -5,7 +5,7 @@
                 <b-navbar-brand to="/">
                     <b-img
                         class="header-logo"
-                        src="@/assets/img/Logo_mfa-mal-anders-white_1200.png"
+                        src="/img/MfaMalAnders_Logo_white.svg"
                         alt="MFA mal anders - Logo"
                     />
                 </b-navbar-brand>

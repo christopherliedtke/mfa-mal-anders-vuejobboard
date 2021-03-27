@@ -69,7 +69,9 @@ module.exports = createInvoice;
 
 function generateHeader(doc) {
     doc.image(
-        __dirname + "/../../client/public/img/" + "logo_800.png",
+        __dirname +
+            "/../../client/public/img/" +
+            "MfaMalAnders_logo_circle_dark.png",
         500,
         40,
         {

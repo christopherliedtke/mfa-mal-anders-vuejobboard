@@ -465,7 +465,7 @@ module.exports = {
                                                                             process
                                                                                 .env
                                                                                 .WEBSITE_URL
-                                                                        }/img/Logo_mfa-mal-anders-white_1200.png"
+                                                                        }/img/MfaMalAnders_Logo_white.svg"
                                                                         style="
                                                                             text-decoration: none;
                                                                             -ms-interpolation-mode: bicubic;
