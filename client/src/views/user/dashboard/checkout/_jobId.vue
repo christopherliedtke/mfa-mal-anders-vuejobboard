@@ -58,7 +58,7 @@
                             <br />
                         </span>
                         <span>
-                            <strong>Automatische Aktualisierung:</strong>
+                            <strong>Datumsaktualisierung:</strong>
                             {{
                                 refreshFrequencyComputed != 0
                                     ? "alle " +

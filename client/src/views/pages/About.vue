@@ -16,7 +16,8 @@
                         MFA mal anders ist ein Karriereportal für Medizinische /
                         Zahnmedizinische Fachangestellte sowie auf die
                         professionelle Personalsuche für Arztpraxen und
-                        Medizinische Versorgungszentren spezialisiert.
+                        Medizinische Versorgungszentren und Zahnkliniken
+                        spezialisiert.
                     </p>
                     <p>
                         Als Praxismanagerin mit Führungsverantwortung, als
@@ -51,7 +52,8 @@
                     medizinische Fachangestellte. Unser Portal soll ein Ort
                     sein, der Informationen über den MFA-Beruf vereint. Wir
                     stehen für Wertschätzung, Respekt und faire
-                    Arbeitsbedingungen für medizinische Fachangestellte.
+                    Arbeitsbedingungen für Medizinische und Zahnmedizinische
+                    Fachangestellte.
                 </p>
                 <p>
                     Jobsuchende MFAs / ZFAs finden bei uns eine große Auswahl an
