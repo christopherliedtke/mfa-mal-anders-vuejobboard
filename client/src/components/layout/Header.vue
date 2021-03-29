@@ -231,12 +231,12 @@
                         icon: "chevron-down",
                         children: [
                             {
-                                title: "Ausbildung und Berufsbild",
+                                title: "MFA – Ausbildung und Berufsbild",
                                 path:
                                     "/page/mfa-career/mfa-ausbildung-berufsbild"
                             },
                             {
-                                title: "Gehalt",
+                                title: "MFA – Gehalt",
                                 path: "/page/mfa-career/gehalt"
                             },
                             {

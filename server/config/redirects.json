@@ -258,5 +258,10 @@
         "old": "/anstellungsart/vollzeit",
         "new": "/jobboard?employmentType=full",
         "statusCode": 301
+    },
+    {
+        "old": "/50-plus-alternative-jobs",
+        "new": "/page/mfa-career/jobs-und-berufsbilder",
+        "statusCode": 301
     }
 ]

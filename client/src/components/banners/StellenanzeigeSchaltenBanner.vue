@@ -18,8 +18,9 @@
                     class="d-flex flex-column justify-content-center align-items-center h-100 p-4"
                 >
                     <h2 class="bold">
-                        <em>Motivierte</em> und <em>qualifizierte</em> MFAs /
-                        ZFAs und ArzthelferInnen gesucht?
+                        <em>Motivierte</em> und
+                        <em>qualifizierte</em> ArzthelferInnen – MFA & ZFA
+                        gesucht?
                     </h2>
                     <p>
                         Erstellen Sie
@@ -27,7 +28,7 @@
                             >in wenigen Minuten Ihre Stellenanzeige</strong
                         >
                         und erreichen Sie noch heute unsere große Community von
-                        MFAs / ZFAs! Mit unserem “Pay What You Want”* Modell
+                        MFAs & ZFAs! Mit unserem “Pay What You Want”* Modell
                         veröffentlichen Sie Ihre Stellenanzeige bereits ab
                         {{
                             ($config.payment.minCost / 100)

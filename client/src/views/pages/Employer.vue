@@ -9,8 +9,9 @@
                 <div class="bg-logo"></div>
                 <b-col cols="12" md="6">
                     <h2 class="h1 bold mb-4">
-                        <em>Motivierte</em> und <em>qualifizierte</em> MFAs /
-                        ZFAs und ArzthelferInnen gesucht?
+                        <em>Motivierte</em> und
+                        <em>qualifizierte</em> ArzthelferInnen – MFA & ZFA
+                        gesucht?
                     </h2>
                     <p>
                         Erstellen Sie
@@ -18,7 +19,7 @@
                             >in wenigen Minuten Ihre Stellenanzeige</span
                         >
                         und erreichen Sie noch heute unsere große Community von
-                        MFAs / ZFAs! Mit unserem
+                        MFAs & ZFAs! Mit unserem
                         <b-link class="text-secondary" href="#pay-what-you-want"
                             >“Pay What You Want”*</b-link
                         >
@@ -53,7 +54,7 @@
             </h2>
             <p class="h1 bold text-center">Ihre Zielgruppe genau im Blick</p>
             <h3 class="h3 text-center">
-                Stellenanzeigen nur für MFAs / ZFAs / ArzthelferInnen
+                Stellenanzeigen nur für ArzthelferInnen – MFA & ZFA
             </h3>
 
             <b-row class="my-4 my-md-5">
@@ -68,8 +69,8 @@
                         <p>
                             Bei uns erreichen Sie
                             <strong
-                                >exklusiv motivierte MFA / ZFA / ArzthelferInnen
-                                und ZFA</strong
+                                >exklusiv motivierte ArzthelferInnen – MFA &
+                                ZFA</strong
                             >
                             und damit genau Ihre Zielgruppe.
                         </p>
@@ -347,8 +348,8 @@
         <b-container fluid class="bg-light-shade py-5 mb-5" id="more-info">
             <b-container>
                 <h2 class="bold mb-4">
-                    Ihre Jobbörse nur für MFAs / ZFAs und ArzthelferInnen – MFA
-                    mal anders
+                    Ihre Jobbörse nur für ArzthelferInnen – MFA & ZFA – MFA mal
+                    anders
                 </h2>
                 <b-row cols="1" cols-md="2">
                     <b-col>
@@ -372,8 +373,8 @@
                             Ihre Stellenanzeige ist bei uns bestens platziert.
                             Im Gegensatz zu anderen allgemeinen Stellenbörsen,
                             finden Sie hier ausschließlich die richtige
-                            Zielgruppe für Ihr Unternehmen: Medizinische
-                            Fachangestellte / ArzthelferInnen.
+                            Zielgruppe für Ihr Unternehmen: Medizinische /
+                            Zahnmedizinische Fachangestellte.
                         </p>
                         <h3>Wo wir Ihre Stellenanzeige ausspielen</h3>
                         <p>
@@ -410,7 +411,7 @@
                             <strong>mehr als eine reine Jobbörse</strong> sind,
                             erreichen wir mit unserem Angebot zudem eine
                             deutlich größere Anzahl von wirklich motivierten
-                            MFAs / ZFAs.
+                            MFAs & ZFAs.
                         </p>
                         <p>
                             Wir arbeiten
@@ -480,7 +481,7 @@
                         </h4>
                         <p>
                             Erstellen Sie jetzt Ihre attraktive Stellenanzeige
-                            und erreichen Sie unsere große Community von MFAs /
+                            und erreichen Sie unsere große Community von MFAs &
                             ZFAs! Mit unserem
                             <b-link
                                 class="text-secondary"
@@ -640,8 +641,8 @@
         <!-- <FixedAddJobBtn /> -->
 
         <Head
-            title="Motivierte MFA / ZFA / ArzthelferIn gesucht?"
-            desc="MFA mal anders ist das Jobportal speziell nur für Medizinische Fachangestellte. Gesucht – Gefunden! Mit günstigen Stellenanzeigen, die wirklich ankommen."
+            title="Motivierte ArzthelferInnen – MFA & ZFA gesucht?"
+            desc="MFA mal anders ist das Jobportal speziell nur für Medizinische / Zahnmedizinische Fachangestellte. Gesucht – Gefunden! Mit günstigen Stellenanzeigen, die wirklich ankommen."
             img=""
             :script="snippet"
         />

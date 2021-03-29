@@ -1,8 +1,12 @@
 [
     "/jobboard",
+    "/jobboard?profession=ZFA",
+    "/jobboard?profession=MFA",
     "/jobboard?state=Baden-W%FCrtemberg",
     "/jobboard?state=Bayern",
     "/jobboard?state=Berlin",
+    "/jobboard?state=Berlin&profession=ZFA",
+    "/jobboard?state=Berlin&profession=MFA",
     "/jobboard?state=Brandenburg",
     "/jobboard?state=Bremen",
     "/jobboard?state=Hamburg",

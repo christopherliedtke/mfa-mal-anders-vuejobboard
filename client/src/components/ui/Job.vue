@@ -393,9 +393,23 @@
         />
         <Head
             v-if="job.title"
-            :title="job.title"
+            :title="
+                `${job.title} | ${
+                    employmentTypeOptions.filter(
+                        option => option.value === job.employmentType
+                    )[0].text
+                } | ${job.company.location}`
+            "
             :desc="
-                `${job.title} | ${job.company.name} | ${job.company.location}, ${job.company.state}`
+                `Stellenangebot – ${job.title} | ${job.company.name} | ${
+                    employmentTypeOptions.filter(
+                        option => option.value === job.employmentType
+                    )[0].text
+                } | ${job.company.location}${
+                    job.company.state != job.company.location
+                        ? ', ' + job.company.state
+                        : ''
+                }`
             "
             :img="
                 job.imageUrl && !job.imageUrl.includes('.svg')
@@ -403,7 +417,9 @@
                     : job.company.logoUrl &&
                       !job.company.logoUrl.includes('.svg')
                     ? job.company.logoUrl
-                    : '/img/MfaMalAnders_NeuesStellenangebot_1200.jpg'
+                    : job.profession === 'ZFA'
+                    ? '/img/MfaMalAnders_NeuesStellenangebot_ZFA_1200.jpg'
+                    : '/img/MfaMalAnders_NeuesStellenangebot_MFA_1200.jpg'
             "
             :twitterCard="
                 job.imageUrl && !job.imageUrl.includes('.svg')

@@ -9,6 +9,12 @@
             title: {
                 type: String
             },
+            separator: {
+                type: String
+            },
+            complement: {
+                type: String
+            },
             desc: {
                 type: String
             },
@@ -21,9 +27,18 @@
         head: {
             title() {
                 if (this.title) {
-                    return {
+                    const title = {
                         inner: this.title
                     };
+
+                    if (this.separator) {
+                        title.separator = this.separator;
+                    }
+                    if (this.complement) {
+                        title.complement = this.complement;
+                    }
+
+                    return title;
                 }
             },
             meta() {

@@ -15,7 +15,7 @@
                         <span
                             class="h2 bg-primary text-light p-2 mt-2 border-radius1 d-inline-block"
                         >
-                            Dein Karriereportal nur für MFAs / ZFAs
+                            Das Karriere- & Stellenportal nur für MFA & ZFA
                         </span>
                     </h1>
                     <p class="lead mt-2 mt-md-3 mb-0">
@@ -23,8 +23,8 @@
                         Weiterbildungen, Stellenangebote und vieles mehr<span
                             class="d-none d-md-inline"
                         >
-                            &ndash; speziell für Medizinische / Zahnmedizinische
-                            Fachangestellte (MFA / ZFA) / ArzthelferInnen</span
+                            – speziell für ArzthelferInnen | Medizinische &
+                            Zahnmedizinische Fachangestellte (MFA / ZFA)</span
                         >.
                     </p>
                 </div>
@@ -78,12 +78,12 @@
                             alt="MFA / ZFA macht nächsten Schritt in der Jobsuche"
                             height="130"
                         />
-                        <h2 class="bold">Stellenbörse für MFAs / ZFAs</h2>
+                        <h2 class="bold">Stellenbörse für MFA & ZFA</h2>
                         <p>
                             Bist Du auf der Suche nach einer interessanten
                             Stelle, die genau zu Dir passt? Schau direkt in
-                            unserer Stellenbörse nur für MFAs / ArzthelferInnen
-                            vorbei!
+                            unserer Stellenbörse nur für ArzthelferInnen (MFA &
+                            ZFA) vorbei!
                         </p>
                         <b-button variant="primary">Zur Stellenbörse</b-button>
                     </b-link>
@@ -101,9 +101,9 @@
                         />
                         <h2 class="bold">Jobs und Berufsbilder</h2>
                         <p>
-                            Schau Dir unsere 52 Jobs und Berufsbilder für MFAs /
-                            ZFAs / ArzthelferInnen an! Deine Möglichkeiten sind
-                            größer als Du denkst.
+                            Schau Dir unsere 52 Jobs und Berufsbilder für
+                            ArzthelferInnen – MFA & ZFA an! Deine Möglichkeiten
+                            sind größer als Du denkst.
                         </p>
                         <b-button variant="primary"
                             >Zu den Berufsbildern</b-button
@@ -125,7 +125,7 @@
                         <p>
                             Auf der Suche nach Deinem nächsten Karriereschritt?
                             Informiere Dich über verschiedene Fort- und
-                            Weiterbildungen für MFAs / ZFAs / ArzthelferInnen!
+                            Weiterbildungen für ArzthelferInnen – MFA & ZFA!
                         </p>
                         <b-button variant="primary"
                             >Zu den Weiterbildungen</b-button
@@ -167,7 +167,7 @@
                             Die Gesellschaft und Politik spricht immer nur von
                             katastrophalen Zuständen in der Pflege, zu wenig
                             Pflegepersonal und unter welchem Zeitdruck Ärzte
-                            stehen. Der Beruf der MFA / ZFA findet gar keine
+                            stehen. Der Beruf der MFA & ZFA findet gar keine
                             Beachtung. Obwohl unser Job auch nicht immer
                             Zuckerschlecken ist und Ärzte auch hier händeringend
                             nach Personal suchen. Ich will kein Mitleid
@@ -175,8 +175,8 @@
                             Aufmerksamkeit schenken.
                         </p>
                         <p>
-                            Mit MFA / ZFA mal anders möchte ich in erster Linie
-                            den Beruf der MFA / ZFA stärken und Dir Tipps und
+                            Mit MFA mal anders möchte ich in erster Linie den
+                            Beruf der MFA & ZFA stärken und Dir Tipps und
                             Hilfestellungen zu Themen wie
                             <b-link
                                 class="text-secondary"
@@ -209,9 +209,9 @@
                             bei der Personalsuche für Arbeitgeber. Auch hier
                             möchte ich mit meiner Expertise und Erfahrung aus
                             dem Personal Recruiting unterstützen, um
-                            Arbeitnehmer und Arbeitgeber bzw. MFAs / ZFAs und
+                            Arbeitnehmer und Arbeitgeber bzw. MFAs & ZFAs und
                             Ärzte zusammenzubringen. Am Ende des Tages ist
-                            entscheidend, dass das Zusammenspiel zwischen MFAs /
+                            entscheidend, dass das Zusammenspiel zwischen
                             ArzthelferInnen und Ärzten funktioniert und Kollegen
                             gern zusammenarbeiten. Nur so kann der Praxisalltag
                             auf lange Sicht für alle Beteiligten positiv
@@ -255,7 +255,7 @@
                         <b-link to="/page/mfa-career/fort-und-weiterbildungen"
                             >Fort- und Weiterbildungen</b-link
                         >
-                        speziell für MFAs / ZFAs / ArzthelferInnen für dich
+                        speziell für ArzthelferInnen (MFA & ZFA) für dich
                         zusammengestellt und erweitern die Auswahl stetig,
                         sodass du dich ein wenig inspirieren lassen kannst.
                         Schau doch gleich mal rein!
@@ -284,8 +284,8 @@
         </b-container>
 
         <Head
-            title="Das Karriereportal nur für MFAs / ZFAs"
-            desc="Job- und Karriereportal für Medizinische Fachangestellte (MFA / ZFA) / ArzthelferIn | Stellenangebote | Weiterbildungen | Alternative Jobs | Gehalt | Bewerbung"
+            title="Das Karriere- & Stellenportal nur für MFA & ZFA"
+            desc="Dein Job- und Karriereportal für ArzthelferInnen – Medizinische / Zahnmedizinische Fachangestellte (MFA / ZFA) | Stellenangebote | Weiterbildungen | Alternative Jobs | Gehalt | Bewerbung"
             img=""
             :script="snippet"
         />

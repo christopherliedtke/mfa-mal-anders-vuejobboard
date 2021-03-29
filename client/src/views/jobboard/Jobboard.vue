@@ -293,13 +293,19 @@
         </b-container>
         <Head
             :title="
-                'MFA / ZFA / ArzthelferIn Jobs' +
+                'Stellenangebote ArzthelferIn | ' +
+                    profession.active.join(' & ') +
+                    ' Jobs' +
                     (filter.state ? ` | ${filter.state}` : '')
             "
+            :separator="' '"
+            :complement="' '"
             :desc="
-                `Aktuelle Stellenangebote (Teilzeit | Vollzeit) für MFA / ZFA / ArzthelferInnen ${
-                    filter.state ? filter.state + ' ' : ''
-                }– Dein Karriereportal nur für MFAs / ZFAs / ArzthelferInnen.`
+                `Stellenangebote (Teilzeit | Vollzeit) für ArzthelferInnen ✓ ${profession.active.join(
+                    ' & '
+                )} Jobs ${
+                    filter.state ? 'in ' + filter.state + ' ' : ''
+                }– Die Jobbörse für Medizinische / Zahnmedizinische Fachangestellte.`
             "
             img=""
             :script="snippet"
@@ -334,7 +340,7 @@
         },
         data() {
             return {
-                title: "Stellenangebote für MFA / ArzthelferIn & ZFA",
+                title: "Stellenangebote für ArzthelferInnen – MFA & ZFA",
                 filter: {
                     searchTerm:
                         this.$route.query.searchTerm ||
@@ -354,9 +360,11 @@
                     indeterminate: false
                 },
                 profession: {
-                    active: professionOptions.map(
-                        profession => profession.value
-                    )
+                    active: this.$route.query.profession
+                        ? typeof this.$route.query.profession === "object"
+                            ? this.$route.query.profession
+                            : [this.$route.query.profession]
+                        : professionOptions.map(profession => profession.value)
                 },
                 employmentTypeOptions: employmentTypeOptions.filter(
                     type => type.value != "part_full"
@@ -581,6 +589,20 @@
                     this.specialization.indeterminate = true;
                     this.specialization.allSelected = false;
                 }
+            },
+            "profession.active"() {
+                // if (newValue.length === 0) {
+                //     this.profession.indeterminate = false;
+                //     this.profession.allSelected = false;
+                // } else if (newValue.length === this.professionOptions.length) {
+                //     this.profession.indeterminate = false;
+                //     this.profession.allSelected = true;
+                // } else {
+                //     this.profession.indeterminate = true;
+                //     this.profession.allSelected = false;
+                // }
+
+                this.setQuery();
             }
         },
         methods: {
@@ -594,7 +616,8 @@
                 this.$router.push({
                     query: {
                         ...this.filter,
-                        jobboardView: this.jobboardView
+                        jobboardView: this.jobboardView,
+                        profession: this.profession.active
                     }
                 });
             },

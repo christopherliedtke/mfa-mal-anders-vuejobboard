@@ -4,7 +4,7 @@
         <b-container class="py-3 py-lg-5">
             <h2 class="mb-4">
                 Verliebt in meinen Beruf - Dein Karriereportal für Medizinische
-                / Zahnmedizinische Fachangestellte
+                & Zahnmedizinische Fachangestellte
             </h2>
             <b-img
                 class="border-radius2 mb-4 mr-4"
@@ -30,11 +30,11 @@
                 und Informationen zur persönlichen sowie beruflichen
                 Weiterentwicklung.
             </p>
-            <blockquote class="d-inline-block">
-                Unser Ziel: Den Beruf der MFA / ZFA stärken und wieder
+            <blockquote class="d-inline">
+                Unser Ziel: Den Beruf der MFA & ZFA stärken und wieder
                 attraktiver machen!
             </blockquote>
-            <h3 class="h5 bold">
+            <h3 class="h5 bold d-inline-block">
                 Unsere Stellenangebote findest du über verschiedene Wege. Wir
                 freuen uns, wenn du einen unserer Kanäle abonnierst.
             </h3>
@@ -140,7 +140,7 @@
             </h2>
 
             <p>
-                Viele Praxen haben zum Glück erkannt, dass ohne uns MFAs / ZFAs
+                Viele Praxen haben zum Glück erkannt, dass ohne uns MFAs & ZFAs
                 nichts läuft. Und das zeigen die Chefs in einem wertschätzenden
                 Umgang, familienfreundlichen Arbeitsbedingungen und einer guten
                 Bezahlung. In der Regel trennt sich die Spreu vom Weizen von
@@ -151,10 +151,10 @@
             <ul>
                 <li>Leistungsgerechte Bezahlung</li>
                 <li>
-                    Tätigkeiten, die du mit einer Ausbildung zur medizinischen
-                    Fachangestellten bzw. ArzthelferIn ausüben kannst – auch
-                    wenn der ausgeschriebene Job nicht immer der typische
-                    MFA-Job ist
+                    Tätigkeiten, die du mit einer Ausbildung zur ArzthelferIn
+                    (Medizinischen & Zahnmedizinischen Fachangestellten) ausüben
+                    kannst – auch wenn der ausgeschriebene Job nicht immer der
+                    typische ArzthelferIn-Job ist
                 </li>
                 <li>
                     Unbefristete Stellen oder befristete Stellen mit Aussicht
@@ -169,12 +169,12 @@
             </div>
             <h2 class="my-4">Bock auf Veränderung?</h2>
             <p>
-                Als MFA / ZFA hast du einen anspruchsvollen Job in der
+                Als MFA & ZFA hast du einen anspruchsvollen Job in der
                 Arztpraxis. Es gibt aber auch viele Karrierechancen darüber
                 hinaus.
             </p>
             <p>
-                Durch deine Ausbildung als MFA / ZFA und mit wachsender
+                Durch deine Ausbildung als MFA & ZFA und mit wachsender
                 Berufserfahrung hast du dir eine Vielzahl an Fähigkeiten und
                 Kompetenzen angeeignet.
             </p>
@@ -212,7 +212,7 @@
                     <BerufsbilderBanner />
                 </b-col>
             </b-row>
-            <h2 class="my-4">MFAs sind vernetzt und halten zusammen</h2>
+            <h2 class="my-4">MFAs & ZFAs sind vernetzt und halten zusammen</h2>
             <p>
                 Um unseren Beruf zu stärken und weiter voran zu bringen, müssen
                 wir zusammenhalten.
@@ -278,7 +278,7 @@
         </b-container>
         <Head
             :title="title"
-            desc="Karriereportal für Medizinische Fachangestellte (MFA / ZFA) / ArzthelferIn || Jobperspektiven | Fortbildungen | Weiterbildungen | Gehalt | Bewerbung"
+            desc="Karriereportal für Medizinische & Zahnmedizinische Fachangestellte (MFA / ZFA) / ArzthelferIn || Jobperspektiven | Fortbildungen | Weiterbildungen | Gehalt | Bewerbung"
             img=""
             :script="snippet"
         />
@@ -300,7 +300,7 @@
         },
         data() {
             return {
-                title: "Karriere machen als MFA / ZFA",
+                title: "Karriere machen als MFA & ZFA",
                 snippet: [
                     {
                         type: "application/ld+json",
