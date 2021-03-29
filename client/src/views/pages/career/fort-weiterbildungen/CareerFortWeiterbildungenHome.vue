@@ -98,8 +98,10 @@
             <RandomTrainingsContainer class="mt-5" />
         </b-container>
         <Head
-            title="Fort- und Weiterbildung für MFA / ZFA / ArzthelferIn"
-            desc="Fortbildungen und Weiterbildunger für Medizinische Fachangestellte (MFA / ZFA) / ArzthelferInnen im Gesundheitswesen || Karriere | Gehalt | Stellenangebote"
+            title="Fort- und Weiterbildung für ArzthelferInnen – MFA & ZFA"
+            :desc="
+                `Fortbildungen und Weiterbildungen für Medizinische & Zahnmedizinische Fachangestellte (MFA / ZFA) im Gesundheitswesen || Karriere | Gehalt ${new Date().getFullYear()} | Stellenangebote`
+            "
             img="/img/Banner_Weiterbildungsdschungel_1200.jpg"
             :script="snippet"
         />
@@ -118,7 +120,7 @@
         },
         data() {
             return {
-                title: "Fort- und Weiterbildungen für MFA / ZFA",
+                title: "Fort- und Weiterbildungen für MFA & ZFA",
                 snippet: [
                     {
                         type: "application/ld+json",

@@ -10,7 +10,7 @@
 
     .card {
         border: none;
-        background-color: darken($light, $amount: 2%);
+        background-color: $light-shade;
         box-shadow: $shadow1;
         transition: $transition1;
 

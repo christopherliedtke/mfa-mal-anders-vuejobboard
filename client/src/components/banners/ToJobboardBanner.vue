@@ -12,7 +12,7 @@
                 <b-card-body
                     class="d-flex flex-column justify-content-center align-items-center h-100 p-4"
                 >
-                    <h3 class="h2 bold">Unzufrieden im Job?</h3>
+                    <h3 class="h2 bold">Neuer Job gefällig?</h3>
                     <p>
                         Bist du auf der Suche nach einer
                         <strong>neuen Herausforderung?</strong> <br />

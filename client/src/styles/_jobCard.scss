@@ -25,7 +25,7 @@
 
     .card {
         border: none;
-        background-color: darken($light, $amount: 2%);
+        background-color: $light-shade;
         box-shadow: $shadow1;
         transition: $transition1;
 
@@ -61,7 +61,7 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                background-color: darken($light, $amount: 1%);
+                background-color: darken($light-shade, $amount: 1%);
                 padding: 1rem 1rem;
                 width: 130px;
                 min-width: 130px;

@@ -14,7 +14,7 @@
     }
 
     .logo-container {
-        background-color: darken($light, $amount: 2%);
+        background-color: $light-shade;
         border-radius: $border-radius1;
         min-width: 120px;
         display: flex;

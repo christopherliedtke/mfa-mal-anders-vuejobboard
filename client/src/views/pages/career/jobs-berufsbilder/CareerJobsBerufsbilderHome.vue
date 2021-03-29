@@ -18,12 +18,12 @@
                     </h2>
                     <p>
                         Sprechstundenhilfe sind wir schon lange nicht mehr. Als
-                        Medizinische / Zahnmedizinische Fachangestellte (MFA /
+                        Medizinische & Zahnmedizinische Fachangestellte (MFA /
                         ZFA) und ArzthelferIn sind wir Organisationstalente,
                         Medizinische Assistenten, SekretärInnen, Seelsorger,
                         Logistiker, Abrechnungsprofis und Aushängeschild der
                         gesamten Praxis. Du merkst schon: Die Aufgabenspektren
-                        und Jobs für Medizinische / Zahnmedizinische
+                        und Jobs für Medizinische & Zahnmedizinische
                         Fachangestellte und ArzthelferInnen sind wahnsinnig
                         vielfältig.
                     </p>
@@ -36,15 +36,21 @@
                         Fachangestellte sind möglich.
                     </p>
                     <p>
-                        Willst Du Deinem Job als Medizinische / Zahnmedizinische
-                        Fachangestellte neuen Schwung geben oder beispielsweise
-                        Dein Gehalt aufbessern? Wenn du nicht weißt, welche
-                        Türen dir offen stehen, informiere Dich hier über Deine
-                        Chancen als ausgebildete/r ArzthelferIn. Ganz gleich, ob
-                        Du den direkten Patientenkontakt liebst, gerne
-                        organisatorische Aufgaben erledigst oder Dich lieber für
-                        einen alternativen Job außerhalb der Arztpraxis
-                        interessierst.
+                        Hast Du schon einmal gedacht:
+                        <strong>"Ich will keine MFA mehr sein"</strong>? Willst
+                        Du Deinem Job als Medizinische / Zahnmedizinische
+                        Fachangestellte neuen Schwung geben, Dein Gehalt
+                        aufbessern oder bist einfach auf der Suche nach
+                        alternativen Jobs für Medizinische / Zahnmedizinische
+                        Fachangestellte?
+                    </p>
+                    <p>
+                        Wenn du nicht weißt, welche Türen dir offen stehen,
+                        informiere Dich hier über Deine Chancen als
+                        ausgebildete/r ArzthelferIn. Ganz gleich, ob Du den
+                        direkten Patientenkontakt liebst, gerne organisatorische
+                        Aufgaben erledigst oder Dich lieber für einen
+                        alternativen Job außerhalb der Arztpraxis interessierst.
                     </p>
                     <b-row>
                         <b-col
@@ -91,7 +97,7 @@
         </b-container>
         <Head
             :title="title"
-            desc="50+ Alternative Jobs / Berufe für Medizinische Fachangestellte (MFA / ZFA) / ArzthelferIn || Stellenangebote | Fortbildungen | Weiterbildungen"
+            desc="50+ Alternative Jobs / Berufe für Medizinische & Zahnmedizinische Fachangestellte (MFA / ZFA) / ArzthelferIn || Stellenangebote | Fortbildungen | Weiterbildungen"
             img="/img/MfaMalAnders_50+Jobmoeglichkeiten_1200.jpg"
             :script="snippet"
         />
@@ -111,7 +117,7 @@
         },
         data() {
             return {
-                title: "50+ Alternative Jobs für MFA / ZFA / ArzthelferIn",
+                title: `50+ Alternative Jobs für ArzthelferInnen ${new Date().getFullYear()} – MFA & ZFA`,
                 cards: [
                     {
                         title: "Beratung",
