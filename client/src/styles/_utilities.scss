@@ -125,6 +125,12 @@ a.icon-box {
     background-color: $light-shade;
 }
 
+ul.no-bullets {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
+}
+
 .bg-logo {
     position: absolute;
     top: 50%;

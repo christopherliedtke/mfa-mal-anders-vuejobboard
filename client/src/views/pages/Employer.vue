@@ -2,44 +2,77 @@
     <div class="employer">
         <h1 class="title">{{ title }}</h1>
 
-        <b-container class="py-5 px-md-5">
+        <b-container class="py-3 py-lg-5 px-md-5">
             <b-row
-                class="bg-primary text-light border-radius2 shadow1 w-100 p-3 p-md-5 mx-auto position-relative"
+                class="bg-primary text-light border-radius2 shadow1 w-100 p-3 py-4 p-md-5 mx-auto position-relative"
             >
                 <div class="bg-logo"></div>
-                <b-col cols="12" md="6">
-                    <h2 class="h1 bold mb-4">
-                        <em>Motivierte</em> und
-                        <em>qualifizierte</em> ArzthelferInnen – MFA & ZFA
+                <b-col cols="12" md="8">
+                    <h2 class="display-4 bold mb-4">
+                        <em>Motivierte</em> und <em>qualifizierte</em> MFA & ZFA
                         gesucht?
                     </h2>
-                    <p>
-                        Erstellen Sie
-                        <span class="text-secondary"
-                            >in wenigen Minuten Ihre Stellenanzeige</span
+                    <ul class="lead no-bullets my-4">
+                        <li class="d-flex">
+                            <Fa icon="check" class="mr-3 mt-1" />
+                            <div>
+                                Einfach und bequem
+                                <span class="text-secondary"
+                                    >in wenigen Minuten</span
+                                >
+                                Ihre Stellenanzeige veröffentlichen
+                            </div>
+                        </li>
+                        <li class="d-flex">
+                            <Fa icon="check" class="mr-3 mt-1" />
+                            <div>
+                                <span class="text-secondary"
+                                    >Mehr Reichweite</span
+                                >
+                                über Google Jobs, Social Media und unsere MFA &
+                                ZFA Community
+                            </div>
+                        </li>
+                        <li class="d-flex">
+                            <Fa icon="check" class="mr-3 mt-1" />
+                            <div>
+                                Stellenaneige
+                                <b-link
+                                    class="text-secondary"
+                                    href="#pay-what-you-want"
+                                    >ab
+                                    {{ $config.payment.minCost / 100 }}
+                                    {{ $config.payment.currency }}</b-link
+                                >
+                                veröffentlichen
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="my-3">
+                        <b-button
+                            to="/auth/register"
+                            variant="secondary"
+                            size="lg"
+                            class="d-block d-md-inline-block my-2 mr-md-2"
+                            >Stellenanzeige erstellen</b-button
                         >
-                        und erreichen Sie noch heute unsere große Community von
-                        MFAs & ZFAs! Mit unserem
-                        <b-link class="text-secondary" href="#pay-what-you-want"
-                            >“Pay What You Want”*</b-link
+                        <b-button
+                            href="#advantages"
+                            variant="outline-light"
+                            size="lg"
+                            class="d-block d-md-inline-block my-2 mr-md-2"
+                            >Mehr erfahren</b-button
                         >
-                        Modell bestimmen Sie, wie viel Sie zahlen.
-                    </p>
-                    <b-button
-                        to="/auth/register"
-                        variant="secondary"
-                        size="lg"
-                        class="my-4"
-                        >Jetzt Stellenanzeige erstellen</b-button
-                    >
+                    </div>
                 </b-col>
                 <b-col
                     cols="12"
-                    md="6"
-                    class="d-flex justify-content-center align-items-center"
+                    md="4"
+                    class="d-none d-md-flex justify-content-center align-items-center"
                 >
                     <b-img
-                        class="p-4"
+                        class="p-0"
                         fluid
                         src="@/assets/img/handshake.svg"
                         alt="MFA / ZFA trifft Arzt zum Bewerbungsgespräch"
@@ -48,7 +81,7 @@
             </b-row>
         </b-container>
 
-        <b-container class="my-5">
+        <b-container id="advantages" class="my-5">
             <h2 class="h5 text-center">
                 Stellenanzeige schalten bei MFA mal anders
             </h2>
@@ -807,20 +840,3 @@
         }
     };
 </script>
-
-<style lang="scss" scoped>
-    #testimonials {
-        .icon-transparent {
-            opacity: 0.1;
-        }
-    }
-
-    .blend {
-        filter: grayscale(0.5);
-        transition: linear 0.3s;
-
-        &:hover {
-            filter: grayscale(0);
-        }
-    }
-</style>
