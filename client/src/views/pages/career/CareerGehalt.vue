@@ -65,14 +65,15 @@
                         Arbeitsgemeinschaft zur Regelung der Arbeitsbedingungen
                         der ArzthelferInnen / Medizinischen Fachangestellten
                         (AAA). Die AAA ist die Tarifpartei der Arbeitgeber,
-                        sprich der niedergelassenen Ärzte.
+                        sprich der niedergelassenen Ärzte mit der der
+                        Manteltarifvertag für MFA verhandelt wird.
                     </p>
                     <p>
                         Die niedergelassenen Ärzte sind nicht automatisch
                         Mitglied in der AAA. Deshalb kann man nicht zwingend
                         davon ausgehen, dass sich Praxen an die Gehälter im
                         Tarifvertrag halten müssen. Arbeitgeber sind nur dann
-                        dazu verpflichtet Gehälter nach Tarifvertrag zu zahlen,
+                        dazu verpflichtet nach Gehaltstarifvertrag zu zahlen,
                         wenn sowohl sie Mitglied im AAA als auch die MFA
                         Mitglied im VMF sind.
                     </p>

@@ -75,7 +75,7 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
                         `,
                         `
                             <a
-                                style="text-decoration: underline; color: #f8faf9"
+                                style="text-decoration: underline; color: #fffcfd"
                                 target="_blank" rel="noopener"
                                 href="${process.env.WEBSITE_URL}/page/unsubscribe"
                             >

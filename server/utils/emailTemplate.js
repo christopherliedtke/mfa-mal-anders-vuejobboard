@@ -5,7 +5,7 @@ module.exports = {
         content,
         footer = "",
         headerImg = `${process.env.WEBSITE_URL}/img/MfaMalAnders_Banner_1200.jpg`,
-        lightColor = "#f8faf9",
+        lightColor = "#fffcfd",
         primaryColor = "#6d0230"
     ) {
         // for templating https://beefree.io/

@@ -79,7 +79,7 @@ const SubscriberResolvers = {
                                     style="
                                         text-decoration: none;
                                         display: inline-block;
-                                        color: #f8faf9;
+                                        color: #fffcfd;
                                         background-color: #fda225;
                                         border-radius: 50px;
                                         -webkit-border-radius: 50px;
@@ -99,7 +99,7 @@ const SubscriberResolvers = {
                                     "
                                 >
                                     <a 
-                                        style="padding-left: 20px; padding-right: 20px; font-size: 16px; display: inline-block; cursor: pointer; border: none; color: #f8faf9; text-decoration: none" href="${process.env.WEBSITE_URL}/page/subscription-activation/${newSubscriber._id}" target="_blank"
+                                        style="padding-left: 20px; padding-right: 20px; font-size: 16px; display: inline-block; cursor: pointer; border: none; color: #fffcfd; text-decoration: none" href="${process.env.WEBSITE_URL}/page/subscription-activation/${newSubscriber._id}" target="_blank"
                                     >
                                         <span 
                                             style="font-size: 16px; line-height: 1.5; word-break: break-word; mso-line-height-alt: 24px"
