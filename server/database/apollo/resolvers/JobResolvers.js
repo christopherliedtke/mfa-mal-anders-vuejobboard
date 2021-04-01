@@ -332,7 +332,9 @@ function recaching(job) {
         job.status === "published" &&
         job._id
     ) {
-        recachePrerender(`${process.env.WEBSITE_URL}/jobboard/job/${job._id}`);
+        recachePrerender(
+            `${process.env.WEBSITE_URL}/stellenangebote/job/${job._id}`
+        );
     }
 }
 

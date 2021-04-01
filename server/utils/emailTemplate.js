@@ -596,7 +596,7 @@ module.exports = {
                                                                                 process
                                                                                     .env
                                                                                     .WEBSITE_URL
-                                                                            }/jobboard"
+                                                                            }/stellenangebote"
                                                                             style="
                                                                                 color: ${lightColor};
                                                                                 text-decoration: none;
@@ -610,7 +610,7 @@ module.exports = {
                                                                                 process
                                                                                     .env
                                                                                     .WEBSITE_URL
-                                                                            }/page/fuer-arbeitgeber"
+                                                                            }/fuer-arbeitgeber"
                                                                             style="
                                                                                 color: ${lightColor};
                                                                                 text-decoration: none;
@@ -625,7 +625,7 @@ module.exports = {
                                                                                 process
                                                                                     .env
                                                                                     .WEBSITE_URL
-                                                                            }/page/contact"
+                                                                            }/kontakt"
                                                                             style="
                                                                                 color: ${lightColor};
                                                                                 text-decoration: none;
@@ -812,7 +812,7 @@ module.exports = {
                                                                             process
                                                                                 .env
                                                                                 .WEBSITE_URL
-                                                                        }/page/agbs"
+                                                                        }/agbs"
                                                                         style="
                                                                             color: ${lightColor};
                                                                             text-decoration: none;
@@ -825,7 +825,7 @@ module.exports = {
                                                                             process
                                                                                 .env
                                                                                 .WEBSITE_URL
-                                                                        }/page/privacy-policy"
+                                                                        }/datenschutz"
                                                                         style="
                                                                             color: ${lightColor};
                                                                             text-decoration: none;

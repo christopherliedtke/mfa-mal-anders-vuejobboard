@@ -1,7 +1,7 @@
 <template>
     <div>
         <b-list-group v-if="trainings">
-            <b-list-group-item to="/page/mfa-career/fort-und-weiterbildungen">
+            <b-list-group-item to="/karriere/fort-und-weiterbildungen">
                 <h3 class="h5 bold">
                     Fort- und Weiterbildungen
                 </h3></b-list-group-item
@@ -20,7 +20,7 @@
                         :key="training.id"
                         class="px-4"
                         :to="
-                            `/page/mfa-career/fort-und-weiterbildungen/${training.slug}`
+                            `/karriere/fort-und-weiterbildungen/${training.slug}`
                         "
                         :active="training.slug === $route.params.slug"
                         >{{ training.title }}</b-list-group-item
@@ -32,7 +32,7 @@
                 v-for="training in trainings"
                 :key="training.id"
                 :to="
-                    `/page/mfa-career/fort-und-weiterbildungen/${training.slug}`
+                    `/karriere/fort-und-weiterbildungen/${training.slug}`
                 "
                 :active="training.slug === $route.params.slug"
                 >{{ training.title }}</b-list-group-item

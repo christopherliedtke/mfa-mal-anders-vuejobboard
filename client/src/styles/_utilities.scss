@@ -27,6 +27,49 @@ body::-webkit-scrollbar-thumb {
     border-radius: 10px;
 }
 
+.title {
+    text-align: center;
+    background-color: $primary;
+    color: $light;
+    padding: 1.8rem 0.75rem 1.5rem 0.75rem;
+
+    @media screen and (max-width: $break-menu) {
+        padding: 1rem 0.75rem 0.65rem 0.75rem;
+    }
+
+    h1 {
+        margin: 0;
+    }
+
+    .breadcrumb {
+        justify-content: center;
+        background-color: $primary;
+        color: $light;
+        margin: 0;
+        padding: 0.5rem 0;
+        font-size: small;
+        line-height: 0.75;
+
+        & > .breadcrumb-item {
+            & > a {
+                color: $light-shade;
+
+                &:hover {
+                    color: $secondary;
+                }
+            }
+
+            &:before {
+                color: $light;
+            }
+
+            &.active {
+                color: transparentize($light, 0.2);
+            }
+        }
+    }
+}
+
 h1.title {
     text-align: center;
     background-color: $primary;

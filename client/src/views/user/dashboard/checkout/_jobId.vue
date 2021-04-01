@@ -324,11 +324,11 @@
                         required
                     >
                         Ich habe die
-                        <b-link href="/page/agbs" target="_blank">
+                        <b-link href="/agbs" target="_blank">
                             AGBs
                         </b-link>
                         und
-                        <b-link href="/page/privacy-policy" target="_blank">
+                        <b-link href="/datenschutz" target="_blank">
                             Datenschutzbestimmungen
                         </b-link>
 

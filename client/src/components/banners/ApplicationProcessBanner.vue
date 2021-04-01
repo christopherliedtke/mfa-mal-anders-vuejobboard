@@ -27,7 +27,7 @@
                         Leitfaden zusammengestellt.
                     </p>
                     <b-button
-                        to="/article/tipps-fuer-einen-effizienten-bewerbungsprozess"
+                        to="/blog/article/tipps-fuer-einen-effizienten-bewerbungsprozess"
                         variant="primary"
                         >Mehr erfahren</b-button
                     >

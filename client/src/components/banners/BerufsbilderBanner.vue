@@ -16,9 +16,7 @@
                 Fachangestellte / ArzthelferInnen!
             </b-card-text>
 
-            <b-button
-                to="/page/mfa-career/jobs-und-berufsbilder"
-                variant="primary"
+            <b-button to="/karriere/jobs-und-berufsbilder" variant="primary"
                 >Mehr erfahren!</b-button
             >
         </b-card-body>

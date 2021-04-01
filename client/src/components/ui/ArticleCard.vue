@@ -1,6 +1,9 @@
 <template>
     <div class="article-card">
-        <b-link :to="'/article/' + article.slug" :aria-label="article.title">
+        <b-link
+            :to="'/blog/article/' + article.slug"
+            :aria-label="article.title"
+        >
             <b-card
                 :title="article.title"
                 :img-src="

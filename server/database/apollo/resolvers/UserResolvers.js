@@ -498,7 +498,7 @@ const UserResolvers = {
                     <p>
                     Sollten Sie Fragen zur Nutzung unseres Portals haben, melden Sie sich bitte jederzeit gern z.B. über unser <a href="${
                         process.env.WEBSITE_URL
-                    }/page/contact">Kontaktformular</a>.
+                    }/kontakt">Kontaktformular</a>.
                     </p>
                     <p>Mit freundlichen Grüßen</p>
                     <p>

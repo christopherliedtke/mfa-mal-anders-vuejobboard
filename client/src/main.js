@@ -60,7 +60,8 @@ import {
     SpinnerPlugin,
     ToastPlugin,
     PaginationPlugin,
-    CarouselPlugin
+    CarouselPlugin,
+    BreadcrumbPlugin
 } from "bootstrap-vue";
 Vue.use(NavbarPlugin);
 Vue.use(AlertPlugin);
@@ -94,6 +95,7 @@ Vue.use(SpinnerPlugin);
 Vue.use(ToastPlugin);
 Vue.use(PaginationPlugin);
 Vue.use(CarouselPlugin);
+Vue.use(BreadcrumbPlugin);
 
 import VueSanitize from "vue-sanitize";
 Vue.use(VueSanitize);

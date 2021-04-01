@@ -61,7 +61,7 @@ module.exports.sendUnpublishedJobReminder = async () => {
                     <p>
                         Melden Sie sich gern bei uns über unser <a href="${
                             process.env.WEBSITE_URL
-                        }/page/contact">Kontaktformular</a> oder direkt per Nachricht an <a href="mailto:${
+                        }/kontakt">Kontaktformular</a> oder direkt per Nachricht an <a href="mailto:${
                         config.website.contactEmail
                     }">${config.website.contactEmail}</a>.
                     </p>

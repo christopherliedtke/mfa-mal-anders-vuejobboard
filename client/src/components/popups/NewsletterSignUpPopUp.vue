@@ -47,7 +47,7 @@
         mounted() {
             if (
                 !localStorage.getItem("nl-pop") &&
-                this.$route.path != "/page/fuer-arbeitgeber"
+                this.$route.path != "/fuer-arbeitgeber"
             ) {
                 setTimeout(() => {
                     this.modalVisible = true;

@@ -48,7 +48,7 @@
                     <!-- <div class="mt-5">
                         <div class="d-flex justify-content-center mb-4">
                             <b-link
-                                to="/page/mfa-career/bewerbungstipps"
+                                to="/karriere/bewerbungstipps"
                                 class="d-flex justify-content-center flex-nowrap"
                             >
                                 <b-img-lazy
@@ -115,25 +115,27 @@
                         </b-link>
                     </div>
                     <b-nav vertical class="justify-content-end">
-                        <b-nav-item to="/jobboard">Stellenangebote</b-nav-item>
-                        <b-nav-item to="/page/mfa-career/bewerbungstipps"
+                        <b-nav-item to="/stellenangebote"
+                            >Stellenangebote</b-nav-item
+                        >
+                        <b-nav-item to="/karriere/bewerbungstipps"
                             >Bewerbungstipps</b-nav-item
                         >
-                        <b-nav-item to="/page/mfa-career/gehalt"
+                        <b-nav-item to="/karriere/gehalt"
                             >Gehaltsrechner</b-nav-item
                         >
                         <b-nav-item to="/dashboard"
                             >Stellenanzeige schalten</b-nav-item
                         >
 
-                        <b-nav-item class="mt-5" to="/page/contact"
+                        <b-nav-item class="mt-5" to="/kontakt"
                             >Kontakt</b-nav-item
                         >
-                        <b-nav-item to="/page/privacy-policy"
+                        <b-nav-item to="/datenschutz"
                             >Datenschutzerklärung</b-nav-item
                         >
-                        <b-nav-item to="/page/impressum">Impressum</b-nav-item>
-                        <b-nav-item to="/page/agbs">AGBs</b-nav-item>
+                        <b-nav-item to="/impressum">Impressum</b-nav-item>
+                        <b-nav-item to="/agbs">AGBs</b-nav-item>
                     </b-nav>
                 </b-col>
             </b-row>

@@ -223,85 +223,83 @@
                     },
                     {
                         title: "Stellenangebote",
-                        path: "/jobboard"
+                        path: "/stellenangebote"
                     },
                     {
                         title: "Karriere",
-                        path: "/page/mfa-career",
+                        path: "/karriere",
                         icon: "chevron-down",
                         children: [
                             {
-                                title: "MFA – Ausbildung und Berufsbild",
-                                path:
-                                    "/page/mfa-career/mfa-ausbildung-berufsbild"
+                                title: "MFA – Ausbildung & Berufsbild",
+                                path: "/karriere/mfa/ausbildung-berufsbild"
                             },
                             {
                                 title: "MFA – Gehalt",
-                                path: "/page/mfa-career/gehalt"
+                                path: "/karriere/mfa/gehalt"
                             },
                             {
                                 title: "Gehaltsverhandlung 2021",
                                 path:
-                                    "/article/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
+                                    "/blog/article/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
                             },
                             {
                                 title: "Bewerbungstipps",
-                                path: "/page/mfa-career/bewerbungstipps"
+                                path: "/karriere/bewerbungstipps"
                             },
                             {
                                 title: "Jobs und Berufsbilder",
-                                path: "/page/mfa-career/jobs-und-berufsbilder"
+                                path: "/karriere/jobs-und-berufsbilder"
                                 // icon: "chevron-right"
                                 // children: [
                                 //     {
                                 //         title: "Medizinisch-Technisch",
                                 //         path:
-                                //             "/page/mfa-career/jobs-und-berufsbilder/medizinisch-technisch"
+                                //             "/karriere/jobs-und-berufsbilder/medizinisch-technisch"
                                 //     },
                                 //     {
                                 //         title: "Verwaltung",
                                 //         path:
-                                //             "/page/mfa-career/jobs-und-berufsbilder/verwaltung"
+                                //             "/karriere/jobs-und-berufsbilder/verwaltung"
                                 //     },
                                 //     {
                                 //         title: "Management",
                                 //         path:
-                                //             "/page/mfa-career/jobs-und-berufsbilder/management"
+                                //             "/karriere/jobs-und-berufsbilder/management"
                                 //     },
                                 //     {
                                 //         title: "Beratung",
                                 //         path:
-                                //             "/page/mfa-career/jobs-und-berufsbilder/beratung"
+                                //             "/karriere/jobs-und-berufsbilder/beratung"
                                 //     },
                                 //     {
                                 //         title: "Forschung",
                                 //         path:
-                                //             "/page/mfa-career/jobs-und-berufsbilder/forschung"
+                                //             "/karriere/jobs-und-berufsbilder/forschung"
                                 //     }
                                 // ]
                             },
                             {
                                 title: "Fort- und Weiterbildungen",
-                                path:
-                                    "/page/mfa-career/fort-und-weiterbildungen"
+                                path: "/karriere/fort-und-weiterbildungen"
                             }
                         ]
                     },
                     {
                         title: "Blog",
-                        path: "/page/blog"
+                        path: "/blog"
                     },
                     {
                         title: "Für Arbeitgeber",
-                        path: "/page/fuer-arbeitgeber"
+                        path: "/fuer-arbeitgeber"
                     },
                     {
                         title: "Über",
-                        path: "/page/about"
+                        path: "/ueber"
                     },
                     {
                         title: "Kontakt",
-                        path: "/page/contact"
+                        path: "/kontakt"
                     }
                 ],
                 previousScrollPositionY:

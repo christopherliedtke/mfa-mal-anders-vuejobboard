@@ -130,11 +130,11 @@
                 :state="validated ? (form.accepted ? true : false) : null"
             >
                 Ich akzeptiere die
-                <b-link to="/page/agbs">
+                <b-link to="/agbs">
                     Nutzungsbedingungen
                 </b-link>
                 und
-                <b-link to="/page/privacy-policy">
+                <b-link to="/datenschutz">
                     Datenschutzbestimmungen
                 </b-link>
                 zur Nutzung des Kontaktformulars.

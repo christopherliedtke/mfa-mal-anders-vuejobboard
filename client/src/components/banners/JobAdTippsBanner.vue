@@ -23,7 +23,7 @@
                         Bewerber*innen anzieht.
                     </p>
                     <b-button
-                        to="/article/8-tipps-fuer-attraktive-stellenanzeigen-fuer-mfas"
+                        to="/blog/article/8-tipps-fuer-attraktive-stellenanzeigen-fuer-mfas"
                         variant="primary"
                         >Weitere Informationen</b-button
                     >

@@ -22,7 +22,7 @@
         <b-button
             variant="secondary"
             class="mt-3 mr-2"
-            to="/page/contact?subject=Probleme+bei+E-Mail-Verifizierung"
+            to="/kontakt?subject=Probleme+bei+E-Mail-Verifizierung"
         >
             Probleme? Kontakt aufnehmen
         </b-button>

@@ -17,14 +17,14 @@
         >
         <b-button
             class="mr-2 mb-2"
-            to="/article/8-tipps-fuer-attraktive-stellenanzeigen-fuer-mfas"
+            to="/blog/article/8-tipps-fuer-attraktive-stellenanzeigen-fuer-mfas"
             variant="secondary"
             target="_blank"
             >Tipps für Stellenanzeigen</b-button
         >
         <b-button
             class="mr-2 mb-2"
-            to="/page/contact"
+            to="/kontakt"
             variant="outline-primary"
             target="_blank"
             >Fragen oder Hilfe benötigt?</b-button

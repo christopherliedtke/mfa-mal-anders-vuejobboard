@@ -41,9 +41,9 @@ router.post("/job-published", verifyToken, isAdmin, async (req, res) => {
                     }' auf unserem Portal MFA mal anders. Diese ist ab sofort unter folgendem Link abrufbar:
                 </p>
                 <p>
-                    <a href="${process.env.WEBSITE_URL}/jobboard/job/${
+                    <a href="${process.env.WEBSITE_URL}/stellenangebote/job/${
                 job._id
-            }">${process.env.WEBSITE_URL}/jobboard/job/${job._id}</a>
+            }">${process.env.WEBSITE_URL}/stellenangebote/job/${job._id}</a>
                 </p>
                 <p>
                     Bitte beachten Sie, dass Ihre Stellenanzeige nur solange abrufbar ist, wie auch Ihre Bewerbungsfrist nicht überschritten ist. Über Ihre Zugangsdaten haben Sie weiterhin Zugriff auf Ihre Stellenanzeigen und können diese jederzeit anpassen.
@@ -51,7 +51,7 @@ router.post("/job-published", verifyToken, isAdmin, async (req, res) => {
                 <p>
                     Sollten Sie noch Fragen, Anregungen oder weiteren Beratungsbedarf haben, melden Sie sich gern bei uns über unser <a href="${
                         process.env.WEBSITE_URL
-                    }/page/contact">Kontaktformular</a> oder direkt per Nachricht an <a href="mailto:kontakt@mfa-mal-anders.de">kontakt@mfa-mal-anders.de</a>.
+                    }/kontakt">Kontaktformular</a> oder direkt per Nachricht an <a href="mailto:kontakt@mfa-mal-anders.de">kontakt@mfa-mal-anders.de</a>.
                 </p>
                 <p>
                     Wir wünschen Ihnen viele qualifizierte BewerberInnen und verbleiben mit freundlichen Grüßen

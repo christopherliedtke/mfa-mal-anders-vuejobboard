@@ -532,7 +532,7 @@
 
                 el.value = `${payment.job.title} | ${
                     payment.job.company.location
-                }\n\n${this.$config.website.url}/jobboard/job/${
+                }\n\n${this.$config.website.url}/stellenangebote/job/${
                     payment.job._id
                 }\n\n#mfamalanders #mfa #arzthelfer #arzthelferin #mfajobs #${payment.job.company.location
                     .replace("-", "")

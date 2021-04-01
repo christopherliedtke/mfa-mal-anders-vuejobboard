@@ -120,7 +120,7 @@ router.post("/checkout-completed", async (req, res) => {
             );
 
             recachePrerender(
-                `${process.env.WEBSITE_URL}/jobboard/job/${jobId}`
+                `${process.env.WEBSITE_URL}/stellenangebote/job/${jobId}`
             );
 
             if (config.facebook.autoPost) {
@@ -247,7 +247,7 @@ router.post("/checkout-completed", async (req, res) => {
                     <p>
                         Sollten Sie noch Fragen, Anregungen oder weiteren Beratungsbedarf haben, melden Sie sich gern bei uns über unser <a href="${
                             process.env.WEBSITE_URL
-                        }/page/contact">Kontaktformular</a> oder direkt per Nachricht an <a href="mailto:${
+                        }/kontakt">Kontaktformular</a> oder direkt per Nachricht an <a href="mailto:${
                     config.website.contactEmail
                 }">${config.website.contactEmail}</a>.
                     </p>

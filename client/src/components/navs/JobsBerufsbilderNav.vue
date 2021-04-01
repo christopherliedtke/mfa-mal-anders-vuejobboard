@@ -1,6 +1,6 @@
 <template>
     <b-list-group>
-        <b-list-group-item to="/page/mfa-career/jobs-und-berufsbilder">
+        <b-list-group-item to="/karriere/jobs-und-berufsbilder">
             <h3 class="h5 bold">
                 Jobs und Berufsbilder
             </h3></b-list-group-item
@@ -9,7 +9,7 @@
             v-for="berufsbilderType in berufsbilderTypes"
             :key="berufsbilderType"
             :to="
-                `/page/mfa-career/jobs-und-berufsbilder/${berufsbilderType.toLowerCase()}`
+                `/karriere/jobs-und-berufsbilder/${berufsbilderType.toLowerCase()}`
             "
             :active="berufsbilderType.toLowerCase() === $route.params.slug"
             >{{ berufsbilderType }}</b-list-group-item

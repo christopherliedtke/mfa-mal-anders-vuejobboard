@@ -8,7 +8,7 @@
     "cms": {
         "url": "https://wordpress.mfa-mal-anders.de/graphql",
         "active": true,
-        "postsPath": "blog",
+        "postsPath": "/blog",
         "postsPageTitle": "Blog"
     },
     "fb": {

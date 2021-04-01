@@ -6,7 +6,7 @@
         >
             <span class="h2 bold text-danger">Abgelaufen</span>
         </div>
-        <b-link :to="`/jobboard/job/${job._id}`">
+        <b-link :to="`/stellenangebote/job/${job._id}`">
             <b-card no-body class="mb-3 mt-3 mt-lg-0">
                 <b-card-text>
                     <div class="card-head position-relative">

@@ -6,91 +6,80 @@ Vue.use(VueRouter);
 
 import store from "@/store";
 
-// #Pages
-const Home = () => import("@/views/index.vue");
-const About = () => import("@/views/pages/About.vue");
-const AGBs = () => import("@/views/pages/AGBs.vue");
-const Contact = () => import("@/views/pages/Contact.vue");
-const Employer = () => import("@/views/pages/Employer.vue");
-const Impressum = () => import("@/views/pages/Impressum.vue");
-const PrivacyPolicy = () => import("@/views/pages/PrivacyPolicy.vue");
+// #Views
+const Home = () => import("@/views/Home.vue");
+const About = () => import("@/views/About.vue");
+const AGBs = () => import("@/views/AGBs.vue");
+const Contact = () => import("@/views/Contact.vue");
+const Employer = () => import("@/views/Employer.vue");
+const Impressum = () => import("@/views/Impressum.vue");
+const PrivacyPolicy = () => import("@/views/PrivacyPolicy.vue");
 
-const Blog = () => import("@/views/pages/Blog.vue");
-const Article = () => import("@/views/articles/_slug.vue");
-
-const Page = () => import("@/views/pages/index.vue");
+const Blog = () => import("@/views/blog/Blog.vue");
+const Article = () => import("@/views/blog/article/_slug.vue");
 
 const NewsletterSubscriptionSuccess = () =>
     import(
-        /* webpackChunkName: "newsletter" */ "@/views/pages/NewsletterSubscriptionSuccess.vue"
+        /* webpackChunkName: "newsletter" */ "@/views/newsletter/NewsletterSubscriptionSuccess.vue"
     );
 const NewsletterSubscriptionActivation = () =>
     import(
-        /* webpackChunkName: "newsletter" */ "@/views/pages/NewsletterSubscriptionActivation.vue"
+        /* webpackChunkName: "newsletter" */ "@/views/newsletter/NewsletterSubscriptionActivation.vue"
     );
 const NewsletterUnsubscribe = () =>
     import(
-        /* webpackChunkName: "newsletter" */ "@/views/pages/NewsletterUnsubscribe.vue"
+        /* webpackChunkName: "newsletter" */ "@/views/newsletter/NewsletterUnsubscribe.vue"
     );
 const NewsletterUnsubscriptionSuccess = () =>
     import(
-        /* webpackChunkName: "newsletter" */ "@/views/pages/NewsletterUnsubscriptionSuccess.vue"
+        /* webpackChunkName: "newsletter" */ "@/views/newsletter/NewsletterUnsubscriptionSuccess.vue"
     );
 
-const Career = () =>
-    import(/* webpackChunkName: "career" */ "@/views/pages/career/index.vue");
+// #Career
 const CareerHome = () =>
-    import(
-        /* webpackChunkName: "career" */ "@/views/pages/career/CareerHome.vue"
-    );
+    import(/* webpackChunkName: "career" */ "@/views/career/CareerHome.vue");
 const CareerMfaAusbildung = () =>
     import(
-        /* webpackChunkName: "career" */ "@/views/pages/career/CareerMfaAusbildung.vue"
+        /* webpackChunkName: "career" */ "@/views/career/mfa/CareerMfaAusbildung.vue"
     );
-const CareerGehalt = () =>
+const CareerMfaGehalt = () =>
     import(
-        /* webpackChunkName: "career" */ "@/views/pages/career/CareerGehalt.vue"
+        /* webpackChunkName: "career" */ "@/views/career/mfa/CareerMfaGehalt.vue"
     );
 const CareerBewerbungstipps = () =>
     import(
-        /* webpackChunkName: "career" */ "@/views/pages/career/CareerBewerbungstipps.vue"
+        /* webpackChunkName: "career" */ "@/views/career/CareerBewerbungstipps.vue"
     );
 
-const CareerJobsBerufsbilder = () =>
-    import(
-        /* webpackChunkName: "career" */ "@/views/pages/career/jobs-berufsbilder/index.vue"
-    );
 const CareerJobsBerufsbilderHome = () =>
     import(
-        /* webpackChunkName: "career" */ "@/views/pages/career/jobs-berufsbilder/CareerJobsBerufsbilderHome.vue"
+        /* webpackChunkName: "career" */ "@/views/career/jobs-berufsbilder/CareerJobsBerufsbilderHome.vue"
     );
 const CareerBerufsbildType = () =>
     import(
-        /* webpackChunkName: "career" */ "@/views/pages/career/jobs-berufsbilder/CareerBerufsbildType.vue"
+        /* webpackChunkName: "career" */ "@/views/career/jobs-berufsbilder/CareerBerufsbildType.vue"
     );
 
-const CareerFortWeiterbildungen = () =>
-    import(
-        /* webpackChunkName: "career" */ "@/views/pages/career/fort-weiterbildungen/index.vue"
-    );
 const CareerFortWeiterbildungenHome = () =>
     import(
-        /* webpackChunkName: "career" */ "@/views/pages/career/fort-weiterbildungen/CareerFortWeiterbildungenHome.vue"
+        /* webpackChunkName: "career" */ "@/views/career/fort-weiterbildungen/CareerFortWeiterbildungenHome.vue"
     );
 const CareerFortWeiterbildung = () =>
     import(
-        /* webpackChunkName: "career" */ "@/views/pages/career/fort-weiterbildungen/CareerFortWeiterbildung.vue"
+        /* webpackChunkName: "career" */ "@/views/career/fort-weiterbildungen/CareerFortWeiterbildung.vue"
     );
 
 // #Jobboard
 const Jobboard = () =>
-    import(/* webpackChunkName: "jobboard" */ "@/views/jobboard/Jobboard.vue");
+    import(
+        /* webpackChunkName: "jobboard" */ "@/views/jobboard/JobboardHome.vue"
+    );
 const JobView = () =>
-    import(/* webpackChunkName: "jobboard" */ "@/views/jobboard/JobView.vue");
+    import(
+        /* webpackChunkName: "jobboard" */ "@/views/jobboard/job/JobView.vue"
+    );
 
 // #Auth
-const Auth = () =>
-    import(/* webpackChunkName: "auth" */ "@/views/auth/index.vue");
 const AuthLogin = () =>
     import(/* webpackChunkName: "auth" */ "@/views/auth/AuthLogin.vue");
 const AuthRegister = () =>
@@ -105,10 +94,6 @@ const AuthAccountVerification = () =>
     );
 
 // #User
-const User = () =>
-    import(/* webpackChunkName: "user" */ "@/views/user/index.vue");
-const UserDashboard = () =>
-    import(/* webpackChunkName: "user" */ "@/views/user/dashboard/index.vue");
 const UserDashboardHome = () =>
     import(
         /* webpackChunkName: "user" */ "@/views/user/dashboard/UserDashboardHome.vue"
@@ -131,8 +116,6 @@ const UserDashboardCheckoutJob = () =>
     );
 
 // #Admin
-const Admin = () =>
-    import(/* webpackChunkName: "admin" */ "@/views/admin/index.vue");
 const AdminHome = () =>
     import(/* webpackChunkName: "admin" */ "@/views/admin/AdminHome.vue");
 const AdminJobPreview = () =>
@@ -161,7 +144,7 @@ const AdminEditPayment = () =>
     );
 
 // #404
-const NotFound = () => import("@/views/pages/NotFound.vue");
+const NotFound = () => import("@/views/NotFound.vue");
 
 // #Routes
 const routes = [
@@ -174,7 +157,7 @@ const routes = [
         }
     },
     {
-        path: "/jobboard",
+        path: "/stellenangebote",
         name: "Jobboard",
         component: Jobboard,
         meta: {
@@ -182,7 +165,7 @@ const routes = [
         }
     },
     {
-        path: "/jobboard/job/:jobId",
+        path: "/stellenangebote/job/:jobId",
         name: "JobView",
         component: JobView,
         meta: {
@@ -190,7 +173,79 @@ const routes = [
         }
     },
     {
-        path: "/article/:slug",
+        path: "/karriere",
+        name: "Karriere",
+        component: CareerHome,
+        meta: {
+            public: true
+        }
+    },
+    {
+        path: "/karriere/mfa/ausbildung-berufsbild",
+        name: "KarriereMfaAusbildungBerufsbild",
+        component: CareerMfaAusbildung,
+        meta: {
+            public: true
+        }
+    },
+    {
+        path: "/karriere/mfa/gehalt",
+        name: "KarriereMfaGehalt",
+        component: CareerMfaGehalt,
+        meta: {
+            public: true
+        }
+    },
+    {
+        path: "/karriere/bewerbungstipps",
+        name: "KarriereBewerbungstipps",
+        component: CareerBewerbungstipps,
+        meta: {
+            public: true
+        }
+    },
+    {
+        path: "/karriere/jobs-und-berufsbilder",
+        name: "KarriereJobsBerufsbilder",
+        component: CareerJobsBerufsbilderHome,
+        meta: {
+            public: true
+        }
+    },
+    {
+        path: "/karriere/jobs-und-berufsbilder/:slug",
+        name: "KarriereJobsBerufsbilderType",
+        component: CareerBerufsbildType,
+        meta: {
+            public: true
+        }
+    },
+    {
+        path: "/karriere/fort-und-weiterbildungen",
+        name: "KarriereFortWeiterbildungen",
+        component: CareerFortWeiterbildungenHome,
+        meta: {
+            public: true
+        }
+    },
+    {
+        path: "/karriere/fort-und-weiterbildungen/:slug",
+        name: "KarriereFortWeiterbildung",
+        component: CareerFortWeiterbildung,
+        meta: {
+            public: true
+        }
+    },
+    {
+        path: config.cms.postsPath,
+        name: config.cms.postsPageTitle,
+        component: Blog,
+        meta: {
+            public: true
+        }
+    },
+    {
+        path: config.cms.postsPath + "/article/:slug",
         name: "Article",
         component: Article,
         meta: {
@@ -198,292 +253,243 @@ const routes = [
         }
     },
     {
-        path: "/page",
-        name: "Page",
-        component: Page,
+        path: "/fuer-arbeitgeber",
+        name: "Employer",
+        component: Employer,
         meta: {
             public: true
-        },
-        children: [
-            {
-                path: "mfa-career",
-                component: Career,
-                children: [
-                    {
-                        path: "",
-                        component: CareerHome
-                    },
-                    {
-                        path: "mfa-ausbildung-berufsbild",
-                        component: CareerMfaAusbildung
-                    },
-                    {
-                        path: "gehalt",
-                        component: CareerGehalt
-                    },
-                    {
-                        path: "bewerbungstipps",
-                        component: CareerBewerbungstipps
-                    },
-                    {
-                        path: "jobs-und-berufsbilder",
-                        component: CareerJobsBerufsbilder,
-                        children: [
-                            {
-                                path: "",
-                                component: CareerJobsBerufsbilderHome
-                            },
-                            {
-                                path: ":slug",
-                                component: CareerBerufsbildType
-                            }
-                        ]
-                    },
-                    {
-                        path: "fort-und-weiterbildungen",
-                        component: CareerFortWeiterbildungen,
-                        children: [
-                            {
-                                path: "",
-                                component: CareerFortWeiterbildungenHome
-                            },
-                            {
-                                path: ":slug",
-                                component: CareerFortWeiterbildung
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                path: "about",
-                component: About
-            },
-            {
-                path: "fuer-arbeitgeber",
-                component: Employer
-            },
-            {
-                path: config.cms.postsPath,
-                component: Blog
-            },
-            {
-                path: "contact",
-                component: Contact
-            },
-            {
-                path: "subscription-successful",
-                component: NewsletterSubscriptionSuccess
-            },
-            {
-                path: "subscription-activation/:subscriberId",
-                component: NewsletterSubscriptionActivation
-            },
-            {
-                path: "unsubscribe",
-                component: NewsletterUnsubscribe
-            },
-            {
-                path: "unsubscribed-successful",
-                component: NewsletterUnsubscriptionSuccess
-            },
-            {
-                path: "impressum",
-                component: Impressum
-            },
-            {
-                path: "privacy-policy",
-                component: PrivacyPolicy
-            },
-            {
-                path: "agbs",
-                component: AGBs
-            }
-        ]
+        }
     },
     {
-        path: "/auth",
-        name: "Auth",
-        component: Auth,
-        children: [
-            {
-                path: "login",
-                name: "AuthLogin",
-                component: AuthLogin,
-                meta: {
-                    public: true,
-                    onlyWhenLoggedOut: true
-                }
-            },
-            {
-                path: "register",
-                name: "AuthRegister",
-                component: AuthRegister,
-                meta: {
-                    public: true,
-                    onlyWhenLoggedOut: true
-                }
-            },
-            {
-                path: "logout",
-                name: "AuthLogout",
-                component: AuthLogout,
-                meta: {
-                    public: true
-                }
-            },
-            {
-                path: "password-reset",
-                name: "AuthPasswordReset",
-                component: AuthPasswordReset,
-                meta: {
-                    public: true,
-                    onlyWhenLoggedOut: true
-                }
-            },
-            {
-                path: "account/verification",
-                name: "AuthAccountVerification",
-                component: AuthAccountVerification,
-                meta: {
-                    public: false,
-                    onlyWhenPending: true
-                }
-            },
-            {
-                path: "account/verification/:userId",
-                name: "AuthAccountVerificationWUserId",
-                component: AuthAccountVerification,
-                meta: {
-                    public: false,
-                    onlyWhenPending: true
-                }
-            }
-        ]
+        path: "/ueber",
+        name: "About",
+        component: About,
+        meta: {
+            public: true
+        }
     },
     {
-        path: "/user",
-        component: User,
-        children: [
-            {
-                path: "dashboard",
-                component: UserDashboard,
-                children: [
-                    {
-                        path: "",
-                        name: "UserDashboardHome",
-                        component: UserDashboardHome,
-                        meta: {
-                            public: false
-                        }
-                    },
-                    {
-                        path: "jobs/edit/:jobId",
-                        name: "UserDashboardEditJob",
-                        component: UserDashboardEditJob,
-                        meta: {
-                            public: false
-                        }
-                    },
-                    {
-                        path: "jobs/preview/:jobId",
-                        name: "UserDashboardJobPreview",
-                        component: UserDashboardJobPreview,
-                        meta: {
-                            public: false
-                        }
-                    },
-                    {
-                        path: "companies/edit/:companyId",
-                        name: "UserDashboardEditCompany",
-                        component: UserDashboardEditCompany,
-                        meta: {
-                            public: false
-                        }
-                    },
-                    {
-                        path: "checkout/:jobId",
-                        name: "UserDashboardCheckoutJob",
-                        component: UserDashboardCheckoutJob,
-                        meta: {
-                            public: false
-                        }
-                    }
-                ]
-            }
-        ]
+        path: "/kontakt",
+        name: "Contact",
+        component: Contact,
+        meta: {
+            public: true
+        }
+    },
+    {
+        path: "/impressum",
+        name: "Impressum",
+        component: Impressum,
+        meta: {
+            public: true
+        }
+    },
+    {
+        path: "/datenschutz",
+        name: "PrivacyPolicy",
+        component: PrivacyPolicy,
+        meta: {
+            public: true
+        }
+    },
+    {
+        path: "/agbs",
+        name: "AGBs",
+        component: AGBs,
+        meta: {
+            public: true
+        }
+    },
+    {
+        path: "/newsletter/subscription-successful",
+        name: "NewsletterSubscriptionSuccess",
+        component: NewsletterSubscriptionSuccess,
+        meta: {
+            public: true
+        }
+    },
+    {
+        path: "/newsletter/subscription-activation/:subscriberId",
+        name: "NewsletterSubscriptionActivation",
+        component: NewsletterSubscriptionActivation,
+        meta: {
+            public: true
+        }
+    },
+    {
+        path: "/newsletter/unsubscribe",
+        name: "NewsletterUnsubscribe",
+        component: NewsletterUnsubscribe,
+        meta: {
+            public: true
+        }
+    },
+    {
+        path: "/newsletter/unsubscribed-successful",
+        name: "NewsletterUnsubscriptionSuccess",
+        component: NewsletterUnsubscriptionSuccess,
+        meta: {
+            public: true
+        }
+    },
+    {
+        path: "/auth/login",
+        name: "AuthLogin",
+        component: AuthLogin,
+        meta: {
+            public: true,
+            onlyWhenLoggedOut: true
+        }
+    },
+    {
+        path: "/auth/register",
+        name: "AuthRegister",
+        component: AuthRegister,
+        meta: {
+            public: true,
+            onlyWhenLoggedOut: true
+        }
+    },
+    {
+        path: "/auth/logout",
+        name: "AuthLogout",
+        component: AuthLogout,
+        meta: {
+            public: true
+        }
+    },
+    {
+        path: "/auth/password-reset",
+        name: "AuthPasswordReset",
+        component: AuthPasswordReset,
+        meta: {
+            public: true,
+            onlyWhenLoggedOut: true
+        }
+    },
+    {
+        path: "/auth/account/verification",
+        name: "AuthAccountVerification",
+        component: AuthAccountVerification,
+        meta: {
+            public: false,
+            onlyWhenPending: true
+        }
+    },
+    {
+        path: "/auth/account/verification/:userId",
+        name: "AuthAccountVerificationWUserId",
+        component: AuthAccountVerification,
+        meta: {
+            public: false,
+            onlyWhenPending: true
+        }
+    },
+    {
+        path: "/user/dashboard",
+        name: "UserDashboardHome",
+        component: UserDashboardHome,
+        meta: {
+            public: false
+        }
+    },
+    {
+        path: "/user/dashboard/jobs/edit/:jobId",
+        name: "UserDashboardEditJob",
+        component: UserDashboardEditJob,
+        meta: {
+            public: false
+        }
+    },
+    {
+        path: "/user/dashboard/jobs/preview/:jobId",
+        name: "UserDashboardJobPreview",
+        component: UserDashboardJobPreview,
+        meta: {
+            public: false
+        }
+    },
+    {
+        path: "/user/dashboard/companies/edit/:companyId",
+        name: "UserDashboardEditCompany",
+        component: UserDashboardEditCompany,
+        meta: {
+            public: false
+        }
+    },
+    {
+        path: "/user/dashboard/checkout/:jobId",
+        name: "UserDashboardCheckoutJob",
+        component: UserDashboardCheckoutJob,
+        meta: {
+            public: false
+        }
     },
     {
         path: "/admin",
-        component: Admin,
-        children: [
-            {
-                path: "",
-                name: "AdminHome",
-                component: AdminHome,
-                meta: {
-                    public: false,
-                    onlyAdmin: true
-                }
-            },
-            {
-                path: "jobs/preview/:jobId",
-                name: "AdminJobPreview",
-                component: AdminJobPreview,
-                meta: {
-                    public: false,
-                    onlyAdmin: true
-                }
-            },
-            {
-                path: "jobs/edit/:jobId",
-                name: "AdminEditJob",
-                component: AdminEditJob,
-                meta: {
-                    public: false,
-                    onlyAdmin: true
-                }
-            },
-            {
-                path: "companies/edit/:companyId",
-                name: "AdminEditCompany",
-                component: AdminEditCompany,
-                meta: {
-                    public: false,
-                    onlyAdmin: true
-                }
-            },
-            {
-                path: "users/edit/:userId",
-                name: "AdminEditUser",
-                component: AdminEditUser,
-                meta: {
-                    public: false,
-                    onlyAdmin: true
-                }
-            },
-            {
-                path: "coupons/edit/:couponId",
-                name: "AdminEditCoupon",
-                component: AdminEditCoupon,
-                meta: {
-                    public: false,
-                    onlyAdmin: true
-                }
-            },
-            {
-                path: "payments/edit/:paymentId",
-                name: "AdminEditPayment",
-                component: AdminEditPayment,
-                meta: {
-                    public: false,
-                    onlyAdmin: true
-                }
-            }
-        ]
+        name: "AdminHome",
+        component: AdminHome,
+        meta: {
+            public: false,
+            onlyAdmin: true
+        }
     },
-    { path: "/pages/404", component: NotFound, meta: { public: true } },
-    { path: "*", redirect: "/jobboard" }
+    {
+        path: "/admin/jobs/preview/:jobId",
+        name: "AdminJobPreview",
+        component: AdminJobPreview,
+        meta: {
+            public: false,
+            onlyAdmin: true
+        }
+    },
+    {
+        path: "/admin/jobs/edit/:jobId",
+        name: "AdminEditJob",
+        component: AdminEditJob,
+        meta: {
+            public: false,
+            onlyAdmin: true
+        }
+    },
+    {
+        path: "/admin/companies/edit/:companyId",
+        name: "AdminEditCompany",
+        component: AdminEditCompany,
+        meta: {
+            public: false,
+            onlyAdmin: true
+        }
+    },
+    {
+        path: "/admin/users/edit/:userId",
+        name: "AdminEditUser",
+        component: AdminEditUser,
+        meta: {
+            public: false,
+            onlyAdmin: true
+        }
+    },
+    {
+        path: "/admin/coupons/edit/:couponId",
+        name: "AdminEditCoupon",
+        component: AdminEditCoupon,
+        meta: {
+            public: false,
+            onlyAdmin: true
+        }
+    },
+    {
+        path: "/admin/payments/edit/:paymentId",
+        name: "AdminEditPayment",
+        component: AdminEditPayment,
+        meta: {
+            public: false,
+            onlyAdmin: true
+        }
+    },
+    { path: "/404", component: NotFound, meta: { public: true } },
+    { path: "*", redirect: "/stellenangebote" }
 ];
 
 const router = new VueRouter({

@@ -10,10 +10,7 @@
         >
             <div class="article-card">
                 <b-link
-                    :to="
-                        '/page/mfa-career/fort-und-weiterbildungen/' +
-                            training.slug
-                    "
+                    :to="'/karriere/fort-und-weiterbildungen/' + training.slug"
                     :aria-label="training.title"
                 >
                     <b-card no-body>
@@ -32,7 +29,7 @@
 
                             <b-button
                                 :to="
-                                    '/page/mfa-career/fort-und-weiterbildungen/' +
+                                    '/karriere/fort-und-weiterbildungen/' +
                                         training.slug
                                 "
                                 variant="primary"

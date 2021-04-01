@@ -237,21 +237,21 @@
                     class="mr-2 mt-2"
                     variant="outline-primary"
                     size="sm"
-                    to="/jobboard"
+                    to="/stellenangebote"
                     >Zurück zur Stellenbörse</b-button
                 >
                 <b-button
                     class="mr-2 mt-2"
                     variant="outline-primary"
                     size="sm"
-                    to="/page/mfa-career/gehalt"
+                    to="/karriere/gehalt"
                     >Gehaltsrechner</b-button
                 >
                 <b-button
                     class="mr-2 mt-2"
                     variant="outline-primary"
                     size="sm"
-                    to="/page/mfa-career/bewerbungstipps"
+                    to="/karriere/bewerbungstipps"
                     >Bewerbungsvorlage</b-button
                 >
             </div>
@@ -371,7 +371,10 @@
             <p class="h5">
                 Diese Stellenanzeige scheint nicht mehr zu existieren.
             </p>
-            <b-button class="mt-3" variant="outline-primary" to="/jobboard"
+            <b-button
+                class="mt-3"
+                variant="outline-primary"
+                to="/stellenangebote"
                 >Zurück zur Stellenübersicht</b-button
             >
         </div>
@@ -485,7 +488,7 @@
                                     "@type": "ListItem",
                                     "position": 2,
                                     "name": "Stellenangebote",
-                                    "item": "https://www.mfa-mal-anders.de/jobboard"
+                                    "item": "https://www.mfa-mal-anders.de/stellenangebote"
                                 },
                                 {
                                     "@type": "ListItem",
@@ -572,15 +575,15 @@
                     if (job.data.data[this.jobQuery]) {
                         this.job = job.data.data[this.jobQuery];
                     } else {
-                        this.$router.push("/jobboard");
+                        this.$router.push("/stellenangebote");
                         throw new Error();
                     }
                 } catch (err) {
                     this.$root.$bvToast.toast(
-                        "Beim Laden der Stellenanzeige ist leider ein Fehler aufgetreten. Bitte versuche es noch einmal, indem Du die Seite aktualisierst.",
+                        "Die Stellenanzeige ist nicht mehr verfügbar bzw. bereits abgelaufen.",
                         {
-                            title: `Fehler beim Laden`,
-                            variant: "danger",
+                            title: `Stellenanzeige nicht verfügbar`,
+                            variant: "warning",
                             toaster: "b-toaster-bottom-right",
                             solid: true,
                             noAutoHide: true
@@ -607,7 +610,7 @@
 
                 el.value = `${job.title} | ${job.company.location}\n\n${
                     this.$config.website.url
-                }/jobboard/job/${
+                }/stellenangebote/job/${
                     job._id
                 }\n\n#mfamalanders #mfa #arzthelfer #arzthelferin #mfajobs #${job.company.location
                     .replace("-", "")

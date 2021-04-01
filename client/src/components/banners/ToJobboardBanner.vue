@@ -19,7 +19,7 @@
                         Möchtest du einfach mal schauen, was es sonst noch für
                         Möglichkeiten gibt?
                     </p>
-                    <b-button to="/jobboard" variant="secondary"
+                    <b-button to="/stellenangebote" variant="secondary"
                         >Zu den Stellenangeboten</b-button
                     >
                 </b-card-body>

@@ -37,7 +37,7 @@
         },
         methods: {
             forward(jobId) {
-                this.$router.push(`/jobboard/job/${jobId}`);
+                this.$router.push(`/stellenangebote/job/${jobId}`);
             },
             async initializeHereMap() {
                 try {
@@ -165,7 +165,7 @@
                     markerObject.jobs.forEach(job => {
                         markerHtml =
                             markerHtml +
-                            `<p class="my-0"><a href="/jobboard/job/${job.jobId}" target="_blank">${job.jobTitle}</a></p><hr class="my-1" />`;
+                            `<p class="my-0"><a href="/stellenangebote/job/${job.jobId}" target="_blank">${job.jobTitle}</a></p><hr class="my-1" />`;
                     });
 
                     marker.setData(markerHtml);

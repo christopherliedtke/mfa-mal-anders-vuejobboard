@@ -3,8 +3,8 @@
         "name": "MFA mal anders",
         "contactEmail": "kontakt@mfa-mal-anders.de",
         "emailFrom": "MFA mal anders",
-        "newsletterSuccessPath": "/page/subscription-successful",
-        "newsletterUnsubscribeSuccessPath": "/page/unsubscribed-successful"
+        "newsletterSuccessPath": "/newsletter/subscription-successful",
+        "newsletterUnsubscribeSuccessPath": "/newsletter/unsubscribed-successful"
     },
     "social": {
         "fb": {
@@ -82,7 +82,7 @@
     },
     "googleIndexing": {
         "active": true,
-        "pathPrefix": "/jobboard/job/"
+        "pathPrefix": "/stellenangebote/job/"
     },
     "facebook": {
         "autoPost": false

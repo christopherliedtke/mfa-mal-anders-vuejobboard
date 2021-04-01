@@ -1,0 +1,648 @@
+<template>
+    <div class="jobboard">
+        <div class="title">
+            <h1>{{ title }}</h1>
+            <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
+        </div>
+        <b-container class="py-3 py-lg-5">
+            <b-row class="mt-2">
+                <b-col cols="12" lg="4" class="px-2 pr-lg-5">
+                    <b-button-toolbar aria-label="Jobboard view toolbar">
+                        <b-button-group class="mb-3">
+                            <b-button
+                                :variant="
+                                    jobboardView == 'list'
+                                        ? 'primary'
+                                        : 'outline-primary'
+                                "
+                                size="sm"
+                                @click.prevent="setJobboardView('list')"
+                                ><Fa
+                                    class="mr-2"
+                                    icon="list-ul"
+                                />Liste</b-button
+                            >
+                            <b-button
+                                :variant="
+                                    jobboardView == 'map'
+                                        ? 'primary'
+                                        : 'outline-primary'
+                                "
+                                size="sm"
+                                @click.prevent="setJobboardView('map')"
+                                ><Fa class="mr-2" icon="map" />Karte</b-button
+                            >
+                        </b-button-group>
+                        <FacebookBtn class="d-lg-none mb-3 ml-1" content="" />
+                        <InstagramBtn class="d-lg-none mb-3 ml-1" content="" />
+                    </b-button-toolbar>
+                    <b-form id="job-filter" @submit.prevent>
+                        <label for="searchTerm-jobboard" class="sr-only"
+                            >Suchbegriff *</label
+                        >
+                        <b-input-group class="mb-1 mr-2">
+                            <b-form-input
+                                :class="
+                                    filter.searchTerm ? 'border-secondary' : ''
+                                "
+                                type="text"
+                                v-model="filter.searchTerm"
+                                placeholder="Suchbegriff..."
+                                id="searchTerm-jobboard"
+                                @change="setQuery"
+                            />
+                            <b-input-group-append>
+                                <b-button
+                                    @click.prevent="
+                                        () => {
+                                            filter.searchTerm = '';
+                                            setQuery();
+                                        }
+                                    "
+                                    ><Fa icon="times"
+                                /></b-button>
+                            </b-input-group-append>
+                        </b-input-group>
+                        <label for="employmentType-jobboard" class="sr-only"
+                            >Anstellungsart *</label
+                        >
+                        <b-form-select
+                            class="my-1 mr-2"
+                            v-model="filter.employmentType"
+                            id="employmentType-jobboard"
+                            @change="setQuery"
+                        >
+                            <b-form-select-option :value="null"
+                                >Alle Anstellungsarten</b-form-select-option
+                            >
+                            <b-form-select-option
+                                v-for="type in employmentTypeOptions"
+                                :key="type.value"
+                                :value="type.value"
+                                >{{ type.text }}</b-form-select-option
+                            >
+                        </b-form-select>
+
+                        <label for="location-jobboard" class="sr-only"
+                            >Ort *</label
+                        >
+                        <b-input-group class="my-1 mr-2">
+                            <b-form-input
+                                :class="
+                                    filter.location ? 'border-secondary' : ''
+                                "
+                                type="text"
+                                v-model="filter.location"
+                                list="location-list"
+                                placeholder="Ort..."
+                                id="location-jobboard"
+                                @change="setQuery"
+                            />
+                            <b-input-group-append>
+                                <b-button
+                                    @click.prevent="
+                                        () => {
+                                            filter.location = '';
+                                            setQuery();
+                                        }
+                                    "
+                                    ><Fa icon="times"
+                                /></b-button>
+                            </b-input-group-append>
+                        </b-input-group>
+                        <b-form-datalist
+                            id="location-list"
+                            :options="locationsList"
+                        ></b-form-datalist>
+                        <label for="state-jobboard" class="sr-only"
+                            >Bundesland *</label
+                        >
+                        <b-form-select
+                            class="my-1 mr-2"
+                            v-model="filter.state"
+                            id="state-jobboard"
+                            @change="setQuery"
+                        >
+                            <b-form-select-option :value="null"
+                                >Alle Bundesländer</b-form-select-option
+                            >
+                            <b-form-select-option
+                                v-for="state in companyStateOptions"
+                                :key="state"
+                                :value="state"
+                                >{{ state }}</b-form-select-option
+                            >
+                        </b-form-select>
+                        <label for="profession-jobboard" class="mb-2 pl-2"
+                            >Berufe
+                        </label>
+                        <b-form-group id="profession-jobboard" class="pl-2">
+                            <b-form-checkbox-group
+                                class="ml-1"
+                                v-model="profession.active"
+                                :options="professionOptions"
+                                size="sm"
+                                stacked
+                            ></b-form-checkbox-group>
+                        </b-form-group>
+                        <label
+                            @click="
+                                specialization.visible = !specialization.visible
+                            "
+                            for="specialization-jobboard"
+                            style="cursor: pointer"
+                            class="mt-0 mb-2 pl-2"
+                            >Fachgebiete
+                            <Fa
+                                icon="caret-right"
+                                size="1x"
+                                :class="
+                                    specialization.visible === true
+                                        ? 'animate rotate-90 ml-2'
+                                        : 'animate ml-2'
+                                "
+                        /></label>
+                        <b-collapse
+                            :visible="specialization.visible === true"
+                            role="tabpanel"
+                        >
+                            <b-form-group
+                                id="specialization-jobboard"
+                                class="pl-2"
+                            >
+                                <template #label>
+                                    <b-form-checkbox
+                                        v-model="specialization.allSelected"
+                                        :indeterminate="
+                                            specialization.indeterminate
+                                        "
+                                        @change="toggleAll"
+                                        size="sm"
+                                        stacked
+                                    >
+                                        {{
+                                            specialization.allSelected
+                                                ? "Alle Abwählen"
+                                                : "Alle Auswählen"
+                                        }}
+                                    </b-form-checkbox>
+                                </template>
+
+                                <b-form-checkbox-group
+                                    class="ml-1"
+                                    v-model="specialization.active"
+                                    :options="
+                                        specializationOptions.map(
+                                            specialization => {
+                                                return {
+                                                    text: specialization,
+                                                    value: specialization
+                                                };
+                                            }
+                                        )
+                                    "
+                                    size="sm"
+                                    stacked
+                                ></b-form-checkbox-group>
+                            </b-form-group>
+                        </b-collapse>
+                    </b-form>
+                    <div class="small text-right mb-2 pr-3 pt-1">
+                        <b-link to="/fuer-arbeitgeber"
+                            >Stellenanzeige schalten</b-link
+                        >
+                    </div>
+                    <div class="d-none d-lg-block mt-5">
+                        <b-button
+                            v-if="
+                                $store.state.auth.loggedIn &&
+                                    $store.state.starredJobs.starredJobs &&
+                                    $store.state.starredJobs.starredJobs
+                                        .length > 0
+                            "
+                            to="/user/dashboard?tab=4"
+                            variant="secondary"
+                            size="sm"
+                            >Meine gespeicherten Jobs</b-button
+                        >
+                    </div>
+                    <div class="d-none d-lg-block mt-4">
+                        <p class="h5">
+                            Verpasse keine Neuigkeiten und folge uns auf
+                        </p>
+                        <FacebookBtn class="mt-2 mr-1" content="Facebook" />
+                        <InstagramBtn class="mt-2 mr-1" content="" />
+                        <TwitterBtn class="mt-2 mr-1" content="" />
+                    </div>
+                </b-col>
+                <b-col>
+                    <keep-alive>
+                        <component
+                            :jobs="filteredJobs"
+                            :is="computedJobboardView"
+                        ></component>
+                    </keep-alive>
+                    <div class="my-4 clearfix">
+                        <h2 class="h5 bold mb-3">Ihre Stellenanzeige hier?</h2>
+                        <b-img
+                            style="max-width: 120px"
+                            class="mr-3 mb-2"
+                            fluid
+                            left
+                            src="~@/assets/img/undraw_Updates_re_o5af.svg"
+                        />
+                        <p>
+                            Sie sind als attraktiver Arbeitergeber auf der Suche
+                            nach einer motivierten und kompetenten
+                            <em
+                                >Medizinischen Fachangestellten (MFA) /
+                                ArzthelferIn oder Zahnmedizinischen
+                                Fachangestellten (ZFA)</em
+                            >{{
+                                $route.query.location || $route.query.state
+                                    ? ` in ${$route.query.location ||
+                                          $route.query.state}`
+                                    : ""
+                            }}? Dann
+                            <b-link to="/auth/register" class="bold"
+                                >registrieren</b-link
+                            >
+                            Sie sich und schalten noch heute Ihre Stellenanzeige
+                            auf unserem Karriereportal. <br />
+                            <b-link to="/fuer-arbeitgeber" class="bold"
+                                >Mehr erfahren</b-link
+                            >
+                        </p>
+                    </div>
+                    <div class="mt-5">
+                        <b-link
+                            class="h2"
+                            to="/karriere/fort-und-weiterbildungen"
+                            >Fort- und Weiterbildungen für MFA</b-link
+                        >
+                        <RandomTrainingsContainer class="mt-3" :number="2" />
+                        <BerufsbilderBanner class="mt-3" />
+                    </div>
+                    <div class="mt-5">
+                        <p class="small">
+                            Stellenangebote, Stellen, Jobs, Jobangebote für
+                            Medizinische Fachangestellte (MFA), Arzthelferin,
+                            Zahnmedizinische Fachangestellte (ZFA), ZMF, ZMV,
+                            MTRA in {{ companyStateOptions.join(", ") }}.
+                        </p>
+                    </div>
+                </b-col>
+            </b-row>
+        </b-container>
+        <Head
+            :title="
+                'Stellenangebote ArzthelferIn | ' +
+                    profession.active.join(' & ') +
+                    ' Jobs' +
+                    (filter.state ? ` | ${filter.state}` : '')
+            "
+            :separator="' '"
+            :complement="' '"
+            :desc="
+                `Stellenangebote (Teilzeit | Vollzeit) für ArzthelferInnen ✓ ${profession.active.join(
+                    ' & '
+                )} Jobs ${
+                    filter.state ? 'in ' + filter.state + ' ' : ''
+                }– Die Jobbörse für Medizinische / Zahnmedizinische Fachangestellte.`
+            "
+            img=""
+            :script="snippet"
+        />
+    </div>
+</template>
+
+<script>
+    import {
+        employmentTypeOptions,
+        companyStateOptions,
+        specializationOptions,
+        professionOptions
+    } from "@/config/formDataConfig.json";
+    import HereMapMultiJobs from "@/components/hereMaps/HereMapMultiJobs.vue";
+    import JobboardList from "@/components/ui/JobboardList.vue";
+    import FacebookBtn from "@/components/buttons/FacebookBtn.vue";
+    import InstagramBtn from "@/components/buttons/InstagramBtn.vue";
+    import TwitterBtn from "@/components/buttons/TwitterBtn.vue";
+    import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
+    import BerufsbilderBanner from "@/components/banners/BerufsbilderBanner.vue";
+    export default {
+        name: "Jobboard",
+        components: {
+            JobboardList,
+            HereMapMultiJobs,
+            FacebookBtn,
+            InstagramBtn,
+            TwitterBtn,
+            RandomTrainingsContainer,
+            BerufsbilderBanner
+        },
+        data() {
+            return {
+                title: "Stellenangebote für ArzthelferInnen – MFA & ZFA",
+                breadcrumbs: [
+                    { text: "Home", to: "/" },
+                    { text: "Stellenangebote", to: "/stellenangebote" }
+                ],
+                filter: {
+                    searchTerm:
+                        this.$route.query.searchTerm ||
+                        this.$route.query.searchterm ||
+                        "",
+                    employmentType:
+                        this.$route.query.employmentType ||
+                        this.$route.query.employmenttype ||
+                        null,
+                    location: this.$route.query.location || "",
+                    state: this.$route.query.state || null
+                },
+                specialization: {
+                    active: specializationOptions,
+                    visible: false,
+                    allSelected: true,
+                    indeterminate: false
+                },
+                profession: {
+                    active: this.$route.query.profession
+                        ? typeof this.$route.query.profession === "object"
+                            ? this.$route.query.profession
+                            : [this.$route.query.profession]
+                        : professionOptions.map(profession => profession.value)
+                },
+                employmentTypeOptions: employmentTypeOptions.filter(
+                    type => type.value != "part_full"
+                ),
+                companyStateOptions,
+                specializationOptions,
+                professionOptions,
+                jobboardView: this.$route.query.jobboardView || "list",
+                snippet: [
+                    {
+                        type: "application/ld+json",
+                        inner: `{
+                            "@context": "http://schema.org",
+                            "@type" : "BreadcrumbList",
+                            "itemListElement": [{
+                                "@type": "ListItem",
+                                "position": 1,
+                                "name": "MFA mal anders",
+                                "item": "https://www.mfa-mal-anders.de"
+                            },{
+                                "@type": "ListItem",
+                                "position": 2,
+                                "name": "Stellenangebote",
+                                "item": "https://www.mfa-mal-anders.de/stellenangebote"
+                            }${
+                                this.$route.query.state
+                                    ? ',{"@type": "ListItem","position": 3,"name": "' +
+                                      this.$route.query.state +
+                                      '","item": "https://www.mfa-mal-anders.de/stellenangebote?state=' +
+                                      this.$route.query.state +
+                                      '"}'
+                                    : ""
+                            }]
+                        }`
+                    }
+                ]
+            };
+        },
+        computed: {
+            computedJobboardView: {
+                get() {
+                    return this.jobboardView === "map"
+                        ? "HereMapMultiJobs"
+                        : "JobboardList";
+                }
+            },
+            filteredJobs: {
+                get() {
+                    let jobs = [...this.$store.state.jobs.jobs];
+
+                    // filter country
+
+                    // filter state
+                    if (this.filter.state) {
+                        jobs = jobs.filter(job => {
+                            if (
+                                job.company &&
+                                job.company.state
+                                    .toLowerCase()
+                                    .includes(this.filter.state.toLowerCase())
+                            ) {
+                                return job;
+                            } else {
+                                return;
+                            }
+                        });
+                    }
+
+                    // filter location
+                    if (this.filter.location) {
+                        jobs = jobs.filter(job => {
+                            if (
+                                job.company &&
+                                job.company.location
+                                    .toLowerCase()
+                                    .includes(
+                                        this.filter.location.toLowerCase()
+                                    )
+                            ) {
+                                return job;
+                            } else {
+                                return;
+                            }
+                        });
+                    }
+
+                    // filter search term
+                    if (this.filter.searchTerm) {
+                        jobs = jobs.filter(job => {
+                            const searchTerm = this.filter.searchTerm
+                                .toLowerCase()
+                                .split(" ");
+                            const searchProp = [
+                                job.title,
+                                job.description,
+                                job.company.name,
+                                job.company.state,
+                                job.company.location,
+                                job.company.zipCode
+                            ]
+                                .join(" ")
+                                .toLowerCase();
+
+                            if (
+                                searchTerm.every(term =>
+                                    searchProp.includes(term)
+                                )
+                            ) {
+                                return job;
+                            } else {
+                                return;
+                            }
+                        });
+                    }
+
+                    // filter employment type
+                    if (this.filter.employmentType) {
+                        jobs = jobs.filter(job => {
+                            if (
+                                job.employmentType.includes(
+                                    this.filter.employmentType
+                                )
+                            ) {
+                                return job;
+                            } else {
+                                return;
+                            }
+                        });
+                    }
+
+                    // filter specialization
+                    if (
+                        this.specialization.active &&
+                        this.specialization.active.length > 0 &&
+                        this.specialization.active.length !=
+                            this.specializationOptions.length
+                    ) {
+                        jobs = jobs.filter(job => {
+                            if (
+                                this.specialization.active.some(element =>
+                                    job.specialization.includes(element)
+                                )
+                            ) {
+                                return job;
+                            } else {
+                                return;
+                            }
+                        });
+                    }
+
+                    // filter profession
+                    if (
+                        this.profession.active &&
+                        this.profession.active.length > 0 &&
+                        this.profession.active.length <
+                            this.professionOptions.length
+                    ) {
+                        jobs = jobs.filter(job => {
+                            if (
+                                this.profession.active.some(element =>
+                                    element.includes(job.profession)
+                                )
+                            ) {
+                                return job;
+                            } else {
+                                return;
+                            }
+                        });
+                        // if (
+                        //     this.profession.active.some(
+                        //         element => element === "Zahnheilkunde"
+                        //     )
+                        // ) {
+                        //     jobs = jobs.filter(
+                        //         job => job.specialization === "Zahnheilkunde"
+                        //     );
+                        // } else if (
+                        //     this.profession.active.every(
+                        //         element => element != "Zahnheilkunde"
+                        //     )
+                        // ) {
+                        //     jobs = jobs.filter(
+                        //         job => job.specialization != "Zahnheilkunde"
+                        //     );
+                        // }
+                    }
+
+                    return jobs;
+                }
+            },
+            locationsList: {
+                get() {
+                    const locations = this.filteredJobs
+                        .map(job => {
+                            if (job.company) {
+                                return job.company.location;
+                            }
+                        })
+                        .filter(element => element);
+
+                    return locations
+                        .filter((v, i) => locations.indexOf(v) === i)
+                        .sort();
+                }
+            }
+        },
+        async created() {
+            this.$store.dispatch("getJobs");
+        },
+        watch: {
+            "specialization.active"(newValue) {
+                // Handle changes in individual flavour checkboxes
+                if (newValue.length === 0) {
+                    this.specialization.indeterminate = false;
+                    this.specialization.allSelected = false;
+                } else if (
+                    newValue.length === this.specializationOptions.length
+                ) {
+                    this.specialization.indeterminate = false;
+                    this.specialization.allSelected = true;
+                } else {
+                    this.specialization.indeterminate = true;
+                    this.specialization.allSelected = false;
+                }
+            },
+            "profession.active"() {
+                // if (newValue.length === 0) {
+                //     this.profession.indeterminate = false;
+                //     this.profession.allSelected = false;
+                // } else if (newValue.length === this.professionOptions.length) {
+                //     this.profession.indeterminate = false;
+                //     this.profession.allSelected = true;
+                // } else {
+                //     this.profession.indeterminate = true;
+                //     this.profession.allSelected = false;
+                // }
+
+                this.setQuery();
+            }
+        },
+        methods: {
+            setJobboardView(value) {
+                if (this.jobboardView != value) {
+                    this.jobboardView = value;
+                    this.setQuery();
+                }
+            },
+            setQuery() {
+                this.$router.push({
+                    query: {
+                        ...this.filter,
+                        jobboardView: this.jobboardView,
+                        profession: this.profession.active
+                    }
+                });
+            },
+            toggleAll(checked) {
+                this.specialization.active = checked
+                    ? this.specializationOptions.slice()
+                    : [];
+            }
+        }
+    };
+</script>
+
+<style lang="scss">
+    #specialization-jobboard,
+    #profession-jobboard {
+        & .custom-control-label {
+            justify-content: flex-start;
+            margin-top: 0;
+        }
+    }
+</style>

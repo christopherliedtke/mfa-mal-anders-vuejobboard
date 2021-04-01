@@ -40,7 +40,7 @@
                         {{ $config.payment.duration }} Tage.
                     </p>
                     <b-button
-                        to="/page/fuer-arbeitgeber"
+                        to="/fuer-arbeitgeber"
                         variant="secondary"
                         size="lg"
                         >Stellenanzeige schalten</b-button

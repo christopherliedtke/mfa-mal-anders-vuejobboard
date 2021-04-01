@@ -7,7 +7,7 @@
         </p>
         <b-button
             class="mr-2 mb-2"
-            to="/page/contact"
+            to="/kontakt"
             variant="outline-primary"
             target="_blank"
             >Fragen oder Hilfe benötigt?</b-button

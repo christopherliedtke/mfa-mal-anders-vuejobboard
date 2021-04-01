@@ -13,9 +13,7 @@
                 Fachangestellte / ArzthelferInnen!
             </b-card-text>
 
-            <b-button
-                to="/page/mfa-career/fort-und-weiterbildungen"
-                variant="primary"
+            <b-button to="/karriere/fort-und-weiterbildungen" variant="primary"
                 >Mehr erfahren!</b-button
             >
         </b-card-body>
