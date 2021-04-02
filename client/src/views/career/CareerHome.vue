@@ -5,98 +5,110 @@
             <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
         </div>
         <b-container class="py-3 py-lg-5">
-            <h2 class="mb-4">
-                Verliebt in meinen Beruf - Dein Karriereportal für Medizinische
-                & Zahnmedizinische Fachangestellte
-            </h2>
-            <b-img
-                class="border-radius2 mb-4 mr-4"
-                left
-                src="@/assets/img/KristinMaurach_sitzendAufMauer_500.jpg"
-                style="width: 40vw; max-width: 250px"
-            />
-            <p>
-                MFA mal anders ist ein Karriereportal speziell für Medizinische
-                Fachangestellte, die sich beruflich wie persönlich
-                weiterentwickeln wollen, um mehr aus ihrem Beruf und Leben raus
-                zu holen.
-            </p>
-            <p>
-                Hier findest du
-                <b-link to="/stellenangebote">Stellenangebote</b-link>,
-                <b-link to="/karriere/fort-und-weiterbildungen"
-                    >Fort- und Weiterbildungsmöglichkeiten</b-link
-                >,
-                <b-link :to="`/${$config.cms.postsPath}`">Praxishacks</b-link>
-                und Informationen zur persönlichen sowie beruflichen
-                Weiterentwicklung.
-            </p>
-            <blockquote class="d-inline">
-                Unser Ziel: Den Beruf der MFA & ZFA stärken und wieder
-                attraktiver machen!
-            </blockquote>
-            <h3 class="h5 bold d-inline-block">
-                Unsere Stellenangebote findest du über verschiedene Wege. Wir
-                freuen uns, wenn du einen unserer Kanäle abonnierst.
-            </h3>
-            <br />
-            <b-row class="mb-4">
-                <b-col cols="12" md="4">
-                    <b-link
-                        to="/stellenangebote"
-                        class="icon-box shadow1 py-4 px-3"
+            <div class="clearfix">
+                <h2 class="mb-4">
+                    Verliebt in meinen Beruf - Dein Karriereportal für
+                    Medizinische & Zahnmedizinische Fachangestellte
+                </h2>
+                <b-img
+                    class="border-radius2 mb-3 mr-4"
+                    left
+                    src="@/assets/img/KristinMaurach_sitzendAufMauer_500.jpg"
+                    style="width: 40vw; max-width: 250px"
+                />
+                <p>
+                    MFA mal anders ist ein Karriereportal speziell für
+                    Medizinische Fachangestellte, die sich beruflich wie
+                    persönlich weiterentwickeln wollen, um mehr aus ihrem Beruf
+                    und Leben raus zu holen.
+                </p>
+                <p>
+                    Hier findest du
+                    <b-link to="/stellenangebote">Stellenangebote</b-link>,
+                    <b-link to="/karriere/fort-und-weiterbildungen"
+                        >Fort- und Weiterbildungsmöglichkeiten</b-link
+                    >,
+                    <b-link :to="`/${$config.cms.postsPath}`"
+                        >Praxishacks</b-link
                     >
-                        <Fa
-                            class="mr-1"
-                            :icon="['fa', 'newspaper']"
-                            size="3x"
-                        />
-                        <h4 class="h5 bold">Stellenangebote</h4>
-                        <p>
-                            Entdecke täglich neue Stellenangebote und finde das
-                            richtige für Dich
-                        </p>
-                    </b-link>
-                </b-col>
-                <b-col cols="12" md="4">
-                    <div
-                        class="icon-box shadow1 py-4 px-3"
-                        @click="$bvModal.show('newsletter')"
-                        style="cursor: pointer"
-                    >
-                        <Fa
-                            class="mr-1"
-                            :icon="['fa', 'envelope-open-text']"
-                            size="3x"
-                        />
-                        <h4 class="h5 bold">Newsletter</h4>
-                        <p>
-                            Mit unserem wöchentlichen Job Newsletter keine
-                            Stellen in Deiner Region verpassen
-                        </p>
-                    </div>
-                    <b-modal centered hide.header hide-footer id="newsletter">
-                        <NewsletterSignUpForm class="p-4" />
-                    </b-modal>
-                </b-col>
-                <b-col cols="12" md="4">
-                    <b-link
-                        :href="`https://www.facebook.com/${$config.fb.path}`"
-                        class="icon-box shadow1 py-4 px-3"
-                    >
-                        <Fa
-                            class="mr-1"
-                            :icon="['fab', 'facebook-square']"
-                            size="3x"
-                        />
-                        <h4 class="h5 bold">Facebook</h4>
-                        <p>
-                            Bleibe über Facebook auf dem Laufenden über alle
-                            Neuigkeiten auf der Seite
-                        </p>
-                    </b-link>
-                </b-col>
-            </b-row>
+                    und Informationen zur persönlichen sowie beruflichen
+                    Weiterentwicklung.
+                </p>
+                <blockquote class="d-inline">
+                    Unser Ziel: Den Beruf der MFA & ZFA stärken und wieder
+                    attraktiver machen!
+                </blockquote>
+            </div>
+
+            <b-container class="my-3 my-md-5">
+                <b-row cols="1" cols-md="3" class="flex-lg-row-reverse">
+                    <b-col>
+                        <b-link to="/stellenangebote" class="icon-box shadow1">
+                            <b-img-lazy
+                                class="mr-4 mb-4 ml-4"
+                                src="@/assets/img/career_.svg"
+                                alt="MFA / ZFA macht nächsten Schritt in der Jobsuche"
+                                height="130"
+                            />
+                            <h2 class="bold">Stellenbörse für MFA & ZFA</h2>
+                            <p>
+                                Bist Du auf der Suche nach einer interessanten
+                                Stelle, die genau zu Dir passt? Schau direkt in
+                                unserer Stellenbörse nur für ArzthelferInnen
+                                (MFA & ZFA) vorbei!
+                            </p>
+                            <b-button variant="primary"
+                                >Zur Stellenbörse</b-button
+                            >
+                        </b-link>
+                    </b-col>
+                    <b-col>
+                        <b-link
+                            to="/karriere/jobs-und-berufsbilder"
+                            class="icon-box shadow1"
+                        >
+                            <b-img-lazy
+                                class="mr-4 mb-4 ml-4"
+                                src="@/assets/img/health_.svg"
+                                alt="Medizinische Fachangestellte im Untersuchungsraum"
+                                height="130"
+                            />
+                            <h2 class="bold">Jobs & Berufsbilder</h2>
+                            <p>
+                                Schau Dir unsere 50+ Jobs und Berufsbilder für
+                                ArzthelferInnen – MFA & ZFA an! Deine
+                                Möglichkeiten sind größer als Du denkst.
+                            </p>
+                            <b-button variant="primary"
+                                >Zu den Berufsbildern</b-button
+                            >
+                        </b-link>
+                    </b-col>
+                    <b-col>
+                        <b-link
+                            to="/karriere/fort-und-weiterbildungen"
+                            class="icon-box shadow1"
+                        >
+                            <b-img-lazy
+                                class="mr-4 mb-4 ml-4"
+                                src="@/assets/img/coach.svg"
+                                alt="MFA studiert bei Weiterbildung"
+                                height="130"
+                            />
+                            <h2 class="bold">Fort- & Weiterbildungen</h2>
+                            <p>
+                                Auf der Suche nach Deinem nächsten
+                                Karriereschritt? Informiere Dich über
+                                verschiedene Fort- und Weiterbildungen für
+                                ArzthelferInnen – MFA & ZFA!
+                            </p>
+                            <b-button variant="primary"
+                                >Zu den Weiterbildungen</b-button
+                            >
+                        </b-link>
+                    </b-col>
+                </b-row>
+            </b-container>
             <h2 class="my-4">
                 Wir helfen dir bei der Suche nach deinem Traumjob
             </h2>
@@ -279,6 +291,7 @@
                     {{ $config.website.contactEmail }}
                 </b-link>
             </div>
+            <RandomTrainingsContainer class="mt-5" />
         </b-container>
         <Head
             :title="title"
@@ -290,17 +303,17 @@
 </template>
 
 <script>
-    import NewsletterSignUpForm from "@/components/forms/NewsletterSignUpForm.vue";
     import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
     import WeiterbildungenBanner from "@/components/banners/WeiterbildungenBanner.vue";
     import BerufsbilderBanner from "@/components/banners/BerufsbilderBanner.vue";
+    import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
     export default {
         name: "CareerHome",
         components: {
-            NewsletterSignUpForm,
             ToJobboardBanner,
             WeiterbildungenBanner,
-            BerufsbilderBanner
+            BerufsbilderBanner,
+            RandomTrainingsContainer
         },
         data() {
             return {

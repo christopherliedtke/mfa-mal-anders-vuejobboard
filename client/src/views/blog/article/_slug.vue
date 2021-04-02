@@ -1,5 +1,5 @@
 <template>
-    <div v-if="article">
+    <article v-if="article">
         <div class="title">
             <h1>{{ article.title }}</h1>
             <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
@@ -119,7 +119,7 @@
             "
             :script="snippet"
         />
-    </div>
+    </article>
 </template>
 
 <script>

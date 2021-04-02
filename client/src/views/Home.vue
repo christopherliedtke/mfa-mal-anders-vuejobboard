@@ -100,9 +100,9 @@
                             alt="Medizinische Fachangestellte im Untersuchungsraum"
                             height="130"
                         />
-                        <h2 class="bold">Jobs und Berufsbilder</h2>
+                        <h2 class="bold">Jobs & Berufsbilder</h2>
                         <p>
-                            Schau Dir unsere 52 Jobs und Berufsbilder für
+                            Schau Dir unsere 50+ Jobs und Berufsbilder für
                             ArzthelferInnen – MFA & ZFA an! Deine Möglichkeiten
                             sind größer als Du denkst.
                         </p>
@@ -122,7 +122,7 @@
                             alt="MFA studiert bei Weiterbildung"
                             height="130"
                         />
-                        <h2 class="bold">Fort- und Weiterbildungen</h2>
+                        <h2 class="bold">Fort- & Weiterbildungen</h2>
                         <p>
                             Auf der Suche nach Deinem nächsten Karriereschritt?
                             Informiere Dich über verschiedene Fort- und
