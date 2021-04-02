@@ -37,25 +37,23 @@
                         <InstagramBtn class="d-lg-none mb-3 ml-1" content="" />
                     </b-button-toolbar>
                     <b-form id="job-filter" @submit.prevent>
-                        <label for="searchTerm-jobboard" class="sr-only"
+                        <label for="s-jobboard" class="sr-only"
                             >Suchbegriff *</label
                         >
                         <b-input-group class="mb-1 mr-2">
                             <b-form-input
-                                :class="
-                                    filter.searchTerm ? 'border-secondary' : ''
-                                "
+                                :class="filter.s ? 'border-secondary' : ''"
                                 type="text"
-                                v-model="filter.searchTerm"
+                                v-model="filter.s"
                                 placeholder="Suchbegriff..."
-                                id="searchTerm-jobboard"
+                                id="s-jobboard"
                                 @change="setQuery"
                             />
                             <b-input-group-append>
                                 <b-button
                                     @click.prevent="
                                         () => {
-                                            filter.searchTerm = '';
+                                            filter.s = '';
                                             setQuery();
                                         }
                                     "
@@ -72,7 +70,7 @@
                             id="employmentType-jobboard"
                             @change="setQuery"
                         >
-                            <b-form-select-option :value="null"
+                            <b-form-select-option :value="''"
                                 >Alle Anstellungsarten</b-form-select-option
                             >
                             <b-form-select-option
@@ -123,7 +121,7 @@
                             id="state-jobboard"
                             @change="setQuery"
                         >
-                            <b-form-select-option :value="null"
+                            <b-form-select-option :value="''"
                                 >Alle Bundesländer</b-form-select-option
                             >
                             <b-form-select-option
@@ -344,21 +342,11 @@
         data() {
             return {
                 title: "Stellenangebote für ArzthelferInnen – MFA & ZFA",
-                breadcrumbs: [
-                    { text: "Home", to: "/" },
-                    { text: "Stellenangebote", to: "/stellenangebote" }
-                ],
                 filter: {
-                    searchTerm:
-                        this.$route.query.searchTerm ||
-                        this.$route.query.searchterm ||
-                        "",
-                    employmentType:
-                        this.$route.query.employmentType ||
-                        this.$route.query.employmenttype ||
-                        null,
-                    location: this.$route.query.location || "",
-                    state: this.$route.query.state || null
+                    s: "",
+                    employmentType: "",
+                    location: "",
+                    state: ""
                 },
                 specialization: {
                     active: specializationOptions,
@@ -459,11 +447,9 @@
                     }
 
                     // filter search term
-                    if (this.filter.searchTerm) {
+                    if (this.filter.s) {
                         jobs = jobs.filter(job => {
-                            const searchTerm = this.filter.searchTerm
-                                .toLowerCase()
-                                .split(" ");
+                            const s = this.filter.s.toLowerCase().split(" ");
                             const searchProp = [
                                 job.title,
                                 job.description,
@@ -475,11 +461,7 @@
                                 .join(" ")
                                 .toLowerCase();
 
-                            if (
-                                searchTerm.every(term =>
-                                    searchProp.includes(term)
-                                )
-                            ) {
+                            if (s.every(term => searchProp.includes(term))) {
                                 return job;
                             } else {
                                 return;
@@ -540,23 +522,6 @@
                                 return;
                             }
                         });
-                        // if (
-                        //     this.profession.active.some(
-                        //         element => element === "Zahnheilkunde"
-                        //     )
-                        // ) {
-                        //     jobs = jobs.filter(
-                        //         job => job.specialization === "Zahnheilkunde"
-                        //     );
-                        // } else if (
-                        //     this.profession.active.every(
-                        //         element => element != "Zahnheilkunde"
-                        //     )
-                        // ) {
-                        //     jobs = jobs.filter(
-                        //         job => job.specialization != "Zahnheilkunde"
-                        //     );
-                        // }
                     }
 
                     return jobs;
@@ -576,14 +541,35 @@
                         .filter((v, i) => locations.indexOf(v) === i)
                         .sort();
                 }
+            },
+            breadcrumbs() {
+                const breadcrumbs = [
+                    { text: "Home", to: "/" },
+                    { text: "Stellenangebote", to: "/stellenangebote" }
+                ];
+
+                if (this.filter.state) {
+                    breadcrumbs.push({
+                        text: this.filter.state,
+                        to: `/stellenangebote/?state=${this.filter.state}`
+                    });
+                }
+                if (this.filter.location) {
+                    breadcrumbs.push({
+                        text: this.filter.location,
+                        to: `/stellenangebote/?location=${this.filter.location}`
+                    });
+                }
+
+                return breadcrumbs;
             }
         },
         async created() {
             this.$store.dispatch("getJobs");
+            this.setFilter();
         },
         watch: {
             "specialization.active"(newValue) {
-                // Handle changes in individual flavour checkboxes
                 if (newValue.length === 0) {
                     this.specialization.indeterminate = false;
                     this.specialization.allSelected = false;
@@ -598,18 +584,10 @@
                 }
             },
             "profession.active"() {
-                // if (newValue.length === 0) {
-                //     this.profession.indeterminate = false;
-                //     this.profession.allSelected = false;
-                // } else if (newValue.length === this.professionOptions.length) {
-                //     this.profession.indeterminate = false;
-                //     this.profession.allSelected = true;
-                // } else {
-                //     this.profession.indeterminate = true;
-                //     this.profession.allSelected = false;
-                // }
-
                 this.setQuery();
+            },
+            "$route.query"() {
+                this.setFilter();
             }
         },
         methods: {
@@ -627,6 +605,14 @@
                         profession: this.profession.active
                     }
                 });
+            },
+            setFilter() {
+                this.filter = {
+                    s: this.$route.query.s || "",
+                    employmentType: this.$route.query.employmenttype || "",
+                    location: this.$route.query.location || "",
+                    state: this.$route.query.state || ""
+                };
             },
             toggleAll(checked) {
                 this.specialization.active = checked
