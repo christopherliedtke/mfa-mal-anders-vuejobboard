@@ -14,40 +14,39 @@
             <p>
                 Sobald es um das Thema Gehalt geht, fehlt vielen MFA bzw.
                 ArzthelferInnen das Gespür für eine konkrete Zahl. Ein typisches
-                Beispiel, das du bestimmt auch kennst: du hast dich gerade auf
-                einen Job beworben und der neue Chef fragt dich nach deinen
+                Beispiel, das du bestimmt auch kennst: Du hast dich gerade auf
+                einen Job beworben. Der zukünftige Chef fragt dich nach deinen
                 <b-link
                     to="/blog/article/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
                     >Gehaltsvorstellungen</b-link
                 >
                 . Natürlich willst du nicht zu dreist sein und das potenzielle
                 Jobangebot durch zu hohe Gehaltswünsche in Gefahr bringen.
-                Deshalb gehen viele Medizinische Fachangestellte lieber auf
-                Nummer sicher und verkaufen sich am Ende unter Wert.
+                Deshalb gehen viele ArzthelferInnen lieber auf Nummer sicher und
+                verkaufen sich am Ende unter Wert.
             </p>
             <h2>
                 Wie ermittelt man eigentlich seinen Marktwert?
             </h2>
             <p>
                 In den vielen Gruppen und Foren kommen regelmäßig Fragen zur
-                Höhe des Gehalts in Voll- und Teilzeit für MFA auf. Wenn ich bei
-                manchen Kommentaren lese, dass eine MFA mit 15 Jahren
-                Berufserfahrung in ein und derselben Praxis mit 1.900€ brutto
-                nach Hause geht, finde ich das einfach nur sehr schade und
-                traurig.
+                Höhe des Gehalts in Voll- und Teilzeit auf. Wenn ich bei manchen
+                Kommentaren lese, dass eine MFA mit 15 Jahren Berufserfahrung in
+                ein und derselben Praxis mit 1.900€ brutto nach Hause geht,
+                finde ich das einfach nur sehr schade und traurig.
             </p>
             <p>
                 Damit dir das nicht passiert, bekommst du in diesem Artikel von
-                MFA mal anders Informationen über Gehalt, Tarifverträge und
-                Tätigkeitsgruppen für MFAs und ArzthelferInnen. Mit diesem
-                Wissen, kannst du deinen eigenen Marktwert einordnen und
-                selbstbewusst für einen leistungsorientierten und fairen Lohn
-                einstehen. In unserem Artikel über
+                Informationen über Gehalt, Tarifverträge und Tätigkeitsgruppen
+                für Medizinische Fachangestellte. Mit diesem Wissen, kannst du
+                deinen eigenen Marktwert einordnen und selbstbewusst für einen
+                leistungsorientierten und fairen Lohn einstehen. In unserem
+                Artikel über
                 <b-link
                     to="/blog/article/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
-                    >Gehaltsvorstellungen</b-link
+                    >Gehaltsverhandlungen</b-link
                 >
-                geben wir dir 9 zusätzliche Tipps, wie du dein Wunschgehalt
+                geben wir dir zusätzlich 9 Tipps, wie du dein Wunschgehalt
                 erzielst.
             </p>
             <p>
@@ -62,14 +61,14 @@
                 <b-col>
                     <p>
                         Der Verband medizinischer Fachberufe e.V. (VMF) ist die
-                        einzige Organisation für Medizinische Fachangestellte
-                        auf Arbeitnehmerseite. Sie vertritt uns Medizinische
-                        Fachangestellte bei Tarifverhandlungen gegenüber der
+                        verantwortliche Organisation für Medizinische
+                        Fachangestellte auf Arbeitnehmerseite. Sie vertritt uns
+                        MFA bei Tarifverhandlungen gegenüber der
                         Arbeitsgemeinschaft zur Regelung der Arbeitsbedingungen
                         der ArzthelferInnen / Medizinischen Fachangestellten
                         (AAA). Die AAA ist die Tarifpartei der Arbeitgeber,
-                        sprich der niedergelassenen Ärzte mit der der
-                        Manteltarifvertag für MFA verhandelt wird.
+                        sprich der niedergelassenen Ärzte, mit der der
+                        Manteltarifvertag verhandelt wird.
                     </p>
                     <p>
                         Die niedergelassenen Ärzte sind nicht automatisch
@@ -81,15 +80,15 @@
                         Mitglied im VMF sind.
                     </p>
                     <p>
-                        Ehrlich gesagt, kenne ich nicht viele MFAs, die Mitglied
-                        im VMF sind. Daher wundert es auch nicht, dass so viele
-                        von uns untertariflich verdienen, wie die Kollegin aus
-                        dem Forum im obigen Beispiel.
+                        Ehrlich gesagt, kenne ich nicht viele ArzthelferInnen,
+                        die Mitglied im VMF sind. Daher wundert es auch nicht,
+                        dass so viele von uns untertariflich verdienen, wie die
+                        Kollegin aus dem Forum im obigen Beispiel.
                     </p>
                     <p>
                         Dennoch gibt es viele Ärzte, die sich freiwillig an den
                         aktuellen Tarifvertrag halten oder zumindest das Gehalt
-                        für ihre medizinischen Fachangestellten daran anlehnen.
+                        für ihre Medizinischen Fachangestellten daran anlehnen.
                     </p>
                     <p>
                         Neben dem offiziellen Tarifvertrag existieren zahlreiche
@@ -102,8 +101,8 @@
                     <p>
                         Es kommt im privaten Bereich oftmals zu einer
                         außertariflichen Bezahlung. Das muss nicht unbedingt
-                        negativ für dich ausfallen. Viele MFA werden dadurch
-                        übertariflich bezahlt.
+                        negativ für dich ausfallen. Viele Medizinische
+                        Fachangestellte werden dadurch übertariflich bezahlt.
                     </p>
                     <p>
                         Wenn dein Chef kein Mitglied im AAA ist, du aber darauf
@@ -120,25 +119,29 @@
                         verhandelt. Das Gehalt wird somit beinahe jährlich immer
                         etwas angepasst und erhöht. Ist dein Chef verpflichtet
                         nach Tarifvertrag zu zahlen oder hält sich freiwillig
-                        daran, musst du also keine Gehaltsverhandlungen mit dem
-                        Chef führen.
+                        daran, musst du also selbst keine
+                        <b-link
+                            to="/blog/article/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
+                            >Gehaltsverhandlungen</b-link
+                        >
+                        führen.
                     </p>
                 </b-col>
                 <b-col>
                     <p>
                         Daneben bietet der Gehaltstarifvertrag für Medizinische
                         Fachangestellte dir vor allem eine gute Orientierung, um
-                        deinen Marktwert einzuschätzen, was Qualifikation und
-                        Erfahrung angehen.
+                        deinen Marktwert einzuschätzen – bezüglich Qualifikation
+                        und Erfahrung.
                     </p>
                     <p>
-                        Den aktuellen Gehaltstarifvertrag für Medizinische
-                        Fachangestellte findest du
+                        Hier findest du den
                         <a
                             href="https://www.vmf-online.de/mfa/mfa-tarife"
                             target="_blank"
                             rel="noopener"
-                            >hier</a
+                            >aktuellen Gehaltstarifvertrag für Medizinische
+                            Fachangestellte</a
                         >.
                     </p>
                     <Gehaltsrechner class="my-4" />
@@ -158,17 +161,18 @@
             <p>
                 Ein wichtiger Indikator für die Höhe des Gehalts von MFA sind
                 Erfahrung und Expertise, die man sich im Laufe seines
-                Berufslebens aneignet. Je länger man im Beruf ist, desto mehr
-                kann man logischerweise an Gehalt verlangen. Auch in den
+                Berufslebens aneignet. Je länger du im Beruf bist, desto mehr
+                kannst du logischerweise an Gehalt verlangen. Auch in den
                 Tarifverhandlungen werden Gehälter nach Berufsjahren und
                 Tätigkeitsgruppen vereinbart.
             </p>
             <p>
-                Schauen wir uns einmal an, wie man seine Berufsjahre berechnet.
+                Schauen wir uns einmal an, wie Du deine Berufsjahre berechnen
+                kannst.
             </p>
             <p>
                 Die Anrechnung deiner Berufsjahre startet ab dem 1. des Monats,
-                wo die Ausbildung beendet wurde.
+                in dem die Ausbildung beendet wurde.
             </p>
 
             <div class="example">
@@ -182,24 +186,24 @@
             </div>
             <p>
                 Bei Beschäftigten in Teilzeit zählen die Berufsjahre genau wie
-                bei Vollzeitbeschäftigung und werden komplett angerechnet.
+                bei Vollzeit-Beschäftigung und werden komplett angerechnet.
             </p>
             <h2>
                 Mutterschutz, Elternzeit und Erziehungsurlaub
             </h2>
             <p>
                 Unterbrichst du die Arbeit für Mutterschutz, Elternzeit oder
-                Erziehungsurlaub können diese Zeiten nur angerechnet werden,
+                Erziehungsurlaub, können diese Zeiten nur angerechnet werden,
                 wenn du dich in einem aktiven Arbeitsverhältnis befindest.
             </p>
             <p>
-                Zeiten für Mutterschutz werden dann voll zu den Berufsjahren
-                dazu gezählt.
+                Zeiten für Mutterschutz werden dann voll bei den Berufsjahren
+                angerechnet.
             </p>
             <p>
                 Zeiten für Erziehungsurlaub bzw. Elternzeit werden nur zur
-                Hälfte zu den Berufsjahren angerechnet. Arbeitest du während der
-                Elternzeit in Teilzeit als MFA / ArzthelferIn, werden die Zeiten
+                Hälfte zu den Berufsjahren gezählt. Arbeitest du während der
+                Elternzeit in Teilzeit als ArzthelferIn, werden die Zeiten
                 jedoch voll dazu gerechnet.
             </p>
             <p>Zwei Beispiele zum besseren Verständnis.</p>
@@ -209,15 +213,16 @@
                         <p><strong>Beispiel 1:</strong></p>
                         <p class="pl-5">
                             <em>
-                                Eine MFA / ArzthelferIn geht am 15. August 2016
-                                bei errechnetem Geburtstermin am 30.09.2016 (6
-                                Wochen vor dem errechneten Entbindungstermin)
-                                bis zum 25.11.2016 (8 Wochen nach der
-                                Entbindung) in den Mutterschutz und nimmt eine
-                                einjährige Elternzeit in Anspruch. Sie kehrt am
-                                01.10.2017 in die berufliche Tätigkeit als MFA
-                                zurück. Die MFA bekommt für diese Zeit insgesamt
-                                8,5 Monate als Berufsjahre angerechnet.
+                                Eine Medizinische Fachangestellte geht am 15.
+                                August 2016 bei errechnetem Geburtstermin am
+                                30.09.2016 (6 Wochen vor dem errechneten
+                                Entbindungstermin) bis zum 25.11.2016 (8 Wochen
+                                nach der Entbindung) in den Mutterschutz und
+                                nimmt eine einjährige Elternzeit in Anspruch.
+                                Sie kehrt am 01.10.2017 in Vollzeit in die
+                                berufliche Tätigkeit als MFA zurück. Sie bekommt
+                                für diese Zeit insgesamt 8,5 Monate bei den
+                                Berufsjahren angerechnet.
                             </em>
                         </p>
                     </div>
@@ -227,47 +232,48 @@
                         <p><strong>Beispiel 2:</strong></p>
                         <p class="pl-5">
                             <em>
-                                Eine MFA / ArzthelferIn geht am 15. August 2016
-                                bei errechnetem Geburtstermin am 30.09.2016 in
-                                Mutterschutz bis zum 25.11.2016 und nimmt
-                                anschließend eine einjährige Elternzeit in
-                                Anspruch. Ab dem 01.04.2017 arbeitet sie während
-                                der Elternzeit 8 Stunden wöchentlich in der
-                                Praxis. Sie kehrt am 01.10.2017 aus der
-                                Elternzeit in die Praxis zurück. Die MFA bekommt
-                                für diese Zeit insgesamt 11,5 Monate als
-                                Berufsjahre angerechnet.
+                                Eine Medizinische Fachangestellte geht am 15.
+                                August 2016 bei errechnetem Geburtstermin am
+                                30.09.2016 in Mutterschutz bis zum 25.11.2016
+                                und nimmt anschließend eine einjährige
+                                Elternzeit in Anspruch. Ab dem 01.04.2017
+                                arbeitet sie während der Elternzeit in Teilzeit
+                                8 Stunden wöchentlich in der Praxis. Sie kehrt
+                                am 01.10.2017 aus der Elternzeit in die Praxis
+                                zurück. Sie bekommt für diese Zeit insgesamt
+                                11,5 Monate bei den Berufsjahren angerechnet.
                             </em>
                         </p>
                     </div>
                 </b-col>
             </b-row>
             <h2>
-                Anrechnung der Berufsjahre bei berufsnahen Tätigkeiten
+                Anrechnung der Berufsjahre für MFA bei berufsnahen Tätigkeiten
             </h2>
             <p>
                 Bist du vor oder nach deiner Ausbildung einer berufsnahen Arbeit
                 nachgegangen (z.B. in einem Labor oder im Krankenhaus), werden
                 die Zeiten zur Hälfte angerechnet. Du musst allerdings deine
-                Prüfung zur MFA vor der Ärztekammer bestanden haben.
+                Prüfung zur Medizinischen Fachangestellten vor der Ärztekammer
+                bestanden haben.
             </p>
             <div class="example">
                 <p><strong>Beispiel:</strong></p>
                 <p class="pl-5">
                     <em>
-                        Eine MFA / ArzthelferIn arbeitet vor (oder nach) ihrer
-                        Ausbildung vier Jahre in einer Zahnarztpraxis. Hier
-                        werden 2 Berufsjahre angerechnet.
+                        Eine Medizinische Fachangestellte arbeitet vor (oder
+                        nach) ihrer Ausbildung vier Jahre in einer
+                        Zahnarztpraxis. Hier werden 2 Berufsjahre angerechnet.
                     </em>
                 </p>
             </div>
             <h2>
-                Tätigkeitsgruppen nach aktuellem Gehaltstarifvertrag
+                Tätigkeitsgruppen nach aktuellem Gehaltstarifvertrag für MFA
             </h2>
             <p>
                 Im Gehaltstarifvertrag für Medizinische Fachangestellte werden
                 vorhandene Kenntnisse und Qualifikationen in Tätigkeitsgruppen
-                eingeordnet und entsprechend im Gehalt wiedergespiegelt. Die
+                eingeordnet und entsprechend im Gehalt widergespiegelt. Die
                 Tätigkeiten werden nach Grad der Selbstständigkeit, Anzahl der
                 Fortbildungsstunden, leitende Tätigkeiten und Verantwortung
                 eingeteilt. Dies gibt dir eine zusätzliche Orientierung, um dein
@@ -631,7 +637,7 @@
                 </b-card>
             </div>
 
-            <h2>Benefits und wenn das Gehalt nicht zufriedenstellend ist</h2>
+            <h2>Benefits – wenn dein Gehalt nicht zufriedenstellend ist</h2>
             <p>
                 Neben einer fairen Bezahlung spielen auch weitere, sogenannte
                 weiche Faktoren oder Benefits eine Rolle in der Auswahl des
@@ -675,7 +681,9 @@
                 </li>
                 <li>Beteiligung am Gewinn/ Prämien</li>
                 <li>Angebot von Home Office</li>
-                <li>Ein individuelles Arbeitszeitmodell</li>
+                <li>
+                    Ein individuelles Arbeitszeitmodell (Teizeit / Vollzeit)
+                </li>
                 <li>Dienstwagen</li>
                 <li>Essensgutscheine für die Mittagspause</li>
                 <li>
@@ -687,10 +695,10 @@
                 In jedem Fall sind Benefits eine zusätzliche Aufwertung und
                 Zeichen der Wertschätzung deiner Arbeit und kein Ersatz oder
                 eine Kompensation für Unzufriedenheit im Job. Denn noch einmal:
-                Geld ist nicht alles. Es muss aber ein gewisses Level haben mit
-                dem man seinen Lebensunterhalt ohne Schwierigkeiten finanzieren
-                kann. Auf der anderen Seite macht viel Geld auch nicht
-                glücklich, wenn dir die Aufgaben, der Chef oder das Team
+                Gehalt ist nicht alles. Es muss aber ein gewisses Level haben
+                mit dem man seinen Lebensunterhalt ohne Schwierigkeiten
+                finanzieren kann. Auf der anderen Seite macht viel Geld auch
+                nicht glücklich, wenn dir die Aufgaben, der Chef oder das Team
                 Bauchschmerzen bereiten und jeden Arbeitstag zur Zumutung werden
                 lassen.
             </p>
@@ -724,6 +732,14 @@
                     <li>
                         <Fa icon="check" size="sm" class="mr-2" />
                         Benefits und Zusatzleistungen mitbedenken
+                    </li>
+                    <li>
+                        <Fa icon="check" size="sm" class="mr-2" />
+                        Lies auch unseren Artikel zu
+                        <b-link
+                            to="/blog/article/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
+                            >Gehaltsverhandlungen</b-link
+                        >
                     </li>
                 </ul>
             </div>
