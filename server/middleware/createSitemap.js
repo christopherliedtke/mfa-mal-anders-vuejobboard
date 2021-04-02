@@ -122,6 +122,7 @@ const getProfessions = async () => {
                     query MyQuery {
                         berufsbilder(first: 100, where: {orderby: {field: MODIFIED, order: ASC}}) {
                             nodes {
+                                content
                                 slug
                                 modifiedGmt
                                 berufsbildTypes {
@@ -140,6 +141,7 @@ const getProfessions = async () => {
             response.data.data.berufsbilder.nodes.length > 0
         ) {
             return response.data.data.berufsbilder.nodes
+                .filter((elem) => elem.content)
                 .map((elem) =>
                     writeUrl(
                         process.env.WEBSITE_URL +
