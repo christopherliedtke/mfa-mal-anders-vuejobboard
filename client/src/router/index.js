@@ -59,6 +59,10 @@ const CareerBerufsbildType = () =>
     import(
         /* webpackChunkName: "career" */ "@/views/career/jobs-berufsbilder/CareerBerufsbildType.vue"
     );
+const CareerBerufsbildProfession = () =>
+    import(
+        /* webpackChunkName: "career" */ "@/views/career/jobs-berufsbilder/CareerBerufsbildProfession.vue"
+    );
 
 const CareerFortWeiterbildungenHome = () =>
     import(
@@ -216,6 +220,14 @@ const routes = [
         path: "/karriere/jobs-und-berufsbilder/:slug",
         name: "KarriereJobsBerufsbilderType",
         component: CareerBerufsbildType,
+        meta: {
+            public: true
+        }
+    },
+    {
+        path: "/karriere/jobs-und-berufsbilder/:slug/:profession",
+        name: "KarriereJobsBerufsbilderProfession",
+        component: CareerBerufsbildProfession,
         meta: {
             public: true
         }

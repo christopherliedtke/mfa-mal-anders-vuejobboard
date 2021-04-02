@@ -22,10 +22,18 @@ async function createSitemap() {
 
         const articles = await getArticles();
         const trainings = await getTrainings();
+        const professions = await getProfessions();
         const jobs = await getJobs();
 
         const sitemap =
-            head + root + pages + articles + trainings + jobs + foot;
+            head +
+            root +
+            pages +
+            articles +
+            trainings +
+            professions +
+            jobs +
+            foot;
 
         saveSitemap(__dirname + "/../public/sitemap.xml", sitemap);
     } catch (error) {
@@ -93,6 +101,51 @@ const getTrainings = async () => {
                     writeUrl(
                         process.env.WEBSITE_URL +
                             "/karriere/fort-und-weiterbildungen/" +
+                            elem.slug,
+                        new Date(elem.modifiedGmt).toISOString()
+                    )
+                )
+                .join(" ");
+        } else {
+            return "";
+        }
+    } catch (err) {
+        console.log("Error on getTrainings() in createSitemap: ", err);
+        return "";
+    }
+};
+
+const getProfessions = async () => {
+    try {
+        const response = await axios.post(config.sitemap.cmsUrl, {
+            query: `
+                    query MyQuery {
+                        berufsbilder(first: 100, where: {orderby: {field: MODIFIED, order: ASC}}) {
+                            nodes {
+                                slug
+                                modifiedGmt
+                                berufsbildTypes {
+                                    nodes {
+                                        slug
+                                    }
+                                }
+                            }
+                        }
+                    }
+                `,
+        });
+
+        if (
+            Array.isArray(response.data.data.berufsbilder.nodes) &&
+            response.data.data.berufsbilder.nodes.length > 0
+        ) {
+            return response.data.data.berufsbilder.nodes
+                .map((elem) =>
+                    writeUrl(
+                        process.env.WEBSITE_URL +
+                            "/karriere/jobs-und-berufsbilder/" +
+                            elem.berufsbildTypes.nodes[0].slug +
+                            "/" +
                             elem.slug,
                         new Date(elem.modifiedGmt).toISOString()
                     )

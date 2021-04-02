@@ -24,7 +24,16 @@ const actions = {
                                 berufsbildTypes {
                                     nodes {
                                         name
+                                        description
+                                        slug
+                                        seo {
+                                            metaDesc
+                                        }
                                     }
+                                }
+                                seo {
+                                    metaDesc
+                                    title
                                 }
                             }
                         }
