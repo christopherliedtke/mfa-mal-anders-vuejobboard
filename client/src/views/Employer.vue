@@ -11,8 +11,8 @@
                 <div class="bg-logo"></div>
                 <b-col cols="12" md="8">
                     <h2 class="display-4 bold mb-4">
-                        <em>Motivierte</em> und <em>qualifizierte</em> MFA & ZFA
-                        gesucht?
+                        <em>Motivierte</em> und
+                        <em>qualifizierte</em> Mediziner:innen gesucht?
                     </h2>
                     <ul class="lead no-bullets my-4">
                         <li class="d-flex">

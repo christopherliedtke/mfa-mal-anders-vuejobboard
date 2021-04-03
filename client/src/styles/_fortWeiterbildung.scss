@@ -89,7 +89,7 @@ $table-breakpoint: 750px;
 
         tr {
             &:nth-child(even) {
-                background-color: darken($light, $amount: 5%);
+                background-color: $light-shade;
             }
 
             &:last-child {

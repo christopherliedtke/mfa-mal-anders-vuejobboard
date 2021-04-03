@@ -15,9 +15,11 @@ const Employer = () => import("@/views/Employer.vue");
 const Impressum = () => import("@/views/Impressum.vue");
 const PrivacyPolicy = () => import("@/views/PrivacyPolicy.vue");
 
+// #Blog
 const Blog = () => import("@/views/blog/Blog.vue");
 const Article = () => import("@/views/blog/article/_slug.vue");
 
+// #Newsletter
 const NewsletterSubscriptionSuccess = () =>
     import(
         /* webpackChunkName: "newsletter" */ "@/views/newsletter/NewsletterSubscriptionSuccess.vue"
