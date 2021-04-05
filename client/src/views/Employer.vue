@@ -6,15 +6,21 @@
         </div>
         <b-container class="py-3 py-lg-5 px-md-5">
             <b-row
+                style="overflow-x: hidden"
                 class="bg-primary text-light border-radius2 shadow1 w-100 p-3 py-4 p-md-5 mx-auto position-relative"
             >
                 <div class="bg-logo"></div>
-                <b-col cols="12" md="8">
+                <b-col cols="12" lg="8" style="z-index: 1">
                     <h2 class="display-4 bold mb-4">
-                        <em>Motivierte</em> und
-                        <em>qualifizierte</em> Mediziner:innen gesucht?
+                        <em>Motivierte</em> und <em>qualifizierte</em> MFA &
+                        ZFA{{
+                            $route.query.location
+                                ? ` in ${$route.query.location}`
+                                : ""
+                        }}
+                        gesucht?
                     </h2>
-                    <ul class="lead no-bullets my-4">
+                    <ul class="lead no-bullets my-4 my-lg-5">
                         <li class="d-flex">
                             <Fa icon="check" class="mr-3 mt-1" />
                             <div>
@@ -29,7 +35,7 @@
                             <Fa icon="check" class="mr-3 mt-1" />
                             <div>
                                 <span class="text-secondary"
-                                    >Mehr Reichweite</span
+                                    >Erhalten Sie mit uns mehr Reichweite</span
                                 >
                                 über Google Jobs, Social Media und unsere MFA &
                                 ZFA Community
@@ -38,7 +44,7 @@
                         <li class="d-flex">
                             <Fa icon="check" class="mr-3 mt-1" />
                             <div>
-                                Stellenaneige
+                                Veröffentlichen Sie Ihre Stellenaneige
                                 <b-link
                                     class="text-secondary"
                                     href="#pay-what-you-want"
@@ -46,7 +52,6 @@
                                     {{ $config.payment.minCost / 100 }}
                                     {{ $config.payment.currency }}</b-link
                                 >
-                                veröffentlichen
                             </div>
                         </li>
                     </ul>
@@ -70,12 +75,12 @@
                 </b-col>
                 <b-col
                     cols="12"
-                    md="4"
-                    class="d-none d-md-flex justify-content-center align-items-center"
+                    lg="4"
+                    class="d-none d-lg-flex justify-content-center align-items-center"
                 >
                     <b-img
-                        class="p-0"
-                        fluid
+                        style="width: 450px; opacity: 0.9; right: 0"
+                        class="position-absolute p-0"
                         src="@/assets/img/handshake.svg"
                         alt="MFA / ZFA trifft Arzt zum Bewerbungsgespräch"
                     />
@@ -200,7 +205,7 @@
         <b-container fluid class="pt-3 bg-light-shade">
             <b-container class="my-4 my-md-5">
                 <h2 class="h1 text-center bold">
-                    Unsere Kooperationspartner
+                    Wir kooperieren mit
                 </h2>
                 <b-row cols="1" cols-lg="4" class="py-4">
                     <b-col
@@ -328,7 +333,7 @@
             <b-row cols="1" cols-md="2">
                 <b-col class="mb-4">
                     <p>
-                        Mit MFA mal anders möchten wir medizinischen
+                        Mit MFA mal anders möchten wir Medizinischen
                         Fachangestellten die Möglichkeit geben, einen
                         attraktiven Job zu finden. Aber auch Ihnen als
                         Arbeitgeber eine alternative Plattform bereitstellen,
@@ -349,12 +354,11 @@
                     </p>
                     <p>
                         Die Idee ist ganz einfach: Nach dem Prinzip
-                        <strong>“Pay What You Want”</strong>* entscheidet jede*r
-                        selbst, was sie/er als Beitrag für die Nutzung der
-                        Stellenbörse und der Informationen rund um MFA mal
-                        anders zahlen möchte. So können wir jedem Arbeitgeber
-                        die Möglichkeit bieten, vergleichsweise kostengünstig
-                        eine Stellenanzeige für
+                        <strong>“Pay What You Want”</strong>* entscheiden Sie,
+                        welchen Beitrag Sie für die Nutzung der Stellenbörse und
+                        der Informationen rund um MFA mal anders zahlen möchten.
+                        So können wir jedem Arbeitgeber die Möglichkeit bieten,
+                        vergleichsweise kostengünstig eine Stellenanzeige für
                         {{ $config.payment.duration }} Tage bei uns zu schalten.
                     </p>
                     <p class="small">
@@ -389,9 +393,10 @@
                 <b-row cols="1" cols-md="2">
                     <b-col>
                         <p>
-                            Wir bieten speziell Arztpraxen und MVZs eine
+                            Wir bieten speziell Arztpraxen, MVZs und allen
+                            weiteren Einrichtungen aus dem Gesundheitswesen eine
                             vertrauensvolle Plattform mit
-                            <strong>Fokus auf Ihre Zielgruppe</strong> .
+                            <strong>Fokus auf Ihre Zielgruppe</strong>.
                         </p>
                         <p>
                             Aufgrund persönlicher Erfahrungen als MFA und im
@@ -408,7 +413,7 @@
                             Ihre Stellenanzeige ist bei uns bestens platziert.
                             Im Gegensatz zu anderen allgemeinen Stellenbörsen,
                             finden Sie hier ausschließlich die richtige
-                            Zielgruppe für Ihr Unternehmen: Medizinische /
+                            Zielgruppe für Ihr Unternehmen: Medizinische &
                             Zahnmedizinische Fachangestellte.
                         </p>
                         <h3>Wo wir Ihre Stellenanzeige ausspielen</h3>
@@ -661,13 +666,20 @@
                     </p>
                 </b-col>
             </b-row>
-            <div class="d-flex flex-wrap justify-content-center mt-4">
+            <div class="d-flex flex-column align-items-center mt-4">
                 <b-button
                     to="/kontakt"
                     variant="primary"
                     size="lg"
                     class="mx-1 my-1"
                     >Kontakt</b-button
+                >
+                <b-button
+                    to="/auth/register"
+                    variant="secondary"
+                    size="lg"
+                    class="d-block d-md-inline-block my-2 mr-md-2"
+                    >Stellenanzeige erstellen</b-button
                 >
             </div>
         </b-container>
