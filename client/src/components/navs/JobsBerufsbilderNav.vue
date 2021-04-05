@@ -2,7 +2,7 @@
     <b-list-group>
         <b-list-group-item to="/karriere/jobs-und-berufsbilder">
             <h3 class="h5 bold">
-                Jobs und Berufsbilder
+                Jobs & Berufsbilder
             </h3></b-list-group-item
         >
         <b-list-group-item

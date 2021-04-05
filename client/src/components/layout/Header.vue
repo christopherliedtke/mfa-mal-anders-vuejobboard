@@ -248,7 +248,7 @@
                                 path: "/karriere/bewerbungstipps"
                             },
                             {
-                                title: "Jobs und Berufsbilder",
+                                title: "Jobs & Berufsbilder",
                                 path: "/karriere/jobs-und-berufsbilder"
                                 // icon: "chevron-right"
                                 // children: [
@@ -280,7 +280,7 @@
                                 // ]
                             },
                             {
-                                title: "Fort- und Weiterbildungen",
+                                title: "Fort- & Weiterbildungen",
                                 path: "/karriere/fort-und-weiterbildungen"
                             }
                         ]

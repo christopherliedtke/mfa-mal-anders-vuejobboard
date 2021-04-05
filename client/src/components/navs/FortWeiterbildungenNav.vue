@@ -3,7 +3,7 @@
         <b-list-group v-if="trainings">
             <b-list-group-item to="/karriere/fort-und-weiterbildungen">
                 <h3 class="h5 bold">
-                    Fort- und Weiterbildungen
+                    Fort- & Weiterbildungen
                 </h3></b-list-group-item
             >
             <b-list-group-item

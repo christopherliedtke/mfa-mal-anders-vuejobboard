@@ -17,7 +17,7 @@
                         alt="Banner - So viel verdienst Du wirklich"
                     />
                     <p>
-                        Als Medizinische / Zahnmedizinische Fachangestellte
+                        Als Medizinische & Zahnmedizinische Fachangestellte
                         haben wir viele Möglichkeiten uns zu qualifizieren und
                         im Job aufzusteigen oder sogar in anderen Bereichen des
                         Gesundheitswesens Fuß zu fassen. Nur leider ist der
@@ -53,7 +53,7 @@
                             img-alt="Banner - In 6 Schritten zur richtigen Weiterbildung für MFA / ZFA und ArzthelferIn"
                             img-top
                             align="center"
-                            class="my-5"
+                            class="bg-light-shade shadow1 mt-4 mb-5"
                         >
                             <b-card-text>
                                 Hier findest du eine kleine Anleitung, wie du
