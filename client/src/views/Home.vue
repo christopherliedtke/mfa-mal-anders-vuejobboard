@@ -51,9 +51,7 @@
                                 size="lg"
                                 class="shadow1"
                                 variant="secondary"
-                                :to="
-                                    `/stellenangebote?searchTerm=${searchTerm}`
-                                "
+                                :to="`/stellenangebote?s=${searchTerm}`"
                                 ><Fa icon="search"
                             /></b-button>
                         </b-input-group-append>
