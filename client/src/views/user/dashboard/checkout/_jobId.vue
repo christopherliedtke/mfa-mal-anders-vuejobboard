@@ -410,6 +410,8 @@
                 </div>
             </div>
         </b-container>
+
+        <Head :title="title" desc="" />
     </div>
 </template>
 

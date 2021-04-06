@@ -30,9 +30,7 @@
                 </div>
                 <b-form
                     @submit.prevent="
-                        $router.push(
-                            `/stellenangebote?searchTerm=${searchTerm}`
-                        )
+                        $router.push(`/stellenangebote?s=${searchTerm}`)
                     "
                 >
                     <label
