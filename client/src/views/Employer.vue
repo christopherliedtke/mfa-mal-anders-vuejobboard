@@ -555,11 +555,13 @@
                     </h3>
                     <p>
                         Für die Zahlung Ihrer Stellenanzeige können Sie eine
-                        Kreditkarte nutzen per GooglePay oder per GiroPay
-                        bezahlen. Sollten Sie ausschließlich per Rechnung zahlen
-                        können, gelangen Sie während des Zahlungsvorgangs zum
-                        Kontaktformular. Lesen Sie dazu die Anmerkung ** im
-                        Bezahlvorgang.
+                        Kreditkarte nutzen, per GooglePay oder per GiroPay
+                        bezahlen. Bei diesen Zahlungsmethoden wird Ihre
+                        Stellenanzeige sofort veröffentlicht. Ebenso steht Ihnen
+                        die Zahlung per Rechnung zur Verfügung. Bitte beachten
+                        Sie hierbei, dass Ihre Stellenanzeige erst dann
+                        veröffentlicht wird, wenn Ihre Zahlung bei uns
+                        eingegangen ist.
                     </p>
                     <h3 class="h5 bold">
                         Wie lange dauert es bis zur Veröffentlichung meiner
@@ -646,8 +648,7 @@
                         gelistet (es kann ein wenig Zeit in Anspruch nehmen, bis
                         Google Ihre Anzeige integriert). Darüber hinaus
                         verteilen wir Ihre Stellenanzeige über unseren Jobs
-                        Newsletter sowie unsere Social Media Kanäle (Facebook,
-                        Twitter).
+                        Newsletter sowie unsere Social Media Kanäle.
                     </p>
                     <h3 class="h5 bold">
                         Ich benötige Hilfe bei der Erstellung einer attraktiven
