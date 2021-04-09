@@ -105,6 +105,7 @@
                                     currency: "EUR",
                                     value: {
                                         "@type": "QuantitativeValue",
+                                        value: "",
                                         minValue: this.job.salaryMin
                                             ? parseInt(this.job.salaryMin)
                                             : "",
