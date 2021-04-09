@@ -38,12 +38,30 @@
             "email": "kontakt@mfa-mal-anders.de",
             "taxNum": "32/437/01653"
         },
+        "senderOld": {
+            "company": "Kristin Maurach Rekruiting",
+            "name": "Kristin Maurach",
+            "address": {
+                "street": "Wellbergstraße 62",
+                "zipCode": "49809",
+                "location": "Lingen (Ems)"
+            },
+            "email": "kontakt@mfa-mal-anders.de",
+            "taxNum": "32/437/01653"
+        },
         "bankAccount": {
             "receiver": "Kristin Maurach Rekruiting",
             "bank": "Holvi Payment Services",
             "iban": "DE40 1001 7997 3020 6852 06",
             "bic": "HOLVDEB1"
         },
+        "bankAccountOld": {
+            "receiver": "Kristin Maurach Rekruiting",
+            "bank": "Holvi Payment Services",
+            "iban": "DE40 1001 7997 3020 6852 06",
+            "bic": "HOLVDEB1"
+        },
+        "changeDate": 0,
         "feeFix": 500,
         "feeVar": 0
     },
