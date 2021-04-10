@@ -24,6 +24,9 @@ async function createSitemap() {
         const trainings = await getTrainings();
         const professions = await getProfessions();
         const jobs = await getJobs();
+        const jobboardStates = await getJobboardStates();
+        const jobboardLocations = await getJobboardLocations();
+        const jobboardProfessions = await getJobboardProfessions();
 
         const sitemap =
             head +
@@ -33,6 +36,9 @@ async function createSitemap() {
             trainings +
             professions +
             jobs +
+            jobboardStates +
+            jobboardLocations +
+            jobboardProfessions +
             foot;
 
         saveSitemap(__dirname + "/../public/sitemap.xml", sitemap);
@@ -191,6 +197,66 @@ const getJobs = async () => {
         }
     } catch (err) {
         console.log("Error on getTrainings() in createSitemap: ", err);
+        return "";
+    }
+};
+
+const getJobboardStates = async () => {
+    try {
+        const states = require("../../client/src/config/formDataConfig.json")
+            .companyStateOptions;
+        return states
+            .map((state) =>
+                writeUrl(
+                    process.env.WEBSITE_URL + "/stellenangebote?state=" + state
+                )
+            )
+            .join(" ");
+    } catch (err) {
+        console.log("Error on getJobboardStates() in createSitemap: ", err);
+        return "";
+    }
+};
+
+const getJobboardLocations = async () => {
+    try {
+        const jobs = await Job.find({}, "company").populate("company");
+
+        const locations = [...new Set(jobs.map((job) => job.company.location))];
+
+        return locations
+            .map((location) =>
+                writeUrl(
+                    process.env.WEBSITE_URL +
+                        "/stellenangebote?location=" +
+                        location
+                )
+            )
+            .join(" ");
+    } catch (err) {
+        console.log("Error on getJobboardLocations() in createSitemap: ", err);
+        return "";
+    }
+};
+
+const getJobboardProfessions = async () => {
+    try {
+        const professions = require("../../client/src/config/formDataConfig.json")
+            .professionOptions;
+        return professions
+            .map((profession) =>
+                writeUrl(
+                    process.env.WEBSITE_URL +
+                        "/stellenangebote?profession=" +
+                        profession.value
+                )
+            )
+            .join(" ");
+    } catch (err) {
+        console.log(
+            "Error on getJobboardProfessions() in createSitemap: ",
+            err
+        );
         return "";
     }
 };

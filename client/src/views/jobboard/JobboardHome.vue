@@ -16,7 +16,7 @@
                                         : 'outline-primary'
                                 "
                                 size="sm"
-                                @click.prevent="setJobboardView('list')"
+                                @click.prevent="jobboardView = 'list'"
                                 ><Fa
                                     class="mr-2"
                                     icon="list-ul"
@@ -29,7 +29,7 @@
                                         : 'outline-primary'
                                 "
                                 size="sm"
-                                @click.prevent="setJobboardView('map')"
+                                @click.prevent="jobboardView = 'map'"
                                 ><Fa class="mr-2" icon="map" />Karte</b-button
                             >
                         </b-button-group>
@@ -591,25 +591,26 @@
             }
         },
         methods: {
-            setJobboardView(value) {
-                if (this.jobboardView != value) {
-                    this.jobboardView = value;
-                    this.setQuery();
-                }
-            },
             setQuery() {
-                this.$router.push({
-                    query: {
-                        ...this.filter,
-                        jobboardView: this.jobboardView,
-                        profession: this.profession.active
+                const query = {
+                    ...this.filter,
+                    profession: this.profession.active
+                };
+
+                for (const key in query) {
+                    if (!query[key]) {
+                        delete query[key];
                     }
+                }
+
+                this.$router.push({
+                    query
                 });
             },
             setFilter() {
                 this.filter = {
                     s: this.$route.query.s || "",
-                    employmentType: this.$route.query.employmenttype || "",
+                    employmentType: this.$route.query.employmentType || "",
                     location: this.$route.query.location || "",
                     state: this.$route.query.state || ""
                 };
