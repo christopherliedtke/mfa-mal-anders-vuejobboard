@@ -92,7 +92,9 @@
             <h2 class="h5 text-center">
                 Stellenanzeige schalten bei MFA mal anders
             </h2>
-            <p class="h1 bold text-center">Ihre Zielgruppe genau im Blick</p>
+            <p class="bold display-4 text-center">
+                Ihre Zielgruppe genau im Blick
+            </p>
             <h3 class="h3 text-center">
                 Stellenanzeigen nur für ArzthelferInnen – MFA & ZFA
             </h3>
@@ -204,7 +206,7 @@
 
         <b-container fluid class="pt-3 bg-light-shade">
             <b-container class="my-4 my-md-5">
-                <h2 class="h1 text-center bold">
+                <h2 class="display-4 text-center bold">
                     Wir kooperieren mit
                 </h2>
                 <b-row cols="1" cols-lg="4" class="py-4">

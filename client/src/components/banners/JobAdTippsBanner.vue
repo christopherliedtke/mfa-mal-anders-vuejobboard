@@ -15,8 +15,8 @@
             <b-col md="9">
                 <b-card-body
                     class="d-flex flex-column justify-content-center align-items-center h-100 p-4"
-                    title="Weitere Tipps für Ihre Stellenanzeige"
                 >
+                    <h4 class="bold">Weitere Tipps für Ihre Stellenanzeige</h4>
                     <p>
                         Erhalten Sie zusätzliche Details zu unseren Tipps und
                         erstellen Sie eine attraktive Stellenanzeige, die mehr
@@ -25,7 +25,7 @@
                     <b-button
                         to="/blog/article/8-tipps-fuer-attraktive-stellenanzeigen-fuer-mfas"
                         variant="primary"
-                        >Weitere Informationen</b-button
+                        >Zu den Tipps</b-button
                     >
                 </b-card-body>
             </b-col>
