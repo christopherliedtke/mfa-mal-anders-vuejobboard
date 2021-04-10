@@ -134,6 +134,9 @@
             },
             link() {
                 this.$emit("updateHead");
+            },
+            "$route.fullPath"() {
+                this.$emit("updateHead");
             }
         }
     };
