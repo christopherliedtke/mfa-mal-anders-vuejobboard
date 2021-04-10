@@ -17,6 +17,16 @@ module.exports = {
         port: 8081
     },
     chainWebpack: config => {
+        // if (config.plugins.has("extract-css")) {
+        //     const extractCSSPlugin = config.plugin("extract-css");
+        //     extractCSSPlugin &&
+        //         extractCSSPlugin.tap(() => [
+        //             {
+        //                 filename: "[name].css",
+        //                 chunkFilename: "[name].css"
+        //             }
+        //         ]);
+        // }
         config.module
             .rule("vue")
             .use("vue-loader")

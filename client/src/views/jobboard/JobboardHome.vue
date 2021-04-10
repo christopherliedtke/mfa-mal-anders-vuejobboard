@@ -594,7 +594,12 @@
             setQuery() {
                 const query = {
                     ...this.filter,
-                    profession: this.profession.active
+                    profession:
+                        typeof this.profession.active === "object" &&
+                        this.profession.active.length ===
+                            this.professionOptions.length
+                            ? ""
+                            : this.profession.active
                 };
 
                 for (const key in query) {

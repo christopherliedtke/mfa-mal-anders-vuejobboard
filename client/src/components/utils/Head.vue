@@ -103,7 +103,8 @@
                     ...this.link,
                     {
                         rel: "canonical",
-                        href: `${this.$config.website.url + this.$route.path}`,
+                        href: `${this.$config.website.url +
+                            this.$route.fullPath}`,
                         id: "canonical"
                     }
                 ];
