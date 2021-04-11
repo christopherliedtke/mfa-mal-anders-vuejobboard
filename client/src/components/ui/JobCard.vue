@@ -126,7 +126,7 @@
   export default {
     name: "JobCard",
     components: { StarJob },
-    props: ["job"],
+    props: { job: { type: Object, default: () => {} } },
     data() {
       return {
         employmentTypeOptions,

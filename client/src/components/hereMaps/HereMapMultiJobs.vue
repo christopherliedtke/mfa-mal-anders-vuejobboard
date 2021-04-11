@@ -9,7 +9,7 @@
   export default {
     name: "HereMapMultiJobs",
     props: {
-      jobs: Array
+      jobs: { type: Array, default: () => [] }
     },
     data() {
       return {

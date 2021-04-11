@@ -51,6 +51,6 @@
 <script>
   export default {
     name: "ArticleCard",
-    props: ["article"]
+    props: { article: { type: Object, default: () => {} } }
   };
 </script>

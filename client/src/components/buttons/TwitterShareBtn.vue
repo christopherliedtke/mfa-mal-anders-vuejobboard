@@ -21,7 +21,10 @@
 <script>
   export default {
     name: "TwitterShareBtn",
-    props: ["sharePath", "title"],
+    props: {
+      sharePath: { type: String, default: "" },
+      title: { type: String, default: "" }
+    },
     data() {
       return {
         url: window.location.origin

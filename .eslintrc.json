@@ -19,14 +19,5 @@
     "no-sparse-arrays": 0,
     "no-unexpected-multiline": 0,
     "no-unsafe-finally": 0
-  },
-  "globals": {
-    "$": true,
-    "jQuery": false,
-    "Handlebars": false,
-    "axios": false,
-    "Vue": true,
-    "expect": false,
-    "test": false
   }
 }

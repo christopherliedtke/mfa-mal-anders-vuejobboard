@@ -18,6 +18,6 @@
     components: {
       NewsletterSignUpForm
     },
-    props: ["state"]
+    props: { state: { type: String, default: "" } }
   };
 </script>

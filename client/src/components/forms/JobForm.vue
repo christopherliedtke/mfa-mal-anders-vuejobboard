@@ -512,7 +512,7 @@
       ImageUploader
     },
     mixins: [saveCompanyMixin, saveJobMixin],
-    props: ["apiJobsSchema"],
+    props: { apiJobsSchema: { type: String, default: "private" } },
     data() {
       return {
         job: {

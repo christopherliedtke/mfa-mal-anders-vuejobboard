@@ -115,7 +115,7 @@
   } from "@/config/formDataConfig.json";
   export default {
     name: "AccountDataForm",
-    props: ["apiUsersSchema"],
+    props: { apiUsersSchema: { type: String, default: "private" } },
     data() {
       return {
         user: {
