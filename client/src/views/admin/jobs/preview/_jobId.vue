@@ -1,15 +1,15 @@
 <template>
-    <b-container class="jobpage py-5">
-        <Job apiJobsSchema="admin" />
-    </b-container>
+  <b-container class="jobpage py-5">
+    <Job api-jobs-schema="admin" />
+  </b-container>
 </template>
 
 <script>
-    import Job from "@/components/ui/Job.vue";
-    export default {
-        name: "AdminJobPreview",
-        components: {
-            Job
-        }
-    };
+  import Job from "@/components/ui/Job.vue";
+  export default {
+    name: "AdminJobPreview",
+    components: {
+      Job
+    }
+  };
 </script>

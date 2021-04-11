@@ -2,17 +2,17 @@ import axios from "@/utils/axios";
 import config from "@/config/config.json";
 
 const state = {
-    trainings: []
+  trainings: []
 };
 
 const getters = {
-    trainings: state => state.trainings
+  trainings: state => state.trainings
 };
 
 const actions = {
-    async getTrainings({ commit }) {
-        const response = await axios.post(config.cms.url, {
-            query: `
+  async getTrainings({ commit }) {
+    const response = await axios.post(config.cms.url, {
+      query: `
                     query MyQuery {
                         weiterbildungen(first: 100, where: {orderby: {field: TITLE, order: ASC}}) {
                             nodes {
@@ -40,21 +40,21 @@ const actions = {
                         }
                     }
                     `
-        });
+    });
 
-        commit("setTrainings", response.data.data.weiterbildungen.nodes);
-    }
+    commit("setTrainings", response.data.data.weiterbildungen.nodes);
+  }
 };
 
 const mutations = {
-    setTrainings: (state, trainings) => {
-        state.trainings = trainings;
-    }
+  setTrainings: (state, trainings) => {
+    state.trainings = trainings;
+  }
 };
 
 export default {
-    state,
-    getters,
-    actions,
-    mutations
+  state,
+  getters,
+  actions,
+  mutations
 };

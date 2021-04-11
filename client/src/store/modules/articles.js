@@ -2,17 +2,17 @@ import axios from "@/utils/axios";
 import config from "@/config/config.json";
 
 const state = {
-    articles: []
+  articles: []
 };
 
 const getters = {
-    articles: state => state.articles
+  articles: state => state.articles
 };
 
 const actions = {
-    async getArticles({ commit }) {
-        const response = await axios.post(config.cms.url, {
-            query: `
+  async getArticles({ commit }) {
+    const response = await axios.post(config.cms.url, {
+      query: `
                     query MyQuery {
                         posts(first: 100, where: {orderby: {field: DATE, order: DESC}}) {
                             nodes {
@@ -55,21 +55,21 @@ const actions = {
                         }
                     }
                     `
-        });
+    });
 
-        commit("setArticles", response.data.data.posts.nodes);
-    }
+    commit("setArticles", response.data.data.posts.nodes);
+  }
 };
 
 const mutations = {
-    setArticles: (state, articles) => {
-        state.articles = articles;
-    }
+  setArticles: (state, articles) => {
+    state.articles = articles;
+  }
 };
 
 export default {
-    state,
-    getters,
-    actions,
-    mutations
+  state,
+  getters,
+  actions,
+  mutations
 };

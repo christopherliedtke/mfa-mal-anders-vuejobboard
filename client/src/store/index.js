@@ -11,13 +11,13 @@ import starredJobs from "@/store/modules/starredJobs";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-    modules: {
-        auth,
-        jobs,
-        articles,
-        trainings,
-        professions,
-        utils,
-        starredJobs
-    }
+  modules: {
+    auth,
+    jobs,
+    articles,
+    trainings,
+    professions,
+    utils,
+    starredJobs
+  }
 });

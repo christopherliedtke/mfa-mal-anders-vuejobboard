@@ -1,40 +1,40 @@
 export const saveJobMixin = {
-    methods: {
-        async saveJob(mutationType, job, redirect = false) {
-            try {
-                const jobQuery = `
+  methods: {
+    async saveJob(mutationType, job, redirect = false) {
+      try {
+        const jobQuery = `
                         mutation {
                             ${mutationType}(
                                 ${
-                                    mutationType === "updateJob" ||
-                                    mutationType === "adminUpdateJob"
-                                        ? `_id: "${job._id}"`
-                                        : ""
+                                  mutationType === "updateJob" ||
+                                  mutationType === "adminUpdateJob"
+                                    ? `_id: "${job._id}"`
+                                    : ""
                                 } 
                                 title: "${job.title}"
                                 publishedAt: ${job.publishedAt}
                                 paidExpiresAt: ${job.paidExpiresAt}
                                 refreshFrequency: ${job.refreshFrequency}
                                 description: "${job.description.replace(
-                                    /"/g,
-                                    '\\"'
+                                  /"/g,
+                                  '\\"'
                                 )}"
                                 profession: "${job.profession}"
                                 employmentType: "${job.employmentType}"
                                 applicationDeadline: ${new Date(
-                                    new Date(
-                                        new Date(
-                                            job.applicationDeadline
-                                        ).setHours(23)
-                                    ).setMinutes(59)
+                                  new Date(
+                                    new Date(job.applicationDeadline).setHours(
+                                      23
+                                    )
+                                  ).setMinutes(59)
                                 ).setSeconds(59)}
                                 simpleApplication: ${job.simpleApplication}
                                 specialization: "${job.specialization}"
                                 extJobUrl: "${
-                                    !/^https?:\/\//i.test(job.extJobUrl) &&
-                                    job.extJobUrl
-                                        ? "https://" + job.extJobUrl
-                                        : job.extJobUrl
+                                  !/^https?:\/\//i.test(job.extJobUrl) &&
+                                  job.extJobUrl
+                                    ? "https://" + job.extJobUrl
+                                    : job.extJobUrl
                                 }"
                                 applicationEmail: "${job.applicationEmail}"
                                 imageUrl: "${job.imageUrl}"
@@ -53,59 +53,59 @@ export const saveJobMixin = {
                         }
                     `;
 
-                const jobQueryResponse = await this.$axios.post(`/graphql`, {
-                    query: jobQuery
-                });
+        const jobQueryResponse = await this.$axios.post(`/graphql`, {
+          query: jobQuery
+        });
 
-                if (jobQueryResponse.data.errors) {
-                    throw new Error("Error on saving the job!");
-                }
-
-                this.$gtag.event(mutationType, {
-                    event_label: `${job.title} | ${job.company.state} - ${jobQueryResponse.data.data[mutationType]._id}`
-                });
-
-                this.$matomo &&
-                    this.$matomo.trackEvent(
-                        "engagement",
-                        mutationType,
-                        `${job.title} | ${job.company.state} - ${jobQueryResponse.data.data[mutationType]._id}`
-                    );
-
-                this.$root.$bvToast.toast(
-                    "Die Stellenanzeige wurde erfolgreich gespeichert.",
-                    {
-                        title: `Stellenanzeige gespeichert`,
-                        variant: "success",
-                        toaster: "b-toaster-bottom-right",
-                        solid: true
-                    }
-                );
-
-                if (redirect) {
-                    this.hasHistory()
-                        ? this.$router.go(-1)
-                        : this.$router.push("/user/dashboard");
-                }
-
-                return { success: true };
-            } catch (err) {
-                this.$root.$bvToast.toast(
-                    "Beim Speichern der Stellenanzeige ist ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal.",
-                    {
-                        title: `Fehler beim Speichern`,
-                        variant: "danger",
-                        toaster: "b-toaster-bottom-right",
-                        solid: true,
-                        noAutoHide: true
-                    }
-                );
-
-                return { success: false };
-            }
-        },
-        hasHistory() {
-            return window.history.length > 2;
+        if (jobQueryResponse.data.errors) {
+          throw new Error("Error on saving the job!");
         }
+
+        this.$gtag.event(mutationType, {
+          event_label: `${job.title} | ${job.company.state} - ${jobQueryResponse.data.data[mutationType]._id}`
+        });
+
+        this.$matomo &&
+          this.$matomo.trackEvent(
+            "engagement",
+            mutationType,
+            `${job.title} | ${job.company.state} - ${jobQueryResponse.data.data[mutationType]._id}`
+          );
+
+        this.$root.$bvToast.toast(
+          "Die Stellenanzeige wurde erfolgreich gespeichert.",
+          {
+            title: `Stellenanzeige gespeichert`,
+            variant: "success",
+            toaster: "b-toaster-bottom-right",
+            solid: true
+          }
+        );
+
+        if (redirect) {
+          this.hasHistory()
+            ? this.$router.go(-1)
+            : this.$router.push("/user/dashboard");
+        }
+
+        return { success: true };
+      } catch (err) {
+        this.$root.$bvToast.toast(
+          "Beim Speichern der Stellenanzeige ist ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal.",
+          {
+            title: `Fehler beim Speichern`,
+            variant: "danger",
+            toaster: "b-toaster-bottom-right",
+            solid: true,
+            noAutoHide: true
+          }
+        );
+
+        return { success: false };
+      }
+    },
+    hasHistory() {
+      return window.history.length > 2;
     }
+  }
 };

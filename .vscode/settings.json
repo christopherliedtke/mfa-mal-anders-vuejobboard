@@ -1,13 +1,14 @@
 {
-    "liveSassCompile.settings.formats": [
-        {
-            "format": "compressed",
-            "extensionName": ".min.css",
-            "savePath": "/client/src/assets/css"
-        }
-    ],
-    "eslint.validate": ["javascript", "javascriptreact", "vue"],
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
+  "liveSassCompile.settings.formats": [
+    {
+      "format": "compressed",
+      "extensionName": ".min.css",
+      "savePath": "/client/src/assets/css"
     }
+  ],
+  "eslint.validate": ["html", "javascript"],
+
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
 }

@@ -1,18 +1,18 @@
 import axios from "@/utils/axios";
 
 const state = {
-    jobs: []
+  jobs: []
 };
 
 const getters = {
-    jobs: state => state.jobs
+  jobs: state => state.jobs
 };
 
 const actions = {
-    async getJobs({ commit }) {
-        const response = await axios.get("/graphql", {
-            params: {
-                query: `
+  async getJobs({ commit }) {
+    const response = await axios.get("/graphql", {
+      params: {
+        query: `
                     query {
                         publicJobs {
                             _id
@@ -46,22 +46,22 @@ const actions = {
                         }  
                     }
                 `
-            }
-        });
+      }
+    });
 
-        commit("setJobs", response.data.data.publicJobs);
-    }
+    commit("setJobs", response.data.data.publicJobs);
+  }
 };
 
 const mutations = {
-    setJobs: (state, jobs) => {
-        state.jobs = jobs;
-    }
+  setJobs: (state, jobs) => {
+    state.jobs = jobs;
+  }
 };
 
 export default {
-    state,
-    getters,
-    actions,
-    mutations
+  state,
+  getters,
+  actions,
+  mutations
 };
