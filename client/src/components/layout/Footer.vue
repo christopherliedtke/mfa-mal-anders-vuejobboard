@@ -127,15 +127,19 @@
         &copy; {{ new Date().getFullYear() }} MFA mal anders
       </p>
     </b-container>
+    <PrerenderRecache />
   </footer>
 </template>
 
 <script>
   import NewsletterSignUpForm from "@/components/forms/NewsletterSignUpForm.vue";
+  import PrerenderRecache from "@/components/buttons/PrerenderRecache.vue";
+
   export default {
     name: "Footer",
     components: {
-      NewsletterSignUpForm
+      NewsletterSignUpForm,
+      PrerenderRecache
     }
   };
 </script>

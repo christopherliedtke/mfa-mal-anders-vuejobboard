@@ -131,6 +131,19 @@
               size="lg"
             />
           </b-link>
+          <b-link
+            :href="
+              `https://developers.facebook.com/tools/debug/?q=https://www.mfa-mal-anders.de/stellenangebote/job/${job._id}`
+            "
+            target="_blank"
+          >
+            <Fa
+              style="cursor: pointer"
+              class="text-info ml-3"
+              :icon="['fab', 'facebook-square']"
+              size="lg"
+            />
+          </b-link>
         </div>
       </div>
       <div

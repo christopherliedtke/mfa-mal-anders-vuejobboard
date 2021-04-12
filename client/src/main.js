@@ -175,7 +175,8 @@ import {
   faCalendar,
   faBriefcaseMedical,
   faDownload,
-  faStar
+  faStar,
+  faSyncAlt
 } from "@fortawesome/free-solid-svg-icons";
 import { faStar as farStar } from "@fortawesome/free-regular-svg-icons";
 import {
@@ -269,7 +270,8 @@ library.add(
   faBriefcaseMedical,
   faDownload,
   faStar,
-  farStar
+  farStar,
+  faSyncAlt
 );
 
 Vue.component("Fa", FontAwesomeIcon);

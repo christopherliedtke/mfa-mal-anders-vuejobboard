@@ -28,11 +28,11 @@ const { CRONUnpublishedJobs } = require("./middleware/CRONUnpublishedJobs");
 
 // #Set Up prerender.io
 const prerender = require("prerender-node").set(
-    "prerenderToken",
-    process.env.PRERENDER_TOKEN
+  "prerenderToken",
+  process.env.PRERENDER_TOKEN
 );
 prerender.crawlerUserAgents = prerender.crawlerUserAgents.filter(
-    (item) => config.prerender.exclude.indexOf(item) <= -1
+  (item) => config.prerender.exclude.indexOf(item) <= -1
 );
 
 // # SSL redirect
@@ -40,37 +40,37 @@ app.use(sslRedirect());
 
 // #Create Sitemap CRON job
 if (config.sitemap.active) {
-    createSitemap.start();
+  createSitemap.start();
 }
 
 // #Send Newsletter CRON job
 if (config.newsletter.active) {
-    CRONNewsletter.start();
+  CRONNewsletter.start();
 }
 
 // #Refresh jobs CRON job
 if (config.refreshJobs.active) {
-    CRONRefreshJobs.start();
+  CRONRefreshJobs.start();
 }
 
 // #Unpublish jobs CRON job
 if (config.unpublishJobs.active) {
-    unpublishJobs.start();
+  unpublishJobs.start();
 }
 
 // #UnpublishedJobsReminder CRON job
 if (config.unpublishedJobsReminder.active) {
-    CRONUnpublishedJobs.start();
+  CRONUnpublishedJobs.start();
 }
 
 // #Redirects
 if (config.redirect.active) {
-    app.use(require("./middleware/redirect"));
+  app.use(require("./middleware/redirect"));
 }
 
 // #Prerender w/o googlebot
 if (process.env.PRERENDER_ACTIVE === "on") {
-    app.use(prerender);
+  app.use(prerender);
 }
 
 app.use(compression());
@@ -82,55 +82,55 @@ app.use("/api/webhooks", require("./routes/webhooks"));
 
 // #Express Session
 app.use(
-    session({
-        store: new MongoStore({
-            mongooseConnection: mongoose.connection,
-            touchAfter: 24 * 3600,
-        }),
-        secret: process.env.COOKIE_SESSION_SECRET,
-        resave: false,
-        saveUninitialized: false,
-        cookie: {
-            maxAge: 1000 * 60 * 60 * 24 * 7,
-            httpOnly: true,
-            secure: false,
-            sameSite: "lax",
-        },
-    })
+  session({
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection,
+      touchAfter: 24 * 3600,
+    }),
+    secret: process.env.COOKIE_SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 7,
+      httpOnly: true,
+      secure: false,
+      sameSite: "lax",
+    },
+  })
 );
 
 app.get("/sitemap.xml", (req, res) => {
-    res.sendFile(__dirname + "/public/sitemap.xml");
+  res.sendFile(__dirname + "/public/sitemap.xml");
 });
 
 // #Middleware for production
 if (process.env.NODE_ENV == "production") {
-    app.use(csurf());
-    app.use(function (err, req, res, next) {
-        if (err.code !== "EBADCSRFTOKEN") return next(err);
+  app.use(csurf());
+  app.use(function (err, req, res, next) {
+    if (err.code !== "EBADCSRFTOKEN") return next(err);
 
-        // handle CSRF token errors here
-        res.sendStatus(403);
-    });
+    // handle CSRF token errors here
+    res.sendStatus(403);
+  });
 
-    app.use((req, res, next) => {
-        res.set("x-frame-options", "DENY");
-        res.cookie("XSRF-TOKEN", req.csrfToken());
-        next();
-    });
-    app.use(express.static(__dirname + "/public"));
+  app.use((req, res, next) => {
+    res.set("x-frame-options", "DENY");
+    res.cookie("XSRF-TOKEN", req.csrfToken());
+    next();
+  });
+  app.use(express.static(__dirname + "/public"));
 }
 
 // #ApolloServer
 const apolloServer = new ApolloServer({
-    schema: apolloSchema,
-    context: ({ req }) => {
-        const token = req.session && req.session.token ? req.session.token : "";
+  schema: apolloSchema,
+  context: ({ req }) => {
+    const token = req.session && req.session.token ? req.session.token : "";
 
-        const user = apolloVerifyToken(token);
+    const user = apolloVerifyToken(token);
 
-        return { user, session: req.session };
-    },
+    return { user, session: req.session };
+  },
 });
 apolloServer.applyMiddleware({ app, path: "/graphql", cors: true });
 
@@ -143,14 +143,15 @@ app.use("/api/invoice", require("./routes/invoice"));
 app.use("/api/send-email", require("./routes/sendEmail"));
 app.use("/api/download", require("./routes/download"));
 app.use("/api/admin", require("./routes/admin"));
+app.use("/api/prerender", require("./routes/prerender"));
 
 // #Serve the built static files in production
 app.use("*", (req, res) => {
-    res.sendFile(__dirname + "/public/index.html");
+  res.sendFile(__dirname + "/public/index.html");
 });
 
 const server = app.listen(process.env.PORT, () =>
-    console.log(`Server listening on port ${process.env.PORT}`)
+  console.log(`Server listening on port ${process.env.PORT}`)
 );
 
 // #Set custom request timeout
