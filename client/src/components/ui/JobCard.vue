@@ -68,10 +68,7 @@
               <div class="icon">
                 <Fa class="mr-2" :icon="['fas', 'clock']" size="lg" />
               </div>
-              {{
-                "vor " +
-                  timeSince(new Date(parseInt(job.publishedAt || job.paidAt)))
-              }}
+              {{ timeSince(new Date(parseInt(job.publishedAt || job.paidAt))) }}
             </div>
             <div v-if="job.salaryMin || job.salaryMax">
               <div class="icon">
@@ -161,6 +158,7 @@
 
         if (interval > 1) {
           return (
+            "vor " +
             Math.floor(interval) +
             " Jahr" +
             (Math.floor(interval) > 1 ? "en" : "")
@@ -170,6 +168,7 @@
         interval = seconds / (60 * 60 * 24 * 7);
         if (interval > 1) {
           return (
+            "vor " +
             Math.floor(interval) +
             " Woche" +
             (Math.floor(interval) > 1 ? "n" : "")
@@ -179,35 +178,14 @@
         interval = seconds / 86400;
         if (interval > 1) {
           return (
+            "vor " +
             Math.floor(interval) +
             " Tag" +
             (Math.floor(interval) > 1 ? "en" : "")
           );
         }
 
-        interval = seconds / 3600;
-        if (interval > 1) {
-          return (
-            Math.floor(interval) +
-            " Stunde" +
-            (Math.floor(interval) > 1 ? "n" : "")
-          );
-        }
-
-        interval = seconds / 60;
-        if (interval > 1) {
-          return (
-            Math.floor(interval) +
-            " Minute" +
-            (Math.floor(interval) > 1 ? "n" : "")
-          );
-        }
-
-        return (
-          Math.floor(seconds) +
-          " Sekunde" +
-          (Math.floor(interval) > 1 ? "n" : "")
-        );
+        return "heute";
       }
     }
   };

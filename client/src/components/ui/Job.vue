@@ -60,8 +60,7 @@
               </div>
               {{
                 job.paid
-                  ? "vor " +
-                    timeSince(new Date(parseInt(job.publishedAt || job.paidAt)))
+                  ? timeSince(new Date(parseInt(job.publishedAt || job.paidAt)))
                   : "-"
               }}
             </b-col>
@@ -627,6 +626,7 @@
 
         if (interval > 1) {
           return (
+            "vor " +
             Math.floor(interval) +
             " Jahr" +
             (Math.floor(interval) > 1 ? "en" : "")
@@ -636,6 +636,7 @@
         interval = seconds / (60 * 60 * 24 * 7);
         if (interval > 1) {
           return (
+            "vor " +
             Math.floor(interval) +
             " Woche" +
             (Math.floor(interval) > 1 ? "n" : "")
@@ -645,35 +646,14 @@
         interval = seconds / 86400;
         if (interval > 1) {
           return (
+            "vor " +
             Math.floor(interval) +
             " Tag" +
             (Math.floor(interval) > 1 ? "en" : "")
           );
         }
 
-        interval = seconds / 3600;
-        if (interval > 1) {
-          return (
-            Math.floor(interval) +
-            " Stunde" +
-            (Math.floor(interval) > 1 ? "n" : "")
-          );
-        }
-
-        interval = seconds / 60;
-        if (interval > 1) {
-          return (
-            Math.floor(interval) +
-            " Minute" +
-            (Math.floor(interval) > 1 ? "n" : "")
-          );
-        }
-
-        return (
-          Math.floor(seconds) +
-          " Sekunde" +
-          (Math.floor(interval) > 1 ? "n" : "")
-        );
+        return "heute";
       }
     }
   };
