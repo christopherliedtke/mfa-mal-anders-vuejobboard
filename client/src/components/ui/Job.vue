@@ -15,7 +15,7 @@
         </div>
         <div
           v-if="job.company && job.company.logoUrl"
-          class="d-none d-sm-flex logo-container mr-1 ml-2 ml-sm-0 mr-sm-4 mb-3 mb-lg-0 order-2 order-sm-1"
+          class="d-none d-sm-flex logo-container mx-2"
         >
           <b-img
             class="logo"
@@ -274,7 +274,7 @@
           class="mr-2 mt-2"
           variant="outline-primary"
           size="sm"
-          to="/karriere/gehalt"
+          to="/karriere/mfa/gehalt"
           >Gehaltsrechner</b-button
         >
         <b-button

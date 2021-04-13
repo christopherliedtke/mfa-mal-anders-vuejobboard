@@ -2,7 +2,6 @@
   padding: 3rem;
   box-shadow: $shadow1;
   border-radius: $border-radius1;
-  //   background-color: $light-shade;
 
   @media screen and (max-width: $break-menu) {
     padding: 0;
@@ -18,22 +17,25 @@
     background-color: $light;
     border-radius: $border-radius1;
     box-shadow: $shadow1;
-    min-width: 80px;
-    min-height: 80px;
+    min-width: 100px;
+    min-height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
 
+    @media screen and (max-width: 767px) {
+      min-width: 90px;
+      min-height: 90px;
+    }
+
     .logo {
-      max-width: 60px;
-      max-height: 60px;
+      max-width: 80px;
+      max-height: 80px;
       //   padding: 0.5rem;
 
       @media screen and (max-width: 767px) {
-        // max-width: 75px;
-        // max-height: 75px;
-        // min-width: 70px;
-        // padding: 0;
+        max-width: 70px;
+        max-height: 70px;
       }
     }
   }
@@ -46,7 +48,6 @@
       margin-right: 1rem;
       margin-top: 0.275rem;
       margin-bottom: 0.275rem;
-      //   color: $primary;
       color: transparentize($primary, $amount: 0.1);
       display: flex;
       align-items: flex-start;
