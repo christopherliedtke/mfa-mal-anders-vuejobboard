@@ -39,7 +39,9 @@
           <hr />
           <div class="card-foot">
             <div>
-              <Fa class="mr-2" :icon="['fas', 'map-marker']" size="lg" />
+              <div class="icon">
+                <Fa class="mr-2" :icon="['fas', 'map-marker']" size="lg" />
+              </div>
               {{
                 job.company.state != job.company.location
                   ? `${job.company.location}, ${job.company.state}`
@@ -47,11 +49,15 @@
               }}
             </div>
             <div>
-              <Fa class="mr-2" :icon="['fas', 'building']" size="lg" />
+              <div class="icon">
+                <Fa class="mr-2" :icon="['fas', 'building']" size="lg" />
+              </div>
               {{ job.company.name }}
             </div>
             <div>
-              <Fa class="mr-2" :icon="['fas', 'clock']" size="lg" />
+              <div class="icon">
+                <Fa class="mr-2" :icon="['fas', 'briefcase']" size="lg" />
+              </div>
               {{
                 employmentTypeOptions.filter(
                   option => option.value === job.employmentType
@@ -59,22 +65,24 @@
               }}
             </div>
             <div>
-              <Fa class="mr-2" :icon="['fas', 'calendar-alt']" size="lg" />
-              Veröffentlicht:
+              <div class="icon">
+                <Fa class="mr-2" :icon="['fas', 'clock']" size="lg" />
+              </div>
               {{
-                new Date(
-                  parseInt(job.publishedAt || job.paidAt)
-                ).toLocaleDateString()
+                "vor " +
+                  timeSince(new Date(parseInt(job.publishedAt || job.paidAt)))
               }}
             </div>
             <div v-if="job.salaryMin || job.salaryMax">
-              <Fa
-                class="mr-2"
-                icon="euro-sign"
-                mask="calendar"
-                transform="shrink-9 down-3"
-                size="lg"
-              />
+              <div class="icon">
+                <Fa
+                  class="mr-2"
+                  icon="euro-sign"
+                  mask="calendar"
+                  transform="shrink-9 down-3"
+                  size="lg"
+                />
+              </div>
               {{
                 !job.salaryMax
                   ? `ab ${parseInt(job.salaryMin)
@@ -97,7 +105,9 @@
               }}
             </div>
             <div v-if="job.specialization && job.specialization != 'null'">
-              <Fa class="mr-2" icon="briefcase-medical" size="lg" />
+              <div class="icon">
+                <Fa class="mr-2" icon="syringe" size="lg" />
+              </div>
               {{ job.specialization }}
             </div>
             <div
@@ -136,9 +146,67 @@
     computed: {
       disabled() {
         return (
-          new Date(this.job.applicationDeadline) < new Date() ||
+          (this.job.applicationDeadline &&
+            new Date(this.job.applicationDeadline) < new Date()) ||
           this.job.status != "published" ||
           this.job.paidExpiresAt < new Date()
+        );
+      }
+    },
+    methods: {
+      timeSince(date) {
+        const seconds = Math.floor((new Date() - date) / 1000);
+
+        let interval = seconds / 31536000;
+
+        if (interval > 1) {
+          return (
+            Math.floor(interval) +
+            " Jahr" +
+            (Math.floor(interval) > 1 ? "en" : "")
+          );
+        }
+
+        interval = seconds / (60 * 60 * 24 * 7);
+        if (interval > 1) {
+          return (
+            Math.floor(interval) +
+            " Woche" +
+            (Math.floor(interval) > 1 ? "n" : "")
+          );
+        }
+
+        interval = seconds / 86400;
+        if (interval > 1) {
+          return (
+            Math.floor(interval) +
+            " Tag" +
+            (Math.floor(interval) > 1 ? "en" : "")
+          );
+        }
+
+        interval = seconds / 3600;
+        if (interval > 1) {
+          return (
+            Math.floor(interval) +
+            " Stunde" +
+            (Math.floor(interval) > 1 ? "n" : "")
+          );
+        }
+
+        interval = seconds / 60;
+        if (interval > 1) {
+          return (
+            Math.floor(interval) +
+            " Minute" +
+            (Math.floor(interval) > 1 ? "n" : "")
+          );
+        }
+
+        return (
+          Math.floor(seconds) +
+          " Sekunde" +
+          (Math.floor(interval) > 1 ? "n" : "")
         );
       }
     }

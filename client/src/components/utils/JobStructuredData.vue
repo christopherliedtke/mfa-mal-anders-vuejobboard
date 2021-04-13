@@ -63,9 +63,9 @@
                     addressCountry: this.job.company.country
                   }
                 },
-                validThrough: new Date(
-                  this.job.applicationDeadline
-                ).toISOString(),
+                validThrough: this.job.applicationDeadline
+                  ? new Date(this.job.applicationDeadline).toISOString()
+                  : new Date(this.job.paidExpiresAt).toISOString(),
                 employmentType: this.getEmploymentType(this.job.employmentType),
                 baseSalary: {
                   "@type": "MonetaryAmount",

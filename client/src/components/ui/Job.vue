@@ -1,110 +1,146 @@
 <template>
   <div>
     <div v-if="job.title" class="job position-relative">
-      <h1>{{ job.title }}</h1>
-
-      <div
-        class="d-flex  flex-lg-nowrap align-items-start align-items-md-center my-3"
-      >
-        <div
-          v-if="job.company && job.company.logoUrl"
-          class="logo-container mr-2 mb-3 mb-lg-0 order-2 order-sm-1"
+      <div class="mb-4">
+        <h1>{{ job.title }}</h1>
+        <span class="lead text-muted"
+          >{{ job.company.name }} | {{ job.company.location }}
+          {{
+            job.company.state != job.company.location
+              ? ", " + job.company.state
+              : ""
+          }}</span
         >
-          <b-img
-            class="logo my-3"
-            :src="job.company.logoUrl"
-            fluid
-            :alt="`Logo - ${job.company.name}`"
-          />
-        </div>
-        <div class="d-flex flex-wrap head order-1 order-sm-2">
-          <div>
-            <Fa class="mr-2" :icon="['fas', 'map-marker']" size="lg" />
-            {{
-              job.company.state != job.company.location
-                ? `${job.company.location}, ${job.company.state}`
-                : job.company.location
-            }}
-          </div>
-          <div>
-            <Fa class="mr-2" :icon="['fas', 'building']" size="lg" />
-            {{ job.company.name }}
-          </div>
-          <div>
-            <Fa class="mr-2" :icon="['fas', 'clock']" size="lg" />
-            {{
-              employmentTypeOptions.filter(
-                option => option.value === job.employmentType
-              )[0].text
-            }}
-          </div>
-          <div>
-            <Fa class="mr-2" :icon="['fas', 'calendar-alt']" size="lg" />
-            Veröffentlicht:
-            {{
-              job.paid
-                ? new Date(
-                    parseInt(job.publishedAt || job.paidAt)
-                  ).toLocaleDateString()
-                : "-"
-            }}
-          </div>
-          <div>
-            <Fa class="mr-2" :icon="['fas', 'calendar-times']" size="lg" />
-            Bewerbungsfrist:
-            {{ new Date(job.applicationDeadline).toLocaleDateString() }}
-          </div>
-          <div>
-            <Fa class="mr-2" :icon="['fas', 'users']" size="lg" />
+      </div>
 
-            {{ job.company.size }}
-          </div>
-          <div v-if="job.salaryMin || job.salaryMax">
-            <Fa
-              class="mr-2"
-              icon="euro-sign"
-              mask="calendar"
-              transform="shrink-9 down-3"
-              size="lg"
-            />
-            {{
-              !job.salaryMax
-                ? `ab ${parseInt(job.salaryMin)
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}€`
-                : `${
-                    job.salaryMin
-                      ? parseInt(job.salaryMin)
-                          .toString()
-                          .replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " -"
-                      : "bis"
-                  }`
-            }}
-            {{
-              job.salaryMax
-                ? `${parseInt(job.salaryMax)
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}€`
-                : ""
-            }}
-          </div>
-          <div v-if="job.specialization && job.specialization != 'null'">
-            <Fa class="mr-2" icon="briefcase-medical" size="lg" />
-            {{ job.specialization }}
-          </div>
+      <hr />
+
+      <div class="py-2">
+        <div class="d-flex flex-lg-nowrap align-items-start">
           <div
-            v-if="job.simpleApplication"
-            v-b-tooltip.bottom.hover
-            title="Lebenslauf genügt für Bewerbung"
+            v-if="job.company && job.company.logoUrl"
+            class="logo-container mr-1 ml-2 ml-sm-0 mr-sm-4 mb-3 mb-lg-0 order-2 order-sm-1"
           >
-            <b-badge style="cursor: pointer" pill variant="secondary"
-              ><Fa class="mr-1" :icon="['fas', 'hashtag']" />Einfach
-              bewerben</b-badge
-            >
+            <b-img
+              class="logo"
+              :src="job.company.logoUrl"
+              :alt="`Logo - ${job.company.name}`"
+            />
           </div>
+          <b-row cols="1" cols-lg="2" class="head order-1 order-sm-2">
+            <!-- <b-col>
+              <div class="icon">
+                <Fa :icon="['fas', 'map-marker']" size="lg" />
+              </div>
+              {{
+                job.company.state != job.company.location
+                  ? `${job.company.location}, ${job.company.state}`
+                  : job.company.location
+              }}
+            </b-col>
+            <b-col>
+              <div class="icon">
+                <Fa :icon="['fas', 'building']" size="lg" />
+              </div>
+              {{ job.company.name }}
+            </b-col> -->
+            <b-col>
+              <div class="icon">
+                <Fa :icon="['fas', 'briefcase']" size="lg" />
+              </div>
+              {{
+                employmentTypeOptions.filter(
+                  option => option.value === job.employmentType
+                )[0].text
+              }}
+            </b-col>
+            <b-col>
+              <div class="icon">
+                <Fa :icon="['fas', 'clock']" size="lg" />
+              </div>
+              {{
+                job.paid
+                  ? "vor " +
+                    timeSince(new Date(parseInt(job.publishedAt || job.paidAt)))
+                  : "-"
+              }}
+            </b-col>
+            <b-col
+              v-if="job.applicationDeadline"
+              :class="
+                new Date(job.applicationDeadline) < new Date()
+                  ? 'text-danger'
+                  : ''
+              "
+            >
+              <div class="icon">
+                <Fa :icon="['fas', 'calendar-times']" size="lg" />
+              </div>
+              bis
+              {{ new Date(job.applicationDeadline).toLocaleDateString() }}
+            </b-col>
+            <b-col>
+              <div class="icon">
+                <Fa :icon="['fas', 'users']" size="lg" />
+              </div>
+
+              {{ job.company.size }}
+            </b-col>
+            <b-col v-if="job.salaryMin || job.salaryMax">
+              <div class="icon">
+                <Fa
+                  icon="euro-sign"
+                  mask="calendar"
+                  transform="shrink-9 down-3"
+                  size="lg"
+                />
+              </div>
+              {{
+                !job.salaryMax
+                  ? `ab ${parseInt(job.salaryMin)
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}€`
+                  : `${
+                      job.salaryMin
+                        ? parseInt(job.salaryMin)
+                            .toString()
+                            .replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " -"
+                        : "bis"
+                    }`
+              }}
+              {{
+                job.salaryMax
+                  ? `${parseInt(job.salaryMax)
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}€`
+                  : ""
+              }}
+            </b-col>
+            <b-col v-if="job.specialization && job.specialization != 'null'">
+              <div class="icon">
+                <Fa icon="syringe" size="lg" />
+              </div>
+              {{ job.specialization }}
+            </b-col>
+            <b-col
+              v-if="job.simpleApplication"
+              v-b-tooltip.bottom.hover
+              title="Lebenslauf genügt für Bewerbung"
+            >
+              <b-badge style="cursor: pointer" pill variant="secondary">
+                <div class="icon">
+                  <Fa class="mr-1" :icon="['fas', 'hashtag']" />
+                </div>
+                Einfach bewerben</b-badge
+              >
+            </b-col>
+          </b-row>
         </div>
       </div>
-      <div class="position-relative d-flex align-items-center">
+
+      <hr />
+
+      <div class="position-relative d-flex align-items-center my-4">
         <StarJob
           :job-id="job._id"
           position="relative"
@@ -146,6 +182,7 @@
           </b-link>
         </div>
       </div>
+
       <div
         v-if="job.imageUrl"
         style="overflow: hidden"
@@ -495,6 +532,7 @@
                                         publishedAt
                                         paidAt
                                         paid
+                                        paidExpiresAt
                                         title
                                         description
                                         profession
@@ -581,6 +619,61 @@
 
         document.execCommand("copy");
         document.body.removeChild(el);
+      },
+      timeSince(date) {
+        const seconds = Math.floor((new Date() - date) / 1000);
+
+        let interval = seconds / 31536000;
+
+        if (interval > 1) {
+          return (
+            Math.floor(interval) +
+            " Jahr" +
+            (Math.floor(interval) > 1 ? "en" : "")
+          );
+        }
+
+        interval = seconds / (60 * 60 * 24 * 7);
+        if (interval > 1) {
+          return (
+            Math.floor(interval) +
+            " Woche" +
+            (Math.floor(interval) > 1 ? "n" : "")
+          );
+        }
+
+        interval = seconds / 86400;
+        if (interval > 1) {
+          return (
+            Math.floor(interval) +
+            " Tag" +
+            (Math.floor(interval) > 1 ? "en" : "")
+          );
+        }
+
+        interval = seconds / 3600;
+        if (interval > 1) {
+          return (
+            Math.floor(interval) +
+            " Stunde" +
+            (Math.floor(interval) > 1 ? "n" : "")
+          );
+        }
+
+        interval = seconds / 60;
+        if (interval > 1) {
+          return (
+            Math.floor(interval) +
+            " Minute" +
+            (Math.floor(interval) > 1 ? "n" : "")
+          );
+        }
+
+        return (
+          Math.floor(seconds) +
+          " Sekunde" +
+          (Math.floor(interval) > 1 ? "n" : "")
+        );
       }
     }
   };

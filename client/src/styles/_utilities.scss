@@ -1,238 +1,246 @@
 #app {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 main {
-    flex-grow: 1;
-    // display: flex;
-    // flex-direction: column;
-    // align-items: center;
+  flex-grow: 1;
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
 }
 
 // #Scrollbar
 body::-webkit-scrollbar {
-    width: 0.8rem;
+  width: 0.8rem;
 }
 
 body::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    background-color: $primary;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: $primary;
 }
 
 body::-webkit-scrollbar-thumb {
-    background-color: transparentize($color: $dark, $amount: 0.5);
-    border-radius: 10px;
+  background-color: transparentize($color: $dark, $amount: 0.5);
+  border-radius: 10px;
 }
 
 .title {
-    text-align: center;
+  text-align: center;
+  background-color: $primary;
+  color: $light;
+  padding: 1.8rem 0.75rem 1.5rem 0.75rem;
+
+  @media screen and (max-width: $break-menu) {
+    padding: 1rem 0.75rem 0.65rem 0.75rem;
+  }
+
+  h1 {
+    margin: 0;
+  }
+
+  .breadcrumb {
+    justify-content: center;
     background-color: $primary;
     color: $light;
-    padding: 1.8rem 0.75rem 1.5rem 0.75rem;
+    margin: 0;
+    padding: 0.5rem 0;
+    font-size: small;
+    line-height: 0.75;
 
-    @media screen and (max-width: $break-menu) {
-        padding: 1rem 0.75rem 0.65rem 0.75rem;
-    }
+    & > .breadcrumb-item {
+      & > a {
+        color: $light-shade;
 
-    h1 {
-        margin: 0;
-    }
-
-    .breadcrumb {
-        justify-content: center;
-        background-color: $primary;
-        color: $light;
-        margin: 0;
-        padding: 0.5rem 0;
-        font-size: small;
-        line-height: 0.75;
-
-        & > .breadcrumb-item {
-            & > a {
-                color: $light-shade;
-
-                &:hover {
-                    color: $secondary;
-                }
-            }
-
-            &:before {
-                color: $light;
-            }
-
-            &.active {
-                color: transparentize($light, 0.2);
-            }
+        &:hover {
+          color: $secondary;
         }
+      }
+
+      &:before {
+        color: $light;
+      }
+
+      &.active {
+        color: transparentize($light, 0.2);
+      }
     }
+  }
 }
 
 h1.title {
-    text-align: center;
-    background-color: $primary;
-    color: $light;
-    padding: 1.8rem 0.75rem;
+  text-align: center;
+  background-color: $primary;
+  color: $light;
+  padding: 1.8rem 0.75rem;
 
-    @media screen and (max-width: $break-menu) {
-        padding: 1rem 0.75rem;
-    }
+  @media screen and (max-width: $break-menu) {
+    padding: 1rem 0.75rem;
+  }
 }
 
 .lead {
-    @media screen and (max-width: $break-menu) {
-        font-size: 1.1rem;
-    }
+  @media screen and (max-width: $break-menu) {
+    font-size: 1.1rem;
+  }
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.small {
+  font-size: small;
 }
 
 .card {
-    border-radius: $border-radius1;
-    border: none;
+  border-radius: $border-radius1;
+  border: none;
 }
 
 a.icon-box {
-    color: $dark;
+  color: $dark;
 
-    &:hover {
-        color: $tertiary;
-    }
+  &:hover {
+    color: $tertiary;
+  }
 }
 
 .example {
-    border-radius: $border-radius1;
-    background-color: $light-shade;
-    padding: 1rem;
-    margin: 1rem 0;
+  border-radius: $border-radius1;
+  background-color: $light-shade;
+  padding: 1rem;
+  margin: 1rem 0;
 }
 
 .icon-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 2.5rem;
-    margin: 1rem;
-    background-color: $light-shade;
-    border-radius: $border-radius1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2.5rem;
+  margin: 1rem;
+  background-color: $light-shade;
+  border-radius: $border-radius1;
 
-    svg {
-        color: $primary;
-        margin-bottom: 1rem;
-    }
+  svg {
+    color: $primary;
+    margin-bottom: 1rem;
+  }
 }
 
 .icon-box2 {
-    padding: 1.5rem;
-    margin: 1rem;
-    background-color: $primary;
-    border-radius: $border-radius1;
+  padding: 1.5rem;
+  margin: 1rem;
+  background-color: $primary;
+  border-radius: $border-radius1;
 
-    svg {
-        color: $light;
-        margin-bottom: 0rem;
-    }
+  svg {
+    color: $light;
+    margin-bottom: 0rem;
+  }
 }
 
 .bold {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .italic {
-    font-style: italic;
+  font-style: italic;
 }
 
 .border-radius1 {
-    border-radius: $border-radius1;
+  border-radius: $border-radius1;
 }
 
 .border-radius2 {
-    border-radius: $border-radius2;
+  border-radius: $border-radius2;
 }
 
 .shadow1 {
-    box-shadow: $shadow1;
+  box-shadow: $shadow1;
 }
 
 .shadow2 {
-    box-shadow: $shadow2;
+  box-shadow: $shadow2;
 }
 
 .shadow3 {
-    box-shadow: $shadow3;
+  box-shadow: $shadow3;
 }
 
 .bg-light-shade {
-    background-color: $light-shade;
+  background-color: $light-shade;
 }
 
 ul.no-bullets {
-    list-style-type: none; /* Remove bullets */
-    padding: 0; /* Remove padding */
-    margin: 0; /* Remove margins */
+  list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margins */
 }
 
 .bg-logo {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translateY(-50%) translateX(-50%);
-    width: 100%;
-    height: 100%;
-    background-image: url("/img/MfaMalAnders_logo_circle_dark.svg");
-    background-position: center center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    opacity: 0.075;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  width: 100%;
+  height: 100%;
+  background-image: url("/img/MfaMalAnders_logo_circle_dark.svg");
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.075;
 }
 
 .auth-container {
-    max-width: 500px;
-    background-color: $light-shade;
-    border-radius: $border-radius1;
-    box-shadow: $shadow1;
-    padding: 2.5rem;
-    margin: 2.5rem auto;
+  max-width: 500px;
+  background-color: $light-shade;
+  border-radius: $border-radius1;
+  box-shadow: $shadow1;
+  padding: 2.5rem;
+  margin: 2.5rem auto;
 }
 
 .animate {
-    transition: $transition1;
+  transition: $transition1;
 }
 
 .rotate-90 {
-    transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 
 // #TipTapEditor
 .editor__content {
-    &.is-invalid {
-        & > .ProseMirror {
-            @extend .is-invalid;
-        }
+  &.is-invalid {
+    & > .ProseMirror {
+      @extend .is-invalid;
     }
-    &.is-valid {
-        & > .ProseMirror {
-            @extend .is-valid;
-        }
+  }
+  &.is-valid {
+    & > .ProseMirror {
+      @extend .is-valid;
     }
+  }
 }
 
 .ProseMirror {
-    @extend .form-control;
-    height: auto;
-    min-height: 150px;
-    padding-top: 0.8rem !important;
-    padding-bottom: 0.8rem !important;
+  @extend .form-control;
+  height: auto;
+  min-height: 150px;
+  padding-top: 0.8rem !important;
+  padding-bottom: 0.8rem !important;
 }
 
 // #Transitions
 .fade-enter-active,
 .fade-leave-active {
-    transition: $transition2;
+  transition: $transition2;
 }
 
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-    opacity: 0;
+  opacity: 0;
 }

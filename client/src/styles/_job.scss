@@ -1,61 +1,78 @@
 .job {
-    padding: 3rem;
+  padding: 3rem;
+  box-shadow: $shadow1;
+  border-radius: $border-radius1;
+  //   background-color: $light-shade;
+
+  @media screen and (max-width: $break-menu) {
+    padding: 0;
+    box-shadow: none;
+    border-radius: none;
+  }
+
+  h1 {
+    font-weight: bold;
+  }
+
+  .logo-container {
+    background-color: $light;
+    border-radius: $border-radius1;
     box-shadow: $shadow1;
-    border-radius: $border-radius2;
+    min-width: 80px;
+    min-height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    @media screen and (max-width: $break-menu) {
-        padding: 0;
-        box-shadow: none;
-        border-radius: none;
+    .logo {
+      max-width: 60px;
+      max-height: 60px;
+      //   padding: 0.5rem;
+
+      @media screen and (max-width: 767px) {
+        // max-width: 75px;
+        // max-height: 75px;
+        // min-width: 70px;
+        // padding: 0;
+      }
     }
+  }
 
-    h1 {
-        font-weight: bold;
-    }
+  .head {
+    & > div {
+      // margin-right: 1rem;
+      margin-top: 0.275rem;
+      margin-bottom: 0.275rem;
+      //   color: $primary;
+      color: transparentize($primary, $amount: 0.1);
+      display: flex;
+      align-items: flex-start;
 
-    .logo-container {
-        background-color: $light-shade;
-        border-radius: $border-radius1;
-        min-width: 120px;
+      .icon {
+        min-width: 40px;
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
 
-        .logo {
-            max-width: 120px;
-            max-height: 120px;
-            padding: 0.5rem;
-
-            @media screen and (max-width: 767px) {
-                max-width: 75px;
-                max-height: 75px;
-                // min-width: 70px;
-                padding: 0;
-            }
+        svg {
+          margin-right: 1rem;
         }
+      }
     }
 
-    .head {
-        div {
-            margin-right: 1rem;
-            margin-top: 0.275rem;
-            margin-bottom: 0.275rem;
-            color: $primary;
-        }
-
-        .badge {
-            font-size: inherit;
-            font-weight: inherit;
-            color: $light;
-            padding: 0.3rem 0.7rem;
-        }
+    .badge {
+      font-size: inherit;
+      font-weight: inherit;
+      color: $light;
+      padding: 0.3rem 0.7rem;
     }
+  }
 
-    .title-img {
-        border-radius: $border-radius1;
-    }
+  .title-img {
+    border-radius: $border-radius1;
+  }
 
-    .blur {
-        filter: blur(4px) opacity(0.4);
-    }
+  .blur {
+    filter: blur(8px) opacity(0.3);
+  }
 }

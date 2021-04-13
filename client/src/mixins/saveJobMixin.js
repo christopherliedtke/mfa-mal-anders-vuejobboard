@@ -21,13 +21,17 @@ export const saveJobMixin = {
                                 )}"
                                 profession: "${job.profession}"
                                 employmentType: "${job.employmentType}"
-                                applicationDeadline: ${new Date(
-                                  new Date(
-                                    new Date(job.applicationDeadline).setHours(
-                                      23
-                                    )
-                                  ).setMinutes(59)
-                                ).setSeconds(59)}
+                                applicationDeadline: ${
+                                  job.applicationDeadline
+                                    ? new Date(
+                                        new Date(
+                                          new Date(
+                                            job.applicationDeadline
+                                          ).setHours(23)
+                                        ).setMinutes(59)
+                                      ).setSeconds(59)
+                                    : null
+                                }
                                 simpleApplication: ${job.simpleApplication}
                                 specialization: "${job.specialization}"
                                 extJobUrl: "${

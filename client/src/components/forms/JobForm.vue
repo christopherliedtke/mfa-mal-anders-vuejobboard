@@ -86,12 +86,15 @@
         ></b-form-select
       >
 
-      <label for="application-deadline">Bewerbungsfrist *</label>
+      <label for="application-deadline">Bewerbungsfrist</label>
       <b-form-datepicker
         id="application-deadline"
         v-model="applicationDeadline"
-        :state="validated && applicationDeadline != ''"
+        :state="validated ? true : null"
         placeholder="Bewerbungsfrist wählen"
+        :reset-button="true"
+        :reset-value="''"
+        label-reset-button="Zurücksetzen"
       />
 
       <label for="simple-applcation">Nur mit Lebenslauf bewerben</label>
@@ -526,10 +529,7 @@
           profession: "",
           specialization: "",
           employmentType: "",
-          applicationDeadline: new Date(
-            new Date().valueOf() +
-              1000 * 60 * 60 * 24 * this.$config.payment.duration
-          ),
+          applicationDeadline: null,
           simpleApplication: false,
           extJobUrl: "",
           applicationEmail: "",
@@ -592,10 +592,18 @@
       },
       applicationDeadline: {
         get() {
-          return new Date(this.job.applicationDeadline);
+          if (this.job.applicationDeadline) {
+            return new Date(this.job.applicationDeadline);
+          } else {
+            return "";
+          }
         },
         set(value) {
-          this.job.applicationDeadline = new Date(value).getTime();
+          if (value) {
+            this.job.applicationDeadline = new Date(value).getTime();
+          } else {
+            this.job.applicationDeadline = null;
+          }
         }
       },
       jobQuery: function() {
@@ -803,7 +811,7 @@
         return !this.job.title ||
           !this.job.description ||
           !this.job.employmentType ||
-          !this.job.applicationDeadline ||
+          // !this.job.applicationDeadline ||
           !this.job.company.name ||
           !this.job.company.country ||
           !this.job.company.location ||

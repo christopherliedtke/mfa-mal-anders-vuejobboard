@@ -50,7 +50,8 @@
             v-if="
               job.status === 'published' &&
                 job.paidExpiresAt >= new Date() &&
-                job.applicationDeadline >= new Date().setHours(24) &&
+                (!job.applicationDeadline ||
+                  job.applicationDeadline >= new Date().getTime()) &&
                 job.paid
             "
             class="mr-1"
@@ -74,7 +75,10 @@
           >
 
           <b-badge
-            v-if="job.applicationDeadline < new Date().setHours(24)"
+            v-if="
+              job.applicationDeadline &&
+                job.applicationDeadline < new Date().getTime()
+            "
             class="mr-1"
             pill
             variant="danger"
@@ -88,16 +92,10 @@
               {{ new Date(parseInt(job.createdAt)).toLocaleString() }}
             </span>
           </div>
-          <div>
+          <div v-if="job.applicationDeadline">
             Bewerbungsfrist:
             <span class="text-muted">
-              {{
-                new Date(
-                  new Date(job.applicationDeadline).valueOf() +
-                    1000 * 60 * 60 * 23 -
-                    1
-                ).toLocaleString()
-              }}
+              {{ new Date(job.applicationDeadline).toLocaleString() }}
             </span>
           </div>
           <div v-if="job.publishedAt && job.paidExpiresAt >= new Date()">
@@ -244,33 +242,33 @@
           const jobs = await this.$axios.get("/graphql", {
             params: {
               query: `
-                                query {
-                                    myJobs {
-                                        _id
-                                        createdAt
-                                        updatedAt
-                                        publishedAt
-                                        status
-                                        paid
-                                        paidExpiresAt
-                                        applicationDeadline
-                                        title
-                                        company {
-                                            name
-                                            street
-                                            zipCode
-                                            location
-                                            state
-                                            size
-                                        }
-                                        payment {
-                                            status
-                                            paidAt
-                                            paymentExpiresAt
-                                        }
-                                    }
-                                }
-                            `
+                query {
+                    myJobs {
+                        _id
+                        createdAt
+                        updatedAt
+                        publishedAt
+                        status
+                        paid
+                        paidExpiresAt
+                        applicationDeadline
+                        title
+                        company {
+                            name
+                            street
+                            zipCode
+                            location
+                            state
+                            size
+                        }
+                        payment {
+                            status
+                            paidAt
+                            paymentExpiresAt
+                        }
+                    }
+                }
+            `
             }
           });
 

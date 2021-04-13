@@ -628,7 +628,8 @@
           item.publishedAt <= new Date() &&
           (item.paidExpiresAt >= new Date() ||
             (item.payment && item.payment.paymentExpiresAt >= new Date())) &&
-          new Date(item.applicationDeadline) > new Date(new Date().setHours(24))
+          (!item.applicationDeadline ||
+            new Date(item.applicationDeadline) > new Date(new Date().getTime()))
         ) {
           return "table-success";
         }
@@ -637,8 +638,9 @@
         }
         if (
           item.status === "unpublished" ||
-          new Date(item.applicationDeadline) <
-            new Date(new Date().setHours(24)) ||
+          (item.applicationDeadline &&
+            new Date(item.applicationDeadline) <
+              new Date(new Date().getTime())) ||
           item.paidExpiresAt < new Date()
         ) {
           return "table-danger";
