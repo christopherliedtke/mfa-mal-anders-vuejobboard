@@ -3,7 +3,7 @@
     :disabled="!$route.meta.public"
     class="whatsapp-share-btn"
     :href="
-      `https://wa.me/send?text=${url}${sharePath ? sharePath : $route.fullPath}`
+      `https://wa.me/?text=${url}${sharePath ? sharePath : $route.fullPath}`
     "
     target="_blank"
     aria-label="WhatsApp"
