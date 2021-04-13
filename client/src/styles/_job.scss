@@ -45,7 +45,7 @@
     flex-wrap: wrap;
 
     & > div {
-      margin-right: 1rem;
+      margin-right: 2rem;
       margin-top: 0.275rem;
       margin-bottom: 0.275rem;
       color: transparentize($primary, $amount: 0.1);
@@ -59,7 +59,7 @@
         align-items: flex-start;
 
         svg {
-          margin-right: 1rem;
+          margin-right: 0.5rem;
         }
       }
     }

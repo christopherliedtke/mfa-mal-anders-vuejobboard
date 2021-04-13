@@ -28,7 +28,9 @@
       <hr />
 
       <div>
-        <div class="d-flex flex-lg-nowrap align-items-start">
+        <div
+          class="d-flex flex-lg-nowrap justify-content-between align-items-start"
+        >
           <div
             v-if="job.company && job.company.logoUrl"
             class="d-sm-none logo-container mr-1 ml-2 ml-sm-0 mr-sm-4 mb-3 mb-lg-0 order-2 order-sm-1"
@@ -39,7 +41,7 @@
               :alt="`Logo - ${job.company.name}`"
             />
           </div>
-          <div class="head order-1 order-sm-2">
+          <div class="head flex-column flex-sm-row order-1 order-sm-2">
             <!-- <b-col>
               <div class="icon">
                 <Fa :icon="['fas', 'map-marker']" size="lg" />
