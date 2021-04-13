@@ -39,8 +39,11 @@
   }
 
   .head {
+    display: flex;
+    flex-wrap: wrap;
+
     & > div {
-      // margin-right: 1rem;
+      margin-right: 1rem;
       margin-top: 0.275rem;
       margin-bottom: 0.275rem;
       //   color: $primary;

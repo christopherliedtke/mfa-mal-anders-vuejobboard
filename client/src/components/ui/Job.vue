@@ -1,25 +1,37 @@
 <template>
   <div>
     <div v-if="job.title" class="job position-relative">
-      <div class="mb-4">
-        <h1>{{ job.title }}</h1>
-        <span class="lead text-muted"
-          >{{ job.company.name }} | {{ job.company.location }}
-          {{
-            job.company.state != job.company.location
-              ? ", " + job.company.state
-              : ""
-          }}</span
+      <div class="mb-4 d-flex align-items-start justify-content-between">
+        <div>
+          <h1>{{ job.title }}</h1>
+          <span class="lead text-muted"
+            >{{ job.company.name }} | {{ job.company.location }}
+            {{
+              job.company.state != job.company.location
+                ? ", " + job.company.state
+                : ""
+            }}</span
+          >
+        </div>
+        <div
+          v-if="job.company && job.company.logoUrl"
+          class="d-none d-sm-flex logo-container mr-1 ml-2 ml-sm-0 mr-sm-4 mb-3 mb-lg-0 order-2 order-sm-1"
         >
+          <b-img
+            class="logo"
+            :src="job.company.logoUrl"
+            :alt="`Logo - ${job.company.name}`"
+          />
+        </div>
       </div>
 
       <hr />
 
-      <div class="py-2">
+      <div>
         <div class="d-flex flex-lg-nowrap align-items-start">
           <div
             v-if="job.company && job.company.logoUrl"
-            class="logo-container mr-1 ml-2 ml-sm-0 mr-sm-4 mb-3 mb-lg-0 order-2 order-sm-1"
+            class="d-sm-none logo-container mr-1 ml-2 ml-sm-0 mr-sm-4 mb-3 mb-lg-0 order-2 order-sm-1"
           >
             <b-img
               class="logo"
@@ -27,7 +39,7 @@
               :alt="`Logo - ${job.company.name}`"
             />
           </div>
-          <b-row cols="1" cols-lg="2" class="head order-1 order-sm-2">
+          <div class="head order-1 order-sm-2">
             <!-- <b-col>
               <div class="icon">
                 <Fa :icon="['fas', 'map-marker']" size="lg" />
@@ -44,7 +56,7 @@
               </div>
               {{ job.company.name }}
             </b-col> -->
-            <b-col>
+            <div>
               <div class="icon">
                 <Fa :icon="['fas', 'briefcase']" size="lg" />
               </div>
@@ -53,8 +65,8 @@
                   option => option.value === job.employmentType
                 )[0].text
               }}
-            </b-col>
-            <b-col>
+            </div>
+            <div>
               <div class="icon">
                 <Fa :icon="['fas', 'clock']" size="lg" />
               </div>
@@ -63,8 +75,8 @@
                   ? timeSince(new Date(parseInt(job.publishedAt || job.paidAt)))
                   : "-"
               }}
-            </b-col>
-            <b-col
+            </div>
+            <div
               v-if="job.applicationDeadline"
               :class="
                 new Date(job.applicationDeadline) < new Date()
@@ -77,15 +89,15 @@
               </div>
               bis
               {{ new Date(job.applicationDeadline).toLocaleDateString() }}
-            </b-col>
-            <b-col>
+            </div>
+            <div>
               <div class="icon">
                 <Fa :icon="['fas', 'users']" size="lg" />
               </div>
 
               {{ job.company.size }}
-            </b-col>
-            <b-col v-if="job.salaryMin || job.salaryMax">
+            </div>
+            <div v-if="job.salaryMin || job.salaryMax">
               <div class="icon">
                 <Fa
                   icon="euro-sign"
@@ -114,14 +126,14 @@
                       .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}€`
                   : ""
               }}
-            </b-col>
-            <b-col v-if="job.specialization && job.specialization != 'null'">
+            </div>
+            <div v-if="job.specialization && job.specialization != 'null'">
               <div class="icon">
                 <Fa icon="syringe" size="lg" />
               </div>
               {{ job.specialization }}
-            </b-col>
-            <b-col
+            </div>
+            <div
               v-if="job.simpleApplication"
               v-b-tooltip.bottom.hover
               title="Lebenslauf genügt für Bewerbung"
@@ -132,8 +144,8 @@
                 </div>
                 Einfach bewerben</b-badge
               >
-            </b-col>
-          </b-row>
+            </div>
+          </div>
         </div>
       </div>
 
