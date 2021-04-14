@@ -5,8 +5,8 @@
         <div>
           <h1>{{ job.title }}</h1>
           <span class="lead text-muted"
-            >{{ job.company.name }} | {{ job.company.location }}
-            {{
+            >{{ job.company.name }} | {{ job.company.location
+            }}{{
               job.company.state != job.company.location
                 ? ", " + job.company.state
                 : ""
