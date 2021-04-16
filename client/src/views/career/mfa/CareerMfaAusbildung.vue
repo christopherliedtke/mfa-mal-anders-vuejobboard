@@ -432,7 +432,7 @@
         Medizinische Fachangestellte. Ausführliche Informationen zum Gehalt für
         Medizinische Fachangestellte nach der Ausbildung, den Tätigkeitsgruppen
         und Einteilung der Berufsjahre findest du
-        <b-link to="/karriere/gehalt">hier</b-link>.
+        <b-link to="/karriere/mfa/gehalt">hier</b-link>.
       </p>
       <p>
         Hast du noch Fragen zum Beruf oder der Ausbildung der Medizinischen

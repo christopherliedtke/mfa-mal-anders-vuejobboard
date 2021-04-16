@@ -168,7 +168,7 @@
                 >Karrierechancen</b-link
               >
               aber auch
-              <b-link to="/karriere/gehalt" class="text-secondary"
+              <b-link to="/karriere/mfa/gehalt" class="text-secondary"
                 >Gehalt</b-link
               >
               (inkl. Gehaltsrechner),

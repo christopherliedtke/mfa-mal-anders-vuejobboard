@@ -767,7 +767,7 @@
                                 "@type": "ListItem",
                                 "position": 3,
                                 "name": "Gehalt",
-                                "item": "https://www.mfa-mal-anders.de/karriere/gehalt"
+                                "item": "https://www.mfa-mal-anders.de/karriere/mfa/gehalt"
                             }]
                         }`
           },

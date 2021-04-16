@@ -110,7 +110,7 @@
             <b-nav-item to="/karriere/bewerbungstipps"
               >Bewerbungstipps</b-nav-item
             >
-            <b-nav-item to="/karriere/gehalt">Gehaltsrechner</b-nav-item>
+            <b-nav-item to="/karriere/mfa/gehalt">Gehaltsrechner</b-nav-item>
             <b-nav-item to="/dashboard">Stellenanzeige schalten</b-nav-item>
 
             <b-nav-item class="mt-5" to="/kontakt">Kontakt</b-nav-item>
