@@ -64,12 +64,7 @@
                 )[0].text
               }}
             </div>
-            <div>
-              <div class="icon">
-                <Fa class="mr-2" :icon="['fas', 'clock']" size="lg" />
-              </div>
-              {{ timeSince(new Date(parseInt(job.publishedAt || job.paidAt))) }}
-            </div>
+
             <div v-if="job.salaryMin || job.salaryMax">
               <div class="icon">
                 <Fa
@@ -106,6 +101,12 @@
                 <Fa class="mr-2" icon="syringe" size="lg" />
               </div>
               {{ job.specialization }}
+            </div>
+            <div>
+              <div class="icon">
+                <Fa class="mr-2" :icon="['fas', 'clock']" size="lg" />
+              </div>
+              {{ timeSince(new Date(parseInt(job.publishedAt || job.paidAt))) }}
             </div>
             <div
               v-if="job.simpleApplication"

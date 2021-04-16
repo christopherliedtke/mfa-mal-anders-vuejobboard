@@ -70,30 +70,6 @@
             </div>
             <div>
               <div class="icon">
-                <Fa :icon="['fas', 'clock']" size="lg" />
-              </div>
-              {{
-                job.paid
-                  ? timeSince(new Date(parseInt(job.publishedAt || job.paidAt)))
-                  : "-"
-              }}
-            </div>
-            <div
-              v-if="job.applicationDeadline"
-              :class="
-                new Date(job.applicationDeadline) < new Date()
-                  ? 'text-danger'
-                  : ''
-              "
-            >
-              <div class="icon">
-                <Fa :icon="['fas', 'calendar-times']" size="lg" />
-              </div>
-              bis
-              {{ new Date(job.applicationDeadline).toLocaleDateString() }}
-            </div>
-            <div>
-              <div class="icon">
                 <Fa :icon="['fas', 'users']" size="lg" />
               </div>
 
@@ -135,15 +111,37 @@
               </div>
               {{ job.specialization }}
             </div>
+            <div>
+              <div class="icon">
+                <Fa :icon="['fas', 'clock']" size="lg" />
+              </div>
+              {{
+                job.paid
+                  ? timeSince(new Date(parseInt(job.publishedAt || job.paidAt)))
+                  : "-"
+              }}
+            </div>
+            <div
+              v-if="job.applicationDeadline"
+              :class="
+                new Date(job.applicationDeadline) < new Date()
+                  ? 'text-danger'
+                  : ''
+              "
+            >
+              <div class="icon">
+                <Fa :icon="['fas', 'calendar-times']" size="lg" />
+              </div>
+              bis
+              {{ new Date(job.applicationDeadline).toLocaleDateString() }}
+            </div>
             <div
               v-if="job.simpleApplication"
               v-b-tooltip.bottom.hover
               title="Lebenslauf genügt für Bewerbung"
             >
               <b-badge style="cursor: pointer" pill variant="secondary">
-                <div class="icon">
-                  <Fa class="mr-1" :icon="['fas', 'hashtag']" />
-                </div>
+                <Fa class="mr-1" :icon="['fas', 'hashtag']" />
                 Einfach bewerben</b-badge
               >
             </div>
