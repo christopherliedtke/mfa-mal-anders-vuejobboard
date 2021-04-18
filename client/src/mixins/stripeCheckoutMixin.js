@@ -7,7 +7,13 @@ export const stripeCheckoutMixin = {
     };
   },
   async mounted() {
-    await this.initStripe();
+    try {
+      // Script is loaded, do something
+      await this.$loadScript("https://js.stripe.com/v3/");
+      await this.initStripe();
+    } catch (err) {
+      // Failed to fetch script
+    }
   },
   methods: {
     async initStripe() {

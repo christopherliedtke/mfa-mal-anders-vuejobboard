@@ -22,6 +22,9 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
+import LoadScript from "vue-plugin-load-script";
+Vue.use(LoadScript);
+
 import config from "@/config/config.json";
 Vue.prototype.$config = config;
 

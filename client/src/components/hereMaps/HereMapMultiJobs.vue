@@ -29,11 +29,25 @@
       }
     },
     async mounted() {
-      const platform = new window.H.service.Platform({
-        apikey: this.apikey
-      });
-      this.platform = platform;
-      this.initializeHereMap();
+      try {
+        // Script is loaded, do something
+        await this.$loadScript("https://js.api.here.com/v3/3.1/mapsjs-core.js");
+        await Promise.all([
+          this.$loadScript("https://js.api.here.com/v3/3.1/mapsjs-service.js"),
+          this.$loadScript(
+            "https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"
+          ),
+          this.$loadScript("https://js.api.here.com/v3/3.1/mapsjs-ui.js")
+        ]);
+
+        const platform = new window.H.service.Platform({
+          apikey: this.apikey
+        });
+        this.platform = platform;
+        this.initializeHereMap();
+      } catch (err) {
+        // Failed to fetch script
+      }
     },
     methods: {
       forward(jobId) {
