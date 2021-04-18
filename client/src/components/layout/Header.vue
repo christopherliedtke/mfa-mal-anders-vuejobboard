@@ -202,6 +202,10 @@
                 path: "/karriere/mfa/gehalt"
               },
               {
+                title: "ZFA – Gehalt",
+                path: "/karriere/zfa/gehalt"
+              },
+              {
                 title: "Gehaltsverhandlung 2021",
                 path:
                   "/blog/article/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"

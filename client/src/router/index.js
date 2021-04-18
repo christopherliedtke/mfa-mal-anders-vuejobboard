@@ -48,6 +48,10 @@ const CareerMfaGehalt = () =>
   import(
     /* webpackChunkName: "career" */ "@/views/career/mfa/CareerMfaGehalt.vue"
   );
+const CareerZfaGehalt = () =>
+  import(
+    /* webpackChunkName: "career" */ "@/views/career/zfa/CareerZfaGehalt.vue"
+  );
 const CareerBewerbungstipps = () =>
   import(
     /* webpackChunkName: "career" */ "@/views/career/CareerBewerbungstipps.vue"
@@ -194,6 +198,14 @@ const routes = [
     path: "/karriere/mfa/gehalt",
     name: "KarriereMfaGehalt",
     component: CareerMfaGehalt,
+    meta: {
+      public: true
+    }
+  },
+  {
+    path: "/karriere/zfa/gehalt",
+    name: "KarriereZfaGehalt",
+    component: CareerZfaGehalt,
     meta: {
       public: true
     }
