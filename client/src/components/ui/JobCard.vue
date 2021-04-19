@@ -26,12 +26,8 @@
             <!-- eslint-disable -->
             <div
               v-html="
-                $sanitize(job.description, {
-                  allowedTags: [],
-                  textFilter: function(text, tagName) {
-                    return ' ' + text;
-                  }
-                }).substring(0, 200) + '...'
+                job.description.replace(/<[^>]+>/g, ' ').substring(0, 200) +
+                  '...'
               "
             ></div>
             <!-- eslint-enable -->

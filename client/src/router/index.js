@@ -46,11 +46,11 @@ const CareerMfaAusbildung = () =>
   );
 const CareerMfaGehalt = () =>
   import(
-    /* webpackChunkName: "career" */ "@/views/career/mfa/CareerMfaGehalt.vue"
+    /* webpackChunkName: "career-mfa-gehalt" */ "@/views/career/mfa/CareerMfaGehalt.vue"
   );
 const CareerZfaGehalt = () =>
   import(
-    /* webpackChunkName: "career" */ "@/views/career/zfa/CareerZfaGehalt.vue"
+    /* webpackChunkName: "career-zfa-gehalt" */ "@/views/career/zfa/CareerZfaGehalt.vue"
   );
 const CareerBewerbungstipps = () =>
   import(
@@ -59,24 +59,24 @@ const CareerBewerbungstipps = () =>
 
 const CareerJobsBerufsbilderHome = () =>
   import(
-    /* webpackChunkName: "career" */ "@/views/career/jobs-berufsbilder/CareerJobsBerufsbilderHome.vue"
+    /* webpackChunkName: "career-profession" */ "@/views/career/jobs-berufsbilder/CareerJobsBerufsbilderHome.vue"
   );
 const CareerBerufsbildType = () =>
   import(
-    /* webpackChunkName: "career" */ "@/views/career/jobs-berufsbilder/CareerBerufsbildType.vue"
+    /* webpackChunkName: "career-profession" */ "@/views/career/jobs-berufsbilder/CareerBerufsbildType.vue"
   );
 const CareerBerufsbildProfession = () =>
   import(
-    /* webpackChunkName: "career" */ "@/views/career/jobs-berufsbilder/CareerBerufsbildProfession.vue"
+    /* webpackChunkName: "career-profession" */ "@/views/career/jobs-berufsbilder/CareerBerufsbildProfession.vue"
   );
 
 const CareerFortWeiterbildungenHome = () =>
   import(
-    /* webpackChunkName: "career" */ "@/views/career/fort-weiterbildungen/CareerFortWeiterbildungenHome.vue"
+    /* webpackChunkName: "career-training" */ "@/views/career/fort-weiterbildungen/CareerFortWeiterbildungenHome.vue"
   );
 const CareerFortWeiterbildung = () =>
   import(
-    /* webpackChunkName: "career" */ "@/views/career/fort-weiterbildungen/CareerFortWeiterbildung.vue"
+    /* webpackChunkName: "career-training" */ "@/views/career/fort-weiterbildungen/CareerFortWeiterbildung.vue"
   );
 
 // #Jobboard
@@ -85,7 +85,7 @@ const Jobboard = () =>
     /* webpackChunkName: "jobboard" */ "@/views/jobboard/JobboardHome.vue"
   );
 const JobView = () =>
-  import(/* webpackChunkName: "jobboard" */ "@/views/jobboard/job/JobView.vue");
+  import(/* webpackChunkName: "job" */ "@/views/jobboard/job/JobView.vue");
 
 // #Auth
 const AuthLogin = () =>
@@ -108,45 +108,45 @@ const UserDashboardHome = () =>
   );
 const UserDashboardJobPreview = () =>
   import(
-    /* webpackChunkName: "user" */ "@/views/user/dashboard/jobs/preview/_jobId.vue"
+    /* webpackChunkName: "job" */ "@/views/user/dashboard/jobs/preview/_jobId.vue"
   );
 const UserDashboardEditJob = () =>
   import(
-    /* webpackChunkName: "user" */ "@/views/user/dashboard/jobs/edit/_jobId.vue"
+    /* webpackChunkName: "job_edit" */ "@/views/user/dashboard/jobs/edit/_jobId.vue"
   );
 const UserDashboardEditCompany = () =>
   import(
-    /* webpackChunkName: "user" */ "@/views/user/dashboard/companies/edit/_companyId.vue"
+    /* webpackChunkName: "company_edit" */ "@/views/user/dashboard/companies/edit/_companyId.vue"
   );
 const UserDashboardCheckoutJob = () =>
   import(
-    /* webpackChunkName: "user" */ "@/views/user/dashboard/checkout/_jobId.vue"
+    /* webpackChunkName: "user_company" */ "@/views/user/dashboard/checkout/_jobId.vue"
   );
 
 // #Admin
 const AdminHome = () =>
-  import(/* webpackChunkName: "admin" */ "@/views/admin/AdminHome.vue");
+  import(/* webpackChunkName: "ad" */ "@/views/admin/AdminHome.vue");
 const AdminJobPreview = () =>
-  import(
-    /* webpackChunkName: "admin" */ "@/views/admin/jobs/preview/_jobId.vue"
-  );
+  import(/* webpackChunkName: "job" */ "@/views/admin/jobs/preview/_jobId.vue");
 const AdminEditJob = () =>
-  import(/* webpackChunkName: "admin" */ "@/views/admin/jobs/edit/_jobId.vue");
+  import(
+    /* webpackChunkName: "job_edit" */ "@/views/admin/jobs/edit/_jobId.vue"
+  );
 const AdminEditCompany = () =>
   import(
-    /* webpackChunkName: "admin" */ "@/views/admin/companies/edit/_companyId.vue"
+    /* webpackChunkName: "company_edit" */ "@/views/admin/companies/edit/_companyId.vue"
   );
 const AdminEditUser = () =>
   import(
-    /* webpackChunkName: "admin" */ "@/views/admin/users/edit/_userId.vue"
+    /* webpackChunkName: "ad_user" */ "@/views/admin/users/edit/_userId.vue"
   );
 const AdminEditCoupon = () =>
   import(
-    /* webpackChunkName: "admin" */ "@/views/admin/coupons/edit/_couponId.vue"
+    /* webpackChunkName: "ad_coupon" */ "@/views/admin/coupons/edit/_couponId.vue"
   );
 const AdminEditPayment = () =>
   import(
-    /* webpackChunkName: "admin" */ "@/views/admin/payments/edit/_paymentId.vue"
+    /* webpackChunkName: "ad_payment" */ "@/views/admin/payments/edit/_paymentId.vue"
   );
 
 // #404

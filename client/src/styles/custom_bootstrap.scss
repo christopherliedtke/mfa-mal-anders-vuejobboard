@@ -1,3 +1,43 @@
+// @import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Montserrat+Alternates:wght@400;600&display=swap");
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserrat/v15/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2)
+    format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Montserrat Alternates";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserratalternates/v12/mFTvWacfw6zH4dthXcyms1lPpC8I_b0juU0566fQ.woff2)
+    format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Montserrat Alternates";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/montserratalternates/v12/mFTiWacfw6zH4dthXcyms1lPpC8I_b0juU0xNIPFB7xG.woff2)
+    format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
+    U+FEFF, U+FFFD;
+}
+
+$font-family-headlines: "Montserrat Alternates", sans-serif;
+$font-family-sans-serif: "Montserrat", sans-serif;
+$enable-responsive-font-sizes: true;
+
 $dark: #0f0106;
 $light: #fffcfd;
 
@@ -9,37 +49,47 @@ $light-shade: #f7f6f9;
 // $light-accent: #f3f7f4;
 // $dark-shade: #100a0f;
 
-$enable-responsive-font-sizes: true;
+$shadow1: 0px 0px 10px 0px rgba(15, 1, 6, 0.18);
+$shadow2: 0px 0px 15px 0px rgba(15, 1, 6, 0.18);
+$shadow3: inset 0px 0px 10px 0px rgba(15, 1, 6, 0.18);
+
+$border-radius1: 5px;
+$border-radius2: 35px;
+
+$break-menu: 1199px;
+
+$transition1: all linear 0.3s;
+$transition2: all cubic-bezier(1, 0.5, 0.8, 1) 0.3s;
 
 .b-form-datepicker {
-    & > label {
-        margin-bottom: 0 !important;
+  & > label {
+    margin-bottom: 0 !important;
 
-        &.form-control {
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-        }
+    &.form-control {
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
     }
+  }
 
-    span {
-        &.btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0;
-            margin: 0.175rem;
-            width: 32px;
-            height: 32px;
-        }
+  span {
+    &.btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      margin: 0.175rem;
+      width: 32px;
+      height: 32px;
     }
+  }
 
-    .btn {
-        display: inline-block;
-    }
+  .btn {
+    display: inline-block;
+  }
 }
 
 .modal-backdrop {
-    background-color: #0000007a !important;
+  background-color: #0000007a !important;
 }

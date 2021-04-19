@@ -49,6 +49,12 @@
   import MyCompaniesList from "@/components/dashboard/MyCompaniesList.vue";
   import MyPaymentsList from "@/components/dashboard/MyPaymentsList.vue";
   import MyStarredJobs from "@/components/dashboard/MyStarredJobs.vue";
+  import { BTabs, BTab } from "bootstrap-vue";
+  import Vue from "vue";
+  // eslint-disable-next-line
+  Vue.component("b-tabs", BTabs);
+  // eslint-disable-next-line
+  Vue.component("b-tab", BTab);
   export default {
     name: "UserDashboardHome",
     components: {

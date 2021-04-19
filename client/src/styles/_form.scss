@@ -1,21 +1,6 @@
 .account-data-form {
-    label[for="is-employer"],
-    label[for="is-employee"] {
-        margin-top: 0;
-    }
-}
-
-.job-form {
-    .b-avatar .b-avatar-img img {
-        width: auto;
-        height: auto;
-        border-radius: 0;
-    }
-}
-
-.company-form {
-    .b-avatar-img > img {
-        max-width: 100%;
-        max-height: 100%;
-    }
+  label[for="is-employer"],
+  label[for="is-employee"] {
+    margin-top: 0;
+  }
 }

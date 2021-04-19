@@ -33,6 +33,10 @@
 <script>
   import JobCard from "@/components/ui/JobCard.vue";
   import JobCardPlaceholder from "@/components/ui/JobCardPlaceholder.vue";
+  import { BPagination } from "bootstrap-vue";
+  import Vue from "vue";
+  // eslint-disable-next-line
+  Vue.component("b-pagination", BPagination);
   export default {
     name: "JobboardList",
     components: {

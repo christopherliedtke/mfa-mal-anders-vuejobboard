@@ -508,6 +508,10 @@
   } from "@/config/formDataConfig.json";
   import TipTapEditor from "@/components/utils/TipTapEditor.vue";
   import ImageUploader from "@/components/utils/ImageUploader.vue";
+  import { BFormDatepicker } from "bootstrap-vue";
+  import Vue from "vue";
+  // eslint-disable-next-line
+  Vue.component("b-form-datepicker", BFormDatepicker);
   export default {
     name: "JobForm",
     components: {

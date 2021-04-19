@@ -24,11 +24,11 @@
             v-if="article.author.node.avatar"
             class="d-flex align-items-center"
           >
-            <b-avatar
-              variant="light"
+            <b-img
               :src="article.author.node.avatar.url"
               :alt="article.author.node.name"
-              class="mr-2"
+              class="mr-2 rounded-circle"
+              height="37.5"
             />
             <div v-if="article.author.node.name" class="mr-3">
               {{ article.author.node.name }}

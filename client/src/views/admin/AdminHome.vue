@@ -37,6 +37,14 @@
   import AllSubscribersListAdmin from "@/components/admin/AllSubscribersListAdmin.vue";
   import AllPaymentsListAdmin from "@/components/admin/AllPaymentsListAdmin.vue";
   import DataAnalyticsDashboard from "@/components/admin/DataAnalyticsDashboard.vue";
+  import { BTable, BTabs, BTab } from "bootstrap-vue";
+  import Vue from "vue";
+  // eslint-disable-next-line
+  Vue.component("b-table", BTable);
+  // eslint-disable-next-line
+  Vue.component("b-tabs", BTabs);
+  // eslint-disable-next-line
+  Vue.component("b-tab", BTab);
   export default {
     name: "AdminHome",
     components: {

@@ -1,4 +1,7 @@
 const path = require("path");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
+const webpack = require("webpack");
 
 module.exports = {
   outputDir: path.resolve(__dirname, "../server/public"),
@@ -16,6 +19,25 @@ module.exports = {
     },
     port: 8081
   },
+  configureWebpack: {
+    plugins: [
+      new BundleAnalyzerPlugin(),
+      new webpack.IgnorePlugin({
+        resourceRegExp: /^\.\/locale$/,
+        contextRegExp: /moment$/
+      })
+    ],
+    optimization: {
+      splitChunks: {
+        chunks: "all"
+      }
+    }
+    // resolve: {
+    //   alias: {
+    //     moment: "moment/src/moment"
+    //   }
+    // }
+  },
   chainWebpack: config => {
     // if (config.plugins.has("extract-css")) {
     //     const extractCSSPlugin = config.plugin("extract-css");
@@ -31,16 +53,16 @@ module.exports = {
        Disable (or customize) prefetch, see:
        https://cli.vuejs.org/guide/html-and-static-assets.html#prefetch
     */
-    config.plugins.delete("prefetch");
+    // config.plugins.delete("prefetch");
 
     /* 
        Configure preload to load all chunks
        NOTE: use `allChunks` instead of `all` (deprecated)
     */
-    config.plugin("preload").tap(options => {
-      options[0].include = "allChunks";
-      return options;
-    });
+    // config.plugin("preload").tap(options => {
+    //   options[0].include = "allChunks";
+    //   return options;
+    // });
     config.module
       .rule("vue")
       .use("vue-loader")

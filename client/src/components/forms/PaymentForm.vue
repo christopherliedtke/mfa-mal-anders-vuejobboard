@@ -201,6 +201,10 @@
     contactGenderOptions,
     contactTitleOptions
   } from "@/config/formDataConfig.json";
+  import { BFormDatepicker } from "bootstrap-vue";
+  import Vue from "vue";
+  // eslint-disable-next-line
+  Vue.component("b-form-datepicker", BFormDatepicker);
   export default {
     name: "PaymentForm",
     data() {

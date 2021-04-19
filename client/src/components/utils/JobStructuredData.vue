@@ -3,6 +3,9 @@
 </template>
 
 <script>
+  // import VSanitize from "v-sanitize";
+  // import Vue from "vue";
+  // Vue.use(VSanitize);
   export default {
     name: "JobStructuredData",
     props: { job: { type: Object, default: () => {} } },
@@ -16,35 +19,9 @@
                 "@context": "http://schema.org",
                 "@type": "JobPosting",
                 title: `${this.job.title} | ${this.job.company.location}`,
-                description: this.$sanitize(
-                  this.job.description.replace(/"/g, "'"),
-                  {
-                    allowedTags: [
-                      "h1",
-                      "h2",
-                      "h3",
-                      "h4",
-                      "h5",
-                      "h6",
-                      "p",
-                      "strong",
-                      "em",
-                      "span",
-                      "ul",
-                      "ol",
-                      "li",
-                      "div"
-                    ],
-                    transformTags: {
-                      h1: "p",
-                      h2: "p",
-                      h3: "p",
-                      h4: "p",
-                      h5: "p",
-                      h6: "p"
-                    }
-                  }
-                ),
+                description: this.job.description
+                  .replace(/"/g, "'")
+                  .replace(/h1|h2|h3|h4|h5|h6/g, "p"),
                 datePosted: new Date(this.job.updatedAt).toISOString(),
                 hiringOrganization: {
                   "@type": "Organization",

@@ -69,13 +69,23 @@
               @mouseover="showSub('account')"
               @mouseleave="hideSub('account')"
             >
-              <b-avatar
-                class="mr-1 text-primary"
-                variant="light"
-                size="sm"
-                :src="user.image"
-              />Mein Konto
-              <Fa class="ml-1" icon="chevron-down" size="xs" />
+              <div class="d-flex align-items-center">
+                <b-img
+                  v-if="user.image"
+                  :src="user.image"
+                  class="mr-1 rounded-circle"
+                  style="width: 25px; height: 25px; object-fit: cover"
+                />
+                <span
+                  v-else
+                  class="bg-light rounded-circle text-primary d-flex justify-content-center align-items-center mr-1"
+                  style="width: 22.5px; height: 22.5px"
+                >
+                  <Fa icon="user" size="sm" />
+                </span>
+                <span>Mein Konto</span>
+                <Fa class="ml-1" icon="chevron-down" size="xs" />
+              </div>
               <div id="account" class="sub-menu">
                 <b-nav-item
                   to="/user/dashboard?tab=0"

@@ -34,7 +34,7 @@ Vue.prototype.$axios = axios;
 import {
   NavbarPlugin,
   AlertPlugin,
-  AvatarPlugin,
+  // AvatarPlugin,
   BadgePlugin,
   ButtonPlugin,
   ButtonGroupPlugin,
@@ -42,7 +42,7 @@ import {
   CardPlugin,
   FormPlugin,
   FormCheckboxPlugin,
-  FormDatepickerPlugin,
+  // FormDatepickerPlugin,
   FormFilePlugin,
   FormGroupPlugin,
   FormInputPlugin,
@@ -57,18 +57,18 @@ import {
   ModalPlugin,
   OverlayPlugin,
   PopoverPlugin,
-  TablePlugin,
-  TabsPlugin,
+  // TablePlugin,
+  // TabsPlugin,
   TooltipPlugin,
   SpinnerPlugin,
   ToastPlugin,
-  PaginationPlugin,
-  CarouselPlugin,
+  // PaginationPlugin,
   BreadcrumbPlugin
 } from "bootstrap-vue";
+
 Vue.use(NavbarPlugin);
 Vue.use(AlertPlugin);
-Vue.use(AvatarPlugin);
+// Vue.use(AvatarPlugin);
 Vue.use(BadgePlugin);
 Vue.use(ButtonPlugin);
 Vue.use(ButtonGroupPlugin);
@@ -76,7 +76,7 @@ Vue.use(ButtonToolbarPlugin);
 Vue.use(CardPlugin);
 Vue.use(FormPlugin);
 Vue.use(FormCheckboxPlugin);
-Vue.use(FormDatepickerPlugin);
+// Vue.use(FormDatepickerPlugin);
 Vue.use(FormFilePlugin);
 Vue.use(FormGroupPlugin);
 Vue.use(FormInputPlugin);
@@ -91,17 +91,13 @@ Vue.use(ListGroupPlugin);
 Vue.use(ModalPlugin);
 Vue.use(OverlayPlugin);
 Vue.use(PopoverPlugin);
-Vue.use(TablePlugin);
-Vue.use(TabsPlugin);
+// Vue.use(TablePlugin);
+// Vue.use(TabsPlugin);
 Vue.use(TooltipPlugin);
 Vue.use(SpinnerPlugin);
 Vue.use(ToastPlugin);
-Vue.use(PaginationPlugin);
-Vue.use(CarouselPlugin);
+// Vue.use(PaginationPlugin);
 Vue.use(BreadcrumbPlugin);
-
-import VueSanitize from "vue-sanitize";
-Vue.use(VueSanitize);
 
 import VueHead from "vue-head";
 import VueGtag from "vue-gtag";

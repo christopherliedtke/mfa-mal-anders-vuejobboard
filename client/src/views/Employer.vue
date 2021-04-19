@@ -201,44 +201,6 @@
             </b-link>
           </b-col>
         </b-row>
-        <!-- <div>
-                    <b-carousel
-                        id="carousel-partners"
-                        :interval="4000"
-                        :img-height="20"
-                        :img-width="100"
-                    >
-                        <b-carousel-slide
-                            img-blank
-                            v-for="partner in partners"
-                            :key="partner.name"
-                        >
-                            <template #img>
-                                <div
-                                    class="d-flex flex-column justify-content-center align-items-center my-4"
-                                >
-                                    <div
-                                        style="min-height: 175px"
-                                        class="d-flex flex-column justify-content-center align-items-center"
-                                    >
-                                        <b-link
-                                            :href="partner.url"
-                                            target="_blank"
-                                        >
-                                            <img
-                                                fluid
-                                                :src="partner.img"
-                                                :alt="`Logo - ${partner.name}`"
-                                                style="max-height: 150px; max-width: 250px"
-                                                class="mb-4"
-                                            />
-                                        </b-link>
-                                    </div>
-                                </div>
-                            </template>
-                        </b-carousel-slide>
-                    </b-carousel>
-                </div> -->
       </b-container>
     </b-container>
 

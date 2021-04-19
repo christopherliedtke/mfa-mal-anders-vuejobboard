@@ -465,6 +465,10 @@
 <script>
   import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
   import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
+  import { BTableSimple } from "bootstrap-vue";
+  import Vue from "vue";
+  // eslint-disable-next-line
+  Vue.component("b-table-simple", BTableSimple);
   export default {
     name: "CareerMfaAusbildung",
     components: {

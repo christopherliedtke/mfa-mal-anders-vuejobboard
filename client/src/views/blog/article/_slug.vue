@@ -20,12 +20,11 @@
           class="position-absolute d-flex align-items-center bg-light-shade border-radius2 px-3 py-1"
           style="bottom: 0; right: 5%"
         >
-          <b-avatar
-            variant="light"
+          <b-img
             :src="article.author.node.avatar.url"
             :alt="article.author.node.name"
-            size=""
-            class="mr-2"
+            class="mr-2 rounded-circle"
+            style="height: 37.5px"
           />
           <div v-if="article.author.node.name">
             by {{ article.author.node.name }}
@@ -42,12 +41,11 @@
             v-if="article.author.node.avatar"
             class="d-flex align-items-center mb-3"
           >
-            <b-avatar
-              variant="light"
+            <b-img
               :src="article.author.node.avatar.url"
               :alt="article.author.node.name"
-              size="60"
-              class="mr-3"
+              class="mr-3 rounded-circle"
+              style="height: 60px"
             />
             <div class="h6">
               <span>
