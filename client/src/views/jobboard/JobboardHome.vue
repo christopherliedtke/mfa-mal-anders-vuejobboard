@@ -217,6 +217,7 @@
               fluid
               left
               src="~@/assets/img/undraw_Updates_re_o5af.svg"
+              alt="Stellenanzeige wird auf MFA mal anders veröffentlicht"
             />
             <p>
               Sie sind als attraktiver Arbeitergeber auf der Suche nach einer

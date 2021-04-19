@@ -30,10 +30,10 @@
 
     .nav {
       .nav-link {
-        padding: 0.3rem 0;
+        padding: 0.4rem 0;
         color: $light;
         font-family: $font-family-headlines;
-        font-size: 1rem;
+        font-size: 1.1rem;
 
         :not(.home) > .router-link-active {
           color: darken($light, 5%);
