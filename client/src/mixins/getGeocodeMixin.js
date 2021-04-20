@@ -7,8 +7,20 @@ export const getGeocodeMixin = {
       }
     };
   },
-  created() {
-    this.initPlatform();
+  async created() {
+    try {
+      // Script is loaded, do something
+      await this.$loadScript("https://js.api.here.com/v3/3.1/mapsjs-core.js");
+      await Promise.all([
+        this.$loadScript("https://js.api.here.com/v3/3.1/mapsjs-service.js"),
+        this.$loadScript("https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"),
+        this.$loadScript("https://js.api.here.com/v3/3.1/mapsjs-ui.js")
+      ]);
+
+      this.initPlatform();
+    } catch (err) {
+      // Failed to fetch script
+    }
   },
   methods: {
     initPlatform() {
