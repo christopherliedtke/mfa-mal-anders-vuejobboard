@@ -81,6 +81,46 @@ h1.title {
   }
 }
 
+.title-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 50vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-blend-mode: normal;
+  background-size: cover;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(
+      0deg,
+      #fafdfe 0%,
+      #fafdfe66 50%,
+      #fd742577 100%
+    );
+  }
+
+  & > div {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    z-index: 2;
+
+    & > div {
+      max-width: 700px;
+    }
+  }
+}
+
+.text-tertiary {
+  color: $tertiary;
+}
+
 .lead {
   @media screen and (max-width: $break-menu) {
     font-size: 1.1rem;

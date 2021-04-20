@@ -4,6 +4,7 @@
       <h1>{{ title }}</h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
+
     <b-container class="py-3 py-lg-5">
       <b-img
         class="border-radius1 shadow1 mb-3 mb-lg-5"
@@ -25,6 +26,58 @@
         viele ArzthelferInnen lieber auf Nummer sicher und verkaufen sich am
         Ende unter Wert.
       </p>
+
+      <div
+        class="bg-light-shade border-radius1 my-4 p-4"
+        style="max-width: fit-content"
+      >
+        <h2 class="h4 bold">Inhalt</h2>
+        <ol class="text-tertiary pl-4">
+          <li class="lead mt-3">
+            <b-link to="#gehaltstarifvertrag"
+              >Gehaltstarifvertrag {{ new Date().getFullYear() }} – MFA /
+              ArzthelferIn (inkl. Gehaltsrechner)</b-link
+            >
+          </li>
+          <li class="lead mt-3">
+            <b-link to="#gehalt-ausbildung"
+              >MFA Ausbildung {{ new Date().getFullYear() }} – Gehalt nach
+              Tarifvertrag</b-link
+            >
+          </li>
+          <li class="lead mt-3">
+            <b-link to="#berufsjahre">Anrechnung von Berufsjahren</b-link>
+          </li>
+          <li class="lead mt-3">
+            <b-link to="#auszeiten"
+              >Mutterschutz, Elternzeit und Erziehungsurlaub</b-link
+            >
+          </li>
+          <li class="lead mt-3">
+            <b-link to="#berufsnahe-taetigkeiten"
+              >Anrechnung der Berufsjahre für MFA bei berufsnahen
+              Tätigkeiten</b-link
+            >
+          </li>
+          <li class="lead mt-3">
+            <b-link to="#taetigkeitsgruppen"
+              >Tätigkeitsgruppen nach aktuellem Gehaltstarifvertrag für
+              MFA</b-link
+            >
+          </li>
+          <li class="lead mt-3">
+            <b-link to="#gehalt-per-bundesland"
+              >MFA Gehalt nach Bundesland</b-link
+            >
+          </li>
+          <li class="lead mt-3">
+            <b-link to="#benefits"
+              >Benefits – wenn dein Gehalt nicht zufriedenstellend ist</b-link
+            >
+          </li>
+        </ol>
+      </div>
+
       <h2>
         Wie ermittelt man eigentlich seinen Marktwert?
       </h2>
@@ -51,7 +104,7 @@
         Vorweg klären wir zuerst ein paar Begrifflichkeiten und wie die
         vertragliche Lage aussieht.
       </p>
-      <h2>
+      <h2 id="gehaltstarifvertrag">
         Gehaltstarifvertrag {{ new Date().getFullYear() }} – MFA / ArzthelferIn
       </h2>
       <b-row>
@@ -125,15 +178,6 @@
             Fachangestellte dir vor allem eine gute Orientierung, um deinen
             Marktwert einzuschätzen – bezüglich Qualifikation und Erfahrung.
           </p>
-          <p>
-            Hier findest du den
-            <a
-              href="https://www.vmf-online.de/mfa/mfa-tarife"
-              target="_blank"
-              rel="noopener"
-              >aktuellen Gehaltstarifvertrag für Medizinische Fachangestellte</a
-            >.
-          </p>
           <Gehaltsrechner class="my-4" />
           <FacebookBtn
             class="mb-4 mr-1"
@@ -142,10 +186,193 @@
           <FacebookShareBtn class="mb-4" />
         </b-col>
       </b-row>
+      <div>
+        <h3 class="h4">
+          Hier noch einmal die ab dem 01.01.2021 gültige Gehaltstabelle:
+        </h3>
+        <b-table-simple class="mt-3" hover responsive table-variant="secondary">
+          <colgroup>
+            <col />
+          </colgroup>
+          <colgroup>
+            <col />
+            <col />
+            <col />
+            <col />
+            <col />
+            <col />
+          </colgroup>
+          <b-thead head-variant="primary">
+            <b-tr>
+              <b-th>Berufsjahr</b-th>
+              <b-th>Tätigkeitsgruppe I</b-th>
+              <b-th>Tätigkeitsgruppe II</b-th>
+              <b-th>Tätigkeitsgruppe III</b-th>
+              <b-th>Tätigkeitsgruppe IV</b-th>
+              <b-th>Tätigkeitsgruppe V</b-th>
+              <b-th>Tätigkeitsgruppe VI</b-th>
+            </b-tr>
+          </b-thead>
+          <b-tbody class="text-right">
+            <b-tr>
+              <b-th>1 - 4</b-th>
+              <b-td>2.088,40 €</b-td>
+              <b-td>2.245,03 €</b-td>
+              <b-td>2.349,45 €</b-td>
+              <b-td>2.506,08 €</b-td>
+              <b-td>2.714,92 €</b-td>
+              <b-td>3.028,18 €</b-td>
+            </b-tr>
+            <b-tr>
+              <b-th>5 - 8</b-th>
+              <b-td>2.267,70 €</b-td>
+              <b-td>2.437,78 €</b-td>
+              <b-td>2.551,16 €</b-td>
+              <b-td>2.721,24 €</b-td>
+              <b-td>2.948,01 €</b-td>
+              <b-td>3.288,17 €</b-td>
+            </b-tr>
+            <b-tr>
+              <b-th>9 - 12</b-th>
+              <b-td>2.411,95 €</b-td>
+              <b-td>2.592,85 €</b-td>
+              <b-td>2.713,44 €</b-td>
+              <b-td>2.894,34 €</b-td>
+              <b-td>3.135,54 €</b-td>
+              <b-td>3.497,33 €</b-td>
+            </b-tr>
+            <b-tr>
+              <b-th>13 - 16</b-th>
+              <b-td>2.480,05 €</b-td>
+              <b-td>2.666,05 €</b-td>
+              <b-td>2.790,06 €</b-td>
+              <b-td>2.976,06 €</b-td>
+              <b-td>3.224,07 €</b-td>
+              <b-td>3.596,07 €</b-td>
+            </b-tr>
+            <b-tr>
+              <b-th>17 - 20</b-th>
+              <b-td>2.743,71 €</b-td>
+              <b-td>2.949,49 €</b-td>
+              <b-td>3.086,67 €</b-td>
+              <b-td>3.292,45 €</b-td>
+              <b-td>3.566,82 €</b-td>
+              <b-td>3.978,38 €</b-td>
+            </b-tr>
+            <b-tr>
+              <b-th>21 - 24</b-th>
+              <b-td>2.793,71 €</b-td>
+              <b-td>3.003,24 €</b-td>
+              <b-td>3.142,92 €</b-td>
+              <b-td>3.352,45 €</b-td>
+              <b-td>3.631,82 €</b-td>
+              <b-td>4.050,88 €</b-td>
+            </b-tr>
+            <b-tr>
+              <b-th>25 - 28</b-th>
+              <b-td>2.843,71 €</b-td>
+              <b-td>3.056,99 €</b-td>
+              <b-td>3.199,17 €</b-td>
+              <b-td>3.412,45 €</b-td>
+              <b-td>3.696,82 €</b-td>
+              <b-td>4.123,38 €</b-td>
+            </b-tr>
+            <b-tr>
+              <b-th>ab 29</b-th>
+              <b-td>2.893,71 €</b-td>
+              <b-td>3.110,74 €</b-td>
+              <b-td>3.255,42 €</b-td>
+              <b-td>3.472,45 €</b-td>
+              <b-td>3.761,82 €</b-td>
+              <b-td>4.195,88 €</b-td>
+            </b-tr>
+          </b-tbody>
+        </b-table-simple>
+        <p class="small text-muted">
+          Quelle:
+          <b-link
+            href="https://www.vmf-online.de/mfa/mfa-tarife"
+            target="_blank"
+            rel="noopener"
+            >Gehaltstarifvertrag 2021 für Medizinische Fachangestellte (MFA) /
+            ArzthelferInnen – AAA (2021)</b-link
+          >
+        </p>
+      </div>
+
+      <h2 id="gehalt-ausbildung">
+        MFA Ausbildung {{ new Date().getFullYear() }} – Gehalt nach Tarifvertrag
+      </h2>
+      <p>
+        Wie für andere Ausbildungsberufe auch, ist für die Ausbildung von
+        Medizinischen Fachangestellten lauf Berufsbildungsgesetz eine Vergütug
+        zu zahlen. Hierüber gibt der aktuelle Gehaltstarifvertrag ebenfalls
+        Auskunft. Demnach ist für Medizinische Fachangestellte /
+        ArzthelferInnen, die Ihre Ausbildung ab dem 01.01.2021 starten eine
+        monatliche Ausbildungsvergütung (brutto) wie folgt vorgesehen:
+      </p>
+      <b-table-simple class="mt-4" hover responsive table-variant="secondary">
+        <colgroup>
+          <col />
+        </colgroup>
+        <colgroup>
+          <col />
+          <col />
+          <col />
+        </colgroup>
+        <b-thead head-variant="primary">
+          <b-tr>
+            <b-th colspan="1"> </b-th>
+            <b-th colspan="3" class="text-center"> Ausbildungsjahr</b-th>
+          </b-tr>
+          <b-tr>
+            <b-th>ab</b-th>
+            <b-th>1.</b-th>
+            <b-th>2.</b-th>
+            <b-th>3.</b-th>
+          </b-tr>
+        </b-thead>
+        <b-tbody>
+          <b-tr>
+            <b-th>01.01.2021</b-th>
+            <b-td>880,- €</b-td>
+            <b-td>935,- €</b-td>
+            <b-td>995,- €</b-td>
+          </b-tr>
+          <b-tr>
+            <b-th>01.01.2022</b-th>
+            <b-td>900,- €</b-td>
+            <b-td>965,- €</b-td>
+            <b-td>1.035,- €</b-td>
+          </b-tr>
+          <b-tr>
+            <b-th>01.01.2023</b-th>
+            <b-td>920,- €</b-td>
+            <b-td>995,- €</b-td>
+            <b-td>1.075,- €</b-td>
+          </b-tr>
+        </b-tbody>
+      </b-table-simple>
+      <p class="small text-muted">
+        Quelle:
+        <b-link
+          href="https://www.vmf-online.de/mfa/mfa-tarife"
+          target="_blank"
+          rel="noopener"
+          >Gehaltstarifvertrag 2021 für Medizinische Fachangestellte (MFA) /
+          ArzthelferInnen – AAA (2021)</b-link
+        >
+      </p>
+      <p>
+        Auf unserer Seite findest Du auch weitere Informationen zur
+        <b-link to="/karriere/mfa/ausbildung-berufsbild"
+          >Ausbildung zur Medizinischen Fachangestellten / ArzthelferIn</b-link
+        >.
+      </p>
 
       <ToJobboardBanner class="my-5 mx-auto" />
 
-      <h2>
+      <h2 id="berufsjahre">
         Anrechnung von Berufsjahren
       </h2>
       <p>
@@ -176,7 +403,7 @@
         Bei Beschäftigten in Teilzeit zählen die Berufsjahre genau wie bei
         Vollzeit-Beschäftigung und werden komplett angerechnet.
       </p>
-      <h2>
+      <h2 id="auszeiten">
         Mutterschutz, Elternzeit und Erziehungsurlaub
       </h2>
       <p>
@@ -229,7 +456,7 @@
           </div>
         </b-col>
       </b-row>
-      <h2>
+      <h2 id="berufsnahe-taetigkeiten">
         Anrechnung der Berufsjahre für MFA bei berufsnahen Tätigkeiten
       </h2>
       <p>
@@ -248,7 +475,7 @@
           </em>
         </p>
       </div>
-      <h2>
+      <h2 id="taetigkeitsgruppen">
         Tätigkeitsgruppen nach aktuellem Gehaltstarifvertrag für MFA
       </h2>
       <p>
@@ -268,306 +495,276 @@
         Nach welchen Kriterien sich die Tätigkeitsgruppen aufteilen, zeigt dir
         die nachfolgende Übersicht.
       </p>
-      <div class="my-4" role="tablist">
-        <b-card no-body class="mb-1">
-          <b-card-header
-            v-b-toggle.accordion-1
-            header-tag="header"
-            class="p-3"
-            role="tab"
-          >
+      <div class="my-4">
+        <b-card no-body class="mb-1 bg-light-shade">
+          <b-card-header header-tag="header" class="p-3" role="tab">
             Tätigkeitsgruppe 1
           </b-card-header>
-          <b-collapse
-            id="accordion-1"
-            visible
-            accordion="my-accordion"
-            role="tabpanel"
-          >
-            <b-card-body>
-              <b-card-text>
-                <ul>
-                  <li>
-                    Berufseinsteiger nach abgeschlossener Ausbildung zur
-                    medizinischen Fachangestellten
-                  </li>
-                  <li>
-                    Du führst Tätigkeiten nach Anweisungen des Arztes oder einer
-                    erfahreneren Kollegin aus
-                  </li>
-                </ul>
-              </b-card-text>
-            </b-card-body>
-          </b-collapse>
+
+          <b-card-body>
+            <b-card-text>
+              <ul>
+                <li>
+                  Berufseinsteiger nach abgeschlossener Ausbildung zur
+                  medizinischen Fachangestellten
+                </li>
+                <li>
+                  Du führst Tätigkeiten nach Anweisungen des Arztes oder einer
+                  erfahreneren Kollegin aus
+                </li>
+              </ul>
+            </b-card-text>
+          </b-card-body>
         </b-card>
-        <b-card no-body class="mb-1">
-          <b-card-header
-            v-b-toggle.accordion-2
-            header-tag="header"
-            class="p-3"
-            role="tab"
-          >
+        <b-card no-body class="mb-1 bg-light-shade">
+          <b-card-header header-tag="header" class="p-3">
             Tätigkeitsgruppe 2
           </b-card-header>
-          <b-collapse id="accordion-2" accordion="my-accordion" role="tabpanel">
-            <b-card-body>
-              <b-card-text>
-                <ul>
-                  <li>
-                    Du kannst Tätigkeiten weitestgehend selbstständig ausführen
-                  </li>
-                  <li>
-                    Du hast mind. 40 Fortbildungsstunden gesammelt und weist
-                    vertiefte Kenntnisse und Fertigkeiten in einem
-                    Arbeitsbereich auf
-                  </li>
-                </ul>
-                <p>
-                  <em>Fortbildungsmaßnahmen sind zum Beispiel:</em>
-                </p>
-                <ul>
-                  <li>
-                    Ambulante Versorgung älterer Menschen
-                  </li>
-                  <li>Wundbehandlung/ Wundmanagement</li>
-                  <li>Hygienemanagement</li>
-                  <li>Qualitätsmanagement</li>
-                  <li>
-                    Patientenbegleitung und Koordination
-                  </li>
-                  <li>Datenschutz und Datensicherheit</li>
-                  <li>
-                    Informations- und Kommunikationstechnik
-                  </li>
-                  <li>
-                    Notfallmanagement/ Erweiterte Notfallkompetenz
-                  </li>
-                  <li>Impfassistenz</li>
-                  <li>Disease-Management-Programme</li>
-                </ul>
-              </b-card-text>
-            </b-card-body>
-          </b-collapse>
+          <b-card-body>
+            <b-card-text>
+              <ul>
+                <li>
+                  Du kannst Tätigkeiten weitestgehend selbstständig ausführen
+                </li>
+                <li>
+                  Du hast mind. 40 Fortbildungsstunden gesammelt und weist
+                  vertiefte Kenntnisse und Fertigkeiten in einem Arbeitsbereich
+                  auf
+                </li>
+              </ul>
+              <p>
+                <em>Fortbildungsmaßnahmen sind zum Beispiel:</em>
+              </p>
+              <ul>
+                <li>
+                  Ambulante Versorgung älterer Menschen
+                </li>
+                <li>Wundbehandlung/ Wundmanagement</li>
+                <li>Hygienemanagement</li>
+                <li>Qualitätsmanagement</li>
+                <li>
+                  Patientenbegleitung und Koordination
+                </li>
+                <li>Datenschutz und Datensicherheit</li>
+                <li>
+                  Informations- und Kommunikationstechnik
+                </li>
+                <li>
+                  Notfallmanagement/ Erweiterte Notfallkompetenz
+                </li>
+                <li>Impfassistenz</li>
+                <li>Disease-Management-Programme</li>
+              </ul>
+            </b-card-text>
+          </b-card-body>
         </b-card>
-        <b-card no-body class="mb-1">
-          <b-card-header
-            v-b-toggle.accordion-3
-            header-tag="header"
-            class="p-3"
-            role="tab"
-          >
+        <b-card no-body class="mb-1 bg-light-shade">
+          <b-card-header header-tag="header" class="p-3">
             Tätigkeitsgruppe 3
           </b-card-header>
-          <b-collapse id="accordion-3" accordion="my-accordion" role="tabpanel">
-            <b-card-body>
-              <b-card-text>
-                <ul>
-                  <li>
-                    Du hast mindestens 80 Fortbildungsstunden gesammelt und/oder
-                    weist entsprechende Berufserfahrung nach
-                  </li>
-                  <li>
-                    Du führst Tätigkeiten in der Durchführung der Ausbildung der
-                    Medizinischen Fachangestellten aus
-                  </li>
-                </ul>
+          <b-card-body>
+            <b-card-text>
+              <ul>
+                <li>
+                  Du hast mindestens 80 Fortbildungsstunden gesammelt und/oder
+                  weist entsprechende Berufserfahrung nach
+                </li>
+                <li>
+                  Du führst Tätigkeiten in der Durchführung der Ausbildung der
+                  Medizinischen Fachangestellten aus
+                </li>
+              </ul>
 
-                <p>
-                  <em>Fortbildungsmaßnahmen sind zum Beispiel:</em>
-                </p>
-                <ul>
-                  <li>
-                    Elektronische Praxiskommunikation und Telematik
-                  </li>
-                  <li>
-                    Prävention bei Jugendlichen und Erwachsenen
-                  </li>
-                  <li>
-                    Prävention im Kindes- und Jugendalter
-                  </li>
-                  <li>
-                    Strahlenschutzkurs lt. § 24 (2) Röntgenverordnung (90
-                    Stunden)
-                  </li>
-                </ul>
-              </b-card-text>
-            </b-card-body>
-          </b-collapse>
+              <p>
+                <em>Fortbildungsmaßnahmen sind zum Beispiel:</em>
+              </p>
+              <ul>
+                <li>
+                  Elektronische Praxiskommunikation und Telematik
+                </li>
+                <li>
+                  Prävention bei Jugendlichen und Erwachsenen
+                </li>
+                <li>
+                  Prävention im Kindes- und Jugendalter
+                </li>
+                <li>
+                  Strahlenschutzkurs lt. § 24 (2) Röntgenverordnung (90 Stunden)
+                </li>
+              </ul>
+            </b-card-text>
+          </b-card-body>
         </b-card>
-        <b-card no-body class="mb-1">
-          <b-card-header
-            v-b-toggle.accordion-4
-            header-tag="header"
-            class="p-3"
-            role="tab"
-          >
+        <b-card no-body class="mb-1 bg-light-shade">
+          <b-card-header header-tag="header" class="p-3">
             Tätigkeitsgruppe 4
           </b-card-header>
-          <b-collapse id="accordion-4" accordion="my-accordion" role="tabpanel">
-            <b-card-body>
-              <b-card-text>
-                <ul>
-                  <li>
-                    Du führst Tätigkeiten komplett selbstständige aus
-                  </li>
-                  <li>
-                    Du hast besonders vielseitige Fachkenntnisse die durch
-                    Aneignung zusätzlicher umfassender Fertigkeiten, Kenntnisse
-                    und Fähigkeiten in komplexen Arbeitsbereichen erworben
-                  </li>
-                  <li>
-                    Du hast mindestens 120 Fortbildungsstunden gesammelt
-                    und/oder übernimmst Tätigkeiten in der systematischen
-                    Planung, Durchführung und Koordination der Ausbildung der
-                    Medizinischen Fachangestellten
-                  </li>
-                </ul>
-                <p>
-                  <em>Fortbildungsmaßnahmen sind zum Beispiel:</em>
-                </p>
-                <ul>
-                  <li>
-                    <b-link
-                      to="/karriere/fort-und-weiterbildungen/ambulantes-operieren"
-                      >Ambulantes Operieren</b-link
-                    >
-                  </li>
-                  <li>
-                    <b-link
-                      to="/karriere/fort-und-weiterbildungen/ambulantes-operieren-in-der-augenheilkunde"
-                      >Ambulantes Operieren in der Augenheilkunde</b-link
-                    >
-                  </li>
-                  <li>
-                    Augenheilkundlich-technische Assistenz
-                  </li>
-                  <li>Dialyse</li>
-                  <li>Ernährungsmedizin</li>
-                  <li>Gastroenterologische Endoskopie</li>
-                  <li>
-                    <b-link
-                      to="/karriere/fort-und-weiterbildungen/onkologischer-fachassistentin"
-                      >Onkologie</b-link
-                    >
-                  </li>
-                  <li>Palliativversorgung</li>
-                  <li>Pneumologie</li>
-                  <li>
-                    Strahlenschutzkurs lt. § 24 (2) Röntgenverordnung (120
-                    Stunden)
-                  </li>
-                  <li>
-                    <b-link
-                      to="/karriere/fort-und-weiterbildungen/qualitaetsmanagementbeauftragte-r-qmb"
-                    >
-                      Qualitätsmanagement
-                    </b-link>
-                  </li>
-                  <li>Hygienemanagement</li>
-                  <li>
-                    <b-link to="/karriere/fort-und-weiterbildungen"
-                      >Nicht-ärztliche Praxisassistentin</b-link
-                    >
-                  </li>
-                  <li>
-                    <b-link to="/karriere/fort-und-weiterbildungen/verah">
-                      Versorgungsassistentin in der Hausarztpraxis (VERAH®)
-                    </b-link>
-                  </li>
-                </ul>
-              </b-card-text>
-            </b-card-body>
-          </b-collapse>
+          <b-card-body>
+            <b-card-text>
+              <ul>
+                <li>
+                  Du führst Tätigkeiten komplett selbstständige aus
+                </li>
+                <li>
+                  Du hast besonders vielseitige Fachkenntnisse die durch
+                  Aneignung zusätzlicher umfassender Fertigkeiten, Kenntnisse
+                  und Fähigkeiten in komplexen Arbeitsbereichen erworben
+                </li>
+                <li>
+                  Du hast mindestens 120 Fortbildungsstunden gesammelt und/oder
+                  übernimmst Tätigkeiten in der systematischen Planung,
+                  Durchführung und Koordination der Ausbildung der Medizinischen
+                  Fachangestellten
+                </li>
+              </ul>
+              <p>
+                <em>Fortbildungsmaßnahmen sind zum Beispiel:</em>
+              </p>
+              <ul>
+                <li>
+                  <b-link
+                    to="/karriere/fort-und-weiterbildungen/ambulantes-operieren"
+                    >Ambulantes Operieren</b-link
+                  >
+                </li>
+                <li>
+                  <b-link
+                    to="/karriere/fort-und-weiterbildungen/ambulantes-operieren-in-der-augenheilkunde"
+                    >Ambulantes Operieren in der Augenheilkunde</b-link
+                  >
+                </li>
+                <li>
+                  Augenheilkundlich-technische Assistenz
+                </li>
+                <li>Dialyse</li>
+                <li>Ernährungsmedizin</li>
+                <li>Gastroenterologische Endoskopie</li>
+                <li>
+                  <b-link
+                    to="/karriere/fort-und-weiterbildungen/onkologischer-fachassistentin"
+                    >Onkologie</b-link
+                  >
+                </li>
+                <li>Palliativversorgung</li>
+                <li>Pneumologie</li>
+                <li>
+                  Strahlenschutzkurs lt. § 24 (2) Röntgenverordnung (120
+                  Stunden)
+                </li>
+                <li>
+                  <b-link
+                    to="/karriere/fort-und-weiterbildungen/qualitaetsmanagementbeauftragte-r-qmb"
+                  >
+                    Qualitätsmanagement
+                  </b-link>
+                </li>
+                <li>Hygienemanagement</li>
+                <li>
+                  <b-link to="/karriere/fort-und-weiterbildungen"
+                    >Nicht-ärztliche Praxisassistentin</b-link
+                  >
+                </li>
+                <li>
+                  <b-link to="/karriere/fort-und-weiterbildungen/verah">
+                    Versorgungsassistentin in der Hausarztpraxis (VERAH®)
+                  </b-link>
+                </li>
+              </ul>
+            </b-card-text>
+          </b-card-body>
         </b-card>
-        <b-card no-body class="mb-1">
-          <b-card-header
-            v-b-toggle.accordion-5
-            header-tag="header"
-            class="p-3"
-            role="tab"
-          >
+        <b-card no-body class="mb-1 bg-light-shade">
+          <b-card-header header-tag="header" class="p-3">
             Tätigkeitsgruppe 5
           </b-card-header>
-          <b-collapse id="accordion-5" accordion="my-accordion" role="tabpanel">
-            <b-card-body>
-              <b-card-text>
-                <ul>
-                  <li>
-                    Du führst leitungsbezogenen Tätigkeiten aus
-                  </li>
-                  <li>
-                    Du kannst Fortbildungsmaßnahmen von insgesamt mindestens 360
-                    Stunden und entsprechende Berufserfahrung vorweisen
-                  </li>
-                  <li>
-                    Hierbei sind eine Fortbildung von mindestens 120 Stunden und
-                    weitere Fortbildungseinheiten von mindestens 40 Stunden
-                    innerhalb eines Zeitraums von 5 Jahren zu erbringen. Dieser
-                    Zeitraum verlängert sich um die in Anspruch genommene
-                    Elternzeit.
-                  </li>
-                </ul>
+          <b-card-body>
+            <b-card-text>
+              <ul>
+                <li>
+                  Du führst leitungsbezogenen Tätigkeiten aus
+                </li>
+                <li>
+                  Du kannst Fortbildungsmaßnahmen von insgesamt mindestens 360
+                  Stunden und entsprechende Berufserfahrung vorweisen
+                </li>
+                <li>
+                  Hierbei sind eine Fortbildung von mindestens 120 Stunden und
+                  weitere Fortbildungseinheiten von mindestens 40 Stunden
+                  innerhalb eines Zeitraums von 5 Jahren zu erbringen. Dieser
+                  Zeitraum verlängert sich um die in Anspruch genommene
+                  Elternzeit.
+                </li>
+              </ul>
 
-                <p>
-                  <em
-                    >Ein Beispiel für eine solche Fortbildungsmaßnahme ist:</em
-                  >
-                </p>
-                <ul>
-                  <li>
-                    Fachwirtin für ambulante Medizinische
-                    Versorgung/Arztfachhelferin gemäß § 54 BBiG
-                  </li>
-                </ul>
-              </b-card-text>
-            </b-card-body>
-          </b-collapse>
+              <p>
+                <em>Ein Beispiel für eine solche Fortbildungsmaßnahme ist:</em>
+              </p>
+              <ul>
+                <li>
+                  Fachwirtin für ambulante Medizinische
+                  Versorgung/Arztfachhelferin gemäß § 54 BBiG
+                </li>
+              </ul>
+            </b-card-text>
+          </b-card-body>
         </b-card>
-        <b-card no-body class="mb-1">
-          <b-card-header
-            v-b-toggle.accordion-6
-            header-tag="header"
-            class="p-3"
-            role="tab"
-          >
+        <b-card no-body class="mb-1 bg-light-shade">
+          <b-card-header header-tag="header" class="p-3">
             Tätigkeitsgruppe 6
           </b-card-header>
-          <b-collapse id="accordion-6" accordion="my-accordion" role="tabpanel">
-            <b-card-body>
-              <b-card-text>
-                <ul>
-                  <li>
-                    Du führst leitungs- und führungsbezogene Tätigkeiten aus
-                  </li>
-                  <li>
-                    Du kannst Fortbildungsmaßnahmen von insgesamt mindestens 600
-                    Stunden und entsprechende Berufserfahrung vorweisen
-                  </li>
-                </ul>
-                <p>
-                  <em
-                    >Ein Beispiel für eine solche Fortbildungsmaßnahme ist:</em
+          <b-card-body>
+            <b-card-text>
+              <ul>
+                <li>
+                  Du führst leitungs- und führungsbezogene Tätigkeiten aus
+                </li>
+                <li>
+                  Du kannst Fortbildungsmaßnahmen von insgesamt mindestens 600
+                  Stunden und entsprechende Berufserfahrung vorweisen
+                </li>
+              </ul>
+              <p>
+                <em>Ein Beispiel für eine solche Fortbildungsmaßnahme ist:</em>
+              </p>
+              <ul>
+                <li>
+                  Betriebswirtin für Management im Gesundheitswesen gemäß § 54
+                  BBiG
+                </li>
+                <li>
+                  <b-link to="/karriere/fort-und-weiterbildungen"
+                    >Fachwirtin im Gesundheits- und Sozialwesen</b-link
                   >
-                </p>
-                <ul>
-                  <li>
-                    Betriebswirtin für Management im Gesundheitswesen gemäß § 54
-                    BBiG
-                  </li>
-                  <li>
-                    <b-link to="/karriere/fort-und-weiterbildungen"
-                      >Fachwirtin im Gesundheits- und Sozialwesen</b-link
-                    >
-                    gemäß § 53 BBiG
-                  </li>
-                </ul>
-              </b-card-text>
-            </b-card-body>
-          </b-collapse>
+                  gemäß § 53 BBiG
+                </li>
+              </ul>
+            </b-card-text>
+          </b-card-body>
         </b-card>
       </div>
 
-      <h2>Benefits – wenn dein Gehalt nicht zufriedenstellend ist</h2>
+      <h2 id="gehalt-per-bundesland">MFA Gehalt nach Bundesland</h2>
+      <p>
+        Nach wie vor ist es so, dass unterschiedliche Gehälter gezahlt werden –
+        je nachdem, wo man arbeitet. Auch bei ArzthelferInnen ist dies der Fall.
+        Wenig überaschend sieht man ein deutliches Gefälle zwischen den alten
+        und neuen Bundesländern. Durchschnittlich verdient man in Sachsen,
+        Sachsen-Anhalt, Brandenburg, Thüringen und Mecklenburg-Vorpommern
+        zwischen 2.057 € und 2.153 € brutto pro Monat. In den übrigen
+        Bundesländern liegt dieser Wert zwischen 2.420 € und 2.612 €.
+      </p>
+      <div class="my-4">
+        <div class="d-flex justify-content-center mb-4">
+          <b-img fluid src="~@/assets/img/gehalt_perBundesland.svg" />
+        </div>
+        <p class="small text-muted text-right">
+          Quelle: Entgeltatlas der Bundesagentur für Arbeit
+        </p>
+      </div>
+
+      <h2 id="benefits">
+        Benefits – wenn dein Gehalt nicht zufriedenstellend ist
+      </h2>
       <p>
         Neben einer fairen Bezahlung spielen auch weitere, sogenannte weiche
         Faktoren oder Benefits eine Rolle in der Auswahl des richtigen
@@ -662,6 +859,7 @@
             <Fa icon="check" size="sm" class="mr-2" />
             Lies auch unseren Artikel zu
             <b-link
+              class="text-secondary"
               to="/blog/article/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
               >Gehaltsverhandlungen</b-link
             >
@@ -740,6 +938,9 @@
   import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
   import BerufsbilderBanner from "@/components/banners/BerufsbilderBanner.vue";
   import WeiterbildungenBanner from "@/components/banners/WeiterbildungenBanner.vue";
+  import { TableSimplePlugin } from "bootstrap-vue";
+  import Vue from "vue";
+  Vue.use(TableSimplePlugin);
   export default {
     name: "CareerGehalt",
     components: {

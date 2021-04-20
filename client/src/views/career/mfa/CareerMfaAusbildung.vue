@@ -285,48 +285,60 @@
         Glücklicherweise konnte die Vergütung mittlerweile fast verdoppelt
         werden.
       </p>
-      <b-table-simple class="my-5" hover responsive table-variant="secondary">
-        <colgroup>
-          <col />
-        </colgroup>
-        <colgroup>
-          <col />
-          <col />
-          <col />
-        </colgroup>
-        <b-thead head-variant="primary">
-          <b-tr>
-            <b-th colspan="1"> </b-th>
-            <b-th colspan="3" class="text-center"> Ausbildungsjahr</b-th>
-          </b-tr>
-          <b-tr>
-            <b-th>ab</b-th>
-            <b-th>1.</b-th>
-            <b-th>2.</b-th>
-            <b-th>3.</b-th>
-          </b-tr>
-        </b-thead>
-        <b-tbody>
-          <b-tr>
-            <b-th>01.01.2021</b-th>
-            <b-td>880,- €</b-td>
-            <b-td>935,- €</b-td>
-            <b-td>995,- €</b-td>
-          </b-tr>
-          <b-tr>
-            <b-th>01.01.2022</b-th>
-            <b-td>900,- €</b-td>
-            <b-td>965,- €</b-td>
-            <b-td>1.035,- €</b-td>
-          </b-tr>
-          <b-tr>
-            <b-th>01.01.2023</b-th>
-            <b-td>920,- €</b-td>
-            <b-td>995,- €</b-td>
-            <b-td>1.075,- €</b-td>
-          </b-tr>
-        </b-tbody>
-      </b-table-simple>
+      <div class="my-5">
+        <b-table-simple hover responsive table-variant="secondary">
+          <colgroup>
+            <col />
+          </colgroup>
+          <colgroup>
+            <col />
+            <col />
+            <col />
+          </colgroup>
+          <b-thead head-variant="primary">
+            <b-tr>
+              <b-th colspan="1"> </b-th>
+              <b-th colspan="3" class="text-center"> Ausbildungsjahr</b-th>
+            </b-tr>
+            <b-tr>
+              <b-th>ab</b-th>
+              <b-th>1.</b-th>
+              <b-th>2.</b-th>
+              <b-th>3.</b-th>
+            </b-tr>
+          </b-thead>
+          <b-tbody>
+            <b-tr>
+              <b-th>01.01.2021</b-th>
+              <b-td>880,- €</b-td>
+              <b-td>935,- €</b-td>
+              <b-td>995,- €</b-td>
+            </b-tr>
+            <b-tr>
+              <b-th>01.01.2022</b-th>
+              <b-td>900,- €</b-td>
+              <b-td>965,- €</b-td>
+              <b-td>1.035,- €</b-td>
+            </b-tr>
+            <b-tr>
+              <b-th>01.01.2023</b-th>
+              <b-td>920,- €</b-td>
+              <b-td>995,- €</b-td>
+              <b-td>1.075,- €</b-td>
+            </b-tr>
+          </b-tbody>
+        </b-table-simple>
+        <p class="small text-muted">
+          Quelle:
+          <b-link
+            href="https://www.vmf-online.de/mfa/mfa-tarife"
+            target="_blank"
+            rel="noopener"
+            >Gehaltstarifvertrag 2021 für Medizinische Fachangestellte (MFA) /
+            ArzthelferInnen – AAA (2021)</b-link
+          >
+        </p>
+      </div>
       <h2>
         Welche Möglichkeiten habe ich nach der Ausbildung als Medizinische
         Fachangestellte?
@@ -465,10 +477,9 @@
 <script>
   import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
   import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
-  import { BTableSimple } from "bootstrap-vue";
+  import { TableSimplePlugin } from "bootstrap-vue";
   import Vue from "vue";
-  // eslint-disable-next-line
-  Vue.component("b-table-simple", BTableSimple);
+  Vue.use(TableSimplePlugin);
   export default {
     name: "CareerMfaAusbildung",
     components: {
