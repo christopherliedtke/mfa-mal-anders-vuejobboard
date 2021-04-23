@@ -135,16 +135,20 @@
               bis
               {{ new Date(job.applicationDeadline).toLocaleDateString() }}
             </div>
-            <div
-              v-if="job.simpleApplication"
-              v-b-tooltip.bottom.hover
-              title="Lebenslauf genügt für Bewerbung"
-            >
-              <b-badge style="cursor: pointer" pill variant="secondary">
+            <div v-if="job.simpleApplication" id="tooltip-simple-application">
+              <BBadge style="cursor: pointer" pill variant="secondary">
                 <Fa class="mr-1" :icon="['fas', 'hashtag']" />
-                Einfach bewerben</b-badge
+                Einfach bewerben</BBadge
               >
             </div>
+            <BTooltip
+              v-if="job.simpleApplication"
+              target="tooltip-simple-application"
+              title="Lebenslauf genügt für Bewerbung"
+              triggers="hover"
+              placement="bottom"
+            >
+            </BTooltip>
           </div>
         </div>
       </div>
@@ -459,6 +463,10 @@
   import EmailShareBtn from "@/components/buttons/EmailShareBtn.vue";
   import TwitterShareBtn from "@/components/buttons/TwitterShareBtn.vue";
   import SubscribeNewsletterBtn from "@/components/buttons/SubscribeNewsletterBtn.vue";
+  import { BTooltip, BBadge } from "bootstrap-vue";
+  import Vue from "vue";
+  Vue.component("BTooltip", BTooltip);
+  Vue.component("BBadge", BBadge);
   export default {
     name: "Job",
     components: {
@@ -670,3 +678,88 @@
     }
   };
 </script>
+
+<style lang="scss" scoped>
+  .job {
+    padding: 3rem;
+    box-shadow: $shadow1;
+    border-radius: $border-radius1;
+
+    @media screen and (max-width: $break-menu) {
+      padding: 0;
+      box-shadow: none;
+      border-radius: none;
+    }
+
+    h1 {
+      font-weight: bold;
+    }
+
+    .logo-container {
+      background-color: $light;
+      border-radius: $border-radius1;
+      box-shadow: $shadow1;
+      min-width: 100px;
+      min-height: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @media screen and (max-width: 767px) {
+        min-width: 90px;
+        min-height: 90px;
+      }
+
+      .logo {
+        max-width: 80px;
+        max-height: 80px;
+        //   padding: 0.5rem;
+
+        @media screen and (max-width: 767px) {
+          max-width: 70px;
+          max-height: 70px;
+        }
+      }
+    }
+
+    .head {
+      display: flex;
+      flex-wrap: wrap;
+
+      & > div {
+        margin-right: 2rem;
+        margin-top: 0.275rem;
+        margin-bottom: 0.275rem;
+        color: transparentize($primary, $amount: 0.1);
+        display: flex;
+        align-items: flex-start;
+
+        .icon {
+          min-width: 40px;
+          display: flex;
+          justify-content: center;
+          align-items: flex-start;
+
+          svg {
+            margin-right: 0.5rem;
+          }
+        }
+      }
+
+      .badge {
+        font-size: inherit;
+        font-weight: inherit;
+        color: $light;
+        padding: 0.3rem 0.7rem;
+      }
+    }
+
+    .title-img {
+      border-radius: $border-radius1;
+    }
+
+    .blur {
+      filter: blur(8px) opacity(0.3);
+    }
+  }
+</style>

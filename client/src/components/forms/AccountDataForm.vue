@@ -274,3 +274,12 @@
     }
   };
 </script>
+
+<style lang="scss" scoped>
+  .account-data-form {
+    label[for="is-employer"],
+    label[for="is-employee"] {
+      margin-top: 0;
+    }
+  }
+</style>

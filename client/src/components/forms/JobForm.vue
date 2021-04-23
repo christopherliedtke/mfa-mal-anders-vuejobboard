@@ -20,12 +20,12 @@
       >
         <h6>ADMIN</h6>
         <label for="created">publishedAt</label>
-        <b-form-datepicker
+        <BFormDatepicker
           v-model="publishedAt"
           placeholder="Veröffentlicht am..."
         />
         <label class="mt-2" for="created">paidExpiresAt</label>
-        <b-form-datepicker
+        <BFormDatepicker
           v-model="paidExpiresAt"
           placeholder="Zahlung läuft ab am..."
         />
@@ -87,7 +87,7 @@
       >
 
       <label for="application-deadline">Bewerbungsfrist</label>
-      <b-form-datepicker
+      <BFormDatepicker
         id="application-deadline"
         v-model="applicationDeadline"
         :state="validated ? true : null"
@@ -510,8 +510,7 @@
   import ImageUploader from "@/components/utils/ImageUploader.vue";
   import { BFormDatepicker } from "bootstrap-vue";
   import Vue from "vue";
-  // eslint-disable-next-line
-  Vue.component("b-form-datepicker", BFormDatepicker);
+  Vue.component("BFormDatepicker", BFormDatepicker);
   export default {
     name: "JobForm",
     components: {

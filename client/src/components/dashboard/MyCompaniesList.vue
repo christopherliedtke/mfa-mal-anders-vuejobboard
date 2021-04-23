@@ -26,8 +26,12 @@
       target="_blank"
       >Fragen oder Hilfe benötigt?</b-button
     >
-    <b-card v-for="company in myCompanies" :key="company._id" class="my-3">
-      <b-card-text>
+    <BCard
+      v-for="company in myCompanies"
+      :key="company._id"
+      class="shadow1 bg-light my-3"
+    >
+      <BCardText>
         <h4>{{ company.name }} | {{ company.location }}</h4>
         <div class="my-3">
           <div>
@@ -54,16 +58,13 @@
             >
           </div>
           <div>
-            <b-button
-              variant="outline-danger"
-              size="sm"
-              @click.prevent="$bvModal.show(company._id)"
+            <b-button v-b-modal="company._id" variant="outline-danger" size="sm"
               ><Fa class="mr-2" icon="trash-alt" /> Löschen</b-button
             >
           </div>
         </div>
-      </b-card-text>
-      <b-modal
+      </BCardText>
+      <BModal
         :id="company._id"
         :title="`Delete ${company.name}`"
         ok-title="Unternehmen löschen"
@@ -74,13 +75,19 @@
         @ok="deleteCompany(company._id)"
         ><p class="my-4">
           Bist Du sicher, dass Du das Unternehmen löschen möchtest?
-        </p></b-modal
+        </p></BModal
       >
-    </b-card>
+    </BCard>
   </div>
 </template>
 
 <script>
+  import Vue from "vue";
+  import { BModal, VBModal, BCard, BCardText } from "bootstrap-vue";
+  Vue.component("BModal", BModal);
+  Vue.directive("b-modal", VBModal);
+  Vue.component("BCard", BCard);
+  Vue.component("BCardText", BCardText);
   export default {
     name: "MyCompaniesList",
     data() {

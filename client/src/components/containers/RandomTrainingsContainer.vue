@@ -13,28 +13,28 @@
           :to="'/karriere/fort-und-weiterbildungen/' + training.slug"
           :aria-label="training.title"
         >
-          <b-card no-body>
-            <b-card-img-lazy
+          <BCard no-body>
+            <BCardImgLazy
               :src="training.featuredImage.node.sourceUrl"
               :alt="training.featuredImage.node.altText"
               offset="1000"
               top
             />
-            <b-card-body>
-              <b-card-title :title="training.title" />
+            <BCardBody>
+              <BCardTitle :title="training.title" />
 
-              <b-card-text>
+              <BCardText>
                 <!-- eslint-disable-next-line -->
                 <div v-html="training.excerpt"></div>
-              </b-card-text>
+              </BCardText>
 
               <b-button
                 :to="'/karriere/fort-und-weiterbildungen/' + training.slug"
                 variant="primary"
                 >Mehr</b-button
               >
-            </b-card-body>
-          </b-card>
+            </BCardBody>
+          </BCard>
         </b-link>
       </div>
     </b-col>
@@ -42,6 +42,19 @@
 </template>
 
 <script>
+  import Vue from "vue";
+  import {
+    BCard,
+    BCardBody,
+    BCardImgLazy,
+    BCardTitle,
+    BCardText
+  } from "bootstrap-vue";
+  Vue.component("BCard", BCard);
+  Vue.component("BCardBody", BCardBody);
+  Vue.component("BCardImgLazy", BCardImgLazy);
+  Vue.component("BCardTitle", BCardTitle);
+  Vue.component("BCardText", BCardText);
   export default {
     name: "RandomTrainingsContainer",
     props: {

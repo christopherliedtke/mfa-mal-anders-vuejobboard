@@ -3,7 +3,7 @@
     <b-button v-b-modal.delete-account variant="danger" size="sm" type="submit"
       ><Fa class="mr-2" icon="trash-alt"></Fa>Account löschen</b-button
     >
-    <b-modal
+    <BModal
       id="delete-account"
       title="Account löschen"
       ok-title="Jetzt löschen"
@@ -46,11 +46,15 @@
           >
         </div>
       </b-form>
-    </b-modal>
+    </BModal>
   </div>
 </template>
 
 <script>
+  import Vue from "vue";
+  import { BModal, VBModal } from "bootstrap-vue";
+  Vue.component("BModal", BModal);
+  Vue.directive("b-modal", VBModal);
   export default {
     name: "DeleteAccountButton",
     data() {

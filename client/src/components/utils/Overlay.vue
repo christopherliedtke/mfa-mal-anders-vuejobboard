@@ -14,6 +14,10 @@
 </template>
 
 <script>
+  import Vue from "vue";
+  import { BOverlay, BSpinner } from "bootstrap-vue";
+  Vue.component("BOverlay", BOverlay);
+  Vue.component("BSpinner", BSpinner);
   export default {
     name: "Overlay"
   };

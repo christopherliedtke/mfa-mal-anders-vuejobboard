@@ -35,11 +35,11 @@ import {
   NavbarPlugin,
   AlertPlugin,
   // AvatarPlugin,
-  BadgePlugin,
+  // BadgePlugin,
   ButtonPlugin,
-  ButtonGroupPlugin,
-  ButtonToolbarPlugin,
-  CardPlugin,
+  // ButtonGroupPlugin,
+  // ButtonToolbarPlugin,
+  // CardPlugin,
   FormPlugin,
   FormCheckboxPlugin,
   // FormDatepickerPlugin,
@@ -53,14 +53,14 @@ import {
   InputGroupPlugin,
   LayoutPlugin,
   LinkPlugin,
-  ListGroupPlugin,
-  ModalPlugin,
-  OverlayPlugin,
-  PopoverPlugin,
+  // ListGroupPlugin,
+  // ModalPlugin,
+  // OverlayPlugin,
+  // PopoverPlugin,
   // TablePlugin,
   // TabsPlugin,
-  TooltipPlugin,
-  SpinnerPlugin,
+  // TooltipPlugin,
+  // SpinnerPlugin,
   ToastPlugin,
   // PaginationPlugin,
   BreadcrumbPlugin
@@ -69,11 +69,11 @@ import {
 Vue.use(NavbarPlugin);
 Vue.use(AlertPlugin);
 // Vue.use(AvatarPlugin);
-Vue.use(BadgePlugin);
+// Vue.use(BadgePlugin);
 Vue.use(ButtonPlugin);
-Vue.use(ButtonGroupPlugin);
-Vue.use(ButtonToolbarPlugin);
-Vue.use(CardPlugin);
+// Vue.use(ButtonGroupPlugin);
+// Vue.use(ButtonToolbarPlugin);
+// Vue.use(CardPlugin);
 Vue.use(FormPlugin);
 Vue.use(FormCheckboxPlugin);
 // Vue.use(FormDatepickerPlugin);
@@ -87,14 +87,14 @@ Vue.use(ImagePlugin);
 Vue.use(InputGroupPlugin);
 Vue.use(LayoutPlugin);
 Vue.use(LinkPlugin);
-Vue.use(ListGroupPlugin);
-Vue.use(ModalPlugin);
-Vue.use(OverlayPlugin);
-Vue.use(PopoverPlugin);
+// Vue.use(ListGroupPlugin);
+// Vue.use(ModalPlugin);
+// Vue.use(OverlayPlugin);
+// Vue.use(PopoverPlugin);
 // Vue.use(TablePlugin);
 // Vue.use(TabsPlugin);
-Vue.use(TooltipPlugin);
-Vue.use(SpinnerPlugin);
+// Vue.use(TooltipPlugin);
+// Vue.use(SpinnerPlugin);
 Vue.use(ToastPlugin);
 // Vue.use(PaginationPlugin);
 Vue.use(BreadcrumbPlugin);

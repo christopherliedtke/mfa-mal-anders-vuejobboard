@@ -1,7 +1,7 @@
 <template>
   <div class="article-card">
     <b-link :to="'/blog/article/' + article.slug" :aria-label="article.title">
-      <b-card
+      <BCard
         :title="article.title"
         :img-src="
           article.featuredImage ? article.featuredImage.node.sourceUrl : ''
@@ -13,10 +13,10 @@
         tag="article"
         class="mb-2"
       >
-        <b-card-text>
+        <BCardText>
           <!-- eslint-disable-next-line -->
           <div v-html="article.excerpt"></div>
-        </b-card-text>
+        </BCardText>
         <hr />
 
         <div class="d-flex justify-content-between">
@@ -37,20 +37,56 @@
           <b-button variant="primary">Weiterlesen</b-button>
         </div>
 
-        <b-badge
-          v-if="article.tags.nodes.length > 0"
-          pill
-          variant="secondary"
-          >{{ article.tags.nodes[0].name }}</b-badge
-        >
-      </b-card>
+        <BBadge v-if="article.tags.nodes.length > 0" pill variant="secondary">{{
+          article.tags.nodes[0].name
+        }}</BBadge>
+      </BCard>
     </b-link>
   </div>
 </template>
 
 <script>
+  import Vue from "vue";
+  import { BBadge, BCard, BCardText } from "bootstrap-vue";
+  Vue.component("BBadge", BBadge);
+  Vue.component("BCard", BCard);
+  Vue.component("BCardText", BCardText);
   export default {
     name: "ArticleCard",
     props: { article: { type: Object, default: () => {} } }
   };
 </script>
+
+<style lang="scss" scoped>
+  .article-card {
+    a:not(.btn) {
+      color: $dark;
+      transition: $transition1;
+
+      &:hover {
+        color: $primary;
+      }
+    }
+
+    .card {
+      border: none;
+      background-color: $light-shade;
+      box-shadow: $shadow1;
+      transition: $transition1;
+
+      &:hover {
+        box-shadow: $shadow2;
+      }
+
+      .badge {
+        color: $light;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        font-size: 0.9rem;
+        font-weight: 400;
+        padding: 0.5rem 0.8rem;
+      }
+    }
+  }
+</style>

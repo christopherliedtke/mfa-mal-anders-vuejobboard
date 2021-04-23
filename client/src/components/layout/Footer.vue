@@ -134,7 +134,6 @@
 <script>
   import NewsletterSignUpForm from "@/components/forms/NewsletterSignUpForm.vue";
   import PrerenderRecache from "@/components/buttons/PrerenderRecache.vue";
-
   export default {
     name: "Footer",
     components: {
@@ -143,3 +142,54 @@
     }
   };
 </script>
+
+<style lang="scss" scoped>
+  #footer {
+    position: relative;
+    background-color: $primary;
+    padding: 1rem 0;
+    color: $light;
+    margin-top: 2rem;
+
+    hr {
+      border-top: 1px solid transparentize($color: $light, $amount: 0.75);
+    }
+
+    .container {
+      max-width: 1300px;
+
+      .col {
+        padding: 0 2rem;
+
+        @media screen and (max-width: $break-menu) {
+          padding: 1rem 2rem;
+        }
+      }
+
+      a {
+        color: $light;
+
+        &:hover.nav-link {
+          color: transparentize($color: $light, $amount: 0.5);
+        }
+      }
+
+      .nav {
+        .nav-link {
+          padding: 0.4rem 0;
+          color: $light;
+          font-family: $font-family-headlines;
+          font-size: 1.1rem;
+
+          :not(.home) > .router-link-active {
+            color: darken($light, 5%);
+          }
+
+          .router-link-exact-active {
+            color: darken($light, 5%);
+          }
+        }
+      }
+    }
+  }
+</style>

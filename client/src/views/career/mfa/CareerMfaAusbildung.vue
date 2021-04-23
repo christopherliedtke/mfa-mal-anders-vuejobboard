@@ -380,26 +380,26 @@
           md="6"
           lg="4"
         >
-          <b-card align="center icon-box shadow1 p-0">
-            <b-card-body>
+          <BCard align="center icon-box shadow1 p-0">
+            <BCardBody>
               <div class="d-flex justify-content-center">
                 <div class="icon-box2 shadow1">
                   <Fa :icon="['fa', card.icon]" size="3x" />
                 </div>
               </div>
-              <b-card-title :title="card.title" class="bold" />
-              <b-card-text>
+              <BCardTitle :title="card.title" class="bold" />
+              <BCardText>
                 <p>
                   {{ card.desc }}
                 </p>
-              </b-card-text>
+              </BCardText>
               <b-button
                 :to="`/karriere/jobs-und-berufsbilder/${card.slug}`"
                 variant="primary"
                 >Mehr</b-button
               >
-            </b-card-body>
-          </b-card>
+            </BCardBody>
+          </BCard>
         </b-col>
       </b-row>
       <p>
@@ -475,11 +475,21 @@
 </template>
 
 <script>
+  import Vue from "vue";
+  import {
+    TableSimplePlugin,
+    BCard,
+    BCardBody,
+    BCardTitle,
+    BCardText
+  } from "bootstrap-vue";
+  Vue.component("BCard", BCard);
+  Vue.component("BCardBody", BCardBody);
+  Vue.component("BCardTitle", BCardTitle);
+  Vue.component("BCardText", BCardText);
+  Vue.use(TableSimplePlugin);
   import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
   import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
-  import { TableSimplePlugin } from "bootstrap-vue";
-  import Vue from "vue";
-  Vue.use(TableSimplePlugin);
   export default {
     name: "CareerMfaAusbildung",
     components: {

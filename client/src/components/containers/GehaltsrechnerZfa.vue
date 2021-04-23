@@ -2,14 +2,21 @@
   <div class="gehaltsrechner p-4 border-radius2 shadow1">
     <h3>
       Gehaltsrechner
-      <div>
-        <Fa
-          v-b-popover.hover.top="
-            'Der Gehaltsrechner gibt Dir eine erste grobe Richtung für Dein zu erwartendes Grundgehalt als Zahnmedizinische Fachangestellte vor. Wichtige weitere Faktoren sind die tatsächliche Verantwortung, die du übernimmst, der Standort (Bundesland etc.), aber beispielsweise auch die Größe der Praxis. Du erhältst weitere Informationen zur noch besseren Einschätzung im folgenden Text und im Gehaltstarifvertrag des AAZ.'
-          "
-          icon="info"
-        />
+      <div id="popover-zfa-gehaltsrechner">
+        <Fa icon="info" />
       </div>
+      <b-popover
+        target="popover-zfa-gehaltsrechner"
+        triggers="hover"
+        placement="top"
+      >
+        Der Gehaltsrechner gibt Dir eine erste grobe Richtung für Dein zu
+        erwartendes Grundgehalt als Zahnmedizinische Fachangestellte vor.
+        Wichtige weitere Faktoren sind die tatsächliche Verantwortung, die du
+        übernimmst, der Standort (Bundesland etc.), aber beispielsweise auch die
+        Größe der Praxis. Du erhältst weitere Informationen zur noch besseren
+        Einschätzung im folgenden Text und im Gehaltstarifvertrag des AAZ.
+      </b-popover>
     </h3>
     <p>
       Gib Deine Daten ein und erhalte Dein Gehalt entsprechend des
@@ -68,6 +75,9 @@
 </template>
 
 <script>
+  import { BPopover } from "bootstrap-vue";
+  import Vue from "vue";
+  Vue.component("BPopover", BPopover);
   export default {
     name: "GehaltsrechnerZfa",
     data() {
@@ -167,3 +177,40 @@
     }
   };
 </script>
+
+<style lang="scss" scoped>
+  .gehaltsrechner {
+    background-color: $primary;
+    color: $light;
+
+    h3 > div {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $light;
+      color: $primary;
+      border-radius: 50%;
+      position: relative;
+      top: -10px;
+      width: 18px;
+      height: 18px;
+
+      svg {
+        font-size: 11px;
+      }
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      background: $secondary;
+    }
+
+    hr {
+      margin-top: 3rem;
+      background-color: $light;
+    }
+
+    a {
+      color: transparentize($light, $amount: 0.2);
+    }
+  }
+</style>

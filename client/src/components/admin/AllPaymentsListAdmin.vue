@@ -135,16 +135,17 @@
         </b-dropdown>
 
         <b-button
+          v-b-modal="'deletePaymentModal'"
           size="sm"
           variant="danger"
-          @click="showDeletePaymentModal(row.item)"
+          @click="paymentToDelete = row.item"
         >
           <Fa class="mr-2" icon="trash-alt" />Delete
         </b-button>
       </template>
     </b-table>
 
-    <b-modal
+    <BModal
       id="deletePaymentModal"
       :title="`Delete Payment ${paymentToDelete._id}`"
       ok-title="Delete Payment"
@@ -154,12 +155,16 @@
       @ok="deletePayment(paymentToDelete._id)"
       ><p class="my-4">
         Are you sure to delete this job?
-      </p></b-modal
+      </p></BModal
     >
   </div>
 </template>
 
 <script>
+  import Vue from "vue";
+  import { BModal, VBModal } from "bootstrap-vue";
+  Vue.component("BModal", BModal);
+  Vue.directive("b-modal", VBModal);
   export default {
     name: "AllPaymentsListAdmin",
     data() {
@@ -419,10 +424,10 @@
           );
         }
       },
-      showDeletePaymentModal(payment) {
-        this.paymentToDelete = payment;
-        this.$bvModal.show("deletePaymentModal");
-      },
+      // showDeletePaymentModal(payment) {
+      //   this.paymentToDelete = payment;
+      //   this.$bvModal.show("deletePaymentModal");
+      // },
       async deletePayment(paymentId) {
         this.$store.dispatch("setOverlay", true);
 

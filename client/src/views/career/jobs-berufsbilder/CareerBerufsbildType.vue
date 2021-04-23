@@ -22,8 +22,8 @@
             <b-link to="/stellenangebote" class="bold">Stellenbörse</b-link>
             den richtigen Job für Dich.
           </p>
-          <b-list-group tag="ul">
-            <b-list-group-item
+          <BListGroup tag="ul">
+            <BListGroupItem
               v-for="berufsbild in berufsbilder"
               :id="berufsbild.slug"
               :key="berufsbild.slug"
@@ -42,10 +42,9 @@
                   v-if="berufsbild.content"
                   icon="caret-right"
                   size="1x"
-                  class="ml-2
-                                    "/></b-link
-            ></b-list-group-item>
-          </b-list-group>
+                  class="ml-2"/></b-link
+            ></BListGroupItem>
+          </BListGroup>
           <ToJobboardBanner class="mt-5" />
         </b-col>
       </b-row>
@@ -61,6 +60,10 @@
 </template>
 
 <script>
+  import Vue from "vue";
+  import { BListGroup, BListGroupItem } from "bootstrap-vue";
+  Vue.component("BListGroup", BListGroup);
+  Vue.component("BListGroupItem", BListGroupItem);
   import JobsBerufsbilderNav from "@/components/navs/JobsBerufsbilderNav.vue";
   import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
   import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";

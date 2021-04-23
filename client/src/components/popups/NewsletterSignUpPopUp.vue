@@ -1,5 +1,5 @@
 <template>
-  <b-modal
+  <BModal
     id="subscribe-newsletter-modal"
     content-class="border-0"
     body-class="shadow1 border-radius1"
@@ -23,10 +23,13 @@
       intro="Erhalte unsere aktuellen Stellenangebote wöchentlich direkt in Dein Postfach."
       :social="true"
     />
-  </b-modal>
+  </BModal>
 </template>
 
 <script>
+  import Vue from "vue";
+  import { BModal } from "bootstrap-vue";
+  Vue.component("BModal", BModal);
   import NewsletterSignUpForm from "@/components/forms/NewsletterSignUpForm.vue";
   export default {
     name: "NewsletterSignUpPopUp",

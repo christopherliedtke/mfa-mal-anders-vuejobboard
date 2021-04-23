@@ -5,13 +5,17 @@
         state ? "Abonniere Jobs für " + state : "Abonniere den Job Newsletter"
       }}</b-button
     >
-    <b-modal id="subscribe-newsletter-modal2" hide-footer centered>
+    <BModal id="subscribe-newsletter-modal2" hide-footer centered>
       <NewsletterSignUpForm class="p-3" :default-state="state" />
-    </b-modal>
+    </BModal>
   </div>
 </template>
 
 <script>
+  import Vue from "vue";
+  import { BModal, VBModal } from "bootstrap-vue";
+  Vue.component("BModal", BModal);
+  Vue.directive("b-modal", VBModal);
   import NewsletterSignUpForm from "@/components/forms/NewsletterSignUpForm.vue";
   export default {
     name: "SubscribeNewsletterBtn",

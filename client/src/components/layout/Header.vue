@@ -331,3 +331,195 @@
     }
   };
 </script>
+
+<style lang="scss" scoped>
+  #header {
+    background: $primary;
+    font-family: $font-family-headlines;
+    box-shadow: $shadow1;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: linear 0.3s;
+
+    @media screen and (max-width: $break-menu) {
+      max-height: 100vh;
+      overflow-y: auto;
+    }
+
+    &.hide {
+      transform: translateY(-100%);
+    }
+
+    .container {
+      max-width: 1300px;
+
+      .navbar {
+        padding: 0 0.75rem;
+
+        .header-logo {
+          height: 50px;
+          margin: 0.5rem 1rem;
+
+          @media screen and (max-width: $break-menu) {
+            height: 45px;
+          }
+        }
+
+        .navbar-nav {
+          display: flex;
+          align-items: center;
+
+          @media screen and (max-width: $break-menu) {
+            align-items: start;
+          }
+        }
+
+        .navbar-collapse {
+          @media screen and (max-width: $break-menu) {
+            padding: 1rem;
+          }
+        }
+
+        .nav-link {
+          position: relative;
+          display: flex;
+          align-items: center;
+          padding: 0.4rem 0.5rem;
+          color: transparentize($color: $light, $amount: 0.3);
+
+          &:not([href="/"]) {
+            &.router-link-active {
+              color: transparentize($color: $light, $amount: 0);
+            }
+          }
+
+          &.router-link-exact-active,
+          &.active {
+            color: transparentize($color: $light, $amount: 0);
+          }
+
+          &:hover {
+            color: transparentize($color: $light, $amount: 0);
+          }
+
+          @media screen and (max-width: $break-menu) {
+            display: block;
+          }
+        }
+
+        .sub-menu {
+          position: absolute;
+          top: 100%;
+          background-color: $primary;
+          border-radius: $border-radius1;
+          width: max-content;
+          max-height: 0;
+          overflow-y: hidden;
+          visibility: hidden;
+          transition: linear 0.3s;
+
+          @media screen and (max-width: $break-menu) {
+            display: block;
+            position: relative;
+            top: 0%;
+            left: 0;
+            max-height: none;
+            visibility: visible;
+          }
+
+          &.show {
+            max-height: 300px;
+            overflow-y: visible;
+            visibility: visible;
+
+            @media screen and (max-width: $break-menu) {
+              max-height: none;
+            }
+          }
+
+          .nav-link {
+            padding: 0.4rem 1rem;
+
+            @media screen and (max-width: $break-menu) {
+              .svg-inline--fa {
+                display: none;
+              }
+            }
+
+            .sub-menu {
+              top: 0%;
+              left: 100%;
+
+              @media screen and (max-width: $break-menu) {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    /* #Animate navbar menu icon */
+    .ui-hamburger-05 {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      width: 35px;
+      height: 30px;
+      border: none;
+      position: relative;
+      background: linear-gradient(
+        to bottom,
+        transparentize($light, 0.5),
+        transparentize($light, 0.5)
+      );
+      background-size: 0 0;
+      background-repeat: no-repeat;
+      background-position: center center;
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+      }
+
+      &:before,
+      &:after {
+        height: 2px;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        background-color: transparentize($light, 0.5);
+        content: "";
+        transition: transform 0.4s ease;
+      }
+
+      &:before {
+        top: 10px;
+      }
+
+      &:after {
+        bottom: 10px;
+      }
+
+      &:not(.collapsed) {
+        background-size: 0 0;
+      }
+
+      &:not(.collapsed):before,
+      &:not(.collapsed):after {
+        transition-delay: 0.1s;
+      }
+
+      &:not(.collapsed):before {
+        transform: translateY(4px) rotate(45deg);
+      }
+
+      &:not(.collapsed):after {
+        transform: translateY(-4px) rotate(-45deg);
+      }
+    }
+  }
+</style>

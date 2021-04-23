@@ -1,26 +1,39 @@
 <template>
-  <b-card no-body class="shadow1">
-    <b-card-img-lazy
+  <BCard no-body class="shadow1">
+    <BCardImgLazy
       top
       src="/img/Banner_Weiterbildungsdschungel_1200.jpg"
       alt="Banner - Fort- und Weiterbildungen für MFA / ZFA"
     />
-    <b-card-body align="center">
-      <b-card-title title="Fort- und Weiterbildungen für MFA / ZFA" />
-      <b-card-text>
+    <BCardBody align="center">
+      <BCardTitle title="Fort- und Weiterbildungen für MFA / ZFA" />
+      <BCardText>
         Hier findest du eine Übersicht von verschiedenen Fortbildungen und
         Weiterbildungen für Medizinische / Zahnmedizinische Fachangestellte /
         ArzthelferInnen!
-      </b-card-text>
+      </BCardText>
 
       <b-button to="/karriere/fort-und-weiterbildungen" variant="primary"
         >Mehr erfahren!</b-button
       >
-    </b-card-body>
-  </b-card>
+    </BCardBody>
+  </BCard>
 </template>
 
 <script>
+  import Vue from "vue";
+  import {
+    BCard,
+    BCardBody,
+    BCardImgLazy,
+    BCardTitle,
+    BCardText
+  } from "bootstrap-vue";
+  Vue.component("BCard", BCard);
+  Vue.component("BCardBody", BCardBody);
+  Vue.component("BCardImgLazy", BCardImgLazy);
+  Vue.component("BCardTitle", BCardTitle);
+  Vue.component("BCardText", BCardText);
   export default {
     name: "WeiterbildungenBanner"
   };

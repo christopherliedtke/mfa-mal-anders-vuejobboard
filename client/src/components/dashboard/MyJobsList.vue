@@ -29,24 +29,24 @@
       target="_blank"
       >Fragen oder Hilfe benötigt?</b-button
     >
-    <b-card v-for="job in myJobs" :key="job._id" class="my-3">
-      <b-card-text>
+    <BCard v-for="job in myJobs" :key="job._id" class="shadow1 bg-light my-3">
+      <BCardText>
         <h4>
           {{ job.title }}
         </h4>
         <div>
-          <b-badge
+          <BBadge
             v-if="job.paidExpiresAt >= new Date() && job.paid"
             class="mr-1"
             pill
             variant="success
                         "
-            >bezahlt</b-badge
+            >bezahlt</BBadge
           >
-          <b-badge v-if="!job.paid" class="mr-1" pill variant="warning"
-            >unbezahlt</b-badge
+          <BBadge v-if="!job.paid" class="mr-1" pill variant="warning"
+            >unbezahlt</BBadge
           >
-          <b-badge
+          <BBadge
             v-if="
               job.status === 'published' &&
                 job.paidExpiresAt >= new Date() &&
@@ -57,24 +57,24 @@
             class="mr-1"
             pill
             variant="success"
-            >online</b-badge
+            >online</BBadge
           >
-          <b-badge
+          <BBadge
             v-if="job.status === 'draft'"
             class="mr-1"
             pill
             variant="light"
-            >Entwurf</b-badge
+            >Entwurf</BBadge
           >
-          <b-badge
+          <BBadge
             v-if="job.status === 'unpublished'"
             class="mr-1"
             pill
             variant="danger"
-            >offline</b-badge
+            >offline</BBadge
           >
 
-          <b-badge
+          <BBadge
             v-if="
               job.applicationDeadline &&
                 job.applicationDeadline < new Date().getTime()
@@ -82,7 +82,7 @@
             class="mr-1"
             pill
             variant="danger"
-            >Bewerbungsfrist abgelaufen</b-badge
+            >Bewerbungsfrist abgelaufen</BBadge
           >
         </div>
         <div class="my-3">
@@ -194,16 +194,16 @@
           </div>
           <div>
             <b-button
+              v-b-modal="job._id"
               class="mb-2 mb-md-0"
               variant="outline-danger"
               size="sm"
-              @click.prevent="$bvModal.show(job._id)"
               ><Fa class="mr-2" icon="trash-alt" /> Löschen</b-button
             >
           </div>
         </div>
-      </b-card-text>
-      <b-modal
+      </BCardText>
+      <BModal
         :id="job._id"
         :title="`Delete ${job.title}`"
         ok-title="Stellenanzeige löschen"
@@ -214,13 +214,20 @@
         @ok="deleteJob(job._id)"
         ><p class="my-4">
           Bist Du sicher, dass Du diese Stellenanzeige löschen möchtest?
-        </p></b-modal
+        </p></BModal
       >
-    </b-card>
+    </BCard>
   </div>
 </template>
 
 <script>
+  import Vue from "vue";
+  import { BModal, VBModal, BBadge, BCard, BCardText } from "bootstrap-vue";
+  Vue.component("BModal", BModal);
+  Vue.directive("b-modal", VBModal);
+  Vue.component("BBadge", BBadge);
+  Vue.component("BCard", BCard);
+  Vue.component("BCardText", BCardText);
   export default {
     name: "MyJobsList",
     data() {

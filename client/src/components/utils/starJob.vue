@@ -7,7 +7,7 @@
     <Fa v-if="!active" :icon="['far', 'star']" :size="size" />
     <Fa v-else :icon="['fas', 'star']" :size="size" />
 
-    <b-modal
+    <BModal
       :id="`register-modal-${jobId}`"
       content-class="border-0"
       body-class="shadow1 border-radius1"
@@ -45,11 +45,14 @@
           >Jetzt registrieren</b-button
         >
       </div>
-    </b-modal>
+    </BModal>
   </span>
 </template>
 
 <script>
+  import Vue from "vue";
+  import { BModal } from "bootstrap-vue";
+  Vue.component("BModal", BModal);
   export default {
     name: "StarJob",
     props: {

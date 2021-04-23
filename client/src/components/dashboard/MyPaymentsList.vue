@@ -13,33 +13,37 @@
       >Fragen oder Hilfe benötigt?</b-button
     >
     <div v-if="myPayments.length > 0">
-      <b-card v-for="payment in myPayments" :key="payment._id" class="my-3">
-        <b-card-text>
+      <BCard
+        v-for="payment in myPayments"
+        :key="payment._id"
+        class="shadow1 bg-light my-3"
+      >
+        <BCardText>
           <h4>{{ payment.job.title }} | {{ payment.job.company.name }}</h4>
           <div>
-            <b-badge
+            <BBadge
               v-if="payment.status === 'paid'"
               class="mr-1"
               pill
               variant="success
                         "
-              >bezahlt</b-badge
+              >bezahlt</BBadge
             >
-            <b-badge
+            <BBadge
               v-if="payment.status === 'pending'"
               class="mr-1"
               pill
               variant="warning
                         "
-              >ausstehend</b-badge
+              >ausstehend</BBadge
             >
-            <b-badge
+            <BBadge
               v-if="payment.status === 'cancelled'"
               class="mr-1"
               pill
               variant="danger
                         "
-              >verworfen</b-badge
+              >verworfen</BBadge
             >
           </div>
           <div class="my-3">
@@ -98,23 +102,19 @@
                 abrufen</b-button
               >
             </div>
-            <!-- <div>
-                        <b-button
-                            variant="outline-danger"
-                            size="sm"
-                            @click.prevent="$bvModal.show(company._id)"
-                            ><Fa class="mr-2" icon="trash-alt" />
-                            Löschen</b-button
-                        >
-                    </div> -->
           </div>
-        </b-card-text>
-      </b-card>
+        </BCardText>
+      </BCard>
     </div>
   </div>
 </template>
 
 <script>
+  import Vue from "vue";
+  import { BBadge, BCard, BCardText } from "bootstrap-vue";
+  Vue.component("BBadge", BBadge);
+  Vue.component("BCard", BCard);
+  Vue.component("BCardText", BCardText);
   export default {
     name: "MyPaymentsList",
     data() {

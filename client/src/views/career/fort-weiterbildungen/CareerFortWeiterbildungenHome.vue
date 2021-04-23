@@ -43,7 +43,7 @@
             Fachangestellte in und außerhalb der Arztpraxis hast.
           </p>
           <div class="d-flex justify-content-center">
-            <b-card
+            <BCard
               style="max-width: 600px"
               title="Die richtige Weiterbildung für dich?!"
               img-src="@/assets/img/Banner_In6SchrittenZurRichtigenWeiterbildung_1200.jpg"
@@ -52,15 +52,15 @@
               align="center"
               class="bg-light-shade shadow1 mt-4 mb-5"
             >
-              <b-card-text>
+              <BCardText>
                 Hier findest du eine kleine Anleitung, wie du Schritt für
                 Schritt vorgehen kannst.
-              </b-card-text>
+              </BCardText>
 
               <b-button to="/karriere/jobs-und-berufsbilder" variant="primary"
                 >Los geht's!</b-button
               >
-            </b-card>
+            </BCard>
           </div>
           <p>
             Wir beschreiben anerkannte Fortbildungen der Ärztekammer,
@@ -105,9 +105,12 @@
 </template>
 
 <script>
+  import Vue from "vue";
+  import { BCard, BCardText } from "bootstrap-vue";
+  Vue.component("BCard", BCard);
+  Vue.component("BCardText", BCardText);
   import FortWeiterbildungenNav from "@/components/navs/FortWeiterbildungenNav.vue";
   import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
-
   export default {
     name: "CareerFortWeiterbildungen",
     components: {

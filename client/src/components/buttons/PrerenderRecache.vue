@@ -23,3 +23,15 @@
     }
   };
 </script>
+
+<style lang="scss" scoped>
+  .recache-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    @media screen and (max-width: $break-menu) {
+      display: none;
+    }
+  }
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <b-card
+  <BCard
     no-body
     class="overflow-hidden shadow1"
     align="center"
@@ -14,7 +14,7 @@
         ></b-img>
       </b-col>
       <b-col md="8">
-        <b-card-body
+        <BCardBody
           class="d-flex flex-column justify-content-center align-items-center h-100 p-4"
         >
           <h2 class="bold">
@@ -41,13 +41,17 @@
           <b-button to="/fuer-arbeitgeber" variant="secondary" size="lg"
             >Stellenanzeige schalten</b-button
           >
-        </b-card-body>
+        </BCardBody>
       </b-col>
     </b-row>
-  </b-card>
+  </BCard>
 </template>
 
 <script>
+  import Vue from "vue";
+  import { BCard, BCardBody } from "bootstrap-vue";
+  Vue.component("BCard", BCard);
+  Vue.component("BCardBody", BCardBody);
   export default {
     name: "StellenanzeigeSchaltenBanner"
   };

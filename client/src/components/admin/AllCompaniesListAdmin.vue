@@ -65,16 +65,17 @@
           <Fa icon="edit" class="mr-2" />Edit
         </b-button>
         <b-button
+          v-b-modal="'deleteCompanyModal'"
           size="sm"
           variant="danger"
-          @click="showDeleteCompanyModal(row.item)"
+          @click="companyToDelete = row.item"
         >
           <Fa icon="trash-alt" class="mr-2" />
           Delete
         </b-button>
       </template>
     </b-table>
-    <b-modal
+    <BModal
       id="deleteCompanyModal"
       :title="`Delete ${companyToDelete.name}`"
       ok-title="Delete Company"
@@ -84,7 +85,7 @@
       @ok="deleteCompany(companyToDelete._id)"
       ><p class="my-4">
         Are you sure to delete this company?
-      </p></b-modal
+      </p></BModal
     >
     <b-alert
       v-model="error"
@@ -99,6 +100,10 @@
 </template>
 
 <script>
+  import Vue from "vue";
+  import { BModal, VBModal } from "bootstrap-vue";
+  Vue.component("BModal", BModal);
+  Vue.directive("b-modal", VBModal);
   export default {
     name: "AllCompaniesListAdmin",
     data() {
@@ -240,10 +245,10 @@
           );
         }
       },
-      showDeleteCompanyModal(company) {
-        this.companyToDelete = company;
-        this.$bvModal.show("deleteCompanyModal");
-      },
+      // showDeleteCompanyModal(company) {
+      //   this.companyToDelete = company;
+      //   // this.$bvModal.show("deleteCompanyModal");
+      // },
       async deleteCompany(companyId) {
         try {
           const response = await this.$axios.post("graphql", {

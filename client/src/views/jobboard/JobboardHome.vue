@@ -7,8 +7,8 @@
     <b-container class="py-3 py-lg-5">
       <b-row class="mt-2">
         <b-col cols="12" lg="4" class="px-2 pr-lg-5">
-          <b-button-toolbar aria-label="Jobboard view toolbar">
-            <b-button-group class="mb-3">
+          <BButtonToolbar aria-label="Jobboard view toolbar">
+            <BButtonGroup class="mb-3">
               <b-button
                 :variant="
                   jobboardView == 'list' ? 'primary' : 'outline-primary'
@@ -23,10 +23,10 @@
                 @click.prevent="jobboardView = 'map'"
                 ><Fa class="mr-2" icon="map" />Karte</b-button
               >
-            </b-button-group>
+            </BButtonGroup>
             <FacebookBtn class="d-lg-none mb-3 ml-1" content="" />
             <InstagramBtn class="d-lg-none mb-3 ml-1" content="" />
-          </b-button-toolbar>
+          </BButtonToolbar>
           <b-form id="job-filter" @submit.prevent>
             <label for="s-jobboard" class="sr-only">Suchbegriff *</label>
             <b-input-group class="mb-1 mr-2">
@@ -277,6 +277,10 @@
 </template>
 
 <script>
+  import Vue from "vue";
+  import { BButtonToolbar, BButtonGroup } from "bootstrap-vue";
+  Vue.component("BButtonToolbar", BButtonToolbar);
+  Vue.component("BButtonGroup", BButtonGroup);
   import {
     employmentTypeOptions,
     companyStateOptions,
@@ -580,11 +584,32 @@
 </script>
 
 <style lang="scss">
-  #specialization-jobboard,
-  #profession-jobboard {
-    & .custom-control-label {
-      justify-content: flex-start;
-      margin-top: 0;
+  .jobboard {
+    input,
+    .input-group,
+    select {
+      min-width: 100%;
+      max-width: 100%;
+    }
+
+    .job-list {
+      a {
+        color: unset;
+        transition: linear 0.1s;
+
+        &:hover {
+          text-decoration: unset;
+          color: $primary;
+        }
+      }
+    }
+
+    #specialization-jobboard,
+    #profession-jobboard {
+      & .custom-control-label {
+        justify-content: flex-start;
+        margin-top: 0;
+      }
     }
   }
 </style>

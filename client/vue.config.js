@@ -1,6 +1,4 @@
 const path = require("path");
-// const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
-//   .BundleAnalyzerPlugin;
 const webpack = require("webpack");
 
 module.exports = {
@@ -21,7 +19,6 @@ module.exports = {
   },
   configureWebpack: {
     plugins: [
-      // new BundleAnalyzerPlugin(),
       new webpack.IgnorePlugin({
         resourceRegExp: /^\.\/locale$/,
         contextRegExp: /moment$/
@@ -72,10 +69,15 @@ module.exports = {
           img: "src",
           image: "xlink:href",
           "b-img": "src",
+          BImg: "src",
           "b-img-lazy": ["src", "blank-src"],
+          BImgLazy: ["src", "blank-src"],
           "b-card": "img-src",
+          BCard: "img-src",
           "b-card-img": "img-src",
+          BCardImage: "img-src",
           "b-card-img-lazy": ["src", "blank-src"],
+          BCardImgLazy: ["src", "blank-src"],
           "b-carousel-slide": "img-src",
           "b-embed": "src"
         };
@@ -89,5 +91,14 @@ module.exports = {
       };
       return args;
     });
+  },
+  css: {
+    loaderOptions: {
+      sass: {
+        prependData: `
+          @import "@/styles/custom_bootstrap.scss";
+        `
+      }
+    }
   }
 };

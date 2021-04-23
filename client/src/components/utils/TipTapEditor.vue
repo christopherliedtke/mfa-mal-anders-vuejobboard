@@ -213,3 +213,33 @@
     }
   };
 </script>
+
+<style lang="scss" scoped>
+  .tip-tap-editor {
+    p.is-editor-empty:first-child::before {
+      content: attr(data-empty-text);
+      float: left;
+      color: #777;
+      pointer-events: none;
+      height: 0;
+    }
+
+    .menubar {
+      display: flex;
+      flex-wrap: wrap;
+
+      & > .btn {
+        background-color: $light-shade;
+
+        &:hover {
+          border-color: $secondary;
+        }
+
+        &.active {
+          background-color: $secondary;
+          color: $light;
+        }
+      }
+    }
+  }
+</style>

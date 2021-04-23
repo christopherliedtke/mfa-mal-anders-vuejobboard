@@ -76,15 +76,16 @@
       </template>
       <template #cell(actions)="row">
         <b-button
+          v-b-modal="'deleteSubscriberModal'"
           size="sm"
           variant="danger"
-          @click="showDeleteSubscriberModal(row.item)"
+          @click="subscriberToDelete = row.item"
         >
           <Fa class="mr-2" icon="trash-alt" />Delete
         </b-button>
       </template>
     </b-table>
-    <b-modal
+    <BModal
       id="deleteSubscriberModal"
       :title="`Delete ${subscriberToDelete.email}`"
       ok-title="Delete Subscriber"
@@ -94,7 +95,7 @@
       @ok="deleteSubscriber(subscriberToDelete._id)"
       ><p class="my-4">
         Are you sure to delete this subscriber?
-      </p></b-modal
+      </p></BModal
     >
     <b-alert
       v-model="error"
@@ -109,6 +110,10 @@
 </template>
 
 <script>
+  import Vue from "vue";
+  import { BModal, VBModal } from "bootstrap-vue";
+  Vue.component("BModal", BModal);
+  Vue.directive("b-modal", VBModal);
   export default {
     name: "AllSubscribersListAdmin",
     data() {
@@ -219,10 +224,10 @@
 
         this.$store.dispatch("setOverlay", false);
       },
-      showDeleteSubscriberModal(subscriber) {
-        this.subscriberToDelete = subscriber;
-        this.$bvModal.show("deleteSubscriberModal");
-      },
+      // showDeleteSubscriberModal(subscriber) {
+      //   this.subscriberToDelete = subscriber;
+      //   this.$bvModal.show("deleteSubscriberModal");
+      // },
       async deleteSubscriber(subscriberId) {
         try {
           const subscriber = await this.$axios.post("/graphql", {

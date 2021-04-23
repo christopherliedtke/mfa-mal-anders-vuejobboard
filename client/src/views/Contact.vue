@@ -60,3 +60,12 @@
     }
   };
 </script>
+
+<style lang="scss" scoped>
+  .contact {
+    background: url("~@/assets/img/new_message.svg") center center no-repeat
+      transparentize($light, $amount: 0.3);
+    background-size: 50vh;
+    background-blend-mode: lighten;
+  }
+</style>

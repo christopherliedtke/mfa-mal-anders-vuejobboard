@@ -13,7 +13,7 @@
         icon="info-circle"
         scale="1"
       />
-      <b-popover
+      <BPopover
         target="popover-job-ad-tipps"
         triggers="hover"
         placement="bottomleft"
@@ -26,13 +26,16 @@
         >
         haben wir Ihnen aus unseren Erfahrungen einige Tipps für eine attraktive
         Stellenanzeige zusammengestellt.
-      </b-popover>
+      </BPopover>
     </p>
     <JobForm api-jobs-schema="private"></JobForm>
   </b-container>
 </template>
 
 <script>
+  import { BPopover } from "bootstrap-vue";
+  import Vue from "vue";
+  Vue.component("BPopover", BPopover);
   import JobForm from "@/components/forms/JobForm.vue";
   export default {
     name: "UserDashboardEditJob",

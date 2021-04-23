@@ -74,15 +74,16 @@
           >
         </b-dropdown>
         <b-button
+          v-b-modal="'deleteUserModal'"
           size="sm"
           variant="danger"
-          @click="showDeleteUserModal(row.item)"
+          @click="userToDelete = row.item"
         >
           <Fa class="mr-2" icon="trash-alt" />Delete
         </b-button>
       </template>
     </b-table>
-    <b-modal
+    <BModal
       id="deleteUserModal"
       :title="`Delete ${userToDelete.email}`"
       ok-title="Delete User"
@@ -92,7 +93,7 @@
       @ok="deleteUser(userToDelete._id)"
       ><p class="my-4">
         Are you sure to delete this user?
-      </p></b-modal
+      </p></BModal
     >
     <b-alert
       v-model="error"
@@ -107,6 +108,10 @@
 </template>
 
 <script>
+  import Vue from "vue";
+  import { BModal, VBModal } from "bootstrap-vue";
+  Vue.component("BModal", BModal);
+  Vue.directive("b-modal", VBModal);
   export default {
     name: "AllUsersListAdmin",
     data() {
@@ -240,10 +245,10 @@
 
         this.$store.dispatch("setOverlay", false);
       },
-      showDeleteUserModal(user) {
-        this.userToDelete = user;
-        this.$bvModal.show("deleteUserModal");
-      },
+      // showDeleteUserModal(user) {
+      //   this.userToDelete = user;
+      //   this.$bvModal.show("deleteUserModal");
+      // },
       async deleteUser(userId) {
         try {
           const deletedUser = await this.$axios.post("/graphql", {

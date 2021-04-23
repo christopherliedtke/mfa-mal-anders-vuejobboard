@@ -180,3 +180,31 @@
     }
   };
 </script>
+
+<style lang="scss">
+  .cms-article {
+    padding: 3rem;
+    box-shadow: $shadow1;
+    border-radius: $border-radius2;
+
+    img {
+      border-radius: $border-radius1;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .summary {
+      background-color: $primary;
+      color: $light;
+      border-radius: $border-radius2;
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+
+    @media screen and (max-width: $break-menu) {
+      padding: 0 1rem;
+      box-shadow: none;
+      border-radius: none;
+    }
+  }
+</style>

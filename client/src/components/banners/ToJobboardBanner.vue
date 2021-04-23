@@ -1,5 +1,5 @@
 <template>
-  <b-card no-body class="overflow-hidden shadow1 p-3" align="center">
+  <BCard no-body class="overflow-hidden shadow1 p-3" align="center">
     <b-row no-gutters>
       <b-col md="3">
         <b-img
@@ -9,7 +9,7 @@
         ></b-img>
       </b-col>
       <b-col md="9">
-        <b-card-body
+        <BCardBody
           class="d-flex flex-column justify-content-center align-items-center h-100 p-4"
         >
           <h3 class="h2 bold">Neuer Job gefällig?</h3>
@@ -22,13 +22,17 @@
           <b-button to="/stellenangebote" variant="secondary"
             >Zu den Stellenangeboten</b-button
           >
-        </b-card-body>
+        </BCardBody>
       </b-col>
     </b-row>
-  </b-card>
+  </BCard>
 </template>
 
 <script>
+  import Vue from "vue";
+  import { BCard, BCardBody } from "bootstrap-vue";
+  Vue.component("BCard", BCard);
+  Vue.component("BCardBody", BCardBody);
   export default {
     name: "ToJobboardBanner"
   };

@@ -273,181 +273,141 @@
         Nach welchen Kriterien sich die Tätigkeitsgruppen aufteilen, zeigt dir
         die nachfolgende Übersicht.
       </p>
-      <div class="my-4" role="tablist">
-        <b-card no-body class="mb-1">
-          <b-card-header
-            v-b-toggle.accordion-1
-            header-tag="header"
-            class="p-3"
-            role="tab"
-          >
+      <div class="my-4">
+        <BCard no-body class="mb-1">
+          <BCardHeader header-tag="header" class="p-3">
             Tätigkeitsgruppe 1
-          </b-card-header>
-          <b-collapse
-            id="accordion-1"
-            visible
-            accordion="my-accordion"
-            role="tabpanel"
-          >
-            <b-card-body>
-              <b-card-text>
-                <ul>
-                  <li>
-                    Grundvergütung für Zahnmedizinische Fachangestellte nach
-                    erfolgreich abgeschlossener Berufsausbildung
-                  </li>
-                  <li>
-                    Du führst Tätigkeiten nach Anweisungen des Zahnarztes oder
-                    einer erfahrenen KollegIn aus
-                  </li>
-                </ul>
-              </b-card-text>
-            </b-card-body>
-          </b-collapse>
-        </b-card>
-        <b-card no-body class="mb-1">
-          <b-card-header
-            v-b-toggle.accordion-2
-            header-tag="header"
-            class="p-3"
-            role="tab"
-          >
+          </BCardHeader>
+          <BCardBody>
+            <BCardText>
+              <ul>
+                <li>
+                  Grundvergütung für Zahnmedizinische Fachangestellte nach
+                  erfolgreich abgeschlossener Berufsausbildung
+                </li>
+                <li>
+                  Du führst Tätigkeiten nach Anweisungen des Zahnarztes oder
+                  einer erfahrenen KollegIn aus
+                </li>
+              </ul>
+            </BCardText>
+          </BCardBody>
+        </BCard>
+        <BCard no-body class="mb-1">
+          <BCardHeader header-tag="header" class="p-3">
             Tätigkeitsgruppe 2
-          </b-card-header>
-          <b-collapse id="accordion-2" accordion="my-accordion" role="tabpanel">
-            <b-card-body>
-              <b-card-text>
-                <ul>
-                  <li>
-                    Zuschlag + 7,5 % zur Grundvergütung
-                  </li>
-                  <li>
-                    Zahnmedizinische Fachangestellte mit durch die
-                    Zahnärztekammern anerkanntem/anerkannten
-                    Fortbildungsnachweis/en von vertiefenden und/oder speziellen
-                    Qualifizierungen im Umfang von insgesamt mindestens 65
-                    Unterrichtsstunden, soweit eine arbeitsplatzbezogene
-                    Tätigkeit im Rahmen der erworbenen Kompetenzen gegeben ist.
-                  </li>
-                  <li>
-                    Die Absolvierung praxistestatpflichtiger Zeiten im Rahmen
-                    der jeweiligen Fortbildung/en ist auf die Fortbildungsdauer
-                    von 65 Unterrichtsstunden anzurechnen.
-                  </li>
-                </ul>
-              </b-card-text>
-            </b-card-body>
-          </b-collapse>
-        </b-card>
-        <b-card no-body class="mb-1">
-          <b-card-header
-            v-b-toggle.accordion-3
-            header-tag="header"
-            class="p-3"
-            role="tab"
-          >
+          </BCardHeader>
+          <BCardBody>
+            <BCardText>
+              <ul>
+                <li>
+                  Zuschlag + 7,5 % zur Grundvergütung
+                </li>
+                <li>
+                  Zahnmedizinische Fachangestellte mit durch die
+                  Zahnärztekammern anerkanntem/anerkannten
+                  Fortbildungsnachweis/en von vertiefenden und/oder speziellen
+                  Qualifizierungen im Umfang von insgesamt mindestens 65
+                  Unterrichtsstunden, soweit eine arbeitsplatzbezogene Tätigkeit
+                  im Rahmen der erworbenen Kompetenzen gegeben ist.
+                </li>
+                <li>
+                  Die Absolvierung praxistestatpflichtiger Zeiten im Rahmen der
+                  jeweiligen Fortbildung/en ist auf die Fortbildungsdauer von 65
+                  Unterrichtsstunden anzurechnen.
+                </li>
+              </ul>
+            </BCardText>
+          </BCardBody>
+        </BCard>
+        <BCard no-body class="mb-1">
+          <BCardHeader header-tag="header" class="p-3">
             Tätigkeitsgruppe 3
-          </b-card-header>
-          <b-collapse id="accordion-3" accordion="my-accordion" role="tabpanel">
-            <b-card-body>
-              <b-card-text>
-                <ul>
-                  <li>
-                    Zuschlag: + 17,5 % zur Grundvergütung
-                  </li>
-                  <li>
-                    Zahnmedizinische Fachangestellte mit durch die
-                    Zahnärztekammern anerkanntem/anerkannten
-                    Fortbildungsnachweis/en von Qualifizierungen zur Erweiterung
-                    der beruflichen Handlungsfähigkeiten im Umfang von insgesamt
-                    mindestens 200 Unterrichtsstunden, soweit eine
-                    arbeitsplatzbezogene Tätigkeit im Rahmen der erworbenen
-                    Kompetenzen gegeben ist.
-                  </li>
-                  <li>
-                    Die Absolvierung praxistestatpflichtiger Zeiten im Rahmen
-                    der jeweiligen Fortbildung/en ist auf die Fortbildungsdauer
-                    von 200 Unterrichtsstunden anzurechnen.
-                  </li>
-                </ul>
-              </b-card-text>
-            </b-card-body>
-          </b-collapse>
-        </b-card>
-        <b-card no-body class="mb-1">
-          <b-card-header
-            v-b-toggle.accordion-4
-            header-tag="header"
-            class="p-3"
-            role="tab"
-          >
+          </BCardHeader>
+          <BCardBody>
+            <BCardText>
+              <ul>
+                <li>
+                  Zuschlag: + 17,5 % zur Grundvergütung
+                </li>
+                <li>
+                  Zahnmedizinische Fachangestellte mit durch die
+                  Zahnärztekammern anerkanntem/anerkannten
+                  Fortbildungsnachweis/en von Qualifizierungen zur Erweiterung
+                  der beruflichen Handlungsfähigkeiten im Umfang von insgesamt
+                  mindestens 200 Unterrichtsstunden, soweit eine
+                  arbeitsplatzbezogene Tätigkeit im Rahmen der erworbenen
+                  Kompetenzen gegeben ist.
+                </li>
+                <li>
+                  Die Absolvierung praxistestatpflichtiger Zeiten im Rahmen der
+                  jeweiligen Fortbildung/en ist auf die Fortbildungsdauer von
+                  200 Unterrichtsstunden anzurechnen.
+                </li>
+              </ul>
+            </BCardText>
+          </BCardBody>
+        </BCard>
+        <BCard no-body class="mb-1">
+          <BCardHeader header-tag="header" class="p-3">
             Tätigkeitsgruppe 4
-          </b-card-header>
-          <b-collapse id="accordion-4" accordion="my-accordion" role="tabpanel">
-            <b-card-body>
-              <b-card-text>
-                <ul>
-                  <li>
-                    Zuschlag: + 25 % zur Grundvergütung
-                  </li>
-                  <li>
-                    Praxismitarbeiter/innen mit erfolgreichem Abschluss als
-                    Zahnmedizinische Fachhelferinnen/Fachassistentinnen (ZMF),
-                    Zahnmedizinische
-                    Prophylaxehelferinnen/Prophylaxeassistentinnen (ZMP),
-                    Fachwirtinnen für Zahnärztliches Praxismanagement,
-                    Zahnmedizinische
-                    Verwaltungshelferinnen/Verwaltungsassistentinnen (ZMV),
-                    Assistentinnen für Zahnärztliches Praxismanagement (AZP).
-                  </li>
-                  <li>
-                    Praxismitarbeiter/innen mit erfolgreichem Abschluss als
-                    Kieferorthopädieassistent/in, erstmalig ausgebildet ab 2021
-                  </li>
-                  <li>
-                    Bei Vorliegen mehrerer Qualifikationen aus dieser
-                    Tätigkeitsgruppe erhöht sich der Zuschlag auf mindestens 30
-                    %, soweit eine arbeitsplatzbezogene Tätigkeit im Rahmen der
-                    erworbenen Kompetenzen gegeben ist.
-                  </li>
-                </ul>
-              </b-card-text>
-            </b-card-body>
-          </b-collapse>
-        </b-card>
-        <b-card no-body class="mb-1">
-          <b-card-header
-            v-b-toggle.accordion-5
-            header-tag="header"
-            class="p-3"
-            role="tab"
-          >
+          </BCardHeader>
+          <BCardBody>
+            <BCardText>
+              <ul>
+                <li>
+                  Zuschlag: + 25 % zur Grundvergütung
+                </li>
+                <li>
+                  Praxismitarbeiter/innen mit erfolgreichem Abschluss als
+                  Zahnmedizinische Fachhelferinnen/Fachassistentinnen (ZMF),
+                  Zahnmedizinische
+                  Prophylaxehelferinnen/Prophylaxeassistentinnen (ZMP),
+                  Fachwirtinnen für Zahnärztliches Praxismanagement,
+                  Zahnmedizinische
+                  Verwaltungshelferinnen/Verwaltungsassistentinnen (ZMV),
+                  Assistentinnen für Zahnärztliches Praxismanagement (AZP).
+                </li>
+                <li>
+                  Praxismitarbeiter/innen mit erfolgreichem Abschluss als
+                  Kieferorthopädieassistent/in, erstmalig ausgebildet ab 2021
+                </li>
+                <li>
+                  Bei Vorliegen mehrerer Qualifikationen aus dieser
+                  Tätigkeitsgruppe erhöht sich der Zuschlag auf mindestens 30 %,
+                  soweit eine arbeitsplatzbezogene Tätigkeit im Rahmen der
+                  erworbenen Kompetenzen gegeben ist.
+                </li>
+              </ul>
+            </BCardText>
+          </BCardBody>
+        </BCard>
+        <BCard no-body class="mb-1">
+          <BCardHeader header-tag="header" class="p-3">
             Tätigkeitsgruppe 5
-          </b-card-header>
-          <b-collapse id="accordion-5" accordion="my-accordion" role="tabpanel">
-            <b-card-body>
-              <b-card-text>
-                <ul>
-                  <li>
-                    Zuschlag: + 30 % zur Grundvergütung
-                  </li>
-                  <li>
-                    Praxismitarbeiter/innen mit erfolgreichem Abschluss als
-                    Dental-Hygienikerinnen (DH), Betriebswirtinnen im
-                    Gesundheitswesen, Betriebswirtinnen für Management im
-                    Gesundheitswesen.
-                  </li>
-                  <li>
-                    Bei Vorliegen mehrerer Qualifikationen aus dieser
-                    Tätigkeitsgruppe erhöht sich der Zuschlag auf mindestens 35
-                    %, soweit eine arbeitsplatzbezogene Tätigkeit im Rahmen der
-                    erworbenen Kompetenzen gegeben ist.
-                  </li>
-                </ul>
-              </b-card-text>
-            </b-card-body>
-          </b-collapse>
-        </b-card>
+          </BCardHeader>
+          <BCardBody>
+            <BCardText>
+              <ul>
+                <li>
+                  Zuschlag: + 30 % zur Grundvergütung
+                </li>
+                <li>
+                  Praxismitarbeiter/innen mit erfolgreichem Abschluss als
+                  Dental-Hygienikerinnen (DH), Betriebswirtinnen im
+                  Gesundheitswesen, Betriebswirtinnen für Management im
+                  Gesundheitswesen.
+                </li>
+                <li>
+                  Bei Vorliegen mehrerer Qualifikationen aus dieser
+                  Tätigkeitsgruppe erhöht sich der Zuschlag auf mindestens 35 %,
+                  soweit eine arbeitsplatzbezogene Tätigkeit im Rahmen der
+                  erworbenen Kompetenzen gegeben ist.
+                </li>
+              </ul>
+            </BCardText>
+          </BCardBody>
+        </BCard>
       </div>
 
       <h2>Benefits – wenn dein Gehalt nicht zufriedenstellend ist</h2>
@@ -610,6 +570,19 @@
 </template>
 
 <script>
+  import Vue from "vue";
+  import {
+    BCard,
+    BCardHeader,
+    BCardBody,
+    BCardText,
+    TableSimplePlugin
+  } from "bootstrap-vue";
+  Vue.component("BCard", BCard);
+  Vue.component("BCardHeader", BCardHeader);
+  Vue.component("BCardBody", BCardBody);
+  Vue.component("BCardText", BCardText);
+  Vue.use(TableSimplePlugin);
   import GehaltsrechnerZfa from "@/components/containers/GehaltsrechnerZfa.vue";
   import FacebookBtn from "@/components/buttons/FacebookBtn.vue";
   import FacebookShareBtn from "@/components/buttons/FacebookShareBtn.vue";
@@ -708,3 +681,29 @@
     }
   };
 </script>
+
+<style lang="scss" scoped>
+  .salary {
+    .card-header {
+      cursor: pointer;
+      background-color: transparentize($primary, $amount: 0.1);
+      color: $light;
+    }
+
+    .checklist {
+      background: url("~@/assets/img/money_motivation_.svg") 90% center
+        no-repeat;
+      background-size: 270px;
+      background-color: $primary;
+      background-blend-mode: normal;
+      color: $light;
+      padding: 2rem;
+
+      ul {
+        list-style-type: none;
+        margin-bottom: 0;
+        padding-left: 1rem;
+      }
+    }
+  }
+</style>

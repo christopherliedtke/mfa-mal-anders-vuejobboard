@@ -760,3 +760,22 @@
     }
   };
 </script>
+
+<style lang="scss" scoped>
+  .employer {
+    #testimonials {
+      .icon-transparent {
+        opacity: 0.1;
+      }
+    }
+
+    .blend {
+      filter: grayscale(0.5);
+      transition: linear 0.3s;
+
+      &:hover {
+        filter: grayscale(0);
+      }
+    }
+  }
+</style>

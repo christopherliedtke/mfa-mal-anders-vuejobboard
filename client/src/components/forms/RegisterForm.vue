@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-button-group class="d-flex mb-4">
+    <BButtonGroup class="d-flex mb-4">
       <b-button
         :variant="isEmployer ? 'primary' : 'outline-primary'"
         @click="toggleRole('employer')"
@@ -11,7 +11,7 @@
         @click="toggleRole('employee')"
         >Ich bin MFA / ZFA</b-button
       >
-    </b-button-group>
+    </BButtonGroup>
 
     <slot name="intro"></slot>
 
@@ -149,6 +149,9 @@
 </template>
 
 <script>
+  import Vue from "vue";
+  import { BButtonGroup } from "bootstrap-vue";
+  Vue.component("BButtonGroup", BButtonGroup);
   import {
     contactGenderOptions,
     contactTitleOptions

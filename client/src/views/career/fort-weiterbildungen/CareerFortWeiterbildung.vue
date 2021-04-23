@@ -110,3 +110,122 @@
     }
   };
 </script>
+
+<style lang="scss">
+  $table-breakpoint: 750px;
+
+  .fort-weiterbildung {
+    table {
+      thead {
+        font-size: 115%;
+      }
+      tr {
+        @media screen and (max-width: $table-breakpoint) {
+          display: flex;
+          flex-direction: column;
+        }
+
+        td {
+          vertical-align: top;
+          padding-top: 1rem;
+
+          // &:first-child {
+          //     font-family: $font-family-headlines;
+          //     font-size: 115%;
+          // }
+
+          &:nth-child(2) {
+            padding-left: 2rem;
+          }
+
+          a {
+            color: transparentize($light, $amount: 0.4);
+
+            &:hover {
+              color: $secondary;
+            }
+          }
+        }
+      }
+    }
+
+    .summary {
+      background-color: $primary;
+      color: $light;
+      padding: 2rem;
+      margin: 2rem 0;
+      border-radius: $border-radius1;
+      box-shadow: $shadow1;
+
+      h3 {
+        margin-bottom: 1rem;
+      }
+
+      a {
+        color: $secondary;
+      }
+    }
+
+    .curriculum {
+      margin: 2rem 0;
+
+      thead {
+        th {
+          background-color: $primary;
+          color: $light;
+
+          &:first-child {
+            border-top-left-radius: 5px;
+
+            @media screen and (max-width: $table-breakpoint) {
+              border-top-right-radius: 5px;
+            }
+          }
+
+          &:last-child {
+            border-top-right-radius: 5px;
+
+            @media screen and (max-width: $table-breakpoint) {
+              border-top-right-radius: 0;
+            }
+          }
+        }
+      }
+
+      th,
+      td {
+        padding: 0.75rem 1rem;
+
+        &:nth-child(2) {
+          text-align: end;
+        }
+      }
+
+      tr {
+        &:nth-child(even) {
+          background-color: $light-shade;
+        }
+
+        &:last-child {
+          td {
+            &:first-child {
+              border-bottom-left-radius: 5px;
+
+              @media screen and (max-width: $table-breakpoint) {
+                border-bottom-left-radius: 0;
+              }
+            }
+
+            &:last-child {
+              border-bottom-right-radius: 5px;
+
+              @media screen and (max-width: $table-breakpoint) {
+                border-bottom-left-radius: 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+</style>

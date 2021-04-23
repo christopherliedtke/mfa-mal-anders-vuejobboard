@@ -13,8 +13,8 @@
           :to="'/blog/article/' + article.slug"
           :aria-label="article.title"
         >
-          <b-card no-body>
-            <b-card-img-lazy
+          <BCard no-body>
+            <BCardImgLazy
               :src="
                 article.featuredImage
                   ? article.featuredImage.node.sourceUrl
@@ -26,18 +26,18 @@
               offset="1000"
               top
             />
-            <b-card-body>
-              <b-card-title :title="article.title" />
-              <b-card-text>
+            <BCardBody>
+              <BCardTitle :title="article.title" />
+              <BCardText>
                 <!-- eslint-disable-next-line -->
                 <div v-html="article.excerpt"></div>
-              </b-card-text>
+              </BCardText>
 
               <b-button :to="'/blog/article/' + article.slug" variant="primary"
                 >Mehr</b-button
               >
-            </b-card-body>
-          </b-card>
+            </BCardBody>
+          </BCard>
         </b-link>
       </div>
     </b-col>
@@ -45,6 +45,19 @@
 </template>
 
 <script>
+  import Vue from "vue";
+  import {
+    BCard,
+    BCardBody,
+    BCardImgLazy,
+    BCardTitle,
+    BCardText
+  } from "bootstrap-vue";
+  Vue.component("BCard", BCard);
+  Vue.component("BCardBody", BCardBody);
+  Vue.component("BCardImgLazy", BCardImgLazy);
+  Vue.component("BCardTitle", BCardTitle);
+  Vue.component("BCardText", BCardText);
   export default {
     name: "RandomArticlesContainer",
     props: {

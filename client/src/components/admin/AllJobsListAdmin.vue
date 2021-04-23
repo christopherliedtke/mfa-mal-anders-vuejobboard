@@ -199,15 +199,16 @@
                     <Fa class="mr-2" icon="share-alt" />Copy
                 </b-button> -->
         <b-button
+          v-b-modal="'deleteJobModal'"
           size="sm"
           variant="danger"
-          @click="showDeleteJobModal(row.item)"
+          @click="jobToDelete = row.item"
         >
           <Fa class="mr-2" icon="trash-alt" />Delete
         </b-button>
       </template>
     </b-table>
-    <b-modal
+    <BModal
       id="deleteJobModal"
       :title="`Delete ${jobToDelete.title}`"
       ok-title="Delete Job"
@@ -217,7 +218,7 @@
       @ok="deleteJob(jobToDelete._id)"
       ><p class="my-4">
         Are you sure to delete this job?
-      </p></b-modal
+      </p></BModal
     >
     <b-alert
       v-model="error"
@@ -232,6 +233,10 @@
 </template>
 
 <script>
+  import Vue from "vue";
+  import { BModal, VBModal } from "bootstrap-vue";
+  Vue.component("BModal", BModal);
+  Vue.directive("b-modal", VBModal);
   export default {
     name: "AllJobsListAdmin",
     data() {
@@ -559,10 +564,10 @@
 
         this.$store.dispatch("setOverlay", false);
       },
-      showDeleteJobModal(job) {
-        this.jobToDelete = job;
-        this.$bvModal.show("deleteJobModal");
-      },
+      // showDeleteJobModal(job) {
+      //   this.jobToDelete = job;
+      //   this.$bvModal.show("deleteJobModal");
+      // },
       async deleteJob(jobId) {
         try {
           const response = await this.$axios.post("/graphql", {

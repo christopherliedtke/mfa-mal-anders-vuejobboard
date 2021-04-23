@@ -1,19 +1,19 @@
 <template>
   <div>
-    <b-list-group v-if="trainings">
-      <b-list-group-item to="/karriere/fort-und-weiterbildungen">
+    <BListGroup v-if="trainings">
+      <BListGroupItem to="/karriere/fort-und-weiterbildungen">
         <h3 class="h5 bold">
           Fort- & Weiterbildungen
-        </h3></b-list-group-item
+        </h3></BListGroupItem
       >
-      <b-list-group-item
+      <BListGroupItem
         v-for="category in categories"
         :key="category"
         class="p-0"
       >
         <h4 class="h5 bold pt-3 pb-1 px-3 mb-0">{{ category }}</h4>
-        <b-list-group flush>
-          <b-list-group-item
+        <BListGroup flush>
+          <BListGroupItem
             v-for="training in trainings.filter(
               training => training.category === category
             )"
@@ -21,21 +21,11 @@
             class="px-4"
             :to="`/karriere/fort-und-weiterbildungen/${training.slug}`"
             :active="training.slug === $route.params.slug"
-            >{{ training.title }}</b-list-group-item
+            >{{ training.title }}</BListGroupItem
           >
-        </b-list-group>
-      </b-list-group-item>
-
-      <!-- <b-list-group-item
-                v-for="training in trainings"
-                :key="training.id"
-                :to="
-                    `/karriere/fort-und-weiterbildungen/${training.slug}`
-                "
-                :active="training.slug === $route.params.slug"
-                >{{ training.title }}</b-list-group-item
-            > -->
-    </b-list-group>
+        </BListGroup>
+      </BListGroupItem>
+    </BListGroup>
     <div>
       <SgdBanner class="my-2" />
       <!-- <DelstBanner class="my-2" /> -->
@@ -44,6 +34,10 @@
 </template>
 
 <script>
+  import Vue from "vue";
+  import { BListGroup, BListGroupItem } from "bootstrap-vue";
+  Vue.component("BListGroup", BListGroup);
+  Vue.component("BListGroupItem", BListGroupItem);
   import SgdBanner from "@/components/banners/SgdBanner.vue";
   // import DelstBanner from "@/components/banners/DelstBanner.vue";
   export default {

@@ -1,27 +1,40 @@
 <template>
-  <b-card no-body class="shadow1">
-    <b-card-img-lazy
+  <BCard no-body class="shadow1">
+    <BCardImgLazy
       top
       src="/img/MfaMalAnders_50+Jobmoeglichkeiten_1200.jpg"
       alt="Banner - Jobs und Berufsbilder für MFA / ZFA und ArzthelferInnen"
     />
-    <b-card-body align="center">
-      <b-card-title title="Alternative Jobs und Berufsbilder für MFA / ZFA" />
+    <BCardBody align="center">
+      <BCardTitle title="Alternative Jobs und Berufsbilder für MFA / ZFA" />
 
-      <b-card-text>
+      <BCardText>
         Hier findest du eine Auswahl von ganz unterschiedlichen Jobs und Berufen
         inklusive vieler Alternativen für Medizinische Fachangestellte /
         ArzthelferInnen!
-      </b-card-text>
+      </BCardText>
 
       <b-button to="/karriere/jobs-und-berufsbilder" variant="primary"
         >Mehr erfahren!</b-button
       >
-    </b-card-body>
-  </b-card>
+    </BCardBody>
+  </BCard>
 </template>
 
 <script>
+  import Vue from "vue";
+  import {
+    BCard,
+    BCardBody,
+    BCardImgLazy,
+    BCardTitle,
+    BCardText
+  } from "bootstrap-vue";
+  Vue.component("BCard", BCard);
+  Vue.component("BCardBody", BCardBody);
+  Vue.component("BCardImgLazy", BCardImgLazy);
+  Vue.component("BCardTitle", BCardTitle);
+  Vue.component("BCardText", BCardText);
   export default {
     name: "BerufsbilderBanner"
   };

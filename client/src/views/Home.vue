@@ -292,3 +292,31 @@
     }
   };
 </script>
+
+<style lang="scss" scoped>
+  .home {
+    .hero {
+      background: linear-gradient(
+          0deg,
+          #fffcfd 0%,
+          #fffcfd66 50%,
+          #6d023077 100%
+        ),
+        url("~@/assets/img/medizinischesPersonal.jpg") center center;
+
+      background-size: cover;
+      background-blend-mode: normal;
+      min-height: 70vh;
+
+      @media screen and (max-width: $break-menu) {
+        min-height: calc(82vh - 70px);
+      }
+
+      .hero-text {
+        border-radius: $border-radius2;
+        background-color: transparentize($light, $amount: 0.15);
+        box-shadow: $shadow1;
+      }
+    }
+  }
+</style>

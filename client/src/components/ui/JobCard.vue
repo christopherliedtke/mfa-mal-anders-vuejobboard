@@ -7,8 +7,8 @@
       <span class="h2 bold text-danger">Abgelaufen</span>
     </div>
     <b-link :to="`/stellenangebote/job/${job._id}`">
-      <b-card no-body class="mb-3 mt-3 mt-lg-0">
-        <b-card-text>
+      <BCard no-body class="mb-3 mt-3 mt-lg-0">
+        <BCardText>
           <div class="card-head position-relative">
             <h2 :class="job.company.logoUrl ? 'mobile-max-width-75 h4' : 'h4'">
               {{ job.title }}
@@ -104,19 +104,23 @@
               </div>
               {{ timeSince(new Date(parseInt(job.publishedAt || job.paidAt))) }}
             </div>
-            <div
-              v-if="job.simpleApplication"
-              v-b-tooltip.bottom.hover
-              title="Lebenslauf genügt für Bewerbung"
-            >
-              <b-badge pill variant="secondary"
+            <div v-if="job.simpleApplication" id="tooltip-simple-application">
+              <BBadge pill variant="secondary"
                 ><Fa class="mr-1" :icon="['fas', 'hashtag']" />Einfach
-                bewerben</b-badge
+                bewerben</BBadge
               >
             </div>
+            <BTooltip
+              v-if="job.simpleApplication"
+              target="tooltip-simple-application"
+              title="Lebenslauf genügt für Bewerbung"
+              triggers="hover"
+              placement="bottom"
+            >
+            </BTooltip>
           </div>
-        </b-card-text>
-      </b-card>
+        </BCardText>
+      </BCard>
     </b-link>
   </div>
 </template>
@@ -127,6 +131,12 @@
     companySizeOptions
   } from "@/config/formDataConfig.json";
   import StarJob from "@/components/utils/starJob";
+  import { BTooltip, BBadge, BCard, BCardText } from "bootstrap-vue";
+  import Vue from "vue";
+  Vue.component("BTooltip", BTooltip);
+  Vue.component("BBadge", BBadge);
+  Vue.component("BCard", BCard);
+  Vue.component("BCardText", BCardText);
   export default {
     name: "JobCard",
     components: { StarJob },
@@ -187,3 +197,134 @@
     }
   };
 </script>
+
+<style lang="scss" scoped>
+  .jobcard {
+    position: relative;
+
+    .disabled-jobcard {
+      cursor: not-allowed;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 5;
+      border-radius: $border-radius1;
+      background-color: #ffffffcc;
+      // backdrop-filter: grayscale(1);
+    }
+
+    a {
+      color: $dark;
+      transition: $transition1;
+
+      &:hover {
+        color: $primary;
+      }
+    }
+
+    .card {
+      border: none;
+      background-color: $light-shade;
+      box-shadow: $shadow1;
+      transition: $transition1;
+
+      &:hover {
+        box-shadow: $shadow2;
+      }
+
+      hr {
+        margin: 0;
+      }
+
+      .card-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        background-color: lighten($primary, $amount: 0%);
+        color: $light;
+        border-radius: 5px 5px 0 0;
+        overflow: hidden;
+
+        .h4 {
+          margin: 0;
+          padding: 1rem;
+
+          &.mobile-max-width-75 {
+            @media screen and (max-width: $break-menu) {
+              max-width: 75%;
+            }
+          }
+        }
+
+        .img-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: darken($light-shade, $amount: 1%);
+          padding: 1rem 1rem;
+          width: 130px;
+          min-width: 130px;
+          border-radius: 0 5px 0 0;
+
+          @media screen and (max-width: $break-menu) {
+            width: 90px;
+            min-width: 90px;
+            padding: 2rem 0;
+          }
+
+          img {
+            max-height: 70px;
+            max-width: 80%;
+          }
+        }
+      }
+
+      .card-content {
+        padding: 1rem;
+      }
+
+      .card-foot {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 1rem;
+
+        & > div {
+          margin-top: 0.5rem;
+          margin-right: 1rem;
+          color: transparentize($primary, $amount: 0.1);
+          display: flex;
+          align-items: flex-start;
+
+          .icon {
+            min-width: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+
+            svg {
+              margin-right: 1rem;
+            }
+          }
+
+          // svg {
+          //   color: $primary;
+          // }
+        }
+
+        .badge {
+          font-size: inherit;
+          font-weight: inherit;
+          color: $light;
+          padding: 0.3rem 0.7rem;
+
+          svg {
+            color: $light;
+          }
+        }
+      }
+    }
+  }
+</style>

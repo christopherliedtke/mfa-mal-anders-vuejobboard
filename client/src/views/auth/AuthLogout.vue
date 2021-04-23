@@ -11,11 +11,11 @@
       dismissible
     >
       {{ alert.msg }}
-      <b-spinner
+      <BSpinner
         style="width: 1.2rem; height: 1.2rem;"
         variant="danger"
         label="Spinning"
-      ></b-spinner>
+      ></BSpinner>
     </b-alert>
 
     <Head :title="title" desc="Ausloggen bei MFA mal anders" img="" />
@@ -23,6 +23,9 @@
 </template>
 
 <script>
+  import Vue from "vue";
+  import { BSpinner } from "bootstrap-vue";
+  Vue.component("BSpinner", BSpinner);
   export default {
     name: "AuthLogout",
     data() {

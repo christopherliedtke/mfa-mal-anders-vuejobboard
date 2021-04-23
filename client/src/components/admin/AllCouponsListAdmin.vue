@@ -56,15 +56,16 @@
           ><Fa icon="edit"></Fa>
         </b-button>
         <b-button
+          v-b-modal="'deleteCouponModal'"
           size="sm"
           variant="danger"
-          @click="showDeleteCouponModal(row.item)"
+          @click="couponToDelete = row.item"
         >
           <Fa class="mr-2" icon="trash-alt"></Fa>Delete
         </b-button>
       </template>
     </b-table>
-    <b-modal
+    <BModal
       id="deleteCouponModal"
       :title="`Delete ${couponToDelete.code}`"
       ok-title="Delete Coupon"
@@ -74,7 +75,7 @@
       @ok="deleteCoupon(couponToDelete._id)"
       ><p class="my-4">
         Are you sure to delete this coupon?
-      </p></b-modal
+      </p></BModal
     >
     <b-alert
       v-model="error"
@@ -89,6 +90,10 @@
 </template>
 
 <script>
+  import Vue from "vue";
+  import { BModal, VBModal } from "bootstrap-vue";
+  Vue.component("BModal", BModal);
+  Vue.directive("b-modal", VBModal);
   export default {
     name: "AllCouponsListAdmin",
     data() {
@@ -228,10 +233,10 @@
 
         this.$store.dispatch("setOverlay", false);
       },
-      showDeleteCouponModal(user) {
-        this.couponToDelete = user;
-        this.$bvModal.show("deleteCouponModal");
-      },
+      // showDeleteCouponModal(user) {
+      //   this.couponToDelete = user;
+      //   this.$bvModal.show("deleteCouponModal");
+      // },
       async deleteCoupon(couponId) {
         try {
           const coupon = await this.$axios.post("/graphql", {

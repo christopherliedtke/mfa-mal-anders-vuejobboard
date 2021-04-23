@@ -496,13 +496,13 @@
         die nachfolgende Übersicht.
       </p>
       <div class="my-4">
-        <b-card no-body class="mb-1 bg-light-shade">
-          <b-card-header header-tag="header" class="p-3" role="tab">
+        <BCard no-body class="mb-1 bg-light-shade">
+          <BCardHeader header-tag="header" class="p-3" role="tab">
             Tätigkeitsgruppe 1
-          </b-card-header>
+          </BCardHeader>
 
-          <b-card-body>
-            <b-card-text>
+          <BCardBody>
+            <BCardText>
               <ul>
                 <li>
                   Berufseinsteiger nach abgeschlossener Ausbildung zur
@@ -513,15 +513,15 @@
                   erfahreneren Kollegin aus
                 </li>
               </ul>
-            </b-card-text>
-          </b-card-body>
-        </b-card>
-        <b-card no-body class="mb-1 bg-light-shade">
-          <b-card-header header-tag="header" class="p-3">
+            </BCardText>
+          </BCardBody>
+        </BCard>
+        <BCard no-body class="mb-1 bg-light-shade">
+          <BCardHeader header-tag="header" class="p-3">
             Tätigkeitsgruppe 2
-          </b-card-header>
-          <b-card-body>
-            <b-card-text>
+          </BCardHeader>
+          <BCardBody>
+            <BCardText>
               <ul>
                 <li>
                   Du kannst Tätigkeiten weitestgehend selbstständig ausführen
@@ -555,15 +555,15 @@
                 <li>Impfassistenz</li>
                 <li>Disease-Management-Programme</li>
               </ul>
-            </b-card-text>
-          </b-card-body>
-        </b-card>
-        <b-card no-body class="mb-1 bg-light-shade">
-          <b-card-header header-tag="header" class="p-3">
+            </BCardText>
+          </BCardBody>
+        </BCard>
+        <BCard no-body class="mb-1 bg-light-shade">
+          <BCardHeader header-tag="header" class="p-3">
             Tätigkeitsgruppe 3
-          </b-card-header>
-          <b-card-body>
-            <b-card-text>
+          </BCardHeader>
+          <BCardBody>
+            <BCardText>
               <ul>
                 <li>
                   Du hast mindestens 80 Fortbildungsstunden gesammelt und/oder
@@ -592,15 +592,15 @@
                   Strahlenschutzkurs lt. § 24 (2) Röntgenverordnung (90 Stunden)
                 </li>
               </ul>
-            </b-card-text>
-          </b-card-body>
-        </b-card>
-        <b-card no-body class="mb-1 bg-light-shade">
-          <b-card-header header-tag="header" class="p-3">
+            </BCardText>
+          </BCardBody>
+        </BCard>
+        <BCard no-body class="mb-1 bg-light-shade">
+          <BCardHeader header-tag="header" class="p-3">
             Tätigkeitsgruppe 4
-          </b-card-header>
-          <b-card-body>
-            <b-card-text>
+          </BCardHeader>
+          <BCardBody>
+            <BCardText>
               <ul>
                 <li>
                   Du führst Tätigkeiten komplett selbstständige aus
@@ -670,15 +670,15 @@
                   </b-link>
                 </li>
               </ul>
-            </b-card-text>
-          </b-card-body>
-        </b-card>
-        <b-card no-body class="mb-1 bg-light-shade">
-          <b-card-header header-tag="header" class="p-3">
+            </BCardText>
+          </BCardBody>
+        </BCard>
+        <BCard no-body class="mb-1 bg-light-shade">
+          <BCardHeader header-tag="header" class="p-3">
             Tätigkeitsgruppe 5
-          </b-card-header>
-          <b-card-body>
-            <b-card-text>
+          </BCardHeader>
+          <BCardBody>
+            <BCardText>
               <ul>
                 <li>
                   Du führst leitungsbezogenen Tätigkeiten aus
@@ -705,15 +705,15 @@
                   Versorgung/Arztfachhelferin gemäß § 54 BBiG
                 </li>
               </ul>
-            </b-card-text>
-          </b-card-body>
-        </b-card>
-        <b-card no-body class="mb-1 bg-light-shade">
-          <b-card-header header-tag="header" class="p-3">
+            </BCardText>
+          </BCardBody>
+        </BCard>
+        <BCard no-body class="mb-1 bg-light-shade">
+          <BCardHeader header-tag="header" class="p-3">
             Tätigkeitsgruppe 6
-          </b-card-header>
-          <b-card-body>
-            <b-card-text>
+          </BCardHeader>
+          <BCardBody>
+            <BCardText>
               <ul>
                 <li>
                   Du führst leitungs- und führungsbezogene Tätigkeiten aus
@@ -738,9 +738,9 @@
                   gemäß § 53 BBiG
                 </li>
               </ul>
-            </b-card-text>
-          </b-card-body>
-        </b-card>
+            </BCardText>
+          </BCardBody>
+        </BCard>
       </div>
 
       <h2 id="gehalt-per-bundesland">MFA Gehalt nach Bundesland</h2>
@@ -932,15 +932,25 @@
 </template>
 
 <script>
+  import Vue from "vue";
+  import {
+    BCard,
+    BCardHeader,
+    BCardBody,
+    BCardText,
+    TableSimplePlugin
+  } from "bootstrap-vue";
+  Vue.component("BCard", BCard);
+  Vue.component("BCardHeader", BCardHeader);
+  Vue.component("BCardBody", BCardBody);
+  Vue.component("BCardText", BCardText);
+  Vue.use(TableSimplePlugin);
   import Gehaltsrechner from "@/components/containers/Gehaltsrechner.vue";
   import FacebookBtn from "@/components/buttons/FacebookBtn.vue";
   import FacebookShareBtn from "@/components/buttons/FacebookShareBtn.vue";
   import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
   import BerufsbilderBanner from "@/components/banners/BerufsbilderBanner.vue";
   import WeiterbildungenBanner from "@/components/banners/WeiterbildungenBanner.vue";
-  import { TableSimplePlugin } from "bootstrap-vue";
-  import Vue from "vue";
-  Vue.use(TableSimplePlugin);
   export default {
     name: "CareerGehalt",
     components: {
@@ -1033,3 +1043,29 @@
     }
   };
 </script>
+
+<style lang="scss" scoped>
+  .salary {
+    .card-header {
+      cursor: pointer;
+      background-color: transparentize($primary, $amount: 0.1);
+      color: $light;
+    }
+
+    .checklist {
+      background: url("~@/assets/img/money_motivation_.svg") 90% center
+        no-repeat;
+      background-size: 270px;
+      background-color: $primary;
+      background-blend-mode: normal;
+      color: $light;
+      padding: 2rem;
+
+      ul {
+        list-style-type: none;
+        margin-bottom: 0;
+        padding-left: 1rem;
+      }
+    }
+  }
+</style>
