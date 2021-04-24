@@ -1,5 +1,5 @@
 import axios from "@/utils/axios";
-import config from "@/config/config.json";
+import config from "@/config/config.js";
 
 const state = {
   professions: []

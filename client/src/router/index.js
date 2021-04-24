@@ -1,5 +1,5 @@
 import Vue from "vue";
-import config from "@/config/config.json";
+import config from "@/config/config.js";
 
 import VueRouter from "vue-router";
 Vue.use(VueRouter);

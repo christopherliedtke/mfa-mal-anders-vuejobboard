@@ -28,7 +28,7 @@ import LoadScript from "vue-plugin-load-script";
 Vue.use(LoadScript);
 
 // #Global Config Integration
-import config from "@/config/config.json";
+import config from "@/config/config.js";
 Vue.prototype.$config = config;
 
 // #Global Axios Integration

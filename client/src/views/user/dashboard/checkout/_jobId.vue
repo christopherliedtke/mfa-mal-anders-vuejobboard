@@ -394,6 +394,9 @@
 </template>
 
 <script>
+  import { BPopover } from "bootstrap-vue";
+  import Vue from "vue";
+  Vue.component("BPopover", BPopover);
   import {
     contactGenderOptions,
     contactTitleOptions
@@ -733,3 +736,9 @@
     }
   };
 </script>
+
+<style lang="scss" scoped>
+  .popover {
+    max-width: 600px;
+  }
+</style>

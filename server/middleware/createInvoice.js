@@ -1,6 +1,6 @@
 const fs = require("fs");
 const PDFDocument = require("pdfkit");
-const config = require("../config/config.json");
+const config = require("../config/config.js");
 
 const createInvoice = (payment, pathToSave) => {
   return new Promise((resolve, reject) => {

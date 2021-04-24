@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const config = require("../../../config/config.json");
+const config = require("../../../config/config.js");
 const { googleIndexing } = require("../../../middleware/googleJobIndexing");
 const recachePrerender = require("../../../middleware/recachePrerender");
 const sanitizeHtml = require("sanitize-html");

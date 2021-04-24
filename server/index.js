@@ -12,7 +12,7 @@ const sslRedirect = require("heroku-ssl-redirect");
 const cors = require("cors");
 const compression = require("compression");
 const csurf = require("csurf");
-const config = require("./config/config.json");
+const config = require("./config/config.js");
 
 // #mongoDB
 const mongoose = require("./database/mongoDB");
