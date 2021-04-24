@@ -8,38 +8,7 @@
       :lg="12 / number"
       class="mb-4"
     >
-      <div class="article-card">
-        <b-link
-          :to="'/blog/article/' + article.slug"
-          :aria-label="article.title"
-        >
-          <BCard no-body>
-            <BCardImgLazy
-              :src="
-                article.featuredImage
-                  ? article.featuredImage.node.sourceUrl
-                  : ''
-              "
-              :alt="
-                article.featuredImage ? article.featuredImage.node.altText : ''
-              "
-              offset="1000"
-              top
-            />
-            <BCardBody>
-              <BCardTitle :title="article.title" />
-              <BCardText>
-                <!-- eslint-disable-next-line -->
-                <div v-html="article.excerpt"></div>
-              </BCardText>
-
-              <b-button :to="'/blog/article/' + article.slug" variant="primary"
-                >Mehr</b-button
-              >
-            </BCardBody>
-          </BCard>
-        </b-link>
-      </div>
+      <ArticleCard :article="article" />
     </b-col>
   </b-row>
 </template>
@@ -58,8 +27,12 @@
   Vue.component("BCardImgLazy", BCardImgLazy);
   Vue.component("BCardTitle", BCardTitle);
   Vue.component("BCardText", BCardText);
+  import ArticleCard from "@/components/ui/ArticleCard.vue";
   export default {
     name: "RandomArticlesContainer",
+    components: {
+      ArticleCard
+    },
     props: {
       number: {
         type: Number,

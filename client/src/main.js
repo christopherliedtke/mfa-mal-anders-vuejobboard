@@ -1,3 +1,4 @@
+// #Custom Polyfills
 if (!String.prototype.startsWith) {
   Object.defineProperty(String.prototype, "startsWith", {
     value: function(search, rawPos) {
@@ -22,27 +23,25 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
+// #Global Async Loadscript Integration
 import LoadScript from "vue-plugin-load-script";
 Vue.use(LoadScript);
 
+// #Global Config Integration
 import config from "@/config/config.json";
 Vue.prototype.$config = config;
 
+// #Global Axios Integration
 import axios from "@/utils/axios.js";
 Vue.prototype.$axios = axios;
 
+// #Bootstrap Integration
 import {
   NavbarPlugin,
   AlertPlugin,
-  // AvatarPlugin,
-  // BadgePlugin,
   ButtonPlugin,
-  // ButtonGroupPlugin,
-  // ButtonToolbarPlugin,
-  // CardPlugin,
   FormPlugin,
   FormCheckboxPlugin,
-  // FormDatepickerPlugin,
   FormFilePlugin,
   FormGroupPlugin,
   FormInputPlugin,
@@ -53,30 +52,15 @@ import {
   InputGroupPlugin,
   LayoutPlugin,
   LinkPlugin,
-  // ListGroupPlugin,
-  // ModalPlugin,
-  // OverlayPlugin,
-  // PopoverPlugin,
-  // TablePlugin,
-  // TabsPlugin,
-  // TooltipPlugin,
-  // SpinnerPlugin,
   ToastPlugin,
-  // PaginationPlugin,
   BreadcrumbPlugin
 } from "bootstrap-vue";
 
 Vue.use(NavbarPlugin);
 Vue.use(AlertPlugin);
-// Vue.use(AvatarPlugin);
-// Vue.use(BadgePlugin);
 Vue.use(ButtonPlugin);
-// Vue.use(ButtonGroupPlugin);
-// Vue.use(ButtonToolbarPlugin);
-// Vue.use(CardPlugin);
 Vue.use(FormPlugin);
 Vue.use(FormCheckboxPlugin);
-// Vue.use(FormDatepickerPlugin);
 Vue.use(FormFilePlugin);
 Vue.use(FormGroupPlugin);
 Vue.use(FormInputPlugin);
@@ -87,23 +71,67 @@ Vue.use(ImagePlugin);
 Vue.use(InputGroupPlugin);
 Vue.use(LayoutPlugin);
 Vue.use(LinkPlugin);
-// Vue.use(ListGroupPlugin);
-// Vue.use(ModalPlugin);
-// Vue.use(OverlayPlugin);
-// Vue.use(PopoverPlugin);
-// Vue.use(TablePlugin);
-// Vue.use(TabsPlugin);
-// Vue.use(TooltipPlugin);
-// Vue.use(SpinnerPlugin);
 Vue.use(ToastPlugin);
-// Vue.use(PaginationPlugin);
 Vue.use(BreadcrumbPlugin);
 
-import VueHead from "vue-head";
-import VueGtag from "vue-gtag";
-import VueMatomo from "vue-matomo";
+// #Custom Global Styles Integration
+import "./styles/app.scss";
 
-// FontAwesome Integration
+// #Global Head Integration
+import VueHead from "vue-head";
+import Head from "@/components/utils/Head.vue";
+Vue.component("Head", Head);
+Vue.use(VueHead, {
+  separator: "–",
+  complement: config.website.name
+});
+
+// #Analytics Integration
+import VueGtag from "vue-gtag";
+// GA tracking -> tracking in App.vue
+Vue.use(VueGtag, {
+  config: {
+    id: config.ga.trackingCode,
+    params: {
+      anonymize_ip: config.ga.anonymizeIP,
+      client_storage: config.ga.storage,
+      send_page_view: false
+    }
+  },
+  // includes: [
+  //     {
+  //         id: "AW-797795882",
+  //         params: {
+  //             anonymize_ip: config.ga.anonymizeIP,
+  //             client_storage: config.ga.storage,
+  //             send_page_view: false
+  //         }
+  //     }
+  // ],
+  enabled:
+    config.ga.active && window.location.origin.includes(config.website.url)
+});
+
+import VueMatomo from "vue-matomo";
+Vue.use(VueMatomo, {
+  host: config.matomo.host,
+  siteId: config.matomo.siteId,
+  trackerFileName: "matomo",
+  router: router,
+  enableLinkTracking: true,
+  requireConsent: false,
+  trackInitialView: true,
+  disableCookies: true,
+  enableHeartBeatTimer: true,
+  heartBeatTimerInterval: 15,
+  debug: false,
+  userId: undefined,
+  cookieDomain: undefined,
+  domains: config.matomo.domains,
+  preInitActions: []
+});
+
+// #FontAwesome Integration
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faMapMarker,
@@ -274,56 +302,6 @@ library.add(
 );
 
 Vue.component("Fa", FontAwesomeIcon);
-
-import Head from "@/components/utils/Head.vue";
-Vue.component("Head", Head);
-
-Vue.use(VueHead, {
-  separator: "–",
-  complement: config.website.name
-});
-
-// GA tracking -> tracking in App.vue
-Vue.use(VueGtag, {
-  config: {
-    id: config.ga.trackingCode,
-    params: {
-      anonymize_ip: config.ga.anonymizeIP,
-      client_storage: config.ga.storage,
-      send_page_view: false
-    }
-  },
-  // includes: [
-  //     {
-  //         id: "AW-797795882",
-  //         params: {
-  //             anonymize_ip: config.ga.anonymizeIP,
-  //             client_storage: config.ga.storage,
-  //             send_page_view: false
-  //         }
-  //     }
-  // ],
-  enabled:
-    config.ga.active && window.location.origin.includes(config.website.url)
-});
-
-Vue.use(VueMatomo, {
-  host: config.matomo.host,
-  siteId: config.matomo.siteId,
-  trackerFileName: "matomo",
-  router: router,
-  enableLinkTracking: true,
-  requireConsent: false,
-  trackInitialView: true,
-  disableCookies: true,
-  enableHeartBeatTimer: true,
-  heartBeatTimerInterval: 15,
-  debug: false,
-  userId: undefined,
-  cookieDomain: undefined,
-  domains: config.matomo.domains,
-  preInitActions: []
-});
 
 Vue.config.productionTip = false;
 

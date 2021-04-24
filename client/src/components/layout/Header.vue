@@ -332,7 +332,7 @@
   };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   #header {
     background: $primary;
     font-family: $font-family-headlines;
@@ -432,7 +432,7 @@
 
           &.show {
             max-height: 300px;
-            overflow-y: visible;
+            // overflow-y: visible;
             visibility: visible;
 
             @media screen and (max-width: $break-menu) {

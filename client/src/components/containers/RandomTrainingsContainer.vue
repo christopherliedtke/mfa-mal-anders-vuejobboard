@@ -106,3 +106,35 @@
     }
   };
 </script>
+
+<style lang="scss" scoped>
+  a:not(.btn) {
+    color: $dark;
+    transition: $transition1;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  .card {
+    border: none;
+    background-color: $light-shade;
+    box-shadow: $shadow1;
+    transition: $transition1;
+
+    &:hover {
+      box-shadow: $shadow2;
+    }
+
+    .badge {
+      color: $light;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 0.9rem;
+      font-weight: 400;
+      padding: 0.5rem 0.8rem;
+    }
+  }
+</style>

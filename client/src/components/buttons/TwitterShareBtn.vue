@@ -47,19 +47,3 @@
     }
   };
 </script>
-
-<style lang="scss">
-  @import "@/styles/custom_bootstrap.scss";
-  .btn.twitter-share-btn {
-    background-color: #1da1f2;
-    border: 1px solid #1da1f2;
-
-    &:hover,
-    &:focus,
-    &:active {
-      background-color: darken($color: #1da1f2, $amount: 10%) !important;
-      border: 1px solid darken($color: #1da1f2, $amount: 10%) !important;
-      color: $light !important;
-    }
-  }
-</style>

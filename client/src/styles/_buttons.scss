@@ -1,50 +1,76 @@
 .btn {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: $border-radius2;
-    padding: 0.466rem 1.4rem;
-    transition: linear 0.3s;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: $border-radius2;
+  padding: 0.466rem 1.4rem;
+  transition: linear 0.3s;
 
-    &:focus,
-    &:active {
-        outline: none !important;
-        box-shadow: none !important;
-    }
+  &:focus,
+  &:active {
+    outline: none !important;
+    box-shadow: none !important;
+  }
 }
 
 .btn-primary {
-    @extend .btn;
-    background-color: $primary;
+  @extend .btn;
+  background-color: $primary;
 
-    &:hover,
-    &:active,
-    &:focus {
-        background-color: lighten($primary, 10%);
-        border-color: lighten($primary, 10%);
-    }
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: lighten($primary, 10%);
+    border-color: lighten($primary, 10%);
+  }
 }
 
 .btn-secondary {
-    @extend .btn;
-    background-color: $secondary;
-    color: $light;
+  @extend .btn;
+  background-color: $secondary;
+  color: $light;
 
-    &:hover,
-    &:not(:disabled):not(.disabled):active,
-    &:focus {
-        background-color: darken($secondary, 10%);
-        border-color: darken($secondary, 10%);
-        color: $light;
-    }
+  &:hover,
+  &:not(:disabled):not(.disabled):active,
+  &:focus {
+    background-color: darken($secondary, 10%);
+    border-color: darken($secondary, 10%);
+    color: $light;
+  }
 }
 
 .btn-outline-secondary {
-    @extend .btn;
+  @extend .btn;
 
-    &:hover,
-    &:not(:disabled):not(.disabled):active,
-    &:focus {
-        color: $light;
-    }
+  &:hover,
+  &:not(:disabled):not(.disabled):active,
+  &:focus {
+    color: $light;
+  }
+}
+
+.whatsapp-share-btn {
+  background-color: #25d366;
+  border: 1px solid #25d366;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: darken($color: #25d366, $amount: 10%);
+    border: 1px solid darken($color: #25d366, $amount: 10%);
+    color: $light;
+  }
+}
+
+.twitter-share-btn {
+  background-color: #1da1f2;
+  border: 1px solid #1da1f2;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: darken($color: #1da1f2, $amount: 10%);
+    border: 1px solid darken($color: #1da1f2, $amount: 10%);
+    color: $light;
+  }
 }

@@ -41,19 +41,3 @@
     }
   };
 </script>
-
-<style lang="scss">
-  @import "@/styles/custom_bootstrap.scss";
-  .btn.whatsapp-share-btn {
-    background-color: #25d366;
-    border: 1px solid #25d366;
-
-    &:hover,
-    &:focus,
-    &:active {
-      background-color: darken($color: #25d366, $amount: 10%) !important;
-      border: 1px solid darken($color: #25d366, $amount: 10%) !important;
-      color: $light !important;
-    }
-  }
-</style>

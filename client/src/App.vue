@@ -63,10 +63,3 @@
     }
   };
 </script>
-
-<style lang="scss">
-  @import "@/styles/custom_bootstrap.scss";
-  @import "node_modules/bootstrap/scss/bootstrap";
-  @import "node_modules/bootstrap-vue/src/index.scss";
-  @import "@/styles/custom.scss";
-</style>

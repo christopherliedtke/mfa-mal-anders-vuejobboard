@@ -108,7 +108,7 @@ const UserDashboardHome = () =>
   );
 const UserDashboardJobPreview = () =>
   import(
-    /* webpackChunkName: "job" */ "@/views/user/dashboard/jobs/preview/_jobId.vue"
+    /* webpackChunkName: "job-preview" */ "@/views/user/dashboard/jobs/preview/_jobId.vue"
   );
 const UserDashboardEditJob = () =>
   import(
@@ -127,7 +127,9 @@ const UserDashboardCheckoutJob = () =>
 const AdminHome = () =>
   import(/* webpackChunkName: "ad" */ "@/views/admin/AdminHome.vue");
 const AdminJobPreview = () =>
-  import(/* webpackChunkName: "job" */ "@/views/admin/jobs/preview/_jobId.vue");
+  import(
+    /* webpackChunkName: "job-preview" */ "@/views/admin/jobs/preview/_jobId.vue"
+  );
 const AdminEditJob = () =>
   import(
     /* webpackChunkName: "job_edit" */ "@/views/admin/jobs/edit/_jobId.vue"

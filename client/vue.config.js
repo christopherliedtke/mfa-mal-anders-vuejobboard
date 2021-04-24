@@ -96,7 +96,7 @@ module.exports = {
     loaderOptions: {
       sass: {
         prependData: `
-          @import "@/styles/custom_bootstrap.scss";
+          @import "@/styles/config.scss";
         `
       }
     }
