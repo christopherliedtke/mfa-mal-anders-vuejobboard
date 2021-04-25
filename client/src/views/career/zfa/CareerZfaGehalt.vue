@@ -25,6 +25,52 @@
         nicht zu dreist rüber kommen, auf der anderen Seite sich auch nicht
         unter Wert verkaufen.
       </p>
+
+      <div
+        class="bg-light-shade border-radius1 my-4 p-4"
+        style="max-width: fit-content"
+      >
+        <h2 class="h4 bold">Inhalt</h2>
+        <ol class="text-tertiary pl-4">
+          <li class="lead mt-3">
+            <b-link to="#gehaltstarifvertrag"
+              >Gehaltstarifvertrag {{ new Date().getFullYear() }} – ZFA /
+              ZahnarzthelferIn (inkl. Gehaltsrechner)</b-link
+            >
+          </li>
+          <li class="lead mt-3">
+            <b-link to="#gehalt-ausbildung"
+              >ZFA Ausbildung {{ new Date().getFullYear() }} – Gehalt nach
+              Tarifvertrag</b-link
+            >
+          </li>
+          <li class="lead mt-3">
+            <b-link to="#berufsjahre">Anrechnung von Berufsjahren</b-link>
+          </li>
+          <li class="lead mt-3">
+            <b-link to="#auszeiten"
+              >Mutterschutz, Elternzeit und Erziehungsurlaub</b-link
+            >
+          </li>
+          <li class="lead mt-3">
+            <b-link to="#taetigkeitsgruppen"
+              >Tätigkeitsgruppen nach aktuellem Gehaltstarifvertrag für
+              MFA</b-link
+            >
+          </li>
+          <li class="lead mt-3">
+            <b-link to="#gehalt-per-bundesland"
+              >ZFA Gehalt nach Bundesland</b-link
+            >
+          </li>
+          <li class="lead mt-3">
+            <b-link to="#benefits"
+              >Benefits – wenn dein Gehalt nicht zufriedenstellend ist</b-link
+            >
+          </li>
+        </ol>
+      </div>
+
       <h2>
         Wie ermittelt man eigentlich seinen Marktwert?
       </h2>
@@ -50,7 +96,7 @@
         Gehaltsrechners für Zahnmedizinische Fachangestellte ganz einfach
         herausfinden.
       </p>
-      <h2>
+      <h2 id="gehaltstarifvertrag">
         Gehaltstarifvertrag {{ new Date().getFullYear() }} – ZFA /
         ZahnarzthelferIn
       </h2>
@@ -166,9 +212,182 @@
         </b-col>
       </b-row>
 
+      <div>
+        <h3 class="h4">
+          Hier noch einmal die ab dem 01.01.2020 gültige Gehaltstabelle:
+        </h3>
+        <b-table-simple class="mt-3" hover responsive table-variant="secondary">
+          <colgroup>
+            <col />
+          </colgroup>
+          <colgroup>
+            <col />
+            <col />
+            <col />
+            <col />
+            <col />
+            <col />
+          </colgroup>
+          <b-thead head-variant="primary">
+            <b-tr>
+              <b-th>Berufsjahr</b-th>
+              <b-th>Tätigkeitsgruppe I</b-th>
+              <b-th>Tätigkeitsgruppe II</b-th>
+              <b-th>Tätigkeitsgruppe III</b-th>
+              <b-th>Tätigkeitsgruppe IV</b-th>
+              <b-th>Tätigkeitsgruppe V</b-th>
+            </b-tr>
+          </b-thead>
+          <b-tbody class="text-right">
+            <b-tr>
+              <b-th>1 - 3</b-th>
+              <b-td>2.043,50 €</b-td>
+              <b-td>2.197,00 €</b-td>
+              <b-td>2.401,50 €</b-td>
+              <b-td>2.554,50 €</b-td>
+              <b-td>2.657,00 €</b-td>
+            </b-tr>
+            <b-tr>
+              <b-th>4 - 6</b-th>
+              <b-td>2.118,00 €</b-td>
+              <b-td>2.277,00 €</b-td>
+              <b-td>2.489,00 €</b-td>
+              <b-td>2.647,50 €</b-td>
+              <b-td>2.753,50 €</b-td>
+            </b-tr>
+            <b-tr>
+              <b-th>7 - 9</b-th>
+              <b-td>2.221,50 €</b-td>
+              <b-td>2.389,00 €</b-td>
+              <b-td>2.611,00 €</b-td>
+              <b-td>2.777,50 €</b-td>
+              <b-td>2.889,00 €</b-td>
+            </b-tr>
+            <b-tr>
+              <b-th>10 - 12</b-th>
+              <b-td>2.299,50 €</b-td>
+              <b-td>2.472,00 €</b-td>
+              <b-td>2.702,00 €</b-td>
+              <b-td>2.874,50 €</b-td>
+              <b-td>2.989,50 €</b-td>
+            </b-tr>
+            <b-tr>
+              <b-th>13 - 15</b-th>
+              <b-td>2.370,50 €</b-td>
+              <b-td>2.548,50 €</b-td>
+              <b-td>2.785,50 €</b-td>
+              <b-td>2.963,50 €</b-td>
+              <b-td>3.082,00 €</b-td>
+            </b-tr>
+            <b-tr>
+              <b-th>16 - 18</b-th>
+              <b-td>2.439,00 €</b-td>
+              <b-td>2.622,50 €</b-td>
+              <b-td>2.866,00 €</b-td>
+              <b-td>3.049,50 €</b-td>
+              <b-td>3.171,50 €</b-td>
+            </b-tr>
+            <b-tr>
+              <b-th>19 - 21</b-th>
+              <b-td>2.507,50 €</b-td>
+              <b-td>2.696,50 €</b-td>
+              <b-td>2.946,50 €</b-td>
+              <b-td>3.135,50 €</b-td>
+              <b-td>3.261,00 €</b-td>
+            </b-tr>
+            <b-tr>
+              <b-th>22 - 24</b-th>
+              <b-td>2.576,00 €</b-td>
+              <b-td>2.770,50 €</b-td>
+              <b-td>3.027,00 €</b-td>
+              <b-td>3.221,50 €</b-td>
+              <b-td>3.350,50 €</b-td>
+            </b-tr>
+            <b-tr>
+              <b-th>25 - 27</b-th>
+              <b-td>2.644,50 €</b-td>
+              <b-td>2.844,50 €</b-td>
+              <b-td>3.107,50 €</b-td>
+              <b-td>3.307,50 €</b-td>
+              <b-td>3.440,00 €</b-td>
+            </b-tr>
+            <b-tr>
+              <b-th>ab 28</b-th>
+              <b-td>2.671,00 €</b-td>
+              <b-td>2.871,50 €</b-td>
+              <b-td>3.138,50 €</b-td>
+              <b-td>3.339,00 €</b-td>
+              <b-td>3.472,50 €</b-td>
+            </b-tr>
+          </b-tbody>
+        </b-table-simple>
+        <p class="small text-muted">
+          Quelle:
+          <b-link
+            href="https://www.vmf-online.de/zfa/zfa-tarife"
+            target="_blank"
+            rel="noopener"
+            >Gehaltstarifvertrag 2020 für Zahnmedizinische Fachangestellte (ZFA)
+            – AAZ (2020)</b-link
+          >
+        </p>
+      </div>
+
       <ToJobboardBanner class="my-5 mx-auto" />
 
-      <h2>
+      <h2 id="gehalt-ausbildung">
+        ZFA Ausbildung {{ new Date().getFullYear() }} – Gehalt nach Tarifvertrag
+      </h2>
+      <p>
+        Wie für andere Ausbildungsberufe auch, ist für die Ausbildung von
+        Medizinischen Fachangestellten laut Berufsbildungsgesetz eine Vergütug
+        zu zahlen. Hierüber gibt der aktuelle Gehaltstarifvertrag ebenfalls
+        Auskunft. Demnach ist für Zahnmedizinische Fachangestellte /
+        ZahnarzthelferInnen, die Ihre Ausbildung ab dem 01.01.2020 starten eine
+        monatliche Ausbildungsvergütung (brutto) wie folgt vorgesehen:
+      </p>
+      <b-table-simple class="mt-4" hover responsive table-variant="secondary">
+        <colgroup>
+          <col />
+        </colgroup>
+        <colgroup>
+          <col />
+          <col />
+          <col />
+        </colgroup>
+        <b-thead head-variant="primary">
+          <b-tr>
+            <b-th colspan="1"> </b-th>
+            <b-th colspan="3" class="text-center"> Ausbildungsjahr</b-th>
+          </b-tr>
+          <b-tr>
+            <b-th>ab</b-th>
+            <b-th>1.</b-th>
+            <b-th>2.</b-th>
+            <b-th>3.</b-th>
+          </b-tr>
+        </b-thead>
+        <b-tbody>
+          <b-tr>
+            <b-th>01.01.2021</b-th>
+            <b-td>870,- €</b-td>
+            <b-td>910,- €</b-td>
+            <b-td>970,- €</b-td>
+          </b-tr>
+        </b-tbody>
+      </b-table-simple>
+      <p class="small text-muted">
+        Quelle:
+        <b-link
+          href="https://www.vmf-online.de/zfa/zfa-tarife"
+          target="_blank"
+          rel="noopener"
+          >Gehaltstarifvertrag 2020 für Zahnmedizinische Fachangestellte (ZFA) –
+          AAZ (2020)</b-link
+        >
+      </p>
+
+      <h2 id="berufsjahre">
         Anrechnung von Berufsjahren
       </h2>
       <p>
@@ -201,7 +420,7 @@
         Bei Beschäftigten in Teilzeit zählen die Berufsjahre genau wie bei
         Vollzeit-Beschäftigung und werden komplett angerechnet.
       </p>
-      <h2>
+      <h2 id="auszeiten">
         Mutterschutz, Elternzeit und Erziehungsurlaub
       </h2>
       <p>
@@ -255,7 +474,7 @@
         </b-col>
       </b-row>
 
-      <h2>
+      <h2 id="taetigkeitsgruppen">
         Tätigkeitsgruppen nach aktuellem Gehaltstarifvertrag für ZFA
       </h2>
       <p>
@@ -412,7 +631,28 @@
         </BCard>
       </div>
 
-      <h2>Benefits – wenn dein Gehalt nicht zufriedenstellend ist</h2>
+      <h2 id="gehalt-per-bundesland">ZFA Gehalt nach Bundesland</h2>
+      <p>
+        Nach wie vor ist es so, dass unterschiedliche Gehälter gezahlt werden –
+        je nachdem, wo man arbeitet. Auch bei ZahnarzthelferInnen ist dies der
+        Fall. Wenig überaschend sieht man ein deutliches Gefälle zwischen den
+        alten und neuen Bundesländern. Durchschnittlich verdient man in Sachsen,
+        Sachsen-Anhalt, Brandenburg, Thüringen und Mecklenburg-Vorpommern
+        zwischen 1.840 € und 1.935 € brutto pro Monat. In den übrigen
+        Bundesländern liegt dieser Wert zwischen 1.972 € und 2.327 €.
+      </p>
+      <div class="my-4">
+        <div class="d-flex justify-content-center mb-4">
+          <b-img fluid src="~@/assets/img/gehalt_perBundesland_zfa.svg" />
+        </div>
+        <p class="small text-muted text-right">
+          Quelle: Entgeltatlas der Bundesagentur für Arbeit
+        </p>
+      </div>
+
+      <h2 id="benefits">
+        Benefits – wenn dein Gehalt nicht zufriedenstellend ist
+      </h2>
       <p>
         Neben einer fairen Bezahlung spielen auch weitere, sogenannte weiche
         Faktoren oder Benefits eine Rolle in der Auswahl des richtigen

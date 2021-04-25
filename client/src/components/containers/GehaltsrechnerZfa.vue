@@ -66,8 +66,8 @@
           href="https://www.vmf-online.de/zfa/zfa-tarife"
           target="_blank"
           rel="noopener"
-          >Gehaltstarifvertrag 2021 für Zahnmedizinische Fachangestellte (ZFA) –
-          AAZ (2021)</a
+          >Gehaltstarifvertrag 2020 für Zahnmedizinische Fachangestellte (ZFA) –
+          AAZ (2020)</a
         >
       </span>
     </p>

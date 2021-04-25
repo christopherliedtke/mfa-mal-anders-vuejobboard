@@ -307,7 +307,7 @@
       </h2>
       <p>
         Wie für andere Ausbildungsberufe auch, ist für die Ausbildung von
-        Medizinischen Fachangestellten lauf Berufsbildungsgesetz eine Vergütug
+        Medizinischen Fachangestellten laut Berufsbildungsgesetz eine Vergütug
         zu zahlen. Hierüber gibt der aktuelle Gehaltstarifvertrag ebenfalls
         Auskunft. Demnach ist für Medizinische Fachangestellte /
         ArzthelferInnen, die Ihre Ausbildung ab dem 01.01.2021 starten eine
