@@ -10,6 +10,8 @@
         fluid
         src="/img/MfaMalAnders_GehaltZfa_1200.jpg"
         alt="ZFA Gehalt - So viel verdienst Du wirklich"
+        width="1200"
+        height="630"
       />
       <p>
         Beim Thema Gehalt geht, geht es der/dem ZFA bzw. ZahnarzthelferIn

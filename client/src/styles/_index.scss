@@ -1,51 +1,11 @@
-html {
-  font-size: 15px;
-  // scroll-behavior: smooth;
-}
-
-body {
-  font-family: $font-family-sans-serif;
-  background-color: $light;
-  color: $dark;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.h1,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6 {
-  font-family: $font-family-headlines;
-  line-height: 1.5;
-  // font-weight: 700;
-}
-
-// h1 {
-//     font-size: calc(0.6em + 2.5vmax);
-// }
-
-// h2 {
-//     font-size: calc(0.75em + 1.25vmax);
-// }
-
-// h3 {
-//     font-size: calc(0.75em + 1vmax);
-// }
-
 a {
-  color: $tertiary;
+  // color: $tertiary;
   transition: $transition1;
 
-  &:hover {
-    color: $secondary;
-    text-decoration: none;
-  }
+  // &:hover {
+  //   color: $secondary;
+  //   text-decoration: none;
+  // }
 }
 
 main {

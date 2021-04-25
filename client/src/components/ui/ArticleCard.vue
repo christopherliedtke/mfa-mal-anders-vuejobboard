@@ -1,41 +1,53 @@
 <template>
   <div class="article-card">
     <b-link :to="'/blog/article/' + article.slug" :aria-label="article.title">
-      <BCard
-        :title="article.title"
-        :img-src="
-          article.featuredImage ? article.featuredImage.node.sourceUrl : ''
-        "
-        :img-alt="
-          article.featuredImage ? article.featuredImage.node.altText : ''
-        "
-        img-top
-        tag="article"
-        class="mb-2"
-      >
-        <BCardText>
-          <!-- eslint-disable-next-line -->
-          <div v-html="article.excerpt"></div>
-        </BCardText>
-        <hr />
+      <BCard no-body tag="article" class="mb-2">
+        <BCardImgLazy
+          :src="
+            article.featuredImage ? article.featuredImage.node.sourceUrl : ''
+          "
+          :alt="article.featuredImage ? article.featuredImage.node.altText : ''"
+          width="1200"
+          height="630"
+          offset="1000"
+          top
+        />
+        <BCardBody>
+          <BCardTitle :title="article.title" />
 
-        <div class="d-flex justify-content-between">
-          <div
-            v-if="article.author.node.avatar"
-            class="d-flex align-items-center"
-          >
-            <b-img
-              :src="article.author.node.avatar.url"
-              :alt="article.author.node.name"
-              class="mr-2 rounded-circle"
-              height="37.5"
-            />
-            <div v-if="article.author.node.name" class="mr-3">
-              {{ article.author.node.name }}
+          <BCardText>
+            <!-- eslint-disable-next-line -->
+            <div v-html="article.excerpt"></div>
+          </BCardText>
+          <hr />
+
+          <div class="d-flex justify-content-between">
+            <div
+              v-if="article.author.node.avatar"
+              class="d-flex align-items-center"
+            >
+              <BCardImgLazy
+                class="mr-2 rounded-circle"
+                :src="article.author.node.avatar.url"
+                :alt="article.author.node.name"
+                height="96"
+                width="96"
+                style="width: auto; height: 37.5px"
+                offset="1000"
+              />
+              <!-- <b-img
+                :src="article.author.node.avatar.url"
+                :alt="article.author.node.name"
+                class="mr-2 rounded-circle"
+                height="37.5"
+              /> -->
+              <div v-if="article.author.node.name" class="mr-3">
+                {{ article.author.node.name }}
+              </div>
             </div>
+            <b-button variant="primary">Weiterlesen</b-button>
           </div>
-          <b-button variant="primary">Weiterlesen</b-button>
-        </div>
+        </BCardBody>
 
         <BBadge v-if="article.tags.nodes.length > 0" pill variant="secondary">{{
           article.tags.nodes[0].name
@@ -47,10 +59,21 @@
 
 <script>
   import Vue from "vue";
-  import { BBadge, BCard, BCardText } from "bootstrap-vue";
+  import {
+    BBadge,
+    BCard,
+    BCardBody,
+    BCardImgLazy,
+    BCardTitle,
+    BCardText
+  } from "bootstrap-vue";
   Vue.component("BBadge", BBadge);
   Vue.component("BCard", BCard);
+  Vue.component("BCardBody", BCardBody);
+  Vue.component("BCardImgLazy", BCardImgLazy);
+  Vue.component("BCardTitle", BCardTitle);
   Vue.component("BCardText", BCardText);
+
   export default {
     name: "ArticleCard",
     props: { article: { type: Object, default: () => {} } }
@@ -86,6 +109,11 @@
         font-size: 0.9rem;
         font-weight: 400;
         padding: 0.5rem 0.8rem;
+      }
+
+      .card-img-top {
+        width: 100%;
+        height: auto;
       }
     }
   }

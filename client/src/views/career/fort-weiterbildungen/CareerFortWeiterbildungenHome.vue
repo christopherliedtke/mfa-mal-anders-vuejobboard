@@ -15,6 +15,8 @@
             fluid
             src="/img/Banner_Weiterbildungsdschungel_1200.jpg"
             alt="Banner - So viel verdienst Du wirklich"
+            width="1200"
+            height="630"
           />
           <p>
             Als Medizinische & Zahnmedizinische Fachangestellte haben wir viele

@@ -445,6 +445,7 @@
           : 'summary_large_image'
       "
       :script="snippet"
+      :link="link"
     />
   </div>
 </template>
@@ -491,29 +492,36 @@
           {
             type: "application/ld+json",
             inner: `{
-                            "@context": "http://schema.org",
-                            "@type" : "BreadcrumbList",
-                            "itemListElement": [
-                                {
-                                    "@type": "ListItem",
-                                    "position": 1,
-                                    "name": "MFA mal anders",
-                                    "item": "https://www.mfa-mal-anders.de"
-                                },
-                                {
-                                    "@type": "ListItem",
-                                    "position": 2,
-                                    "name": "Stellenangebote",
-                                    "item": "https://www.mfa-mal-anders.de/stellenangebote"
-                                },
-                                {
-                                    "@type": "ListItem",
-                                    "position": 3,
-                                    "name": "Stellenangebot",
-                                    "item": "https://www.mfa-mal-anders.de${this.$route.fullPath}"
-                                }
-                            ]
-                        }`
+              "@context": "http://schema.org",
+              "@type" : "BreadcrumbList",
+              "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "MFA mal anders",
+                    "item": "https://www.mfa-mal-anders.de"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Stellenangebote",
+                    "item": "https://www.mfa-mal-anders.de/stellenangebote"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Stellenangebot",
+                    "item": "https://www.mfa-mal-anders.de${this.$route.fullPath}"
+                }
+              ]
+            }`
+          }
+        ],
+        link: [
+          {
+            rel: "stylesheet",
+            href: "https://js.api.here.com/v3/3.1/mapsjs-ui.css",
+            type: "text/css"
           }
         ]
       };

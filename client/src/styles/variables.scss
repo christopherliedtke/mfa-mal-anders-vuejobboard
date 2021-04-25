@@ -1,0 +1,35 @@
+$dark: #0f0106;
+$light: #fffcfd;
+$light-shade: #f7f6f9;
+
+$primary: #6d0230;
+$secondary: #fda225;
+$tertiary: #b94559;
+
+$body-bg: $light;
+$body-color: $dark;
+
+$font-family-sans-serif: "Montserrat", sans-serif;
+$font-size-base: 0.938rem;
+
+$headings-font-family: "Montserrat Alternates", sans-serif;
+$headings-line-height: 1.5;
+
+$enable-responsive-font-sizes: true;
+
+$link-color: $tertiary;
+$link-hover-color: $secondary;
+// $link-hover-color: darken($link-color, 10%);
+$link-hover-decoration: none;
+
+$shadow1: 0px 0px 10px 0px rgba(15, 1, 6, 0.18);
+$shadow2: 0px 0px 15px 0px rgba(15, 1, 6, 0.18);
+$shadow3: inset 0px 0px 10px 0px rgba(15, 1, 6, 0.18);
+
+$border-radius1: 5px;
+$border-radius2: 35px;
+
+$break-menu: 1199px;
+
+$transition1: all linear 0.3s;
+$transition2: all cubic-bezier(1, 0.5, 0.8, 1) 0.3s;

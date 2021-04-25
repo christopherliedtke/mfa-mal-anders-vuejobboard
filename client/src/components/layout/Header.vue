@@ -335,7 +335,7 @@
 <style lang="scss">
   #header {
     background: $primary;
-    font-family: $font-family-headlines;
+    font-family: $headings-font-family;
     box-shadow: $shadow1;
     position: sticky;
     top: 0;

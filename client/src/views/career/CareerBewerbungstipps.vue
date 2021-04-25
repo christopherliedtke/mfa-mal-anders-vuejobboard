@@ -10,6 +10,8 @@
         fluid
         src="/img/MfaMalAnders_Bewerbungstipps_1200.jpg"
         alt="Banner - Schnell und einfach eine Top-Bewerbung schreiben"
+        width="1200"
+        height="630"
       />
       <p>
         Hast du eine Stellenanzeige entdeckt, die dir richtig gut gefällt? Am
@@ -35,15 +37,19 @@
       <div class="d-flex justify-content-center mb-5">
         <b-img
           class="mx-3 shadow1"
-          style="width: 35vw; max-width: 300px"
+          style="width: 35vw; max-width: 300px; height: auto"
           src="@/assets/img/Vorlage_Bewerbungsanschreiben_300.jpg"
           alt="Bild von Mustervorlage für Motivationsschreiben"
+          width="300"
+          height="425"
         />
         <b-img
           class="mx-3 shadow1"
-          style="width: 35vw; max-width: 300px"
+          style="width: 35vw; max-width: 300px; height: auto"
           src="@/assets/img/Vorlage_Lebenslauf_300.jpg"
           alt="Bild von Mustervorlage für Lebenslauf"
+          width="300"
+          height="425"
         />
       </div>
 

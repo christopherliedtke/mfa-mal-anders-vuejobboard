@@ -11,6 +11,8 @@
         fluid
         src="/img/MfaMalAnders_Gehalt_1200.jpg"
         alt="MFA Gehalt - So viel verdienst Du wirklich"
+        width="1200"
+        height="630"
       />
       <p>
         Sobald es um das Thema Gehalt geht, fehlt vielen MFA bzw.

@@ -12,6 +12,8 @@
             article.featuredImage ? article.featuredImage.node.sourceUrl : ''
           "
           :alt="article.featuredImage ? article.featuredImage.node.altText : ''"
+          width="1200"
+          height="630"
           class="mt-3 mb-4"
           fluid
         />

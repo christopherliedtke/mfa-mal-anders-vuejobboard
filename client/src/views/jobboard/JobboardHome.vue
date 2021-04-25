@@ -237,7 +237,9 @@
             </p>
           </div>
           <div class="mt-5">
-            <b-link class="h2" to="/karriere/fort-und-weiterbildungen"
+            <b-link
+              class="h2 text-primary"
+              to="/karriere/fort-und-weiterbildungen"
               >Fort- und Weiterbildungen für MFA</b-link
             >
             <RandomTrainingsContainer class="mt-3" :number="2" />
@@ -272,6 +274,7 @@
       "
       img=""
       :script="snippet"
+      :link="link"
     />
   </div>
 </template>
@@ -360,6 +363,13 @@
                                 : ""
                             }]
                         }`
+          }
+        ],
+        link: [
+          {
+            rel: "stylesheet",
+            href: "https://js.api.here.com/v3/3.1/mapsjs-ui.css",
+            type: "text/css"
           }
         ]
       };

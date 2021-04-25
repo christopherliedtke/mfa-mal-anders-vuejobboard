@@ -17,6 +17,8 @@
             <BCardImgLazy
               :src="training.featuredImage.node.sourceUrl"
               :alt="training.featuredImage.node.altText"
+              img-width="1200"
+              img-height="630"
               offset="1000"
               top
             />
@@ -135,6 +137,11 @@
       font-size: 0.9rem;
       font-weight: 400;
       padding: 0.5rem 0.8rem;
+    }
+
+    .card-img-top {
+      width: 100%;
+      height: auto;
     }
   }
 </style>

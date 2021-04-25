@@ -12,6 +12,8 @@
             fluid
             src="@/assets/img/KristinMaurach_portrait_800.jpg"
             alt="Portrait Kristin Maurach"
+            width="800"
+            height="800"
           />
         </b-col>
         <b-col order="1" order-md="2">

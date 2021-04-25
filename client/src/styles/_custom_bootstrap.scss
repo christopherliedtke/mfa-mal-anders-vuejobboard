@@ -1,0 +1,32 @@
+.b-form-datepicker {
+  & > label {
+    margin-bottom: 0 !important;
+
+    &.form-control {
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  span {
+    &.btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      margin: 0.175rem;
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  .btn {
+    display: inline-block;
+  }
+}
+
+.modal-backdrop {
+  background-color: #0000007a !important;
+}

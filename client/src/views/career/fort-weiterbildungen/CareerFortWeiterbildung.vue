@@ -16,6 +16,8 @@
             fluid
             :src="training.featuredImage.node.sourceUrl"
             :alt="`Banner - ${training.title}`"
+            width="1200"
+            height="630"
           />
           <!-- eslint-disable-next-line -->
           <div v-html="training.content"></div>
@@ -130,7 +132,7 @@
           padding-top: 1rem;
 
           // &:first-child {
-          //     font-family: $font-family-headlines;
+          //     font-family: $headings-font-family;
           //     font-size: 115%;
           // }
 

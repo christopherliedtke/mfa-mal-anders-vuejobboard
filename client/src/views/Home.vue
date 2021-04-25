@@ -128,9 +128,11 @@
               fluid
               left
               class="border-radius2 mr-3 mb-2"
-              style="max-width: 170px"
+              style="max-width: 170px; height: auto"
               src="@/assets/img/KristinMaurach_portrait_800.jpg"
               alt="Portrait Kristin Maurach"
+              width="800"
+              height="800"
             />
             <p>
               Ich habe selbst über 10 Jahre in Praxen gearbeitet. Und obwohl ich
@@ -239,7 +241,7 @@
       </b-row>
     </b-container>
 
-    <b-container fluid class="bg-light-shade my-5 py-5">
+    <b-container fluid class="bg-light-shade my-5 py-5 px-0">
       <b-container>
         <h2 class="h1 bold display-4 text-center">Blog</h2>
         <h3 class="h5 text-center mb-4">

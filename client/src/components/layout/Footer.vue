@@ -178,7 +178,7 @@
         .nav-link {
           padding: 0.4rem 0;
           color: $light;
-          font-family: $font-family-headlines;
+          font-family: $headings-font-family;
           font-size: 1.1rem;
 
           :not(.home) > .router-link-active {
