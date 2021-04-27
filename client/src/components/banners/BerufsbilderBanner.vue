@@ -2,7 +2,7 @@
   <BCard no-body class="shadow1">
     <BCardImgLazy
       top
-      srcset="/img/MfaMalAnders_50+Jobmoeglichkeiten_1200.jpg-300x157.jpg 300w, /img/MfaMalAnders_50+Jobmoeglichkeiten_1200.jpg-1024x538.jpg 1024w, /img/MfaMalAnders_50+Jobmoeglichkeiten_1200.jpg-768x403.jpg 768w, /img/MfaMalAnders_50+Jobmoeglichkeiten_1200.jpg 1200w"
+      srcset="/img/MfaMalAnders_50+Jobmoeglichkeiten_1200-300x157.jpg 300w, /img/MfaMalAnders_50+Jobmoeglichkeiten_1200-1024x538.jpg 1024w, /img/MfaMalAnders_50+Jobmoeglichkeiten_1200-768x403.jpg 768w, /img/MfaMalAnders_50+Jobmoeglichkeiten_1200.jpg 1200w"
       sizes="(max-width: 768px) 100vw, 50vw"
       src="/img/MfaMalAnders_50+Jobmoeglichkeiten_1200.jpg"
       alt="Banner - Jobs und Berufsbilder für MFA / ZFA und ArzthelferInnen"
