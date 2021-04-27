@@ -18,8 +18,8 @@
               :style="compact ? 'font-size:1rem; padding: 0.75rem' : ''"
             >
               {{
-                compact && job.title.length > 25
-                  ? job.title.slice(0, 25) + "..."
+                compact && job.title.length > 30
+                  ? job.title.slice(0, 30) + "..."
                   : job.title
               }}
             </h2>

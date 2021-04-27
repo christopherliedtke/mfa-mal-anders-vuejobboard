@@ -62,19 +62,34 @@
     </b-container>
 
     <b-container v-if="$store.state.jobs.jobs.length > 0" class="mt-4 mt-lg-0">
-      <h2 class="h3 bold text-primary ml-1">Neu in der Stellenbörse:</h2>
-      <b-row cols="1" cols-md="3">
+      <!-- <h2 class="h3 bold text-primary ml-1">Neu in der Stellenbörse:</h2> -->
+      <b-row v-if="$store.state.jobs.jobs.length > 0" cols="1" cols-md="3">
         <b-col v-for="job in $store.state.jobs.jobs.slice(0, 3)" :key="job._id">
           <JobCard :job="job" :compact="true" />
         </b-col>
       </b-row>
+      <b-row v-else cols="1" cols-md="3">
+        <b-col>
+          <JobCardPlaceholder :compact="true" />
+        </b-col>
+        <b-col>
+          <JobCardPlaceholder :compact="true" />
+        </b-col>
+        <b-col>
+          <JobCardPlaceholder :compact="true" />
+        </b-col>
+      </b-row>
       <div class="d-flex justify-content-end mt-2">
-        <b-button variant="outline-primary" size="sm">Weitere</b-button>
+        <b-button to="/stellenangebote" variant="outline-primary" size="sm"
+          >Weitere</b-button
+        >
       </div>
     </b-container>
 
     <b-container class="my-3 my-md-5 py-3 py-md-5">
-      <h2 class="bold display-4 text-left text-lg-center mb-lg-5">
+      <h2
+        class="d-none d-lg-block bold display-4 text-left text-lg-center mb-lg-5"
+      >
         Deine berufliche Weiterentwicklung
       </h2>
       <b-row cols="1" cols-md="3" class="flex-lg-row-reverse">
@@ -281,13 +296,15 @@
   import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
   import RandomArticlesContainer from "@/components/containers/RandomArticlesContainer.vue";
   import JobCard from "@/components/ui/JobCard.vue";
+  import JobCardPlaceholder from "@/components/ui/JobCardPlaceholder.vue";
   export default {
     name: "Home",
     components: {
       StellenanzeigeSchaltenBanner,
       RandomTrainingsContainer,
       RandomArticlesContainer,
-      JobCard
+      JobCard,
+      JobCardPlaceholder
     },
     data() {
       return {

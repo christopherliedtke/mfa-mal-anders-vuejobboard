@@ -3,7 +3,7 @@
     <div class="title">
       <div class="content animate-color"></div>
     </div>
-    <div class="body">
+    <div v-if="!compact" class="body">
       <div class="content animate-color"></div>
       <div class="content animate-color"></div>
       <div class="content animate-color"></div>
@@ -17,7 +17,10 @@
 
 <script>
   export default {
-    name: "JobCardPlaceholder"
+    name: "JobCardPlaceholder",
+    props: {
+      compact: { type: Boolean, default: false }
+    }
   };
 </script>
 
@@ -31,6 +34,7 @@
       padding: 0.5rem;
       display: flex;
       flex-direction: column;
+      border-radius: $border-radius1;
     }
 
     .content {
