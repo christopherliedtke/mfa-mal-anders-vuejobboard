@@ -7,14 +7,24 @@
       <span class="h2 bold text-danger">Abgelaufen</span>
     </div>
     <b-link :to="`/stellenangebote/job/${job._id}`">
-      <BCard no-body class="mb-3 mt-3 mt-lg-0">
+      <BCard
+        no-body
+        :class="compact ? 'mb-2 mt-2 mt-lg-0' : 'mb-3 mt-3 mt-lg-0'"
+      >
         <BCardText>
           <div class="card-head position-relative">
-            <h2 :class="job.company.logoUrl ? 'mobile-max-width-75 h4' : 'h4'">
-              {{ job.title }}
+            <h2
+              :class="job.company.logoUrl ? 'mobile-max-width-75 h4' : 'h4'"
+              :style="compact ? 'font-size:1rem; padding: 0.75rem' : ''"
+            >
+              {{
+                compact && job.title.length > 25
+                  ? job.title.slice(0, 25) + "..."
+                  : job.title
+              }}
             </h2>
             <StarJob :job-id="job._id" />
-            <div v-if="job.company.logoUrl" class="img-container">
+            <div v-if="job.company.logoUrl && !compact" class="img-container">
               <b-img-lazy
                 :src="job.company.logoUrl"
                 blank-src="/img/MfaMalAnders_logo_circle_dark.svg"
@@ -22,7 +32,7 @@
               />
             </div>
           </div>
-          <div class="card-content">
+          <div v-if="!compact" class="card-content">
             <!-- eslint-disable -->
             <div
               v-html="
@@ -32,19 +42,22 @@
             ></div>
             <!-- eslint-enable -->
           </div>
-          <hr />
-          <div class="card-foot">
+          <hr v-if="!compact" />
+          <div
+            class="card-foot"
+            :style="compact ? 'font-size:0.85rem; padding: 0.7rem' : ''"
+          >
             <div>
               <div class="icon">
                 <Fa class="mr-2" :icon="['fas', 'map-marker']" size="lg" />
               </div>
               {{
-                job.company.state != job.company.location
+                job.company.state != job.company.location && !compact
                   ? `${job.company.location}, ${job.company.state}`
                   : job.company.location
               }}
             </div>
-            <div>
+            <div v-if="!compact">
               <div class="icon">
                 <Fa class="mr-2" :icon="['fas', 'building']" size="lg" />
               </div>
@@ -61,7 +74,7 @@
               }}
             </div>
 
-            <div v-if="job.salaryMin || job.salaryMax">
+            <div v-if="!compact && (job.salaryMin || job.salaryMax)">
               <div class="icon">
                 <Fa
                   class="mr-2"
@@ -92,7 +105,11 @@
                   : ""
               }}
             </div>
-            <div v-if="job.specialization && job.specialization != 'null'">
+            <div
+              v-if="
+                !compact && job.specialization && job.specialization != 'null'
+              "
+            >
               <div class="icon">
                 <Fa class="mr-2" icon="syringe" size="lg" />
               </div>
@@ -140,7 +157,10 @@
   export default {
     name: "JobCard",
     components: { StarJob },
-    props: { job: { type: Object, default: () => {} } },
+    props: {
+      job: { type: Object, default: () => {} },
+      compact: { type: Boolean, default: false }
+    },
     data() {
       return {
         employmentTypeOptions,

@@ -7,348 +7,343 @@ const emailTemplate = require("../../../utils/emailTemplate");
 const emailService = require("../../../utils/nodemailer");
 const { hash, compare } = require("../../../utils/bcrypt");
 const {
-    UserInputError,
-    ApolloError,
-    AuthenticationError,
+  UserInputError,
+  ApolloError,
+  AuthenticationError,
 } = require("apollo-server-express");
 const { User } = require("../../models/user");
 const { Code } = require("../../models/secretCode");
 
 const UserResolvers = {
-    Query: {
-        me: async (root, args, context) => {
-            const user = await User.findOne({
-                _id: context.user._id,
-            });
+  Query: {
+    me: async (root, args, context) => {
+      const user = await User.findOne({
+        _id: context.user._id,
+      });
 
-            if (!user) {
-                return null;
-            }
+      if (!user) {
+        return null;
+      }
 
-            delete user.password;
+      delete user.password;
 
-            const token = jwt.sign(
-                {
-                    user: {
-                        _id: user._id,
-                        role: user.role,
-                        isEmployer: user.isEmployer,
-                        isEmployee: user.isEmployee,
-                        isAdmin: user.isAdmin,
-                        status: user.status,
-                        gender: user.gender,
-                        title: user.title,
-                        firstName: user.firstName,
-                        lastName: user.lastName,
-                        email: user.email,
-                    },
-                },
-                process.env.JWT_SECRET,
-                {
-                    expiresIn: 60 * 60 * 24 * 7,
-                }
-            );
-
-            context.session.token = token;
-            user.token = token;
-
-            return user;
+      const token = jwt.sign(
+        {
+          user: {
+            _id: user._id,
+            role: user.role,
+            isEmployer: user.isEmployer,
+            isEmployee: user.isEmployee,
+            isAdmin: user.isAdmin,
+            status: user.status,
+            gender: user.gender,
+            title: user.title,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+          },
         },
-        meFromToken: (root, args, context) => {
-            return context.user;
-        },
-        adminUser: async (root, args, context) => {
-            if (!context.user.isAdmin) {
-                throw new AuthenticationError("Missing permission!");
-            }
+        process.env.JWT_SECRET,
+        {
+          expiresIn: 60 * 60 * 24 * 7,
+        }
+      );
 
-            const user = await User.findOne({ _id: args._id });
+      context.session.token = token;
+      user.token = token;
 
-            return user;
-        },
-        adminUsers: async (root, args, context) => {
-            if (!context.user.isAdmin) {
-                throw new AuthenticationError("Missing permission!");
-            }
-
-            const users = await User.find().sort({
-                createdAt: "desc",
-            });
-
-            return users;
-        },
+      return user;
     },
+    meFromToken: (root, args, context) => {
+      return context.user;
+    },
+    adminUser: async (root, args, context) => {
+      if (!context.user.isAdmin) {
+        throw new AuthenticationError("Missing permission!");
+      }
 
-    Mutation: {
-        login: async (root, args, context) => {
-            if (!args.email || !args.password) {
-                throw new UserInputError(errorMsg.auth.fillAll, {
-                    invalidArgs: Object.keys(args),
-                });
-            }
+      const user = await User.findOne({ _id: args._id });
 
-            const user = await User.findOne({ email: args.email });
+      return user;
+    },
+    adminUsers: async (root, args, context) => {
+      if (!context.user.isAdmin) {
+        throw new AuthenticationError("Missing permission!");
+      }
 
-            if (!user) {
-                throw new ApolloError(errorMsg.auth.noMatch);
-            }
+      const users = await User.find().sort({
+        createdAt: "desc",
+      });
 
-            const pwCheckSuccess = await compare(args.password, user.password);
+      return users;
+    },
+  },
 
-            if (!pwCheckSuccess) {
-                throw new ApolloError(errorMsg.auth.pwNoMatch);
-            }
+  Mutation: {
+    login: async (root, args, context) => {
+      if (!args.email || !args.password) {
+        throw new UserInputError(errorMsg.auth.fillAll, {
+          invalidArgs: Object.keys(args),
+        });
+      }
 
-            delete user.password;
+      const user = await User.findOne({ email: args.email });
 
-            const token = jwt.sign(
-                {
-                    user: {
-                        _id: user._id,
-                        role: user.role,
-                        isEmployer: user.isEmployer,
-                        isEmployee: user.isEmployee,
-                        isAdmin: user.isAdmin,
-                        status: user.status,
-                        gender: user.gender,
-                        title: user.title,
-                        firstName: user.firstName,
-                        lastName: user.lastName,
-                        email: user.email,
-                    },
-                },
-                process.env.JWT_SECRET,
-                {
-                    expiresIn: 60 * 60 * 24 * 7,
-                }
-            );
+      if (!user) {
+        throw new ApolloError(errorMsg.auth.noMatch);
+      }
 
-            context.session.token = token;
-            user.token = token;
+      const pwCheckSuccess = await compare(args.password, user.password);
 
-            return user;
+      if (!pwCheckSuccess) {
+        throw new ApolloError(errorMsg.auth.pwNoMatch);
+      }
+
+      delete user.password;
+
+      const token = jwt.sign(
+        {
+          user: {
+            _id: user._id,
+            role: user.role,
+            isEmployer: user.isEmployer,
+            isEmployee: user.isEmployee,
+            isAdmin: user.isAdmin,
+            status: user.status,
+            gender: user.gender,
+            title: user.title,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+          },
         },
-        register: async (root, args, context) => {
-            if (
-                !args.firstName ||
-                !args.lastName ||
-                !args.email ||
-                !args.password ||
-                !args.password2
-            ) {
-                throw new UserInputError(errorMsg.auth.fillAll);
-            }
-            if (args.password != args.password2) {
-                throw new UserInputError(errorMsg.auth.pwsNoMatch);
-            }
-            if (
-                !args.password.match(
-                    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{6,}$/
-                )
-            ) {
-                throw new UserInputError(errorMsg.auth.pwRequirements);
-            }
-            if (!args.email.match(/\S+@\S+\.\S+/)) {
-                throw new UserInputError(errorMsg.auth.notValidEmail);
-            }
-            if (args.acceptance != "accepted") {
-                throw new UserInputError(errorMsg.auth.termsOfUse);
-            }
+        process.env.JWT_SECRET,
+        {
+          expiresIn: 60 * 60 * 24 * 7,
+        }
+      );
 
-            const existingUser = await User.findOne({ email: args.email });
+      context.session.token = token;
+      user.token = token;
 
-            if (existingUser) {
-                throw new UserInputError(errorMsg.auth.emailRegistered);
-            }
+      return user;
+    },
+    register: async (root, args, context) => {
+      if (
+        !args.firstName ||
+        !args.lastName ||
+        !args.email ||
+        !args.password ||
+        !args.password2
+      ) {
+        throw new UserInputError(errorMsg.auth.fillAll);
+      }
+      if (args.password != args.password2) {
+        throw new UserInputError(errorMsg.auth.pwsNoMatch);
+      }
+      if (
+        !args.password.match(
+          /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{6,}$/
+        )
+      ) {
+        throw new UserInputError(errorMsg.auth.pwRequirements);
+      }
+      if (!args.email.match(/\S+@\S+\.\S+/)) {
+        throw new UserInputError(errorMsg.auth.notValidEmail);
+      }
+      if (args.acceptance != "accepted") {
+        throw new UserInputError(errorMsg.auth.termsOfUse);
+      }
 
-            const hashedPw = await hash(args.password);
+      const existingUser = await User.findOne({ email: args.email });
 
-            const newUserObj = new User({
-                gender: sanitizeHtml(args.gender),
-                title: sanitizeHtml(args.title),
-                firstName: sanitizeHtml(args.firstName),
-                lastName: sanitizeHtml(args.lastName),
-                email: sanitizeHtml(args.email),
-                role: "basic",
-                isEmployer: args.isEmployer,
-                isEmployee: args.isEmployee,
-                password: hashedPw,
-                accepted: true,
-                status: "pending",
-            });
+      if (existingUser) {
+        throw new UserInputError(errorMsg.auth.emailRegistered);
+      }
 
-            const user = await newUserObj.save();
-            delete user.password;
+      const hashedPw = await hash(args.password);
 
-            const token = jwt.sign(
-                {
-                    user: {
-                        _id: user._id,
-                        role: user.role,
-                        isEmployer: user.isEmployer,
-                        isEmployee: user.isEmployee,
-                        isAdmin: user.isAdmin,
-                        status: user.status,
-                        gender: user.gender,
-                        title: user.title,
-                        firstName: user.firstName,
-                        lastName: user.lastName,
-                        email: user.email,
-                    },
-                },
-                process.env.JWT_SECRET,
-                {
-                    expiresIn: 60 * 60 * 24 * 7,
-                }
-            );
+      const newUserObj = new User({
+        gender: sanitizeHtml(args.gender),
+        title: sanitizeHtml(args.title),
+        firstName: sanitizeHtml(args.firstName),
+        lastName: sanitizeHtml(args.lastName),
+        email: sanitizeHtml(args.email),
+        role: "basic",
+        isEmployer: args.isEmployer,
+        isEmployee: args.isEmployee,
+        password: hashedPw,
+        accepted: true,
+        status: "pending",
+      });
 
-            context.session.token = token;
-            user.token = token;
+      const user = await newUserObj.save();
+      delete user.password;
 
-            return user;
+      const token = jwt.sign(
+        {
+          user: {
+            _id: user._id,
+            role: user.role,
+            isEmployer: user.isEmployer,
+            isEmployee: user.isEmployee,
+            isAdmin: user.isAdmin,
+            status: user.status,
+            gender: user.gender,
+            title: user.title,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+          },
         },
-        activateUser: async (root, args, context) => {
-            const user = await User.findOneAndUpdate(
-                { _id: args._id },
-                { status: "active" },
-                { new: true }
-            );
+        process.env.JWT_SECRET,
+        {
+          expiresIn: 60 * 60 * 24 * 7,
+        }
+      );
 
-            delete user.password;
+      context.session.token = token;
+      user.token = token;
 
-            const token = jwt.sign(
-                {
-                    user: {
-                        _id: user._id,
-                        role: user.role,
-                        isEmployer: user.isEmployer,
-                        isEmployee: user.isEmployee,
-                        isAdmin: user.isAdmin,
-                        status: user.status,
-                        gender: user.gender,
-                        title: user.title,
-                        firstName: user.firstName,
-                        lastName: user.lastName,
-                        email: user.email,
-                    },
-                },
-                process.env.JWT_SECRET,
-                {
-                    expiresIn: 60 * 60 * 24 * 7,
-                }
-            );
+      return user;
+    },
+    activateUser: async (root, args, context) => {
+      const user = await User.findOneAndUpdate(
+        { _id: args._id },
+        { status: "active" },
+        { new: true }
+      );
 
-            context.session.token = token;
-            user.token = token;
+      delete user.password;
 
-            return user;
+      const token = jwt.sign(
+        {
+          user: {
+            _id: user._id,
+            role: user.role,
+            isEmployer: user.isEmployer,
+            isEmployee: user.isEmployee,
+            isAdmin: user.isAdmin,
+            status: user.status,
+            gender: user.gender,
+            title: user.title,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+          },
         },
-        logout: (root, args, context) => {
-            context.session.destroy();
-            return { _id: "" };
-        },
-        resetPasswordGetCode: async (root, args) => {
-            if (!args.email) {
-                throw new UserInputError(errorMsg.auth.provideRegisteredEmail);
-            }
+        process.env.JWT_SECRET,
+        {
+          expiresIn: 60 * 60 * 24 * 7,
+        }
+      );
 
-            const user = await User.findOne({ email: args.email });
+      context.session.token = token;
+      user.token = token;
 
-            if (!user) {
-                throw new ApolloError(errorMsg.auth.emailNotExist);
-            }
+      return user;
+    },
+    logout: (root, args, context) => {
+      context.session.destroy();
+      return { _id: "" };
+    },
+    resetPasswordGetCode: async (root, args) => {
+      if (!args.email) {
+        throw new UserInputError(errorMsg.auth.provideRegisteredEmail);
+      }
 
-            const secretCode = cryptoRandomString({
-                length: 6,
-            });
+      const user = await User.findOne({ email: args.email });
 
-            const newCode = new Code({
-                code: secretCode,
-                email: args.email,
-            });
+      if (!user) {
+        throw new ApolloError(errorMsg.auth.emailNotExist);
+      }
 
-            await newCode.save();
+      const secretCode = cryptoRandomString({
+        length: 6,
+      });
 
-            const emailData = {
-                from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
-                to: args.email,
-                subject: `Ihr Code für den Passwort Reset auf ${config.website.name}`,
-                text: `
+      const newCode = new Code({
+        code: secretCode,
+        email: args.email,
+      });
+
+      await newCode.save();
+
+      const emailData = {
+        from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
+        to: args.email,
+        subject: `Ihr Code für den Passwort Reset auf ${config.website.name}`,
+        text: `
                         Bitte nutzen Sie den folgenden Code innerhalb der nächsten 60 Minuten, um Ihr Passwort auf ${config.website.name} zu ändern: ${secretCode}
                     `,
-                html: emailTemplate.generate(`
+        html: emailTemplate.generate(`
                         <p>Bitte nutzen Sie den folgenden Code innerhalb der nächsten 60 Minuten, um Ihr Passwort auf ${config.website.name} zu ändern: <strong>${secretCode}</strong></p>
                         `),
-            };
-            const email = await emailService.sendMail(emailData);
+      };
+      const email = await emailService.sendMail(emailData);
 
-            if (email.accepted.length === 0) {
-                throw new ApolloError(
-                    "Die E-Mail konnte nicht versandt werden, bitte versuchen Sie es noch einmal."
-                );
-            }
+      if (email.accepted.length === 0) {
+        throw new ApolloError(
+          "Die E-Mail konnte nicht versandt werden, bitte versuchen Sie es noch einmal."
+        );
+      }
 
-            return { _id: user._id };
-        },
-        resetPasswordVerify: async (root, args) => {
-            if (
-                !args.email ||
-                !args.password ||
-                !args.password2 ||
-                !args.code
-            ) {
-                throw new UserInputError(errorMsg.auth.fillAll);
-            }
-            if (args.password != args.password2) {
-                throw new UserInputError(errorMsg.auth.pwsNoMatch);
-            }
-            if (
-                !args.password.match(
-                    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{6,}$/
-                )
-            ) {
-                throw new UserInputError(errorMsg.auth.pwRequirements);
-            }
+      return { _id: user._id };
+    },
+    resetPasswordVerify: async (root, args) => {
+      if (!args.email || !args.password || !args.password2 || !args.code) {
+        throw new UserInputError(errorMsg.auth.fillAll);
+      }
+      if (args.password != args.password2) {
+        throw new UserInputError(errorMsg.auth.pwsNoMatch);
+      }
+      if (
+        !args.password.match(
+          /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{6,}$/
+        )
+      ) {
+        throw new UserInputError(errorMsg.auth.pwRequirements);
+      }
 
-            const code = await Code.findOne({
-                email: args.email,
-                code: args.code,
-            });
+      const code = await Code.findOne({
+        email: args.email,
+        code: args.code,
+      });
 
-            if (!code) {
-                throw new UserInputError(errorMsg.auth.codeIncorrect);
-            }
+      if (!code) {
+        throw new UserInputError(errorMsg.auth.codeIncorrect);
+      }
 
-            const newHashedPw = await hash(args.password);
+      const newHashedPw = await hash(args.password);
 
-            const user = await User.findOneAndUpdate(
-                { email: args.email },
-                { password: newHashedPw },
-                { new: true }
-            );
-            await Code.deleteOne({ email: args.email, code: args.code });
+      const user = await User.findOneAndUpdate(
+        { email: args.email },
+        { password: newHashedPw },
+        { new: true }
+      );
+      await Code.deleteOne({ email: args.email, code: args.code });
 
-            return { _id: user._id };
-        },
-        accountVerificationGetEmail: async (root, args, context) => {
-            if (!context.user._id) {
-                throw new ApolloError(errorMsg.general);
-            }
+      return { _id: user._id };
+    },
+    accountVerificationGetEmail: async (root, args, context) => {
+      if (!context.user._id) {
+        throw new ApolloError(errorMsg.general);
+      }
 
-            const user = await User.findById(context.user._id);
+      const user = await User.findById(context.user._id);
 
-            if (!user) {
-                throw new ApolloError(errorMsg.general);
-            }
+      if (!user) {
+        throw new ApolloError(errorMsg.general);
+      }
 
-            const emailData = {
-                from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
-                to: user.email,
-                subject: `E-Mail bestätigen für ${config.website.name}`,
-                text: `
+      const emailData = {
+        from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
+        to: user.email,
+        subject: `E-Mail bestätigen für ${config.website.name}`,
+        text: `
                         Bitte nutzen Sie den folgenden Link, um Ihren Account auf ${config.website.name} zu aktivieren: ${process.env.WEBSITE_URL}/auth/account/verification/${user._id}
                     `,
-                html: emailTemplate.generate(`
+        html: emailTemplate.generate(`
                         <div 
                             style="color: #000000; font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif; line-height: 1.2; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px">
                             <div style="line-height: 1.2; font-size: 12px; color: #000000; font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif; mso-line-height-alt: 14px">
@@ -392,112 +387,112 @@ const UserResolvers = {
                             </a>
                         </div>
                     `),
-            };
+      };
 
-            const emailSent = await emailService.sendMail(emailData);
-            console.log("sendMail() for user activation email: ", emailSent);
+      const emailSent = await emailService.sendMail(emailData);
+      console.log("sendMail() for user activation email: ", emailSent);
 
-            return { _id: user._id };
+      return { _id: user._id };
+    },
+    updateMe: async (root, args, context) => {
+      if (!context.user._id) {
+        throw new AuthenticationError("Must be logged in!");
+      }
+
+      const oldUserData = await User.findOne({ _id: context.user._id });
+
+      const status =
+        args.email.toLowerCase() === oldUserData.email.toLowerCase()
+          ? oldUserData.status
+          : "pending";
+
+      const user = User.findOneAndUpdate(
+        { _id: context.user._id },
+        {
+          gender: sanitizeHtml(args.gender),
+          title: sanitizeHtml(args.title),
+          firstName: sanitizeHtml(args.firstName),
+          lastName: sanitizeHtml(args.lastName),
+          email: sanitizeHtml(args.email),
+          status: status,
+          isEmployer: args.isEmployer,
+          isEmployee: args.isEmployee,
         },
-        updateMe: async (root, args, context) => {
-            if (!context.user._id) {
-                throw new AuthenticationError("Must be logged in!");
-            }
+        { new: true }
+      );
 
-            const oldUserData = await User.findOne({ _id: context.user._id });
+      return user;
+    },
+    deleteMe: async (root, args, context) => {
+      if (!context.user._id) {
+        throw new AuthenticationError("Must be logged in!");
+      }
 
-            const status =
-                args.email.toLowerCase() === oldUserData.email.toLowerCase()
-                    ? oldUserData.status
-                    : "pending";
+      if (!args.password) {
+        throw new UserInputError(errorMsg.auth.fillAll, {
+          invalidArgs: Object.keys(args),
+        });
+      }
 
-            const user = User.findOneAndUpdate(
-                { _id: context.user._id },
-                {
-                    gender: sanitizeHtml(args.gender),
-                    title: sanitizeHtml(args.title),
-                    firstName: sanitizeHtml(args.firstName),
-                    lastName: sanitizeHtml(args.lastName),
-                    email: sanitizeHtml(args.email),
-                    status: status,
-                    isEmployer: args.isEmployer,
-                    isEmployee: args.isEmployee,
-                },
-                { new: true }
-            );
+      const user = await User.findOne({ _id: context.user._id });
 
-            return user;
-        },
-        deleteMe: async (root, args, context) => {
-            if (!context.user._id) {
-                throw new AuthenticationError("Must be logged in!");
-            }
+      if (!user) {
+        throw new ApolloError(errorMsg.general);
+      }
 
-            if (!args.password) {
-                throw new UserInputError(errorMsg.auth.fillAll, {
-                    invalidArgs: Object.keys(args),
-                });
-            }
+      const pwCheckSuccess = await compare(args.password, user.password);
 
-            const user = await User.findOne({ _id: context.user._id });
+      if (!pwCheckSuccess) {
+        throw new UserInputError(errorMsg.auth.pwNoMatch);
+      }
 
-            if (!user) {
-                throw new ApolloError(errorMsg.general);
-            }
+      const deletedUser = await User.findOneAndDelete({
+        _id: context.user._id,
+      });
 
-            const pwCheckSuccess = await compare(args.password, user.password);
+      if (!deletedUser) {
+        throw new ApolloError(errorMsg.general);
+      }
 
-            if (!pwCheckSuccess) {
-                throw new UserInputError(errorMsg.auth.pwNoMatch);
-            }
+      return deletedUser;
+    },
+    adminUserActivationConfirmation: async (root, args, context) => {
+      if (!context.user.isAdmin) {
+        throw new AuthenticationError("Missing permission!");
+      }
 
-            const deletedUser = await User.findOneAndDelete({
-                _id: context.user._id,
-            });
+      const user = await User.findOne({
+        _id: args._id,
+      });
 
-            if (!deletedUser) {
-                throw new ApolloError(errorMsg.general);
-            }
+      console.log("user: ", user);
 
-            return deletedUser;
-        },
-        adminUserActivationConfirmation: async (root, args, context) => {
-            if (!context.user.isAdmin) {
-                throw new AuthenticationError("Missing permission!");
-            }
-
-            const user = await User.findOne({
-                _id: args._id,
-            });
-
-            console.log("user: ", user);
-
-            const emailData = {
-                from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
-                to: user.email,
-                subject: `Aktivierung Ihres Accounts für ${config.website.name}`,
-                html: `
+      const emailData = {
+        from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
+        to: user.email,
+        subject: `Aktivierung Ihres Accounts für ${config.website.name}`,
+        html: `
                     <p>
                         Sehr ${
-                            !user.gender || user.gender === "null"
-                                ? "geehrte/r Frau/Herr"
-                                : user.gender === "Frau"
-                                ? "geehrte Frau"
-                                : "geehrter Herr"
+                          !user.gender || user.gender === "null"
+                            ? "geehrte/r Frau/Herr"
+                            : user.gender === "Frau"
+                            ? "geehrte Frau"
+                            : "geehrter Herr"
                         }${
-                    user.title && user.title != "null" ? " " + user.title : ""
-                } ${user.lastName},
+          user.title && user.title != "null" ? " " + user.title : ""
+        } ${user.lastName},
                     </p>
                     <p>
                         Ihr Account für '${
-                            config.website.name
+                          config.website.name
                         }' wurde erfolgreich aktiviert. Ab sofort können Sie sich unter ${
-                    process.env.WEBSITE_URL
-                }/auth/login mit Ihrer registrierten E-Mail Adresse anmelden.
+          process.env.WEBSITE_URL
+        }/auth/login mit Ihrer registrierten E-Mail Adresse anmelden.
                     </p>
                     <p>
                     Sollten Sie Fragen zur Nutzung unseres Portals haben, melden Sie sich bitte jederzeit gern z.B. über unser <a href="${
-                        process.env.WEBSITE_URL
+                      process.env.WEBSITE_URL
                     }/kontakt">Kontaktformular</a>.
                     </p>
                     <p>Mit freundlichen Grüßen</p>
@@ -508,120 +503,117 @@ const UserResolvers = {
                     <p>
                         <img src="cid:mfa-mal-anders-logo" width="60" style="margin-bottom: 1rem"/> <br>
                         <strong>MFA mal anders</strong> <br>
-                        Das Karriere- & Stellenportal für Medizinische / Zahnmedizinische Fachangestellte <br>
+                        Das Stellen- & Karriereportal für Medizinische / Zahnmedizinische Fachangestellte <br>
                         <br>
                         Tel: <a href="tel:017663393957">0176 633 939 57</a> <br>
                         E-Mail: <a href="mailto:kontakt@mfa-mal-anders.de">kontakt@mfa-mal-anders.de</a> <br>
                         Webseite: <a href="${process.env.WEBSITE_URL}">${
-                    process.env.WEBSITE_URL
-                }</a>
+          process.env.WEBSITE_URL
+        }</a>
                     </p>
                 `,
-                attachments: [
-                    {
-                        filename: "MfaMalAnders_logo_circle_dark.png",
-                        path:
-                            __dirname +
-                            "/../../../../client/public/img/MfaMalAnders_logo_circle_dark.png",
-                        cid: "mfa-mal-anders-logo", //same cid value as in the html img src
-                    },
-                ],
-            };
+        attachments: [
+          {
+            filename: "MfaMalAnders_logo_circle_dark.png",
+            path:
+              __dirname +
+              "/../../../../client/public/img/MfaMalAnders_logo_circle_dark.png",
+            cid: "mfa-mal-anders-logo", //same cid value as in the html img src
+          },
+        ],
+      };
 
-            const emailSent = await emailService.sendMail(emailData);
-            console.log(
-                "sendMail() for user activation confirmation: ",
-                emailSent
-            );
+      const emailSent = await emailService.sendMail(emailData);
+      console.log("sendMail() for user activation confirmation: ", emailSent);
 
-            return { _id: user._id };
-        },
-        adminUpdateUser: async (root, args, context) => {
-            if (!context.user.isAdmin) {
-                throw new AuthenticationError("Missing permission!");
-            }
-
-            const updateObj = { ...args };
-
-            for (const key in updateObj) {
-                if (typeof updateObj[key] === "string") {
-                    updateObj[key] = sanitizeHtml(updateObj[key]);
-                }
-            }
-
-            const user = User.findOneAndUpdate({ _id: args._id }, updateObj, {
-                new: true,
-            });
-
-            return user;
-        },
-        adminDeleteUser: async (root, args, context) => {
-            if (!context.user.isAdmin) {
-                throw new AuthenticationError("Missing permission!");
-            }
-
-            const user = await User.findOneAndDelete({ _id: args._id });
-
-            return user;
-        },
+      return { _id: user._id };
     },
+    adminUpdateUser: async (root, args, context) => {
+      if (!context.user.isAdmin) {
+        throw new AuthenticationError("Missing permission!");
+      }
 
-    Job: {
-        userId: async (job, args, context) => {
-            if (!context.user.isAdmin) {
-                return job.userId;
-            }
+      const updateObj = { ...args };
 
-            const user = await User.findOne({
-                _id: job.userId,
-            });
-            delete user.password;
+      for (const key in updateObj) {
+        if (typeof updateObj[key] === "string") {
+          updateObj[key] = sanitizeHtml(updateObj[key]);
+        }
+      }
 
-            return user;
-        },
+      const user = User.findOneAndUpdate({ _id: args._id }, updateObj, {
+        new: true,
+      });
+
+      return user;
     },
+    adminDeleteUser: async (root, args, context) => {
+      if (!context.user.isAdmin) {
+        throw new AuthenticationError("Missing permission!");
+      }
 
-    Company: {
-        userId: async (company, args, context) => {
-            if (!context.user.isAdmin) {
-                return company.userId;
-            }
-            const user = await User.findOne({
-                _id: company.userId,
-            });
-            delete user.password;
+      const user = await User.findOneAndDelete({ _id: args._id });
 
-            return user;
-        },
+      return user;
     },
+  },
 
-    Coupon: {
-        userId: async (coupon, args, context) => {
-            if (!context.user.isAdmin) {
-                return coupon.userId;
-            }
-            const user = await User.findOne({
-                _id: coupon.userId,
-            });
-            delete user.password;
+  Job: {
+    userId: async (job, args, context) => {
+      if (!context.user.isAdmin) {
+        return job.userId;
+      }
 
-            return user;
-        },
+      const user = await User.findOne({
+        _id: job.userId,
+      });
+      delete user.password;
+
+      return user;
     },
+  },
 
-    Payment: {
-        user: async (payment, args, context) => {
-            if (!context.user.isAdmin) {
-                throw new AuthenticationError("Missing permission!");
-            }
+  Company: {
+    userId: async (company, args, context) => {
+      if (!context.user.isAdmin) {
+        return company.userId;
+      }
+      const user = await User.findOne({
+        _id: company.userId,
+      });
+      delete user.password;
 
-            const user = await User.findOne({ _id: payment.user });
-
-            delete user.password;
-
-            return user;
-        },
+      return user;
     },
+  },
+
+  Coupon: {
+    userId: async (coupon, args, context) => {
+      if (!context.user.isAdmin) {
+        return coupon.userId;
+      }
+      const user = await User.findOne({
+        _id: coupon.userId,
+      });
+      delete user.password;
+
+      return user;
+    },
+  },
+
+  Payment: {
+    user: async (payment, args, context) => {
+      if (!context.user.isAdmin) {
+        throw new AuthenticationError("Missing permission!");
+      }
+
+      const user = await User.findOne({ _id: payment.user });
+
+      delete user.password;
+
+      return user;
+    },
+  },
 };
 
 module.exports = UserResolvers;

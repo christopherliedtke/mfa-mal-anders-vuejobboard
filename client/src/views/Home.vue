@@ -15,7 +15,7 @@
             <span
               class="h2 bg-primary text-light p-2 mt-2 border-radius1 d-inline-block"
             >
-              Das Karriere- & Stellenportal nur für MFA & ZFA
+              Das Stellen- & Karriereportal nur für MFA & ZFA
             </span>
           </h1>
           <p class="lead mt-2 mt-md-3 mb-0">
@@ -61,7 +61,22 @@
       </b-container>
     </b-container>
 
+    <b-container v-if="$store.state.jobs.jobs.length > 0" class="mt-4 mt-lg-0">
+      <h2 class="h3 bold text-primary ml-1">Neu in der Stellenbörse:</h2>
+      <b-row cols="1" cols-md="3">
+        <b-col v-for="job in $store.state.jobs.jobs.slice(0, 3)" :key="job._id">
+          <JobCard :job="job" :compact="true" />
+        </b-col>
+      </b-row>
+      <div class="d-flex justify-content-end mt-2">
+        <b-button variant="outline-primary" size="sm">Weitere</b-button>
+      </div>
+    </b-container>
+
     <b-container class="my-3 my-md-5 py-3 py-md-5">
+      <h2 class="bold display-4 text-left text-lg-center mb-lg-5">
+        Deine berufliche Weiterentwicklung
+      </h2>
       <b-row cols="1" cols-md="3" class="flex-lg-row-reverse">
         <b-col>
           <b-link to="/stellenangebote" class="icon-box shadow1">
@@ -253,7 +268,7 @@
     </b-container>
 
     <Head
-      title="Das Karriere- & Stellenportal nur für MFA & ZFA"
+      title="Das Stellen- & Karriereportal nur für MFA & ZFA"
       desc="Dein Job- und Karriereportal für ArzthelferInnen – Medizinische / Zahnmedizinische Fachangestellte (MFA / ZFA) | Stellenangebote | Weiterbildungen | Alternative Jobs | Gehalt | Bewerbung"
       img=""
       :script="snippet"
@@ -265,12 +280,14 @@
   import StellenanzeigeSchaltenBanner from "@/components/banners/StellenanzeigeSchaltenBanner.vue";
   import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
   import RandomArticlesContainer from "@/components/containers/RandomArticlesContainer.vue";
+  import JobCard from "@/components/ui/JobCard.vue";
   export default {
     name: "Home",
     components: {
       StellenanzeigeSchaltenBanner,
       RandomTrainingsContainer,
-      RandomArticlesContainer
+      RandomArticlesContainer,
+      JobCard
     },
     data() {
       return {

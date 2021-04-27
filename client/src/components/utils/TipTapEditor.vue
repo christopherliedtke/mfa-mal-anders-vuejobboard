@@ -131,7 +131,6 @@
       EditorContent,
       EditorMenuBar
     },
-    // props: ["content", "validated"],
     props: {
       content: {
         type: String,
