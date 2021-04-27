@@ -13,8 +13,14 @@
 <script>
   import Header from "@/components/layout/Header";
   import Footer from "@/components/layout/Footer";
-  import NewsletterSignUpPopUp from "@/components/popups/NewsletterSignUpPopUp.vue";
-  import Overlay from "@/components/utils/Overlay";
+  // import NewsletterSignUpPopUp from "@/components/popups/NewsletterSignUpPopUp.vue";
+  const NewsletterSignUpPopUp = () =>
+    import(
+      /* webpackChunkName: "newsletterSignUpPopUp" */ "@/components/popups/NewsletterSignUpPopUp.vue"
+    );
+  // import Overlay from "@/components/utils/Overlay";
+  const Overlay = () =>
+    import(/* webpackChunkName: "overlay" */ "@/components/utils/Overlay");
   export default {
     components: {
       Header,
