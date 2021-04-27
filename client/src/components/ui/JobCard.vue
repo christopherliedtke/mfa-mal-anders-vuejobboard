@@ -49,6 +49,12 @@
           >
             <div>
               <div class="icon">
+                <Fa class="mr-2" :icon="['fas', 'building']" size="lg" />
+              </div>
+              {{ job.company.name }}
+            </div>
+            <div>
+              <div class="icon">
                 <Fa class="mr-2" :icon="['fas', 'map-marker']" size="lg" />
               </div>
               {{
@@ -56,12 +62,6 @@
                   ? `${job.company.location}, ${job.company.state}`
                   : job.company.location
               }}
-            </div>
-            <div>
-              <div class="icon">
-                <Fa class="mr-2" :icon="['fas', 'building']" size="lg" />
-              </div>
-              {{ job.company.name }}
             </div>
             <div>
               <div class="icon">
