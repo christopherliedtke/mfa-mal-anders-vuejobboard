@@ -18,8 +18,8 @@
               :style="compact ? 'font-size:1rem; padding: 0.75rem' : ''"
             >
               {{
-                compact && job.title.length > 30
-                  ? job.title.slice(0, 30) + "..."
+                compact && job.title.length > 32
+                  ? job.title.slice(0, 32) + "..."
                   : job.title
               }}
             </h2>
@@ -57,7 +57,7 @@
                   : job.company.location
               }}
             </div>
-            <div v-if="!compact">
+            <div>
               <div class="icon">
                 <Fa class="mr-2" :icon="['fas', 'building']" size="lg" />
               </div>
