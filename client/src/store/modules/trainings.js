@@ -13,33 +13,35 @@ const actions = {
   async getTrainings({ commit }) {
     const response = await axios.post(config.cms.url, {
       query: `
-                    query MyQuery {
-                        weiterbildungen(first: 100, where: {orderby: {field: TITLE, order: ASC}}) {
-                            nodes {
-                                id
-                                title
-                                content
-                                excerpt
-                                slug
-                                featuredImage {
-                                    node {
-                                        sourceUrl
-                                        altText
-                                    }
-                                }
-                                seo {
-                                    title
-                                    metaDesc
-                                }
-                                categories {
-                                    nodes {
-                                        name
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    `
+        query MyQuery {
+          weiterbildungen(first: 100, where: {orderby: {field: TITLE, order: ASC}}) {
+            nodes {
+              id
+              title
+              content
+              excerpt
+              slug
+              featuredImage {
+                node {
+                  altText
+                  sourceUrl
+                  srcSet
+                  sizes
+                }
+              }
+              seo {
+                title
+                metaDesc
+              }
+              categories {
+                nodes {
+                  name
+                }
+              }
+            }
+          }
+        }
+      `
     });
 
     commit("setTrainings", response.data.data.weiterbildungen.nodes);

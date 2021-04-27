@@ -40,6 +40,8 @@ const actions = {
                                     node {
                                         altText
                                         sourceUrl
+                                        srcSet
+                                        sizes
                                     }
                                 }
                                 seo {

@@ -321,7 +321,17 @@
           #fffcfd66 50%,
           #6d023077 100%
         ),
-        url("~@/assets/img/medizinischesPersonal.jpg") center center;
+        image-set(
+            url("~@/assets/img/medizinischesPersonal-1200x513.jpg") 1x,
+            url("~@/assets/img/medizinischesPersonal.jpg") 2x
+          )
+          // url("~@/assets/img/medizinischesPersonal.jpg")
+          center center;
+
+      // background-image: image-set(
+      //   url("~@/assets/img/medizinischesPersonal-1200x513.jpg") 1x,
+      //   url("~@/assets/img/medizinischesPersonal.jpg") 2x
+      // );
 
       background-size: cover;
       background-blend-mode: normal;

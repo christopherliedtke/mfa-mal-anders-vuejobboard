@@ -15,10 +15,10 @@
         >
           <BCard no-body>
             <BCardImgLazy
+              :srcset="training.featuredImage.node.srcSet"
+              sizes="(max-width: 768px) 100vw, (max-width: 992px) 50vw, 33vw"
               :src="training.featuredImage.node.sourceUrl"
               :alt="training.featuredImage.node.altText"
-              img-width="1200"
-              img-height="630"
               offset="1000"
               top
             />

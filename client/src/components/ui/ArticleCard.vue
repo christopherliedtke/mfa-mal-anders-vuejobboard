@@ -3,12 +3,14 @@
     <b-link :to="'/blog/article/' + article.slug" :aria-label="article.title">
       <BCard no-body tag="article" class="mb-2">
         <BCardImgLazy
+          :srcset="
+            article.featuredImage ? article.featuredImage.node.srcSet : ''
+          "
           :src="
             article.featuredImage ? article.featuredImage.node.sourceUrl : ''
           "
+          sizes="(max-width: 768px) 100vw, 50vw"
           :alt="article.featuredImage ? article.featuredImage.node.altText : ''"
-          width="1200"
-          height="630"
           offset="1000"
           top
         />

@@ -9,10 +9,10 @@
       <b-img
         class="border-radius1 shadow1 mb-3 mb-lg-5"
         fluid
+        srcset="/img/MfaMalAnders_Gehalt_1200-300x157.jpg 300w, /img/MfaMalAnders_Gehalt_1200-1024x538.jpg 1024w, /img/MfaMalAnders_Gehalt_1200-768x404.jpg 768w, /img/MfaMalAnders_Gehalt_1200.jpg 1200w"
+        sizes="(max-width: 1200px) 100vw, 1200px"
         src="/img/MfaMalAnders_Gehalt_1200.jpg"
         alt="MFA Gehalt - So viel verdienst Du wirklich"
-        width="1200"
-        height="630"
       />
       <p>
         Sobald es um das Thema Gehalt geht, fehlt vielen MFA bzw.

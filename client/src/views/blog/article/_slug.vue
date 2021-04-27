@@ -8,12 +8,14 @@
       <div class="position-relative">
         <b-img
           v-if="article.featuredImage"
+          :srcset="
+            article.featuredImage ? article.featuredImage.node.srcSet : ''
+          "
+          sizes="100vw"
           :src="
             article.featuredImage ? article.featuredImage.node.sourceUrl : ''
           "
           :alt="article.featuredImage ? article.featuredImage.node.altText : ''"
-          width="1200"
-          height="630"
           class="mt-3 mb-4"
           fluid
         />
