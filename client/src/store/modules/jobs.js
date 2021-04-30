@@ -1,4 +1,5 @@
 import axios from "@/utils/axios";
+import config from "@/config/config.js";
 
 const state = {
   jobs: []
@@ -13,43 +14,68 @@ const actions = {
     const response = await axios.get("/graphql", {
       params: {
         query: `
-                    query {
-                        publicJobs {
-                            _id
-                            createdAt
-                            publishedAt
-                            paidAt
-                            paidExpiresAt
-                            status
-                            title
-                            description
-                            profession
-                            employmentType
-                            applicationDeadline
-                            salaryMin
-                            salaryMax
-                            simpleApplication
-                            specialization
-                            company {
-                                _id
-                                name
-                                street
-                                location
-                                zipCode
-                                state
-                                country
-                                geoCodeLat
-                                geoCodeLng
-                                size
-                                logoUrl
-                            }
-                        }  
-                    }
-                `
+        query {
+          publicJobs {
+            _id
+            createdAt
+            updatedAt
+            publishedAt
+            paidAt
+            paid
+            paidExpiresAt
+            status
+            title
+            description
+            profession
+            employmentType
+            applicationDeadline
+            simpleApplication
+            extJobUrl
+            applicationEmail
+            imageUrl
+            salaryMin
+            salaryMax
+            specialization
+            contactGender
+            contactTitle
+            contactFirstName
+            contactLastName
+            contactEmail
+            contactPhone
+            company {
+              _id
+              name
+              street
+              location
+              zipCode
+              state
+              country
+              geoCodeLat
+              geoCodeLng
+              size
+              url
+              logoUrl
+            }
+          }  
+        }
+      `
       }
     });
 
-    commit("setJobs", response.data.data.publicJobs);
+    let jobs = response.data.data.publicJobs;
+
+    commit("setJobs", jobs);
+
+    if (config.externalJobs.active) {
+      if (config.externalJobs.joblift) {
+        const jobLiftJobs = await axios.get("/api/external-jobs");
+        jobs = [...jobs, ...jobLiftJobs.data].sort(
+          (a, b) => b.publishedAt - a.publishedAt
+        );
+      }
+
+      commit("setJobs", jobs);
+    }
   }
 };
 

@@ -6,7 +6,15 @@
     >
       <span class="h2 bold text-danger">Abgelaufen</span>
     </div>
-    <b-link :to="`/stellenangebote/job/${job._id}`">
+    <b-link
+      :to="
+        job.source != 'stepstone'
+          ? `/stellenangebote/job/${job._id}`
+          : undefined
+      "
+      :href="job.extJobUrl"
+      :target="job.source != 'stepstone' ? '_self' : '_blank'"
+    >
       <BCard
         no-body
         :class="compact ? 'mb-2 mt-2 mt-lg-0' : 'mb-3 mt-3 mt-lg-0'"
@@ -14,7 +22,11 @@
         <BCardText>
           <div class="card-head position-relative">
             <h2
-              :class="job.company.logoUrl ? 'mobile-max-width-75 h4' : 'h4'"
+              :class="
+                job.company.logoUrl && !compact
+                  ? 'mobile-max-width-75 h4'
+                  : 'h4'
+              "
               :style="compact ? 'font-size:1rem; padding: 0.75rem' : ''"
             >
               {{
@@ -23,7 +35,7 @@
                   : job.title
               }}
             </h2>
-            <StarJob :job-id="job._id" />
+            <StarJob v-if="!job.source" :job-id="job._id" />
             <div v-if="job.company.logoUrl && !compact" class="img-container">
               <b-img-lazy
                 :src="job.company.logoUrl"
@@ -47,23 +59,19 @@
             class="card-foot"
             :style="compact ? 'font-size:0.85rem; padding: 0.7rem' : ''"
           >
-            <div>
+            <div v-if="job.company.name">
               <div class="icon">
                 <Fa class="mr-2" :icon="['fas', 'building']" size="lg" />
               </div>
               {{ job.company.name }}
             </div>
-            <div>
+            <div v-if="job.company.location">
               <div class="icon">
                 <Fa class="mr-2" :icon="['fas', 'map-marker']" size="lg" />
               </div>
-              {{
-                job.company.state != job.company.location && !compact
-                  ? `${job.company.location}, ${job.company.state}`
-                  : job.company.location
-              }}
+              {{ job.company.location }}
             </div>
-            <div>
+            <div v-if="job.employmentType">
               <div class="icon">
                 <Fa class="mr-2" :icon="['fas', 'briefcase']" size="lg" />
               </div>
@@ -115,7 +123,7 @@
               </div>
               {{ job.specialization }}
             </div>
-            <div>
+            <div v-if="job.publishedAt || job.paidAt">
               <div class="icon">
                 <Fa class="mr-2" :icon="['fas', 'clock']" size="lg" />
               </div>

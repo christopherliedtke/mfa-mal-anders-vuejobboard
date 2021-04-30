@@ -552,7 +552,9 @@
       }
     },
     async created() {
-      this.$store.dispatch("getJobs");
+      if (this.$store.state.auth.loggedIn) {
+        this.$store.dispatch("getJobs");
+      }
       this.setFilter();
     },
     methods: {

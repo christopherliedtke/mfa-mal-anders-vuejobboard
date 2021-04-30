@@ -11,6 +11,10 @@ module.exports = {
     postsPath: "/blog",
     postsPageTitle: "Blog"
   },
+  externalJobs: {
+    active: true,
+    joblift: true
+  },
   fb: {
     appId: "509159293103491",
     path: "MFAmalanders"

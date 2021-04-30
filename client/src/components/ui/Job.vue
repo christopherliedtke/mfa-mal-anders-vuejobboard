@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="job">
     <div v-if="job.title" class="job position-relative">
       <div class="mb-4 d-flex align-items-start justify-content-between">
         <div>
@@ -7,7 +7,7 @@
           <span class="lead text-muted"
             >{{ job.company.name }} | {{ job.company.location
             }}{{
-              job.company.state != job.company.location
+              job.company.state && job.company.state != job.company.location
                 ? ", " + job.company.state
                 : ""
             }}</span
@@ -58,7 +58,7 @@
               </div>
               {{ job.company.name }}
             </b-col> -->
-            <div>
+            <div v-if="job.employmentType">
               <div class="icon">
                 <Fa :icon="['fas', 'briefcase']" size="lg" />
               </div>
@@ -68,7 +68,7 @@
                 )[0].text
               }}
             </div>
-            <div>
+            <div v-if="job.company.size">
               <div class="icon">
                 <Fa :icon="['fas', 'users']" size="lg" />
               </div>
@@ -157,6 +157,7 @@
 
       <div class="position-relative d-flex align-items-center my-4">
         <StarJob
+          v-if="!job.source"
           :job-id="job._id"
           position="relative"
           padding="0 20px 0 0"
@@ -356,6 +357,7 @@
       </div>
       <div class="d-flex flex-wrap flex-column flex-md-row align-items-center">
         <StarJob
+          v-if="!job.source"
           class="ml-3 ml-md-0 mb-2"
           :job-id="job._id"
           position="relative"
@@ -412,16 +414,20 @@
       v-if="job.title"
       :title="
         `${job.title} | ${
-          employmentTypeOptions.filter(
-            option => option.value === job.employmentType
-          )[0].text
+          job.employmentType
+            ? employmentTypeOptions.filter(
+                option => option.value === job.employmentType
+              )[0].text
+            : ''
         } | ${job.company.location}`
       "
       :desc="
         `Stellenangebot – ${job.title} | ${job.company.name} | ${
-          employmentTypeOptions.filter(
-            option => option.value === job.employmentType
-          )[0].text
+          job.employmentType
+            ? employmentTypeOptions.filter(
+                option => option.value === job.employmentType
+              )[0].text
+            : ''
         } | ${job.company.location}${
           job.company.state != job.company.location
             ? ', ' + job.company.state
@@ -538,6 +544,9 @@
     watch: {
       "$route.params.jobId"() {
         this.getJob(this.$route.params.jobId);
+      },
+      "$store.state.jobs.jobs"() {
+        this.getJob(this.$route.params.jobId);
       }
     },
     created() {
@@ -547,73 +556,77 @@
       async getJob(jobId) {
         this.$store.dispatch("setOverlay", true);
 
-        try {
-          const job = await this.$axios.get(`/graphql`, {
-            params: {
-              query: `
-                                query {
-                                    ${this.jobQuery}(_id: "${jobId}") {
-                                        _id
-                                        createdAt
-                                        updatedAt
-                                        publishedAt
-                                        paidAt
-                                        paid
-                                        paidExpiresAt
-                                        title
-                                        description
-                                        profession
-                                        employmentType
-                                        applicationDeadline
-                                        simpleApplication
-                                        extJobUrl
-                                        applicationEmail
-                                        imageUrl
-                                        salaryMin
-                                        salaryMax
-                                        specialization
-                                        contactGender
-                                        contactTitle
-                                        contactFirstName
-                                        contactLastName
-                                        contactEmail
-                                        contactPhone
-                                        company {
-                                            name
-                                            street
-                                            location
-                                            zipCode
-                                            state
-                                            country
-                                            geoCodeLat
-                                            geoCodeLng
-                                            size
-                                            url
-                                            logoUrl
-                                        }
-                                    }
-                                }
-                            `
-            }
-          });
+        if (this.jobQuery === "publicJob") {
+          this.job = this.$store.state.jobs.jobs.find(job => job._id == jobId);
+        } else {
+          try {
+            const job = await this.$axios.get(`/graphql`, {
+              params: {
+                query: `
+                  query {
+                    ${this.jobQuery}(_id: "${jobId}") {
+                      _id
+                      createdAt
+                      updatedAt
+                      publishedAt
+                      paidAt
+                      paid
+                      paidExpiresAt
+                      title
+                      description
+                      profession
+                      employmentType
+                      applicationDeadline
+                      simpleApplication
+                      extJobUrl
+                      applicationEmail
+                      imageUrl
+                      salaryMin
+                      salaryMax
+                      specialization
+                      contactGender
+                      contactTitle
+                      contactFirstName
+                      contactLastName
+                      contactEmail
+                      contactPhone
+                      company {
+                        name
+                        street
+                        location
+                        zipCode
+                        state
+                        country
+                        geoCodeLat
+                        geoCodeLng
+                        size
+                        url
+                        logoUrl
+                      }
+                    }
+                  }
+                `
+              }
+            });
 
-          if (job.data.data[this.jobQuery]) {
-            this.job = job.data.data[this.jobQuery];
-          } else {
-            this.$router.push("/stellenangebote");
-            throw new Error();
-          }
-        } catch (err) {
-          this.$root.$bvToast.toast(
-            "Die Stellenanzeige ist nicht mehr verfügbar bzw. bereits abgelaufen.",
-            {
-              title: `Stellenanzeige nicht verfügbar`,
-              variant: "warning",
-              toaster: "b-toaster-bottom-right",
-              solid: true,
-              noAutoHide: true
+            if (job.data.data[this.jobQuery]) {
+              this.job = job.data.data[this.jobQuery];
+            } else {
+              this.$router.push("/stellenangebote");
+              throw new Error();
             }
-          );
+          } catch (err) {
+            this.$root.$bvToast.toast(
+              "Die Stellenanzeige ist nicht mehr verfügbar bzw. bereits abgelaufen.",
+              {
+                title: `Stellenanzeige nicht verfügbar`,
+                variant: "warning",
+                toaster: "b-toaster-bottom-right",
+                solid: true,
+                noAutoHide: true
+              }
+            );
+          }
         }
 
         this.$store.dispatch("setOverlay", false);

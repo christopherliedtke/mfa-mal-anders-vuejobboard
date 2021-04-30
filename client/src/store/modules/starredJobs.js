@@ -13,36 +13,35 @@ const actions = {
     const response = await axios.get("/graphql", {
       params: {
         query: `
-                    query {
-                        starredJobs {
-                            _id
-                            user
-                            job {
-                                _id
-                                title
-                                status
-                                publishedAt
-                                paidExpiresAt
-                                description
-                                employmentType
-                                applicationDeadline
-                                salaryMin
-                                salaryMax
-                                simpleApplication
-                                specialization
-                                company {
-                                    _id
-                                    name
-                                    location
-                                    state
-                                    size
-                                    logoUrl
-                                }
-
-                            }
-                        }  
-                    }
-                `
+        query {
+          starredJobs {
+            _id
+            user
+            job {
+              _id
+              title
+              status
+              publishedAt
+              paidExpiresAt
+              description
+              employmentType
+              applicationDeadline
+              salaryMin
+              salaryMax
+              simpleApplication
+              specialization
+              company {
+                _id
+                name
+                location
+                state
+                size
+                logoUrl
+              }
+            }
+          }  
+        }
+      `
       }
     });
 
@@ -51,36 +50,35 @@ const actions = {
   async addStarredJob({ commit }, jobId) {
     const response = await axios.post("/graphql", {
       query: `
-                mutation {
-                    addStarredJob (job: "${jobId}") {
-                        _id
-                            user
-                            job {
-                                _id
-                                title
-                                status
-                                publishedAt
-                                paidExpiresAt
-                                description
-                                employmentType
-                                applicationDeadline
-                                salaryMin
-                                salaryMax
-                                simpleApplication
-                                specialization
-                                company {
-                                    _id
-                                    name
-                                    location
-                                    state
-                                    size
-                                    logoUrl
-                                }
-
-                            }
-                    }
-                }
-            `
+        mutation {
+          addStarredJob (job: "${jobId}") {
+            _id
+            user
+            job {
+              _id
+              title
+              status
+              publishedAt
+              paidExpiresAt
+              description
+              employmentType
+              applicationDeadline
+              salaryMin
+              salaryMax
+              simpleApplication
+              specialization
+              company {
+                _id
+                name
+                location
+                state
+                size
+                logoUrl
+              }
+            }
+          }
+        }
+    `
     });
 
     commit("addStarredJob", response.data.data.addStarredJob);
