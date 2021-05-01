@@ -28,9 +28,10 @@
       </b-tab>
       <b-tab
         v-if="
-          $store.state.auth.user.isAdmin ||
-            $store.state.auth.user.isEmployee ||
-            $store.state.starredJobs.starredJobs.length > 0
+          $config.starredJobs.active &&
+            ($store.state.auth.user.isAdmin ||
+              $store.state.auth.user.isEmployee ||
+              $store.state.starredJobs.starredJobs.length > 0)
         "
         title="Meine gespeicherten Stellenanzeigen"
         @click="setQuery('tab', 4)"

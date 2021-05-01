@@ -63,16 +63,14 @@ const actions = {
     });
 
     let jobs = response.data.data.publicJobs;
-
     commit("setJobs", jobs);
 
     if (config.externalJobs.active) {
-      if (config.externalJobs.joblift) {
-        const jobLiftJobs = await axios.get("/api/external-jobs");
-        jobs = [...jobs, ...jobLiftJobs.data].sort(
-          (a, b) => b.publishedAt - a.publishedAt
-        );
-      }
+      const externalJobs = await axios.get("/api/external-jobs");
+      jobs = [...jobs, ...externalJobs.data];
+      // .sort(
+      //   (a, b) => b.publishedAt - a.publishedAt
+      // )
 
       commit("setJobs", jobs);
     }

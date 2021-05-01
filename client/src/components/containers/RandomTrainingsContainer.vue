@@ -19,8 +19,12 @@
               sizes="(max-width: 768px) 100vw, (max-width: 992px) 50vw, 33vw"
               :src="training.featuredImage.node.sourceUrl"
               :alt="training.featuredImage.node.altText"
+              blank-width="1200"
+              blank-height="630"
+              blank-color="#f7f6f9"
               offset="1000"
               top
+              fluid
             />
             <BCardBody>
               <BCardTitle :title="training.title" />

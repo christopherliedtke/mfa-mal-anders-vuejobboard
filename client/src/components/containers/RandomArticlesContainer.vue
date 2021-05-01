@@ -14,19 +14,6 @@
 </template>
 
 <script>
-  import Vue from "vue";
-  import {
-    BCard,
-    BCardBody,
-    BCardImgLazy,
-    BCardTitle,
-    BCardText
-  } from "bootstrap-vue";
-  Vue.component("BCard", BCard);
-  Vue.component("BCardBody", BCardBody);
-  Vue.component("BCardImgLazy", BCardImgLazy);
-  Vue.component("BCardTitle", BCardTitle);
-  Vue.component("BCardText", BCardText);
   import ArticleCard from "@/components/ui/ArticleCard.vue";
   export default {
     name: "RandomArticlesContainer",

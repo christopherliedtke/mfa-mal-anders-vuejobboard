@@ -345,8 +345,8 @@
       <div class="mt-4">
         <h2>Arbeitsort</h2>
         <p>
-          {{ job.company.name }} <br />
-          {{ job.company.street }} <br />
+          {{ job.company.name }} <br v-if="job.company.name" />
+          {{ job.company.street }} <br v-if="job.company.street" />
           {{ job.company.zipCode + " " + job.company.location }}
           <br />
         </p>

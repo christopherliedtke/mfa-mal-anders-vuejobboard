@@ -1,11 +1,15 @@
 <template>
   <BCard no-body class="shadow1">
     <BCardImgLazy
+      fluid
       top
       srcset="/img/Banner_Weiterbildungsdschungel_1200-300x157.jpg 300w, /img/Banner_Weiterbildungsdschungel_1200-1024x538.jpg 1024w, /img/Banner_Weiterbildungsdschungel_1200-768x404.jpg 768w, /img/Banner_Weiterbildungsdschungel_1200.jpg 1200w"
       sizes="(max-width: 768px) 100vw, 50vw"
       src="/img/Banner_Weiterbildungsdschungel_1200.jpg"
       alt="Banner - Fort- und Weiterbildungen für MFA / ZFA"
+      blank-width="1200"
+      blank-height="630"
+      blank-color="#f7f6f9"
     />
     <BCardBody align="center">
       <BCardTitle title="Fort- und Weiterbildungen für MFA / ZFA" />

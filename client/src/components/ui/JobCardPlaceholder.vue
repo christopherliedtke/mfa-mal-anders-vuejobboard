@@ -11,6 +11,7 @@
     </div>
     <div class="footer">
       <div class="content animate-color"></div>
+      <div class="content animate-color"></div>
     </div>
   </div>
 </template>

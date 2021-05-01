@@ -61,7 +61,7 @@
       </b-container>
     </b-container>
 
-    <b-container v-if="$store.state.jobs.jobs.length > 0" class="mt-4 mt-lg-0">
+    <b-container class="mt-4 mt-lg-0">
       <!-- <h2 class="h3 bold text-primary ml-1">Neu in der Stellenbörse:</h2> -->
       <b-row v-if="$store.state.jobs.jobs.length > 0" cols="1" cols-md="3">
         <b-col v-for="job in $store.state.jobs.jobs.slice(0, 3)" :key="job._id">
@@ -100,6 +100,8 @@
               src="@/assets/img/career_.svg"
               alt="MFA / ZFA macht nächsten Schritt in der Jobsuche"
               height="130"
+              blank-width="184"
+              blank-height="130"
             />
             <h2 class="bold">Stellenbörse für MFA & ZFA</h2>
             <p>
@@ -117,6 +119,8 @@
               src="@/assets/img/health_.svg"
               alt="Medizinische Fachangestellte im Untersuchungsraum"
               height="130"
+              blank-width="167"
+              blank-height="130"
             />
             <h2 class="bold">Jobs & Berufsbilder</h2>
             <p>
@@ -136,6 +140,8 @@
               src="@/assets/img/coach.svg"
               alt="MFA studiert bei Weiterbildung"
               height="130"
+              blank-width="167"
+              blank-height="130"
             />
             <h2 class="bold">Fort- & Weiterbildungen</h2>
             <p>
@@ -163,6 +169,9 @@
               alt="Portrait Kristin Maurach"
               width="800"
               height="800"
+              blank-width="800"
+              blank-height="800"
+              blank-color="#f7f6f9"
             />
             <p>
               Ich habe selbst über 10 Jahre in Praxen gearbeitet. Und obwohl ich

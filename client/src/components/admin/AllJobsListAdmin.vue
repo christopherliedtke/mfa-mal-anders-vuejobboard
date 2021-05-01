@@ -396,45 +396,45 @@
           const jobs = await this.$axios.get("graphql", {
             params: {
               query: `
-                                query {
-                                    adminJobs {
-                                        _id
-                                        createdAt
-                                        updatedAt
-                                        refreshFrequency
-                                        status
-                                        applicationDeadline
-                                        paid
-                                        paidExpiresAt
-                                        publishedAt
-                                        sentReminder
-                                        title
-                                        company {
-                                            name
-                                            street
-                                            location
-                                            state
-                                            zipCode
-                                            country
-                                        }
-                                        userId {
-                                            _id
-                                            createdAt
-                                            firstName
-                                            lastName
-                                            email
-                                        }
-                                        payment {
-                                            _id
-                                            status
-                                            amount
-                                            paidAt
-                                            paymentExpiresAt
-                                            invoiceNo
-                                        }
-                                    }
-                                }
-                            `
+                query {
+                    adminJobs {
+                        _id
+                        createdAt
+                        updatedAt
+                        refreshFrequency
+                        status
+                        applicationDeadline
+                        paid
+                        paidExpiresAt
+                        publishedAt
+                        sentReminder
+                        title
+                        company {
+                            name
+                            street
+                            location
+                            state
+                            zipCode
+                            country
+                        }
+                        userId {
+                            _id
+                            createdAt
+                            firstName
+                            lastName
+                            email
+                        }
+                        payment {
+                            _id
+                            status
+                            amount
+                            paidAt
+                            paymentExpiresAt
+                            invoiceNo
+                        }
+                    }
+                }
+              `
             }
           });
 

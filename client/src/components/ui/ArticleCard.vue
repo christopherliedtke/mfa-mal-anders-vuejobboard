@@ -11,8 +11,12 @@
           "
           sizes="(max-width: 768px) 100vw, 50vw"
           :alt="article.featuredImage ? article.featuredImage.node.altText : ''"
+          blank-width="1200"
+          blank-height="630"
+          blank-color="#f7f6f9"
           offset="1000"
           top
+          fluid
         />
         <BCardBody>
           <BCardTitle :title="article.title" />
@@ -34,6 +38,8 @@
                 :alt="article.author.node.name"
                 height="96"
                 width="96"
+                blank-width="96"
+                blank-height="96"
                 style="width: auto; height: 37.5px"
                 offset="1000"
               />

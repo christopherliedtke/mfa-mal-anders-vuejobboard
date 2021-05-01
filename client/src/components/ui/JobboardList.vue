@@ -10,7 +10,7 @@
           :per-page="perPage"
           pills
           align="center"
-          :limit="5"
+          :limit="6"
           aria-controls="my-table"
           @change="scrollToTop"
         ></b-pagination>
@@ -23,9 +23,7 @@
       <p class="h5">Leider gibt es hierzu keine Ergebnisse.</p>
     </div>
     <div v-else>
-      <JobCardPlaceholder class="mb-3" />
-      <JobCardPlaceholder class="mb-3" />
-      <JobCardPlaceholder class="mb-3" />
+      <JobCardPlaceholder v-for="index in perPage" :key="index" class="mb-3" />
     </div>
   </div>
 </template>

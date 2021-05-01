@@ -8,7 +8,7 @@
       <b-row class="mt-2">
         <b-col cols="12" lg="4" class="px-2 pr-lg-5">
           <BButtonToolbar aria-label="Jobboard view toolbar">
-            <BButtonGroup class="mb-3">
+            <BButtonGroup v-if="$config.jobboardMap.active" class="mb-3">
               <b-button
                 :variant="
                   jobboardView == 'list' ? 'primary' : 'outline-primary'
@@ -183,7 +183,8 @@
           <div class="d-none d-lg-block mt-5">
             <b-button
               v-if="
-                $store.state.auth.loggedIn &&
+                $config.starredJobs.active &&
+                  $store.state.auth.loggedIn &&
                   $store.state.starredJobs.starredJobs &&
                   $store.state.starredJobs.starredJobs.length > 0
               "
@@ -202,7 +203,7 @@
             <TwitterBtn class="mt-2 mr-1" content="" />
           </div>
         </b-col>
-        <b-col>
+        <b-col cols="12" lg="8">
           <keep-alive>
             <component
               :is="computedJobboardView"
@@ -290,7 +291,11 @@
     specializationOptions,
     professionOptions
   } from "@/config/formDataConfig.json";
-  import HereMapMultiJobs from "@/components/hereMaps/HereMapMultiJobs.vue";
+  const HereMapMultiJobs = () =>
+    import(
+      /* webpackChunkName: "HereMapMultiJobs" */ "@/components/hereMaps/HereMapMultiJobs.vue"
+    );
+  // import HereMapMultiJobs from "@/components/hereMaps/HereMapMultiJobs.vue";
   import JobboardList from "@/components/ui/JobboardList.vue";
   import FacebookBtn from "@/components/buttons/FacebookBtn.vue";
   import InstagramBtn from "@/components/buttons/InstagramBtn.vue";
@@ -446,7 +451,10 @@
           // filter employment type
           if (this.filter.employmentType) {
             jobs = jobs.filter(job => {
-              if (job.employmentType.includes(this.filter.employmentType)) {
+              if (
+                job.employmentType &&
+                job.employmentType.includes(this.filter.employmentType)
+              ) {
                 return job;
               } else {
                 return;

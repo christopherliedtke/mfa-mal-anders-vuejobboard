@@ -5,13 +5,15 @@
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
     <b-container class="py-3 py-lg-5">
-      <b-img
+      <b-img-lazy
         class="border-radius1 shadow1 mb-3 mb-lg-5 w-100"
         fluid
         srcset="/img/MfaMalAnders_Bewerbungstipps_1200-300x157.jpg 300w, /img/MfaMalAnders_Bewerbungstipps_1200-1024x538.jpg 1024w, /img/MfaMalAnders_Bewerbungstipps_1200-768x404.jpg 768w, /img/MfaMalAnders_Bewerbungstipps_1200.jpg 1200w"
         sizes="(max-width: 1200px) 100vw, 1200px"
         src="/img/MfaMalAnders_Bewerbungstipps_1200.jpg"
         alt="Banner - Schnell und einfach eine Top-Bewerbung schreiben"
+        blank-width="1200"
+        blank-height="630"
       />
       <p>
         Hast du eine Stellenanzeige entdeckt, die dir richtig gut gefällt? Am

@@ -10,7 +10,7 @@
           <FortWeiterbildungenNav />
         </b-col>
         <b-col class="mb-4" order="1" order-md="2">
-          <b-img
+          <b-img-lazy
             v-if="training.featuredImage"
             class="border-radius1 shadow1 mb-3 mb-lg-5"
             fluid
@@ -18,6 +18,8 @@
             :alt="`Banner - ${training.title}`"
             width="1200"
             height="630"
+            blank-width="1200"
+            blank-height="630"
           />
           <!-- eslint-disable-next-line -->
           <div v-html="training.content"></div>

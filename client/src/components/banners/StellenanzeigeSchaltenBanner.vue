@@ -7,11 +7,14 @@
   >
     <b-row class="p-4">
       <b-col md="4">
-        <b-img
+        <b-img-lazy
           class="p-3 pl-md-3 pr-md-0 w-100 h-100"
           src="@/assets/img/medical_research.svg"
           alt="Bewerbungsgespräch zwischen Arzt und MFA / ZFA / ArzthelferIn"
-        ></b-img>
+          blank-width="248"
+          blank-height="316"
+          fluid
+        ></b-img-lazy>
       </b-col>
       <b-col md="8">
         <BCardBody

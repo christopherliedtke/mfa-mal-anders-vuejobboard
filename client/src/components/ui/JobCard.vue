@@ -38,8 +38,9 @@
             <StarJob v-if="!job.source" :job-id="job._id" />
             <div v-if="job.company.logoUrl && !compact" class="img-container">
               <b-img-lazy
-                :src="job.company.logoUrl"
                 blank-src="/img/MfaMalAnders_logo_circle_dark.svg"
+                blank-width="90"
+                :src="job.company.logoUrl"
                 :alt="`Logo - ${job.company.name}`"
               />
             </div>

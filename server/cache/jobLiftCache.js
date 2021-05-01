@@ -23,20 +23,18 @@ class Cache {
       "https://transport.productsup.io/5e5212ca82cce88337e8/channel/305297/joblift_external.xml"
     );
 
-    let jobLiftJobs = [];
+    let jobLiftJobs;
 
     try {
       parseString(jobLiftXml.data, function (err, result) {
         // console.log("result.feed.job: ", result.feed.job);
         jobLiftJobs = result.feed.job
           .filter(
-            (job) =>
-              !job.fullDescription[0].includes("onaldienst") &&
-              !job.fullDescription[0].includes("ersonalservice")
+            (job) => !job.fullDescription[0].match(/onaldienst|onalservice/g)
           )
           .map((job) => {
             return {
-              _id: job.id && job.id.length > 0 ? job.id[0] : "",
+              _id: job.id && job.id.length > 0 ? job.id[0] + "-jl" : "",
               source: "joblift",
               status: "published",
               paid: true,
@@ -44,6 +42,10 @@ class Cache {
               description: job.fullDescription
                 ? decode(job.fullDescription[0])
                 : "",
+              employmentType:
+                job.workingTimes && job.workingTimes[0].item
+                  ? getEmploymentType(job.workingTimes[0].item)
+                  : "",
               extJobUrl: job.url ? job.url[0] : "",
               publishedAt: new Date(
                 job.publishDate ? job.publishDate[0] : ""
@@ -98,14 +100,21 @@ class Cache {
 
         if (err) {
           console.log("Error on set jobLiftCache: ", err);
-          return [];
+          return null;
         }
       });
+
+      this.cache.set(
+        "jobs",
+        jobLiftJobs
+          ? jobLiftJobs.sort((a, b) => b.publishedAt - a.publishedAt)
+          : null
+      );
     } catch (error) {
       console.log("error: ", error);
-      return [];
+      return null;
     }
-    return jobLiftJobs.sort((a, b) => b.publishedAt - a.publishedAt);
+    return this.cache.get("jobs");
   }
 
   del(keys) {
@@ -135,3 +144,13 @@ const jobLiftCache = new Cache({
 });
 
 module.exports = jobLiftCache;
+
+function getEmploymentType(arr) {
+  if (arr.includes("parttime;fulltime")) {
+    return "part_full";
+  } else if (arr.includes("parttime")) {
+    return "part";
+  } else if (arr.includes("fulltime")) {
+    return "full";
+  }
+}

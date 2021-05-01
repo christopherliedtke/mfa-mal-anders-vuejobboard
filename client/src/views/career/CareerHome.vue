@@ -10,11 +10,13 @@
           Verliebt in meinen Beruf - Dein Karriereportal für Medizinische &
           Zahnmedizinische Fachangestellte
         </h2>
-        <b-img
+        <b-img-lazy
           class="border-radius2 mb-3 mr-4"
           left
           src="@/assets/img/KristinMaurach_sitzendAufMauer_500.jpg"
           style="width: 40vw; max-width: 250px"
+          blank-width="150"
+          blank-height="150"
         />
         <p>
           MFA mal anders ist ein Karriereportal speziell für Medizinische
@@ -37,7 +39,7 @@
         </blockquote>
       </div>
 
-      <b-container class="my-3 my-md-5">
+      <b-container class="my-3 my-md-5 px-0">
         <b-row cols="1" cols-md="3" class="flex-lg-row-reverse">
           <b-col>
             <b-link to="/stellenangebote" class="icon-box shadow1">
@@ -46,6 +48,8 @@
                 src="@/assets/img/career_.svg"
                 alt="MFA / ZFA macht nächsten Schritt in der Jobsuche"
                 height="130"
+                blank-width="184"
+                blank-height="130"
               />
               <h2 class="bold">Stellenbörse für MFA & ZFA</h2>
               <p>
@@ -66,6 +70,8 @@
                 src="@/assets/img/health_.svg"
                 alt="Medizinische Fachangestellte im Untersuchungsraum"
                 height="130"
+                blank-width="167"
+                blank-height="130"
               />
               <h2 class="bold">Jobs & Berufsbilder</h2>
               <p>
@@ -85,6 +91,8 @@
                 src="@/assets/img/coach.svg"
                 alt="MFA studiert bei Weiterbildung"
                 height="130"
+                blank-width="167"
+                blank-height="130"
               />
               <h2 class="bold">Fort- & Weiterbildungen</h2>
               <p>

@@ -14,6 +14,10 @@ module.exports = {
       path: "mfa.mal.anders",
     },
   },
+  externalJobs: {
+    joblift: true,
+    stepstone: true,
+  },
   payment: {
     currency: "eur",
     tax: 0,

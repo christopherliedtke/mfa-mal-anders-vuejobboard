@@ -6,7 +6,7 @@
     </div>
     <b-container class="cms-article mt-3 mb-5">
       <div class="position-relative">
-        <b-img
+        <b-img-lazy
           v-if="article.featuredImage"
           :srcset="
             article.featuredImage ? article.featuredImage.node.srcSet : ''
@@ -16,6 +16,8 @@
             article.featuredImage ? article.featuredImage.node.sourceUrl : ''
           "
           :alt="article.featuredImage ? article.featuredImage.node.altText : ''"
+          blank-width="1200"
+          blank-height="630"
           class="mt-3 mb-4"
           fluid
         />

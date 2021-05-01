@@ -195,7 +195,7 @@
                 fluid
                 :src="partner.img"
                 :alt="`Logo - ${partner.name}`"
-                style="max-height: 130px; max-width: 220px"
+                style="max-height: 75px; max-width: 220px"
                 class="m-5 blend"
               />
             </b-link>
@@ -690,10 +690,15 @@
             url: "https://www.hausaerzteverband-wl.de/"
           },
           {
-            name: "Ihre „gesunde“ Arztpraxis",
-            img: "/img/ihreGesundeArztpraxis_logo2.png",
-            url: "https://www.facebook.com/ihregesundearztpraxis/"
+            name: "PKV Institut",
+            img: "/img/pkvverlag_logo.png",
+            url: "https://www.pkv-institut.de/"
           }
+          // {
+          //   name: "Ihre „gesunde“ Arztpraxis",
+          //   img: "/img/ihreGesundeArztpraxis_logo2.png",
+          //   url: "https://www.facebook.com/ihregesundearztpraxis/"
+          // }
         ],
         numbersAndFacts: [
           {
@@ -770,11 +775,12 @@
     }
 
     .blend {
-      filter: grayscale(0.5);
+      // filter: grayscale(0.5);
       transition: linear 0.3s;
 
       &:hover {
-        filter: grayscale(0);
+        // filter: grayscale(0);
+        transform: scale(0.95);
       }
     }
   }

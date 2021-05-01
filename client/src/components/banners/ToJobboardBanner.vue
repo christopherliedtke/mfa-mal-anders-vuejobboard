@@ -2,11 +2,14 @@
   <BCard no-body class="overflow-hidden shadow1 p-3" align="center">
     <b-row no-gutters>
       <b-col md="3">
-        <b-img
+        <b-img-lazy
           class="p-4 w-100 h-100"
           src="@/assets/img/search_engine__monochromatic.svg"
           alt="Karriereschritt für MFA / ZFA"
-        ></b-img>
+          blank-width="170"
+          blank-height="148"
+          fluid
+        ></b-img-lazy>
       </b-col>
       <b-col md="9">
         <BCardBody
