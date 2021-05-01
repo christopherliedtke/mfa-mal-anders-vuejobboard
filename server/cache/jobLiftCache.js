@@ -28,75 +28,72 @@ class Cache {
     try {
       parseString(jobLiftXml.data, function (err, result) {
         // console.log("result.feed.job: ", result.feed.job);
-        jobLiftJobs = result.feed.job
-          .filter(
-            (job) => !job.fullDescription[0].match(/onaldienst|onalservice/g)
-          )
-          .map((job) => {
-            return {
-              _id: job.id && job.id.length > 0 ? job.id[0] + "-jl" : "",
-              source: "joblift",
-              status: "published",
-              paid: true,
-              title: job.title ? job.title[0] : "",
-              description: job.fullDescription
-                ? decode(job.fullDescription[0])
+        jobLiftJobs = result.feed.job.filter(filterJobliftJobs).map((job) => {
+          return {
+            _id: job.id && job.id.length > 0 ? job.id[0] + "-jl" : "",
+            source: "joblift",
+            status: "published",
+            paid: true,
+            title: job.title ? job.title[0] : "",
+            description: job.fullDescription
+              ? decode(job.fullDescription[0])
+              : "",
+            employmentType:
+              job.workingTimes && job.workingTimes[0].item
+                ? getEmploymentType(job.workingTimes[0].item)
                 : "",
-              employmentType:
-                job.workingTimes && job.workingTimes[0].item
-                  ? getEmploymentType(job.workingTimes[0].item)
+            profession: getProfession(job.title[0] + job.fullDescription[0]),
+            extJobUrl: job.url ? job.url[0] : "",
+            publishedAt: new Date(
+              job.publishDate ? job.publishDate[0] : ""
+            ).getTime(),
+            contactEmail:
+              job.contact && job.contact[0].email
+                ? job.contact[0].email[0]
+                : "",
+            company: {
+              name: job.company ? decode(job.company[0]) : "",
+              location:
+                job.locations &&
+                job.locations[0].location &&
+                job.locations[0].location[0].city
+                  ? job.locations[0].location[0].city[0]
                   : "",
-              extJobUrl: job.url ? job.url[0] : "",
-              publishedAt: new Date(
-                job.publishDate ? job.publishDate[0] : ""
-              ).getTime(),
-              contactEmail:
-                job.contact && job.contact[0].email
-                  ? job.contact[0].email[0]
+              state:
+                job.locations &&
+                job.locations[0].location &&
+                job.locations[0].location[0].zip
+                  ? zipCodeToState(job.locations[0].location[0].zip[0])
                   : "",
-              company: {
-                name: job.company ? decode(job.company[0]) : "",
-                location:
-                  job.locations &&
-                  job.locations[0].location &&
-                  job.locations[0].location[0].city
-                    ? job.locations[0].location[0].city[0]
-                    : "",
-                state:
-                  job.locations &&
-                  job.locations[0].location &&
-                  job.locations[0].location[0].zip
-                    ? zipCodeToState(job.locations[0].location[0].zip[0])
-                    : "",
-                zipCode:
-                  job.locations &&
-                  job.locations[0].location &&
-                  job.locations[0].location[0].zip
-                    ? job.locations[0].location[0].zip[0]
-                    : "",
-                country:
-                  job.locations &&
-                  job.locations[0].location &&
-                  job.locations[0].location[0].country
-                    ? job.locations[0].location[0].country[0]
-                    : "",
-                geoCodeLat:
-                  job.locations &&
-                  job.locations[0].location &&
-                  job.locations[0].location[0].geo &&
-                  job.locations[0].location[0].geo[0].geo_lat
-                    ? job.locations[0].location[0].geo[0].geo_lat[0]
-                    : "",
-                geoCodeLng:
-                  job.locations &&
-                  job.locations[0].location &&
-                  job.locations[0].location[0].geo &&
-                  job.locations[0].location[0].geo[0].geo_lon
-                    ? job.locations[0].location[0].geo[0].geo_lon[0]
-                    : "",
-              },
-            };
-          });
+              zipCode:
+                job.locations &&
+                job.locations[0].location &&
+                job.locations[0].location[0].zip
+                  ? job.locations[0].location[0].zip[0]
+                  : "",
+              country:
+                job.locations &&
+                job.locations[0].location &&
+                job.locations[0].location[0].country
+                  ? job.locations[0].location[0].country[0]
+                  : "",
+              geoCodeLat:
+                job.locations &&
+                job.locations[0].location &&
+                job.locations[0].location[0].geo &&
+                job.locations[0].location[0].geo[0].geo_lat
+                  ? job.locations[0].location[0].geo[0].geo_lat[0]
+                  : "",
+              geoCodeLng:
+                job.locations &&
+                job.locations[0].location &&
+                job.locations[0].location[0].geo &&
+                job.locations[0].location[0].geo[0].geo_lon
+                  ? job.locations[0].location[0].geo[0].geo_lon[0]
+                  : "",
+            },
+          };
+        });
 
         if (err) {
           console.log("Error on set jobLiftCache: ", err);
@@ -145,6 +142,20 @@ const jobLiftCache = new Cache({
 
 module.exports = jobLiftCache;
 
+function filterJobliftJobs(job) {
+  return (
+    job.publishDate &&
+    job.publishDate[0] &&
+    job.locations &&
+    job.locations[0].location &&
+    job.locations[0].location[0].zip &&
+    job.locations[0].location[0].zip[0] &&
+    !job.fullDescription[0].match(/onaldienst|onalservice/gi) &&
+    (checkMfa(job.title[0] + job.fullDescription[0]) ||
+      checkZfa(job.title[0] + job.fullDescription[0]))
+  );
+}
+
 function getEmploymentType(arr) {
   if (arr.includes("parttime;fulltime")) {
     return "part_full";
@@ -152,5 +163,26 @@ function getEmploymentType(arr) {
     return "part";
   } else if (arr.includes("fulltime")) {
     return "full";
+  }
+}
+
+function checkMfa(str) {
+  return str.match(/medizinische|mta|mfa|arzthelf|zfa/gi);
+}
+
+function checkZfa(str) {
+  return str.match(/zahnmedizinische|zahnarzthelf|zfa|zmv|zfv/gi);
+}
+
+function getProfession(str) {
+  const isMfa = checkMfa(str);
+  const isZfa = checkZfa(str);
+
+  if (isMfa && !isZfa) {
+    return "MFA";
+  } else if (isZfa && !isMfa) {
+    return "ZFA";
+  } else {
+    return "";
   }
 }

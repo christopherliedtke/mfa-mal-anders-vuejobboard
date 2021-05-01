@@ -77,7 +77,7 @@
                 v-model="filter.location"
                 :class="filter.location ? 'border-secondary' : ''"
                 type="text"
-                list="location-list"
+                :list="!$config.externalJobs.active ? 'location-list' : ''"
                 placeholder="Ort..."
                 @change="setQuery"
               />

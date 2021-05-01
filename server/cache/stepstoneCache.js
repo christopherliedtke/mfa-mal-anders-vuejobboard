@@ -39,14 +39,7 @@ class Cache {
         // }
 
         stepstoneJobs = result.jobs.job
-          .filter(
-            (job) =>
-              job.date &&
-              job.date[0] &&
-              job.postalcode &&
-              job.postalcode[0] &&
-              !job.description[0].match(/onaldienst|onalservice/g)
-          )
+          .filter(filterStepstoneJobs)
           .map((job) => {
             return {
               _id: job.$.id && job.$.id.length > 0 ? job.$.id + "-ss" : "",
@@ -58,6 +51,7 @@ class Cache {
               employmentType: job.Category
                 ? getEmploymentType(job.Category)
                 : "",
+              profession: getProfession(job.title[0] + job.description[0]),
               extJobUrl: job.url ? job.url[0] : "",
               publishedAt: parseDate(job.date[0]),
               //   publishedAt: job.date
@@ -159,4 +153,37 @@ function parseDate(input) {
   var parts = input.match(/(\d+)/g);
   // note parts[1]-1
   return new Date(parts[2], parts[1] - 1, parts[0]).getTime();
+}
+
+function filterStepstoneJobs(job) {
+  return (
+    job.date &&
+    job.date[0] &&
+    job.postalcode &&
+    job.postalcode[0] &&
+    !job.description[0].match(/onaldienst|onalservice/gi) &&
+    (checkMfa(job.title[0] + job.description[0]) ||
+      checkZfa(job.title[0] + job.description[0]))
+  );
+}
+
+function checkMfa(str) {
+  return str.match(/medizinische|mta|mfa|arzthelf|zfa/gi);
+}
+
+function checkZfa(str) {
+  return str.match(/zahnmedizinische|zahnarzthelf|zfa|zmv|zfv/gi);
+}
+
+function getProfession(str) {
+  const isMfa = checkMfa(str);
+  const isZfa = checkZfa(str);
+
+  if (isMfa && !isZfa) {
+    return "MFA";
+  } else if (isZfa && !isMfa) {
+    return "ZFA";
+  } else {
+    return "";
+  }
 }
