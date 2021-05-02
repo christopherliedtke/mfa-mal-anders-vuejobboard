@@ -14,6 +14,7 @@
         alt="MFA Ausbildung und Berufsbild"
         blank-width="1200"
         blank-height="630"
+        offset="1000"
       />
       <p>
         Die Medizinische Fachangestellte, kurz gesagt MFA oder in der früheren

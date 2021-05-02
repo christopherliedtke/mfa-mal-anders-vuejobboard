@@ -9,6 +9,7 @@
       alt="Banner - Jobs und Berufsbilder für MFA / ZFA und ArzthelferInnen"
       blank-width="1200"
       blank-height="630"
+      offset="1000"
       blank-color="#f7f6f9"
     />
     <BCardBody align="center">

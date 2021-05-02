@@ -102,6 +102,7 @@
               height="130"
               blank-width="184"
               blank-height="130"
+              offset="1000"
             />
             <h2 class="bold">Stellenbörse für MFA & ZFA</h2>
             <p>
@@ -121,6 +122,7 @@
               height="130"
               blank-width="167"
               blank-height="130"
+              offset="1000"
             />
             <h2 class="bold">Jobs & Berufsbilder</h2>
             <p>
@@ -142,6 +144,7 @@
               height="130"
               blank-width="167"
               blank-height="130"
+              offset="1000"
             />
             <h2 class="bold">Fort- & Weiterbildungen</h2>
             <p>
@@ -172,6 +175,7 @@
               blank-width="800"
               blank-height="800"
               blank-color="#f7f6f9"
+              offset="1000"
             />
             <p>
               Ich habe selbst über 10 Jahre in Praxen gearbeitet. Und obwohl ich

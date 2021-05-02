@@ -18,6 +18,7 @@
           :alt="article.featuredImage ? article.featuredImage.node.altText : ''"
           blank-width="1200"
           blank-height="630"
+          offset="1000"
           class="mt-3 mb-4"
           fluid
         />

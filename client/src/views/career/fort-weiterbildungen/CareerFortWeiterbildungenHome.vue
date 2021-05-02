@@ -19,6 +19,7 @@
             alt="Banner - So viel verdienst Du wirklich"
             blank-width="1200"
             blank-height="630"
+            offset="1000"
           />
           <p>
             Als Medizinische & Zahnmedizinische Fachangestellte haben wir viele

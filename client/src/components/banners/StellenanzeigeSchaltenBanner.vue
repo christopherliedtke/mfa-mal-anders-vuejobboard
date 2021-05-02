@@ -13,6 +13,7 @@
           alt="Bewerbungsgespräch zwischen Arzt und MFA / ZFA / ArzthelferIn"
           blank-width="248"
           blank-height="316"
+          offset="1000"
           fluid
         ></b-img-lazy>
       </b-col>

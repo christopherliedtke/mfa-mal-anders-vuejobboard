@@ -19,6 +19,7 @@
             alt="50+ Alternative Jobs für MFA / ZFA / ArtzhelferInnen"
             blank-width="1200"
             blank-height="630"
+            offset="1000"
           />
           <h2 class="bold">
             Wo man als MFA / ZFA überall arbeiten kann?

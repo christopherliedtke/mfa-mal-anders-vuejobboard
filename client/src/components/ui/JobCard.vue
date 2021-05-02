@@ -40,6 +40,7 @@
               <b-img-lazy
                 blank-src="/img/MfaMalAnders_logo_circle_dark.svg"
                 blank-width="90"
+                offset="1000"
                 :src="job.company.logoUrl"
                 :alt="`Logo - ${job.company.name}`"
               />

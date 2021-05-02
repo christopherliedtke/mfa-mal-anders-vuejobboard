@@ -17,6 +17,7 @@
           style="width: 40vw; max-width: 250px"
           blank-width="150"
           blank-height="150"
+          offset="1000"
         />
         <p>
           MFA mal anders ist ein Karriereportal speziell für Medizinische
@@ -50,6 +51,7 @@
                 height="130"
                 blank-width="184"
                 blank-height="130"
+                offset="1000"
               />
               <h2 class="bold">Stellenbörse für MFA & ZFA</h2>
               <p>
@@ -72,6 +74,7 @@
                 height="130"
                 blank-width="167"
                 blank-height="130"
+                offset="1000"
               />
               <h2 class="bold">Jobs & Berufsbilder</h2>
               <p>
@@ -93,6 +96,7 @@
                 height="130"
                 blank-width="167"
                 blank-height="130"
+                offset="1000"
               />
               <h2 class="bold">Fort- & Weiterbildungen</h2>
               <p>

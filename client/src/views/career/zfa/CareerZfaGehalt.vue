@@ -14,6 +14,7 @@
         alt="ZFA Gehalt - So viel verdienst Du wirklich"
         blank-width="1200"
         blank-height="630"
+        offset="1000"
       />
       <p>
         Beim Thema Gehalt geht, geht es der/dem ZFA bzw. ZahnarzthelferIn

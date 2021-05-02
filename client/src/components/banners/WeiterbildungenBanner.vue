@@ -10,6 +10,7 @@
       blank-width="1200"
       blank-height="630"
       blank-color="#f7f6f9"
+      offset="1000"
     />
     <BCardBody align="center">
       <BCardTitle title="Fort- und Weiterbildungen für MFA / ZFA" />

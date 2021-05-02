@@ -14,6 +14,7 @@
         alt="Banner - Schnell und einfach eine Top-Bewerbung schreiben"
         blank-width="1200"
         blank-height="630"
+        offset="1000"
       />
       <p>
         Hast du eine Stellenanzeige entdeckt, die dir richtig gut gefällt? Am

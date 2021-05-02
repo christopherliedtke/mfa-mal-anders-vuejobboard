@@ -8,6 +8,7 @@
           alt="Karriereschritt für MFA / ZFA"
           blank-width="170"
           blank-height="148"
+          offset="1000"
           fluid
         ></b-img-lazy>
       </b-col>

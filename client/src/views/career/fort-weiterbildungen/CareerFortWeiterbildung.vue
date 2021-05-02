@@ -20,6 +20,7 @@
             height="630"
             blank-width="1200"
             blank-height="630"
+            offset="1000"
           />
           <!-- eslint-disable-next-line -->
           <div v-html="training.content"></div>

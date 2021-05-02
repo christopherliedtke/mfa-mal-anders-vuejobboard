@@ -15,6 +15,7 @@
         alt="MFA Gehalt - So viel verdienst Du wirklich"
         blank-width="1200"
         blank-height="630"
+        offset="1000"
       />
       <p>
         Sobald es um das Thema Gehalt geht, fehlt vielen MFA bzw.
