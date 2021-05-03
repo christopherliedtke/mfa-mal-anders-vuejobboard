@@ -89,12 +89,7 @@
                 type="text"
                 :list="!$config.externalJobs.active ? 'location-list' : ''"
                 placeholder="Ort..."
-                @input="
-                  () => {
-                    getLocationSuggestions(filter.location);
-                    setQuery();
-                  }
-                "
+                @change="setQuery"
               />
               <b-input-group-append>
                 <b-button
@@ -432,9 +427,12 @@
             jobs = jobs.filter(job => {
               if (
                 job.company &&
-                job.company.location
+                (job.company.location
                   .toLowerCase()
-                  .includes(this.filter.location.toLowerCase())
+                  .includes(this.filter.location.toLowerCase()) ||
+                  job.company.state
+                    .toLowerCase()
+                    .includes(this.filter.location.toLowerCase()))
               ) {
                 return job;
               } else {

@@ -15,8 +15,8 @@ module.exports = {
     },
   },
   externalJobs: {
-    joblift: false,
-    stepstone: false,
+    joblift: true,
+    stepstone: true,
   },
   payment: {
     currency: "eur",
