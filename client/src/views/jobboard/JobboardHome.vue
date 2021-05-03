@@ -7,7 +7,7 @@
     <b-container class="py-3 py-lg-5">
       <b-row class="mt-2">
         <b-col cols="12" lg="4" class="px-2 pr-lg-5">
-          <div v-if="$config.externalJobs.active" class="mb-2">
+          <div v-if="$store.state.jobs.jobs.length > 200" class="mb-2">
             <p class="small text-muted text-right m-0">
               {{
                 parseInt(filteredJobs.length)
@@ -89,7 +89,12 @@
                 type="text"
                 :list="!$config.externalJobs.active ? 'location-list' : ''"
                 placeholder="Ort..."
-                @change="setQuery"
+                @input="
+                  () => {
+                    getLocationSuggestions(filter.location);
+                    setQuery();
+                  }
+                "
               />
               <b-input-group-append>
                 <b-button
@@ -312,6 +317,7 @@
   import TwitterBtn from "@/components/buttons/TwitterBtn.vue";
   import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
   import BerufsbilderBanner from "@/components/banners/BerufsbilderBanner.vue";
+  // import { getHereServiceMixin } from "@/mixins/getHereServiceMixin.js";
   export default {
     name: "Jobboard",
     components: {
@@ -323,6 +329,7 @@
       RandomTrainingsContainer,
       BerufsbilderBanner
     },
+    // mixins: [getHereServiceMixin],
     data() {
       return {
         title: "Stellenangebote für ArzthelferInnen – MFA & ZFA",
@@ -332,6 +339,7 @@
           location: "",
           state: ""
         },
+        locationSuggestions: [],
         specialization: {
           active: specializationOptions,
           visible: false,
@@ -609,6 +617,21 @@
           ? this.specializationOptions.slice()
           : [];
       }
+      // async getLocationSuggestions(str) {
+      //   if (!str) {
+      //     return [];
+      //   }
+      //   const suggestions = await this.getHereLocationSuggestions(str);
+      //   console.log(
+      //     "suggestions: ",
+      //     suggestions.map(suggestion => suggestion.label)
+      //   );
+
+      //   this.locationSuggestions = suggestions.map(
+      //     suggestion =>
+      //       `${suggestion.address.city}, ${suggestion.address.state}`
+      //   );
+      // }
     }
   };
 </script>

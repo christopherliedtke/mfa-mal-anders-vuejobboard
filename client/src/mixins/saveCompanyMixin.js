@@ -1,44 +1,54 @@
-import { getGeocodeMixin } from "@/mixins/getGeocodeMixin";
+import { getHereServiceMixin } from "@/mixins/getHereServiceMixin.js";
 export const saveCompanyMixin = {
-  mixins: [getGeocodeMixin],
+  mixins: [getHereServiceMixin],
   methods: {
     async saveCompany(mutationType, company, redirect = false) {
       try {
-        const data = await this.getGeocode(company);
-        company.geoCodeLat = data.lat;
-        company.geoCodeLng = data.lng;
-        company.state = data.state;
+        const location = await this.getHereLocation(
+          `${company.street} ${company.location} ${company.zipCode} ${company.country}`
+        );
+        company.geoCodeLat =
+          location.position && location.position.lat
+            ? location.position.lat
+            : this.$config.maps.defaultCenter.lat;
+        company.geoCodeLng =
+          location.position && location.position.lng
+            ? location.position.lng
+            : this.$config.maps.defaultCenter.lng;
+        company.state =
+          location.address && location.address.state
+            ? location.address.state
+            : "";
 
         const companyQuery = `
-                        mutation {
-                            ${mutationType}(
-                                ${
-                                  mutationType === "updateCompany" ||
-                                  mutationType === "adminUpdateCompany"
-                                    ? `_id: "${company._id}",`
-                                    : ""
-                                } 
-                                name: "${company.name}", 
-                                street: "${company.street}"
-                                location: "${company.location}", 
-                                zipCode: "${company.zipCode}"
-                                state: "${company.state}", 
-                                country: "${company.country}", 
-                                geoCodeLat: ${company.geoCodeLat}, 
-                                geoCodeLng: ${company.geoCodeLng}, 
-                                size: "${company.size}"
-                                url: "${
-                                  !/^https?:\/\//i.test(company.url) &&
-                                  company.url
-                                    ? "https://" + company.url
-                                    : company.url
-                                }"
-                                logoUrl: "${company.logoUrl}"
-                            ) {
-                                _id
-                            }
-                        }
-                    `;
+          mutation {
+            ${mutationType}(
+              ${
+                mutationType === "updateCompany" ||
+                mutationType === "adminUpdateCompany"
+                  ? `_id: "${company._id}",`
+                  : ""
+              } 
+              name: "${company.name}", 
+              street: "${company.street}"
+              location: "${company.location}", 
+              zipCode: "${company.zipCode}"
+              state: "${company.state}", 
+              country: "${company.country}", 
+              geoCodeLat: ${company.geoCodeLat}, 
+              geoCodeLng: ${company.geoCodeLng}, 
+              size: "${company.size}"
+              url: "${
+                !/^https?:\/\//i.test(company.url) && company.url
+                  ? "https://" + company.url
+                  : company.url
+              }"
+              logoUrl: "${company.logoUrl}"
+            ) {
+              _id
+            }
+          }
+      `;
 
         const response = await this.$axios.post(`/graphql`, {
           query: companyQuery
@@ -72,6 +82,8 @@ export const saveCompanyMixin = {
           };
         }
       } catch (err) {
+        console.log("err: ", err);
+
         this.$root.$bvToast.toast(
           "Beim Speichern des Unternehmens ist ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal.",
           {

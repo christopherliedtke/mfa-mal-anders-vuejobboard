@@ -17,9 +17,9 @@
         offset="1000"
       />
       <p>
-        Beim Thema Gehalt geht, geht es der/dem ZFA bzw. ZahnarzthelferIn
-        ähnlich wie den MFA-KollegenInnen: Es könnte etwas mehr sein. Kommt es
-        zu Gehaltsfragen, z.B. in einem Vorstellungsgespräch, fehlt vielen das
+        Beim Thema Gehalt geht es der/dem ZFA bzw. ZahnarzthelferIn ähnlich wie
+        den MFA-KollegenInnen: Es könnte etwas mehr sein. Kommt es zu
+        Gehaltsfragen, z.B. in einem Vorstellungsgespräch, fehlt vielen das
         Gespür für eine konkrete Zahl. Man möchte mit seinen
         <b-link
           to="/blog/article/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
