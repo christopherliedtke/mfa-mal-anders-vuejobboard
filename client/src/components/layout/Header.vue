@@ -182,7 +182,10 @@
 </template>
 
 <script>
-  import LogoutBtn from "@/components/buttons/LogoutBtn";
+  const LogoutBtn = () =>
+    import(
+      /* webpackChunkName: "LogoutBtn" */ "@/components/buttons/LogoutBtn"
+    );
   export default {
     name: "Header",
     components: {

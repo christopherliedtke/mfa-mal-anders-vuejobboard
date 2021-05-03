@@ -133,7 +133,11 @@
 
 <script>
   import NewsletterSignUpForm from "@/components/forms/NewsletterSignUpForm.vue";
-  import PrerenderRecache from "@/components/buttons/PrerenderRecache.vue";
+  // import PrerenderRecache from "@/components/buttons/PrerenderRecache.vue";
+  const PrerenderRecache = () =>
+    import(
+      /* webpackChunkName: "PrerenderRecache" */ "@/components/buttons/PrerenderRecache.vue"
+    );
   export default {
     name: "Footer",
     components: {

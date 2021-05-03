@@ -39,7 +39,7 @@ class Cache {
         // }
 
         stepstoneJobs = result.jobs.job
-          .filter(filterStepstoneJobs)
+          .filter(filterStepstoneJob)
           .map((job) => {
             return {
               _id: job.$.id && job.$.id.length > 0 ? job.$.id + "-ss" : "",
@@ -155,12 +155,12 @@ function parseDate(input) {
   return new Date(parts[2], parts[1] - 1, parts[0]).getTime();
 }
 
-function filterStepstoneJobs(job) {
+function filterStepstoneJob(job) {
   return (
     job.date &&
     job.date[0] &&
-    job.postalcode &&
-    job.postalcode[0] &&
+    // job.postalcode &&
+    // job.postalcode[0] &&
     !job.description[0].match(/onaldienst|onalservice/gi) &&
     (checkMfa(job.title[0] + job.description[0]) ||
       checkZfa(job.title[0] + job.description[0]))

@@ -7,6 +7,16 @@
     <b-container class="py-3 py-lg-5">
       <b-row class="mt-2">
         <b-col cols="12" lg="4" class="px-2 pr-lg-5">
+          <div v-if="$config.externalJobs.active" class="mb-2">
+            <p class="small text-muted text-right m-0">
+              {{
+                parseInt(filteredJobs.length)
+                  .toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+              }}
+              Stellenanzeigen
+            </p>
+          </div>
           <BButtonToolbar aria-label="Jobboard view toolbar">
             <BButtonGroup v-if="$config.jobboardMap.active" class="mb-3">
               <b-button
