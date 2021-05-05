@@ -168,7 +168,10 @@ function filterStepstoneJob(job) {
 }
 
 function checkMfa(str) {
-  return str.match(/medizinische|mta|mfa|arzthelf|zfa/gi);
+  return (
+    str.match(/medizinische|mta|mfa|arzthelf|zfa/gi) &&
+    !str.match(/zahnmedizinische|zahnarzthelf|zfa|zmv|zfv/gi)
+  );
 }
 
 function checkZfa(str) {

@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div v-if="jobs.length > 0">
+    <div v-if="jobs.length > 0" class="position-relative">
       <JobCard v-for="job in activeJobs" :key="job._id" :job="job" />
       <div>
-        <b-pagination
+        <BPagination
           v-model="currentPage"
           class="mt-4"
           :total-rows="noOfJobs"
@@ -13,11 +13,13 @@
           :limit="6"
           aria-controls="my-table"
           @change="scrollToTop"
-        ></b-pagination>
+        ></BPagination>
       </div>
     </div>
     <div
-      v-else-if="jobs.length === 0 && $store.state.jobs.jobs.length > 0"
+      v-else-if="
+        nojobs && jobs.length === 0 && $store.state.jobs.jobs.length > 0
+      "
       style="min-height: 200px"
     >
       <p class="h5">Leider gibt es hierzu keine Ergebnisse.</p>
@@ -29,19 +31,21 @@
 </template>
 
 <script>
+  import Vue from "vue";
+  import { BPagination } from "bootstrap-vue";
+  Vue.component("BPagination", BPagination);
   import JobCard from "@/components/ui/JobCard.vue";
   import JobCardPlaceholder from "@/components/ui/JobCardPlaceholder.vue";
-  import { BPagination } from "bootstrap-vue";
-  import Vue from "vue";
-  // eslint-disable-next-line
-  Vue.component("b-pagination", BPagination);
   export default {
     name: "JobboardList",
     components: {
       JobCard,
       JobCardPlaceholder
     },
-    props: { jobs: { type: Array, default: () => [] } },
+    props: {
+      jobs: { type: Array, default: () => [] },
+      nojobs: { type: Boolean, default: false }
+    },
     data() {
       return {
         perPage: 25,

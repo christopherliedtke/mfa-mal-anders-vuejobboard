@@ -7,14 +7,16 @@
     <b-container class="py-3 py-lg-5">
       <b-row class="mt-2">
         <b-col cols="12" lg="4" class="px-2 pr-lg-5">
-          <div v-if="$store.state.jobs.jobs.length > 200" class="mb-2">
+          <div v-if="$config.externalJobs.active" class="mb-2">
             <p class="small text-muted text-right m-0">
               {{
-                parseInt(filteredJobs.length)
-                  .toString()
-                  .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+                filteredJobs.length > 0
+                  ? parseInt(filteredJobs.length)
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+                  : "-"
               }}
-              Stellenanzeigen
+              Stellenangebote
             </p>
           </div>
           <BButtonToolbar aria-label="Jobboard view toolbar">
@@ -46,13 +48,19 @@
                 :class="filter.s ? 'border-secondary' : ''"
                 type="text"
                 placeholder="Suchbegriff..."
-                @change="setQuery"
+                @input="
+                  () => {
+                    filterJobs();
+                    setQuery();
+                  }
+                "
               />
               <b-input-group-append>
                 <b-button
                   @click.prevent="
                     () => {
                       filter.s = '';
+                      filterJobs();
                       setQuery();
                     }
                   "
@@ -67,7 +75,7 @@
               id="employmentType-jobboard"
               v-model="filter.employmentType"
               class="my-1 mr-2"
-              @change="setQuery"
+              @change="filterJobs"
             >
               <b-form-select-option :value="''"
                 >Alle Anstellungsarten</b-form-select-option
@@ -89,13 +97,19 @@
                 type="text"
                 :list="!$config.externalJobs.active ? 'location-list' : ''"
                 placeholder="Ort..."
-                @change="setQuery"
+                @input="
+                  () => {
+                    filterJobs();
+                    setQuery();
+                  }
+                "
               />
               <b-input-group-append>
                 <b-button
                   @click.prevent="
                     () => {
                       filter.location = '';
+                      filterJobs();
                       setQuery();
                     }
                   "
@@ -112,7 +126,12 @@
               id="state-jobboard"
               v-model="filter.state"
               class="my-1 mr-2"
-              @change="setQuery"
+              @change="
+                () => {
+                  filterJobs();
+                  setQuery();
+                }
+              "
             >
               <b-form-select-option :value="''"
                 >Alle Bundesländer</b-form-select-option
@@ -132,6 +151,11 @@
                 :options="professionOptions"
                 size="sm"
                 stacked
+                @change="
+                  () => {
+                    filterJobs();
+                  }
+                "
               ></b-form-checkbox-group>
             </b-form-group>
             <label
@@ -183,6 +207,11 @@
                   "
                   size="sm"
                   stacked
+                  @change="
+                    () => {
+                      filterJobs();
+                    }
+                  "
                 ></b-form-checkbox-group>
               </b-form-group>
             </b-collapse>
@@ -218,6 +247,7 @@
             <component
               :is="computedJobboardView"
               :jobs="filteredJobs"
+              :nojobs="nojobs"
             ></component>
           </keep-alive>
           <div class="my-4 clearfix">
@@ -328,6 +358,9 @@
     data() {
       return {
         title: "Stellenangebote für ArzthelferInnen – MFA & ZFA",
+        filteredJobs: [],
+        filterJobTimeoutId: null,
+        nojobs: false,
         filter: {
           s: "",
           employmentType: "",
@@ -400,8 +433,195 @@
             : "JobboardList";
         }
       },
-      filteredJobs: {
+      // filteredJobs: {
+      //   get() {
+      //     let jobs = [...this.$store.state.jobs.jobs];
+
+      //     // filter country
+
+      //     // filter state
+      //     if (this.filter.state) {
+      //       jobs = jobs.filter(job => {
+      //         if (
+      //           job.company &&
+      //           job.company.state
+      //             .toLowerCase()
+      //             .includes(this.filter.state.toLowerCase())
+      //         ) {
+      //           return job;
+      //         } else {
+      //           return;
+      //         }
+      //       });
+      //     }
+
+      //     // filter location
+      //     if (this.filter.location) {
+      //       jobs = jobs.filter(job => {
+      //         if (
+      //           job.company &&
+      //           (job.company.location
+      //             .toLowerCase()
+      //             .includes(this.filter.location.toLowerCase()) ||
+      //             job.company.state
+      //               .toLowerCase()
+      //               .includes(this.filter.location.toLowerCase()))
+      //         ) {
+      //           return job;
+      //         } else {
+      //           return;
+      //         }
+      //       });
+      //     }
+
+      //     // filter search term
+      //     if (this.filter.s) {
+      //       jobs = jobs.filter(job => {
+      //         const s = this.filter.s.toLowerCase().split(" ");
+      //         const searchProp = [
+      //           job.title,
+      //           job.description,
+      //           job.company.name,
+      //           job.company.state,
+      //           job.company.location,
+      //           job.company.zipCode
+      //         ]
+      //           .join(" ")
+      //           .toLowerCase();
+
+      //         if (s.every(term => searchProp.includes(term))) {
+      //           return job;
+      //         } else {
+      //           return;
+      //         }
+      //       });
+      //     }
+
+      //     // filter employment type
+      //     if (this.filter.employmentType) {
+      //       jobs = jobs.filter(job => {
+      //         if (
+      //           job.employmentType &&
+      //           job.employmentType.includes(this.filter.employmentType)
+      //         ) {
+      //           return job;
+      //         } else {
+      //           return;
+      //         }
+      //       });
+      //     }
+
+      //     // filter specialization
+      //     if (
+      //       this.specialization.active &&
+      //       this.specialization.active.length > 0 &&
+      //       this.specialization.active.length !=
+      //         this.specializationOptions.length
+      //     ) {
+      //       jobs = jobs.filter(job => {
+      //         if (
+      //           this.specialization.active.some(element =>
+      //             job.specialization.includes(element)
+      //           )
+      //         ) {
+      //           return job;
+      //         } else {
+      //           return;
+      //         }
+      //       });
+      //     }
+
+      //     // filter profession
+      //     if (
+      //       this.profession.active &&
+      //       this.profession.active.length > 0 &&
+      //       this.profession.active.length < this.professionOptions.length
+      //     ) {
+      //       jobs = jobs.filter(job => {
+      //         if (
+      //           this.profession.active.some(element =>
+      //             element.includes(job.profession)
+      //           )
+      //         ) {
+      //           return job;
+      //         } else {
+      //           return;
+      //         }
+      //       });
+      //     }
+
+      //     return jobs;
+      //   }
+      // },
+      locationsList: {
         get() {
+          const locations = this.filteredJobs
+            .map(job => {
+              if (job.company) {
+                return job.company.location;
+              }
+            })
+            .filter(element => element);
+
+          return locations.filter((v, i) => locations.indexOf(v) === i).sort();
+        }
+      },
+      breadcrumbs() {
+        const breadcrumbs = [
+          { text: "Home", to: "/" },
+          { text: "Stellenangebote", to: "/stellenangebote" }
+        ];
+
+        if (this.filter.state) {
+          breadcrumbs.push({
+            text: this.filter.state,
+            to: `/stellenangebote/?state=${this.filter.state}`
+          });
+        }
+        if (this.filter.location) {
+          breadcrumbs.push({
+            text: this.filter.location,
+            to: `/stellenangebote/?location=${this.filter.location}`
+          });
+        }
+
+        return breadcrumbs;
+      }
+    },
+    watch: {
+      "specialization.active"(newValue) {
+        if (newValue.length === 0) {
+          this.specialization.indeterminate = false;
+          this.specialization.allSelected = false;
+        } else if (newValue.length === this.specializationOptions.length) {
+          this.specialization.indeterminate = false;
+          this.specialization.allSelected = true;
+        } else {
+          this.specialization.indeterminate = true;
+          this.specialization.allSelected = false;
+        }
+      },
+      "profession.active"() {
+        this.setQuery();
+      },
+      "$route.query"() {
+        this.setFilter();
+      },
+      "$store.state.jobs.jobs"() {
+        this.filterJobs(0);
+      }
+    },
+    async created() {
+      if (this.$store.state.auth.loggedIn) {
+        this.$store.dispatch("getJobs");
+      }
+      this.setFilter();
+    },
+    methods: {
+      filterJobs(delay = 400) {
+        clearTimeout(this.filterJobTimeoutId);
+
+        this.filterJobTimeoutId = setTimeout(() => {
           let jobs = [...this.$store.state.jobs.jobs];
 
           // filter country
@@ -488,7 +708,7 @@
             jobs = jobs.filter(job => {
               if (
                 this.specialization.active.some(element =>
-                  job.specialization.includes(element)
+                  element.includes(job.specialization)
                 )
               ) {
                 return job;
@@ -517,71 +737,15 @@
             });
           }
 
-          return jobs;
-        }
-      },
-      locationsList: {
-        get() {
-          const locations = this.filteredJobs
-            .map(job => {
-              if (job.company) {
-                return job.company.location;
-              }
-            })
-            .filter(element => element);
+          this.filteredJobs = jobs;
 
-          return locations.filter((v, i) => locations.indexOf(v) === i).sort();
-        }
+          if (jobs.length === 0) {
+            this.nojobs = true;
+          } else {
+            this.nojobs = false;
+          }
+        }, delay);
       },
-      breadcrumbs() {
-        const breadcrumbs = [
-          { text: "Home", to: "/" },
-          { text: "Stellenangebote", to: "/stellenangebote" }
-        ];
-
-        if (this.filter.state) {
-          breadcrumbs.push({
-            text: this.filter.state,
-            to: `/stellenangebote/?state=${this.filter.state}`
-          });
-        }
-        if (this.filter.location) {
-          breadcrumbs.push({
-            text: this.filter.location,
-            to: `/stellenangebote/?location=${this.filter.location}`
-          });
-        }
-
-        return breadcrumbs;
-      }
-    },
-    watch: {
-      "specialization.active"(newValue) {
-        if (newValue.length === 0) {
-          this.specialization.indeterminate = false;
-          this.specialization.allSelected = false;
-        } else if (newValue.length === this.specializationOptions.length) {
-          this.specialization.indeterminate = false;
-          this.specialization.allSelected = true;
-        } else {
-          this.specialization.indeterminate = true;
-          this.specialization.allSelected = false;
-        }
-      },
-      "profession.active"() {
-        this.setQuery();
-      },
-      "$route.query"() {
-        this.setFilter();
-      }
-    },
-    async created() {
-      if (this.$store.state.auth.loggedIn) {
-        this.$store.dispatch("getJobs");
-      }
-      this.setFilter();
-    },
-    methods: {
       setQuery() {
         const query = {
           ...this.filter,
@@ -614,6 +778,7 @@
         this.specialization.active = checked
           ? this.specializationOptions.slice()
           : [];
+        this.filterJobs();
       }
       // async getLocationSuggestions(str) {
       //   if (!str) {
