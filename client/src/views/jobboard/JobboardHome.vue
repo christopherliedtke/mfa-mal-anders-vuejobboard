@@ -613,9 +613,10 @@
     },
     async created() {
       if (this.$store.state.auth.loggedIn) {
-        this.$store.dispatch("getJobs");
+        await this.$store.dispatch("getJobs");
       }
       this.setFilter();
+      // this.filterJobs(0);
     },
     methods: {
       filterJobs(delay = 400) {
