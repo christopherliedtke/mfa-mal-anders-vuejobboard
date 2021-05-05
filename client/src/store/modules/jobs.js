@@ -14,51 +14,51 @@ const actions = {
     const response = await axios.get("/graphql", {
       params: {
         query: `
-        query {
-          publicJobs {
-            _id
-            createdAt
-            updatedAt
-            publishedAt
-            paidAt
-            paid
-            paidExpiresAt
-            status
-            title
-            description
-            profession
-            employmentType
-            applicationDeadline
-            simpleApplication
-            extJobUrl
-            applicationEmail
-            imageUrl
-            salaryMin
-            salaryMax
-            specialization
-            contactGender
-            contactTitle
-            contactFirstName
-            contactLastName
-            contactEmail
-            contactPhone
-            company {
+          query {
+            publicJobs {
               _id
-              name
-              street
-              location
-              zipCode
-              state
-              country
-              geoCodeLat
-              geoCodeLng
-              size
-              url
-              logoUrl
-            }
-          }  
-        }
-      `
+              createdAt
+              updatedAt
+              publishedAt
+              paidAt
+              paid
+              paidExpiresAt
+              status
+              title
+              description
+              profession
+              employmentType
+              applicationDeadline
+              simpleApplication
+              extJobUrl
+              applicationEmail
+              imageUrl
+              salaryMin
+              salaryMax
+              specialization
+              contactGender
+              contactTitle
+              contactFirstName
+              contactLastName
+              contactEmail
+              contactPhone
+              company {
+                _id
+                name
+                street
+                location
+                zipCode
+                state
+                country
+                geoCodeLat
+                geoCodeLng
+                size
+                url
+                logoUrl
+              }
+            }  
+          }
+        `
       }
     });
 

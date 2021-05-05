@@ -12,13 +12,13 @@ module.exports = {
     postsPageTitle: "Blog"
   },
   externalJobs: {
-    active: true
+    active: false
   },
   jobboardMap: {
     active: false
   },
   starredJobs: {
-    active: false
+    active: true
   },
   fb: {
     appId: "509159293103491",
