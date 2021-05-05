@@ -616,7 +616,7 @@
         await this.$store.dispatch("getJobs");
       }
       this.setFilter();
-      // this.filterJobs(0);
+      this.filterJobs(0);
     },
     methods: {
       filterJobs(delay = 400) {
