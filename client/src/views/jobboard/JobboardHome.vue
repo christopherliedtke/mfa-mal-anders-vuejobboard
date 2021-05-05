@@ -740,7 +740,7 @@
 
           this.filteredJobs = jobs;
 
-          if (jobs.length === 0) {
+          if (jobs.length === 0 && this.$store.state.jobs.jobs.length > 0) {
             this.nojobs = true;
           } else {
             this.nojobs = false;
