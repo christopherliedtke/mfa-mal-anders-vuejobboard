@@ -36,7 +36,9 @@ prerender.crawlerUserAgents = prerender.crawlerUserAgents.filter(
 );
 
 // # SSL redirect
-app.use(sslRedirect());
+if (process.env.HEROKU == "yes") {
+  app.use(sslRedirect());
+}
 
 // #Create Sitemap CRON job
 if (config.sitemap.active) {
@@ -152,7 +154,9 @@ app.use("*", (req, res) => {
 });
 
 const server = app.listen(process.env.PORT, () =>
-  console.log(`Server listening on port ${process.env.PORT}`)
+  console.log(
+    `Server listening on port ${process.env.PORT} in ${process.env.NODE_ENV} mode`
+  )
 );
 
 // #Set custom request timeout
