@@ -1,4 +1,4 @@
-require("dotenv").config();
+require("dotenv").config({ path: "./.env.dev" });
 const express = require("express");
 const apolloVerifyToken = require("./middleware/apolloVerifyToken");
 const { ApolloServer } = require("apollo-server-express");

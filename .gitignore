@@ -5,4 +5,4 @@ node_modules
 # /server
 secrets*
 **/invoices/*.pdf
-.env
+.env*

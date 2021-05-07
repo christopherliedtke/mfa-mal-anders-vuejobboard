@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  app:
+    container_name: mfa_mal_anders_jobboard
+    restart: always
+    build: .
+    ports:
+      - "80:5001"
+    env_file:
+      - .env
+    # environment:
+    #   - NODE_ENV=production
