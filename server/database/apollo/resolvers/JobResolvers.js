@@ -304,7 +304,7 @@ function cleanUpJob(job, user) {
   }
 
   for (const key in job) {
-    if (typeof job[key] === "string") {
+    if (typeof job[key] === "string" && key != "extJobUrl") {
       job[key] = sanitizeHtml(job[key]);
     }
   }

@@ -807,7 +807,7 @@
         this.$store.dispatch("setOverlay", false);
       },
       formatter(value) {
-        return value.replace('"', "'").replace("&", "+");
+        return value.replaceAll('"', "'");
       },
       formValidation() {
         this.validated = true;
