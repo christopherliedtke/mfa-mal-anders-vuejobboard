@@ -216,7 +216,7 @@
           coupon: null,
           status: "",
           invoiceNo: 0,
-          invoiceDate: new Date(),
+          invoiceDate: new Date().getTime(),
           paymentType: "invoice",
           amount: 0,
           fee: 0,
