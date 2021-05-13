@@ -269,6 +269,12 @@ const UserResolvers = {
 
       await newCode.save();
 
+      console.log("gettingPasswordResetCode: ", {
+        ...args,
+        secretCode,
+        newCode,
+      });
+
       const emailData = {
         from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
         to: args.email,
@@ -308,6 +314,11 @@ const UserResolvers = {
       const code = await Code.findOne({
         email: args.email,
         code: args.code,
+      });
+
+      console.log("verifyPasswordReset: ", {
+        ...args,
+        codeFromDb: code,
       });
 
       if (!code) {

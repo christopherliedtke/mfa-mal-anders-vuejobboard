@@ -9,6 +9,7 @@
         placeholder="E-Mail Adresse eingeben..."
         autocomplete="email"
         autofocus
+        trim
       ></b-form-input>
       <button class="btn btn-primary my-3" @click.prevent="onSubmitEmail">
         Passwort zurücksetzen
@@ -31,6 +32,7 @@
         type="text"
         placeholder="Code eingeben..."
         autofocus
+        trim
       ></b-form-input>
       <label for="password">Neues Passwort</label>
       <b-input-group>
