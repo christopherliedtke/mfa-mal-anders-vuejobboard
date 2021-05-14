@@ -147,6 +147,7 @@ app.use("/api/download", require("./routes/download"));
 app.use("/api/admin", require("./routes/admin"));
 app.use("/api/prerender", require("./routes/prerender"));
 app.use("/api/external-jobs", require("./routes/externalJobs"));
+app.use("/api/public-jobs", require("./routes/publicJobs"));
 
 // #Serve the built static files in production
 app.use("*", (req, res) => {
