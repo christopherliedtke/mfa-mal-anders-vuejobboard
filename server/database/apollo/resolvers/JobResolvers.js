@@ -5,6 +5,7 @@ const recachePrerender = require("../../../middleware/recachePrerender");
 const sanitizeHtml = require("sanitize-html");
 const s3 = require("../../../middleware/s3");
 const { Job } = require("../../models/job");
+const internalJobsCache = require("../../../cache/internalJobsCache");
 
 const JobResolvers = {
   Query: {
@@ -133,6 +134,10 @@ const JobResolvers = {
         { new: true }
       );
 
+      if (updatedJob.status === "published") {
+        internalJobsCache.flush();
+      }
+
       indexing(updatedJob);
       recaching(updatedJob);
 
@@ -163,6 +168,8 @@ const JobResolvers = {
       const newJobObj = new Job(addObj);
       const newJob = await newJobObj.save();
 
+      internalJobsCache.flush();
+
       indexing(newJob);
       recaching(newJob);
 
@@ -184,6 +191,10 @@ const JobResolvers = {
         { new: true }
       );
 
+      if (updatedJob.status === "published") {
+        internalJobsCache.flush();
+      }
+
       indexing(updatedJob);
       recaching(updatedJob);
 
@@ -197,6 +208,10 @@ const JobResolvers = {
       const deletedJob = await Job.findOneAndDelete({
         _id: args._id,
       });
+
+      if (deletedJob.status === "published") {
+        internalJobsCache.flush();
+      }
 
       if (deletedJob.imageUrl) {
         await s3.delete(deletedJob.imageUrl);

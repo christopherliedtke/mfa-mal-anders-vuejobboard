@@ -10,25 +10,47 @@ const stepstoneCache = require("../cache/stepstoneCache");
 // #access: Public
 router.get("/", async (req, res) => {
   const { query } = req;
-  console.log("query: ", query);
+  // console.log("query: ", query);
 
-  // let jobs = await internalJobsCache.get("jobs");
   let jobs = await Promise.all([
     internalJobsCache.get("jobs"),
     config.externalJobs.joblift ? jobLiftCache.get("jobs") : [],
     config.externalJobs.stepstone ? stepstoneCache.get("jobs") : [],
   ]);
   jobs = jobs.flat();
-  // console.log("jobs: ", jobs);
 
   jobs = filterJobs(jobs, query);
-  jobs = sliceJobs(jobs, query.limit || undefined, query.offset || undefined);
+  const jobsCount = jobs.length;
+  jobs = sliceJobs(
+    jobs,
+    parseInt(query.limit) || undefined,
+    parseInt(query.offset) || undefined
+  );
 
-  res.json({ count: jobs.length, jobs });
+  res.json({ jobsCount, jobs });
+});
+
+// #route:  GET /api/public-jobs/job/:id
+// #desc:   Fetch public job
+// #access: Public
+router.get("/job/:id", async (req, res) => {
+  const { id: jobId } = req.params;
+
+  let jobs = await Promise.all([
+    internalJobsCache.get("jobs"),
+    config.externalJobs.joblift ? jobLiftCache.get("jobs") : [],
+    // config.externalJobs.stepstone ? stepstoneCache.get("jobs") : [],
+  ]);
+  jobs = jobs.flat();
+
+  const job = jobs.find((job) => job._id == jobId);
+
+  res.json({ job });
 });
 
 module.exports = router;
 
+// #Functions
 function filterJobs(jobs, query) {
   let filteredJobs = [...jobs];
 
@@ -46,7 +68,9 @@ function filterJobs(jobs, query) {
     filteredJobs = filteredJobs.filter(
       (job) =>
         job.employmentType &&
-        job.employmentType.toLowerCase() === query.employmentType.toLowerCase()
+        job.employmentType
+          .toLowerCase()
+          .includes(query.employmentType.toLowerCase())
     );
   }
 
@@ -105,7 +129,9 @@ function filterJobs(jobs, query) {
     filteredJobs = sortByDistance(
       query.geoCodeLat,
       query.geoCodeLng,
-      filteredJobs
+      filteredJobs.filter(
+        (job) => job.company.geoCodeLat && job.company.geoCodeLng
+      )
     );
   }
 

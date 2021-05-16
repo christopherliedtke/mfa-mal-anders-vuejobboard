@@ -1,8 +1,8 @@
 <template>
   <div>
     <div v-if="jobs.length > 0" class="position-relative">
-      <JobCard v-for="job in activeJobs" :key="job._id" :job="job" />
-      <div>
+      <JobCard v-for="job in jobs" :key="job._id" :job="job" />
+      <!-- <div>
         <BPagination
           v-model="currentPage"
           class="mt-4"
@@ -14,26 +14,21 @@
           aria-controls="my-table"
           @change="scrollToTop"
         ></BPagination>
-      </div>
+      </div> -->
     </div>
-    <div
-      v-else-if="
-        nojobs && jobs.length === 0 && $store.state.jobs.jobs.length > 0
-      "
-      style="min-height: 200px"
-    >
+    <div v-else-if="nojobs && jobs.length === 0" style="min-height: 200px">
       <p class="h5">Leider gibt es hierzu keine Ergebnisse.</p>
     </div>
     <div v-else>
-      <JobCardPlaceholder v-for="index in perPage" :key="index" class="mb-3" />
+      <JobCardPlaceholder v-for="index in 25" :key="index" class="mb-3" />
     </div>
   </div>
 </template>
 
 <script>
-  import Vue from "vue";
-  import { BPagination } from "bootstrap-vue";
-  Vue.component("BPagination", BPagination);
+  // import Vue from "vue";
+  // import { BPagination } from "bootstrap-vue";
+  // Vue.component("BPagination", BPagination);
   import JobCard from "@/components/ui/JobCard.vue";
   import JobCardPlaceholder from "@/components/ui/JobCardPlaceholder.vue";
   export default {
@@ -48,25 +43,25 @@
     },
     data() {
       return {
-        perPage: 25,
-        currentPage: 1
+        // perPage: 25,
+        // currentPage: 1
       };
     },
     computed: {
-      noOfJobs() {
-        return this.jobs.length;
-      },
-      activeJobs() {
-        return this.jobs.slice(
-          this.currentPage * this.perPage - this.perPage,
-          this.currentPage * this.perPage
-        );
-      }
+      // noOfJobs() {
+      //   return this.jobs.length;
+      // },
+      // activeJobs() {
+      //   return this.jobs.slice(
+      //     this.currentPage * this.perPage - this.perPage,
+      //     this.currentPage * this.perPage
+      //   );
+      // }
     },
     methods: {
-      scrollToTop() {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
+      // scrollToTop() {
+      //   window.scrollTo({ top: 0, behavior: "smooth" });
+      // }
     }
   };
 </script>

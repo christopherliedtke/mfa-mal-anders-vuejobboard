@@ -2,10 +2,10 @@ const NodeCache = require("node-cache");
 const { Job } = require("../database/models/job");
 
 class Cache {
-  constructor(ttlSeconds = 60 * 60, checkPeriod = 60 * 5) {
+  constructor(ttlSeconds = 60 * 60) {
     this.cache = new NodeCache({
       stdTTL: ttlSeconds,
-      checkperiod: checkPeriod,
+      checkperiod: ttlSeconds * 0.2,
       useClones: false,
     });
   }
@@ -31,6 +31,7 @@ class Cache {
 
     try {
       this.cache.set("jobs", internalJobs);
+      // console.log("this.cache: ", this.cache);
     } catch (error) {
       console.log("error: ", error);
       return null;
@@ -60,8 +61,13 @@ class Cache {
   }
 }
 
-const internalJobsCache = new Cache({
-  stdTTL: 60 * 60,
+const internalJobsCache = new Cache(60 * 60, 60 * 5);
+
+internalJobsCache.cache.on("expired", () => {
+  internalJobsCache.get("jobs");
+});
+internalJobsCache.cache.on("flush", () => {
+  internalJobsCache.get("jobs");
 });
 
 module.exports = internalJobsCache;

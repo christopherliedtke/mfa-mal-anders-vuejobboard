@@ -129,7 +129,7 @@
               <div class="icon">
                 <Fa class="mr-2" :icon="['fas', 'clock']" size="lg" />
               </div>
-              {{ timeSince(new Date(parseInt(job.publishedAt || job.paidAt))) }}
+              {{ timeSince(new Date(job.publishedAt || job.paidAt)) }}
             </div>
             <div v-if="job.simpleApplication" id="tooltip-simple-application">
               <BBadge pill variant="secondary"

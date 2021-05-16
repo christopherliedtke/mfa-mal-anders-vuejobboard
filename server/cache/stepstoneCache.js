@@ -5,10 +5,10 @@ const { decode } = require("html-entities");
 const zipCodeToState = require("../utils/zipCodeToState");
 
 class Cache {
-  constructor(ttlSeconds, checkPeriod = 60 * 5) {
+  constructor(ttlSeconds) {
     this.cache = new NodeCache({
       stdTTL: ttlSeconds,
-      checkperiod: checkPeriod,
+      checkperiod: ttlSeconds * 0.2,
       useClones: false,
     });
   }
@@ -52,6 +52,7 @@ class Cache {
                 ? getEmploymentType(job.Category)
                 : "",
               profession: getProfession(job.title[0] + job.description[0]),
+              specialization: "",
               extJobUrl: job.url ? job.url[0] : "",
               publishedAt: parseDate(job.date[0]),
               //   publishedAt: job.date
@@ -63,15 +64,15 @@ class Cache {
                 state: job.postalcode ? zipCodeToState(job.postalcode[0]) : "",
                 zipCode: job.postalcode ? job.postalcode[0] : "",
                 logoUrl: job.company_logo ? job.company_logo[0] : "",
-                // country: "Deutschland",
-                // geoCodeLat:
-                //   job.geokoordinaten && job.geokoordinaten[0].latitude
-                //     ? job.geokoordinaten[0].latitude[0]
-                //     : "",
-                // geoCodeLng:
-                //   job.geokoordinaten && job.geokoordinaten[0].longitude
-                //     ? job.geokoordinaten[0].longitude[0]
-                //     : "",
+                country: "Deutschland",
+                geoCodeLat:
+                  job.geokoordinaten && job.geokoordinaten[0].latitude
+                    ? job.geokoordinaten[0].latitude[0]
+                    : "",
+                geoCodeLng:
+                  job.geokoordinaten && job.geokoordinaten[0].longitude
+                    ? job.geokoordinaten[0].longitude[0]
+                    : "",
               },
             };
           });
@@ -120,9 +121,7 @@ class Cache {
   }
 }
 
-const stepstoneCache = new Cache({
-  stdTTL: 60 * 60 * 24,
-});
+const stepstoneCache = new Cache(60 * 60 * 24);
 
 module.exports = stepstoneCache;
 

@@ -10,8 +10,8 @@
           <div v-if="$config.externalJobs.active" class="mb-2">
             <p class="small text-muted text-right m-0">
               {{
-                filteredJobs.length > 0
-                  ? parseInt(filteredJobs.length)
+                jobsCount > 0
+                  ? parseInt(jobsCount)
                       .toString()
                       .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
                   : "-"
@@ -50,7 +50,7 @@
                 placeholder="Suchbegriff..."
                 @input="
                   () => {
-                    filterJobs();
+                    getJobs();
                     setQuery();
                   }
                 "
@@ -60,7 +60,7 @@
                   @click.prevent="
                     () => {
                       filter.s = '';
-                      filterJobs();
+                      getJobs();
                       setQuery();
                     }
                   "
@@ -75,7 +75,12 @@
               id="employmentType-jobboard"
               v-model="filter.employmentType"
               class="my-1 mr-2"
-              @change="filterJobs"
+              @change="
+                () => {
+                  getJobs();
+                  setQuery();
+                }
+              "
             >
               <b-form-select-option :value="''"
                 >Alle Anstellungsarten</b-form-select-option
@@ -95,11 +100,10 @@
                 v-model="filter.location"
                 :class="filter.location ? 'border-secondary' : ''"
                 type="text"
-                :list="!$config.externalJobs.active ? 'location-list' : ''"
                 placeholder="Ort..."
                 @input="
                   () => {
-                    filterJobs();
+                    getJobs();
                     setQuery();
                   }
                 "
@@ -109,7 +113,7 @@
                   @click.prevent="
                     () => {
                       filter.location = '';
-                      filterJobs();
+                      getJobs();
                       setQuery();
                     }
                   "
@@ -117,10 +121,10 @@
                 /></b-button>
               </b-input-group-append>
             </b-input-group>
-            <b-form-datalist
+            <!-- <b-form-datalist
               id="location-list"
               :options="locationsList"
-            ></b-form-datalist>
+            ></b-form-datalist> -->
             <label for="state-jobboard" class="sr-only">Bundesland *</label>
             <b-form-select
               id="state-jobboard"
@@ -128,7 +132,7 @@
               class="my-1 mr-2"
               @change="
                 () => {
-                  filterJobs();
+                  getJobs();
                   setQuery();
                 }
               "
@@ -153,7 +157,7 @@
                 stacked
                 @change="
                   () => {
-                    filterJobs();
+                    getJobs();
                   }
                 "
               ></b-form-checkbox-group>
@@ -209,7 +213,7 @@
                   stacked
                   @change="
                     () => {
-                      filterJobs();
+                      getJobs();
                     }
                   "
                 ></b-form-checkbox-group>
@@ -246,10 +250,19 @@
           <keep-alive>
             <component
               :is="computedJobboardView"
+              id="job-list"
+              class="mb-4"
               :jobs="filteredJobs"
               :nojobs="nojobs"
             ></component>
           </keep-alive>
+          <!-- <b-button
+            v-if="filteredJobs.length < jobsCount"
+            variant="secondary"
+            block
+            @click.prevent="getJobs(0, 25, filteredJobs.length)"
+            >Weitere laden</b-button
+          > -->
           <div class="my-4 clearfix">
             <h2 class="h5 bold mb-3">Ihre Stellenanzeige hier?</h2>
             <b-img
@@ -361,6 +374,7 @@
         filteredJobs: [],
         filterJobTimeoutId: null,
         nojobs: false,
+        jobsCount: 0,
         filter: {
           s: "",
           employmentType: "",
@@ -433,139 +447,6 @@
             : "JobboardList";
         }
       },
-      // filteredJobs: {
-      //   get() {
-      //     let jobs = [...this.$store.state.jobs.jobs];
-
-      //     // filter country
-
-      //     // filter state
-      //     if (this.filter.state) {
-      //       jobs = jobs.filter(job => {
-      //         if (
-      //           job.company &&
-      //           job.company.state
-      //             .toLowerCase()
-      //             .includes(this.filter.state.toLowerCase())
-      //         ) {
-      //           return job;
-      //         } else {
-      //           return;
-      //         }
-      //       });
-      //     }
-
-      //     // filter location
-      //     if (this.filter.location) {
-      //       jobs = jobs.filter(job => {
-      //         if (
-      //           job.company &&
-      //           (job.company.location
-      //             .toLowerCase()
-      //             .includes(this.filter.location.toLowerCase()) ||
-      //             job.company.state
-      //               .toLowerCase()
-      //               .includes(this.filter.location.toLowerCase()))
-      //         ) {
-      //           return job;
-      //         } else {
-      //           return;
-      //         }
-      //       });
-      //     }
-
-      //     // filter search term
-      //     if (this.filter.s) {
-      //       jobs = jobs.filter(job => {
-      //         const s = this.filter.s.toLowerCase().split(" ");
-      //         const searchProp = [
-      //           job.title,
-      //           job.description,
-      //           job.company.name,
-      //           job.company.state,
-      //           job.company.location,
-      //           job.company.zipCode
-      //         ]
-      //           .join(" ")
-      //           .toLowerCase();
-
-      //         if (s.every(term => searchProp.includes(term))) {
-      //           return job;
-      //         } else {
-      //           return;
-      //         }
-      //       });
-      //     }
-
-      //     // filter employment type
-      //     if (this.filter.employmentType) {
-      //       jobs = jobs.filter(job => {
-      //         if (
-      //           job.employmentType &&
-      //           job.employmentType.includes(this.filter.employmentType)
-      //         ) {
-      //           return job;
-      //         } else {
-      //           return;
-      //         }
-      //       });
-      //     }
-
-      //     // filter specialization
-      //     if (
-      //       this.specialization.active &&
-      //       this.specialization.active.length > 0 &&
-      //       this.specialization.active.length !=
-      //         this.specializationOptions.length
-      //     ) {
-      //       jobs = jobs.filter(job => {
-      //         if (
-      //           this.specialization.active.some(element =>
-      //             job.specialization.includes(element)
-      //           )
-      //         ) {
-      //           return job;
-      //         } else {
-      //           return;
-      //         }
-      //       });
-      //     }
-
-      //     // filter profession
-      //     if (
-      //       this.profession.active &&
-      //       this.profession.active.length > 0 &&
-      //       this.profession.active.length < this.professionOptions.length
-      //     ) {
-      //       jobs = jobs.filter(job => {
-      //         if (
-      //           this.profession.active.some(element =>
-      //             element.includes(job.profession)
-      //           )
-      //         ) {
-      //           return job;
-      //         } else {
-      //           return;
-      //         }
-      //       });
-      //     }
-
-      //     return jobs;
-      //   }
-      // },
-      locationsList: {
-        get() {
-          const locations = this.filteredJobs
-            .map(job => {
-              if (job.company) {
-                return job.company.location;
-              }
-            })
-            .filter(element => element);
-
-          return locations.filter((v, i) => locations.indexOf(v) === i).sort();
-        }
-      },
       breadcrumbs() {
         const breadcrumbs = [
           { text: "Home", to: "/" },
@@ -605,147 +486,76 @@
         this.setQuery();
       },
       "$route.query"() {
-        this.setFilter();
-      },
-      "$store.state.jobs.jobs"() {
-        this.filterJobs(0);
+        this.getJobs();
       }
     },
     async created() {
-      if (this.$store.state.auth.loggedIn) {
-        await this.$store.dispatch("getJobs");
-      }
+      this.getJobs(0);
       this.setFilter();
-      this.filterJobs(0);
+    },
+    mounted() {
+      this.loadMoreJobs();
     },
     methods: {
-      filterJobs(delay = 400) {
+      async getJobs(delay = 400, limit = "", offset = "") {
         clearTimeout(this.filterJobTimeoutId);
 
-        this.filterJobTimeoutId = setTimeout(() => {
-          let jobs = [...this.$store.state.jobs.jobs];
+        this.filteredJobs = offset > 0 ? this.filteredJobs : [];
 
-          // filter country
+        this.filterJobTimeoutId = setTimeout(async () => {
+          let response = await this.$axios.get("/api/public-jobs", {
+            params: {
+              s: this.filter.s,
+              employmentType: this.filter.employmentType,
+              state: this.filter.state,
+              location: this.filter.location,
+              profession:
+                typeof this.$route.query.profession === "object"
+                  ? this.$route.query.profession.join("+")
+                  : this.$route.query.profession,
+              specialization:
+                this.specialization.active.length ===
+                this.specializationOptions.length
+                  ? ""
+                  : typeof this.specialization.active === "object"
+                  ? this.specialization.active.join("+")
+                  : this.specialization.active,
+              limit,
+              offset
+            }
+          });
 
-          // filter state
-          if (this.filter.state) {
-            jobs = jobs.filter(job => {
-              if (
-                job.company &&
-                job.company.state
-                  .toLowerCase()
-                  .includes(this.filter.state.toLowerCase())
-              ) {
-                return job;
-              } else {
-                return;
-              }
-            });
-          }
+          // console.log("response.data.jobs: ", response.data.jobs);
 
-          // filter location
-          if (this.filter.location) {
-            jobs = jobs.filter(job => {
-              if (
-                job.company &&
-                (job.company.location
-                  .toLowerCase()
-                  .includes(this.filter.location.toLowerCase()) ||
-                  job.company.state
-                    .toLowerCase()
-                    .includes(this.filter.location.toLowerCase()))
-              ) {
-                return job;
-              } else {
-                return;
-              }
-            });
-          }
+          this.filteredJobs = [...this.filteredJobs, ...response.data.jobs];
+          this.jobsCount = response.data.jobsCount;
 
-          // filter search term
-          if (this.filter.s) {
-            jobs = jobs.filter(job => {
-              const s = this.filter.s.toLowerCase().split(" ");
-              const searchProp = [
-                job.title,
-                job.description,
-                job.company.name,
-                job.company.state,
-                job.company.location,
-                job.company.zipCode
-              ]
-                .join(" ")
-                .toLowerCase();
-
-              if (s.every(term => searchProp.includes(term))) {
-                return job;
-              } else {
-                return;
-              }
-            });
-          }
-
-          // filter employment type
-          if (this.filter.employmentType) {
-            jobs = jobs.filter(job => {
-              if (
-                job.employmentType &&
-                job.employmentType.includes(this.filter.employmentType)
-              ) {
-                return job;
-              } else {
-                return;
-              }
-            });
-          }
-
-          // filter specialization
-          if (
-            this.specialization.active &&
-            this.specialization.active.length > 0 &&
-            this.specialization.active.length !=
-              this.specializationOptions.length
-          ) {
-            jobs = jobs.filter(job => {
-              if (
-                this.specialization.active.some(element =>
-                  element.includes(job.specialization)
-                )
-              ) {
-                return job;
-              } else {
-                return;
-              }
-            });
-          }
-
-          // filter profession
-          if (
-            this.profession.active &&
-            this.profession.active.length > 0 &&
-            this.profession.active.length < this.professionOptions.length
-          ) {
-            jobs = jobs.filter(job => {
-              if (
-                this.profession.active.some(element =>
-                  element.includes(job.profession)
-                )
-              ) {
-                return job;
-              } else {
-                return;
-              }
-            });
-          }
-
-          this.filteredJobs = jobs;
-
-          if (jobs.length === 0 && this.$store.state.jobs.jobs.length > 0) {
+          if (this.filteredJobs.length === 0) {
             this.nojobs = true;
           } else {
             this.nojobs = false;
           }
         }, delay);
+      },
+      loadMoreJobs() {
+        if (
+          this.filteredJobs.length < this.jobsCount ||
+          this.filteredJobs.length === 0
+        ) {
+          const jobsList = window.document.getElementById("job-list");
+
+          if (jobsList) {
+            const jobsListBottom = jobsList.getBoundingClientRect().bottom;
+            const clientBottom = document.documentElement.clientHeight;
+
+            setTimeout(async () => {
+              if (!this.nojobs && jobsListBottom - clientBottom < 500) {
+                await this.getJobs(0, undefined, this.filteredJobs.length);
+              }
+              this.loadMoreJobs();
+            }, 500);
+          }
+        }
       },
       setQuery() {
         const query = {
@@ -779,7 +589,7 @@
         this.specialization.active = checked
           ? this.specializationOptions.slice()
           : [];
-        this.filterJobs();
+        this.getJobs(0);
       }
       // async getLocationSuggestions(str) {
       //   if (!str) {

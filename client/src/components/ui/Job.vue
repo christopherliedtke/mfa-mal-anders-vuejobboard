@@ -117,7 +117,7 @@
               </div>
               {{
                 job.paid
-                  ? timeSince(new Date(parseInt(job.publishedAt || job.paidAt)))
+                  ? timeSince(new Date(job.publishedAt || job.paidAt))
                   : "-"
               }}
             </div>
@@ -404,12 +404,7 @@
       >Oh, da ist leider etwas schief gelaufen oder die Stellenanzeige existiert
       nicht mehr.</b-alert
     >
-    <SimilarJobsContainer
-      v-if="job.title"
-      :jobs="$store.state.jobs.jobs"
-      :job="job"
-      :number="5"
-    />
+    <SimilarJobsContainer v-if="job.title" :job="job" :number="5" />
     <Head
       v-if="job.title"
       :title="
@@ -544,10 +539,10 @@
     watch: {
       "$route.params.jobId"() {
         this.getJob(this.$route.params.jobId);
-      },
-      "$store.state.jobs.jobs"() {
-        this.getJob(this.$route.params.jobId);
       }
+      // "$store.state.jobs.jobs"() {
+      //   this.getJob(this.$route.params.jobId);
+      // }
     },
     created() {
       this.getJob(this.$route.params.jobId);
@@ -557,7 +552,12 @@
         this.$store.dispatch("setOverlay", true);
 
         if (this.jobQuery === "publicJob") {
-          this.job = this.$store.state.jobs.jobs.find(job => job._id == jobId);
+          // this.job = this.$store.state.jobs.jobs.find(job => job._id == jobId);
+          const response = await this.$axios.get(
+            `/api/public-jobs/job/${jobId}`
+          );
+
+          this.job = response.data.job;
         } else {
           try {
             const job = await this.$axios.get(`/graphql`, {
@@ -617,7 +617,7 @@
             }
           } catch (err) {
             this.$root.$bvToast.toast(
-              "Die Stellenanzeige ist nicht mehr verfügbar bzw. bereits abgelaufen.",
+              "Die Stellenanzeige ist nicht verfügbar bzw. bereits abgelaufen.",
               {
                 title: `Stellenanzeige nicht verfügbar`,
                 variant: "warning",

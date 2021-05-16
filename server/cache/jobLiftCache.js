@@ -5,10 +5,10 @@ const { decode } = require("html-entities");
 const zipCodeToState = require("../utils/zipCodeToState");
 
 class Cache {
-  constructor(ttlSeconds, checkPeriod = 60 * 5) {
+  constructor(ttlSeconds) {
     this.cache = new NodeCache({
       stdTTL: ttlSeconds,
-      checkperiod: checkPeriod,
+      checkperiod: ttlSeconds * 0.2,
       useClones: false,
     });
   }
@@ -43,6 +43,7 @@ class Cache {
                 ? getEmploymentType(job.workingTimes[0].item)
                 : "",
             profession: getProfession(job.title[0] + job.fullDescription[0]),
+            specialization: "",
             extJobUrl: job.url ? job.url[0] : "",
             publishedAt: new Date(
               job.publishDate ? job.publishDate[0] : ""
@@ -136,9 +137,7 @@ class Cache {
   }
 }
 
-const jobLiftCache = new Cache({
-  stdTTL: 60 * 60 * 24,
-});
+const jobLiftCache = new Cache(60 * 60 * 24);
 
 module.exports = jobLiftCache;
 

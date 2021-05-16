@@ -45,7 +45,7 @@
         }
       }
 
-      this.$store.dispatch("getJobs");
+      // this.$store.dispatch("getJobs");
 
       if (this.$config.starredJobs.active) {
         this.$store.dispatch("getStarredJobs");

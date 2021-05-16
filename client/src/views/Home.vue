@@ -63,8 +63,8 @@
 
     <b-container class="mt-4 mt-lg-0">
       <!-- <h2 class="h3 bold text-primary ml-1">Neu in der Stellenbörse:</h2> -->
-      <b-row v-if="$store.state.jobs.jobs.length > 0" cols="1" cols-md="3">
-        <b-col v-for="job in $store.state.jobs.jobs.slice(0, 3)" :key="job._id">
+      <b-row v-if="jobs.length > 0" cols="1" cols-md="3">
+        <b-col v-for="job in jobs" :key="job._id">
           <JobCard :job="job" :compact="true" />
         </b-col>
       </b-row>
@@ -321,6 +321,7 @@
     },
     data() {
       return {
+        jobs: [],
         searchTerm: "",
         snippet: [
           {
@@ -338,6 +339,20 @@
           }
         ]
       };
+    },
+    created() {
+      this.getPublicJobs();
+    },
+    methods: {
+      async getPublicJobs() {
+        const response = await this.$axios.get("/api/public-jobs", {
+          params: {
+            limit: 3
+          }
+        });
+
+        this.jobs = response.data.jobs;
+      }
     }
   };
 </script>

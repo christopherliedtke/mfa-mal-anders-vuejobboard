@@ -3,6 +3,7 @@ const router = express.Router();
 const config = require("../config/config");
 const recachePrerender = require("../middleware/recachePrerender");
 const emailService = require("../utils/nodemailer");
+const internalJobsCache = require("../cache/internalJobsCache");
 const { Job } = require("../database/models/job");
 const { Payment } = require("../database/models/payment");
 const { UsedCoupon } = require("../database/models/usedCoupon");
@@ -109,6 +110,10 @@ router.post("/checkout-completed", async (req, res) => {
           couponId: couponId,
         });
         await newUsedCoupon.save();
+      }
+
+      if (updatedJob.status === "published") {
+        internalJobsCache.flush();
       }
 
       googleIndexing(

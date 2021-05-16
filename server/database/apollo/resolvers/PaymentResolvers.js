@@ -3,6 +3,7 @@ const config = require("../../../config/config.js");
 const { Payment } = require("../../models/payment");
 const { Job } = require("../../models/job");
 const { googleIndexing } = require("../../../middleware/googleJobIndexing");
+const internalJobsCache = require("../../../cache/internalJobsCache");
 
 const PaymentResolvers = {
   Query: {
@@ -70,7 +71,7 @@ const PaymentResolvers = {
       const payment = await newPaymentObj.save();
 
       if (payment) {
-        await Job.findOneAndUpdate(
+        const updatedJob = await Job.findOneAndUpdate(
           { _id: payment.job },
           {
             paid:
@@ -96,6 +97,12 @@ const PaymentResolvers = {
           },
           { new: true }
         );
+
+        if (updatedJob.status === "published") {
+          internalJobsCache.flush();
+        }
+
+        indexing(updatedJob);
       }
 
       return payment;
@@ -136,7 +143,7 @@ const PaymentResolvers = {
       );
 
       if (updatedPayment) {
-        const job = await Job.findOneAndUpdate(
+        const updatedJob = await Job.findOneAndUpdate(
           { _id: updatedPayment.job },
           {
             paid:
@@ -163,7 +170,11 @@ const PaymentResolvers = {
           { new: true }
         );
 
-        indexing(job);
+        if (updatedJob.status === "published") {
+          internalJobsCache.flush();
+        }
+
+        indexing(updatedJob);
       }
 
       return updatedPayment;
