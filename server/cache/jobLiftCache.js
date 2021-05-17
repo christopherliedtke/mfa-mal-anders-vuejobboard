@@ -139,6 +139,13 @@ class Cache {
 
 const jobLiftCache = new Cache(60 * 60 * 24);
 
+jobLiftCache.cache.on("expired", () => {
+  jobLiftCache.get("jobs");
+});
+jobLiftCache.cache.on("flush", () => {
+  jobLiftCache.get("jobs");
+});
+
 module.exports = jobLiftCache;
 
 function filterJobliftJobs(job) {

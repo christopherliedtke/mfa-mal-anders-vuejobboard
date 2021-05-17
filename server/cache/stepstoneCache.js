@@ -123,6 +123,13 @@ class Cache {
 
 const stepstoneCache = new Cache(60 * 60 * 24);
 
+stepstoneCache.cache.on("expired", () => {
+  stepstoneCache.get("jobs");
+});
+stepstoneCache.cache.on("flush", () => {
+  stepstoneCache.get("jobs");
+});
+
 module.exports = stepstoneCache;
 
 function getEmploymentType(categories) {
