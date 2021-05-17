@@ -12,7 +12,7 @@
           ? `/stellenangebote/job/${job._id}`
           : undefined
       "
-      :href="job.extJobUrl"
+      :href="job.source === 'stepstone' ? job.extJobUrl : undefined"
       :target="job.source != 'stepstone' ? '_self' : '_blank'"
     >
       <BCard
