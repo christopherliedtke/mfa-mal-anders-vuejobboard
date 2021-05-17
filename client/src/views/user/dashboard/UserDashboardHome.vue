@@ -73,12 +73,15 @@
       };
     },
     watch: {
-      "$route.query.tab"() {
-        this.query.tab = this.$route.query.tab || 0;
+      "$route.query.tab": {
+        handler() {
+          this.query.tab = parseInt(this.$route.query.tab) || 0;
+        },
+        immediate: true
       }
     },
     mounted() {
-      this.query.tab = this.$route.query.tab;
+      // this.query.tab = this.$route.query.tab;
     },
     methods: {
       setQuery(key, value) {

@@ -48,8 +48,6 @@
           )
         });
 
-        console.log(jobs.data.jobs);
-
         this.jobs = jobs.data.jobs;
         this.$store.dispatch("setOverlay", false);
       }
