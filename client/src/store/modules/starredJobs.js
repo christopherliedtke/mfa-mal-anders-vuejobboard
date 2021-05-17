@@ -13,35 +13,14 @@ const actions = {
     const response = await axios.get("/graphql", {
       params: {
         query: `
-        query {
-          starredJobs {
-            _id
-            user
-            job {
+          query {
+            starredJobs {
               _id
-              title
-              status
-              publishedAt
-              paidExpiresAt
-              description
-              employmentType
-              applicationDeadline
-              salaryMin
-              salaryMax
-              simpleApplication
-              specialization
-              company {
-                _id
-                name
-                location
-                state
-                size
-                logoUrl
-              }
-            }
-          }  
-        }
-      `
+              user
+              job
+            }  
+          }
+        `
       }
     });
 
@@ -54,31 +33,10 @@ const actions = {
           addStarredJob (job: "${jobId}") {
             _id
             user
-            job {
-              _id
-              title
-              status
-              publishedAt
-              paidExpiresAt
-              description
-              employmentType
-              applicationDeadline
-              salaryMin
-              salaryMax
-              simpleApplication
-              specialization
-              company {
-                _id
-                name
-                location
-                state
-                size
-                logoUrl
-              }
-            }
+            job 
           }
         }
-    `
+      `
     });
 
     commit("addStarredJob", response.data.data.addStarredJob);
@@ -86,19 +44,17 @@ const actions = {
   async deleteStarredJob({ commit }, jobId) {
     const response = await axios.post("/graphql", {
       query: `
-                mutation {
-                    deleteStarredJob (job: "${jobId}") {
-                        _id
-                        user
-                        job {
-                            _id
-                        }
-                    }
-                }
-            `
+        mutation {
+          deleteStarredJob (job: "${jobId}") {
+            _id
+            user
+            job
+          }
+        }
+      `
     });
 
-    commit("deleteStarredJob", response.data.data.deleteStarredJob.job._id);
+    commit("deleteStarredJob", response.data.data.deleteStarredJob.job);
   }
 };
 
@@ -111,7 +67,7 @@ const mutations = {
   },
   deleteStarredJob: (state, deletedStarredJobId) => {
     state.starredJobs = state.starredJobs.filter(
-      star => star.job._id != deletedStarredJobId
+      star => star.job != deletedStarredJobId
     );
   },
   emptyStarredJobs: state => {

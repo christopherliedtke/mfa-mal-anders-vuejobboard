@@ -271,17 +271,17 @@ const JobResolvers = {
     },
   },
 
-  StarredJob: {
-    job: async (starredJob, args, context) => {
-      if (!context.user._id) {
-        throw new AuthenticationError("Must be logged in!");
-      }
+  // StarredJob: {
+  //   job: async (starredJob, args, context) => {
+  //     if (!context.user._id) {
+  //       throw new AuthenticationError("Must be logged in!");
+  //     }
 
-      const job = await Job.findOne({ _id: starredJob.job });
+  //     const job = await Job.findOne({ _id: starredJob.job });
 
-      return job;
-    },
-  },
+  //     return job;
+  //   },
+  // },
 };
 
 function cleanUpJob(job, user) {

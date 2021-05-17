@@ -93,7 +93,7 @@
         if (
           this.$store.state.auth.loggedIn &&
           this.$store.state.starredJobs.starredJobs.some(
-            starredJob => starredJob.job._id === this.jobId
+            starredJob => starredJob.job === this.jobId
           )
         ) {
           this.active = true;

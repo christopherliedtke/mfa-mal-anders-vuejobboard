@@ -171,9 +171,9 @@ const JobType = gql`
     job: Job
   }
 
-  extend type StarredJob {
-    job: Job
-  }
+  # extend type StarredJob {
+  #   job: Job
+  # }
 `;
 
 module.exports = JobType;

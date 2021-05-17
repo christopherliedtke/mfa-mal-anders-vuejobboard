@@ -35,7 +35,7 @@
                   : job.title
               }}
             </h2>
-            <StarJob v-if="!job.source" :job-id="job._id" />
+            <StarJob :job-id="job._id" />
             <div v-if="job.company.logoUrl && !compact" class="img-container">
               <b-img-lazy
                 blank-src="/img/MfaMalAnders_logo_circle_dark.svg"

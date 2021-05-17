@@ -14,6 +14,7 @@ const StarredJobType = gql`
   type StarredJob {
     _id: ID!
     user: ID
+    job: ID
     createdAt: Float
     updatedAt: Float
   }

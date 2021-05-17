@@ -157,7 +157,6 @@
 
       <div class="position-relative d-flex align-items-center my-4">
         <StarJob
-          v-if="!job.source"
           :job-id="job._id"
           position="relative"
           padding="0 20px 0 0"
@@ -357,7 +356,6 @@
       </div>
       <div class="d-flex flex-wrap flex-column flex-md-row align-items-center">
         <StarJob
-          v-if="!job.source"
           class="ml-3 ml-md-0 mb-2"
           :job-id="job._id"
           position="relative"

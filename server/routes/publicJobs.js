@@ -30,6 +30,23 @@ router.get("/", async (req, res) => {
   res.json({ jobsCount, jobs });
 });
 
+// #route:  GET /api/public-jobs
+// #desc:   Fetch public jobs
+// #access: Public
+router.post("/by-ids", async (req, res) => {
+  const { ids } = req.body;
+
+  let jobs = await Promise.all([
+    internalJobsCache.get("jobs"),
+    config.externalJobs.joblift ? jobLiftCache.get("jobs") : [],
+    config.externalJobs.stepstone ? stepstoneCache.get("jobs") : [],
+  ]);
+
+  jobs = jobs.flat().filter((job) => ids.some((id) => id == job._id));
+
+  res.json({ jobs });
+});
+
 // #route:  GET /api/public-jobs/job/:id
 // #desc:   Fetch public job
 // #access: Public

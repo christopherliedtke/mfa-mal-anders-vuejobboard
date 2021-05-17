@@ -47,7 +47,7 @@
 
       // this.$store.dispatch("getJobs");
 
-      if (this.$config.starredJobs.active) {
+      if (this.$store.state.auth.loggedIn && this.$config.starredJobs.active) {
         this.$store.dispatch("getStarredJobs");
       }
 
