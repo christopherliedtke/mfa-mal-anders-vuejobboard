@@ -646,9 +646,15 @@
         zwischen 1.840 € und 1.935 € brutto pro Monat. In den übrigen
         Bundesländern liegt dieser Wert zwischen 1.972 € und 2.327 €.
       </p>
-      <div class="my-4">
+      <div class="w-75 mx-auto my-4">
         <div class="d-flex justify-content-center mb-4">
-          <b-img fluid src="~@/assets/img/gehalt_perBundesland_zfa.svg" />
+          <b-img
+            fluid
+            src="~@/assets/img/gehalt_perBundesland_zfa.jpg"
+            alt="Zahnmedizinische Fachangestellte (ZFA) Gehalt pro Bundesland"
+            width="1200"
+            height="508"
+          />
         </div>
         <p class="small text-muted text-right">
           Quelle: Entgeltatlas der Bundesagentur für Arbeit

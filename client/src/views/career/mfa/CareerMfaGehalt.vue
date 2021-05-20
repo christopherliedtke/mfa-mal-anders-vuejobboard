@@ -760,9 +760,15 @@
         zwischen 2.057 € und 2.153 € brutto pro Monat. In den übrigen
         Bundesländern liegt dieser Wert zwischen 2.420 € und 2.612 €.
       </p>
-      <div class="my-4">
+      <div class="w-75 mx-auto my-4">
         <div class="d-flex justify-content-center mb-4">
-          <b-img fluid src="~@/assets/img/gehalt_perBundesland.svg" />
+          <b-img
+            fluid
+            src="~@/assets/img/gehalt_perBundesland.jpg"
+            alt="Medizinische Fachangestellte (MFA) Gehalt pro Bundesland"
+            width="1200"
+            height="507"
+          />
         </div>
         <p class="small text-muted text-right">
           Quelle: Entgeltatlas der Bundesagentur für Arbeit
