@@ -144,7 +144,7 @@
                   : null
               "
             >
-              <b-form-select-option :value="null"
+              <b-form-select-option value=""
                 >-- Anrede auswählen --</b-form-select-option
               >
               <b-form-select-option
@@ -167,7 +167,7 @@
                   : null
               "
             >
-              <b-form-select-option :value="null"
+              <b-form-select-option value=""
                 >-- Titel auswählen --</b-form-select-option
               >
               <b-form-select-option
@@ -209,7 +209,7 @@
               required
             />
 
-            <label for="billing-address-company">Unternehmen</label>
+            <label for="billing-address-company">Unternehmen *</label>
             <b-input
               id="billing-address-company"
               v-model="checkout.billingAddress.company"
@@ -225,7 +225,16 @@
               "
             />
 
-            <label for="billing-address-email">E-Mail Adresse</label>
+            <label for="billing-address-department">Abteilung</label>
+            <b-input
+              id="billing-address-company"
+              v-model="checkout.billingAddress.department"
+              type="text"
+              placeholder="Abteilung eingeben..."
+              trim
+            />
+
+            <label for="billing-address-email">E-Mail Adresse *</label>
             <b-input
               id="billing-address-email"
               v-model="checkout.billingAddress.email"
@@ -240,7 +249,7 @@
                   : null
               "
             />
-            <label for="billing-address-street">Straße und Hausnummer</label>
+            <label for="billing-address-street">Straße und Hausnummer *</label>
             <b-input
               id="billing-address-street"
               v-model="checkout.billingAddress.street"
@@ -255,7 +264,7 @@
                   : null
               "
             />
-            <label for="billing-address-zip-code">PLZ</label>
+            <label for="billing-address-zip-code">PLZ *</label>
             <b-input
               id="billing-address-zip-code"
               v-model="checkout.billingAddress.zipCode"
@@ -270,7 +279,7 @@
                   : null
               "
             />
-            <label for="billing-address-location">Ort</label>
+            <label for="billing-address-location">Ort *</label>
             <b-input
               id="billing-address-location"
               v-model="checkout.billingAddress.location"
@@ -423,15 +432,16 @@
           },
           couponValidationState: null,
           billingAddress: {
-            gender: null,
-            title: null,
+            gender: "",
+            title: "",
             firstName: "",
             lastName: "",
-            company: null,
-            email: null,
-            street: null,
-            zipCode: null,
-            location: null
+            company: "",
+            department: "",
+            email: "",
+            street: "",
+            zipCode: "",
+            location: ""
           },
           accepted: false,
           validated: false,

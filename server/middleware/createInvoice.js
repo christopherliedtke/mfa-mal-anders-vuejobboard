@@ -115,12 +115,25 @@ function generateCustomerInformation(doc, payment) {
   doc
     .fontSize(10)
     .text(payment.billingCompany, 50, 140, { align: "left" })
-    .text(payment.billingFullName, 50, 155, { align: "left" })
-    .text(payment.billingStreet || "", 50, 170, { align: "left" })
+    .text(payment.billingDepartment || "", 50, 155, { align: "left" })
+    .text(
+      payment.billingFullName,
+      50,
+      155 + (payment.billingDepartment ? 15 : 0),
+      {
+        align: "left",
+      }
+    )
+    .text(
+      payment.billingStreet || "",
+      50,
+      170 + (payment.billingDepartment ? 15 : 0),
+      { align: "left" }
+    )
     .text(
       (payment.billingZipCode || "") + " " + (payment.billingLocation || ""),
       50,
-      185,
+      185 + (payment.billingDepartment ? 15 : 0),
       {
         align: "left",
       }

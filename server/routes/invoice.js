@@ -70,6 +70,7 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
       user: req.user._id,
       billingEmail: sanitizeHtml(billingAddress.email),
       billingCompany: sanitizeHtml(billingAddress.company),
+      billingDepartment: sanitizeHtml(billingAddress.department),
       billingGender: sanitizeHtml(billingAddress.gender),
       billingFirstName: sanitizeHtml(billingAddress.firstName),
       billingLastName: sanitizeHtml(billingAddress.lastName),

@@ -100,6 +100,14 @@
         placeholder="Billing Company eingeben..."
         trim
       />
+      <label for="billing-department">Billing Department</label>
+      <b-input
+        id="billing-department"
+        v-model="payment.billingDepartment"
+        type="text"
+        placeholder="Billing Department eingeben..."
+        trim
+      />
       <label for="billing-gender">Billing Gender</label>
       <b-form-select id="billing-gender" v-model="payment.billingGender">
         <b-form-select-option :value="''"
@@ -223,6 +231,7 @@
           taxes: 0,
           billingEmail: "",
           billingCompany: "",
+          billingDepartment: "",
           billingGender: "",
           billingTitle: "",
           billingFirstName: "",
@@ -297,6 +306,7 @@
                                         taxes
                                         billingEmail
                                         billingCompany
+                                        billingDepartment
                                         billingGender
                                         billingTitle
                                         billingFirstName
@@ -368,6 +378,9 @@
                                 taxes: ${this.payment.taxes}
                                 billingEmail: "${this.payment.billingEmail}"
                                 billingCompany: "${this.payment.billingCompany}"
+                                billingDepartment: "${
+                                  this.payment.billingDepartment
+                                }"
                                 billingGender: "${this.payment.billingGender}"
                                 billingTitle: "${this.payment.billingTitle}"
                                 billingFirstName: "${
