@@ -106,81 +106,81 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
 
     const invoice = await createInvoice(payment, __dirname + "/../invoices/");
 
-    const emailDataToAdmin = {
-      from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
-      to: config.website.contactEmail,
-      replyTo: payment.billingEmail,
-      subject: `[Rechnungsanforderung] - ${
-        (parseInt(payment.amount) * (1 - payment.discount)) / 100
-      }€ | ${jobTitle} | ${jobId}`,
-      html: `
-                <h1>Rechnungsanforderung</h1>
-                <h2>Stellenanzeige</h2>
-                <p>
-                    Job ID: ${jobId} <br>
-                    Job Title: ${jobTitle} <br>
-                    Zahlungsmethode: ${payment.paymentType} <br>
-                    Betrag: ${
-                      (parseInt(payment.amount) * (1 - payment.discount)) / 100
-                    } EUR <br>
-                    InvoiceNo: ${payment.invoiceNo} <br>
-                    Aktionscode: ${payment.coupon} <br>
-                    Discount: ${payment.discount} <br>
-                    Refresh Frequency: ${refreshFrequency}
-                </p>
-                <h2>User</h2>
-                <p>
-                    User ID: ${req.user._id}
-                </p>
-                <h2>Rechnungsadresse</h2>
-                <p>
-                    Unternehmen: ${payment.billingCompany} <br>
-                    Name: ${payment.billingFullName} <br>
-                    Straße und Hausnummer: ${payment.billingStreet} <br>
-                    PLZ: ${payment.billingZipCode} <br>
-                    Ort: ${payment.billingLocation} <br>
-                    E-Mail Adresse: ${payment.billingEmail}
-                </p>
-                <hr>
-                <h1>E-Mail</h1>
-                <p>[Rechnung ${
-                  "RE-" +
-                  "000000".slice(0, 6 - payment.invoiceNo.toString().length) +
-                  payment.invoiceNo.toString()
-                }] Veröffentlichung Ihrer Stellenanzeige '${jobTitle}'</p>
-                <p>
-                    ${
-                      payment.billingFullName.includes("Herr")
-                        ? "Sehr geehrter"
-                        : payment.billingFullName.includes("Frau")
-                        ? "Sehr geehrte"
-                        : "Sehr geehrte/r"
-                    } ${payment.billingFullName},
-                </p>
-                <p>
-                    vielen Dank für die Erstellung Ihrer Stellenanzeige '${jobTitle}' auf unserem Portal 'MFA mal anders'. Wie gewünscht haben wir Ihnen die beigefügte Rechnung erstellt.
-                </p>
-                <p>
-                    Sobald Ihre Zahlung bei uns eingegangen ist, veröffentlichen wir Ihre Stellenanzeige und geben Ihnen noch einmal Bescheid. Anschließend haben Sie weiterhin die Möglichkeit, Ihre Stellenanzeige wie gewohnt selbst zu bearbeiten, offline zu nehmen oder zu löschen.
-                </p>
-                <p>
-                    Sollten Sie noch Fragen oder Anregungen haben, melden Sie sich gern bei uns.
-                </p>
-                <p>
-                    Mit freundlichen Grüßen
-                </p>
-                <p>
-                    Kristin Maurach
-                </p>
-                `,
-      attachments: [
-        {
-          filename: invoice.fileName,
-          path: invoice.path,
-          contentType: "application/pdf",
-        },
-      ],
-    };
+    // const emailDataToAdmin = {
+    //   from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
+    //   to: config.website.contactEmail,
+    //   replyTo: payment.billingEmail,
+    // subject: `[Rechnungsanforderung] - ${
+    //   (parseInt(payment.amount) * (1 - payment.discount)) / 100
+    // }€ | ${jobTitle} | ${jobId}`,
+    //   html: `
+    //             <h1>Rechnungsanforderung</h1>
+    //             <h2>Stellenanzeige</h2>
+    //             <p>
+    //                 Job ID: ${jobId} <br>
+    //                 Job Title: ${jobTitle} <br>
+    //                 Zahlungsmethode: ${payment.paymentType} <br>
+    //                 Betrag: ${
+    //                   (parseInt(payment.amount) * (1 - payment.discount)) / 100
+    //                 } EUR <br>
+    //                 InvoiceNo: ${payment.invoiceNo} <br>
+    //                 Aktionscode: ${payment.coupon} <br>
+    //                 Discount: ${payment.discount} <br>
+    //                 Refresh Frequency: ${refreshFrequency}
+    //             </p>
+    //             <h2>User</h2>
+    //             <p>
+    //                 User ID: ${req.user._id}
+    //             </p>
+    //             <h2>Rechnungsadresse</h2>
+    //             <p>
+    //                 Unternehmen: ${payment.billingCompany} <br>
+    //                 Name: ${payment.billingFullName} <br>
+    //                 Straße und Hausnummer: ${payment.billingStreet} <br>
+    //                 PLZ: ${payment.billingZipCode} <br>
+    //                 Ort: ${payment.billingLocation} <br>
+    //                 E-Mail Adresse: ${payment.billingEmail}
+    //             </p>
+    //             <hr>
+    //             <h1>E-Mail</h1>
+    //             <p>[Rechnung ${
+    //               "RE-" +
+    //               "000000".slice(0, 6 - payment.invoiceNo.toString().length) +
+    //               payment.invoiceNo.toString()
+    //             }] Veröffentlichung Ihrer Stellenanzeige '${jobTitle}'</p>
+    //             <p>
+    //                 ${
+    //                   payment.billingFullName.includes("Herr")
+    //                     ? "Sehr geehrter"
+    //                     : payment.billingFullName.includes("Frau")
+    //                     ? "Sehr geehrte"
+    //                     : "Sehr geehrte/r"
+    //                 } ${payment.billingFullName},
+    //             </p>
+    //             <p>
+    //                 vielen Dank für die Erstellung Ihrer Stellenanzeige '${jobTitle}' auf unserem Portal 'MFA mal anders'. Wie gewünscht haben wir Ihnen die beigefügte Rechnung erstellt.
+    //             </p>
+    //             <p>
+    //                 Sobald Ihre Zahlung bei uns eingegangen ist, veröffentlichen wir Ihre Stellenanzeige und geben Ihnen noch einmal Bescheid. Anschließend haben Sie weiterhin die Möglichkeit, Ihre Stellenanzeige wie gewohnt selbst zu bearbeiten, offline zu nehmen oder zu löschen.
+    //             </p>
+    //             <p>
+    //                 Sollten Sie noch Fragen oder Anregungen haben, melden Sie sich gern bei uns.
+    //             </p>
+    //             <p>
+    //                 Mit freundlichen Grüßen
+    //             </p>
+    //             <p>
+    //                 Kristin Maurach
+    //             </p>
+    //             `,
+    //   attachments: [
+    //     {
+    //       filename: invoice.fileName,
+    //       path: invoice.path,
+    //       contentType: "application/pdf",
+    //     },
+    //   ],
+    // };
 
     const emailDataToCustomer = {
       from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
@@ -191,7 +191,9 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
         "RE-" +
         "000000".slice(0, 6 - payment.invoiceNo.toString().length) +
         payment.invoiceNo.toString()
-      }] Veröffentlichung Ihrer Stellenanzeige '${jobTitle}'`,
+      }] - ${
+        (parseInt(payment.amount) * (1 - payment.discount)) / 100
+      }€ - Veröffentlichung Ihrer Stellenanzeige '${jobTitle}'`,
       html: `
                 <p>
                     ${
@@ -248,7 +250,7 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
 
     const emailSent = await Promise.all([
       emailService.sendMail(emailDataToCustomer),
-      emailService.sendMail(emailDataToAdmin),
+      // emailService.sendMail(emailDataToAdmin),
     ]);
 
     console.log("emailSent: ", emailSent);

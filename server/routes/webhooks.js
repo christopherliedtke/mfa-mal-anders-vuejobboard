@@ -132,14 +132,13 @@ router.post("/checkout-completed", async (req, res) => {
       const dataMailToAdmin = {
         from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
         to: config.website.contactEmail,
-        subject: `[Neue Stelle veröffentlicht] - ${payment.amount / 100}€`,
-        text: `
-                        Soeben wurde eine neue Stelle für ${
-                          payment.amount / 100
-                        }€ veröffentlicht: ${
-          process.env.WEBSITE_URL + config.googleIndexing.pathPrefix + jobId
-        }
-                `,
+        subject: `[Stripe ${
+          "RE-" +
+          "000000".slice(0, 6 - payment.invoiceNo.toString().length) +
+          payment.invoiceNo.toString()
+        }] - ${payment.amount / 100}€ - Veröffentlichung Stellenanzeige '${
+          updatedJob.title
+        }'`,
         html: `
                     <h2>Veröffentlichung einer neuen Stelle</h2>
                     <p>
