@@ -276,8 +276,10 @@
               const searchProp = [
                 payment._id,
                 payment.status ? payment.status : "",
+                payment.invoiceNo ? payment.invoiceNo : "",
+                payment.amount,
                 payment.user._id,
-                payment.user._email,
+                payment.user.email,
                 payment.job._id,
                 payment.job.title
               ]
