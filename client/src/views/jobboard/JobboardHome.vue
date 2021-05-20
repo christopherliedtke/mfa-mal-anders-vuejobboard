@@ -373,6 +373,7 @@
         title: "Stellenangebote für ArzthelferInnen – MFA & ZFA",
         filteredJobs: [],
         filterJobTimeoutId: null,
+        loadMoreJobsTimeoutId: null,
         nojobs: false,
         jobsCount: 0,
         filter: {
@@ -494,7 +495,7 @@
       this.setFilter();
     },
     mounted() {
-      this.loadMoreJobs();
+      // this.loadMoreJobs();
     },
     methods: {
       async getJobs(delay = 400, limit = "", offset = "") {
@@ -530,6 +531,8 @@
           this.filteredJobs = [...this.filteredJobs, ...response.data.jobs];
           this.jobsCount = response.data.jobsCount;
 
+          this.loadMoreJobs();
+
           if (this.filteredJobs.length === 0) {
             this.nojobs = true;
           } else {
@@ -538,6 +541,8 @@
         }, delay);
       },
       loadMoreJobs() {
+        clearTimeout(this.loadMoreJobsTimeoutId);
+
         if (
           this.filteredJobs.length < this.jobsCount ||
           this.filteredJobs.length === 0
@@ -548,7 +553,7 @@
             const jobsListBottom = jobsList.getBoundingClientRect().bottom;
             const clientBottom = document.documentElement.clientHeight;
 
-            setTimeout(async () => {
+            this.loadMoreJobsTimeoutId = setTimeout(async () => {
               if (!this.nojobs && jobsListBottom - clientBottom < 500) {
                 await this.getJobs(0, undefined, this.filteredJobs.length);
               }
