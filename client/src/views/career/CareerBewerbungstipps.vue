@@ -12,6 +12,8 @@
         sizes="(max-width: 1200px) 100vw, 1200px"
         src="/img/MfaMalAnders_Bewerbungstipps_1200.jpg"
         alt="Banner - Schnell und einfach eine Top-Bewerbung schreiben"
+        width="1200"
+        height="630"
         blank-width="1200"
         blank-height="630"
         offset="1000"

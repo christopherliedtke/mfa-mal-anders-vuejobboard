@@ -7,6 +7,8 @@
       sizes="(max-width: 768px) 100vw, 50vw"
       src="/img/Banner_Weiterbildungsdschungel_1200.jpg"
       alt="Banner - Fort- und Weiterbildungen für MFA / ZFA"
+      width="1200"
+      height="630"
       blank-width="1200"
       blank-height="630"
       blank-color="#f7f6f9"

@@ -19,6 +19,8 @@
               sizes="(max-width: 768px) 100vw, (max-width: 992px) 50vw, 33vw"
               :src="training.featuredImage.node.sourceUrl"
               :alt="training.featuredImage.node.altText"
+              width="1200"
+              height="630"
               blank-width="1200"
               blank-height="630"
               blank-color="#f7f6f9"

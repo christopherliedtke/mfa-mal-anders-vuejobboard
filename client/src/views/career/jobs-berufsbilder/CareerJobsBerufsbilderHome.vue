@@ -17,6 +17,8 @@
             sizes="(max-width: 992px) 100vw, 800px"
             src="/img/MfaMalAnders_50+Jobmoeglichkeiten_1200.jpg"
             alt="50+ Alternative Jobs für MFA / ZFA / ArtzhelferInnen"
+            width="1200"
+            height="630"
             blank-width="1200"
             blank-height="630"
             offset="1000"

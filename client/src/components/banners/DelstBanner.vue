@@ -6,6 +6,8 @@
         fluid
         src="@/assets/img/DelsT_728x90.jpg"
         alt="Banner - Deutsches eLearning Studieninstitut"
+        width="728"
+        height="90"
       />
     </b-link>
   </div>

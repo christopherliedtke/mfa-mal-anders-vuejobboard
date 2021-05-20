@@ -11,6 +11,8 @@
           "
           sizes="(max-width: 768px) 100vw, 50vw"
           :alt="article.featuredImage ? article.featuredImage.node.altText : ''"
+          width="1200"
+          height="630"
           blank-width="1200"
           blank-height="630"
           blank-color="#f7f6f9"

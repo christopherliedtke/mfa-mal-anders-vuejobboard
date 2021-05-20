@@ -1,6 +1,10 @@
 <template>
-  <div v-if="job">
-    <div v-if="job.title" class="job position-relative">
+  <div v-if="!job.title && !error">
+    <JobPlaceholder class="mb-5" />
+    <JobCardPlaceholder v-for="index in 5" :key="index" class="mb-3" />
+  </div>
+  <div v-else-if="job.title">
+    <div class="job position-relative">
       <div class="mb-4 d-flex align-items-start justify-content-between">
         <div>
           <h1>{{ job.title }}</h1>
@@ -213,7 +217,6 @@
 
         <b-img
           class="title-img"
-          style="max-height: 35vh"
           :src="job.imageUrl"
           fluid
           center
@@ -381,30 +384,13 @@
           :subject="job.title"
         />
       </div>
+    </div>
 
-      <JobStructuredData :job="job" />
-    </div>
-    <div v-if="error">
-      <p class="h5">
-        Diese Stellenanzeige scheint nicht mehr zu existieren.
-      </p>
-      <b-button class="mt-3" variant="outline-primary" to="/stellenangebote"
-        >Zurück zur Stellenübersicht</b-button
-      >
-    </div>
-    <b-alert
-      v-if="error"
-      class="position-fixed fixed-bottom m-0 rounded-0 mt-3"
-      show
-      dismissible
-      variant="warning"
-      style="z-index: 2000;"
-      >Oh, da ist leider etwas schief gelaufen oder die Stellenanzeige existiert
-      nicht mehr.</b-alert
-    >
-    <SimilarJobsContainer v-if="job.title" :job="job" :number="5" />
+    <SimilarJobsContainer :job="job" :number="5" />
+
+    <RandomTrainingsContainer :number="3" class="mt-4 mt-lg-5" />
+
     <Head
-      v-if="job.title"
       :title="
         `${job.title} | ${
           job.employmentType
@@ -446,6 +432,16 @@
       :script="snippet"
       :link="link"
     />
+    <JobStructuredData :job="job" />
+  </div>
+
+  <div v-else>
+    <p class="h5">
+      Diese Stellenanzeige scheint nicht (mehr) zu existieren.
+    </p>
+    <b-button class="mt-3" variant="outline-primary" to="/stellenangebote"
+      >Zurück zur Stellenübersicht</b-button
+    >
   </div>
 </template>
 
@@ -463,7 +459,10 @@
   import EmailShareBtn from "@/components/buttons/EmailShareBtn.vue";
   import TwitterShareBtn from "@/components/buttons/TwitterShareBtn.vue";
   import SubscribeNewsletterBtn from "@/components/buttons/SubscribeNewsletterBtn.vue";
+  import JobPlaceholder from "@/components/ui/JobPlaceholder.vue";
+  import JobCardPlaceholder from "@/components/ui/JobCardPlaceholder.vue";
   import { BTooltip, BBadge } from "bootstrap-vue";
+  import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
   import Vue from "vue";
   Vue.component("BTooltip", BTooltip);
   Vue.component("BBadge", BBadge);
@@ -478,13 +477,16 @@
       EmailShareBtn,
       TwitterShareBtn,
       SubscribeNewsletterBtn,
-      StarJob
+      StarJob,
+      JobPlaceholder,
+      JobCardPlaceholder,
+      RandomTrainingsContainer
     },
     props: { apiJobsSchema: { type: String, default: "private" } },
     data() {
       return {
         job: Object,
-        error: null,
+        error: false,
         employmentTypeOptions,
         companySizeOptions,
         snippet: [
@@ -538,24 +540,26 @@
       "$route.params.jobId"() {
         this.getJob(this.$route.params.jobId);
       }
-      // "$store.state.jobs.jobs"() {
-      //   this.getJob(this.$route.params.jobId);
-      // }
     },
     created() {
       this.getJob(this.$route.params.jobId);
     },
     methods: {
       async getJob(jobId) {
-        this.$store.dispatch("setOverlay", true);
-
         if (this.jobQuery === "publicJob") {
-          // this.job = this.$store.state.jobs.jobs.find(job => job._id == jobId);
-          const response = await this.$axios.get(
-            `/api/public-jobs/job/${jobId}`
-          );
+          try {
+            const response = await this.$axios.get(
+              `/api/public-jobs/job/${jobId}`
+            );
 
-          this.job = response.data.job;
+            if (response.data.job) {
+              this.job = response.data.job;
+            } else {
+              throw new Error();
+            }
+          } catch (err) {
+            this.error = true;
+          }
         } else {
           try {
             const job = await this.$axios.get(`/graphql`, {
@@ -614,20 +618,9 @@
               throw new Error();
             }
           } catch (err) {
-            this.$root.$bvToast.toast(
-              "Die Stellenanzeige ist nicht verfügbar bzw. bereits abgelaufen.",
-              {
-                title: `Stellenanzeige nicht verfügbar`,
-                variant: "warning",
-                toaster: "b-toaster-bottom-right",
-                solid: true,
-                noAutoHide: true
-              }
-            );
+            this.error = true;
           }
         }
-
-        this.$store.dispatch("setOverlay", false);
       },
       track(eventAction, eventLabel) {
         this.$gtag.event(eventAction, {
@@ -774,6 +767,7 @@
     }
 
     .title-img {
+      max-height: 35vh;
       border-radius: $border-radius1;
     }
 

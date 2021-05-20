@@ -17,6 +17,8 @@
             sizes="(max-width: 992px) 100vw, 800px"
             src="/img/Banner_Weiterbildungsdschungel_1200.jpg"
             alt="Banner - So viel verdienst Du wirklich"
+            width="1200"
+            height="630"
             blank-width="1200"
             blank-height="630"
             offset="1000"

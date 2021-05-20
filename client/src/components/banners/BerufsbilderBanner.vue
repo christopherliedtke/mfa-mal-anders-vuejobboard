@@ -7,6 +7,8 @@
       sizes="(max-width: 768px) 100vw, 50vw"
       src="/img/MfaMalAnders_50+Jobmoeglichkeiten_1200.jpg"
       alt="Banner - Jobs und Berufsbilder für MFA / ZFA und ArzthelferInnen"
+      width="1200"
+      height="630"
       blank-width="1200"
       blank-height="630"
       offset="1000"

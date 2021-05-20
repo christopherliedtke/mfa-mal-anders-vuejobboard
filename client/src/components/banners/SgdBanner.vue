@@ -8,6 +8,8 @@
         fluid
         src="@/assets/img/SGD_Banner_468.jpg"
         alt="Banner - SGD Fernschule"
+        width="468"
+        height="60"
       />
     </b-link>
   </div>

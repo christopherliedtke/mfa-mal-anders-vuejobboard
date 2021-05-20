@@ -16,6 +16,8 @@
             article.featuredImage ? article.featuredImage.node.sourceUrl : ''
           "
           :alt="article.featuredImage ? article.featuredImage.node.altText : ''"
+          width="1200"
+          height="630"
           blank-width="1200"
           blank-height="630"
           offset="1000"
