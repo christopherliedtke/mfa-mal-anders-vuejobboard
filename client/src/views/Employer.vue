@@ -184,7 +184,7 @@
         <h2 class="display-4 text-center bold">
           Wir kooperieren mit
         </h2>
-        <b-row cols="1" cols-lg="4" class="py-4">
+        <b-row class="py-4">
           <b-col
             v-for="partner in partners"
             :key="partner.name"
@@ -199,6 +199,18 @@
                 class="m-5 blend"
               />
             </b-link>
+            <!-- eslint-disable-next-line -->
+            <div v-html="partner.html"></div>
+            <b-button
+              v-if="partner.html"
+              class="align-self-start"
+              size="sm"
+              variant="outline-primary"
+              :href="partner.url"
+              target="_blank"
+              rel="noopener"
+              >Mehr erfahren</b-button
+            >
           </b-col>
         </b-row>
       </b-container>
@@ -674,6 +686,12 @@
         ],
         partners: [
           {
+            name: "PKV Institut",
+            img: "/img/pkvverlag_logo.png",
+            url:
+              "https://www.pkv-institut.de/?utm_source=MFA%20mal%20anders&utm_medium=affiliate"
+          },
+          {
             name: "Landarzt sein.",
             img: "/img/landarztSein_logo.png",
             url:
@@ -687,13 +705,41 @@
           {
             name: "Hausärzteverband Westfalen-Lippe",
             img: "/img/hvwl_logo.png",
-            url: "https://www.hausaerzteverband-wl.de/"
-          },
-          {
-            name: "PKV Institut",
-            img: "/img/pkvverlag_logo.png",
-            url: "https://www.pkv-institut.de/"
+            url:
+              "https://www.hausaerzteverband-wl.de/index.php/hausaerzte/personal-finden-mfa-mal-anders",
+            html: `
+              <p>Der Hausärzteverband Westfalen-Lippe e.V. ist ein Zusammenschluss und
+                die Interessenvertretung hausärztlich tätiger Ärztinnen und Ärzte in
+                Westfalen-Lippe und der drittgrößte der 17 Landesverbände des
+                Deutschen Hausärzteverbandes.
+              </p>
+              <p>
+                Mit knapp 30.000 Mitgliedern bundesweit ist der Deutsche
+                Hausärzteverband e.V. der größte Berufsverband niedergelassener Ärzte
+                in Deutschland und Europa.
+              </p>
+              <p>
+                Die 17 Landesverbände setzen sich für die Interessen der Hausärztinnen
+                und Hausärzte regional gegenüber Ärztekammern, Kassenärztlichen
+                Vereinigungen, Krankenkassen und Landesministerien ein. Das Büro des
+                Bundesvorsitzenden in Berlin nimmt die Interessen auf
+                bundespolitischer Ebene wahr.
+              </p>
+              <p>
+                Der Hausärzteverband Westfalen-Lippe e.V. vertritt mehr als 4.500
+                Ärztinnen und Ärzte, die in Westfalen-Lippe an der hausärztlichen
+                Versorgung teilnehmen.
+              </p>
+              <p>
+                <strong>
+                  Als Kooperationspartner des Hausärzteverbandes Westfalen-Lippe
+                  unterstützt „MFA mal anders“ Mitglieder des Hausärzteverbandes mit
+                  einem Vorzugsangebot zur Schaltung von Stellenanzeigen.
+                </strong>
+              </p>
+            `
           }
+
           // {
           //   name: "Ihre „gesunde“ Arztpraxis",
           //   img: "/img/ihreGesundeArztpraxis_logo2.png",
