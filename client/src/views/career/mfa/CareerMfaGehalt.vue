@@ -986,70 +986,70 @@
           {
             type: "application/ld+json",
             inner: `{
-                            "@context": "http://schema.org",
-                            "@type" : "BreadcrumbList",
-                            "itemListElement": [{
-                                "@type": "ListItem",
-                                "position": 1,
-                                "name": "MFA mal anders",
-                                "item": "https://www.mfa-mal-anders.de"
-                            },{
-                                "@type": "ListItem",
-                                "position": 2,
-                                "name": "Karriere",
-                                "item": "https://www.mfa-mal-anders.de/karriere"
-                            },{
-                                "@type": "ListItem",
-                                "position": 3,
-                                "name": "MFA Gehalt",
-                                "item": "https://www.mfa-mal-anders.de/karriere/mfa/gehalt"
-                            }]
-                        }`
+              "@context": "http://schema.org",
+              "@type" : "BreadcrumbList",
+              "itemListElement": [{
+                "@type": "ListItem",
+                "position": 1,
+                "name": "MFA mal anders",
+                "item": "https://www.mfa-mal-anders.de"
+              },{
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Karriere",
+                "item": "https://www.mfa-mal-anders.de/karriere"
+              },{
+                "@type": "ListItem",
+                "position": 3,
+                "name": "MFA Gehalt",
+                "item": "https://www.mfa-mal-anders.de/karriere/mfa/gehalt"
+              }]
+            }`
           },
           {
             type: "application/ld+json",
             inner: `{
-                            "@context": "http://schema.org",
-                            "@type" : "FAQPage",
-                            "mainEntity": [{
-                                "@type": "Question",
-                                "name": "Wie viel Gehalt verdient eine MFA / ArzthelferIn?",
-                                "acceptedAnswer": {
-                                    "@type": "Answer",
-                                    "text": "Das Gehalt einer MFA / ArzthelferIn liegt bei Berufseinstieg laut aktuellen Gehaltstarifvertrag bei ca. 1.970 Euro / Monat für eine Vollzeitstelle. Mit zunehmender Berufserfahrung und abgeschlossenen Fortbildungen erhöht sich das Gehalt tariflich bis auf über 3.800 Euro / Monat. Im aktuellen Durchschnitt liegt der Verdienst einer MFA / ArzthelferIn bei ca. 2.500 Euro / Monat."
-                                 }
-                            }]
-                        }`
+              "@context": "http://schema.org",
+              "@type" : "FAQPage",
+              "mainEntity": [{
+                "@type": "Question",
+                "name": "Wie viel Gehalt verdient eine Medizinische Fachangestellte (MFA) / ArzthelferIn?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Das Gehalt einer MFA / ArzthelferIn liegt bei Berufseinstieg laut aktuellen Gehaltstarifvertrag bei ca. 1.970 Euro / Monat für eine Vollzeitstelle. Mit zunehmender Berufserfahrung und abgeschlossenen Fortbildungen erhöht sich das Gehalt tariflich bis auf über 3.800 Euro / Monat. Im aktuellen Durchschnitt liegt der Verdienst einer MFA / ArzthelferIn bei ca. 2.500 Euro / Monat."
+                }
+              }]
+            }`
           },
           {
             type: "application/ld+json",
             inner: `{
-                            "@context": "https://schema.org/",
-                            "@type": "Occupation",
-                            "name": "Medizinische Fachangstellte (MFA) / ArzthelferIn",
-                            "mainEntityOfPage": {
-                                "@type": "WebPage",
-                                "lastReviewed": "2020-10-25T14:20:00-05:00"
-                            },
-                            "description": "Medizinische Fachangestellte (MFA) oder auch ArzthelferInnen arbeiten meist in Arztpraxen, aber auch Krankenhäusern und anderen Pflegeeinrichtungen und unterstützen Ärzte bei der Behandlung von Patienten sowie der Organisation des gesamten Betriebsablaufs.",
-                            "estimatedSalary": [
-                                {
-                                "@type": "MonetaryAmountDistribution",
-                                "name": "base",
-                                "currency": "EUR",
-                                "duration": "P1M",
-                                "percentile25": "2200",
-                                "median": "2500",
-                                "percentile75": "3000"
-                                }
-                            ],
-                            "occupationLocation": [
-                                {
-                                "@type": "Country",
-                                "name": "Germany"
-                                }
-                            ]
-                        }`
+              "@context": "https://schema.org/",
+              "@type": "Occupation",
+              "name": "Medizinische Fachangstellte (MFA) / ArzthelferIn",
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "lastReviewed": "2020-10-25T14:20:00-05:00"
+              },
+              "description": "Medizinische Fachangestellte (MFA) oder auch ArzthelferInnen arbeiten meist in Arztpraxen, aber auch Krankenhäusern und anderen Pflegeeinrichtungen und unterstützen Ärzte bei der Behandlung von Patienten sowie der Organisation des gesamten Betriebsablaufs.",
+              "estimatedSalary": [
+                {
+                "@type": "MonetaryAmountDistribution",
+                "name": "base",
+                "currency": "EUR",
+                "duration": "P1M",
+                "percentile25": "2200",
+                "median": "2500",
+                "percentile75": "3000"
+                }
+              ],
+              "occupationLocation": [
+                {
+                "@type": "Country",
+                "name": "Germany"
+                }
+              ]
+            }`
           }
         ]
       };

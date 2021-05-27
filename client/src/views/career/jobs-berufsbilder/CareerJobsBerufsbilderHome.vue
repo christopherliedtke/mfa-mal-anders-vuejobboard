@@ -170,25 +170,40 @@
           {
             type: "application/ld+json",
             inner: `{
-                            "@context": "http://schema.org",
-                            "@type" : "BreadcrumbList",
-                            "itemListElement": [{
-                                "@type": "ListItem",
-                                "position": 1,
-                                "name": "MFA mal anders",
-                                "item": "https://www.mfa-mal-anders.de"
-                            },{
-                                "@type": "ListItem",
-                                "position": 2,
-                                "name": "Karriere",
-                                "item": "https://www.mfa-mal-anders.de/karriere"
-                            },{
-                                "@type": "ListItem",
-                                "position": 3,
-                                "name": "Jobs und Berufsbilder",
-                                "item": "https://www.mfa-mal-anders.de/karriere/jobs-und-berufsbilder"
-                            }]
-                        }`
+              "@context": "http://schema.org",
+              "@type" : "BreadcrumbList",
+              "itemListElement": [{
+                "@type": "ListItem",
+                "position": 1,
+                "name": "MFA mal anders",
+                "item": "https://www.mfa-mal-anders.de"
+              },{
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Karriere",
+                "item": "https://www.mfa-mal-anders.de/karriere"
+              },{
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Jobs und Berufsbilder",
+                "item": "https://www.mfa-mal-anders.de/karriere/jobs-und-berufsbilder"
+              }]
+            }`
+          },
+          {
+            type: "application/ld+json",
+            inner: `{
+              "@context": "http://schema.org",
+              "@type" : "FAQPage",
+              "mainEntity": [{
+                "@type": "Question",
+                "name": "Welche alternativen Jobs gibt es für Medizinische Fachangestellte (MFA) / ArzthelferIn?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Für Medizinische Fachangestellte (MFA) / ArzthelferInnen gibt es zahlreiche berufliche Alternativen. In verschiedenen Bereichen wie Beratung, Forschung, Management, Verwaltung oder im medizinische-technischen Bereich kann eine ausgebildete MFA Tätigkeiten z.B. als Study Nurse, PraxisberaterIn, AbrechnungsmanagerIn, PraxismanagerIn, VERAH und vieles mehr durchführen. Es gibt weit über 50 passende alternative Berufsfelder."
+                }
+              }]
+            }`
           }
         ]
       };

@@ -555,55 +555,55 @@
           {
             type: "application/ld+json",
             inner: `{
-                            "@context": "http://schema.org",
-                            "@type" : "BreadcrumbList",
-                            "itemListElement": [{
-                                "@type": "ListItem",
-                                "position": 1,
-                                "name": "MFA mal anders",
-                                "item": "https://www.mfa-mal-anders.de"
-                            },{
-                                "@type": "ListItem",
-                                "position": 2,
-                                "name": "Karriere",
-                                "item": "https://www.mfa-mal-anders.de/karriere"
-                            },{
-                                "@type": "ListItem",
-                                "position": 3,
-                                "name": "MFA Ausbildung und Berufsbild",
-                                "item": "https://www.mfa-mal-anders.de/karriere/mfa-ausbildung-berufsbild"
-                            }]
-                        }`
+              "@context": "http://schema.org",
+              "@type" : "BreadcrumbList",
+              "itemListElement": [{
+                "@type": "ListItem",
+                "position": 1,
+                "name": "MFA mal anders",
+                "item": "https://www.mfa-mal-anders.de"
+              },{
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Karriere",
+                "item": "https://www.mfa-mal-anders.de/karriere"
+              },{
+                "@type": "ListItem",
+                "position": 3,
+                "name": "MFA Ausbildung und Berufsbild",
+                "item": "https://www.mfa-mal-anders.de/karriere/mfa-ausbildung-berufsbild"
+              }]
+            }`
           },
           {
             type: "application/ld+json",
             inner: `{
-                            "@context": "https://schema.org/",
-                            "@type": "Occupation",
-                            "name": "Medizinische Fachangstellte (MFA) / ArzthelferIn",
-                            "mainEntityOfPage": {
-                                "@type": "WebPage",
-                                "lastReviewed": "2020-10-25T14:20:00-05:00"
-                            },
-                            "description": "Medizinische Fachangestellte (MFA) oder auch ArzthelferInnen arbeiten meist in Arztpraxen, aber auch Krankenhäusern und anderen Pflegeeinrichtungen und unterstützen Ärzte bei der Behandlung von Patienten sowie der Organisation des gesamten Betriebsablaufs.",
-                            "estimatedSalary": [
-                                {
-                                "@type": "MonetaryAmountDistribution",
-                                "name": "base",
-                                "currency": "EUR",
-                                "duration": "P1M",
-                                "percentile25": "2200",
-                                "median": "2500",
-                                "percentile75": "3000"
-                                }
-                            ],
-                            "occupationLocation": [
-                                {
-                                "@type": "Country",
-                                "name": "Germany"
-                                }
-                            ]
-                        }`
+              "@context": "https://schema.org/",
+              "@type": "Occupation",
+              "name": "Medizinische Fachangstellte (MFA) / ArzthelferIn",
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "lastReviewed": "2021-05-27T12:20:00-05:00"
+              },
+              "description": "Medizinische Fachangestellte (MFA) oder auch ArzthelferInnen arbeiten meist in Arztpraxen, aber auch Krankenhäusern und anderen Pflegeeinrichtungen und unterstützen Ärzte bei der Behandlung von Patienten sowie der Organisation des gesamten Betriebsablaufs.",
+              "estimatedSalary": [
+                {
+                "@type": "MonetaryAmountDistribution",
+                "name": "base",
+                "currency": "EUR",
+                "duration": "P1M",
+                "percentile25": "2200",
+                "median": "2500",
+                "percentile75": "3000"
+                }
+              ],
+              "occupationLocation": [
+                {
+                "@type": "Country",
+                "name": "Germany"
+                }
+              ]
+            }`
           }
         ]
       };
