@@ -28,6 +28,7 @@ const JobType = gql`
       contactTitle: String
       contactFirstName: String
       contactLastName: String
+      contactPosition: String
       contactEmail: String
       contactPhone: String
       company: ID
@@ -56,6 +57,7 @@ const JobType = gql`
       contactTitle: String
       contactFirstName: String
       contactLastName: String
+      contactPosition: String
       contactEmail: String
       contactPhone: String
       company: ID
@@ -84,6 +86,7 @@ const JobType = gql`
       contactTitle: String
       contactFirstName: String
       contactLastName: String
+      contactPosition: String
       contactEmail: String
       contactPhone: String
       company: ID
@@ -112,6 +115,7 @@ const JobType = gql`
       contactTitle: String
       contactFirstName: String
       contactLastName: String
+      contactPosition: String
       contactEmail: String
       contactPhone: String
       company: ID
@@ -154,6 +158,7 @@ const JobType = gql`
     contactTitle: String
     contactFirstName: String
     contactLastName: String
+    contactPosition: String
     contactEmail: String
     contactPhone: String
   }

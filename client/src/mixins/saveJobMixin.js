@@ -48,6 +48,7 @@ export const saveJobMixin = {
                                 contactTitle: "${job.contactTitle}"
                                 contactFirstName: "${job.contactFirstName}"
                                 contactLastName: "${job.contactLastName}"
+                                contactPosition: "${job.contactPosition}"
                                 contactEmail: "${job.contactEmail}"
                                 contactPhone: "${job.contactPhone}"
                                 company: "${job.company._id}"

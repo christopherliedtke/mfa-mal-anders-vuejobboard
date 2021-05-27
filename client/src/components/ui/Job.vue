@@ -307,6 +307,8 @@
             {{ job.contactGender != "null" ? job.contactGender + " " : "" }}
             {{ job.contactTitle != "null" ? job.contactTitle + " " : "" }}
             {{ job.contactFirstName + " " + job.contactLastName }}
+            <br v-if="job.contactPosition" />
+            {{ job.contactPosition }}
             <br />
           </div>
           <div v-if="job.contactPhone">
@@ -590,6 +592,7 @@
                       contactTitle
                       contactFirstName
                       contactLastName
+                      contactPosition
                       contactEmail
                       contactPhone
                       company {

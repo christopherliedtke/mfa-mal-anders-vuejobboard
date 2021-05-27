@@ -272,6 +272,18 @@
         trim
       />
 
+      <label for="contact-position">Position im Unternehmen</label>
+      <b-form-input
+        id="contact-position"
+        v-model="job.contactPosition"
+        type="text"
+        lazy-formatter
+        :formatter="formatter"
+        :state="validated ? (job.contactPosition ? true : null) : null"
+        placeholder="Position eingeben..."
+        trim
+      />
+
       <label for="contact-email">E-Mail Adresse</label>
       <b-input-group>
         <template #prepend>
@@ -543,6 +555,7 @@
           contactTitle: "",
           contactFirstName: "",
           contactLastName: "",
+          contactPosition: "",
           contactEmail: "",
           contactPhone: "",
           company: {
@@ -659,6 +672,7 @@
                                         contactTitle
                                         contactFirstName
                                         contactLastName
+                                        contactPosition
                                         contactEmail
                                         contactPhone
                                         company {

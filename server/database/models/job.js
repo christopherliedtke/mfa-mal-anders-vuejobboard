@@ -98,6 +98,10 @@ const JobSchema = new Schema(
       type: String,
       default: "",
     },
+    contactPosition: {
+      type: String,
+      default: "",
+    },
     contactEmail: {
       type: String,
     },
