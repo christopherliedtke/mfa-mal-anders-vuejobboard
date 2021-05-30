@@ -256,6 +256,12 @@
               :nojobs="nojobs"
             ></component>
           </keep-alive>
+          <div v-if="loading" class="text-center">
+            <BSpinner
+              variant="primary"
+              label="Lade weitere Stellenanzeigen..."
+            ></BSpinner>
+          </div>
           <!-- <b-button
             v-if="filteredJobs.length < jobsCount"
             variant="secondary"
@@ -335,9 +341,10 @@
 
 <script>
   import Vue from "vue";
-  import { BButtonToolbar, BButtonGroup } from "bootstrap-vue";
+  import { BButtonToolbar, BButtonGroup, BSpinner } from "bootstrap-vue";
   Vue.component("BButtonToolbar", BButtonToolbar);
   Vue.component("BButtonGroup", BButtonGroup);
+  Vue.component("BSpinner", BSpinner);
   import {
     employmentTypeOptions,
     companyStateOptions,
@@ -373,6 +380,7 @@
         title: "Stellenangebote für ArzthelferInnen – MFA & ZFA",
         filteredJobs: [],
         filterJobTimeoutId: null,
+        loading: false,
         loadMoreJobsTimeoutId: null,
         nojobs: false,
         jobsCount: 0,
@@ -553,12 +561,14 @@
             const jobsListBottom = jobsList.getBoundingClientRect().bottom;
             const clientBottom = document.documentElement.clientHeight;
 
+            this.loading = true;
             this.loadMoreJobsTimeoutId = setTimeout(async () => {
               if (!this.nojobs && jobsListBottom - clientBottom < 500) {
                 await this.getJobs(0, undefined, this.filteredJobs.length);
               }
+              this.loading = false;
               this.loadMoreJobs();
-            }, 500);
+            }, 200);
           }
         }
       },
