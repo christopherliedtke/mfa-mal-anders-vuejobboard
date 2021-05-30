@@ -35,7 +35,7 @@ module.exports = {
       company: "MFA mal anders - Kristin Maurach & Christopher Liedtke GbR",
       name: "Kristin Maurach",
       address: {
-        street: "Am Bauernwälchen 38",
+        street: "Am Bauernwäldchen 38",
         zipCode: "12559",
         location: "Berlin",
       },
