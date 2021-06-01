@@ -75,8 +75,10 @@ if (process.env.PRERENDER_ACTIVE === "on") {
   app.use(prerender);
 }
 
+if (process.env.NODE_ENV != "production") {
+  app.use(cors());
+}
 app.use(compression());
-app.use(cors());
 app.use(express.json());
 
 // #Routes w/o csrf protection

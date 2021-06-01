@@ -3,9 +3,6 @@
 </template>
 
 <script>
-  // import VSanitize from "v-sanitize";
-  // import Vue from "vue";
-  // Vue.use(VSanitize);
   export default {
     name: "JobStructuredData",
     props: { job: { type: Object, default: () => {} } },
@@ -67,6 +64,11 @@
             }
           ];
         }
+      }
+    },
+    watch: {
+      job() {
+        this.$emit("updateHead");
       }
     },
     methods: {
