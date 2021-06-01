@@ -148,7 +148,7 @@ router.post("/checkout-completed", async (req, res) => {
                     <p>
                     <strong>InvoiceNo:</strong> <a href="${
                       process.env.WEBSITE_URL
-                    }/api/invoice/download/${updatedJob._id}" target="_blank">${
+                    }/api/invoice/download/${payment._id}" target="_blank">${
           "RE-" +
           "000000".slice(0, 6 - payment.invoiceNo.toString().length) +
           payment.invoiceNo.toString()

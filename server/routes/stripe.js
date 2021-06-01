@@ -38,6 +38,7 @@ router.post("/job/create-session-id", verifyToken, async (req, res) => {
 
     const session = await stripe.checkout.sessions.create({
       customer_email: req.user.email,
+      client_reference_id: req.user._id,
       payment_method_types: config.stripe.paymentMethods,
       line_items: [
         {
