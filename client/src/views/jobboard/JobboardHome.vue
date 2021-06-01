@@ -550,6 +550,7 @@
       },
       loadMoreJobs() {
         clearTimeout(this.loadMoreJobsTimeoutId);
+        this.loading = false;
 
         if (
           this.filteredJobs.length < this.jobsCount ||
