@@ -1,5 +1,5 @@
 <template>
-  <BListGroup>
+  <BListGroup tag="nav">
     <BListGroupItem to="/karriere/jobs-und-berufsbilder">
       <h3 class="h5 bold">
         Jobs & Berufsbilder

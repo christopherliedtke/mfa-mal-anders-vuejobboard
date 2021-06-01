@@ -1,6 +1,6 @@
 <template>
   <div>
-    <BListGroup v-if="trainings">
+    <BListGroup v-if="trainings" tag="nav">
       <BListGroupItem to="/karriere/fort-und-weiterbildungen">
         <h3 class="h5 bold">
           Fort- & Weiterbildungen

@@ -105,7 +105,7 @@
               <Fa :icon="['fab', 'instagram']" size="2x" />
             </b-link>
           </div>
-          <b-nav vertical class="justify-content-end">
+          <b-nav vertical class="justify-content-end" tag="nav">
             <b-nav-item to="/stellenangebote">Stellenangebote</b-nav-item>
             <b-nav-item to="/karriere/bewerbungstipps"
               >Bewerbungstipps</b-nav-item

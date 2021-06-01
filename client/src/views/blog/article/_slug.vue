@@ -116,10 +116,12 @@
       :img="article.featuredImage ? article.featuredImage.node.sourceUrl : ''"
       :script="snippet"
     />
+    <ArticleStructuredData :article="article" />
   </article>
 </template>
 
 <script>
+  import ArticleStructuredData from "@/components/utils/ArticleStructuredData.vue";
   import RandomArticlesContainer from "@/components/containers/RandomArticlesContainer.vue";
   import FacebookShareBtn from "@/components/buttons/FacebookShareBtn.vue";
   import TwitterShareBtn from "@/components/buttons/TwitterShareBtn.vue";
@@ -127,6 +129,7 @@
   export default {
     name: "Article",
     components: {
+      ArticleStructuredData,
       RandomArticlesContainer,
       FacebookShareBtn,
       TwitterShareBtn,

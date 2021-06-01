@@ -28,6 +28,8 @@ const actions = {
                             avatar {
                                 url
                             }
+                            firstName
+                            lastName
                             name
                             seo {
                                 social {

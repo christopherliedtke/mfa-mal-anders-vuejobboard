@@ -15,7 +15,7 @@
         </b-navbar-toggle>
 
         <b-collapse id="nav-collapse" is-nav @click="toggleNavbar">
-          <b-navbar-nav class="m-auto">
+          <b-navbar-nav class="m-auto" tag="nav">
             <b-nav-item
               v-for="link in headerLinks"
               :key="link.title"
