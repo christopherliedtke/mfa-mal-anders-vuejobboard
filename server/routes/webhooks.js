@@ -63,6 +63,10 @@ router.post("/checkout-completed", async (req, res) => {
         taxes: config.payment.tax * amount,
         billingEmail: succeededCharge["billing_details"].email,
         billingCompany: job ? job.company.name : "",
+        billingDepartment: "",
+        billingGender: "",
+        billingTitle: "",
+        billingFirstName: "",
         billingLastName: succeededCharge["billing_details"].name,
         billingStreet:
           succeededCharge["billing_details"].address.line1 +

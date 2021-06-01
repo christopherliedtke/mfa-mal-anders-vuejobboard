@@ -58,18 +58,23 @@ const PaymentSchema = new Schema(
     },
     billingDepartment: {
       type: String,
+      default: "",
     },
     billingGender: {
       type: String,
+      default: "",
     },
     billingTitle: {
       type: String,
+      default: "",
     },
     billingFirstName: {
       type: String,
+      default: "",
     },
     billingLastName: {
       type: String,
+      default: "",
     },
     billingStreet: {
       type: String,
