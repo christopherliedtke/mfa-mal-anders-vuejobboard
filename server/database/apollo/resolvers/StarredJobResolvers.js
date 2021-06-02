@@ -44,12 +44,9 @@ const StarredJobResolvers = {
   },
 
   User: {
-    starredJobs: async (user, args, context) => {
-      if (!context.user._id) {
-        throw new AuthenticationError("Must be logged in!");
-      }
-
-      //
+    starredJobs: async (user) => {
+      const starredJobs = await StarredJob.find({ user: user._id });
+      return starredJobs;
     },
   },
 };

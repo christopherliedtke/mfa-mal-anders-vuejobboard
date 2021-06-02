@@ -149,6 +149,20 @@
                   "
                   >Gespeicherte Jobs</b-nav-item
                 >
+                <b-nav-item
+                  v-if="
+                    $store.state.auth.user.isEmployee ||
+                      $store.state.auth.user.isAdmin
+                  "
+                  to="/user/dashboard?tab=5"
+                  :active-class="
+                    $route.query.tab == 5 ? 'router-link-active' : ''
+                  "
+                  :exact-active-class="
+                    $route.query.tab == 5 ? 'router-link-active' : ''
+                  "
+                  >Job-Newsletter</b-nav-item
+                >
               </div>
             </b-nav-item>
 

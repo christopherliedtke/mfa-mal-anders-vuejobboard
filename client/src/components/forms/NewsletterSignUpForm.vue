@@ -1,5 +1,5 @@
 <template>
-  <div class="newsletter-signup">
+  <div v-if="!$store.state.auth.loggedIn" class="newsletter-signup">
     <h2 class="mb-4 h4">{{ title }}</h2>
     <p v-if="intro">{{ intro }}</p>
     <b-form>
@@ -109,6 +109,13 @@
       dismissible
       variant="danger"
       >{{ error.message }}</b-alert
+    >
+  </div>
+  <div v-else>
+    <h2 class="mb-4 h4">{{ title }}</h2>
+    <p v-if="intro">{{ intro }}</p>
+    <b-button v-if="$store.state.auth.loggedIn" to="/user/dashboard?tab=5"
+      >Jetzt Abonnieren</b-button
     >
   </div>
 </template>

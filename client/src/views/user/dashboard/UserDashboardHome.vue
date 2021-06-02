@@ -38,6 +38,15 @@
       >
         <MyStarredJobs />
       </b-tab>
+      <b-tab
+        v-if="
+          $store.state.auth.user.isAdmin || $store.state.auth.user.isEmployee
+        "
+        title="Job-Newsletter"
+        @click="setQuery('tab', 5)"
+      >
+        <MyJobAlerts />
+      </b-tab>
     </b-tabs>
 
     <Head title="Dashboard" desc="" img="" />
@@ -50,6 +59,7 @@
   import MyCompaniesList from "@/components/dashboard/MyCompaniesList.vue";
   import MyPaymentsList from "@/components/dashboard/MyPaymentsList.vue";
   import MyStarredJobs from "@/components/dashboard/MyStarredJobs.vue";
+  import MyJobAlerts from "@/components/dashboard/MyJobAlerts.vue";
   import { BTabs, BTab } from "bootstrap-vue";
   import Vue from "vue";
   // eslint-disable-next-line
@@ -63,7 +73,8 @@
       MyJobsList,
       MyCompaniesList,
       MyPaymentsList,
-      MyStarredJobs
+      MyStarredJobs,
+      MyJobAlerts
     },
     data() {
       return {
