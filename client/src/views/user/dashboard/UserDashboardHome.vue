@@ -38,13 +38,7 @@
       >
         <MyStarredJobs />
       </b-tab>
-      <b-tab
-        v-if="
-          $store.state.auth.user.isAdmin || $store.state.auth.user.isEmployee
-        "
-        title="Job-Newsletter"
-        @click="setQuery('tab', 5)"
-      >
+      <b-tab title="Job-Newsletter" @click="setQuery('tab', 5)">
         <MyJobAlerts />
       </b-tab>
     </b-tabs>
