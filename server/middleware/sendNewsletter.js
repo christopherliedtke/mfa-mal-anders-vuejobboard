@@ -3,6 +3,7 @@ const emailTemplate = require("../utils/emailTemplate");
 
 const { Subscriber } = require("../database/models/subscriber");
 const { Job } = require("../database/models/job");
+const { JobAlert } = require("../database/models/jobAlert");
 
 const mg = require("mailgun-js")({
   apiKey: process.env.MG_API_KEY,
@@ -18,6 +19,26 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
       { status: "active" },
       "email state"
     );
+
+    const jobAlerts = await JobAlert.find({}).populate("user");
+
+    const receivers = subscribers
+      .map((subscriber) => {
+        return {
+          role: "subscriber",
+          email: subscriber.email,
+          state: subscriber.state,
+        };
+      })
+      .concat(
+        jobAlerts.map((jobAlert) => {
+          return {
+            role: "jobAlert",
+            email: jobAlert.user.email,
+            state: jobAlert.state,
+          };
+        })
+      );
 
     const jobs = await Job.find({
       paid: true,
@@ -42,11 +63,9 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
       newsletterList[state.replace("ü", "ue")] = [];
     });
 
-    subscribers.forEach((subscriber) => {
-      if (newsletterList[subscriber.state.replace("ü", "ue")]) {
-        newsletterList[subscriber.state.replace("ü", "ue")].push(
-          subscriber.email
-        );
+    receivers.forEach((receiver) => {
+      if (newsletterList[receiver.state.replace("ü", "ue")]) {
+        newsletterList[receiver.state.replace("ü", "ue")].push(receiver);
       }
     });
 
@@ -59,7 +78,7 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
         const data = {
           from: `${config.website.emailFrom} <kontakt@${process.env.MG_DOMAIN}>`,
           to: config.website.contactEmail,
-          bcc: newsletterList[key].join(", "),
+          bcc: newsletterList[key].map((elem) => elem.email).join(", "),
           subject: `Dein Job-Newsletter für ${key} – ${config.website.name}`,
           html: emailTemplate.generate(
             `

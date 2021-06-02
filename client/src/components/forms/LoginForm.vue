@@ -80,9 +80,13 @@
             this.$router.push("/auth/account/verification");
           } else if (this.$store.state.auth.loggedIn) {
             if (this.$store.state.auth.user.isEmployee) {
-              this.$router.push("/user/dashboard?tab=4");
+              this.$router.push(
+                this.$route.query.redirect || "/user/dashboard?tab=4"
+              );
             } else {
-              this.$router.push("/user/dashboard?tab=1");
+              this.$router.push(
+                this.$route.query.redirect || "/user/dashboard?tab=1"
+              );
             }
           }
 
