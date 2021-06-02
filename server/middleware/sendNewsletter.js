@@ -1,6 +1,5 @@
 const config = require("../config/config.js");
 const emailTemplate = require("../utils/emailTemplate");
-
 const { Subscriber } = require("../database/models/subscriber");
 const { Job } = require("../database/models/job");
 const { JobAlert } = require("../database/models/jobAlert");
