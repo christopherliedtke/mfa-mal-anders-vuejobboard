@@ -578,6 +578,7 @@
             firstName: this.$store.state.auth.user.firstName || "",
             lastName: this.$store.state.auth.user.lastName || "",
             company: this.job.company.name,
+            department: "",
             email: this.$store.state.auth.user.email,
             street: this.job.company.street,
             zipCode: this.job.company.zipCode,

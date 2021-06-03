@@ -69,9 +69,9 @@ router.post("/checkout-completed", async (req, res) => {
         billingFirstName: "",
         billingLastName: succeededCharge["billing_details"].name,
         billingStreet:
-          succeededCharge["billing_details"].address.line1 +
+          (succeededCharge["billing_details"].address.line1 || "") +
           " " +
-          succeededCharge["billing_details"].address.line2,
+          (succeededCharge["billing_details"].address.line2 || ""),
         billingZipCode:
           succeededCharge["billing_details"].address["postal_code"],
         billingLocation: succeededCharge["billing_details"].address.city,
