@@ -96,7 +96,7 @@ router.post("/checkout-completed", async (req, res) => {
         { _id: jobId, userId: userId },
         {
           status: "published",
-          publishedAt: new Date().setHours(0),
+          publishedAt: new Date().getTime(),
           paid: true,
           // paidAt,
           paidExpiresAt,

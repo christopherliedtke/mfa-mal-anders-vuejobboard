@@ -31,9 +31,7 @@ const prerender = require("prerender-node").set(
   "prerenderToken",
   process.env.PRERENDER_TOKEN
 );
-prerender.crawlerUserAgents = prerender.crawlerUserAgents.filter(
-  (item) => config.prerender.exclude.indexOf(item) <= -1
-);
+prerender.crawlerUserAgents = config.prerender.userAgents;
 
 // # SSL redirect
 if (process.env.HEROKU == "yes") {
