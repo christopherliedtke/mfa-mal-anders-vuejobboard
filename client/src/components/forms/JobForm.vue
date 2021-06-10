@@ -8,11 +8,22 @@
         type="text"
         lazy-formatter
         :formatter="formatter"
-        :state="validated ? (job.title ? true : false) : null"
+        :state="
+          validated
+            ? job.title && job.title.length <= 155
+              ? true
+              : false
+            : null
+        "
+        aria-describedby="title-help title-feedback"
         placeholder="Titel der Stellenanzeige eingeben..."
         required
         trim
       />
+      <b-form-invalid-feedback id="title-feedback" class="ml-2">
+        Bitte nutzen Sie maximal 155 Zeichen.
+      </b-form-invalid-feedback>
+      <b-form-text id="title-help" class="ml-2">Max. 155 Zeichen</b-form-text>
 
       <div
         v-if="$store.state.auth.user.isAdmin"
@@ -773,7 +784,8 @@
         this.error = false;
 
         if (!this.formValidation()) {
-          this.error = "Bitte füllen Sie die erforderlichen Felder aus!";
+          this.error =
+            "Bitte füllen Sie die erforderlichen Felder aus und beachten Sie die Zeichenvorgaben!";
 
           return null;
         }
@@ -826,6 +838,7 @@
       formValidation() {
         this.validated = true;
         return !this.job.title ||
+          this.job.title.length > 155 ||
           !this.job.description ||
           !this.job.employmentType ||
           // !this.job.applicationDeadline ||

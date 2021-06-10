@@ -195,7 +195,7 @@ const PaymentResolvers = {
   },
 
   Job: {
-    payment: async (job) => {
+    payment: async job => {
       const payment = await Payment.find({
         job: job._id,
         paymentExpiresAt: { $gte: new Date() },

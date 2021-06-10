@@ -34,7 +34,7 @@ router.post("/checkout-completed", async (req, res) => {
       );
 
       if (refreshFrequency == 0) {
-        config.payment.refreshFrequencies.forEach((frequency) => {
+        config.payment.refreshFrequencies.forEach(frequency => {
           if (amount >= frequency.amount) {
             refreshFrequency = frequency.refreshAfterDays;
           }
@@ -42,7 +42,7 @@ router.post("/checkout-completed", async (req, res) => {
       }
 
       const succeededCharge = intent.charges.data.filter(
-        (charge) => charge.paid
+        charge => charge.paid
       )[0];
 
       const job = await Job.findOne({ _id: jobId }).populate("company");
@@ -129,9 +129,7 @@ router.post("/checkout-completed", async (req, res) => {
         `${process.env.WEBSITE_URL}/stellenangebote/job/${jobId}`
       );
 
-      if (config.facebook.autoPost) {
-        postToFacebook();
-      }
+      if (config.facebook.autoPost) postToFacebook();
 
       const dataMailToAdmin = {
         from: `${config.website.emailFrom} <${config.website.contactEmail}>`,

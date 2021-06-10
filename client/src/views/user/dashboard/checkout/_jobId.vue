@@ -218,12 +218,20 @@
               trim
               :state="
                 checkout.validated
-                  ? checkout.billingAddress.company
+                  ? checkout.billingAddress.company &&
+                    checkout.billingAddress.company.length <= 55
                     ? true
                     : false
                   : null
               "
+              aria-describedby="company-name-help company-name-feedback"
             />
+            <b-form-invalid-feedback id="company-name-feedback" class="ml-2">
+              Bitte nutzen Sie maximal 55 Zeichen.
+            </b-form-invalid-feedback>
+            <b-form-text id="company-name-help" class="ml-2"
+              >Max. 55 Zeichen</b-form-text
+            >
 
             <label for="billing-address-department">Abteilung</label>
             <b-input
@@ -232,7 +240,24 @@
               type="text"
               placeholder="Abteilung eingeben..."
               trim
+              :state="
+                checkout.validated
+                  ? checkout.billingAddress.department &&
+                    checkout.billingAddress.department.length <= 55
+                    ? true
+                    : !checkout.billingAddress.department
+                    ? null
+                    : false
+                  : null
+              "
+              aria-describedby="department-help department-feedback"
             />
+            <b-form-invalid-feedback id="department-feedback" class="ml-2">
+              Bitte nutzen Sie maximal 55 Zeichen.
+            </b-form-invalid-feedback>
+            <b-form-text id="department-help" class="ml-2"
+              >Max. 55 Zeichen</b-form-text
+            >
 
             <label for="billing-address-email">E-Mail Adresse *</label>
             <b-input
@@ -590,6 +615,8 @@
         this.checkout.error = null;
         this.checkout.validated = true;
         return !this.checkout.billingAddress.company ||
+          this.checkout.billingAddress.company.length > 55 ||
+          this.checkout.billingAddress.department.length > 55 ||
           !this.checkout.billingAddress.firstName ||
           !this.checkout.billingAddress.lastName ||
           !this.checkout.billingAddress.email ||
@@ -602,7 +629,7 @@
       async sendInvoice() {
         if (!this.validateBillingAddress()) {
           this.checkout.error =
-            "Bitte füllen Sie die erforderlichen Felder aus!";
+            "Bitte füllen Sie die erforderlichen Felder aus und beachten Sie die Zeichenvorgaben!";
           return null;
         }
 

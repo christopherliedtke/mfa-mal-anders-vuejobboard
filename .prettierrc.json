@@ -1,5 +1,8 @@
 {
-    "tabWidth": 2,
-    "printWidth": 80,
-    "vueIndentScriptAndStyle": true
+  "tabWidth": 2,
+  "printWidth": 80,
+  "semi": true,
+  "vueIndentScriptAndStyle": true,
+  "quoteProps": "consistent",
+  "arrowParens": "avoid"
 }
