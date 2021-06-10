@@ -48,6 +48,96 @@ module.exports = {
     },
     lang: "de"
   },
+  pricingPackages: [
+    {
+      name: "Basis",
+      price: 79,
+      desc: [
+        {
+          html:
+            'Stellenanzeige für <span class="text-secondary bold">60 Tage</span> online'
+        },
+        {
+          html:
+            'Integration <span class="text-secondary bold">Logo & Titelbild</span> in Stellenanzeige für individuelles Branding'
+        },
+        {
+          html:
+            'Veröffentlichung im <span class="text-secondary bold">MFA mal anders</span> Stellenportal'
+        },
+        {
+          html:
+            'Listung bei <span class="text-secondary bold">Google Jobs</span> &ndash; Ihre Anzeige in den organischen Suchergebnissen'
+        },
+        {
+          html:
+            'Einmaliger Versand Ihrer Stellenanzeige in unserem <span class="text-secondary bold" >wöchentlichen Job-Newsletter</span>'
+        }
+      ],
+      primary: "primary",
+      accent: "light-shade"
+    },
+    {
+      name: "Standard",
+      price: 179,
+      desc: [
+        { html: '<span class="bold">Basis Features</span>' },
+        {
+          html:
+            'Stellenanzeige für <span class="text-secondary bold">90 Tage</span> online',
+          icon: "plus-circle"
+        },
+        {
+          html:
+            '<span class="text-secondary bold">Datumsupdate alle 14 Tage</span> &ndash; Ihre Stellenanzeige rutscht nach oben',
+          icon: "plus-circle"
+        },
+        {
+          html:
+            'Wiederholter Versand Ihrer Stellenanzeige in unserem <span class="text-secondary bold" >wöchentlichen Job-Newsletter</span> alle 14 Tage',
+          icon: "plus-circle"
+        },
+        {
+          html:
+            'Social Boost durch Veröffentlichung Ihrer Stellenanzeige <span class="text-secondary bold">auf unserem Facebook-Kanal sowie in speziellen Facebook-Gruppen</span> für MFA/ZFA',
+          icon: "plus-circle"
+        }
+      ],
+      primary: "light",
+      accent: "primary"
+    },
+    {
+      name: "Professional",
+      price: 479,
+      desc: [
+        {
+          html: '<span class="bold">Basis & Standard Features</span>'
+        },
+        {
+          html:
+            '<span class="text-secondary bold">Datumsupdate alle 7 Tage</span> &ndash; Ihre Stellenanzeige rutscht nach oben',
+          icon: "plus-circle"
+        },
+        {
+          html:
+            'Wiederholter Versand Ihrer Stellenanzeige in unserem <span class="text-secondary bold" >wöchentlichen Job-Newsletter</span> alle 7 Tage',
+          icon: "plus-circle"
+        },
+        {
+          html:
+            '<span class="text-secondary bold">Persönliche Beratung</span> zur Erstellung und Optimierung Ihrer Stellenanzeige',
+          icon: "plus-circle"
+        },
+        {
+          html:
+            'Optional &ndash; Vereinbarung zusätzl. Marketingbudget zum Schalten von <span class="text-secondary bold">Google & Social Media Anzeigen</span> zur Reichweitenmaximierung',
+          icon: "plus-circle"
+        }
+      ],
+      primary: "light",
+      accent: "secondary"
+    }
+  ],
   payment: {
     minCost: 3900,
     mediumCost: 6500,

@@ -281,6 +281,14 @@
       <h2 class="mb-4 bold">
         Unsere Preise nach dem “Pay What You Want”* Model
       </h2>
+      <b-row cols="1" cols-lg="3" class="mb-5">
+        <b-col
+          v-for="pricingPackage in $config.pricingPackages"
+          :key="pricingPackage.name"
+        >
+          <PricingCard :pricing="pricingPackage" />
+        </b-col>
+      </b-row>
       <b-row cols="1" cols-md="2">
         <b-col class="mb-4">
           <p>
@@ -618,13 +626,15 @@
   import PayWhatYouWantSuggestion from "@/components/containers/PayWhatYouWantSuggestion.vue";
   import JobAdTippsBanner from "@/components/banners/JobAdTippsBanner.vue";
   import ApplicationProcessBanner from "@/components/banners/ApplicationProcessBanner.vue";
+  import PricingCard from "@/components/ui/PricingCard.vue";
   // import FixedAddJobBtn from "@/components/buttons/FixedAddJobBtn.vue";
   export default {
     name: "Employer",
     components: {
       PayWhatYouWantSuggestion,
       JobAdTippsBanner,
-      ApplicationProcessBanner
+      ApplicationProcessBanner,
+      PricingCard
       // FixedAddJobBtn
     },
     data() {
