@@ -27,6 +27,7 @@ export const stripeCheckoutMixin = {
       title = "",
       code = null,
       amount,
+      pricingPackage,
       accepted = false,
       returnPath = ""
     ) {
@@ -42,6 +43,7 @@ export const stripeCheckoutMixin = {
             url: returnPath,
             code,
             amount,
+            pricingPackage,
             accepted
           }
         );

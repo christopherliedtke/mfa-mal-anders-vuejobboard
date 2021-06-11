@@ -31,16 +31,18 @@
               >in wenigen Minuten Ihre Stellenanzeige</strong
             >
             und erreichen Sie noch heute unsere große Community von MFAs & ZFAs!
-            Mit unserem “Pay What You Want”* Modell veröffentlichen Sie Ihre
-            Stellenanzeige bereits ab
-            {{
-              ($config.payment.minCost / 100)
-                .toFixed(2)
-                .toString()
-                .replace(".", ",")
-            }}
-            {{ $config.payment.currency }} à
-            {{ $config.payment.duration }} Tage.
+            Mit unserem
+            <strong class="text-primary">individuellen Paketen</strong>
+            veröffentlichen Sie Ihre Stellenanzeige bereits ab
+            <strong class="text-primary"
+              >{{
+                ($config.pricingPackages[0].price / 100)
+                  .toFixed(2)
+                  .toString()
+                  .replace(".", ",")
+              }}
+              {{ $config.payment.currency }}</strong
+            >.
           </p>
           <b-button to="/fuer-arbeitgeber" variant="secondary" size="lg"
             >Stellenanzeige schalten</b-button

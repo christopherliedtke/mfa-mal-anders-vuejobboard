@@ -39,11 +39,12 @@
               <Fa icon="check" class="mr-3 mt-1" />
               <div>
                 Veröffentlichen Sie Ihre Stellenaneige
-                <b-link class="text-secondary" href="#pay-what-you-want"
+                <b-link class="text-secondary" href="#preise"
                   >ab
-                  {{ $config.payment.minCost / 100 }}
+                  {{ $config.pricingPackages[0].price / 100 }}
                   {{ $config.payment.currency }}</b-link
                 >
+                à 60 Tage
               </div>
             </li>
           </ul>
@@ -80,7 +81,7 @@
       </b-row>
     </b-container>
 
-    <b-container id="advantages" class="my-5">
+    <b-container id="advantages" class="my-5 pb-3 pb-lg-5">
       <h2 class="h5 text-center">
         Stellenanzeige schalten bei MFA mal anders
       </h2>
@@ -108,16 +109,13 @@
             <Fa class="m-0" :icon="['fa', 'credit-card']" size="3x" />
             <h4 class="h4 mt-4 mb-3">Niedrige Kosten</h4>
             <p>
-              Veröffentlichen Sie Ihre Stellenanzeige nach unserem
-              <b-link href="#pay-what-you-want">
-                <strong>"Pay What You Want"</strong>
-              </b-link>
-              Modell
+              Veröffentlichen Sie Ihre Stellenanzeige und wählen Sie eines
+              unserer Pakete
               <strong>
                 ab
-                {{ $config.payment.minCost / 100 }}
+                {{ $config.pricingPackages[0].price / 100 }}
                 {{ $config.payment.currency }}
-                für {{ $config.payment.duration }} Tage.
+                für {{ $config.pricingPackages[0].duration }} Tage.
               </strong>
             </p>
           </div>
@@ -146,7 +144,7 @@
             >Stellenanzeige erstellen</b-button
           >
           <b-button
-            href="#pay-what-you-want"
+            href="#preise"
             variant="primary"
             size="lg"
             class="d-block d-lg-inline-block mx-1 my-1"
@@ -179,41 +177,76 @@
       </div>
     </b-container>
 
-    <b-container fluid class="pt-3 bg-light-shade">
-      <b-container class="my-4 my-md-5">
-        <h2 class="display-4 text-center bold">
-          Wir kooperieren mit
+    <b-container fluid class="bg-light-shade py-4 py-lg-5 px-0">
+      <b-container id="preise">
+        <h2 class=" display-4 bold text-center">
+          Unsere Pakete in der Übersicht
         </h2>
-        <b-row class="py-4">
+        <div class="my-4 my-lg-5 text-center text-lg-left">
+          <p>
+            Mit MFA mal anders möchten wir Medizinischen & Zahnmedizinischen
+            Fachangestellten die Möglichkeit geben, einen attraktiven Job zu
+            finden. Aber auch Ihnen als Arbeitgeber eine alternative Plattform
+            bereitstellen, die Ihre Stellenangebote an die richtige Zielgruppe
+            ausspielt und so Ihre Chancen erhöht, qualifizierte Bewerbungen zu
+            erhalten.
+          </p>
+          <p>
+            Zur Veröffentlichung Ihrer Stellenanzeige bieten wir verschiedene
+            Pakete an, um Sie bei Ihrer MitarbeiterInnen-Suche optimal
+            unterstützen und ergänzen zu können.
+          </p>
+        </div>
+        <b-row cols="1" cols-lg="3" class="mb-4">
           <b-col
-            v-for="partner in partners"
-            :key="partner.name"
-            class="d-flex flex-column justify-content-center align-items-center"
+            v-for="pricingPackage in $config.pricingPackages"
+            :key="pricingPackage.name"
           >
-            <b-link :href="partner.url" target="_blank">
-              <img
-                fluid
-                :src="partner.img"
-                :alt="`Logo - ${partner.name}`"
-                style="max-height: 75px; max-width: 220px"
-                class="m-5 blend"
-              />
-            </b-link>
-            <!-- eslint-disable-next-line -->
-            <div v-html="partner.html"></div>
-            <b-button
-              v-if="partner.html"
-              class="align-self-start"
-              size="sm"
-              variant="outline-primary"
-              :href="partner.url"
-              target="_blank"
-              rel="noopener"
-              >Mehr erfahren</b-button
-            >
+            <PricingCard :pricing="pricingPackage" />
           </b-col>
         </b-row>
+        <p>
+          Gern bieten wir Ihnen nach Absprache auch individuelle Pakete an, wenn
+          Sie beispielsweise eine Stellenanzeige dauerhaft bei uns schalten
+          möchten. Kontaktieren Sie uns dazu gern über unser
+          <b-link to="/kontakt?role=employer">Kontaktformular</b-link>.
+        </p>
       </b-container>
+    </b-container>
+
+    <b-container class="my-4 my-md-5">
+      <h2 class="display-4 text-center bold">
+        Wir kooperieren mit
+      </h2>
+      <b-row class="py-4">
+        <b-col
+          v-for="partner in partners"
+          :key="partner.name"
+          class="d-flex flex-column justify-content-center align-items-center"
+        >
+          <b-link :href="partner.url" target="_blank">
+            <img
+              fluid
+              :src="partner.img"
+              :alt="`Logo - ${partner.name}`"
+              style="max-height: 75px; max-width: 220px"
+              class="m-5 blend"
+            />
+          </b-link>
+          <!-- eslint-disable-next-line -->
+          <div v-html="partner.html"></div>
+          <b-button
+            v-if="partner.html"
+            class="align-self-start"
+            size="sm"
+            variant="outline-primary"
+            :href="partner.url"
+            target="_blank"
+            rel="noopener"
+            >Mehr erfahren</b-button
+          >
+        </b-col>
+      </b-row>
     </b-container>
 
     <b-container id="numbers-and-facts" class="mb-5 py-md-5">
@@ -276,69 +309,6 @@
                 </b-row>
             </b-container>
         </b-container> -->
-
-    <b-container id="pay-what-you-want" class="mb-5 py-0 py-md-5">
-      <h2 class="mb-4 bold">
-        Unsere Preise nach dem “Pay What You Want”* Model
-      </h2>
-      <b-row cols="1" cols-lg="3" class="mb-5">
-        <b-col
-          v-for="pricingPackage in $config.pricingPackages"
-          :key="pricingPackage.name"
-        >
-          <PricingCard :pricing="pricingPackage" />
-        </b-col>
-      </b-row>
-      <b-row cols="1" cols-md="2">
-        <b-col class="mb-4">
-          <p>
-            Mit MFA mal anders möchten wir Medizinischen Fachangestellten die
-            Möglichkeit geben, einen attraktiven Job zu finden. Aber auch Ihnen
-            als Arbeitgeber eine alternative Plattform bereitstellen, die Ihre
-            Stellenangebote an die richtige Zielgruppe ausspielt und so Ihre
-            Chancen erhöht, qualifizierte Bewerbungen zu erhalten.
-          </p>
-          <b-img
-            class="p-2 p-md-4"
-            right
-            src="@/assets/img/piggy_bank.svg"
-            alt="Person zahlt Preis für MFA / ZFA Stellenanzeige"
-            style="max-width: 45%"
-          />
-          <p>
-            Bei uns finden Sie keine überteuerten Angebote, um Ihre
-            Stellenanzeige zu veröffentlichen.
-          </p>
-          <p>
-            Die Idee ist ganz einfach: Nach dem Prinzip
-            <strong>“Pay What You Want”</strong>* entscheiden Sie, welchen
-            Beitrag Sie für die Nutzung der Stellenbörse und der Informationen
-            rund um MFA mal anders zahlen möchten. So können wir jedem
-            Arbeitgeber die Möglichkeit bieten, vergleichsweise kostengünstig
-            eine Stellenanzeige für {{ $config.payment.duration }} Tage bei uns
-            zu schalten.
-          </p>
-          <p class="small">
-            * Es fällt ein Mindestbeitrag von
-            {{
-              ($config.payment.minCost / 100)
-                .toFixed(2)
-                .toString()
-                .replace(".", ",")
-            }}
-            {{ $config.payment.currency }} pro Stellenanzeige à
-            {{ $config.payment.duration }} Tage an, der für den Betrieb der
-            IT-Infrastruktur und der Pflege des Portals unerlässlich ist.
-          </p>
-        </b-col>
-        <b-col>
-          <PayWhatYouWantSuggestion
-            class="bg-light-shade border-radius1 p-4"
-            :minimum="false"
-          />
-        </b-col>
-      </b-row>
-    </b-container>
 
     <b-container id="more-info" fluid class="bg-light-shade py-5 mb-5">
       <b-container>
@@ -466,11 +436,10 @@
             </h4>
             <p>
               Erstellen Sie jetzt Ihre attraktive Stellenanzeige und erreichen
-              Sie unsere große Community von MFAs & ZFAs! Mit unserem
-              <b-link class="text-secondary" href="#pay-what-you-want"
-                >“Pay What You Want”*</b-link
-              >
-              Modell bestimmen Sie, wie viel Sie zahlen.
+              Sie unsere große Community von MFAs & ZFAs! Mit unseren
+              <b-link class="text-secondary" href="#preise">Paketen</b-link>
+              unterstützen wir Sie optimal und individuell bei der
+              Personalsuche.
             </p>
             <b-button to="/auth/register" variant="secondary"
               >Zur Registrierung</b-button
@@ -509,47 +478,16 @@
           <p>
             Je nach Zahlungsmethode ist Ihre Stellenanzeige sofort online
             (GiroPay, GooglePay, Kreditkarte) oder Zahlung auf Rechnung erst
-            nach bei uns erfolgtem Zahlungseingang.
+            nach erfolgtem Zahlungseingang.
           </p>
           <h3 class="h5 bold">
             Kann ich auch per Rechnung zahlen?
           </h3>
           <p>
-            Ja, die Möglichkeit besteht. Lesen Sie dazu nach einem Klick auf
-            "Jetzt bezahlen" die Anmerkung **im Zahlungsprozess haben Sie die
-            Auswahl zwischen verschiedenen Bezahlfunktionen und können dort
-            unter anderem die "Zahlung per Rechnung" nutzen. Da wir einen
-            erhöhten Aufwand für die separate Rechnungslegung und
-            Zahlungsabwicklung haben, erhöht sich der Rechnungsbetrag bei
-            Zahlung per Rechnung um 5,- Euro. Ihre Stellenanzeige wird von uns
+            Ja, die Möglichkeit besteht. Ihre Stellenanzeige wird von uns
             freigeschaltet sobald wir einen Zahlungseingang von Ihnen verbuchen
             können.
           </p>
-          <h3 class="h5 bold">
-            Woher weiß ich, wie viel ich für meine Stellenanzeige zahlen soll?
-          </h3>
-          <p>
-            Wir arbeiten grundsätzlich nach dem "Pay What You Want" Prinzip,
-            d.h. Sie können selbst entscheiden, wie viel Sie für die
-            Veröffentlichung Ihrer Stellenanzeige bei uns zahlen möchten. Um den
-            Betrieb der Plattform zu sichern, erheben wir lediglich einen
-            Mindestbetrag von
-            {{
-              ($config.payment.minCost / 100)
-                .toFixed(2)
-                .toString()
-                .replace(".", ",")
-            }}
-            {{ $config.payment.currency }}. Wer heutzutage auf Personalsuche
-            ist, weiß, dass die Veröffentlichung von Stellenanzeigen sehr
-            schnell sehr teuer werden kann. Mit unserem Nischenportal möchten
-            wir Ihnen eine maßgeschneiderte Alternative anbieten. Wir haben
-            Ihnen <b-link href="#pay-what-you-want">einige Vorschläge</b-link>,
-            die weit unterhalb der großen Allgemein-Jobportale liegen,
-            zusammengestellt.
-          </p>
-        </b-col>
-        <b-col>
           <h3 class="h5 bold">
             Kann ich meine Stellenanzeige im Nachhinein ändern?
           </h3>
@@ -558,18 +496,20 @@
             jederzeit anpassen. Die Änderungen werden sofort automatisch
             übernommen.
           </p>
+        </b-col>
+        <b-col>
           <h3 class="h5 bold">
             Wie lange ist meine Stellenanzeige online?
           </h3>
           <p>
-            Nach bestätigter Zahlung ist Ihre Stellenanzeige für
-            {{ $config.payment.duration }} Tage freigeschaltet. Ihre Stelle ist
-            so lange online, wie die {{ $config.payment.duration }} Tage sowie
-            Ihre angegebene Bewerbungsfrist nicht abgelaufen sind. Über Ihren
-            Account können Sie Ihre Stellenanzeige jederzeit selbst offline
-            nehmen oder löschen. Für individuelle Stellenpakete können Sie uns
-            direkt über das
-            <b-link to="/kontakt">Kontaktformular</b-link>
+            Die Laufzeit Ihrer Stellenanzeige können Sie über die verfügbaren
+            Stellenpakete auswählen. Die Mindestlaufzeit beträgt 60 Tage. Ihre
+            Stelle ist so lange online, wie Ihre gewählte Laufzeit sowie Ihre
+            angegebene Bewerbungsfrist nicht abgelaufen sind. Über Ihren Account
+            können Sie Ihre Stellenanzeige jederzeit selbst offline nehmen oder
+            löschen. Für individuelle Stellenpakete können Sie uns direkt über
+            das
+            <b-link to="/kontakt?role=employer">Kontaktformular</b-link>
             kontaktieren.
           </p>
           <h3 class="h5 bold">
@@ -580,25 +520,32 @@
             wird diese automatisch bei Google Jobs gelistet (es kann ein wenig
             Zeit in Anspruch nehmen, bis Google Ihre Anzeige integriert).
             Darüber hinaus verteilen wir Ihre Stellenanzeige über unseren Jobs
-            Newsletter sowie unsere Social Media Kanäle.
+            Newsletter sowie je nach Paket in unsere Social Media Kanälen.
           </p>
           <h3 class="h5 bold">
             Ich benötige Hilfe bei der Erstellung einer attraktiven
             Stellenanzeige. Kann ich Unterstützung von Ihnen bekommen?
           </h3>
           <p>
-            Mit unseren
+            In unserem "Professional" Paket erhalten Sie individuelle und
+            persönliche Beratung bei der Erstellung und Optimierung Ihrer
+            Stellenanzeige. Zudem geben wir Ihnen mit unseren
             <b-link href="#tipps-stellenanzeigen"
               >Tipps für attraktive Stellenanzeigen</b-link
             >
-            geben wir Ihnen unseren Erfahrungsschatz an die Hand. Benötigen Sie
-            darüber hinaus Hilfe, melden Sie sich gern über das
-            <b-link to="/kontakt">Kontaktformular</b-link> bei uns.
+            wichtige Hinweise an die Hand. Benötigen Sie darüber hinaus Hilfe,
+            melden Sie sich gern auch über das
+            <b-link to="/kontakt?role=employer">Kontaktformular</b-link> bei
+            uns.
           </p>
         </b-col>
       </b-row>
       <div class="d-flex flex-column align-items-center mt-4">
-        <b-button to="/kontakt" variant="primary" size="lg" class="mx-1 my-1"
+        <b-button
+          to="/kontakt?role=employer"
+          variant="primary"
+          size="lg"
+          class="mx-1 my-1"
           >Kontakt</b-button
         >
         <b-button
@@ -611,8 +558,6 @@
       </div>
     </b-container>
 
-    <!-- <FixedAddJobBtn /> -->
-
     <Head
       title="Motivierte ArzthelferInnen – MFA & ZFA gesucht?"
       desc="MFA mal anders ist das Jobportal speziell nur für Medizinische / Zahnmedizinische Fachangestellte. Gesucht – Gefunden! Mit günstigen Stellenanzeigen, die wirklich ankommen."
@@ -623,19 +568,15 @@
 </template>
 
 <script>
-  import PayWhatYouWantSuggestion from "@/components/containers/PayWhatYouWantSuggestion.vue";
   import JobAdTippsBanner from "@/components/banners/JobAdTippsBanner.vue";
   import ApplicationProcessBanner from "@/components/banners/ApplicationProcessBanner.vue";
   import PricingCard from "@/components/ui/PricingCard.vue";
-  // import FixedAddJobBtn from "@/components/buttons/FixedAddJobBtn.vue";
   export default {
     name: "Employer",
     components: {
-      PayWhatYouWantSuggestion,
       JobAdTippsBanner,
       ApplicationProcessBanner,
       PricingCard
-      // FixedAddJobBtn
     },
     data() {
       return {

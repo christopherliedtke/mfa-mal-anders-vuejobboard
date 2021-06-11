@@ -3,69 +3,36 @@
     <h1 class="title">{{ title }}</h1>
     <b-container class="checkout py-3 py-lg-5">
       <div>
-        <h5 class="mb-4">
+        <h2 class="mb-4">
           <strong>{{ job && job.title }}</strong>
-        </h5>
-        <p>
-          Bitte wählen Sie den gewünschten Betrag, den Sie nach unserem
-          <em>“Pay What You Want”**</em> Modell für die Veröffentlichung der
-          Stellenanzeige bezahlen möchten.
+        </h2>
+        <p class="mb-4">
+          Bitte wählen Sie Ihr gewünschtes Stellenpaket.
         </p>
 
-        <div class="mb-3">
-          <strong>Betrag:</strong>
-          {{
-            (amountComputed / 100)
-              .toFixed(2)
-              .toString()
-              .replace(".", ",")
-          }}
-          {{ $config.payment.currency }}
-          <Fa
-            id="popover-payment-recommendation"
-            class="position-relative text-info mr-2"
-            style="top: -5px; cursor: pointer"
-            icon="info-circle"
-            scale="1"
-          />
-          <span class="small">
-            {{ amountCorelation }}
-          </span>
+        <b-row cols="1" cols-lg="3" class="mb-4">
+          <b-col
+            v-for="pricingPackage in $config.pricingPackages"
+            :key="pricingPackage.name"
+          >
+            <PricingCard
+              :pricing="pricingPackage"
+              :checkout="true"
+              :active="pricingPackage.name === checkout.pricingPackage"
+              @update-pricing-package="updatePricingPackage"
+            />
+          </b-col>
+        </b-row>
+
+        <div class="d-flex justify-content-end">
+          <b-button variant="outline-primary" to="/kontakt?role=employer"
+            >Sie haben noch Fragen? Nehmen Sie jetzt Kontakt auf!</b-button
+          >
         </div>
-        <b-popover
-          target="popover-payment-recommendation"
-          triggers="hover"
-          placement="bottomright"
-          :fallback-placement="['bottom']"
-          :container="null"
-        >
-          <PayWhatYouWantSuggestion class="mt-3" :minimum="true" />
-        </b-popover>
 
         <b-form class="mb-4">
-          <b-form-input
-            v-model="checkout.amount"
-            type="range"
-            :min="$config.payment.minCost"
-            :max="$config.payment.maxCost"
-            step="100"
-          />
-          <div class="my-3">
-            <span>
-              <strong>Laufzeit:</strong>
-              {{ $config.payment.duration }} Tage
-              <br />
-            </span>
-            <span>
-              <strong>Datumsaktualisierung:</strong>
-              {{
-                refreshFrequencyComputed != 0
-                  ? "alle " + refreshFrequencyComputed + " Tage"
-                  : "-"
-              }}
-            </span>
-          </div>
-          <b-input-group class="mt-3">
+          <label for="coupon">Haben Sie einen gültigen Aktionscode?</label>
+          <b-input-group>
             <b-form-input
               id="coupon"
               v-model="checkout.coupon.code"
@@ -87,6 +54,22 @@
             Ihr eingegebener Aktionscode ist nicht gültig oder wurde bereits
             benutzt.
           </b-form-invalid-feedback>
+          <b-form-valid-feedback
+            :state="
+              checkout.coupon.discount > 0 ||
+                checkout.coupon.refreshFrequency > 0
+            "
+          >
+            <span v-if="checkout.coupon.discount">
+              Sie erhalten einen Rabatt von
+              {{ checkout.coupon.discount * 100 }} Prozent.
+            </span>
+            <span v-if="checkout.coupon.refreshFrequency > 0"
+              >Sie erhalten eine zusätzliche Datumsaktualisierung Ihrer
+              Stellenanzeige alle
+              {{ checkout.coupon.refreshFrequency }} Tage.</span
+            >
+          </b-form-valid-feedback>
           <hr class="mt-4" />
 
           <label for="payment-method" class="bold">Zahlungsart auswählen</label>
@@ -113,14 +96,7 @@
                 <span class="small">Sofortige Veröffentlichung</span>
               </b-form-radio>
               <b-form-radio value="invoice"
-                >Rechnung*** (+
-                {{
-                  ($config.payment.invoiceCost / 100)
-                    .toFixed(2)
-                    .toString()
-                    .replace(".", ",")
-                }}
-                {{ $config.payment.currency }}) <br />
+                >Rechnung <br />
                 <span class="small">Veröffentlichung nach Geldeingang</span>
               </b-form-radio>
             </b-form-radio-group>
@@ -264,13 +240,28 @@
               id="billing-address-email"
               v-model="checkout.billingAddress.email"
               type="text"
-              placeholder="E-Mail Adresse angeben..."
+              placeholder="E-Mail Adresse eingeben..."
               trim
               :state="
                 checkout.validated
                   ? checkout.billingAddress.email
                     ? true
                     : false
+                  : null
+              "
+            />
+            <label for="billing-address-phone">Telefonnummer</label>
+            <b-input
+              id="billing-address-phone"
+              v-model="checkout.billingAddress.phone"
+              type="text"
+              placeholder="Telefonnummer eingeben..."
+              trim
+              :state="
+                checkout.validated
+                  ? checkout.billingAddress.phone
+                    ? true
+                    : null
                   : null
               "
             />
@@ -351,39 +342,6 @@
             gelesen und akzeptiere diese.
           </b-form-checkbox>
         </b-form>
-        <div class="small">
-          <div>
-            ** Es fällt ein
-            <strong
-              >Mindestbeitrag von
-              {{
-                ($config.payment.minCost / 100)
-                  .toFixed(2)
-                  .toString()
-                  .replace(".", ",")
-              }}
-              {{ $config.payment.currency }} pro Stellenanzeige</strong
-            >
-            an, um den Betrieb des Portals aufrecht zu erhalten.
-          </div>
-          <div class="mt-1">
-            *** Sollten Sie ausschließlich auf vorab ausgestellte Rechnung
-            bezahlen können, erhalten Sie diese nach Anforderung auf Ihre
-            angegebene E-Mail Adresse. In dem Fall erhöht sich Ihr gewählter
-            Kostenbeitrag um
-            {{
-              ($config.payment.invoiceCost / 100)
-                .toFixed(2)
-                .toString()
-                .replace(".", ",")
-            }}
-            {{ $config.payment.currency }}.
-            <strong
-              >Ihre Stellenanzeige wird nach erfolgtem Geldeingang bei uns
-              freigeschaltet.</strong
-            >
-          </div>
-        </div>
       </div>
       <div class="d-flex justify-content-between align-items-start mt-5">
         <b-button class="mr-2 mb-2" variant="danger" @click="$router.go(-1)"
@@ -397,7 +355,7 @@
             :disabled="!checkout.accepted"
             @click.prevent="sendInvoice"
             >{{
-              ((amountComputed + 500) / 100)
+              (amountComputed / 100)
                 .toFixed(2)
                 .toString()
                 .replace(".", ",")
@@ -428,26 +386,25 @@
 </template>
 
 <script>
-  import { BPopover } from "bootstrap-vue";
-  import Vue from "vue";
-  Vue.component("BPopover", BPopover);
+  // import { BPopover } from "bootstrap-vue";
+  // import Vue from "vue";
+  // Vue.component("BPopover", BPopover);
   import {
     contactGenderOptions,
     contactTitleOptions
   } from "@/config/formDataConfig.json";
-  import PayWhatYouWantSuggestion from "@/components/containers/PayWhatYouWantSuggestion";
   import { stripeCheckoutMixin } from "@/mixins/stripeCheckoutMixin";
+  import PricingCard from "@/components/ui/PricingCard.vue";
   export default {
     name: "UserDashboardCheckoutJob",
-    components: {
-      PayWhatYouWantSuggestion
-    },
+    components: { PricingCard },
     mixins: [stripeCheckoutMixin],
     data() {
       return {
         title: "Zahlung – Stellenanzeige veröffentlichen",
         job: Object,
         checkout: {
+          pricingPackage: localStorage.getItem("pricingPackage") || "Standard",
           paymentMethod: "stripe",
           amount: null,
           coupon: {
@@ -464,6 +421,7 @@
             company: "",
             department: "",
             email: "",
+            phone: "",
             street: "",
             zipCode: "",
             location: ""
@@ -480,42 +438,24 @@
       amountComputed() {
         return (
           Math.round(
-            this.checkout.amount * (1 - this.checkout.coupon.discount) * 100
+            this.$config.pricingPackages.find(
+              pkg => pkg.name === this.checkout.pricingPackage
+            ).price *
+              (1 - this.checkout.coupon.discount) *
+              100
           ) / 100
         );
-      },
-      amountCorelation() {
-        let text;
-        if (this.checkout.amount >= this.$config.payment.xLargeCost) {
-          text = "~ große Versorgungseinrichtung | 20+ MitarbeiterInnen";
-        } else if (this.checkout.amount >= this.$config.payment.largeCost) {
-          text =
-            "~ große Praxis oder kleinere bis mittlere Versorgungseinrichtung | 11 - 20 MitarbeiterInnen";
-        } else if (this.checkout.amount >= this.$config.payment.mediumCost) {
-          text = "~ mittlere Praxis | 6 - 10 MitarbeiterInnen";
-        } else {
-          text = "~ kleine Praxis | 1 - 5 MitarbeiterInnen";
-        }
-
-        return text;
       },
       refreshFrequencyComputed() {
         let value = 0;
         if (this.checkout.coupon.refreshFrequency) {
           value = this.checkout.coupon.refreshFrequency;
-        } else if (this.checkout.amount >= this.$config.payment.refreshCost) {
-          value = 14;
         }
-
         return value;
       }
     },
     async mounted() {
       await this.getJob();
-
-      if (this.job.company.size) {
-        this.calculatePrice();
-      }
 
       if (this.job.company.name) {
         this.setBillingAddress();
@@ -529,33 +469,33 @@
           const job = await this.$axios.get("/graphql", {
             params: {
               query: `
-                                query {
-                                    myJob (_id: "${this.$route.params.jobId}") {
-                                        _id
-                                        createdAt
-                                        updatedAt
-                                        publishedAt
-                                        status
-                                        paid
-                                        paidExpiresAt
-                                        applicationDeadline
-                                        title
-                                        company {
-                                            name
-                                            street
-                                            zipCode
-                                            location
-                                            state
-                                            size
-                                        }
-                                        payment {
-                                            status
-                                            paidAt
-                                            paymentExpiresAt
-                                        }
-                                    }
-                                }
-                            `
+                query {
+                  myJob (_id: "${this.$route.params.jobId}") {
+                    _id
+                    createdAt
+                    updatedAt
+                    publishedAt
+                    status
+                    paid
+                    paidExpiresAt
+                    applicationDeadline
+                    title
+                    company {
+                      name
+                      street
+                      zipCode
+                      location
+                      state
+                      size
+                    }
+                    payment {
+                      status
+                      paidAt
+                      paymentExpiresAt
+                    }
+                  }
+                }
+              `
             }
           });
 
@@ -579,32 +519,20 @@
 
         this.$store.dispatch("setOverlay", false);
       },
-      calculatePrice() {
-        switch (this.job.company.size) {
-          case "1 - 5 Mitarbeiter":
-            this.checkout.amount = this.$config.payment.minCost;
-            break;
-          case "6 - 10 Mitarbeiter":
-            this.checkout.amount = this.$config.payment.mediumCost;
-            break;
-          case "11 - 20 Mitarbeiter":
-            this.checkout.amount = this.$config.payment.largeCost;
-            break;
-          case "20+ Mitarbeiter":
-            this.checkout.amount = this.$config.payment.xLargeCost;
-            break;
-        }
+      updatePricingPackage(pkg) {
+        this.checkout.pricingPackage = pkg;
       },
       async setBillingAddress() {
         if (this.$store.state.auth.loggedIn && this.$store.state.auth.user) {
           this.checkout.billingAddress = {
-            gender: this.$store.state.auth.user.gender || null,
-            title: this.$store.state.auth.user.title || null,
+            gender: this.$store.state.auth.user.gender || "",
+            title: this.$store.state.auth.user.title || "",
             firstName: this.$store.state.auth.user.firstName || "",
             lastName: this.$store.state.auth.user.lastName || "",
             company: this.job.company.name,
             department: "",
             email: this.$store.state.auth.user.email,
+            phone: "",
             street: this.job.company.street,
             zipCode: this.job.company.zipCode,
             location: this.job.company.location
@@ -639,6 +567,7 @@
           const response = await this.$axios.post("/api/invoice/get-invoice", {
             jobId: this.job._id,
             jobTitle: this.job.title,
+            pricingPackage: this.checkout.pricingPackage,
             amount: this.checkout.amount,
             paymentMethod: this.checkout.paymentMethod,
             couponCode: this.checkout.coupon.code,
@@ -737,6 +666,7 @@
           this.job.title,
           this.checkout.coupon.code,
           this.checkout.amount,
+          this.checkout.pricingPackage,
           this.checkout.accepted,
           "/user/dashboard?tab=1"
         );
@@ -747,15 +677,15 @@
         const coupon = await this.$axios.get("/graphql", {
           params: {
             query: `
-                            query {
-                                validateCoupon (code: "${this.checkout.coupon.code}") {
-                                    _id
-                                    code
-                                    discount
-                                    refreshFrequency
-                                }
-                            }
-                        `
+              query {
+                validateCoupon (code: "${this.checkout.coupon.code}") {
+                  _id
+                  code
+                  discount
+                  refreshFrequency
+                }
+              }
+            `
           }
         });
 
@@ -774,9 +704,3 @@
     }
   };
 </script>
-
-<style lang="scss" scoped>
-  .popover {
-    max-width: 600px;
-  }
-</style>

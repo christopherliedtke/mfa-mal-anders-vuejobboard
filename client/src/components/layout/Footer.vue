@@ -111,7 +111,9 @@
               >Bewerbungstipps</b-nav-item
             >
             <b-nav-item to="/karriere/mfa/gehalt">Gehaltsrechner</b-nav-item>
-            <b-nav-item to="/dashboard">Stellenanzeige schalten</b-nav-item>
+            <b-nav-item to="/user/dashboard?tab=1"
+              >Stellenanzeige schalten</b-nav-item
+            >
 
             <b-nav-item class="mt-5" to="/kontakt">Kontakt</b-nav-item>
             <b-nav-item to="/datenschutz">Datenschutzerklärung</b-nav-item>

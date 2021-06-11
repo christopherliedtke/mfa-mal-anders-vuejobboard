@@ -51,7 +51,8 @@ module.exports = {
   pricingPackages: [
     {
       name: "Basis",
-      price: 79,
+      price: 7900,
+      duration: 60,
       desc: [
         {
           html:
@@ -67,7 +68,7 @@ module.exports = {
         },
         {
           html:
-            'Listung bei <span class="text-secondary bold">Google Jobs</span> &ndash; Ihre Anzeige in den organischen Suchergebnissen'
+            'Listung bei <span class="text-secondary bold">Google Jobs</span> &ndash; Ihre Anzeige in den organischen Suchergebnissen von Google'
         },
         {
           html:
@@ -79,7 +80,8 @@ module.exports = {
     },
     {
       name: "Standard",
-      price: 179,
+      price: 17900,
+      duration: 90,
       desc: [
         { html: '<span class="bold">Basis Features</span>' },
         {
@@ -99,7 +101,7 @@ module.exports = {
         },
         {
           html:
-            'Social Boost durch Veröffentlichung Ihrer Stellenanzeige <span class="text-secondary bold">auf unserem Facebook-Kanal sowie in speziellen Facebook-Gruppen</span> für MFA/ZFA',
+            'Social Boost durch Veröffentlichung Ihrer Stellenanzeige <span class="text-secondary bold">auf unserem Facebook-Kanal sowie in speziellen Facebook-Gruppen</span> für MFA & ZFA',
           icon: "plus-circle"
         }
       ],
@@ -108,7 +110,8 @@ module.exports = {
     },
     {
       name: "Professional",
-      price: 479,
+      price: 47900,
+      duration: 90,
       desc: [
         {
           html: '<span class="bold">Basis & Standard Features</span>'
@@ -125,7 +128,7 @@ module.exports = {
         },
         {
           html:
-            '<span class="text-secondary bold">Persönliche Beratung</span> zur Erstellung und Optimierung Ihrer Stellenanzeige',
+            '<span class="text-secondary bold">Persönliche Beratung</span> bei der Erstellung und Optimierung Ihrer Stellenanzeige',
           icon: "plus-circle"
         },
         {

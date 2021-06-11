@@ -1,5 +1,11 @@
 <template>
-  <div class="pricing-card shadow1 border-radius2 m-1 mb-3">
+  <div
+    :class="
+      `pricing-card shadow${
+        active ? '2' : '1'
+      } border-radius2 bg-light m-1 mb-3`
+    "
+  >
     <div
       :class="
         `h2 bold text-center text-${pricing.primary} bg-${pricing.accent} border-radius2  p-3`
@@ -9,7 +15,7 @@
     </div>
     <div class="p-3">
       <span class="display-3 text-center d-block"
-        ><span class="bold">{{ pricing.price }}</span
+        ><span class="bold">{{ pricing.price / 100 }}</span
         ><span>€</span></span
       >
     </div>
@@ -29,10 +35,12 @@
       <b-button
         class="mt-2 mt-lg-3"
         block
-        variant="secondary"
-        to="/user/dashboard?tab=1"
+        :variant="active ? 'primary' : 'secondary'"
         @click="setPricingPackage(pricing.name)"
-        >Weiter mit {{ pricing.name }}</b-button
+        >{{ !checkout ? "Weiter mit " : "" }}{{ pricing.name
+        }}{{
+          checkout ? (active ? " Ausgewählt" : " Auswählen") : ""
+        }}</b-button
       >
     </div>
   </div>
@@ -53,11 +61,25 @@
             accent: "light-shade"
           };
         }
+      },
+      checkout: {
+        type: Boolean,
+        default: false
+      },
+      active: {
+        type: Boolean,
+        default: false
       }
     },
     methods: {
-      setPricingPackage(value) {
-        localStorage.setItem("pricingPackage", value);
+      setPricingPackage(pkg) {
+        localStorage.setItem("pricingPackage", pkg);
+
+        if (!this.checkout) {
+          this.$router.push("/user/dashboard?tab=1");
+        } else {
+          this.$emit("update-pricing-package", pkg);
+        }
       }
     }
   };

@@ -5,13 +5,7 @@
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
     <b-container class="contact py-3 py-lg-5">
-      <ContactForm
-        title="Nimm Kontakt auf!"
-        intro="Hast Du Fragen, Anregungen oder Hinweise zur Webseite, suchst
-                Austausch zum Thema “Jobs und Karriere für MFAs / ZFAs” oder benötigst
-                Hilfe bei der Jobsuche bzw. Personalsuche? Dann schreibe uns
-                gern und nutze dazu das Kontaktformular."
-      />
+      <ContactForm :title="formContent.title" :intro="formContent.intro" />
     </b-container>
     <Head
       :title="title"
@@ -32,6 +26,16 @@
     data() {
       return {
         title: "Kontakt",
+        formContent: {
+          title:
+            this.$route.query.role != "employer"
+              ? "Nimm Kontakt auf!"
+              : "Nehmen Sie Kontakt auf!",
+          intro:
+            this.$route.query.role != "employer"
+              ? "Hast Du Fragen, Anregungen oder Hinweise zur Webseite, suchst Austausch zum Thema “Jobs und Karriere für MFAs / ZFAs” oder benötigst Hilfe bei der Jobsuche bzw. Personalsuche? Dann schreibe uns gern und nutze dazu das Kontaktformular."
+              : ""
+        },
         breadcrumbs: [
           { text: "Home", to: "/" },
           { text: "Kontakt", to: "/kontakt" }
