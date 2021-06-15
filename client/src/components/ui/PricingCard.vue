@@ -1,10 +1,9 @@
 <template>
   <div
-    :class="
-      `pricing-card shadow${
-        active ? '2' : '1'
-      } border-radius2 bg-light m-1 mb-3`
-    "
+    :class="[
+      'pricing-card border-radius2 bg-light m-1 mb-3',
+      active ? 'shadow2' : 'shadow1'
+    ]"
   >
     <div
       :class="

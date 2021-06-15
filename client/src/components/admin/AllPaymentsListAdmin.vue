@@ -201,6 +201,9 @@
             sortable: true
           },
           {
+            key: "pricingPackage"
+          },
+          {
             key: "invoiceNo",
             sortable: true
           },
@@ -323,6 +326,7 @@
                                         invoiceNo
                                         invoiceDate
                                         paymentType
+                                        pricingPackage
                                         amount
                                         fee
                                         taxes
@@ -381,6 +385,7 @@
                                     invoiceNo
                                     invoiceDate
                                     paymentType
+                                    pricingPackage
                                     amount
                                     fee
                                     taxes

@@ -15,20 +15,31 @@ const sanitizeHtml = require("sanitize-html");
 // #access: Private
 router.post("/get-invoice", verifyToken, async (req, res) => {
   try {
-    if (req.body.amount < config.payment.minPricePerJob) {
-      throw new Error(
-        "Error STRIPE Invalid amount entered for stripe checkout!"
-      );
+    if (!req.body.pricingPackage) {
+      throw new Error("Error on /get-invoice - no pricingPackage provided!");
     }
 
     const {
       jobId,
       jobTitle,
-      amount,
+      pricingPackage,
       paymentMethod,
       couponCode,
       billingAddress,
     } = req.body;
+
+    const amount = config.payment.pricingPackages.find(
+      pkg => pkg.name.toLowerCase() === pricingPackage.toLowerCase()
+    ).price;
+    let refreshFrequency = config.payment.pricingPackages.find(
+      pkg => pkg.name.toLowerCase() === pricingPackage.toLowerCase()
+    ).refreshFrequency;
+
+    if (!amount) {
+      throw new Error(
+        `Error on /get-invoice - ${pricingPackage} not found in pricingPackages!`
+      );
+    }
 
     let validatedCoupon = {};
 
@@ -38,14 +49,12 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
 
     const couponId = validatedCoupon._id || "";
     const discount = validatedCoupon.discount || 0;
-    let refreshFrequency = validatedCoupon.refreshFrequency || 0;
 
-    if (refreshFrequency == 0) {
-      config.payment.refreshFrequencies.forEach((frequency) => {
-        if (parseInt(amount) >= frequency.amount) {
-          refreshFrequency = frequency.refreshAfterDays;
-        }
-      });
+    if (
+      validatedCoupon.refreshFrequency > 0 &&
+      validatedCoupon.refreshFrequency < refreshFrequency
+    ) {
+      refreshFrequency = validatedCoupon.refreshFrequency;
     }
 
     const lastInvoiceNo = await Payment.find({}, "invoiceNo")
@@ -59,7 +68,8 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
       paymentType: paymentMethod,
       invoiceNo,
       invoiceDate: new Date(),
-      amount: parseInt(amount) * (1 - discount) + config.invoice.feeFix,
+      pricingPackage,
+      amount: parseInt(amount) * (1 - discount),
       fee: 0,
       taxes: config.payment.tax * amount,
       paymentExpiresAt: new Date(
@@ -69,6 +79,7 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
       job: jobId,
       user: req.user._id,
       billingEmail: sanitizeHtml(billingAddress.email),
+      billingPhone: sanitizeHtml(billingAddress.phone),
       billingCompany: sanitizeHtml(billingAddress.company),
       billingDepartment: sanitizeHtml(billingAddress.department),
       billingGender: sanitizeHtml(billingAddress.gender),
@@ -107,82 +118,6 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
 
     const invoice = await createInvoice(payment, __dirname + "/../invoices/");
 
-    // const emailDataToAdmin = {
-    //   from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
-    //   to: config.website.contactEmail,
-    //   replyTo: payment.billingEmail,
-    // subject: `[Rechnungsanforderung] - ${
-    //   (parseInt(payment.amount) * (1 - payment.discount)) / 100
-    // }€ | ${jobTitle} | ${jobId}`,
-    //   html: `
-    //             <h1>Rechnungsanforderung</h1>
-    //             <h2>Stellenanzeige</h2>
-    //             <p>
-    //                 Job ID: ${jobId} <br>
-    //                 Job Title: ${jobTitle} <br>
-    //                 Zahlungsmethode: ${payment.paymentType} <br>
-    //                 Betrag: ${
-    //                   (parseInt(payment.amount) * (1 - payment.discount)) / 100
-    //                 } EUR <br>
-    //                 InvoiceNo: ${payment.invoiceNo} <br>
-    //                 Aktionscode: ${payment.coupon} <br>
-    //                 Discount: ${payment.discount} <br>
-    //                 Refresh Frequency: ${refreshFrequency}
-    //             </p>
-    //             <h2>User</h2>
-    //             <p>
-    //                 User ID: ${req.user._id}
-    //             </p>
-    //             <h2>Rechnungsadresse</h2>
-    //             <p>
-    //                 Unternehmen: ${payment.billingCompany} <br>
-    //                 Name: ${payment.billingFullName} <br>
-    //                 Straße und Hausnummer: ${payment.billingStreet} <br>
-    //                 PLZ: ${payment.billingZipCode} <br>
-    //                 Ort: ${payment.billingLocation} <br>
-    //                 E-Mail Adresse: ${payment.billingEmail}
-    //             </p>
-    //             <hr>
-    //             <h1>E-Mail</h1>
-    //             <p>[Rechnung ${
-    //               "RE-" +
-    //               "000000".slice(0, 6 - payment.invoiceNo.toString().length) +
-    //               payment.invoiceNo.toString()
-    //             }] Veröffentlichung Ihrer Stellenanzeige '${jobTitle}'</p>
-    //             <p>
-    //                 ${
-    //                   payment.billingFullName.includes("Herr")
-    //                     ? "Sehr geehrter"
-    //                     : payment.billingFullName.includes("Frau")
-    //                     ? "Sehr geehrte"
-    //                     : "Sehr geehrte/r"
-    //                 } ${payment.billingFullName},
-    //             </p>
-    //             <p>
-    //                 vielen Dank für die Erstellung Ihrer Stellenanzeige '${jobTitle}' auf unserem Portal 'MFA mal anders'. Wie gewünscht haben wir Ihnen die beigefügte Rechnung erstellt.
-    //             </p>
-    //             <p>
-    //                 Sobald Ihre Zahlung bei uns eingegangen ist, veröffentlichen wir Ihre Stellenanzeige und geben Ihnen noch einmal Bescheid. Anschließend haben Sie weiterhin die Möglichkeit, Ihre Stellenanzeige wie gewohnt selbst zu bearbeiten, offline zu nehmen oder zu löschen.
-    //             </p>
-    //             <p>
-    //                 Sollten Sie noch Fragen oder Anregungen haben, melden Sie sich gern bei uns.
-    //             </p>
-    //             <p>
-    //                 Mit freundlichen Grüßen
-    //             </p>
-    //             <p>
-    //                 Kristin Maurach
-    //             </p>
-    //             `,
-    //   attachments: [
-    //     {
-    //       filename: invoice.fileName,
-    //       path: invoice.path,
-    //       contentType: "application/pdf",
-    //     },
-    //   ],
-    // };
-
     const emailDataToCustomer = {
       from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
       to: payment.billingEmail,
@@ -192,7 +127,7 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
         "RE-" +
         "000000".slice(0, 6 - payment.invoiceNo.toString().length) +
         payment.invoiceNo.toString()
-      }] - ${
+      }] - ${pricingPackage} | ${
         (parseInt(payment.amount) * (1 - payment.discount)) / 100
       }€ - Veröffentlichung Ihrer Stellenanzeige '${jobTitle}'`,
       html: `
@@ -206,11 +141,21 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
                     } ${payment.billingFullName},
                 </p>
                 <p>
-                    vielen Dank für die Erstellung Ihrer Stellenanzeige '${jobTitle}' auf unserem Portal 'MFA mal anders'. Wie gewünscht haben wir Ihnen die beigefügte Rechnung erstellt.
+                    vielen Dank für die Erstellung Ihrer Stellenanzeige '${jobTitle}' auf unserem Stellen- und Karriereportal speziell für MFA & ZFA – 'MFA mal anders'. Wie gewünscht erhalten Sie die beigefügte Rechnung für Ihr gewähltes Stellenpaket – ${pricingPackage}.
                 </p>
-                <p>
-                    Sobald Ihre Zahlung bei uns eingegangen ist, veröffentlichen wir Ihre Stellenanzeige und geben Ihnen noch einmal Bescheid. Anschließend haben Sie weiterhin die Möglichkeit, Ihre Stellenanzeige wie gewohnt selbst zu bearbeiten, offline zu nehmen oder zu löschen.
-                </p>
+                ${
+                  pricingPackage === "Professional"
+                    ? `
+                      <p>
+                        Mit Ihrem gewählten Stellenpaket "${pricingPackage}" erhalten Sie eine individuelle, persönliche Beratung zur Optimierung Ihrer Stellenanzeige. Wir werden Sie innerhalb von 2 Werktagen direkt kontaktieren und das weitere Vorgehen mit Ihnen besprechen. Ihre Stellenanzeige wird nach der Optimierung und Absprache mit Ihnen von uns veröffentlicht. Die Laufzeit beginnt natürlich erst nach erfolgter Veröffentlichung.
+                      </p>
+                    `
+                    : `
+                      <p>
+                        Sobald Ihre Zahlung bei uns eingegangen ist, veröffentlichen wir Ihre Stellenanzeige und geben Ihnen noch einmal Bescheid. Anschließend haben Sie weiterhin die Möglichkeit, Ihre Stellenanzeige wie gewohnt selbst zu bearbeiten, offline zu nehmen oder zu löschen.
+                      </p>
+                    `
+                }
                 <p>
                     Sollten Sie noch Fragen oder Anregungen haben, melden Sie sich gern bei uns.
                 </p>
@@ -251,7 +196,6 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
 
     const emailSent = await Promise.all([
       emailService.sendMail(emailDataToCustomer),
-      // emailService.sendMail(emailDataToAdmin),
     ]);
 
     console.log("emailSent: ", emailSent);

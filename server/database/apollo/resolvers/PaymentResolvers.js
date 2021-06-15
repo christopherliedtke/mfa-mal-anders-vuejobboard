@@ -51,18 +51,19 @@ const PaymentResolvers = {
           addObj.paidAt = new Date();
           addObj.paymentExpiresAt = new Date(
             new Date().setHours(24) +
-              1000 * 60 * 60 * 24 * config.payment.paymentExpirationDays
+              1000 *
+                60 *
+                60 *
+                24 *
+                (config.payment.pricingPackages.find(
+                  pkg =>
+                    pkg.name.toLowerCase() ===
+                    addObj.pricingPackage.toLowerCase()
+                ).duration || 60)
           );
         }
-        if (addObj.status === "cancelled") {
+        if (addObj.status === "cancelled" || addObj.status === "pending") {
           addObj.paymentExpiresAt = undefined;
-          addObj.paidAt = undefined;
-        }
-        if (addObj.status === "pending") {
-          addObj.paymentExpiresAt = new Date(
-            new Date().setHours(24) +
-              1000 * 60 * 60 * 24 * config.payment.paymentExpirationDays
-          );
           addObj.paidAt = undefined;
         }
       }
@@ -100,9 +101,8 @@ const PaymentResolvers = {
 
         if (updatedJob.status === "published") {
           internalJobsCache.flush();
+          indexing(updatedJob);
         }
-
-        indexing(updatedJob);
       }
 
       return payment;
@@ -112,26 +112,37 @@ const PaymentResolvers = {
         throw new AuthenticationError("Missing permission!");
       }
 
+      console.log("args: ", args);
+
       let updateObj = { ...args };
       delete updateObj._id;
+
+      const oldPayment = await Payment.findOne({ _id: args._id });
+      updateObj.pricingPackage = oldPayment.pricingPackage || "basis";
+
+      console.log("oldPayment: ", oldPayment);
 
       if (updateObj.status && !updateObj.paymentExpiresAt) {
         if (updateObj.status === "paid") {
           updateObj.paidAt = new Date();
           updateObj.paymentExpiresAt = new Date(
             new Date().setHours(24) +
-              1000 * 60 * 60 * 24 * config.payment.paymentExpirationDays
+              1000 *
+                60 *
+                60 *
+                24 *
+                (config.payment.pricingPackages.find(
+                  pkg =>
+                    pkg.name.toLowerCase() ===
+                    updateObj.pricingPackage.toLowerCase()
+                ).duration || 60)
           );
         }
-        if (updateObj.status === "cancelled") {
+        if (
+          updateObj.status === "cancelled" ||
+          updateObj.status === "pending"
+        ) {
           updateObj.paymentExpiresAt = undefined;
-          updateObj.paidAt = undefined;
-        }
-        if (updateObj.status === "pending") {
-          updateObj.paymentExpiresAt = new Date(
-            new Date().setHours(24) +
-              1000 * 60 * 60 * 24 * config.payment.paymentExpirationDays
-          );
           updateObj.paidAt = undefined;
         }
       }
@@ -172,9 +183,8 @@ const PaymentResolvers = {
 
         if (updatedJob.status === "published") {
           internalJobsCache.flush();
+          indexing(updatedJob);
         }
-
-        indexing(updatedJob);
       }
 
       return updatedPayment;

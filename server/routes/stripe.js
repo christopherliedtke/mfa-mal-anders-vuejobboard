@@ -19,22 +19,43 @@ router.get("/get-stripe-pk", (req, res) => {
 // #access: Private
 router.post("/job/create-session-id", verifyToken, async (req, res) => {
   try {
-    if (req.body.amount < config.payment.minPricePerJob) {
+    if (!req.body.pricingPackage) {
       throw new Error(
-        "Error STRIPE Invalid amount entered for stripe checkout!"
+        "Error on /job/create-session-id - no pricingPackage provided!"
+      );
+    }
+
+    const { pricingPackage, code } = req.body;
+
+    const amount = config.payment.pricingPackages.find(
+      pkg => pkg.name.toLowerCase() === pricingPackage.toLowerCase()
+    ).price;
+    let refreshFrequency = config.payment.pricingPackages.find(
+      pkg => pkg.name.toLowerCase() === pricingPackage.toLowerCase()
+    ).refreshFrequency;
+
+    if (!amount) {
+      throw new Error(
+        `Error on /job/create-session-id - ${pricingPackage} not found in pricingPackages!`
       );
     }
 
     let validatedCoupon = {};
 
-    if (req.body.code) {
-      validatedCoupon = await validateCoupon(req.body.code, req.user._id);
+    if (code) {
+      validatedCoupon = await validateCoupon(code, req.user._id);
     }
 
     const couponId = validatedCoupon._id || "";
     const discount = validatedCoupon.discount || 0;
-    const couponUsage = validatedCoupon.usage || "";
-    const couponRefreshFrequency = validatedCoupon.refreshFrequency || 0;
+
+    if (
+      validatedCoupon.refreshFrequency > 0 &&
+      validatedCoupon.refreshFrequency < refreshFrequency
+    ) {
+      refreshFrequency = validatedCoupon.refreshFrequency;
+    }
+    // const couponRefreshFrequency = validatedCoupon.refreshFrequency || 0;
 
     const session = await stripe.checkout.sessions.create({
       customer_email: req.user.email,
@@ -46,10 +67,10 @@ router.post("/job/create-session-id", verifyToken, async (req, res) => {
             currency: config.payment.currency,
             product_data: {
               name: req.body.title,
-              description: `Veröffentlichung Ihrer Stellenanzeige "${req.body.title}" auf ${config.website.name}.`,
+              description: `Veröffentlichung Ihrer Stellenanzeige "${req.body.title}" auf ${config.website.name} | Paket '${pricingPackage}'`,
               images: [],
             },
-            unit_amount: Math.round(req.body.amount * (1 - discount)),
+            unit_amount: Math.round(amount * (1 - discount)),
           },
           quantity: 1,
         },
@@ -59,11 +80,11 @@ router.post("/job/create-session-id", verifyToken, async (req, res) => {
         type: req.body.type,
         jobId: req.body.id,
         userId: req.user._id,
+        pricingPackage,
         couponId: couponId ? toString(couponId) : "",
         couponCode: req.body.code,
-        discount: discount,
-        refreshFrequency: couponRefreshFrequency,
-        couponUsage: couponUsage,
+        discount,
+        refreshFrequency,
         accepted: req.body.accepted,
       },
       mode: "payment",
@@ -78,6 +99,7 @@ router.post("/job/create-session-id", verifyToken, async (req, res) => {
     res.json({
       success: true,
       sessionId: session.id,
+      amount,
     });
   } catch (err) {
     console.log("Error STRIPE on /job/create-session-id: ", err);

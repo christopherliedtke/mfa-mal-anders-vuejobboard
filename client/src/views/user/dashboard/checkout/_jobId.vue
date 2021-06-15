@@ -568,7 +568,7 @@
             jobId: this.job._id,
             jobTitle: this.job.title,
             pricingPackage: this.checkout.pricingPackage,
-            amount: this.checkout.amount,
+            // amount: this.checkout.amount,
             paymentMethod: this.checkout.paymentMethod,
             couponCode: this.checkout.coupon.code,
             refreshFrequency: this.refreshFrequencyComputed,
@@ -665,7 +665,6 @@
           this.job._id,
           this.job.title,
           this.checkout.coupon.code,
-          this.checkout.amount,
           this.checkout.pricingPackage,
           this.checkout.accepted,
           "/user/dashboard?tab=1"

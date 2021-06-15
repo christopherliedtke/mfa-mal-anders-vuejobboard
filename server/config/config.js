@@ -29,6 +29,26 @@ module.exports = {
         refreshAfterDays: 14,
       },
     ],
+    pricingPackages: [
+      {
+        name: "Basis",
+        price: 7900,
+        duration: 60,
+        refreshFrequency: 0,
+      },
+      {
+        name: "Standard",
+        price: 17900,
+        duration: 90,
+        refreshFrequency: 14,
+      },
+      {
+        name: "Professional",
+        price: 47900,
+        duration: 90,
+        refreshFrequency: 7,
+      },
+    ],
   },
   invoice: {
     sender: {

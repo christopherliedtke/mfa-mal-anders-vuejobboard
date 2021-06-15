@@ -39,6 +39,10 @@ const PaymentSchema = new Schema(
     receiptNumber: {
       type: String,
     },
+    pricingPackage: {
+      type: String,
+      default: "",
+    },
     amount: {
       type: Number,
     },
@@ -52,6 +56,10 @@ const PaymentSchema = new Schema(
     },
     billingEmail: {
       type: String,
+    },
+    billingPhone: {
+      type: String,
+      default: "",
     },
     billingCompany: {
       type: String,

@@ -38,7 +38,7 @@ router.post("/job-published", verifyToken, isAdmin, async (req, res) => {
                 <p>
                     Ihre Zahlung ist heute bei uns eingetroffen. Vielen Dank für die Veröffentlichung Ihrer Stellenanzeige '${
                       job.title
-                    }' auf unserem Portal MFA mal anders. Diese ist ab sofort unter folgendem Link abrufbar:
+                    }' auf unserem Stellen- und Karriereportal speziell für MFA & ZFA – MFA mal anders. Diese ist ab sofort unter folgendem Link abrufbar:
                 </p>
                 <p>
                     <a href="${process.env.WEBSITE_URL}/stellenangebote/job/${

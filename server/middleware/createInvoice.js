@@ -175,7 +175,7 @@ function generateBody(doc, payment, bankAccount, sender) {
       280
     )
     .text(
-      `vielen Dank für die Erstellung Ihrer Stellenanzeige auf unserem Portal 'MFA mal anders'. Wie gewünscht erhalten Sie hier Ihre Rechnung:`,
+      `vielen Dank für die Erstellung Ihrer Stellenanzeige auf unserem Stellen- und Karriereportal speziell für MFA & ZFA – 'MFA mal anders'. Wie gewünscht erhalten Sie hier Ihre Rechnung:`,
       50,
       305,
       { width: 500 }
@@ -241,7 +241,9 @@ function generateBody(doc, payment, bankAccount, sender) {
 
   doc
     .text(
-      "Sobald Ihre Zahlung bei uns eingegangen ist, veröffentlichen wir Ihre Stellenanzeige und geben Ihnen noch einmal Bescheid. Anschließend haben Sie weiterhin die Möglichkeit, Ihre Stellenanzeige wie gewohnt selbst zu bearbeiten, offline zu nehmen oder zu löschen. Für Fragen und Anregungen stehe ich Ihnen jederzeit gern zur Verfügung.",
+      payment.pricingPackage === "Professional"
+        ? `Mit Ihrem gewählten Stellenpaket "${payment.pricingPackage}" erhalten Sie eine individuelle, persönliche Beratung zur Optimierung Ihrer Stellenanzeige. Wir werden Sie innerhalb von 2 Werktagen direkt kontaktieren und das weitere Vorgehen mit Ihnen besprechen. Ihre Stellenanzeige wird nach der Optimierung und Absprache mit Ihnen von uns veröffentlicht.`
+        : `Sobald Ihre Zahlung bei uns eingegangen ist, veröffentlichen wir Ihre Stellenanzeige und geben Ihnen noch einmal Bescheid. Anschließend haben Sie weiterhin die Möglichkeit, Ihre Stellenanzeige wie gewohnt selbst zu bearbeiten, offline zu nehmen oder zu löschen. Für Fragen und Anregungen stehe ich Ihnen jederzeit gern zur Verfügung.`,
       50,
       position,
       { width: 500 }
@@ -288,12 +290,16 @@ function generateInvoiceTable(doc, payment, position) {
     doc,
     invoiceTableTop + 25,
     "1",
-    `Veröffentlichung Stellenanzeige`,
+    `Veröffentlichung Stellenanzeige ${
+      payment.pricingPackage ? `| Paket ${payment.pricingPackage}` : ""
+    }`,
     "1",
     `${(
       (parseInt(
         payment.amount -
-          (payment.paymentType === "invoice" ? config.invoice.feeFix : 0)
+          (payment.paymentType === "invoice" && !payment.pricingPackage
+            ? config.invoice.feeFix
+            : 0)
       ) *
         (1 - payment.discount)) /
       100
@@ -304,7 +310,9 @@ function generateInvoiceTable(doc, payment, position) {
     `${(
       (parseInt(
         payment.amount -
-          (payment.paymentType === "invoice" ? config.invoice.feeFix : 0)
+          (payment.paymentType === "invoice" && !payment.pricingPackage
+            ? config.invoice.feeFix
+            : 0)
       ) *
         (1 - payment.discount)) /
       100
@@ -314,7 +322,7 @@ function generateInvoiceTable(doc, payment, position) {
       .replace(".", ",")}€`
   );
 
-  if (payment.paymentType === "invoice") {
+  if (payment.paymentType === "invoice" && !payment.pricingPackage) {
     generateTableRow(
       doc,
       invoiceTableTop + 45,
@@ -344,10 +352,12 @@ function generateInvoiceTable(doc, payment, position) {
     "",
     ``,
     `${(
-      (parseInt(payment.amount - config.invoice.feeFix) *
+      (parseInt(
+        payment.amount - (!payment.pricingPackage ? config.invoice.feeFix : 0)
+      ) *
         (1 - payment.discount)) /
         100 +
-      config.invoice.feeFix / 100
+      (!payment.pricingPackage ? config.invoice.feeFix / 100 : 0)
     )
       .toFixed(2)
       .toString()

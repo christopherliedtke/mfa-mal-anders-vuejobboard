@@ -58,6 +58,18 @@
         <b-form-select-option :value="'invoice'">invoice</b-form-select-option>
         <b-form-select-option :value="'stripe'">stripe</b-form-select-option>
       </b-form-select>
+      <label for="pricing-package">Pricing Package</label>
+      <b-form-select id="pricing-package" v-model="payment.pricingPackage">
+        <b-form-select-option :value="''"
+          >-- Choose Pricing Package --</b-form-select-option
+        >
+        <b-form-select-option
+          v-for="pkg in $config.pricingPackages"
+          :key="pkg.name"
+          :value="pkg.name"
+          >{{ pkg.name }}</b-form-select-option
+        >
+      </b-form-select>
       <label for="amount">Amount [Cents]</label>
       <b-form-input
         id="amount"
@@ -91,6 +103,14 @@
         placeholder="Billing Email Address eingeben..."
         trim
         required
+      />
+      <label for="billing-phone">Billing Phone Number</label>
+      <b-form-input
+        id="billing-phone"
+        v-model="payment.billingPhone"
+        type="text"
+        placeholder="Billing Phone Number eingeben..."
+        trim
       />
       <label for="billing-company">Billing Company</label>
       <b-input
@@ -226,10 +246,12 @@
           invoiceNo: 0,
           invoiceDate: new Date().getTime(),
           paymentType: "invoice",
+          pricingPackage: "",
           amount: 0,
           fee: 0,
           taxes: 0,
           billingEmail: "",
+          billingPhone: "",
           billingCompany: "",
           billingDepartment: "",
           billingGender: "",
@@ -287,38 +309,39 @@
           const payment = await this.$axios.get("/graphql", {
             params: {
               query: `
-                                query {
-                                    payment (_id: "${id}") {
-                                        _id
-                                        user {
-                                            _id
-                                        }
-                                        job {
-                                            _id
-                                        }
-
-                                        status
-                                        invoiceNo
-                                        invoiceDate
-                                        paymentType
-                                        amount
-                                        fee
-                                        taxes
-                                        billingEmail
-                                        billingCompany
-                                        billingDepartment
-                                        billingGender
-                                        billingTitle
-                                        billingFirstName
-                                        billingLastName
-                                        billingStreet
-                                        billingZipCode
-                                        billingLocation
-                                        paidAt
-                                        paymentExpiresAt
-                                    }
-                                }
-                            `
+                query {
+                  payment (_id: "${id}") {
+                    _id
+                    user {
+                      _id
+                    }
+                    job {
+                      _id
+                    }
+                    status
+                    invoiceNo
+                    invoiceDate
+                    paymentType
+                    pricingPackage
+                    amount
+                    fee
+                    taxes
+                    billingEmail
+                    billingPhone
+                    billingCompany
+                    billingDepartment
+                    billingGender
+                    billingTitle
+                    billingFirstName
+                    billingLastName
+                    billingStreet
+                    billingZipCode
+                    billingLocation
+                    paidAt
+                    paymentExpiresAt
+                  }
+                }
+              `
             }
           });
 
@@ -355,54 +378,46 @@
               : "addPayment";
 
           const query = `
-                        mutation {
-                            ${mutationType} (
-                                ${
-                                  mutationType === "updatePayment"
-                                    ? `_id: "${this.payment._id}"`
-                                    : ""
-                                }
-                                user: "${this.payment.user}"
-                                job: "${this.payment.job}"
-                                ${
-                                  this.payment.coupon
-                                    ? `coupon: "${this.payment.coupon}"`
-                                    : ""
-                                }
-                                status: "${this.payment.status}"
-                                invoiceNo: ${this.payment.invoiceNo}
-                                invoiceDate: ${this.payment.invoiceDate}
-                                paymentType: "${this.payment.paymentType}"
-                                amount: ${this.payment.amount}
-                                fee: ${this.payment.fee}
-                                taxes: ${this.payment.taxes}
-                                billingEmail: "${this.payment.billingEmail}"
-                                billingCompany: "${this.payment.billingCompany}"
-                                billingDepartment: "${
-                                  this.payment.billingDepartment
-                                }"
-                                billingGender: "${this.payment.billingGender}"
-                                billingTitle: "${this.payment.billingTitle}"
-                                billingFirstName: "${
-                                  this.payment.billingFirstName
-                                }"
-                                billingLastName: "${
-                                  this.payment.billingLastName
-                                }"
-                                billingStreet: "${this.payment.billingStreet}"
-                                billingZipCode: "${this.payment.billingZipCode}"
-                                billingLocation: "${
-                                  this.payment.billingLocation
-                                }"
-                                paidAt: ${this.payment.paidAt}
-                                paymentExpiresAt: ${
-                                  this.payment.paymentExpiresAt
-                                }
-                            ) {
-                                _id
-                            }
-                        }
-                    `;
+            mutation {
+              ${mutationType} (
+                  ${
+                    mutationType === "updatePayment"
+                      ? `_id: "${this.payment._id}"`
+                      : ""
+                  }
+                  user: "${this.payment.user}"
+                  job: "${this.payment.job}"
+                  ${
+                    this.payment.coupon
+                      ? `coupon: "${this.payment.coupon}"`
+                      : ""
+                  }
+                  status: "${this.payment.status}"
+                  invoiceNo: ${this.payment.invoiceNo}
+                  invoiceDate: ${this.payment.invoiceDate}
+                  paymentType: "${this.payment.paymentType}"
+                  pricingPackage: "${this.payment.pricingPackage}"
+                  amount: ${this.payment.amount}
+                  fee: ${this.payment.fee}
+                  taxes: ${this.payment.taxes}
+                  billingEmail: "${this.payment.billingEmail}"
+                  billingPhone: "${this.payment.billingPhone}"
+                  billingCompany: "${this.payment.billingCompany}"
+                  billingDepartment: "${this.payment.billingDepartment}"
+                  billingGender: "${this.payment.billingGender}"
+                  billingTitle: "${this.payment.billingTitle}"
+                  billingFirstName: "${this.payment.billingFirstName}"
+                  billingLastName: "${this.payment.billingLastName}"
+                  billingStreet: "${this.payment.billingStreet}"
+                  billingZipCode: "${this.payment.billingZipCode}"
+                  billingLocation: "${this.payment.billingLocation}"
+                  paidAt: ${this.payment.paidAt}
+                  paymentExpiresAt: ${this.payment.paymentExpiresAt}
+              ) {
+                  _id
+              }
+            }
+          `;
 
           const payment = await this.$axios.post("/graphql", {
             query

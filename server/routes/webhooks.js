@@ -8,7 +8,7 @@ const { Job } = require("../database/models/job");
 const { Payment } = require("../database/models/payment");
 const { UsedCoupon } = require("../database/models/usedCoupon");
 const { googleIndexing } = require("../middleware/googleJobIndexing");
-const { postToFacebook } = require("../middleware/postToFacebook");
+// const { postToFacebook } = require("../middleware/postToFacebook");
 
 const stripe = require("stripe")(process.env.STRIPE_SK);
 
@@ -16,10 +16,10 @@ const stripe = require("stripe")(process.env.STRIPE_SK);
 // #desc:   Check if payment is completed and update job
 // #access: Private
 router.post("/checkout-completed", async (req, res) => {
-  const { jobId, userId, couponId } = req.body.data.object.metadata;
+  const { jobId, userId, couponId, pricingPackage } =
+    req.body.data.object.metadata;
 
   let { refreshFrequency } = req.body.data.object.metadata;
-  // const billingEmail = req.body.data.object["customer_email"];
   const amount = req.body.data.object["amount_total"];
 
   try {
@@ -30,16 +30,14 @@ router.post("/checkout-completed", async (req, res) => {
     if (intent.status === "succeeded") {
       const paidExpiresAt = new Date(
         new Date().setHours(24) +
-          1000 * 60 * 60 * 24 * config.payment.paymentExpirationDays
+          1000 *
+            60 *
+            60 *
+            24 *
+            config.payment.pricingPackages.find(
+              pkg => pkg.name.toLowerCase() === pricingPackage.toLowerCase()
+            ).duration
       );
-
-      if (refreshFrequency == 0) {
-        config.payment.refreshFrequencies.forEach(frequency => {
-          if (amount >= frequency.amount) {
-            refreshFrequency = frequency.refreshAfterDays;
-          }
-        });
-      }
 
       const succeededCharge = intent.charges.data.filter(
         charge => charge.paid
@@ -58,6 +56,7 @@ router.post("/checkout-completed", async (req, res) => {
         invoiceNo,
         invoiceDate: new Date(),
         paymentType: "stripe",
+        pricingPackage,
         amount,
         fee: config.stripe.feeFix + config.stripe.feeVar * amount,
         taxes: config.payment.tax * amount,
@@ -95,10 +94,12 @@ router.post("/checkout-completed", async (req, res) => {
       const updatedJob = await Job.findOneAndUpdate(
         { _id: jobId, userId: userId },
         {
-          status: "published",
+          status:
+            pricingPackage.toLowerCase() != "professional"
+              ? "published"
+              : "draft",
           publishedAt: new Date().getTime(),
           paid: true,
-          // paidAt,
           paidExpiresAt,
           refreshFrequency,
           payment: payment._id,
@@ -116,20 +117,22 @@ router.post("/checkout-completed", async (req, res) => {
         await newUsedCoupon.save();
       }
 
-      if (updatedJob.status === "published") {
+      if (
+        pricingPackage.toLowerCase() != "professional" &&
+        updatedJob.status === "published"
+      ) {
         internalJobsCache.flush();
+        googleIndexing(
+          process.env.WEBSITE_URL + config.googleIndexing.pathPrefix + jobId,
+          "URL_UPDATED"
+        );
+
+        recachePrerender(
+          `${process.env.WEBSITE_URL}/stellenangebote/job/${jobId}`
+        );
       }
 
-      googleIndexing(
-        process.env.WEBSITE_URL + config.googleIndexing.pathPrefix + jobId,
-        "URL_UPDATED"
-      );
-
-      recachePrerender(
-        `${process.env.WEBSITE_URL}/stellenangebote/job/${jobId}`
-      );
-
-      if (config.facebook.autoPost) postToFacebook();
+      // if (config.facebook.autoPost) postToFacebook();
 
       const dataMailToAdmin = {
         from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
@@ -138,9 +141,9 @@ router.post("/checkout-completed", async (req, res) => {
           "RE-" +
           "000000".slice(0, 6 - payment.invoiceNo.toString().length) +
           payment.invoiceNo.toString()
-        }] - ${payment.amount / 100}€ - Veröffentlichung Stellenanzeige '${
-          updatedJob.title
-        }'`,
+        }] - ${pricingPackage} | ${
+          payment.amount / 100
+        }€ - Veröffentlichung Stellenanzeige '${updatedJob.title}'`,
         html: `
                     <h2>Veröffentlichung einer neuen Stelle</h2>
                     <p>
@@ -152,6 +155,7 @@ router.post("/checkout-completed", async (req, res) => {
           payment.invoiceNo.toString()
         }</a>  <br>
                     <strong>ID:</strong> ${updatedJob._id} <br>
+                    <strong>Paket:</strong> ${pricingPackage} <br>
                     <strong>Stellentitel:</strong> ${updatedJob.title} <br>
                     <strong>Unternehmen:</strong> ${
                       updatedJob.company.name
@@ -229,33 +233,58 @@ router.post("/checkout-completed", async (req, res) => {
                     <p>
                         vielen Dank für die Veröffentlichung Ihrer Stellenanzeige <strong>'${
                           updatedJob.title
-                        }'</strong> auf unserem Portal MFA mal anders. Ihre Stellenanzeige ist ab sofort für 60 Tage unter folgendem Link abrufbar:
+                        }'</strong> auf unserem Stellen- und Karriereportal speziell für MFA & ZFA – 'MFA mal anders'.
                     </p>
-                    <p>
-                        <a href="${
-                          process.env.WEBSITE_URL +
-                          config.googleIndexing.pathPrefix +
-                          jobId
-                        }">${
-          process.env.WEBSITE_URL + config.googleIndexing.pathPrefix + jobId
-        }</a>
-                    </p>
-                    <p>
-                        Bitte beachten Sie, dass Ihre Stellenanzeige nur solange abrufbar ist, wie auch Ihre Bewerbungsfrist nicht überschritten ist. Über Ihre Zugangsdaten haben Sie weiterhin Zugriff auf Ihre Stellenanzeigen und können diese jederzeit anpassen.
-                    </p>
+                    ${
+                      pricingPackage === "Professional"
+                        ? `
+                          <p>
+                            Mit Ihrem gewählten Stellenpaket "${pricingPackage}" erhalten Sie eine individuelle, persönliche Beratung zur Optimierung Ihrer Stellenanzeige. Wir werden Sie innerhalb von 2 Werktagen direkt kontaktieren und das weitere Vorgehen mit Ihnen besprechen. Ihre Stellenanzeige wird nach der Optimierung und Absprache mit Ihnen von uns veröffentlicht. Die Laufzeit beginnt natürlich erst nach erfolgter Veröffentlichung.
+                          </p>
+                        `
+                        : `
+                          <p>
+                          Ihre Stellenanzeige ist ab sofort für ${
+                            config.payment.pricingPackages.find(
+                              pkg =>
+                                pkg.name.toLowerCase() ===
+                                pricingPackage.toLowerCase()
+                            ).duration
+                          } Tage unter folgendem Link abrufbar: <a href="${
+                            process.env.WEBSITE_URL +
+                            config.googleIndexing.pathPrefix +
+                            jobId
+                          }">${
+                            process.env.WEBSITE_URL +
+                            config.googleIndexing.pathPrefix +
+                            jobId
+                          }</a>
+                          </p>
+                          <p>
+                            Bitte beachten Sie, dass Ihre Stellenanzeige nur solange abrufbar ist, wie auch Ihre Bewerbungsfrist nicht überschritten ist. Über Ihre Zugangsdaten haben Sie weiterhin Zugriff auf Ihre Stellenanzeigen und können diese jederzeit anpassen.
+                          </p>
+                        `
+                    }
                     <p>
                         Die zugehörige Rechnung zur getätigten Zahlung finden Sie in Ihrem Account unter MEIN KONTO -> ZAHLUNGEN. Diese können Sie dort herunterladen.
                     </p>
-                    <p>
-                        Sollten Sie noch Fragen, Anregungen oder weiteren Beratungsbedarf haben, melden Sie sich gern bei uns über unser <a href="${
-                          process.env.WEBSITE_URL
-                        }/kontakt">Kontaktformular</a> oder direkt per Nachricht an <a href="mailto:${
-          config.website.contactEmail
-        }">${config.website.contactEmail}</a>.
-                    </p>
-                    <p>
-                        Wir wünschen Ihnen viele qualifizierte BewerberInnen und verbleiben mit freundlichen Grüßen
-                    </p>
+                    ${
+                      pricingPackage === "Professional"
+                        ? `
+                          <p>
+                            Mit freundlichen Grüßen
+                          </p>
+                        `
+                        : `
+                          <p>
+                            Sollten Sie noch Fragen, Anregungen oder weiteren Beratungsbedarf haben, melden Sie sich gern bei uns über unser <a href="${process.env.WEBSITE_URL}/kontakt">Kontaktformular</a> oder direkt per Nachricht an <a href="mailto:${config.website.contactEmail}">${config.website.contactEmail}</a>.
+                          </p>
+                          <p>
+                            Wir wünschen Ihnen viele qualifizierte BewerberInnen und verbleiben mit freundlichen Grüßen
+                          </p>
+                        `
+                    }
+                    
                     <p>Kristin Maurach</p>
                     <p>__</p>
                     <p>

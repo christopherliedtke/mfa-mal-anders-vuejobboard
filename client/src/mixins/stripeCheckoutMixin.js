@@ -26,7 +26,6 @@ export const stripeCheckoutMixin = {
       id,
       title = "",
       code = null,
-      amount,
       pricingPackage,
       accepted = false,
       returnPath = ""
@@ -42,7 +41,6 @@ export const stripeCheckoutMixin = {
             title,
             url: returnPath,
             code,
-            amount,
             pricingPackage,
             accepted
           }
@@ -51,14 +49,15 @@ export const stripeCheckoutMixin = {
           this.checkoutSessionId = response.data.sessionId;
 
           this.$gtag.event("begin_checkout", {
-            value: amount,
+            value: response.data.amount,
             currency: "EUR",
             items: [
               {
                 id: id,
                 name: title,
                 coupon: code,
-                price: amount,
+                pricingPackage: pricingPackage,
+                amount: response.data.amount,
                 category: type
               }
             ]
@@ -69,7 +68,7 @@ export const stripeCheckoutMixin = {
               "commerce",
               "begin_checkout",
               id,
-              amount / 100
+              response.data.amount / 100
             );
 
           await this.redirectToCheckout(this.checkoutSessionId);

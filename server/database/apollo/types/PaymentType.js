@@ -16,10 +16,12 @@ const PaymentType = gql`
       invoiceNo: Float
       invoiceDate: Float
       paymentType: String
+      pricingPackage: String
       amount: Float
       fee: Float
       taxes: Float
       billingEmail: String
+      billingPhone: String
       billingCompany: String
       billingDepartment: String
       billingGender: String
@@ -41,10 +43,12 @@ const PaymentType = gql`
       invoiceNo: Float
       invoiceDate: Float
       paymentType: String
+      pricingPackage: String
       amount: Float
       fee: Float
       taxes: Float
       billingEmail: String
+      billingPhone: String
       billingCompany: String
       billingDepartment: String
       billingGender: String
@@ -69,10 +73,12 @@ const PaymentType = gql`
     stripePaymentIntent: String
     receiptUrl: String
     receiptNumber: String
+    pricingPackage: String
     amount: Float
     fee: Float
     taxes: Float
     billingEmail: String
+    billingPhone: String
     billingCompany: String
     billingDepartment: String
     billingGender: String
