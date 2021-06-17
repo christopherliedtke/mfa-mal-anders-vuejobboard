@@ -327,15 +327,15 @@
           {
             type: "application/ld+json",
             inner: `{
-                            "@context": "http://schema.org",
-                            "@type" : "BreadcrumbList",
-                            "itemListElement": [{
-                                "@type": "ListItem",
-                                "position": 1,
-                                "name": "MFA mal anders",
-                                "item": "https://www.mfa-mal-anders.de"
-                            }]
-                        }`
+              "@context": "http://schema.org",
+              "@type" : "BreadcrumbList",
+              "itemListElement": [{
+                "@type": "ListItem",
+                "position": 1,
+                "name": "MFA mal anders",
+                "item": "https://www.mfa-mal-anders.de"
+              }]
+            }`
           }
         ]
       };
@@ -370,13 +370,7 @@
             url("~@/assets/img/medizinischesPersonal-1200x513.jpg") 1x,
             url("~@/assets/img/medizinischesPersonal.jpg") 2x
           )
-          // url("~@/assets/img/medizinischesPersonal.jpg")
           center center;
-
-      // background-image: image-set(
-      //   url("~@/assets/img/medizinischesPersonal-1200x513.jpg") 1x,
-      //   url("~@/assets/img/medizinischesPersonal.jpg") 2x
-      // );
 
       background-size: cover;
       background-blend-mode: normal;

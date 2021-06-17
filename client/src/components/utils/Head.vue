@@ -116,25 +116,25 @@
       }
     },
     watch: {
-      title() {
+      "title"() {
         this.$emit("updateHead");
       },
-      desc() {
+      "desc"() {
         this.$emit("updateHead");
       },
-      img() {
+      "img"() {
         this.$emit("updateHead");
       },
-      imgAlt() {
+      "imgAlt"() {
         this.$emit("updateHead");
       },
-      twitterCard() {
+      "twitterCard"() {
         this.$emit("updateHead");
       },
-      script() {
+      "script"() {
         this.$emit("updateHead");
       },
-      link() {
+      "link"() {
         this.$emit("updateHead");
       },
       "$route.fullPath"() {

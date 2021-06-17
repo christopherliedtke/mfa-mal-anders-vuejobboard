@@ -77,7 +77,7 @@
       };
     },
     watch: {
-      $route(to, from) {
+      "$route"(to, from) {
         if (to != from) {
           this.getTrainings();
         }

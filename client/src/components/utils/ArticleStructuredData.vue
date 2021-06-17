@@ -15,25 +15,25 @@
               inner: JSON.stringify({
                 "@context": "http://schema.org",
                 "@type": "Article",
-                headline: this.article.title,
-                author: {
+                "headline": this.article.title,
+                "author": {
                   "@type": "Person",
-                  name: `${this.article.author.node.firstName} ${this.article.author.node.lastName}`,
-                  image: this.article.author.node.avatar
+                  "name": `${this.article.author.node.firstName} ${this.article.author.node.lastName}`,
+                  "image": this.article.author.node.avatar
                     ? this.article.author.node.avatar.url
                     : ""
                 },
-                publisher: {
+                "publisher": {
                   "@type": "Organization",
-                  name: "MFA mal anders",
-                  logo: {
+                  "name": "MFA mal anders",
+                  "logo": {
                     "@type": "ImageObject",
-                    url: "/img/MfaMalAnders_logo_circle_dark.png"
+                    "url": "/img/MfaMalAnders_logo_circle_dark.png"
                   }
                 },
-                image: this.article.featuredImage.node.sourceUrl,
-                datePublished: this.article.date,
-                dateModofied: this.article.modified
+                "image": this.article.featuredImage.node.sourceUrl,
+                "datePublished": this.article.date,
+                "dateModofied": this.article.modified
               })
             }
           ];

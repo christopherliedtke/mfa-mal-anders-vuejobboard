@@ -102,7 +102,7 @@
 
     <editor-content
       :class="{
-        editor__content: true,
+        'editor__content': true,
         'is-invalid': validated && html.length < 10,
         'is-valid': validated && html.length >= 10
       }"

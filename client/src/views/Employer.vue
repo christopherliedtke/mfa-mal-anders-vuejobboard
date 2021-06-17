@@ -266,7 +266,7 @@
             size="4x"
           />
           <div class="display-4 bold mb-3">
-            {{ Math.floor(item.current).toLocaleString() }}+
+            {{ Math.floor(item.number).toLocaleString() }}+
           </div>
           <p>{{ item.desc }}</p>
         </b-col>
@@ -740,14 +740,13 @@
       };
     },
     mounted() {
-      const elem = window.document.getElementById("numbers-and-facts");
-
-      let intervalId = setInterval(() => {
-        if (elem.offsetTop < window.scrollY + window.innerHeight * 0.66) {
-          clearInterval(intervalId);
-          this.startCounters();
-        }
-      }, 500);
+      // const elem = window.document.getElementById("numbers-and-facts");
+      // let intervalId = setInterval(() => {
+      //   if (elem.offsetTop < window.scrollY + window.innerHeight * 0.66) {
+      //     clearInterval(intervalId);
+      //     this.startCounters();
+      //   }
+      // }, 500);
     },
     methods: {
       startCounters() {
