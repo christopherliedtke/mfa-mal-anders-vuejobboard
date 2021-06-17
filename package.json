@@ -19,6 +19,7 @@
     "aws-sdk": "^2.709.0",
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
+    "caniuse-lite": "^1.0.30001237",
     "compression": "^1.7.4",
     "connect-mongo": "^3.2.0",
     "cookie-session": "^1.4.0",

@@ -16,12 +16,14 @@
         <BCardBody
           class="d-flex flex-column justify-content-center align-items-center h-100 p-4"
         >
-          <h3 class="h2 bold">Neuer Job gefällig?</h3>
+          <h3 class="h2 bold">Der richtige Job für Dich!</h3>
           <p>
             Bist du auf der Suche nach einer
-            <strong>neuen Herausforderung?</strong> <br />
-            Möchtest du einfach mal schauen, was es sonst noch für Möglichkeiten
-            gibt?
+            <strong class="text-primary">neuen Herausforderung?</strong> <br />
+            Du willst Dich
+            <strong class="text-primary">beruflich weiterentwickeln?</strong>
+            <br />
+            Finde bei uns Deinen nächsten Job!
           </p>
           <b-button to="/stellenangebote" variant="secondary"
             >Zu den Stellenangeboten</b-button
@@ -44,8 +46,15 @@
 
 <style scoped lang="scss">
   .card {
-    background: radial-gradient(closest-side, #fffcfdcc 0%, #fffcfdff 100%),
-      url("~@/assets/img/hero_map_1200.jpg") center center;
+    // background: radial-gradient(closest-side, #fffcfdcc 0%, #fffcfdff 100%),
+    //   url("~@/assets/img/hero_map_1200.jpg") center center;
+    background: radial-gradient(closest-side, #fffcfd88 0%, #fffcfdff 100%),
+      image-set(
+          url("~@/assets/img/medizinischesPersonal-1200x513.jpg") 1x,
+          url("~@/assets/img/medizinischesPersonal.jpg") 2x
+        )
+        // url("~@/assets/img/medizinischesPersonal.jpg")
+        center center;
     background-size: cover;
     background-blend-mode: lighten;
 
