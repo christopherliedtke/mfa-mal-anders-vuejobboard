@@ -206,10 +206,22 @@
           </b-col>
         </b-row>
         <p>
+          Sie haben die Möglichkeit, Ihre Stellenanzeige nach
+          <b-link to="/auth/register">Registrierung</b-link> auf unserem Portal
+          zu erstellen und in einer Vorschau zu betrachten. Anschließend können
+          Sie Ihre Stellenanzeige mit einem der drei Pakete veröffentlichen.
+          Auch für das Professional Paket bitten wir Sie, Ihre Stellenanzeige
+          anhand unserer vorgegebenen Struktur zu erstellen. Wir setzen uns dann
+          umgehend mit Ihnen in Verbindung, um Ihre Stellenanzeige gemeinsam für
+          die Veröffentlichung und Reichweitenmaximierung zu optimieren.
+        </p>
+        <p>
           Gern bieten wir Ihnen nach Absprache auch individuelle Pakete an, wenn
           Sie beispielsweise eine Stellenanzeige dauerhaft bei uns schalten
           möchten. Kontaktieren Sie uns dazu gern über unser
-          <b-link to="/kontakt?role=employer">Kontaktformular</b-link>.
+          <b-link to="/kontakt?role=employer&subject=Stellenpakete"
+            >Kontaktformular</b-link
+          >.
         </p>
       </b-container>
     </b-container>

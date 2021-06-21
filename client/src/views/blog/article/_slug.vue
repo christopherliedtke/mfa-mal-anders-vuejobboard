@@ -36,7 +36,7 @@
             style="height: 37.5px"
           />
           <div v-if="article.author.node.name">
-            by {{ article.author.node.name }}
+            von {{ article.author.node.name }}
           </div>
         </div>
       </div>

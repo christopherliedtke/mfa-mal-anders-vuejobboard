@@ -7,10 +7,22 @@
   >
     <div
       :class="
-        `h2 bold text-center text-${pricing.primary} bg-${pricing.accent} border-radius2  p-3`
+        `position-relative text-center bg-${pricing.accent} border-radius2 p-3`
       "
+      style="overflow: hidden"
     >
-      {{ pricing.name }}
+      <span :class="`h2 bold text-${pricing.primary}`">
+        {{ pricing.name }}
+      </span>
+      <span
+        v-if="pricing.badge"
+        :class="
+          `position-absolute text-light bg-${pricing.badgeBg} px-5 py-1 small`
+        "
+        style="transform: rotate(45deg); right: -45px; top: 12px"
+      >
+        {{ pricing.badge }}
+      </span>
     </div>
     <div class="p-3">
       <span class="display-3 text-center d-block"

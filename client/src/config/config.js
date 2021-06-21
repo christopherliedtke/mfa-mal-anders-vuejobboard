@@ -51,7 +51,7 @@ module.exports = {
   pricingPackages: [
     {
       name: "Basis",
-      price: 7900,
+      price: 8900,
       duration: 60,
       desc: [
         {
@@ -80,8 +80,9 @@ module.exports = {
     },
     {
       name: "Standard",
-      price: 17900,
+      price: 14900,
       duration: 90,
+      badge: "beliebt",
       desc: [
         { html: '<span class="bold">Basis Features</span>' },
         {
@@ -106,15 +107,21 @@ module.exports = {
         }
       ],
       primary: "light",
-      accent: "primary"
+      accent: "primary",
+      badgeBg: "secondary"
     },
     {
       name: "Professional",
-      price: 47900,
+      price: 45900,
       duration: 90,
       desc: [
         {
           html: '<span class="bold">Basis & Standard Features</span>'
+        },
+        {
+          html:
+            '<span class="text-secondary bold">Persönliche Beratung</span> zur Erstellung, Veröffentlichung und Optimierung Ihrer Stellenanzeige',
+          icon: "plus-circle"
         },
         {
           html:
@@ -128,12 +135,7 @@ module.exports = {
         },
         {
           html:
-            '<span class="text-secondary bold">Persönliche Beratung</span> bei der Erstellung und Optimierung Ihrer Stellenanzeige',
-          icon: "plus-circle"
-        },
-        {
-          html:
-            'Optional &ndash; Vereinbarung zusätzl. Marketingbudget zum Schalten von <span class="text-secondary bold">Google & Social Media Anzeigen</span> zur Reichweitenmaximierung',
+            'Optional &ndash; Vereinbarung zusätzl. Marketingbudget zum Schalten von <span class="text-secondary bold">Google & Social Media Werbeanzeigen</span> zur Reichweitenmaximierung',
           icon: "plus-circle"
         }
       ],
