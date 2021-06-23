@@ -28,10 +28,11 @@
                 >
               </p>
               <p>
-                Kristin Maurach ist Teilnehmerin des Amazon-Partnerprogramm, das
-                zur Bereitstellung eines Mediums für Webseiten konzipiert wurde,
-                mittels dessen durch die Platzierung von Partner-Links zu
-                Amazon.de Entgelte verdient werden können.
+                MFA mal anders - Kristin Maurach & Christopher Liedtke GbR ist
+                Teilnehmer des Amazon-Partnerprogramm, das zur Bereitstellung
+                eines Mediums für Webseiten konzipiert wurde, mittels dessen
+                durch die Platzierung von Partner-Links zu Amazon.de Entgelte
+                verdient werden können.
               </p>
             </div>
             <!-- <div class="mt-5">
@@ -67,7 +68,7 @@
 
                         <div class="d-flex justify-content-center mb-5">
                             <b-button
-                                href="/api/download/public/bewerbungsunterlagen"
+                                href="/downloads/bewerbungsunterlagen"
                                 target="_blank"
                                 variant="secondary"
                                 >Download Bewerbungsunterlagen</b-button

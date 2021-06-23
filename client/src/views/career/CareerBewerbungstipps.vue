@@ -60,7 +60,7 @@
 
       <div class="d-flex justify-content-center mb-5">
         <b-button
-          href="/api/download/public/bewerbungsunterlagen"
+          href="/downloads/Bewerbungsunterlagen.zip"
           variant="primary"
           size="lg"
           @click="track('download', 'bewerbungsunterlagen')"
@@ -205,7 +205,7 @@
       </p>
       <div class="d-flex justify-content-center my-5">
         <b-button
-          href="/api/download/public/bewerbungsunterlagen"
+          href="/downloads/Bewerbungsunterlagen.zip"
           variant="primary"
           size="lg"
           @click="track('download', 'bewerbungsunterlagen')"

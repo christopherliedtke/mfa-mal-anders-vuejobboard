@@ -9,7 +9,7 @@
         <b-img
           class="p-1 w-100 h-100"
           src="@/assets/img/presentation.svg"
-          alt="Weitere Tipps für Stellenanzeigen für MFA / ZFA"
+          alt="Weitere Tipps für Stellenanzeigen für MFA & ZFA"
         ></b-img>
       </b-col>
       <b-col md="9">
@@ -21,11 +21,21 @@
             Erhalten Sie zusätzliche Details zu unseren Tipps und erstellen Sie
             eine attraktive Stellenanzeige, die mehr Bewerber*innen anzieht.
           </p>
-          <b-button
-            to="/blog/article/8-tipps-fuer-attraktive-stellenanzeigen-fuer-mfas"
-            variant="primary"
-            >Zu den Tipps</b-button
-          >
+          <div>
+            <b-button
+              to="/blog/article/8-tipps-fuer-attraktive-stellenanzeigen-fuer-mfas"
+              variant="primary"
+              class="mx-1 my-1"
+              >Zu den Tipps</b-button
+            >
+            <b-button
+              href="/downloads/MfaMalAnders_Beispiel_Stellenanzeige.pdf"
+              target="_blank"
+              variant="secondary"
+              class="mx-1 my-1"
+              >Beispiel herunterladen</b-button
+            >
+          </div>
         </BCardBody>
       </b-col>
     </b-row>
