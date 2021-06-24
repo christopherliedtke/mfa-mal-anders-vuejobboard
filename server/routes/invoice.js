@@ -8,6 +8,7 @@ const config = require("../config/config");
 const { Job } = require("../database/models/job");
 const { Payment } = require("../database/models/payment");
 const createInvoice = require("../middleware/createInvoice");
+const createHtmlInvoice = require("../middleware/createHtmlInvoice");
 const sanitizeHtml = require("sanitize-html");
 
 // #route:  POST /api/invoice/get-invoice
@@ -228,6 +229,11 @@ router.get("/download/:paymentId", verifyToken, async (req, res) => {
     if (!req.user.isAdmin && !req.user._id === payment.user) {
       throw new Error("Missing permission!");
     }
+
+    const invoice2 = await createHtmlInvoice(
+      payment,
+      __dirname + "/../invoices/"
+    );
 
     const invoice = await createInvoice(payment, __dirname + "/../invoices/");
 
