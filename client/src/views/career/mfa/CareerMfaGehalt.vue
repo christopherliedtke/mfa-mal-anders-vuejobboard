@@ -673,7 +673,7 @@
                 <li>Hygienemanagement</li>
                 <li>
                   <b-link to="/karriere/fort-und-weiterbildungen"
-                    >Nicht-ärztliche Praxisassistentin</b-link
+                    >Nicht-ärztliche Praxisassistenz</b-link
                   >
                 </li>
                 <li>
