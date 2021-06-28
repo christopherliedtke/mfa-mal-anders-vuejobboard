@@ -559,7 +559,12 @@
                 <li>
                   Notfallmanagement/ Erweiterte Notfallkompetenz
                 </li>
-                <li>Impfassistenz</li>
+                <li>
+                  <b-link
+                    to="/karriere/fort-und-weiterbildungen/impfassistentin-fachkraft-fuer-impfmanagement"
+                    >Impfassistenz</b-link
+                  >
+                </li>
                 <li>Disease-Management-Programme</li>
               </ul>
             </BCardText>
