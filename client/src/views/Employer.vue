@@ -229,11 +229,11 @@
       <h2 class="display-4 text-center bold">
         Wir kooperieren mit
       </h2>
-      <b-row class="py-4">
+      <b-row class="py-4" cols="1" cols-md="2">
         <b-col
           v-for="partner in partners"
           :key="partner.name"
-          class="d-flex flex-column justify-content-center align-items-center"
+          class="d-flex flex-column justify-content-start align-items-center"
         >
           <b-link :href="partner.url" target="_blank">
             <img
@@ -658,19 +658,14 @@
             name: "PKV Institut",
             img: "/img/pkvverlag_logo.png",
             url:
-              "https://www.pkv-institut.de/?utm_source=MFA%20mal%20anders&utm_medium=affiliate"
+              "https://www.pkv-institut.de/?utm_source=MFA%20mal%20anders&utm_medium=affiliate",
+            html: `
+              <p>Die PKV Institut GmbH entwickelt seit 1990 Fort- und Weiterbildungsangebote speziell für medizinische Fachangestellte (MFA) und zahnmedizinische Fachangestellte (ZFA). Alle Fernlehrgänge sind von der staatlichen Zentralstelle für Fernunterricht zertifiziert. Das PKV Institut ist als Bildungsdienstleister ISO-zertifiziert (DIN 29990) sowie AZAV-zertifiziert und gehört zu den TOP-Fernschulen in Deutschland.</p>
+              <p>Mit dem jährlich in München stattfindenden „MFA-Tag & ZFA-Tag“ richtet das PKV Institut den größten deutschsprachigen Kongress für MFAs und ZFAs aus. Seit 8 Jahren bietet das PKV Institut auch Online-Seminare bzw. Webinare an.</p>
+              <p>Es arbeitet unabhängig von Industrie, Politik und Pharmaunternehmen und ist allein den MFAs und ZFAs sowie den Arzt- und Zahnarztpraxen verpflichtet. Es steht nach dem Motto <strong>„Nah an der Praxis. Nah am Leben.“</strong> für einen verbesserten Praxisalltag, mehr Erfolg und Chancen im Beruf.</p>
+            `
           },
-          {
-            name: "Landarzt sein.",
-            img: "/img/landarztSein_logo.png",
-            url:
-              "https://www.landarzt-sein.de/?utm_source=mfa-mal-anders&utm_medium=linkref&utm_campaign=other"
-          },
-          {
-            name: "Hausärzteverband HH",
-            img: "/img/hzv-logo-hamburg2.png",
-            url: "https://www.hausaerzteverband-hamburg.de/"
-          },
+
           {
             name: "Hausärzteverband Westfalen-Lippe",
             img: "/img/hvwl_logo.png",
@@ -707,6 +702,17 @@
                 </strong>
               </p>
             `
+          },
+          {
+            name: "Landarzt sein.",
+            img: "/img/landarztSein_logo.png",
+            url:
+              "https://www.landarzt-sein.de/?utm_source=mfa-mal-anders&utm_medium=linkref&utm_campaign=other"
+          },
+          {
+            name: "Hausärzteverband HH",
+            img: "/img/hzv-logo-hamburg2.png",
+            url: "https://www.hausaerzteverband-hamburg.de/"
           }
 
           // {
