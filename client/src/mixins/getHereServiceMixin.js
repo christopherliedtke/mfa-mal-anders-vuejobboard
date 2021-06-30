@@ -75,15 +75,10 @@ export const getHereServiceMixin = {
           }
         );
 
-        console.log("response: ", response);
-
         locations = response.data.suggestions;
       } catch (err) {
         //
-        console.log("err: ", err);
       } finally {
-        console.log("locations: ", locations);
-
         return locations;
       }
     }

@@ -66,18 +66,18 @@ module.exports = {
       .loader("vue-loader")
       .tap(options => {
         options["transformAssetUrls"] = {
-          img: "src",
-          image: "xlink:href",
+          "img": "src",
+          "image": "xlink:href",
           "b-img": "src",
-          BImg: "src",
+          "BImg": "src",
           "b-img-lazy": ["src", "blank-src"],
-          BImgLazy: ["src", "blank-src"],
+          "BImgLazy": ["src", "blank-src"],
           "b-card": "img-src",
-          BCard: "img-src",
+          "BCard": "img-src",
           "b-card-img": "img-src",
-          BCardImage: "img-src",
+          "BCardImage": "img-src",
           "b-card-img-lazy": ["src", "blank-src"],
-          BCardImgLazy: ["src", "blank-src"],
+          "BCardImgLazy": ["src", "blank-src"],
           "b-carousel-slide": "img-src",
           "b-embed": "src"
         };

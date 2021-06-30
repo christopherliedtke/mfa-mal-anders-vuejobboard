@@ -110,9 +110,9 @@
       <RandomArticlesContainer />
     </b-container>
     <Head
-      v-if="article.title"
-      :title="article.title"
-      :desc="article.excerpt"
+      v-if="article.seo.title"
+      :title="article.seo.title"
+      :desc="article.seo.metaDesc"
       :img="article.featuredImage ? article.featuredImage.node.sourceUrl : ''"
       :script="snippet"
     />

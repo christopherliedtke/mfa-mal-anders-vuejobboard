@@ -1,5 +1,5 @@
 <template>
-  <header id="header">
+  <header id="header" :class="{ hide: hideNavbar }">
     <b-container class="px-0">
       <b-navbar toggleable="xl" type="dark">
         <b-navbar-brand to="/">
@@ -207,6 +207,7 @@
     },
     data() {
       return {
+        hideNavbar: false,
         headerLinks: [
           {
             title: "Home",
@@ -335,12 +336,14 @@
           !navCollapse.classList.contains("show") &&
           !header.classList.contains("hide")
         ) {
-          header.classList.add("hide");
+          // header.classList.add("hide");
+          this.hideNavbar = true;
         } else if (
           currentPositionY < this.previousScrollPositionY &&
           header.classList.contains("hide")
         ) {
-          header.classList.remove("hide");
+          // header.classList.remove("hide");
+          this.hideNavbar = false;
         }
 
         this.previousScrollPositionY =
