@@ -13,37 +13,34 @@ const createHtmlInvoice = async (payment, pathToSave) => {
       bottom: "0.5cm",
       left: "2.5cm",
     },
-    header: {
-      height: "2.5cm",
-      contents: `<div>Test</div>`,
-    },
-    footer: {
-      height: "3cm",
-      contents: `
-        <div>
-            <div style="text-align: center">Seite {{page}} / {{pages}}</div>
-        </div>
-        `,
-    },
+    // header: {
+    //   height: "2.5cm",
+    //   // contents: `<div>Test</div>`,
+    // },
+    // footer: {
+    //   height: "3cm",
+    //   // contents: `
+    //   //   <div>
+    //   //       <div style="text-align: center">Seite {{page}} / {{pages}}</div>
+    //   //   </div>
+    //   //   `,
+    // },
+    localUrlAccess: true,
     base: "file://" + path.join(pathToSave),
   };
-
-  console.log("options.base: ", options.base);
 
   payment.invoiceNoLong =
     "RE-" +
     "000000".slice(0, 6 - payment.invoiceNo.toString().length) +
     payment.invoiceNo.toString();
 
-  //   console.log("payment: ", payment);
-
   const html = fs.readFileSync(
-    path.join(pathToSave, "./html/invoice.html"),
+    path.join(pathToSave, "html/invoice.html"),
     "utf8"
   );
 
   try {
-    await pdf
+    pdf
       .create(html, options)
       .toFile(
         pathToSave + payment.invoiceNoLong + "_.pdf",

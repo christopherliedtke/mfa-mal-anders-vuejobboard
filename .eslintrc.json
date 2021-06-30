@@ -19,5 +19,6 @@
     "no-sparse-arrays": 0,
     "no-unexpected-multiline": 0,
     "no-unsafe-finally": 0
-  }
+  },
+  "plugins": ["html"]
 }

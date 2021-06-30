@@ -54,6 +54,7 @@
   },
   "devDependencies": {
     "eslint": "^7.24.0",
+    "eslint-plugin-html": "^6.1.2",
     "nodemon": "^2.0.4"
   }
 }
