@@ -22,18 +22,17 @@
         <BCardText>
           <div class="card-head position-relative">
             <h2
-              :class="
-                job.company.logoUrl && !compact
-                  ? 'mobile-max-width-75 h4'
-                  : 'h4'
+              :class="[
+                'h4',
+                { 'mobile-max-width-75': job.company.logoUrl && !compact }
+              ]"
+              :style="
+                compact
+                  ? 'font-size:1rem; padding: 0.75rem; text-overflow: ellipsis; width: 95%; overflow: hidden; white-space: nowrap'
+                  : ''
               "
-              :style="compact ? 'font-size:1rem; padding: 0.75rem' : ''"
             >
-              {{
-                compact && job.title.length > 32
-                  ? job.title.slice(0, 32) + "..."
-                  : job.title
-              }}
+              {{ job.title }}
             </h2>
             <StarJob :job-id="job._id" />
             <div v-if="job.company.logoUrl && !compact" class="img-container">
