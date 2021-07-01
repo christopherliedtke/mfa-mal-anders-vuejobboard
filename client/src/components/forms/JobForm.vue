@@ -328,7 +328,7 @@
         />
       </b-input-group>
 
-      <h3 class="mt-4">Unternehmen</h3>
+      <h3 class="mt-4">Arbeitsort</h3>
       <div class="mt-3 d-flex align-items-end">
         <div>
           <label for="company-list">Vorhandenes Unternehmen wählen</label>
@@ -435,13 +435,13 @@
         >
       </b-form-select>
 
-      <label for="company-size">Unternehmensgröße *</label>
+      <label for="company-size">Unternehmensgröße</label>
       <b-form-select
         id="company-size"
         v-model="job.company.size"
-        :state="validated ? (job.company.size ? true : false) : null"
+        :state="validated ? (job.company.size ? true : null) : null"
       >
-        <b-form-select-option value="" disabled
+        <b-form-select-option value=""
           >-- Unternehmensgröße auswählen --</b-form-select-option
         >
         <b-form-select-option
@@ -841,13 +841,11 @@
           this.job.title.length > 155 ||
           !this.job.description ||
           !this.job.employmentType ||
-          // !this.job.applicationDeadline ||
           !this.job.company.name ||
           !this.job.company.country ||
           !this.job.company.location ||
           !this.job.company.street ||
-          !this.job.company.zipCode ||
-          !this.job.company.size
+          !this.job.company.zipCode
           ? false
           : true;
       },

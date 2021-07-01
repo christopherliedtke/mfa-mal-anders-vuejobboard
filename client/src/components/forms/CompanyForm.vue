@@ -85,13 +85,13 @@
         >
       </b-form-select>
 
-      <label for="company-size">Unternehmensgröße *</label>
+      <label for="company-size">Unternehmensgröße</label>
       <b-form-select
         id="company-size"
         v-model="company.size"
-        :state="validated ? (company.size ? true : false) : null"
+        :state="validated ? (company.size ? true : null) : null"
       >
-        <b-form-select-option value="" disabled
+        <b-form-select-option value=""
           >-- Unternehmensgröße auswählen --</b-form-select-option
         >
         <b-form-select-option
@@ -278,10 +278,8 @@
         return !this.company.name ||
           !this.company.country ||
           !this.company.location ||
-          // !this.company.state ||
           !this.company.street ||
-          !this.company.zipCode ||
-          !this.company.size
+          !this.company.zipCode
           ? false
           : true;
       },
