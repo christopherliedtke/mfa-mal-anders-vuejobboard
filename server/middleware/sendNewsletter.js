@@ -1,19 +1,27 @@
+const fs = require("fs");
+const path = require("path");
+const Handlebars = require("handlebars");
 const config = require("../config/config.js");
-const emailTemplate = require("../utils/emailTemplate");
+const mg = require("../utils/mailgunMailer");
 const { Subscriber } = require("../database/models/subscriber");
 const { Job } = require("../database/models/job");
 const { JobAlert } = require("../database/models/jobAlert");
 
-const mg = require("mailgun-js")({
-  apiKey: process.env.MG_API_KEY,
-  domain: process.env.MG_DOMAIN,
-  host: "api.eu.mailgun.net",
+const newsletterTemplate = fs.readFileSync(
+  path.join(__dirname, "../templates/newsletter_email.hbs"),
+  "utf8"
+);
+
+Handlebars.registerHelper("currentYear", () => {
+  return new Date().getFullYear();
 });
+const template = Handlebars.compile(newsletterTemplate);
 
 module.exports.sendNewsletter = async (daysBack = 7) => {
   console.log("sendNewsletter starting now...");
 
   try {
+    // collect newsletter recipients
     const subscribers = await Subscriber.find(
       { status: "active" },
       "email state"
@@ -22,7 +30,7 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
     const jobAlerts = await JobAlert.find({}).populate("user");
 
     const receivers = subscribers
-      .map((subscriber) => {
+      .map(subscriber => {
         return {
           role: "subscriber",
           email: subscriber.email,
@@ -30,7 +38,7 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
         };
       })
       .concat(
-        jobAlerts.map((jobAlert) => {
+        jobAlerts.map(jobAlert => {
           return {
             role: "jobAlert",
             email: jobAlert.user.email,
@@ -39,6 +47,7 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
         })
       );
 
+    // collect jobs to send w newsletter
     const jobs = await Job.find({
       paid: true,
       status: "published",
@@ -53,101 +62,71 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
       },
     }).populate("company");
 
-    const states = [
-      ...new Set(jobs.map((job) => job.company.state.replace("ü", "ue"))),
-    ];
-    const newsletterList = {};
+    // set states to send newsletter for
+    const states = [...new Set(jobs.map(job => job.company.state))];
 
-    states.forEach((state) => {
-      newsletterList[state.replace("ü", "ue")] = [];
-    });
+    // send newsletter for each state
+    states.forEach(state => {
+      const stateJobs = jobs
+        .filter(
+          job =>
+            job.company.state.replace("ü", "ue").toLowerCase() ==
+            state.replace("ü", "ue").toLowerCase()
+        )
+        .map(job => {
+          return {
+            _id: job._id,
+            title: job.title,
+            location: job.company.location,
+          };
+        });
 
-    receivers.forEach((receiver) => {
-      if (newsletterList[receiver.state.replace("ü", "ue")]) {
-        newsletterList[receiver.state.replace("ü", "ue")].push(receiver);
-      }
-    });
+      if (stateJobs.length > 0) {
+        const stateReceivers = receivers
+          .filter(
+            receiver =>
+              receiver.state.replace("ü", "ue").toLowerCase() ===
+              state.replace("ü", "ue").toLowerCase()
+          )
+          .map(receiver => receiver.email);
 
-    console.log("newsletterList: ", newsletterList);
+        const html = template({
+          jobs: stateJobs,
+          state: state,
+          websiteUrl: process.env.WEBSITE_URL,
+          websiteName: config.website.name,
+          headerImg: `${
+            process.env.WEBSITE_URL
+          }/img/SocialCard_JobsDerWoche_${state
+            .replace(/\s+/g, "")
+            .replace("ü", "ue")}.jpg`,
+          lightColor: "#fffcfd",
+          primaryColor: "#6d0230",
+          fbPath: config.social.fb.path,
+          igPath: config.social.ig.path,
+        });
 
-    for (const key in newsletterList) {
-      const jobList = generateListOfJobs(key.replace("ü", "ue"), jobs);
-
-      if (jobList) {
         const data = {
           from: `${config.website.emailFrom} <kontakt@${process.env.MG_DOMAIN}>`,
           to: config.website.contactEmail,
-          bcc: newsletterList[key].map((elem) => elem.email).join(", "),
-          subject: `Dein Job-Newsletter für ${key} – ${config.website.name}`,
-          html: emailTemplate.generate(
-            `
-                            <div>
-                                <h2 style="color: #6d0230">Deine Stellenangebote der Woche für ${key}</h2>
-                                <p>Es ist wieder soweit! Hier erhältst Du unsere aktuellen Stellenanzeigen direkt in Dein Postfach.</p>
-                                <p>Wir hoffen, für Dich ist etwas dabei und drücken die Daumen für Bewerbung und Co. </p>
-                            </div>
-                            <div style="margin: 2rem 0; padding: 1.5rem 0; border-top: solid 2px #6d0230">
-                                ${jobList}
-                            </div>
-                        `,
-            `
-                            <a
-                                style="text-decoration: underline; color: #fffcfd"
-                                target="_blank" rel="noopener"
-                                href="${process.env.WEBSITE_URL}/newsletter/unsubscribe"
-                            >
-                                Vom Newsletter abmelden
-                            </a>
-                        `,
-            `
-                            ${
-                              process.env.WEBSITE_URL
-                            }/img/SocialCard_JobsDerWoche_${key
-              .replace(/\s+/g, "")
-              .replace("ü", "ue")}.jpg
-                        `
-          ),
+          bcc: stateReceivers.join(", "),
+          subject: `Dein Job-Newsletter für ${state} – ${config.website.name}`,
+          html: html,
         };
 
         mg.messages().send(data, (error, body) => {
-          console.log(`mailgun.messages() -> Body for ${key}: `, body);
+          console.log(`mailgun.messages() -> Body for ${state}: `, body);
 
           if (error) {
-            console.log(`Error on mailgun.messages() for ${key}: `, error);
+            console.log(`Error on mailgun.messages() for ${state}: `, error);
           }
         });
       }
-    }
+    });
 
     return { success: true };
   } catch (error) {
     console.log("Error on sendNewsletter: ", error);
     return { success: false };
   }
-};
-
-const generateListOfJobs = (state, jobs) => {
-  let outputStr = "";
-
-  jobs.forEach((job) => {
-    if (job.company.state.replace("ü", "ue") === state) {
-      outputStr += `
-                <a 
-                    style="margin-bottom: 1rem; font-size: 16px; display: inline-block; cursor: pointer; border: none; color: #b94559; text-decoration: none" 
-                    href="${
-                      process.env.WEBSITE_URL +
-                      config.googleIndexing.pathPrefix +
-                      job._id
-                    }?source=newsletter"
-                    target="_blank"
-                    rel="noopener"
-                >
-                    ${job.title} | ${job.company.location}
-                </a>
-                <br>
-            `;
-    }
-  });
-
-  return outputStr;
 };

@@ -122,7 +122,12 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
       from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
       to: payment.billingEmail,
       replyTo: config.website.contactEmail,
-      bcc: config.website.contactEmail,
+      bcc: [
+        config.website.contactEmail,
+        process.env.NODE_ENV == "production" && process.env.ZAPIER_INVOICES
+          ? process.env.ZAPIER_INVOICES
+          : "",
+      ],
       subject: `[Rechnung ${
         "RE-" +
         "000000".slice(0, 6 - payment.invoiceNo.toString().length) +

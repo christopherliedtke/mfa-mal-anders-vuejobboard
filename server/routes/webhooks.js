@@ -4,6 +4,7 @@ const config = require("../config/config");
 const recachePrerender = require("../middleware/recachePrerender");
 const emailService = require("../utils/nodemailer");
 const internalJobsCache = require("../cache/internalJobsCache");
+const createInvoice = require("../middleware/createInvoice");
 const { Job } = require("../database/models/job");
 const { Payment } = require("../database/models/payment");
 const { UsedCoupon } = require("../database/models/usedCoupon");
@@ -134,9 +135,15 @@ router.post("/checkout-completed", async (req, res) => {
 
       // if (config.facebook.autoPost) postToFacebook();
 
+      const invoice = await createInvoice(payment, __dirname + "/../invoices/");
+
       const dataMailToAdmin = {
         from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
         to: config.website.contactEmail,
+        cc:
+          process.env.NODE_ENV == "production" && process.env.ZAPIER_INVOICES
+            ? process.env.ZAPIER_INVOICES
+            : "",
         subject: `[Stripe ${
           "RE-" +
           "000000".slice(0, 6 - payment.invoiceNo.toString().length) +
@@ -204,6 +211,13 @@ router.post("/checkout-completed", async (req, res) => {
           .trim()}
                 </p>
                 `,
+        attachments: [
+          {
+            filename: invoice.fileName,
+            path: invoice.path,
+            contentType: "application/pdf",
+          },
+        ],
       };
 
       emailService.sendMail(dataMailToAdmin);

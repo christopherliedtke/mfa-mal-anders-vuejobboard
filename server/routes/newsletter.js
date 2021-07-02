@@ -8,8 +8,8 @@ const { sendNewsletter } = require("../middleware/sendNewsletter");
 // #desc:   Send newsletter
 // #access: Admin
 router.post("/send", verifyToken, isAdmin, async (req, res) => {
-    const success = await sendNewsletter(req.body.daysBack);
-    res.json(success);
+  const success = await sendNewsletter(req.body.daysBack);
+  res.json(success);
 });
 
 module.exports = router;

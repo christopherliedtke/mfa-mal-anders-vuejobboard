@@ -34,6 +34,7 @@
     "googleapis": "^58.0.0",
     "graphql": "^15.1.0",
     "graphql-modules": "^1.2.1",
+    "handlebars": "^4.7.7",
     "heroku-ssl-redirect": "0.0.4",
     "html-entities": "^2.3.2",
     "jsonwebtoken": "^8.5.1",
