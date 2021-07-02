@@ -267,12 +267,12 @@ const UserResolvers = {
         email: args.email,
       });
 
-      await newCode.save();
+      const savedCode = await newCode.save();
 
       console.log("gettingPasswordResetCode: ", {
         ...args,
         secretCode,
-        newCode,
+        savedCode,
       });
 
       const emailData = {
