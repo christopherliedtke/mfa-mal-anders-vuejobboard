@@ -94,12 +94,12 @@ const actions = {
   async getActivationEmail() {
     const user = await axios.post("/graphql", {
       query: `
-                mutation {
-                    accountVerificationGetEmail {
-                        _id
-                    }
-                }
-        `
+        mutation {
+          accountVerificationGetEmail {
+            _id
+          }
+        }
+      `
     });
 
     return user.data.data.accountVerificationGetEmail._id ? true : false;

@@ -1,9 +1,11 @@
+const fs = require("fs");
+const path = require("path");
 const sanitizeHtml = require("sanitize-html");
 const config = require("../../../config/config");
 const errorMsg = require("../../../config/errorMsg.json");
 const jwt = require("jsonwebtoken");
+const Handlebars = require("handlebars");
 const cryptoRandomString = require("crypto-random-string");
-const emailTemplate = require("../../../utils/emailTemplate");
 const emailService = require("../../../utils/nodemailer");
 const { hash, compare } = require("../../../utils/bcrypt");
 const {
@@ -269,10 +271,30 @@ const UserResolvers = {
 
       const savedCode = await newCode.save();
 
-      console.log("gettingPasswordResetCode: ", {
+      console.info("Creating password reset code: ", {
         ...args,
         secretCode,
         savedCode,
+      });
+
+      const passwordResetTemplate = fs.readFileSync(
+        path.join(__dirname, "../../../templates/password_reset_email.hbs"),
+        "utf8"
+      );
+
+      Handlebars.registerHelper("currentYear", () => {
+        return new Date().getFullYear();
+      });
+      const template = Handlebars.compile(passwordResetTemplate);
+
+      const html = template({
+        secretCode,
+        websiteUrl: process.env.WEBSITE_URL,
+        websiteName: config.website.name,
+        lightColor: "#fffcfd",
+        primaryColor: "#6d0230",
+        fbPath: config.social.fb.path,
+        igPath: config.social.ig.path,
       });
 
       const emailData = {
@@ -280,11 +302,9 @@ const UserResolvers = {
         to: args.email,
         subject: `Ihr Code für den Passwort Reset auf ${config.website.name}`,
         text: `
-                        Bitte nutzen Sie den folgenden Code innerhalb der nächsten 60 Minuten, um Ihr Passwort auf ${config.website.name} zu ändern: ${secretCode}
-                    `,
-        html: emailTemplate.generate(`
-                        <p>Bitte nutzen Sie den folgenden Code innerhalb der nächsten 60 Minuten, um Ihr Passwort auf ${config.website.name} zu ändern: <strong>${secretCode}</strong></p>
-                        `),
+          Bitte nutzen Sie den folgenden Code innerhalb der nächsten 60 Minuten, um Ihr Passwort auf ${config.website.name} zu ändern: ${secretCode}
+        `,
+        html: html,
       };
       const email = await emailService.sendMail(emailData);
 
@@ -316,7 +336,7 @@ const UserResolvers = {
         code: args.code,
       });
 
-      console.log("verifyPasswordReset: ", {
+      console.info("verifyPasswordReset: ", {
         ...args,
         codeFromDb: code,
       });
@@ -347,61 +367,45 @@ const UserResolvers = {
         throw new ApolloError(errorMsg.general);
       }
 
-      const emailData = {
-        from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
-        to: user.email,
-        subject: `E-Mail bestätigen für ${config.website.name}`,
-        text: `
-                        Bitte nutzen Sie den folgenden Link, um Ihren Account auf ${config.website.name} zu aktivieren: ${process.env.WEBSITE_URL}/auth/account/verification/${user._id}
-                    `,
-        html: emailTemplate.generate(`
-                        <div 
-                            style="color: #000000; font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif; line-height: 1.2; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px">
-                            <div style="line-height: 1.2; font-size: 12px; color: #000000; font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif; mso-line-height-alt: 14px">
-                                <h2>Aktivieren Sie Ihren Account bei ${config.website.name}</h2>
-                                <p>
-                                    Bitte nutzen Sie den folgenden Link, um Ihren Account auf ${config.website.name} zu aktivieren: 
-                                </p>
-                            </div>
-                        </div>
-                        <div
-                            style="
-                                text-decoration: none;
-                                display: inline-block;
-                                color: #fffcfd;
-                                background-color: #fda225;
-                                border-radius: 50px;
-                                -webkit-border-radius: 50px;
-                                -moz-border-radius: 50px;
-                                width: auto;
-                                width: auto;
-                                border-top: 1px solid #fda225;
-                                border-right: 1px solid #fda225;
-                                border-bottom: 1px solid #fda225;
-                                border-left: 1px solid #fda225;
-                                padding-top: 5px;
-                                padding-bottom: 5px;
-                                font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif;
-                                text-align: center;
-                                mso-border-alt: none;
-                                word-break: keep-all;
-                            "
-                        >
-                            <a 
-                                style="padding-left: 20px; padding-right: 20px; font-size: 16px; display: inline-block; cursor: pointer; border: none; color: #fffcfd; text-decoration: none" href="${process.env.WEBSITE_URL}/auth/account/verification/${user._id}" target="_blank"
-                            >
-                                <span 
-                                    style="font-size: 16px; line-height: 1.5; word-break: break-word; mso-line-height-alt: 24px"
-                                >
-                                    Account aktivieren
-                                </span>
-                            </a>
-                        </div>
-                    `),
-      };
+      try {
+        const accountVerificationTemplate = fs.readFileSync(
+          path.join(
+            __dirname,
+            "../../../templates/account_verification_email.hbs"
+          ),
+          "utf8"
+        );
 
-      const emailSent = await emailService.sendMail(emailData);
-      console.log("sendMail() for user activation email: ", emailSent);
+        Handlebars.registerHelper("currentYear", () => {
+          return new Date().getFullYear();
+        });
+        const template = Handlebars.compile(accountVerificationTemplate);
+
+        const html = template({
+          userId: user._id,
+          websiteUrl: process.env.WEBSITE_URL,
+          websiteName: config.website.name,
+          lightColor: "#fffcfd",
+          primaryColor: "#6d0230",
+          fbPath: config.social.fb.path,
+          igPath: config.social.ig.path,
+        });
+
+        const emailData = {
+          from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
+          to: user.email,
+          subject: `E-Mail bestätigen für ${config.website.name}`,
+          text: `
+            Bitte nutzen Sie den folgenden Link, um Ihren Account auf ${config.website.name} zu aktivieren: ${process.env.WEBSITE_URL}/auth/account/verification/${user._id}
+          `,
+          html: html,
+        };
+
+        const emailSent = await emailService.sendMail(emailData);
+        console.info("sendMail() for user activation email: ", user, emailSent);
+      } catch (err) {
+        console.error("Error on sending account activation email: ", user, err);
+      }
 
       return { _id: user._id };
     },
@@ -476,8 +480,6 @@ const UserResolvers = {
         _id: args._id,
       });
 
-      console.log("user: ", user);
-
       const emailData = {
         from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
         to: user.email,
@@ -535,7 +537,7 @@ const UserResolvers = {
       };
 
       const emailSent = await emailService.sendMail(emailData);
-      console.log("sendMail() for user activation confirmation: ", emailSent);
+      console.info("sendMail() for user activation confirmation: ", emailSent);
 
       return { _id: user._id };
     },

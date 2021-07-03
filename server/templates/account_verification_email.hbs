@@ -22,128 +22,33 @@
     <!--[if !mso]><!-->
     <!--<![endif]-->
     <style type="text/css">
-            body {
-                margin: 0;
-                padding: 0;
-            }
-
-            table,
-            td,
-            tr {
-                vertical-align: top;
-                border-collapse: collapse;
-            }
-
-            * {
-                line-height: inherit;
-            }
-
-            a[x-apple-data-detectors="true"] {
-                color: inherit !important;
-                text-decoration: none !important;
-            }
-        </style>
-        <style id="media-query" type="text/css">
-            @media (max-width: 520px) {
-                .block-grid,
-                .col {
-                    min-width: 320px !important;
-                    max-width: 100% !important;
-                    display: block !important;
-                }
-
-                .block-grid {
-                    width: 100% !important;
-                }
-
-                .col {
-                    width: 100% !important;
-                }
-
-                .col_cont {
-                    margin: 0 auto;
-                }
-
-                img.fullwidth,
-                img.fullwidthOnMobile {
-                    max-width: 100% !important;
-                }
-
-                .no-stack .col {
-                    min-width: 0 !important;
-                    display: table-cell !important;
-                }
-
-                .no-stack.two-up .col {
-                    width: 50% !important;
-                }
-
-                .no-stack .col.num2 {
-                    width: 16.6% !important;
-                }
-
-                .no-stack .col.num3 {
-                    width: 25% !important;
-                }
-
-                .no-stack .col.num4 {
-                    width: 33% !important;
-                }
-
-                .no-stack .col.num5 {
-                    width: 41.6% !important;
-                }
-
-                .no-stack .col.num6 {
-                    width: 50% !important;
-                }
-
-                .no-stack .col.num7 {
-                    width: 58.3% !important;
-                }
-
-                .no-stack .col.num8 {
-                    width: 66.6% !important;
-                }
-
-                .no-stack .col.num9 {
-                    width: 75% !important;
-                }
-
-                .no-stack .col.num10 {
-                    width: 83.3% !important;
-                }
-
-                .video-block {
-                    max-width: none !important;
-                }
-
-                .mobile_hide {
-                    min-height: 0px;
-                    max-height: 0px;
-                    max-width: 0px;
-                    display: none;
-                    overflow: hidden;
-                    font-size: 0px;
-                }
-
-                .desktop_hide {
-                    display: block !important;
-                    max-height: none !important;
-                }
-            }
-        </style>
-        <style id="icon-media-query" type="text/css">
-            @media (max-width: 520px) {
-                .icons-inner {
-                    text-align: center;
-                }
-
-                .icons-inner td {
-                    margin: 0 auto;
-                }
-            }
-        </style>
+      body { margin: 0; padding: 0; } table, td, tr { vertical-align: top;
+      border-collapse: collapse; } * { line-height: inherit; }
+      a[x-apple-data-detectors="true"] { color: inherit !important;
+      text-decoration: none !important; }
+    </style>
+    <style id="media-query" type="text/css">
+      @media (max-width: 520px) { .block-grid, .col { min-width: 320px
+      !important; max-width: 100% !important; display: block !important; }
+      .block-grid { width: 100% !important; } .col { width: 100% !important; }
+      .col_cont { margin: 0 auto; } img.fullwidth, img.fullwidthOnMobile {
+      max-width: 100% !important; } .no-stack .col { min-width: 0 !important;
+      display: table-cell !important; } .no-stack.two-up .col { width: 50%
+      !important; } .no-stack .col.num2 { width: 16.6% !important; } .no-stack
+      .col.num3 { width: 25% !important; } .no-stack .col.num4 { width: 33%
+      !important; } .no-stack .col.num5 { width: 41.6% !important; } .no-stack
+      .col.num6 { width: 50% !important; } .no-stack .col.num7 { width: 58.3%
+      !important; } .no-stack .col.num8 { width: 66.6% !important; } .no-stack
+      .col.num9 { width: 75% !important; } .no-stack .col.num10 { width: 83.3%
+      !important; } .video-block { max-width: none !important; } .mobile_hide {
+      min-height: 0px; max-height: 0px; max-width: 0px; display: none; overflow:
+      hidden; font-size: 0px; } .desktop_hide { display: block !important;
+      max-height: none !important; } }
+    </style>
+    <style id="icon-media-query" type="text/css">
+      @media (max-width: 520px) { .icons-inner { text-align: center; }
+      .icons-inner td { margin: 0 auto; } }
+    </style>
   </head>
   <body
     class="clean-body"
@@ -245,7 +150,7 @@
                               align="center"
                               border="0"
                               class="center autowidth"
-                              src="{{headerImg}}"
+                              src="{{websiteUrl}}/img/MfaMalAnders_Banner_1200.jpg"
                               alt="MFA mal anders - Das Stellen- und Karriereportal für MFA & ZFA"
                               style="
                                 text-decoration: none;
@@ -326,32 +231,57 @@
                           "
                         >
                           <div class="our-class">
-                            <div>
-                              <h2 style="color: {{primaryColor}}">Deine
-                                Stellenangebote der Woche für
-                                {{state}}</h2>
-                              <p>Es ist wieder soweit! Hier erhältst Du unsere
-                                aktuellen Stellenanzeigen direkt in Dein
-                                Postfach.</p>
-                              <p>Wir hoffen, für Dich ist etwas dabei und
-                                drücken die Daumen für Bewerbung und Co.
-                              </p>
-                            </div>
-                              {{#each jobs}}
-                                <div
-                                  style="margin: 2rem 0; padding: 1.5rem 0; border-top: solid 2px {{../primaryColor}}"
-                                >
-                                  <a
-                                    href="{{../websiteUrl}}/stellenangebote/job/{{this._id}}"
-                                    target="_blank"
-                                    style="margin-bottom: 1rem; font-size: 16px; display: inline-block; cursor: pointer; border: none; color: {{../primaryColor}}; text-decoration: none" 
-                                  >
-                                    {{this.title}}
-                                    |
-                                    {{this.location}}
-                                  </a>
+                            <div
+                              style="color: #000000; font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif; line-height: 1.2; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px"
+                            >
+                              <div
+                                style="line-height: 1.2; font-size: 12px; color: #000000; font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif; mso-line-height-alt: 14px"
+                              >
+                                <h2>Aktivieren Sie jetzt Ihren Account bei
+                                  {{websiteName}}</h2>
+                                <p>
+                                  Vielen Dank für Ihre Registrierung auf
+                                  {{websiteName}}! Bitte nutzen Sie den
+                                  folgenden Link, um Ihren Account zu
+                                  aktivieren:
+                                </p>
                               </div>
-                            {{/each}}
+                            </div>
+                            <div
+                              style="
+                                text-decoration: none;
+                                display: inline-block;
+                                color: #fffcfd;
+                                background-color: #fda225;
+                                border-radius: 50px;
+                                -webkit-border-radius: 50px;
+                                -moz-border-radius: 50px;
+                                width: auto;
+                                width: auto;
+                                border-top: 1px solid #fda225;
+                                border-right: 1px solid #fda225;
+                                border-bottom: 1px solid #fda225;
+                                border-left: 1px solid #fda225;
+                                padding-top: 5px;
+                                padding-bottom: 5px;
+                                font-family: 'Montserrat', 'Open Sans', 'Helvetica Neue', sans-serif;
+                                text-align: center;
+                                mso-border-alt: none;
+                                word-break: keep-all;
+                            "
+                            >
+                              <a
+                                style="padding-left: 20px; padding-right: 20px; font-size: 16px; display: inline-block; cursor: pointer; border: none; color: #fffcfd; text-decoration: none"
+                                href="{{websiteUrl}}/auth/account/verification/{{userId}}"
+                                target="_blank"
+                              >
+                                <span
+                                  style="font-size: 16px; line-height: 1.5; word-break: break-word; mso-line-height-alt: 24px"
+                                >
+                                  Account aktivieren
+                                </span>
+                              </a>
+                            </div>
                           </div>
                         </div>
                         <!--[if (!mso)&(!IE)]><!-->
@@ -482,10 +412,7 @@
                           width="100%"
                         >
                           <tbody>
-                            <tr
-                              style="vertical-align: top;"
-                              valign="top"
-                            >
+                            <tr style="vertical-align: top;" valign="top">
                               <td
                                 class="divider_inner"
                                 style="
@@ -601,10 +528,7 @@
                           width="100%"
                         >
                           <tbody>
-                            <tr
-                              style=" vertical-align: top;"
-                              valign="top"
-                            >
+                            <tr style=" vertical-align: top;" valign="top">
                               <td
                                 class="divider_inner"
                                 style="
@@ -711,7 +635,8 @@
                               padding: 1rem 0;
                             "
                           >
-                            © {{currentYear}}
+                            ©
+                            {{currentYear}}
                             {{websiteName}}.
                             <a
                               href="{{websiteUrl}}/agbs"
@@ -728,18 +653,6 @@
                                 text-decoration: none;
                               "
                             >AGBs</a>
-                            <div
-                              style="margin: 1rem 0 0 0;"
-                            >
-                              <a
-                                style="text-decoration: underline; color: #fffcfd"
-                                target="_blank"
-                                rel="noopener"
-                                href="{{websiteUrl}}/newsletter/unsubscribe"
-                              >
-                                Vom Newsletter abmelden
-                              </a>
-                            </div>
                           </div>
                         </div>
                         <!--[if (!mso)&(!IE)]><!-->
