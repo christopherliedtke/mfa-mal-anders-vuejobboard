@@ -172,7 +172,9 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
                 </p>
                 <p>__</p>
                 <p>
-                    <img src="cid:mfa-mal-anders-logo" width="60" style="margin-bottom: 1rem"/> <br>
+                    <img src="${
+                      process.env.WEBSITE_URL
+                    }/img/MfaMalAnders_logo_circle_dark.png" alt="MFA mal anders - Logo" width="60" style="margin-bottom: 1rem"/> <br>
                     <strong>MFA mal anders</strong> <br>
                     Das Stellen- & Karriereportal für Medizinische / Zahnmedizinische Fachangestellte <br>
                     <br>
@@ -189,13 +191,13 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
           path: invoice.path,
           contentType: "application/pdf",
         },
-        {
-          filename: "MfaMalAnders_logo_circle_dark.png",
-          path:
-            __dirname +
-            "/../../client/public/img/MfaMalAnders_logo_circle_dark.png",
-          cid: "mfa-mal-anders-logo", //same cid value as in the html img src
-        },
+        // {
+        //   filename: "MfaMalAnders_logo_circle_dark.png",
+        //   path:
+        //     __dirname +
+        //     "/../../client/public/img/MfaMalAnders_logo_circle_dark.png",
+        //   cid: "mfa-mal-anders-logo", //same cid value as in the html img src
+        // },
       ],
     };
 

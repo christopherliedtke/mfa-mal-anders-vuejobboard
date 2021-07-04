@@ -337,10 +337,10 @@
                                 drücken die Daumen für Bewerbung und Co.
                               </p>
                             </div>
-                              {{#each jobs}}
-                                <div
-                                  style="margin: 2rem 0; padding: 1.5rem 0; border-top: solid 2px {{../primaryColor}}"
-                                >
+                              <div
+                                style="margin: 2rem 0; padding: 1.5rem 0; border-top: solid 2px {{primaryColor}}"
+                              >
+                                {{#each jobs}}
                                   <a
                                     href="{{../websiteUrl}}/stellenangebote/job/{{this._id}}"
                                     target="_blank"
@@ -350,8 +350,8 @@
                                     |
                                     {{this.location}}
                                   </a>
-                              </div>
-                            {{/each}}
+                              {{/each}}
+                            </div>
                           </div>
                         </div>
                         <!--[if (!mso)&(!IE)]><!-->
@@ -438,7 +438,7 @@
                               align="center"
                               border="0"
                               class="center fixedwidth"
-                              src="{{websiteUrl}}/img/MfaMalAnders_Logo_white.svg"
+                              src="{{websiteUrl}}/img/MfaMalAnders_Logo_white.png"
                               alt="MFA mal anders - Logo"
                               style="
                                 text-decoration: none;
