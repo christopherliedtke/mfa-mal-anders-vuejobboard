@@ -27,8 +27,7 @@
         <b-link
           to="/blog/article/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
           >Gehaltsvorstellungen</b-link
-        >
-        . Natürlich willst du nicht zu dreist sein und das potenzielle
+        >. Natürlich willst du nicht zu dreist sein und das potenzielle
         Jobangebot durch zu hohe Gehaltswünsche in Gefahr bringen. Deshalb gehen
         viele ArzthelferInnen lieber auf Nummer sicher und verkaufen sich am
         Ende unter Wert.
@@ -178,14 +177,15 @@
             >
             führen.
           </p>
-        </b-col>
-        <b-col>
           <p>
             Daneben bietet der Gehaltstarifvertrag für Medizinische
             Fachangestellte dir vor allem eine gute Orientierung, um deinen
             Marktwert einzuschätzen – bezüglich Qualifikation und Erfahrung.
           </p>
+        </b-col>
+        <b-col>
           <Gehaltsrechner class="my-4" />
+          <GehaltsverhandlungBanner class="mb-4" />
           <FacebookBtn
             class="mb-4 mr-1"
             content="Folgen und keine Neuigkeiten verpassen"
@@ -969,6 +969,7 @@
   import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
   import BerufsbilderBanner from "@/components/banners/BerufsbilderBanner.vue";
   import WeiterbildungenBanner from "@/components/banners/WeiterbildungenBanner.vue";
+  import GehaltsverhandlungBanner from "@/components/banners/GehaltsverhandlungBanner.vue";
   export default {
     name: "CareerGehalt",
     components: {
@@ -977,7 +978,8 @@
       FacebookShareBtn,
       ToJobboardBanner,
       BerufsbilderBanner,
-      WeiterbildungenBanner
+      WeiterbildungenBanner,
+      GehaltsverhandlungBanner
     },
     data() {
       return {

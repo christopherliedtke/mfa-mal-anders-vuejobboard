@@ -170,8 +170,6 @@
             Klausel im Arbeitsvertrag aufnehmen zu lassen, die die Abmachung
             bindend macht.
           </p>
-        </b-col>
-        <b-col>
           <p>
             Der Tarifvertrag hat natürlich auch einen ganz entscheidenden
             Vorteil: er wird regelmäßig neu verhandelt. Das Gehalt wird somit
@@ -189,6 +187,8 @@
             Fachangestellte dir vor allem eine gute Orientierung, um deinen
             Marktwert einzuschätzen – bezüglich Qualifikation und Erfahrung.
           </p>
+        </b-col>
+        <b-col>
           <p>
             Die letzte Gehaltserhöhung bzw. Tarifanpassung wurde zum 01.01.2020
             wirksam. Anfangsgehälter für Zahnmedizinische Fachangestellte nach
@@ -209,6 +209,7 @@
             >.
           </p>
           <GehaltsrechnerZfa class="my-4" />
+          <GehaltsverhandlungBanner class="mb-4" />
           <FacebookBtn
             class="mb-4 mr-1"
             content="Folgen und keine Neuigkeiten verpassen"
@@ -842,6 +843,7 @@
   import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
   import BerufsbilderBanner from "@/components/banners/BerufsbilderBanner.vue";
   import WeiterbildungenBanner from "@/components/banners/WeiterbildungenBanner.vue";
+  import GehaltsverhandlungBanner from "@/components/banners/GehaltsverhandlungBanner.vue";
   export default {
     name: "CareerGehalt",
     components: {
@@ -850,7 +852,8 @@
       GehaltsrechnerZfa,
       ToJobboardBanner,
       BerufsbilderBanner,
-      WeiterbildungenBanner
+      WeiterbildungenBanner,
+      GehaltsverhandlungBanner
     },
     data() {
       return {

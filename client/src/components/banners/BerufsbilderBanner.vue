@@ -19,8 +19,8 @@
 
       <BCardText>
         Hier findest du eine Auswahl von ganz unterschiedlichen Jobs und Berufen
-        inklusive vieler Alternativen für Medizinische Fachangestellte /
-        ArzthelferInnen!
+        inklusive vieler Alternativen für Medizinische & Zahnmedizinische
+        Fachangestellte / ArzthelferInnen!
       </BCardText>
 
       <b-button to="/karriere/jobs-und-berufsbilder" variant="primary"
