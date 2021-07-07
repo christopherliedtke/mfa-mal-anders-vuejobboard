@@ -42,7 +42,6 @@ import {
   ButtonPlugin,
   FormPlugin,
   FormCheckboxPlugin,
-  FormFilePlugin,
   FormGroupPlugin,
   FormInputPlugin,
   FormRadioPlugin,
@@ -61,7 +60,6 @@ Vue.use(AlertPlugin);
 Vue.use(ButtonPlugin);
 Vue.use(FormPlugin);
 Vue.use(FormCheckboxPlugin);
-Vue.use(FormFilePlugin);
 Vue.use(FormGroupPlugin);
 Vue.use(FormInputPlugin);
 Vue.use(FormRadioPlugin);

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="d-flex">
-      <b-form-file
+      <BFormFile
         :id="id"
         ref="file-input"
         v-model="file"
@@ -24,6 +24,9 @@
 </template>
 
 <script>
+  import Vue from "vue";
+  import { BFormFile } from "bootstrap-vue";
+  Vue.component("BFormFile", BFormFile);
   export default {
     name: "ImageUploader",
     // props: ["id", "validated", "imageUrl", "width", "height", "fit"],
