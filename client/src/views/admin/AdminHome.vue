@@ -73,3 +73,7 @@
     }
   };
 </script>
+
+<style lang="scss">
+  @import "~bootstrap/scss/tables";
+</style>

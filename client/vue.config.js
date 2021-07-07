@@ -97,6 +97,10 @@ module.exports = {
       sass: {
         prependData: `
           @import "@/styles/variables.scss";
+          @import "~bootstrap/scss/functions";
+          @import "~bootstrap/scss/variables";
+          @import "~bootstrap/scss/mixins";
+          @import "~bootstrap/scss/root";
         `
       }
     }
