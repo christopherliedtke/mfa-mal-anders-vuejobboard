@@ -10,6 +10,7 @@ const sanitizeHtml = require("sanitize-html");
 const config = require("../../../config/config");
 const Handlebars = require("handlebars");
 const emailService = require("../../../utils/nodemailer");
+const mg = require("../../../utils/mailgunMailer");
 const { Subscriber } = require("../../models/subscriber");
 
 const SubscriberResolvers = {
@@ -85,7 +86,7 @@ const SubscriberResolvers = {
         });
 
         const emailData = {
-          from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
+          from: `${config.website.emailFrom} <newsletter@${process.env.MG_DOMAIN}>`,
           to: args.email,
           subject: `Anmeldung für Job Newsletter auf ${config.website.name}`,
           text: `
@@ -94,7 +95,9 @@ const SubscriberResolvers = {
           html: html,
         };
 
-        const emailSent = await emailService.sendMail(emailData);
+        const emailSent = await mg.messages().send(emailData);
+        //   const emailSent = await emailService.sendMail(emailData);
+
         console.info(
           "sendMail() for newsletter activation email: ",
           newSubscriber,
@@ -116,6 +119,8 @@ const SubscriberResolvers = {
       if (!subscriber) {
         throw new ApolloError(errorMsg.subscriber.noMatch);
       }
+
+      console.info("Subscriber activated: ", subscriber);
 
       return { _id: subscriber._id };
     },
