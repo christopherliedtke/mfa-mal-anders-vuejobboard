@@ -22,7 +22,3 @@
     name: "Overlay"
   };
 </script>
-
-<style lang="scss">
-  @import "~bootstrap/scss/modal";
-</style>
