@@ -150,6 +150,10 @@ const AdminEditPayment = () =>
   import(
     /* webpackChunkName: "ad_payment" */ "@/views/admin/payments/edit/_paymentId.vue"
   );
+const AdminCreateJobOfTheDay = () =>
+  import(
+    /* webpackChunkName: "ad_createImage" */ "@/views/admin/create-image/jobOfTheDay.vue"
+  );
 
 // #404
 const NotFound = () => import("@/views/NotFound.vue");
@@ -507,6 +511,15 @@ const routes = [
     path: "/admin/payments/edit/:paymentId",
     name: "AdminEditPayment",
     component: AdminEditPayment,
+    meta: {
+      public: false,
+      onlyAdmin: true
+    }
+  },
+  {
+    path: "/admin/create-image/job-of-the-day",
+    name: "AdminCreateJobOfTheDay",
+    component: AdminCreateJobOfTheDay,
     meta: {
       public: false,
       onlyAdmin: true
