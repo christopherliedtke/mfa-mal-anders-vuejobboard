@@ -1,196 +1,191 @@
 <template>
   <header id="header" :class="{ hide: hideNavbar }">
-    <b-container class="px-0">
-      <b-navbar toggleable="xl" type="dark">
-        <b-navbar-brand to="/">
-          <b-img
-            class="header-logo"
-            src="/img/MfaMalAnders_Logo_white.svg"
-            alt="MFA mal anders - Logo"
-          />
-        </b-navbar-brand>
+    <b-container id="navbar">
+      <router-link to="/">
+        <b-img
+          class="header-logo"
+          src="/img/MfaMalAnders_Logo_white.svg"
+          alt="MFA mal anders - Logo"
+          fluid
+        />
+      </router-link>
 
-        <b-navbar-toggle class="ui-hamburger-05" target="nav-collapse">
-          <span></span>
-        </b-navbar-toggle>
-
-        <b-collapse id="nav-collapse" is-nav @click="toggleNavbar">
-          <b-navbar-nav class="m-auto" tag="nav">
-            <b-nav-item
-              v-for="link in headerLinks"
-              :key="link.title"
-              :to="link.path"
-              @mouseover="link.children && showSub(link.title)"
-              @mouseleave="link.children && hideSub(link.title)"
+      <div :class="['nav-wrapper', { collapsed: navCollapsed }]">
+        <nav id="primary-nav">
+          <router-link
+            v-for="link in headerLinks"
+            :key="link.title"
+            :to="link.path"
+            @mouseenter.native="link.children && showSub(link.title)"
+            @mouseleave.native="link.children && hideSub(link.title)"
+            ><span
               >{{ link.title }}
-              <Fa
-                v-if="link.icon"
-                class="ml-1 icon"
-                :icon="link.icon"
-                size="xs"
+              <Fa v-if="link.icon" class="icon" :icon="link.icon" size="xs" />
+            </span>
+            <div v-if="link.children" :id="link.title" class="sub-menu">
+              <router-link
+                v-for="subLink in link.children"
+                :key="subLink.title"
+                :to="subLink.path"
+                @mouseenter.native="subLink.children && showSub(subLink.title)"
+                @mouseleave.native="subLink.children && hideSub(subLink.title)"
+                >{{ subLink.title }}
+                <Fa
+                  v-if="subLink.icon"
+                  class="ml-1 icon"
+                  :icon="subLink.icon"
+                  size="xs"/>
+                <div
+                  v-if="subLink.children"
+                  :id="subLink.title"
+                  class="sub-menu"
+                >
+                  <router-link
+                    v-for="subSubLink in subLink.children"
+                    :key="subSubLink.title"
+                    :to="subSubLink.path"
+                    >{{ subSubLink.title }}
+                    <Fa
+                      v-if="subSubLink.icon"
+                      class="ml-1 icon"
+                      :icon="subSubLink.icon"
+                      size="xs"
+                  /></router-link></div
+              ></router-link>
+            </div>
+          </router-link>
+        </nav>
+        <nav id="secondary-nav" class="mt-3 mt-lg-0">
+          <router-link
+            v-if="loggedIn"
+            to="/user/dashboard"
+            @mouseenter.native="showSub('account')"
+            @mouseleave.native="hideSub('account')"
+          >
+            <div class="d-flex align-items-center">
+              <b-img
+                v-if="user.image"
+                :src="user.image"
+                class="mr-1 rounded-circle"
+                style="width: 25px; height: 25px; object-fit: cover"
               />
-              <div v-if="link.children" :id="link.title" class="sub-menu">
-                <b-nav-item
-                  v-for="subLink in link.children"
-                  :key="subLink.title"
-                  :to="subLink.path"
-                  @mouseover="subLink.children && showSub(subLink.title)"
-                  @mouseleave="subLink.children && hideSub(subLink.title)"
-                  >{{ subLink.title }}
-                  <Fa
-                    v-if="subLink.icon"
-                    class="ml-1 icon"
-                    :icon="subLink.icon"
-                    size="xs"/>
-                  <div
-                    v-if="subLink.children"
-                    :id="subLink.title"
-                    class="sub-menu"
-                  >
-                    <b-nav-item
-                      v-for="subSubLink in subLink.children"
-                      :key="subSubLink.title"
-                      :to="subSubLink.path"
-                      >{{ subSubLink.title }}
-                      <Fa
-                        v-if="subSubLink.icon"
-                        class="ml-1 icon"
-                        :icon="subSubLink.icon"
-                        size="xs"
-                    /></b-nav-item></div
-                ></b-nav-item>
-              </div>
-            </b-nav-item>
-          </b-navbar-nav>
-          <b-navbar-nav class="mt-3 mt-lg-0">
-            <b-nav-item
-              v-if="loggedIn"
-              to="/user/dashboard"
-              @mouseover="showSub('account')"
-              @mouseleave="hideSub('account')"
-            >
-              <div class="d-flex align-items-center">
-                <b-img
-                  v-if="user.image"
-                  :src="user.image"
-                  class="mr-1 rounded-circle"
-                  style="width: 25px; height: 25px; object-fit: cover"
-                />
-                <span
-                  v-else
-                  class="bg-light rounded-circle text-primary d-flex justify-content-center align-items-center mr-1"
-                  style="width: 22.5px; height: 22.5px"
-                >
-                  <Fa icon="user" size="sm" />
-                </span>
-                <span>Mein Konto</span>
-                <Fa class="ml-1" icon="chevron-down" size="xs" />
-              </div>
-              <div id="account" class="sub-menu">
-                <b-nav-item
-                  to="/user/dashboard?tab=0"
-                  :active="
-                    $route.path == '/user/dashboard' && !$route.query.tab
-                  "
-                  :active-class="
-                    $route.query.tab == 0 ? 'router-link-active' : ''
-                  "
-                  :exact-active-class="
-                    $route.query.tab == 0 ? 'router-link-active' : ''
-                  "
-                  >Account</b-nav-item
-                >
-                <b-nav-item
-                  v-if="$store.state.auth.user.isEmployer"
-                  to="/user/dashboard?tab=1"
-                  :active-class="
-                    $route.query.tab == 1 ? 'router-link-active' : ''
-                  "
-                  :exact-active-class="
-                    $route.query.tab == 1 ? 'router-link-active' : ''
-                  "
-                  >Stellenanzeigen</b-nav-item
-                >
-                <b-nav-item
-                  v-if="$store.state.auth.user.isEmployer"
-                  to="/user/dashboard?tab=2"
-                  :active-class="
-                    $route.query.tab == 2 ? 'router-link-active' : ''
-                  "
-                  :exact-active-class="
-                    $route.query.tab == 2 ? 'router-link-active' : ''
-                  "
-                  >Unternehmen</b-nav-item
-                >
-                <b-nav-item
-                  v-if="$store.state.auth.user.isEmployer"
-                  to="/user/dashboard?tab=3"
-                  :active-class="
-                    $route.query.tab == 3 ? 'router-link-active' : ''
-                  "
-                  :exact-active-class="
-                    $route.query.tab == 3 ? 'router-link-active' : ''
-                  "
-                  >Zahlungen</b-nav-item
-                >
-                <b-nav-item
-                  v-if="
-                    $config.starredJobs.active &&
-                      ($store.state.auth.user.isEmployee ||
-                        ($store.state.starredJobs.starredJobs &&
-                          $store.state.starredJobs.starredJobs.length > 0))
-                  "
-                  to="/user/dashboard?tab=4"
-                  :active-class="
-                    $route.query.tab == 4 ? 'router-link-active' : ''
-                  "
-                  :exact-active-class="
-                    $route.query.tab == 4 ? 'router-link-active' : ''
-                  "
-                  >Gespeicherte Jobs</b-nav-item
-                >
-                <b-nav-item
-                  v-if="
-                    $store.state.auth.user.isEmployee ||
-                      $store.state.auth.user.isAdmin
-                  "
-                  to="/user/dashboard?tab=5"
-                  :active-class="
-                    $route.query.tab == 5 ? 'router-link-active' : ''
-                  "
-                  :exact-active-class="
-                    $route.query.tab == 5 ? 'router-link-active' : ''
-                  "
-                  >Job-Newsletter</b-nav-item
-                >
-              </div>
-            </b-nav-item>
-
-            <b-nav-item v-if="user.isAdmin" to="/admin"
-              ><Fa icon="key" size="lg"
-            /></b-nav-item>
-            <b-nav-item v-if="loggedIn"
-              ><LogoutBtn @done="toggleNavbar"
-            /></b-nav-item>
-            <b-nav-item v-else>
-              <b-button
-                class="mr-1"
-                variant="secondary"
-                size="sm"
-                to="/auth/login"
-                >Login</b-button
+              <span
+                v-else
+                class="bg-light rounded-circle text-primary d-flex justify-content-center align-items-center mr-1"
+                style="width: 22.5px; height: 22.5px"
               >
-              <b-button
-                class="px-3"
-                variant="secondary"
-                size="lg"
-                to="/auth/register"
-                ><Fa style="margin: 0.1rem" icon="user-plus" size="sm" />
-              </b-button>
-            </b-nav-item>
-          </b-navbar-nav>
-        </b-collapse>
-      </b-navbar>
+                <Fa icon="user" size="sm" />
+              </span>
+              <span>Mein Konto</span>
+              <Fa class="ml-1" icon="chevron-down" size="xs" />
+            </div>
+            <div id="account" class="sub-menu">
+              <router-link
+                to="/user/dashboard?tab=0"
+                :active="$route.path == '/user/dashboard' && !$route.query.tab"
+                :active-class="
+                  $route.query.tab == 0 ? 'router-link-active' : ''
+                "
+                :exact-active-class="
+                  $route.query.tab == 0 ? 'router-link-active' : ''
+                "
+                >Account</router-link
+              >
+              <router-link
+                v-if="$store.state.auth.user.isEmployer"
+                to="/user/dashboard?tab=1"
+                :active-class="
+                  $route.query.tab == 1 ? 'router-link-active' : ''
+                "
+                :exact-active-class="
+                  $route.query.tab == 1 ? 'router-link-active' : ''
+                "
+                >Stellenanzeigen</router-link
+              >
+              <router-link
+                v-if="$store.state.auth.user.isEmployer"
+                to="/user/dashboard?tab=2"
+                :active-class="
+                  $route.query.tab == 2 ? 'router-link-active' : ''
+                "
+                :exact-active-class="
+                  $route.query.tab == 2 ? 'router-link-active' : ''
+                "
+                >Unternehmen</router-link
+              >
+              <router-link
+                v-if="$store.state.auth.user.isEmployer"
+                to="/user/dashboard?tab=3"
+                :active-class="
+                  $route.query.tab == 3 ? 'router-link-active' : ''
+                "
+                :exact-active-class="
+                  $route.query.tab == 3 ? 'router-link-active' : ''
+                "
+                >Zahlungen</router-link
+              >
+              <router-link
+                v-if="
+                  $config.starredJobs.active &&
+                    ($store.state.auth.user.isEmployee ||
+                      ($store.state.starredJobs.starredJobs &&
+                        $store.state.starredJobs.starredJobs.length > 0))
+                "
+                to="/user/dashboard?tab=4"
+                :active-class="
+                  $route.query.tab == 4 ? 'router-link-active' : ''
+                "
+                :exact-active-class="
+                  $route.query.tab == 4 ? 'router-link-active' : ''
+                "
+                >Gespeicherte Jobs</router-link
+              >
+              <router-link
+                v-if="
+                  $store.state.auth.user.isEmployee ||
+                    $store.state.auth.user.isAdmin
+                "
+                to="/user/dashboard?tab=5"
+                :active-class="
+                  $route.query.tab == 5 ? 'router-link-active' : ''
+                "
+                :exact-active-class="
+                  $route.query.tab == 5 ? 'router-link-active' : ''
+                "
+                >Job-Newsletter</router-link
+              >
+            </div>
+          </router-link>
+
+          <router-link v-if="user.isAdmin" to="/admin"
+            ><Fa icon="key" size="lg"
+          /></router-link>
+          <div v-if="loggedIn"><LogoutBtn @done="toggleNavbar" /></div>
+          <div v-else class="d-flex">
+            <b-button
+              class="mr-1 px-4 py-1"
+              variant="secondary"
+              size="sm"
+              to="/auth/login"
+              >Login</b-button
+            >
+            <b-button
+              class="px-3"
+              variant="secondary"
+              size="lg"
+              to="/auth/register"
+              ><Fa style="margin: 0.1rem" icon="user-plus" size="sm" />
+            </b-button>
+          </div>
+        </nav>
+      </div>
+
+      <div
+        :class="['ui-hamburger-05', { collapsed: navCollapsed }]"
+        @click="navCollapsed = !navCollapsed"
+      >
+        <span></span>
+      </div>
     </b-container>
   </header>
 </template>
@@ -208,6 +203,7 @@
     data() {
       return {
         hideNavbar: false,
+        navCollapsed: true,
         headerLinks: [
           {
             title: "Home",
@@ -326,14 +322,15 @@
       },
       showHeader() {
         const header = document.getElementById("header");
-        const navCollapse = document.getElementById("nav-collapse");
+        // const navCollapse = document.getElementById("nav-collapse");
         let currentPositionY = window.document.documentElement.scrollTop;
 
         if (
           currentPositionY > this.previousScrollPositionY &&
           currentPositionY > header.offsetHeight &&
-          !navCollapse.classList.contains("collapsing") &&
-          !navCollapse.classList.contains("show") &&
+          this.navCollapsed &&
+          // !navCollapse.classList.contains("collapsing") &&
+          // !navCollapse.classList.contains("show") &&
           !header.classList.contains("hide")
         ) {
           // header.classList.add("hide");
@@ -362,185 +359,262 @@
     top: 0;
     left: 0;
     right: 0;
+    height: 70px;
     z-index: 1000;
-    transition: linear 0.3s;
+    transition: ease-in-out 0.3s;
 
     @media screen and (max-width: $break-menu) {
       max-height: 100vh;
-      overflow-y: auto;
+      overflow-y: hidden;
+      height: 60px;
     }
 
     &.hide {
       transform: translateY(-100%);
     }
 
-    .container {
+    #navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       max-width: 1300px;
+      padding: 0 0.75rem;
 
-      .navbar {
-        padding: 0 0.75rem;
+      .header-logo {
+        height: 50px;
+        margin: 0.5rem 1rem;
 
-        .header-logo {
-          height: 50px;
-          margin: 0.5rem 1rem;
+        @media screen and (max-width: $break-menu) {
+          height: 44px;
+        }
+      }
 
-          @media screen and (max-width: $break-menu) {
-            height: 45px;
+      .nav-wrapper {
+        flex-grow: 1;
+        display: flex;
+        padding: 1rem;
+
+        @media screen and (max-width: $break-menu) {
+          position: fixed;
+          left: 0;
+          top: 60px;
+          bottom: 0;
+          flex-direction: column;
+          background-color: $primary;
+          box-shadow: $shadow1;
+          transition: ease-in-out 0.3s;
+          overflow: auto;
+
+          &.collapsed {
+            transform: translateX(-100%);
           }
         }
 
-        .navbar-nav {
+        nav {
           display: flex;
+          justify-content: center;
           align-items: center;
 
           @media screen and (max-width: $break-menu) {
-            align-items: start;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
           }
-        }
 
-        .navbar-collapse {
-          @media screen and (max-width: $break-menu) {
-            padding: 1rem;
-          }
-        }
+          a {
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 0.4rem 0.5rem;
+            color: transparentize($color: $light, $amount: 0.3);
 
-        .nav-link {
-          position: relative;
-          display: flex;
-          align-items: center;
-          padding: 0.4rem 0.5rem;
-          color: transparentize($color: $light, $amount: 0.3);
+            @media screen and (max-width: $break-menu) {
+              flex-direction: column;
+              align-items: flex-start;
+            }
 
-          &:not([href="/"]) {
-            &.router-link-active {
+            &:not([href="/"]) {
+              &.router-link-active {
+                color: transparentize($color: $light, $amount: 0);
+              }
+            }
+
+            &.router-link-exact-active,
+            &.active {
+              color: transparentize($color: $light, $amount: 0);
+            }
+
+            &:hover {
               color: transparentize($color: $light, $amount: 0);
             }
           }
 
-          &.router-link-exact-active,
-          &.active {
-            color: transparentize($color: $light, $amount: 0);
-          }
-
-          &:hover {
-            color: transparentize($color: $light, $amount: 0);
-          }
-
-          @media screen and (max-width: $break-menu) {
-            display: block;
-          }
-        }
-
-        .sub-menu {
-          position: absolute;
-          top: 100%;
-          background-color: $primary;
-          border-radius: $border-radius1;
-          width: max-content;
-          max-height: 0;
-          overflow-y: hidden;
-          visibility: hidden;
-          transition: linear 0.3s;
-
-          @media screen and (max-width: $break-menu) {
-            display: block;
-            position: relative;
-            top: 0%;
-            left: 0;
-            max-height: none;
-            visibility: visible;
-          }
-
-          &.show {
-            max-height: 300px;
-            // overflow-y: visible;
-            visibility: visible;
+          .sub-menu {
+            position: absolute;
+            top: 100%;
+            background-color: $primary;
+            border-radius: $border-radius1;
+            width: max-content;
+            max-height: 0;
+            overflow-y: hidden;
+            visibility: hidden;
+            transition: linear 0.3s;
 
             @media screen and (max-width: $break-menu) {
-              max-height: none;
-            }
-          }
-
-          .nav-link {
-            padding: 0.4rem 1rem;
-
-            @media screen and (max-width: $break-menu) {
-              .svg-inline--fa {
-                display: none;
-              }
-            }
-
-            .sub-menu {
+              display: block;
+              position: relative;
               top: 0%;
-              left: 100%;
+              left: 0;
+              max-height: none;
+              visibility: visible;
+            }
+
+            &.show {
+              max-height: 300px;
+              // overflow-y: visible;
+              visibility: visible;
 
               @media screen and (max-width: $break-menu) {
-                display: none;
+                max-height: none;
+              }
+            }
+
+            a {
+              padding: 0.4rem 1rem;
+
+              @media screen and (max-width: $break-menu) {
+                .svg-inline--fa {
+                  display: none;
+                }
+              }
+
+              .sub-menu {
+                top: 0%;
+                left: 100%;
+
+                @media screen and (max-width: $break-menu) {
+                  display: none;
+                }
               }
             }
           }
         }
+
+        #primary-nav {
+          flex-grow: 1;
+
+          // @media screen and (max-width: $break-menu) {
+          //   flex-grow: 0;
+          // }
+        }
       }
+
+      // .navbar-nav {
+      //   display: flex;
+      //   align-items: center;
+
+      //   @media screen and (max-width: $break-menu) {
+      //     align-items: start;
+      //   }
+      // }
+
+      // .navbar-collapse {
+      //   @media screen and (max-width: $break-menu) {
+      //     padding: 1rem;
+      //   }
+      // }
+
+      // .nav-link {
+      //   position: relative;
+      //   display: flex;
+      //   align-items: center;
+      //   padding: 0.4rem 0.5rem;
+      //   color: transparentize($color: $light, $amount: 0.3);
+
+      //   &:not([href="/"]) {
+      //     &.router-link-active {
+      //       color: transparentize($color: $light, $amount: 0);
+      //     }
+      //   }
+
+      //   &.router-link-exact-active,
+      //   &.active {
+      //     color: transparentize($color: $light, $amount: 0);
+      //   }
+
+      //   &:hover {
+      //     color: transparentize($color: $light, $amount: 0);
+      //   }
+
+      //   @media screen and (max-width: $break-menu) {
+      //     display: block;
+      //   }
+      // }
+    }
+  }
+
+  /* #Animate navbar menu icon */
+  .ui-hamburger-05 {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 35px;
+    height: 30px;
+    border: none;
+    position: relative;
+    background: linear-gradient(
+      to bottom,
+      transparentize($light, 0.5),
+      transparentize($light, 0.5)
+    );
+    background-size: 0 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: pointer;
+    display: none;
+
+    @media screen and (max-width: $break-menu) {
+      display: block;
     }
 
-    /* #Animate navbar menu icon */
-    .ui-hamburger-05 {
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;
-      width: 35px;
-      height: 30px;
-      border: none;
-      position: relative;
-      background: linear-gradient(
-        to bottom,
-        transparentize($light, 0.5),
-        transparentize($light, 0.5)
-      );
+    &:focus {
+      outline: none;
+    }
+
+    &:before,
+    &:after {
+      height: 2px;
+      width: 100%;
+      position: absolute;
+      left: 0;
+      background-color: transparentize($light, 0.5);
+      content: "";
+      transition: transform 0.4s ease;
+    }
+
+    &:before {
+      top: 10px;
+    }
+
+    &:after {
+      bottom: 10px;
+    }
+
+    &:not(.collapsed) {
       background-size: 0 0;
-      background-repeat: no-repeat;
-      background-position: center center;
-      cursor: pointer;
+    }
 
-      &:focus {
-        outline: none;
-      }
+    &:not(.collapsed):before,
+    &:not(.collapsed):after {
+      transition-delay: 0.1s;
+    }
 
-      &:before,
-      &:after {
-        height: 2px;
-        width: 100%;
-        position: absolute;
-        left: 0;
-        background-color: transparentize($light, 0.5);
-        content: "";
-        transition: transform 0.4s ease;
-      }
+    &:not(.collapsed):before {
+      transform: translateY(4px) rotate(45deg);
+    }
 
-      &:before {
-        top: 10px;
-      }
-
-      &:after {
-        bottom: 10px;
-      }
-
-      &:not(.collapsed) {
-        background-size: 0 0;
-      }
-
-      &:not(.collapsed):before,
-      &:not(.collapsed):after {
-        transition-delay: 0.1s;
-      }
-
-      &:not(.collapsed):before {
-        transform: translateY(4px) rotate(45deg);
-      }
-
-      &:not(.collapsed):after {
-        transform: translateY(-4px) rotate(-45deg);
-      }
+    &:not(.collapsed):after {
+      transform: translateY(-4px) rotate(-45deg);
     }
   }
 </style>
