@@ -163,7 +163,7 @@
           <router-link v-if="user.isAdmin" to="/admin"
             ><Fa icon="key" size="lg"
           /></router-link>
-          <div v-if="loggedIn"><LogoutBtn @done="toggleNavbar" /></div>
+          <div v-if="loggedIn"><LogoutBtn /></div>
           <div v-else class="d-flex">
             <b-button
               class="mr-1 px-4 py-1"
@@ -314,9 +314,6 @@
       }, 100);
     },
     methods: {
-      toggleNavbar() {
-        this.$root.$emit("bv::toggle::collapse", "nav-collapse");
-      },
       showSub(id) {
         window.document.getElementById(id).classList.add("show");
       },
@@ -325,24 +322,19 @@
       },
       showHeader() {
         const header = document.getElementById("header");
-        // const navCollapse = document.getElementById("nav-collapse");
         let currentPositionY = window.document.documentElement.scrollTop;
 
         if (
           currentPositionY > this.previousScrollPositionY &&
           currentPositionY > header.offsetHeight &&
           this.navCollapsed &&
-          // !navCollapse.classList.contains("collapsing") &&
-          // !navCollapse.classList.contains("show") &&
           !header.classList.contains("hide")
         ) {
-          // header.classList.add("hide");
           this.hideNavbar = true;
         } else if (
           currentPositionY < this.previousScrollPositionY &&
           header.classList.contains("hide")
         ) {
-          // header.classList.remove("hide");
           this.hideNavbar = false;
         }
 
@@ -402,7 +394,7 @@
           left: 0;
           top: 60px;
           bottom: 0;
-          height: calc(100vh - 60px);
+          min-height: calc(100vh - 60px);
           flex-direction: column;
           background-color: $primary;
           box-shadow: $shadow1;
@@ -475,7 +467,6 @@
 
             &.show {
               max-height: 300px;
-              // overflow-y: visible;
               visibility: visible;
 
               @media screen and (max-width: $break-menu) {
@@ -506,54 +497,8 @@
 
         #primary-nav {
           flex-grow: 1;
-
-          // @media screen and (max-width: $break-menu) {
-          //   flex-grow: 0;
-          // }
         }
       }
-
-      // .navbar-nav {
-      //   display: flex;
-      //   align-items: center;
-
-      //   @media screen and (max-width: $break-menu) {
-      //     align-items: start;
-      //   }
-      // }
-
-      // .navbar-collapse {
-      //   @media screen and (max-width: $break-menu) {
-      //     padding: 1rem;
-      //   }
-      // }
-
-      // .nav-link {
-      //   position: relative;
-      //   display: flex;
-      //   align-items: center;
-      //   padding: 0.4rem 0.5rem;
-      //   color: transparentize($color: $light, $amount: 0.3);
-
-      //   &:not([href="/"]) {
-      //     &.router-link-active {
-      //       color: transparentize($color: $light, $amount: 0);
-      //     }
-      //   }
-
-      //   &.router-link-exact-active,
-      //   &.active {
-      //     color: transparentize($color: $light, $amount: 0);
-      //   }
-
-      //   &:hover {
-      //     color: transparentize($color: $light, $amount: 0);
-      //   }
-
-      //   @media screen and (max-width: $break-menu) {
-      //     display: block;
-      //   }
-      // }
     }
   }
 

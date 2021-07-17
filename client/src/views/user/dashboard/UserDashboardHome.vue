@@ -1,32 +1,32 @@
 <template>
   <b-container class="dashboard py-5">
     <h2>Mein Konto</h2>
-    <b-tabs content-class="mt-3" :value="parseInt(query.tab)" lazy>
-      <b-tab title="Account" @click="setQuery('tab', 0)">
+    <BTabs content-class="mt-3" :value="parseInt(query.tab)" lazy>
+      <BTab title="Account" @click="setQuery('tab', 0)">
         <MyAccount />
-      </b-tab>
-      <b-tab
+      </BTab>
+      <BTab
         v-if="$store.state.auth.user.isEmployer"
         title="Stellenanzeigen"
         @click="setQuery('tab', 1)"
       >
         <MyJobsList />
-      </b-tab>
-      <b-tab
+      </BTab>
+      <BTab
         v-if="$store.state.auth.user.isEmployer"
         title="Unternehmen"
         @click="setQuery('tab', 2)"
       >
         <MyCompaniesList />
-      </b-tab>
-      <b-tab
+      </BTab>
+      <BTab
         v-if="$store.state.auth.user.isEmployer"
         title="Zahlungen"
         @click="setQuery('tab', 3)"
       >
         <MyPaymentsList />
-      </b-tab>
-      <b-tab
+      </BTab>
+      <BTab
         v-if="
           $config.starredJobs.active &&
             ($store.state.auth.user.isAdmin ||
@@ -37,11 +37,11 @@
         @click="setQuery('tab', 4)"
       >
         <MyStarredJobs />
-      </b-tab>
-      <b-tab title="Job-Newsletter" @click="setQuery('tab', 5)">
+      </BTab>
+      <BTab title="Job-Newsletter" @click="setQuery('tab', 5)">
         <MyJobAlerts />
-      </b-tab>
-    </b-tabs>
+      </BTab>
+    </BTabs>
 
     <Head title="Dashboard" desc="" img="" />
   </b-container>
@@ -56,10 +56,8 @@
   import MyJobAlerts from "@/components/dashboard/MyJobAlerts.vue";
   import { BTabs, BTab } from "bootstrap-vue";
   import Vue from "vue";
-  // eslint-disable-next-line
-  Vue.component("b-tabs", BTabs);
-  // eslint-disable-next-line
-  Vue.component("b-tab", BTab);
+  Vue.component("BTabs", BTabs);
+  Vue.component("BTab", BTab);
   export default {
     name: "UserDashboardHome",
     components: {

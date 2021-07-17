@@ -1,29 +1,29 @@
 <template>
   <b-container fluid class="dashboard py-5 px-3 px-md-5">
     <h2>Admin</h2>
-    <b-tabs content-class="mt-3" :value="query.tab" lazy>
-      <b-tab title="Jobs" @click="setQuery('tab', 0)">
+    <BTabs content-class="mt-3" :value="query.tab" lazy>
+      <BTab title="Jobs" @click="setQuery('tab', 0)">
         <AllJobsListAdmin />
-      </b-tab>
-      <b-tab title="Companies" @click="setQuery('tab', 1)">
+      </BTab>
+      <BTab title="Companies" @click="setQuery('tab', 1)">
         <AllCompaniesListAdmin />
-      </b-tab>
-      <b-tab title="Users" @click="setQuery('tab', 2)">
+      </BTab>
+      <BTab title="Users" @click="setQuery('tab', 2)">
         <AllUsersListAdmin />
-      </b-tab>
-      <b-tab title="Coupons" @click="setQuery('tab', 3)">
+      </BTab>
+      <BTab title="Coupons" @click="setQuery('tab', 3)">
         <AllCouponsListAdmin />
-      </b-tab>
-      <b-tab title="Subscribers" @click="setQuery('tab', 4)">
+      </BTab>
+      <BTab title="Subscribers" @click="setQuery('tab', 4)">
         <AllSubscribersListAdmin />
-      </b-tab>
-      <b-tab title="Payments" @click="setQuery('tab', 5)">
+      </BTab>
+      <BTab title="Payments" @click="setQuery('tab', 5)">
         <AllPaymentsListAdmin />
-      </b-tab>
-      <b-tab title="Data Analytics" @click="setQuery('tab', 6)">
+      </BTab>
+      <BTab title="Data Analytics" @click="setQuery('tab', 6)">
         <DataAnalyticsDashboard />
-      </b-tab>
-    </b-tabs>
+      </BTab>
+    </BTabs>
 
     <Head title="Admin" desc="" img="" />
   </b-container>
@@ -41,10 +41,8 @@
   import Vue from "vue";
   // eslint-disable-next-line
   Vue.component("b-table", BTable);
-  // eslint-disable-next-line
-  Vue.component("b-tabs", BTabs);
-  // eslint-disable-next-line
-  Vue.component("b-tab", BTab);
+  Vue.component("BTabs", BTabs);
+  Vue.component("BTab", BTab);
   export default {
     name: "AdminHome",
     components: {

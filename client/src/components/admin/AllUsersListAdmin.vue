@@ -45,34 +45,34 @@
           size="sm"
           ><Fa class="mr-2" icon="edit" />Edit
         </b-button>
-        <b-dropdown class="mr-2 mb-2" size="sm" left variant="secondary">
+        <BDropdown class="mr-2 mb-2" size="sm" left variant="secondary">
           <template #button-content>
             <Fa class="mr-2" icon="ellipsis-v" /> Status
           </template>
-          <b-dropdown-item
+          <BDropdownItem
             class="mb-0"
             variant="success"
             @click.prevent="updateUserStatus(row.item._id, 'active')"
-            >active</b-dropdown-item
+            >active</BDropdownItem
           >
-          <b-dropdown-item
+          <BDropdownItem
             class="mb-0"
             variant="warning"
             @click.prevent="updateUserStatus(row.item._id, 'pending')"
-            >pending</b-dropdown-item
+            >pending</BDropdownItem
           >
-        </b-dropdown>
-        <b-dropdown class="mr-2 mb-2" size="sm" left variant="info">
+        </BDropdown>
+        <BDropdown class="mr-2 mb-2" size="sm" left variant="info">
           <template #button-content>
             <Fa class="mr-2" icon="envelope" /> Email
           </template>
-          <b-dropdown-item
+          <BDropdownItem
             class="mb-0"
             variant="success"
             @click.prevent="sendActivationConfirmation(row.item._id)"
-            >confirm activation</b-dropdown-item
+            >confirm activation</BDropdownItem
           >
-        </b-dropdown>
+        </BDropdown>
         <b-button
           v-b-modal="'deleteUserModal'"
           size="sm"
@@ -109,8 +109,10 @@
 
 <script>
   import Vue from "vue";
-  import { BModal, VBModal } from "bootstrap-vue";
+  import { BModal, BDropdown, BDropdownItem, VBModal } from "bootstrap-vue";
   Vue.component("BModal", BModal);
+  Vue.component("BDropdown", BDropdown);
+  Vue.component("BDropdownItem", BDropdownItem);
   Vue.directive("b-modal", VBModal);
   export default {
     name: "AllUsersListAdmin",

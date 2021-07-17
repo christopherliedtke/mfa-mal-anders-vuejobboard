@@ -177,7 +177,7 @@
                     : 'animate ml-2'
                 "
             /></label>
-            <b-collapse
+            <BCollapse
               :visible="specialization.visible === true"
               role="tabpanel"
             >
@@ -218,7 +218,7 @@
                   "
                 ></b-form-checkbox-group>
               </b-form-group>
-            </b-collapse>
+            </BCollapse>
           </b-form>
           <div class="small text-right mb-2 pr-3 pt-1">
             <b-link to="/fuer-arbeitgeber">Stellenanzeige schalten</b-link>
@@ -341,10 +341,16 @@
 
 <script>
   import Vue from "vue";
-  import { BButtonToolbar, BButtonGroup, BSpinner } from "bootstrap-vue";
+  import {
+    BButtonToolbar,
+    BButtonGroup,
+    BSpinner,
+    BCollapse
+  } from "bootstrap-vue";
   Vue.component("BButtonToolbar", BButtonToolbar);
   Vue.component("BButtonGroup", BButtonGroup);
   Vue.component("BSpinner", BSpinner);
+  Vue.component("BCollapse", BCollapse);
   import {
     employmentTypeOptions,
     companyStateOptions,

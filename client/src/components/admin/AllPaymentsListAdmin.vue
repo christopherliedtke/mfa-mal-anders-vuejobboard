@@ -78,41 +78,41 @@
           ><Fa icon="edit"></Fa>
         </b-button>
 
-        <b-dropdown class="mr-2 mb-2" size="sm" left variant="secondary">
+        <BDropdown class="mr-2 mb-2" size="sm" left variant="secondary">
           <template #button-content>
             <Fa class="mr-2" icon="ellipsis-v" />
             Paid Status
           </template>
-          <b-dropdown-item
+          <BDropdownItem
             :active="row.item.status === 'pending'"
             variant="secondary"
             @click.prevent="updatePayment(row.item._id, 'status', 'pending')"
-            >Pending</b-dropdown-item
+            >Pending</BDropdownItem
           >
-          <b-dropdown-item
+          <BDropdownItem
             :active="row.item.status === 'paid'"
             variant="success"
             @click.prevent="updatePayment(row.item._id, 'status', 'paid')"
-            >Paid</b-dropdown-item
+            >Paid</BDropdownItem
           >
-          <b-dropdown-item
+          <BDropdownItem
             :active="row.item.status === 'cancelled'"
             variant="danger"
             @click.prevent="updatePayment(row.item._id, 'status', 'cancelled')"
-            >Cancelled</b-dropdown-item
+            >Cancelled</BDropdownItem
           >
-        </b-dropdown>
-        <b-dropdown class="mr-2 mb-2" size="sm" left variant="info">
+        </BDropdown>
+        <BDropdown class="mr-2 mb-2" size="sm" left variant="info">
           <template #button-content>
             <Fa class="mr-2" icon="envelope" /> E-Mail
           </template>
-          <b-dropdown-item
+          <BDropdownItem
             class="mb-0"
             variant="info"
             @click.prevent="sendPublishedEmail(row.item.job._id)"
-            >Send job published</b-dropdown-item
+            >Send job published</BDropdownItem
           >
-        </b-dropdown>
+        </BDropdown>
         <b-button
           class="mr-2 mb-2"
           size="sm"
@@ -122,17 +122,17 @@
         >
           <Fa class="mr-2" icon="download" />Invoice
         </b-button>
-        <b-dropdown class="mr-2 mb-2" size="sm" left variant="primary">
+        <BDropdown class="mr-2 mb-2" size="sm" left variant="primary">
           <template #button-content>
             <Fa class="mr-2" icon="share-alt" /> Share
           </template>
-          <b-dropdown-item
+          <BDropdownItem
             class="mb-0"
             variant="info"
             @click.prevent="socialShareToClipBoard(row.item)"
-            >Copy Text</b-dropdown-item
+            >Copy Text</BDropdownItem
           >
-        </b-dropdown>
+        </BDropdown>
 
         <b-button
           v-b-modal="'deletePaymentModal'"
@@ -162,8 +162,10 @@
 
 <script>
   import Vue from "vue";
-  import { BModal, VBModal } from "bootstrap-vue";
+  import { BModal, BDropdown, BDropdownItem, VBModal } from "bootstrap-vue";
   Vue.component("BModal", BModal);
+  Vue.component("BDropdown", BDropdown);
+  Vue.component("BDropdownItem", BDropdownItem);
   Vue.directive("b-modal", VBModal);
   export default {
     name: "AllPaymentsListAdmin",

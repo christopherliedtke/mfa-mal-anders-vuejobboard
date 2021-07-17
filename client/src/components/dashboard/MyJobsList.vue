@@ -144,7 +144,7 @@
               size="sm"
               ><Fa class="mr-2" icon="eye" /> Vorschau</b-button
             >
-            <b-dropdown
+            <BDropdown
               v-if="job.paid && job.paidExpiresAt >= new Date()"
               class="mr-2 mb-2 mb-md-0"
               size="sm"
@@ -155,23 +155,23 @@
                 <Fa class="mr-2" icon="ellipsis-v" />
                 Status ändern
               </template>
-              <b-dropdown-item
+              <BDropdownItem
                 variant=""
                 @click.prevent="updateJobStatus(job._id, 'draft')"
-                >Entwurf</b-dropdown-item
+                >Entwurf</BDropdownItem
               >
-              <b-dropdown-item
+              <BDropdownItem
                 variant="success"
                 @click.prevent="updateJobStatus(job._id, 'published')"
-                >Online</b-dropdown-item
+                >Online</BDropdownItem
               >
-              <b-dropdown-item
+              <BDropdownItem
                 class="mb-0"
                 variant="danger"
                 @click.prevent="updateJobStatus(job._id, 'unpublished')"
-                >Offline</b-dropdown-item
+                >Offline</BDropdownItem
               >
-            </b-dropdown>
+            </BDropdown>
             <b-button
               v-if="job.paidExpiresAt < new Date() && !job.payment"
               class="mr-2 mb-2 mb-md-0"
@@ -222,11 +222,21 @@
 
 <script>
   import Vue from "vue";
-  import { BModal, VBModal, BBadge, BCard, BCardText } from "bootstrap-vue";
+  import {
+    BModal,
+    VBModal,
+    BBadge,
+    BCard,
+    BDropdown,
+    BDropdownItem,
+    BCardText
+  } from "bootstrap-vue";
   Vue.component("BModal", BModal);
   Vue.directive("b-modal", VBModal);
   Vue.component("BBadge", BBadge);
   Vue.component("BCard", BCard);
+  Vue.component("BDropdown", BDropdown);
+  Vue.component("BDropdownItem", BDropdownItem);
   Vue.component("BCardText", BCardText);
   export default {
     name: "MyJobsList",

@@ -17,7 +17,7 @@
         this.$store.dispatch("setOverlay", true);
 
         this.$store.dispatch("logout");
-        this.$emit("done");
+        // this.$emit("done");
 
         this.$store.dispatch("setOverlay", false);
       }

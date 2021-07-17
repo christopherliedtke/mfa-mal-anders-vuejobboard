@@ -10,10 +10,10 @@
             class="mb-4"
           />
           <h2 class="h6">
-            Das Job- und Karriereportal für Medizinische & Zahnmedizinische
+            Das Stellen- und Karriereportal für Medizinische & Zahnmedizinische
             Fachangestellte.
           </h2>
-          <div class="small">
+          <div class="small" style="font-size: 65%">
             <div class="pt-5 mt-5">
               <h2 class="h6"><strong>Hinweis</strong></h2>
               <p>
@@ -106,21 +106,21 @@
               <Fa :icon="['fab', 'instagram']" size="2x" />
             </b-link>
           </div>
-          <b-nav vertical class="justify-content-end" tag="nav">
-            <b-nav-item to="/stellenangebote">Stellenangebote</b-nav-item>
-            <b-nav-item to="/karriere/bewerbungstipps"
-              >Bewerbungstipps</b-nav-item
+          <nav>
+            <router-link to="/stellenangebote">Stellenangebote</router-link>
+            <router-link to="/karriere/bewerbungstipps"
+              >Bewerbungstipps</router-link
             >
-            <b-nav-item to="/karriere/mfa/gehalt">Gehaltsrechner</b-nav-item>
-            <b-nav-item to="/user/dashboard?tab=1"
-              >Stellenanzeige schalten</b-nav-item
+            <router-link to="/karriere/mfa/gehalt">Gehaltsrechner</router-link>
+            <router-link to="/user/dashboard?tab=1"
+              >Stellenanzeige schalten</router-link
             >
 
-            <b-nav-item class="mt-5" to="/kontakt">Kontakt</b-nav-item>
-            <b-nav-item to="/datenschutz">Datenschutzerklärung</b-nav-item>
-            <b-nav-item to="/impressum">Impressum</b-nav-item>
-            <b-nav-item to="/agbs">AGBs</b-nav-item>
-          </b-nav>
+            <router-link class="mt-5" to="/kontakt">Kontakt</router-link>
+            <router-link to="/datenschutz">Datenschutzerklärung</router-link>
+            <router-link to="/impressum">Impressum</router-link>
+            <router-link to="/agbs">AGBs</router-link>
+          </nav>
         </b-col>
       </b-row>
     </b-container>
@@ -181,8 +181,11 @@
         }
       }
 
-      .nav {
-        .nav-link {
+      nav {
+        display: flex;
+        flex-direction: column;
+
+        a {
           padding: 0.4rem 0;
           color: $light;
           font-family: $headings-font-family;

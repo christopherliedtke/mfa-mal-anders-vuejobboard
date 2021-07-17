@@ -37,7 +37,9 @@ Vue.prototype.$axios = axios;
 
 // #Bootstrap Integration
 import {
-  NavbarPlugin,
+  // NavbarPlugin,
+  // DropdownPlugin,
+  // CollapsePlugin,
   AlertPlugin,
   ButtonPlugin,
   FormPlugin,
@@ -55,7 +57,9 @@ import {
   BreadcrumbPlugin
 } from "bootstrap-vue";
 
-Vue.use(NavbarPlugin);
+// Vue.use(NavbarPlugin);
+// Vue.use(DropdownPlugin);
+// Vue.use(CollapsePlugin);
 Vue.use(AlertPlugin);
 Vue.use(ButtonPlugin);
 Vue.use(FormPlugin);

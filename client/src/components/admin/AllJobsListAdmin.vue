@@ -111,85 +111,85 @@
           size="sm"
           ><Fa scale="1" icon="eye" />
         </b-button>
-        <b-dropdown class="mr-2 mb-2" size="sm" left variant="secondary">
+        <BDropdown class="mr-2 mb-2" size="sm" left variant="secondary">
           <template #button-content>
             <Fa class="mr-2" icon="ellipsis-v" />
             Status
           </template>
-          <b-dropdown-item
+          <BDropdownItem
             :active="row.item.status === 'draft'"
             variant="secondary"
             @click.prevent="updateJob(row.item._id, 'status', 'draft')"
-            >Draft</b-dropdown-item
+            >Draft</BDropdownItem
           >
-          <!-- <b-dropdown-item
+          <!-- <BDropdownItem
                         :active="row.item.status === 'invoice-pending'"
                         variant="secondary"
                         @click.prevent="
                             updateJob(row.item._id, 'status', 'invoice-pending')
                         "
-                        >Invoice pending</b-dropdown-item
+                        >Invoice pending</BDropdownItem
                     > -->
-          <b-dropdown-item
+          <BDropdownItem
             :active="row.item.status === 'published'"
             variant="success"
             @click.prevent="updateJob(row.item._id, 'status', 'published')"
-            >Published</b-dropdown-item
+            >Published</BDropdownItem
           >
-          <b-dropdown-item
+          <BDropdownItem
             :active="row.item.status === 'unpublished'"
             variant="danger"
             @click.prevent="updateJob(row.item._id, 'status', 'unpublished')"
-            >Unpublished</b-dropdown-item
+            >Unpublished</BDropdownItem
           >
-          <b-dropdown-item
+          <BDropdownItem
             class="mb-0"
             :active="row.item.status === 'deleted'"
             variant="danger"
             @click.prevent="updateJob(row.item._id, 'status', 'deleted')"
-            >Deleted</b-dropdown-item
+            >Deleted</BDropdownItem
           >
-        </b-dropdown>
-        <b-dropdown class="mr-2 mb-2" size="sm" left variant="secondary">
+        </BDropdown>
+        <BDropdown class="mr-2 mb-2" size="sm" left variant="secondary">
           <template #button-content>
             <Fa class="mr-2" icon="credit-card" /> Paid Status
           </template>
-          <b-dropdown-item
+          <BDropdownItem
             :active="row.item.paid === false"
             variant="danger"
             @click.prevent="updateJob(row.item._id, 'paid', false)"
-            >Unpaid</b-dropdown-item
+            >Unpaid</BDropdownItem
           >
-          <b-dropdown-item
+          <BDropdownItem
             class="mb-0"
             :active="row.item.paid === true"
             variant="success"
             @click.prevent="updateJob(row.item._id, 'paid', true)"
-            >Paid</b-dropdown-item
+            >Paid</BDropdownItem
           >
-        </b-dropdown>
-        <b-dropdown class="mr-2 mb-2" size="sm" left variant="info">
+        </BDropdown>
+        <BDropdown class="mr-2 mb-2" size="sm" left variant="info">
           <template #button-content>
             <Fa class="mr-2" icon="envelope" /> E-Mail
           </template>
-          <b-dropdown-item
+          <BDropdownItem
             class="mb-0"
             variant="info"
             @click.prevent="sendPublishedEmail(row.item._id)"
-            >Send job published</b-dropdown-item
+            >Send job published</BDropdownItem
           >
-        </b-dropdown>
-        <b-dropdown class="mr-2 mb-2" size="sm" left variant="primary">
+        </BDropdown>
+        <BDropdown class="mr-2 mb-2" size="sm" left variant="primary">
           <template #button-content>
             <Fa class="mr-2" icon="share-alt" /> Share
           </template>
-          <b-dropdown-item
+          <BDropdownItem
             class="mb-0"
             variant="info"
             @click.prevent="socialShareToClipBoard(row.item)"
-            >Copy Text</b-dropdown-item
+            >Copy Text</BDropdownItem
           >
-        </b-dropdown>
+        </BDropdown>
         <!-- <b-button
                     class="mr-2 mb-2"
                     size="sm"
@@ -234,8 +234,10 @@
 
 <script>
   import Vue from "vue";
-  import { BModal, VBModal } from "bootstrap-vue";
+  import { BModal, BDropdown, BDropdownItem, VBModal } from "bootstrap-vue";
   Vue.component("BModal", BModal);
+  Vue.component("BDropdown", BDropdown);
+  Vue.component("BDropdownItem", BDropdownItem);
   Vue.directive("b-modal", VBModal);
   export default {
     name: "AllJobsListAdmin",

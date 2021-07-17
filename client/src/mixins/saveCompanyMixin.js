@@ -82,8 +82,6 @@ export const saveCompanyMixin = {
           };
         }
       } catch (err) {
-        console.log("err: ", err);
-
         this.$root.$bvToast.toast(
           "Beim Speichern des Unternehmens ist ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal.",
           {
