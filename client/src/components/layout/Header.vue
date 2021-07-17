@@ -10,7 +10,10 @@
         />
       </router-link>
 
-      <div :class="['nav-wrapper', { collapsed: navCollapsed }]">
+      <div
+        :class="['nav-wrapper', { collapsed: navCollapsed }]"
+        @click="navCollapsed = true"
+      >
         <nav id="primary-nav">
           <router-link
             v-for="link in headerLinks"
@@ -399,6 +402,7 @@
           left: 0;
           top: 60px;
           bottom: 0;
+          height: calc(100vh - 60px);
           flex-direction: column;
           background-color: $primary;
           box-shadow: $shadow1;
