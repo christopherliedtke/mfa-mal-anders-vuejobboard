@@ -46,6 +46,8 @@ router.post("/job/create-session-id", verifyToken, async (req, res) => {
       validatedCoupon = await validateCoupon(code, req.user._id);
     }
 
+    console.info("validatedCoupon: ", validatedCoupon);
+
     const couponId = validatedCoupon._id || "";
     const discount = validatedCoupon.discount || 0;
 
@@ -81,7 +83,7 @@ router.post("/job/create-session-id", verifyToken, async (req, res) => {
         jobId: req.body.id,
         userId: req.user._id,
         pricingPackage,
-        couponId: couponId ? toString(couponId) : "",
+        couponId: couponId ? couponId.toString() : "",
         couponCode: req.body.code,
         discount,
         refreshFrequency,

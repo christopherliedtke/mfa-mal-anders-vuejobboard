@@ -160,9 +160,90 @@
             </div>
           </router-link>
 
-          <router-link v-if="user.isAdmin" to="/admin"
-            ><Fa icon="key" size="lg"
-          /></router-link>
+          <router-link
+            v-if="user.isAdmin"
+            to="/admin"
+            @mouseenter.native="showSub('admin')"
+            @mouseleave.native="hideSub('admin')"
+          >
+            <div class="d-flex align-items-center">
+              <Fa icon="key" size="lg" />
+              <Fa class="ml-1" icon="chevron-down" size="xs" />
+            </div>
+            <div id="admin" class="sub-menu">
+              <router-link
+                to="/admin?tab=0"
+                :active="$route.path == '/admin?tab=0' && !$route.query.tab"
+                :active-class="
+                  $route.query.tab == 0 ? 'router-link-active' : ''
+                "
+                :exact-active-class="
+                  $route.query.tab == 0 ? 'router-link-active' : ''
+                "
+                >Jobs</router-link
+              >
+              <router-link
+                to="/admin?tab=1"
+                :active-class="
+                  $route.query.tab == 1 ? 'router-link-active' : ''
+                "
+                :exact-active-class="
+                  $route.query.tab == 1 ? 'router-link-active' : ''
+                "
+                >Companies</router-link
+              >
+              <router-link
+                to="/admin?tab=2"
+                :active-class="
+                  $route.query.tab == 2 ? 'router-link-active' : ''
+                "
+                :exact-active-class="
+                  $route.query.tab == 2 ? 'router-link-active' : ''
+                "
+                >Users</router-link
+              >
+              <router-link
+                to="/admin?tab=3"
+                :active-class="
+                  $route.query.tab == 3 ? 'router-link-active' : ''
+                "
+                :exact-active-class="
+                  $route.query.tab == 3 ? 'router-link-active' : ''
+                "
+                >Coupons</router-link
+              >
+              <router-link
+                to="/admin?tab=4"
+                :active-class="
+                  $route.query.tab == 4 ? 'router-link-active' : ''
+                "
+                :exact-active-class="
+                  $route.query.tab == 4 ? 'router-link-active' : ''
+                "
+                >Subscribers</router-link
+              >
+              <router-link
+                to="/admin?tab=5"
+                :active-class="
+                  $route.query.tab == 5 ? 'router-link-active' : ''
+                "
+                :exact-active-class="
+                  $route.query.tab == 5 ? 'router-link-active' : ''
+                "
+                >Payments</router-link
+              >
+              <router-link
+                to="/admin?tab=6"
+                :active-class="
+                  $route.query.tab == 5 ? 'router-link-active' : ''
+                "
+                :exact-active-class="
+                  $route.query.tab == 5 ? 'router-link-active' : ''
+                "
+                >Data Analytics</router-link
+              >
+            </div>
+          </router-link>
           <div v-if="loggedIn"><LogoutBtn /></div>
           <div v-else class="d-flex">
             <b-button

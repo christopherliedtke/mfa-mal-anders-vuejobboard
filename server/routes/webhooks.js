@@ -88,9 +88,11 @@ router.post("/checkout-completed", async (req, res) => {
         paymentObj.coupon = couponId;
       }
 
+      console.info("newPaymentObj: ", newPaymentObj);
+
       const newPaymentObj = new Payment(paymentObj);
       const payment = await newPaymentObj.save();
-      console.log("payment: ", payment);
+      console.info("payment: ", payment);
 
       const updatedJob = await Job.findOneAndUpdate(
         { _id: jobId, userId: userId },
