@@ -358,6 +358,10 @@
               {
                 title: "Fort- & Weiterbildungen",
                 path: "/karriere/fort-und-weiterbildungen"
+              },
+              {
+                title: "Fortbildungskalender",
+                path: "/karriere/fortbildungskalender"
               }
             ]
           },

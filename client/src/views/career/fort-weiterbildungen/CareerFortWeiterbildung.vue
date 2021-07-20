@@ -104,11 +104,11 @@
           { text: "Karriere", to: "/karriere" },
           {
             text: "Fort- & Weiterbildungen",
-            to: "/karriere/jobs-und-berufsbilder"
+            to: "/karriere/fort-und-weiterbildungen"
           },
           {
             text: this.training.title,
-            to: `/karriere/jobs-und-berufsbilder/${this.training.slug}`
+            to: `/karriere/fort-und-weiterbildungen/${this.training.slug}`
           }
         ];
       }

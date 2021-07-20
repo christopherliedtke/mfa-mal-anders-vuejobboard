@@ -78,6 +78,10 @@ const CareerFortWeiterbildung = () =>
   import(
     /* webpackChunkName: "career-training" */ "@/views/career/fort-weiterbildungen/CareerFortWeiterbildung.vue"
   );
+const CareerFortWeiterbildungenCalendar = () =>
+  import(
+    /* webpackChunkName: "career-training" */ "@/views/career/fort-weiterbildungen/CareerFortWeiterbildungenCalendar.vue"
+  );
 
 // #Jobboard
 const Jobboard = () =>
@@ -256,6 +260,14 @@ const routes = [
     path: "/karriere/fort-und-weiterbildungen/:slug",
     name: "KarriereFortWeiterbildung",
     component: CareerFortWeiterbildung,
+    meta: {
+      public: true
+    }
+  },
+  {
+    path: "/karriere/fortbildungskalender",
+    name: "KarriereFortbildungskalender",
+    component: CareerFortWeiterbildungenCalendar,
     meta: {
       public: true
     }

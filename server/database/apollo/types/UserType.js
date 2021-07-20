@@ -91,6 +91,10 @@ const UserType = gql`
   extend type Payment {
     user: User
   }
+
+  extend type Training {
+    user: User
+  }
 `;
 
 module.exports = UserType;
