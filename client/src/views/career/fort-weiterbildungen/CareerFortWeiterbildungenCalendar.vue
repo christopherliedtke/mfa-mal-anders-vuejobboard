@@ -44,7 +44,7 @@
     data() {
       return {
         title: "Fortbildungskalender",
-        trainings: [{}, {}, {}],
+        trainings: [{}, {}, {}, {}, {}],
         error: false,
         breadcrumbs: [
           { text: "Home", to: "/" },
@@ -90,18 +90,26 @@
           const trainings = await this.$axios.get("/graphql", {
             params: {
               query: `
-                    query {
-                        publicTrainings {
-                            _id
-                            title
-                            excerpt
-                            company
-                            logoUrl
-                            type
-                            startAt
-                        }
+                query {
+                    publicTrainings {
+                        _id
+                        title
+                        excerpt
+                        company
+                        logoUrl
+                        type
+                        remote
+                        startAnytime
+                        startAt
+                        endAt
+                        location
+                        duration
+                        effort
+                        cost
+                        extUrl
                     }
-                `
+                }
+            `
             }
           });
 

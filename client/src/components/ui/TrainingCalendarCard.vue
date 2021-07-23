@@ -1,15 +1,16 @@
 <template>
   <div class="training-card">
     <div class="side">
-      <div>
+      <div v-if="training.startAt">
         {{
           new Date(training.startAt).toLocaleString("default", {
             month: "long"
           })
         }}
       </div>
+      <div v-else-if="training.startAnytime">Jederzeit</div>
     </div>
-    <div class="header">
+    <div v-if="training._id" class="header">
       <div class="logo-container">
         <b-img-lazy
           v-if="training.logoUrl"
@@ -24,13 +25,108 @@
       </div>
       <div class="training-title">
         <h2 class="h4">{{ training.title }}</h2>
+        <span class="text-muted">{{ training.company }}</span>
       </div>
     </div>
-    <div class="body">{{ training.excerpt }}</div>
+    <div v-else class="header">
+      <BSkeleton height="40px" width="90%" />
+    </div>
+    <div v-if="training._id" class="meta">
+      <BBadge v-if="training.startAt" class="mr-1" pill variant="secondary"
+        ><Fa class="mr-1" :icon="['fas', 'calendar']" size="sm" />{{
+          new Date(training.startAt).toLocaleDateString()
+        }}</BBadge
+      >
+      <BBadge
+        v-if="training.location && !training.remote"
+        class="mr-1"
+        pill
+        variant="secondary"
+        ><Fa class="mr-1" :icon="['fas', 'map-marker']" size="sm" />{{
+          training.location
+        }}</BBadge
+      >
+      <BBadge v-if="training.remote" class="mr-1" pill variant="secondary"
+        ><Fa class="mr-1" icon="laptop" size="sm" />Online</BBadge
+      >
+      <BBadge v-if="training.duration" class="mr-1" pill variant="secondary"
+        ><Fa class="mr-1" icon="hourglass" size="sm" />{{
+          training.duration
+        }}</BBadge
+      >
+      <BBadge v-if="training.effort" class="mr-1" pill variant="secondary"
+        ><Fa class="mr-1" icon="clock" size="sm" />{{ training.effort }}</BBadge
+      >
+      <BBadge v-if="training.cost" class="mr-1" pill variant="secondary"
+        ><Fa class="mr-1" icon="euro-sign" size="sm" />{{
+          parseInt(training.cost)
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+        }}</BBadge
+      >
+    </div>
+    <div v-else class="meta d-flex">
+      <BSkeleton
+        height="19px"
+        width="70px"
+        class="mr-2"
+        style="border-radius: 10px"
+      />
+      <BSkeleton
+        height="19px"
+        width="90px"
+        class="mr-2"
+        style="border-radius: 10px"
+      />
+      <BSkeleton
+        height="19px"
+        width="60px"
+        class="mr-2"
+        style="border-radius: 10px"
+      />
+    </div>
+    <div v-if="training._id" class="body">{{ training.excerpt }}</div>
+    <div v-else class="body">
+      <BSkeleton />
+      <BSkeleton />
+      <BSkeleton />
+      <BSkeleton />
+      <BSkeleton />
+      <BSkeleton />
+    </div>
+    <div class="footer">
+      <b-button
+        v-if="training._id"
+        :to="`/karriere/fortbildungskalender/${training._id}`"
+        class="mr-2 mt-2"
+        variant="primary"
+        size="sm"
+        >Weitere Informationen</b-button
+      >
+      <b-button
+        v-if="training._id"
+        :href="training.extUrl"
+        target="_blank"
+        class="mt-2"
+        variant="success"
+        size="sm"
+        >Zum Anbieter</b-button
+      >
+      <BSkeleton
+        v-if="!training._id"
+        height="36px"
+        width="150px"
+        style="border-radius: 18px"
+      />
+    </div>
   </div>
 </template>
 
 <script>
+  import Vue from "vue";
+  import { BBadge, BSkeleton } from "bootstrap-vue";
+  Vue.component("BSkeleton", BSkeleton);
+  Vue.component("BBadge", BBadge);
   export default {
     name: "TrainingCalendarCard",
     props: {
@@ -46,7 +142,7 @@
   .training-card {
     position: relative;
     margin-bottom: 1rem;
-    padding-right: 2.5rem;
+    padding-right: 2rem;
     // background-color: $light-shade;
     border-radius: $border-radius1;
     box-shadow: $shadow1;
@@ -67,39 +163,55 @@
 
       div {
         transform: rotate(90deg);
+
+        @media screen and (max-width: $break-menu) {
+          padding-left: 2rem;
+        }
       }
     }
 
     .header {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
+      // flex-wrap: wrap;
       border-top-left-radius: $border-radius1;
       border-top-right-radius: $border-radius1;
-      font-family: $headings-font-family;
       // color: $light;
       // background-color: $primary;
-      padding: 1rem 1rem 0 1rem;
+      padding: 1.5rem 1.5rem 0 1.5rem;
       // padding: 1rem 1rem 1rem 1rem;
       // border-bottom: 1px solid #ddd;
 
       .training-title {
-        padding-left: 1rem;
+        h2 {
+          font-family: $headings-font-family;
+          word-break: break-word;
+        }
+
+        @media screen and (max-width: $break-menu) {
+          padding-right: 0.5rem;
+        }
       }
 
       .logo-container {
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         // background-color: darken($light-shade, $amount: 1%);
-        padding: 1rem 1rem;
+        padding: 0.5rem;
         width: 110px;
         min-width: 110px;
         border-radius: 5px;
 
         @media screen and (max-width: $break-menu) {
-          width: 80px;
-          min-width: 80px;
-          padding: 2rem 0;
+          width: 60px;
+          min-width: 60px;
+          padding: 1.8rem 0.5rem 1.5rem 0.5rem;
+          position: absolute;
+          top: 0;
+          right: 0;
+          background-color: $light;
+          border-bottom-right-radius: 0;
         }
 
         img {
@@ -109,8 +221,22 @@
       }
     }
 
+    .meta {
+      padding: 0 1.5rem;
+      margin: 0.75rem 0;
+
+      .badge {
+        font-size: 0.8rem;
+        color: $light;
+      }
+    }
+
     .body {
-      padding: 1.5rem;
+      padding: 0 1.5rem 1rem 1.5rem;
+    }
+
+    .footer {
+      padding: 0 1.5rem 1.5rem 1.5rem;
     }
   }
 </style>

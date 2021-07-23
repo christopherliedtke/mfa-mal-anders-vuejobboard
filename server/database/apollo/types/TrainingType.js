@@ -16,13 +16,16 @@ const TrainingType = gql`
       desc: String!
       excerpt: String!
       remote: Boolean
+      startAnytime: Boolean
       state: String
       location: String
       company: String!
       logoUrl: String
       type: String!
-      startAt: Float!
-      duration: Float
+      startAt: Float
+      endAt: Float
+      duration: String
+      effort: String
       cost: Float
       extUrl: String!
     ): Training
@@ -32,13 +35,16 @@ const TrainingType = gql`
       desc: String
       excerpt: String
       remote: Boolean
+      startAnytime: Boolean
       state: String
       location: String
       company: String
       logoUrl: String
       type: String
       startAt: Float
-      duration: Float
+      endAt: Float
+      duration: String
+      effort: String
       cost: Float
       extUrl: String
     ): Training
@@ -53,13 +59,16 @@ const TrainingType = gql`
     desc: String!
     excerpt: String!
     remote: Boolean
+    startAnytime: Boolean
     state: String
     location: String
     company: String!
     logoUrl: String
     type: String!
-    startAt: Float!
-    duration: Float
+    startAt: Float
+    endAt: Float
+    duration: String
+    effort: String
     cost: Float
     extUrl: String!
     published: Boolean

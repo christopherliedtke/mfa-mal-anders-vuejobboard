@@ -8,7 +8,7 @@ const TrainingResolvers = {
     publicTraining: async (root, args) => {
       const training = await Training.findOne({
         _id: args._id,
-        startAt: { $lte: new Date() },
+        $or: [{ startAt: { $gte: new Date() } }, { startAnytime: true }],
         published: true,
       });
 
@@ -17,11 +17,12 @@ const TrainingResolvers = {
     publicTrainings: async (root, args) => {
       const filter = {
         published: true,
-        startAt: { $gte: new Date() },
+        $or: [{ startAt: { $gte: new Date() } }, { startAnytime: true }],
       };
 
       const trainings = await Training.find(filter)
         .sort({
+          startAnytime: "desc",
           startAt: "desc",
         })
         .skip(args.skip ? args.skip : 0)

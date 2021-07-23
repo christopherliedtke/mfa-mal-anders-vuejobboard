@@ -10,16 +10,23 @@ const TrainingSchema = new Schema(
     title: {
       type: String,
       required: true,
+      trim: true,
     },
     desc: {
       type: String,
       required: true,
+      trim: true,
     },
     excerpt: {
       type: String,
       required: true,
+      trim: true,
     },
     remote: {
+      type: Boolean,
+      default: false,
+    },
+    startAnytime: {
       type: Boolean,
       default: false,
     },
@@ -42,10 +49,16 @@ const TrainingSchema = new Schema(
     },
     startAt: {
       type: Date,
-      required: true,
+    },
+    endAt: {
+      type: Date,
     },
     duration: {
-      type: Number,
+      type: String,
+    },
+    effort: {
+      Type: String,
+      default: "",
     },
     cost: {
       type: Number,
