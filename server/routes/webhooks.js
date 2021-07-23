@@ -88,9 +88,8 @@ router.post("/checkout-completed", async (req, res) => {
         paymentObj.coupon = couponId;
       }
 
-      console.info("newPaymentObj: ", newPaymentObj);
-
       const newPaymentObj = new Payment(paymentObj);
+      console.info("newPaymentObj: ", newPaymentObj);
       const payment = await newPaymentObj.save();
       console.info("payment: ", payment);
 
