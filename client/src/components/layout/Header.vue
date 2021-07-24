@@ -235,10 +235,20 @@
               <router-link
                 to="/admin?tab=6"
                 :active-class="
-                  $route.query.tab == 5 ? 'router-link-active' : ''
+                  $route.query.tab == 6 ? 'router-link-active' : ''
                 "
                 :exact-active-class="
-                  $route.query.tab == 5 ? 'router-link-active' : ''
+                  $route.query.tab == 6 ? 'router-link-active' : ''
+                "
+                >Trainings</router-link
+              >
+              <router-link
+                to="/admin?tab=7"
+                :active-class="
+                  $route.query.tab == 7 ? 'router-link-active' : ''
+                "
+                :exact-active-class="
+                  $route.query.tab == 7 ? 'router-link-active' : ''
                 "
                 >Data Analytics</router-link
               >
@@ -289,10 +299,10 @@
         hideNavbar: false,
         navCollapsed: true,
         headerLinks: [
-          {
-            title: "Home",
-            path: "/"
-          },
+          // {
+          //   title: "Home",
+          //   path: "/"
+          // },
           {
             title: "Stellenangebote",
             path: "/stellenangebote"

@@ -8,7 +8,7 @@ const TrainingResolvers = {
     publicTraining: async (root, args) => {
       const training = await Training.findOne({
         _id: args._id,
-        $or: [{ startAt: { $gte: new Date() } }, { startAnytime: true }],
+        // $or: [{ startAt: { $gte: new Date() } }, { startAnytime: true }],
         published: true,
       });
 
@@ -17,7 +17,7 @@ const TrainingResolvers = {
     publicTrainings: async (root, args) => {
       const filter = {
         published: true,
-        $or: [{ startAt: { $gte: new Date() } }, { startAnytime: true }],
+        // $or: [{ startAt: { $gte: new Date() } }, { startAnytime: true }],
       };
 
       const trainings = await Training.find(filter)
@@ -86,6 +86,7 @@ const TrainingResolvers = {
       addObj = cleanUpTraining(addObj, context.user);
 
       const newTrainingObj = new Training(addObj);
+
       const newTraining = await newTrainingObj.save();
 
       return newTraining;
@@ -152,7 +153,80 @@ function cleanUpTraining(training, user) {
 
   for (const key in training) {
     if (typeof training[key] === "string" && key != "extUrl") {
-      training[key] = sanitizeHtml(training[key]);
+      training[key] = sanitizeHtml(training[key], {
+        allowedTags: [
+          // "address",
+          // "article",
+          // "aside",
+          // "footer",
+          // "header",
+          // "h1",
+          "h2",
+          "h3",
+          "h4",
+          "h5",
+          "h6",
+          // "hgroup",
+          // "main",
+          // "nav",
+          // "section",
+          // "blockquote",
+          // "dd",
+          "div",
+          // "dl",
+          // "dt",
+          // "figcaption",
+          // "figure",
+          "hr",
+          "li",
+          // "main",
+          "ol",
+          "p",
+          "pre",
+          "ul",
+          "a",
+          // "abbr",
+          // "b",
+          // "bdi",
+          // "bdo",
+          "br",
+          "cite",
+          // "code",
+          // "data",
+          // "dfn",
+          // "em",
+          // "i",
+          // "kbd",
+          // "mark",
+          // "q",
+          // "rb",
+          // "rp",
+          // "rt",
+          // "rtc",
+          // "ruby",
+          // "s",
+          "samp",
+          "small",
+          "span",
+          "strong",
+          "sub",
+          "sup",
+          // "time",
+          // "u",
+          // "var",
+          // "wbr",
+          // "caption",
+          // "col",
+          // "colgroup",
+          // "table",
+          // "tbody",
+          // "td",
+          // "tfoot",
+          // "th",
+          // "thead",
+          // "tr",
+        ],
+      });
     }
   }
 

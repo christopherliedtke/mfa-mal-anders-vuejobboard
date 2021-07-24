@@ -24,7 +24,7 @@ body::-webkit-scrollbar-track {
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: transparentize($color: $dark, $amount: 0.5);
+  background-color: transparentize($color: $secondary, $amount: 0.5);
   border-radius: 10px;
 }
 

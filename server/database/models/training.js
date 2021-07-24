@@ -57,7 +57,7 @@ const TrainingSchema = new Schema(
       type: String,
     },
     effort: {
-      Type: String,
+      type: String,
       default: "",
     },
     cost: {
