@@ -1,19 +1,20 @@
 <template>
   <div>
     <div class="title">
-      <h1>Fortbildung &ndash; {{ training.title }}</h1>
+      <h1>Fortbildung &ndash; {{ training ? training.title : "" }}</h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
 
     <b-container class="py-4 py-lg-5">
-      <Training :training="training" />
+      <Training v-if="training" :training="training" />
+      <span v-else class="h5"
+        >Fortbildung konnte nicht gefunden/geladen werden.</span
+      >
     </b-container>
 
     <Head
       title="Fortbildungskalender für ArzthelferInnen – MFA & ZFA"
-      :desc="
-        `Fortbildungskalender für Medizinische & Zahnmedizinische Fachangestellte (MFA / ZFA) || Weiterbildungen | Online & Offline`
-      "
+      :desc="training ? training.excerpt : ''"
       img=""
       :script="snippet"
     />
@@ -79,7 +80,6 @@
     },
     methods: {
       async getTraining() {
-        //
         try {
           const training = await this.$axios.get("/graphql", {
             params: {
@@ -115,6 +115,7 @@
           //   this.trainings = [];
           this.training = training.data.data.publicTraining;
         } catch (err) {
+          this.training = null;
           this.error = true;
         }
       }

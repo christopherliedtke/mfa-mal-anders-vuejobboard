@@ -17,8 +17,36 @@ const TrainingResolvers = {
     publicTrainings: async (root, args) => {
       const filter = {
         published: true,
-        // $or: [{ startAt: { $gte: new Date() } }, { startAnytime: true }],
       };
+
+      if (args.search) {
+        const searchStr = new RegExp(args.search.replace(/ /g, "|"), "i");
+
+        filter.$or = [
+          "title",
+          "desc",
+          "excerpt",
+          "company",
+          "location",
+          "state",
+        ].map(elem => {
+          return {
+            [elem]: { $regex: searchStr },
+          };
+        });
+      }
+
+      if (args.type) {
+        filter.type = args.type;
+      }
+
+      if (args.state && !args.remote) {
+        filter.state = args.state;
+      }
+
+      if (args.remote) {
+        filter.remote = true;
+      }
 
       const trainings = await Training.find(filter)
         .sort({

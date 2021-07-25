@@ -3,7 +3,14 @@ const { gql } = require("graphql-modules");
 const TrainingType = gql`
   extend type Query {
     publicTraining(_id: ID!): Training
-    publicTrainings(limit: Int, skip: Int): [Training]
+    publicTrainings(
+      limit: Int
+      skip: Int
+      search: String
+      type: String
+      state: String
+      remote: Boolean
+    ): [Training]
     myTraining(_id: ID!): Training
     myTrainings: [Training]
     adminTraining(_id: ID!): Training
