@@ -14,8 +14,6 @@ const TrainingSchema = new Schema(
     },
     desc: {
       type: String,
-      required: true,
-      trim: true,
     },
     excerpt: {
       type: String,
@@ -46,6 +44,10 @@ const TrainingSchema = new Schema(
     type: {
       type: String,
       required: true,
+    },
+    profession: {
+      type: String,
+      default: "",
     },
     startAt: {
       type: Date,

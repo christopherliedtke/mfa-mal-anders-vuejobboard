@@ -81,6 +81,30 @@
                 >{{ state }}</b-form-select-option
               >
             </b-form-select>
+            <label for="profession-training" class="sr-only"
+              >Berufsgruppe</label
+            >
+            <b-form-select
+              id="profession-training"
+              v-model="filter.profession"
+              class="my-1 mr-2"
+              @change="
+                () => {
+                  getTrainings();
+                  setQuery();
+                }
+              "
+            >
+              <b-form-select-option :value="''"
+                >Alle Berufsgruppen</b-form-select-option
+              >
+              <b-form-select-option
+                v-for="profession in professionOptions"
+                :key="profession.value"
+                :value="profession.value"
+                >{{ profession.text }}</b-form-select-option
+              >
+            </b-form-select>
             <b-form-checkbox
               v-model="filter.remote"
               switch
@@ -96,19 +120,34 @@
               Nur Onlinefortbildungen
             </b-form-checkbox>
           </b-form>
+          <div class="d-none d-lg-block">
+            <SgdBanner class="mt-4" />
+            <!-- <DelstBanner class="my-2" /> -->
+          </div>
         </b-col>
-        <b-col v-if="trainings.length > 0">
-          <TrainingCalendarCard
-            v-for="training in trainings"
-            :key="training._id"
-            :training="training"
-          />
+        <b-col>
+          <div v-if="trainings.length > 0" id="training-list">
+            <TrainingCalendarCard
+              v-for="training in trainings"
+              :key="training._id"
+              :training="training"
+            />
+          </div>
+
+          <span v-else class="h5">Keine passenden Fortbildungen gefunden.</span>
+
+          <div v-if="loading" class="text-center">
+            <BSpinner
+              variant="primary"
+              label="Lade weitere Fortbildungen..."
+            ></BSpinner>
+          </div>
+
+          <div class="mt-5">
+            <ToJobboardBanner class="mt-3" />
+            <BerufsbilderBanner class="mt-3" />
+          </div>
         </b-col>
-        <b-col v-else
-          ><span class="h5"
-            >Keine passenden Fortbildungen gefunden.</span
-          ></b-col
-        >
       </b-row>
     </b-container>
 
@@ -124,31 +163,43 @@
 </template>
 
 <script>
+  import Vue from "vue";
+  import { BSpinner } from "bootstrap-vue";
+  Vue.component("BSpinner", BSpinner);
   import TrainingCalendarCard from "@/components/ui/TrainingCalendarCard.vue";
   import {
     companyStateOptions,
+    professionOptions,
     typeOptions
   } from "@/config/formDataConfig.json";
+  import SgdBanner from "@/components/banners/SgdBanner.vue";
+  import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
+  import BerufsbilderBanner from "@/components/banners/BerufsbilderBanner.vue";
   export default {
     name: "CareerFortWeiterbildungenCalendar",
     components: {
-      TrainingCalendarCard
+      TrainingCalendarCard,
+      SgdBanner,
+      ToJobboardBanner,
+      BerufsbilderBanner
     },
     data() {
       return {
         title: "Fortbildungskalender",
         trainings: [{}, {}, {}, {}, {}],
-        filterTrainingsTimeoutId: null,
-        // loading: false,
+        getTrainingsTimeoutId: null,
         loadMoreTrainingsTimeoutId: null,
+        loading: false,
         filter: {
           s: "",
           remote: false,
           type: "",
+          profession: "",
           state: ""
         },
         error: false,
         companyStateOptions,
+        professionOptions,
         typeOptions,
         breadcrumbs: [
           { text: "Home", to: "/" },
@@ -190,26 +241,34 @@
       this.getTrainings(0);
     },
     methods: {
-      async getTrainings(delay = 400, limit = 0, offset = 0) {
-        clearTimeout(this.filterTrainingsTimeoutId);
-        this.trainings = [{}, {}, {}, {}, {}];
-
+      async getTrainings(delay = 400, limit = 0, offset = 0, loadMore = false) {
         try {
-          this.filterTrainingsTimeoutId = setTimeout(async () => {
-            const trainings = await this.$axios.get("/graphql", {
-              params: {
-                query: `
-                  query {
+          clearTimeout(this.getTrainingsTimeoutId);
+          clearTimeout(this.loadMoreTrainingsTimeoutId);
+
+          if (!loadMore) {
+            // this.loading = false;
+            this.trainings = [{}, {}, {}, {}, {}];
+          }
+
+          await new Promise(resolve => {
+            this.getTrainingsTimeoutId = setTimeout(async () => {
+              const trainings = await this.$axios.get("/graphql", {
+                params: {
+                  query: `
+                    query {
                       publicTrainings (
                         limit: ${limit}
                         skip: ${offset}
                         search: "${this.filter.s}"
                         type: "${this.filter.type}"
+                        profession: "${this.filter.profession}"
                         state: "${this.filter.state}"
                         remote: ${this.filter.remote}
                         ) {
                           _id
                           title
+                          desc
                           excerpt
                           company
                           logoUrl
@@ -223,22 +282,73 @@
                           effort
                           cost
                           extUrl
-                      }
-                  }
-                `
+                        }
+                    }
+                  `
+                }
+              });
+
+              if (trainings.data.errors) {
+                throw new Error("Fortbildungen konnten nicht geladen werden!");
               }
-            });
 
-            if (trainings.data.errors) {
-              throw new Error("Fortbildungen konnten nicht geladen werden!");
-            }
+              if (trainings.data.data.publicTrainings.length === 0) {
+                clearTimeout(this.loadMoreTrainingsTimeoutId);
+                this.loading = false;
+              }
 
-            //   this.trainings = [];
-            this.trainings = trainings.data.data.publicTrainings;
-          }, delay);
+              if (!loadMore) {
+                this.trainings = trainings.data.data.publicTrainings;
+              } else {
+                this.trainings = [
+                  ...this.trainings,
+                  ...trainings.data.data.publicTrainings
+                ];
+              }
+
+              if (trainings.data.data.publicTrainings.length > 0) {
+                this.loadMoreTrainings();
+              }
+
+              resolve(trainings.data.data.publicTrainings.length > 0);
+            }, delay);
+          });
         } catch (err) {
           this.error = true;
         }
+      },
+      loadMoreTrainings() {
+        // this.loading = false;
+
+        this.loadMoreTrainingsTimeoutId = setTimeout(async () => {
+          clearTimeout(this.loadMoreTrainingsTimeoutId);
+          clearTimeout(this.getTrainingsTimeoutId);
+          const trainingsList = window.document.getElementById("training-list");
+
+          if (trainingsList) {
+            const trainingsListBottom = trainingsList.getBoundingClientRect()
+              .bottom;
+            const clientBottom = document.documentElement.clientHeight;
+
+            // this.loading = true;
+
+            let loadMore = true;
+
+            if (trainingsListBottom - clientBottom < 500) {
+              loadMore = await this.getTrainings(
+                0,
+                undefined,
+                this.trainings.length,
+                true
+              );
+            }
+            if (loadMore) {
+              this.loadMoreTrainings();
+            }
+
+            // this.loading = false;
+          }
+        }, 200);
       },
       setQuery() {
         const query = {
@@ -259,6 +369,7 @@
         this.filter = {
           s: this.$route.query.s || "",
           type: this.$route.query.type || "",
+          profession: this.$route.query.profession || "",
           location: this.$route.query.location || "",
           state: this.$route.query.state || "",
           remote: this.$route.query.remote === "true" ? true : false

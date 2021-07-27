@@ -1,6 +1,6 @@
 <template>
   <div class="training-card">
-    <div class="side">
+    <div v-if="training._id" class="side">
       <div v-if="training.startAnytime">Jederzeit</div>
       <div
         v-else-if="training.startAt && new Date(training.startAt) >= new Date()"
@@ -99,7 +99,7 @@
     </div>
     <div class="footer">
       <b-button
-        v-if="training._id"
+        v-if="training.desc"
         :to="`/karriere/fortbildungskalender/${training._id}`"
         target="_blank"
         class="mr-2 mt-2"

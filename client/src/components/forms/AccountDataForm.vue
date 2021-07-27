@@ -86,6 +86,16 @@
       >
         MFA / ZFA
       </b-form-checkbox>
+      <b-form-checkbox
+        id="is-educational"
+        v-model="user.isEducational"
+        :value="true"
+        :unchecked-value="false"
+        :disabled="disabled"
+        inline
+      >
+        Fortbildungsanbieter
+      </b-form-checkbox>
 
       <div class="d-flex justify-content-between my-4">
         <b-button
@@ -126,7 +136,8 @@
           lastName: "",
           email: "",
           isEmployer: false,
-          isEmployee: false
+          isEmployee: false,
+          isEducational: false
         },
         contactGenderOptions,
         contactTitleOptions,
@@ -150,24 +161,25 @@
           const user = await this.$axios.get(`/graphql`, {
             params: {
               query: `
-                                query {
-                                    ${this.userQuery} ${
+                query {
+                    ${this.userQuery} ${
                 this.apiUsersSchema === "admin"
                   ? `(_id: "${this.$route.params.userId}")`
                   : ""
               }
-                                        {
-                                        _id
-                                        gender
-                                        title
-                                        firstName
-                                        lastName
-                                        email
-                                        isEmployer
-                                        isEmployee
-                                    }
-                                }
-                            `
+                  {
+                    _id
+                    gender
+                    title
+                    firstName
+                    lastName
+                    email
+                    isEmployer
+                    isEmployee
+                    isEducational
+                  }
+                }
+              `
             }
           });
 
@@ -189,26 +201,27 @@
               this.apiUsersSchema === "admin" ? "adminUpdateUser" : "updateMe";
             const response = await this.$axios.post(`/graphql`, {
               query: `
-                                    mutation {
-                                        ${mutationType} (
-                                            ${
-                                              this.apiUsersSchema === "admin"
-                                                ? `_id: "${this.user._id}",`
-                                                : ""
-                                            }
-                                            gender: "${this.user.gender}",
-                                            title: "${this.user.title}",
-                                            firstName: "${this.user.firstName}",
-                                            lastName: "${this.user.lastName}",
-                                            email: "${this.user.email.toLowerCase()}",
-                                            isEmployer: ${this.user.isEmployer},
-                                            isEmployee: ${this.user.isEmployee},
-                                        ) {
-                                            _id
-                                            status
-                                        }
-                                    }
-                                `
+                mutation {
+                    ${mutationType} (
+                        ${
+                          this.apiUsersSchema === "admin"
+                            ? `_id: "${this.user._id}",`
+                            : ""
+                        }
+                        gender: "${this.user.gender}",
+                        title: "${this.user.title}",
+                        firstName: "${this.user.firstName}",
+                        lastName: "${this.user.lastName}",
+                        email: "${this.user.email.toLowerCase()}",
+                        isEmployer: ${this.user.isEmployer},
+                        isEmployee: ${this.user.isEmployee},
+                        isEducational: ${this.user.isEducational},
+                    ) {
+                        _id
+                        status
+                    }
+                }
+            `
             });
 
             if (response.data.data[mutationType]) {

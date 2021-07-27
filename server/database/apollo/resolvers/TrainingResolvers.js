@@ -40,6 +40,10 @@ const TrainingResolvers = {
         filter.type = args.type;
       }
 
+      if (args.profession) {
+        filter.profession = { $in: [null, "", args.profession] };
+      }
+
       if (args.state && !args.remote) {
         filter.state = args.state;
       }
@@ -54,7 +58,7 @@ const TrainingResolvers = {
           startAt: "desc",
         })
         .skip(args.skip ? args.skip : 0)
-        .limit(args.limit ? args.limit : 0);
+        .limit(args.limit ? args.limit : 10);
 
       return trainings;
     },
@@ -77,7 +81,7 @@ const TrainingResolvers = {
 
       const trainings = await Training.find({
         user: context.user._id,
-      });
+      }).sort({ createdAt: "desc" });
 
       return trainings;
     },

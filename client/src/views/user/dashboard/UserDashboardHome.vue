@@ -41,6 +41,13 @@
       <BTab title="Job-Newsletter" @click="setQuery('tab', 5)">
         <MyJobAlerts />
       </BTab>
+      <BTab
+        v-if="$store.state.auth.user.isEducational"
+        title="Fortbildungen"
+        @click="setQuery('tab', 6)"
+      >
+        <MyTrainingsList />
+      </BTab>
     </BTabs>
 
     <Head title="Dashboard" desc="" img="" />
@@ -54,6 +61,7 @@
   import MyPaymentsList from "@/components/dashboard/MyPaymentsList.vue";
   import MyStarredJobs from "@/components/dashboard/MyStarredJobs.vue";
   import MyJobAlerts from "@/components/dashboard/MyJobAlerts.vue";
+  import MyTrainingsList from "@/components/dashboard/MyTrainingsList.vue";
   import { BTabs, BTab } from "bootstrap-vue";
   import Vue from "vue";
   Vue.component("BTabs", BTabs);
@@ -66,7 +74,8 @@
       MyCompaniesList,
       MyPaymentsList,
       MyStarredJobs,
-      MyJobAlerts
+      MyJobAlerts,
+      MyTrainingsList
     },
     data() {
       return {

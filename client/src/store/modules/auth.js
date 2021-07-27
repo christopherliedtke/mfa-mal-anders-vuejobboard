@@ -45,6 +45,7 @@ const actions = {
                         isAdmin
                         isEmployer
                         isEmployee
+                        isEducational
                         token
                     }
                 }
@@ -76,6 +77,7 @@ const actions = {
                             isAdmin
                             isEmployer
                             isEmployee
+                            isEducational
                             token
                         }
                     }
@@ -120,6 +122,7 @@ const actions = {
                         isAdmin
                         isEmployer
                         isEmployee
+                        isEducational
                         token
                     }
                 }
@@ -151,6 +154,7 @@ const actions = {
                             isAdmin
                             isEmployer
                             isEmployee
+                            isEducational
                         }
                     }
                 `

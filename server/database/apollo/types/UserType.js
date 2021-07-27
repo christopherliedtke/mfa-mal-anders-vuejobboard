@@ -22,6 +22,7 @@ const UserType = gql`
       password2: String
       isEmployer: Boolean
       isEmployee: Boolean
+      isEducational: Boolean
     ): User
     activateUser(_id: ID!): User
     resetPasswordGetCode(email: String): User
@@ -40,6 +41,7 @@ const UserType = gql`
       email: String!
       isEmployer: Boolean!
       isEmployee: Boolean!
+      isEducational: Boolean!
     ): User
     deleteMe(password: String): User
     adminUserActivationConfirmation(_id: ID!): User
@@ -52,6 +54,7 @@ const UserType = gql`
       email: String
       isEmployer: Boolean
       isEmployee: Boolean
+      isEducational: Boolean
       status: String
     ): User
     adminDeleteUser(_id: ID!): User
@@ -66,6 +69,7 @@ const UserType = gql`
     role: String
     isEmployer: Boolean
     isEmployee: Boolean
+    isEducational: Boolean
     isAdmin: Boolean
     gender: String
     title: String

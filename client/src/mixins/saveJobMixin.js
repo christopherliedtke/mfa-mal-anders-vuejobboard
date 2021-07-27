@@ -90,7 +90,7 @@ export const saveJobMixin = {
         if (redirect) {
           this.hasHistory()
             ? this.$router.go(-1)
-            : this.$router.push("/user/dashboard");
+            : this.$router.push("/user/dashboard?tab=1");
         }
 
         return { success: true };

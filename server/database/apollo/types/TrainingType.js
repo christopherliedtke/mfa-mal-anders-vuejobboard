@@ -8,6 +8,7 @@ const TrainingType = gql`
       skip: Int
       search: String
       type: String
+      profession: String
       state: String
       remote: Boolean
     ): [Training]
@@ -20,7 +21,7 @@ const TrainingType = gql`
   extend type Mutation {
     addTraining(
       title: String!
-      desc: String!
+      desc: String
       excerpt: String!
       remote: Boolean
       startAnytime: Boolean
@@ -29,6 +30,7 @@ const TrainingType = gql`
       company: String!
       logoUrl: String
       type: String!
+      profession: String
       startAt: Float
       endAt: Float
       duration: String
@@ -48,6 +50,7 @@ const TrainingType = gql`
       company: String
       logoUrl: String
       type: String
+      profession: String
       startAt: Float
       endAt: Float
       duration: String
@@ -63,7 +66,7 @@ const TrainingType = gql`
     createdAt: Float
     updatedAt: Float
     title: String!
-    desc: String!
+    desc: String
     excerpt: String!
     remote: Boolean
     startAnytime: Boolean
@@ -72,6 +75,7 @@ const TrainingType = gql`
     company: String!
     logoUrl: String
     type: String!
+    profession: String
     startAt: Float
     endAt: Float
     duration: String
