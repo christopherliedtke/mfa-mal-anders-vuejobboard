@@ -81,7 +81,7 @@
           } else if (this.$store.state.auth.loggedIn) {
             if (this.$store.state.auth.user.isEmployee) {
               this.$router.push(
-                this.$route.query.redirect || "/user/dashboard?tab=4"
+                this.$route.query.redirect || "/user/dashboard?tab=5"
               );
             } else {
               this.$router.push(

@@ -1,6 +1,8 @@
 const { AuthenticationError } = require("apollo-server-express");
 const sanitizeHtml = require("sanitize-html");
 const s3 = require("../../../middleware/s3");
+const config = require("../../../config/config");
+const emailService = require("../../../utils/nodemailer");
 const { Training } = require("../../models/training");
 
 const TrainingResolvers = {
@@ -20,7 +22,14 @@ const TrainingResolvers = {
       };
 
       if (args.search) {
-        const searchStr = new RegExp(args.search.replace(/ /g, "|"), "i");
+        // const searchStr = new RegExp(
+        //   args.search
+        //     .split(" ")
+        //     .map(str => `(?=.*${str})`)
+        //     .join(""),
+        //   "gi"
+        // );
+        const searchStr = new RegExp(args.search.replace(/ /g, "|"), "gi");
 
         filter.$or = [
           "title",
@@ -56,6 +65,7 @@ const TrainingResolvers = {
         .sort({
           startAnytime: "desc",
           startAt: "desc",
+          updatedAt: "desc",
         })
         .skip(args.skip ? args.skip : 0)
         .limit(args.limit ? args.limit : 10);
@@ -146,6 +156,47 @@ const TrainingResolvers = {
 
       return updatedTraining;
     },
+    submitTraining: async (root, args, context) => {
+      if (!context.user._id) {
+        throw new AuthenticationError("Must be logged in!");
+      }
+
+      const updatedTraining = await Training.findOneAndUpdate(
+        { _id: args._id, user: context.user._id },
+        { pending: true },
+        { new: true }
+      );
+
+      const dataMailToAdmin = {
+        from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
+        to: config.website.contactEmail,
+        subject: `[Einreichung neue Fortbildung] - ${updatedTraining.title}`,
+        html: `
+          <h2>Einreichung einer neuen Fortbildung</h2>
+          <p>
+            <strong>ID:</strong> ${updatedTraining._id} <br>
+            <strong>Titel:</strong> ${updatedTraining.title} <br>
+            <strong>Unternehmen:</strong> ${updatedTraining.company} <br>
+            <strong>Link:</strong> <a href="${
+              process.env.WEBSITE_URL +
+              "/user/dashboard/trainings/edit/" +
+              updatedTraining._id
+            }">${
+          process.env.WEBSITE_URL +
+          "/user/dashboard/trainings/edit/" +
+          updatedTraining._id
+        }</a> <br>
+            <strong>Admin-Übersicht:</strong> <a href="${
+              process.env.WEBSITE_URL + "/admin?tab=6"
+            }">${process.env.WEBSITE_URL + "/admin?tab=6"}</a> <br>
+          </p>
+        `,
+      };
+
+      emailService.sendMail(dataMailToAdmin);
+
+      return updatedTraining;
+    },
     deleteTraining: async (root, args, context) => {
       if (!context.user._id) {
         throw new AuthenticationError("Must be logged in!");
@@ -179,8 +230,9 @@ function cleanUpTraining(training, user) {
   }
 
   if (!user.isAdmin) {
-    delete training.published;
+    // delete training.published;
     delete training.paid;
+    delete training.pending;
   }
 
   for (const key in training) {

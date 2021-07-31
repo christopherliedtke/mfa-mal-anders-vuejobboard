@@ -126,6 +126,10 @@ const UserDashboardEditCompany = () =>
   import(
     /* webpackChunkName: "company_edit" */ "@/views/user/dashboard/companies/edit/_companyId.vue"
   );
+const UserDashboardEditTraining = () =>
+  import(
+    /* webpackChunkName: "training_edit" */ "@/views/user/dashboard/trainings/edit/_trainingId.vue"
+  );
 const UserDashboardCheckoutJob = () =>
   import(
     /* webpackChunkName: "user_company" */ "@/views/user/dashboard/checkout/_jobId.vue"
@@ -466,6 +470,14 @@ const routes = [
     }
   },
   {
+    path: "/user/dashboard/trainings/edit/:trainingId",
+    name: "UserDashboardEditTraining",
+    component: UserDashboardEditTraining,
+    meta: {
+      public: false
+    }
+  },
+  {
     path: "/user/dashboard/checkout/:jobId",
     name: "UserDashboardCheckoutJob",
     component: UserDashboardCheckoutJob,
@@ -593,7 +605,9 @@ router.beforeEach((to, from, next) => {
   }
 
   if (loggedIn && onlyWhenLoggedOut) {
-    return next("/user/dashboard?tab=1");
+    return next(
+      to.query.redirect ? to.query.redirect : "/user/dashboard?tab=1"
+    );
   }
 
   next();

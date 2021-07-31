@@ -128,18 +128,29 @@
                 >Zahlungen</router-link
               >
               <router-link
-                v-if="
-                  $config.starredJobs.active &&
-                    ($store.state.auth.user.isEmployee ||
-                      ($store.state.starredJobs.starredJobs &&
-                        $store.state.starredJobs.starredJobs.length > 0))
-                "
+                v-if="$store.state.auth.user.isEducational"
                 to="/user/dashboard?tab=4"
                 :active-class="
                   $route.query.tab == 4 ? 'router-link-active' : ''
                 "
                 :exact-active-class="
                   $route.query.tab == 4 ? 'router-link-active' : ''
+                "
+                >Fortbildungen</router-link
+              >
+              <router-link
+                v-if="
+                  $config.starredJobs.active &&
+                    ($store.state.auth.user.isEmployee ||
+                      ($store.state.starredJobs.starredJobs &&
+                        $store.state.starredJobs.starredJobs.length > 0))
+                "
+                to="/user/dashboard?tab=5"
+                :active-class="
+                  $route.query.tab == 5 ? 'router-link-active' : ''
+                "
+                :exact-active-class="
+                  $route.query.tab == 5 ? 'router-link-active' : ''
                 "
                 >Gespeicherte Jobs</router-link
               >
@@ -148,12 +159,12 @@
                   $store.state.auth.user.isEmployee ||
                     $store.state.auth.user.isAdmin
                 "
-                to="/user/dashboard?tab=5"
+                to="/user/dashboard?tab=6"
                 :active-class="
-                  $route.query.tab == 5 ? 'router-link-active' : ''
+                  $route.query.tab == 6 ? 'router-link-active' : ''
                 "
                 :exact-active-class="
-                  $route.query.tab == 5 ? 'router-link-active' : ''
+                  $route.query.tab == 6 ? 'router-link-active' : ''
                 "
                 >Job-Newsletter</router-link
               >

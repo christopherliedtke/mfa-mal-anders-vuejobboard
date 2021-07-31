@@ -10,12 +10,13 @@
       <span v-else class="h5"
         >Fortbildung konnte nicht gefunden/geladen werden.</span
       >
+      <ToJobboardBanner v-if="training" class="mt-5" />
     </b-container>
 
     <Head
-      title="Fortbildungskalender für ArzthelferInnen – MFA & ZFA"
+      :title="training ? training.title : ' | Fortbildungskalender'"
       :desc="training ? training.excerpt : ''"
-      img=""
+      img="/img/MfaMalAnders_Fortbildungskalender_Banner_1200.jpg"
       :script="snippet"
     />
   </div>
@@ -23,10 +24,12 @@
 
 <script>
   import Training from "@/components/ui/Training.vue";
+  import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
   export default {
     name: "CareerFortWeiterbildungCalendarTraining",
     components: {
-      Training
+      Training,
+      ToJobboardBanner
     },
     data() {
       return {

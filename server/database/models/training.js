@@ -14,6 +14,7 @@ const TrainingSchema = new Schema(
     },
     desc: {
       type: String,
+      default: "",
     },
     excerpt: {
       type: String,
@@ -30,9 +31,11 @@ const TrainingSchema = new Schema(
     },
     location: {
       type: String,
+      default: "",
     },
     state: {
       type: String,
+      default: "",
     },
     company: {
       type: String,
@@ -40,6 +43,7 @@ const TrainingSchema = new Schema(
     },
     logoUrl: {
       type: String,
+      default: "",
     },
     type: {
       type: String,
@@ -57,6 +61,7 @@ const TrainingSchema = new Schema(
     },
     duration: {
       type: String,
+      default: "",
     },
     effort: {
       type: String,
@@ -70,6 +75,10 @@ const TrainingSchema = new Schema(
       required: true,
     },
     published: {
+      type: Boolean,
+      default: false,
+    },
+    pending: {
       type: Boolean,
       default: false,
     },

@@ -5,12 +5,25 @@
         <h2 class="text-center mb-0">
           {{
             $route.query.role === "employee"
-              ? "Registrierung als MFA / ZFA"
+              ? "Registrierung als MFA/  ZFA"
+              : $route.query.role === "education"
+              ? "Registrierung als Fortbildungsanbieter"
               : "Registrierung als Arbeitgeber"
           }}
         </h2>
 
-        <div v-if="$route.query.role != 'employee'" class="mt-4">
+        <div v-if="$route.query.role == 'education'" class="mt-4">
+          <p class="bold text-left text-md-center">
+            Sie möchten eine Fortbildung bei uns veröffentlichen?
+          </p>
+        </div>
+        <div v-else-if="$route.query.role == 'employee'" class="mt-4">
+          <!-- <p class="bold text-left text-md-center">
+            TEST
+          </p> -->
+        </div>
+
+        <div v-else class="mt-4">
           <p class="bold text-left text-md-center">
             Sie möchten eine Stellenanzeige bei uns schalten?
           </p>

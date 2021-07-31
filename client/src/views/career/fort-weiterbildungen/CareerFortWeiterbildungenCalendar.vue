@@ -124,6 +124,12 @@
             <SgdBanner class="mt-4" />
             <!-- <DelstBanner class="my-2" /> -->
           </div>
+          <div class="small text-right my-3 pt-1">
+            <b-link
+              to="/auth/register?role=education&redirect=/user/dashboard?tab=4"
+              >Jetzt kostenfrei Fortbildung veröffentlichen</b-link
+            >
+          </div>
         </b-col>
         <b-col>
           <div v-if="trainings.length > 0" id="training-list">
@@ -156,7 +162,7 @@
       :desc="
         `Fortbildungskalender für Medizinische & Zahnmedizinische Fachangestellte (MFA / ZFA) || Weiterbildungen | Online & Offline`
       "
-      img=""
+      img="/img/MfaMalAnders_Fortbildungskalender_Banner_1200.jpg"
       :script="snippet"
     />
   </div>
@@ -185,7 +191,7 @@
     },
     data() {
       return {
-        title: "Fortbildungskalender",
+        title: "Fortbildungskalender für MFA & ZFA",
         trainings: [{}, {}, {}, {}, {}],
         getTrainingsTimeoutId: null,
         loadMoreTrainingsTimeoutId: null,

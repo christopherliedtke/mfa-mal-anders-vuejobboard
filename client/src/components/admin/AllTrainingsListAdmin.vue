@@ -49,39 +49,78 @@
       <template #cell(actions)="row">
         <b-button
           class="mr-2 mb-2"
-          :to="`/admin/trainings/edit/${row.item._id}`"
+          :to="`/user/dashboard/trainings/edit/${row.item._id}`"
           variant="primary"
           size="sm"
           ><Fa class="mr-2" icon="edit" />Edit
         </b-button>
-        <!-- <BDropdown class="mr-2 mb-2" size="sm" left variant="secondary">
+
+        <BDropdown class="mr-2 mb-2" size="sm" left variant="secondary">
           <template #button-content>
-            <Fa class="mr-2" icon="ellipsis-v" /> Status
+            Published
           </template>
           <BDropdownItem
             class="mb-0"
             variant="success"
-            @click.prevent="updateUserStatus(row.item._id, 'active')"
-            >active</BDropdownItem
+            @click.prevent="updateTraining(row.item._id, 'published: true')"
+            >online</BDropdownItem
           >
           <BDropdownItem
             class="mb-0"
-            variant="warning"
-            @click.prevent="updateUserStatus(row.item._id, 'pending')"
-            >pending</BDropdownItem
+            variant="danger"
+            @click.prevent="updateTraining(row.item._id, 'published: false')"
+            >offline</BDropdownItem
           >
-        </BDropdown> -->
-        <!-- <BDropdown class="mr-2 mb-2" size="sm" left variant="info">
+        </BDropdown>
+
+        <BDropdown class="mr-2 mb-2" size="sm" left variant="secondary">
+          <template #button-content>
+            Paid
+          </template>
+          <BDropdownItem
+            class="mb-0"
+            variant="success"
+            @click.prevent="updateTraining(row.item._id, 'paid: true')"
+            >paid</BDropdownItem
+          >
+          <BDropdownItem
+            class="mb-0"
+            variant="danger"
+            @click.prevent="updateTraining(row.item._id, 'paid: false')"
+            >unpaid</BDropdownItem
+          >
+        </BDropdown>
+
+        <BDropdown class="mr-2 mb-2" size="sm" left variant="secondary">
+          <template #button-content>
+            Pending
+          </template>
+          <BDropdownItem
+            class="mb-0"
+            variant="success"
+            @click.prevent="updateTraining(row.item._id, 'pending: true')"
+            >true</BDropdownItem
+          >
+          <BDropdownItem
+            class="mb-0"
+            variant="danger"
+            @click.prevent="updateTraining(row.item._id, 'pending: false')"
+            >false</BDropdownItem
+          >
+        </BDropdown>
+
+        <BDropdown class="mr-2 mb-2" size="sm" left variant="info">
           <template #button-content>
             <Fa class="mr-2" icon="envelope" /> Email
           </template>
           <BDropdownItem
             class="mb-0"
             variant="success"
-            @click.prevent="sendActivationConfirmation(row.item._id)"
-            >confirm activation</BDropdownItem
+            @click.prevent="sendPublishedEmail(row.item._id)"
+            >send published</BDropdownItem
           >
-        </BDropdown> -->
+        </BDropdown>
+
         <b-button
           v-b-modal="'deleteTrainingModal'"
           size="sm"
@@ -153,6 +192,14 @@
           },
           {
             key: "published",
+            sortable: true
+          },
+          {
+            key: "paid",
+            sortable: true
+          },
+          {
+            key: "pending",
             sortable: true
           },
           {
@@ -228,6 +275,8 @@
                         updatedAt
                         title
                         published
+                        paid
+                        pending
                         startAt
                         startAnytime
                         duration
@@ -261,6 +310,67 @@
         }
 
         this.$store.dispatch("setOverlay", false);
+      },
+      async updateTraining(trainingId, args) {
+        try {
+          const training = await this.$axios.post("/graphql", {
+            query: `
+              mutation {
+                updateTraining (_id: "${trainingId}" ${args}) {
+                  _id
+                        createdAt
+                        updatedAt
+                        title
+                        published
+                        paid
+                        pending
+                        startAt
+                        startAnytime
+                        duration
+                        remote
+                        company
+                        location
+                        state
+                }
+              }
+            `
+          });
+
+          if (training.data.errors) {
+            throw new Error("Training could not be updated!");
+          }
+
+          this.trainings.forEach((oldTraining, index) => {
+            if (oldTraining._id === trainingId) {
+              this.trainings.splice(
+                index,
+                1,
+                training.data.data.updateTraining
+              );
+            }
+          });
+
+          this.$root.$bvToast.toast(
+            "Die Fortbildung wurde erfolgreich aktualisiert.",
+            {
+              title: `Fortbildung aktualisiert`,
+              variant: "success",
+              toaster: "b-toaster-bottom-right",
+              solid: true
+            }
+          );
+        } catch (err) {
+          this.$root.$bvToast.toast(
+            `Das Training konnte nicht aktualisiert werden. Error: ${err}`,
+            {
+              title: `Fehler beim Aktualisieren`,
+              variant: "danger",
+              toaster: "b-toaster-bottom-right",
+              solid: true,
+              noAutoHide: true
+            }
+          );
+        }
       },
       async deleteTraining(trainingId) {
         try {
@@ -297,106 +407,46 @@
           );
         }
       },
-      //   async updateUserStatus(userId, status) {
-      //     try {
-      //       const updatedUser = await this.$axios.post("/graphql", {
-      //         query: `
-      //                             mutation {
-      //                                 adminUpdateUser(_id: "${userId}" status: "${status}") {
-      //                                     _id
-      //                                     createdAt
-      //                                     updatedAt
-      //                                     firstName
-      //                                     lastName
-      //                                     email
-      //                                     status
-      //                                     isEmployer
-      //                                     isEmployee
-      //                                 }
-      //                             }
-      //                         `
-      //       });
+      async sendPublishedEmail(trainingId) {
+        try {
+          const response = await this.$axios.post(
+            "/api/send-email/training-published",
+            {
+              trainingId
+            }
+          );
 
-      //       if (updatedUser.data.errors) {
-      //         throw new Error("User could not be updated!");
-      //       }
+          if (response.data.errors) {
+            throw new Error("Email could not be sent.");
+          }
 
-      //       this.users = this.users.map(userOld => {
-      //         if (userOld._id === updatedUser.data.data.adminUpdateUser._id) {
-      //           return updatedUser.data.data.adminUpdateUser;
-      //         } else {
-      //           return userOld;
-      //         }
-      //       });
-      //     } catch (err) {
-      //       this.error = true;
-      //       this.$root.$bvToast.toast(
-      //         `Der User konnte nicht aktualisiert werden. Error: ${err}`,
-      //         {
-      //           title: `Fehler beim Aktualisieren`,
-      //           variant: "danger",
-      //           toaster: "b-toaster-bottom-right",
-      //           solid: true,
-      //           noAutoHide: true
-      //         }
-      //       );
-      //     }
-      //   },
-      //   async sendActivationConfirmation(userId) {
-      //     this.$store.dispatch("setOverlay", true);
-
-      //     try {
-      //       const response = await this.$axios.post("/graphql", {
-      //         query: `
-      //                         mutation {
-      //                             adminUserActivationConfirmation (_id: "${userId}") {
-      //                                 _id
-      //                             }
-      //                         }
-      //                     `
-      //       });
-
-      //       if (response.data.errors) {
-      //         throw new Error("Email could not be sent!");
-      //       }
-
-      //       this.$root.$bvToast.toast(
-      //         `Die Bestätigung zur Aktivierung des User Accounts konnte erfolgreich gesendet werden.`,
-      //         {
-      //           title: `E-Mail erfolgreich gesendet.`,
-      //           variant: "success",
-      //           toaster: "b-toaster-bottom-right",
-      //           solid: true,
-      //           noAutoHide: false
-      //         }
-      //       );
-      //     } catch (err) {
-      //       this.error = true;
-      //       this.$root.$bvToast.toast(
-      //         `E-Mail konnte nicht gesendet werden. Error: ${err}`,
-      //         {
-      //           title: `Fehler beim Senden der E-Mail`,
-      //           variant: "danger",
-      //           toaster: "b-toaster-bottom-right",
-      //           solid: true,
-      //           noAutoHide: true
-      //         }
-      //       );
-      //     }
-
-      //     this.$store.dispatch("setOverlay", false);
-      //   },
+          this.$root.$bvToast.toast("Die E-Mail wurde erfolgreich versandt.", {
+            title: `E-Mail versandt`,
+            variant: "success",
+            toaster: "b-toaster-bottom-right",
+            solid: true
+          });
+        } catch (err) {
+          this.$root.$bvToast.toast(
+            `E-Mail konnte nicht versandt werden. Error: ${err}`,
+            {
+              title: `Fehler beim Versenden`,
+              variant: "danger",
+              toaster: "b-toaster-bottom-right",
+              solid: true,
+              noAutoHide: true
+            }
+          );
+        }
+      },
       rowClass(item, type) {
         if (!item || type !== "row") return;
-        if (!item.published) {
+        if (!item.published || item.pending) {
           return "table-warning";
         }
-        if (item.published) {
+        if (item.published && item.paid) {
           return "table-success";
         }
-        // if (item.status === "active") {
-        //   return "table-info";
-        // }
       }
     }
   };

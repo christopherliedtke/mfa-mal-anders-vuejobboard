@@ -27,26 +27,30 @@
         <MyPaymentsList />
       </BTab>
       <BTab
+        v-if="$store.state.auth.user.isEducational"
+        title="Fortbildungen"
+        @click="setQuery('tab', 4)"
+      >
+        <MyTrainingsList />
+      </BTab>
+      <BTab
         v-if="
           $config.starredJobs.active &&
             ($store.state.auth.user.isAdmin ||
               $store.state.auth.user.isEmployee ||
               $store.state.starredJobs.starredJobs.length > 0)
         "
-        title="Meine gespeicherten Stellenanzeigen"
-        @click="setQuery('tab', 4)"
+        title="Gespeicherten Stellenanzeigen"
+        @click="setQuery('tab', 5)"
       >
         <MyStarredJobs />
       </BTab>
-      <BTab title="Job-Newsletter" @click="setQuery('tab', 5)">
-        <MyJobAlerts />
-      </BTab>
       <BTab
-        v-if="$store.state.auth.user.isEducational"
-        title="Fortbildungen"
+        v-if="$store.state.auth.user.isEmployee"
+        title="Job-Newsletter"
         @click="setQuery('tab', 6)"
       >
-        <MyTrainingsList />
+        <MyJobAlerts />
       </BTab>
     </BTabs>
 

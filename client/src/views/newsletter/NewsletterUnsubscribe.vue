@@ -23,7 +23,7 @@
       <div class="small mt-4">
         Du hast Dich über Deinen registrierten Account zum Job-Newsletter
         angemeldet? Dann melde dich
-        <b-link to="/user/dashboard?tab=5">hier</b-link> ab.
+        <b-link to="/user/dashboard?tab=6">hier</b-link> ab.
       </div>
 
       <b-alert

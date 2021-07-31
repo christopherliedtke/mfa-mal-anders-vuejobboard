@@ -37,6 +37,9 @@ const TrainingType = gql`
       effort: String
       cost: Float
       extUrl: String!
+      published: Boolean
+      pending: Boolean
+      paid: Boolean
     ): Training
     updateTraining(
       _id: ID!
@@ -57,7 +60,11 @@ const TrainingType = gql`
       effort: String
       cost: Float
       extUrl: String
+      published: Boolean
+      pending: Boolean
+      paid: Boolean
     ): Training
+    submitTraining(_id: ID!): Training
     deleteTraining(_id: ID!): Training
   }
 
@@ -83,6 +90,7 @@ const TrainingType = gql`
     cost: Float
     extUrl: String!
     published: Boolean
+    pending: Boolean
     paid: Boolean
   }
 

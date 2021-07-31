@@ -1,30 +1,40 @@
 form {
-    input,
-    select,
-    textarea,
-    .form-control,
-    .custom-select {
-        border-radius: $border-radius2;
-        padding: 0.4rem 1.4rem;
+  input,
+  select,
+  textarea,
+  .form-control,
+  .custom-select {
+    padding: 0.4rem 1.4rem;
+    border-radius: $border-radius2 0 0 $border-radius2;
 
-        &:focus,
-        &:active {
-            outline: none !important;
-            box-shadow: none !important;
-            border: 1px solid $secondary;
-        }
-
-        &::placeholder {
-            color: #999;
-        }
+    &:not(textarea) {
+      border-radius: $border-radius2;
     }
 
-    & > label,
-    & label {
-        margin: 1rem 0.3rem 0.3rem 0.3rem;
+    &:focus,
+    &:active {
+      outline: none !important;
+      box-shadow: none !important;
+      border: 1px solid $secondary;
     }
 
-    .custom-file-label {
-        margin-top: 0;
+    &::placeholder {
+      color: #999;
     }
+  }
+
+  & > label,
+  & label {
+    margin: 1rem 0.3rem 0.3rem 0.3rem;
+  }
+
+  .custom-radio {
+    & > label {
+      margin: 0;
+    }
+  }
+
+  .custom-file-label {
+    margin-top: 0;
+  }
 }

@@ -136,6 +136,10 @@
         type: String,
         default: ""
       },
+      placeholder: {
+        type: String,
+        default: "Schreiben Sie etwas..."
+      },
       validated: Boolean
     },
     data() {
@@ -155,7 +159,8 @@
             new Placeholder({
               emptyEditorClass: "is-editor-empty",
               emptyNodeClass: "is-empty",
-              emptyNodeText: "Schreibe etwas...",
+              // emptyNodeText: "Schreiben Sie etwas...",
+              emptyNodeText: this.placeholder,
               showOnlyWhenEditable: true,
               showOnlyCurrent: true
             })
@@ -213,12 +218,12 @@
   };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .tip-tap-editor {
     p.is-editor-empty:first-child::before {
       content: attr(data-empty-text);
       float: left;
-      color: #777;
+      color: #999;
       pointer-events: none;
       height: 0;
     }
