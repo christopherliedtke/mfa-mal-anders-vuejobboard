@@ -21,7 +21,12 @@
       class="shadow1 bg-light my-3"
     >
       <BCardText>
-        <h4>{{ training.title }} | {{ training.company }}</h4>
+        <h4>
+          <!-- eslint-disable -->
+          <span v-html="training.title"></span> |
+          <span v-html="training.company"></span>
+          <!-- eslint-enable -->
+        </h4>
         <div>
           <BBadge v-if="training.pending" class="mr-1" pill variant="warning"
             >wird geprüft</BBadge

@@ -27,8 +27,10 @@
         />
       </div>
       <div class="training-title">
-        <h2 class="h4">{{ training.title }}</h2>
-        <span class="text-muted">{{ training.company }}</span>
+        <!-- eslint-disable-next-line -->
+        <h2 class="h4" v-html="training.title"></h2>
+        <!-- eslint-disable-next-line -->
+        <span class="text-muted" v-html="training.company"></span>
       </div>
     </div>
     <div v-else class="header">
