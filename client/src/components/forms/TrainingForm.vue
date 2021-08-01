@@ -73,6 +73,7 @@
         rows="6"
         max-rows="50"
         lazy-formatter
+        wrap="hard"
         :formatter="formatter"
         :state="
           validated
@@ -213,7 +214,7 @@
         </div>
       </b-form-group>
 
-      <label for="cost">Kosten für Fortbildung [€]</label>
+      <label for="cost">Kosten für Fortbildung <small>[€]</small></label>
       <b-form-input
         id="cost"
         v-model="cost"
@@ -265,7 +266,7 @@
           v-model="training.remote"
           class="mb-2"
           :options="[
-            { value: false, text: 'Vor Ort' },
+            { value: false, text: 'Vor Ort / Hybrid' },
             { value: true, text: 'Nur Online' }
           ]"
           name="remote"
@@ -273,7 +274,9 @@
         ></b-form-radio-group>
 
         <div v-if="!training.remote">
-          <label for="training-location" class="mt-1">Ort</label>
+          <label for="training-location" class="mt-1"
+            >Ort <small>(Komma-getrennt für mehrere Orte)</small></label
+          >
           <b-form-input
             id="training-location"
             v-model="training.location"
@@ -284,7 +287,9 @@
             placeholder="Ort der Fortbildung eingeben..."
             trim
           />
-          <label for="training-state" class="mt-2">Bundesland</label>
+          <label for="training-state" class="mt-2"
+            >Bundesland <small>(auslassen bei mehreren Orten)</small></label
+          >
           <b-form-select
             id="training-state"
             v-model="training.state"
@@ -545,7 +550,7 @@
                 ${mutationType} (
                   ${this.training._id ? `_id: "${this.training._id}"` : ""}
                   title: "${this.training.title}"
-                  excerpt: "${this.training.excerpt}"
+                  excerpt: "${this.training.excerpt.replace(/\n/g, "\\n")}"
                   desc: "${this.training.desc.replace(/"/g, '\\"')}"
                   remote: ${this.training.remote}
                   startAnytime: ${this.training.startAnytime}
