@@ -497,6 +497,7 @@
 
         @media screen and (max-width: $break-menu) {
           position: fixed;
+          padding-bottom: 70px;
           left: 0;
           top: 60px;
           bottom: 0;

@@ -63,7 +63,9 @@
         ></b-form-radio-group>
       </b-form-group>
 
-      <label for="excerpt" required>Kurzbeschreibung der Fortbildung</label>
+      <label for="excerpt" required
+        >Kurzbeschreibung der Fortbildung für Vorschau</label
+      >
       <b-form-textarea
         id="excerpt"
         v-model="training.excerpt"
@@ -211,7 +213,7 @@
         </div>
       </b-form-group>
 
-      <label for="cost">Kosten für Fortbildung</label>
+      <label for="cost">Kosten für Fortbildung [€]</label>
       <b-form-input
         id="cost"
         v-model="cost"
