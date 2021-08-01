@@ -78,6 +78,14 @@ const CareerFortWeiterbildung = () =>
   import(
     /* webpackChunkName: "career-training" */ "@/views/career/fort-weiterbildungen/CareerFortWeiterbildung.vue"
   );
+const CareerFortWeiterbildungenCalendar = () =>
+  import(
+    /* webpackChunkName: "career-training" */ "@/views/career/fort-weiterbildungen/CareerFortWeiterbildungenCalendar.vue"
+  );
+const CareerFortWeiterbildungenCalendarTraining = () =>
+  import(
+    /* webpackChunkName: "career-training" */ "@/views/career/fort-weiterbildungen/training/_id.vue"
+  );
 
 // #Jobboard
 const Jobboard = () =>
@@ -117,6 +125,10 @@ const UserDashboardEditJob = () =>
 const UserDashboardEditCompany = () =>
   import(
     /* webpackChunkName: "company_edit" */ "@/views/user/dashboard/companies/edit/_companyId.vue"
+  );
+const UserDashboardEditTraining = () =>
+  import(
+    /* webpackChunkName: "training_edit" */ "@/views/user/dashboard/trainings/edit/_trainingId.vue"
   );
 const UserDashboardCheckoutJob = () =>
   import(
@@ -256,6 +268,22 @@ const routes = [
     path: "/karriere/fort-und-weiterbildungen/:slug",
     name: "KarriereFortWeiterbildung",
     component: CareerFortWeiterbildung,
+    meta: {
+      public: true
+    }
+  },
+  {
+    path: "/karriere/fortbildungskalender",
+    name: "KarriereFortbildungskalender",
+    component: CareerFortWeiterbildungenCalendar,
+    meta: {
+      public: true
+    }
+  },
+  {
+    path: "/karriere/fortbildungskalender/:id",
+    name: "KarriereFortbildungskalenderFortbildung",
+    component: CareerFortWeiterbildungenCalendarTraining,
     meta: {
       public: true
     }
@@ -442,6 +470,14 @@ const routes = [
     }
   },
   {
+    path: "/user/dashboard/trainings/edit/:trainingId",
+    name: "UserDashboardEditTraining",
+    component: UserDashboardEditTraining,
+    meta: {
+      public: false
+    }
+  },
+  {
     path: "/user/dashboard/checkout/:jobId",
     name: "UserDashboardCheckoutJob",
     component: UserDashboardCheckoutJob,
@@ -569,7 +605,9 @@ router.beforeEach((to, from, next) => {
   }
 
   if (loggedIn && onlyWhenLoggedOut) {
-    return next("/user/dashboard?tab=1");
+    return next(
+      to.query.redirect ? to.query.redirect : "/user/dashboard?tab=1"
+    );
   }
 
   next();

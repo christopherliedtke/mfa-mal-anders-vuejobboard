@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-button v-if="$store.state.auth.loggedIn" to="/user/dashboard?tab=5">{{
+    <b-button v-if="$store.state.auth.loggedIn" to="/user/dashboard?tab=6">{{
       state ? "Abonniere Jobs für " + state : "Abonniere den Job Newsletter"
     }}</b-button>
     <b-button v-else v-b-modal.subscribe-newsletter-modal2 variant="secondary">

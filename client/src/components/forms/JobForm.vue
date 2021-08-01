@@ -23,19 +23,23 @@
       <b-form-invalid-feedback id="title-feedback" class="ml-2">
         Bitte nutzen Sie maximal 155 Zeichen.
       </b-form-invalid-feedback>
-      <b-form-text id="title-help" class="ml-2">Max. 155 Zeichen</b-form-text>
+      <b-form-text id="title-help" class="ml-2"
+        ><span :class="[{ 'text-danger': job.title.length > 155 }]">
+          {{ 155 - job.title.length }} Zeichen verfügbar</span
+        ></b-form-text
+      >
 
       <div
         v-if="$store.state.auth.user.isAdmin"
         class="bg-light-shade border-radius1 p-3 mt-3"
       >
         <h6>ADMIN</h6>
-        <label for="created">publishedAt</label>
+        <label for="published-at">publishedAt</label>
         <BFormDatepicker
           v-model="publishedAt"
           placeholder="Veröffentlicht am..."
         />
-        <label class="mt-2" for="created">paidExpiresAt</label>
+        <label class="mt-2" for="paid-expires-at">paidExpiresAt</label>
         <BFormDatepicker
           v-model="paidExpiresAt"
           placeholder="Zahlung läuft ab am..."

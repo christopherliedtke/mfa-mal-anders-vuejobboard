@@ -9,7 +9,12 @@
       <b-button
         :variant="isEmployee ? 'primary' : 'outline-primary'"
         @click="toggleRole('employee')"
-        >Ich bin MFA / ZFA</b-button
+        >Ich bin MFA/ZFA</b-button
+      >
+      <b-button
+        :variant="isEducational ? 'primary' : 'outline-primary'"
+        @click="toggleRole('education')"
+        >Ich bin Fortbildungs-anbieter</b-button
       >
     </BButtonGroup>
 
@@ -28,8 +33,12 @@
           >{{ genderOption }}</b-form-select-option
         >
       </b-form-select>
-      <label v-if="isEmployer" for="user-title">Titel</label>
-      <b-form-select v-if="isEmployer" id="user-title" v-model="title">
+      <label v-if="isEmployer || isEducational" for="user-title">Titel</label>
+      <b-form-select
+        v-if="isEmployer || isEducational"
+        id="user-title"
+        v-model="title"
+      >
         <b-form-select-option value=""
           >-- Titel auswählen --</b-form-select-option
         >
@@ -173,6 +182,7 @@
         contactTitleOptions,
         isEmployer: true,
         isEmployee: false,
+        isEducational: false,
         errors: []
       };
     },
@@ -195,6 +205,7 @@
             password2: this.password2,
             isEmployer: this.isEmployer,
             isEmployee: this.isEmployee,
+            isEducational: this.isEducational,
             acceptance: this.acceptance
           }
         });
@@ -243,9 +254,15 @@
         if (role === "employee") {
           this.isEmployer = false;
           this.isEmployee = true;
+          this.isEducational = false;
+        } else if (role === "education") {
+          this.isEmployer = false;
+          this.isEmployee = false;
+          this.isEducational = true;
         } else {
           this.isEmployer = true;
           this.isEmployee = false;
+          this.isEducational = false;
         }
       }
     }

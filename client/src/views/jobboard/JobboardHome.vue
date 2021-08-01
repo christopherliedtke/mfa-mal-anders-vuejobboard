@@ -237,6 +237,7 @@
               >Meine gespeicherten Jobs</b-button
             >
           </div>
+          <TrainingCalendarSmallBanner class="d-none d-lg-block mt-4" />
           <div class="d-none d-lg-block mt-4">
             <p class="h5">
               Verpasse keine Neuigkeiten und folge uns auf
@@ -296,11 +297,12 @@
               <b-link to="/fuer-arbeitgeber" class="bold">Mehr erfahren</b-link>
             </p>
           </div>
-          <div class="mt-5">
+          <TrainingCalendarSmallBanner class="d-lg-none mt-3" />
+          <div class="mt-4 mt-lg-5">
             <b-link
               class="h2 text-primary"
               to="/karriere/fort-und-weiterbildungen"
-              >Fort- und Weiterbildungen für MFA</b-link
+              >Fort- und Weiterbildungen für MFA & ZFA</b-link
             >
             <RandomTrainingsContainer class="mt-3" :number="2" />
             <BerufsbilderBanner class="mt-3" />
@@ -368,6 +370,7 @@
   import TwitterBtn from "@/components/buttons/TwitterBtn.vue";
   import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
   import BerufsbilderBanner from "@/components/banners/BerufsbilderBanner.vue";
+  import TrainingCalendarSmallBanner from "@/components/banners/TrainingCalendarSmallBanner.vue";
   // import { getHereServiceMixin } from "@/mixins/getHereServiceMixin.js";
   export default {
     name: "Jobboard",
@@ -378,7 +381,8 @@
       InstagramBtn,
       TwitterBtn,
       RandomTrainingsContainer,
-      BerufsbilderBanner
+      BerufsbilderBanner,
+      TrainingCalendarSmallBanner
     },
     // mixins: [getHereServiceMixin],
     data() {

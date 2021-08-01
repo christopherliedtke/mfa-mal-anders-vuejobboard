@@ -20,7 +20,10 @@
       <BTab title="Payments" @click="setQuery('tab', 5)">
         <AllPaymentsListAdmin />
       </BTab>
-      <BTab title="Data Analytics" @click="setQuery('tab', 6)">
+      <BTab title="Trainings" @click="setQuery('tab', 6)">
+        <AllTrainingsListAdmin />
+      </BTab>
+      <BTab title="Data Analytics" @click="setQuery('tab', 7)">
         <DataAnalyticsDashboard />
       </BTab>
     </BTabs>
@@ -36,6 +39,7 @@
   import AllCouponsListAdmin from "@/components/admin/AllCouponsListAdmin.vue";
   import AllSubscribersListAdmin from "@/components/admin/AllSubscribersListAdmin.vue";
   import AllPaymentsListAdmin from "@/components/admin/AllPaymentsListAdmin.vue";
+  import AllTrainingsListAdmin from "@/components/admin/AllTrainingsListAdmin.vue";
   import DataAnalyticsDashboard from "@/components/admin/DataAnalyticsDashboard.vue";
   import { BTable, BTabs, BTab } from "bootstrap-vue";
   import Vue from "vue";
@@ -52,6 +56,7 @@
       AllCouponsListAdmin,
       AllSubscribersListAdmin,
       AllPaymentsListAdmin,
+      AllTrainingsListAdmin,
       DataAnalyticsDashboard
     },
     data() {

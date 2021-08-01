@@ -182,13 +182,14 @@
             >
             führen.
           </p>
+          <TrainingCalendarSmallBanner class="my-2" />
+        </b-col>
+        <b-col>
           <p>
             Daneben bietet der Gehaltstarifvertrag für Zahnmedizinische
             Fachangestellte dir vor allem eine gute Orientierung, um deinen
             Marktwert einzuschätzen – bezüglich Qualifikation und Erfahrung.
           </p>
-        </b-col>
-        <b-col>
           <p>
             Die letzte Gehaltserhöhung bzw. Tarifanpassung wurde zum 01.01.2020
             wirksam. Anfangsgehälter für Zahnmedizinische Fachangestellte nach
@@ -844,6 +845,7 @@
   import BerufsbilderBanner from "@/components/banners/BerufsbilderBanner.vue";
   import WeiterbildungenBanner from "@/components/banners/WeiterbildungenBanner.vue";
   import GehaltsverhandlungBanner from "@/components/banners/GehaltsverhandlungBanner.vue";
+  import TrainingCalendarSmallBanner from "@/components/banners/TrainingCalendarSmallBanner.vue";
   export default {
     name: "CareerGehalt",
     components: {
@@ -853,7 +855,8 @@
       ToJobboardBanner,
       BerufsbilderBanner,
       WeiterbildungenBanner,
-      GehaltsverhandlungBanner
+      GehaltsverhandlungBanner,
+      TrainingCalendarSmallBanner
     },
     data() {
       return {

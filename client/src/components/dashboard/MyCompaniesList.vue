@@ -106,16 +106,16 @@
           const companies = await this.$axios.get("/graphql", {
             params: {
               query: `
-                                query {
-                                    myCompanies {
-                                        _id
-                                        createdAt
-                                        updatedAt
-                                        name
-                                        location
-                                    }
-                                }
-                            `
+                query {
+                  myCompanies {
+                    _id
+                    createdAt
+                    updatedAt
+                    name
+                    location
+                  }
+                }
+              `
             }
           });
 
@@ -139,12 +139,12 @@
         try {
           const company = await this.$axios.post("/graphql", {
             query: `
-                                mutation {
-                                    deleteCompany(_id: "${companyId}") {
-                                        _id
-                                    }
-                                }
-                            `
+              mutation {
+                deleteCompany(_id: "${companyId}") {
+                  _id
+                }
+              }
+            `
           });
 
           if (company.data.data.deleteCompany._id) {

@@ -108,6 +108,30 @@
             </b-link>
           </b-col>
         </b-row>
+        <div>
+          <b-link
+            to="/karriere/fortbildungskalender"
+            class="d-flex flex-column flex-lg-row icon-box shadow1"
+          >
+            <b-img-lazy
+              class="mr-4 mb-4 ml-4"
+              src="@/assets/img/calendar.svg"
+              alt="MFA liest Fortbildungskalender"
+              height="130"
+              blank-width="167"
+              blank-height="130"
+              offset="1000"
+            />
+            <div>
+              <h2 class="bold">Fortbildungskalender</h2>
+              <p>
+                Finde die nächste Fort- oder Weiterbildung für ArzthelferInnen
+                (MFA & ZFA) in Deiner Nähe oder bequem online von zu Hause!
+              </p>
+              <b-button variant="primary">Zum Fortbildungskalender</b-button>
+            </div>
+          </b-link>
+        </div>
       </b-container>
       <h2 class="my-4">
         Wir helfen dir bei der Suche nach deinem Traumjob

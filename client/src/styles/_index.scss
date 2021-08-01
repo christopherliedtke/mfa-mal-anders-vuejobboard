@@ -9,7 +9,7 @@ a {
 }
 
 main {
-  ul,
+  ul:not([role="tablist"]),
   ol {
     li {
       margin-bottom: 0.75rem;

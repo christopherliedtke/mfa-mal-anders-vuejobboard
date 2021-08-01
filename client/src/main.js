@@ -207,7 +207,9 @@ import {
   faBriefcaseMedical,
   faDownload,
   faStar,
-  faSyncAlt
+  faSyncAlt,
+  faLaptop,
+  faHourglass
 } from "@fortawesome/free-solid-svg-icons";
 import { faStar as farStar } from "@fortawesome/free-regular-svg-icons";
 import {
@@ -304,7 +306,9 @@ library.add(
   faDownload,
   faStar,
   farStar,
-  faSyncAlt
+  faSyncAlt,
+  faLaptop,
+  faHourglass
 );
 
 Vue.component("Fa", FontAwesomeIcon);
