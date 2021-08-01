@@ -9,14 +9,14 @@
       <b-row>
         <b-col md="4" class="mb-4">
           <b-form>
-            <label for="s-trainings" class="sr-only">Suchbegriff *</label>
+            <label for="s-trainings" class="sr-only">Suchbegriff / Ort *</label>
             <b-input-group class="mb-1 mr-2">
               <b-form-input
                 id="s-trainings"
                 v-model="filter.s"
                 :class="filter.s ? 'border-secondary' : ''"
                 type="text"
-                placeholder="Suchbegriff..."
+                placeholder="Suchbegriff / Ort..."
                 @input="
                   () => {
                     getTrainings();
@@ -59,7 +59,7 @@
                 >{{ type }}</b-form-select-option
               >
             </b-form-select>
-            <label for="state-training" class="sr-only">Bundesland *</label>
+            <label for="state-training" class="sr-only">Bundesland</label>
             <b-form-select
               id="state-training"
               v-model="filter.state"

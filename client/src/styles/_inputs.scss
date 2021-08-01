@@ -11,6 +11,10 @@ form {
       border-radius: $border-radius2;
     }
 
+    // &:not(input) {
+    //   border-radius: $border-radius2;
+    // }
+
     &:focus,
     &:active {
       outline: none !important;

@@ -275,7 +275,7 @@
 
         <div v-if="!training.remote">
           <label for="training-location" class="mt-1"
-            >Ort <small>(Komma-getrennt für mehrere Orte)</small></label
+            >Ort <small>(Mehrere Orte mit Komma trennen)</small></label
           >
           <b-form-input
             id="training-location"
@@ -288,21 +288,24 @@
             trim
           />
           <label for="training-state" class="mt-2"
-            >Bundesland <small>(auslassen bei mehreren Orten)</small></label
+            >Bundesland
+            <small>('STRG' für Mehrfachauswahl gedrückt halten)</small></label
           >
           <b-form-select
             id="training-state"
-            v-model="training.state"
-            :state="validated ? (training.state ? true : null) : null"
+            v-model="state"
+            :state="validated ? (state ? true : null) : null"
+            style="border-radius: 5px 0 0 5px"
+            multiple
           >
             <b-form-select-option value=""
               >-- Bundesland auswählen --</b-form-select-option
             >
             <b-form-select-option
-              v-for="state in companyStateOptions"
-              :key="state"
-              :value="state"
-              >{{ state }}</b-form-select-option
+              v-for="stateOption in companyStateOptions"
+              :key="stateOption"
+              :value="stateOption"
+              >{{ stateOption }}</b-form-select-option
             >
           </b-form-select>
         </div>
@@ -463,6 +466,14 @@
         },
         set(value) {
           this.training.cost = !value ? null : value;
+        }
+      },
+      state: {
+        get() {
+          return this.training.state.split(",");
+        },
+        set(value) {
+          this.training.state = value.join(",");
         }
       }
     },

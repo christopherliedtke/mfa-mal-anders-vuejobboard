@@ -54,7 +54,10 @@ const TrainingResolvers = {
       }
 
       if (args.state && !args.remote) {
-        filter.state = args.state;
+        filter.state = {
+          $regex: new RegExp(args.state, "gi"),
+        };
+        // filter.state = args.state;
       }
 
       if (args.remote) {
