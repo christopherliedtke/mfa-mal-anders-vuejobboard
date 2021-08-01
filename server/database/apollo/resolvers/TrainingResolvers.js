@@ -67,7 +67,7 @@ const TrainingResolvers = {
       const trainings = await Training.find(filter)
         .sort({
           // startAt: "asc",
-          // startAnytime: "desc",
+          startAnytime: "desc",
           updatedAt: "desc",
         })
         .skip(args.skip ? args.skip : 0)
