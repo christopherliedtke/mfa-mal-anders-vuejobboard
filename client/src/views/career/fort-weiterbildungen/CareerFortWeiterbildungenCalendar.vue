@@ -235,7 +235,7 @@
                     "@type": "ListItem",
                     "position": 3,
                     "name": "Fortbildungskalender",
-                    "item": "https://www.mfa-mal-anders.de/karriere/fortbildungskalender
+                    "item": "https://www.mfa-mal-anders.de/karriere/fortbildungskalender"
                 }]
             }`
           }

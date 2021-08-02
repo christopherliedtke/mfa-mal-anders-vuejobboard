@@ -36,24 +36,32 @@
                 ><Fa class="mr-2" icon="map" />Karte</b-button
               >
             </BButtonGroup>
-            <FacebookBtn class="d-lg-none mb-3 ml-1" content="" />
-            <InstagramBtn class="d-lg-none mb-3 ml-1" content="" />
+            <!-- <FacebookBtn class="d-lg-none mb-3 ml-1" content="" />
+            <InstagramBtn class="d-lg-none mb-3 ml-1" content="" /> -->
           </BButtonToolbar>
-          <b-form id="job-filter" @submit.prevent>
+          <b-form
+            id="job-filter"
+            @submit.prevent="
+              () => {
+                getJobs();
+                setQuery();
+              }
+            "
+            @keydown.enter="
+              () => {
+                getJobs();
+                setQuery();
+              }
+            "
+          >
             <label for="s-jobboard" class="sr-only">Suchbegriff *</label>
-            <b-input-group class="mb-1 mr-2">
+            <b-input-group class="mb-2 mr-2">
               <b-form-input
                 id="s-jobboard"
                 v-model="filter.s"
                 :class="filter.s ? 'border-secondary' : ''"
                 type="text"
                 placeholder="Suchbegriff..."
-                @input="
-                  () => {
-                    getJobs();
-                    setQuery();
-                  }
-                "
               />
               <b-input-group-append>
                 <b-button
@@ -68,13 +76,37 @@
                 /></b-button>
               </b-input-group-append>
             </b-input-group>
+
+            <label for="location-jobboard" class="sr-only">Ort / PLZ *</label>
+            <b-input-group class="mb-2 mr-2">
+              <b-form-input
+                id="location-jobboard"
+                v-model="filter.location"
+                :class="filter.location ? 'border-secondary' : ''"
+                type="text"
+                placeholder="Umkreis (Ort oder PLZ)..."
+              />
+              <b-input-group-append>
+                <b-button
+                  @click.prevent="
+                    () => {
+                      filter.location = '';
+                      getJobs();
+                      setQuery();
+                    }
+                  "
+                  ><Fa icon="times"
+                /></b-button>
+              </b-input-group-append>
+            </b-input-group>
+
             <label for="employmentType-jobboard" class="sr-only"
               >Anstellungsart *</label
             >
             <b-form-select
               id="employmentType-jobboard"
               v-model="filter.employmentType"
-              class="my-1 mr-2"
+              class="mb-2 mr-2"
               @change="
                 () => {
                   getJobs();
@@ -93,39 +125,11 @@
               >
             </b-form-select>
 
-            <label for="location-jobboard" class="sr-only">Ort *</label>
-            <b-input-group class="my-1 mr-2">
-              <b-form-input
-                id="location-jobboard"
-                v-model="filter.location"
-                :class="filter.location ? 'border-secondary' : ''"
-                type="text"
-                placeholder="Ort..."
-                @input="
-                  () => {
-                    getJobs();
-                    setQuery();
-                  }
-                "
-              />
-              <b-input-group-append>
-                <b-button
-                  @click.prevent="
-                    () => {
-                      filter.location = '';
-                      getJobs();
-                      setQuery();
-                    }
-                  "
-                  ><Fa icon="times"
-                /></b-button>
-              </b-input-group-append>
-            </b-input-group>
             <!-- <b-form-datalist
               id="location-list"
               :options="locationsList"
             ></b-form-datalist> -->
-            <label for="state-jobboard" class="sr-only">Bundesland *</label>
+            <!-- <label for="state-jobboard" class="sr-only">Bundesland *</label>
             <b-form-select
               id="state-jobboard"
               v-model="filter.state"
@@ -146,7 +150,7 @@
                 :value="state"
                 >{{ state }}</b-form-select-option
               >
-            </b-form-select>
+            </b-form-select> -->
             <label for="profession-jobboard" class="mb-2 pl-2">Berufe </label>
             <b-form-group id="profession-jobboard" class="pl-2">
               <b-form-checkbox-group
@@ -219,8 +223,14 @@
                 ></b-form-checkbox-group>
               </b-form-group>
             </BCollapse>
+            <div class="mt-2">
+              <b-button variant="success" type="submit" block
+                ><Fa class="mr-2" size="sm" icon="search" />Jobs
+                finden</b-button
+              >
+            </div>
           </b-form>
-          <div class="small text-right mb-2 pr-3 pt-1">
+          <div class="small text-right mt-2 mb-2 pr-3 pt-1">
             <b-link to="/fuer-arbeitgeber">Stellenanzeige schalten</b-link>
           </div>
           <div class="d-none d-lg-block mt-5">
@@ -232,16 +242,18 @@
                   $store.state.starredJobs.starredJobs.length > 0
               "
               to="/user/dashboard?tab=4"
-              variant="secondary"
+              variant="outline-secondary"
               size="sm"
               >Meine gespeicherten Jobs</b-button
             >
           </div>
-          <TrainingCalendarSmallBanner class="d-none d-lg-block mt-4" />
           <div class="d-none d-lg-block mt-4">
-            <p class="h5">
+            <TrainingCalendarSmallBanner />
+          </div>
+          <div class="d-none d-lg-block mt-4">
+            <!-- <p class="h5">
               Verpasse keine Neuigkeiten und folge uns auf
-            </p>
+            </p> -->
             <FacebookBtn class="mt-2 mr-1" content="Facebook" />
             <InstagramBtn class="mt-2 mr-1" content="" />
             <TwitterBtn class="mt-2 mr-1" content="" />
@@ -505,7 +517,7 @@
         this.setQuery();
       },
       "$route.query"() {
-        this.getJobs();
+        // this.getJobs();
       }
     },
     async created() {
@@ -599,9 +611,11 @@
           }
         }
 
-        this.$router.push({
-          query
-        });
+        this.$router
+          .push({
+            query
+          })
+          .catch(() => {});
       },
       setFilter() {
         this.filter = {

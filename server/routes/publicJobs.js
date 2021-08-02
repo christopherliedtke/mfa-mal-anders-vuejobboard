@@ -4,13 +4,21 @@ const config = require("../config/config");
 const internalJobsCache = require("../cache/internalJobsCache");
 const jobLiftCache = require("../cache/jobLiftCache");
 const stepstoneCache = require("../cache/stepstoneCache");
+const getLocation = require("../utils/geocoder");
 
 // #route:  GET /api/public-jobs
 // #desc:   Fetch public jobs
 // #access: Public
 router.get("/", async (req, res) => {
   const { query } = req;
-  // console.log("query: ", query);
+
+  if (query.location) {
+    const locations = await getLocation(query.location);
+
+    if (locations) {
+      query.position = locations[0].position;
+    }
+  }
 
   let jobs = await Promise.all([
     internalJobsCache.get("jobs"),
@@ -18,6 +26,11 @@ router.get("/", async (req, res) => {
     config.externalJobs.stepstone ? stepstoneCache.get("jobs") : [],
   ]);
   jobs = jobs.flat();
+
+  // sort by distance from position
+  if (query.position) {
+    jobs = sortByPosition(query.position, jobs);
+  }
 
   jobs = filterJobs(jobs, query);
   const jobsCount = jobs.length;
@@ -30,8 +43,8 @@ router.get("/", async (req, res) => {
   res.json({ jobsCount, jobs });
 });
 
-// #route:  GET /api/public-jobs
-// #desc:   Fetch public jobs
+// #route:  GET /api/public-jobs/by-ids
+// #desc:   Fetch public jobs by ids
 // #access: Public
 router.post("/by-ids", async (req, res) => {
   const { ids } = req.body;
@@ -42,7 +55,7 @@ router.post("/by-ids", async (req, res) => {
     config.externalJobs.stepstone ? stepstoneCache.get("jobs") : [],
   ]);
 
-  jobs = jobs.flat().filter((job) => ids.some((id) => id == job._id));
+  jobs = jobs.flat().filter(job => ids.some(id => id == job._id));
 
   res.json({ jobs });
 });
@@ -60,7 +73,7 @@ router.get("/job/:id", async (req, res) => {
   ]);
   jobs = jobs.flat();
 
-  const job = jobs.find((job) => job._id == jobId);
+  const job = jobs.find(job => job._id == jobId);
 
   res.json({ job });
 });
@@ -74,7 +87,7 @@ function filterJobs(jobs, query) {
   //   filter profession
   if (query.profession) {
     filteredJobs = filteredJobs.filter(
-      (job) =>
+      job =>
         job.profession &&
         job.profession.toLowerCase() === query.profession.toLowerCase()
     );
@@ -83,7 +96,7 @@ function filterJobs(jobs, query) {
   //   filter employmentType
   if (query.employmentType) {
     filteredJobs = filteredJobs.filter(
-      (job) =>
+      job =>
         job.employmentType &&
         job.employmentType
           .toLowerCase()
@@ -92,29 +105,29 @@ function filterJobs(jobs, query) {
   }
 
   //   filter location
-  if (query.location) {
-    filteredJobs = filteredJobs.filter(
-      (job) =>
-        job.company.location &&
-        job.company.location
-          .toLowerCase()
-          .includes(query.location.toLowerCase())
-    );
-  }
+  // if (query.location) {
+  //   filteredJobs = filteredJobs.filter(
+  //     job =>
+  //       job.company.location &&
+  //       job.company.location
+  //         .toLowerCase()
+  //         .includes(query.location.toLowerCase())
+  //   );
+  // }
 
   //   filter state
-  if (query.state) {
-    filteredJobs = filteredJobs.filter(
-      (job) =>
-        job.company.state &&
-        job.company.state.toLowerCase() === query.state.toLowerCase()
-    );
-  }
+  // if (query.state) {
+  //   filteredJobs = filteredJobs.filter(
+  //     job =>
+  //       job.company.state &&
+  //       job.company.state.toLowerCase() === query.state.toLowerCase()
+  //   );
+  // }
 
   //   filter specialization
   if (query.specialization) {
     filteredJobs = filteredJobs.filter(
-      (job) =>
+      job =>
         job.specialization &&
         query.specialization
           .toLowerCase()
@@ -124,7 +137,7 @@ function filterJobs(jobs, query) {
 
   //   filter searchTerm
   if (query.s) {
-    filteredJobs = jobs.filter((job) => {
+    filteredJobs = jobs.filter(job => {
       const s = query.s.toLowerCase().split(" ");
       const searchProp = [
         job.title,
@@ -137,20 +150,20 @@ function filterJobs(jobs, query) {
         .join(" ")
         .toLowerCase();
 
-      return s.every((term) => searchProp.includes(term));
+      return s.every(term => searchProp.includes(term));
     });
   }
 
   // sort by geocode
-  if (query.geoCodeLat && query.geoCodeLng) {
-    filteredJobs = sortByDistance(
-      query.geoCodeLat,
-      query.geoCodeLng,
-      filteredJobs.filter(
-        (job) => job.company.geoCodeLat && job.company.geoCodeLng
-      )
-    );
-  }
+  // if (query.geoCodeLat && query.geoCodeLng) {
+  //   filteredJobs = sortByDistance(
+  //     query.geoCodeLat,
+  //     query.geoCodeLng,
+  //     filteredJobs.filter(
+  //       job => job.company.geoCodeLat && job.company.geoCodeLng
+  //     )
+  //   );
+  // }
 
   return filteredJobs;
 }
@@ -159,20 +172,20 @@ function sliceJobs(jobs = [], limit = 25, offset = 0) {
   return jobs.slice(offset, offset + limit);
 }
 
-function sortByDistance(geoCodeLat, geoCodeLng, jobs) {
+function sortByPosition(position, jobs) {
   return jobs.sort((a, b) => {
     return (
       calcDistance(
         a.company.geoCodeLat,
         a.company.geoCodeLng,
-        geoCodeLat,
-        geoCodeLng
+        position.lat,
+        position.lng
       ) -
       calcDistance(
         b.company.geoCodeLat,
         b.company.geoCodeLng,
-        geoCodeLat,
-        geoCodeLng
+        position.lat,
+        position.lng
       )
     );
   });
