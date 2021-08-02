@@ -246,7 +246,7 @@
       <b-form-select
         id="training-type"
         v-model="training.type"
-        :state="validated ? (training.type ? true : null) : null"
+        :state="validated ? (training.type ? true : false) : null"
       >
         <b-form-select-option value="" disabled
           >-- Bereich auswählen --</b-form-select-option

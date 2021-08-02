@@ -257,7 +257,7 @@
               :nojobs="nojobs"
             ></component>
           </keep-alive>
-          <div v-if="loading" class="text-center">
+          <div v-if="loading && !nojobs" class="text-center">
             <BSpinner
               variant="primary"
               label="Lade weitere Stellenanzeigen..."

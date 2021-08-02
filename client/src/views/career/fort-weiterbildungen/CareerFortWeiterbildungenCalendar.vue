@@ -8,7 +8,7 @@
     <b-container class="py-4 py-lg-5">
       <b-row>
         <b-col md="4" class="mb-4">
-          <b-form>
+          <b-form @submit.prevent>
             <label for="s-trainings" class="sr-only">Suchbegriff / Ort *</label>
             <b-input-group class="mb-1 mr-2">
               <b-form-input
