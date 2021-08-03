@@ -155,15 +155,17 @@ function filterJobs(jobs, query) {
   }
 
   // sort by geocode
-  // if (query.geoCodeLat && query.geoCodeLng) {
-  //   filteredJobs = sortByDistance(
-  //     query.geoCodeLat,
-  //     query.geoCodeLng,
-  //     filteredJobs.filter(
-  //       job => job.company.geoCodeLat && job.company.geoCodeLng
-  //     )
-  //   );
-  // }
+  if (query.geoCodeLat && query.geoCodeLng) {
+    filteredJobs = sortByPosition(
+      {
+        lat: query.geoCodeLat,
+        lng: query.geoCodeLng,
+      },
+      filteredJobs.filter(
+        job => job.company.geoCodeLat && job.company.geoCodeLng
+      )
+    );
+  }
 
   return filteredJobs;
 }

@@ -12,7 +12,7 @@ const getLocation = async (q, country = "Germany") => {
     );
 
     if (location.data.items.length === 0) {
-      throw new Error("No items found!");
+      throw new Error(`No items found for ${q}!`);
     }
 
     return location.data.items;
