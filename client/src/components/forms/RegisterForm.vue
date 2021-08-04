@@ -219,7 +219,11 @@
             this.$gtag.event("sign_up", {
               method: "local",
               event_label: `id: ${this.$store.state.auth.user._id}; type: ${
-                this.isEmployer ? "employer" : "employee"
+                this.isEmployer
+                  ? "employer"
+                  : this.isEmployee
+                  ? "employee"
+                  : "educational"
               }`
             });
 
@@ -228,7 +232,11 @@
                 "engagement",
                 "sign_up",
                 `id: ${this.$store.state.auth.user._id}; type: ${
-                  this.isEmployer ? "employer" : "employee"
+                  this.isEmployer
+                    ? "employer"
+                    : this.isEmployee
+                    ? "employee"
+                    : "educational"
                 }`
               );
 
