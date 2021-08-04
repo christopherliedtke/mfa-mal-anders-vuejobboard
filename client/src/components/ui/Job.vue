@@ -8,8 +8,9 @@
       <div class="mb-4 d-flex align-items-start justify-content-between">
         <div>
           <h1>{{ job.title }}</h1>
-          <span class="lead text-muted"
-            >{{ job.company.name }} | {{ job.company.location
+          <span class="lead text-muted">
+            <!-- eslint-disable-next-line -->
+            <span v-html="job.company.name"></span> | {{ job.company.location
             }}{{
               job.company.state && job.company.state != job.company.location
                 ? ", " + job.company.state

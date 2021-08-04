@@ -66,7 +66,8 @@
               <div class="icon">
                 <Fa class="mr-2" :icon="['fas', 'building']" size="lg" />
               </div>
-              {{ job.company.name }}
+              <!-- eslint-disable-next-line -->
+              <span v-html="job.company.name"></span>
             </div>
             <div v-if="job.company.location">
               <div class="icon">
