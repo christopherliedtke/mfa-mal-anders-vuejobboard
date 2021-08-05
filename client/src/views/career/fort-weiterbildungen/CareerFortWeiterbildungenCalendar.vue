@@ -9,14 +9,14 @@
       <b-row>
         <b-col md="4" class="mb-4">
           <b-form @submit.prevent>
-            <label for="s-trainings" class="sr-only">Suchbegriff / Ort *</label>
+            <label for="s-trainings" class="sr-only">Suchbegriff</label>
             <b-input-group class="mb-1 mr-2">
               <b-form-input
                 id="s-trainings"
                 v-model="filter.s"
                 :class="filter.s ? 'border-secondary' : ''"
                 type="text"
-                placeholder="Suchbegriff / Ort..."
+                placeholder="Suchbegriff..."
                 @input="
                   () => {
                     getTrainings();
@@ -37,28 +37,6 @@
                 /></b-button>
               </b-input-group-append>
             </b-input-group>
-            <label for="type-jobboard" class="sr-only">Bereich</label>
-            <b-form-select
-              id="type-training"
-              v-model="filter.type"
-              class="my-1 mr-2"
-              @change="
-                () => {
-                  getTrainings();
-                  setQuery();
-                }
-              "
-            >
-              <b-form-select-option :value="''"
-                >Alle Bereiche</b-form-select-option
-              >
-              <b-form-select-option
-                v-for="type in typeOptions"
-                :key="type"
-                :value="type"
-                >{{ type }}</b-form-select-option
-              >
-            </b-form-select>
             <label for="state-training" class="sr-only">Bundesland</label>
             <b-form-select
               id="state-training"
@@ -79,6 +57,28 @@
                 :key="state"
                 :value="state"
                 >{{ state }}</b-form-select-option
+              >
+            </b-form-select>
+            <label for="type-jobboard" class="sr-only">Bereich</label>
+            <b-form-select
+              id="type-training"
+              v-model="filter.type"
+              class="my-1 mr-2"
+              @change="
+                () => {
+                  getTrainings();
+                  setQuery();
+                }
+              "
+            >
+              <b-form-select-option :value="''"
+                >Alle Bereiche</b-form-select-option
+              >
+              <b-form-select-option
+                v-for="type in typeOptions"
+                :key="type"
+                :value="type"
+                >{{ type }}</b-form-select-option
               >
             </b-form-select>
             <label for="profession-training" class="sr-only"

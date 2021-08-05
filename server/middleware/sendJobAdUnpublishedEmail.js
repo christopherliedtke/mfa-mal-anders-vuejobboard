@@ -12,14 +12,14 @@ const sendJobAdUnpublishedEmail = async () => {
   }).populate("userId");
 
   const emailData = jobs
-    .filter((job) => !job.userId.isAdmin)
-    .map((job) => {
+    .filter(job => !job.userId.isAdmin)
+    .map(job => {
       return {
         from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
         to: job.userId.email,
         replyTo: config.website.contactEmail,
         bcc: config.website.contactEmail,
-        subject: `Ihre Stellenanzeige ist abgelaufen – '${job.title}'`,
+        subject: `[Stellenanzeige abgelaufen] – '${job.title}'`,
         html: `
                 <p>
                     ${
@@ -35,15 +35,15 @@ const sendJobAdUnpublishedEmail = async () => {
         }${job.userId.lastName},
                 </p>
                 <p>
-                    wir möchten uns noch einmal für die Schaltung Ihrer Stellenanzeige '${
+                    wir möchten Sie darüber informieren, dass Ihre Stellenanzeige mit dem Titel '${
                       job.title
-                    }' auf unserem Portal 'MFA mal anders' bedanken und hoffen, sie konnten die offene Stelle erfolgreich besetzen.
+                    }' auf unserem Portal 'MFA mal anders' abgelaufen ist und hoffen, sie konnten die offene Stelle erfolgreich besetzen.
                 </p>
                 <p>
-                    Sollten Sie Ihre Stellenanzeige verlängern wollen, können Sie dies nach erfolgtem Login auf <a href="https://www.mfa-mal-anders.de/auth/login">www.mfa-mal-anders.de</a> unter MEIN KONTO -> STELLENANZEIGEN tun.
+                    Sie haben die Möglichkeit, Ihre Stellenanzeige jederzeit auf <a href="https://www.mfa-mal-anders.de/auth/login">www.mfa-mal-anders.de</a> unter MEIN KONTO -> STELLENANZEIGEN zu reaktivieren.
                 </p>
                 <p>
-                    Wir freuen uns immer über Feedback, um unseren Service für Sie noch besser zu machen. Sollten Sie noch Fragen oder Anregungen haben, melden Sie sich gern bei uns.
+                    Sollten Sie noch Fragen oder Anregungen haben, melden Sie sich gern bei uns.
                 </p>
                 <p>
                     Mit freundlichen Grüßen
@@ -77,7 +77,7 @@ const sendJobAdUnpublishedEmail = async () => {
     });
 
   const emailSent = await Promise.all(
-    emailData.map((data) => emailService.sendMail(data))
+    emailData.map(data => emailService.sendMail(data))
   );
 
   console.log("emailSent: ", emailSent);
