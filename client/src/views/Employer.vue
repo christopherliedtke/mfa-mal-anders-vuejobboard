@@ -38,7 +38,7 @@
             <li class="d-flex">
               <Fa icon="check" class="mr-3 mt-1" />
               <div>
-                Veröffentlichen Sie Ihre Stellenaneige
+                Veröffentlichen Sie Ihre Stellenanzeige
                 <b-link class="text-secondary" href="#preise"
                   >ab
                   {{ $config.pricingPackages[0].price / 100 }}

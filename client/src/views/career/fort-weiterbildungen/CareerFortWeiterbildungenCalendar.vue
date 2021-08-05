@@ -158,9 +158,9 @@
     </b-container>
 
     <Head
-      title="Fortbildungskalender für ArzthelferInnen – MFA & ZFA"
+      title="Fortbildungskalender speziell für MFA & ZFA"
       :desc="
-        `Fortbildungskalender für Medizinische & Zahnmedizinische Fachangestellte (MFA / ZFA) || Weiterbildungen | Online & Offline`
+        `Deutschlands größte Übersicht an Fortbildungen / Weiterbildungen für Medizinische & Zahnmedizinische Fachangestellte (MFA / ZFA) || ArzthelferInnen`
       "
       img="/img/MfaMalAnders_Fortbildungskalender_Banner_1200.jpg"
       :script="snippet"
@@ -384,9 +384,3 @@
     }
   };
 </script>
-
-<style lang="scss" scoped>
-  // .custom-switch {
-  //   cursor: pointer;
-  // }
-</style>
