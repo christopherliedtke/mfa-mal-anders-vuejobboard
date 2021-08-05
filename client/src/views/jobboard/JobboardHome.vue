@@ -85,6 +85,7 @@
                 :class="filter.location ? 'border-secondary' : ''"
                 type="text"
                 placeholder="Ort oder PLZ..."
+                trim
               />
               <b-input-group-append>
                 <b-button
@@ -621,8 +622,9 @@
         this.filter = {
           s: this.$route.query.s || "",
           employmentType: this.$route.query.employmentType || "",
-          location: `${this.$route.query.location || ""} ${this.$route.query
-            .state || ""}`
+          location: `${this.$route.query.location || ""}${
+            this.$route.query.state ? " " : ""
+          }${this.$route.query.state || ""}`
         };
       },
       toggleAll(checked) {
