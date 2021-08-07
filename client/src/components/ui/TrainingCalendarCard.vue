@@ -1,5 +1,5 @@
 <template>
-  <div class="training-card">
+  <article class="training-card">
     <div v-if="training._id" class="side">
       <div v-if="training.startAnytime">Jederzeit</div>
       <div
@@ -125,7 +125,7 @@
         style="border-radius: 18px"
       />
     </div>
-  </div>
+  </article>
 </template>
 
 <script>

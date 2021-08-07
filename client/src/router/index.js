@@ -193,6 +193,14 @@ const routes = [
     }
   },
   {
+    path: "/stellenangebote/job/:jobId/:title",
+    name: "JobViewWithTitle",
+    component: JobView,
+    meta: {
+      public: true
+    }
+  },
+  {
     path: "/karriere",
     name: "Karriere",
     component: CareerHome,

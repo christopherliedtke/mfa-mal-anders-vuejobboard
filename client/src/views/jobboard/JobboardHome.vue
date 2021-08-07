@@ -333,18 +333,16 @@
     </b-container>
     <Head
       :title="
-        'Stellenangebote ArzthelferIn | ' +
-          profession.active.join(' & ') +
-          ' Jobs' +
-          (filter.state ? ` | ${filter.state}` : '')
+        `Stellenangebote ArzthelferIn | ${profession.active.join(
+          ' & '
+        )} Jobs | ${filter.location ? filter.location : ''}
+      `
       "
-      :separator="' '"
-      :complement="' '"
       :desc="
         `Stellenangebote (Teilzeit | Vollzeit) für ArzthelferInnen ✓ ${profession.active.join(
           ' & '
         )} Jobs ${
-          filter.state ? 'in ' + filter.state + ' ' : ''
+          filter.location ? 'in ' + filter.location + ' ' : ''
         }– Die Jobbörse für Medizinische / Zahnmedizinische Fachangestellte.`
       "
       img=""
@@ -434,36 +432,37 @@
         specializationOptions,
         professionOptions,
         jobboardView: this.$route.query.jobboardView || "list",
-        snippet: [
-          {
-            type: "application/ld+json",
-            inner: `{
-                            "@context": "http://schema.org",
-                            "@type" : "BreadcrumbList",
-                            "itemListElement": [{
-                                "@type": "ListItem",
-                                "position": 1,
-                                "name": "MFA mal anders",
-                                "item": "https://www.mfa-mal-anders.de"
-                            },{
-                                "@type": "ListItem",
-                                "position": 2,
-                                "name": "Stellenangebote",
-                                "item": "https://www.mfa-mal-anders.de/stellenangebote"
-                            }${
-                              this.$route.query.state
-                                ? ',{"@type": "ListItem","position": 3,"name": "' +
-                                  this.$route.query.state +
-                                  '","item": "https://www.mfa-mal-anders.de/stellenangebote?state=' +
-                                  this.$route.query.state +
-                                  '"}'
-                                : ""
-                            }]
-                        }`
-          }
-        ],
+        // snippet: [
+        //   {
+        //     type: "application/ld+json",
+        //     inner: `{
+        //       "@context": "http://schema.org",
+        //       "@type" : "BreadcrumbList",
+        //       "itemListElement": [{
+        //           "@type": "ListItem",
+        //           "position": 1,
+        //           "name": "MFA mal anders",
+        //           "item": "https://www.mfa-mal-anders.de"
+        //       },{
+        //           "@type": "ListItem",
+        //           "position": 2,
+        //           "name": "Stellenangebote",
+        //           "item": "https://www.mfa-mal-anders.de/stellenangebote"
+        //       }${
+        //         this.$route.query.location || this.$route.query.state
+        //           ? ',{"@type": "ListItem","position": 3,"name": "' +
+        //             (this.$route.query.location || this.$route.query.state) +
+        //             '","item": "https://www.mfa-mal-anders.de/stellenangebote?location=' +
+        //             (this.$route.query.location || this.$route.query.state) +
+        //             '"}'
+        //           : ""
+        //       }]
+        //     }`
+        //   }
+        // ],
         link: [
           {
+            id: "mapsjs-ui",
             rel: "stylesheet",
             href: "https://js.api.here.com/v3/3.1/mapsjs-ui.css",
             type: "text/css"
@@ -478,6 +477,48 @@
             ? "HereMapMultiJobs"
             : "JobboardList";
         }
+      },
+      snippet() {
+        return [
+          {
+            id: "breadcrumbs",
+            type: "application/ld+json",
+            inner: `{
+              "@context": "http://schema.org",
+              "@type" : "BreadcrumbList",
+              "itemListElement": [{
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "MFA mal anders",
+                  "item": "https://www.mfa-mal-anders.de"
+              },{
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Stellenangebote",
+                  "item": "https://www.mfa-mal-anders.de/stellenangebote"
+              }${
+                this.$route.query.location || this.$route.query.state
+                  ? ',{"@type": "ListItem","position": 3,"name": "' +
+                    (this.$route.query.location || this.$route.query.state) +
+                    '","item": "https://www.mfa-mal-anders.de/stellenangebote?location=' +
+                    (this.$route.query.location || this.$route.query.state) +
+                    '"}'
+                  : ""
+              }]
+            }`
+          },
+          {
+            rel: "canonical",
+            href: `${this.$config.website.url +
+              `stellenangebote${
+                this.$route.query.location || this.$route.query.state
+                  ? "?location=" +
+                    (this.$route.query.location || this.$route.query.state)
+                  : ""
+              }`}`,
+            id: "canonical"
+          }
+        ];
       },
       breadcrumbs() {
         const breadcrumbs = [

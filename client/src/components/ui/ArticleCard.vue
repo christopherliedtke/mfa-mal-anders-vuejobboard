@@ -1,7 +1,7 @@
 <template>
-  <div class="article-card">
+  <article class="article-card">
     <b-link :to="'/blog/article/' + article.slug" :aria-label="article.title">
-      <BCard no-body tag="article" class="mb-2">
+      <BCard no-body tag="div" class="mb-2">
         <BCardImgLazy
           :srcset="
             article.featuredImage ? article.featuredImage.node.srcSet : ''
@@ -64,7 +64,7 @@
         }}</BBadge>
       </BCard>
     </b-link>
-  </div>
+  </article>
 </template>
 
 <script>

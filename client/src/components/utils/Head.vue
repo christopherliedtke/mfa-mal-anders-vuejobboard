@@ -103,12 +103,12 @@
       },
       link() {
         return [
-          ...this.link,
           {
             rel: "canonical",
             href: `${this.$config.website.url + this.$route.fullPath}`,
             id: "canonical"
-          }
+          },
+          ...this.link
         ];
       },
       script() {

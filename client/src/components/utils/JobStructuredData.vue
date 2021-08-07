@@ -11,6 +11,7 @@
         if (this.job.title) {
           return [
             {
+              id: "job-structured-data",
               type: "application/ld+json",
               inner: JSON.stringify({
                 "@context": "http://schema.org",

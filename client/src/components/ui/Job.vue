@@ -4,7 +4,7 @@
     <JobCardPlaceholder v-for="index in 5" :key="index" class="mb-3" />
   </div>
   <div v-else-if="job.title">
-    <div class="job position-relative">
+    <article class="job position-relative">
       <div class="mb-4 d-flex align-items-start justify-content-between">
         <div>
           <h1>{{ job.title }}</h1>
@@ -387,7 +387,7 @@
           :subject="job.title"
         />
       </div>
-    </div>
+    </article>
 
     <SimilarJobsContainer :job="job" :number="5" />
 
@@ -449,6 +449,7 @@
 </template>
 
 <script>
+  import jobToSlug from "@/utils/jobToSlug.js";
   import SimilarJobsContainer from "@/components/containers/SimilarJobsContainer.vue";
   import {
     employmentTypeOptions,
@@ -492,8 +493,57 @@
         error: false,
         employmentTypeOptions,
         companySizeOptions,
-        snippet: [
+        // snippet: [
+        //   {
+        //     type: "application/ld+json",
+        //     inner: `{
+        //       "@context": "http://schema.org",
+        //       "@type" : "BreadcrumbList",
+        //       "itemListElement": [
+        //         {
+        //             "@type": "ListItem",
+        //             "position": 1,
+        //             "name": "MFA mal anders",
+        //             "item": "https://www.mfa-mal-anders.de"
+        //         },
+        //         {
+        //             "@type": "ListItem",
+        //             "position": 2,
+        //             "name": "Stellenangebote",
+        //             "item": "https://www.mfa-mal-anders.de/stellenangebote"
+        //         },
+        //         {
+        //             "@type": "ListItem",
+        //             "position": 3,
+        //             "name": "Stellenangebot",
+        //             "item": "https://www.mfa-mal-anders.de${this.$route.fullPath}"
+        //         }
+        //       ]
+        //     }`
+        //   }
+        // ],
+        link: [
           {
+            id: "mapsjs-ui",
+            rel: "stylesheet",
+            href: "https://js.api.here.com/v3/3.1/mapsjs-ui.css",
+            type: "text/css"
+          }
+        ]
+      };
+    },
+    computed: {
+      jobQuery: function() {
+        return this.apiJobsSchema === "admin"
+          ? "adminJob"
+          : this.apiJobsSchema === "private"
+          ? "myJob"
+          : "publicJob";
+      },
+      snippet: function() {
+        return [
+          {
+            id: "breadcrumbs",
             type: "application/ld+json",
             inner: `{
               "@context": "http://schema.org",
@@ -515,28 +565,22 @@
                     "@type": "ListItem",
                     "position": 3,
                     "name": "Stellenangebot",
-                    "item": "https://www.mfa-mal-anders.de${this.$route.fullPath}"
+                    "item": "https://www.mfa-mal-anders.de/stellenangebote/job/${
+                      this.job._id
+                    }/${jobToSlug(this.job.title, this.job.company.location)}"
                 }
               ]
             }`
-          }
-        ],
-        link: [
+          },
           {
-            rel: "stylesheet",
-            href: "https://js.api.here.com/v3/3.1/mapsjs-ui.css",
-            type: "text/css"
+            id: "canonical",
+            rel: "canonical",
+            href: `${this.$config.website.url}job/${this.job._id}/${jobToSlug(
+              this.job.title,
+              this.job.company.location
+            )}`
           }
-        ]
-      };
-    },
-    computed: {
-      jobQuery: function() {
-        return this.apiJobsSchema === "admin"
-          ? "adminJob"
-          : this.apiJobsSchema === "private"
-          ? "myJob"
-          : "publicJob";
+        ];
       }
     },
     watch: {
@@ -561,7 +605,20 @@
               throw new Error();
             }
           } catch (err) {
-            this.error = true;
+            // this.error = true;
+
+            this.$root.$bvToast.toast(
+              "Diese Stellenanzeige ist nicht oder nicht mehr verfügbar.",
+              {
+                title: `Stellenanzeige nicht verfügbar`,
+                variant: "warning",
+                toaster: "b-toaster-bottom-right",
+                solid: true,
+                noAutoHide: true
+              }
+            );
+
+            this.$router.push("/stellenangebote");
           }
         } else {
           try {
@@ -639,9 +696,10 @@
 
         el.value = `${job.title} | ${job.company.location}\n\n${
           this.$config.website.url
-        }/stellenangebote/job/${
-          job._id
-        }\n\n#mfamalanders #mfa #arzthelfer #arzthelferin #mfajobs #${job.company.location
+        }/stellenangebote/job/${job._id}/${jobToSlug(
+          job.title,
+          job.company.location
+        )}\n\n#mfamalanders #mfa #arzthelfer #arzthelferin #mfajobs #${job.company.location
           .replace("-", "")
           .replace(/\s/g, "")
           .toLowerCase()}jobs #${job.company.location

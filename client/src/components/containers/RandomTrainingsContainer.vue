@@ -8,7 +8,7 @@
       :lg="12 / number"
       class="mb-4"
     >
-      <div class="article-card">
+      <article class="article-card">
         <b-link
           :to="'/karriere/fort-und-weiterbildungen/' + training.slug"
           :aria-label="training.title"
@@ -44,7 +44,7 @@
             </BCardBody>
           </BCard>
         </b-link>
-      </div>
+      </article>
     </b-col>
   </b-row>
 </template>

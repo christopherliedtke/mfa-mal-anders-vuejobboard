@@ -1,35 +1,41 @@
 <template>
-  <div v-if="training" class="fort-weiterbildung">
-    <div class="title">
-      <h1>{{ training.title }}</h1>
-      <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
-    </div>
-    <b-container class="py-3 py-lg-5">
-      <b-row>
-        <b-col md="4" order="2" order-md="1">
-          <FortWeiterbildungenNav />
-        </b-col>
-        <b-col class="mb-4" order="1" order-md="2">
-          <b-img-lazy
-            v-if="training.featuredImage"
-            class="border-radius1 shadow1 mb-3 mb-lg-5"
-            fluid
-            :src="training.featuredImage.node.sourceUrl"
-            :alt="`Banner - ${training.title}`"
-            width="1200"
-            height="630"
-            blank-width="1200"
-            blank-height="630"
-            offset="1000"
-          />
-          <!-- eslint-disable-next-line -->
-          <div v-html="training.content"></div>
-          <TrainingCalendarLargeBanner class="mt-4" />
-          <ToJobboardBanner class="mt-4" />
-        </b-col>
-      </b-row>
+  <div>
+    <article v-if="training" class="fort-weiterbildung">
+      <div class="title">
+        <h1>{{ training.title }}</h1>
+        <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
+      </div>
+      <b-container class="py-3 py-lg-5">
+        <b-row>
+          <b-col md="4" order="2" order-md="1">
+            <FortWeiterbildungenNav />
+          </b-col>
+          <b-col class="mb-4" order="1" order-md="2">
+            <b-img-lazy
+              v-if="training.featuredImage"
+              class="border-radius1 shadow1 mb-3 mb-lg-5"
+              fluid
+              :src="training.featuredImage.node.sourceUrl"
+              :alt="`Banner - ${training.title}`"
+              width="1200"
+              height="630"
+              blank-width="1200"
+              blank-height="630"
+              offset="1000"
+            />
+            <!-- eslint-disable-next-line -->
+            <div v-html="training.content"></div>
+            <TrainingCalendarLargeBanner class="mt-4" />
+            <ToJobboardBanner class="mt-4" />
+          </b-col>
+        </b-row>
+      </b-container>
+    </article>
+
+    <b-container>
       <RandomTrainingsContainer />
     </b-container>
+
     <Head
       :title="training.seo && training.seo.title"
       :desc="training.seo && training.seo.metaDesc"

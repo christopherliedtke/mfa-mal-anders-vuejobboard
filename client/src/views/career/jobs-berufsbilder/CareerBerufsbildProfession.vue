@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="profession" class="profession">
+    <article v-if="profession" class="profession">
       <div class="title">
         <h1>{{ profession.title }}</h1>
         <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
@@ -34,15 +34,19 @@
             <ToJobboardBanner class="mt-5" />
           </b-col>
         </b-row>
-        <RandomTrainingsContainer class="mt-4" />
       </b-container>
-      <Head
-        :title="title"
-        :desc="profession.seo.metaDesc"
-        img=""
-        :script="snippet"
-      />
-    </div>
+    </article>
+
+    <b-container>
+      <RandomTrainingsContainer />
+    </b-container>
+
+    <Head
+      :title="title"
+      :desc="profession.seo.metaDesc"
+      img=""
+      :script="snippet"
+    />
   </div>
 </template>
 

@@ -1,111 +1,116 @@
 <template>
-  <article v-if="article">
-    <div class="title">
-      <h1>{{ article.title }}</h1>
-      <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
-    </div>
-    <b-container class="cms-article mt-3 mb-5">
-      <div class="position-relative">
-        <b-img-lazy
-          v-if="article.featuredImage"
-          :srcset="
-            article.featuredImage ? article.featuredImage.node.srcSet : ''
-          "
-          sizes="100vw"
-          :src="
-            article.featuredImage ? article.featuredImage.node.sourceUrl : ''
-          "
-          :alt="article.featuredImage ? article.featuredImage.node.altText : ''"
-          width="1200"
-          height="630"
-          blank-width="1200"
-          blank-height="630"
-          offset="1000"
-          class="mt-3 mb-4"
-          fluid
-        />
-        <div
-          v-if="article.author.node.avatar && article.featuredImage"
-          class="position-absolute d-flex align-items-center bg-light-shade border-radius2 px-3 py-1"
-          style="bottom: 0; right: 5%"
-        >
-          <b-img
-            :src="article.author.node.avatar.url"
-            :alt="article.author.node.name"
-            class="mr-2 rounded-circle"
-            style="height: 37.5px"
-          />
-          <div v-if="article.author.node.name">
-            von {{ article.author.node.name }}
-          </div>
-        </div>
+  <div v-if="article">
+    <article>
+      <div class="title">
+        <h1>{{ article.title }}</h1>
+        <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
       </div>
-      <!-- eslint-disable-next-line -->
-      <div class="mt-3" v-html="article.content"></div>
-      <div
-        class="d-flex flex-wrap justify-content-between align-items-center mt-5"
-      >
-        <div class="mb-4 mb-lg-0">
+      <b-container class="cms-article mt-3 mb-5">
+        <div class="position-relative">
+          <b-img-lazy
+            v-if="article.featuredImage"
+            :srcset="
+              article.featuredImage ? article.featuredImage.node.srcSet : ''
+            "
+            sizes="100vw"
+            :src="
+              article.featuredImage ? article.featuredImage.node.sourceUrl : ''
+            "
+            :alt="
+              article.featuredImage ? article.featuredImage.node.altText : ''
+            "
+            width="1200"
+            height="630"
+            blank-width="1200"
+            blank-height="630"
+            offset="1000"
+            class="mt-3 mb-4"
+            fluid
+          />
           <div
-            v-if="article.author.node.avatar"
-            class="d-flex align-items-center mb-3"
+            v-if="article.author.node.avatar && article.featuredImage"
+            class="position-absolute d-flex align-items-center bg-light-shade border-radius2 px-3 py-1"
+            style="bottom: 0; right: 5%"
           >
             <b-img
               :src="article.author.node.avatar.url"
               :alt="article.author.node.name"
-              class="mr-3 rounded-circle"
-              style="height: 60px"
+              class="mr-2 rounded-circle"
+              style="height: 37.5px"
             />
-            <div class="h6">
-              <span>
-                Liebe Grüße,
-              </span>
-              <br />
-              <span>{{ article.author.node.name }}</span>
+            <div v-if="article.author.node.name">
+              von {{ article.author.node.name }}
             </div>
           </div>
-          <div class="text-primary">
-            <b-link
-              v-if="article.author.node.url"
-              class="mr-2"
-              :href="article.author.node.url"
-              target="blank"
+        </div>
+        <!-- eslint-disable-next-line -->
+        <div class="mt-3" v-html="article.content"></div>
+        <div
+          class="d-flex flex-wrap justify-content-between align-items-center mt-5"
+        >
+          <div class="mb-4 mb-lg-0">
+            <div
+              v-if="article.author.node.avatar"
+              class="d-flex align-items-center mb-3"
             >
-              <Fa :icon="['fa', 'globe']" size="2x" />
-            </b-link>
-            <b-link
-              v-if="article.author.node.seo.social.facebook"
-              class="mr-2"
-              :href="article.author.node.seo.social.facebook"
-              target="blank"
-            >
-              <Fa :icon="['fab', 'facebook-square']" size="2x" />
-            </b-link>
-            <b-link
-              v-if="article.author.node.seo.social.instagram"
-              class="mr-2"
-              :href="article.author.node.seo.social.instagram"
-              target="blank"
-            >
-              <Fa :icon="['fab', 'instagram']" size="2x" />
-            </b-link>
+              <b-img
+                :src="article.author.node.avatar.url"
+                :alt="article.author.node.name"
+                class="mr-3 rounded-circle"
+                style="height: 60px"
+              />
+              <div class="h6">
+                <span>
+                  Liebe Grüße,
+                </span>
+                <br />
+                <span>{{ article.author.node.name }}</span>
+              </div>
+            </div>
+            <div class="text-primary">
+              <b-link
+                v-if="article.author.node.url"
+                class="mr-2"
+                :href="article.author.node.url"
+                target="blank"
+              >
+                <Fa :icon="['fa', 'globe']" size="2x" />
+              </b-link>
+              <b-link
+                v-if="article.author.node.seo.social.facebook"
+                class="mr-2"
+                :href="article.author.node.seo.social.facebook"
+                target="blank"
+              >
+                <Fa :icon="['fab', 'facebook-square']" size="2x" />
+              </b-link>
+              <b-link
+                v-if="article.author.node.seo.social.instagram"
+                class="mr-2"
+                :href="article.author.node.seo.social.instagram"
+                target="blank"
+              >
+                <Fa :icon="['fab', 'instagram']" size="2x" />
+              </b-link>
+            </div>
+          </div>
+          <div>
+            <FacebookShareBtn class="mb-2 mb-lg-0 mr-2" />
+            <TwitterShareBtn class="mb-2 mb-lg-0 mr-2" />
+            <WhatsAppShareBtn class="mb-2 mb-lg-0" />
+          </div>
+          <div
+            v-if="article.tags.nodes[0].name === 'Erfahrungsbericht'"
+            class="small mt-4"
+          >
+            Wenn auch Du von einer interessanten Weiterbildung oder Deiner
+            Arbeit als MFA / ZFA berichten möchtest, melde Dich gern bei uns
+            über das
+            <b-link to="/kontakt">Kontaktformular</b-link>.
           </div>
         </div>
-        <div>
-          <FacebookShareBtn class="mb-2 mb-lg-0 mr-2" />
-          <TwitterShareBtn class="mb-2 mb-lg-0 mr-2" />
-          <WhatsAppShareBtn class="mb-2 mb-lg-0" />
-        </div>
-        <div
-          v-if="article.tags.nodes[0].name === 'Erfahrungsbericht'"
-          class="small mt-4"
-        >
-          Wenn auch Du von einer interessanten Weiterbildung oder Deiner Arbeit
-          als MFA / ZFA berichten möchtest, melde Dich gern bei uns über das
-          <b-link to="/kontakt">Kontaktformular</b-link>.
-        </div>
-      </div>
-    </b-container>
+      </b-container>
+    </article>
     <b-container>
       <RandomArticlesContainer />
     </b-container>
@@ -117,7 +122,7 @@
       :script="snippet"
     />
     <ArticleStructuredData :article="article" />
-  </article>
+  </div>
 </template>
 
 <script>

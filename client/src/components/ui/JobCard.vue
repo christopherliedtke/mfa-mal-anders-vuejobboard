@@ -1,5 +1,5 @@
 <template>
-  <div v-if="job" class="jobcard">
+  <article v-if="job" class="jobcard">
     <div
       v-if="disabled"
       class="disabled-jobcard d-flex justify-content-center align-items-center"
@@ -9,7 +9,10 @@
     <b-link
       :to="
         job.source != 'stepstone'
-          ? `/stellenangebote/job/${job._id}`
+          ? `/stellenangebote/job/${job._id}/${jobToSlug(
+              job.title,
+              job.company.location
+            )}`
           : undefined
       "
       :href="job.source === 'stepstone' ? job.extJobUrl : undefined"
@@ -151,10 +154,11 @@
         </BCardText>
       </BCard>
     </b-link>
-  </div>
+  </article>
 </template>
 
 <script>
+  import jobToSlug from "@/utils/jobToSlug.js";
   import {
     employmentTypeOptions,
     companySizeOptions
@@ -176,7 +180,8 @@
     data() {
       return {
         employmentTypeOptions,
-        companySizeOptions
+        companySizeOptions,
+        jobToSlug
       };
     },
     computed: {
