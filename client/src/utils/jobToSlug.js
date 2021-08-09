@@ -3,5 +3,8 @@ export default function jobToSlug(title, location) {
     return "";
   }
 
-  return (title + " in " + location).toLowerCase().replace(/ /gi, "-");
+  return (title + " in " + location)
+    .toLowerCase()
+    .replace(/ /gi, "-")
+    .replace(/\//gi, "-");
 }
