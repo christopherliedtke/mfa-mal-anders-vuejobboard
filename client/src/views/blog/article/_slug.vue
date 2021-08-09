@@ -144,6 +144,7 @@
       return {
         snippet: [
           {
+            id: "breadcrumbs",
             type: "application/ld+json",
             inner: `{
               "@context": "http://schema.org",

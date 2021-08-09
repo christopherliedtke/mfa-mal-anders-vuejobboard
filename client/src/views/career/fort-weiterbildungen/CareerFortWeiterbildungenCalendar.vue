@@ -217,6 +217,7 @@
         ],
         snippet: [
           {
+            id: "breadcrumbs",
             type: "application/ld+json",
             inner: `{
                 "@context": "http://schema.org",
@@ -238,6 +239,11 @@
                     "item": "https://www.mfa-mal-anders.de/karriere/fortbildungskalender"
                 }]
             }`
+          },
+          {
+            rel: "canonical",
+            href: `${this.$config.website.url + this.$route.fullPath}`,
+            id: "canonical"
           }
         ]
       };

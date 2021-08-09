@@ -575,10 +575,7 @@
           {
             id: "canonical",
             rel: "canonical",
-            href: `${this.$config.website.url}job/${this.job._id}/${jobToSlug(
-              this.job.title,
-              this.job.company.location
-            )}`
+            href: `${this.$config.website.url}job/${this.job._id}`
           }
         ];
       }

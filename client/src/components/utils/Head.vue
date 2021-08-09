@@ -105,7 +105,7 @@
         return [
           {
             rel: "canonical",
-            href: `${this.$config.website.url + this.$route.fullPath}`,
+            href: `${this.$config.website.url + this.$route.path}`,
             id: "canonical"
           },
           ...this.link
