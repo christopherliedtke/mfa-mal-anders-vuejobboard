@@ -185,6 +185,14 @@ const routes = [
     }
   },
   {
+    path: "/stellenangebote/ort/:location",
+    name: "JobboardWLocation",
+    component: Jobboard,
+    meta: {
+      public: true
+    }
+  },
+  {
     path: "/stellenangebote/job/:jobId",
     name: "JobView",
     component: JobView,

@@ -31,9 +31,8 @@
     >
     <BCard v-for="job in myJobs" :key="job._id" class="shadow1 bg-light my-3">
       <BCardText>
-        <h4>
-          {{ job.title }}
-        </h4>
+        <!-- eslint-disable-next-line -->
+        <h4 v-html="job.title"></h4>
         <div>
           <BBadge
             v-if="job.paidExpiresAt >= new Date() && job.paid"

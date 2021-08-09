@@ -7,7 +7,8 @@
     <article class="job position-relative">
       <div class="mb-4 d-flex align-items-start justify-content-between">
         <div>
-          <h1>{{ job.title }}</h1>
+          <!-- eslint-disable-next-line -->
+          <h1 v-html="job.title"></h1>
           <span class="lead text-muted">
             <!-- eslint-disable-next-line -->
             <span v-html="job.company.name"></span> | {{ job.company.location

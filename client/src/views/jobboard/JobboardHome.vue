@@ -499,9 +499,13 @@
               }${
                 this.$route.query.location || this.$route.query.state
                   ? ',{"@type": "ListItem","position": 3,"name": "' +
-                    (this.$route.query.location || this.$route.query.state) +
+                    (this.$route.params.location ||
+                      this.$route.query.location ||
+                      this.$route.query.state) +
                     '","item": "https://www.mfa-mal-anders.de/stellenangebote?location=' +
-                    (this.$route.query.location || this.$route.query.state) +
+                    (this.$route.params.location ||
+                      this.$route.query.location ||
+                      this.$route.query.state) +
                     '"}'
                   : ""
               }]
@@ -511,9 +515,13 @@
             rel: "canonical",
             href: `${this.$config.website.url +
               `stellenangebote${
-                this.$route.query.location || this.$route.query.state
+                this.$route.params.location ||
+                this.$route.query.location ||
+                this.$route.query.state
                   ? "?location=" +
-                    (this.$route.query.location || this.$route.query.state)
+                    (this.$route.params.location ||
+                      this.$route.query.location ||
+                      this.$route.query.state)
                   : ""
               }`}`,
             id: "canonical"
@@ -655,7 +663,8 @@
 
         this.$router
           .push({
-            query
+            query,
+            path: "/stellenangebote"
           })
           .catch(() => {});
       },
@@ -663,9 +672,10 @@
         this.filter = {
           s: this.$route.query.s || "",
           employmentType: this.$route.query.employmentType || "",
-          location: `${this.$route.query.location || ""}${
-            this.$route.query.state ? " " : ""
-          }${this.$route.query.state || ""}`
+          location: `${this.$route.params.location ||
+            this.$route.query.location ||
+            ""}${this.$route.query.state ? " " : ""}${this.$route.query.state ||
+            ""}`
         };
       },
       toggleAll(checked) {

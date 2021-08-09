@@ -24,6 +24,7 @@
       >
         <BCardText>
           <div class="card-head position-relative">
+            <!-- eslint-disable -->
             <h2
               :class="[
                 'h4',
@@ -34,9 +35,9 @@
                   ? 'font-size:1rem; padding: 0.75rem; text-overflow: ellipsis; width: 95%; overflow: hidden; white-space: nowrap'
                   : ''
               "
-            >
-              {{ job.title }}
-            </h2>
+              v-html="job.title"
+            ></h2>
+            <!-- eslint-enable -->
             <StarJob :job-id="job._id" />
             <div v-if="job.company.logoUrl && !compact" class="img-container">
               <b-img-lazy

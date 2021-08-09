@@ -10,10 +10,11 @@ function string_to_slug(str) {
   str = str.replace(/^\s+|\s+$/g, ""); // trim
   str = str.toLowerCase();
   str = str
+    .replace(/&amp;/g, "-")
     .replace(/ß/g, "ss")
     .replace(/ä/g, "ae")
     .replace(/ö/g, "oe")
-    .replace(/ü/g, "ue"); // replace ß, ä, ö, ü
+    .replace(/ü/g, "ue"); // replace &, ß, ä, ö, ü
 
   // remove accents, swap ñ for n, etc
   var from = "àáãäâèéëêìíïîòóöôùúüûñç·/_,:;";
