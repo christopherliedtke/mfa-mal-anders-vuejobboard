@@ -333,13 +333,13 @@
     </b-container>
     <Head
       :title="
-        `Stellenangebote ArzthelferIn | ${profession.active.join(
-          ' & '
-        )} Jobs | ${filter.location ? filter.location : ''}
+        `Stellenangebote ArzthelferIn | ${profession.active.join(' & ')} Jobs${
+          filter.location ? ' | ' + filter.location : ''
+        }
       `
       "
       :desc="
-        `Stellenangebote (Teilzeit | Vollzeit) für ArzthelferInnen ✓ ${profession.active.join(
+        `Stellenangebote (Teilzeit | Vollzeit) für ArzthelferIn ✓ ${profession.active.join(
           ' & '
         )} Jobs ${
           filter.location ? 'in ' + filter.location + ' ' : ''

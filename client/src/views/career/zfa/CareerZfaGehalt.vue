@@ -814,9 +814,11 @@
       </p>
     </b-container>
     <Head
-      :title="`MFA Gehalt ${new Date().getFullYear()} | inkl. Gehaltsrechner`"
+      :title="
+        `MFA Gehalt ${new Date().getFullYear()} | Gehaltsrechner | Tarifvertrag`
+      "
       :desc="
-        `Tarifvertrag ${new Date().getFullYear()} | Tätigkeitsgruppen für MFA / ArzthelferIn || Gehaltsrechner Teilzeit / Vollzeit nach Gehaltstarifvertrag ${new Date().getFullYear()}.`
+        `Tarifvertrag ${new Date().getFullYear()} | Tätigkeitsgruppen für ZFA || Gehaltsrechner Teilzeit / Vollzeit nach Gehaltstarifvertrag ${new Date().getFullYear()}.`
       "
       img="/img/MfaMalAnders_GehaltZfa_1200.jpg"
       :script="snippet"
