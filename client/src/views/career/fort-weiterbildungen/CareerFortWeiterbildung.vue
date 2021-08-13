@@ -25,7 +25,7 @@
             />
             <!-- eslint-disable-next-line -->
             <div v-html="training.content"></div>
-            <TrainingCalendarLargeBanner class="mt-4" />
+            <TrainingCatalogueLargeBanner class="mt-4" />
             <ToJobboardBanner class="mt-4" />
           </b-col>
         </b-row>
@@ -48,14 +48,14 @@
 <script>
   import FortWeiterbildungenNav from "@/components/navs/FortWeiterbildungenNav.vue";
   import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
-  import TrainingCalendarLargeBanner from "@/components/banners/TrainingCalendarLargeBanner.vue";
+  import TrainingCatalogueLargeBanner from "@/components/banners/TrainingCatalogueLargeBanner.vue";
   import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
   export default {
     name: "CareerFortWeiterbildung",
     components: {
       FortWeiterbildungenNav,
       RandomTrainingsContainer,
-      TrainingCalendarLargeBanner,
+      TrainingCatalogueLargeBanner,
       ToJobboardBanner
     },
     data() {

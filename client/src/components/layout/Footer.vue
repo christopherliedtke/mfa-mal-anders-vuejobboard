@@ -108,8 +108,8 @@
           </div>
           <nav>
             <router-link to="/stellenangebote">Stellenangebote</router-link>
-            <router-link to="/karriere/fortbildungskalender"
-              >Fortbildungskalender</router-link
+            <router-link to="/karriere/fortbildungskatalog"
+              >Fortbildungskatalog</router-link
             >
             <router-link to="/karriere/bewerbungstipps"
               >Bewerbungstipps</router-link

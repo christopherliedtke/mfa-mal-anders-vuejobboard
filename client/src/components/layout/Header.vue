@@ -381,8 +381,8 @@
                 path: "/karriere/fort-und-weiterbildungen"
               },
               {
-                title: "Fortbildungskalender",
-                path: "/karriere/fortbildungskalender"
+                title: "Fortbildungskatalog",
+                path: "/karriere/fortbildungskatalog"
               }
             ]
           },

@@ -110,25 +110,25 @@
         </b-row>
         <div>
           <b-link
-            to="/karriere/fortbildungskalender"
+            to="/karriere/fortbildungskatalog"
             class="d-flex flex-column flex-lg-row icon-box shadow1"
           >
             <b-img-lazy
               class="mr-4 mb-4 ml-4"
               src="@/assets/img/calendar.svg"
-              alt="MFA liest Fortbildungskalender"
+              alt="MFA liest Fortbildungskatalog"
               height="130"
               blank-width="167"
               blank-height="130"
               offset="1000"
             />
             <div>
-              <h2 class="bold">Fortbildungskalender</h2>
+              <h2 class="bold">Fortbildungskatalog</h2>
               <p>
                 Finde die nächste Fort- oder Weiterbildung für ArzthelferInnen
                 (MFA & ZFA) in Deiner Nähe oder bequem online von zu Hause!
               </p>
-              <b-button variant="primary">Zum Fortbildungskalender</b-button>
+              <b-button variant="primary">Zum Fortbildungskatalog</b-button>
             </div>
           </b-link>
         </div>

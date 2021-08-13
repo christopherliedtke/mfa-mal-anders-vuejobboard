@@ -78,11 +78,11 @@ const CareerFortWeiterbildung = () =>
   import(
     /* webpackChunkName: "career-training" */ "@/views/career/fort-weiterbildungen/CareerFortWeiterbildung.vue"
   );
-const CareerFortWeiterbildungenCalendar = () =>
+const CareerFortWeiterbildungenCatalogue = () =>
   import(
-    /* webpackChunkName: "career-training" */ "@/views/career/fort-weiterbildungen/CareerFortWeiterbildungenCalendar.vue"
+    /* webpackChunkName: "career-training" */ "@/views/career/fort-weiterbildungen/CareerFortWeiterbildungenCatalogue.vue"
   );
-const CareerFortWeiterbildungenCalendarTraining = () =>
+const CareerFortWeiterbildungenCatalogueTraining = () =>
   import(
     /* webpackChunkName: "career-training" */ "@/views/career/fort-weiterbildungen/training/_id.vue"
   );
@@ -289,17 +289,17 @@ const routes = [
     }
   },
   {
-    path: "/karriere/fortbildungskalender",
-    name: "KarriereFortbildungskalender",
-    component: CareerFortWeiterbildungenCalendar,
+    path: "/karriere/fortbildungskatalog",
+    name: "KarriereFortbildungskatalog",
+    component: CareerFortWeiterbildungenCatalogue,
     meta: {
       public: true
     }
   },
   {
-    path: "/karriere/fortbildungskalender/:id",
-    name: "KarriereFortbildungskalenderFortbildung",
-    component: CareerFortWeiterbildungenCalendarTraining,
+    path: "/karriere/fortbildungskatalog/:id",
+    name: "KarriereFortbildungskatalogFortbildung",
+    component: CareerFortWeiterbildungenCatalogueTraining,
     meta: {
       public: true
     }

@@ -182,7 +182,7 @@
             Fachangestellte dir vor allem eine gute Orientierung, um deinen
             Marktwert einzuschätzen – bezüglich Qualifikation und Erfahrung.
           </p>
-          <TrainingCalendarSmallBanner class="my-2" />
+          <TrainingCatalogueSmallBanner class="my-2" />
         </b-col>
         <b-col>
           <Gehaltsrechner class="my-4" />
@@ -973,7 +973,7 @@
   import BerufsbilderBanner from "@/components/banners/BerufsbilderBanner.vue";
   import WeiterbildungenBanner from "@/components/banners/WeiterbildungenBanner.vue";
   import GehaltsverhandlungBanner from "@/components/banners/GehaltsverhandlungBanner.vue";
-  import TrainingCalendarSmallBanner from "@/components/banners/TrainingCalendarSmallBanner.vue";
+  import TrainingCatalogueSmallBanner from "@/components/banners/TrainingCatalogueSmallBanner.vue";
   export default {
     name: "CareerGehalt",
     components: {
@@ -984,7 +984,7 @@
       BerufsbilderBanner,
       WeiterbildungenBanner,
       GehaltsverhandlungBanner,
-      TrainingCalendarSmallBanner
+      TrainingCatalogueSmallBanner
     },
     data() {
       return {

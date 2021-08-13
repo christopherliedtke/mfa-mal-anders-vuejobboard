@@ -249,7 +249,7 @@
             >
           </div>
           <div class="d-none d-lg-block mt-4">
-            <TrainingCalendarSmallBanner />
+            <TrainingCatalogueSmallBanner />
           </div>
           <div class="d-none d-lg-block mt-4">
             <!-- <p class="h5">
@@ -310,7 +310,7 @@
               <b-link to="/fuer-arbeitgeber" class="bold">Mehr erfahren</b-link>
             </p>
           </div>
-          <TrainingCalendarSmallBanner class="d-lg-none mt-3" />
+          <TrainingCatalogueSmallBanner class="d-lg-none mt-3" />
           <div class="mt-4 mt-lg-5">
             <b-link
               class="h2 text-primary"
@@ -381,7 +381,7 @@
   import TwitterBtn from "@/components/buttons/TwitterBtn.vue";
   import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
   import BerufsbilderBanner from "@/components/banners/BerufsbilderBanner.vue";
-  import TrainingCalendarSmallBanner from "@/components/banners/TrainingCalendarSmallBanner.vue";
+  import TrainingCatalogueSmallBanner from "@/components/banners/TrainingCatalogueSmallBanner.vue";
   // import { getHereServiceMixin } from "@/mixins/getHereServiceMixin.js";
   export default {
     name: "Jobboard",
@@ -393,7 +393,7 @@
       TwitterBtn,
       RandomTrainingsContainer,
       BerufsbilderBanner,
-      TrainingCalendarSmallBanner
+      TrainingCatalogueSmallBanner
     },
     // mixins: [getHereServiceMixin],
     data() {

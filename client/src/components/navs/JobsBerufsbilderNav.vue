@@ -17,7 +17,7 @@
       >
     </BListGroup>
     <div class="mt-3">
-      <TrainingCalendarSmallBanner class="my-2" />
+      <TrainingCatalogueSmallBanner class="my-2" />
     </div>
   </div>
 </template>
@@ -27,11 +27,11 @@
   import { BListGroup, BListGroupItem } from "bootstrap-vue";
   Vue.component("BListGroup", BListGroup);
   Vue.component("BListGroupItem", BListGroupItem);
-  import TrainingCalendarSmallBanner from "@/components/banners/TrainingCalendarSmallBanner.vue";
+  import TrainingCatalogueSmallBanner from "@/components/banners/TrainingCatalogueSmallBanner.vue";
   export default {
     name: "JobsBerufsbilderNav",
     components: {
-      TrainingCalendarSmallBanner
+      TrainingCatalogueSmallBanner
     },
     computed: {
       berufsbilderTypes() {

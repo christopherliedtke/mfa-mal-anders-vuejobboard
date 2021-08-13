@@ -124,7 +124,7 @@
         :image-url="company.logoUrl"
         :width="200"
         :height="200"
-        fit="inside"
+        fit="outside"
         @update-url="company.logoUrl = $event"
       />
       <b-form-input

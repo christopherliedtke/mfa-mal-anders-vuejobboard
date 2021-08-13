@@ -27,7 +27,7 @@
       </BListGroupItem>
     </BListGroup>
     <div class="mt-3">
-      <TrainingCalendarSmallBanner class="my-2" />
+      <TrainingCatalogueSmallBanner class="my-2" />
       <SgdBanner class="my-2" />
       <!-- <DelstBanner class="my-2" /> -->
     </div>
@@ -40,13 +40,13 @@
   Vue.component("BListGroup", BListGroup);
   Vue.component("BListGroupItem", BListGroupItem);
   import SgdBanner from "@/components/banners/SgdBanner.vue";
-  import TrainingCalendarSmallBanner from "@/components/banners/TrainingCalendarSmallBanner.vue";
+  import TrainingCatalogueSmallBanner from "@/components/banners/TrainingCatalogueSmallBanner.vue";
   // import DelstBanner from "@/components/banners/DelstBanner.vue";
   export default {
     name: "FortWeiterbildungenNav",
     components: {
       SgdBanner,
-      TrainingCalendarSmallBanner
+      TrainingCatalogueSmallBanner
       // DelstBanner
     },
     computed: {

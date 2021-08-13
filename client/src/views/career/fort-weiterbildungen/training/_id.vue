@@ -14,9 +14,9 @@
     </b-container>
 
     <Head
-      :title="training ? training.title : ' | Fortbildungskalender'"
+      :title="training ? training.title : ' | Fortbildungskatalog'"
       :desc="training ? training.excerpt : ''"
-      img="/img/MfaMalAnders_Fortbildungskalender_Banner_1200.jpg"
+      img="/img/MfaMalAnders_Fortbildungskatalog_Banner_1200.jpg"
       :script="snippet"
     />
   </div>
@@ -26,7 +26,7 @@
   import Training from "@/components/ui/Training.vue";
   import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
   export default {
-    name: "CareerFortWeiterbildungCalendarTraining",
+    name: "CareerFortWeiterbildungCatalogueTraining",
     components: {
       Training,
       ToJobboardBanner
@@ -39,8 +39,8 @@
           { text: "Home", to: "/" },
           { text: "Karriere", to: "/karriere" },
           {
-            text: "Fortbildungskalender",
-            to: "/karriere/fortbildungskalender"
+            text: "Fortbildungskatalog",
+            to: "/karriere/fortbildungskatalog"
           },
           {
             text: "Fortbildung"
@@ -66,13 +66,13 @@
                   },{
                       "@type": "ListItem",
                       "position": 3,
-                      "name": "Fortbildungskalender",
-                      "item": "https://www.mfa-mal-anders.de/karriere/fortbildungskalender
+                      "name": "Fortbildungskatalog",
+                      "item": "https://www.mfa-mal-anders.de/karriere/fortbildungskatalog
                   },{
                       "@type": "ListItem",
                       "position": 4,
                       "name": "Fortbildung",
-                      "item": "https://www.mfa-mal-anders.de/karriere/fortbildungskalender/${this.$route.params.id}
+                      "item": "https://www.mfa-mal-anders.de/karriere/fortbildungskatalog/${this.$route.params.id}
                   }]
               }`
           }

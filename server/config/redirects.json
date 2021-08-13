@@ -281,63 +281,63 @@
   },
   {
     "old": "/jobboard?state=berlin",
-    "new": "/stellenangebote?state=Berlin"
+    "new": "/stellenangebote?location=Berlin"
   },
   {
     "old": "/jobboard?state=bayern",
-    "new": "/stellenangebote?state=Bayern"
+    "new": "/stellenangebote?location=Bayern"
   },
   {
     "old": "/jobboard?state=hamburg",
-    "new": "/stellenangebote?state=Hamburg"
+    "new": "/stellenangebote?location=Hamburg"
   },
   {
     "old": "/jobboard?state=niedersachsen",
-    "new": "/stellenangebote?state=Niedersachsen"
+    "new": "/stellenangebote?location=Niedersachsen"
   },
   {
     "old": "/jobboard?state=hessen",
-    "new": "/stellenangebote?state=Hessen"
+    "new": "/stellenangebote?location=Hessen"
   },
   {
     "old": "/jobboard?state=rheinland-pfalz",
-    "new": "/stellenangebote?state=Rheinland-Pfalz"
+    "new": "/stellenangebote?location=Rheinland-Pfalz"
   },
   {
     "old": "/jobboard?state=brandenburg",
-    "new": "/stellenangebote?state=Brandenburg"
+    "new": "/stellenangebote?location=Brandenburg"
   },
   {
     "old": "/jobboard?state=saarland",
-    "new": "/stellenangebote?state=Saarland"
+    "new": "/stellenangebote?location=Saarland"
   },
   {
     "old": "/jobboard?state=thueringen",
-    "new": "/stellenangebote?state=Thüringen"
+    "new": "/stellenangebote?location=Thüringen"
   },
   {
     "old": "/jobboard?state=bremen",
-    "new": "/stellenangebote?state=Bremen"
+    "new": "/stellenangebote?location=Bremen"
   },
   {
     "old": "/jobboard?state=mecklenburg-vorpommern",
-    "new": "/stellenangebote?state=Mecklenburg-Vorpommern"
+    "new": "/stellenangebote?location=Mecklenburg-Vorpommern"
   },
   {
     "old": "/jobboard?state=sachsen",
-    "new": "/stellenangebote?state=Sachsen"
+    "new": "/stellenangebote?location=Sachsen"
   },
   {
     "old": "/jobboard?state=sachsen-anhalt",
-    "new": "/stellenangebote?state=Sachsen-Anhalt"
+    "new": "/stellenangebote?location=Sachsen-Anhalt"
   },
   {
     "old": "/jobboard?state=schleswig-holstein",
-    "new": "/stellenangebote?state=Schleswig-Holstein"
+    "new": "/stellenangebote?location=Schleswig-Holstein"
   },
   {
     "old": "/jobboard?state=baden-wuerttemberg",
-    "new": "/stellenangebote?state=Baden-Württemberg"
+    "new": "/stellenangebote?location=Baden-Württemberg"
   },
   {
     "old": "/jobboard?location=koeln",
@@ -368,251 +368,7 @@
     "new": "/karriere/jobs-und-berufsbilder"
   },
   {
-    "old": "/jobboard/job/5f8f145d7639f200171957f3",
-    "new": "/stellenangebote/job/5f8f145d7639f200171957f3"
-  },
-  {
-    "old": "/jobboard/job/6033cede5d19990017174fd7",
-    "new": "/stellenangebote/job/6033cede5d19990017174fd7"
-  },
-  {
-    "old": "/jobboard/job/602e523c9545490017038cba",
-    "new": "/stellenangebote/job/602e523c9545490017038cba"
-  },
-  {
-    "old": "/jobboard/job/6060951ef4407300172af34c",
-    "new": "/stellenangebote/job/6060951ef4407300172af34c"
-  },
-  {
-    "old": "/jobboard/job/60609b68f4407300172af352",
-    "new": "/stellenangebote/job/60609b68f4407300172af352"
-  },
-  {
-    "old": "/jobboard/job/6033ae4e5d19990017174fc2",
-    "new": "/stellenangebote/job/6033ae4e5d19990017174fc2"
-  },
-  {
-    "old": "/jobboard/job/6059d1b6a6c5f400179245ea",
-    "new": "/stellenangebote/job/6059d1b6a6c5f400179245ea"
-  },
-  {
-    "old": "/jobboard/job/6060743411593c0017e92c62",
-    "new": "/stellenangebote/job/6060743411593c0017e92c62"
-  },
-  {
-    "old": "/jobboard/job/602e501b9545490017038cb8",
-    "new": "/stellenangebote/job/602e501b9545490017038cb8"
-  },
-  {
-    "old": "/jobboard/job/605855f115e79f0017f90a9e",
-    "new": "/stellenangebote/job/605855f115e79f0017f90a9e"
-  },
-  {
-    "old": "/jobboard/job/6040b35b68cb2a00171f859b",
-    "new": "/stellenangebote/job/6040b35b68cb2a00171f859b"
-  },
-  {
-    "old": "/jobboard/job/605b190d76fdc8001739e593",
-    "new": "/stellenangebote/job/605b190d76fdc8001739e593"
-  },
-  {
-    "old": "/jobboard/job/6033cda75d19990017174fd5",
-    "new": "/stellenangebote/job/6033cda75d19990017174fd5"
-  },
-  {
-    "old": "/jobboard/job/6033bae25d19990017174fcd",
-    "new": "/stellenangebote/job/6033bae25d19990017174fcd"
-  },
-  {
-    "old": "/jobboard/job/6033ccb95d19990017174fd3",
-    "new": "/stellenangebote/job/6033ccb95d19990017174fd3"
-  },
-  {
-    "old": "/jobboard/job/601a682d5c4fcc00173f7d1d",
-    "new": "/stellenangebote/job/601a682d5c4fcc00173f7d1d"
-  },
-  {
-    "old": "/jobboard/job/60563cbc2f5fef0017f09182",
-    "new": "/stellenangebote/job/60563cbc2f5fef0017f09182"
-  },
-  {
-    "old": "/jobboard/job/604616dbeb75f30017c450c8",
-    "new": "/stellenangebote/job/604616dbeb75f30017c450c8"
-  },
-  {
-    "old": "/jobboard/job/602cebb5bb14cc0017d0f780",
-    "new": "/stellenangebote/job/602cebb5bb14cc0017d0f780"
-  },
-  {
-    "old": "/jobboard/job/605757bc7b78260017974e22",
-    "new": "/stellenangebote/job/605757bc7b78260017974e22"
-  },
-  {
-    "old": "/jobboard/job/602cde65bb14cc0017d0f77c",
-    "new": "/stellenangebote/job/602cde65bb14cc0017d0f77c"
-  },
-  {
-    "old": "/jobboard/job/6061decf7409770017bcdcbb",
-    "new": "/stellenangebote/job/6061decf7409770017bcdcbb"
-  },
-  {
-    "old": "/jobboard/job/5fba3d575a3dd300175ddfbf",
-    "new": "/stellenangebote/job/5fba3d575a3dd300175ddfbf"
-  },
-  {
-    "old": "/jobboard/job/6059a6ea15e79f0017f90aa4",
-    "new": "/stellenangebote/job/6059a6ea15e79f0017f90aa4"
-  },
-  {
-    "old": "/jobboard/job/6033b90f5d19990017174fcb",
-    "new": "/stellenangebote/job/6033b90f5d19990017174fcb"
-  },
-  {
-    "old": "/jobboard/job/6049c2f31f2cd2001723fd2d",
-    "new": "/stellenangebote/job/6049c2f31f2cd2001723fd2d"
-  },
-  {
-    "old": "/jobboard/job/6045044629c3bd0017640fa4",
-    "new": "/stellenangebote/job/6045044629c3bd0017640fa4"
-  },
-  {
-    "old": "/jobboard/job/602e42969545490017038cb6",
-    "new": "/stellenangebote/job/602e42969545490017038cb6"
-  },
-  {
-    "old": "/jobboard/job/60472f51eb75f30017c450d3",
-    "new": "/stellenangebote/job/60472f51eb75f30017c450d3"
-  },
-  {
-    "old": "/jobboard/job/601a64db5c4fcc00173f7d19",
-    "new": "/stellenangebote/job/601a64db5c4fcc00173f7d19"
-  },
-  {
-    "old": "/jobboard/job/602cedfbbb14cc0017d0f784",
-    "new": "/stellenangebote/job/602cedfbbb14cc0017d0f784"
-  },
-  {
-    "old": "/jobboard/job/6027e7c551b40e0017589847",
-    "new": "/stellenangebote/job/6027e7c551b40e0017589847"
-  },
-  {
-    "old": "/jobboard/job/6050bf47cb3fad001756538d",
-    "new": "/stellenangebote/job/6050bf47cb3fad001756538d"
-  },
-  {
-    "old": "/jobboard/job/6033b3875d19990017174fc8",
-    "new": "/stellenangebote/job/6033b3875d19990017174fc8"
-  },
-  {
-    "old": "/jobboard/job/604a65d21f2cd2001723fd39",
-    "new": "/stellenangebote/job/604a65d21f2cd2001723fd39"
-  },
-  {
-    "old": "/jobboard/job/6040c30f68cb2a00171f85a5",
-    "new": "/stellenangebote/job/6040c30f68cb2a00171f85a5"
-  },
-  {
-    "old": "/jobboard/job/601a3f2b5c4fcc00173f7d12",
-    "new": "/stellenangebote/job/601a3f2b5c4fcc00173f7d12"
-  },
-  {
-    "old": "/jobboard/job/602ce936bb14cc0017d0f77e",
-    "new": "/stellenangebote/job/602ce936bb14cc0017d0f77e"
-  },
-  {
-    "old": "/jobboard/job/6033b0925d19990017174fc6",
-    "new": "/stellenangebote/job/6033b0925d19990017174fc6"
-  },
-  {
-    "old": "/jobboard/job/6049cd071f2cd2001723fd2f",
-    "new": "/stellenangebote/job/6049cd071f2cd2001723fd2f"
-  },
-  {
-    "old": "/jobboard/job/605c809aa56662001730752a",
-    "new": "/stellenangebote/job/605c809aa56662001730752a"
-  },
-  {
-    "old": "/jobboard/job/60532257c12ecc00170b33a5",
-    "new": "/stellenangebote/job/60532257c12ecc00170b33a5"
-  },
-  {
-    "old": "/jobboard/job/602eb112c0fedd0017e61c73",
-    "new": "/stellenangebote/job/602eb112c0fedd0017e61c73"
-  },
-  {
-    "old": "/jobboard/job/6033bd2c5d19990017174fcf",
-    "new": "/stellenangebote/job/6033bd2c5d19990017174fcf"
-  },
-  {
-    "old": "/jobboard/job/6059a57615e79f0017f90aa2",
-    "new": "/stellenangebote/job/6059a57615e79f0017f90aa2"
-  },
-  {
-    "old": "/jobboard/job/5f9935815c3b28001782aed6",
-    "new": "/stellenangebote/job/5f9935815c3b28001782aed6"
-  },
-  {
-    "old": "/jobboard/job/604b59456d2ca60017a5be5e",
-    "new": "/stellenangebote/job/604b59456d2ca60017a5be5e"
-  },
-  {
-    "old": "/jobboard/job/605ccccda566620017307533",
-    "new": "/stellenangebote/job/605ccccda566620017307533"
-  },
-  {
-    "old": "/jobboard/job/6028d02551b40e0017589853",
-    "new": "/stellenangebote/job/6028d02551b40e0017589853"
-  },
-  {
-    "old": "/jobboard/job/602e3f179545490017038cb4",
-    "new": "/stellenangebote/job/602e3f179545490017038cb4"
-  },
-  {
-    "old": "/jobboard/job/6027e88151b40e0017589849",
-    "new": "/stellenangebote/job/6027e88151b40e0017589849"
-  },
-  {
-    "old": "/jobboard/job/6040db2b68cb2a00171f85b1",
-    "new": "/stellenangebote/job/6040db2b68cb2a00171f85b1"
-  },
-  {
-    "old": "/jobboard/job/601a66475c4fcc00173f7d1b",
-    "new": "/stellenangebote/job/601a66475c4fcc00173f7d1b"
-  },
-  {
-    "old": "/jobboard/job/6033af645d19990017174fc4",
-    "new": "/stellenangebote/job/6033af645d19990017174fc4"
-  },
-  {
-    "old": "/jobboard/job/6040b68f68cb2a00171f859d",
-    "new": "/stellenangebote/job/6040b68f68cb2a00171f859d"
-  },
-  {
-    "old": "/jobboard/job/604e1b5f3288ab0017924098",
-    "new": "/stellenangebote/job/604e1b5f3288ab0017924098"
-  },
-  {
-    "old": "/jobboard/job/6027ea1451b40e001758984d",
-    "new": "/stellenangebote/job/6027ea1451b40e001758984d"
-  },
-  {
-    "old": "/jobboard/job/60479fdb903afa0017bc61f3",
-    "new": "/stellenangebote/job/60479fdb903afa0017bc61f3"
-  },
-  {
-    "old": "/jobboard/job/601a6c195c4fcc00173f7d21",
-    "new": "/stellenangebote/job/601a6c195c4fcc00173f7d21"
-  },
-  {
-    "old": "/jobboard/job/605c83b2a56662001730752e",
-    "new": "/stellenangebote/job/605c83b2a56662001730752e"
-  },
-  {
-    "old": "/jobboard/job/6032cce6390d930017a55374",
-    "new": "/stellenangebote/job/6032cce6390d930017a55374"
-  },
-  {
-    "old": "/jobboard/job/5fbf7b1bdbb71d0017429da6",
-    "new": "/stellenangebote/job/5fbf7b1bdbb71d0017429da6"
+    "old": "/karriere/fortbildungskalender",
+    "new": "/karriere/fortbildungskatalog"
   }
 ]
