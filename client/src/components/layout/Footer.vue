@@ -27,13 +27,13 @@
                   dich.</strong
                 >
               </p>
-              <p>
+              <!-- <p>
                 MFA mal anders - Kristin Maurach & Christopher Liedtke GbR ist
                 Teilnehmer des Amazon-Partnerprogramm, das zur Bereitstellung
                 eines Mediums für Webseiten konzipiert wurde, mittels dessen
                 durch die Platzierung von Partner-Links zu Amazon.de Entgelte
                 verdient werden können.
-              </p>
+              </p> -->
             </div>
             <!-- <div class="mt-5">
                             <h6><strong>Links</strong></h6>

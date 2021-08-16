@@ -161,8 +161,6 @@ const actions = {
       }
     });
 
-    console.log("user: ", user);
-
     if (user.data.data.meFromToken) {
       commit("setUser", user.data.data.meFromToken);
       commit("setLoggedIn", true);

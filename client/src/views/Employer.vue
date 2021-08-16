@@ -4,7 +4,99 @@
       <h1>{{ title }}</h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
-    <b-container class="py-3 py-lg-5 px-md-5">
+
+    <div
+      id="hero"
+      class="text-light bg-primary shadow1 border-radius2 my-3 mr-2 mr-lg-5 my-lg-5 position-relative"
+      style="border-top-left-radius: 0; border-bottom-left-radius: 0"
+    >
+      <b-row
+        style="max-width: 1600px; overflow-x: hidden"
+        class="px-3 py-5 px-md-5 mx-auto ml-lg-auto position-relative"
+      >
+        <div class="bg-logo"></div>
+        <b-col cols="12" md="8" style="z-index: 1">
+          <h2 class="display-4 bold mb-4">
+            <em>Motivierte</em> und <em>qualifizierte</em> MFA & ZFA{{
+              $route.query.location ? ` in ${$route.query.location}` : ""
+            }}
+            gesucht?
+          </h2>
+          <ul class="lead no-bullets my-4 my-lg-5">
+            <li class="d-flex">
+              <Fa icon="check" class="mr-3 mt-1" />
+              <div>
+                Einfach und bequem
+                <span class="text-secondary">in wenigen Minuten</span>
+                Ihre Stellenanzeige veröffentlichen
+              </div>
+            </li>
+            <li class="d-flex">
+              <Fa icon="check" class="mr-3 mt-1" />
+              <div>
+                Erreichen Sie
+                <span class="text-secondary"
+                  >engagierte potentielle BewerberInnen</span
+                >
+                über unsere spezielle Karriereplattform nur für MFA & ZFA
+              </div>
+            </li>
+            <li class="d-flex">
+              <Fa icon="check" class="mr-3 mt-1" />
+              <div>
+                <span class="text-secondary"
+                  >Erhalten Sie mit uns mehr Reichweite</span
+                >
+                über Google, Google Jobs, Social Media und unsere MFA & ZFA
+                Community
+              </div>
+            </li>
+            <li class="d-flex">
+              <Fa icon="check" class="mr-3 mt-1" />
+              <div>
+                Veröffentlichen Sie Ihre Stellenanzeige
+                <b-link class="text-secondary" href="#preise"
+                  >ab
+                  {{ $config.pricingPackages[0].price / 100 }}
+                  {{ $config.payment.currency }}</b-link
+                >
+              </div>
+            </li>
+          </ul>
+
+          <div class="my-3">
+            <b-button
+              to="/auth/register"
+              variant="secondary"
+              size="lg"
+              class="d-block d-md-inline-block my-2 mr-md-2"
+              >Stellenanzeige erstellen</b-button
+            >
+            <b-button
+              href="#advantages"
+              variant="outline-light"
+              size="lg"
+              class="d-block d-md-inline-block my-2 mr-md-2"
+              >Mehr erfahren</b-button
+            >
+          </div>
+        </b-col>
+        <b-col
+          cols="12"
+          lg="4"
+          class="d-none d-lg-flex justify-content-center align-items-center"
+        >
+          <!-- <b-img
+            style="width: 450px; opacity: 0.9; right: 0"
+            class="position-absolute p-0"
+            src="@/assets/img/handshake.svg"
+            alt="MFA / ZFA trifft Arzt zum Bewerbungsgespräch"
+          /> -->
+        </b-col>
+      </b-row>
+    </div>
+
+    <!-- <b-container class="py-3 py-lg-5 px-md-5">
       <b-row
         style="overflow-x: hidden"
         class="bg-primary text-light border-radius2 shadow1 w-100 p-3 py-4 p-md-5 mx-auto position-relative"
@@ -78,9 +170,9 @@
           />
         </b-col>
       </b-row>
-    </b-container>
+    </b-container> -->
 
-    <b-container id="advantages" class="my-5 pb-3 pb-lg-5">
+    <b-container id="advantages" class="my-5 py-3 py-lg-5">
       <h2 class="h5 text-center">
         Stellenanzeige schalten bei MFA mal anders
       </h2>
@@ -538,7 +630,7 @@
             wird diese automatisch bei Google Jobs gelistet (es kann ein wenig
             Zeit in Anspruch nehmen, bis Google Ihre Anzeige integriert).
             Darüber hinaus verteilen wir Ihre Stellenanzeige über unseren Jobs
-            Newsletter sowie je nach Paket in unsere Social Media Kanälen.
+            Newsletter sowie je nach Paket über unsere Social Media Kanäle.
           </p>
           <h3 class="h5 bold">
             Ich benötige Hilfe bei der Erstellung einer attraktiven
@@ -792,6 +884,26 @@
     #testimonials {
       .icon-transparent {
         opacity: 0.1;
+      }
+    }
+
+    #hero {
+      @media screen and (min-width: 768px) {
+        background: linear-gradient(
+            90deg,
+            #6d0230 0%,
+            #6d0230 50%,
+            #6d023077 100%
+          ),
+          image-set(
+              url("~@/assets/img/medizinischesPersonal-1200x513.jpg") 1x,
+              url("~@/assets/img/medizinischesPersonal.jpg") 2x
+            )
+            400px center;
+
+        background-size: cover;
+        background-blend-mode: normal;
+        border-radius: $border-radius2;
       }
     }
 

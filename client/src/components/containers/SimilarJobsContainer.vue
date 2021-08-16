@@ -5,6 +5,7 @@
         v-for="similarJob in similarJobs"
         :key="similarJob.id"
         :job="similarJob"
+        :compact="compact"
       />
     </div>
     <div v-if="loading">
@@ -24,7 +25,8 @@
     },
     props: {
       job: { type: Object, default: () => {} },
-      number: { type: Number, default: 5 }
+      number: { type: Number, default: 5 },
+      compact: { type: Boolean, default: false }
     },
     data() {
       return {
@@ -41,19 +43,19 @@
       this.getSimilarJobs(this.job);
     },
     methods: {
-      async getSimilarJobs(job) {
+      async getSimilarJobs(job = {}) {
         const response = await this.$axios.get("/api/public-jobs", {
           params: {
-            limit: 6,
-            geoCodeLat: job.company.geoCodeLat,
-            geoCodeLng: job.company.geoCodeLng
+            limit: this.number + 1,
+            geoCodeLat: job.company ? job.company.geoCodeLat : undefined,
+            geoCodeLng: job.company ? job.company.geoCodeLng : undefined
           }
         });
 
         this.loading = false;
-        this.similarJobs = response.data.jobs.filter(
-          similarJob => job._id != similarJob._id
-        );
+        this.similarJobs = response.data.jobs
+          .filter(similarJob => job._id != similarJob._id)
+          .slice(0, this.number);
       }
     }
   };
