@@ -45,11 +45,10 @@ const UserResolvers = {
             lastName: user.lastName,
             email: user.email,
           },
+          exp: new Date().getTime() + 1000 * 60 * 60 * 24 * 7,
+          iat: new Date().getTime(),
         },
-        process.env.JWT_SECRET,
-        {
-          expiresIn: 60 * 60 * 24 * 7,
-        }
+        process.env.JWT_SECRET
       );
 
       context.session.token = token;
@@ -120,11 +119,10 @@ const UserResolvers = {
             lastName: user.lastName,
             email: user.email,
           },
+          exp: new Date().getTime() + 1000 * 60 * 60 * 24 * 7,
+          iat: new Date().getTime(),
         },
-        process.env.JWT_SECRET,
-        {
-          expiresIn: 60 * 60 * 24 * 7,
-        }
+        process.env.JWT_SECRET
       );
 
       context.session.token = token;
@@ -201,11 +199,10 @@ const UserResolvers = {
             lastName: user.lastName,
             email: user.email,
           },
+          exp: new Date().getTime() + 1000 * 60 * 60 * 24 * 7,
+          iat: new Date().getTime(),
         },
-        process.env.JWT_SECRET,
-        {
-          expiresIn: 60 * 60 * 24 * 7,
-        }
+        process.env.JWT_SECRET
       );
 
       context.session.token = token;
@@ -238,11 +235,10 @@ const UserResolvers = {
             lastName: user.lastName,
             email: user.email,
           },
+          exp: new Date().getTime() + 1000 * 60 * 60 * 24 * 7,
+          iat: new Date().getTime(),
         },
-        process.env.JWT_SECRET,
-        {
-          expiresIn: 60 * 60 * 24 * 7,
-        }
+        process.env.JWT_SECRET
       );
 
       context.session.token = token;

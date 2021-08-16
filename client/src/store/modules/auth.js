@@ -30,26 +30,26 @@ const actions = {
 
     const user = await axios.post("/graphql", {
       query: `
-                mutation {
-                    ${data.type}(
-                        ${args} 
-                    ) {
-                        _id
-                        gender
-                        title
-                        firstName
-                        lastName
-                        email
-                        status
-                        role
-                        isAdmin
-                        isEmployer
-                        isEmployee
-                        isEducational
-                        token
-                    }
-                }
-            `
+        mutation {
+          ${data.type}(
+              ${args} 
+          ) {
+            _id
+            gender
+            title
+            firstName
+            lastName
+            email
+            status
+            role
+            isAdmin
+            isEmployer
+            isEmployee
+            isEducational
+            token
+          }
+        }
+      `
     });
 
     if (user.data.data[data.type]) {
@@ -64,24 +64,24 @@ const actions = {
     const user = await axios.get("/graphql", {
       params: {
         query: `
-                    query {
-                        me {
-                            _id
-                            gender
-                            title
-                            firstName
-                            lastName
-                            email
-                            status
-                            role
-                            isAdmin
-                            isEmployer
-                            isEmployee
-                            isEducational
-                            token
-                        }
-                    }
-                `
+          query {
+            me {
+              _id
+              gender
+              title
+              firstName
+              lastName
+              email
+              status
+              role
+              isAdmin
+              isEmployer
+              isEmployee
+              isEducational
+              token
+            }
+          }
+        `
       }
     });
 
@@ -109,24 +109,24 @@ const actions = {
   async activateUser({ commit }, id) {
     const user = await axios.post("/graphql", {
       query: `
-                mutation {
-                    activateUser (_id: "${id}") {
-                        _id
-                        gender
-                        title
-                        firstName
-                        lastName
-                        email
-                        status
-                        role
-                        isAdmin
-                        isEmployer
-                        isEmployee
-                        isEducational
-                        token
-                    }
-                }
-            `
+        mutation {
+          activateUser (_id: "${id}") {
+            _id
+            gender
+            title
+            firstName
+            lastName
+            email
+            status
+            role
+            isAdmin
+            isEmployer
+            isEmployee
+            isEducational
+            token
+          }
+        }
+      `
     });
 
     if (user.data.data.activateUser) {
@@ -141,25 +141,27 @@ const actions = {
     const user = await axios.get("/graphql", {
       params: {
         query: `
-                    query {
-                        meFromToken {
-                            _id
-                            gender
-                            title
-                            firstName
-                            lastName
-                            email
-                            status
-                            role
-                            isAdmin
-                            isEmployer
-                            isEmployee
-                            isEducational
-                        }
-                    }
-                `
+          query {
+            meFromToken {
+              _id
+              gender
+              title
+              firstName
+              lastName
+              email
+              status
+              role
+              isAdmin
+              isEmployer
+              isEmployee
+              isEducational
+            }
+          }
+        `
       }
     });
+
+    console.log("user: ", user);
 
     if (user.data.data.meFromToken) {
       commit("setUser", user.data.data.meFromToken);
@@ -171,12 +173,12 @@ const actions = {
   logout({ commit }) {
     axios.post("/graphql", {
       query: `
-                mutation {
-                    logout {
-                        _id
-                    }
-                }
-        `
+        mutation {
+          logout {
+            _id
+          }
+        }
+      `
     });
 
     commit("setToken", false);
