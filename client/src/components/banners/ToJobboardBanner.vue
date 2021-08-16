@@ -16,7 +16,7 @@
         <BCardBody
           class="d-flex flex-column justify-content-center align-items-center h-100 p-4"
         >
-          <h3 class="h2 bold">Der richtige Job für Dich!</h3>
+          <h3 class="h2 bold">{{ header }}</h3>
           <p>
             Bist du auf der Suche nach einer
             <strong class="text-primary">neuen Herausforderung?</strong> <br />
@@ -40,7 +40,13 @@
   Vue.component("BCard", BCard);
   Vue.component("BCardBody", BCardBody);
   export default {
-    name: "ToJobboardBanner"
+    name: "ToJobboardBanner",
+    props: {
+      header: {
+        type: String,
+        default: "Der richtige Job für Dich!"
+      }
+    }
   };
 </script>
 

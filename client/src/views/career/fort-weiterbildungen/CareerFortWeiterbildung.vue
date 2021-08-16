@@ -25,7 +25,10 @@
             />
             <!-- eslint-disable-next-line -->
             <div v-html="training.content"></div>
-            <TrainingCatalogueLargeBanner class="mt-4" />
+            <TrainingCatalogueLargeBanner
+              header="Jetzt passende Fortbildung finden"
+              class="mt-4"
+            />
             <ToJobboardBanner class="mt-4" />
           </b-col>
         </b-row>
@@ -65,39 +68,35 @@
             id: "breadcrumbs",
             type: "application/ld+json",
             inner: `{
-                              "@context": "http://schema.org",
-                              "@type" : "BreadcrumbList",
-                              "itemListElement": [{
-                                  "@type": "ListItem",
-                                  "position": 1,
-                                  "name": "MFA mal anders",
-                                  "item": "https://www.mfa-mal-anders.de"
-                              },{
-                                  "@type": "ListItem",
-                                  "position": 2,
-                                  "name": "Karriere",
-                                  "item": "https://www.mfa-mal-anders.de/karriere"
-                              },{
-                                  "@type": "ListItem",
-                                  "position": 3,
-                                  "name": "Fort- und Weiterbildungen",
-                                  "item": "https://www.mfa-mal-anders.de/karriere/fort-und-weiterbildungen"
-                              },{
-                                  "@type": "ListItem",
-                                  "position": 4,
-                                  "name": "${this.$route.params.slug
-                                    .split("-")
-                                    .map(
-                                      elem =>
-                                        elem.charAt(0).toUpperCase() +
-                                        elem.slice(1)
-                                    )
-                                    .join(" ")}",
-                                  "item": "https://www.mfa-mal-anders.de/karriere/fort-und-weiterbildungen/${
-                                    this.$route.params.slug
-                                  }"
-                              }]
-                          }`
+              "@context": "http://schema.org",
+              "@type" : "BreadcrumbList",
+              "itemListElement": [{
+                "@type": "ListItem",
+                "position": 1,
+                "name": "MFA mal anders",
+                "item": "https://www.mfa-mal-anders.de"
+              },{
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Karriere",
+                "item": "https://www.mfa-mal-anders.de/karriere"
+              },{
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Fort- und Weiterbildungen",
+                "item": "https://www.mfa-mal-anders.de/karriere/fort-und-weiterbildungen"
+              },{
+                "@type": "ListItem",
+                "position": 4,
+                "name": "${this.$route.params.slug
+                  .split("-")
+                  .map(elem => elem.charAt(0).toUpperCase() + elem.slice(1))
+                  .join(" ")}",
+                "item": "https://www.mfa-mal-anders.de/karriere/fort-und-weiterbildungen/${
+                  this.$route.params.slug
+                }"
+              }]
+            }`
           }
         ]
       };

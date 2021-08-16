@@ -3,7 +3,7 @@
     <BCardBody
       class="d-flex flex-column justify-content-center align-items-center h-100 p-4"
     >
-      <h3 class="h2 bold">Unser Online Fortbildungskatalog!</h3>
+      <h3 class="h2 bold">{{ header }}</h3>
       <p>
         Egal ob online oder in Deiner Umgebung, für MFA oder ZFA, von Abrechnung
         über Praxismanagement bis hin zu Medizinstudium... <br />
@@ -23,7 +23,13 @@
   Vue.component("BCard", BCard);
   Vue.component("BCardBody", BCardBody);
   export default {
-    name: "TrainingCatalogueLargeBanner"
+    name: "TrainingCatalogueLargeBanner",
+    props: {
+      header: {
+        type: String,
+        default: "Unser Online Fortbildungskatalog!"
+      }
+    }
   };
 </script>
 

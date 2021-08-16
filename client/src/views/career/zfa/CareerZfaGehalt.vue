@@ -340,7 +340,10 @@
         </p>
       </div>
 
-      <ToJobboardBanner class="my-5 mx-auto" />
+      <ToJobboardBanner
+        header="Mit neuem Job zu mehr Gehalt?"
+        class="my-5 mx-auto"
+      />
 
       <h2 id="gehalt-ausbildung">
         ZFA Ausbildung {{ new Date().getFullYear() }} – Gehalt nach Tarifvertrag

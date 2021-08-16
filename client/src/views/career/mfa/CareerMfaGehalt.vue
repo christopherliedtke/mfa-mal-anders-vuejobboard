@@ -378,7 +378,10 @@
         >.
       </p>
 
-      <ToJobboardBanner class="my-5 mx-auto" />
+      <ToJobboardBanner
+        header="Mit neuem Job zu mehr Gehalt?"
+        class="my-5 mx-auto"
+      />
 
       <h2 id="berufsjahre">
         Anrechnung von Berufsjahren
