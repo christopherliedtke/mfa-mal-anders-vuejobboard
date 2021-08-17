@@ -1,7 +1,16 @@
 <template>
   <div class="jobboard">
     <div class="title">
-      <h1>{{ title }}</h1>
+      <h1>
+        {{
+          `Stellenangebote${
+            profession.active.length > 0
+              ? " – " + profession.active.join(" & ")
+              : ""
+          } ${filter.location ? " | " + filter.location : ""}
+      `
+        }}
+      </h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
     <b-container class="py-3 py-lg-5">
@@ -86,6 +95,7 @@
                 type="text"
                 placeholder="Ort oder PLZ..."
                 trim
+                lazy
               />
               <b-input-group-append>
                 <b-button
@@ -398,7 +408,7 @@
     // mixins: [getHereServiceMixin],
     data() {
       return {
-        title: "Stellenangebote für ArzthelferInnen – MFA & ZFA",
+        // title: "Stellenangebote für MFA & ZFA",
         filteredJobs: [],
         filterJobTimeoutId: null,
         loading: false,

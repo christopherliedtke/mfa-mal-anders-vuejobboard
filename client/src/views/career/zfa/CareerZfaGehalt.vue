@@ -818,10 +818,10 @@
     </b-container>
     <Head
       :title="
-        `MFA Gehalt ${new Date().getFullYear()} | Gehaltsrechner | Tarifvertrag`
+        `ZFA Gehalt ${new Date().getFullYear()} | Gehaltsrechner | Tarifvertrag`
       "
       :desc="
-        `Tarifvertrag ${new Date().getFullYear()} | Tätigkeitsgruppen für ZFA || Gehaltsrechner Teilzeit / Vollzeit nach Gehaltstarifvertrag ${new Date().getFullYear()}.`
+        `Dein Gehalt als Zahnmedizinische Fachangestellte (ZFA) | Gehaltstarifvertrag ${new Date().getFullYear()} | Tätigkeitsgruppen || Gehaltsrechner Teilzeit / Vollzeit`
       "
       img="/img/MfaMalAnders_GehaltZfa_1200.jpg"
       :script="snippet"

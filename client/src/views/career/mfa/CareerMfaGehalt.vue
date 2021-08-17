@@ -12,7 +12,7 @@
         srcset="/img/MfaMalAnders_Gehalt_1200-300x157.jpg 300w, /img/MfaMalAnders_Gehalt_1200-1024x538.jpg 1024w, /img/MfaMalAnders_Gehalt_1200-768x404.jpg 768w, /img/MfaMalAnders_Gehalt_1200.jpg 1200w"
         sizes="(max-width: 1200px) 100vw, 1200px"
         src="/img/MfaMalAnders_Gehalt_1200.jpg"
-        alt="MFA Gehalt - So viel verdienst Du wirklich"
+        alt="MFA Gehalt - Berechne Dein Gehalt mit unserem Gehaltsrechner"
         width="1200"
         height="630"
         blank-width="1200"
@@ -20,17 +20,18 @@
         offset="1000"
       />
       <p>
-        Sobald es um das Thema Gehalt geht, fehlt vielen MFA bzw.
-        ArzthelferInnen das Gespür für eine konkrete Zahl. Ein typisches
-        Beispiel, das du bestimmt auch kennst: Du hast dich gerade auf einen Job
-        beworben. Der zukünftige Chef fragt dich nach deinen
+        Sobald es um das Thema Gehalt geht, fehlt uns als MFA bzw. ArzthelferIn
+        oft das Gespür für eine konkrete Zahl. Ein typisches Beispiel, das du
+        bestimmt auch kennst: Du hast dich gerade auf einen Job beworben. Der
+        zukünftige Chef fragt dich nach deinen Gehaltsvorstellungen. Natürlich
+        willst du nicht zu dreist sein und das potenzielle Jobangebot durch zu
+        hohe Gehaltswünsche in Gefahr bringen. Deshalb gehen viele Medizinische
+        Fachangestellte bei der
         <b-link
           to="/blog/article/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
-          >Gehaltsvorstellungen</b-link
-        >. Natürlich willst du nicht zu dreist sein und das potenzielle
-        Jobangebot durch zu hohe Gehaltswünsche in Gefahr bringen. Deshalb gehen
-        viele ArzthelferInnen lieber auf Nummer sicher und verkaufen sich am
-        Ende unter Wert.
+          >Gehaltsverhandlung</b-link
+        >
+        lieber auf Nummer sicher und verkaufen sich am Ende unter Wert.
       </p>
 
       <div
@@ -41,8 +42,9 @@
         <ol class="text-tertiary pl-4">
           <li class="lead mt-3">
             <b-link to="#gehaltstarifvertrag"
-              >Gehaltstarifvertrag {{ new Date().getFullYear() }} – MFA /
-              ArzthelferIn (inkl. Gehaltsrechner)</b-link
+              >Gehaltstarifvertrag {{ new Date().getFullYear() }} für
+              Medizinische Fachangestellte (MFA) / ArzthelferIn (inkl.
+              Gehaltsrechner)</b-link
             >
           </li>
           <li class="lead mt-3">
@@ -52,7 +54,9 @@
             >
           </li>
           <li class="lead mt-3">
-            <b-link to="#berufsjahre">Anrechnung von Berufsjahren</b-link>
+            <b-link to="#berufsjahre"
+              >Anrechnung von Berufsjahren nach Gehaltstarifvertrag</b-link
+            >
           </li>
           <li class="lead mt-3">
             <b-link to="#auszeiten"
@@ -90,12 +94,12 @@
       <p>
         In den vielen Gruppen und Foren kommen regelmäßig Fragen zur Höhe des
         Gehalts in Voll- und Teilzeit auf. Wenn ich bei manchen Kommentaren
-        lese, dass eine MFA mit 15 Jahren Berufserfahrung in ein und derselben
-        Praxis mit 1.900€ brutto nach Hause geht, finde ich das einfach nur sehr
-        schade und traurig.
+        lese, dass eine ausgebildete Medizinische Fachangestellte mit 15 Jahren
+        Berufserfahrung in ein und derselben Praxis mit 1.900€ brutto nach Hause
+        geht, finde ich das einfach nur sehr schade und traurig.
       </p>
       <p>
-        Damit dir das nicht passiert, bekommst du in diesem Artikel von
+        Damit dir das nicht passiert, bekommst du in diesem Artikel
         Informationen über Gehalt, Tarifverträge und Tätigkeitsgruppen für
         Medizinische Fachangestellte. Mit diesem Wissen, kannst du deinen
         eigenen Marktwert einordnen und selbstbewusst für einen
@@ -107,11 +111,12 @@
         geben wir dir zusätzlich 9 Tipps, wie du dein Wunschgehalt erzielst.
       </p>
       <p>
-        Vorweg klären wir zuerst ein paar Begrifflichkeiten und wie die
+        Vorweg klären wir zunächst ein paar Begrifflichkeiten und wie die
         vertragliche Lage aussieht.
       </p>
       <h2 id="gehaltstarifvertrag">
-        Gehaltstarifvertrag {{ new Date().getFullYear() }} – MFA / ArzthelferIn
+        Gehaltstarifvertrag {{ new Date().getFullYear() }} – Medizinische
+        Fachangestellte (MFA) / ArzthelferIn
       </h2>
       <b-row>
         <b-col>
@@ -154,8 +159,7 @@
           <p>
             Es kommt im privaten Bereich oftmals zu einer außertariflichen
             Bezahlung. Das muss nicht unbedingt negativ für dich ausfallen.
-            Viele Medizinische Fachangestellte werden dadurch übertariflich
-            bezahlt.
+            Viele MFA werden dadurch übertariflich bezahlt.
           </p>
           <p>
             Wenn dein Chef kein Mitglied im AAA ist, du aber darauf bestehst,
@@ -196,7 +200,8 @@
       </b-row>
       <div>
         <h3 class="h4">
-          Hier noch einmal die ab dem 01.01.2021 gültige Gehaltstabelle:
+          Hier noch einmal die ab dem 01.01.2021 gültige Gehaltstabelle nach
+          Gehaltstarifvertrag:
         </h3>
         <b-table-simple class="mt-3" hover responsive table-variant="secondary">
           <colgroup>
@@ -947,7 +952,7 @@
         `MFA Gehalt ${new Date().getFullYear()} | Gehaltsrechner | Tarifvertrag`
       "
       :desc="
-        `Tarifvertrag ${new Date().getFullYear()} | Tätigkeitsgruppen für MFA / ArzthelferIn || Gehaltsrechner Teilzeit / Vollzeit nach Gehaltstarifvertrag ${new Date().getFullYear()}.`
+        `Dein Gehalt als Medizinische Fachangestellte (MFA) | Gehaltstarifvertrag ${new Date().getFullYear()} | Tätigkeitsgruppen || Gehaltsrechner Teilzeit / Vollzeit`
       "
       img="/img/MfaMalAnders_Gehalt_1200.jpg"
       :script="snippet"

@@ -29,7 +29,9 @@
           </p>
         </div>
         <b-form
-          @submit.prevent="$router.push(`/stellenangebote?s=${searchTerm}`)"
+          @submit.prevent="
+            $router.push(`/stellenangebote?location=${searchTerm}`)
+          "
         >
           <label class="sr-only sr-only-focusable" for="landing-search"
             >Suchbegriff</label
@@ -40,14 +42,14 @@
               v-model="searchTerm"
               size="lg"
               class="shadow1"
-              placeholder="Stelle finden..."
+              placeholder="Stelle finden in (Ort/PLZ) ..."
             ></b-form-input>
             <b-input-group-append>
               <b-button
                 size="lg"
                 class="shadow1"
                 variant="secondary"
-                :to="`/stellenangebote?s=${searchTerm}`"
+                :to="`/stellenangebote?location=${searchTerm}`"
                 ><Fa icon="search"
               /></b-button>
             </b-input-group-append>
