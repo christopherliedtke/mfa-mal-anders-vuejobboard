@@ -36,7 +36,7 @@
               <div>
                 Erreichen Sie
                 <span class="text-secondary"
-                  >engagierte potentielle BewerberInnen</span
+                  >engagierte potentielle MitarbeiterInnen</span
                 >
                 über unsere spezielle Karriereplattform nur für MFA & ZFA
               </div>
@@ -180,7 +180,7 @@
         Ihre Zielgruppe genau im Blick
       </p>
       <h3 class="h3 text-center">
-        Stellenanzeigen nur für ArzthelferInnen – MFA & ZFA
+        Stellenangebote nur für ArzthelferInnen – MFA & ZFA
       </h3>
 
       <b-row class="my-4 my-md-5">
@@ -669,7 +669,7 @@
     </b-container>
 
     <Head
-      title="Motivierte ArzthelferInnen – MFA & ZFA gesucht?"
+      title="Stellenanzeige schalten – MFA & ZFA finden!"
       desc="MFA mal anders ist das Jobportal speziell nur für Medizinische / Zahnmedizinische Fachangestellte. Gesucht – Gefunden! Mit günstigen Stellenanzeigen, die wirklich ankommen."
       img=""
       :script="snippet"

@@ -6,7 +6,7 @@ const getLocation = async (q, country = "Germany") => {
       `https://geocode.search.hereapi.com/v1/geocode?apiKey=${process.env.HERE_REST_APIKEY}`,
       {
         params: {
-          q: `${q}+${country}`,
+          q: `${q}+${country}&in=countryCode:DEU`,
         },
       }
     );

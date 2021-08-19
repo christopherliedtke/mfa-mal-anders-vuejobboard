@@ -4,7 +4,10 @@
       <JobCard v-for="job in jobs" :key="job._id" :job="job" />
     </div>
     <div v-else-if="nojobs && jobs.length === 0" style="min-height: 200px">
-      <p class="h5">Leider gibt es hierzu keine Ergebnisse.</p>
+      <div v-if="errors">
+        <p v-for="error in errors" :key="error">{{ error }}</p>
+      </div>
+      <p v-else>Leider gibt es hierzu keine Ergebnisse.</p>
     </div>
     <div v-else>
       <JobCardPlaceholder v-for="index in 25" :key="index" class="mb-3" />
@@ -23,7 +26,8 @@
     },
     props: {
       jobs: { type: Array, default: () => [] },
-      nojobs: { type: Boolean, default: false }
+      nojobs: { type: Boolean, default: false },
+      errors: { type: Array, default: null }
     }
   };
 </script>

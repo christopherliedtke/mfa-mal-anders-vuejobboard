@@ -11,12 +11,20 @@ const getLocation = require("../utils/geocoder");
 // #access: Public
 router.get("/", async (req, res) => {
   const { query } = req;
+  const errors = [];
 
   if (query.location) {
     const locations = await getLocation(query.location);
 
     if (locations) {
       query.position = locations[0].position;
+    } else {
+      errors.push(
+        `Es konnte kein passender Ort für '${query.location}' gefunden werden. Bitte stelle sicher, dass Du den Ort bzw. die PLZ korrekt und komplett angegeben hast.`
+      );
+
+      res.json({ jobCount: 0, jobs: [], errors });
+      return;
     }
   }
 

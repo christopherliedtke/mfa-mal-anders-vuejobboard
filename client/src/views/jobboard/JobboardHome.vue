@@ -56,12 +56,6 @@
                 setQuery();
               }
             "
-            @keydown.enter="
-              () => {
-                getJobs();
-                setQuery();
-              }
-            "
           >
             <label for="s-jobboard" class="sr-only">Suchbegriff *</label>
             <b-input-group class="mb-2 mr-2">
@@ -71,6 +65,7 @@
                 :class="filter.s ? 'border-secondary' : ''"
                 type="text"
                 placeholder="Suchbegriff..."
+                lazy
               />
               <b-input-group-append>
                 <b-button
@@ -278,6 +273,7 @@
               class="mb-4"
               :jobs="filteredJobs"
               :nojobs="nojobs"
+              :errors="errors"
             ></component>
           </keep-alive>
           <div v-if="loading && !nojobs" class="text-center">
@@ -335,7 +331,20 @@
               Stellenangebote, Stellen, Jobs, Jobangebote für Medizinische
               Fachangestellte (MFA), Arzthelferin, Zahnmedizinische
               Fachangestellte (ZFA), ZMF, ZMV, MTRA in
-              {{ companyStateOptions.join(", ") }}.
+              <span v-for="(state, index) in companyStateOptions" :key="state">
+                <b-link
+                  :to="`/stellenangebote?location=${state}`"
+                  @click="
+                    () => {
+                      filter.location = state;
+                      getJobs();
+                    }
+                  "
+                  >{{ state }}</b-link
+                ><span v-if="index < companyStateOptions.length - 1"
+                  >,
+                </span></span
+              >.
             </p>
           </div>
         </b-col>
@@ -408,9 +417,7 @@
     // mixins: [getHereServiceMixin],
     data() {
       return {
-        // title: "Stellenangebote für MFA & ZFA",
         filteredJobs: [],
-        filterJobTimeoutId: null,
         loading: false,
         loadMoreJobsTimeoutId: null,
         nojobs: false,
@@ -442,34 +449,7 @@
         specializationOptions,
         professionOptions,
         jobboardView: this.$route.query.jobboardView || "list",
-        // snippet: [
-        //   {
-        //     type: "application/ld+json",
-        //     inner: `{
-        //       "@context": "http://schema.org",
-        //       "@type" : "BreadcrumbList",
-        //       "itemListElement": [{
-        //           "@type": "ListItem",
-        //           "position": 1,
-        //           "name": "MFA mal anders",
-        //           "item": "https://www.mfa-mal-anders.de"
-        //       },{
-        //           "@type": "ListItem",
-        //           "position": 2,
-        //           "name": "Stellenangebote",
-        //           "item": "https://www.mfa-mal-anders.de/stellenangebote"
-        //       }${
-        //         this.$route.query.location || this.$route.query.state
-        //           ? ',{"@type": "ListItem","position": 3,"name": "' +
-        //             (this.$route.query.location || this.$route.query.state) +
-        //             '","item": "https://www.mfa-mal-anders.de/stellenangebote?location=' +
-        //             (this.$route.query.location || this.$route.query.state) +
-        //             '"}'
-        //           : ""
-        //       }]
-        //     }`
-        //   }
-        // ],
+        errors: null,
         link: [
           {
             id: "mapsjs-ui",
@@ -575,60 +555,59 @@
       },
       "profession.active"() {
         this.setQuery();
-      },
-      "$route.query"() {
-        // this.getJobs();
       }
+      // "$route.query.location"() {
+      //   this.setFilter();
+      //   this.getJobs();
+      // }
     },
     async created() {
-      this.getJobs(0);
       this.setFilter();
-    },
-    mounted() {
-      // this.loadMoreJobs();
+      this.getJobs();
     },
     methods: {
-      async getJobs(delay = 400, limit = "", offset = "") {
-        clearTimeout(this.filterJobTimeoutId);
-
+      async getJobs(limit = "", offset = "") {
+        clearTimeout(this.loadMoreJobsTimeoutId);
+        this.errors = null;
+        this.nojobs = false;
         this.filteredJobs = offset > 0 ? this.filteredJobs : [];
 
-        this.filterJobTimeoutId = setTimeout(async () => {
-          let response = await this.$axios.get("/api/public-jobs", {
-            params: {
-              s: this.filter.s,
-              employmentType: this.filter.employmentType,
-              state: this.filter.state,
-              location: this.filter.location,
-              profession:
-                typeof this.$route.query.profession === "object"
-                  ? this.$route.query.profession.join("+")
-                  : this.$route.query.profession,
-              specialization:
-                this.specialization.active.length ===
-                this.specializationOptions.length
-                  ? ""
-                  : typeof this.specialization.active === "object"
-                  ? this.specialization.active.join("+")
-                  : this.specialization.active,
-              limit,
-              offset
-            }
-          });
-
-          // console.log("response.data.jobs: ", response.data.jobs);
-
-          this.filteredJobs = [...this.filteredJobs, ...response.data.jobs];
-          this.jobsCount = response.data.jobsCount;
-
-          this.loadMoreJobs();
-
-          if (this.filteredJobs.length === 0) {
-            this.nojobs = true;
-          } else {
-            this.nojobs = false;
+        let response = await this.$axios.get("/api/public-jobs", {
+          params: {
+            s: this.filter.s,
+            employmentType: this.filter.employmentType,
+            state: this.filter.state,
+            location: this.filter.location,
+            profession:
+              typeof this.$route.query.profession === "object"
+                ? this.$route.query.profession.join("+")
+                : this.$route.query.profession,
+            specialization:
+              this.specialization.active.length ===
+              this.specializationOptions.length
+                ? ""
+                : typeof this.specialization.active === "object"
+                ? this.specialization.active.join("+")
+                : this.specialization.active,
+            limit,
+            offset
           }
-        }, delay);
+        });
+
+        if (response.data.errors) {
+          this.errors = response.data.errors;
+        }
+
+        this.filteredJobs = [...this.filteredJobs, ...response.data.jobs];
+        this.jobsCount = response.data.jobsCount;
+
+        if (this.filteredJobs.length === 0) {
+          this.nojobs = true;
+          clearTimeout(this.loadMoreJobsTimeoutId);
+        } else {
+          this.nojobs = false;
+          this.loadMoreJobs();
+        }
       },
       loadMoreJobs() {
         clearTimeout(this.loadMoreJobsTimeoutId);
@@ -646,8 +625,9 @@
 
             this.loading = true;
             this.loadMoreJobsTimeoutId = setTimeout(async () => {
+              console.log("load more");
               if (!this.nojobs && jobsListBottom - clientBottom < 500) {
-                await this.getJobs(0, undefined, this.filteredJobs.length);
+                await this.getJobs(undefined, this.filteredJobs.length);
               }
               this.loading = false;
               this.loadMoreJobs();
@@ -692,7 +672,7 @@
         this.specialization.active = checked
           ? this.specializationOptions.slice()
           : [];
-        this.getJobs(0);
+        this.getJobs();
       }
       // async getLocationSuggestions(str) {
       //   if (!str) {
