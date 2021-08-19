@@ -625,7 +625,6 @@
 
             this.loading = true;
             this.loadMoreJobsTimeoutId = setTimeout(async () => {
-              console.log("load more");
               if (!this.nojobs && jobsListBottom - clientBottom < 500) {
                 await this.getJobs(undefined, this.filteredJobs.length);
               }
