@@ -67,12 +67,12 @@
                       "@type": "ListItem",
                       "position": 3,
                       "name": "Fortbildungskatalog",
-                      "item": "https://www.mfa-mal-anders.de/karriere/fortbildungskatalog
+                      "item": "https://www.mfa-mal-anders.de/karriere/fortbildungskatalog"
                   },{
                       "@type": "ListItem",
                       "position": 4,
                       "name": "Fortbildung",
-                      "item": "https://www.mfa-mal-anders.de/karriere/fortbildungskatalog/${this.$route.params.id}
+                      "item": "https://www.mfa-mal-anders.de/karriere/fortbildungskatalog/${this.$route.params.id}"
                   }]
               }`
           }

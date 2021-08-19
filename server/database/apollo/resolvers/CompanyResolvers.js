@@ -112,14 +112,14 @@ const CompanyResolvers = {
   },
 
   Job: {
-    company: async (job) => {
+    company: async job => {
       const company = await Company.findOne({ _id: job.company });
       return company;
     },
   },
 
   User: {
-    companies: async (user) => {
+    companies: async user => {
       const companies = await Company.find({ userId: user._id });
       return companies;
     },
