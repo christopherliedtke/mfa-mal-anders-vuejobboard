@@ -46,7 +46,7 @@
                   position: "left",
                   ticks: {
                     min: 0,
-                    suggestedMax: 3000,
+                    suggestedMax: 4000,
                     stepSize: 200,
                     callback: function(value) {
                       return (
@@ -66,7 +66,7 @@
                   position: "right",
                   ticks: {
                     min: 0,
-                    suggestedMax: 30,
+                    suggestedMax: 40,
                     stepSize: 2
                   },
                   gridLines: {
