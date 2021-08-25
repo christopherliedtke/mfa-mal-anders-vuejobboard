@@ -1,9 +1,9 @@
-export default function jobToSlug(title, location) {
-  if (!title || !location) {
+export default function textToSlug(text) {
+  if (!text) {
     return "";
   }
 
-  return string_to_slug(title + " in " + location);
+  return string_to_slug(text);
 }
 
 function string_to_slug(str) {

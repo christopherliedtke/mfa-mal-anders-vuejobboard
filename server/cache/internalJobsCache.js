@@ -27,11 +27,11 @@ class Cache {
         paidAt: "desc",
         createdAt: "desc",
       })
-      .populate("company");
+      .populate("company")
+      .populate("userId", "isAdmin");
 
     try {
       this.cache.set("jobs", internalJobs);
-      // console.log("this.cache: ", this.cache);
     } catch (error) {
       console.log("error: ", error);
       return null;

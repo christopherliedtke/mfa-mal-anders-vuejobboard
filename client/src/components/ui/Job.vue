@@ -450,7 +450,7 @@
 </template>
 
 <script>
-  import jobToSlug from "@/utils/jobToSlug.js";
+  import textToSlug from "@/utils/textToSlug.js";
   import SimilarJobsContainer from "@/components/containers/SimilarJobsContainer.vue";
   import {
     employmentTypeOptions,
@@ -568,7 +568,9 @@
                     "name": "Stellenangebot",
                     "item": "https://www.mfa-mal-anders.de/stellenangebote/job/${
                       this.job._id
-                    }/${jobToSlug(this.job.title, this.job.company.location)}"
+                    }/${textToSlug(
+              this.job.title + " in " + this.job.company.location
+            )}"
                 }
               ]
             }`
@@ -694,7 +696,7 @@
 
         el.value = `${job.title} | ${job.company.location}\n\n${
           this.$config.website.url
-        }/stellenangebote/job/${job._id}/${jobToSlug(
+        }/stellenangebote/job/${job._id}/${textToSlug(
           job.title,
           job.company.location
         )}\n\n#mfamalanders #mfa #arzthelfer #arzthelferin #mfajobs #${job.company.location

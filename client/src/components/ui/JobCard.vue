@@ -9,10 +9,9 @@
     <b-link
       :to="
         job.source != 'stepstone'
-          ? `/stellenangebote/job/${job._id}/${jobToSlug(
-              job.title,
-              job.company.location
-            )}`
+          ? `/stellenangebote/job/${job._id}/${textToSlug(
+              job.title + ' in ' + job.company.location
+            )}${job.userId.isAdmin ? '' : '?dsa=1'}`
           : undefined
       "
       :href="job.source === 'stepstone' ? job.extJobUrl : undefined"
@@ -159,7 +158,7 @@
 </template>
 
 <script>
-  import jobToSlug from "@/utils/jobToSlug.js";
+  import textToSlug from "@/utils/textToSlug.js";
   import {
     employmentTypeOptions,
     companySizeOptions
@@ -182,7 +181,7 @@
       return {
         employmentTypeOptions,
         companySizeOptions,
-        jobToSlug
+        textToSlug
       };
     },
     computed: {

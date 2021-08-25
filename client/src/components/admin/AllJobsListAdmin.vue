@@ -233,7 +233,7 @@
 </template>
 
 <script>
-  import jobToSlug from "@/utils/jobToSlug.js";
+  import textToSlug from "@/utils/textToSlug.js";
   import Vue from "vue";
   import { BModal, BDropdown, BDropdownItem, VBModal } from "bootstrap-vue";
   Vue.component("BModal", BModal);
@@ -612,9 +612,8 @@
 
         el.value = `${job.title} | ${job.company.location}\n\n${
           this.$config.website.url
-        }/stellenangebote/job/${job._id}/${jobToSlug(
-          job.title,
-          job.company.location
+        }/stellenangebote/job/${job._id}/${textToSlug(
+          job.title + " in " + job.company.location
         )}\n\n#mfamalanders #mfa #arzthelfer #arzthelferin #mfajobs #${job.company.location
           .replace("-", "")
           .replace(/\s/g, "")
