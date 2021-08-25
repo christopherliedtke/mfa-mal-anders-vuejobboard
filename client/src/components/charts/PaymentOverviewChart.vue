@@ -1,11 +1,11 @@
 <template>
   <div class="shadow1 border-radius1 p-3">
     <h2 class="h5 text-center">Payment Overview</h2>
-    <b-form>
+    <b-form @submit.prevent="fillChartData">
       <b-input-group prepend="# of Months" size="sm" class="mt-3 px-5">
         <b-form-input v-model="options.numberOfMonths"></b-form-input>
         <b-input-group-append>
-          <b-button variant="success" @click="fillChartData">Apply</b-button>
+          <b-button variant="success" role="submit">Apply</b-button>
         </b-input-group-append>
       </b-input-group>
     </b-form>
@@ -31,7 +31,7 @@
       return {
         options: {
           endDate: new Date().setDate(1),
-          numberOfMonths: 6
+          numberOfMonths: parseInt(localStorage.getItem("numberOfMonths") || 6)
         },
         chart: {
           data: null,
@@ -102,6 +102,10 @@
     },
     methods: {
       fillChartData() {
+        localStorage.setItem(
+          "numberOfMonths",
+          this.options.numberOfMonths.toString()
+        );
         this.chart.data = this.makeData();
       },
       makeData() {
@@ -150,6 +154,11 @@
 
           amountPerPayment.push(Math.round((amount / number || 1) * 100) / 100);
         }
+
+        this.chart.options.scales.yAxes[0].ticks.suggestedMax =
+          Math.ceil(Math.max.apply(null, amounts) / 1000) * 1000;
+        this.chart.options.scales.yAxes[1].ticks.suggestedMax =
+          Math.ceil(Math.max.apply(null, amounts) / 1000) * 10;
 
         return {
           labels: dates.reverse(),

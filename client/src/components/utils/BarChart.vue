@@ -9,6 +9,11 @@
     extends: Bar,
     mixins: [reactiveProp],
     props: { options: { type: Object, default: () => {} } },
+    watch: {
+      chartData() {
+        this.renderChart(this.chartData, this.options);
+      }
+    },
     mounted() {
       this.renderChart(this.chartData, this.options);
     }
