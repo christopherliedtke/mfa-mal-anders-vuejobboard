@@ -49,7 +49,7 @@
           >{{ contactTitle }}</b-form-select-option
         >
       </b-form-select>
-      <label for="firstName">Vorname *</label>
+      <label for="firstName" required>Vorname</label>
       <b-form-input
         id="firstName"
         v-model="firstName"
@@ -58,7 +58,7 @@
         autocomplete="given-name"
         trim
       ></b-form-input>
-      <label for="lastName">Nachname *</label>
+      <label for="lastName" required>Nachname</label>
       <b-form-input
         id="lastName"
         v-model="lastName"
@@ -67,7 +67,7 @@
         autocomplete="family-name"
         trim
       ></b-form-input>
-      <label for="email">E-Mail Adresse *</label>
+      <label for="email" required>E-Mail Adresse</label>
       <b-form-input
         id="email"
         v-model="email"
@@ -76,7 +76,7 @@
         autocomplete="email"
         trim
       ></b-form-input>
-      <label for="password">Passwort *</label>
+      <label for="password" required>Passwort</label>
       <b-input-group>
         <b-form-input
           id="password"
@@ -99,7 +99,7 @@
         Großbuchstabe, Zahl und Sonderzeichen enthalten.
       </b-form-text>
 
-      <label for="password2">Passwort wiederholen *</label>
+      <label for="password2" required>Passwort wiederholen</label>
       <b-input-group>
         <b-form-input
           id="password2"

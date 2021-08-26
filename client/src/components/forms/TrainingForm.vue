@@ -275,7 +275,7 @@
 
         <div v-if="!training.remote">
           <label for="training-location" class="mt-1"
-            >Ort <small>(Mehrere Orte mit Komma trennen)</small></label
+            >Ort <small>[Mehrere Orte mit Komma trennen]</small></label
           >
           <b-form-input
             id="training-location"
@@ -289,7 +289,7 @@
           />
           <label for="training-state" class="mt-2"
             >Bundesland
-            <small>('STRG' für Mehrfachauswahl gedrückt halten)</small></label
+            <small>['STRG' für Mehrfachauswahl gedrückt halten]</small></label
           >
           <b-form-select
             id="training-state"
@@ -330,7 +330,7 @@
         trim
       />
 
-      <label for="logo">Logo (jpg, png | max. 5MB)</label>
+      <label for="logo">Logo <small>(jpg, png | max. 5MB)</small></label>
       <ImageUploader
         id="logo"
         :validated="validated"
@@ -669,8 +669,10 @@
   };
 </script>
 
+//
 <style lang="scss" scoped>
-  label[required]::after {
-    content: " *";
-  }
+  //   label[required]::after {
+  //     content: " *";
+  //   }
+  //
 </style>

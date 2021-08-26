@@ -36,7 +36,7 @@
       imageUrl: { type: String, default: "" },
       width: { type: Number, default: 0 },
       height: { type: Number, default: 0 },
-      fit: { type: String, default: "inside" }
+      fit: { type: String, default: "outside" }
     },
     data() {
       return {

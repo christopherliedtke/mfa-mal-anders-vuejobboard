@@ -11,7 +11,7 @@
         job.source != 'stepstone'
           ? `/stellenangebote/job/${job._id}/${textToSlug(
               job.title + ' in ' + job.company.location
-            )}${job.userId.isAdmin ? '' : '?dsa=1'}`
+            )}${job.userId.isAdmin ? '' : '_dsa'}`
           : undefined
       "
       :href="job.source === 'stepstone' ? job.extJobUrl : undefined"

@@ -616,8 +616,6 @@
               this.job._id,
               this.checkout.amount / 100
             );
-
-          this.$router.push("/user/dashboard?tab=1");
         } catch (err) {
           this.$root.$bvToast.toast(
             "Bei der Verarbeitung Ihrer Daten ist leider ein Fehler aufgetreten. Bitte versuchen Sie es später noch einmal.",
@@ -629,9 +627,10 @@
               noAutoHide: true
             }
           );
+        } finally {
+          this.$store.dispatch("setOverlay", false);
+          this.$router.push("/user/dashboard?tab=1");
         }
-
-        this.$store.dispatch("setOverlay", false);
       },
       async downloadInvoice(paymentId, invoiceNo) {
         if (!paymentId || !invoiceNo) {

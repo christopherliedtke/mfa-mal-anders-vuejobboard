@@ -1,7 +1,11 @@
 <template>
   <div class="job-form position-relative">
     <b-form id="job-form">
-      <label for="title">Titel *</label>
+      <p>
+        Bitte beachten Sie, dass mit * gekennzeichete Felder ausgefüllt werden
+        müssen.
+      </p>
+      <label for="title" required>Titel</label>
       <b-form-input
         id="title"
         v-model="job.title"
@@ -84,7 +88,7 @@
         ></b-form-select
       >
 
-      <label for="employment-type">Anstellungsart *</label>
+      <label for="employment-type" required>Anstellungsart</label>
       <b-form-select
         id="employment-type"
         v-model="job.employmentType"
@@ -101,7 +105,12 @@
         ></b-form-select
       >
 
-      <label for="application-deadline">Bewerbungsfrist</label>
+      <label for="application-deadline"
+        >Bewerbungsfrist
+        <small
+          >[Stellenanzeige geht nach diesem Datum automatisch offline]</small
+        ></label
+      >
       <BFormDatepicker
         id="application-deadline"
         v-model="applicationDeadline"
@@ -126,7 +135,7 @@
         ></b-form-select
       >
 
-      <label for="description">Stellenbeschreibung *</label>
+      <label for="description" required>Stellenbeschreibung</label>
       <TipTapEditor
         :validated="validated"
         :content="job.description"
@@ -150,8 +159,8 @@
       </b-input-group>
 
       <label for="ext-job-url"
-        >URL zur Bewerbung auf Ihrem Bewerberportal [optional, wenn
-        vorhanden]</label
+        >URL zur Bewerbung auf Ihrem Bewerberportal
+        <small>[optional, wenn vorhanden]</small></label
       >
       <b-input-group>
         <template #prepend>
@@ -168,7 +177,9 @@
         />
       </b-input-group>
 
-      <label for="title-image">Team/Praxis Bild (jpg, png | max. 5MB)</label>
+      <label for="title-image"
+        >Team/Praxis Bild <small>(jpg, png | max. 5MB)</small></label
+      >
       <ImageUploader
         id="title-image"
         :validated="validated"
@@ -195,7 +206,9 @@
       </div>
       <b-row cols="1" cols-md="2">
         <b-col>
-          <label for="min-salary">Minimum Monatsgehalt [optional]</label>
+          <label for="min-salary"
+            >Minimum Monatsgehalt <small>[optional]</small></label
+          >
           <b-input-group>
             <template #prepend>
               <b-input-group-text><Fa icon="euro-sign"/></b-input-group-text>
@@ -211,7 +224,9 @@
           </b-input-group>
         </b-col>
         <b-col>
-          <label for="max-salary">Maximum Monatsgehalt [optional]</label>
+          <label for="max-salary"
+            >Maximum Monatsgehalt <small>[optional]</small></label
+          >
           <b-input-group>
             <template #prepend>
               <b-input-group-text><Fa icon="euro-sign"/></b-input-group-text>
@@ -355,7 +370,7 @@
         >
       </div>
 
-      <label for="company-name">Unternehmensname *</label>
+      <label for="company-name" required>Unternehmensname</label>
       <b-form-input
         id="company-name"
         v-model="job.company.name"
@@ -364,11 +379,10 @@
         :formatter="formatter"
         :state="validated ? (job.company.name ? true : false) : null"
         placeholder="Unternehmensname eingeben..."
-        required
         trim
       />
 
-      <label for="company-street">Straße und Hausnummer *</label>
+      <label for="company-street" required>Straße und Hausnummer</label>
       <b-form-input
         id="company-street"
         v-model="job.company.street"
@@ -381,7 +395,7 @@
         trim
       />
 
-      <label for="company-zip-code">PLZ *</label>
+      <label for="company-zip-code" required>PLZ</label>
       <b-form-input
         id="company-zip-code"
         v-model="job.company.zipCode"
@@ -392,7 +406,7 @@
         trim
       />
 
-      <label for="company-location">Ort *</label>
+      <label for="company-location" required>Ort</label>
       <b-form-input
         id="company-location"
         v-model="job.company.location"
@@ -422,7 +436,7 @@
                 >
             </b-form-select> -->
 
-      <label for="company-country">Land *</label>
+      <label for="company-country" required>Land</label>
       <b-form-select
         id="company-country"
         v-model="job.company.country"
@@ -472,7 +486,7 @@
         />
       </b-input-group>
 
-      <label for="logo">Logo (jpg, png | max. 5MB)</label>
+      <label for="logo">Logo <small>(jpg, png | max. 5MB)</small></label>
       <ImageUploader
         id="logo"
         :validated="validated"

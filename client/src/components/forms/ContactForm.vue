@@ -44,7 +44,7 @@
       </b-row>
       <b-row cols="1" cols-md="2">
         <b-col>
-          <label for="firstName">Vorname *</label>
+          <label for="firstName" required>Vorname</label>
           <b-form-input
             id="firstName"
             v-model="form.firstName"
@@ -57,7 +57,7 @@
           ></b-form-input>
         </b-col>
         <b-col>
-          <label for="lastName">Nachname *</label>
+          <label for="lastName" required>Nachname</label>
           <b-form-input
             id="firstName"
             v-model="form.lastName"
@@ -72,7 +72,7 @@
       </b-row>
       <b-row cols="1" cols-md="2">
         <b-col>
-          <label for="email">E-Mail Adresse *</label>
+          <label for="email" required>E-Mail Adresse</label>
           <b-form-input
             id="email"
             v-model="form.email"
@@ -96,7 +96,7 @@
           ></b-form-input>
         </b-col>
       </b-row>
-      <label for="subject">Betreff *</label>
+      <label for="subject" required>Betreff</label>
       <b-form-input
         id="subject"
         v-model="form.subject"
@@ -106,7 +106,7 @@
         trim
         :state="validated ? (form.subject ? true : false) : null"
       ></b-form-input>
-      <label for="message">Deine Nachricht *</label>
+      <label for="message" required>Deine Nachricht</label>
       <b-form-textarea
         id="message"
         v-model="form.message"

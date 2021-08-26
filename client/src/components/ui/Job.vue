@@ -697,8 +697,7 @@
         el.value = `${job.title} | ${job.company.location}\n\n${
           this.$config.website.url
         }/stellenangebote/job/${job._id}/${textToSlug(
-          job.title,
-          job.company.location
+          job.title + " in " + job.company.location
         )}\n\n#mfamalanders #mfa #arzthelfer #arzthelferin #mfajobs #${job.company.location
           .replace("-", "")
           .replace(/\s/g, "")

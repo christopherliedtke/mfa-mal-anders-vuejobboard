@@ -35,7 +35,7 @@
           >{{ title }}</b-form-select-option
         >
       </b-form-select>
-      <label for="first-name">Vorname *</label>
+      <label for="first-name" required>Vorname</label>
       <b-form-input
         id="first-name"
         v-model="user.firstName"
@@ -45,7 +45,7 @@
         required
         :disabled="disabled"
       />
-      <label for="last-name">Nachname *</label>
+      <label for="last-name" required>Nachname</label>
       <b-form-input
         id="last-name"
         v-model="user.lastName"
@@ -55,7 +55,7 @@
         required
         :disabled="disabled"
       />
-      <label for="email">E-Mail Adresse *</label>
+      <label for="email" required>E-Mail Adresse</label>
       <b-form-input
         id="email"
         v-model="user.email"

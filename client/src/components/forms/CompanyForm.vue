@@ -1,7 +1,7 @@
 <template>
   <div class="job-form position-relative">
     <b-form id="company-form">
-      <label for="company-name">Unternehmensname *</label>
+      <label for="company-name" required>Unternehmensname</label>
       <b-form-input
         id="company-name"
         v-model="company.name"
@@ -14,7 +14,7 @@
         trim
       />
 
-      <label for="company-street">Straße und Hausnummer *</label>
+      <label for="company-street" required>Straße und Hausnummer</label>
       <b-form-input
         id="company-street"
         v-model="company.street"
@@ -27,7 +27,7 @@
         trim
       />
 
-      <label for="company-zip-code">PLZ *</label>
+      <label for="company-zip-code" required>PLZ</label>
       <b-form-input
         id="company-zip-code"
         v-model="company.zipCode"
@@ -38,7 +38,7 @@
         trim
       />
 
-      <label for="company-location">Ort *</label>
+      <label for="company-location" required>Ort</label>
       <b-form-input
         id="company-location"
         v-model="company.location"
@@ -51,7 +51,7 @@
         trim
       />
 
-      <!-- <label for="company-state">Bundesland *</label>
+      <!-- <label for="company-state" required>Bundesland</label>
             <b-form-select
                 id="company-state"
                 v-model="company.state"
@@ -68,7 +68,7 @@
                 >
             </b-form-select> -->
 
-      <label for="company-country">Land *</label>
+      <label for="company-country" required>Land</label>
       <b-form-select
         id="company-country"
         v-model="company.country"
@@ -118,7 +118,7 @@
         />
       </b-input-group>
 
-      <label for="file">Logo (jpg, png | max. 5MB)</label>
+      <label for="file">Logo <small>(jpg, png | max. 5MB)</small></label>
       <ImageUploader
         :validated="validated"
         :image-url="company.logoUrl"

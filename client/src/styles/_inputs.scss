@@ -1,4 +1,14 @@
 form {
+  label {
+    small {
+      color: #6c757d;
+    }
+  }
+  label[required]::after {
+    content: " *";
+    color: #6c757d;
+  }
+
   input,
   select,
   textarea,
