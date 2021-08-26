@@ -186,7 +186,7 @@
           <BDropdownItem
             class="mb-0"
             variant="info"
-            @click.prevent="socialShareToClipBoard(row.item)"
+            @click.prevent="socialShareJobToClipboard(row.item)"
             >Copy Text</BDropdownItem
           >
         </BDropdown>
@@ -233,7 +233,7 @@
 </template>
 
 <script>
-  import textToSlug from "@/utils/textToSlug.js";
+  import socialShareJobToClipboard from "@/utils/socialShareJobToClipboard.js";
   import Vue from "vue";
   import { BModal, BDropdown, BDropdownItem, VBModal } from "bootstrap-vue";
   Vue.component("BModal", BModal);
@@ -250,6 +250,7 @@
         filter: {
           searchTerm: ""
         },
+        socialShareJobToClipboard,
         fields: [
           {
             key: "_id",
@@ -606,27 +607,6 @@
             }
           );
         }
-      },
-      socialShareToClipBoard(job) {
-        let el = document.createElement("textarea");
-
-        el.value = `${job.title} | ${job.company.location}\n\n${
-          this.$config.website.url
-        }/stellenangebote/job/${job._id}/${textToSlug(
-          job.title + " in " + job.company.location
-        )}\n\n#mfamalanders #mfa #arzthelfer #arzthelferin #mfajobs #${job.company.location
-          .replace("-", "")
-          .replace(/\s/g, "")
-          .toLowerCase()}jobs #${job.company.location
-          .replace("-", "")
-          .replace(/\s/g, "")
-          .toLowerCase()}`;
-
-        document.body.appendChild(el);
-        el.select();
-
-        document.execCommand("copy");
-        document.body.removeChild(el);
       },
       rowClass(item, type) {
         if (!item || type !== "row") return;

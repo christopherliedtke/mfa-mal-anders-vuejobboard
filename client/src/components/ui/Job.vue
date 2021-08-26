@@ -178,7 +178,7 @@
             class="text-info"
             icon="share-alt"
             size="lg"
-            @click="socialShareToClipBoard(job)"
+            @click="socialShareJobToClipboard(job)"
           />
           <b-link :to="`/admin/jobs/edit/${job._id}`">
             <Fa
@@ -451,6 +451,7 @@
 
 <script>
   import textToSlug from "@/utils/textToSlug.js";
+  import socialShareJobToClipboard from "@/utils/socialShareJobToClipboard.js";
   import SimilarJobsContainer from "@/components/containers/SimilarJobsContainer.vue";
   import {
     employmentTypeOptions,
@@ -494,6 +495,7 @@
         error: false,
         employmentTypeOptions,
         companySizeOptions,
+        socialShareJobToClipboard,
         // snippet: [
         //   {
         //     type: "application/ld+json",
@@ -690,27 +692,6 @@
 
         this.$matomo &&
           this.$matomo.trackEvent("engagement", eventAction, eventLabel);
-      },
-      socialShareToClipBoard(job) {
-        let el = document.createElement("textarea");
-
-        el.value = `${job.title} | ${job.company.location}\n\n${
-          this.$config.website.url
-        }/stellenangebote/job/${job._id}/${textToSlug(
-          job.title + " in " + job.company.location
-        )}\n\n#mfamalanders #mfa #arzthelfer #arzthelferin #mfajobs #${job.company.location
-          .replace("-", "")
-          .replace(/\s/g, "")
-          .toLowerCase()}jobs #${job.company.location
-          .replace("-", "")
-          .replace(/\s/g, "")
-          .toLowerCase()}`;
-
-        document.body.appendChild(el);
-        el.select();
-
-        document.execCommand("copy");
-        document.body.removeChild(el);
       },
       timeSince(date) {
         const seconds = Math.floor((new Date() - date) / 1000);
