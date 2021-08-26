@@ -651,7 +651,7 @@
         }
 
         this.$router
-          .push({
+          .replace({
             query,
             path: "/stellenangebote"
           })
