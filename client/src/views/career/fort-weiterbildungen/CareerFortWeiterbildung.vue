@@ -40,6 +40,7 @@
     </b-container>
 
     <Head
+      v-if="training"
       :title="training.seo && training.seo.title"
       :desc="training.seo && training.seo.metaDesc"
       :img="training.featuredImage && training.featuredImage.node.sourceUrl"
