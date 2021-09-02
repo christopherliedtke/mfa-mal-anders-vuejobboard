@@ -149,6 +149,9 @@
         ];
       }
     },
+    created() {
+      this.$store.dispatch("getProfessions");
+    },
     methods: {
       setVisible(id) {
         if (this.visible === id) {

@@ -63,6 +63,9 @@
       articles() {
         return this.$store.state.articles.articles;
       }
+    },
+    created() {
+      this.$store.dispatch("getArticles");
     }
   };
 </script>

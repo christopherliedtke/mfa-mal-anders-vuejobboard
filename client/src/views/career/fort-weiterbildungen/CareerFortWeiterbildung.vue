@@ -122,6 +122,9 @@
           }
         ];
       }
+    },
+    created() {
+      this.$store.dispatch("getTrainings");
     }
   };
 </script>

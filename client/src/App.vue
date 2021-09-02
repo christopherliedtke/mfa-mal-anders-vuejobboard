@@ -45,16 +45,8 @@
         }
       }
 
-      // this.$store.dispatch("getJobs");
-
-      if (this.$store.state.auth.loggedIn && this.$config.starredJobs.active) {
+      if (this.$store.state.auth.loggedIn) {
         this.$store.dispatch("getStarredJobs");
-      }
-
-      if (this.$config.cms.active) {
-        this.$store.dispatch("getArticles");
-        this.$store.dispatch("getTrainings");
-        this.$store.dispatch("getProfessions");
       }
     },
     methods: {

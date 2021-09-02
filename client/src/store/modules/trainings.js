@@ -11,8 +11,9 @@ const getters = {
 
 const actions = {
   async getTrainings({ commit }) {
-    const response = await axios.post(config.cms.url, {
-      query: `
+    if (config.cms.active && state.trainings.length === 0) {
+      const response = await axios.post(config.cms.url, {
+        query: `
         query MyQuery {
           weiterbildungen(first: 100, where: {orderby: {field: TITLE, order: ASC}}) {
             nodes {
@@ -42,9 +43,10 @@ const actions = {
           }
         }
       `
-    });
+      });
 
-    commit("setTrainings", response.data.data.weiterbildungen.nodes);
+      commit("setTrainings", response.data.data.weiterbildungen.nodes);
+    }
   }
 };
 

@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <article v-if="profession" class="profession">
+  <div v-if="profession">
+    <article class="profession">
       <div class="title">
         <h1>{{ profession.title }}</h1>
         <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
@@ -121,7 +121,9 @@
     },
     computed: {
       title() {
-        return `MFA & ZFA Berufsbilder – ${this.profession.title}`;
+        return `MFA & ZFA Berufsbilder – ${
+          this.profession ? this.profession.title : ""
+        }`;
       },
       profession() {
         return this.$store.state.professions.professions.find(
@@ -143,11 +145,14 @@
             to: `/karriere/jobs-und-berufsbilder/${this.$route.params.slug}`
           },
           {
-            text: this.profession.title,
+            text: this.profession ? this.profession.title : "",
             to: `/karriere/jobs-und-berufsbilder/${this.$route.params.profession}`
           }
         ];
       }
+    },
+    created() {
+      this.$store.dispatch("getProfessions");
     }
   };
 </script>

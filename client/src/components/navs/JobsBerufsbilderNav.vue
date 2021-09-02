@@ -44,6 +44,9 @@
           .filter((value, index) => value && data.indexOf(value) === index)
           .sort();
       }
+    },
+    created() {
+      this.$store.dispatch("getProfessions");
     }
   };
 </script>

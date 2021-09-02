@@ -11,37 +11,39 @@ const getters = {
 
 const actions = {
   async getProfessions({ commit }) {
-    const response = await axios.post(config.cms.url, {
-      query: `
-                    query MyQuery {
-                        berufsbilder(first: 100, where: {orderby: {field: TITLE, order: ASC}}) {
-                            nodes {
-                                id
-                                title
-                                content
-                                excerpt
-                                slug
-                                berufsbildTypes {
-                                    nodes {
-                                        name
-                                        description
-                                        slug
-                                        seo {
-                                            metaDesc
-                                        }
-                                    }
-                                }
-                                seo {
-                                    metaDesc
-                                    title
-                                }
-                            }
-                        }
+    if (config.cms.active && state.professions.length === 0) {
+      const response = await axios.post(config.cms.url, {
+        query: `
+          query MyQuery {
+            berufsbilder(first: 100, where: {orderby: {field: TITLE, order: ASC}}) {
+              nodes {
+                id
+                title
+                content
+                excerpt
+                slug
+                berufsbildTypes {
+                  nodes {
+                    name
+                    description
+                    slug
+                    seo {
+                      metaDesc
                     }
-                    `
-    });
+                  }
+                }
+                seo {
+                  metaDesc
+                  title
+                }
+              }
+            }
+          }
+        `
+      });
 
-    commit("setProfessions", response.data.data.berufsbilder.nodes);
+      commit("setProfessions", response.data.data.berufsbilder.nodes);
+    }
   }
 };
 

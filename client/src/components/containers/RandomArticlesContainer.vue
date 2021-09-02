@@ -41,7 +41,8 @@
         this.getArticles();
       }
     },
-    mounted() {
+    async created() {
+      this.$store.dispatch("getArticles");
       this.getArticles();
     },
     methods: {

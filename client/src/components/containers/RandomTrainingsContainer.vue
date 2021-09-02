@@ -86,7 +86,8 @@
         this.getTrainings();
       }
     },
-    mounted() {
+    created() {
+      this.$store.dispatch("getTrainings");
       this.getTrainings();
     },
     methods: {

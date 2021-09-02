@@ -191,6 +191,9 @@
           }
         ];
       }
+    },
+    created() {
+      this.$store.dispatch("getArticles");
     }
   };
 </script>
