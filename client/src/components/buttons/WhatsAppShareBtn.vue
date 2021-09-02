@@ -30,13 +30,6 @@
           method: method,
           content_id: path
         });
-
-        this.$matomo &&
-          this.$matomo.trackEvent(
-            "engagement",
-            eventAction,
-            `method: ${method}; path: ${path}`
-          );
       }
     }
   };

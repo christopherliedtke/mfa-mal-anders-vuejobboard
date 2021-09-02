@@ -608,14 +608,6 @@
               }
             ]
           });
-
-          this.$matomo &&
-            this.$matomo.trackEvent(
-              "commerce",
-              "begin_checkout",
-              this.job._id,
-              this.checkout.amount / 100
-            );
         } catch (err) {
           this.$root.$bvToast.toast(
             "Bei der Verarbeitung Ihrer Daten ist leider ein Fehler aufgetreten. Bitte versuchen Sie es später noch einmal.",

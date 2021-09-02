@@ -89,13 +89,6 @@
             event_label: this.$store.state.auth.user._id
           });
 
-          this.$matomo &&
-            this.$matomo.trackEvent(
-              "engagement",
-              "delete_account",
-              this.$store.state.auth.user._id
-            );
-
           this.$store.dispatch("logout");
         }
 

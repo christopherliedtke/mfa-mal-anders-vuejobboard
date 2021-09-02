@@ -227,22 +227,6 @@
               }`
             });
 
-            this.$matomo &&
-              this.$matomo.trackEvent(
-                "engagement",
-                "sign_up",
-                `id: ${this.$store.state.auth.user._id}; type: ${
-                  this.isEmployer
-                    ? "employer"
-                    : this.isEmployee
-                    ? "employee"
-                    : "educational"
-                }`
-              );
-
-            this.$matomo &&
-              this.$matomo.setUserId(this.$store.state.auth.user._id);
-
             this.$router.push("/auth/account/verification");
           }
         }

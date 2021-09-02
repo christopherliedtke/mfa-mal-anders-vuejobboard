@@ -94,16 +94,6 @@
             method: "local",
             event_label: this.$store.state.auth.user._id
           });
-
-          this.$matomo &&
-            this.$matomo.trackEvent(
-              "engagement",
-              "login",
-              this.$store.state.auth.user._id
-            );
-
-          this.$matomo &&
-            this.$matomo.setUserId(this.$store.state.auth.user._id);
         }
 
         this.$store.dispatch("getStarredJobs");

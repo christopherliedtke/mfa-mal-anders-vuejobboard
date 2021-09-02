@@ -114,25 +114,6 @@ Vue.use(VueGtag, {
     config.ga.active && window.location.origin.includes(config.website.url)
 });
 
-import VueMatomo from "vue-matomo";
-Vue.use(VueMatomo, {
-  host: config.matomo.host,
-  siteId: config.matomo.siteId,
-  trackerFileName: "matomo",
-  router: router,
-  enableLinkTracking: true,
-  requireConsent: false,
-  trackInitialView: true,
-  disableCookies: true,
-  enableHeartBeatTimer: true,
-  heartBeatTimerInterval: 15,
-  debug: false,
-  userId: undefined,
-  cookieDomain: undefined,
-  domains: config.matomo.domains,
-  preInitActions: []
-});
-
 // #FontAwesome Integration
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {

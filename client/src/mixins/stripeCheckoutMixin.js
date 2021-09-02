@@ -63,14 +63,6 @@ export const stripeCheckoutMixin = {
             ]
           });
 
-          this.$matomo &&
-            this.$matomo.trackEvent(
-              "commerce",
-              "begin_checkout",
-              id,
-              response.data.amount / 100
-            );
-
           await this.redirectToCheckout(this.checkoutSessionId);
         } else {
           throw new Error();
