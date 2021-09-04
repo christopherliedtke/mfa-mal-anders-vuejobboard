@@ -26,6 +26,12 @@
         <b-button block to="/fuer-arbeitgeber">🏥 Für Arbeitgeber</b-button>
       </nav>
     </b-container>
+
+    <Head
+      title="Linktree | Sitemap"
+      desc="Dein Job- und Karriereportal für ArzthelferInnen – Medizinische / Zahnmedizinische Fachangestellte (MFA / ZFA) | Stellenangebote | Weiterbildungen | Alternative Jobs | Gehalt | Bewerbung"
+      img=""
+    />
   </div>
 </template>
 
