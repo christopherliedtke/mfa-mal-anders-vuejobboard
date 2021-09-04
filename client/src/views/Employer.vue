@@ -565,7 +565,7 @@
       </b-row>
     </b-container>
 
-    <b-container id="faq">
+    <b-container id="faq" class="mb-5">
       <h2 class="h1 bold text-center mb-4">
         Häufige Fragen
       </h2>

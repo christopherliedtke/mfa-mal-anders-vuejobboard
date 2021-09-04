@@ -11,6 +11,7 @@ const Home = () => import("@/views/Home.vue");
 const About = () => import("@/views/About.vue");
 const AGBs = () => import("@/views/AGBs.vue");
 const Contact = () => import("@/views/Contact.vue");
+const Linktree = () => import("@/views/Linktree.vue");
 const Employer = () => import("@/views/Employer.vue");
 const Impressum = () => import("@/views/Impressum.vue");
 const PrivacyPolicy = () => import("@/views/PrivacyPolicy.vue");
@@ -340,6 +341,14 @@ const routes = [
     path: "/kontakt",
     name: "Contact",
     component: Contact,
+    meta: {
+      public: true
+    }
+  },
+  {
+    path: "/linktree",
+    name: "Linktree",
+    component: Linktree,
     meta: {
       public: true
     }

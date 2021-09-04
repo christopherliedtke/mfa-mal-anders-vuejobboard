@@ -784,7 +784,18 @@
             }
           });
 
-          this.companies = companies.data.data.myCompanies;
+          this.companies = companies.data.data.myCompanies.sort(function(a, b) {
+            var nameA = a.name.toUpperCase();
+            var nameB = b.name.toUpperCase();
+            if (nameA < nameB) {
+              return -1;
+            }
+            if (nameA > nameB) {
+              return 1;
+            }
+
+            return 0;
+          });
         } catch (err) {
           this.$root.$bvToast.toast(
             "Beim Laden Ihrer erstellten Unternehmen ist ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal, indem Sie die Seite neu laden.",

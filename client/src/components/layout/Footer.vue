@@ -159,7 +159,7 @@
     background-color: $primary;
     padding: 1rem 0;
     color: $light;
-    margin-top: 2rem;
+    // margin-top: 2rem;
 
     hr {
       border-top: 1px solid transparentize($color: $light, $amount: 0.75);

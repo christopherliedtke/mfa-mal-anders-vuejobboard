@@ -1,7 +1,7 @@
 <template>
   <div class="map">
     <!--In the following div the HERE Map will render-->
-    <div ref="hereMap" class="map-container"></div>
+    <div v-show="showMap" ref="hereMap" class="map-container"></div>
   </div>
 </template>
 
@@ -18,7 +18,8 @@
         mapContainer: null,
         map: null,
         mapTypes: null,
-        H: null
+        H: null,
+        showMap: true
       };
     },
     watch: {
@@ -43,6 +44,7 @@
         const platform = new window.H.service.Platform({
           apikey: this.apikey
         });
+
         this.platform = platform;
         this.initializeHereMap();
       } catch (err) {
@@ -120,13 +122,14 @@
             this.H.ui.UI.createDefault(this.map, this.maptypes);
           }
         } catch (err) {
-          this.$root.$bvToast.toast(`Die Karte konnten nicht geladen werden.`, {
-            title: `Fehler beim Laden`,
-            variant: "danger",
-            toaster: "b-toaster-bottom-right",
-            solid: true,
-            noAutoHide: false
-          });
+          // this.$root.$bvToast.toast(`Die Karte konnten nicht geladen werden.`, {
+          //   title: `Fehler beim Laden`,
+          //   variant: "danger",
+          //   toaster: "b-toaster-bottom-right",
+          //   solid: true,
+          //   noAutoHide: false
+          // });
+          this.showMap = false;
         }
       }
     }

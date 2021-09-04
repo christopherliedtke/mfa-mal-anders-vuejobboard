@@ -9,7 +9,9 @@
       <b-input-group class="mb-3" prepend="# of Days" size="sm">
         <b-form-input v-model="options.numberOfDays"></b-form-input>
         <b-input-group-append>
-          <b-button variant="success" role="submit">Apply</b-button>
+          <b-button variant="success" role="submit" @click="fillChartData"
+            >Apply</b-button
+          >
         </b-input-group-append>
       </b-input-group>
       <b-form-radio-group

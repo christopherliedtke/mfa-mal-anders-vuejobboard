@@ -5,7 +5,9 @@
       <b-input-group prepend="# of Months" size="sm" class="mt-3 px-5">
         <b-form-input v-model="options.numberOfMonths"></b-form-input>
         <b-input-group-append>
-          <b-button variant="success" role="submit">Apply</b-button>
+          <b-button variant="success" role="submit" @click="fillChartData"
+            >Apply</b-button
+          >
         </b-input-group-append>
       </b-input-group>
     </b-form>
