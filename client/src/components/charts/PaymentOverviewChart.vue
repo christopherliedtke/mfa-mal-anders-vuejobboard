@@ -2,13 +2,21 @@
   <div class="shadow1 border-radius1 p-3">
     <h2 class="h5 text-center">Payment Overview</h2>
     <b-form @submit.prevent="fillChartData">
-      <b-input-group prepend="# of Months" size="sm" class="mt-3 px-5">
+      <b-input-group
+        prepend="# of Months"
+        :append="'~ ' + numberToCurrencyString(sum)"
+        size="sm"
+        class="mt-3 px-2 px-lg-5"
+      >
         <b-form-input v-model="options.numberOfMonths"></b-form-input>
         <b-input-group-append>
           <b-button variant="success" role="submit" @click="fillChartData"
             >Apply</b-button
           >
         </b-input-group-append>
+        <!-- <b-input-group-append>
+          <b-button variant="muted" role="submit">{{ sum }}</b-button>
+        </b-input-group-append> -->
       </b-input-group>
     </b-form>
     <bar-chart
@@ -31,6 +39,7 @@
     },
     data() {
       return {
+        sum: 0,
         options: {
           endDate: new Date().setDate(1),
           numberOfMonths: parseInt(localStorage.getItem("numberOfMonths") || 6)
@@ -50,12 +59,7 @@
                     min: 0,
                     suggestedMax: 4000,
                     stepSize: 200,
-                    callback: function(value) {
-                      return (
-                        value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") +
-                        "€"
-                      );
-                    }
+                    callback: this.numberToCurrencyString
                   },
                   gridLines: {
                     color: "#eeefff",
@@ -162,6 +166,10 @@
         this.chart.options.scales.yAxes[1].ticks.suggestedMax =
           Math.ceil(Math.max.apply(null, amounts) / 1000) * 10;
 
+        this.sum = amounts.reduce(
+          (accumulator, currentValue) => accumulator + currentValue
+        );
+
         return {
           labels: dates.reverse(),
           datasets: [
@@ -196,6 +204,13 @@
             }
           ]
         };
+      },
+      numberToCurrencyString(value) {
+        return (
+          Math.round(isNaN(value) ? value.parseInt() : value)
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, "'") + "€"
+        );
       }
     }
   };

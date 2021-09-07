@@ -256,8 +256,9 @@
           size="lg"
           :variant="job.simpleApplication ? 'secondary' : 'primary'"
           :href="
-            job.extJobUrl ||
-              `mailto:${job.applicationEmail}?subject=Bewerbung - ${job.title} über ${$config.website.name}`
+            job.applicationEmail
+              ? `mailto:${job.applicationEmail}?subject=Bewerbung - ${job.title} über ${$config.website.name}`
+              : job.extJobUrl
           "
           target="_blank"
           @click="

@@ -153,9 +153,22 @@
           type="email"
           lazy-formatter
           :formatter="formatter"
-          :state="validated ? (job.applicationEmail ? true : null) : null"
+          :state="
+            validated
+              ? job.applicationEmail
+                ? true
+                : !job.applicationEmail && !job.extJobUrl
+                ? false
+                : null
+              : null
+          "
           placeholder="karriere@ihr-unternehmen.de"
+          aria-describedby="application-email-feedback"
         />
+        <b-form-invalid-feedback id="application-email-feedback" class="ml-2">
+          Bitte E-Mail Adresse für Bewerbungen oder URL zur Bewerbung auf
+          Bewerberportal angeben.
+        </b-form-invalid-feedback>
       </b-input-group>
 
       <label for="ext-job-url"
@@ -172,9 +185,22 @@
           type="url"
           lazy-formatter
           :formatter="formatter"
-          :state="validated ? (job.extJobUrl ? true : null) : null"
+          :state="
+            validated
+              ? job.extJobUrl
+                ? true
+                : !job.applicationEmail && !job.extJobUrl
+                ? false
+                : null
+              : null
+          "
           placeholder="https://www.ihr-unternehmen.com/karriere/stelle/bewerben"
+          aria-describedby="ext-job-url-feedback"
         />
+        <b-form-invalid-feedback id="ext-job-url-feedback" class="ml-2">
+          Bitte E-Mail Adresse für Bewerbungen oder URL zur Bewerbung auf
+          Bewerberportal angeben.
+        </b-form-invalid-feedback>
       </b-input-group>
 
       <label for="title-image"
@@ -870,6 +896,7 @@
           this.job.title.length > 155 ||
           !this.job.description ||
           !this.job.employmentType ||
+          (!this.job.applicationEmail && !this.job.extJobUrl) ||
           !this.job.company.name ||
           !this.job.company.country ||
           !this.job.company.location ||

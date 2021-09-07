@@ -141,10 +141,15 @@ router.post("/checkout-completed", async (req, res) => {
       const dataMailToAdmin = {
         from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
         to: config.website.contactEmail,
-        cc:
+        cc: [
           process.env.NODE_ENV == "production" && process.env.ZAPIER_INVOICES
             ? process.env.ZAPIER_INVOICES
             : "",
+          process.env.NODE_ENV == "production" &&
+          process.env.ASANA_SHARETOSOCIALMEDIA_EMAIL
+            ? process.env.ASANA_SHARETOSOCIALMEDIA_EMAIL
+            : "",
+        ],
         subject: `[Stripe ${
           "RE-" +
           "000000".slice(0, 6 - payment.invoiceNo.toString().length) +

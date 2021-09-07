@@ -21,6 +21,11 @@ router.post("/job-published", verifyToken, isAdmin, async (req, res) => {
     const emailData = {
       from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
       to: job.userId.email,
+      bcc:
+        process.env.NODE_ENV == "production" &&
+        process.env.ASANA_SHARETOSOCIALMEDIA_EMAIL
+          ? process.env.ASANA_SHARETOSOCIALMEDIA_EMAIL
+          : "",
       subject: `Veröffentlichung Ihrer Stellenanzeige auf 'MFA mal anders'`,
       html: `
                 <p>
