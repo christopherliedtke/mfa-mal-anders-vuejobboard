@@ -138,6 +138,8 @@ router.post("/checkout-completed", async (req, res) => {
 
       const invoice = await createInvoice(payment, __dirname + "/../invoices/");
 
+      // ?add invoice to gdrive
+
       const dataMailToAdmin = {
         from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
         to: config.website.contactEmail,

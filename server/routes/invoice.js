@@ -9,6 +9,7 @@ const { Job } = require("../database/models/job");
 const { Payment } = require("../database/models/payment");
 const createInvoice = require("../middleware/createInvoice");
 const sanitizeHtml = require("sanitize-html");
+const saveInvoiceToGDrive = require("../utils/saveInvoiceToGDrive");
 
 // #route:  POST /api/invoice/get-invoice
 // #desc:   Handle invoice request
@@ -117,6 +118,8 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
     );
 
     const invoice = await createInvoice(payment, __dirname + "/../invoices/");
+
+    await saveInvoiceToGDrive(invoice.path, invoice.fileName);
 
     const emailDataToCustomer = {
       from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
