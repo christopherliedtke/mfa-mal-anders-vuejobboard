@@ -10,6 +10,7 @@ const { Payment } = require("../database/models/payment");
 const { UsedCoupon } = require("../database/models/usedCoupon");
 const { googleIndexing } = require("../middleware/googleJobIndexing");
 const saveInvoiceToGDrive = require("../utils/saveInvoiceToGDrive");
+const jobToAsanaTask = require("../utils/jobToAsanaTask");
 // const { postToFacebook } = require("../middleware/postToFacebook");
 
 const stripe = require("stripe")(process.env.STRIPE_SK);
@@ -141,18 +142,11 @@ router.post("/checkout-completed", async (req, res) => {
 
       await saveInvoiceToGDrive(invoice.path, invoice.fileName);
 
+      await jobToAsanaTask(updatedJob);
+
       const dataMailToAdmin = {
         from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
         to: config.website.contactEmail,
-        cc: [
-          process.env.NODE_ENV == "production" && process.env.ZAPIER_INVOICES
-            ? process.env.ZAPIER_INVOICES
-            : "",
-          process.env.NODE_ENV == "production" &&
-          process.env.ASANA_SHARETOSOCIALMEDIA_EMAIL
-            ? process.env.ASANA_SHARETOSOCIALMEDIA_EMAIL
-            : "",
-        ],
         subject: `[Stripe ${
           "RE-" +
           "000000".slice(0, 6 - payment.invoiceNo.toString().length) +

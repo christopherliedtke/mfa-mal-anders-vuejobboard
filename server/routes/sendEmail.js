@@ -6,6 +6,7 @@ const emailService = require("../utils/nodemailer");
 const config = require("../config/config");
 const { Job } = require("../database/models/job");
 const { Training } = require("../database/models/training");
+const jobToAsanaTask = require("../utils/jobToAsanaTask");
 
 // #route:  POST /api/send-email/job-published
 // #desc:   Handle invoice request
@@ -21,11 +22,6 @@ router.post("/job-published", verifyToken, isAdmin, async (req, res) => {
     const emailData = {
       from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
       to: job.userId.email,
-      bcc:
-        process.env.NODE_ENV == "production" &&
-        process.env.ASANA_SHARETOSOCIALMEDIA_EMAIL
-          ? process.env.ASANA_SHARETOSOCIALMEDIA_EMAIL
-          : "",
       subject: `Veröffentlichung Ihrer Stellenanzeige auf 'MFA mal anders'`,
       html: `
                 <p>
@@ -90,8 +86,9 @@ router.post("/job-published", verifyToken, isAdmin, async (req, res) => {
     };
 
     const sentEmail = await emailService.sendMail(emailData);
-
     console.log("sentEmail: ", sentEmail);
+
+    await jobToAsanaTask(job);
 
     res.json({ success: sentEmail.accepted.length > 0 });
   } catch (err) {
