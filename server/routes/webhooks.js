@@ -9,6 +9,7 @@ const { Job } = require("../database/models/job");
 const { Payment } = require("../database/models/payment");
 const { UsedCoupon } = require("../database/models/usedCoupon");
 const { googleIndexing } = require("../middleware/googleJobIndexing");
+const saveInvoiceToGDrive = require("../utils/saveInvoiceToGDrive");
 // const { postToFacebook } = require("../middleware/postToFacebook");
 
 const stripe = require("stripe")(process.env.STRIPE_SK);
@@ -138,7 +139,7 @@ router.post("/checkout-completed", async (req, res) => {
 
       const invoice = await createInvoice(payment, __dirname + "/../invoices/");
 
-      // ?add invoice to gdrive
+      await saveInvoiceToGDrive(invoice.path, invoice.fileName);
 
       const dataMailToAdmin = {
         from: `${config.website.emailFrom} <${config.website.contactEmail}>`,

@@ -46,7 +46,7 @@ const saveInvoiceToGDrive = async (filePath, fileName) => {
         console.error(error);
       });
 
-    console.info("File uploaded successfully!");
+    console.info("Invoice uploaded successfully to gdrive!");
   } catch (err) {
     console.error("Error on saveInvoiceToGDrive(): ", err);
   } finally {
