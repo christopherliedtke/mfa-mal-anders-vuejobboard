@@ -57,31 +57,7 @@
               }
             "
           >
-            <label for="s-jobboard" class="sr-only">Suchbegriff *</label>
-            <b-input-group class="mb-2 mr-2">
-              <b-form-input
-                id="s-jobboard"
-                v-model="filter.s"
-                :class="filter.s ? 'border-secondary' : ''"
-                type="text"
-                placeholder="Suchbegriff..."
-                lazy
-              />
-              <b-input-group-append>
-                <b-button
-                  @click.prevent="
-                    () => {
-                      filter.s = '';
-                      getJobs();
-                      setQuery();
-                    }
-                  "
-                  ><Fa icon="times"
-                /></b-button>
-              </b-input-group-append>
-            </b-input-group>
-
-            <label for="location-jobboard" class="sr-only">Ort / PLZ *</label>
+            <label for="location-jobboard" class="sr-only">Ort / PLZ</label>
             <b-input-group class="mb-2 mr-2">
               <b-form-input
                 id="location-jobboard"
@@ -106,36 +82,76 @@
               </b-input-group-append>
             </b-input-group>
 
-            <label for="employmentType-jobboard" class="sr-only"
-              >Anstellungsart *</label
+            <div
+              style="cursor: pointer"
+              class="text-primary my-3 ml-2"
+              @click="showAdvancedSearch = !showAdvancedSearch"
             >
-            <b-form-select
-              id="employmentType-jobboard"
-              v-model="filter.employmentType"
-              class="mb-2 mr-2"
-              @change="
-                () => {
-                  getJobs();
-                  setQuery();
-                }
-              "
-            >
-              <b-form-select-option :value="''"
-                >Alle Anstellungsarten</b-form-select-option
+              Erweiterte Suche
+              <Fa
+                icon="caret-right"
+                size="1x"
+                :class="
+                  showAdvancedSearch === true
+                    ? 'animate rotate-90 ml-2'
+                    : 'animate ml-2'
+                "
+              />
+            </div>
+            <b-collapse id="advanced-search" v-model="showAdvancedSearch">
+              <label for="s-jobboard" class="sr-only">Suchbegriff</label>
+              <b-input-group class="mb-2 mr-2">
+                <b-form-input
+                  id="s-jobboard"
+                  v-model="filter.s"
+                  :class="filter.s ? 'border-secondary' : ''"
+                  type="text"
+                  placeholder="Suchbegriff..."
+                  lazy
+                />
+                <b-input-group-append>
+                  <b-button
+                    @click.prevent="
+                      () => {
+                        filter.s = '';
+                        getJobs();
+                        setQuery();
+                      }
+                    "
+                    ><Fa icon="times"
+                  /></b-button>
+                </b-input-group-append>
+              </b-input-group>
+              <label for="employmentType-jobboard" class="sr-only"
+                >Anstellungsart *</label
               >
-              <b-form-select-option
-                v-for="type in employmentTypeOptions"
-                :key="type.value"
-                :value="type.value"
-                >{{ type.text }}</b-form-select-option
+              <b-form-select
+                id="employmentType-jobboard"
+                v-model="filter.employmentType"
+                class="mb-2 mr-2"
+                @change="
+                  () => {
+                    getJobs();
+                    setQuery();
+                  }
+                "
               >
-            </b-form-select>
+                <b-form-select-option :value="''"
+                  >Alle Anstellungsarten</b-form-select-option
+                >
+                <b-form-select-option
+                  v-for="type in employmentTypeOptions"
+                  :key="type.value"
+                  :value="type.value"
+                  >{{ type.text }}</b-form-select-option
+                >
+              </b-form-select>
 
-            <!-- <b-form-datalist
+              <!-- <b-form-datalist
               id="location-list"
               :options="locationsList"
             ></b-form-datalist> -->
-            <!-- <label for="state-jobboard" class="sr-only">Bundesland *</label>
+              <!-- <label for="state-jobboard" class="sr-only">Bundesland *</label>
             <b-form-select
               id="state-jobboard"
               v-model="filter.state"
@@ -157,68 +173,12 @@
                 >{{ state }}</b-form-select-option
               >
             </b-form-select> -->
-            <label for="profession-jobboard" class="mb-2 pl-2">Berufe </label>
-            <b-form-group id="profession-jobboard" class="pl-2">
-              <b-form-checkbox-group
-                v-model="profession.active"
-                class="ml-1"
-                :options="professionOptions"
-                size="sm"
-                stacked
-                @change="
-                  () => {
-                    getJobs();
-                  }
-                "
-              ></b-form-checkbox-group>
-            </b-form-group>
-            <label
-              for="specialization-jobboard"
-              style="cursor: pointer"
-              class="mt-0 mb-2 pl-2"
-              @click="specialization.visible = !specialization.visible"
-              >Fachgebiete
-              <Fa
-                icon="caret-right"
-                size="1x"
-                :class="
-                  specialization.visible === true
-                    ? 'animate rotate-90 ml-2'
-                    : 'animate ml-2'
-                "
-            /></label>
-            <BCollapse
-              :visible="specialization.visible === true"
-              role="tabpanel"
-            >
-              <b-form-group id="specialization-jobboard" class="pl-2">
-                <template #label>
-                  <b-form-checkbox
-                    v-model="specialization.allSelected"
-                    :indeterminate="specialization.indeterminate"
-                    size="sm"
-                    stacked
-                    @change="toggleAll"
-                  >
-                    {{
-                      specialization.allSelected
-                        ? "Alle Abwählen"
-                        : "Alle Auswählen"
-                    }}
-                  </b-form-checkbox>
-                </template>
-
+              <label for="profession-jobboard" class="mb-2 pl-2">Berufe </label>
+              <b-form-group id="profession-jobboard" class="pl-2">
                 <b-form-checkbox-group
-                  v-model="specialization.active"
+                  v-model="profession.active"
                   class="ml-1"
-                  :options="
-                    specializationOptions.map(specialization => {
-                      return {
-                        text: specialization,
-                        value: specialization
-                      };
-                    })
-                  "
+                  :options="professionOptions"
                   size="sm"
                   stacked
                   @change="
@@ -228,7 +188,73 @@
                   "
                 ></b-form-checkbox-group>
               </b-form-group>
-            </BCollapse>
+              <label
+                for="specialization-jobboard"
+                style="cursor: pointer"
+                class="mt-0 mb-2 pl-2"
+                @click="specialization.visible = !specialization.visible"
+                >Fachgebiete
+                <Fa
+                  icon="caret-right"
+                  size="1x"
+                  :class="
+                    specialization.visible === true
+                      ? 'animate rotate-90 ml-2'
+                      : 'animate ml-2'
+                  "
+              /></label>
+              <BCollapse
+                :visible="specialization.visible === true"
+                role="tabpanel"
+              >
+                <b-form-group id="specialization-jobboard" class="pl-2">
+                  <template #label>
+                    <b-form-checkbox
+                      v-model="specialization.allSelected"
+                      :indeterminate="specialization.indeterminate"
+                      size="sm"
+                      stacked
+                      @change="toggleAll"
+                    >
+                      {{
+                        specialization.allSelected
+                          ? "Alle Abwählen"
+                          : "Alle Auswählen"
+                      }}
+                    </b-form-checkbox>
+                  </template>
+
+                  <b-form-checkbox-group
+                    v-model="specialization.active"
+                    class="ml-1"
+                    :options="
+                      specializationOptions.map(specialization => {
+                        return {
+                          text: specialization,
+                          value: specialization
+                        };
+                      })
+                    "
+                    size="sm"
+                    stacked
+                    @change="
+                      () => {
+                        getJobs();
+                      }
+                    "
+                  ></b-form-checkbox-group>
+                </b-form-group>
+              </BCollapse>
+              <div>
+                <span
+                  style="cursor: pointer"
+                  class="text-danger small ml-2"
+                  @click="resetFilter"
+                  >Filter zurücksetzen</span
+                >
+              </div>
+            </b-collapse>
+
             <div class="mt-2">
               <b-button variant="success" type="submit" block
                 ><Fa class="mr-2" size="sm" icon="search" />Jobs
@@ -445,6 +471,7 @@
         employmentTypeOptions: employmentTypeOptions.filter(
           type => type.value != "part_full"
         ),
+        showAdvancedSearch: false,
         companyStateOptions,
         specializationOptions,
         professionOptions,
@@ -666,11 +693,41 @@
             ""}${this.$route.query.state ? " " : ""}${this.$route.query.state ||
             ""}`
         };
+
+        if (
+          this.$route.query.s ||
+          this.$route.query.employmentType ||
+          this.$route.query.profession
+        ) {
+          this.showAdvancedSearch = true;
+        }
       },
       toggleAll(checked) {
         this.specialization.active = checked
           ? this.specializationOptions.slice()
           : [];
+        this.getJobs();
+      },
+      resetFilter() {
+        this.filter = {
+          s: "",
+          employmentType: "",
+          location: "",
+          state: ""
+        };
+
+        this.specialization = {
+          active: this.specializationOptions,
+          visible: false,
+          allSelected: true,
+          indeterminate: false
+        };
+
+        this.profession.active = this.professionOptions.map(
+          profession => profession.value
+        );
+
+        this.setQuery();
         this.getJobs();
       }
       // async getLocationSuggestions(str) {
