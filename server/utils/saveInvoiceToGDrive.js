@@ -13,7 +13,10 @@ const saveInvoiceToGDrive = async (filePath, fileName) => {
     const parentFolderId = "1IFPRU4FP0I03KwkpS-oIFVQ-fttM3HMl";
     const folderName =
       new Date().getFullYear().toString() +
-      (process.env.NODE_ENV === "development" ? "_test" : "");
+      (process.env.NODE_ENV === "development" ||
+      process.env.WEBSITE_URL != "https://www.mfa-mal-anders.de"
+        ? "_test"
+        : "");
 
     const googleDriveService = new GoogleDriveService(
       driveClientId,
@@ -23,7 +26,7 @@ const saveInvoiceToGDrive = async (filePath, fileName) => {
     );
 
     if (!fs.existsSync(filePath)) {
-      throw new Error("File not found!");
+      throw new Error("Invoice file not found!");
     }
 
     let folder = await googleDriveService
