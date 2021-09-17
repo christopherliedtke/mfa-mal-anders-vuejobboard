@@ -1,20 +1,23 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const CodeSchema = new Schema({
-  email: {
-    type: String,
-    required: true,
+const CodeSchema = new Schema(
+  {
+    email: {
+      type: String,
+      required: true,
+    },
+    code: {
+      type: String,
+      required: true,
+    },
+    validUntil: {
+      type: Date,
+      default: Date.now,
+      expires: 600,
+    },
   },
-  code: {
-    type: String,
-    required: true,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-    expires: 3600,
-  },
-});
+  { timestamps: true }
+);
 
 module.exports.Code = mongoose.model("Code", CodeSchema);
