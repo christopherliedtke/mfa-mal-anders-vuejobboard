@@ -13,8 +13,10 @@ const CodeSchema = new Schema(
     },
     validUntil: {
       type: Date,
-      default: Date.now,
-      expires: 600,
+      default: () => {
+        return Date.now() + 1000 * 60 * 10;
+      },
+      expires: 0,
     },
   },
   { timestamps: true }
