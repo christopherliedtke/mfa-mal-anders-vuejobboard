@@ -1,20 +1,20 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const secretCode = new Schema({
-    email: {
-        type: String,
-        required: true,
-    },
-    code: {
-        type: String,
-        required: true,
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now(),
-        expires: 3600,
-    },
+const CodeSchema = new Schema({
+  email: {
+    type: String,
+    required: true,
+  },
+  code: {
+    type: String,
+    required: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+    expires: 3600,
+  },
 });
 
-module.exports.Code = mongoose.model("code", secretCode);
+module.exports.Code = mongoose.model("Code", CodeSchema);
