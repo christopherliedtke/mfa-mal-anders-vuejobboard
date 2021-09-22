@@ -46,6 +46,7 @@
   &:not(:disabled):not(.disabled):active,
   &:focus {
     color: $light;
+    background-color: $secondary;
   }
 }
 

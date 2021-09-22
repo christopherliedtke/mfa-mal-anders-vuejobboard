@@ -649,7 +649,7 @@
         this.$store.dispatch("setOverlay", false);
       },
       formatter(value) {
-        return value.replaceAll('"', "'");
+        return value.replaceAll('"', "'").replace(/&amp;/, "&");
       },
       formValidation() {
         this.validated = true;
