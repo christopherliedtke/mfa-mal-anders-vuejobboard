@@ -14,7 +14,12 @@
       <div class="content animate-color"></div>
     </div>
   </div> -->
-  <div class="job-card-placeholder">
+  <div
+    :class="[
+      'job-card-placeholder',
+      compact ? 'mb-2 mt-2 mt-lg-0' : 'mb-3 mt-3 mt-lg-0'
+    ]"
+  >
     <BSkeleton :height="!compact ? '60px' : '40px'" class="header" />
     <div class="body">
       <BSkeleton />
