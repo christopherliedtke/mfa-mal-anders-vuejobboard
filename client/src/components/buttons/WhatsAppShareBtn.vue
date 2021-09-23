@@ -1,6 +1,7 @@
 <template>
   <b-button
     :disabled="!$route.meta.public"
+    :size="size"
     class="whatsapp-share-btn"
     :href="
       `https://wa.me/?text=${url}${sharePath ? sharePath : $route.fullPath}`
@@ -18,7 +19,10 @@
 <script>
   export default {
     name: "WhatsAppShareBtn",
-    props: { sharePath: { type: String, default: "" } },
+    props: {
+      sharePath: { type: String, default: "" },
+      size: { type: String, default: "" }
+    },
     data() {
       return {
         url: window.location.origin

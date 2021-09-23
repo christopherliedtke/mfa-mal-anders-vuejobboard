@@ -61,14 +61,23 @@
         gelesen und akzeptiere diese.
       </b-form-checkbox>
 
-      <b-button
-        class="mt-3"
-        variant="secondary"
-        :disabled="disabled"
-        @click.prevent="onSubmit"
-      >
-        Abonnieren
-      </b-button>
+      <div class="d-flex justify-content-between mt-3">
+        <b-button
+          v-if="closeBtn"
+          variant="outline-danger"
+          size="sm"
+          @click="$emit('close')"
+          >Schließen</b-button
+        >
+        <b-button
+          variant="secondary"
+          size="sm"
+          :disabled="disabled"
+          @click.prevent="onSubmit"
+        >
+          Abonnieren
+        </b-button>
+      </div>
     </b-form>
 
     <div v-if="social" class="mt-4">
@@ -143,6 +152,10 @@
       social: {
         type: Boolean,
         default: false
+      },
+      closeBtn: {
+        type: Boolean,
+        default: true
       }
     },
     data() {

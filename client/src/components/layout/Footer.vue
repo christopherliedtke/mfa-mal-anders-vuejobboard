@@ -42,7 +42,7 @@
           </div>
         </b-col>
         <b-col order="2" order-lg="2">
-          <NewsletterSignUpForm />
+          <NewsletterSignUpForm :close-btn="false" />
           <!-- <div class="mt-5">
                         <div class="d-flex justify-content-center mb-4">
                             <b-link

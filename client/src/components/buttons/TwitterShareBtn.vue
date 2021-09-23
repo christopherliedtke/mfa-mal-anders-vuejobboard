@@ -1,6 +1,7 @@
 <template>
   <b-button
     :disabled="!$route.meta.public"
+    :size="size"
     class="twitter-share-btn"
     :href="
       `
@@ -23,7 +24,8 @@
     name: "TwitterShareBtn",
     props: {
       sharePath: { type: String, default: "" },
-      title: { type: String, default: "" }
+      title: { type: String, default: "" },
+      size: { type: String, default: "" }
     },
     data() {
       return {

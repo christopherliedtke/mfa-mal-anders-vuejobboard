@@ -2,6 +2,7 @@
   <b-button
     class="twitter-btn"
     variant="primary"
+    :size="size"
     :href="`https://www.twitter.com/${$config.twitter.path}`"
     target="_blank"
     aria-label="Twitter"
@@ -18,7 +19,8 @@
       content: {
         type: String,
         default: "Twitter"
-      }
+      },
+      size: { type: String, default: "" }
     }
   };
 </script>

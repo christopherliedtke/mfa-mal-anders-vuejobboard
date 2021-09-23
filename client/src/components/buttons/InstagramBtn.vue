@@ -2,6 +2,7 @@
   <b-button
     class="instagram-btn"
     variant="primary"
+    :size="size"
     :href="`https://www.instagram.com/${$config.ig.path}`"
     target="_blank"
     aria-label="Instagram"
@@ -18,7 +19,8 @@
       content: {
         type: String,
         default: "Instagram"
-      }
+      },
+      size: { type: String, default: "" }
     }
   };
 </script>

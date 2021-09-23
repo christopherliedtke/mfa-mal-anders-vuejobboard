@@ -2,6 +2,7 @@
   <b-button
     class="facebook-btn"
     variant="primary"
+    :size="size"
     :href="`https://www.facebook.com/${$config.fb.path}`"
     target="_blank"
     aria-label="Facebook"
@@ -22,7 +23,8 @@
       content: {
         type: String,
         default: "Facebook"
-      }
+      },
+      size: { type: String, default: "" }
     }
   };
 </script>

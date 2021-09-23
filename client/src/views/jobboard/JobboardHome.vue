@@ -173,7 +173,9 @@
                 >{{ state }}</b-form-select-option
               >
             </b-form-select> -->
-              <label for="profession-jobboard" class="mb-2 pl-2">Berufe </label>
+              <label for="profession-jobboard" class="mb-2 pl-2"
+                >Berufsgruppe</label
+              >
               <b-form-group id="profession-jobboard" class="pl-2">
                 <b-form-checkbox-group
                   v-model="profession.active"
@@ -265,7 +267,7 @@
           <div class="small text-right mt-2 mb-2 pr-3 pt-1">
             <b-link to="/fuer-arbeitgeber">Stellenanzeige schalten</b-link>
           </div>
-          <div class="d-none d-lg-block mt-5">
+          <div class="mt-3 mt-lg-5 text-right text-lg-left">
             <b-button
               v-if="
                 $config.starredJobs.active &&
@@ -278,17 +280,23 @@
               size="sm"
               >Meine gespeicherten Jobs</b-button
             >
+            <SubscribeNewsletterBtn
+              v-else
+              class="mt-2 mr-1 d-flex justify-content-end justify-content-lg-start"
+              size="sm"
+              variant="secondary"
+            />
           </div>
           <div class="d-none d-lg-block mt-4">
             <TrainingCatalogueSmallBanner />
           </div>
-          <div class="d-none d-lg-block mt-4">
+          <div class="d-none d-lg-block mt-3">
             <!-- <p class="h5">
               Verpasse keine Neuigkeiten und folge uns auf
             </p> -->
-            <FacebookBtn class="mt-2 mr-1" content="Facebook" />
-            <InstagramBtn class="mt-2 mr-1" content="" />
-            <TwitterBtn class="mt-2 mr-1" content="" />
+            <FacebookBtn class="mt-2 mr-1" content="Facebook" size="sm" />
+            <InstagramBtn class="mt-2 mr-1" content="" size="sm" />
+            <TwitterBtn class="mt-2 mr-1" content="" size="sm" />
           </div>
         </b-col>
         <b-col cols="12" lg="8">
@@ -427,6 +435,7 @@
   import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
   import BerufsbilderBanner from "@/components/banners/BerufsbilderBanner.vue";
   import TrainingCatalogueSmallBanner from "@/components/banners/TrainingCatalogueSmallBanner.vue";
+  import SubscribeNewsletterBtn from "@/components/buttons/SubscribeNewsletterBtn.vue";
   // import { getHereServiceMixin } from "@/mixins/getHereServiceMixin.js";
   export default {
     name: "Jobboard",
@@ -438,7 +447,8 @@
       TwitterBtn,
       RandomTrainingsContainer,
       BerufsbilderBanner,
-      TrainingCatalogueSmallBanner
+      TrainingCatalogueSmallBanner,
+      SubscribeNewsletterBtn
     },
     // mixins: [getHereServiceMixin],
     data() {
@@ -531,7 +541,7 @@
           {
             rel: "canonical",
             href: `${this.$config.website.url +
-              `stellenangebote${
+              `/stellenangebote${
                 this.$route.params.location ||
                 this.$route.query.location ||
                 this.$route.query.state
@@ -594,7 +604,9 @@
     },
     methods: {
       async getJobs(limit = "", offset = "") {
-        clearTimeout(this.loadMoreJobsTimeoutId);
+        this.loadMoreJobsTimeoutId
+          ? clearTimeout(this.loadMoreJobsTimeoutId)
+          : null;
         this.errors = null;
         this.nojobs = false;
         this.filteredJobs = offset > 0 ? this.filteredJobs : [];

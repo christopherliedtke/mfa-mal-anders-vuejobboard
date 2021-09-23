@@ -48,8 +48,8 @@
                 class="shadow1"
                 variant="secondary"
                 :to="`/stellenangebote?s=${searchTerm}`"
-                ><Fa icon="search"
-              /></b-button>
+                ><Fa icon="search" /> <span class="sr-only">Suchen</span>
+              </b-button>
             </b-input-group-append>
           </b-input-group>
         </b-form>

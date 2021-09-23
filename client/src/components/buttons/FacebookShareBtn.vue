@@ -1,6 +1,7 @@
 <template>
   <b-button
     variant="primary"
+    :size="size"
     class="facebook-share-btn"
     :href="
       `https://www.facebook.com/sharer/sharer.php?u=${url}${
@@ -21,7 +22,8 @@
     name: "FacebookShareBtn",
     props: {
       sharePath: { type: String, default: "" },
-      content: { type: String, default: "Teilen" }
+      content: { type: String, default: "Teilen" },
+      size: { type: String, default: "" }
     },
     data() {
       return {

@@ -581,7 +581,7 @@
           {
             id: "canonical",
             rel: "canonical",
-            href: `${this.$config.website.url}job/${this.job._id}`
+            href: `${this.$config.website.url}/job/${this.job._id}`
           }
         ];
       }

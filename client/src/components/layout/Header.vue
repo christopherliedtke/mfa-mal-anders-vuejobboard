@@ -280,6 +280,7 @@
               size="lg"
               to="/auth/register"
               ><Fa style="margin: 0.1rem" icon="user-plus" size="sm" />
+              <span class="sr-only">Registrieren</span>
             </b-button>
           </div>
         </nav>

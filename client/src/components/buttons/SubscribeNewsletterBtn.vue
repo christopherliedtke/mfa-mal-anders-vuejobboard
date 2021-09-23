@@ -3,13 +3,28 @@
     <b-button v-if="$store.state.auth.loggedIn" to="/user/dashboard?tab=6">{{
       state ? "Abonniere Jobs für " + state : "Abonniere den Job Newsletter"
     }}</b-button>
-    <b-button v-else v-b-modal.subscribe-newsletter-modal2 variant="secondary">
+    <b-button
+      v-else
+      v-b-modal.subscribe-newsletter-modal2
+      :variant="variant"
+      :size="size"
+    >
       {{
         state ? "Abonniere Jobs für " + state : "Abonniere den Job Newsletter"
       }}</b-button
     >
-    <BModal id="subscribe-newsletter-modal2" hide-footer centered>
-      <NewsletterSignUpForm class="p-3" :default-state="state" />
+    <BModal
+      id="subscribe-newsletter-modal2"
+      ref="subscribe-newsletter-modal2"
+      hide-footer
+      hide-header
+      centered
+    >
+      <NewsletterSignUpForm
+        class="p-3"
+        :default-state="state"
+        @close="$refs['subscribe-newsletter-modal2'].hide()"
+      />
     </BModal>
   </div>
 </template>
@@ -25,6 +40,10 @@
     components: {
       NewsletterSignUpForm
     },
-    props: { state: { type: String, default: "" } }
+    props: {
+      state: { type: String, default: "" },
+      variant: { type: String, default: "secondary" },
+      size: { type: String, default: "" }
+    }
   };
 </script>

@@ -1,6 +1,7 @@
 <template>
   <b-button
     variant="secondary"
+    :size="size"
     :disabled="!$route.meta.public"
     class="email-share-btn"
     :href="
@@ -23,7 +24,8 @@
     name: "EmailShareBtn",
     props: {
       sharePath: { type: String, default: "" },
-      subject: { type: String, default: "" }
+      subject: { type: String, default: "" },
+      size: { type: String, default: "" }
     },
     data() {
       return {
