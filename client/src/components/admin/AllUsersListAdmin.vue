@@ -159,6 +159,10 @@
             sortable: true
           },
           {
+            key: "isEducational",
+            sortable: true
+          },
+          {
             key: "isEmployee",
             sortable: true
           },
@@ -209,20 +213,21 @@
           const users = await this.$axios.get("/graphql", {
             params: {
               query: `
-                                query {
-                                    adminUsers {
-                                        _id
-                                        createdAt
-                                        updatedAt
-                                        firstName
-                                        lastName
-                                        email
-                                        status
-                                        isEmployer
-                                        isEmployee
-                                    }
-                                }
-                            `
+                  query {
+                    adminUsers {
+                      _id
+                      createdAt
+                      updatedAt
+                      firstName
+                      lastName
+                      email
+                      status
+                      isEmployer
+                      isEmployee
+                      isEducational
+                    }
+                  }
+              `
             }
           });
 
@@ -255,12 +260,12 @@
         try {
           const deletedUser = await this.$axios.post("/graphql", {
             query: `
-                            mutation {
-                                adminDeleteUser(_id: "${userId}") {
-                                    _id
-                                }
-                            }
-                        `
+              mutation {
+                adminDeleteUser(_id: "${userId}") {
+                  _id
+                }
+              }
+            `
           });
 
           if (!deletedUser.data.data.adminDeleteUser) {
@@ -290,20 +295,21 @@
         try {
           const updatedUser = await this.$axios.post("/graphql", {
             query: `
-                                mutation {
-                                    adminUpdateUser(_id: "${userId}" status: "${status}") {
-                                        _id
-                                        createdAt
-                                        updatedAt
-                                        firstName
-                                        lastName
-                                        email
-                                        status
-                                        isEmployer
-                                        isEmployee
-                                    }
-                                }
-                            `
+              mutation {
+                adminUpdateUser(_id: "${userId}" status: "${status}") {
+                  _id
+                  createdAt
+                  updatedAt
+                  firstName
+                  lastName
+                  email
+                  status
+                  isEmployer
+                  isEmployee
+                  isEducational
+                }
+              }
+            `
           });
 
           if (updatedUser.data.errors) {
@@ -337,12 +343,12 @@
         try {
           const response = await this.$axios.post("/graphql", {
             query: `
-                            mutation {
-                                adminUserActivationConfirmation (_id: "${userId}") {
-                                    _id
-                                }
-                            }
-                        `
+              mutation {
+                adminUserActivationConfirmation (_id: "${userId}") {
+                  _id
+                }
+              }
+            `
           });
 
           if (response.data.errors) {
