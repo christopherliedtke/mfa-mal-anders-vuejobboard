@@ -606,8 +606,6 @@
             jederzeit anpassen. Die Änderungen werden sofort automatisch
             übernommen.
           </p>
-        </b-col>
-        <b-col>
           <h3 class="h5 bold">
             Wie lange ist meine Stellenanzeige online?
           </h3>
@@ -622,6 +620,8 @@
             <b-link to="/kontakt?role=employer">Kontaktformular</b-link>
             kontaktieren.
           </p>
+        </b-col>
+        <b-col>
           <h3 class="h5 bold">
             Wo wird meine Stellenanzeige veröffentlicht?
           </h3>
@@ -647,6 +647,20 @@
             melden Sie sich gern auch über das
             <b-link to="/kontakt?role=employer">Kontaktformular</b-link> bei
             uns.
+          </p>
+          <h3 class="h5 bold">
+            Kann ich als Agentur eine Stellenanzeige veröffentlichen?
+          </h3>
+          <p>
+            Ja, Sie können als Vertreter einer Agentur Stellenanzeigen bei MFA
+            mal anders veröffentlichen. Dazu registrieren Sie sich als
+            Arbeitgeber und erstellen anschließend wie gewünscht Ihre
+            Stellenanzeige. Die zu den Kunden zugehörigen Kontaktdaten
+            (Unternehmen, AnsprechpartnerIn, E-Mail oder Link für Bewerbungen)
+            können Sie individuell für jede Stellenanzeige hinterlegen. Da wir
+            nicht mit Personalvermittlungen zusammen arbeiten, ist wichtig, dass
+            Sie als Agentur nicht als Dritte im Bewerbungsprozess auftreten.
+            D.h. Bewerbungen laufen ausschließlich über Ihre Kunden.
           </p>
         </b-col>
       </b-row>
@@ -864,6 +878,7 @@
       //     this.startCounters();
       //   }
       // }, 500);
+      this.scrollToHash();
     },
     methods: {
       startCounters() {
@@ -874,6 +889,14 @@
             }
           }, 1);
         });
+      },
+      scrollToHash() {
+        if (this.$route.hash) {
+          const elem = window.document.getElementById(
+            this.$route.hash.replace("#", "")
+          );
+          elem.scrollIntoView({ behavior: "smooth" });
+        }
       }
     }
   };
