@@ -6,24 +6,24 @@
     </main>
     <Footer />
     <Overlay />
-    <!-- <NewsletterSignUpPopUp /> -->
+    <NewsletterSignUpPopUp />
   </div>
 </template>
 
 <script>
   import Header from "@/components/layout/Header";
   import Footer from "@/components/layout/Footer";
-  // const NewsletterSignUpPopUp = () =>
-  //   import(
-  //     /* webpackChunkName: "newsletterSignUpPopUp" */ "@/components/popups/NewsletterSignUpPopUp.vue"
-  //   );
+  const NewsletterSignUpPopUp = () =>
+    import(
+      /* webpackChunkName: "newsletterSignUpPopUp" */ "@/components/popups/NewsletterSignUpPopUp.vue"
+    );
   const Overlay = () =>
     import(/* webpackChunkName: "overlay" */ "@/components/utils/Overlay");
   export default {
     components: {
       Header,
       Footer,
-      // NewsletterSignUpPopUp,
+      NewsletterSignUpPopUp,
       Overlay
     },
     watch: {
