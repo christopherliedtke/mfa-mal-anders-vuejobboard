@@ -118,7 +118,8 @@ const PaymentResolvers = {
       delete updateObj._id;
 
       const oldPayment = await Payment.findOne({ _id: args._id });
-      updateObj.pricingPackage = oldPayment.pricingPackage || "basis";
+      updateObj.pricingPackage =
+        updateObj.pricingPackage || oldPayment.pricingPackage || "Basis";
 
       console.log("oldPayment: ", oldPayment);
 
