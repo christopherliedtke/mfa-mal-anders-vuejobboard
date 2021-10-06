@@ -22,33 +22,35 @@
             }}
             gesucht?
           </h2>
+          <h3 class="">
+            <em>
+              Schalten Sie Ihre Stellenanzeige <br />
+              auf der reichweitenstärksten Karriereplattform <br />
+              speziell für MFA & ZFA
+            </em>
+          </h3>
           <ul class="lead no-bullets my-4 my-lg-5">
             <li class="d-flex">
               <Fa icon="check" class="mr-3 mt-1" />
               <div>
                 Einfach und bequem
-                <span class="text-secondary">in wenigen Minuten</span>
-                Ihre Stellenanzeige veröffentlichen
+                <span class="text-secondary">in wenigen Schritten</span>
               </div>
             </li>
             <li class="d-flex">
               <Fa icon="check" class="mr-3 mt-1" />
               <div>
-                Erreichen Sie
-                <span class="text-secondary"
-                  >engagierte potentielle MitarbeiterInnen</span
-                >
-                über unsere spezielle Karriereplattform nur für MFA & ZFA
+                Erreichen Sie exklusiv
+                <span class="text-secondary">engagierte MFA & ZFA</span>
+                über unsere spezielle Karriereplattform
               </div>
             </li>
             <li class="d-flex">
               <Fa icon="check" class="mr-3 mt-1" />
               <div>
-                <span class="text-secondary"
-                  >Erhalten Sie mit uns mehr Reichweite</span
-                >
-                über Google, Google Jobs, Social Media und unsere MFA & ZFA
-                Community
+                <span class="text-secondary">Erhalten Sie mehr Reichweite</span>
+                über unseren Jobnewsletter, Google, Google Jobs, Social Media
+                und unsere MFA & ZFA Community
               </div>
             </li>
             <li class="d-flex">
@@ -285,7 +287,10 @@
           <p>
             Zur Veröffentlichung Ihrer Stellenanzeige bieten wir verschiedene
             Pakete an, um Sie bei Ihrer MitarbeiterInnen-Suche optimal
-            unterstützen und ergänzen zu können.
+            unterstützen und ergänzen zu können. In der Regel empfehlen wir
+            Ihnen unser beliebtes
+            <strong class="text-secondary">Standard Paket</strong>, um die
+            Reichweite Ihrer Stellenanzeige zu optimieren.
           </p>
         </div>
         <b-row cols="1" cols-lg="3" class="mb-4">
