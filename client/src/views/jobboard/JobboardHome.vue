@@ -59,6 +59,11 @@
           >
             <label for="location-jobboard" class="sr-only">Ort / PLZ</label>
             <b-input-group class="mb-2 mr-2">
+              <template #prepend>
+                <b-input-group-text class="bg-secondary text-light border-0"
+                  ><Fa :icon="['fas', 'map-marker']"
+                /></b-input-group-text>
+              </template>
               <b-form-input
                 id="location-jobboard"
                 v-model="filter.location"
@@ -101,6 +106,11 @@
             <b-collapse id="advanced-search" v-model="showAdvancedSearch">
               <label for="s-jobboard" class="sr-only">Suchbegriff</label>
               <b-input-group class="mb-2 mr-2">
+                <template #prepend>
+                  <b-input-group-text class="bg-secondary text-light border-0"
+                    ><Fa icon="search"
+                  /></b-input-group-text>
+                </template>
                 <b-form-input
                   id="s-jobboard"
                   v-model="filter.s"
@@ -123,29 +133,36 @@
                 </b-input-group-append>
               </b-input-group>
               <label for="employmentType-jobboard" class="sr-only"
-                >Anstellungsart *</label
+                >Anstellungsart</label
               >
-              <b-form-select
-                id="employmentType-jobboard"
-                v-model="filter.employmentType"
-                class="mb-2 mr-2"
-                @change="
-                  () => {
-                    getJobs();
-                    setQuery();
-                  }
-                "
-              >
-                <b-form-select-option :value="''"
-                  >Alle Anstellungsarten</b-form-select-option
+              <b-input-group class="mb-2 mr-2">
+                <template #prepend>
+                  <b-input-group-text class="bg-secondary text-light border-0"
+                    ><Fa :icon="['fas', 'briefcase']"
+                  /></b-input-group-text>
+                </template>
+                <b-form-select
+                  id="employmentType-jobboard"
+                  v-model="filter.employmentType"
+                  class=""
+                  @change="
+                    () => {
+                      getJobs();
+                      setQuery();
+                    }
+                  "
                 >
-                <b-form-select-option
-                  v-for="type in employmentTypeOptions"
-                  :key="type.value"
-                  :value="type.value"
-                  >{{ type.text }}</b-form-select-option
-                >
-              </b-form-select>
+                  <b-form-select-option :value="''"
+                    >Alle Anstellungsarten</b-form-select-option
+                  >
+                  <b-form-select-option
+                    v-for="type in employmentTypeOptions"
+                    :key="type.value"
+                    :value="type.value"
+                    >{{ type.text }}</b-form-select-option
+                  >
+                </b-form-select>
+              </b-input-group>
 
               <!-- <b-form-datalist
               id="location-list"
