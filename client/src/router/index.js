@@ -7,18 +7,43 @@ Vue.use(VueRouter);
 import store from "@/store";
 
 // #Views
-const Home = () => import("@/views/Home.vue");
-const About = () => import("@/views/About.vue");
-const AGBs = () => import("@/views/AGBs.vue");
-const Contact = () => import("@/views/Contact.vue");
-const Linktree = () => import("@/views/Linktree.vue");
-const Employer = () => import("@/views/Employer.vue");
-const Impressum = () => import("@/views/Impressum.vue");
-const PrivacyPolicy = () => import("@/views/PrivacyPolicy.vue");
+const Home = () =>
+  import(
+    /* webpackChunkName: "home" */
+    /* webpackPrefetch: true */
+    "@/views/Home.vue"
+  );
+const Employer = () =>
+  import(
+    /* webpackChunkName: "employer" */
+    /* webpackPrefetch: true */
+    "@/views/Employer.vue"
+  );
+
+const About = () => import(/* webpackChunkName: "about" */ "@/views/About.vue");
+const Contact = () =>
+  import(/* webpackChunkName: "contact" */ "@/views/Contact.vue");
+const AGBs = () => import(/* webpackChunkName: "agbs" */ "@/views/AGBs.vue");
+const Linktree = () =>
+  import(/* webpackChunkName: "linktree" */ "@/views/Linktree.vue");
+const Impressum = () =>
+  import(/* webpackChunkName: "impressum" */ "@/views/Impressum.vue");
+const PrivacyPolicy = () =>
+  import(/* webpackChunkName: "privacy" */ "@/views/PrivacyPolicy.vue");
 
 // #Blog
-const Blog = () => import("@/views/blog/Blog.vue");
-const Article = () => import("@/views/blog/article/_slug.vue");
+const Blog = () =>
+  import(
+    /* webpackChunkName: "blog" */
+    /* webpackPrefetch: true */
+    "@/views/blog/Blog.vue"
+  );
+const Article = () =>
+  import(
+    /* webpackChunkName: "blog" */
+    /* webpackPrefetch: true */
+    "@/views/blog/article/_slug.vue"
+  );
 
 // #Newsletter
 const NewsletterSubscriptionSuccess = () =>
@@ -40,61 +65,93 @@ const NewsletterUnsubscriptionSuccess = () =>
 
 // #Career
 const CareerHome = () =>
-  import(/* webpackChunkName: "career" */ "@/views/career/CareerHome.vue");
+  import(
+    /* webpackChunkName: "career" */
+    /* webpackPrefetch: true */
+    "@/views/career/CareerHome.vue"
+  );
 const CareerMfaAusbildung = () =>
   import(
-    /* webpackChunkName: "career" */ "@/views/career/mfa/CareerMfaAusbildung.vue"
+    /* webpackChunkName: "career" */
+    /* webpackPrefetch: true */
+    "@/views/career/mfa/CareerMfaAusbildung.vue"
   );
 const CareerMfaGehalt = () =>
   import(
-    /* webpackChunkName: "career-mfa-gehalt" */ "@/views/career/mfa/CareerMfaGehalt.vue"
+    /* webpackChunkName: "career-mfa-gehalt" */
+    /* webpackPrefetch: true */
+    "@/views/career/mfa/CareerMfaGehalt.vue"
   );
 const CareerZfaGehalt = () =>
   import(
-    /* webpackChunkName: "career-zfa-gehalt" */ "@/views/career/zfa/CareerZfaGehalt.vue"
+    /* webpackChunkName: "career-zfa-gehalt" */
+    /* webpackPrefetch: true */
+    "@/views/career/zfa/CareerZfaGehalt.vue"
   );
 const CareerBewerbungstipps = () =>
   import(
-    /* webpackChunkName: "career" */ "@/views/career/CareerBewerbungstipps.vue"
+    /* webpackChunkName: "career" */
+    /* webpackPrefetch: true */
+    "@/views/career/CareerBewerbungstipps.vue"
   );
 
 const CareerJobsBerufsbilderHome = () =>
   import(
-    /* webpackChunkName: "career-profession" */ "@/views/career/jobs-berufsbilder/CareerJobsBerufsbilderHome.vue"
+    /* webpackChunkName: "career-profession" */
+    /* webpackPrefetch: true */
+    "@/views/career/jobs-berufsbilder/CareerJobsBerufsbilderHome.vue"
   );
 const CareerBerufsbildType = () =>
   import(
-    /* webpackChunkName: "career-profession" */ "@/views/career/jobs-berufsbilder/CareerBerufsbildType.vue"
+    /* webpackChunkName: "career-profession" */
+    /* webpackPrefetch: true */
+    "@/views/career/jobs-berufsbilder/CareerBerufsbildType.vue"
   );
 const CareerBerufsbildProfession = () =>
   import(
-    /* webpackChunkName: "career-profession" */ "@/views/career/jobs-berufsbilder/CareerBerufsbildProfession.vue"
+    /* webpackChunkName: "career-profession" */
+    /* webpackPrefetch: true */
+    "@/views/career/jobs-berufsbilder/CareerBerufsbildProfession.vue"
   );
 
 const CareerFortWeiterbildungenHome = () =>
   import(
-    /* webpackChunkName: "career-training" */ "@/views/career/fort-weiterbildungen/CareerFortWeiterbildungenHome.vue"
+    /* webpackChunkName: "career-training" */
+    /* webpackPrefetch: true */
+    "@/views/career/fort-weiterbildungen/CareerFortWeiterbildungenHome.vue"
   );
 const CareerFortWeiterbildung = () =>
   import(
-    /* webpackChunkName: "career-training" */ "@/views/career/fort-weiterbildungen/CareerFortWeiterbildung.vue"
+    /* webpackChunkName: "career-training" */
+    /* webpackPrefetch: true */
+    "@/views/career/fort-weiterbildungen/CareerFortWeiterbildung.vue"
   );
 const CareerFortWeiterbildungenCatalogue = () =>
   import(
-    /* webpackChunkName: "career-training" */ "@/views/career/fort-weiterbildungen/CareerFortWeiterbildungenCatalogue.vue"
+    /* webpackChunkName: "career-training" */
+    /* webpackPrefetch: true */
+    "@/views/career/fort-weiterbildungen/CareerFortWeiterbildungenCatalogue.vue"
   );
 const CareerFortWeiterbildungenCatalogueTraining = () =>
   import(
-    /* webpackChunkName: "career-training" */ "@/views/career/fort-weiterbildungen/training/_id.vue"
+    /* webpackChunkName: "career-training" */
+    /* webpackPrefetch: true */
+    "@/views/career/fort-weiterbildungen/training/_id.vue"
   );
 
 // #Jobboard
 const Jobboard = () =>
   import(
-    /* webpackChunkName: "jobboard" */ "@/views/jobboard/JobboardHome.vue"
+    /* webpackChunkName: "jobboard" */
+    /* webpackPrefetch: true */
+    "@/views/jobboard/JobboardHome.vue"
   );
 const JobView = () =>
-  import(/* webpackChunkName: "job" */ "@/views/jobboard/job/JobView.vue");
+  import(
+    /* webpackChunkName: "job" */
+    /* webpackPrefetch: true */
+    "@/views/jobboard/job/JobView.vue"
+  );
 
 // #Auth
 const AuthLogin = () =>
@@ -165,7 +222,8 @@ const AdminEditPayment = () =>
   );
 
 // #404
-const NotFound = () => import("@/views/NotFound.vue");
+const NotFound = () =>
+  import(/* webpackChunkName: "not_found" */ "@/views/NotFound.vue");
 
 // #Routes
 const routes = [
