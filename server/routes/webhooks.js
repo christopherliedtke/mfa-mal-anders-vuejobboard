@@ -140,6 +140,20 @@ router.post("/checkout-completed", async (req, res) => {
 
       const invoice = await createInvoice(payment, __dirname + "/../invoices/");
 
+      try {
+        await stripe.paymentIntents.update(
+          req.body.data.object["payment_intent"],
+          {
+            description:
+              "RE-" +
+              "000000".slice(0, 6 - payment.invoiceNo.toString().length) +
+              payment.invoiceNo.toString(),
+          }
+        );
+      } catch (err) {
+        console.log("Error on updating paymentIntent in /webhooks: ", err);
+      }
+
       await saveInvoiceToGDrive(invoice.path, invoice.fileName);
 
       await jobToAsanaTask(updatedJob);
