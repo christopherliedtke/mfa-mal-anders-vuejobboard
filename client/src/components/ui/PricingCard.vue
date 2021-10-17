@@ -25,10 +25,15 @@
       </span>
     </div>
     <div class="p-3">
-      <span class="display-3 text-center d-block"
-        ><span class="bold">{{ pricing.price / 100 }}</span
-        ><span>€</span></span
-      >
+      <div>
+        <span class="display-3 text-center d-block"
+          ><span class="bold">{{ pricing.price / 100 }}</span
+          ><span>€</span></span
+        >
+      </div>
+      <div v-if="$config.payment.tax" class="small text-center">
+        (zzgl. USt.)
+      </div>
     </div>
     <hr class="bg-light-shade" />
     <div class="p-3 p-lg-4">

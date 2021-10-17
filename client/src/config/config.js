@@ -139,14 +139,16 @@ module.exports = {
     }
   ],
   payment: {
-    minCost: 3900,
-    mediumCost: 6500,
-    largeCost: 12000,
-    xLargeCost: 25000,
-    maxCost: 30000,
-    refreshCost: 15000,
-    invoiceCost: 500,
+    // minCost: 3900,
+    // mediumCost: 6500,
+    // largeCost: 12000,
+    // xLargeCost: 25000,
+    // maxCost: 30000,
+    // refreshCost: 15000,
+    // invoiceCost: 500,
     currency: "EUR",
-    duration: 60
+    minDuration: 60,
+    tax:
+      new Date().getTime() < new Date("2022-01-01 00:00:00").getTime() ? 0 : 0
   }
 };

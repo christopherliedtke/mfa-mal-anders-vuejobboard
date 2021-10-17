@@ -264,7 +264,7 @@
           paidAt: new Date().setHours(0),
           paymentExpiresAt:
             new Date().setHours(24) +
-            1000 * 60 * 60 * 24 * this.$config.payment.duration
+            1000 * 60 * 60 * 24 * this.$config.payment.minDuration
         },
         contactGenderOptions,
         contactTitleOptions

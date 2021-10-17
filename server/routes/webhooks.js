@@ -24,6 +24,7 @@ router.post("/checkout-completed", async (req, res) => {
 
   let { refreshFrequency } = req.body.data.object.metadata;
   const amount = req.body.data.object["amount_total"];
+  const tax = Math.round(amount * config.invoice.sender(new Date()).tax);
 
   try {
     const intent = await stripe.paymentIntents.retrieve(
@@ -53,16 +54,17 @@ router.post("/checkout-completed", async (req, res) => {
         .limit(1);
 
       const invoiceNo = lastInvoiceNo[0].invoiceNo + 1;
+      const invoiceDate = new Date().getTime();
 
       const paymentObj = {
         status: "paid",
         invoiceNo,
-        invoiceDate: new Date(),
+        invoiceDate,
         paymentType: "stripe",
         pricingPackage,
         amount,
+        taxes: tax,
         fee: config.stripe.feeFix + config.stripe.feeVar * amount,
-        taxes: config.payment.tax * amount,
         billingEmail: succeededCharge["billing_details"].email,
         billingCompany: job ? job.company.name : "",
         billingDepartment: "",

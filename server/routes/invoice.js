@@ -29,7 +29,7 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
       billingAddress,
     } = req.body;
 
-    const amount = config.payment.pricingPackages.find(
+    let amount = config.payment.pricingPackages.find(
       pkg => pkg.name.toLowerCase() === pricingPackage.toLowerCase()
     ).price;
     let refreshFrequency = config.payment.pricingPackages.find(
@@ -58,21 +58,26 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
       refreshFrequency = validatedCoupon.refreshFrequency;
     }
 
+    amount = Math.round(parseInt(amount) * (1 - discount));
+    const tax = Math.round(amount * config.invoice.sender(new Date()).tax);
+    amount += tax;
+
     const lastInvoiceNo = await Payment.find({}, "invoiceNo")
       .sort({ invoiceNo: -1 })
       .limit(1);
 
     const invoiceNo = lastInvoiceNo[0].invoiceNo + 1;
+    const invoiceDate = new Date().getTime();
 
     const paymentObj = {
       status: "pending",
       paymentType: paymentMethod,
       invoiceNo,
-      invoiceDate: new Date(),
+      invoiceDate,
       pricingPackage,
-      amount: parseInt(amount) * (1 - discount),
+      amount,
       fee: 0,
-      taxes: config.payment.tax * amount,
+      taxes: tax,
       paymentExpiresAt: new Date(
         new Date().setHours(24) +
           1000 * 60 * 60 * 24 * config.payment.paymentExpirationDays
@@ -131,7 +136,7 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
         "000000".slice(0, 6 - payment.invoiceNo.toString().length) +
         payment.invoiceNo.toString()
       }] - ${pricingPackage} | ${
-        (parseInt(payment.amount) * (1 - payment.discount)) / 100
+        parseInt(payment.amount) / 100
       }€ - Veröffentlichung Ihrer Stellenanzeige '${jobTitle}'`,
       html: `
                 <p>
@@ -189,13 +194,6 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
           path: invoice.path,
           contentType: "application/pdf",
         },
-        // {
-        //   filename: "MfaMalAnders_logo_circle_dark.png",
-        //   path:
-        //     __dirname +
-        //     "/../../client/public/img/MfaMalAnders_logo_circle_dark.png",
-        //   cid: "mfa-mal-anders-logo", //same cid value as in the html img src
-        // },
       ],
     };
 

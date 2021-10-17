@@ -62,6 +62,9 @@
                   {{ $config.pricingPackages[0].price / 100 }}
                   {{ $config.payment.currency }}</b-link
                 >
+                <span v-if="$config.payment.tax" class="small">
+                  (zzgl. USt.)</span
+                >
               </div>
             </li>
           </ul>
@@ -208,8 +211,10 @@
                 ab
                 {{ $config.pricingPackages[0].price / 100 }}
                 {{ $config.payment.currency }}
-                für {{ $config.pricingPackages[0].duration }} Tage.
+                für {{ $config.pricingPackages[0].duration }} Tage
               </strong>
+              <span v-if="$config.payment.tax" class="small"> (zzgl. USt.)</span
+              >.
             </p>
           </div>
         </b-col>

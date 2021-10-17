@@ -27,7 +27,7 @@ router.post("/job/create-session-id", verifyToken, async (req, res) => {
 
     const { pricingPackage, code } = req.body;
 
-    const amount = config.payment.pricingPackages.find(
+    let amount = config.payment.pricingPackages.find(
       pkg => pkg.name.toLowerCase() === pricingPackage.toLowerCase()
     ).price;
     let refreshFrequency = config.payment.pricingPackages.find(
@@ -59,6 +59,10 @@ router.post("/job/create-session-id", verifyToken, async (req, res) => {
     }
     // const couponRefreshFrequency = validatedCoupon.refreshFrequency || 0;
 
+    amount = Math.round(amount * (1 - discount));
+    const tax = Math.round(amount * config.invoice.sender(new Date()).tax);
+    amount += tax;
+
     const session = await stripe.checkout.sessions.create({
       customer_email: req.user.email,
       client_reference_id: req.user._id,
@@ -72,7 +76,7 @@ router.post("/job/create-session-id", verifyToken, async (req, res) => {
               description: `Veröffentlichung Ihrer Stellenanzeige "${req.body.title}" auf ${config.website.name} | Paket '${pricingPackage}'`,
               images: [],
             },
-            unit_amount: Math.round(amount * (1 - discount)),
+            unit_amount: amount,
           },
           quantity: 1,
         },

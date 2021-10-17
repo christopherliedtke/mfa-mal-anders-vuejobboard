@@ -4,7 +4,8 @@
     <b-container class="checkout py-3 py-lg-5">
       <div>
         <h2 class="mb-4">
-          <strong>{{ job && job.title }}</strong>
+          <!-- eslint-disable-next-line -->
+          <strong v-if="job && job.title" v-html="job.title"></strong>
         </h2>
         <p class="mb-4">
           Bitte wählen Sie Ihr gewünschtes Stellenpaket.
@@ -436,15 +437,17 @@
     },
     computed: {
       amountComputed() {
-        return (
-          Math.round(
-            this.$config.pricingPackages.find(
-              pkg => pkg.name === this.checkout.pricingPackage
-            ).price *
-              (1 - this.checkout.coupon.discount) *
-              100
-          ) / 100
+        const amount = Math.round(
+          this.$config.pricingPackages.find(
+            pkg => pkg.name === this.checkout.pricingPackage
+          ).price *
+            (1 - this.checkout.coupon.discount) *
+            100
         );
+
+        const tax = Math.round(amount * this.$config.payment.tax);
+
+        return (amount + tax) / 100;
       },
       refreshFrequencyComputed() {
         let value = 0;

@@ -694,7 +694,7 @@
           this.publishedAt = new Date();
           this.paidExpiresAt = new Date(
             new Date().valueOf() +
-              1000 * 60 * 60 * 24 * this.$config.payment.duration
+              1000 * 60 * 60 * 24 * this.$config.payment.minDuration
           );
         }
       },

@@ -30,24 +30,26 @@ const createInvoice = (payment, pathToSave) => {
         "000000".slice(0, 6 - payment.invoiceNo.toString().length) +
         payment.invoiceNo.toString();
 
-      const bankAccount =
-        new Date(payment.invoiceDate).getTime() < config.invoice.changeDate
-          ? config.invoice.bankAccountOld
-          : config.invoice.bankAccount;
-      const sender =
-        new Date(payment.invoiceDate).getTime() < config.invoice.changeDate
-          ? config.invoice.senderOld
-          : config.invoice.sender;
+      const sender = config.invoice.sender(payment.invoiceDate);
+
+      // const bankAccount =
+      //   new Date(payment.invoiceDate).getTime() < config.invoice.changeDate
+      //     ? config.invoice.bankAccountOld
+      //     : config.invoice.bankAccount;
+      // const sender =
+      //   new Date(payment.invoiceDate).getTime() < config.invoice.changeDate
+      //     ? config.invoice.senderOld
+      //     : config.invoice.sender;
 
       let doc = new PDFDocument({
         size: "A4",
         margins: { top: 50, bottom: 15, left: 50, right: 50 },
       }).font("Helvetica");
 
-      generateHeader(doc, bankAccount, sender);
+      generateHeader(doc, sender);
       generateCustomerInformation(doc, payment);
-      generateBody(doc, payment, bankAccount, sender);
-      generateFooter(doc, bankAccount, sender);
+      generateBody(doc, payment, sender);
+      generateFooter(doc, sender);
 
       doc.end();
 
@@ -76,7 +78,7 @@ const createInvoice = (payment, pathToSave) => {
 
 module.exports = createInvoice;
 
-function generateHeader(doc, bankAccount, sender) {
+function generateHeader(doc, sender) {
   doc
     .image(
       __dirname +
@@ -101,6 +103,7 @@ function generateHeader(doc, bankAccount, sender) {
       50,
       105,
       {
+        width: 200,
         align: "left",
         underline: true,
         oblique: true,
@@ -142,6 +145,7 @@ function generateCustomerInformation(doc, payment) {
     .text("Rechnungsnummer:", 340, 140, { align: "left" })
     .text("Rechnungsdatum:", 340, 155, { align: "left" })
     .text("Ihr Ansprechpartner:", 340, 170, { align: "left" })
+    .text("Status:", 340, 185, { align: "left" })
     .font("Helvetica")
     .text(payment.invoiceNoLong, 450, 140, { align: "right" })
     .text(
@@ -151,10 +155,13 @@ function generateCustomerInformation(doc, payment) {
       { align: "right" }
     )
     .text("Kristin Maurach", 450, 170, { align: "right" })
+    .text(payment.status === "paid" ? "bezahlt" : "offen", 450, 185, {
+      align: "right",
+    })
     .moveDown();
 }
 
-function generateBody(doc, payment, bankAccount, sender) {
+function generateBody(doc, payment, sender) {
   let position = 250;
 
   doc
@@ -188,7 +195,11 @@ function generateBody(doc, payment, bankAccount, sender) {
     .font("Helvetica")
     .fontSize(8)
     .text(
-      "Zahlungsbedingungen: Der Rechnungsbetrag ist innerhalb von 14 Tagen ohne Abzüge ab Rechnungseingang fällig. Gemäß § 19 UStG erheben wir keine Umsatzsteuer und weisen diese folglich auch nicht aus. Die Preise sind Endpreise.",
+      `Zahlungsbedingungen: Der Rechnungsbetrag ist innerhalb von 14 Tagen ohne Abzüge ab Rechnungseingang fällig.${
+        sender.taxFree
+          ? " Gemäß § 19 UStG erheben wir keine Umsatzsteuer und weisen diese folglich auch nicht aus. Die Preise sind Endpreise."
+          : ""
+      }`,
       50,
       position,
       { width: 500 }
@@ -208,19 +219,19 @@ function generateBody(doc, payment, bankAccount, sender) {
   position += 65;
 
   doc
-    .text("Empfänger: " + bankAccount.receiver, 70, position, {
+    .text("Empfänger: " + sender.bankAccount.receiver, 70, position, {
       width: 500,
       oblique: true,
     })
-    .text("Bank: " + bankAccount.bank, 70, position + 12, {
+    .text("Bank: " + sender.bankAccount.bank, 70, position + 12, {
       width: 500,
       oblique: true,
     })
-    .text("IBAN: " + bankAccount.iban, 70, position + 24, {
+    .text("IBAN: " + sender.bankAccount.iban, 70, position + 24, {
       width: 500,
       oblique: true,
     })
-    .text("BIC: " + bankAccount.bic, 70, position + 36, {
+    .text("BIC: " + sender.bankAccount.bic, 70, position + 36, {
       width: 500,
       oblique: true,
     })
@@ -278,8 +289,10 @@ function generateInvoiceTable(doc, payment, position) {
     "Pos.",
     "Bezeichnung",
     "Menge",
-    "Einzelpreis",
-    "Gesamtpreis"
+    "Stückpreis",
+    "USt. %",
+    "USt.",
+    "Netto"
   );
 
   doc.font("Helvetica");
@@ -289,82 +302,122 @@ function generateInvoiceTable(doc, payment, position) {
   generateTableRow(
     doc,
     invoiceTableTop + 25,
+    // Position
     "1",
+    // Bezeichnung
     `Veröffentlichung Stellenanzeige ${
       payment.pricingPackage ? `| Paket ${payment.pricingPackage}` : ""
     }`,
+    // Menge
     "1",
-    `${(
+    // Stückpreis
+    (
       (parseInt(
         payment.amount -
           (payment.paymentType === "invoice" && !payment.pricingPackage
             ? config.invoice.feeFix
             : 0)
-      ) *
-        (1 - payment.discount)) /
+      ) -
+        payment.taxes) /
       100
     )
       .toFixed(2)
       .toString()
-      .replace(".", ",")}€`,
-    `${(
+      .replace(".", ","),
+    // USt. %
+    config.invoice.sender(payment.invoiceDate).tax * 100,
+    // USt.
+    (payment.taxes / 100).toFixed(2).toString().replace(".", ","),
+    // Netto
+    (
       (parseInt(
         payment.amount -
           (payment.paymentType === "invoice" && !payment.pricingPackage
             ? config.invoice.feeFix
             : 0)
-      ) *
-        (1 - payment.discount)) /
+      ) -
+        payment.taxes) /
       100
     )
       .toFixed(2)
       .toString()
-      .replace(".", ",")}€`
+      .replace(".", ",")
   );
 
   if (payment.paymentType === "invoice" && !payment.pricingPackage) {
     generateTableRow(
       doc,
       invoiceTableTop + 45,
+      // Position
       "2",
+      // Bezeichnung
       `Bearbeitungsgebühr - separate Rechnungsverarbeitung`,
+      // Menge
       "1",
-      `${(config.invoice.feeFix / 100)
+      // Stückpreis
+      (config.invoice.feeFix / 100).toFixed(2).toString().replace(".", ","),
+      // USt. %
+      config.invoice.sender(payment.invoiceDate).tax * 100,
+      // USt.
+      (
+        (config.invoice.feeFix *
+          config.invoice.sender(payment.invoiceDate).tax) /
+        100
+      )
         .toFixed(2)
         .toString()
-        .replace(".", ",")}€`,
-      `${(config.invoice.feeFix / 100)
-        .toFixed(2)
-        .toString()
-        .replace(".", ",")}€`
+        .replace(".", ","),
+      // Netto
+      (config.invoice.feeFix / 100).toFixed(2).toString().replace(".", ",")
     );
   }
 
   generateHr(doc, invoiceTableTop + 75);
 
+  generateTableRow(
+    doc,
+    invoiceTableTop + 85,
+    // Position
+    "",
+    // Bezeichnung
+    `Summe Positionen`,
+    // Menge
+    "",
+    // Stückpreis
+    "",
+    // USt. %
+    "",
+    // USt.
+    (payment.taxes / 100).toFixed(2).toString().replace(".", ","),
+    // Netto
+    (parseInt(payment.amount - payment.taxes) / 100)
+      .toFixed(2)
+      .toString()
+      .replace(".", ",")
+  );
+
   doc.font("Helvetica-Bold");
 
   generateTableRow(
     doc,
-    invoiceTableTop + 85,
+    invoiceTableTop + 105,
+    // Position
     "",
-    `Rechnungsbetrag`,
+    // Bezeichnung
+    `Gesamtbetrag EUR`,
+    // Menge
     "",
-    ``,
-    `${(
-      (parseInt(
-        payment.amount - (!payment.pricingPackage ? config.invoice.feeFix : 0)
-      ) *
-        (1 - payment.discount)) /
-        100 +
-      (!payment.pricingPackage ? config.invoice.feeFix / 100 : 0)
-    )
-      .toFixed(2)
-      .toString()
-      .replace(".", ",")}€`
+    // Stückpreis
+    "",
+    // USt. %
+    "",
+    // USt.
+    "",
+    // Netto
+    (parseInt(payment.amount) / 100).toFixed(2).toString().replace(".", ",")
   );
 
-  return invoiceTableTop + 110;
+  return invoiceTableTop + 125;
 }
 
 function generateTableRow(
@@ -374,14 +427,18 @@ function generateTableRow(
   description,
   units,
   pricePerUnit,
+  vatPercent,
+  vatAbsolute,
   lineTotal
 ) {
   doc
     .text(position, 50, y, { width: 30 })
-    .text(description, 80, y, { width: 240 })
-    .text(units, 330, y, { width: 40, align: "right" })
-    .text(pricePerUnit, 380, y, { width: 60, align: "right" })
-    .text(lineTotal, 450, y, { align: "right" })
+    .text(description, 80, y, { width: 200 })
+    .text(units, 280, y, { width: 35, align: "right" })
+    .text(pricePerUnit, 315, y, { width: 70, align: "right" })
+    .text(vatPercent, 385, y, { width: 40, align: "right" })
+    .text(vatAbsolute, 425, y, { width: 50, align: "right" })
+    .text(lineTotal, 475, y, { align: "right" })
     .moveDown();
 }
 
@@ -395,7 +452,7 @@ function generateHr(doc, y, color = "#222222", lineWidth = 1) {
     .moveDown();
 }
 
-function generateFooter(doc, bankAccount, sender) {
+function generateFooter(doc, sender) {
   let position = 780;
   doc
     .fontSize(8)
@@ -413,9 +470,9 @@ function generateFooter(doc, bankAccount, sender) {
   doc
     .fontSize(8)
     .fillColor("#888888")
-    .text(bankAccount.bank, 400, position)
-    .text("IBAN: " + bankAccount.iban, 400, position + 10)
-    .text("BIC: " + bankAccount.bic, 400, position + 20)
+    .text(sender.bankAccount.bank, 400, position)
+    .text("IBAN: " + sender.bankAccount.iban, 400, position + 10)
+    .text("BIC: " + sender.bankAccount.bic, 400, position + 20)
     .text("Steuernummer: " + sender.taxNum, 400, position + 30)
     .moveDown();
 }
