@@ -45,6 +45,7 @@
       <BBadge
         v-if="training.location && !training.remote"
         class="mr-1"
+        style="overflow: hidden; text-overflow: ellipsis; max-width: 100%"
         pill
         variant="secondary"
         ><Fa class="mr-1" :icon="['fas', 'map-marker']" size="sm" />{{
