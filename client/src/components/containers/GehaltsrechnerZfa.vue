@@ -1,7 +1,7 @@
 <template>
   <div class="gehaltsrechner p-4 border-radius2 shadow1">
     <h3>
-      Gehaltsrechner
+      ZFA Gehaltsrechner {{ year }}
       <div id="popover-zfa-gehaltsrechner">
         <Fa icon="info" />
       </div>
@@ -20,9 +20,11 @@
     </h3>
     <p>
       Gib Deine Daten ein und erhalte Dein Gehalt entsprechend des
-      Gehaltstarifvertrags* 2021 für Zahnmedizinische Fachangestellte (ZFA) /
-      ZahnarzthelferInnen in Voll- oder Teilzeit. <br />
-      <span class="small">(Stand 2021 | gültig ab 01.07.2021) </span>
+      Gehaltstarifvertrags* {{ year }} für Zahnmedizinische Fachangestellte
+      (ZFA) / ZahnarzthelferInnen in Voll- oder Teilzeit. <br />
+      <span class="small"
+        >(Stand {{ year }} | gültig ab 01.07.{{ year }})
+      </span>
     </p>
     <b-form>
       <b-form-select
@@ -87,6 +89,7 @@
           hoursOfEducation: null,
           workingHours: 38.89
         },
+        year: "2021",
         yearsOfExperienceOptions: [
           {
             value: null,

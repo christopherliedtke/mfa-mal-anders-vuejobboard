@@ -1,7 +1,7 @@
 <template>
   <div class="gehaltsrechner p-4 border-radius2 shadow1">
     <h3>
-      Gehaltsrechner
+      MFA Gehaltsrechner {{ year }}
       <div id="popover-mfa-gehaltsrechner">
         <Fa icon="info" />
       </div>
@@ -20,9 +20,11 @@
     </h3>
     <p>
       Gib Deine Daten ein und erhalte Dein Gehalt entsprechend des
-      Gehaltstarifvertrags* 2021 für Medizinische Fachangestellte (MFA) /
-      ArzthelferIn in Voll- oder Teilzeit. <br />
-      <span class="small">(Stand 2021 | gültig ab 01.01.2021) </span>
+      Gehaltstarifvertrags* für {{ year }} für Medizinische Fachangestellte
+      (MFA) / ArzthelferIn in Voll- oder Teilzeit. <br />
+      <span class="small"
+        >(Stand {{ year }} | gültig ab 01.01.{{ year }})
+      </span>
     </p>
     <b-form>
       <b-form-select
@@ -85,6 +87,7 @@
           hoursOfEducation: null,
           workingHours: 38.5
         },
+        year: "2021",
         yearsOfExperienceOptions: [
           {
             value: null,
