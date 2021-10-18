@@ -65,15 +65,15 @@ const actions = {
     let jobs = response.data.data.publicJobs;
     commit("setJobs", jobs);
 
-    if (config.externalJobs.active) {
-      const externalJobs = await axios.get("/api/external-jobs");
-      jobs = [...jobs, ...externalJobs.data];
-      // .sort(
-      //   (a, b) => b.publishedAt - a.publishedAt
-      // )
+    // if (config.externalJobs.active) {
+    //   const externalJobs = await axios.get("/api/external-jobs");
+    //   jobs = [...jobs, ...externalJobs.data];
+    //   // .sort(
+    //   //   (a, b) => b.publishedAt - a.publishedAt
+    //   // )
 
-      commit("setJobs", jobs);
-    }
+    //   commit("setJobs", jobs);
+    // }
   }
 };
 

@@ -196,7 +196,7 @@ function generateBody(doc, payment, sender) {
     .fontSize(8)
     .text(
       `Zahlungsbedingungen: Der Rechnungsbetrag ist innerhalb von 14 Tagen ohne Abzüge ab Rechnungseingang fällig.${
-        sender.taxFree
+        !sender.tax
           ? " Gemäß § 19 UStG erheben wir keine Umsatzsteuer und weisen diese folglich auch nicht aus. Die Preise sind Endpreise."
           : ""
       }`,

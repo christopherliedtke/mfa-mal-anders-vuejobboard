@@ -80,7 +80,11 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
       taxes: tax,
       paymentExpiresAt: new Date(
         new Date().setHours(24) +
-          1000 * 60 * 60 * 24 * config.payment.paymentExpirationDays
+          1000 *
+            60 *
+            60 *
+            24 *
+            config.payment.pricingPackages.map(pkg => pkg.duration).sort()[0]
       ),
       job: jobId,
       user: req.user._id,

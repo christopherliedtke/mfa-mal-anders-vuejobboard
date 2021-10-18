@@ -2,8 +2,8 @@ module.exports = {
   website: {
     name: "MFA mal anders",
     url: "https://www.mfa-mal-anders.de",
-    contactEmail: "kontakt@mfa-mal-anders.de",
-    googleCustomSearchUrl: "https://cse.google.com/cse?cx=7f5c5e15bf2d73a5d"
+    contactEmail: "kontakt@mfa-mal-anders.de"
+    // googleCustomSearchUrl: "https://cse.google.com/cse?cx=7f5c5e15bf2d73a5d"
   },
   cms: {
     url: "https://wordpress.mfa-mal-anders.de/graphql",
@@ -149,6 +149,8 @@ module.exports = {
     currency: "EUR",
     minDuration: 60,
     tax:
-      new Date().getTime() < new Date("2022-01-01 00:00:00").getTime() ? 0 : 0
+      new Date().getTime() < new Date("2022-01-01 00:00:00").getTime()
+        ? 0
+        : 0.19
   }
 };
