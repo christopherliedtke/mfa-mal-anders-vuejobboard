@@ -6,8 +6,9 @@
       "savePath": "/client/src/assets/css"
     }
   ],
-  "eslint.validate": ["html", "javascript"],
+  "eslint.validate": ["html", "javascript", "vue"],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
-  }
+  },
+  "eslint.workingDirectories": ["./", "./client"]
 }
