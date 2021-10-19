@@ -22,6 +22,7 @@
       :default-state="state"
       intro="Erhalte unsere aktuellen Stellenangebote wöchentlich direkt in Dein Postfach."
       :social="true"
+      @close="closePopUp"
     />
   </BModal>
 </template>
