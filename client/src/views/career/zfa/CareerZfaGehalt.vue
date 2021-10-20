@@ -219,9 +219,29 @@
         </b-col>
       </b-row>
 
+      <div class="bg-light-shade border-radius1 p-4 mb-4">
+        <p class="h5">Übrigens</p>
+        <p>
+          Laut offizieller Berechnung im Gehaltstarifvertrag 2020 bezieht sich
+          das jeweils angegebene
+          <strong
+            >Vollzeit-Gehalt auf eine Wochenstundenarbeitszeit von 38,8953
+            Stunden</strong
+          >
+          <sup>1</sup>. Die Wochenstundenarbeitszeit für Vollzeit ist nicht
+          explizit im Vertrag angegeben, lässt sich jedoch aus der
+          Berechnungsformel für Teilzeitkräfte herleiten.
+        </p>
+        <p class="small text-muted mb-0">
+          <sup>1</sup> Wenn Ihr dies selbst prüfen möchtet, gebt die Arbeitszeit
+          von 38,8953 Stunden in den Gehaltsrechner ein oder benutzt direkt die
+          Formel aus dem Gehaltstarifvertrag.
+        </p>
+      </div>
+
       <div>
         <h3 class="h4">
-          Hier noch einmal die ab dem 01.01.2020 gültige Gehaltstabelle:
+          Hier noch einmal die ab dem 01.07.2021 gültige Gehaltstabelle:
         </h3>
         <b-table-simple class="mt-3" hover responsive table-variant="secondary">
           <colgroup>
@@ -248,83 +268,83 @@
           <b-tbody class="text-right">
             <b-tr>
               <b-th>1 - 3</b-th>
-              <b-td>2.043,50 €</b-td>
-              <b-td>2.197,00 €</b-td>
-              <b-td>2.401,50 €</b-td>
-              <b-td>2.554,50 €</b-td>
-              <b-td>2.657,00 €</b-td>
+              <b-td>2.105,00 €</b-td>
+              <b-td>2.263,00 €</b-td>
+              <b-td>2.473,50 €</b-td>
+              <b-td>2.631,50 €</b-td>
+              <b-td>2.736,50 €</b-td>
             </b-tr>
             <b-tr>
               <b-th>4 - 6</b-th>
-              <b-td>2.118,00 €</b-td>
-              <b-td>2.277,00 €</b-td>
-              <b-td>2.489,00 €</b-td>
-              <b-td>2.647,50 €</b-td>
-              <b-td>2.753,50 €</b-td>
+              <b-td>2.182,00 €</b-td>
+              <b-td>2.346,00 €</b-td>
+              <b-td>2.564,00 €</b-td>
+              <b-td>2.727,50 €</b-td>
+              <b-td>2.837,00 €</b-td>
             </b-tr>
             <b-tr>
               <b-th>7 - 9</b-th>
-              <b-td>2.221,50 €</b-td>
-              <b-td>2.389,00 €</b-td>
-              <b-td>2.611,00 €</b-td>
-              <b-td>2.777,50 €</b-td>
-              <b-td>2.889,00 €</b-td>
+              <b-td>2.288,50 €</b-td>
+              <b-td>2.460,50 €</b-td>
+              <b-td>2.689,00 €</b-td>
+              <b-td>2.861,00 €</b-td>
+              <b-td>2.975,50 €</b-td>
             </b-tr>
             <b-tr>
               <b-th>10 - 12</b-th>
-              <b-td>2.299,50 €</b-td>
-              <b-td>2.472,00 €</b-td>
-              <b-td>2.702,00 €</b-td>
-              <b-td>2.874,50 €</b-td>
-              <b-td>2.989,50 €</b-td>
+              <b-td>2.368,50 €</b-td>
+              <b-td>2.546,50 €</b-td>
+              <b-td>2.783,00 €</b-td>
+              <b-td>2.961,00 €</b-td>
+              <b-td>3.079,50 €</b-td>
             </b-tr>
             <b-tr>
               <b-th>13 - 15</b-th>
-              <b-td>2.370,50 €</b-td>
-              <b-td>2.548,50 €</b-td>
-              <b-td>2.785,50 €</b-td>
-              <b-td>2.963,50 €</b-td>
-              <b-td>3.082,00 €</b-td>
+              <b-td>2.442,00 €</b-td>
+              <b-td>2.625,50 €</b-td>
+              <b-td>2.869,50 €</b-td>
+              <b-td>3.052,50 €</b-td>
+              <b-td>3.175,50 €</b-td>
             </b-tr>
             <b-tr>
               <b-th>16 - 18</b-th>
-              <b-td>2.439,00 €</b-td>
-              <b-td>2.622,50 €</b-td>
-              <b-td>2.866,00 €</b-td>
-              <b-td>3.049,50 €</b-td>
-              <b-td>3.171,50 €</b-td>
+              <b-td>2.512,00 €</b-td>
+              <b-td>2.701,00 €</b-td>
+              <b-td>2.952,00 €</b-td>
+              <b-td>3.140,00 €</b-td>
+              <b-td>3.266,50 €</b-td>
             </b-tr>
             <b-tr>
               <b-th>19 - 21</b-th>
-              <b-td>2.507,50 €</b-td>
-              <b-td>2.696,50 €</b-td>
-              <b-td>2.946,50 €</b-td>
-              <b-td>3.135,50 €</b-td>
-              <b-td>3.261,00 €</b-td>
+              <b-td>2.582,00 €</b-td>
+              <b-td>2.776,50 €</b-td>
+              <b-td>3.034,50 €</b-td>
+              <b-td>3.227,50 €</b-td>
+              <b-td>3.357,50 €</b-td>
             </b-tr>
             <b-tr>
               <b-th>22 - 24</b-th>
-              <b-td>2.576,00 €</b-td>
-              <b-td>2.770,50 €</b-td>
-              <b-td>3.027,00 €</b-td>
-              <b-td>3.221,50 €</b-td>
-              <b-td>3.350,50 €</b-td>
+              <b-td>2.652,00 €</b-td>
+              <b-td>2.852,00 €</b-td>
+              <b-td>3.117,00 €</b-td>
+              <b-td>3.315,00 €</b-td>
+              <b-td>3.448,50 €</b-td>
             </b-tr>
             <b-tr>
               <b-th>25 - 27</b-th>
-              <b-td>2.644,50 €</b-td>
-              <b-td>2.844,50 €</b-td>
-              <b-td>3.107,50 €</b-td>
-              <b-td>3.307,50 €</b-td>
-              <b-td>3.440,00 €</b-td>
+              <b-td>2.722,00 €</b-td>
+              <b-td>2.927,50 €</b-td>
+              <b-td>3.199,50 €</b-td>
+              <b-td>3.402,50 €</b-td>
+              <b-td>3.539,50 €</b-td>
             </b-tr>
             <b-tr>
               <b-th>ab 28</b-th>
-              <b-td>2.671,00 €</b-td>
-              <b-td>2.871,50 €</b-td>
-              <b-td>3.138,50 €</b-td>
-              <b-td>3.339,00 €</b-td>
-              <b-td>3.472,50 €</b-td>
+              <b-td>2.776,50 €</b-td>
+              <b-td>2.985,00 €</b-td>
+              <b-td>3.262,50 €</b-td>
+              <b-td>3.471,00 €</b-td>
+              <b-td>3.609,50 €</b-td>
             </b-tr>
           </b-tbody>
         </b-table-simple>
@@ -338,6 +358,11 @@
             – AAZ (2020)</b-link
           >
         </p>
+      </div>
+
+      <div class="bg-light-shade border-radius2 shadow1 my-5 p-3 p-md-4">
+        <JobSearchSingleForm placeholder="ZFA Job finden..." profession="ZFA" />
+        <JobsTeaserContainer profession="ZFA" />
       </div>
 
       <ToJobboardBanner
@@ -844,6 +869,8 @@
   Vue.component("BCardText", BCardText);
   Vue.use(TableSimplePlugin);
   import GehaltsrechnerZfa from "@/components/containers/GehaltsrechnerZfa.vue";
+  import JobsTeaserContainer from "@/components/containers/JobsTeaserContainer.vue";
+  import JobSearchSingleForm from "@/components/forms/JobSearchSingleForm.vue";
   import FacebookBtn from "@/components/buttons/FacebookBtn.vue";
   import FacebookShareBtn from "@/components/buttons/FacebookShareBtn.vue";
   import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
@@ -854,6 +881,8 @@
   export default {
     name: "CareerGehalt",
     components: {
+      JobsTeaserContainer,
+      JobSearchSingleForm,
       FacebookBtn,
       FacebookShareBtn,
       GehaltsrechnerZfa,

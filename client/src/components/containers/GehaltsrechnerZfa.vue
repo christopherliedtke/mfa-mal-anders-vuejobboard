@@ -22,9 +22,7 @@
       Gib Deine Daten ein und erhalte Dein Gehalt entsprechend des
       Gehaltstarifvertrags* {{ year }} für Zahnmedizinische Fachangestellte
       (ZFA) / ZahnarzthelferInnen in Voll- oder Teilzeit. <br />
-      <span class="small"
-        >(Stand {{ year }} | gültig ab 01.07.{{ year }})
-      </span>
+      <span class="small">(Stand 2021 | gültig ab 01.07.2021) </span>
     </p>
     <b-form>
       <b-form-select
@@ -89,7 +87,7 @@
           hoursOfEducation: null,
           workingHours: 38.89
         },
-        year: "2021",
+        year: new Date().getFullYear(),
         yearsOfExperienceOptions: [
           {
             value: null,

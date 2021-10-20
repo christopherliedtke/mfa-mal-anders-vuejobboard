@@ -22,11 +22,17 @@
       Gib Deine Daten ein und erhalte Dein Gehalt entsprechend des
       Gehaltstarifvertrags* für {{ year }} für Medizinische Fachangestellte
       (MFA) / ArzthelferIn in Voll- oder Teilzeit. <br />
-      <span class="small"
-        >(Stand {{ year }} | gültig ab 01.01.{{ year }})
-      </span>
+      <span class="small">(Stand 2021 | gültig ab 01.01.{{ year }}) </span>
     </p>
     <b-form>
+      <b-form-select
+        v-model="year"
+        class="mt-2"
+        :options="[
+          { text: 'Jahr 2021', value: 2021 },
+          { text: 'Jahr 2022', value: 2022 }
+        ]"
+      ></b-form-select>
       <b-form-select
         v-model="form.yearsOfExperience"
         class="mt-2"
@@ -87,7 +93,7 @@
           hoursOfEducation: null,
           workingHours: 38.5
         },
-        year: "2021",
+        year: new Date().getFullYear(),
         yearsOfExperienceOptions: [
           {
             value: null,
@@ -168,7 +174,7 @@
               this.form.workingHours *
               4.33) /
               167) *
-              100
+              (100 + (this.year - 2021) * 3)
           ) / 100
         );
       }

@@ -198,10 +198,29 @@
           <FacebookShareBtn class="mb-4" />
         </b-col>
       </b-row>
+      <div class="bg-light-shade border-radius1 p-4 mb-4">
+        <p class="h5">Übrigens</p>
+        <p>
+          Laut offizieller Berechnung im Gehaltstarifvertrag 2021 bezieht sich
+          das jeweils angegebene
+          <strong
+            >Vollzeit-Gehalt auf eine Wochenstundenarbeitszeit von 38,5681
+            Stunden</strong
+          >
+          <sup>1</sup>. Die Wochenstundenarbeitszeit für Vollzeit ist nicht
+          explizit im Vertrag angegeben, lässt sich jedoch aus der
+          Berechnungsformel für Teilzeitkräfte herleiten.
+        </p>
+        <p class="small text-muted mb-0">
+          <sup>1</sup> Wenn Ihr dies selbst prüfen möchtet, gebt die Arbeitszeit
+          von 38,5681 Stunden in den Gehaltsrechner ein oder benutzt direkt die
+          Formel aus dem Gehaltstarifvertrag.
+        </p>
+      </div>
       <div>
         <h3 class="h4">
-          Hier noch einmal die ab dem 01.01.2021 gültige Gehaltstabelle nach
-          Gehaltstarifvertrag:
+          Hier noch einmal die ab dem 01.01.2021 gültige Gehaltstabelle für das
+          Jahr 2021 nach Gehaltstarifvertrag:
         </h3>
         <b-table-simple class="mt-3" hover responsive table-variant="secondary">
           <colgroup>
@@ -301,6 +320,107 @@
             </b-tr>
           </b-tbody>
         </b-table-simple>
+        <h3 class="h4 mt-5">
+          Gehaltstabelle ab 01.01.2022:
+        </h3>
+        <b-table-simple class="mt-3" hover responsive table-variant="secondary">
+          <colgroup>
+            <col />
+          </colgroup>
+          <colgroup>
+            <col />
+            <col />
+            <col />
+            <col />
+            <col />
+            <col />
+          </colgroup>
+          <b-thead head-variant="primary">
+            <b-tr>
+              <b-th>Berufsjahr</b-th>
+              <b-th>Tätigkeitsgruppe I</b-th>
+              <b-th>Tätigkeitsgruppe II</b-th>
+              <b-th>Tätigkeitsgruppe III</b-th>
+              <b-th>Tätigkeitsgruppe IV</b-th>
+              <b-th>Tätigkeitsgruppe V</b-th>
+              <b-th>Tätigkeitsgruppe VI</b-th>
+            </b-tr>
+          </b-thead>
+          <b-tbody class="text-right">
+            <b-tr>
+              <b-th>1 - 4</b-th>
+              <b-td>2.151,05 €</b-td>
+              <b-td>2.312,38 €</b-td>
+              <b-td>2.419,93 €</b-td>
+              <b-td>2.581,26 €</b-td>
+              <b-td>2.796,37 €</b-td>
+              <b-td>3.119,02 €</b-td>
+            </b-tr>
+            <b-tr>
+              <b-th>5 - 8</b-th>
+              <b-td>2.335,73 €</b-td>
+              <b-td>2.510,91 €</b-td>
+              <b-td>2.627,70 €</b-td>
+              <b-td>2.802,88 €</b-td>
+              <b-td>3.036,45 €</b-td>
+              <b-td>3.386,81 €</b-td>
+            </b-tr>
+            <b-tr>
+              <b-th>9 - 12</b-th>
+              <b-td>2.484,31 €</b-td>
+              <b-td>2.670,63 €</b-td>
+              <b-td>2.794,85 €</b-td>
+              <b-td>2.981,17 €</b-td>
+              <b-td>3.229,60 €</b-td>
+              <b-td>3.602,25 €</b-td>
+            </b-tr>
+            <b-tr>
+              <b-th>13 - 16</b-th>
+              <b-td>2.554,45 €</b-td>
+              <b-td>2.746,03 €</b-td>
+              <b-td>2.873,76 €</b-td>
+              <b-td>3.065,34 €</b-td>
+              <b-td>3.320,79 €</b-td>
+              <b-td>3.703,95 €</b-td>
+            </b-tr>
+            <b-tr>
+              <b-th>17 - 20</b-th>
+              <b-td>2.826,02 €</b-td>
+              <b-td>3.037,97 €</b-td>
+              <b-td>3.179,27 €</b-td>
+              <b-td>3.391,22 €</b-td>
+              <b-td>3.673,83 €</b-td>
+              <b-td>4.097,73 €</b-td>
+            </b-tr>
+            <b-tr>
+              <b-th>21 - 24</b-th>
+              <b-td>2.877,52 €</b-td>
+              <b-td>3.093,34 €</b-td>
+              <b-td>3.237,21 €</b-td>
+              <b-td>3.453,02 €</b-td>
+              <b-td>3.740,77 €</b-td>
+              <b-td>4.172,41 €</b-td>
+            </b-tr>
+            <b-tr>
+              <b-th>25 - 28</b-th>
+              <b-td>2.929,02 €</b-td>
+              <b-td>3.148,70 €</b-td>
+              <b-td>3.295,15 €</b-td>
+              <b-td>3.514,82 €</b-td>
+              <b-td>3.807,72 €</b-td>
+              <b-td>4.247,08 €</b-td>
+            </b-tr>
+            <b-tr>
+              <b-th>ab 29</b-th>
+              <b-td>2.980,52 €</b-td>
+              <b-td>3.204,06 €</b-td>
+              <b-td>3.353,08 €</b-td>
+              <b-td>3.576,62 €</b-td>
+              <b-td>3.874,67 €</b-td>
+              <b-td>4.321,76 €</b-td>
+            </b-tr>
+          </b-tbody>
+        </b-table-simple>
         <p class="small text-muted">
           Quelle:
           <b-link
@@ -311,6 +431,11 @@
             ArzthelferInnen – AAA (2021)</b-link
           >
         </p>
+      </div>
+
+      <div class="bg-light-shade border-radius2 shadow1 my-5 p-3 p-md-4">
+        <JobSearchSingleForm placeholder="Neuen Job finden..." />
+        <JobsTeaserContainer profession="" />
       </div>
 
       <h2 id="gehalt-ausbildung">
@@ -975,6 +1100,8 @@
   Vue.component("BCardText", BCardText);
   Vue.use(TableSimplePlugin);
   import Gehaltsrechner from "@/components/containers/Gehaltsrechner.vue";
+  import JobsTeaserContainer from "@/components/containers/JobsTeaserContainer.vue";
+  import JobSearchSingleForm from "@/components/forms/JobSearchSingleForm.vue";
   import FacebookBtn from "@/components/buttons/FacebookBtn.vue";
   import FacebookShareBtn from "@/components/buttons/FacebookShareBtn.vue";
   import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
@@ -986,6 +1113,8 @@
     name: "CareerGehalt",
     components: {
       Gehaltsrechner,
+      JobsTeaserContainer,
+      JobSearchSingleForm,
       FacebookBtn,
       FacebookShareBtn,
       ToJobboardBanner,

@@ -28,62 +28,12 @@
             >.
           </p>
         </div>
-        <b-form
-          @submit.prevent="$router.push(`/stellenangebote?s=${searchTerm}`)"
-        >
-          <label class="sr-only sr-only-focusable" for="landing-search"
-            >Suchbegriff</label
-          >
-          <b-input-group>
-            <b-form-input
-              id="landing-search"
-              v-model="searchTerm"
-              size="lg"
-              class="shadow1"
-              placeholder="Stelle finden..."
-            ></b-form-input>
-            <b-input-group-append>
-              <b-button
-                size="lg"
-                class="shadow1"
-                variant="secondary"
-                :to="`/stellenangebote?s=${searchTerm}`"
-                ><Fa icon="search" /> <span class="sr-only">Suchen</span>
-              </b-button>
-            </b-input-group-append>
-          </b-input-group>
-        </b-form>
-        <div class="mt-2 text-right">
-          <b-link class="pt-3 pb-4 px-3 small" to="/fuer-arbeitgeber">
-            Stellenanzeige schalten
-          </b-link>
-        </div>
+        <JobSearchSingleForm />
       </b-container>
     </b-container>
 
     <b-container class="mt-4 mt-lg-0">
-      <!-- <h2 class="h3 bold text-primary ml-1">Neu in der Stellenbörse:</h2> -->
-      <b-row v-if="jobs.length > 0" cols="1" cols-md="3">
-        <b-col v-for="job in jobs" :key="job._id">
-          <JobCard :job="job" :compact="true" />
-        </b-col>
-      </b-row>
-      <b-row v-else cols="1" cols-md="3">
-        <b-col>
-          <JobCardPlaceholder :compact="true" />
-        </b-col>
-        <b-col>
-          <JobCardPlaceholder :compact="true" />
-        </b-col>
-        <b-col>
-          <JobCardPlaceholder :compact="true" />
-        </b-col>
-      </b-row>
-      <div class="d-flex justify-content-end mt-2">
-        <b-button to="/stellenangebote" variant="outline-primary" size="sm"
-          >Weitere</b-button
-        >
-      </div>
+      <JobsTeaserContainer />
     </b-container>
 
     <b-container class="my-3 my-md-5 py-3 py-md-5">
@@ -332,21 +282,19 @@
   import StellenanzeigeSchaltenBanner from "@/components/banners/StellenanzeigeSchaltenBanner.vue";
   import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
   import RandomArticlesContainer from "@/components/containers/RandomArticlesContainer.vue";
-  import JobCard from "@/components/ui/JobCard.vue";
-  import JobCardPlaceholder from "@/components/ui/JobCardPlaceholder.vue";
+  import JobsTeaserContainer from "@/components/containers/JobsTeaserContainer.vue";
+  import JobSearchSingleForm from "@/components/forms/JobSearchSingleForm.vue";
   export default {
     name: "Home",
     components: {
       StellenanzeigeSchaltenBanner,
       RandomTrainingsContainer,
       RandomArticlesContainer,
-      JobCard,
-      JobCardPlaceholder
+      JobsTeaserContainer,
+      JobSearchSingleForm
     },
     data() {
       return {
-        jobs: [],
-        searchTerm: "",
         snippet: [
           {
             id: "breadcrumbs",
@@ -364,20 +312,6 @@
           }
         ]
       };
-    },
-    created() {
-      this.getPublicJobs();
-    },
-    methods: {
-      async getPublicJobs() {
-        const response = await this.$axios.get("/api/public-jobs", {
-          params: {
-            limit: 3
-          }
-        });
-
-        this.jobs = response.data.jobs;
-      }
     }
   };
 </script>

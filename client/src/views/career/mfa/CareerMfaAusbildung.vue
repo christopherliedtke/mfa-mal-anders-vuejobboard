@@ -346,6 +346,12 @@
           >
         </p>
       </div>
+
+      <div class="bg-light-shade border-radius2 shadow1 my-5 p-3 p-md-4">
+        <JobSearchSingleForm placeholder="Ausbildung finden..." />
+        <JobsTeaserContainer employment-type="training" />
+      </div>
+
       <h2>
         Welche Möglichkeiten habe ich nach der Ausbildung als Medizinische
         Fachangestellte?
@@ -497,11 +503,15 @@
   Vue.use(TableSimplePlugin);
   import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
   import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
+  import JobsTeaserContainer from "@/components/containers/JobsTeaserContainer.vue";
+  import JobSearchSingleForm from "@/components/forms/JobSearchSingleForm.vue";
   export default {
     name: "CareerMfaAusbildung",
     components: {
       RandomTrainingsContainer,
-      ToJobboardBanner
+      ToJobboardBanner,
+      JobsTeaserContainer,
+      JobSearchSingleForm
     },
     data() {
       return {
