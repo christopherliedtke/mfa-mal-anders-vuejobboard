@@ -434,7 +434,7 @@
       </div>
 
       <div class="bg-light-shade border-radius2 shadow1 my-5 p-3 p-md-4">
-        <JobSearchSingleForm placeholder="Neuen Job finden..." />
+        <JobSearchSingleForm class="mb-3" placeholder="Neuen Job finden..." />
         <JobsTeaserContainer profession="" />
       </div>
 
