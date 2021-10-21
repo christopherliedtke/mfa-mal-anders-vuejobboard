@@ -17,11 +17,11 @@
             v-html="berufsbilder[0].berufsbildTypes.nodes[0].description"
           ></div>
           <!-- eslint-enable -->
-          <p class="mb-4">
+          <!-- <p class="mb-4">
             Vielleicht findest Du auch auf unserer
             <b-link to="/stellenangebote" class="bold">Stellenbörse</b-link>
             den richtigen Job für Dich.
-          </p>
+          </p> -->
           <BListGroup tag="ul">
             <BListGroupItem
               v-for="berufsbild in berufsbilder"
@@ -45,6 +45,21 @@
                   class="ml-2"/></b-link
             ></BListGroupItem>
           </BListGroup>
+
+          <div class="bg-light-shade border-radius2 shadow1 my-5 p-3 p-md-4">
+            <JobSearchSingleForm
+              class="mb-3"
+              placeholder="Passende Stelle finden..."
+              profession=""
+            />
+            <JobsTeaserContainer
+              profession=""
+              :number="2"
+              :cols-md="2"
+              :cols-lg="2"
+            />
+          </div>
+
           <ToJobboardBanner class="mt-5" />
         </b-col>
       </b-row>
@@ -67,12 +82,16 @@
   import JobsBerufsbilderNav from "@/components/navs/JobsBerufsbilderNav.vue";
   import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
   import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
+  import JobsTeaserContainer from "@/components/containers/JobsTeaserContainer.vue";
+  import JobSearchSingleForm from "@/components/forms/JobSearchSingleForm.vue";
   export default {
     name: "CareerBerufsbildType",
     components: {
       JobsBerufsbilderNav,
       RandomTrainingsContainer,
-      ToJobboardBanner
+      ToJobboardBanner,
+      JobsTeaserContainer,
+      JobSearchSingleForm
     },
     data() {
       return {
@@ -134,6 +153,7 @@
           return null;
         }
       },
+      /** @returns { array } */
       breadcrumbs() {
         return [
           { text: "Home", to: "/" },

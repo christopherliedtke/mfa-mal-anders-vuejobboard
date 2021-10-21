@@ -438,6 +438,15 @@
         <JobsTeaserContainer profession="" />
       </div>
 
+      <div class="row mb-4">
+        <div class="col">
+          <BerufsbilderBanner class="mb-3" />
+        </div>
+        <div class="col">
+          <WeiterbildungenBanner class="mb-3" />
+        </div>
+      </div>
+
       <h2 id="gehalt-ausbildung">
         MFA Ausbildung {{ new Date().getFullYear() }} – Gehalt nach Tarifvertrag
       </h2>
@@ -1032,15 +1041,6 @@
       </p>
 
       <ToJobboardBanner class="my-5 mx-auto" />
-
-      <div class="row mb-4">
-        <div class="col">
-          <BerufsbilderBanner class="mb-3" />
-        </div>
-        <div class="col">
-          <WeiterbildungenBanner class="mb-3" />
-        </div>
-      </div>
 
       <h2>Quellen</h2>
       <p>

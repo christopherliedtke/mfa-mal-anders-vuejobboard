@@ -13,7 +13,7 @@
           <b-col class="order-1 order-lg-2 mb-5">
             <!-- eslint-disable-next-line -->
             <div v-html="profession.content"></div>
-            <p class="bold">
+            <!-- <p class="bold">
               <b-link :to="`/stellenangebote`"
                 >Finde den passenden Job auf unserer Stellenbörse
                 <Fa
@@ -23,7 +23,7 @@
                   size="xs"
                 />
               </b-link>
-            </p>
+            </p> -->
             <b-button
               :to="
                 `/karriere/jobs-und-berufsbilder/${profession.berufsbildTypes.nodes[0].slug}`
@@ -31,6 +31,21 @@
               size="sm"
               >Zurück</b-button
             >
+
+            <div class="bg-light-shade border-radius2 shadow1 my-5 p-3 p-md-4">
+              <JobSearchSingleForm
+                class="mb-3"
+                placeholder="Passende Stelle finden..."
+                profession=""
+              />
+              <JobsTeaserContainer
+                profession=""
+                :number="2"
+                :cols-md="2"
+                :cols-lg="2"
+              />
+            </div>
+
             <ToJobboardBanner class="mt-5" />
           </b-col>
         </b-row>
@@ -54,12 +69,16 @@
   import JobsBerufsbilderNav from "@/components/navs/JobsBerufsbilderNav.vue";
   import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
   import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
+  import JobsTeaserContainer from "@/components/containers/JobsTeaserContainer.vue";
+  import JobSearchSingleForm from "@/components/forms/JobSearchSingleForm.vue";
   export default {
     name: "CareerBerufsbildProfession",
     components: {
       JobsBerufsbilderNav,
       RandomTrainingsContainer,
-      ToJobboardBanner
+      ToJobboardBanner,
+      JobsTeaserContainer,
+      JobSearchSingleForm
     },
     data() {
       return {
