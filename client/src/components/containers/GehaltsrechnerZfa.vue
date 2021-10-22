@@ -55,9 +55,20 @@
       <hr />
       <h4>Dein monatliches Grundgehalt (brutto)</h4>
 
-      <b-input-group prepend="€">
+      <b-input-group prepend="€" class="mb-2">
         <b-form-input v-model="salary" disabled type="number"></b-form-input>
       </b-input-group>
+
+      <p class="small">
+        entspricht einem Stundenlohn von
+        {{
+          salaryPerHour
+            .toFixed(2)
+            .toString()
+            .replace(".", ",")
+        }}
+        €/h
+      </p>
     </b-form>
     <p class="small mt-4 source">
       <span>
@@ -172,6 +183,14 @@
               4.345) /
               169) *
               100
+          ) / 100
+        );
+      },
+      salaryPerHour() {
+        return (
+          Math.round(
+            ((this.form.yearsOfExperience * this.form.hoursOfEducation) / 167) *
+              (100 + (this.year - 2021) * 3)
           ) / 100
         );
       }

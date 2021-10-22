@@ -239,6 +239,14 @@
         </p>
       </div>
 
+      <p>
+        Der Stundenlohn im Jahr {{ new Date().getFullYear() }} für
+        Zahnmedizinische Fachangestellte (ZFA) bewegt sich laut
+        Gehaltstarifvertrag je nach Berufserfahrung und erworbenen
+        Qualifikationen durch Fort- und Weiterbildungen zwischen 12,60 €/h und
+        21,61 €/h.
+      </p>
+
       <div>
         <h3 class="h4">
           Hier noch einmal die ab dem 01.07.2021 gültige Gehaltstabelle:

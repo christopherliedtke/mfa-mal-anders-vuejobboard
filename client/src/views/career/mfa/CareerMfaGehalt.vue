@@ -171,10 +171,10 @@
           </p>
           <p>
             Der Tarifvertrag hat natürlich auch einen ganz entscheidenden
-            Vorteil: er wird regelmäßig neu verhandelt. Das Gehalt wird somit
-            beinahe jährlich immer etwas angepasst und erhöht. Ist dein Chef
-            verpflichtet nach Tarifvertrag zu zahlen oder hält sich freiwillig
-            daran, musst du also selbst keine
+            Vorteil: er wird regelmäßig neu verhandelt. Dein Verdienst wird
+            somit beinahe jährlich immer etwas angepasst und erhöht. Ist dein
+            Chef verpflichtet nach Tarifvertrag zu zahlen oder hält sich
+            freiwillig daran, musst du also selbst keine
             <b-link
               to="/blog/article/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
               >Gehaltsverhandlungen</b-link
@@ -217,6 +217,14 @@
           Formel aus dem Gehaltstarifvertrag.
         </p>
       </div>
+
+      <p>
+        Das heißt, der Stundenlohn im Jahr 2021 für Medizinische Fachangestellte
+        (MFA) bewegt sich laut Gehaltstarifvertrag je nach Berufserfahrung und
+        erworbenen Qualifikationen durch Fort- und Weiterbildungen zwischen
+        12,51 €/h und 25,13 €/h.
+      </p>
+
       <div>
         <h3 class="h4">
           Hier noch einmal die ab dem 01.01.2021 gültige Gehaltstabelle für das
@@ -320,7 +328,15 @@
             </b-tr>
           </b-tbody>
         </b-table-simple>
-        <h3 class="h4 mt-5">
+
+        <p class="mt-5">
+          Der Stundenlohn im Jahr 2022 für Medizinische Fachangestellte (MFA)
+          bewegt sich laut Gehaltstarifvertrag je nach Berufserfahrung und
+          erworbenen Qualifikationen durch Fort- und Weiterbildungen zwischen
+          12,88 €/h und 25,88 €/h.
+        </p>
+
+        <h3 class="h4">
           Gehaltstabelle ab 01.01.2022:
         </h3>
         <b-table-simple class="mt-3" hover responsive table-variant="secondary">
@@ -526,11 +542,11 @@
         Anrechnung von Berufsjahren
       </h2>
       <p>
-        Ein wichtiger Indikator für die Höhe des Gehalts von MFA sind Erfahrung
-        und Expertise, die man sich im Laufe seines Berufslebens aneignet. Je
-        länger du im Beruf bist, desto mehr kannst du logischerweise an Gehalt
-        verlangen. Auch in den Tarifverhandlungen werden Gehälter nach
-        Berufsjahren und Tätigkeitsgruppen vereinbart.
+        Ein wichtiger Indikator für die Höhe des Verdienstes von MFA sind
+        Erfahrung und Expertise, die man sich im Laufe seines Berufslebens
+        aneignet. Je länger du im Beruf bist, desto mehr kannst du
+        logischerweise an Gehalt verlangen. Auch in den Tarifverhandlungen
+        werden Gehälter nach Berufsjahren und Tätigkeitsgruppen vereinbart.
       </p>
       <p>
         Schauen wir uns einmal an, wie Du deine Berufsjahre berechnen kannst.
