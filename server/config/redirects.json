@@ -281,79 +281,79 @@
   },
   {
     "old": "/jobboard?state=berlin",
-    "new": "/stellenangebote?location=Berlin"
+    "new": "/stellenangebote/ort/berlin"
   },
   {
     "old": "/jobboard?state=bayern",
-    "new": "/stellenangebote?location=Bayern"
+    "new": "/stellenangebote/ort/bayern"
   },
   {
     "old": "/jobboard?state=hamburg",
-    "new": "/stellenangebote?location=Hamburg"
+    "new": "/stellenangebote/ort/hamburg"
   },
   {
     "old": "/jobboard?state=niedersachsen",
-    "new": "/stellenangebote?location=Niedersachsen"
+    "new": "/stellenangebote/ort/niedersachsen"
   },
   {
     "old": "/jobboard?state=hessen",
-    "new": "/stellenangebote?location=Hessen"
+    "new": "/stellenangebote/ort/hessen"
   },
   {
     "old": "/jobboard?state=rheinland-pfalz",
-    "new": "/stellenangebote?location=Rheinland-Pfalz"
+    "new": "/stellenangebote/ort/rheinland-Pfalz"
   },
   {
     "old": "/jobboard?state=brandenburg",
-    "new": "/stellenangebote?location=Brandenburg"
+    "new": "/stellenangebote/ort/brandenburg"
   },
   {
     "old": "/jobboard?state=saarland",
-    "new": "/stellenangebote?location=Saarland"
+    "new": "/stellenangebote/ort/saarland"
   },
   {
     "old": "/jobboard?state=thueringen",
-    "new": "/stellenangebote?location=Thüringen"
+    "new": "/stellenangebote/ort/thueringen"
   },
   {
     "old": "/jobboard?state=bremen",
-    "new": "/stellenangebote?location=Bremen"
+    "new": "/stellenangebote/ort/bremen"
   },
   {
     "old": "/jobboard?state=mecklenburg-vorpommern",
-    "new": "/stellenangebote?location=Mecklenburg-Vorpommern"
+    "new": "/stellenangebote/ort/mecklenburg-vorpommern"
   },
   {
     "old": "/jobboard?state=sachsen",
-    "new": "/stellenangebote?location=Sachsen"
+    "new": "/stellenangebote/ort/sachsen"
   },
   {
     "old": "/jobboard?state=sachsen-anhalt",
-    "new": "/stellenangebote?location=Sachsen-Anhalt"
+    "new": "/stellenangebote/ort/sachsen-anhalt"
   },
   {
     "old": "/jobboard?state=schleswig-holstein",
-    "new": "/stellenangebote?location=Schleswig-Holstein"
+    "new": "/stellenangebote/ort/schleswig-holstein"
   },
   {
     "old": "/jobboard?state=baden-wuerttemberg",
-    "new": "/stellenangebote?location=Baden-Württemberg"
+    "new": "/stellenangebote/ort/baden-wuerttemberg"
   },
   {
-    "old": "/jobboard?location=koeln",
-    "new": "/stellenangebote?location=Köln"
+    "old": "/jobboard/ort/koeln",
+    "new": "/stellenangebote/ort/koeln"
   },
   {
-    "old": "/jobboard?location=berlin",
-    "new": "/stellenangebote?location=Berlin"
+    "old": "/jobboard/ort/berlin",
+    "new": "/stellenangebote/ort/berlin"
   },
   {
-    "old": "/jobboard?location=hamburg",
-    "new": "/stellenangebote?location=Hamburg"
+    "old": "/jobboard/ort/hamburg",
+    "new": "/stellenangebote/ort/hamburg"
   },
   {
-    "old": "/jobboard?location=muenchen",
-    "new": "/stellenangebote?location=München"
+    "old": "/jobboard/ort/muenchen",
+    "new": "/stellenangebote/ort/muenchen"
   },
   {
     "old": "/jobboard?employmentType=part",

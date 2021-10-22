@@ -1,5 +1,5 @@
 <template>
-  <header id="header" :class="{ hide: hideNavbar }">
+  <header id="header" ref="header" :class="{ hide: hideNavbar }">
     <b-container id="navbar">
       <router-link to="/">
         <b-img
@@ -404,7 +404,7 @@
             path: "/kontakt"
           }
         ],
-        previousScrollPositionY: window.document.documentElement.scrollTop
+        previousScrollPositionY: document.documentElement.scrollTop
       };
     },
     computed: {
@@ -416,37 +416,37 @@
       }
     },
     mounted() {
-      setInterval(() => {
-        this.showHeader();
-      }, 100);
+      this.checkHeaderVisible();
     },
     methods: {
       showSub(id) {
-        window.document.getElementById(id).classList.add("show");
+        document.getElementById(id).classList.add("show");
       },
       hideSub(id) {
-        window.document.getElementById(id).classList.remove("show");
+        document.getElementById(id).classList.remove("show");
       },
-      showHeader() {
-        const header = document.getElementById("header");
-        let currentPositionY = window.document.documentElement.scrollTop;
+      checkHeaderVisible(timer = 0) {
+        setTimeout(() => {
+          let currentPositionY = document.documentElement.scrollTop;
 
-        if (
-          currentPositionY > this.previousScrollPositionY &&
-          currentPositionY > header.offsetHeight &&
-          this.navCollapsed &&
-          !header.classList.contains("hide")
-        ) {
-          this.hideNavbar = true;
-        } else if (
-          currentPositionY < this.previousScrollPositionY &&
-          header.classList.contains("hide")
-        ) {
-          this.hideNavbar = false;
-        }
+          if (
+            currentPositionY > this.previousScrollPositionY &&
+            currentPositionY > this.$refs.header.offsetHeight &&
+            this.navCollapsed &&
+            !this.$refs.header.classList.contains("hide")
+          ) {
+            this.hideNavbar = true;
+          } else if (
+            currentPositionY < this.previousScrollPositionY &&
+            this.$refs.header.classList.contains("hide")
+          ) {
+            this.hideNavbar = false;
+          }
 
-        this.previousScrollPositionY =
-          window.document.documentElement.scrollTop;
+          this.previousScrollPositionY = document.documentElement.scrollTop;
+
+          this.checkHeaderVisible(100);
+        }, timer);
       }
     }
   };

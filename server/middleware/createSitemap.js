@@ -210,7 +210,11 @@ const getJobboardStates = async () => {
       require("../../client/src/config/formDataConfig.json").companyStateOptions;
     return states
       .map(state =>
-        writeUrl(process.env.WEBSITE_URL + "/stellenangebote?location=" + state)
+        writeUrl(
+          process.env.WEBSITE_URL +
+            "/stellenangebote/ort/" +
+            state.toLowerCase()
+        )
       )
       .join(" ");
   } catch (err) {
@@ -228,7 +232,9 @@ const getJobboardLocations = async () => {
     return locations
       .map(location =>
         writeUrl(
-          process.env.WEBSITE_URL + "/stellenangebote?location=" + location
+          process.env.WEBSITE_URL +
+            "/stellenangebote/ort/" +
+            location.toLowerCase()
         )
       )
       .join(" ");

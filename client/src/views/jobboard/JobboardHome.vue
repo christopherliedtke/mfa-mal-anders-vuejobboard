@@ -384,7 +384,7 @@
               Fachangestellte (ZFA), ZMF, ZMV, MTRA in
               <span v-for="(state, index) in companyStateOptions" :key="state">
                 <b-link
-                  :to="`/stellenangebote?location=${state}`"
+                  :to="`/stellenangebote/ort/${state.toLowerCase()}`"
                   @click="
                     () => {
                       filter.location = state;
@@ -546,10 +546,12 @@
                     (this.$route.params.location ||
                       this.$route.query.location ||
                       this.$route.query.state) +
-                    '","item": "https://www.mfa-mal-anders.de/stellenangebote?location=' +
-                    (this.$route.params.location ||
+                    '","item": "https://www.mfa-mal-anders.de/stellenangebote/ort/' +
+                    (
+                      this.$route.params.location ||
                       this.$route.query.location ||
-                      this.$route.query.state) +
+                      this.$route.query.state
+                    ).toLowerCase() +
                     '"}'
                   : ""
               }]
@@ -562,10 +564,12 @@
                 this.$route.params.location ||
                 this.$route.query.location ||
                 this.$route.query.state
-                  ? "?location=" +
-                    (this.$route.params.location ||
+                  ? "/ort/" +
+                    (
+                      this.$route.params.location ||
                       this.$route.query.location ||
-                      this.$route.query.state)
+                      this.$route.query.state
+                    ).toLowerCase()
                   : ""
               }`}`,
             id: "canonical"
@@ -578,16 +582,12 @@
           { text: "Stellenangebote", to: "/stellenangebote" }
         ];
 
-        if (this.filter.state) {
+        if (this.filter.state || this.filter.location) {
           breadcrumbs.push({
-            text: this.filter.state,
-            to: `/stellenangebote/?state=${this.filter.state}`
-          });
-        }
-        if (this.filter.location) {
-          breadcrumbs.push({
-            text: this.filter.location,
-            to: `/stellenangebote/?location=${this.filter.location}`
+            text: this.filter.state || this.filter.location,
+            to: `/stellenangebote/ort/${(
+              this.filter.state || this.filter.location
+            ).toLowerCase()}`
           });
         }
 
