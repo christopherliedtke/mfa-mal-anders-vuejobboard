@@ -48,7 +48,7 @@
             />
           </div>
           <div class="head flex-column flex-sm-row order-1 order-sm-2">
-            <!-- <b-col>
+            <!-- <div class="col">
               <div class="icon">
                 <Fa :icon="['fas', 'map-marker']" size="lg" />
               </div>
@@ -57,13 +57,13 @@
                   ? `${job.company.location}, ${job.company.state}`
                   : job.company.location
               }}
-            </b-col>
-            <b-col>
+            </div>
+            <div class="col">
               <div class="icon">
                 <Fa :icon="['fas', 'building']" size="lg" />
               </div>
               {{ job.company.name }}
-            </b-col> -->
+            </div> -->
             <div v-if="job.employmentType">
               <div class="icon">
                 <Fa :icon="['fas', 'briefcase']" size="lg" />

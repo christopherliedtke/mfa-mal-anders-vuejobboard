@@ -26,12 +26,6 @@
           </small>
         </div>
       </div>
-      <!-- <b-row no-gutters>
-        <b-col cols="3">
-        </b-col>
-        <b-col cols="9">
-        </b-col>
-      </b-row> -->
     </router-link>
   </div>
 </template>

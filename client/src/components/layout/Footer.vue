@@ -1,8 +1,8 @@
 <template>
   <footer id="footer" class="py-5">
-    <b-container class="px-3 px-lg-5">
-      <b-row cols="1" cols-lg="3">
-        <b-col order="3" order-lg="1">
+    <div class="container px-3 px-lg-5">
+      <div class="row ros-cols-1 row-cols-lg-3">
+        <div class="col order-3 order-lg-1">
           <b-img
             src="/img/MfaMalAnders_Logo_white.svg"
             height="110"
@@ -40,8 +40,8 @@
                             <p><a href="https://de.jooble.org/">Jooble</a></p>
                         </div> -->
           </div>
-        </b-col>
-        <b-col order="2" order-lg="2">
+        </div>
+        <div class="col order-2 order-lg-2">
           <NewsletterSignUpForm :close-btn="false" />
           <!-- <div class="mt-5">
                         <div class="d-flex justify-content-center mb-4">
@@ -75,8 +75,8 @@
                             >
                         </div>
                     </div> -->
-        </b-col>
-        <b-col order="1" order-lg="3">
+        </div>
+        <div class="col order-1 order-lg-3">
           <div class="mb-4">
             <b-link
               :href="`https://www.facebook.com/${$config.fb.path}`"
@@ -124,15 +124,15 @@
             <router-link to="/impressum">Impressum</router-link>
             <router-link to="/agbs">AGBs</router-link>
           </nav>
-        </b-col>
-      </b-row>
-    </b-container>
+        </div>
+      </div>
+    </div>
     <hr />
-    <b-container class="px-3 px-lg-5">
+    <div class="container px-3 px-lg-5">
       <p class="text-right">
         &copy; {{ new Date().getFullYear() }} MFA mal anders
       </p>
-    </b-container>
+    </div>
     <PrerenderRecache />
   </footer>
 </template>

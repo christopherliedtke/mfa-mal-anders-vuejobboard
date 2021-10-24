@@ -1,12 +1,9 @@
 <template>
-  <b-row>
-    <b-col
+  <div class="row">
+    <div
       v-for="training in trainings"
       :key="training.id"
-      cols="12"
-      :md="12 / 2"
-      :lg="12 / number"
-      class="mb-4"
+      :class="['col-12 mb-4', `col-md-${12 / 2}`, `col-lg-${12 / number}`]"
     >
       <article class="article-card">
         <b-link
@@ -45,8 +42,8 @@
           </BCard>
         </b-link>
       </article>
-    </b-col>
-  </b-row>
+    </div>
+  </div>
 </template>
 
 <script>

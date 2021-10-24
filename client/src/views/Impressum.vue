@@ -4,10 +4,10 @@
       <h1>{{ title }}</h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
-    <b-container class="py-3 py-lg-5">
+    <div class="container py-3 py-lg-5">
       <!-- eslint-disable-next-line -->
       <div v-html="content"></div>
-    </b-container>
+    </div>
     <Head :title="title" desc="Impressum" img="" />
   </div>
 </template>

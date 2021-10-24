@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="title">{{ title }}</h1>
-    <b-container class="logout"> </b-container>
+    <div class="logout container"></div>
 
     <b-alert
       v-model="alert.show"

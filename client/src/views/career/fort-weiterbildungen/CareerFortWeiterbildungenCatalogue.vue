@@ -5,9 +5,9 @@
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
 
-    <b-container class="py-4 py-lg-5">
-      <b-row>
-        <b-col md="4" class="mb-4">
+    <div class="container py-4 py-lg-5">
+      <div class="row">
+        <div class="col-12 col-md-4 mb-4">
           <b-form @submit.prevent>
             <label for="s-trainings" class="sr-only">Suchbegriff</label>
             <b-input-group class="mb-1 mr-2">
@@ -130,8 +130,8 @@
               >Jetzt kostenfrei Fortbildung veröffentlichen</b-link
             >
           </div>
-        </b-col>
-        <b-col>
+        </div>
+        <div class="col">
           <div v-if="trainings.length > 0" id="training-list">
             <TrainingCatalogueCard
               v-for="training in trainings"
@@ -153,9 +153,9 @@
             <ToJobboardBanner class="mt-3" />
             <BerufsbilderBanner class="mt-3" />
           </div>
-        </b-col>
-      </b-row>
-    </b-container>
+        </div>
+      </div>
+    </div>
 
     <Head
       title="Fortbildungskatalog speziell für MFA & ZFA"

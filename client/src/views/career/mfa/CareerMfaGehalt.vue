@@ -5,7 +5,7 @@
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
 
-    <b-container class="py-3 py-lg-5">
+    <div class="container py-3 py-lg-5">
       <b-img-lazy
         class="border-radius1 shadow1 mb-3 mb-lg-5"
         fluid
@@ -118,8 +118,8 @@
         Gehaltstarifvertrag {{ new Date().getFullYear() }} – Medizinische
         Fachangestellte (MFA) / ArzthelferIn
       </h2>
-      <b-row>
-        <b-col>
+      <div class="row">
+        <div class="col">
           <p>
             Der Verband medizinischer Fachberufe e.V. (VMF) ist die
             verantwortliche Organisation für Medizinische Fachangestellte auf
@@ -187,8 +187,8 @@
             Marktwert einzuschätzen – bezüglich Qualifikation und Erfahrung.
           </p>
           <TrainingCatalogueSmallBanner class="my-2" />
-        </b-col>
-        <b-col>
+        </div>
+        <div class="col">
           <Gehaltsrechner class="my-4" />
           <GehaltsverhandlungBanner class="mb-4" />
           <FacebookBtn
@@ -196,8 +196,8 @@
             content="Folgen und keine Neuigkeiten verpassen"
           />
           <FacebookShareBtn class="mb-4" />
-        </b-col>
-      </b-row>
+        </div>
+      </div>
       <div class="bg-light-shade border-radius1 p-4 mb-4">
         <p class="h5">Übrigens</p>
         <p>
@@ -587,8 +587,8 @@
         als ArzthelferIn, werden die Zeiten jedoch voll dazu gerechnet.
       </p>
       <p>Zwei Beispiele zum besseren Verständnis.</p>
-      <b-row class="my-3">
-        <b-col class="mx-lg-4">
+      <div class="row my-3">
+        <div class="col mx-lg-4">
           <div class="example">
             <p><strong>Beispiel 1:</strong></p>
             <p class="pl-5">
@@ -603,8 +603,8 @@
               </em>
             </p>
           </div>
-        </b-col>
-        <b-col class="mx-lg-4">
+        </div>
+        <div class="col mx-lg-4">
           <div class="example">
             <p><strong>Beispiel 2:</strong></p>
             <p class="pl-5">
@@ -620,8 +620,8 @@
               </em>
             </p>
           </div>
-        </b-col>
-      </b-row>
+        </div>
+      </div>
       <h2 id="berufsnahe-taetigkeiten">
         Anrechnung der Berufsjahre für MFA bei berufsnahen Tätigkeiten
       </h2>
@@ -1087,7 +1087,7 @@
         >
         von Teramed
       </p>
-    </b-container>
+    </div>
     <Head
       :title="
         `MFA Gehalt ${new Date().getFullYear()} | Gehaltsrechner | Tarifvertrag`

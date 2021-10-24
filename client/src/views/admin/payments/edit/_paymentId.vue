@@ -1,8 +1,8 @@
 <template>
-  <b-container class="edit-payment py-5">
+  <div class="edit-payment container py-5">
     <h2>Zahlung bearbeiten</h2>
     <PaymentForm />
-  </b-container>
+  </div>
 </template>
 
 <script>

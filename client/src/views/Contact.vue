@@ -4,9 +4,9 @@
       <h1>{{ title }}</h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
-    <b-container class="contact py-3 py-lg-5">
+    <div class="contact container py-3 py-lg-5">
       <ContactForm :title="formContent.title" :intro="formContent.intro" />
-    </b-container>
+    </div>
     <Head
       :title="title"
       desc="Du hast ein Anliegen, dass Du mit uns besprechen möchtest? Nimm noch heute Kontakt zu uns auf."

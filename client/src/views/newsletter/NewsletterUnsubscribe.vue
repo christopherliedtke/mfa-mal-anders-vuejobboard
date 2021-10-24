@@ -2,7 +2,7 @@
   <div>
     <h1 class="title">{{ title }}</h1>
 
-    <b-container class="my-5" style="max-width: 600px">
+    <div class="container my-5" style="max-width: 600px">
       <h3 class="text-center">Schade, dass Du gehst!</h3>
       <b-form>
         <label for="email"
@@ -35,7 +35,7 @@
         style="z-index: 2000;"
         >{{ error }}</b-alert
       >
-    </b-container>
+    </div>
   </div>
 </template>
 

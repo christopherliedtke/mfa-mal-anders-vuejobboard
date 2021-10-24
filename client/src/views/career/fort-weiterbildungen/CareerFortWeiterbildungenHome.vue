@@ -4,12 +4,12 @@
       <h1>{{ title }}</h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
-    <b-container class="py-3 py-lg-5">
-      <b-row>
-        <b-col md="4" class="mb-4">
+    <div class="container py-3 py-lg-5">
+      <div class="row">
+        <div class="col-12 col-md-4 mb-4">
           <FortWeiterbildungenNav />
-        </b-col>
-        <b-col>
+        </div>
+        <div class="col">
           <b-img-lazy
             class="border-radius1 shadow1 mb-3 mb-lg-5"
             fluid
@@ -96,10 +96,10 @@
             Wir freuen uns über
             <b-link to="/kontakt">eure Nachrichten</b-link>.
           </p>
-        </b-col>
-      </b-row>
+        </div>
+      </div>
       <RandomTrainingsContainer class="mt-5" />
-    </b-container>
+    </div>
     <Head
       title="Fort- und Weiterbildung für ArzthelferInnen – MFA & ZFA"
       :desc="

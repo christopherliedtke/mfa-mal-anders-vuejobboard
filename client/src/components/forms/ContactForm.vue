@@ -3,8 +3,8 @@
     <h2 v-if="title">{{ title }}</h2>
     <p v-if="intro">{{ intro }}</p>
     <b-form>
-      <b-row cols="1" cols-md="2">
-        <b-col>
+      <div class="row row-cols-1 row-cols-md-2">
+        <div class="col">
           <label for="gender">Anrede</label>
 
           <b-form-select
@@ -22,8 +22,8 @@
               >{{ genderOption }}</b-form-select-option
             >
           </b-form-select>
-        </b-col>
-        <b-col>
+        </div>
+        <div class="col">
           <label for="title">Titel</label>
           <b-form-select
             id="title"
@@ -40,10 +40,10 @@
               >{{ contactTitle }}</b-form-select-option
             >
           </b-form-select>
-        </b-col>
-      </b-row>
-      <b-row cols="1" cols-md="2">
-        <b-col>
+        </div>
+      </div>
+      <div class="row row-cols-1 row-cols-md-2">
+        <div class="col">
           <label for="firstName" required>Vorname</label>
           <b-form-input
             id="firstName"
@@ -55,8 +55,8 @@
             trim
             :state="validated ? (form.firstName ? true : false) : null"
           ></b-form-input>
-        </b-col>
-        <b-col>
+        </div>
+        <div class="col">
           <label for="lastName" required>Nachname</label>
           <b-form-input
             id="firstName"
@@ -68,10 +68,10 @@
             trim
             :state="validated ? (form.lastName ? true : false) : null"
           ></b-form-input>
-        </b-col>
-      </b-row>
-      <b-row cols="1" cols-md="2">
-        <b-col>
+        </div>
+      </div>
+      <div class="row row-cols-1 row-cols-md-2">
+        <div class="col">
           <label for="email" required>E-Mail Adresse</label>
           <b-form-input
             id="email"
@@ -83,8 +83,8 @@
             trim
             :state="validated ? (form.email ? true : false) : null"
           ></b-form-input>
-        </b-col>
-        <b-col>
+        </div>
+        <div class="col">
           <label for="phone">Telefonnummer</label>
           <b-form-input
             id="phone"
@@ -94,8 +94,8 @@
             autocomplete="tel"
             trim
           ></b-form-input>
-        </b-col>
-      </b-row>
+        </div>
+      </div>
       <label for="subject" required>Betreff</label>
       <b-form-input
         id="subject"

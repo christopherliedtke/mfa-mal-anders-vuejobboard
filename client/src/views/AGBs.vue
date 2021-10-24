@@ -4,10 +4,10 @@
       <h1>{{ title }}</h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
-    <b-container class="privacy-policy py-5">
+    <div class="privacy-policy container py-5">
       <!-- eslint-disable-next-line -->
       <div v-html="content"></div>
-    </b-container>
+    </div>
     <Head :title="title" desc="Allgemeine Geschäftsbedingungen" img="" />
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <b-container class="edit-job py-3 py-lg-5">
+  <div class="edit-job container py-3 py-lg-5">
     <h2>
       Stellenanzeige
       {{ $route.params.jobId === "new" ? "erstellen" : "bearbeiten" }}
@@ -29,7 +29,7 @@
       </BPopover>
     </p>
     <JobForm api-jobs-schema="private"></JobForm>
-  </b-container>
+  </div>
 </template>
 
 <script>

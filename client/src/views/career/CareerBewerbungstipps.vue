@@ -4,7 +4,7 @@
       <h1>{{ title }}</h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
-    <b-container class="py-3 py-lg-5">
+    <div class="container py-3 py-lg-5">
       <b-img-lazy
         class="border-radius1 shadow1 mb-3 mb-lg-5 w-100"
         fluid
@@ -215,7 +215,7 @@
 
       <ToJobboardBanner class="my-5 mx-auto" />
       <RandomArticlesContainer class="my-5 mx-auto" />
-    </b-container>
+    </div>
 
     <Head
       :title="title"

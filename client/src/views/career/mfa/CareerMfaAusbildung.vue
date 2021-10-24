@@ -4,7 +4,7 @@
       <h1>{{ title }}</h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
-    <b-container class="py-3 py-lg-5">
+    <div class="container py-3 py-lg-5">
       <b-img-lazy
         class="border-radius1 shadow1 mb-3 mb-lg-5"
         fluid
@@ -49,8 +49,8 @@
         Der Beruf vereint bürokratische, organisatorische und medizinische
         Aufgaben.
       </p>
-      <b-row cols="12" lg="4">
-        <b-col>
+      <div class="row row-cols-1 row-cols-lg-3">
+        <div class="col">
           <div class="example">
             <h3 class="h5">
               Beispiele für medizinische Tätigkeiten:
@@ -66,8 +66,8 @@
               Instrumenten zuständig.
             </p>
           </div>
-        </b-col>
-        <b-col>
+        </div>
+        <div class="col">
           <div class="example">
             <h3 class="h5">
               Beispiele für bürokratische Tätigkeiten:
@@ -80,8 +80,8 @@
               funktionierendes Qualitätsmanagement.
             </p>
           </div>
-        </b-col>
-        <b-col>
+        </div>
+        <div class="col">
           <div class="example">
             <h3 class="h5">
               Beispiele für organisatorische Tätigkeiten:
@@ -95,8 +95,8 @@
               fachgerecht handeln.
             </p>
           </div>
-        </b-col>
-      </b-row>
+        </div>
+      </div>
       <h2>
         Welche Fähigkeiten muss ich als Medizinische Fachangestellte haben?
       </h2>
@@ -106,8 +106,8 @@
         Herausforderungen meistern zu können und diesen wirklich wunderbaren
         Beruf mit Freude auszuüben, helfen bestimmte Eigenschaften:
       </p>
-      <b-row cols="1" cols-lg="2">
-        <b-col>
+      <div class="row row-cols-1 row-cols-lg-2">
+        <div class="col">
           <ul>
             <li>Organisationstalent</li>
             <li>Gutes Zeitmanagement</li>
@@ -131,16 +131,16 @@
               König 🤷‍♀️)
             </li>
           </ul>
-        </b-col>
-        <b-col class="d-flex justify-content-center align-items-center">
+        </div>
+        <div class="col d-flex justify-content-center align-items-center">
           <b-img
             style="max-width: 80%"
             class="my-4"
             fluid
             src="~@/assets/img/profile_mfa.svg"
           />
-        </b-col>
-      </b-row>
+        </div>
+      </div>
       <h2>
         Wie läuft die Ausbildung zur Medizinischen Fachangestellten ab?
       </h2>
@@ -384,14 +384,11 @@
         Ganz allgemein haben wir die Kompetenzbereiche und Jobmöglichkeiten für
         Medizinische Fachangestellte / ArzthelferInnen in 5 Bereiche eingeteilt:
       </p>
-      <b-row>
-        <b-col
+      <div class="row">
+        <div
           v-for="card in cards"
           :key="card.title"
-          class="my-3"
-          cols="12"
-          md="6"
-          lg="4"
+          class="col-12 col-md-6 col-lg-4 my-3"
         >
           <BCard align="center icon-box shadow1 p-0">
             <BCardBody>
@@ -413,8 +410,8 @@
               >
             </BCardBody>
           </BCard>
-        </b-col>
-      </b-row>
+        </div>
+      </div>
       <p>
         Jeder Bereich bietet verschiedene Möglichkeiten sich zu spezialisieren
         oder im Beruf und gehaltstechnisch aufzusteigen.
@@ -476,7 +473,7 @@
       </p>
       <ToJobboardBanner class="my-5" />
       <RandomTrainingsContainer />
-    </b-container>
+    </div>
 
     <Head
       :title="title"

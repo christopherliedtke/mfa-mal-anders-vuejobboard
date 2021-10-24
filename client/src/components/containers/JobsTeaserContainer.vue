@@ -1,20 +1,31 @@
 <template>
   <div v-if="jobs">
-    <b-row
+    <div
       v-if="jobs.length > 0"
-      :cols="cols"
-      :cols-md="colsMd"
-      :cols-lg="colsLg"
+      :class="[
+        'row',
+        `row-cols-${cols}`,
+        `row-cols-md-${colsMd}`,
+        `row-cols-lg-${colsLg}`
+      ]"
     >
-      <b-col v-for="job in jobs" :key="job._id">
+      <div v-for="job in jobs" :key="job._id" class="col">
         <JobCard :job="job" :compact="compact" />
-      </b-col>
-    </b-row>
-    <b-row v-else :cols="cols" cols-md="3">
-      <b-col v-for="index in number" :key="index">
+      </div>
+    </div>
+    <div
+      v-else
+      :class="[
+        'row',
+        `row-cols-${cols}`,
+        `row-cols-md-${colsMd}`,
+        `row-cols-lg-${colsLg}`
+      ]"
+    >
+      <div v-for="index in number" :key="index" class="col">
         <JobCardPlaceholder :compact="compact" />
-      </b-col>
-    </b-row>
+      </div>
+    </div>
     <div v-if="showMoreBtn" class="d-flex justify-content-end mt-2">
       <b-button
         :to="

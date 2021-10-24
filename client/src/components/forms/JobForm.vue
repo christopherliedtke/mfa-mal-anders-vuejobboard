@@ -230,8 +230,8 @@
         <b-img v-if="job.imageUrl" :src="job.imageUrl" fluid />
         <Fa v-else icon="image" size="5x" />
       </div>
-      <b-row cols="1" cols-md="2">
-        <b-col>
+      <div class="row row-cols-1 row-cols-md-2">
+        <div class="col">
           <label for="min-salary"
             >Minimum Monatsgehalt <small>[optional]</small></label
           >
@@ -248,8 +248,8 @@
               placeholder="Min. Monatsgehalt eingeben..."
             />
           </b-input-group>
-        </b-col>
-        <b-col>
+        </div>
+        <div class="col">
           <label for="max-salary"
             >Maximum Monatsgehalt <small>[optional]</small></label
           >
@@ -266,8 +266,8 @@
               placeholder="Max. Monatsgehalt eingeben..."
             />
           </b-input-group>
-        </b-col>
-      </b-row>
+        </div>
+      </div>
 
       <h3 class="mt-4">Kontakt für Bewerbungen</h3>
       <label for="contact-gender">Anrede</label>

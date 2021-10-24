@@ -5,8 +5,8 @@
     align="center"
     style="max-width: 840px;"
   >
-    <b-row class="p-4">
-      <b-col md="4">
+    <div class="row p-4">
+      <div class="col-md-4">
         <b-img-lazy
           class="p-3 pl-md-3 pr-md-0 w-100 h-100"
           src="@/assets/img/medical_research.svg"
@@ -16,8 +16,8 @@
           offset="1000"
           fluid
         ></b-img-lazy>
-      </b-col>
-      <b-col md="8">
+      </div>
+      <div class="col-md-8">
         <BCardBody
           class="d-flex flex-column justify-content-center align-items-center h-100 p-4"
         >
@@ -48,8 +48,8 @@
             >Stellenanzeige schalten</b-button
           >
         </BCardBody>
-      </b-col>
-    </b-row>
+      </div>
+    </div>
   </BCard>
 </template>
 

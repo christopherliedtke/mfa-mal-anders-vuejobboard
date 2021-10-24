@@ -1,7 +1,7 @@
 <template>
   <div id="linktree">
     <div class="bg-logo"></div>
-    <b-container class=" position-relative py-3 py-lg-5">
+    <div class="container position-relative py-3 py-lg-5">
       <nav class="d-flex flex-column align-items-center">
         <b-button block to="/">📌 mfa-mal-anders.de</b-button>
         <b-button block to="/stellenangebote"
@@ -25,7 +25,7 @@
         <b-button block to="/blog">📰 Blog</b-button>
         <b-button block to="/fuer-arbeitgeber">🏥 Für Arbeitgeber</b-button>
       </nav>
-    </b-container>
+    </div>
 
     <Head
       title="Linktree | Sitemap"

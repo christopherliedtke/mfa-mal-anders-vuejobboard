@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="title">{{ title }}</h1>
-    <b-container class="checkout py-3 py-lg-5">
+    <div class="checkout container py-3 py-lg-5">
       <div>
         <h2 class="mb-4">
           <!-- eslint-disable-next-line -->
@@ -11,10 +11,11 @@
           Bitte wählen Sie Ihr gewünschtes Stellenpaket.
         </p>
 
-        <b-row cols="1" cols-lg="3" class="mb-4">
-          <b-col
+        <div class="row row-cols-1 row-cols-lg-3 mb-4">
+          <div
             v-for="pricingPackage in $config.pricingPackages"
             :key="pricingPackage.name"
+            class="col"
           >
             <PricingCard
               :pricing="pricingPackage"
@@ -22,8 +23,8 @@
               :active="pricingPackage.name === checkout.pricingPackage"
               @update-pricing-package="updatePricingPackage"
             />
-          </b-col>
-        </b-row>
+          </div>
+        </div>
 
         <div class="d-flex justify-content-end">
           <b-button variant="outline-primary" to="/kontakt?role=employer"
@@ -380,7 +381,7 @@
           </b-button>
         </div>
       </div>
-    </b-container>
+    </div>
 
     <Head :title="title" desc="" />
   </div>

@@ -1,5 +1,5 @@
 <template>
-  <b-container class="mt-5 px-0">
+  <div class="container mt-5 px-0">
     <div v-if="similarJobs.length > 0">
       <JobCard
         v-for="similarJob in similarJobs"
@@ -11,7 +11,7 @@
     <div v-if="loading">
       <JobCardPlaceholder v-for="index in number" :key="index" class="mb-3" />
     </div>
-  </b-container>
+  </div>
 </template>
 
 <script>

@@ -5,13 +5,13 @@
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
 
-    <b-container class="py-4 py-lg-5">
+    <div class="container py-4 py-lg-5">
       <Training v-if="training" :training="training" />
       <span v-else class="h5"
         >Fortbildung konnte nicht gefunden/geladen werden.</span
       >
       <ToJobboardBanner v-if="training" class="mt-5" />
-    </b-container>
+    </div>
 
     <Head
       :title="training ? training.title : ' | Fortbildungskatalog'"

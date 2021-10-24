@@ -1,5 +1,5 @@
 <template>
-  <b-container class="register auth-container">
+  <div class="register auth-container container">
     <RegisterForm>
       <template #intro>
         <h2 class="text-center mb-0">
@@ -28,8 +28,8 @@
             Sie möchten eine Stellenanzeige bei uns schalten?
           </p>
 
-          <b-row cols-md="3" class="d-none d-md-flex my-4 text-center">
-            <b-col>
+          <div class="row row-cols-md-3 d-none d-md-flex my-4 text-center">
+            <div class="col">
               <div
                 class="icon-box mx-auto bg-primary rounded-circle"
                 style="width: 75px; height: 75px"
@@ -37,8 +37,8 @@
                 <Fa icon="user-plus" class="text-light m-0" size="2x" />
               </div>
               <h3 class="h6">Registrieren</h3>
-            </b-col>
-            <b-col>
+            </div>
+            <div class="col">
               <div
                 class="icon-box mx-auto bg-primary rounded-circle"
                 style="width: 75px; height: 75px"
@@ -46,8 +46,8 @@
                 <Fa icon="drafting-compass" class="text-light m-0" size="2x" />
               </div>
               <h3 class="h6">Stellenanzeige erstellen</h3>
-            </b-col>
-            <b-col>
+            </div>
+            <div class="col">
               <div
                 class="icon-box mx-auto bg-primary rounded-circle"
                 style="width: 75px; height: 75px"
@@ -55,8 +55,8 @@
                 <Fa icon="paper-plane" class="text-light m-0" size="2x" />
               </div>
               <h3 class="h6">Veröffentlichen</h3>
-            </b-col>
-          </b-row>
+            </div>
+          </div>
           <p class="">
             Registrieren Sie sich jetzt und veröffentlichen Sie noch heute Ihre
             Stellenanzeige!
@@ -70,7 +70,7 @@
       desc="Registriere Dich jetzt bei MFA mal anders und veröffentliche noch heute Deine Stellenanzeige."
       img=""
     />
-  </b-container>
+  </div>
 </template>
 
 <script>

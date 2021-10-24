@@ -5,12 +5,12 @@
         <h1>{{ training.title }}</h1>
         <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
       </div>
-      <b-container class="py-3 py-lg-5">
-        <b-row>
-          <b-col md="4" order="2" order-md="1">
+      <div class="container py-3 py-lg-5">
+        <div class="row">
+          <div class="col-12 col-md-4 order-2 order-md-1">
             <FortWeiterbildungenNav />
-          </b-col>
-          <b-col class="mb-4" order="1" order-md="2">
+          </div>
+          <div class="col-12 col-md-8 order-1 order-md-2 mb-4">
             <b-img-lazy
               v-if="training.featuredImage"
               class="border-radius1 shadow1 mb-3 mb-lg-5"
@@ -30,14 +30,14 @@
               class="mt-4"
             />
             <ToJobboardBanner class="mt-4" />
-          </b-col>
-        </b-row>
-      </b-container>
+          </div>
+        </div>
+      </div>
     </article>
 
-    <b-container>
+    <div class="container">
       <RandomTrainingsContainer />
-    </b-container>
+    </div>
 
     <Head
       v-if="training"

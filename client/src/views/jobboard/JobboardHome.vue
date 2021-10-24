@@ -13,41 +13,9 @@
       </h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
-    <b-container class="py-3 py-lg-5">
-      <b-row class="mt-2">
-        <b-col cols="12" lg="4" class="px-2 pr-lg-5">
-          <!-- <div v-if="$config.externalJobs.active" class="mb-2">
-            <p class="small text-muted text-right m-0">
-              {{
-                jobsCount > 0
-                  ? parseInt(jobsCount)
-                      .toString()
-                      .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
-                  : "-"
-              }}
-              Stellenangebote
-            </p>
-          </div> -->
-          <BButtonToolbar aria-label="Jobboard view toolbar">
-            <BButtonGroup v-if="$config.jobboardMap.active" class="mb-3">
-              <b-button
-                :variant="
-                  jobboardView == 'list' ? 'primary' : 'outline-primary'
-                "
-                size="sm"
-                @click.prevent="jobboardView = 'list'"
-                ><Fa class="mr-2" icon="list-ul" />Liste</b-button
-              >
-              <b-button
-                :variant="jobboardView == 'map' ? 'primary' : 'outline-primary'"
-                size="sm"
-                @click.prevent="jobboardView = 'map'"
-                ><Fa class="mr-2" icon="map" />Karte</b-button
-              >
-            </BButtonGroup>
-            <!-- <FacebookBtn class="d-lg-none mb-3 ml-1" content="" />
-            <InstagramBtn class="d-lg-none mb-3 ml-1" content="" /> -->
-          </BButtonToolbar>
+    <div class="container py-3 py-lg-5">
+      <div class="row mt-2">
+        <div class="col-12 col-lg-4 px-2 pr-lg-5">
           <b-form
             id="job-filter"
             @submit.prevent="
@@ -164,32 +132,6 @@
                 </b-form-select>
               </b-input-group>
 
-              <!-- <b-form-datalist
-              id="location-list"
-              :options="locationsList"
-            ></b-form-datalist> -->
-              <!-- <label for="state-jobboard" class="sr-only">Bundesland *</label>
-            <b-form-select
-              id="state-jobboard"
-              v-model="filter.state"
-              class="my-1 mr-2"
-              @change="
-                () => {
-                  getJobs();
-                  setQuery();
-                }
-              "
-            >
-              <b-form-select-option :value="''"
-                >Alle Bundesländer</b-form-select-option
-              >
-              <b-form-select-option
-                v-for="state in companyStateOptions"
-                :key="state"
-                :value="state"
-                >{{ state }}</b-form-select-option
-              >
-            </b-form-select> -->
               <label for="profession-jobboard" class="mb-2 pl-2"
                 >Berufsgruppe</label
               >
@@ -308,38 +250,35 @@
             <TrainingCatalogueSmallBanner />
           </div>
           <div class="d-none d-lg-block mt-3">
-            <!-- <p class="h5">
-              Verpasse keine Neuigkeiten und folge uns auf
-            </p> -->
             <FacebookBtn class="mt-2 mr-1" content="Facebook" size="sm" />
             <InstagramBtn class="mt-2 mr-1" content="" size="sm" />
             <TwitterBtn class="mt-2 mr-1" content="" size="sm" />
           </div>
-        </b-col>
-        <b-col cols="12" lg="8">
-          <keep-alive>
-            <component
-              :is="computedJobboardView"
-              id="job-list"
-              class="mb-4"
-              :jobs="filteredJobs"
-              :nojobs="nojobs"
-              :errors="errors"
-            ></component>
-          </keep-alive>
-          <div v-if="loading && !nojobs" class="text-center">
+        </div>
+        <div class="col-12 col-lg-8">
+          <JobboardList
+            id="job-list"
+            class="mb-4"
+            :jobs="filteredJobs"
+            :nojobs="nojobs"
+            :errors="errors"
+          ></JobboardList>
+
+          <div class="d-flex justify-content-center">
+            <button
+              v-if="!nojobs && !loading && filteredJobs.length < jobsCount"
+              class="btn btn-secondary"
+              @click="loadMoreJobs()"
+            >
+              Weitere Laden
+            </button>
             <BSpinner
+              v-else-if="loading && !nojobs"
               variant="primary"
               label="Lade weitere Stellenanzeigen..."
             ></BSpinner>
           </div>
-          <!-- <b-button
-            v-if="filteredJobs.length < jobsCount"
-            variant="secondary"
-            block
-            @click.prevent="getJobs(0, 25, filteredJobs.length)"
-            >Weitere laden</b-button
-          > -->
+
           <div class="my-4 clearfix">
             <h2 class="h5 bold mb-3">Ihre Stellenanzeige hier?</h2>
             <b-img
@@ -369,13 +308,13 @@
           </div>
           <TrainingCatalogueSmallBanner class="d-lg-none mt-3" />
           <div class="mt-4 mt-lg-5">
+            <BerufsbilderBanner class="mt-3 mb-5" />
             <b-link
               class="h2 text-primary"
               to="/karriere/fort-und-weiterbildungen"
               >Fort- und Weiterbildungen für MFA & ZFA</b-link
             >
             <RandomTrainingsContainer class="mt-3" :number="2" />
-            <BerufsbilderBanner class="mt-3" />
           </div>
           <div class="mt-5">
             <p class="small">
@@ -398,9 +337,10 @@
               >.
             </p>
           </div>
-        </b-col>
-      </b-row>
-    </b-container>
+        </div>
+      </div>
+    </div>
+
     <Head
       :title="
         `Stellenangebote ArzthelferIn | ${profession.active.join(' & ')} Jobs${
@@ -424,14 +364,7 @@
 
 <script>
   import Vue from "vue";
-  import {
-    BButtonToolbar,
-    BButtonGroup,
-    BSpinner,
-    BCollapse
-  } from "bootstrap-vue";
-  Vue.component("BButtonToolbar", BButtonToolbar);
-  Vue.component("BButtonGroup", BButtonGroup);
+  import { BSpinner, BCollapse } from "bootstrap-vue";
   Vue.component("BSpinner", BSpinner);
   Vue.component("BCollapse", BCollapse);
   import {
@@ -440,11 +373,7 @@
     specializationOptions,
     professionOptions
   } from "@/config/formDataConfig.json";
-  const HereMapMultiJobs = () =>
-    import(
-      /* webpackChunkName: "HereMapMultiJobs" */ "@/components/hereMaps/HereMapMultiJobs.vue"
-    );
-  // import HereMapMultiJobs from "@/components/hereMaps/HereMapMultiJobs.vue";
+
   import JobboardList from "@/components/ui/JobboardList.vue";
   import FacebookBtn from "@/components/buttons/FacebookBtn.vue";
   import InstagramBtn from "@/components/buttons/InstagramBtn.vue";
@@ -453,12 +382,10 @@
   import BerufsbilderBanner from "@/components/banners/BerufsbilderBanner.vue";
   import TrainingCatalogueSmallBanner from "@/components/banners/TrainingCatalogueSmallBanner.vue";
   import SubscribeNewsletterBtn from "@/components/buttons/SubscribeNewsletterBtn.vue";
-  // import { getHereServiceMixin } from "@/mixins/getHereServiceMixin.js";
   export default {
     name: "Jobboard",
     components: {
       JobboardList,
-      HereMapMultiJobs,
       FacebookBtn,
       InstagramBtn,
       TwitterBtn,
@@ -467,12 +394,10 @@
       TrainingCatalogueSmallBanner,
       SubscribeNewsletterBtn
     },
-    // mixins: [getHereServiceMixin],
     data() {
       return {
         filteredJobs: [],
         loading: false,
-        loadMoreJobsTimeoutId: null,
         nojobs: false,
         jobsCount: 0,
         filter: {
@@ -481,7 +406,6 @@
           location: "",
           state: ""
         },
-        locationSuggestions: [],
         specialization: {
           active: specializationOptions,
           visible: false,
@@ -515,47 +439,40 @@
       };
     },
     computed: {
-      computedJobboardView: {
-        get() {
-          return this.jobboardView === "map"
-            ? "HereMapMultiJobs"
-            : "JobboardList";
-        }
-      },
       snippet() {
         return [
           {
             id: "breadcrumbs",
             type: "application/ld+json",
             inner: `{
-              "@context": "http://schema.org",
-              "@type" : "BreadcrumbList",
-              "itemListElement": [{
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "MFA mal anders",
-                  "item": "https://www.mfa-mal-anders.de"
-              },{
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Stellenangebote",
-                  "item": "https://www.mfa-mal-anders.de/stellenangebote"
-              }${
-                this.$route.query.location || this.$route.query.state
-                  ? ',{"@type": "ListItem","position": 3,"name": "' +
-                    (this.$route.params.location ||
-                      this.$route.query.location ||
-                      this.$route.query.state) +
-                    '","item": "https://www.mfa-mal-anders.de/stellenangebote/ort/' +
-                    (
-                      this.$route.params.location ||
-                      this.$route.query.location ||
-                      this.$route.query.state
-                    ).toLowerCase() +
-                    '"}'
-                  : ""
-              }]
-            }`
+                "@context": "http://schema.org",
+                "@type" : "BreadcrumbList",
+                "itemListElement": [{
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "MFA mal anders",
+                    "item": "https://www.mfa-mal-anders.de"
+                },{
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Stellenangebote",
+                    "item": "https://www.mfa-mal-anders.de/stellenangebote"
+                }${
+                  this.$route.query.location || this.$route.query.state
+                    ? ',{"@type": "ListItem","position": 3,"name": "' +
+                      (this.$route.params.location ||
+                        this.$route.query.location ||
+                        this.$route.query.state) +
+                      '","item": "https://www.mfa-mal-anders.de/stellenangebote/ort/' +
+                      (
+                        this.$route.params.location ||
+                        this.$route.query.location ||
+                        this.$route.query.state
+                      ).toLowerCase() +
+                      '"}'
+                    : ""
+                }]
+              }`
           },
           {
             rel: "canonical",
@@ -610,10 +527,6 @@
       "profession.active"() {
         this.setQuery();
       }
-      // "$route.query.location"() {
-      //   this.setFilter();
-      //   this.getJobs();
-      // }
     },
     async created() {
       this.setFilter();
@@ -621,9 +534,6 @@
     },
     methods: {
       async getJobs(limit = "", offset = "") {
-        this.loadMoreJobsTimeoutId
-          ? clearTimeout(this.loadMoreJobsTimeoutId)
-          : null;
         this.errors = null;
         this.nojobs = false;
         this.filteredJobs = offset > 0 ? this.filteredJobs : [];
@@ -659,35 +569,20 @@
 
         if (this.filteredJobs.length === 0) {
           this.nojobs = true;
-          clearTimeout(this.loadMoreJobsTimeoutId);
         } else {
           this.nojobs = false;
-          this.loadMoreJobs();
         }
       },
-      loadMoreJobs() {
-        clearTimeout(this.loadMoreJobsTimeoutId);
+      async loadMoreJobs() {
         this.loading = false;
 
         if (
           this.filteredJobs.length < this.jobsCount ||
           this.filteredJobs.length === 0
         ) {
-          const jobsList = window.document.getElementById("job-list");
-
-          if (jobsList) {
-            const jobsListBottom = jobsList.getBoundingClientRect().bottom;
-            const clientBottom = document.documentElement.clientHeight;
-
-            this.loading = true;
-            this.loadMoreJobsTimeoutId = setTimeout(async () => {
-              if (!this.nojobs && jobsListBottom - clientBottom < 500) {
-                await this.getJobs(undefined, this.filteredJobs.length);
-              }
-              this.loading = false;
-              this.loadMoreJobs();
-            }, 200);
-          }
+          this.loading = true;
+          await this.getJobs(undefined, this.filteredJobs.length);
+          this.loading = false;
         }
       },
       setQuery() {
@@ -759,21 +654,6 @@
         this.setQuery();
         this.getJobs();
       }
-      // async getLocationSuggestions(str) {
-      //   if (!str) {
-      //     return [];
-      //   }
-      //   const suggestions = await this.getHereLocationSuggestions(str);
-      //   console.log(
-      //     "suggestions: ",
-      //     suggestions.map(suggestion => suggestion.label)
-      //   );
-
-      //   this.locationSuggestions = suggestions.map(
-      //     suggestion =>
-      //       `${suggestion.address.city}, ${suggestion.address.state}`
-      //   );
-      // }
     }
   };
 </script>

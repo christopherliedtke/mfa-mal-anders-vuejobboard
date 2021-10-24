@@ -1,8 +1,8 @@
 <template>
-  <b-container class="password-reset auth-container">
+  <div class="password-reset auth-container container">
     <h2 class="text-center">{{ title }}</h2>
     <PasswordResetForm />
-  </b-container>
+  </div>
 </template>
 
 <script>

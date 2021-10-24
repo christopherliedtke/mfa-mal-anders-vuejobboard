@@ -1,13 +1,13 @@
 <template>
   <div class="newsletter-activation">
     <h1 class="title">{{ title }}</h1>
-    <b-container class="py-3 py-lg-5">
+    <div class="container py-3 py-lg-5">
       <p class="text-center">
         Aktivierung Deiner Job-Newsletter Anmeldung läuft...
       </p>
 
       <RandomArticlesContainer style="margin-top: 5rem" />
-    </b-container>
+    </div>
     <Head
       :title="title"
       desc="Aktivierung Job-Newsletter für MFAs / ZFAs / ArzthelferInnen."

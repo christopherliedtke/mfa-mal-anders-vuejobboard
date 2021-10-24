@@ -5,7 +5,7 @@
         <h1>{{ article.title }}</h1>
         <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
       </div>
-      <b-container class="cms-article mt-3 mb-5">
+      <div class="cms-article container mt-3 mb-5">
         <div class="position-relative">
           <b-img-lazy
             v-if="article.featuredImage"
@@ -109,11 +109,11 @@
             <b-link to="/kontakt">Kontaktformular</b-link>.
           </div>
         </div>
-      </b-container>
+      </div>
     </article>
-    <b-container>
+    <div class="container">
       <RandomArticlesContainer />
-    </b-container>
+    </div>
     <Head
       v-if="article.seo.title"
       :title="article.seo.title"

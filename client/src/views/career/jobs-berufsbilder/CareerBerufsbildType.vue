@@ -4,12 +4,12 @@
       <h1>{{ title }}</h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
-    <b-container class="py-3 py-lg-5">
-      <b-row>
-        <b-col md="4" class="mb-4">
+    <div class="container py-3 py-lg-5">
+      <div class="row">
+        <div class="col-12 col-md-4 mb-4">
           <JobsBerufsbilderNav />
-        </b-col>
-        <b-col>
+        </div>
+        <div class="col">
           <!-- eslint-disable -->
           <div
             v-if="berufsbilder[0].berufsbildTypes.nodes[0].description"
@@ -61,10 +61,10 @@
           </div>
 
           <ToJobboardBanner class="mt-5" />
-        </b-col>
-      </b-row>
+        </div>
+      </div>
       <RandomTrainingsContainer class="mt-5" />
-    </b-container>
+    </div>
     <Head
       :title="title"
       :desc="berufsbilder[0].berufsbildTypes.nodes[0].seo.metaDesc"

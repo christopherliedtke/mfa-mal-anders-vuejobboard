@@ -4,15 +4,15 @@
     class="overflow-hidden bg-light-shade shadow1 m-3 p-4"
     align="center"
   >
-    <b-row no-gutters>
-      <b-col md="3">
+    <div class="row no-gutters">
+      <div class="col-md-3">
         <b-img
           class="p-1 w-100 h-100"
           src="@/assets/img/profiling_monochromatic.svg"
           alt="Tipps für einen effizienten Bewerbungsprozess für MFAs / ZFAs / ArzthelferInnen"
         ></b-img>
-      </b-col>
-      <b-col md="9">
+      </div>
+      <div class="col-md-9">
         <BCardBody
           class="d-flex flex-column justify-content-center align-items-center h-100 p-4"
         >
@@ -31,8 +31,8 @@
             >Mehr erfahren</b-button
           >
         </BCardBody>
-      </b-col>
-    </b-row>
+      </div>
+    </div>
   </BCard>
 </template>
 

@@ -1,8 +1,8 @@
 <template>
-  <b-container class="edit-company py-5">
+  <div class="edit-company container py-5">
     <h2>Unternehmen bearbeiten</h2>
     <CompanyForm api-jobs-schema="admin"></CompanyForm>
-  </b-container>
+  </div>
 </template>
 
 <script>

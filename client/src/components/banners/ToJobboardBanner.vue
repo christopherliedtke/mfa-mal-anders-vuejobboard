@@ -1,7 +1,7 @@
 <template>
   <BCard no-body class="overflow-hidden shadow1 p-3" align="center">
-    <b-row no-gutters>
-      <b-col md="3">
+    <div class="row no-gutters">
+      <div class="col-md-3">
         <b-img-lazy
           class="p-4 w-100 h-100"
           src="@/assets/img/search_engine__monochromatic.svg"
@@ -11,8 +11,8 @@
           offset="1000"
           fluid
         ></b-img-lazy>
-      </b-col>
-      <b-col md="9">
+      </div>
+      <div class="col-md-9">
         <BCardBody
           class="d-flex flex-column justify-content-center align-items-center h-100 p-4"
         >
@@ -29,8 +29,8 @@
             >Zu den Stellenangeboten</b-button
           >
         </BCardBody>
-      </b-col>
-    </b-row>
+      </div>
+    </div>
   </BCard>
 </template>
 

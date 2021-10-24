@@ -4,9 +4,9 @@
       <h1>{{ title }}</h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
-    <b-container class="about py-3 py-lg-5">
-      <b-row>
-        <b-col cols="12" md="3" order="2" order-md="1">
+    <div class="about container py-3 py-lg-5">
+      <div class="row">
+        <div class="col-12 col-md-3 order-2 order-md-1">
           <b-img
             class="border-radius2 my-3 p-3 p-md-0 my-md-0"
             fluid
@@ -15,8 +15,8 @@
             width="800"
             height="800"
           />
-        </b-col>
-        <b-col order="1" order-md="2">
+        </div>
+        <div class="col order-1 oder-md-2">
           <p class="lead bold mb-4">
             MFA mal anders ist ein Karriereportal für Medizinische /
             Zahnmedizinische Fachangestellte sowie auf die professionelle
@@ -40,8 +40,8 @@
             Es ist mir eine Herzensangelegenheit Arbeitgeber und Arbeitnehmer
             zusammenzubringen.
           </p>
-        </b-col>
-      </b-row>
+        </div>
+      </div>
       <div>
         <blockquote>
           MFA mal anders hat die Mission, Medizinische / Zahnmedizinische
@@ -92,7 +92,7 @@
           </b-link>
         </div>
       </div>
-    </b-container>
+    </div>
     <Head
       :title="title"
       desc="MFA mal anders ist ein Job- und Karriereportal für MFA / ZFA / ArzthelferInnen sowie auf die Personalsuche für Arztpraxen und MVZs spezialisiert."

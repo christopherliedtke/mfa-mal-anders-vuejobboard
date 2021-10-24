@@ -1,5 +1,5 @@
 <template>
-  <b-container class="dashboard py-5">
+  <div class="dashboard container py-5">
     <h2>Mein Konto</h2>
     <BTabs content-class="mt-3" :value="parseInt(query.tab)" lazy>
       <BTab title="Account" @click="setQuery('tab', 0)">
@@ -55,7 +55,7 @@
     </BTabs>
 
     <Head title="Dashboard" desc="" img="" />
-  </b-container>
+  </div>
 </template>
 
 <script>

@@ -10,12 +10,12 @@
       class="text-light bg-primary shadow1 border-radius2 my-3 mr-2 mr-lg-5 my-lg-5 position-relative"
       style="border-top-left-radius: 0; border-bottom-left-radius: 0"
     >
-      <b-row
+      <div
         style="max-width: 1600px; overflow-x: hidden"
-        class="px-3 py-5 px-md-5 mx-auto ml-lg-auto position-relative"
+        class="row px-3 py-5 px-md-5 mx-auto ml-lg-auto position-relative"
       >
         <div class="bg-logo"></div>
-        <b-col cols="12" md="8" style="z-index: 1">
+        <div class="col-12 col-md-8" style="z-index: 1">
           <h2 class="display-4 bold mb-4">
             <em>Motivierte</em> und <em>qualifizierte</em> MFA & ZFA{{
               $route.query.location ? ` in ${$route.query.location}` : ""
@@ -85,11 +85,9 @@
               >Mehr erfahren</b-button
             >
           </div>
-        </b-col>
-        <b-col
-          cols="12"
-          lg="4"
-          class="d-none d-lg-flex justify-content-center align-items-center"
+        </div>
+        <div
+          class="col-12 col-lg-4 d-none d-lg-flex justify-content-center align-items-center"
         >
           <!-- <b-img
             style="width: 450px; opacity: 0.9; right: 0"
@@ -97,17 +95,17 @@
             src="@/assets/img/handshake.svg"
             alt="MFA / ZFA trifft Arzt zum Bewerbungsgespräch"
           /> -->
-        </b-col>
-      </b-row>
+        </div>
+      </div>
     </div>
 
-    <!-- <b-container class="py-3 py-lg-5 px-md-5">
-      <b-row
+    <!-- <div class="container py-3 py-lg-5 px-md-5">
+      <div
         style="overflow-x: hidden"
-        class="bg-primary text-light border-radius2 shadow1 w-100 p-3 py-4 p-md-5 mx-auto position-relative"
+        class="row bg-primary text-light border-radius2 shadow1 w-100 p-3 py-4 p-md-5 mx-auto position-relative"
       >
         <div class="bg-logo"></div>
-        <b-col cols="12" lg="8" style="z-index: 1">
+        <div class="col-12 col-lg-8" style="z-index: 1">
           <h2 class="display-4 bold mb-4">
             <em>Motivierte</em> und <em>qualifizierte</em> MFA & ZFA{{
               $route.query.location ? ` in ${$route.query.location}` : ""
@@ -161,11 +159,9 @@
               >Mehr erfahren</b-button
             >
           </div>
-        </b-col>
-        <b-col
-          cols="12"
-          lg="4"
-          class="d-none d-lg-flex justify-content-center align-items-center"
+        </div>
+        <div
+          class="col-12 col-lg-4 d-none d-lg-flex justify-content-center align-items-center"
         >
           <b-img
             style="width: 450px; opacity: 0.9; right: 0"
@@ -173,11 +169,11 @@
             src="@/assets/img/handshake.svg"
             alt="MFA / ZFA trifft Arzt zum Bewerbungsgespräch"
           />
-        </b-col>
-      </b-row>
-    </b-container> -->
+        </div>
+      </div>
+    </div> -->
 
-    <b-container id="advantages" class="my-5 py-3 py-lg-5">
+    <div id="advantages" class="container my-5 py-3 py-lg-5">
       <h2 class="h5 text-center">
         Stellenanzeige schalten bei MFA mal anders
       </h2>
@@ -188,8 +184,8 @@
         Stellenangebote nur für ArzthelferInnen – MFA & ZFA
       </h3>
 
-      <b-row class="my-4 my-md-5">
-        <b-col>
+      <div class="row my-4 my-md-5">
+        <div class="col">
           <div class="icon-box shadow1 py-5 px-4">
             <Fa class="m-0" :icon="['fa', 'user-nurse']" size="3x" />
             <h4 class="h4 mt-4 mb-3">Genau Ihre Zielgruppe</h4>
@@ -199,8 +195,8 @@
               und damit genau Ihre Zielgruppe.
             </p>
           </div>
-        </b-col>
-        <b-col>
+        </div>
+        <div class="col">
           <div class="icon-box shadow1 py-5 px-4">
             <Fa class="m-0" :icon="['fa', 'credit-card']" size="3x" />
             <h4 class="h4 mt-4 mb-3">Niedrige Kosten</h4>
@@ -217,8 +213,8 @@
               >.
             </p>
           </div>
-        </b-col>
-        <b-col>
+        </div>
+        <div class="col">
           <div class="icon-box shadow1 py-5 px-4">
             <Fa class="m-0" :icon="['fa', 'paper-plane']" size="3x" />
             <h4 class="h4 mt-4 mb-3">Einfach und bequem</h4>
@@ -230,8 +226,8 @@
               <b-link to="#more-info">mehr...</b-link>
             </p>
           </div>
-        </b-col>
-      </b-row>
+        </div>
+      </div>
       <div class="d-flex flex-column align-items-center mt-4">
         <div class="mb-3">
           <b-button
@@ -273,10 +269,10 @@
           >
         </div>
       </div>
-    </b-container>
+    </div>
 
-    <b-container fluid class="bg-light-shade py-4 py-lg-5 px-0">
-      <b-container id="preise">
+    <div class="container-fluid bg-light-shade py-4 py-lg-5 px-0">
+      <div id="preise" class="container">
         <h2 class=" display-4 bold text-center">
           Unsere Pakete in der Übersicht
         </h2>
@@ -298,14 +294,15 @@
             Reichweite Ihrer Stellenanzeige zu optimieren.
           </p>
         </div>
-        <b-row cols="1" cols-lg="3" class="mb-4">
-          <b-col
+        <div class="row row-cols-1 row-cols-lg-3 mb-4">
+          <div
             v-for="pricingPackage in $config.pricingPackages"
             :key="pricingPackage.name"
+            class="col"
           >
             <PricingCard :pricing="pricingPackage" />
-          </b-col>
-        </b-row>
+          </div>
+        </div>
         <p>
           Sie haben die Möglichkeit, Ihre Stellenanzeige nach
           <b-link to="/auth/register">Registrierung</b-link> auf unserem Portal
@@ -324,18 +321,18 @@
             >Kontaktformular</b-link
           >.
         </p>
-      </b-container>
-    </b-container>
+      </div>
+    </div>
 
-    <b-container class="my-4 my-md-5">
+    <div class="container my-4 my-md-5">
       <h2 class="display-4 text-center bold">
         Wir kooperieren mit
       </h2>
-      <b-row class="py-4" cols="1" cols-md="2">
-        <b-col
+      <div class="row row-cols-1 row-cols-md-2 py-4">
+        <div
           v-for="partner in partners"
           :key="partner.name"
-          class="d-flex flex-column justify-content-start align-items-center"
+          class="col d-flex flex-column justify-content-start align-items-center"
         >
           <b-link :href="partner.url" target="_blank">
             <img
@@ -358,20 +355,20 @@
             rel="noopener"
             >Mehr erfahren</b-button
           >
-        </b-col>
-      </b-row>
-    </b-container>
+        </div>
+      </div>
+    </div>
 
-    <b-container id="numbers-and-facts" class="mb-5 py-md-5">
+    <div id="numbers-and-facts" class="container mb-5 py-md-5">
       <h2 class="h1 text-center bold mb-4">
         Ein paar Zahlen und Fakten
         <span style="font-size: 0.8rem">(01/2021)</span>
       </h2>
-      <b-row cols="1" cols-md="3">
-        <b-col
+      <div class="row row-cols-1 row-cols-md-3">
+        <div
           v-for="item in numbersAndFacts"
           :key="item.desc"
-          class="text-center"
+          class="col text-center"
         >
           <Fa
             class="mt-3 mb-4 text-secondary"
@@ -382,16 +379,16 @@
             {{ Math.floor(item.number).toLocaleString() }}+
           </div>
           <p>{{ item.desc }}</p>
-        </b-col>
-      </b-row>
-    </b-container>
+        </div>
+      </div>
+    </div>
 
-    <!-- <b-container id="testimonials" class="mb-5 pb-md-5" fluid>
+    <!-- <div id="testimonials" class="container mb-5 pb-md-5" fluid>
             <h2 class="h4 text-center">Feedback</h2>
             <h3 class="h1 text-center bold mb-4">Was unsere Kunden sagen</h3>
-            <b-container
+            <div
                 style="max-width: 600px"
-                class="position-relative bg-light-shade border-radius2 shadow1 p-5"
+                class="container position-relative bg-light-shade border-radius2 shadow1 p-5"
             >
                 <Fa
                     style="right: 15%; top: 25%"
@@ -399,15 +396,15 @@
                     icon="quote-right"
                     size="7x"
                 />
-                <b-row>
-                    <b-col cols="12" md="3" class="d-flex py-2 px-4">
+                <div class="row">
+                    <div class="col-12 col-md-3 d-flex py-2 px-4">
                         <b-img
                             class="rounded-circle shadow1"
                             height="100"
                             src="@/assets/img/kinderarztpraxis_ostertor_200.jpg"
                         />
-                    </b-col>
-                    <b-col cols="12" md="9" class="d-flex flex-column py-2">
+                    </div>
+                    <div class="col-12 col-md-9 d-flex flex-column py-2">
                         <p>
                             Durch die Online-Suche haben wir deutlich mehr und
                             auch besser qualifizierte Zuschriften erhalten.
@@ -418,18 +415,18 @@
                             &ndash; Franziska Fritz |
                             <em>Kinderarztpraxis Ostertor</em>
                         </p>
-                    </b-col>
-                </b-row>
-            </b-container>
-        </b-container> -->
+                    </div>
+                </div>
+            </div>
+        </div> -->
 
-    <b-container id="more-info" fluid class="bg-light-shade py-5 mb-5">
-      <b-container>
+    <div id="more-info" class="container-fluid bg-light-shade py-5 mb-5">
+      <div class="container">
         <h2 class="bold mb-4">
           Ihre Jobbörse nur für ArzthelferInnen – MFA & ZFA – MFA mal anders
         </h2>
-        <b-row cols="1" cols-md="2">
-          <b-col>
+        <div class="row row-cols-1 row-cols-md-2">
+          <div class="col">
             <p>
               Wir bieten speziell Arztpraxen, MVZs und allen weiteren
               Einrichtungen aus dem Gesundheitswesen eine vertrauensvolle
@@ -464,8 +461,8 @@
               </strong>
               .
             </p>
-          </b-col>
-          <b-col>
+          </div>
+          <div class="col">
             <p>
               Erhöhen Sie die Chance, dass Ihre Stellenanzeige von der richtigen
               Person gesehen wird.
@@ -498,12 +495,12 @@
               anpassen sowie zusätzliche Reichweite und qualifizierte
               Bewerbungen erzielen.
             </p>
-          </b-col>
-        </b-row>
-      </b-container>
-    </b-container>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <b-container id="tipps-stellenanzeigen" class="mb-5">
+    <div id="tipps-stellenanzeigen" class="container mb-5">
       <h2 class="bold mb-4">
         Tipps für Ihre Stellenanzeige
       </h2>
@@ -528,13 +525,11 @@
         >
         zur Inspiration ansehen.
       </p>
-      <b-row>
-        <b-col
+      <div class="row">
+        <div
           v-for="jobAdTipp in jobAdTipps"
           :key="jobAdTipp.title"
-          cols="12"
-          md="6"
-          lg="4"
+          class="col-12 col-md-6 col-lg-4"
         >
           <div class="icon-box shadow1">
             <div
@@ -548,8 +543,8 @@
               {{ jobAdTipp.desc }}
             </p>
           </div>
-        </b-col>
-        <b-col cols="12" md="6" lg="4">
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
           <div class="icon-box shadow1 py-4">
             <h4 class="bold mb-3">
               Jetzt Stellenanzeige erstellen
@@ -565,22 +560,22 @@
               >Zur Registrierung</b-button
             >
           </div>
-        </b-col>
-        <b-col cols="12" md="6" lg="12">
+        </div>
+        <div class="cols-12 cols-md-6 cols-md-12">
           <JobAdTippsBanner />
-        </b-col>
-        <b-col cols="12">
+        </div>
+        <div class="cols-12">
           <ApplicationProcessBanner />
-        </b-col>
-      </b-row>
-    </b-container>
+        </div>
+      </div>
+    </div>
 
-    <b-container id="faq" class="mb-5">
+    <div id="faq" class="container mb-5">
       <h2 class="h1 bold text-center mb-4">
         Häufige Fragen
       </h2>
-      <b-row cols="1" cols-md="2">
-        <b-col>
+      <div class="row row-cols-1 row-cols-md-2">
+        <div class="col">
           <h3 class="h5 bold">
             Welche Zahlungsarten stehen zur Verfügung?
           </h3>
@@ -630,8 +625,8 @@
             <b-link to="/kontakt?role=employer">Kontaktformular</b-link>
             kontaktieren.
           </p>
-        </b-col>
-        <b-col>
+        </div>
+        <div class="col">
           <h3 class="h5 bold">
             Wo wird meine Stellenanzeige veröffentlicht?
           </h3>
@@ -672,8 +667,8 @@
             Sie als Agentur nicht als Dritte im Bewerbungsprozess auftreten.
             D.h. Bewerbungen laufen ausschließlich über Ihre Kunden.
           </p>
-        </b-col>
-      </b-row>
+        </div>
+      </div>
       <div class="d-flex flex-column align-items-center mt-4">
         <b-button
           to="/kontakt?role=employer"
@@ -690,7 +685,7 @@
           >Stellenanzeige erstellen</b-button
         >
       </div>
-    </b-container>
+    </div>
 
     <Head
       title="Stellenanzeige schalten – MFA & ZFA finden!"

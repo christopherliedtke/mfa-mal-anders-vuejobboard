@@ -1,16 +1,13 @@
 <template>
-  <b-row>
-    <b-col
+  <div class="row">
+    <div
       v-for="article in articles"
       :key="article.id"
-      cols="12"
-      :md="12 / 2"
-      :lg="12 / number"
-      class="mb-4"
+      :class="['col-12 mb-4', `col-md-${12 / 2}`, `col-lg-${12 / number}`]"
     >
       <ArticleCard :article="article" />
-    </b-col>
-  </b-row>
+    </div>
+  </div>
 </template>
 
 <script>

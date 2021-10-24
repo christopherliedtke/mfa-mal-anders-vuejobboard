@@ -1,8 +1,8 @@
 <template>
-  <b-container class="edit-job py-5">
+  <div class="edit-job container py-5">
     <h2>Stellenanzeige bearbeiten</h2>
     <JobForm api-jobs-schema="admin"></JobForm>
-  </b-container>
+  </div>
 </template>
 
 <script>

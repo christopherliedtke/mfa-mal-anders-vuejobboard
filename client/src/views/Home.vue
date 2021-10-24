@@ -1,10 +1,9 @@
 <template>
   <div class="home">
-    <b-container
-      fluid
-      class="hero d-flex justify-content-center align-items-center"
+    <div
+      class="container-fluid hero d-flex justify-content-center align-items-center"
     >
-      <b-container style="max-width: 850px" class="p-0">
+      <div style="max-width: 850px" class="container p-0">
         <div class="hero-text mt-4 mb-5 my-lg-5 p-4">
           <h1>
             <span class="bold display-2">
@@ -29,21 +28,21 @@
           </p>
         </div>
         <JobSearchSingleForm />
-      </b-container>
-    </b-container>
+      </div>
+    </div>
 
-    <b-container class="mt-4 mt-lg-0">
+    <div class="container mt-4 mt-lg-0">
       <JobsTeaserContainer />
-    </b-container>
+    </div>
 
-    <b-container class="my-3 my-md-5 py-3 py-md-5">
+    <div class="container my-3 my-md-5 py-3 py-md-5">
       <h2
         class="d-none d-lg-block bold display-4 text-left text-lg-center mb-lg-5"
       >
         Deine berufliche Weiterentwicklung
       </h2>
-      <b-row cols="1" cols-md="3" class="flex-lg-row-reverse">
-        <b-col>
+      <div class="row row-cols-1 row-cols-md-3 flex-lg-row-reverse">
+        <div class="col">
           <b-link to="/stellenangebote" class="icon-box shadow1">
             <b-img-lazy
               class="mr-4 mb-4 ml-4"
@@ -62,8 +61,8 @@
             </p>
             <b-button variant="primary">Zur Stellenbörse</b-button>
           </b-link>
-        </b-col>
-        <b-col>
+        </div>
+        <div class="col">
           <b-link to="/karriere/jobs-und-berufsbilder" class="icon-box shadow1">
             <b-img-lazy
               class="mr-4 mb-4 ml-4"
@@ -81,8 +80,8 @@
             </p>
             <b-button variant="primary">Zu den Berufsbildern</b-button>
           </b-link>
-        </b-col>
-        <b-col>
+        </div>
+        <div class="col">
           <b-link
             to="/karriere/fort-und-weiterbildungen"
             class="icon-box shadow1"
@@ -104,8 +103,8 @@
             </p>
             <b-button variant="primary">Zu den Weiterbildungen</b-button>
           </b-link>
-        </b-col>
-      </b-row>
+        </div>
+      </div>
       <div>
         <b-link
           to="/karriere/fortbildungskatalog"
@@ -130,13 +129,13 @@
           </div>
         </b-link>
       </div>
-    </b-container>
+    </div>
 
-    <b-container fluid class="bg-primary text-light py-5">
-      <b-container class="py-0 py-md-3">
+    <div class="container-fluid bg-primary text-light py-5">
+      <div class="container py-0 py-md-3">
         <h2 class="h1 mb-4 bold display-4">Warum MFA mal anders?</h2>
-        <b-row cols="1" cols-md="3">
-          <b-col>
+        <div class="row row-cols-1 row-cols-md-3">
+          <div class="col">
             <b-img-lazy
               fluid
               left
@@ -162,8 +161,8 @@
               nicht viel. Im Anbetracht dessen, was ich an Tätigkeiten
               übernommen habe, nicht angemessen.
             </p>
-          </b-col>
-          <b-col>
+          </div>
+          <div class="col">
             <p>
               Die Gesellschaft und Politik spricht immer nur von katastrophalen
               Zuständen in der Pflege, zu wenig Pflegepersonal und unter welchem
@@ -196,8 +195,8 @@
               >
               und vieles, vieles mehr geben.
             </p>
-          </b-col>
-          <b-col>
+          </div>
+          <div class="col">
             <p>
               Auf der anderen Seite weiß ich auch um die Probleme bei der
               Personalsuche für Arbeitgeber. Auch hier möchte ich mit meiner
@@ -215,18 +214,18 @@
                 ><Fa icon="caret-right" /> Mehr über die Story dahinter</b-link
               >
             </p>
-          </b-col>
-        </b-row>
-      </b-container>
-    </b-container>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <b-container class="my-5 py-0 py-md-5 d-flex justify-content-center">
+    <div class="container my-5 py-0 py-md-5 d-flex justify-content-center">
       <StellenanzeigeSchaltenBanner />
-    </b-container>
+    </div>
 
-    <b-container>
-      <b-row>
-        <b-col cols="12" md="4" class="mb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-4 mb-5">
           <h2 class="bold">
             Fort- und Weiterbildungen
           </h2>
@@ -251,23 +250,23 @@
           <b-button to="/karriere/fort-und-weiterbildungen" variant="primary"
             >Zu den Fort- und Weiterbildungen</b-button
           >
-        </b-col>
-        <b-col cols="12" md="8">
+        </div>
+        <div class="cols-12 cols-md-8">
           <RandomTrainingsContainer :number="2" />
-        </b-col>
-      </b-row>
-    </b-container>
+        </div>
+      </div>
+    </div>
 
-    <b-container fluid class="bg-light-shade my-5 py-5 px-0">
-      <b-container>
+    <div class="container-fluid bg-light-shade my-5 py-5 px-0">
+      <div class="container">
         <h2 class="h1 bold display-4 text-center">Blog</h2>
         <h3 class="h5 text-center mb-4">
           Rund um Praxisalltag, Tipps zu Weiterbildung und Karriere,
           Persönlichkeitsentwicklung und vieles mehr...
         </h3>
         <RandomArticlesContainer />
-      </b-container>
-    </b-container>
+      </div>
+    </div>
 
     <Head
       title="Das Stellen- & Karriereportal nur für MFA & ZFA"

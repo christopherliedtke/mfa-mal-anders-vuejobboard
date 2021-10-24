@@ -1,7 +1,7 @@
 <template>
-  <b-container class="jobpage py-5">
+  <div class="jobpage container py-5">
     <Job api-jobs-schema="private" />
-  </b-container>
+  </div>
 </template>
 
 <script>

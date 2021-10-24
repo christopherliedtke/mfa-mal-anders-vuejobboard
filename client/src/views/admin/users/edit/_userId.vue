@@ -1,8 +1,8 @@
 <template>
-  <b-container class="edit-user py-5">
+  <div class="edit-user container py-5">
     <h2>Nutzer bearbeiten</h2>
     <AccountDataForm api-users-schema="admin" />
-  </b-container>
+  </div>
 </template>
 
 <script>

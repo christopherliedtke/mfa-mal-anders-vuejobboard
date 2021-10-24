@@ -4,7 +4,7 @@
       <h1>{{ title }}</h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
-    <b-container v-if="$config.cms.active && articles" class="py-3 py-lg-5">
+    <div v-if="$config.cms.active && articles" class="container py-3 py-lg-5">
       <div class="grid">
         <ArticleCard
           v-for="article in articles"
@@ -12,7 +12,7 @@
           :article="article"
         />
       </div>
-    </b-container>
+    </div>
     <Head
       :title="title"
       desc="Interessante Artikel rund Praxisalltag, Tipps zu Weiterbildung und Karriere, Persönlichkeitsentwicklung und vieles mehr..."

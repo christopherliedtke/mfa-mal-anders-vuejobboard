@@ -1,6 +1,6 @@
 <template>
   <header id="header" ref="header" :class="{ hide: hideNavbar }">
-    <b-container id="navbar">
+    <div id="navbar" class="container">
       <router-link to="/">
         <b-img
           class="header-logo"
@@ -292,7 +292,7 @@
       >
         <span></span>
       </div>
-    </b-container>
+    </div>
   </header>
 </template>
 

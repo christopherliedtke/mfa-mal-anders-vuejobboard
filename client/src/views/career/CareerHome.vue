@@ -4,7 +4,7 @@
       <h1>{{ title }}</h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
-    <b-container class="py-3 py-lg-5">
+    <div class="container py-3 py-lg-5">
       <div class="clearfix">
         <h2 class="mb-4">
           Verliebt in meinen Beruf - Dein Karriereportal für Medizinische &
@@ -40,9 +40,9 @@
         </blockquote>
       </div>
 
-      <b-container class="my-3 my-md-5 px-0">
-        <b-row cols="1" cols-md="3" class="flex-lg-row-reverse">
-          <b-col>
+      <div class="container my-3 my-md-5 px-0">
+        <div class="row row-cols-1 row-cols-md-3 flex-lg-row-reverse">
+          <div class="col">
             <b-link to="/stellenangebote" class="icon-box shadow1">
               <b-img-lazy
                 class="mr-4 mb-4 ml-4"
@@ -61,8 +61,8 @@
               </p>
               <b-button variant="primary">Zur Stellenbörse</b-button>
             </b-link>
-          </b-col>
-          <b-col>
+          </div>
+          <div class="col">
             <b-link
               to="/karriere/jobs-und-berufsbilder"
               class="icon-box shadow1"
@@ -83,8 +83,8 @@
               </p>
               <b-button variant="primary">Zu den Berufsbildern</b-button>
             </b-link>
-          </b-col>
-          <b-col>
+          </div>
+          <div class="col">
             <b-link
               to="/karriere/fort-und-weiterbildungen"
               class="icon-box shadow1"
@@ -106,8 +106,8 @@
               </p>
               <b-button variant="primary">Zu den Weiterbildungen</b-button>
             </b-link>
-          </b-col>
-        </b-row>
+          </div>
+        </div>
         <div>
           <b-link
             to="/karriere/fortbildungskatalog"
@@ -132,12 +132,12 @@
             </div>
           </b-link>
         </div>
-      </b-container>
+      </div>
       <h2 class="my-4">
         Wir helfen dir bei der Suche nach deinem Traumjob
       </h2>
-      <b-row>
-        <b-col cols="12" md="6">
+      <div class="row">
+        <div class="cols-12 cols-md-6">
           <p>
             Auf MFA mal anders berichte ich über Aufstiegsmöglichkeiten in der
             Arztpraxis, aber auch über Karrierechancen, die du als Medizinische
@@ -155,8 +155,8 @@
             medizinischen Fachangestellten zu machen und wieder glücklicher und
             zufriedener im Arbeitsalltag zu sein.
           </p>
-        </b-col>
-        <b-col cols="12" md="6">
+        </div>
+        <div class="cols-12 cols-md-6">
           <p>
             MFA mal anders ist ein Netzwerk unter Gleichgesinnten. Um deinen
             beruflichen Weg im Gesundheitswesen zu finden und erfolgreich deine
@@ -166,8 +166,8 @@
             neuen Job zu finden, deine Gehaltswünsche durchzusetzen oder einfach
             nur durch den Praxisalltagswahnsinn zu helfen.
           </p>
-        </b-col>
-      </b-row>
+        </div>
+      </div>
       <h2 class="my-4">
         Wir helfen dir dabei einen Job zu finden, den du liebst. Und den du
         verdienst.
@@ -233,14 +233,14 @@
         <b-link to="/karriere/fort-und-weiterbildungen">Weiterbildung</b-link>,
         die zu dir und deinen Karrierezielen passt.
       </p>
-      <b-row class="my-5">
-        <b-col class="my-2">
+      <div class="row my-5">
+        <div class="col my-2">
           <WeiterbildungenBanner />
-        </b-col>
-        <b-col class="my-2">
+        </div>
+        <div class="col my-2">
           <BerufsbilderBanner />
-        </b-col>
-      </b-row>
+        </div>
+      </div>
       <h2 class="my-4">MFAs & ZFAs sind vernetzt und halten zusammen</h2>
       <p>
         Um unseren Beruf zu stärken und weiter voran zu bringen, müssen wir
@@ -302,7 +302,7 @@
         </b-link>
       </div>
       <RandomTrainingsContainer class="mt-5" />
-    </b-container>
+    </div>
     <Head
       :title="title"
       desc="Karriereportal für Medizinische & Zahnmedizinische Fachangestellte (MFA / ZFA) / ArzthelferIn || Jobperspektiven | Fortbildungen | Weiterbildungen | Gehalt | Bewerbung"

@@ -1,5 +1,5 @@
 <template>
-  <b-container class="account-verification position-relative py-5">
+  <div class="account-verification container position-relative py-5">
     <h2>E-Mail Adresse verifizieren</h2>
     <p>
       Aus Datenschutzgründen müssen wir Ihre E-Mail Adresse verifizieren.
@@ -25,7 +25,7 @@
     >
       Probleme? Kontakt aufnehmen
     </b-button>
-  </b-container>
+  </div>
 </template>
 
 <script>

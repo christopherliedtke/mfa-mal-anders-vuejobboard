@@ -4,12 +4,12 @@
       <h1>{{ title }}</h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
-    <b-container class="py-3 py-lg-5">
-      <b-row>
-        <b-col md="4" class="mb-4" order="2" order-md="1">
+    <div class="container py-3 py-lg-5">
+      <div class="row">
+        <div class="col-12 col-md-4 order-2 order-md-1 mb-4">
           <JobsBerufsbilderNav />
-        </b-col>
-        <b-col class="mb-4" order="1" order-md="2">
+        </div>
+        <div class="col order-1 order-md-2 mb-4">
           <b-img-lazy
             class="border-radius1 shadow1 mb-3 mb-lg-5"
             fluid
@@ -57,13 +57,11 @@
             organisatorische Aufgaben erledigst oder Dich lieber für einen
             alternativen Job außerhalb der Arztpraxis interessierst.
           </p>
-          <b-row>
-            <b-col
+          <div class="row">
+            <div
               v-for="card in cards"
               :key="card.title"
-              class="my-3"
-              cols="12"
-              md="6"
+              class="col-12 col-md-6 my-3"
             >
               <BCard align="center icon-box shadow1 p-0">
                 <BCardBody>
@@ -85,13 +83,13 @@
                   >
                 </BCardBody>
               </BCard>
-            </b-col>
-          </b-row>
+            </div>
+          </div>
           <ToJobboardBanner />
-        </b-col>
-      </b-row>
+        </div>
+      </div>
       <RandomTrainingsContainer class="mt-5" />
-    </b-container>
+    </div>
     <Head
       :title="title"
       desc="50+ Alternative Jobs / Berufe für Medizinische & Zahnmedizinische Fachangestellte (MFA / ZFA) / ArzthelferIn || Stellenangebote | Fortbildungen | Weiterbildungen"

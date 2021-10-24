@@ -1,5 +1,5 @@
 <template>
-  <b-container class="login auth-container">
+  <div class="login auth-container container">
     <h2 class="text-center">{{ title }}</h2>
     <div
       class="icon-box mx-auto bg-primary rounded-circle"
@@ -10,7 +10,7 @@
     <LoginForm />
 
     <Head :title="title" desc="Anmelden bei MFA mal anders" img="" />
-  </b-container>
+  </div>
 </template>
 
 <script>

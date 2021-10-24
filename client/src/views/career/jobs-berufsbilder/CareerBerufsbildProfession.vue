@@ -5,12 +5,12 @@
         <h1>{{ profession.title }}</h1>
         <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
       </div>
-      <b-container class="py-3 py-lg-5">
-        <b-row>
-          <b-col md="4" class="mb-4 order-2 order-lg-1">
+      <div class="container py-3 py-lg-5">
+        <div class="row">
+          <div class="col-12 col-md-4 mb-4 order-2 order-lg-1">
             <JobsBerufsbilderNav />
-          </b-col>
-          <b-col class="order-1 order-lg-2 mb-5">
+          </div>
+          <div class="col order-1 order-lg-2 mb-5">
             <!-- eslint-disable-next-line -->
             <div v-html="profession.content"></div>
             <!-- <p class="bold">
@@ -47,14 +47,14 @@
             </div>
 
             <ToJobboardBanner class="mt-5" />
-          </b-col>
-        </b-row>
-      </b-container>
+          </div>
+        </div>
+      </div>
     </article>
 
-    <b-container>
+    <div class="container">
       <RandomTrainingsContainer />
-    </b-container>
+    </div>
 
     <Head
       :title="title"

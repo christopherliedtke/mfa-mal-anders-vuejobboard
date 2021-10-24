@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 class="title">Seite nicht gefunden</h1>
-    <b-container class="my-5">
+    <div class="container my-5">
       <b-img
         class="p-5"
         fluid
@@ -19,7 +19,7 @@
         >
         <b-button variant="primary" to="/">Zur Startseite</b-button>
       </div>
-    </b-container>
+    </div>
   </div>
 </template>
 
