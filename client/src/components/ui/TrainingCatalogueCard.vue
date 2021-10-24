@@ -45,7 +45,6 @@
       <BBadge
         v-if="training.location && !training.remote"
         class="mr-1"
-        style="overflow: hidden; text-overflow: ellipsis; max-width: 100%"
         pill
         variant="secondary"
         ><Fa class="mr-1" :icon="['fas', 'map-marker']" size="sm" />{{
@@ -154,6 +153,12 @@
     border-radius: $border-radius1;
     box-shadow: $shadow1;
 
+    .badge {
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+
     .side {
       position: absolute;
       display: flex;
@@ -231,6 +236,7 @@
     }
 
     .meta {
+      // display: flex;
       padding: 0 1.5rem;
       margin: 0.75rem 0;
 

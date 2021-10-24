@@ -131,7 +131,7 @@
             >
           </div>
         </div>
-        <div class="col">
+        <div class="col" style="overflow: hidden">
           <div v-if="trainings.length > 0" id="training-list">
             <TrainingCatalogueCard
               v-for="training in trainings"
