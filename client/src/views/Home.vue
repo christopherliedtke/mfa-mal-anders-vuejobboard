@@ -251,7 +251,7 @@
             >Zu den Fort- und Weiterbildungen</b-button
           >
         </div>
-        <div class="cols-12 cols-md-8">
+        <div class="col-12 col-md-8">
           <RandomTrainingsContainer :number="2" />
         </div>
       </div>

@@ -137,7 +137,7 @@
         Wir helfen dir bei der Suche nach deinem Traumjob
       </h2>
       <div class="row">
-        <div class="cols-12 cols-md-6">
+        <div class="col-12 col-md-6">
           <p>
             Auf MFA mal anders berichte ich über Aufstiegsmöglichkeiten in der
             Arztpraxis, aber auch über Karrierechancen, die du als Medizinische
@@ -156,7 +156,7 @@
             zufriedener im Arbeitsalltag zu sein.
           </p>
         </div>
-        <div class="cols-12 cols-md-6">
+        <div class="col-12 col-md-6">
           <p>
             MFA mal anders ist ein Netzwerk unter Gleichgesinnten. Um deinen
             beruflichen Weg im Gesundheitswesen zu finden und erfolgreich deine

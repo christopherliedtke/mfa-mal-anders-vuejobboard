@@ -561,10 +561,10 @@
             >
           </div>
         </div>
-        <div class="cols-12 cols-md-6 cols-md-12">
+        <div class="col-12 col-md-6 col-md-12">
           <JobAdTippsBanner />
         </div>
-        <div class="cols-12">
+        <div class="col-12">
           <ApplicationProcessBanner />
         </div>
       </div>
