@@ -176,7 +176,7 @@ const getJobs = async () => {
           $gte: new Date(),
         },
       },
-      "_id updatedAt title"
+      "_id updatedAt title slug"
     )
       .populate("company", "location")
       .populate("userId", "isAdmin");
@@ -189,8 +189,7 @@ const getJobs = async () => {
               "/stellenangebote/job/" +
               elem._id +
               "/" +
-              textToSlug(elem.title + " in " + elem.company.location) +
-              (elem.userId.isAdmin ? "" : "_dsa"),
+              elem.slug,
             new Date(elem.updatedAt).toISOString()
           )
         )

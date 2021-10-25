@@ -6,17 +6,7 @@
     >
       <span class="h2 bold text-danger">Abgelaufen</span>
     </div>
-    <b-link
-      :to="
-        job.source != 'stepstone'
-          ? `/stellenangebote/job/${job._id}/${textToSlug(
-              job.title + ' in ' + job.company.location
-            )}${job.userId.isAdmin ? '' : '_dsa'}`
-          : undefined
-      "
-      :href="job.source === 'stepstone' ? job.extJobUrl : undefined"
-      :target="job.source != 'stepstone' ? '_self' : '_blank'"
-    >
+    <b-link :to="`/stellenangebote/job/${job._id}/${job.slug}`" target="_self">
       <div
         :class="['card', compact ? 'mb-2 mt-2 mt-lg-0' : 'mb-3 mt-3 mt-lg-0']"
       >
@@ -82,9 +72,9 @@
                 <Fa class="mr-2" :icon="['fas', 'briefcase']" size="lg" />
               </div>
               {{
-                employmentTypeOptions.filter(
+                employmentTypeOptions.find(
                   option => option.value === job.employmentType
-                )[0].text
+                ).text
               }}
             </div>
 
@@ -148,7 +138,6 @@
 </template>
 
 <script>
-  import textToSlug from "@/utils/textToSlug.js";
   import {
     employmentTypeOptions,
     companySizeOptions
@@ -164,8 +153,7 @@
     data() {
       return {
         employmentTypeOptions,
-        companySizeOptions,
-        textToSlug
+        companySizeOptions
       };
     },
     computed: {

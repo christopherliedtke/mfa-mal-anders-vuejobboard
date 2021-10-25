@@ -69,9 +69,9 @@
                 <Fa :icon="['fas', 'briefcase']" size="lg" />
               </div>
               {{
-                employmentTypeOptions.filter(
+                employmentTypeOptions.find(
                   option => option.value === job.employmentType
-                )[0].text
+                ).text
               }}
             </div>
             <div v-if="job.company.size">

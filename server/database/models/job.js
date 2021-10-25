@@ -49,6 +49,10 @@ const JobSchema = new Schema(
       type: String,
       required: true,
     },
+    slug: {
+      type: String,
+      default: "",
+    },
     profession: {
       type: String,
       default: "",

@@ -5,7 +5,9 @@ const recachePrerender = require("../../../middleware/recachePrerender");
 const sanitizeHtml = require("sanitize-html");
 const s3 = require("../../../middleware/s3");
 const { Job } = require("../../models/job");
+const { Company } = require("../../models/company");
 const internalJobsCache = require("../../../cache/internalJobsCache");
+const textToSlug = require("../../../utils/textToSlug");
 
 const JobResolvers = {
   Query: {
@@ -40,7 +42,7 @@ const JobResolvers = {
       });
 
       return jobs.filter(
-        (job) =>
+        job =>
           !job.applicationDeadline ||
           job.applicationDeadline >= new Date().getTime()
       );
@@ -106,7 +108,11 @@ const JobResolvers = {
         throw new AuthenticationError("Must be logged in!");
       }
 
-      let addObj = { ...args, userId: context.user._id };
+      let addObj = {
+        ...args,
+        userId: context.user._id,
+        slug: await getJobSlug(args),
+      };
 
       addObj = cleanUpJob(addObj, context.user);
 
@@ -123,7 +129,7 @@ const JobResolvers = {
         throw new AuthenticationError("Must be logged in!");
       }
 
-      let updateObj = { ...args };
+      let updateObj = { ...args, slug: await getJobSlug(args) };
       delete updateObj._id;
 
       updateObj = cleanUpJob(updateObj, context.user);
@@ -161,7 +167,11 @@ const JobResolvers = {
         throw new AuthenticationError("Missing permission!");
       }
 
-      let addObj = { ...args, userId: context.user._id };
+      let addObj = {
+        ...args,
+        userId: context.user._id,
+        slug: await getJobSlug(args),
+      };
 
       addObj = cleanUpJob(addObj, context.user);
 
@@ -180,7 +190,11 @@ const JobResolvers = {
         throw new AuthenticationError("Missing permission!");
       }
 
-      let updateObj = { ...args };
+      let updateObj = {
+        ...args,
+        slug: await getJobSlug(args),
+      };
+
       delete updateObj._id;
 
       updateObj = cleanUpJob(updateObj, context.user);
@@ -241,7 +255,7 @@ const JobResolvers = {
       const jobs = await Job.find({ company: company._id });
       return jobs;
     },
-    publicJobs: async (company) => {
+    publicJobs: async company => {
       const jobs = await Job.find({
         company: company._id,
         status: "published",
@@ -348,6 +362,12 @@ function recaching(job) {
       `${process.env.WEBSITE_URL}/stellenangebote/job/${job._id}`
     );
   }
+}
+
+async function getJobSlug(job) {
+  const company = await Company.findOne({ _id: job.company }, "location");
+
+  return textToSlug(job.title + (company ? " in " + company.location : ""));
 }
 
 module.exports = JobResolvers;
