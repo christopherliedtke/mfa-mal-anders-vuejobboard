@@ -5,7 +5,8 @@
       <router-view />
     </main>
     <Footer />
-    <Overlay />
+    <Overlay v-if="$store.state.utils.overlay" />
+    <StarJobModal v-if="$store.state.utils.starJobModal" />
     <NewsletterSignUpPopUp />
   </div>
 </template>
@@ -19,12 +20,15 @@
     );
   const Overlay = () =>
     import(/* webpackChunkName: "overlay" */ "@/components/utils/Overlay");
+  const StarJobModal = () =>
+    import(/* webpackChunkName: "overlay" */ "@/components/utils/StarJobModal");
   export default {
     components: {
       Header,
       Footer,
       NewsletterSignUpPopUp,
-      Overlay
+      Overlay,
+      StarJobModal
     },
     watch: {
       $route(to, from) {

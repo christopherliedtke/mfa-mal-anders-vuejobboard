@@ -73,7 +73,7 @@
   ],
   "contactGenderOptions": ["Frau", "Herr"],
   "contactTitleOptions": ["Dr.", "Prof.", "Prof. Dr.", "Dipl. med."],
-  "companyCountryOptions": ["Deutschland"],
+  "companyCountryOptions": ["Deutschland", "Österreich", "Schweiz"],
   "companyStateOptions": [
     "Baden-Württemberg",
     "Bayern",

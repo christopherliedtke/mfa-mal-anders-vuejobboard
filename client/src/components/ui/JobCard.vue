@@ -17,11 +17,11 @@
       :href="job.source === 'stepstone' ? job.extJobUrl : undefined"
       :target="job.source != 'stepstone' ? '_self' : '_blank'"
     >
-      <BCard
+      <div
         no-body
-        :class="compact ? 'mb-2 mt-2 mt-lg-0' : 'mb-3 mt-3 mt-lg-0'"
+        :class="['card', compact ? 'mb-2 mt-2 mt-lg-0' : 'mb-3 mt-3 mt-lg-0']"
       >
-        <BCardText>
+        <div class="card-text">
           <div class="card-head position-relative">
             <!-- eslint-disable -->
             <h2
@@ -43,7 +43,7 @@
                 fluid
                 blank-src="/img/MfaMalAnders_logo_circle_dark.svg"
                 blank-width="90"
-                offset="1000"
+                offset="360"
                 :src="job.company.logoUrl"
                 :alt="`Logo - ${job.company.name}`"
                 height="70"
@@ -136,23 +136,14 @@
               </div>
               {{ timeSince(new Date(job.publishedAt || job.paidAt)) }}
             </div>
-            <div v-if="job.simpleApplication" id="tooltip-simple-application">
-              <BBadge pill variant="secondary"
-                ><Fa class="mr-1" :icon="['fas', 'hashtag']" />Einfach
-                bewerben</BBadge
-              >
+            <div v-if="job.simpleApplication">
+              <div class="badge badge-pill badge-secondary">
+                <Fa class="mr-1" :icon="['fas', 'hashtag']" />Einfach bewerben
+              </div>
             </div>
-            <BTooltip
-              v-if="job.simpleApplication"
-              target="tooltip-simple-application"
-              title="Lebenslauf genügt für Bewerbung"
-              triggers="hover"
-              placement="bottom"
-            >
-            </BTooltip>
           </div>
-        </BCardText>
-      </BCard>
+        </div>
+      </div>
     </b-link>
   </article>
 </template>
@@ -164,12 +155,6 @@
     companySizeOptions
   } from "@/config/formDataConfig.json";
   import StarJob from "@/components/utils/starJob";
-  import { BTooltip, BBadge, BCard, BCardText } from "bootstrap-vue";
-  import Vue from "vue";
-  Vue.component("BTooltip", BTooltip);
-  Vue.component("BBadge", BBadge);
-  Vue.component("BCard", BCard);
-  Vue.component("BCardText", BCardText);
   export default {
     name: "JobCard",
     components: { StarJob },

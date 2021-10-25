@@ -142,19 +142,14 @@
               {{ new Date(job.applicationDeadline).toLocaleDateString() }}
             </div>
             <div v-if="job.simpleApplication" id="tooltip-simple-application">
-              <BBadge style="cursor: pointer" pill variant="secondary">
-                <Fa class="mr-1" :icon="['fas', 'hashtag']" />
-                Einfach bewerben</BBadge
+              <div
+                style="cursor: pointer"
+                class="badge badge-pill badge-secondary"
               >
+                <Fa class="mr-1" :icon="['fas', 'hashtag']" />
+                Einfach bewerben
+              </div>
             </div>
-            <BTooltip
-              v-if="job.simpleApplication"
-              target="tooltip-simple-application"
-              title="Lebenslauf genügt für Bewerbung"
-              triggers="hover"
-              placement="bottom"
-            >
-            </BTooltip>
           </div>
         </div>
       </div>
@@ -451,7 +446,6 @@
 </template>
 
 <script>
-  import textToSlug from "@/utils/textToSlug.js";
   import socialShareJobToClipboard from "@/utils/socialShareJobToClipboard.js";
   import SimilarJobsContainer from "@/components/containers/SimilarJobsContainer.vue";
   import {
@@ -468,11 +462,7 @@
   import SubscribeNewsletterBtn from "@/components/buttons/SubscribeNewsletterBtn.vue";
   import JobPlaceholder from "@/components/ui/JobPlaceholder.vue";
   import JobCardPlaceholder from "@/components/ui/JobCardPlaceholder.vue";
-  import { BTooltip, BBadge } from "bootstrap-vue";
   import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
-  import Vue from "vue";
-  Vue.component("BTooltip", BTooltip);
-  Vue.component("BBadge", BBadge);
   export default {
     name: "Job",
     components: {
@@ -569,11 +559,7 @@
                     "@type": "ListItem",
                     "position": 3,
                     "name": "Stellenangebot",
-                    "item": "https://www.mfa-mal-anders.de/stellenangebote/job/${
-                      this.job._id
-                    }/${textToSlug(
-              this.job.title + " in " + this.job.company.location
-            )}"
+                    "item": "https://www.mfa-mal-anders.de/stellenangebote/job/${this.job._id}"
                 }
               ]
             }`
