@@ -18,7 +18,6 @@
       :target="job.source != 'stepstone' ? '_self' : '_blank'"
     >
       <div
-        no-body
         :class="['card', compact ? 'mb-2 mt-2 mt-lg-0' : 'mb-3 mt-3 mt-lg-0']"
       >
         <div class="card-text">
@@ -41,12 +40,12 @@
             <div v-if="job.company.logoUrl && !compact" class="img-container">
               <b-img-lazy
                 fluid
-                blank-src="/img/MfaMalAnders_logo_circle_dark.svg"
-                blank-width="90"
-                offset="360"
                 :src="job.company.logoUrl"
                 :alt="`Logo - ${job.company.name}`"
                 height="70"
+                blank-width="70"
+                blank-height="70"
+                offset="500"
               />
             </div>
           </div>
