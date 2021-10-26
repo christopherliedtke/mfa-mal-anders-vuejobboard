@@ -8,9 +8,19 @@
           placeholder="Enter search term ..."
         />
         <b-input-group-append>
-          <b-button @click.prevent="filter.searchTerm = ''"
-            ><Fa icon="times"
-          /></b-button>
+          <b-button class="px-2" @click.prevent="filter.searchTerm = ''">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="currentColor"
+              class="bi bi-x"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+              /></svg
+          ></b-button>
         </b-input-group-append>
       </b-input-group>
       <div class="inline-block ml-3 my-3 my-lg-0">
@@ -101,7 +111,22 @@
           :to="`/admin/jobs/edit/${row.item._id}`"
           variant="primary"
           size="sm"
-          ><Fa icon="edit"></Fa>
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-pencil-square"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
+            />
+            <path
+              fill-rule="evenodd"
+              d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
+            />
+          </svg>
         </b-button>
         <b-button
           class="mr-2 mb-2"
@@ -109,11 +134,34 @@
           target="_blank"
           variant="info"
           size="sm"
-          ><Fa scale="1" icon="eye" />
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-eye-fill"
+            viewBox="0 0 16 16"
+          >
+            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+            <path
+              d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"
+            />
+          </svg>
         </b-button>
         <BDropdown class="mr-2 mb-2" size="sm" left variant="secondary">
           <template #button-content>
-            <Fa class="mr-2" icon="ellipsis-v" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-three-dots-vertical mr-2"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"
+              />
+            </svg>
             Status
           </template>
           <BDropdownItem
@@ -152,7 +200,19 @@
         </BDropdown>
         <BDropdown class="mr-2 mb-2" size="sm" left variant="secondary">
           <template #button-content>
-            <Fa class="mr-2" icon="credit-card" /> Paid Status
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-credit-card-fill mr-2"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1H0V4zm0 3v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7H0zm3 2h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1a1 1 0 0 1 1-1z"
+              />
+            </svg>
+            Paid Status
           </template>
           <BDropdownItem
             :active="row.item.paid === false"
@@ -170,7 +230,19 @@
         </BDropdown>
         <BDropdown class="mr-2 mb-2" size="sm" left variant="info">
           <template #button-content>
-            <Fa class="mr-2" icon="envelope" /> E-Mail
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-envelope-fill mr-2"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"
+              />
+            </svg>
+            E-Mail
           </template>
           <BDropdownItem
             class="mb-0"
@@ -181,7 +253,19 @@
         </BDropdown>
         <BDropdown class="mr-2 mb-2" size="sm" left variant="primary">
           <template #button-content>
-            <Fa class="mr-2" icon="share-alt" /> Share
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-share-fill mr-2"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"
+              />
+            </svg>
+            Share
           </template>
           <BDropdownItem
             class="mb-0"
@@ -190,21 +274,24 @@
             >Copy Text</BDropdownItem
           >
         </BDropdown>
-        <!-- <b-button
-                    class="mr-2 mb-2"
-                    size="sm"
-                    variant="info"
-                    @click="socialShareToClipBoard(row.item._id)"
-                >
-                    <Fa class="mr-2" icon="share-alt" />Copy
-                </b-button> -->
         <b-button
           v-b-modal="'deleteJobModal'"
           size="sm"
           variant="danger"
           @click="jobToDelete = row.item"
         >
-          <Fa class="mr-2" icon="trash-alt" />Delete
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-trash-fill mr-2"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"
+            /></svg
+          >Delete
         </b-button>
       </template>
     </b-table>

@@ -23,7 +23,20 @@
             @mouseleave.native="link.children && hideSub(link.title)"
             ><span
               >{{ link.title }}
-              <Fa v-if="link.icon" class="icon" :icon="link.icon" size="xs" />
+              <svg
+                v-if="link.icon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-chevron-down"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
+                />
+              </svg>
             </span>
             <div v-if="link.children" :id="link.title" class="sub-menu">
               <router-link
@@ -33,11 +46,6 @@
                 @mouseenter.native="subLink.children && showSub(subLink.title)"
                 @mouseleave.native="subLink.children && hideSub(subLink.title)"
                 >{{ subLink.title }}
-                <Fa
-                  v-if="subLink.icon"
-                  class="ml-1 icon"
-                  :icon="subLink.icon"
-                  size="xs"/>
                 <div
                   v-if="subLink.children"
                   :id="subLink.title"
@@ -48,13 +56,9 @@
                     :key="subSubLink.title"
                     :to="subSubLink.path"
                     >{{ subSubLink.title }}
-                    <Fa
-                      v-if="subSubLink.icon"
-                      class="ml-1 icon"
-                      :icon="subSubLink.icon"
-                      size="xs"
-                  /></router-link></div
-              ></router-link>
+                  </router-link>
+                </div></router-link
+              >
             </div>
           </router-link>
         </nav>
@@ -77,10 +81,33 @@
                 class="bg-light rounded-circle text-primary d-flex justify-content-center align-items-center mr-1"
                 style="width: 22.5px; height: 22.5px"
               >
-                <Fa icon="user" size="sm" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  fill="currentColor"
+                  class="bi bi-person-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+                  />
+                </svg>
               </span>
               <span>Mein Konto</span>
-              <Fa class="ml-1" icon="chevron-down" size="xs" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-chevron-down ml-1"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
+                />
+              </svg>
             </div>
             <div id="account" class="sub-menu">
               <router-link
@@ -178,8 +205,32 @@
             @mouseleave.native="hideSub('admin')"
           >
             <div class="d-flex align-items-center">
-              <Fa icon="key" size="lg" />
-              <Fa class="ml-1" icon="chevron-down" size="xs" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="22"
+                fill="currentColor"
+                class="bi bi-shield-lock-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M8 0c-.69 0-1.843.265-2.928.56-1.11.3-2.229.655-2.887.87a1.54 1.54 0 0 0-1.044 1.262c-.596 4.477.787 7.795 2.465 9.99a11.777 11.777 0 0 0 2.517 2.453c.386.273.744.482 1.048.625.28.132.581.24.829.24s.548-.108.829-.24a7.159 7.159 0 0 0 1.048-.625 11.775 11.775 0 0 0 2.517-2.453c1.678-2.195 3.061-5.513 2.465-9.99a1.541 1.541 0 0 0-1.044-1.263 62.467 62.467 0 0 0-2.887-.87C9.843.266 8.69 0 8 0zm0 5a1.5 1.5 0 0 1 .5 2.915l.385 1.99a.5.5 0 0 1-.491.595h-.788a.5.5 0 0 1-.49-.595l.384-1.99A1.5 1.5 0 0 1 8 5z"
+                />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-chevron-down ml-1"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
+                />
+              </svg>
             </div>
             <div id="admin" class="sub-menu">
               <router-link
@@ -279,7 +330,22 @@
               variant="secondary"
               size="lg"
               to="/auth/register"
-              ><Fa style="margin: 0.1rem" icon="user-plus" size="sm" />
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                fill="currentColor"
+                class="bi bi-person-plus-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+                />
+                <path
+                  fill-rule="evenodd"
+                  d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"
+                />
+              </svg>
               <span class="sr-only">Registrieren</span>
             </b-button>
           </div>
@@ -311,10 +377,6 @@
         hideNavbar: false,
         navCollapsed: true,
         headerLinks: [
-          // {
-          //   title: "Home",
-          //   path: "/"
-          // },
           {
             title: "Stellenangebote",
             path: "/stellenangebote"
@@ -322,7 +384,7 @@
           {
             title: "Karriere",
             path: "/karriere",
-            icon: "chevron-down",
+            icon: true,
             children: [
               {
                 title: "MFA – Ausbildung & Berufsbild",
@@ -348,34 +410,6 @@
               {
                 title: "Jobs & Berufsbilder",
                 path: "/karriere/jobs-und-berufsbilder"
-                // icon: "chevron-right"
-                // children: [
-                //     {
-                //         title: "Medizinisch-Technisch",
-                //         path:
-                //             "/karriere/jobs-und-berufsbilder/medizinisch-technisch"
-                //     },
-                //     {
-                //         title: "Verwaltung",
-                //         path:
-                //             "/karriere/jobs-und-berufsbilder/verwaltung"
-                //     },
-                //     {
-                //         title: "Management",
-                //         path:
-                //             "/karriere/jobs-und-berufsbilder/management"
-                //     },
-                //     {
-                //         title: "Beratung",
-                //         path:
-                //             "/karriere/jobs-und-berufsbilder/beratung"
-                //     },
-                //     {
-                //         title: "Forschung",
-                //         path:
-                //             "/karriere/jobs-und-berufsbilder/forschung"
-                //     }
-                // ]
               },
               {
                 title: "Fort- & Weiterbildungen",

@@ -31,14 +31,42 @@
           </h3>
           <ul class="lead no-bullets my-4 my-lg-5">
             <li class="d-flex">
-              <Fa icon="check" class="mr-3 mt-1" />
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="25"
+                  fill="currentColor"
+                  class="bi bi-check-lg mr-3"
+                  style="vertical-align: top;"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"
+                  />
+                </svg>
+              </span>
               <div>
                 Einfach und bequem
                 <span class="text-secondary">in wenigen Schritten</span>
               </div>
             </li>
             <li class="d-flex">
-              <Fa icon="check" class="mr-3 mt-1" />
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="25"
+                  fill="currentColor"
+                  class="bi bi-check-lg mr-3"
+                  style="vertical-align: top;"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"
+                  />
+                </svg>
+              </span>
               <div>
                 Erreichen Sie exklusiv
                 <span class="text-secondary">engagierte MFA & ZFA</span>
@@ -46,7 +74,21 @@
               </div>
             </li>
             <li class="d-flex">
-              <Fa icon="check" class="mr-3 mt-1" />
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="25"
+                  fill="currentColor"
+                  class="bi bi-check-lg mr-3"
+                  style="vertical-align: top;"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"
+                  />
+                </svg>
+              </span>
               <div>
                 <span class="text-secondary">Erhalten Sie mehr Reichweite</span>
                 über unseren Jobnewsletter, Google, Google Jobs, Social Media
@@ -54,7 +96,21 @@
               </div>
             </li>
             <li class="d-flex">
-              <Fa icon="check" class="mr-3 mt-1" />
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="25"
+                  fill="currentColor"
+                  class="bi bi-check-lg mr-3"
+                  style="vertical-align: top;"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"
+                  />
+                </svg>
+              </span>
               <div>
                 Veröffentlichen Sie Ihre Stellenanzeige
                 <b-link class="text-secondary" href="#preise"
@@ -88,90 +144,9 @@
         </div>
         <div
           class="col-12 col-lg-4 d-none d-lg-flex justify-content-center align-items-center"
-        >
-          <!-- <b-img
-            style="width: 450px; opacity: 0.9; right: 0"
-            class="position-absolute p-0"
-            src="@/assets/img/handshake.svg"
-            alt="MFA / ZFA trifft Arzt zum Bewerbungsgespräch"
-          /> -->
-        </div>
+        ></div>
       </div>
     </div>
-
-    <!-- <div class="container py-3 py-lg-5 px-md-5">
-      <div
-        style="overflow-x: hidden"
-        class="row bg-primary text-light border-radius2 shadow1 w-100 p-3 py-4 p-md-5 mx-auto position-relative"
-      >
-        <div class="bg-logo"></div>
-        <div class="col-12 col-lg-8" style="z-index: 1">
-          <h2 class="display-4 bold mb-4">
-            <em>Motivierte</em> und <em>qualifizierte</em> MFA & ZFA{{
-              $route.query.location ? ` in ${$route.query.location}` : ""
-            }}
-            gesucht?
-          </h2>
-          <ul class="lead no-bullets my-4 my-lg-5">
-            <li class="d-flex">
-              <Fa icon="check" class="mr-3 mt-1" />
-              <div>
-                Einfach und bequem
-                <span class="text-secondary">in wenigen Minuten</span>
-                Ihre Stellenanzeige veröffentlichen
-              </div>
-            </li>
-            <li class="d-flex">
-              <Fa icon="check" class="mr-3 mt-1" />
-              <div>
-                <span class="text-secondary"
-                  >Erhalten Sie mit uns mehr Reichweite</span
-                >
-                über Google Jobs, Social Media und unsere MFA & ZFA Community
-              </div>
-            </li>
-            <li class="d-flex">
-              <Fa icon="check" class="mr-3 mt-1" />
-              <div>
-                Veröffentlichen Sie Ihre Stellenanzeige
-                <b-link class="text-secondary" href="#preise"
-                  >ab
-                  {{ $config.pricingPackages[0].price / 100 }}
-                  {{ $config.payment.currency }}</b-link
-                >
-              </div>
-            </li>
-          </ul>
-
-          <div class="my-3">
-            <b-button
-              to="/auth/register"
-              variant="secondary"
-              size="lg"
-              class="d-block d-md-inline-block my-2 mr-md-2"
-              >Stellenanzeige erstellen</b-button
-            >
-            <b-button
-              href="#advantages"
-              variant="outline-light"
-              size="lg"
-              class="d-block d-md-inline-block my-2 mr-md-2"
-              >Mehr erfahren</b-button
-            >
-          </div>
-        </div>
-        <div
-          class="col-12 col-lg-4 d-none d-lg-flex justify-content-center align-items-center"
-        >
-          <b-img
-            style="width: 450px; opacity: 0.9; right: 0"
-            class="position-absolute p-0"
-            src="@/assets/img/handshake.svg"
-            alt="MFA / ZFA trifft Arzt zum Bewerbungsgespräch"
-          />
-        </div>
-      </div>
-    </div> -->
 
     <div id="advantages" class="container my-5 py-3 py-lg-5">
       <h2 class="h5 text-center">
@@ -187,8 +162,24 @@
       <div class="row my-4 my-md-5">
         <div class="col">
           <div class="icon-box shadow1 py-5 px-4">
-            <Fa class="m-0" :icon="['fa', 'user-nurse']" size="3x" />
-            <h4 class="h4 mt-4 mb-3">Genau Ihre Zielgruppe</h4>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="50"
+              height="50"
+              fill="currentColor"
+              class="bi bi-people-fill"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+              />
+              <path
+                fill-rule="evenodd"
+                d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"
+              />
+              <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
+            </svg>
+            <h4 class="h4 mt-2 mb-3">Genau Ihre Zielgruppe</h4>
             <p>
               Bei uns erreichen Sie
               <strong>exklusiv motivierte ArzthelferInnen – MFA & ZFA</strong>
@@ -198,8 +189,19 @@
         </div>
         <div class="col">
           <div class="icon-box shadow1 py-5 px-4">
-            <Fa class="m-0" :icon="['fa', 'credit-card']" size="3x" />
-            <h4 class="h4 mt-4 mb-3">Niedrige Kosten</h4>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="50"
+              height="50"
+              fill="currentColor"
+              class="bi bi-credit-card-2-front-fill"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2.5 1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-2zm0 3a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z"
+              />
+            </svg>
+            <h4 class="h4 mt-2 mb-3">Niedrige Kosten</h4>
             <p>
               Veröffentlichen Sie Ihre Stellenanzeige und wählen Sie eines
               unserer Pakete
@@ -216,8 +218,19 @@
         </div>
         <div class="col">
           <div class="icon-box shadow1 py-5 px-4">
-            <Fa class="m-0" :icon="['fa', 'paper-plane']" size="3x" />
-            <h4 class="h4 mt-4 mb-3">Einfach und bequem</h4>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="50"
+              height="50"
+              fill="currentColor"
+              class="bi bi-puzzle-fill"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M3.112 3.645A1.5 1.5 0 0 1 4.605 2H7a.5.5 0 0 1 .5.5v.382c0 .696-.497 1.182-.872 1.469a.459.459 0 0 0-.115.118.113.113 0 0 0-.012.025L6.5 4.5v.003l.003.01c.004.01.014.028.036.053a.86.86 0 0 0 .27.194C7.09 4.9 7.51 5 8 5c.492 0 .912-.1 1.19-.24a.86.86 0 0 0 .271-.194.213.213 0 0 0 .036-.054l.003-.01v-.008a.112.112 0 0 0-.012-.025.459.459 0 0 0-.115-.118c-.375-.287-.872-.773-.872-1.469V2.5A.5.5 0 0 1 9 2h2.395a1.5 1.5 0 0 1 1.493 1.645L12.645 6.5h.237c.195 0 .42-.147.675-.48.21-.274.528-.52.943-.52.568 0 .947.447 1.154.862C15.877 6.807 16 7.387 16 8s-.123 1.193-.346 1.638c-.207.415-.586.862-1.154.862-.415 0-.733-.246-.943-.52-.255-.333-.48-.48-.675-.48h-.237l.243 2.855A1.5 1.5 0 0 1 11.395 14H9a.5.5 0 0 1-.5-.5v-.382c0-.696.497-1.182.872-1.469a.459.459 0 0 0 .115-.118.113.113 0 0 0 .012-.025L9.5 11.5v-.003l-.003-.01a.214.214 0 0 0-.036-.053.859.859 0 0 0-.27-.194C8.91 11.1 8.49 11 8 11c-.491 0-.912.1-1.19.24a.859.859 0 0 0-.271.194.214.214 0 0 0-.036.054l-.003.01v.002l.001.006a.113.113 0 0 0 .012.025c.016.027.05.068.115.118.375.287.872.773.872 1.469v.382a.5.5 0 0 1-.5.5H4.605a1.5 1.5 0 0 1-1.493-1.645L3.356 9.5h-.238c-.195 0-.42.147-.675.48-.21.274-.528.52-.943.52-.568 0-.947-.447-1.154-.862C.123 9.193 0 8.613 0 8s.123-1.193.346-1.638C.553 5.947.932 5.5 1.5 5.5c.415 0 .733.246.943.52.255.333.48.48.675.48h.238l-.244-2.855z"
+              />
+            </svg>
+            <h4 class="h4 mt-2 mb-3">Einfach und bequem</h4>
             <p>
               <strong
                 >Sie erstellen Ihre Anzeige, wir sorgen für den Rest</strong
@@ -359,66 +372,115 @@
       </div>
     </div>
 
-    <div id="numbers-and-facts" class="container mb-5 py-md-5">
+    <div id="numbers-and-facts2" class="container mb-5 py-md-5">
       <h2 class="h1 text-center bold mb-4">
         Ein paar Zahlen und Fakten
         <span style="font-size: 0.8rem">(01/2021)</span>
       </h2>
       <div class="row row-cols-1 row-cols-md-3">
-        <div
-          v-for="item in numbersAndFacts"
-          :key="item.desc"
-          class="col text-center"
-        >
-          <Fa
-            class="mt-3 mb-4 text-secondary"
-            :icon="['fab', item.icon]"
-            size="4x"
-          />
+        <div class="col text-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="60"
+            height="60"
+            fill="currentColor"
+            class="bi bi-google text-secondary mt-3 mb-4"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545z"
+            />
+          </svg>
           <div class="display-4 bold mb-3">
-            {{ Math.floor(item.number).toLocaleString() }}+
+            423.000+
           </div>
-          <p>{{ item.desc }}</p>
+          <p>Menschen sehen uns monatlich bei Google</p>
+        </div>
+        <div class="col text-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="60"
+            height="60"
+            fill="currentColor"
+            class="bi bi-facebook text-secondary mt-3 mb-4"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"
+            />
+          </svg>
+          <div class="display-4 bold mb-3">
+            28.000+
+          </div>
+          <p>Monatliche Reichweite bei Facebook</p>
+        </div>
+        <div class="col text-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="60"
+            height="60"
+            viewBox="0 0 496 512"
+            class="text-secondary mt-3 mb-4"
+          >
+            <path
+              data-v-64b4b916=""
+              fill="currentColor"
+              d="M131.5 217.5L55.1 100.1c47.6-59.2 119-91.8 192-92.1 42.3-.3 85.5 10.5 124.8 33.2 43.4 25.2 76.4 61.4 97.4 103L264 133.4c-58.1-3.4-113.4 29.3-132.5 84.1zm32.9 38.5c0 46.2 37.4 83.6 83.6 83.6s83.6-37.4 83.6-83.6-37.4-83.6-83.6-83.6-83.6 37.3-83.6 83.6zm314.9-89.2L339.6 174c37.9 44.3 38.5 108.2 6.6 157.2L234.1 503.6c46.5 2.5 94.4-7.7 137.8-32.9 107.4-62 150.9-192 107.4-303.9zM133.7 303.6L40.4 120.1C14.9 159.1 0 205.9 0 256c0 124 90.8 226.7 209.5 244.9l63.7-124.8c-57.6 10.8-113.2-20.8-139.5-72.5z"
+              class=""
+            ></path>
+          </svg>
+          <div class="display-4 bold mb-3">
+            53.000+
+          </div>
+          <p>Monatliche Seitenaufrufe auf der Webseite</p>
         </div>
       </div>
     </div>
 
     <!-- <div id="testimonials" class="container mb-5 pb-md-5" fluid>
-            <h2 class="h4 text-center">Feedback</h2>
-            <h3 class="h1 text-center bold mb-4">Was unsere Kunden sagen</h3>
-            <div
-                style="max-width: 600px"
-                class="container position-relative bg-light-shade border-radius2 shadow1 p-5"
-            >
-                <Fa
-                    style="right: 15%; top: 25%"
-                    class="position-absolute text-primary icon-transparent"
-                    icon="quote-right"
-                    size="7x"
-                />
-                <div class="row">
-                    <div class="col-12 col-md-3 d-flex py-2 px-4">
-                        <b-img
-                            class="rounded-circle shadow1"
-                            height="100"
-                            src="@/assets/img/kinderarztpraxis_ostertor_200.jpg"
-                        />
-                    </div>
-                    <div class="col-12 col-md-9 d-flex flex-column py-2">
-                        <p>
-                            Durch die Online-Suche haben wir deutlich mehr und
-                            auch besser qualifizierte Zuschriften erhalten.
-                            Vielen Dank noch einmal für Ihre Unterstützung und
-                            die wertvollen Tipps.
-                        </p>
-                        <p class="h6 mb-0">
-                            &ndash; Franziska Fritz |
-                            <em>Kinderarztpraxis Ostertor</em>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div> -->
+      <h2 class="h4 text-center">Feedback</h2>
+      <h3 class="h1 text-center bold mb-4">Was unsere Kunden sagen</h3>
+      <div
+        style="max-width: 600px"
+        class="container position-relative bg-light-shade border-radius2 shadow1 p-5"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="120"
+          height="120"
+          viewBox="0 0 512 512"
+          class="position-absolute text-primary icon-transparent"
+          style="right: 15%; top: 25%;"
+        >
+          <path
+            data-v-64b4b916=""
+            fill="currentColor"
+            d="M464 32H336c-26.5 0-48 21.5-48 48v128c0 26.5 21.5 48 48 48h80v64c0 35.3-28.7 64-64 64h-8c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h8c88.4 0 160-71.6 160-160V80c0-26.5-21.5-48-48-48zm-288 0H48C21.5 32 0 53.5 0 80v128c0 26.5 21.5 48 48 48h80v64c0 35.3-28.7 64-64 64h-8c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h8c88.4 0 160-71.6 160-160V80c0-26.5-21.5-48-48-48z"
+            class=""
+          ></path>
+        </svg>
+        <div class="row">
+          <div class="col-12 col-md-3 d-flex py-2 px-4">
+            <b-img
+              class="rounded-circle shadow1"
+              height="100"
+              src="@/assets/img/kinderarztpraxis_ostertor_200.jpg"
+            />
+          </div>
+          <div class="col-12 col-md-9 d-flex flex-column py-2">
+            <p>
+              Durch die Online-Suche haben wir deutlich mehr und auch besser
+              qualifizierte Zuschriften erhalten. Vielen Dank noch einmal für
+              Ihre Unterstützung und die wertvollen Tipps.
+            </p>
+            <p class="h6 mb-0">
+              &ndash; Franziska Fritz |
+              <em>Kinderarztpraxis Ostertor</em>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div> -->
 
     <div id="more-info" class="container-fluid bg-light-shade py-5 mb-5">
       <div class="container">
@@ -525,49 +587,8 @@
         >
         zur Inspiration ansehen.
       </p>
-      <div class="row">
-        <div
-          v-for="jobAdTipp in jobAdTipps"
-          :key="jobAdTipp.title"
-          class="col-12 col-md-6 col-lg-4"
-        >
-          <div class="icon-box shadow1">
-            <div
-              style="width: 75px; height: 75px"
-              class="bg-light border-radius1 shadow3 d-flex justify-content-center align-items-center mb-3"
-            >
-              <Fa class="m-0" :icon="['fa', jobAdTipp.icon]" size="3x" />
-            </div>
-            <h3 class="bold">{{ jobAdTipp.title }}</h3>
-            <p class="mb-0">
-              {{ jobAdTipp.desc }}
-            </p>
-          </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4">
-          <div class="icon-box shadow1 py-4">
-            <h4 class="bold mb-3">
-              Jetzt Stellenanzeige erstellen
-            </h4>
-            <p>
-              Erstellen Sie jetzt Ihre attraktive Stellenanzeige und erreichen
-              Sie unsere große Community von MFAs & ZFAs! Mit unseren
-              <b-link class="text-secondary" href="#preise">Paketen</b-link>
-              unterstützen wir Sie optimal und individuell bei der
-              Personalsuche.
-            </p>
-            <b-button to="/auth/register" variant="secondary"
-              >Zur Registrierung</b-button
-            >
-          </div>
-        </div>
-        <div class="col-12 col-md-6 col-md-12">
-          <JobAdTippsBanner />
-        </div>
-        <div class="col-12">
-          <ApplicationProcessBanner />
-        </div>
-      </div>
+
+      <JobAdTipsContainer class="my-4" />
     </div>
 
     <div id="faq" class="container mb-5">
@@ -697,14 +718,12 @@
 </template>
 
 <script>
-  import JobAdTippsBanner from "@/components/banners/JobAdTippsBanner.vue";
-  import ApplicationProcessBanner from "@/components/banners/ApplicationProcessBanner.vue";
+  import JobAdTipsContainer from "@/components/containers/JobAdTipsContainer.vue";
   import PricingCard from "@/components/ui/PricingCard.vue";
   export default {
     name: "Employer",
     components: {
-      JobAdTippsBanner,
-      ApplicationProcessBanner,
+      JobAdTipsContainer,
       PricingCard
     },
     data() {
@@ -713,56 +732,6 @@
         breadcrumbs: [
           { text: "Home", to: "/" },
           { text: "Für Arbeitgeber", to: "/fuer-arbeitgeber" }
-        ],
-        jobAdTipps: [
-          {
-            icon: "drafting-compass",
-            title: "Präziser Stellentitel",
-            desc:
-              "Beschreiben Sie die Stelle in wenigen Worten so konkret wie möglich. Heben Sie bereits hier die Vorteile für die Arbeit bei Ihnen hervor. Versuchen Sie positiv aufzufallen!"
-          },
-          {
-            icon: "hospital",
-            title: "Interessanter Einstiegstext",
-            desc:
-              "Erzählen Sie ein wenig über die Praxis bzw. Ihr Unternehmen. Wie viele MitarbeiterInnen gibt es? Seit wann gibt es die Praxis? Was zeichnet Sie aus? Wie ist die Arbeitskultur?"
-          },
-          {
-            icon: "tasks",
-            title: "Konkrete Aufgaben",
-            desc:
-              "Beschreiben Sie die konkreten und wichtigsten Aufgaben, sodass BewerberInnen ein gutes Bild bekommen und wissen, was sie potentiell erwartet."
-          },
-          {
-            icon: "users",
-            title: "Sympathisches Teambild",
-            desc:
-              "Bilder sagen mehr als 1000 Worte. Das gilt auch hier und speziell in Zeiten von Social Media. Ein nettes Bild von Ihrem Praxisteam kann die Zahl der Bewerbungen um ein Vielfaches erhöhen."
-          },
-          {
-            icon: "syringe",
-            title: "Adäquates Stellenprofil",
-            desc:
-              "Werden Sie auch hier konkret und unterscheiden Sie zwischen erforderlichen und wünschenswerten Kenntnissen. Zu viele oder hohe Anforderungen können BewerberInnen abschrecken, die eigentlich geeignet wären."
-          },
-          {
-            icon: "gift",
-            title: "Lukrative Benefits",
-            desc:
-              "Vergessen Sie nicht das wesentliche für die KandidatInnen. Was macht einen Wechsel zu Ihnen lohnenswert? Neben Gehalt und Urlaub können auch Dinge wie Weiterbildungen, spezielle Arbeitszeitmodelle oder Zuschüsse attraktiv sein."
-          },
-          {
-            icon: "door-open",
-            title: "Einfaches Bewerben",
-            desc:
-              "Ermöglichen Sie das einfache Bewerben nur per Lebenslauf. So können Sie die innerliche Hürde für BewerberInnen beträchtlich senken. Das persönliche Gespräch ist letztlich ohnehin entscheidend."
-          },
-          {
-            icon: "desktop",
-            title: "Moderner Webauftritt",
-            desc:
-              "Platzieren Sie sich als moderner Arbeitgeber. Potentielle BewerberInnen informieren sich meist auf Ihrer Webseite über Ihr Unternehmen. Hier können Sie punkten und positiv herausstechen."
-          }
         ],
         partners: [
           {
@@ -832,26 +801,6 @@
           //   url: "https://www.facebook.com/ihregesundearztpraxis/"
           // }
         ],
-        numbersAndFacts: [
-          {
-            icon: "google",
-            number: 423000,
-            current: 0,
-            desc: "Menschen sehen uns monatlich bei Google"
-          },
-          {
-            icon: "facebook",
-            number: 28000,
-            current: 0,
-            desc: "Monatliche Reichweite bei Facebook"
-          },
-          {
-            icon: "chrome",
-            number: 53000,
-            current: 0,
-            desc: "Monatliche Seitenaufrufe auf der Webseite"
-          }
-        ],
         snippet: [
           {
             id: "breadcrumbs",
@@ -876,13 +825,6 @@
       };
     },
     mounted() {
-      // const elem = window.document.getElementById("numbers-and-facts");
-      // let intervalId = setInterval(() => {
-      //   if (elem.offsetTop < window.scrollY + window.innerHeight * 0.66) {
-      //     clearInterval(intervalId);
-      //     this.startCounters();
-      //   }
-      // }, 500);
       this.scrollToHash();
     },
     methods: {

@@ -105,7 +105,22 @@
       <label for="company-url">Unternehmenswebseite</label>
       <b-input-group>
         <template #prepend>
-          <b-input-group-text><Fa icon="link"/></b-input-group-text>
+          <b-input-group-text
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="currentColor"
+              class="bi bi-link-45deg"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"
+              />
+              <path
+                d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"
+              /></svg
+          ></b-input-group-text>
         </template>
         <b-form-input
           id="company-url"
@@ -140,7 +155,17 @@
         style="width: 55px; height: 55px"
       >
         <b-img v-if="company.logoUrl" :src="company.logoUrl" fluid />
-        <Fa v-else icon="box-open" size="lg" />
+        <svg
+          v-else
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          class="bi bi-box p-3"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5 8 5.961 14.154 3.5 8.186 1.113zM15 4.239l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"
+          />
+        </svg>
       </div>
 
       <div class="d-flex justify-content-between my-4">
@@ -148,8 +173,7 @@
           Abbrechen
         </b-button>
         <b-button variant="success" @click.prevent="onSubmit">
-          <Fa v-if="success" icon="check" class="mr-2" />
-          {{ success ? "Gespeichert" : "Speichern" }}
+          Speichern
         </b-button>
       </div>
     </b-form>

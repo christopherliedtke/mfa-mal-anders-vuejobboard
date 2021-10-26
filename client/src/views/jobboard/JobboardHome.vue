@@ -29,8 +29,19 @@
             <b-input-group class="mb-2 mr-2">
               <template #prepend>
                 <b-input-group-text class="bg-secondary text-light border-0"
-                  ><Fa :icon="['fas', 'map-marker']"
-                /></b-input-group-text>
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-geo-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999zm2.493 8.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.319 1.319 0 0 0-.37.265.301.301 0 0 0-.057.09V14l.002.008a.147.147 0 0 0 .016.033.617.617 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.619.619 0 0 0 .146-.15.148.148 0 0 0 .015-.033L12 14v-.004a.301.301 0 0 0-.057-.09 1.318 1.318 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465-1.281 0-2.462-.172-3.34-.465-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411z"
+                    /></svg
+                ></b-input-group-text>
               </template>
               <b-form-input
                 id="location-jobboard"
@@ -43,6 +54,7 @@
               />
               <b-input-group-append>
                 <b-button
+                  class="px-2"
                   @click.prevent="
                     () => {
                       filter.location = '';
@@ -50,8 +62,18 @@
                       setQuery();
                     }
                   "
-                  ><Fa icon="times"
-                /></b-button>
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    class="bi bi-x"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+                    /></svg
+                ></b-button>
               </b-input-group-append>
             </b-input-group>
 
@@ -61,23 +83,39 @@
               @click="showAdvancedSearch = !showAdvancedSearch"
             >
               Erweiterte Suche
-              <Fa
-                icon="caret-right"
-                size="1x"
-                :class="
-                  showAdvancedSearch === true
-                    ? 'animate rotate-90 ml-2'
-                    : 'animate ml-2'
-                "
-              />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="12"
+                height="12"
+                fill="currentColor"
+                :class="[
+                  'bi bi-caret-right-fill animate ml-2 mb-1',
+                  { 'rotate-90': showAdvancedSearch }
+                ]"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"
+                />
+              </svg>
             </div>
             <b-collapse id="advanced-search" v-model="showAdvancedSearch">
               <label for="s-jobboard" class="sr-only">Suchbegriff</label>
               <b-input-group class="mb-2 mr-2">
                 <template #prepend>
                   <b-input-group-text class="bg-secondary text-light border-0"
-                    ><Fa icon="search"
-                  /></b-input-group-text>
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-search"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                      /></svg
+                  ></b-input-group-text>
                 </template>
                 <b-form-input
                   id="s-jobboard"
@@ -89,6 +127,7 @@
                 />
                 <b-input-group-append>
                   <b-button
+                    class="px-2"
                     @click.prevent="
                       () => {
                         filter.s = '';
@@ -96,8 +135,18 @@
                         setQuery();
                       }
                     "
-                    ><Fa icon="times"
-                  /></b-button>
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      fill="currentColor"
+                      class="bi bi-x"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+                      /></svg
+                  ></b-button>
                 </b-input-group-append>
               </b-input-group>
               <label for="employmentType-jobboard" class="sr-only"
@@ -106,8 +155,21 @@
               <b-input-group class="mb-2 mr-2">
                 <template #prepend>
                   <b-input-group-text class="bg-secondary text-light border-0"
-                    ><Fa :icon="['fas', 'briefcase']"
-                  /></b-input-group-text>
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-briefcase-fill"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v1.384l7.614 2.03a1.5 1.5 0 0 0 .772 0L16 5.884V4.5A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5z"
+                      />
+                      <path
+                        d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85v5.65z"
+                      /></svg
+                  ></b-input-group-text>
                 </template>
                 <b-form-select
                   id="employmentType-jobboard"
@@ -155,15 +217,22 @@
                 class="mt-0 mb-2 pl-2"
                 @click="specialization.visible = !specialization.visible"
                 >Fachgebiete
-                <Fa
-                  icon="caret-right"
-                  size="1x"
-                  :class="
-                    specialization.visible === true
-                      ? 'animate rotate-90 ml-2'
-                      : 'animate ml-2'
-                  "
-              /></label>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="12"
+                  height="12"
+                  fill="currentColor"
+                  :class="[
+                    'bi bi-caret-right-fill animate ml-2 mb-1',
+                    { 'rotate-90': specialization.visible }
+                  ]"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"
+                  />
+                </svg>
+              </label>
               <BCollapse
                 :visible="specialization.visible === true"
                 role="tabpanel"
@@ -218,8 +287,18 @@
 
             <div class="mt-2">
               <b-button variant="success" type="submit" block
-                ><Fa class="mr-2" size="sm" icon="search" />Jobs
-                finden</b-button
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-search mr-2"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                  /></svg
+                >Jobs finden</b-button
               >
             </div>
           </b-form>

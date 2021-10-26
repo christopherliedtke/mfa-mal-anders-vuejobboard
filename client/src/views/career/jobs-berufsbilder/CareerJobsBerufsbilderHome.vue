@@ -57,34 +57,8 @@
             organisatorische Aufgaben erledigst oder Dich lieber für einen
             alternativen Job außerhalb der Arztpraxis interessierst.
           </p>
-          <div class="row">
-            <div
-              v-for="card in cards"
-              :key="card.title"
-              class="col-12 col-md-6 my-3"
-            >
-              <BCard align="center icon-box shadow1 p-0">
-                <BCardBody>
-                  <div class="d-flex justify-content-center">
-                    <div class="icon-box2 shadow1">
-                      <Fa :icon="['fa', card.icon]" size="3x" />
-                    </div>
-                  </div>
-                  <BCardTitle :title="card.title" class="bold" />
-                  <BCardText>
-                    <p>
-                      {{ card.desc }}
-                    </p>
-                  </BCardText>
-                  <b-button
-                    :to="`/karriere/jobs-und-berufsbilder/${card.slug}`"
-                    variant="primary"
-                    >Mehr</b-button
-                  >
-                </BCardBody>
-              </BCard>
-            </div>
-          </div>
+
+          <ProfessionTypeContainer class="my-4" :col-md="12" :col-lg="6" />
           <ToJobboardBanner />
         </div>
       </div>
@@ -100,21 +74,17 @@
 </template>
 
 <script>
-  import Vue from "vue";
-  import { BCard, BCardBody, BCardTitle, BCardText } from "bootstrap-vue";
-  Vue.component("BCard", BCard);
-  Vue.component("BCardBody", BCardBody);
-  Vue.component("BCardTitle", BCardTitle);
-  Vue.component("BCardText", BCardText);
   import JobsBerufsbilderNav from "@/components/navs/JobsBerufsbilderNav.vue";
   import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
   import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
+  import ProfessionTypeContainer from "@/components/containers/ProfessionTypeContainer.vue";
   export default {
     name: "CareerJobsBerufsbilderHome",
     components: {
       JobsBerufsbilderNav,
       RandomTrainingsContainer,
-      ToJobboardBanner
+      ToJobboardBanner,
+      ProfessionTypeContainer
     },
     data() {
       return {
@@ -125,43 +95,6 @@
           {
             text: "Jobs & Berufsbilder",
             to: "/karriere/jobs-und-berufsbilder"
-          }
-        ],
-        cards: [
-          {
-            title: "Beratung",
-            slug: "beratung",
-            desc:
-              "Jobs, bei denen du aufgrund deines Expertenwissens andere Menschen berätst.",
-            icon: "comments"
-          },
-          {
-            title: "Forschung",
-            slug: "forschung",
-            desc:
-              "Jobs, bei denen du zum medizinischen Fortschritt beitragen kannst.",
-            icon: "flask"
-          },
-          {
-            title: "Management",
-            slug: "management",
-            desc:
-              "Jobs, bei denen du betriebswirtschaftliche Aufgaben und Personalverantwortung übernehmen kannst.",
-            icon: "briefcase"
-          },
-          {
-            title: "Medizinisch-Technisch",
-            slug: "medizinisch-technisch",
-            desc:
-              "Jobs, bei denen die medizinische Arbeit am bzw. mit dem Patienten im Mittelpunkt steht.",
-            icon: "stethoscope"
-          },
-          {
-            title: "Verwaltung",
-            slug: "verwaltung",
-            desc:
-              "Jobs, bei denen deine administrativen und organisatorischen Fähigkeiten gefragt sind.",
-            icon: "building"
           }
         ],
         snippet: [

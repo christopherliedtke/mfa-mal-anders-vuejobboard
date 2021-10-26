@@ -13,17 +13,6 @@
           <div class="col order-1 order-lg-2 mb-5">
             <!-- eslint-disable-next-line -->
             <div v-html="profession.content"></div>
-            <!-- <p class="bold">
-              <b-link :to="`/stellenangebote`"
-                >Finde den passenden Job auf unserer Stellenbörse
-                <Fa
-                  class="position-relative"
-                  style="top: -5px"
-                  icon="external-link-alt"
-                  size="xs"
-                />
-              </b-link>
-            </p> -->
             <b-button
               :to="
                 `/karriere/jobs-und-berufsbilder/${profession.berufsbildTypes.nodes[0].slug}`
