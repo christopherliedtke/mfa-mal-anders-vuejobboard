@@ -29,8 +29,8 @@
           <b-button class="px-2" @click.prevent="filter.searchTerm = ''">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
+              width="16"
+              height="16"
               fill="currentColor"
               class="bi bi-x"
               viewBox="0 0 16 16"
