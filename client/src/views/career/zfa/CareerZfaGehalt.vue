@@ -687,13 +687,26 @@
       </p>
       <div class="w-75 mx-auto my-4">
         <div class="d-flex justify-content-center mb-4">
-          <b-img
-            fluid
-            src="~@/assets/img/gehalt_perBundesland_zfa.jpg"
-            alt="Zahnmedizinische Fachangestellte (ZFA) Gehalt pro Bundesland"
-            width="1200"
-            height="508"
-          />
+          <picture>
+            <source
+              srcset="
+                /img/gehalt_perBundesland_zfa-300x127.webp   300w,
+                /img/gehalt_perBundesland_zfa-768x325.webp   768w,
+                /img/gehalt_perBundesland_zfa-1024x433.webp 1024w,
+                /img/gehalt_perBundesland_zfa.webp          1200w
+              "
+              type="image/webp"
+            />
+            <b-img-lazy
+              fluid
+              srcset="/img/gehalt_perBundesland_zfa-300x127.jpg 300w, /img/gehalt_perBundesland_zfa-1024x433.jpg 1024w, /img/gehalt_perBundesland_zfa-768x325.jpg 768w, /img/gehalt_perBundesland_zfa.jpg 1200w"
+              sizes="(max-width: 1200px) 100vw, 1200px"
+              src="/img/gehalt_perBundesland_zfa.jpg"
+              alt="Zahnmedizinische Fachangestellte (ZFA) Gehalt pro Bundesland"
+              width="1200"
+              height="508"
+            />
+          </picture>
         </div>
         <p class="small text-muted text-right">
           Quelle: Entgeltatlas der Bundesagentur für Arbeit

@@ -4,8 +4,10 @@
       <div class="row ros-cols-1 row-cols-lg-3">
         <div class="col order-3 order-lg-1">
           <b-img
+            fluid
             src="/img/MfaMalAnders_Logo_white.svg"
             height="110"
+            width="220"
             alt="MFA mal anders - Logo"
             class="mb-4"
           />

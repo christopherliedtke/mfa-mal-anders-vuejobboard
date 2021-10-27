@@ -913,9 +913,11 @@
       </p>
       <div class="w-75 mx-auto my-4">
         <div class="d-flex justify-content-center mb-4">
-          <b-img
+          <b-img-lazy
             fluid
-            src="~@/assets/img/gehalt_perBundesland.jpg"
+            srcset="/img/gehalt_perBundesland-300x127.jpg 300w, /img/gehalt_perBundesland-1024x433.jpg 1024w, /img/gehalt_perBundesland-768x324.jpg 768w, /img/gehalt_perBundesland.jpg 1200w"
+            sizes="(max-width: 1200px) 100vw, 1200px"
+            src="/img/gehalt_perBundesland.jpg"
             alt="Medizinische Fachangestellte (MFA) Gehalt pro Bundesland"
             width="1200"
             height="507"

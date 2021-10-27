@@ -6,6 +6,8 @@
           class="header-logo"
           src="/img/MfaMalAnders_Logo_white.svg"
           alt="MFA mal anders - Logo"
+          width="100"
+          height="50"
           fluid
         />
       </router-link>
@@ -464,6 +466,7 @@
 
         @media screen and (max-width: $break-menu) {
           height: 44px;
+          width: 88px;
         }
       }
 
