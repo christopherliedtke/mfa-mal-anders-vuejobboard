@@ -10,8 +10,9 @@
           :to="'/karriere/fort-und-weiterbildungen/' + training.slug"
           :aria-label="training.title"
         >
-          <BCard no-body>
-            <BCardImgLazy
+          <div class="card">
+            <b-img-lazy
+              class="card-img-top"
               :srcset="training.featuredImage.node.srcSet"
               sizes="(max-width: 768px) 100vw, (max-width: 992px) 50vw, 33vw"
               :src="training.featuredImage.node.sourceUrl"
@@ -22,24 +23,21 @@
               blank-height="630"
               blank-color="#f7f6f9"
               offset="1000"
-              top
               fluid
             />
-            <BCardBody>
-              <BCardTitle :title="training.title" />
+            <div class="card-body">
+              <h4 class="card-title">{{ training.title }}</h4>
 
-              <BCardText>
-                <!-- eslint-disable-next-line -->
-                <div v-html="training.excerpt"></div>
-              </BCardText>
+              <!-- eslint-disable-next-line -->
+              <p class="card-text" v-html="training.excerpt"></p>
 
               <b-button
                 :to="'/karriere/fort-und-weiterbildungen/' + training.slug"
                 variant="primary"
                 >Mehr</b-button
               >
-            </BCardBody>
-          </BCard>
+            </div>
+          </div>
         </b-link>
       </article>
     </div>

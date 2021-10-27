@@ -50,24 +50,37 @@
             Fachangestellte in und außerhalb der Arztpraxis hast.
           </p>
           <div class="d-flex justify-content-center">
-            <BCard
+            <div
               style="max-width: 600px"
-              title="Die richtige Weiterbildung für dich?!"
-              img-src="@/assets/img/Banner_In6SchrittenZurRichtigenWeiterbildung_1200.jpg"
-              img-alt="Banner - In 6 Schritten zur richtigen Weiterbildung für MFA / ZFA und ArzthelferIn"
-              img-top
-              align="center"
-              class="bg-light-shade shadow1 mt-4 mb-5"
+              class="card text-center bg-light-shade shadow1 mt-4 mb-5"
             >
-              <BCardText>
-                Hier findest du eine kleine Anleitung, wie du Schritt für
-                Schritt vorgehen kannst.
-              </BCardText>
+              <b-img-lazy
+                src="@/assets/img/Banner_In6SchrittenZurRichtigenWeiterbildung_1200.jpg"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                alt="Banner - In 6 Schritten zur richtigen Weiterbildung für MFA / ZFA und ArzthelferIn"
+                width="1200"
+                height="630"
+                blank-width="1200"
+                blank-height="630"
+                blank-color="#f7f6f9"
+                offset="1000"
+                class="card-img-top"
+                fluid
+              />
 
-              <b-button to="/karriere/jobs-und-berufsbilder" variant="primary"
-                >Los geht's!</b-button
-              >
-            </BCard>
+              <div class="card-body">
+                <h4 class="card-title">
+                  Die richtige Weiterbildung für dich?!
+                </h4>
+                <p class="card-text">
+                  Hier findest du eine kleine Anleitung, wie du Schritt für
+                  Schritt vorgehen kannst.
+                </p>
+                <b-button to="/karriere/jobs-und-berufsbilder" variant="primary"
+                  >Los geht's!</b-button
+                >
+              </div>
+            </div>
           </div>
           <p>
             Wir beschreiben anerkannte Fortbildungen der Ärztekammer,

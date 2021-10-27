@@ -15,16 +15,15 @@
         @click="navCollapsed = true"
       >
         <nav id="primary-nav">
+          <router-link to="/stellenangebote">Stellenangebote</router-link>
+
           <router-link
-            v-for="link in headerLinks"
-            :key="link.title"
-            :to="link.path"
-            @mouseenter.native="link.children && showSub(link.title)"
-            @mouseleave.native="link.children && hideSub(link.title)"
+            to="/karriere"
+            @mouseenter.native="showSub('karriere')"
+            @mouseleave.native="hideSub('karriere')"
             ><span
-              >{{ link.title }}
+              >Karriere
               <svg
-                v-if="link.icon"
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
                 height="16"
@@ -35,32 +34,37 @@
                 <path
                   fill-rule="evenodd"
                   d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
-                />
-              </svg>
-            </span>
-            <div v-if="link.children" :id="link.title" class="sub-menu">
+                /></svg
+            ></span>
+            <div id="karriere" ref="karriere" class="sub-menu">
+              <router-link to="/karriere/mfa/ausbildung-berufsbild"
+                >MFA - Ausbildung und Berufsbild</router-link
+              >
+              <router-link to="/karriere/mfa/gehalt">MFA - Gehalt</router-link>
+              <router-link to="/karriere/zfa/gehalt">ZFA - Gehalt</router-link>
               <router-link
-                v-for="subLink in link.children"
-                :key="subLink.title"
-                :to="subLink.path"
-                @mouseenter.native="subLink.children && showSub(subLink.title)"
-                @mouseleave.native="subLink.children && hideSub(subLink.title)"
-                >{{ subLink.title }}
-                <div
-                  v-if="subLink.children"
-                  :id="subLink.title"
-                  class="sub-menu"
-                >
-                  <router-link
-                    v-for="subSubLink in subLink.children"
-                    :key="subSubLink.title"
-                    :to="subSubLink.path"
-                    >{{ subSubLink.title }}
-                  </router-link>
-                </div></router-link
+                to="/blog/article/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
+                >Gehaltsverhandlung 2021</router-link
+              >
+              <router-link to="/karriere/bewerbungstipps"
+                >Bewerbungstipps</router-link
+              >
+              <router-link to="/karriere/jobs-und-berufsbilder"
+                >Jobs & Berufsbilder</router-link
+              >
+              <router-link to="/karriere/fort-und-weiterbildungen"
+                >Fort- & Weiterbildungen</router-link
+              >
+              <router-link to="/karriere/fortbildungskatalog"
+                >Fortbildungskatalog</router-link
               >
             </div>
           </router-link>
+
+          <router-link to="/blog">Blog</router-link>
+          <router-link to="/fuer-arbeitgeber">Für Arbeitgeber</router-link>
+          <router-link to="/ueber">Über</router-link>
+          <router-link to="/kontakt">Kontakt</router-link>
         </nav>
         <nav id="secondary-nav" class="mt-3 mt-lg-0">
           <router-link
@@ -78,7 +82,7 @@
               />
               <span
                 v-else
-                class="bg-light rounded-circle text-primary d-flex justify-content-center align-items-center mr-1"
+                class="bg-light rounded-circle text-primary d-flex justify-content-center align-items-center mr-2"
                 style="width: 22.5px; height: 22.5px"
               >
                 <svg
@@ -109,7 +113,7 @@
                 />
               </svg>
             </div>
-            <div id="account" class="sub-menu">
+            <div id="account" ref="account" class="sub-menu">
               <router-link
                 to="/user/dashboard?tab=0"
                 :active="$route.path == '/user/dashboard' && !$route.query.tab"
@@ -232,7 +236,7 @@
                 />
               </svg>
             </div>
-            <div id="admin" class="sub-menu">
+            <div id="admin" ref="admin" class="sub-menu">
               <router-link
                 to="/admin?tab=0"
                 :active="$route.path == '/admin?tab=0' && !$route.query.tab"
@@ -376,68 +380,6 @@
       return {
         hideNavbar: false,
         navCollapsed: true,
-        headerLinks: [
-          {
-            title: "Stellenangebote",
-            path: "/stellenangebote"
-          },
-          {
-            title: "Karriere",
-            path: "/karriere",
-            icon: true,
-            children: [
-              {
-                title: "MFA – Ausbildung & Berufsbild",
-                path: "/karriere/mfa/ausbildung-berufsbild"
-              },
-              {
-                title: "MFA – Gehalt",
-                path: "/karriere/mfa/gehalt"
-              },
-              {
-                title: "ZFA – Gehalt",
-                path: "/karriere/zfa/gehalt"
-              },
-              {
-                title: "Gehaltsverhandlung 2021",
-                path:
-                  "/blog/article/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
-              },
-              {
-                title: "Bewerbungstipps",
-                path: "/karriere/bewerbungstipps"
-              },
-              {
-                title: "Jobs & Berufsbilder",
-                path: "/karriere/jobs-und-berufsbilder"
-              },
-              {
-                title: "Fort- & Weiterbildungen",
-                path: "/karriere/fort-und-weiterbildungen"
-              },
-              {
-                title: "Fortbildungskatalog",
-                path: "/karriere/fortbildungskatalog"
-              }
-            ]
-          },
-          {
-            title: "Blog",
-            path: "/blog"
-          },
-          {
-            title: "Für Arbeitgeber",
-            path: "/fuer-arbeitgeber"
-          },
-          {
-            title: "Über",
-            path: "/ueber"
-          },
-          {
-            title: "Kontakt",
-            path: "/kontakt"
-          }
-        ],
         previousScrollPositionY: document.documentElement.scrollTop
       };
     },
@@ -454,10 +396,10 @@
     },
     methods: {
       showSub(id) {
-        document.getElementById(id).classList.add("show");
+        this.$refs[id].classList.add("show");
       },
       hideSub(id) {
-        document.getElementById(id).classList.remove("show");
+        this.$refs[id].classList.remove("show");
       },
       checkHeaderVisible(timer = 0) {
         setTimeout(() => {

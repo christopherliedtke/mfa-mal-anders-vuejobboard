@@ -1,8 +1,8 @@
 <template>
   <article class="article-card">
     <b-link :to="'/blog/article/' + article.slug" :aria-label="article.title">
-      <BCard no-body tag="div" class="mb-2">
-        <BCardImgLazy
+      <div class="card mb-2">
+        <b-img-lazy
           :srcset="
             article.featuredImage ? article.featuredImage.node.srcSet : ''
           "
@@ -17,16 +17,14 @@
           blank-height="630"
           blank-color="#f7f6f9"
           offset="1000"
-          top
+          class="card-img-top"
           fluid
         />
-        <BCardBody>
-          <BCardTitle :title="article.title" />
+        <div class="card-body">
+          <h4 class="card-title">{{ article.title }}</h4>
 
-          <BCardText>
-            <!-- eslint-disable-next-line -->
-            <div v-html="article.excerpt"></div>
-          </BCardText>
+          <!-- eslint-disable-next-line -->
+          <p class="card-text" v-html="article.excerpt"></p>
           <hr />
 
           <div class="d-flex justify-content-between">
@@ -34,7 +32,7 @@
               v-if="article.author.node.avatar"
               class="d-flex align-items-center"
             >
-              <BCardImgLazy
+              <b-img-lazy
                 class="mr-2 rounded-circle"
                 :src="article.author.node.avatar.url"
                 :alt="article.author.node.name"
@@ -45,45 +43,25 @@
                 style="width: auto; height: 37.5px"
                 offset="1000"
               />
-              <!-- <b-img
-                :src="article.author.node.avatar.url"
-                :alt="article.author.node.name"
-                class="mr-2 rounded-circle"
-                height="37.5"
-              /> -->
               <div v-if="article.author.node.name" class="mr-3">
                 {{ article.author.node.name }}
               </div>
             </div>
             <b-button variant="primary">Weiterlesen</b-button>
           </div>
-        </BCardBody>
+        </div>
 
-        <BBadge v-if="article.tags.nodes.length > 0" pill variant="secondary">{{
-          article.tags.nodes[0].name
-        }}</BBadge>
-      </BCard>
+        <span
+          v-if="article.tags.nodes.length > 0"
+          class="badge badge-pill badge-secondary"
+          >{{ article.tags.nodes[0].name }}</span
+        >
+      </div>
     </b-link>
   </article>
 </template>
 
 <script>
-  import Vue from "vue";
-  import {
-    BBadge,
-    BCard,
-    BCardBody,
-    BCardImgLazy,
-    BCardTitle,
-    BCardText
-  } from "bootstrap-vue";
-  Vue.component("BBadge", BBadge);
-  Vue.component("BCard", BCard);
-  Vue.component("BCardBody", BCardBody);
-  Vue.component("BCardImgLazy", BCardImgLazy);
-  Vue.component("BCardTitle", BCardTitle);
-  Vue.component("BCardText", BCardText);
-
   export default {
     name: "ArticleCard",
     props: { article: { type: Object, default: () => {} } }

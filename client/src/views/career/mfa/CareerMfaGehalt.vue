@@ -662,256 +662,243 @@
         die nachfolgende Übersicht.
       </p>
       <div class="my-4">
-        <BCard no-body class="mb-1 bg-light-shade">
-          <BCardHeader header-tag="header" class="p-3" role="tab">
+        <div class="card mb-1 bg-light-shade">
+          <header class="card-header p-3" role="tab">
             Tätigkeitsgruppe 1
-          </BCardHeader>
+          </header>
 
-          <BCardBody>
-            <BCardText>
-              <ul>
-                <li>
-                  Berufseinsteiger nach abgeschlossener Ausbildung zur
-                  medizinischen Fachangestellten
-                </li>
-                <li>
-                  Du führst Tätigkeiten nach Anweisungen des Arztes oder einer
-                  erfahreneren Kollegin aus
-                </li>
-              </ul>
-            </BCardText>
-          </BCardBody>
-        </BCard>
-        <BCard no-body class="mb-1 bg-light-shade">
-          <BCardHeader header-tag="header" class="p-3">
+          <div class="card-body pl-5">
+            <ul>
+              <li>
+                Berufseinsteiger nach abgeschlossener Ausbildung zur
+                medizinischen Fachangestellten
+              </li>
+              <li>
+                Du führst Tätigkeiten nach Anweisungen des Arztes oder einer
+                erfahreneren Kollegin aus
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="card mb-1 bg-light-shade">
+          <header class="card-header p-3" role="tab">
             Tätigkeitsgruppe 2
-          </BCardHeader>
-          <BCardBody>
-            <BCardText>
-              <ul>
-                <li>
-                  Du kannst Tätigkeiten weitestgehend selbstständig ausführen
-                </li>
-                <li>
-                  Du hast mind. 40 Fortbildungsstunden gesammelt und weist
-                  vertiefte Kenntnisse und Fertigkeiten in einem Arbeitsbereich
-                  auf
-                </li>
-              </ul>
-              <p>
-                <em>Fortbildungsmaßnahmen sind zum Beispiel:</em>
-              </p>
-              <ul>
-                <li>
-                  Ambulante Versorgung älterer Menschen
-                </li>
-                <li>Wundbehandlung/ Wundmanagement</li>
-                <li>Hygienemanagement</li>
-                <li>Qualitätsmanagement</li>
-                <li>
-                  Patientenbegleitung und Koordination
-                </li>
-                <li>Datenschutz und Datensicherheit</li>
-                <li>
-                  Informations- und Kommunikationstechnik
-                </li>
-                <li>
-                  Notfallmanagement/ Erweiterte Notfallkompetenz
-                </li>
-                <li>
-                  <b-link
-                    to="/karriere/fort-und-weiterbildungen/impfassistentin-fachkraft-fuer-impfmanagement"
-                    >Impfassistenz</b-link
-                  >
-                </li>
-                <li>Disease-Management-Programme</li>
-              </ul>
-            </BCardText>
-          </BCardBody>
-        </BCard>
-        <BCard no-body class="mb-1 bg-light-shade">
-          <BCardHeader header-tag="header" class="p-3">
+          </header>
+          <div class="card-body pl-5">
+            <ul>
+              <li>
+                Du kannst Tätigkeiten weitestgehend selbstständig ausführen
+              </li>
+              <li>
+                Du hast mind. 40 Fortbildungsstunden gesammelt und weist
+                vertiefte Kenntnisse und Fertigkeiten in einem Arbeitsbereich
+                auf
+              </li>
+            </ul>
+            <p>
+              <em>Fortbildungsmaßnahmen sind zum Beispiel:</em>
+            </p>
+            <ul>
+              <li>
+                Ambulante Versorgung älterer Menschen
+              </li>
+              <li>Wundbehandlung/ Wundmanagement</li>
+              <li>Hygienemanagement</li>
+              <li>Qualitätsmanagement</li>
+              <li>
+                Patientenbegleitung und Koordination
+              </li>
+              <li>Datenschutz und Datensicherheit</li>
+              <li>
+                Informations- und Kommunikationstechnik
+              </li>
+              <li>
+                Notfallmanagement/ Erweiterte Notfallkompetenz
+              </li>
+              <li>
+                <b-link
+                  to="/karriere/fort-und-weiterbildungen/impfassistentin-fachkraft-fuer-impfmanagement"
+                  >Impfassistenz</b-link
+                >
+              </li>
+              <li>Disease-Management-Programme</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card mb-1 bg-light-shade">
+          <header class="card-header p-3" role="tab">
             Tätigkeitsgruppe 3
-          </BCardHeader>
-          <BCardBody>
-            <BCardText>
-              <ul>
-                <li>
-                  Du hast mindestens 80 Fortbildungsstunden gesammelt und/oder
-                  weist entsprechende Berufserfahrung nach
-                </li>
-                <li>
-                  Du führst Tätigkeiten in der Durchführung der Ausbildung der
-                  Medizinischen Fachangestellten aus
-                </li>
-              </ul>
+          </header>
+          <div class="card-body pl-5">
+            <ul>
+              <li>
+                Du hast mindestens 80 Fortbildungsstunden gesammelt und/oder
+                weist entsprechende Berufserfahrung nach
+              </li>
+              <li>
+                Du führst Tätigkeiten in der Durchführung der Ausbildung der
+                Medizinischen Fachangestellten aus
+              </li>
+            </ul>
 
-              <p>
-                <em>Fortbildungsmaßnahmen sind zum Beispiel:</em>
-              </p>
-              <ul>
-                <li>
-                  Elektronische Praxiskommunikation und Telematik
-                </li>
-                <li>
-                  Prävention bei Jugendlichen und Erwachsenen
-                </li>
-                <li>
-                  Prävention im Kindes- und Jugendalter
-                </li>
-                <li>
-                  Strahlenschutzkurs lt. § 24 (2) Röntgenverordnung (90 Stunden)
-                </li>
-              </ul>
-            </BCardText>
-          </BCardBody>
-        </BCard>
-        <BCard no-body class="mb-1 bg-light-shade">
-          <BCardHeader header-tag="header" class="p-3">
+            <p>
+              <em>Fortbildungsmaßnahmen sind zum Beispiel:</em>
+            </p>
+            <ul>
+              <li>
+                Elektronische Praxiskommunikation und Telematik
+              </li>
+              <li>
+                Prävention bei Jugendlichen und Erwachsenen
+              </li>
+              <li>
+                Prävention im Kindes- und Jugendalter
+              </li>
+              <li>
+                Strahlenschutzkurs lt. § 24 (2) Röntgenverordnung (90 Stunden)
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="card mb-1 bg-light-shade">
+          <header class="card-header p-3" role="tab">
             Tätigkeitsgruppe 4
-          </BCardHeader>
-          <BCardBody>
-            <BCardText>
-              <ul>
-                <li>
-                  Du führst Tätigkeiten komplett selbstständige aus
-                </li>
-                <li>
-                  Du hast besonders vielseitige Fachkenntnisse die durch
-                  Aneignung zusätzlicher umfassender Fertigkeiten, Kenntnisse
-                  und Fähigkeiten in komplexen Arbeitsbereichen erworben
-                </li>
-                <li>
-                  Du hast mindestens 120 Fortbildungsstunden gesammelt und/oder
-                  übernimmst Tätigkeiten in der systematischen Planung,
-                  Durchführung und Koordination der Ausbildung der Medizinischen
-                  Fachangestellten
-                </li>
-              </ul>
-              <p>
-                <em>Fortbildungsmaßnahmen sind zum Beispiel:</em>
-              </p>
-              <ul>
-                <li>
-                  <b-link
-                    to="/karriere/fort-und-weiterbildungen/ambulantes-operieren"
-                    >Ambulantes Operieren</b-link
-                  >
-                </li>
-                <li>
-                  <b-link
-                    to="/karriere/fort-und-weiterbildungen/ambulantes-operieren-in-der-augenheilkunde"
-                    >Ambulantes Operieren in der Augenheilkunde</b-link
-                  >
-                </li>
-                <li>
-                  Augenheilkundlich-technische Assistenz
-                </li>
-                <li>Dialyse</li>
-                <li>Ernährungsmedizin</li>
-                <li>Gastroenterologische Endoskopie</li>
-                <li>
-                  <b-link
-                    to="/karriere/fort-und-weiterbildungen/onkologischer-fachassistentin"
-                    >Onkologie</b-link
-                  >
-                </li>
-                <li>Palliativversorgung</li>
-                <li>Pneumologie</li>
-                <li>
-                  Strahlenschutzkurs lt. § 24 (2) Röntgenverordnung (120
-                  Stunden)
-                </li>
-                <li>
-                  <b-link
-                    to="/karriere/fort-und-weiterbildungen/qualitaetsmanagementbeauftragte-r-qmb"
-                  >
-                    Qualitätsmanagement
-                  </b-link>
-                </li>
-                <li>Hygienemanagement</li>
-                <li>
-                  <b-link to="/karriere/fort-und-weiterbildungen"
-                    >Nicht-ärztliche Praxisassistenz</b-link
-                  >
-                </li>
-                <li>
-                  <b-link to="/karriere/fort-und-weiterbildungen/verah">
-                    Versorgungsassistentin in der Hausarztpraxis (VERAH®)
-                  </b-link>
-                </li>
-              </ul>
-            </BCardText>
-          </BCardBody>
-        </BCard>
-        <BCard no-body class="mb-1 bg-light-shade">
-          <BCardHeader header-tag="header" class="p-3">
+          </header>
+          <div class="card-body pl-5">
+            <ul>
+              <li>
+                Du führst Tätigkeiten komplett selbstständige aus
+              </li>
+              <li>
+                Du hast besonders vielseitige Fachkenntnisse die durch Aneignung
+                zusätzlicher umfassender Fertigkeiten, Kenntnisse und
+                Fähigkeiten in komplexen Arbeitsbereichen erworben
+              </li>
+              <li>
+                Du hast mindestens 120 Fortbildungsstunden gesammelt und/oder
+                übernimmst Tätigkeiten in der systematischen Planung,
+                Durchführung und Koordination der Ausbildung der Medizinischen
+                Fachangestellten
+              </li>
+            </ul>
+            <p>
+              <em>Fortbildungsmaßnahmen sind zum Beispiel:</em>
+            </p>
+            <ul>
+              <li>
+                <b-link
+                  to="/karriere/fort-und-weiterbildungen/ambulantes-operieren"
+                  >Ambulantes Operieren</b-link
+                >
+              </li>
+              <li>
+                <b-link
+                  to="/karriere/fort-und-weiterbildungen/ambulantes-operieren-in-der-augenheilkunde"
+                  >Ambulantes Operieren in der Augenheilkunde</b-link
+                >
+              </li>
+              <li>
+                Augenheilkundlich-technische Assistenz
+              </li>
+              <li>Dialyse</li>
+              <li>Ernährungsmedizin</li>
+              <li>Gastroenterologische Endoskopie</li>
+              <li>
+                <b-link
+                  to="/karriere/fort-und-weiterbildungen/onkologischer-fachassistentin"
+                  >Onkologie</b-link
+                >
+              </li>
+              <li>Palliativversorgung</li>
+              <li>Pneumologie</li>
+              <li>
+                Strahlenschutzkurs lt. § 24 (2) Röntgenverordnung (120 Stunden)
+              </li>
+              <li>
+                <b-link
+                  to="/karriere/fort-und-weiterbildungen/qualitaetsmanagementbeauftragte-r-qmb"
+                >
+                  Qualitätsmanagement
+                </b-link>
+              </li>
+              <li>Hygienemanagement</li>
+              <li>
+                <b-link to="/karriere/fort-und-weiterbildungen"
+                  >Nicht-ärztliche Praxisassistenz</b-link
+                >
+              </li>
+              <li>
+                <b-link to="/karriere/fort-und-weiterbildungen/verah">
+                  Versorgungsassistentin in der Hausarztpraxis (VERAH®)
+                </b-link>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="card mb-1 bg-light-shade">
+          <header class="card-header p-3" role="tab">
             Tätigkeitsgruppe 5
-          </BCardHeader>
-          <BCardBody>
-            <BCardText>
-              <ul>
-                <li>
-                  Du führst leitungsbezogenen Tätigkeiten aus
-                </li>
-                <li>
-                  Du kannst Fortbildungsmaßnahmen von insgesamt mindestens 360
-                  Stunden und entsprechende Berufserfahrung vorweisen
-                </li>
-                <li>
-                  Hierbei sind eine Fortbildung von mindestens 120 Stunden und
-                  weitere Fortbildungseinheiten von mindestens 40 Stunden
-                  innerhalb eines Zeitraums von 5 Jahren zu erbringen. Dieser
-                  Zeitraum verlängert sich um die in Anspruch genommene
-                  Elternzeit.
-                </li>
-              </ul>
+          </header>
+          <div class="card-body pl-5">
+            <ul>
+              <li>
+                Du führst leitungsbezogenen Tätigkeiten aus
+              </li>
+              <li>
+                Du kannst Fortbildungsmaßnahmen von insgesamt mindestens 360
+                Stunden und entsprechende Berufserfahrung vorweisen
+              </li>
+              <li>
+                Hierbei sind eine Fortbildung von mindestens 120 Stunden und
+                weitere Fortbildungseinheiten von mindestens 40 Stunden
+                innerhalb eines Zeitraums von 5 Jahren zu erbringen. Dieser
+                Zeitraum verlängert sich um die in Anspruch genommene
+                Elternzeit.
+              </li>
+            </ul>
 
-              <p>
-                <em>Ein Beispiel für eine solche Fortbildungsmaßnahme ist:</em>
-              </p>
-              <ul>
-                <li>
-                  Fachwirtin für ambulante Medizinische
-                  Versorgung/Arztfachhelferin gemäß § 54 BBiG
-                </li>
-              </ul>
-            </BCardText>
-          </BCardBody>
-        </BCard>
-        <BCard no-body class="mb-1 bg-light-shade">
-          <BCardHeader header-tag="header" class="p-3">
+            <p>
+              <em>Ein Beispiel für eine solche Fortbildungsmaßnahme ist:</em>
+            </p>
+            <ul>
+              <li>
+                Fachwirtin für ambulante Medizinische
+                Versorgung/Arztfachhelferin gemäß § 54 BBiG
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="card mb-1 bg-light-shade">
+          <header class="card-header p-3" role="tab">
             Tätigkeitsgruppe 6
-          </BCardHeader>
-          <BCardBody>
-            <BCardText>
-              <ul>
-                <li>
-                  Du führst leitungs- und führungsbezogene Tätigkeiten aus
-                </li>
-                <li>
-                  Du kannst Fortbildungsmaßnahmen von insgesamt mindestens 600
-                  Stunden und entsprechende Berufserfahrung vorweisen
-                </li>
-              </ul>
-              <p>
-                <em>Ein Beispiel für eine solche Fortbildungsmaßnahme ist:</em>
-              </p>
-              <ul>
-                <li>
-                  Betriebswirtin für Management im Gesundheitswesen gemäß § 54
-                  BBiG
-                </li>
-                <li>
-                  <b-link to="/karriere/fort-und-weiterbildungen"
-                    >Fachwirtin im Gesundheits- und Sozialwesen</b-link
-                  >
-                  gemäß § 53 BBiG
-                </li>
-              </ul>
-            </BCardText>
-          </BCardBody>
-        </BCard>
+          </header>
+          <div class="card-body pl-5">
+            <ul>
+              <li>
+                Du führst leitungs- und führungsbezogene Tätigkeiten aus
+              </li>
+              <li>
+                Du kannst Fortbildungsmaßnahmen von insgesamt mindestens 600
+                Stunden und entsprechende Berufserfahrung vorweisen
+              </li>
+            </ul>
+            <p>
+              <em>Ein Beispiel für eine solche Fortbildungsmaßnahme ist:</em>
+            </p>
+            <ul>
+              <li>
+                Betriebswirtin für Management im Gesundheitswesen gemäß § 54
+                BBiG
+              </li>
+              <li>
+                <b-link to="/karriere/fort-und-weiterbildungen"
+                  >Fachwirtin im Gesundheits- und Sozialwesen</b-link
+                >
+                gemäß § 53 BBiG
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
 
       <h2 id="gehalt-per-bundesland">MFA Gehalt nach Bundesland</h2>
@@ -1203,17 +1190,7 @@
 
 <script>
   import Vue from "vue";
-  import {
-    BCard,
-    BCardHeader,
-    BCardBody,
-    BCardText,
-    TableSimplePlugin
-  } from "bootstrap-vue";
-  Vue.component("BCard", BCard);
-  Vue.component("BCardHeader", BCardHeader);
-  Vue.component("BCardBody", BCardBody);
-  Vue.component("BCardText", BCardText);
+  import { TableSimplePlugin } from "bootstrap-vue";
   Vue.use(TableSimplePlugin);
   import Gehaltsrechner from "@/components/containers/Gehaltsrechner.vue";
   import JobsTeaserContainer from "@/components/containers/JobsTeaserContainer.vue";

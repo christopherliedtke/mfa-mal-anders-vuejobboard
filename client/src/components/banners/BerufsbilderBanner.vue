@@ -1,6 +1,7 @@
 <template>
-  <BCard no-body class="shadow1">
-    <BCardImgLazy
+  <div class="card shadow1">
+    <b-img-lazy
+      class="card-img-top"
       fluid
       top
       srcset="/img/MfaMalAnders_50+Jobmoeglichkeiten_1200-300x157.jpg 300w, /img/MfaMalAnders_50+Jobmoeglichkeiten_1200-1024x538.jpg 1024w, /img/MfaMalAnders_50+Jobmoeglichkeiten_1200-768x403.jpg 768w, /img/MfaMalAnders_50+Jobmoeglichkeiten_1200.jpg 1200w"
@@ -14,36 +15,25 @@
       offset="1000"
       blank-color="#f7f6f9"
     />
-    <BCardBody align="center">
-      <BCardTitle title="Alternative Jobs und Berufsbilder für MFA / ZFA" />
+    <div class="card-body text-center">
+      <h4 class="card-title">
+        Alternative Jobs und Berufsbilder für MFA / ZFA
+      </h4>
 
-      <BCardText>
+      <p class="card-text">
         Hier findest du eine Auswahl von ganz unterschiedlichen Jobs und Berufen
         inklusive vieler Alternativen für Medizinische & Zahnmedizinische
         Fachangestellte / ArzthelferInnen!
-      </BCardText>
+      </p>
 
       <b-button to="/karriere/jobs-und-berufsbilder" variant="primary"
         >Mehr erfahren!</b-button
       >
-    </BCardBody>
-  </BCard>
+    </div>
+  </div>
 </template>
 
 <script>
-  import Vue from "vue";
-  import {
-    BCard,
-    BCardBody,
-    BCardImgLazy,
-    BCardTitle,
-    BCardText
-  } from "bootstrap-vue";
-  Vue.component("BCard", BCard);
-  Vue.component("BCardBody", BCardBody);
-  Vue.component("BCardImgLazy", BCardImgLazy);
-  Vue.component("BCardTitle", BCardTitle);
-  Vue.component("BCardText", BCardText);
   export default {
     name: "BerufsbilderBanner"
   };

@@ -51,7 +51,7 @@ import {
   FormTextareaPlugin,
   ImagePlugin,
   InputGroupPlugin,
-  LayoutPlugin,
+  // LayoutPlugin,
   LinkPlugin,
   ToastPlugin,
   BreadcrumbPlugin
@@ -71,7 +71,7 @@ Vue.use(FormSelectPlugin);
 Vue.use(FormTextareaPlugin);
 Vue.use(ImagePlugin);
 Vue.use(InputGroupPlugin);
-Vue.use(LayoutPlugin);
+// Vue.use(LayoutPlugin);
 Vue.use(LinkPlugin);
 Vue.use(ToastPlugin);
 Vue.use(BreadcrumbPlugin);

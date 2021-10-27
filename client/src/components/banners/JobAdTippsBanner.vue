@@ -1,9 +1,5 @@
 <template>
-  <BCard
-    no-body
-    class="overflow-hidden bg-light-shade shadow1 m-3 p-4"
-    align="center"
-  >
+  <div class="card text-center overflow-hidden bg-light-shade shadow1 m-3 p-4">
     <div class="row no-gutters">
       <div class="col-md-3">
         <b-img
@@ -13,8 +9,8 @@
         ></b-img>
       </div>
       <div class="col-md-9">
-        <BCardBody
-          class="d-flex flex-column justify-content-center align-items-center h-100 p-4"
+        <div
+          class="card-body d-flex flex-column justify-content-center align-items-center h-100 p-4"
         >
           <h4 class="bold">Weitere Tipps für Ihre Stellenanzeige</h4>
           <p>
@@ -36,17 +32,13 @@
               >Beispiel herunterladen</b-button
             >
           </div>
-        </BCardBody>
+        </div>
       </div>
     </div>
-  </BCard>
+  </div>
 </template>
 
 <script>
-  import Vue from "vue";
-  import { BCard, BCardBody } from "bootstrap-vue";
-  Vue.component("BCard", BCard);
-  Vue.component("BCardBody", BCardBody);
   export default {
     name: "JobAdTippsBanner"
   };

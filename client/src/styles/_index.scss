@@ -11,6 +11,12 @@ a {
 main {
   ul:not([role="tablist"]),
   ol {
+    padding-inline-start: 2rem;
+
+    &.no-bullets {
+      padding-inline-start: 0;
+    }
+
     li {
       margin-bottom: 0.75rem;
     }

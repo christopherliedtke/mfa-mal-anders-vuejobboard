@@ -17,41 +17,35 @@
             v-html="berufsbilder[0].berufsbildTypes.nodes[0].description"
           ></div>
           <!-- eslint-enable -->
-          <!-- <p class="mb-4">
-            Vielleicht findest Du auch auf unserer
-            <b-link to="/stellenangebote" class="bold">Stellenbörse</b-link>
-            den richtigen Job für Dich.
-          </p> -->
-          <BListGroup tag="ul">
-            <BListGroupItem
+          <nav class="list-group">
+            <b-link
               v-for="berufsbild in berufsbilder"
               :id="berufsbild.slug"
               :key="berufsbild.slug"
+              :class="[
+                'list-group-item mb-0 p-3',
+                { 'text-primary bold': berufsbild.content }
+              ]"
+              style="font-size: larger; color: inherit"
+              :to="
+                `/karriere/jobs-und-berufsbilder/${berufsbild.berufsbildTypes.nodes[0].slug}/${berufsbild.slug}`
+              "
               :disabled="!berufsbild.content"
-              :class="berufsbild.content ? 'text-primary bold mb-0' : 'mb-0'"
-              tag="li"
-            >
-              <b-link
-                :to="
-                  `/karriere/jobs-und-berufsbilder/${berufsbild.berufsbildTypes.nodes[0].slug}/${berufsbild.slug}`
-                "
-                class="p-1"
-                style="font-size: larger; color: inherit"
-                >{{ berufsbild.title }}
-                <svg
-                  v-if="berufsbild.content"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-caret-right-fill"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"
-                  /></svg></b-link
-            ></BListGroupItem>
-          </BListGroup>
+              >{{ berufsbild.title }}
+              <svg
+                v-if="berufsbild.content"
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-caret-right-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"
+                /></svg
+            ></b-link>
+          </nav>
 
           <div class="bg-light-shade border-radius2 shadow1 my-5 p-3 p-md-4">
             <JobSearchSingleForm
@@ -72,6 +66,7 @@
       </div>
       <RandomTrainingsContainer class="mt-5" />
     </div>
+
     <Head
       :title="title"
       :desc="berufsbilder[0].berufsbildTypes.nodes[0].seo.metaDesc"
@@ -82,10 +77,6 @@
 </template>
 
 <script>
-  import Vue from "vue";
-  import { BListGroup, BListGroupItem } from "bootstrap-vue";
-  Vue.component("BListGroup", BListGroup);
-  Vue.component("BListGroupItem", BListGroupItem);
   import JobsBerufsbilderNav from "@/components/navs/JobsBerufsbilderNav.vue";
   import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
   import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";

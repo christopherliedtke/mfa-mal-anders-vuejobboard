@@ -13,37 +13,32 @@
       >Fragen oder Hilfe benötigt?</b-button
     >
     <div v-if="myPayments.length > 0">
-      <BCard
+      <div
         v-for="payment in myPayments"
         :key="payment._id"
-        class="shadow1 bg-light my-3"
+        class="card shadow1 bg-light my-3"
       >
-        <BCardText>
-          <h4>{{ payment.job.title }} | {{ payment.job.company.name }}</h4>
+        <div class="card-body">
+          <!-- eslint-disable -->
+          <h4
+            v-html="payment.job.title + ' | ' + payment.job.company.name"
+          ></h4>
+          <!-- eslint-enable -->
           <div>
-            <BBadge
+            <span
               v-if="payment.status === 'paid'"
-              class="mr-1"
-              pill
-              variant="success
-                        "
-              >bezahlt</BBadge
+              class="badge badge-pill badge-success mr-1"
+              >bezahlt</span
             >
-            <BBadge
+            <span
               v-if="payment.status === 'pending'"
-              class="mr-1"
-              pill
-              variant="warning
-                        "
-              >ausstehend</BBadge
+              class="badge badge-pill badge-warning mr-1"
+              >ausstehend</span
             >
-            <BBadge
+            <span
               v-if="payment.status === 'cancelled'"
-              class="mr-1"
-              pill
-              variant="danger
-                        "
-              >verworfen</BBadge
+              class="badge badge-pill badge-danger mr-1"
+              >verworfen</span
             >
           </div>
           <div class="my-3">
@@ -69,14 +64,6 @@
                 )
               }}
             </div>
-            <!-- <div>
-                        Aktualisiert:
-                        {{
-                            new Date(
-                                parseInt(company.updatedAt)
-                            ).toLocaleString()
-                        }}
-                    </div> -->
           </div>
           <div class="d-flex justify-content-start align-items-end">
             <div>
@@ -132,18 +119,13 @@
               >
             </div>
           </div>
-        </BCardText>
-      </BCard>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-  import Vue from "vue";
-  import { BBadge, BCard, BCardText } from "bootstrap-vue";
-  Vue.component("BBadge", BBadge);
-  Vue.component("BCard", BCard);
-  Vue.component("BCardText", BCardText);
   export default {
     name: "MyPaymentsList",
     data() {

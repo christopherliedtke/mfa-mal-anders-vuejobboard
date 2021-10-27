@@ -38,12 +38,12 @@
       target="_blank"
       >Fragen oder Hilfe benötigt?</b-button
     >
-    <BCard
+    <div
       v-for="company in myCompanies"
       :key="company._id"
-      class="shadow1 bg-light my-3"
+      class="card shadow1 bg-light my-3"
     >
-      <BCardText>
+      <div class="card-body">
         <h4>{{ company.name }} | {{ company.location }}</h4>
         <div class="my-3">
           <div>
@@ -103,7 +103,7 @@
             >
           </div>
         </div>
-      </BCardText>
+      </div>
       <BModal
         :id="company._id"
         :title="`Delete ${company.name}`"
@@ -117,17 +117,16 @@
           Bist Du sicher, dass Du das Unternehmen löschen möchtest?
         </p></BModal
       >
-    </BCard>
+    </div>
   </div>
 </template>
 
 <script>
   import Vue from "vue";
-  import { BModal, VBModal, BCard, BCardText } from "bootstrap-vue";
+  import { BModal, VBModal } from "bootstrap-vue";
   Vue.component("BModal", BModal);
   Vue.directive("b-modal", VBModal);
-  Vue.component("BCard", BCard);
-  Vue.component("BCardText", BCardText);
+
   export default {
     name: "MyCompaniesList",
     data() {

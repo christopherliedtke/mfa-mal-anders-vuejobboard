@@ -1,7 +1,7 @@
 <template>
-  <BCard no-body class="overflow-hidden shadow1 p-3" align="center">
-    <BCardBody
-      class="d-flex flex-column justify-content-center align-items-center h-100 p-4"
+  <div class="card text-center overflow-hidden shadow1 p-3">
+    <div
+      class="card-body d-flex flex-column justify-content-center align-items-center h-100 p-4"
     >
       <h3 class="h2 bold">{{ header }}</h3>
       <p>
@@ -13,15 +13,11 @@
       <b-button to="/karriere/fortbildungskatalog" variant="secondary"
         >Zum Fortbildungskatalog</b-button
       >
-    </BCardBody>
-  </BCard>
+    </div>
+  </div>
 </template>
 
 <script>
-  import Vue from "vue";
-  import { BCard, BCardBody } from "bootstrap-vue";
-  Vue.component("BCard", BCard);
-  Vue.component("BCardBody", BCardBody);
   export default {
     name: "TrainingCatalogueLargeBanner",
     props: {

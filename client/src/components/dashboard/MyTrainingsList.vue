@@ -27,12 +27,12 @@
       >Fragen oder Hilfe benötigt?</b-button
     >
 
-    <BCard
+    <div
       v-for="training in myTrainings"
       :key="training._id"
-      class="shadow1 bg-light my-3"
+      class="card shadow1 bg-light my-3"
     >
-      <BCardText>
+      <div class="card-body">
         <h4>
           <!-- eslint-disable -->
           <span v-html="training.title"></span> |
@@ -40,22 +40,20 @@
           <!-- eslint-enable -->
         </h4>
         <div>
-          <BBadge v-if="training.pending" class="mr-1" pill variant="warning"
-            >wird geprüft</BBadge
+          <span
+            v-if="training.pending"
+            class="badge badge-pill badge-warning mr-1"
+            >wird geprüft</span
           >
-          <BBadge
+          <span
             v-else-if="training.published && training.paid"
-            class="mr-1"
-            pill
-            variant="success"
-            >online</BBadge
+            class="badge badge-pill badge-success mr-1"
+            >online</span
           >
-          <BBadge
+          <span
             v-else-if="!training.paid || !training.published"
-            class="mr-1"
-            pill
-            variant="danger"
-            >offline</BBadge
+            class="badge badge-pill badge-danger mr-1"
+            >offline</span
           >
         </div>
         <div class="my-3">
@@ -173,7 +171,7 @@
             >
           </div>
         </div>
-      </BCardText>
+      </div>
       <BModal
         :id="training._id"
         :title="`Delete ${training.title}`"
@@ -187,26 +185,15 @@
           Sind Sie sicher, dass Sie die Fortbildung löschen möchten?
         </p></BModal
       >
-    </BCard>
+    </div>
   </div>
 </template>
 
 <script>
   import Vue from "vue";
-  import {
-    BModal,
-    VBModal,
-    BCard,
-    BCardText,
-    BBadge,
-    BDropdown,
-    BDropdownItem
-  } from "bootstrap-vue";
+  import { BModal, VBModal, BDropdown, BDropdownItem } from "bootstrap-vue";
   Vue.component("BModal", BModal);
   Vue.directive("b-modal", VBModal);
-  Vue.component("BCard", BCard);
-  Vue.component("BCardText", BCardText);
-  Vue.component("BBadge", BBadge);
   Vue.component("BDropdown", BDropdown);
   Vue.component("BDropdownItem", BDropdownItem);
   export default {

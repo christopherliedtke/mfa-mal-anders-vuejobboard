@@ -1,21 +1,23 @@
 <template>
   <div>
-    <BListGroup tag="nav">
-      <BListGroupItem to="/karriere/jobs-und-berufsbilder">
-        <h3 class="h5 bold">
-          Jobs & Berufsbilder
-        </h3></BListGroupItem
+    <nav class="list-group">
+      <b-link
+        to="/karriere/jobs-und-berufsbilder"
+        class="h5 bold list-group-item list-group-item-action text-dark mb-0"
       >
-      <BListGroupItem
+        Jobs & Berufsbilder
+      </b-link>
+      <b-link
         v-for="berufsbilderType in berufsbilderTypes"
         :key="berufsbilderType"
+        class="list-group-item list-group-item-action"
         :to="
           `/karriere/jobs-und-berufsbilder/${berufsbilderType.toLowerCase()}`
         "
         :active="berufsbilderType.toLowerCase() === $route.params.slug"
-        >{{ berufsbilderType }}</BListGroupItem
+        >{{ berufsbilderType }}</b-link
       >
-    </BListGroup>
+    </nav>
     <div class="mt-3">
       <TrainingCatalogueSmallBanner class="my-2" />
     </div>
@@ -23,10 +25,6 @@
 </template>
 
 <script>
-  import Vue from "vue";
-  import { BListGroup, BListGroupItem } from "bootstrap-vue";
-  Vue.component("BListGroup", BListGroup);
-  Vue.component("BListGroupItem", BListGroupItem);
   import TrainingCatalogueSmallBanner from "@/components/banners/TrainingCatalogueSmallBanner.vue";
   export default {
     name: "JobsBerufsbilderNav",
