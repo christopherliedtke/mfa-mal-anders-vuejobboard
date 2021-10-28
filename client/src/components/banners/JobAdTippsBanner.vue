@@ -12,7 +12,7 @@
         <div
           class="card-body d-flex flex-column justify-content-center align-items-center h-100 p-4"
         >
-          <h4 class="bold">Weitere Tipps für Ihre Stellenanzeige</h4>
+          <h3 class="h4 bold">Weitere Tipps für Ihre Stellenanzeige</h3>
           <p>
             Erhalten Sie zusätzliche Details zu unseren Tipps und erstellen Sie
             eine attraktive Stellenanzeige, die mehr Bewerber*innen anzieht.

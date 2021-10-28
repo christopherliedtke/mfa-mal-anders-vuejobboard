@@ -1,9 +1,5 @@
 <template>
-  <b-button
-    v-if="$store.state.auth.user.isAdmin && $route.meta.public"
-    class="recache-btn p-1"
-    @click="recache"
-  >
+  <b-button class="recache-btn p-1" @click="recache">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="16"

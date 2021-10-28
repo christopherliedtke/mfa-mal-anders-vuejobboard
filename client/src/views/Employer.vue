@@ -828,15 +828,15 @@
       this.scrollToHash();
     },
     methods: {
-      startCounters() {
-        this.numbersAndFacts.forEach(element => {
-          setInterval(() => {
-            if (element.current < element.number) {
-              element.current = element.current + element.number / 100;
-            }
-          }, 1);
-        });
-      },
+      // startCounters() {
+      //   this.numbersAndFacts.forEach(element => {
+      //     setInterval(() => {
+      //       if (element.current < element.number) {
+      //         element.current = element.current + element.number / 100;
+      //       }
+      //     }, 1);
+      //   });
+      // },
       scrollToHash() {
         if (this.$route.hash) {
           const elem = window.document.getElementById(

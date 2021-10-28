@@ -1,7 +1,10 @@
 <template>
-  <div class="salary">
+  <article class="salary">
     <div class="title">
-      <h1>{{ title }}</h1>
+      <h1>
+        {{ title }} <br />
+        <span class="h3">für Zahnmedizinische Fachangestellte</span>
+      </h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
     <div class="container py-3 py-lg-5">
@@ -11,12 +14,13 @@
         srcset="/img/MfaMalAnders_GehaltZfa_1200-300x157.jpg 300w, /img/MfaMalAnders_GehaltZfa_1200-1024x538.jpg 1024w, /img/MfaMalAnders_GehaltZfa_1200-768x404.jpg 768w, /img/MfaMalAnders_GehaltZfa_1200.jpg 1200w"
         sizes="(max-width: 1200px) 100vw, 1200px"
         src="/img/MfaMalAnders_GehaltZfa_1200.jpg"
-        alt="ZFA Gehalt - So viel verdienst Du wirklich"
+        :alt="
+          `ZFA / Zahnmedizinische Fachangestellte Gehalt ${new Date().getFullYear()} - Berechne Dein Gehalt mit unserem Gehaltsrechner`
+        "
         width="1200"
         height="630"
         blank-width="1200"
         blank-height="630"
-        offset="1000"
       />
       <p>
         Beim Thema Gehalt geht es der/dem ZFA bzw. ZahnarzthelferIn ähnlich wie
@@ -31,7 +35,7 @@
         unter Wert verkaufen.
       </p>
 
-      <div
+      <nav
         class="bg-light-shade border-radius1 my-4 p-4"
         style="max-width: fit-content"
       >
@@ -40,7 +44,12 @@
           <li class="lead mt-3">
             <b-link to="#gehaltstarifvertrag"
               >Gehaltstarifvertrag {{ new Date().getFullYear() }} – ZFA /
-              ZahnarzthelferIn (inkl. Gehaltsrechner)</b-link
+              ZahnarzthelferIn</b-link
+            >
+          </li>
+          <li class="lead mt-3">
+            <b-link to="#gehaltsrechner"
+              >Gehaltsrechner für ZFA / ZahnarzthelferIn</b-link
             >
           </li>
           <li class="lead mt-3">
@@ -74,11 +83,7 @@
             >
           </li>
         </ol>
-      </div>
-
-      <h2>
-        Wie ermittelt man eigentlich seinen Marktwert?
-      </h2>
+      </nav>
       <p>
         In diesem Artikel geben wir dir die Informationen an die Hand, die du
         benötigst, um DEIN Gehalt anhand von Berufserfahrung und Qualifikationen
@@ -209,7 +214,7 @@
               Fachangestellte</b-link
             >.
           </p>
-          <GehaltsrechnerZfa class="my-4" />
+          <GehaltsrechnerZfa id="gehaltsrechner" class="my-4" />
           <GehaltsverhandlungBanner class="mb-4" />
           <FacebookBtn
             class="mb-4 mr-1"
@@ -239,18 +244,21 @@
         </p>
       </div>
 
-      <p>
-        Der Stundenlohn im Jahr {{ new Date().getFullYear() }} für
-        Zahnmedizinische Fachangestellte (ZFA) bewegt sich laut
-        Gehaltstarifvertrag je nach Berufserfahrung und erworbenen
-        Qualifikationen durch Fort- und Weiterbildungen zwischen 12,60 €/h und
-        21,61 €/h.
-      </p>
-
       <div>
-        <h3 class="h4">
-          Hier noch einmal die ab dem 01.07.2021 gültige Gehaltstabelle:
+        <h3 class="h4 mt-5">
+          Gehaltstabelle ZFA 2021 nach Gehaltstarifvertrag – gültig ab
+          01.07.2021
         </h3>
+        <p>
+          Der Stundenlohn im Jahr {{ new Date().getFullYear() }} für
+          Zahnmedizinische Fachangestellte (ZFA) bewegt sich laut
+          Gehaltstarifvertrag je nach Berufserfahrung und erworbenen
+          Qualifikationen durch Fort- und Weiterbildungen zwischen 12,60 €/h und
+          21,61 €/h. <b-link to="#gehaltsrechner">Gehaltsrechner</b-link> kannst
+          Du Dir den Stundenlohn bzw. Gehalt in Teilzeit für Deinen relevanten
+          Bereich errechnen, indem Du als Wochenarbeitszeit eine Stunde
+          auswählst.
+        </p>
         <b-table-simple class="mt-3" hover responsive table-variant="secondary">
           <colgroup>
             <col />
@@ -552,7 +560,7 @@
       </p>
       <div class="my-4">
         <div class="card mb-1 bg-light-shade">
-          <header class="card-header p-3" role="tab">
+          <header class="card-header p-3">
             Tätigkeitsgruppe 1
           </header>
           <div class="card-body pl-5">
@@ -569,7 +577,7 @@
           </div>
         </div>
         <div class="card mb-1 bg-light-shade">
-          <header class="card-header p-3" role="tab">
+          <header class="card-header p-3">
             Tätigkeitsgruppe 2
           </header>
           <div class="card-body pl-5">
@@ -594,7 +602,7 @@
           </div>
         </div>
         <div class="card mb-1 bg-light-shade">
-          <header class="card-header p-3" role="tab">
+          <header class="card-header p-3">
             Tätigkeitsgruppe 3
           </header>
           <div class="card-body pl-5">
@@ -619,7 +627,7 @@
           </div>
         </div>
         <div class="card mb-1 bg-light-shade">
-          <header class="card-header p-3" role="tab">
+          <header class="card-header p-3">
             Tätigkeitsgruppe 4
           </header>
           <div class="card-body pl-5">
@@ -650,7 +658,7 @@
           </div>
         </div>
         <div class="card mb-1 bg-light-shade">
-          <header class="card-header p-3" role="tab">
+          <header class="card-header p-3">
             Tätigkeitsgruppe 5
           </header>
           <div class="card-body pl-5">
@@ -959,12 +967,12 @@
         `ZFA Gehalt ${new Date().getFullYear()} | Gehaltsrechner | Tarifvertrag`
       "
       :desc="
-        `Dein Gehalt als Zahnmedizinische Fachangestellte (ZFA) | Gehaltstarifvertrag ${new Date().getFullYear()} | Tätigkeitsgruppen || Gehaltsrechner Teilzeit / Vollzeit`
+        `Gehalt als Zahnmedizinische Fachangestellte (ZFA) | Gehaltstarifvertrag ${new Date().getFullYear()} | Tätigkeitsgruppen || Gehaltsrechner Teilzeit / Vollzeit`
       "
       img="/img/MfaMalAnders_GehaltZfa_1200.jpg"
       :script="snippet"
     />
-  </div>
+  </article>
 </template>
 
 <script>
@@ -997,7 +1005,7 @@
     },
     data() {
       return {
-        title: `Zahnmedizinische Fachangestellte (ZFA) – Gehalt ${new Date().getFullYear()}`,
+        title: `ZFA Gehalt ${new Date().getFullYear()}`,
         breadcrumbs: [
           { text: "Home", to: "/" },
           { text: "Karriere", to: "/karriere" },
@@ -1075,6 +1083,19 @@
           }
         ]
       };
+    },
+    mounted() {
+      this.scrollToHash();
+    },
+    methods: {
+      scrollToHash() {
+        if (this.$route.hash) {
+          const elem = window.document.getElementById(
+            this.$route.hash.replace("#", "")
+          );
+          elem.scrollIntoView({ behavior: "smooth" });
+        }
+      }
     }
   };
 </script>

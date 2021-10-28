@@ -12,9 +12,9 @@
         <div
           class="card-body d-flex flex-column justify-content-center align-items-center h-100 p-4"
         >
-          <h4 class="bold">
+          <h3 class="h4 bold">
             Unsere Tipps für einen effizienten Bewerbungsprozess
-          </h4>
+          </h3>
           <p>
             Die Einstellung neuer MitarbeiterInnen kostet viel Zeit, Geld und
             Mühe. Aus diesem Grund sollte ein Bewerbungsprozess so effizient und

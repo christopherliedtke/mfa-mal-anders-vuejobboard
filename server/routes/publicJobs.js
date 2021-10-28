@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const config = require("../config/config");
+// const config = require("../config/config");
 const internalJobsCache = require("../cache/internalJobsCache");
-const jobLiftCache = require("../cache/jobLiftCache");
-const stepstoneCache = require("../cache/stepstoneCache");
+// const jobLiftCache = require("../cache/jobLiftCache");
+// const stepstoneCache = require("../cache/stepstoneCache");
 const getLocation = require("../utils/geocoder");
 
 // #route:  GET /api/public-jobs
@@ -28,12 +28,19 @@ router.get("/", async (req, res) => {
     }
   }
 
-  let jobs = await Promise.all([
-    internalJobsCache.get("jobs"),
-    config.externalJobs.joblift ? jobLiftCache.get("jobs") : [],
-    config.externalJobs.stepstone ? stepstoneCache.get("jobs") : [],
-  ]);
-  jobs = jobs.flat();
+  let jobs = await internalJobsCache.get("jobs");
+
+  // jobs.map(job => {
+  //   delete job.description;
+  //   return job;
+  // });
+
+  // let jobs = await Promise.all([
+  //   internalJobsCache.get("jobs"),
+  //   config.externalJobs.joblift ? jobLiftCache.get("jobs") : [],
+  //   config.externalJobs.stepstone ? stepstoneCache.get("jobs") : [],
+  // ]);
+  // jobs = jobs.flat();
 
   // sort by distance from position
   if (query.position) {
@@ -57,13 +64,17 @@ router.get("/", async (req, res) => {
 router.post("/by-ids", async (req, res) => {
   const { ids } = req.body;
 
-  let jobs = await Promise.all([
-    internalJobsCache.get("jobs"),
-    config.externalJobs.joblift ? jobLiftCache.get("jobs") : [],
-    config.externalJobs.stepstone ? stepstoneCache.get("jobs") : [],
-  ]);
+  let jobs = await internalJobsCache.get("jobs");
 
-  jobs = jobs.flat().filter(job => ids.some(id => id == job._id));
+  // let jobs = await Promise.all([
+  //   internalJobsCache.get("jobs"),
+  //   config.externalJobs.joblift ? jobLiftCache.get("jobs") : [],
+  //   config.externalJobs.stepstone ? stepstoneCache.get("jobs") : [],
+  // ]);
+
+  // jobs = jobs.flat()
+
+  jobs = jobs.filter(job => ids.some(id => id == job._id));
 
   res.json({ jobs });
 });
@@ -74,12 +85,14 @@ router.post("/by-ids", async (req, res) => {
 router.get("/job/:id", async (req, res) => {
   const { id: jobId } = req.params;
 
-  let jobs = await Promise.all([
-    internalJobsCache.get("jobs"),
-    config.externalJobs.joblift ? jobLiftCache.get("jobs") : [],
-    // config.externalJobs.stepstone ? stepstoneCache.get("jobs") : [],
-  ]);
-  jobs = jobs.flat();
+  let jobs = await internalJobsCache.get("jobs");
+
+  // let jobs = await Promise.all([
+  //   internalJobsCache.get("jobs"),
+  //   config.externalJobs.joblift ? jobLiftCache.get("jobs") : [],
+  //   // config.externalJobs.stepstone ? stepstoneCache.get("jobs") : [],
+  // ]);
+  // jobs = jobs.flat();
 
   const job = jobs.find(job => job._id == jobId);
 

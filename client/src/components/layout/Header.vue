@@ -70,15 +70,15 @@
         </nav>
         <nav id="secondary-nav" class="mt-3 mt-lg-0">
           <router-link
-            v-if="loggedIn"
+            v-if="$store.state.auth.loggedIn"
             to="/user/dashboard"
             @mouseenter.native="showSub('account')"
             @mouseleave.native="hideSub('account')"
           >
             <div class="d-flex align-items-center">
               <b-img
-                v-if="user.image"
-                :src="user.image"
+                v-if="$store.state.auth.user.image"
+                :src="$store.state.auth.user.image"
                 class="mr-1 rounded-circle"
                 style="width: 25px; height: 25px; object-fit: cover"
               />
@@ -205,7 +205,7 @@
           </router-link>
 
           <router-link
-            v-if="user.isAdmin"
+            v-if="$store.state.auth.user.isAdmin"
             to="/admin"
             @mouseenter.native="showSub('admin')"
             @mouseleave.native="hideSub('admin')"
@@ -322,7 +322,7 @@
               >
             </div>
           </router-link>
-          <div v-if="loggedIn"><LogoutBtn /></div>
+          <div v-if="$store.state.auth.loggedIn"><LogoutBtn /></div>
           <div v-else class="d-flex">
             <b-button
               class="mr-1 px-4 py-1"
@@ -384,14 +384,6 @@
         navCollapsed: true,
         previousScrollPositionY: document.documentElement.scrollTop
       };
-    },
-    computed: {
-      user() {
-        return this.$store.state.auth.user;
-      },
-      loggedIn() {
-        return this.$store.state.auth.loggedIn;
-      }
     },
     mounted() {
       this.checkHeaderVisible();

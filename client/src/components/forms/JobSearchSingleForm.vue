@@ -20,6 +20,7 @@
         ></b-form-input>
         <b-input-group-append>
           <b-button
+            aria-label="Suchen"
             size="lg"
             class="shadow1"
             variant="secondary"

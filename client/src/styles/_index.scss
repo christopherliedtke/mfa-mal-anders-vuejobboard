@@ -9,7 +9,7 @@ a {
 }
 
 main {
-  ul:not([role="tablist"]),
+  ul:not([role="tablist"]):not([role="menu"]),
   ol {
     padding-inline-start: 2rem;
 

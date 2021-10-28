@@ -1,11 +1,11 @@
 <template>
   <article v-if="job" class="jobcard">
-    <div
+    <!-- <div
       v-if="disabled"
       class="disabled-jobcard d-flex justify-content-center align-items-center"
     >
       <span class="h2 bold text-danger">Abgelaufen</span>
-    </div>
+    </div> -->
     <b-link :to="`/stellenangebote/job/${job._id}/${job.slug}`" target="_self">
       <div
         :class="['card', compact ? 'mb-2 mt-2 mt-lg-0' : 'mb-3 mt-3 mt-lg-0']"
@@ -41,12 +41,13 @@
           </div>
           <div v-if="!compact" class="card-content">
             <!-- eslint-disable -->
-            <div
+            <p
+              class="mb-0"
               v-html="
                 job.description.replace(/<[^>]+>/g, ' ').substring(0, 200) +
                   '...'
               "
-            ></div>
+            ></p>
             <!-- eslint-enable -->
           </div>
           <hr v-if="!compact" />
@@ -177,23 +178,6 @@
               </div>
               {{ job.specialization }}
             </div>
-            <div v-if="job.publishedAt || job.paidAt">
-              <div class="icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  :width="18 + !compact * 2"
-                  :height="18 + !compact * 2"
-                  fill="currentColor"
-                  class="bi bi-calendar2-check-fill"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zm9.954 3H2.545c-.3 0-.545.224-.545.5v1c0 .276.244.5.545.5h10.91c.3 0 .545-.224.545-.5v-1c0-.276-.244-.5-.546-.5zm-2.6 5.854a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"
-                  />
-                </svg>
-              </div>
-              {{ timeSince(new Date(job.publishedAt || job.paidAt)) }}
-            </div>
             <div v-if="job.simpleApplication">
               <div class="badge badge-pill badge-secondary">
                 # Einfach bewerben
@@ -224,55 +208,17 @@
         employmentTypeOptions,
         companySizeOptions
       };
-    },
-    computed: {
-      disabled() {
-        return (
-          (this.job.applicationDeadline &&
-            new Date(this.job.applicationDeadline) < new Date()) ||
-          this.job.status != "published" ||
-          this.job.paidExpiresAt < new Date()
-        );
-      }
-    },
-    methods: {
-      timeSince(date) {
-        const seconds = Math.floor((new Date() - date) / 1000);
-
-        let interval = seconds / 31536000;
-
-        if (interval > 1) {
-          return (
-            "vor " +
-            Math.floor(interval) +
-            " Jahr" +
-            (Math.floor(interval) > 1 ? "en" : "")
-          );
-        }
-
-        interval = seconds / (60 * 60 * 24 * 7);
-        if (interval > 1) {
-          return (
-            "vor " +
-            Math.floor(interval) +
-            " Woche" +
-            (Math.floor(interval) > 1 ? "n" : "")
-          );
-        }
-
-        interval = seconds / 86400;
-        if (interval > 1) {
-          return (
-            "vor " +
-            Math.floor(interval) +
-            " Tag" +
-            (Math.floor(interval) > 1 ? "en" : "")
-          );
-        }
-
-        return "heute";
-      }
     }
+    // computed: {
+    //   disabled() {
+    //     return (
+    //       (this.job.applicationDeadline &&
+    //         new Date(this.job.applicationDeadline) < new Date()) ||
+    //       this.job.status != "published" ||
+    //       this.job.paidExpiresAt < new Date()
+    //     );
+    //   }
+    // }
   };
 </script>
 

@@ -7,7 +7,7 @@
     "build": "vue-cli-service build --modern",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "build-report": "vue-cli-service build --report"
+    "build-report": "vue-cli-service build --modern --report"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",

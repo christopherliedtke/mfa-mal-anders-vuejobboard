@@ -1,7 +1,10 @@
 <template>
-  <div class="salary">
+  <article class="salary">
     <div class="title">
-      <h1>{{ title }}</h1>
+      <h1>
+        {{ title }} <br />
+        <span class="h3">für Medizinische Fachangestellte / ArzthelferIn</span>
+      </h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
 
@@ -12,12 +15,13 @@
         srcset="/img/MfaMalAnders_Gehalt_1200-300x157.jpg 300w, /img/MfaMalAnders_Gehalt_1200-1024x538.jpg 1024w, /img/MfaMalAnders_Gehalt_1200-768x404.jpg 768w, /img/MfaMalAnders_Gehalt_1200.jpg 1200w"
         sizes="(max-width: 1200px) 100vw, 1200px"
         src="/img/MfaMalAnders_Gehalt_1200.jpg"
-        alt="MFA Gehalt - Berechne Dein Gehalt mit unserem Gehaltsrechner"
+        :alt="
+          `MFA / Medizinische Fachangestellte / ArzthelferIn Gehalt ${new Date().getFullYear()} - Berechne Dein Gehalt mit unserem Gehaltsrechner`
+        "
         width="1200"
         height="630"
         blank-width="1200"
         blank-height="630"
-        offset="1000"
       />
       <p>
         Sobald es um das Thema Gehalt geht, fehlt uns als MFA bzw. ArzthelferIn
@@ -34,7 +38,7 @@
         lieber auf Nummer sicher und verkaufen sich am Ende unter Wert.
       </p>
 
-      <div
+      <nav
         class="bg-light-shade border-radius1 my-4 p-4"
         style="max-width: fit-content"
       >
@@ -42,14 +46,19 @@
         <ol class="text-tertiary pl-4">
           <li class="lead mt-3">
             <b-link to="#gehaltstarifvertrag"
-              >Gehaltstarifvertrag {{ new Date().getFullYear() }} für
-              Medizinische Fachangestellte (MFA) / ArzthelferIn (inkl.
-              Gehaltsrechner)</b-link
+              >Tarifvertrag MFA {{ new Date().getFullYear() }} – für
+              Medizinische Fachangestellte / ArzthelferIn</b-link
+            >
+          </li>
+          <li class="lead mt-3">
+            <b-link to="#gehaltsrechner"
+              >Gehaltsrechner MFA – nach Berufsjahre, Fortbildungen,
+              Arbeitszeit</b-link
             >
           </li>
           <li class="lead mt-3">
             <b-link to="#gehalt-ausbildung"
-              >MFA Ausbildung {{ new Date().getFullYear() }} – Gehalt nach
+              >MFA Ausbildung Gehalt {{ new Date().getFullYear() }} – nach
               Tarifvertrag</b-link
             >
           </li>
@@ -86,11 +95,8 @@
             >
           </li>
         </ol>
-      </div>
+      </nav>
 
-      <h2>
-        Wie ermittelt man eigentlich seinen Marktwert?
-      </h2>
       <p>
         In den vielen Gruppen und Foren kommen regelmäßig Fragen zur Höhe des
         Gehalts in Voll- und Teilzeit auf. Wenn ich bei manchen Kommentaren
@@ -115,8 +121,8 @@
         vertragliche Lage aussieht.
       </p>
       <h2 id="gehaltstarifvertrag">
-        Gehaltstarifvertrag {{ new Date().getFullYear() }} – Medizinische
-        Fachangestellte (MFA) / ArzthelferIn
+        Gehaltstarifvertag MFA {{ new Date().getFullYear() }} – für Medizinische
+        Fachangestellte / ArzthelferIn
       </h2>
       <div class="row">
         <div class="col">
@@ -189,7 +195,7 @@
           <TrainingCatalogueSmallBanner class="my-2" />
         </div>
         <div class="col">
-          <Gehaltsrechner class="my-4" />
+          <Gehaltsrechner id="gehaltsrechner" class="my-4" />
           <GehaltsverhandlungBanner class="mb-4" />
           <FacebookBtn
             class="mb-4 mr-1"
@@ -218,18 +224,20 @@
         </p>
       </div>
 
-      <p>
-        Das heißt, der Stundenlohn im Jahr 2021 für Medizinische Fachangestellte
-        (MFA) bewegt sich laut Gehaltstarifvertrag je nach Berufserfahrung und
-        erworbenen Qualifikationen durch Fort- und Weiterbildungen zwischen
-        12,51 €/h und 25,13 €/h.
-      </p>
-
       <div>
-        <h3 class="h4">
-          Hier noch einmal die ab dem 01.01.2021 gültige Gehaltstabelle für das
-          Jahr 2021 nach Gehaltstarifvertrag:
+        <h3 class="h4 mt-5">
+          Gehaltstabelle MFA 2021 nach Gehaltstarifvertrag – gültig ab
+          01.01.2021
         </h3>
+        <p>
+          Der Stundenlohn im Jahr 2021 für Medizinische Fachangestellte (MFA)
+          bewegt sich laut Gehaltstarifvertrag je nach Berufserfahrung und
+          erworbenen Qualifikationen durch Fort- und Weiterbildungen zwischen
+          12,51 €/h und 25,13 €/h. Über den
+          <b-link to="#gehaltsrechner">Gehaltsrechner</b-link> kannst Du Dir den
+          Stundenlohn bzw. Gehalt in Teilzeit für Deinen relevanten Bereich
+          errechnen, indem Du als Wochenarbeitszeit eine Stunde auswählst.
+        </p>
         <b-table-simple class="mt-3" hover responsive table-variant="secondary">
           <colgroup>
             <col />
@@ -329,16 +337,20 @@
           </b-tbody>
         </b-table-simple>
 
-        <p class="mt-5">
+        <h3 class="h4 mt-5">
+          Gehaltstabelle MFA 2022 nach Gehaltstarifvertrag – gültig ab
+          01.01.2022
+        </h3>
+        <p>
+          Nach Tarifvertrag gibt es für MFA in 2022 eine Gehaltserhöhung von 3%.
+          Die Gehaltstabelle für 2022 entspricht dieser Erhöhung.
+        </p>
+        <p>
           Der Stundenlohn im Jahr 2022 für Medizinische Fachangestellte (MFA)
           bewegt sich laut Gehaltstarifvertrag je nach Berufserfahrung und
           erworbenen Qualifikationen durch Fort- und Weiterbildungen zwischen
           12,88 €/h und 25,88 €/h.
         </p>
-
-        <h3 class="h4">
-          Gehaltstabelle ab 01.01.2022:
-        </h3>
         <b-table-simple class="mt-3" hover responsive table-variant="secondary">
           <colgroup>
             <col />
@@ -447,6 +459,32 @@
             ArzthelferInnen – AAA (2021)</b-link
           >
         </p>
+        <h3 class="mt-4">
+          MFA Gehalt {{ new Date().getFullYear() }} in Teilzeit
+        </h3>
+        <p>
+          Dein Gehalt als ArzthelferIn in Teilzeit kannst Du Dir mit Hilfe des
+          <b-link to="#gehaltsrechner">Gehaltsrechners</b-link> ausrechnen.
+        </p>
+        <p>
+          Arbeitest Du <strong>25 Stunden pro Woche in Teilzeit</strong>, kommst
+          Du laut Gehaltstabelle aus dem Tarifvertrag beispielsweise auf ein
+          monatliches
+          <strong
+            >Grundgehalt zwischen 1.354,- und 2.720,- Euro (brutto)</strong
+          >
+          in Abhängigkeit von Deinen Berufsjahren und absolvierten
+          Fortbildungsstunden.
+        </p>
+        <p>
+          Bei <strong>30 Stunden pro Woche in Teilzeit</strong>, kommst Du laut
+          Gehaltstabelle aus dem Tarifvertrag auf ein monatliches
+          <strong
+            >Grundgehalt zwischen 1.625,- und 3.264,- Euro (brutto)</strong
+          >
+          in Abhängigkeit von Deinen Berufsjahren und absolvierten
+          Fortbildungsstunden.
+        </p>
       </div>
 
       <div class="bg-light-shade border-radius2 shadow1 my-5 p-3 p-md-4">
@@ -464,15 +502,15 @@
       </div>
 
       <h2 id="gehalt-ausbildung">
-        MFA Ausbildung {{ new Date().getFullYear() }} – Gehalt nach Tarifvertrag
+        MFA Ausbildung Gehalt {{ new Date().getFullYear() }} – nach Tarifvertrag
       </h2>
       <p>
         Wie für andere Ausbildungsberufe auch, ist für die Ausbildung von
         Medizinischen Fachangestellten laut Berufsbildungsgesetz eine Vergütug
         zu zahlen. Hierüber gibt der aktuelle Gehaltstarifvertrag ebenfalls
-        Auskunft. Demnach ist für Medizinische Fachangestellte /
-        ArzthelferInnen, die Ihre Ausbildung ab dem 01.01.2021 starten eine
-        monatliche Ausbildungsvergütung (brutto) wie folgt vorgesehen:
+        Auskunft. Demnach ist für Medizinische Fachangestellte / ArzthelferInnen
+        ein Gehalt entsprechend der monatlichen Ausbildungsvergütung (brutto)
+        wie folgt vorgesehen:
       </p>
       <b-table-simple class="mt-4" hover responsive table-variant="secondary">
         <colgroup>
@@ -529,7 +567,8 @@
       <p>
         Auf unserer Seite findest Du auch weitere Informationen zur
         <b-link to="/karriere/mfa/ausbildung-berufsbild"
-          >Ausbildung zur Medizinischen Fachangestellten / ArzthelferIn</b-link
+          >Ausbildung zur MFA – Medizinischen Fachangestellten /
+          ArzthelferIn</b-link
         >.
       </p>
 
@@ -663,7 +702,7 @@
       </p>
       <div class="my-4">
         <div class="card mb-1 bg-light-shade">
-          <header class="card-header p-3" role="tab">
+          <header class="card-header p-3">
             Tätigkeitsgruppe 1
           </header>
 
@@ -681,7 +720,7 @@
           </div>
         </div>
         <div class="card mb-1 bg-light-shade">
-          <header class="card-header p-3" role="tab">
+          <header class="card-header p-3">
             Tätigkeitsgruppe 2
           </header>
           <div class="card-body pl-5">
@@ -726,7 +765,7 @@
           </div>
         </div>
         <div class="card mb-1 bg-light-shade">
-          <header class="card-header p-3" role="tab">
+          <header class="card-header p-3">
             Tätigkeitsgruppe 3
           </header>
           <div class="card-body pl-5">
@@ -761,7 +800,7 @@
           </div>
         </div>
         <div class="card mb-1 bg-light-shade">
-          <header class="card-header p-3" role="tab">
+          <header class="card-header p-3">
             Tätigkeitsgruppe 4
           </header>
           <div class="card-body pl-5">
@@ -836,7 +875,7 @@
           </div>
         </div>
         <div class="card mb-1 bg-light-shade">
-          <header class="card-header p-3" role="tab">
+          <header class="card-header p-3">
             Tätigkeitsgruppe 5
           </header>
           <div class="card-body pl-5">
@@ -869,7 +908,7 @@
           </div>
         </div>
         <div class="card mb-1 bg-light-shade">
-          <header class="card-header p-3" role="tab">
+          <header class="card-header p-3">
             Tätigkeitsgruppe 6
           </header>
           <div class="card-body pl-5">
@@ -1182,12 +1221,12 @@
         `MFA Gehalt ${new Date().getFullYear()} | Gehaltsrechner | Tarifvertrag`
       "
       :desc="
-        `Dein Gehalt als Medizinische Fachangestellte (MFA) | Gehaltstarifvertrag ${new Date().getFullYear()} | Tätigkeitsgruppen || Gehaltsrechner Teilzeit / Vollzeit`
+        `Gehalt als Medizinische Fachangestellte (MFA) | Gehaltstarifvertrag ${new Date().getFullYear()} | Tätigkeitsgruppen || Gehaltsrechner Teilzeit / Vollzeit`
       "
       img="/img/MfaMalAnders_Gehalt_1200.jpg"
       :script="snippet"
     />
-  </div>
+  </article>
 </template>
 
 <script>
@@ -1220,7 +1259,7 @@
     },
     data() {
       return {
-        title: `Medizinische Fachangestellte (MFA) – Gehalt ${new Date().getFullYear()}`,
+        title: `MFA Gehalt ${new Date().getFullYear()}`,
         breadcrumbs: [
           { text: "Home", to: "/" },
           { text: "Karriere", to: "/karriere" },
@@ -1269,6 +1308,21 @@
           {
             type: "application/ld+json",
             inner: `{
+              "@context": "http://schema.org",
+              "@type" : "FAQPage",
+              "mainEntity": [{
+                "@type": "Question",
+                "name": "Wie hoch ist der Stundenlohn für eine Medizinische Fachangestellte (MFA) / ArzthelferIn in ${new Date().getFullYear()}?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Der Stundenlohn im Jahr ${new Date().getFullYear()} für Medizinische Fachangestellte (MFA) / ArzthelferInnen bewegt sich laut Gehaltstarifvertrag je nach Berufserfahrung und erworbenen Qualifikationen durch Fort- und Weiterbildungen zwischen 12,51 €/h und 25,13 €/h."
+                }
+              }]
+            }`
+          },
+          {
+            type: "application/ld+json",
+            inner: `{
               "@context": "https://schema.org/",
               "@type": "Occupation",
               "name": "Medizinische Fachangstellte (MFA) / ArzthelferIn",
@@ -1298,6 +1352,19 @@
           }
         ]
       };
+    },
+    mounted() {
+      this.scrollToHash();
+    },
+    methods: {
+      scrollToHash() {
+        if (this.$route.hash) {
+          const elem = window.document.getElementById(
+            this.$route.hash.replace("#", "")
+          );
+          elem.scrollIntoView({ behavior: "smooth" });
+        }
+      }
     }
   };
 </script>

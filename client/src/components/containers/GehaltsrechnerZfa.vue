@@ -1,6 +1,6 @@
 <template>
   <div class="gehaltsrechner p-4 border-radius2 shadow1">
-    <h3>
+    <h2 class="h3">
       ZFA Gehaltsrechner {{ year }}
       <div id="popover-zfa-gehaltsrechner">
         <svg
@@ -19,7 +19,7 @@
       <b-popover
         target="popover-zfa-gehaltsrechner"
         triggers="hover"
-        placement="top"
+        placement="bottom"
       >
         Der Gehaltsrechner gibt Dir eine erste grobe Richtung für Dein zu
         erwartendes Grundgehalt als Zahnmedizinische Fachangestellte vor.
@@ -28,7 +28,7 @@
         Größe der Praxis. Du erhältst weitere Informationen zur noch besseren
         Einschätzung im folgenden Text und im Gehaltstarifvertrag des AAZ.
       </b-popover>
-    </h3>
+    </h2>
     <p>
       Gib Deine Daten ein und erhalte Dein Gehalt entsprechend des
       Gehaltstarifvertrags* {{ year }} für Zahnmedizinische Fachangestellte
@@ -36,12 +36,18 @@
       <span class="small">(Stand 2021 | gültig ab 01.07.2021) </span>
     </p>
     <b-form>
+      <label for="years-of-experience" class="sr-only">Berufsjahre</label>
       <b-form-select
+        id="years-of-experience"
         v-model="form.yearsOfExperience"
         class="mt-2"
         :options="yearsOfExperienceOptions"
       ></b-form-select>
+      <label for="hours-of-training" class="sr-only"
+        >Umfang absolvierter Fortbildungsmaßnahmen</label
+      >
       <b-form-select
+        id="hours-of-training"
         v-model="form.hoursOfEducation"
         class="mt-2"
         :options="hoursOfEducationOptions"
@@ -55,7 +61,11 @@
         max="40"
         step="0.5"
       ></b-form-input>
+      <label for="weekly-working-hours" class="sr-only"
+        >Deine Wochenarbeitsstunden</label
+      >
       <b-form-input
+        id="weekly-working-hours"
         v-model="form.workingHours"
         type="number"
         min="0"
@@ -66,8 +76,16 @@
       <hr />
       <h4>Dein monatliches Grundgehalt (brutto)</h4>
 
+      <label for="monthly-salary" class="sr-only"
+        >Dein Monatliches Grundgehalt</label
+      >
       <b-input-group prepend="€" class="mb-2">
-        <b-form-input v-model="salary" disabled type="number"></b-form-input>
+        <b-form-input
+          id="monthly-salary"
+          v-model="salary"
+          disabled
+          type="number"
+        ></b-form-input>
       </b-input-group>
 
       <p class="small">
@@ -214,12 +232,10 @@
     background-color: $primary;
     color: $light;
 
-    h3 > div {
+    h2 > div {
       display: inline-flex;
       justify-content: center;
       align-items: center;
-      // background-color: $light;
-      // color: $primary;
       border-radius: 50%;
       position: relative;
       top: -10px;

@@ -156,11 +156,11 @@
                   width="20"
                   height="20"
                   fill="currentColor"
-                  class="bi bi-calendar2-check-fill"
+                  class="bi bi-megaphone-fill"
                   viewBox="0 0 16 16"
                 >
                   <path
-                    d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zm9.954 3H2.545c-.3 0-.545.224-.545.5v1c0 .276.244.5.545.5h10.91c.3 0 .545-.224.545-.5v-1c0-.276-.244-.5-.546-.5zm-2.6 5.854a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"
+                    d="M13 2.5a1.5 1.5 0 0 1 3 0v11a1.5 1.5 0 0 1-3 0v-11zm-1 .724c-2.067.95-4.539 1.481-7 1.656v6.237a25.222 25.222 0 0 1 1.088.085c2.053.204 4.038.668 5.912 1.56V3.224zm-8 7.841V4.934c-.68.027-1.399.043-2.008.053A2.02 2.02 0 0 0 0 7v2c0 1.106.896 1.996 1.994 2.009a68.14 68.14 0 0 1 .496.008 64 64 0 0 1 1.51.048zm1.39 1.081c.285.021.569.047.85.078l.253 1.69a1 1 0 0 1-.983 1.187h-.548a1 1 0 0 1-.916-.599l-1.314-2.48a65.81 65.81 0 0 1 1.692.064c.327.017.65.037.966.06z"
                   />
                 </svg>
               </div>
@@ -579,35 +579,6 @@
         employmentTypeOptions,
         companySizeOptions,
         socialShareJobToClipboard,
-        // snippet: [
-        //   {
-        //     type: "application/ld+json",
-        //     inner: `{
-        //       "@context": "http://schema.org",
-        //       "@type" : "BreadcrumbList",
-        //       "itemListElement": [
-        //         {
-        //             "@type": "ListItem",
-        //             "position": 1,
-        //             "name": "MFA mal anders",
-        //             "item": "https://www.mfa-mal-anders.de"
-        //         },
-        //         {
-        //             "@type": "ListItem",
-        //             "position": 2,
-        //             "name": "Stellenangebote",
-        //             "item": "https://www.mfa-mal-anders.de/stellenangebote"
-        //         },
-        //         {
-        //             "@type": "ListItem",
-        //             "position": 3,
-        //             "name": "Stellenangebot",
-        //             "item": "https://www.mfa-mal-anders.de${this.$route.fullPath}"
-        //         }
-        //       ]
-        //     }`
-        //   }
-        // ],
         link: [
           {
             id: "mapsjs-ui",

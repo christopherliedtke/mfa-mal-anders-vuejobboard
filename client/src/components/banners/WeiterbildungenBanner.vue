@@ -15,7 +15,7 @@
       offset="1000"
     />
     <div class="card-body text-center">
-      <h4 class="card-title">Fort- und Weiterbildungen für MFA / ZFA</h4>
+      <h3 class="h4 card-title">Fort- und Weiterbildungen für MFA / ZFA</h3>
       <p class="card-text">
         Hier findest du eine Übersicht von verschiedenen Fortbildungen und
         Weiterbildungen für Medizinische / Zahnmedizinische Fachangestellte /

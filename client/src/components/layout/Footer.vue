@@ -29,54 +29,11 @@
                   dich.</strong
                 >
               </p>
-              <!-- <p>
-                MFA mal anders - Kristin Maurach & Christopher Liedtke GbR ist
-                Teilnehmer des Amazon-Partnerprogramm, das zur Bereitstellung
-                eines Mediums für Webseiten konzipiert wurde, mittels dessen
-                durch die Platzierung von Partner-Links zu Amazon.de Entgelte
-                verdient werden können.
-              </p> -->
             </div>
-            <!-- <div class="mt-5">
-                            <h6><strong>Links</strong></h6>
-                            <p><a href="https://de.jooble.org/">Jooble</a></p>
-                        </div> -->
           </div>
         </div>
         <div class="col order-2 order-lg-2">
           <NewsletterSignUpForm :close-btn="false" />
-          <!-- <div class="mt-5">
-                        <div class="d-flex justify-content-center mb-4">
-                            <b-link
-                                to="/karriere/bewerbungstipps"
-                                class="d-flex justify-content-center flex-nowrap"
-                            >
-                                <b-img-lazy
-                                    fluid
-                                    class="mx-3 shadow1"
-                                    style="width: 35vw; max-width: 120px"
-                                    src="@/assets/img/Vorlage_Bewerbungsanschreiben_150.jpg"
-                                    alt="Bild von Mustervorlage für Motivationsschreiben"
-                                />
-                                <b-img-lazy
-                                    fluid
-                                    class="mx-3 shadow1"
-                                    style="width: 35vw; max-width: 120px"
-                                    src="@/assets/img/Vorlage_Lebenslauf_150.jpg"
-                                    alt="Bild von Mustervorlage für Lebenslauf"
-                                />
-                            </b-link>
-                        </div>
-
-                        <div class="d-flex justify-content-center mb-5">
-                            <b-button
-                                href="/downloads/bewerbungsunterlagen"
-                                target="_blank"
-                                variant="secondary"
-                                >Download Bewerbungsunterlagen</b-button
-                            >
-                        </div>
-                    </div> -->
         </div>
         <div class="col order-1 order-lg-3">
           <div class="mb-4">
@@ -168,13 +125,14 @@
         &copy; {{ new Date().getFullYear() }} MFA mal anders
       </p>
     </div>
-    <PrerenderRecache />
+    <PrerenderRecache
+      v-if="$store.state.auth.user.isAdmin && $route.meta.public"
+    />
   </footer>
 </template>
 
 <script>
   import NewsletterSignUpForm from "@/components/forms/NewsletterSignUpForm.vue";
-  // import PrerenderRecache from "@/components/buttons/PrerenderRecache.vue";
   const PrerenderRecache = () =>
     import(
       /* webpackChunkName: "PrerenderRecache" */ "@/components/buttons/PrerenderRecache.vue"
