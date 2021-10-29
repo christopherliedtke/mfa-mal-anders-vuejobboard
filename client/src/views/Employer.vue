@@ -578,12 +578,13 @@
         Durch unsere Arbeit hatten wir die Gelegenheit eine Vielzahl von
         Bewerbungsprozessen zu begleiten und aus erster Hand zu erfahren, was
         bei potentiellen BewerberInnen ankommt und was nicht. Deshalb geben wir
-        hier eine kleine Übersicht an Tipps. Zusätzlich können Sie sich unsere
+        hier eine kleine Übersicht an Tipps, die wir Ihnen ans Herz legen
+        möchten. Zusätzlich können Sie sich unsere
         <b-link
           href="/downloads/MfaMalAnders_Beispiel_Stellenanzeige.pdf"
           target="_blank"
           class="bold"
-          >Beispiel Stellenanzeige</b-link
+          >Muster Stellenanzeige für MFA</b-link
         >
         zur Inspiration ansehen.
       </p>

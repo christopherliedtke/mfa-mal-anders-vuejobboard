@@ -140,9 +140,7 @@ const JobResolvers = {
         { new: true }
       );
 
-      if (updatedJob.status === "published") {
-        internalJobsCache.flush();
-      }
+      internalJobsCache.flush();
 
       indexing(updatedJob);
       recaching(updatedJob);
@@ -159,6 +157,8 @@ const JobResolvers = {
         { status: "deleted" },
         { new: true }
       );
+
+      internalJobsCache.flush();
 
       return updatedJob;
     },
@@ -205,9 +205,7 @@ const JobResolvers = {
         { new: true }
       );
 
-      if (updatedJob.status === "published") {
-        internalJobsCache.flush();
-      }
+      internalJobsCache.flush();
 
       indexing(updatedJob);
       recaching(updatedJob);
