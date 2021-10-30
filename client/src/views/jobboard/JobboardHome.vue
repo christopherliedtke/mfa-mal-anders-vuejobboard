@@ -7,11 +7,13 @@
             profession.active.length > 0
               ? " – " + profession.active.join(" & ")
               : ""
-          } ${filter.location ? " | " + filter.location : ""}
+          }
       `
-        }}
+        }}<span class="text-capitalize">{{
+          filter.location ? " | " + filter.location : ""
+        }}</span>
       </h1>
-      <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
+      <b-breadcrumb :items="breadcrumbs" class="text-capitalize"></b-breadcrumb>
     </div>
     <div class="container py-3 py-lg-5">
       <div class="row mt-2">
@@ -46,7 +48,10 @@
               <b-form-input
                 id="location-jobboard"
                 v-model="filter.location"
-                :class="filter.location ? 'border-secondary' : ''"
+                :class="[
+                  'text-capitalize',
+                  { 'border-secondary': !!filter.location }
+                ]"
                 type="text"
                 placeholder="Ort oder PLZ..."
                 trim
@@ -502,9 +507,7 @@
               : [this.$route.query.profession]
             : professionOptions.map(profession => profession.value)
         },
-        employmentTypeOptions: employmentTypeOptions.filter(
-          type => type.value != "part_full"
-        ),
+        employmentTypeOptions,
         showAdvancedSearch: false,
         companyStateOptions,
         specializationOptions,
@@ -701,10 +704,24 @@
             ""}`
         };
 
+        if (this.$route.query.fachgebiet) {
+          const specialization = this.specializationOptions.find(
+            elem => elem.toLowerCase() == this.$route.query.fachgebiet
+          );
+
+          this.specialization = {
+            active: [specialization],
+            visible: true,
+            allSelected: false,
+            indeterminate: true
+          };
+        }
+
         if (
           this.$route.query.s ||
           this.$route.query.employmentType ||
-          this.$route.query.profession
+          this.$route.query.profession ||
+          this.$route.query.fachgebiet
         ) {
           this.showAdvancedSearch = true;
         }

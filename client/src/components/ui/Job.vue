@@ -11,12 +11,21 @@
           <h1 v-html="job.title"></h1>
           <span class="lead text-muted">
             <!-- eslint-disable-next-line -->
-            <span v-html="job.company.name"></span> | {{ job.company.location
-            }}{{
-              job.company.state && job.company.state != job.company.location
-                ? ", " + job.company.state
-                : ""
-            }}</span
+            <span v-html="job.company.name"></span> |
+            <b-link
+              class="text-muted"
+              :to="
+                `/stellenangebote/ort/${job.company.location
+                  .toLowerCase()
+                  .replace(' ', '-')}`
+              "
+              >{{ job.company.location
+              }}{{
+                job.company.state && job.company.state != job.company.location
+                  ? ", " + job.company.state
+                  : ""
+              }}</b-link
+            ></span
           >
         </div>
         <div
@@ -48,7 +57,10 @@
             />
           </div>
           <div class="head flex-column flex-sm-row order-1 order-sm-2">
-            <div v-if="job.employmentType">
+            <b-link
+              v-if="job.employmentType"
+              :to="`/stellenangebote?employmentType=${job.employmentType}`"
+            >
               <div class="icon">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -71,7 +83,7 @@
                   option => option.value === job.employmentType
                 ).text
               }}
-            </div>
+            </b-link>
             <div v-if="job.company.size">
               <div class="icon">
                 <svg
@@ -131,7 +143,12 @@
                   : ""
               }}
             </div>
-            <div v-if="job.specialization && job.specialization != 'null'">
+            <b-link
+              v-if="job.specialization && job.specialization != 'null'"
+              :to="
+                `/stellenangebote?fachgebiet=${job.specialization.toLowerCase()}`
+              "
+            >
               <div class="icon">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -148,7 +165,7 @@
                 </svg>
               </div>
               {{ job.specialization }}
-            </div>
+            </b-link>
             <div>
               <div class="icon">
                 <svg
@@ -827,7 +844,8 @@
       display: flex;
       flex-wrap: wrap;
 
-      & > div {
+      & > div,
+      a {
         margin-right: 2rem;
         margin-top: 0.275rem;
         margin-bottom: 0.275rem;
