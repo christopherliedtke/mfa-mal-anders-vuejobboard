@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const textToSlug = require("../../utils/textToSlug");
 const Schema = mongoose.Schema;
 
 const JobSchema = new Schema(
@@ -51,7 +52,13 @@ const JobSchema = new Schema(
     },
     slug: {
       type: String,
-      default: "",
+      default: function () {
+        if (this.title) {
+          return textToSlug(this.title);
+        } else {
+          return "";
+        }
+      },
     },
     profession: {
       type: String,

@@ -153,6 +153,13 @@ const JobView = () =>
     "@/views/jobboard/job/JobView.vue"
   );
 
+// #Company
+const CompanyView = () =>
+  import(
+    /* webpackChunkName: "company" */
+    "@/views/company/CompanyView.vue"
+  );
+
 // #Auth
 const AuthLogin = () =>
   import(/* webpackChunkName: "auth" */ "@/views/auth/AuthLogin.vue");
@@ -263,6 +270,22 @@ const routes = [
     path: "/stellenangebote/job/:jobId/:title",
     name: "JobViewWithTitle",
     component: JobView,
+    meta: {
+      public: true
+    }
+  },
+  {
+    path: "/unternehmen/:companyId",
+    name: "CompanyView",
+    component: CompanyView,
+    meta: {
+      public: true
+    }
+  },
+  {
+    path: "/unternehmen/:companyId/:name",
+    name: "CompanyViewWithName",
+    component: CompanyView,
     meta: {
       public: true
     }

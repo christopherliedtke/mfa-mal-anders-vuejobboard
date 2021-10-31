@@ -2,10 +2,12 @@ a {
   // color: $tertiary;
   transition: $transition1;
 
-  // &:hover {
-  //   color: $secondary;
-  //   text-decoration: none;
-  // }
+  &.text-muted {
+    &:hover {
+      color: $secondary !important;
+      text-decoration: none;
+    }
+  }
 }
 
 main {

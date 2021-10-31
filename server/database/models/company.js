@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const textToSlug = require("../../utils/textToSlug");
 const Schema = mongoose.Schema;
 
 const CompanySchema = new Schema(
@@ -11,6 +12,10 @@ const CompanySchema = new Schema(
     name: {
       type: String,
       required: true,
+    },
+    description: {
+      type: String,
+      default: "",
     },
     street: {
       type: String,
@@ -47,6 +52,18 @@ const CompanySchema = new Schema(
     },
     logoUrl: {
       type: String,
+    },
+    slug: {
+      type: String,
+      default: function () {
+        if (this.name) {
+          return textToSlug(
+            `${this.name}${this.location ? "-" + this.location : ""}`
+          );
+        } else {
+          return "";
+        }
+      },
     },
   },
   { timestamps: true }

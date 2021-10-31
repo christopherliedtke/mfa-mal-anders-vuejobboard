@@ -4,6 +4,7 @@ const CronJob = require("cron").CronJob;
 const config = require("../config/config");
 const pagesSitemap = require("../config/sitemap.json");
 const { Job } = require("../database/models/job");
+const { Company } = require("../database/models/company");
 
 async function createSitemap() {
   try {
@@ -25,6 +26,7 @@ async function createSitemap() {
     const jobboardStates = await getJobboardStates();
     const jobboardLocations = await getJobboardLocations();
     const jobboardProfessions = await getJobboardProfessions();
+    const companies = await getCompanies();
 
     const sitemap =
       head +
@@ -37,6 +39,7 @@ async function createSitemap() {
       jobboardStates +
       jobboardLocations +
       jobboardProfessions +
+      companies +
       foot;
 
     saveSitemap(__dirname + "/../public/sitemap.xml", sitemap);
@@ -266,6 +269,27 @@ const getJobboardProfessions = async () => {
       .join(" ");
   } catch (err) {
     console.log("Error on getJobboardProfessions() in createSitemap: ", err);
+    return "";
+  }
+};
+
+const getCompanies = async () => {
+  try {
+    const companies = await Company.find({}, "_id name slug updatedAt");
+
+    return companies
+      .map(company =>
+        writeUrl(
+          process.env.WEBSITE_URL +
+            `/unternehmen/${company._id}/${company.slug}`,
+          new Date(company.updatedAt).toISOString(),
+          "weekly",
+          0.8
+        )
+      )
+      .join(" ");
+  } catch (err) {
+    console.log("Error on getCompanies() in createSitemap: ", err);
     return "";
   }
 };

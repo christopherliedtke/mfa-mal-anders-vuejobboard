@@ -9,9 +9,15 @@
         <div>
           <!-- eslint-disable-next-line -->
           <h1 v-html="job.title"></h1>
-          <span class="lead text-muted">
-            <!-- eslint-disable-next-line -->
-            <span v-html="job.company.name"></span> |
+          <span class="lead">
+            <b-link
+              class="text-muted"
+              :to="`/unternehmen/${job.company._id}/${job.company.slug}`"
+            >
+              <!-- eslint-disable-next-line -->
+              <span v-html="job.company.name"></span>
+            </b-link>
+            |
             <b-link
               class="text-muted"
               :to="
@@ -28,8 +34,9 @@
             ></span
           >
         </div>
-        <div
+        <b-link
           v-if="job.company && job.company.logoUrl"
+          :to="`/unternehmen/${job.company._id}/${job.company.slug}`"
           class="d-none d-sm-flex logo-container mx-2"
         >
           <b-img
@@ -37,7 +44,7 @@
             :src="job.company.logoUrl"
             :alt="`Logo - ${job.company.name}`"
           />
-        </div>
+        </b-link>
       </div>
 
       <hr />
@@ -46,8 +53,9 @@
         <div
           class="d-flex flex-lg-nowrap justify-content-between align-items-start"
         >
-          <div
+          <b-link
             v-if="job.company && job.company.logoUrl"
+            :to="`/unternehmen/${job.company._id}/${job.company.slug}`"
             class="d-sm-none logo-container mr-1 ml-2 ml-sm-0 mr-sm-4 mb-3 mb-lg-0 order-2 order-sm-1"
           >
             <b-img
@@ -55,7 +63,7 @@
               :src="job.company.logoUrl"
               :alt="`Logo - ${job.company.name}`"
             />
-          </div>
+          </b-link>
           <div class="head flex-column flex-sm-row order-1 order-sm-2">
             <b-link
               v-if="job.employmentType"
@@ -456,7 +464,10 @@
       <div class="mt-4">
         <h2>Arbeitsort</h2>
         <p>
-          {{ job.company.name }} <br v-if="job.company.name" />
+          <b-link :to="`/unternehmen/${job.company._id}/${job.company.slug}`">{{
+            job.company.name
+          }}</b-link>
+          <br v-if="job.company.name" />
           {{ job.company.street }} <br v-if="job.company.street" />
           {{ job.company.zipCode + " " + job.company.location }}
           <br />
@@ -464,6 +475,7 @@
         <HereMapSingleJob
           v-if="job.company && job.company.geoCodeLat && job.company.geoCodeLng"
           :job="job"
+          class="mt-4 mb-5"
         />
       </div>
       <div class="d-flex flex-wrap flex-column flex-md-row align-items-center">
@@ -723,6 +735,7 @@
                       contactEmail
                       contactPhone
                       company {
+                        _id
                         name
                         street
                         location
@@ -734,6 +747,7 @@
                         size
                         url
                         logoUrl
+                        slug
                       }
                     }
                   }
