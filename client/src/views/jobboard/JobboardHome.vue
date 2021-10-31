@@ -9,9 +9,7 @@
               : ""
           }
       `
-        }}<span class="text-capitalize">{{
-          filter.location ? " | " + filter.location : ""
-        }}</span>
+        }}{{ filter.location ? " | " + filter.location : "" }}
       </h1>
       <b-breadcrumb :items="breadcrumbs" class="text-capitalize"></b-breadcrumb>
     </div>
@@ -48,14 +46,12 @@
               <b-form-input
                 id="location-jobboard"
                 v-model="filter.location"
-                :class="[
-                  'text-capitalize',
-                  { 'border-secondary': !!filter.location }
-                ]"
+                :class="[{ 'border-secondary': !!filter.location }]"
                 type="text"
                 placeholder="Ort oder PLZ..."
                 trim
                 lazy
+                :formatter="capitalize"
               />
               <b-input-group-append>
                 <b-button
@@ -441,7 +437,7 @@
           ' & '
         )} Jobs ${
           filter.location ? 'in ' + filter.location + ' ' : ''
-        }– Die Jobbörse für Medizinische / Zahnmedizinische Fachangestellte.`
+        }– Jobs speziell für Medizinische / Zahnmedizinische Fachangestellte.`
       "
       img=""
       :script="snippet"
@@ -698,10 +694,12 @@
         this.filter = {
           s: this.$route.query.s || "",
           employmentType: this.$route.query.employmentType || "",
-          location: `${this.$route.params.location ||
-            this.$route.query.location ||
-            ""}${this.$route.query.state ? " " : ""}${this.$route.query.state ||
-            ""}`
+          location: this.capitalize(
+            `${this.$route.params.location ||
+              this.$route.query.location ||
+              ""}${this.$route.query.state ? " " : ""}${this.$route.query
+              .state || ""}`
+          )
         };
 
         if (this.$route.query.fachgebiet) {
@@ -753,6 +751,11 @@
 
         this.setQuery();
         this.getJobs();
+      },
+      capitalize(value) {
+        return value.replace(/(^\w|((?<=-)(.)){1})|(\s+\w{1})/g, letter =>
+          letter.toUpperCase()
+        );
       }
     }
   };

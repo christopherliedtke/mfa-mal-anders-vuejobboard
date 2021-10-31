@@ -190,7 +190,9 @@ const getJobs = async () => {
               elem._id +
               "/" +
               elem.slug,
-            new Date(elem.updatedAt).toISOString()
+            new Date(elem.updatedAt).toISOString(),
+            "weekly",
+            0.8
           )
         )
         .join(" ");
@@ -212,7 +214,10 @@ const getJobboardStates = async () => {
         writeUrl(
           process.env.WEBSITE_URL +
             "/stellenangebote/ort/" +
-            state.toLowerCase()
+            state.toLowerCase(),
+          undefined,
+          "daily",
+          0.8
         )
       )
       .join(" ");
@@ -233,7 +238,10 @@ const getJobboardLocations = async () => {
         writeUrl(
           process.env.WEBSITE_URL +
             "/stellenangebote/ort/" +
-            location.toLowerCase()
+            location.toLowerCase(),
+          undefined,
+          "daily",
+          0.8
         )
       )
       .join(" ");
@@ -275,47 +283,20 @@ function writeFoot() {
   return `</urlset>`;
 }
 
-function writeUrl(url, lastmod = new Date().toISOString()) {
+function writeUrl(
+  url,
+  lastmod = new Date().toISOString(),
+  changefreq = "monthly",
+  priority = 0.5
+) {
   return `
         <url>
             <loc>${url}</loc>
             <lastmod>${lastmod}</lastmod>
+            <changefreq>${changefreq}</changefreq>
+            <priority>${priority}</priority>
         </url>
     `;
-}
-
-function textToSlug(text) {
-  if (!text) {
-    return "";
-  }
-
-  return string_to_slug(text);
-}
-
-function string_to_slug(str) {
-  str = str.replace(/^\s+|\s+$/g, ""); // trim
-  str = str.toLowerCase();
-  str = str
-    .replace(/&amp;/g, "-")
-    .replace(/ß/g, "ss")
-    .replace(/ä/g, "ae")
-    .replace(/ö/g, "oe")
-    .replace(/ü/g, "ue"); // replace &, ß, ä, ö, ü
-
-  // remove accents, swap ñ for n, etc
-  var from = "àáãäâèéëêìíïîòóöôùúüûñç·/_,:;";
-  var to = "aaaaaeeeeiiiioooouuuunc------";
-
-  for (var i = 0, l = from.length; i < l; i++) {
-    str = str.replace(new RegExp(from.charAt(i), "g"), to.charAt(i));
-  }
-
-  str = str
-    .replace(/[^a-z0-9 -]/g, "") // remove invalid chars
-    .replace(/\s+/g, "-") // collapse whitespace and replace by -
-    .replace(/-+/g, "-"); // collapse dashes
-
-  return str;
 }
 
 function saveSitemap(filename, data) {

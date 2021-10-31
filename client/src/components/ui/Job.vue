@@ -231,7 +231,7 @@
           :job-id="job._id"
           position="relative"
           padding="0 20px 0 0"
-          size="2x"
+          :size="2"
         />
         <SubscribeNewsletterBtn :state="job.company.state" />
         <div
@@ -472,7 +472,7 @@
           :job-id="job._id"
           position="relative"
           padding="0 20px 0 0"
-          size="2x"
+          :size="2"
         />
         <FacebookShareBtn
           class="mr-0 mr-md-2 mb-2"
@@ -647,7 +647,7 @@
           {
             id: "canonical",
             rel: "canonical",
-            href: `${this.$config.website.url}/stellenangebote/job/${this.job._id}`
+            href: `${this.$config.website.url}/stellenangebote/job/${this.job._id}/${this.job.slug}`
           }
         ];
       }

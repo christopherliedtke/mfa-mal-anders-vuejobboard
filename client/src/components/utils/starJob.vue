@@ -8,8 +8,8 @@
     <svg
       v-if="!active"
       xmlns="http://www.w3.org/2000/svg"
-      width="15"
-      height="15"
+      :width="15 * size"
+      :height="15 * size"
       fill="currentColor"
       class="bi bi-star"
       viewBox="0 0 16 16"
@@ -21,8 +21,8 @@
     <svg
       v-else
       xmlns="http://www.w3.org/2000/svg"
-      width="15"
-      height="15"
+      :width="15 * size"
+      :height="15 * size"
       fill="currentColor"
       class="bi bi-star-fill"
       viewBox="0 0 16 16"
@@ -51,8 +51,8 @@
         default: "absolute"
       },
       size: {
-        type: String,
-        default: "sm"
+        type: Number,
+        default: 1
       }
     },
     data() {
