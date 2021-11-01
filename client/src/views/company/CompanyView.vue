@@ -60,9 +60,11 @@
         </div>
 
         <div>
+          <!-- eslint-disable -->
           <h2 class="h3 mb-3">
-            Aktuelle Stellenangebote bei {{ company.name }}
+            Aktuelle Stellenangebote bei <span v-html="company.name"></span>
           </h2>
+          <!-- eslint-enable -->
           <div v-if="company.publicJobs.length > 0">
             <JobCard
               v-for="job in company.publicJobs"

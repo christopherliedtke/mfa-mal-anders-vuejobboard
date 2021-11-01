@@ -155,9 +155,18 @@ function generateCustomerInformation(doc, payment) {
       { align: "right" }
     )
     .text("Kristin Maurach", 450, 170, { align: "right" })
-    .text(payment.status === "paid" ? "bezahlt" : "offen", 450, 185, {
-      align: "right",
-    })
+    .text(
+      payment.status === "paid"
+        ? "bezahlt"
+        : payment.status === "cancelled"
+        ? "storniert"
+        : "offen",
+      450,
+      185,
+      {
+        align: "right",
+      }
+    )
     .moveDown();
 }
 
