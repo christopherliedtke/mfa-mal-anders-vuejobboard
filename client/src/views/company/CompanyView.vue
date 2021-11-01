@@ -46,8 +46,12 @@
           <div class="col-12 col-lg-6">
             <div class="mb-0">
               <h2 class="h3">Über</h2>
-              <!-- eslint-disable-next-line -->
-              <p v-if="company.description" v-html="company.description"></p>
+              <!-- eslint-disable -->
+              <div
+                v-if="company.description"
+                v-html="company.description"
+              ></div>
+              <!-- eslint-enable -->
               <p class="mb-0">Unternehmensgröße: {{ company.size }}</p>
               <p v-if="company.url">
                 Webseite:

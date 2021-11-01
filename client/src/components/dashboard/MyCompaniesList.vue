@@ -84,6 +84,27 @@
               </svg>
               Bearbeiten</b-button
             >
+            <b-button
+              class="mr-2 mb-2 mb-md-0"
+              :to="`/unternehmen/${company._id}/${company.slug}`"
+              target="_blank"
+              variant="info"
+              size="sm"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-eye-fill mr-2"
+                viewBox="0 0 16 16"
+              >
+                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                <path
+                  d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"
+                />
+              </svg>
+              Unternehmensprofil</b-button
+            >
           </div>
           <div>
             <b-button v-b-modal="company._id" variant="outline-danger" size="sm"
@@ -152,6 +173,7 @@
                     updatedAt
                     name
                     location
+                    slug
                   }
                 }
               `

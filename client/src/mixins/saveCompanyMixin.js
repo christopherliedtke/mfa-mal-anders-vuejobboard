@@ -30,6 +30,7 @@ export const saveCompanyMixin = {
                   : ""
               } 
               name: "${company.name}", 
+              description: "${company.description}", 
               street: "${company.street}"
               location: "${company.location}", 
               zipCode: "${company.zipCode}"

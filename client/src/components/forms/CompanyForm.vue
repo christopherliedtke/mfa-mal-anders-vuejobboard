@@ -168,6 +168,37 @@
         </svg>
       </div>
 
+      <div>
+        <label
+          for="description"
+          :role="
+            !company.description && !showCompanyDescription ? 'button' : ''
+          "
+          @click="showCompanyDescription = !showCompanyDescription"
+          ><svg
+            v-if="!company.description && !showCompanyDescription"
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            fill="currentColor"
+            class="bi bi-plus-circle-fill text-primary mr-2"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"
+            /></svg
+          >Unternehmensbeschreibung für Unternehmensprofil
+          <span class="small text-muted">[optional]</span></label
+        >
+        <TipTapEditor
+          v-if="company.description || showCompanyDescription"
+          :validated="validated"
+          :content="company.description"
+          placeholder="Beschreiben Sie hier Ihr Unternehmen..."
+          @update-content="company.description = $event"
+        />
+      </div>
+
       <div class="d-flex justify-content-between my-4">
         <b-button variant="outline-danger" @click.prevent="$router.go(-1)">
           Abbrechen
@@ -191,10 +222,12 @@
     companySizeOptions
   } from "@/config/formDataConfig.json";
   import ImageUploader from "@/components/utils/ImageUploader.vue";
+  import TipTapEditor from "@/components/utils/TipTapEditor.vue";
   export default {
     name: "CompanyForm",
     components: {
-      ImageUploader
+      ImageUploader,
+      TipTapEditor
     },
     mixins: [saveCompanyMixin],
     props: { apiJobsSchema: { type: String, default: "private" } },
@@ -203,6 +236,7 @@
         company: {
           _id: this.$route.params.companyId,
           name: "",
+          description: "",
           street: "",
           location: "",
           zipCode: "",
@@ -214,6 +248,7 @@
           url: "",
           logoUrl: ""
         },
+        showCompanyDescription: false,
         companyCountryOptions,
         companyStateOptions,
         companySizeOptions,
@@ -233,23 +268,24 @@
           const company = await this.$axios.get(`/graphql`, {
             params: {
               query: `
-                            query {
-                                company(_id: "${id}") {
-                                    _id
-                                    name
-                                    street
-                                    location
-                                    zipCode
-                                    state
-                                    country
-                                    geoCodeLat
-                                    geoCodeLng
-                                    size
-                                    url
-                                    logoUrl
-                                }
-                            }
-                        `
+                  query {
+                      company(_id: "${id}") {
+                          _id
+                          name
+                          description
+                          street
+                          location
+                          zipCode
+                          state
+                          country
+                          geoCodeLat
+                          geoCodeLng
+                          size
+                          url
+                          logoUrl
+                      }
+                  }
+              `
             }
           });
 

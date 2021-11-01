@@ -10,6 +10,7 @@ const CompanyType = gql`
   extend type Mutation {
     addCompany(
       name: String
+      description: String
       street: String
       zipCode: String
       location: String
@@ -24,6 +25,7 @@ const CompanyType = gql`
     updateCompany(
       _id: ID!
       name: String
+      description: String
       street: String
       zipCode: String
       location: String
@@ -39,6 +41,7 @@ const CompanyType = gql`
     adminUpdateCompany(
       _id: ID!
       name: String
+      description: String
       street: String
       zipCode: String
       location: String
