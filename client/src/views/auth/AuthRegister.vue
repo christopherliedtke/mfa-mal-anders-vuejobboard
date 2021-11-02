@@ -2,7 +2,7 @@
   <div class="register auth-container container">
     <RegisterForm>
       <template #intro>
-        <h2 class="text-center mb-0">
+        <h1 class="h2 text-center mb-0">
           {{
             $route.query.role === "employee"
               ? "Registrierung als MFA/  ZFA"
@@ -10,7 +10,7 @@
               ? "Registrierung als Fortbildungsanbieter"
               : "Registrierung als Arbeitgeber"
           }}
-        </h2>
+        </h1>
 
         <div v-if="$route.query.role == 'education'" class="mt-4">
           <p class="bold text-left text-md-center">

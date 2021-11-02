@@ -1,7 +1,13 @@
 <template>
   <div class="password-reset auth-container container">
-    <h2 class="text-center">{{ title }}</h2>
+    <h1 class="h2 text-center">{{ title }}</h1>
     <PasswordResetForm />
+
+    <Head
+      :title="title"
+      desc="Passwort zurücksetzen bei MFA mal anders"
+      img=""
+    />
   </div>
 </template>
 

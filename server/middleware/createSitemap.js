@@ -275,7 +275,10 @@ const getJobboardProfessions = async () => {
 
 const getCompanies = async () => {
   try {
-    const companies = await Company.find({}, "_id name slug updatedAt");
+    const companies = await Company.find(
+      {},
+      "_id name location slug updatedAt"
+    );
 
     return companies
       .map(company =>

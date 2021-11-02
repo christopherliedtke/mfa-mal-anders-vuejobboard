@@ -58,7 +58,7 @@ const CompanySchema = new Schema(
       default: function () {
         if (this.name) {
           return textToSlug(
-            `${this.name}${this.location ? "-" + this.location : ""}`
+            `${this.name}${this.location ? "-in-" + this.location : ""}`
           );
         } else {
           return "";

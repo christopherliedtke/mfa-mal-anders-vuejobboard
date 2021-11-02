@@ -9,7 +9,7 @@
         <div class="col-12 col-md-4 mb-4">
           <JobsBerufsbilderNav />
         </div>
-        <div class="col">
+        <div class="col-12 col-md-8 mb-5">
           <!-- eslint-disable -->
           <div
             v-if="berufsbilder[0].berufsbildTypes.nodes[0].description"

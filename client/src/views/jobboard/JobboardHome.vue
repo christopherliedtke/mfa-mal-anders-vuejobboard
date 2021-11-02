@@ -558,19 +558,18 @@
           },
           {
             rel: "canonical",
-            href: `${this.$config.website.url +
-              `/stellenangebote${
-                this.$route.params.location ||
-                this.$route.query.location ||
-                this.$route.query.state
-                  ? "/ort/" +
-                    (
-                      this.$route.params.location ||
-                      this.$route.query.location ||
-                      this.$route.query.state
-                    ).toLowerCase()
-                  : ""
-              }`}`,
+            href: `${this.$config.website.url}/stellenangebote${
+              this.$route.params.location ||
+              this.$route.query.location ||
+              this.$route.query.state
+                ? "/ort/" +
+                  (
+                    this.$route.params.location ||
+                    this.$route.query.location ||
+                    this.$route.query.state
+                  ).toLowerCase()
+                : ""
+            }`,
             id: "canonical"
           }
         ];
@@ -693,7 +692,16 @@
       setFilter() {
         this.filter = {
           s: this.$route.query.s || "",
-          employmentType: this.$route.query.employmentType || "",
+          employmentType:
+            this.$route.query.employmentType ||
+            (this.$route.params.employmentType
+              ? employmentTypeOptions.find(
+                  opt =>
+                    opt.text.toLowerCase() ==
+                    this.$route.params.employmentType.toLowerCase()
+                ).value
+              : "") ||
+            "",
           location: this.capitalize(
             `${this.$route.params.location ||
               this.$route.query.location ||

@@ -7,6 +7,18 @@
         :job="similarJob"
         :compact="compact"
       />
+      <div class="text-right mt-4">
+        <b-button
+          :to="
+            `/stellenangebote/ort/${job.company.location
+              .toLowerCase()
+              .replace(' ', '-')}`
+          "
+          variant="outline-primary"
+        >
+          Weitere Stellenangebote in der Nähe von {{ job.company.location }}
+        </b-button>
+      </div>
     </div>
     <div v-if="loading">
       <JobCardPlaceholder v-for="index in number" :key="index" class="mb-3" />

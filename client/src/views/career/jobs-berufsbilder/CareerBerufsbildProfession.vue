@@ -10,7 +10,7 @@
           <div class="col-12 col-md-4 mb-4 order-2 order-lg-1">
             <JobsBerufsbilderNav />
           </div>
-          <div class="col order-1 order-lg-2 mb-5">
+          <div class="col-12 col-md-8 order-1 order-lg-2 mb-5">
             <!-- eslint-disable-next-line -->
             <div v-html="profession.content"></div>
             <b-button

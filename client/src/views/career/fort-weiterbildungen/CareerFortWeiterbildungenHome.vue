@@ -9,7 +9,7 @@
         <div class="col-12 col-md-4 mb-4">
           <FortWeiterbildungenNav />
         </div>
-        <div class="col">
+        <div class="col-12 col-md-8 mb-5">
           <b-img-lazy
             class="border-radius1 shadow1 mb-3 mb-lg-5"
             fluid

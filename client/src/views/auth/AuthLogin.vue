@@ -1,6 +1,6 @@
 <template>
   <div class="login auth-container container">
-    <h2 class="text-center">{{ title }}</h2>
+    <h1 class="h2 text-center">{{ title }}</h1>
     <div
       class="mx-auto my-3 bg-primary rounded-circle"
       style="width: 75px; height: 75px"

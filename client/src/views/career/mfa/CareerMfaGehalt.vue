@@ -1198,7 +1198,7 @@
       <p>
         Die Ärztekammer Baden-Württemberg hat zum Thema Gehaltstarifvertrag eine
         gute<a
-          href="https://www.aerztekammer-bw.de/30mfa/50tarifvertraege/01bFAQs_GTV.pdf"
+          href="https://www.aerztekammer-bw.de/30mfa/50tarifvertraege/02bFAQs_GTV.pdf"
           target="_blank"
           rel="noopener"
         >

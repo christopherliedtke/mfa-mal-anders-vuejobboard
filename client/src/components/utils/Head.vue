@@ -94,6 +94,26 @@
               id: "twitter-card"
             },
             {
+              property: "twitter:title",
+              content: `${this.title} – ${this.$config.website.name}`,
+              id: "twitter-title"
+            },
+            {
+              property: "twitter:description",
+              content: this.desc,
+              id: "twitter-description"
+            },
+            {
+              property: "twitter:image",
+              content: this.img || `/img/MfaMalAnders_Banner_1200.jpg`,
+              id: "twitter-image"
+            },
+            {
+              property: "twitter:image:alt",
+              content: this.imgAlt || this.title,
+              id: "twitter-image-alt"
+            },
+            {
               property: "twitter:site",
               content: "@MfaMalAnders",
               id: "twitter-site"
