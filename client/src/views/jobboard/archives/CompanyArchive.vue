@@ -4,7 +4,7 @@
       <h1>
         Unternehmensverzeichnis
       </h1>
-      <!-- <b-breadcrumb :items="breadcrumbs" class="text-capitalize"></b-breadcrumb> -->
+      <b-breadcrumb :items="breadcrumbs" class="text-capitalize"></b-breadcrumb>
     </div>
 
     <div class="container py-4 py-lg-5">
@@ -12,12 +12,24 @@
         <b-link
           v-for="company in companies"
           :key="company._id"
-          class="list-group-item list-group-item-action h5 text-truncate my-3 text-primary"
+          class="list-group-item list-group-item-action h5 text-truncate py-3 mb-0 text-primary d-flex justify-content-between"
           :to="`/unternehmen/${company._id}/${company.slug}`"
-          ><strong>{{ company.name }}</strong> | {{ company.location }}</b-link
-        >
+          ><span
+            ><strong>{{ company.name }}</strong> | {{ company.location }}</span
+          >
+          <div v-if="company.logoUrl" class="logo-container">
+            <b-img-lazy
+              fluid
+              :src="company.logoUrl"
+              :alt="`Logo - ${company.name}`"
+              class="logo"
+            />
+          </div>
+        </b-link>
       </nav>
     </div>
+
+    <Head title="Unternehmensverzeichnis" desc="" :script="snippet" />
   </div>
 </template>
 
@@ -26,7 +38,46 @@
     name: "CompanyArchive",
     data() {
       return {
-        companies: null
+        companies: null,
+        breadcrumbs: [
+          { text: "Home", to: "/" },
+          { text: "Stellenangebote", to: "/stellenangebote" },
+          {
+            text: "Unternehmensverzeichnis",
+            to: "/stellenangebote/unternehmensverzeichnis"
+          }
+        ],
+        snippet: [
+          {
+            id: "canonical",
+            rel: "canonical",
+            href: `${this.$config.website.url}/stellenangebote/unternehmensverzeichnis`
+          },
+          {
+            id: "breadcrumbs",
+            type: "application/ld+json",
+            inner: `{
+              "@context": "http://schema.org",
+              "@type" : "BreadcrumbList",
+              "itemListElement": [{
+                "@type": "ListItem",
+                "position": 1,
+                "name": "MFA mal anders",
+                "item": "https://www.mfa-mal-anders.de"
+              },{
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Stellenangebote",
+                "item": "https://www.mfa-mal-anders.de/stellenangebote"
+              },{
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Unternehmensverzeichnis",
+                "item": "https://www.mfa-mal-anders.de/stellenangebote/unternehmensverzeichnis"
+              }]
+            }`
+          }
+        ]
       };
     },
     async created() {
@@ -75,4 +126,20 @@
   };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+  .logo-container {
+    background-color: $light;
+    border-radius: $border-radius1;
+    box-shadow: $shadow1;
+    min-width: 50px;
+    min-height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .logo {
+      max-width: 40px;
+      max-height: 40px;
+    }
+  }
+</style>
