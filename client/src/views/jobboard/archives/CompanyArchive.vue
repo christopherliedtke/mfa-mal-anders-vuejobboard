@@ -12,12 +12,12 @@
         <b-link
           v-for="company in companies"
           :key="company._id"
-          class="list-group-item list-group-item-action h5 text-truncate py-3 mb-0 text-primary d-flex justify-content-between"
+          class="list-group-item list-group-item-action py-3 mb-0 text-primary d-flex justify-content-between"
           :to="`/unternehmen/${company._id}/${company.slug}`"
           ><span
             ><strong>{{ company.name }}</strong> | {{ company.location }}</span
           >
-          <div v-if="company.logoUrl" class="logo-container">
+          <div v-if="company.logoUrl" class="logo-container ml-3">
             <b-img-lazy
               fluid
               :src="company.logoUrl"
