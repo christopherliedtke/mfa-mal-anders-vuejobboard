@@ -110,6 +110,9 @@
             <router-link to="/user/dashboard?tab=1"
               >Stellenanzeige schalten</router-link
             >
+            <router-link to="/stellenangebote/unternehmensverzeichnis"
+              >Unternehmensverzeichnis</router-link
+            >
 
             <router-link class="mt-5" to="/kontakt">Kontakt</router-link>
             <router-link to="/datenschutz">Datenschutzerklärung</router-link>

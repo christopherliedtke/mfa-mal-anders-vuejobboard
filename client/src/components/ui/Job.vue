@@ -313,6 +313,11 @@
           style="object-fit: fill; z-index: -1"
           class="blur position-absolute w-100"
           :src="job.imageUrl"
+          :alt="
+            `Bild von ${job.company && job.company.name} zu ${job.title}${
+              job.company ? ' in ' + job.company.location : ''
+            }`
+          "
         />
 
         <b-img
@@ -320,7 +325,11 @@
           :src="job.imageUrl"
           fluid
           center
-          :alt="`Image - ${job.company && job.company.name}`"
+          :alt="
+            `Bild von ${job.company && job.company.name} zu ${job.title}${
+              job.company ? ' in ' + job.company.location : ''
+            }`
+          "
         />
       </div>
       <!-- eslint-disable-next-line -->

@@ -13,7 +13,7 @@ const CompanyResolvers = {
     },
     companies: async () => {
       const companies = await Company.find().sort({
-        createdAt: "desc",
+        name: "asc",
       });
       return companies;
     },
@@ -21,7 +21,7 @@ const CompanyResolvers = {
       const companies = await Company.find({
         userId: context.user._id,
       }).sort({
-        createdAt: "desc",
+        name: "asc",
       });
       return companies;
     },

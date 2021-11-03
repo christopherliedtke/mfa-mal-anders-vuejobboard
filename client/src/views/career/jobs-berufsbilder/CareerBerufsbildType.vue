@@ -18,33 +18,36 @@
           ></div>
           <!-- eslint-enable -->
           <nav class="list-group">
-            <b-link
+            <div
               v-for="berufsbild in berufsbilder"
               :id="berufsbild.slug"
               :key="berufsbild.slug"
-              :class="[
-                'list-group-item mb-0 p-3',
-                { 'text-primary bold': berufsbild.content }
-              ]"
+              class="list-group-item mb-0 p-3"
               style="font-size: larger; color: inherit"
-              :to="
-                `/karriere/jobs-und-berufsbilder/${berufsbild.berufsbildTypes.nodes[0].slug}/${berufsbild.slug}`
-              "
-              :disabled="!berufsbild.content"
-              >{{ berufsbild.title }}
-              <svg
+            >
+              <b-link
                 v-if="berufsbild.content"
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-caret-right-fill"
-                viewBox="0 0 16 16"
+                :to="
+                  `/karriere/jobs-und-berufsbilder/${berufsbild.berufsbildTypes.nodes[0].slug}/${berufsbild.slug}`
+                "
+                class="bold text-primary hover-text-secondary"
               >
-                <path
-                  d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"
-                /></svg
-            ></b-link>
+                {{ berufsbild.title }}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-caret-right-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"
+                  />
+                </svg>
+              </b-link>
+              <span v-else class="text-muted">{{ berufsbild.title }}</span>
+            </div>
           </nav>
 
           <div class="bg-light-shade border-radius2 shadow1 my-5 p-3 p-md-4">

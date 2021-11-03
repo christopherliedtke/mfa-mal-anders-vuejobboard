@@ -305,6 +305,7 @@
                           effort
                           cost
                           extUrl
+                          slug
                         }
                     }
                   `

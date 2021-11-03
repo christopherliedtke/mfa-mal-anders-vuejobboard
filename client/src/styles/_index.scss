@@ -2,6 +2,13 @@ a {
   // color: $tertiary;
   transition: $transition1;
 
+  &.text-primary {
+    &:hover {
+      color: $secondary !important;
+      text-decoration: none;
+    }
+  }
+
   &.text-muted {
     &:hover {
       color: $secondary !important;

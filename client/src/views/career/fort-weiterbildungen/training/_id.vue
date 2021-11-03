@@ -11,6 +11,24 @@
         >Fortbildung konnte nicht gefunden/geladen werden.</span
       >
       <ToJobboardBanner v-if="training" class="mt-5" />
+
+      <div class="mt-5">
+        <h2>
+          <b-link to="/karriere/fort-und-weiterbildungen"
+            >Fort- und Weiterbildungen aus unserer Übersicht</b-link
+          >
+        </h2>
+        <p>
+          Du bist noch nicht sicher, welche Fort- oder Weiterbildung die
+          richtige für Dich ist? Hier eine Auswahl aus unserer
+          <b-link to="/karriere/fort-und-weiterbildungen"
+            >Übersicht an Fort- und Weiterbildungen für Medizinische und
+            Zahnmedizinische Fachangestellte (MFA & ZFA)</b-link
+          >.
+        </p>
+
+        <RandomTrainingsContainer v-if="training" />
+      </div>
     </div>
 
     <Head
@@ -25,11 +43,13 @@
 <script>
   import Training from "@/components/ui/Training.vue";
   import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
+  import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
   export default {
     name: "CareerFortWeiterbildungCatalogueTraining",
     components: {
       Training,
-      ToJobboardBanner
+      ToJobboardBanner,
+      RandomTrainingsContainer
     },
     data() {
       return {

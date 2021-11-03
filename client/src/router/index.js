@@ -152,6 +152,12 @@ const JobView = () =>
     /* webpackPrefetch: true */
     "@/views/jobboard/job/JobView.vue"
   );
+const CompanyArchive = () =>
+  import(
+    /* webpackChunkName: "job" */
+    /* webpackPrefetch: true */
+    "@/views/jobboard/archives/CompanyArchive.vue"
+  );
 
 // #Company
 const CompanyView = () =>
@@ -283,6 +289,14 @@ const routes = [
     }
   },
   {
+    path: "/stellenangebote/unternehmensverzeichnis",
+    name: "CompanyArchive",
+    component: CompanyArchive,
+    meta: {
+      public: true
+    }
+  },
+  {
     path: "/unternehmen/:companyId",
     name: "CompanyView",
     component: CompanyView,
@@ -389,6 +403,14 @@ const routes = [
   {
     path: "/karriere/fortbildungskatalog/:id",
     name: "KarriereFortbildungskatalogFortbildung",
+    component: CareerFortWeiterbildungenCatalogueTraining,
+    meta: {
+      public: true
+    }
+  },
+  {
+    path: "/karriere/fortbildungskatalog/:id/:slug",
+    name: "KarriereFortbildungskatalogFortbildungWSlug",
     component: CareerFortWeiterbildungenCatalogueTraining,
     meta: {
       public: true

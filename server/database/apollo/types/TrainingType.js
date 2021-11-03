@@ -92,6 +92,7 @@ const TrainingType = gql`
     published: Boolean
     pending: Boolean
     paid: Boolean
+    slug: String
   }
 
   extend type User {

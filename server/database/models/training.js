@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const textToSlug = require("../../utils/textToSlug");
 const { Schema } = mongoose;
 
 const TrainingSchema = new Schema(
@@ -85,6 +86,18 @@ const TrainingSchema = new Schema(
     paid: {
       type: Boolean,
       default: false,
+    },
+    slug: {
+      type: String,
+      default: function () {
+        if (this.title) {
+          return textToSlug(
+            this.title + (this.company ? "-bei-" + this.company : "")
+          );
+        } else {
+          return "";
+        }
+      },
     },
   },
   {

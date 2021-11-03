@@ -5,6 +5,7 @@ const config = require("../config/config");
 const pagesSitemap = require("../config/sitemap.json");
 const { Job } = require("../database/models/job");
 const { Company } = require("../database/models/company");
+const { Training } = require("../database/models/training");
 
 async function createSitemap() {
   try {
@@ -27,6 +28,7 @@ async function createSitemap() {
     const jobboardLocations = await getJobboardLocations();
     const jobboardProfessions = await getJobboardProfessions();
     const companies = await getCompanies();
+    const trainingEvents = await getTrainingEvents();
 
     const sitemap =
       head +
@@ -40,6 +42,7 @@ async function createSitemap() {
       jobboardLocations +
       jobboardProfessions +
       companies +
+      trainingEvents +
       foot;
 
     saveSitemap(__dirname + "/../public/sitemap.xml", sitemap);
@@ -288,6 +291,30 @@ const getCompanies = async () => {
           new Date(company.updatedAt).toISOString(),
           "weekly",
           0.8
+        )
+      )
+      .join(" ");
+  } catch (err) {
+    console.log("Error on getCompanies() in createSitemap: ", err);
+    return "";
+  }
+};
+
+const getTrainingEvents = async () => {
+  try {
+    const trainingEvents = await Training.find(
+      {},
+      "_id title company slug updatedAt"
+    );
+
+    return trainingEvents
+      .map(trainingEvent =>
+        writeUrl(
+          process.env.WEBSITE_URL +
+            `/karriere/fortbildungskatalog/${trainingEvent._id}/${trainingEvent.slug}`,
+          new Date(trainingEvent.updatedAt).toISOString(),
+          "weekly",
+          0.5
         )
       )
       .join(" ");

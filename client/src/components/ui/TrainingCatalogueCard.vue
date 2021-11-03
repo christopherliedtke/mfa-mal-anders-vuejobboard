@@ -165,7 +165,7 @@
     <div class="footer">
       <b-button
         v-if="training.desc"
-        :to="`/karriere/fortbildungskatalog/${training._id}`"
+        :to="`/karriere/fortbildungskatalog/${training._id}/${training.slug}`"
         target="_blank"
         class="mr-2 mt-2"
         variant="primary"

@@ -53,7 +53,7 @@
               ></div>
               <!-- eslint-enable -->
               <p class="mb-0">Unternehmensgröße: {{ company.size }}</p>
-              <p v-if="company.url">
+              <p v-if="company.url" class="text-truncate">
                 Webseite:
                 <b-link class="bold" :href="company.url" target="_blank">{{
                   company.url
