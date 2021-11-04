@@ -40,7 +40,7 @@
           </p>
           <p>
             Ob
-            <b-link to="/blog/article/fortbildung-weiterbildung-oder-studium"
+            <b-link to="/blog/artikel/fortbildung-weiterbildung-oder-studium"
               >Fortbildung, Weiterbildung oder Studium für MFA / ZFA</b-link
             >, finde deinen richtigen Weg.
           </p>

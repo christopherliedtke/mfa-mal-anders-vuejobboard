@@ -73,7 +73,7 @@ const getArticles = async () => {
       return response.data.data.posts.nodes
         .map(elem =>
           writeUrl(
-            process.env.WEBSITE_URL + "/blog/article/" + elem.slug,
+            process.env.WEBSITE_URL + "/blog/artikel/" + elem.slug,
             new Date(elem.modifiedGmt).toISOString()
           )
         )

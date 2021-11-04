@@ -210,7 +210,7 @@
             <p>
               <b-link
                 class="text-secondary"
-                to="/blog/article/warum-es-mfa-mal-anders-gibt"
+                to="/blog/artikel/warum-es-mfa-mal-anders-gibt"
                 ><svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="12"

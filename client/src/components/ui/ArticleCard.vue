@@ -1,6 +1,6 @@
 <template>
   <article class="article-card">
-    <b-link :to="'/blog/article/' + article.slug" :aria-label="article.title">
+    <b-link :to="'/blog/artikel/' + article.slug" :aria-label="article.title">
       <div class="card mb-2">
         <b-img-lazy
           :srcset="

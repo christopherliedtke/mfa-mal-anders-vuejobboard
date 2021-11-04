@@ -401,7 +401,7 @@
         Informationen über die drei großen Bildungsformen, Fortbildung,
         Weiterbildung und Studium, und welche davon für dich die Richtige ist,
         kannst du
-        <b-link to="/blog/article/fortbildung-weiterbildung-oder-studium"
+        <b-link to="/blog/artikel/fortbildung-weiterbildung-oder-studium"
           >hier</b-link
         >
         nachlesen.

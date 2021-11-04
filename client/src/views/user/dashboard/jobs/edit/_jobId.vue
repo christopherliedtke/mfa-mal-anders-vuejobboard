@@ -9,7 +9,7 @@
       <strong
         >Beachten Sie auch unsere
         <b-link
-          href="/blog/article/8-tipps-fuer-attraktive-stellenanzeigen-fuer-mfas"
+          href="/blog/artikel/8-tipps-fuer-attraktive-stellenanzeigen-fuer-mfas"
           target="_blank"
           >Tipps
         </b-link>
@@ -35,7 +35,7 @@
       >
         <template #title>Tipps für Ihre Stellenanzeige</template>
         <b-link
-          href="/blog/article/8-tipps-fuer-attraktive-stellenanzeigen-fuer-mfas"
+          href="/blog/artikel/8-tipps-fuer-attraktive-stellenanzeigen-fuer-mfas"
           target="_blank"
           >Hier</b-link
         >

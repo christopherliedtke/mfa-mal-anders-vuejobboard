@@ -32,7 +32,7 @@
         hohe Gehaltswünsche in Gefahr bringen. Deshalb gehen viele Medizinische
         Fachangestellte bei der
         <b-link
-          to="/blog/article/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
+          to="/blog/artikel/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
           >Gehaltsverhandlung</b-link
         >
         lieber auf Nummer sicher und verkaufen sich am Ende unter Wert.
@@ -111,7 +111,7 @@
         eigenen Marktwert einordnen und selbstbewusst für einen
         leistungsorientierten und fairen Lohn einstehen. In unserem Artikel über
         <b-link
-          to="/blog/article/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
+          to="/blog/artikel/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
           >Gehaltsverhandlungen</b-link
         >
         geben wir dir zusätzlich 9 Tipps, wie du dein Wunschgehalt erzielst.
@@ -182,7 +182,7 @@
             Chef verpflichtet nach Tarifvertrag zu zahlen oder hält sich
             freiwillig daran, musst du also selbst keine
             <b-link
-              to="/blog/article/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
+              to="/blog/artikel/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
               >Gehaltsverhandlungen</b-link
             >
             führen.
@@ -994,7 +994,7 @@
         individuelle Lebenslage. Prüfe deshalb die angebotenen Zusatzleistungen
         eines Arbeitgebers und gehe zur Not auch in die
         <b-link
-          to="/blog/article/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
+          to="/blog/artikel/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
           >Verhandlung</b-link
         >
         und frage, ob man sich über bestimmte Zusatzleistungen einigen kann.
@@ -1165,7 +1165,7 @@
             Lies auch unseren Artikel zu
             <b-link
               class="text-secondary"
-              to="/blog/article/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
+              to="/blog/artikel/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
               >Gehaltsverhandlungen</b-link
             >
           </li>
@@ -1179,7 +1179,7 @@
         dich, selbstbewusst für dein Wissen und deine bisherige berufliche
         Erfahrung einzustehen und ein
         <b-link
-          to="/blog/article/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
+          to="/blog/artikel/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
           >angemessenes Gehalt zu verlangen</b-link
         >.
       </p>

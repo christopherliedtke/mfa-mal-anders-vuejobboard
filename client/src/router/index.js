@@ -433,6 +433,14 @@ const routes = [
     }
   },
   {
+    path: config.cms.postsPath + "/artikel/:slug",
+    name: "Article2",
+    component: Article,
+    meta: {
+      public: true
+    }
+  },
+  {
     path: "/fuer-arbeitgeber",
     name: "Employer",
     component: Employer,

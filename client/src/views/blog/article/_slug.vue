@@ -199,11 +199,16 @@
                   .split("-")
                   .map(elem => elem.charAt(0).toUpperCase() + elem.slice(1))
                   .join(" ")}",
-                "item": "https://www.mfa-mal-anders.de/article/${
+                "item": "https://www.mfa-mal-anders.de/blog/artikel/${
                   this.$route.params.slug
                 }"
               }]
             }`
+          },
+          {
+            id: "canonical",
+            rel: "canonical",
+            href: `${this.$config.website.url}/blog/artikel/${this.$route.params.slug}`
           }
         ]
       };
@@ -220,7 +225,7 @@
           { text: "Blog", to: "/blog" },
           {
             text: "Artikel",
-            to: `/blog/article/${this.$route.params.slug}`
+            to: `/blog/artikel/${this.$route.params.slug}`
           }
         ];
       }

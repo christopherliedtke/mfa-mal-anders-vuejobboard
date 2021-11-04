@@ -19,7 +19,7 @@
           </p>
           <div>
             <b-button
-              to="/blog/article/8-tipps-fuer-attraktive-stellenanzeigen-fuer-mfas"
+              to="/blog/artikel/8-tipps-fuer-attraktive-stellenanzeigen-fuer-mfas"
               variant="primary"
               class="mx-1 my-1"
               >Zu den Tipps</b-button
