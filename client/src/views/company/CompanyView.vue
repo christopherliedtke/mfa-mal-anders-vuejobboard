@@ -52,7 +52,9 @@
                 v-html="company.description"
               ></div>
               <!-- eslint-enable -->
-              <p class="mb-0">Unternehmensgröße: {{ company.size }}</p>
+              <p v-if="company.size" class="mb-0">
+                Unternehmensgröße: {{ company.size }}
+              </p>
               <p v-if="company.url" class="text-truncate">
                 Webseite:
                 <b-link class="bold" :href="company.url" target="_blank">{{
@@ -82,7 +84,7 @@
 
       <Head
         :title="`${company.name} | ${company.location}`"
-        :desc="`${company.name} | ${company.location}`"
+        :desc="`Unternehmensprofil – ${company.name} | ${company.location}`"
         :img="
           company.logoUrl && !company.logoUrl.includes('.svg')
             ? company.logoUrl

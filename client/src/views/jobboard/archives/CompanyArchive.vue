@@ -29,7 +29,11 @@
       </nav>
     </div>
 
-    <Head title="Unternehmensverzeichnis" desc="" :script="snippet" />
+    <Head
+      title="Unternehmensverzeichnis für Stellenangebote"
+      desc="Finde passende Unternehmen mit Stellenanzeigen auf MFA mal anders"
+      :script="snippet"
+    />
   </div>
 </template>
 

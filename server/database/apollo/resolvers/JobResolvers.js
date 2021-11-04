@@ -342,7 +342,11 @@ function cleanUpJob(job, user) {
 function indexing(job) {
   if (job.status === "published") {
     googleIndexing(
-      process.env.WEBSITE_URL + config.googleIndexing.pathPrefix + job._id,
+      process.env.WEBSITE_URL +
+        config.googleIndexing.pathPrefix +
+        job._id +
+        "/" +
+        job.slug,
       "URL_UPDATED"
     );
   }

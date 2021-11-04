@@ -48,6 +48,9 @@ router.post("/job-published", verifyToken, isAdmin, async (req, res) => {
       }">${process.env.WEBSITE_URL}/stellenangebote/job/${job._id}</a>
                 </p>
                 <p>
+                  Gern können Sie diesen Link nutzen, um beispielsweise auf Ihrer Webseite oder über Ihre Social Media Kanäle auf die offene Stelle aufmerksam zu machen. Unserer Erfahrung nach ist dies eine weitere hilfreiche Möglichkeit, potentielle BewerberInnen auf sich aufmerksam zu machen. 
+                </p>
+                <p>
                     Bitte beachten Sie, dass Ihre Stellenanzeige nur solange abrufbar ist, wie auch Ihre Bewerbungsfrist nicht überschritten ist. Über Ihre Zugangsdaten haben Sie weiterhin Zugriff auf Ihre Stellenanzeigen und können diese jederzeit anpassen.
                 </p>
                 <p>

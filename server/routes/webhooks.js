@@ -129,7 +129,11 @@ router.post("/checkout-completed", async (req, res) => {
       ) {
         internalJobsCache.flush();
         googleIndexing(
-          process.env.WEBSITE_URL + config.googleIndexing.pathPrefix + jobId,
+          process.env.WEBSITE_URL +
+            config.googleIndexing.pathPrefix +
+            jobId +
+            "/" +
+            job.slug,
           "URL_UPDATED"
         );
 
