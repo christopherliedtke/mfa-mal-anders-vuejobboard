@@ -35,7 +35,9 @@
           to="/blog/artikel/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
           >Gehaltsverhandlung</b-link
         >
-        lieber auf Nummer sicher und verkaufen sich am Ende unter Wert.
+        lieber auf Nummer sicher und verkaufen sich am Ende unter Wert. Aber wie
+        viel verdient man eigentlich als Medizinische Fachangestellte /
+        ArzthelferIn?
       </p>
 
       <nav
@@ -1300,7 +1302,7 @@
                 "name": "Wie viel Gehalt verdient eine Medizinische Fachangestellte (MFA) / ArzthelferIn?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Das Gehalt einer MFA / ArzthelferIn liegt bei Berufseinstieg laut aktuellen Gehaltstarifvertrag bei ca. 1.970 Euro / Monat für eine Vollzeitstelle. Mit zunehmender Berufserfahrung und abgeschlossenen Fortbildungen erhöht sich das Gehalt tariflich bis auf über 3.800 Euro / Monat. Im aktuellen Durchschnitt liegt der Verdienst einer MFA / ArzthelferIn bei ca. 2.500 Euro / Monat."
+                  "text": "Das Gehalt einer Medizinischen Fachangestellten / ArzthelferIn liegt bei Berufseinstieg laut aktuellen Gehaltstarifvertrag bei ca. 1.970 Euro / Monat für eine Vollzeitstelle. Mit zunehmender Berufserfahrung und abgeschlossenen Fortbildungen erhöht sich das Gehalt tariflich bis auf über 3.800 Euro / Monat. Im aktuellen Durchschnitt liegt der Verdienst einer MFA / ArzthelferIn bei ca. 2.500 Euro / Monat."
                 }
               },
               {
