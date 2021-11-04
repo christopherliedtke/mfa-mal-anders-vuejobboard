@@ -134,7 +134,7 @@
               >Stellenanzeige erstellen</b-button
             >
             <b-button
-              href="#advantages"
+              href="#vorteile"
               variant="outline-light"
               size="lg"
               class="d-block d-md-inline-block my-2 mr-md-2"
@@ -148,7 +148,7 @@
       </div>
     </div>
 
-    <div id="advantages" class="container my-5 py-3 py-lg-5">
+    <div id="vorteile" class="container my-5 py-3 py-lg-5">
       <h2 class="h5 text-center">
         Stellenanzeige schalten bei MFA mal anders
       </h2>
@@ -236,7 +236,7 @@
                 >Sie erstellen Ihre Anzeige, wir sorgen für den Rest</strong
               >
               - Reichweite auf MFA mal anders, Google Jobs, Facebook und
-              <b-link to="#more-info">mehr...</b-link>
+              <b-link to="#mehr-informationen">mehr...</b-link>
             </p>
           </div>
         </div>
@@ -267,7 +267,7 @@
             >Tipps für Stellenanzeigen</b-button
           >
           <b-button
-            href="#more-info"
+            href="#mehr-informationen"
             variant="outline-primary"
             size="lg"
             class="d-block d-lg-inline-block mx-1 my-1"
@@ -482,7 +482,10 @@
       </div>
     </div> -->
 
-    <div id="more-info" class="container-fluid bg-light-shade py-5 mb-5">
+    <div
+      id="mehr-informationen"
+      class="container-fluid bg-light-shade py-5 mb-5"
+    >
       <div class="container">
         <h2 class="bold mb-4">
           Ihre Jobbörse nur für ArzthelferInnen – MFA & ZFA – MFA mal anders
