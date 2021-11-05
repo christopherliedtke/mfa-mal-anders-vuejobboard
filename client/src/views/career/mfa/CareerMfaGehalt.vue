@@ -1225,7 +1225,7 @@
       :desc="
         `Gehalt als Medizinische Fachangestellte (MFA) | Gehaltstarifvertrag ${new Date().getFullYear()} | Tätigkeitsgruppen || Gehaltsrechner Teilzeit / Vollzeit`
       "
-      img="/img/MfaMalAnders_Gehalt_1200.jpg"
+      img="/img/MfaMalAnders_Gehalt_1200_.jpg"
       :script="snippet"
     />
   </article>

@@ -30,6 +30,18 @@
                 >
               </p>
             </div>
+            <div>
+              <h2 class="h6">Links</h2>
+              <ul class="list-unstyled">
+                <li>
+                  <a
+                    href="https://de.jooble.org/stellenangebote-medizin"
+                    target="_blank"
+                    >Jooble</a
+                  >
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
         <div class="col order-2 order-lg-2">
