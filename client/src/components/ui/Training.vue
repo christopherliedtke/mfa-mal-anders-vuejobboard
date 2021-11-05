@@ -309,6 +309,10 @@
         padding: 0.4rem 0.8rem;
         margin-bottom: 0.5rem;
         color: $light;
+        border-radius: 14px;
+        text-align: left;
+        word-wrap: break-word;
+        max-width: 100%;
 
         svg {
           vertical-align: top;

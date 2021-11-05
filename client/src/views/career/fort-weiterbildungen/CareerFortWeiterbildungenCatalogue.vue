@@ -5,9 +5,9 @@
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
 
-    <div class="container py-4 py-lg-5">
-      <div class="row">
-        <div class="col-12 col-md-4 mb-4">
+    <div class="container py-3 py-lg-4">
+      <div class="row mt-2">
+        <div class="col-12 col-md-4 mb-4 pt-2">
           <b-form @submit.prevent>
             <label for="s-trainings" class="sr-only">Suchbegriff</label>
             <b-input-group class="mb-1 mr-2">
@@ -142,7 +142,7 @@
             >
           </div>
         </div>
-        <div class="col" style="overflow: hidden">
+        <div class="col-12 col-md-8 pt-2" style="overflow: hidden">
           <div v-if="trainings.length > 0" id="training-list">
             <TrainingCatalogueCard
               v-for="training in trainings"

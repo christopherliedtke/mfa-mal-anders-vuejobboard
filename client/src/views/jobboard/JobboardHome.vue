@@ -13,9 +13,9 @@
       </h1>
       <b-breadcrumb :items="breadcrumbs" class="text-capitalize"></b-breadcrumb>
     </div>
-    <div class="container py-3 py-lg-5">
+    <div class="container py-3 py-lg-4">
       <div class="row mt-2">
-        <div class="col-12 col-lg-4 px-2 pr-lg-5">
+        <div class="col-12 col-lg-4 pt-2 px-2 pr-lg-5">
           <b-form
             id="job-filter"
             @submit.prevent="
@@ -339,7 +339,7 @@
             <TwitterBtn class="mt-2 mr-1" content="" size="sm" />
           </div>
         </div>
-        <div class="col-12 col-lg-8">
+        <div class="col-12 col-lg-8 pt-2">
           <JobboardList
             id="job-list"
             class="mb-4"
