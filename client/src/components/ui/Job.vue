@@ -423,14 +423,15 @@
           variant="outline-primary"
           size="sm"
           to="/stellenangebote"
-          >Zurück zur Stellenbörse</b-button
+          >Zurück zu Stellenangeboten</b-button
         >
         <b-button
           class="mr-2 mt-2"
           variant="outline-primary"
           size="sm"
-          to="/karriere/mfa/gehalt"
-          >Gehaltsrechner</b-button
+          :to="`/karriere/${job.profession === 'ZFA' ? 'zfa' : 'mfa'}/gehalt`"
+          >{{ job.profession === "ZFA" ? "ZFA" : "MFA" }} Gehalt |
+          Gehaltsrechner</b-button
         >
         <b-button
           class="mr-2 mt-2"

@@ -118,12 +118,21 @@
             <router-link to="/karriere/bewerbungstipps"
               >Bewerbungstipps</router-link
             >
-            <router-link to="/karriere/mfa/gehalt">Gehaltsrechner</router-link>
-            <router-link to="/user/dashboard?tab=1"
-              >Stellenanzeige schalten</router-link
+            <router-link to="/karriere/mfa/gehalt"
+              >MFA Gehalt | Gehaltsrechner</router-link
+            >
+            <router-link to="/karriere/zfa/gehalt"
+              >ZFA Gehalt | Gehaltsrechner</router-link
             >
             <router-link to="/stellenangebote/unternehmensverzeichnis"
               >Unternehmensverzeichnis</router-link
+            >
+
+            <router-link class="mt-4" to="/fuer-arbeitgeber"
+              >Für Arbeitgeber</router-link
+            >
+            <router-link to="/user/dashboard?tab=1"
+              >Stellenanzeige schalten</router-link
             >
 
             <router-link class="mt-5" to="/kontakt">Kontakt</router-link>
