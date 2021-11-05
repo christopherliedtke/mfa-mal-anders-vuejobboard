@@ -70,12 +70,15 @@
             },
             {
               property: "og:url",
-              content: this.$route.path,
+              content: window.location.origin + this.$route.path,
               id: "og-url"
             },
             {
               property: "og:image",
-              content: this.img || `/img/MfaMalAnders_Banner_1200.jpg`,
+              content: this.img.match(/https?:\/\//gi)
+                ? this.img
+                : window.location.origin + this.img ||
+                  window.location.origin + `/img/MfaMalAnders_Banner_1200.jpg`,
               id: "og-image"
             },
             {
@@ -105,7 +108,10 @@
             },
             {
               property: "twitter:image",
-              content: this.img || `/img/MfaMalAnders_Banner_1200.jpg`,
+              content: this.img.match(/https?:\/\//gi)
+                ? this.img
+                : window.location.origin + this.img ||
+                  window.location.origin + `/img/MfaMalAnders_Banner_1200.jpg`,
               id: "twitter-image"
             },
             {
