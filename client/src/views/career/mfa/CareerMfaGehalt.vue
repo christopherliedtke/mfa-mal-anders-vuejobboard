@@ -60,8 +60,8 @@
           </li>
           <li class="lead mt-3">
             <b-link to="#gehalt-ausbildung"
-              >MFA Ausbildung Gehalt {{ new Date().getFullYear() }} – nach
-              Tarifvertrag</b-link
+              >MFA Gehalt in der Ausbildung {{ new Date().getFullYear() }} –
+              nach Tarifvertrag</b-link
             >
           </li>
           <li class="lead mt-3">
@@ -87,8 +87,21 @@
             >
           </li>
           <li class="lead mt-3">
+            <b-link to="#gehalt-im-oeffentlichen-dienst"
+              >MFA Gehalt im Öffentlichen Dienst</b-link
+            >
+          </li>
+          <li class="lead mt-3">
             <b-link to="#gehalt-per-bundesland"
               >MFA Gehalt nach Bundesland</b-link
+            >
+          </li>
+          <li class="lead mt-3">
+            <b-link to="#gehalt-per-stadt">MFA Gehalt nach Stadt</b-link>
+          </li>
+          <li class="lead mt-3">
+            <b-link to="#gehalt-per-alter"
+              >MFA Gehalt nach Alter und Geschlecht</b-link
             >
           </li>
           <li class="lead mt-3">
@@ -942,15 +955,113 @@
         </div>
       </div>
 
+      <h2 id="gehalt-im-oeffentlichen-dienst">
+        MFA Gehalt im öffentlichen Dienst
+      </h2>
+      <p>
+        Im öffentlichen Dienst werden Medizinische Fachangestellte gemäß TVöD-B
+        in die Entgeltgruppe E-5 eingeordnet. Sollte Personalverantwortung in
+        Deiner Position hinzukommen, kannst Du in die Entgeltgruppe E-6
+        aufsteigen. Entsprechend Deiner Berufserfahrung wirst Du in die Stufen 1
+        - 6 eingeteilt und kannst so bezüglich Deines Gehalts weiter aufsteigen.
+      </p>
+
+      <h3 class="h5">TVöD-B – 01.04.2021 - 31.03.2022</h3>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Entgeltgruppe</th>
+              <th scope="col">1. Stufe</th>
+              <th scope="col">2. Stufe</th>
+              <th scope="col">3. Stufe</th>
+              <th scope="col">4. Stufe</th>
+              <th scope="col">5. Stufe</th>
+              <th scope="col">6. Stufe</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>E 6</td>
+              <td>2.636,00 €</td>
+              <td>2.817,11 €</td>
+              <td>2.944,11 €</td>
+              <td>3.069,78 €</td>
+              <td>3.193,22 €</td>
+              <td>3.256,10 €</td>
+            </tr>
+            <tr>
+              <td>E 5</td>
+              <td>2.530,74 €</td>
+              <td>2.706,42 €</td>
+              <td>2.825,08 €</td>
+              <td>2.950,74 €</td>
+              <td>3.067,50 €</td>
+              <td>3.127,85 €</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="small text-muted text-right mt-3">
+          Quelle: TVöD-B Tabelle gültig vom 01.04.2021 - 31.03.2022
+        </p>
+      </div>
+
+      <h3 class="h5">TVöD-B – 01.04.2022 - 31.12.2022</h3>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Entgeltgruppe</th>
+              <th scope="col">1. Stufe</th>
+              <th scope="col">2. Stufe</th>
+              <th scope="col">3. Stufe</th>
+              <th scope="col">4. Stufe</th>
+              <th scope="col">5. Stufe</th>
+              <th scope="col">6. Stufe</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>E 6</td>
+              <td>2.683,45 €</td>
+              <td>2.867,82 €</td>
+              <td>2.997,10 €</td>
+              <td>3.125,04 €</td>
+              <td>3.250,70 €</td>
+              <td>3.314,71 €</td>
+            </tr>
+            <tr>
+              <td>E 5</td>
+              <td>2.576,29 €</td>
+              <td>2.755,14 €</td>
+              <td>2.875,93 €</td>
+              <td>3.003,85 €</td>
+              <td>3.122,72 €</td>
+              <td>3.184,15 €</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="small text-muted text-right mt-3">
+          Quelle: TVöD-B Tabelle gültig vom 01.04.2022 - 31.12.2022
+        </p>
+      </div>
+
       <h2 id="gehalt-per-bundesland">MFA Gehalt nach Bundesland</h2>
       <p>
         Nach wie vor ist es so, dass unterschiedliche Gehälter gezahlt werden –
-        je nachdem, wo man arbeitet. Auch bei ArzthelferInnen ist dies der Fall.
-        Wenig überaschend sieht man ein deutliches Gefälle zwischen den alten
-        und neuen Bundesländern. Durchschnittlich verdient man in Sachsen,
-        Sachsen-Anhalt, Brandenburg, Thüringen und Mecklenburg-Vorpommern
-        zwischen 2.057 € und 2.153 € brutto pro Monat. In den übrigen
-        Bundesländern liegt dieser Wert zwischen 2.420 € und 2.612 €.
+        je nachdem, wo man arbeitet. Auch bei Medizinischen Fachangestellten ist
+        dies der Fall. Wenig überaschend sieht man ein deutliches Gefälle
+        zwischen den alten und neuen Bundesländern. Durchschnittlich verdient
+        man in Sachsen, Sachsen-Anhalt, Brandenburg, Thüringen und
+        Mecklenburg-Vorpommern zwischen 2.123 € und 2.202 € brutto pro Monat. In
+        den übrigen Bundesländern
+        <span class="text-muted"
+          >(Niedersachsen, Saarland, Berlin, Rheinland-Pfalz,
+          Nordrhein-Westfalen, Schleswig-Holstein, Bremen, Hessen,
+          Baden-Württemberg, Bayern, Hamburg)</span
+        >
+        liegt das monatliche Gehalt brutto durchschnittlich zwischen 2.467 € und
+        2.673 €.
       </p>
       <div class="w-75 mx-auto my-4">
         <div class="d-flex justify-content-center mb-4">
@@ -965,6 +1076,212 @@
           />
         </div>
         <p class="small text-muted text-right">
+          Quelle: Entgeltatlas der Bundesagentur für Arbeit
+        </p>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Bundesland</th>
+              <th scope="col">Monatliches Gehalt (brutto)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Sachsen</th>
+              <td>2.123 €</td>
+            </tr>
+            <tr>
+              <th scope="row">Sachsen-Anhalt</th>
+              <td>2.133 €</td>
+            </tr>
+            <tr>
+              <th scope="row">Thüringen</th>
+              <td>2.138 €</td>
+            </tr>
+            <tr>
+              <th scope="row">Mecklenburg-Vorpommern</th>
+              <td>2.196 €</td>
+            </tr>
+            <tr>
+              <th scope="row">Brandenburg</th>
+              <td>2.202 €</td>
+            </tr>
+            <tr>
+              <th scope="row">Niedersachsen</th>
+              <td>2.467 €</td>
+            </tr>
+            <tr>
+              <th scope="row">Saarland</th>
+              <td>2.471 €</td>
+            </tr>
+            <tr>
+              <th scope="row">Rheinland-Pfalz</th>
+              <td>2.501 €</td>
+            </tr>
+            <tr>
+              <th scope="row">Nordrhein-Westfalen</th>
+              <td>2.514 €</td>
+            </tr>
+            <tr>
+              <th scope="row">Berlin</th>
+              <td>2.524 €</td>
+            </tr>
+            <tr>
+              <th scope="row">Schleswig-Holstein</th>
+              <td>2.533 €</td>
+            </tr>
+            <tr>
+              <th scope="row">Bremen</th>
+              <td>2.551 €</td>
+            </tr>
+            <tr>
+              <th scope="row">Hessen</th>
+              <td>2.555 €</td>
+            </tr>
+            <tr>
+              <th scope="row">Baden-Württemberg</th>
+              <td>2.590 €</td>
+            </tr>
+            <tr>
+              <th scope="row">Bayern</th>
+              <td>2.600 €</td>
+            </tr>
+            <tr>
+              <th scope="row">Hamburg</th>
+              <td>2.673 €</td>
+            </tr>
+            <tr class="table-secondary">
+              <th scope="row">Deutschland ∅</th>
+              <td>2.496 €</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="small text-muted text-right mt-3">
+          Quelle: Entgeltatlas der Bundesagentur für Arbeit
+        </p>
+      </div>
+
+      <h2 id="gehalt-per-stadt">MFA Gehalt nach Stadt</h2>
+      <p>
+        Dazu gilt es noch zu beachten, dass das Gehalt für Medizinische
+        Fachangestellte in den Städten in der Regel höher ist, als im ländlichen
+        Raum. Aber auch der Vergleich zwischen den verschiedenen Großstädten
+        zeigt zum Teil große Differenzen. Während eine ArzthelferIn in München
+        im Schnitt etwa 2.912 € im Monat verdient, sind es in Köln 2.611 € und
+        in Leipzig lediglich 2.172 €.
+      </p>
+
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Stadt</th>
+              <th scope="col">Monatliches Gehalt (brutto)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">München</th>
+              <td>2.912 €</td>
+            </tr>
+            <tr>
+              <th scope="row">Stuttgart</th>
+              <td>2.818 €</td>
+            </tr>
+            <tr>
+              <th scope="row">Frankfurt am Main</th>
+              <td>2.767 €</td>
+            </tr>
+            <tr>
+              <th scope="row">Essen</th>
+              <td>2.678 €</td>
+            </tr>
+            <tr>
+              <th scope="row">Hannover</th>
+              <td>2.647 €</td>
+            </tr>
+            <tr>
+              <th scope="row">Köln</th>
+              <td>2.611 €</td>
+            </tr>
+            <tr>
+              <th scope="row">Düsseldorf</th>
+              <td>2.589 €</td>
+            </tr>
+            <tr>
+              <th scope="row">Nürnberg</th>
+              <td>2.571 €</td>
+            </tr>
+            <tr>
+              <th scope="row">Dortmund</th>
+              <td>2.552 €</td>
+            </tr>
+            <tr>
+              <th scope="row">Dresden</th>
+              <td>2.236 €</td>
+            </tr>
+            <tr>
+              <th scope="row">Leipzig</th>
+              <td>2.172 €</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="small text-muted text-right mt-3">
+          Quelle: Entgeltatlas der Bundesagentur für Arbeit
+        </p>
+      </div>
+
+      <h2 id="gehalt-per-alter">MFA Gehalt nach Alter und Geschlecht</h2>
+      <p>
+        Mit höherem Alter kommen in der Regel auch eine größere Berufserfahrung
+        und Anzahl absolvierter Fortbildungen zusammen. In diesem Zusammenhang
+        steigt natürlich auch das Gehalt entsprechend der persönlichen
+        Qualifikationen an.
+      </p>
+      <p>
+        Der Vergleich zwischen den Geschlechtern ist in der Berufsgruppe der
+        Medizinischen Fachangestellten schwierig. Dem Entgeltatlas der
+        Bundesagentur für Arbeit sind bezüglich des Gehaltes männlicher
+        Medizinischer Fachangestellter kaum Daten zu entnehmen. Grund hierfür
+        dürfte sein, dass der Beruf nach wie vor mit überwältigender Mehrheit
+        von Frauen ausgeübt wird. Dementsprechend sind auch die Daten in der
+        folgenden Tabelle mit Vorsicht zu genießen.
+      </p>
+
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Altersgruppe</th>
+              <th scope="col">weiblich</th>
+              <th scope="col">männlich</th>
+              <th scope="col">Median</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">&lt; 25</th>
+              <td>2.198 €</td>
+              <td>keine Daten</td>
+              <td>2.198 €</td>
+            </tr>
+            <tr>
+              <th scope="row">25 - 54</th>
+              <td>2.558 €</td>
+              <td>2.879 €</td>
+              <td>2.562 €</td>
+            </tr>
+            <tr>
+              <th scope="row">55+</th>
+              <td>2.690 €</td>
+              <td>keine Daten</td>
+              <td>2.690 €</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="small text-muted text-right mt-3">
           Quelle: Entgeltatlas der Bundesagentur für Arbeit
         </p>
       </div>
