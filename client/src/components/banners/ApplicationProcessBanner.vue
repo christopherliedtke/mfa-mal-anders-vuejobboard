@@ -1,5 +1,7 @@
 <template>
-  <div class="card text-center overflow-hidden bg-light-shade shadow1 m-3 p-4">
+  <aside
+    class="card text-center overflow-hidden bg-light-shade shadow1 m-3 p-4"
+  >
     <div class="row no-gutters">
       <div class="col-md-3">
         <b-img
@@ -29,7 +31,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </aside>
 </template>
 
 <script>

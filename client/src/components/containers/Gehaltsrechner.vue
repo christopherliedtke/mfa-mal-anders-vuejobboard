@@ -1,6 +1,6 @@
 <template>
   <div class="gehaltsrechner p-4 border-radius2 shadow1">
-    <h2 class="h3">
+    <h3>
       MFA Gehaltsrechner {{ year }}
       <div id="popover-mfa-gehaltsrechner">
         <svg
@@ -28,7 +28,7 @@
         Praxis. Du erhältst weitere Informationen zur noch besseren Einschätzung
         im folgenden Text und im Gehaltstarifvertrag des AAA.
       </b-popover>
-    </h2>
+    </h3>
     <p>
       Gib Deine Daten ein und erhalte Dein Gehalt entsprechend des
       Gehaltstarifvertrags* für {{ year }} für Medizinische Fachangestellte
@@ -237,7 +237,7 @@
     background-color: $primary;
     color: $light;
 
-    h2 > div {
+    h3 > div {
       display: inline-flex;
       justify-content: center;
       align-items: center;

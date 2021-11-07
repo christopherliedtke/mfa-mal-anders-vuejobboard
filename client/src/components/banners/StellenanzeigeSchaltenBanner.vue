@@ -1,5 +1,5 @@
 <template>
-  <div class="card  overflow-hidden shadow1" style="max-width: 840px;">
+  <aside class="card  overflow-hidden shadow1" style="max-width: 840px;">
     <div class="row p-4">
       <div class="col-md-8">
         <div class="card-body  h-100 p-4">
@@ -43,7 +43,7 @@
         ></b-img-lazy>
       </div>
     </div>
-  </div>
+  </aside>
 </template>
 
 <script>

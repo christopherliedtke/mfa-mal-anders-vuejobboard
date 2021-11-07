@@ -1,5 +1,5 @@
 <template>
-  <div class="card text-center overflow-hidden shadow1 p-3">
+  <aside class="card text-center overflow-hidden shadow1 p-3">
     <div
       class="card-body d-flex flex-column justify-content-center align-items-center h-100 p-4"
     >
@@ -14,7 +14,7 @@
         >Zum Fortbildungskatalog</b-button
       >
     </div>
-  </div>
+  </aside>
 </template>
 
 <script>

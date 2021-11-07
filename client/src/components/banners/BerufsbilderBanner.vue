@@ -1,5 +1,5 @@
 <template>
-  <div class="card shadow1">
+  <aside class="card shadow1">
     <b-img-lazy
       class="card-img-top"
       fluid
@@ -30,7 +30,7 @@
         >Mehr erfahren!</b-button
       >
     </div>
-  </div>
+  </aside>
 </template>
 
 <script>

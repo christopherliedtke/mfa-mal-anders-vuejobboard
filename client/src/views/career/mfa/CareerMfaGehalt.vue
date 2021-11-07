@@ -52,38 +52,46 @@
               Medizinische Fachangestellte / ArzthelferIn</b-link
             >
           </li>
+
+          <ol>
+            <li class="lead mt-3">
+              <b-link to="#gehaltsrechner"
+                >Gehaltsrechner MFA – nach Berufsjahre, Fortbildungen,
+                Arbeitszeit</b-link
+              >
+            </li>
+
+            <li class="lead mt-3">
+              <b-link to="#berufsjahre"
+                >Anrechnung von Berufsjahren nach Gehaltstarifvertrag</b-link
+              >
+            </li>
+            <li class="lead mt-3">
+              <b-link to="#auszeiten"
+                >Mutterschutz, Elternzeit und Erziehungsurlaub</b-link
+              >
+            </li>
+            <li class="lead mt-3">
+              <b-link to="#berufsnahe-taetigkeiten"
+                >Anrechnung der Berufsjahre für MFA bei berufsnahen
+                Tätigkeiten</b-link
+              >
+            </li>
+            <li class="lead mt-3">
+              <b-link to="#taetigkeitsgruppen"
+                >Tätigkeitsgruppen nach aktuellem Gehaltstarifvertrag für
+                MFA</b-link
+              >
+            </li>
+          </ol>
+
           <li class="lead mt-3">
-            <b-link to="#gehaltsrechner"
-              >Gehaltsrechner MFA – nach Berufsjahre, Fortbildungen,
-              Arbeitszeit</b-link
-            >
+            <b-link to="#gehalt-teilzeit">MFA Gehalt in Teilzeit</b-link>
           </li>
           <li class="lead mt-3">
             <b-link to="#gehalt-ausbildung"
               >MFA Gehalt in der Ausbildung {{ new Date().getFullYear() }} –
               nach Tarifvertrag</b-link
-            >
-          </li>
-          <li class="lead mt-3">
-            <b-link to="#berufsjahre"
-              >Anrechnung von Berufsjahren nach Gehaltstarifvertrag</b-link
-            >
-          </li>
-          <li class="lead mt-3">
-            <b-link to="#auszeiten"
-              >Mutterschutz, Elternzeit und Erziehungsurlaub</b-link
-            >
-          </li>
-          <li class="lead mt-3">
-            <b-link to="#berufsnahe-taetigkeiten"
-              >Anrechnung der Berufsjahre für MFA bei berufsnahen
-              Tätigkeiten</b-link
-            >
-          </li>
-          <li class="lead mt-3">
-            <b-link to="#taetigkeitsgruppen"
-              >Tätigkeitsgruppen nach aktuellem Gehaltstarifvertrag für
-              MFA</b-link
             >
           </li>
           <li class="lead mt-3">
@@ -474,37 +482,374 @@
             ArzthelferInnen – AAA (2021)</b-link
           >
         </p>
-        <h3 class="mt-4">
-          MFA Gehalt {{ new Date().getFullYear() }} in Teilzeit
-        </h3>
-        <p>
-          Dein Gehalt als ArzthelferIn in Teilzeit kannst Du Dir mit Hilfe des
-          <b-link to="#gehaltsrechner">Gehaltsrechners</b-link> ausrechnen.
-        </p>
-        <p>
-          Arbeitest Du <strong>25 Stunden pro Woche in Teilzeit</strong>, kommst
-          Du laut Gehaltstabelle aus dem Tarifvertrag beispielsweise auf ein
-          monatliches
-          <strong
-            >Grundgehalt zwischen 1.354,- und 2.720,- Euro (brutto)</strong
-          >
-          in Abhängigkeit von Deinen Berufsjahren und absolvierten
-          Fortbildungsstunden.
-        </p>
-        <p>
-          Bei <strong>30 Stunden pro Woche in Teilzeit</strong>, kommst Du laut
-          Gehaltstabelle aus dem Tarifvertrag auf ein monatliches
-          <strong
-            >Grundgehalt zwischen 1.625,- und 3.264,- Euro (brutto)</strong
-          >
-          in Abhängigkeit von Deinen Berufsjahren und absolvierten
-          Fortbildungsstunden.
-        </p>
       </div>
 
       <div class="bg-light-shade border-radius2 shadow1 my-5 p-3 p-md-4">
         <JobSearchSingleForm class="mb-3" placeholder="Neuen Job finden..." />
         <JobsTeaserContainer profession="" />
+      </div>
+
+      <h3 id="berufsjahre">
+        Anrechnung von Berufsjahren
+      </h3>
+      <p>
+        Ein wichtiger Indikator für die Höhe des Verdienstes von MFA sind
+        Erfahrung und Expertise, die man sich im Laufe seines Berufslebens
+        aneignet. Je länger du im Beruf bist, desto mehr kannst du
+        logischerweise an Gehalt verlangen. Auch in den Tarifverhandlungen
+        werden Gehälter nach Berufsjahren und Tätigkeitsgruppen vereinbart.
+      </p>
+      <p>
+        Schauen wir uns einmal an, wie Du deine Berufsjahre berechnen kannst.
+      </p>
+      <p>
+        Die Anrechnung deiner Berufsjahre startet ab dem 1. des Monats, in dem
+        die Ausbildung beendet wurde.
+      </p>
+
+      <div class="example">
+        <p><strong>Beispiel:</strong></p>
+        <p class="pl-5">
+          <em>
+            Ausbildung am 16.07. beendet -> Anrechnung der Berufsjahre beginnt
+            ab 01.07.
+          </em>
+        </p>
+      </div>
+      <p>
+        Bei Beschäftigten in Teilzeit zählen die Berufsjahre genau wie bei
+        Vollzeit-Beschäftigung und werden komplett angerechnet.
+      </p>
+      <h3 id="auszeiten">
+        Mutterschutz, Elternzeit und Erziehungsurlaub
+      </h3>
+      <p>
+        Unterbrichst du die Arbeit für Mutterschutz, Elternzeit oder
+        Erziehungsurlaub, können diese Zeiten nur angerechnet werden, wenn du
+        dich in einem aktiven Arbeitsverhältnis befindest.
+      </p>
+      <p>
+        Zeiten für Mutterschutz werden dann voll bei den Berufsjahren
+        angerechnet.
+      </p>
+      <p>
+        Zeiten für Erziehungsurlaub bzw. Elternzeit werden nur zur Hälfte zu den
+        Berufsjahren gezählt. Arbeitest du während der Elternzeit in Teilzeit
+        als ArzthelferIn, werden die Zeiten jedoch voll dazu gerechnet.
+      </p>
+      <p>Zwei Beispiele zum besseren Verständnis.</p>
+      <div class="row my-3">
+        <div class="col mx-lg-4">
+          <div class="example">
+            <p><strong>Beispiel 1:</strong></p>
+            <p class="pl-5">
+              <em>
+                Eine Medizinische Fachangestellte geht am 15. August 2016 bei
+                errechnetem Geburtstermin am 30.09.2016 (6 Wochen vor dem
+                errechneten Entbindungstermin) bis zum 25.11.2016 (8 Wochen nach
+                der Entbindung) in den Mutterschutz und nimmt eine einjährige
+                Elternzeit in Anspruch. Sie kehrt am 01.10.2017 in Vollzeit in
+                die berufliche Tätigkeit als MFA zurück. Sie bekommt für diese
+                Zeit insgesamt 8,5 Monate bei den Berufsjahren angerechnet.
+              </em>
+            </p>
+          </div>
+        </div>
+        <div class="col mx-lg-4">
+          <div class="example">
+            <p><strong>Beispiel 2:</strong></p>
+            <p class="pl-5">
+              <em>
+                Eine Medizinische Fachangestellte geht am 15. August 2016 bei
+                errechnetem Geburtstermin am 30.09.2016 in Mutterschutz bis zum
+                25.11.2016 und nimmt anschließend eine einjährige Elternzeit in
+                Anspruch. Ab dem 01.04.2017 arbeitet sie während der Elternzeit
+                in Teilzeit 8 Stunden wöchentlich in der Praxis. Sie kehrt am
+                01.10.2017 aus der Elternzeit in die Praxis zurück. Sie bekommt
+                für diese Zeit insgesamt 11,5 Monate bei den Berufsjahren
+                angerechnet.
+              </em>
+            </p>
+          </div>
+        </div>
+      </div>
+      <h3 id="berufsnahe-taetigkeiten">
+        Anrechnung der Berufsjahre für MFA bei berufsnahen Tätigkeiten
+      </h3>
+      <p>
+        Bist du vor oder nach deiner Ausbildung einer berufsnahen Arbeit
+        nachgegangen (z.B. in einem Labor oder im Krankenhaus), werden die
+        Zeiten zur Hälfte angerechnet. Du musst allerdings deine Prüfung zur
+        Medizinischen Fachangestellten vor der Ärztekammer bestanden haben.
+      </p>
+      <div class="example">
+        <p><strong>Beispiel:</strong></p>
+        <p class="pl-5">
+          <em>
+            Eine Medizinische Fachangestellte arbeitet vor (oder nach) ihrer
+            Ausbildung vier Jahre in einer Zahnarztpraxis. Hier werden 2
+            Berufsjahre angerechnet.
+          </em>
+        </p>
+      </div>
+      <h3 id="taetigkeitsgruppen">
+        Tätigkeitsgruppen nach aktuellem Gehaltstarifvertrag für MFA
+      </h3>
+      <p>
+        Im Gehaltstarifvertrag für Medizinische Fachangestellte werden
+        vorhandene Kenntnisse und Qualifikationen in Tätigkeitsgruppen
+        eingeordnet und entsprechend im Gehalt widergespiegelt. Die Tätigkeiten
+        werden nach Grad der Selbstständigkeit, Anzahl der Fortbildungsstunden,
+        leitende Tätigkeiten und Verantwortung eingeteilt. Dies gibt dir eine
+        zusätzliche Orientierung, um dein Gehaltsniveau einschätzen zu können.
+        Hier steigern vor allem abgeschlossene
+        <b-link to="/karriere/fort-und-weiterbildungen"
+          >Fortbildungen und Weiterbildungen</b-link
+        >
+        das Gehaltsniveau.
+      </p>
+      <p>
+        Nach welchen Kriterien sich die Tätigkeitsgruppen aufteilen, zeigt dir
+        die nachfolgende Übersicht.
+      </p>
+      <div class="my-4">
+        <div class="card mb-1 bg-light-shade">
+          <h4 class="card-header h5 p-3">
+            Tätigkeitsgruppe 1
+          </h4>
+
+          <div class="card-body pl-5">
+            <ul>
+              <li>
+                Berufseinsteiger nach abgeschlossener Ausbildung zur
+                medizinischen Fachangestellten
+              </li>
+              <li>
+                Du führst Tätigkeiten nach Anweisungen des Arztes oder einer
+                erfahreneren Kollegin aus
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="card mb-1 bg-light-shade">
+          <h4 class="card-header h5 p-3">
+            Tätigkeitsgruppe 2
+          </h4>
+          <div class="card-body pl-5">
+            <ul>
+              <li>
+                Du kannst Tätigkeiten weitestgehend selbstständig ausführen
+              </li>
+              <li>
+                Du hast mind. 40 Fortbildungsstunden gesammelt und weist
+                vertiefte Kenntnisse und Fertigkeiten in einem Arbeitsbereich
+                auf
+              </li>
+            </ul>
+            <p>
+              <em>Fortbildungsmaßnahmen sind zum Beispiel:</em>
+            </p>
+            <ul>
+              <li>
+                Ambulante Versorgung älterer Menschen
+              </li>
+              <li>Wundbehandlung/ Wundmanagement</li>
+              <li>Hygienemanagement</li>
+              <li>Qualitätsmanagement</li>
+              <li>
+                Patientenbegleitung und Koordination
+              </li>
+              <li>Datenschutz und Datensicherheit</li>
+              <li>
+                Informations- und Kommunikationstechnik
+              </li>
+              <li>
+                Notfallmanagement/ Erweiterte Notfallkompetenz
+              </li>
+              <li>
+                <b-link
+                  to="/karriere/fort-und-weiterbildungen/impfassistentin-fachkraft-fuer-impfmanagement"
+                  >Impfassistenz</b-link
+                >
+              </li>
+              <li>Disease-Management-Programme</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card mb-1 bg-light-shade">
+          <h4 class="card-header h5 p-3">
+            Tätigkeitsgruppe 3
+          </h4>
+          <div class="card-body pl-5">
+            <ul>
+              <li>
+                Du hast mindestens 80 Fortbildungsstunden gesammelt und/oder
+                weist entsprechende Berufserfahrung nach
+              </li>
+              <li>
+                Du führst Tätigkeiten in der Durchführung der Ausbildung der
+                Medizinischen Fachangestellten aus
+              </li>
+            </ul>
+
+            <p>
+              <em>Fortbildungsmaßnahmen sind zum Beispiel:</em>
+            </p>
+            <ul>
+              <li>
+                Elektronische Praxiskommunikation und Telematik
+              </li>
+              <li>
+                Prävention bei Jugendlichen und Erwachsenen
+              </li>
+              <li>
+                Prävention im Kindes- und Jugendalter
+              </li>
+              <li>
+                Strahlenschutzkurs lt. § 24 (2) Röntgenverordnung (90 Stunden)
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="card mb-1 bg-light-shade">
+          <h4 class="card-header h5 p-3">
+            Tätigkeitsgruppe 4
+          </h4>
+          <div class="card-body pl-5">
+            <ul>
+              <li>
+                Du führst Tätigkeiten komplett selbstständige aus
+              </li>
+              <li>
+                Du hast besonders vielseitige Fachkenntnisse die durch Aneignung
+                zusätzlicher umfassender Fertigkeiten, Kenntnisse und
+                Fähigkeiten in komplexen Arbeitsbereichen erworben
+              </li>
+              <li>
+                Du hast mindestens 120 Fortbildungsstunden gesammelt und/oder
+                übernimmst Tätigkeiten in der systematischen Planung,
+                Durchführung und Koordination der Ausbildung der Medizinischen
+                Fachangestellten
+              </li>
+            </ul>
+            <p>
+              <em>Fortbildungsmaßnahmen sind zum Beispiel:</em>
+            </p>
+            <ul>
+              <li>
+                <b-link
+                  to="/karriere/fort-und-weiterbildungen/ambulantes-operieren"
+                  >Ambulantes Operieren</b-link
+                >
+              </li>
+              <li>
+                <b-link
+                  to="/karriere/fort-und-weiterbildungen/ambulantes-operieren-in-der-augenheilkunde"
+                  >Ambulantes Operieren in der Augenheilkunde</b-link
+                >
+              </li>
+              <li>
+                Augenheilkundlich-technische Assistenz
+              </li>
+              <li>Dialyse</li>
+              <li>Ernährungsmedizin</li>
+              <li>Gastroenterologische Endoskopie</li>
+              <li>
+                <b-link
+                  to="/karriere/fort-und-weiterbildungen/onkologischer-fachassistentin"
+                  >Onkologie</b-link
+                >
+              </li>
+              <li>Palliativversorgung</li>
+              <li>Pneumologie</li>
+              <li>
+                Strahlenschutzkurs lt. § 24 (2) Röntgenverordnung (120 Stunden)
+              </li>
+              <li>
+                <b-link
+                  to="/karriere/fort-und-weiterbildungen/qualitaetsmanagementbeauftragte-r-qmb"
+                >
+                  Qualitätsmanagement
+                </b-link>
+              </li>
+              <li>Hygienemanagement</li>
+              <li>
+                <b-link to="/karriere/fort-und-weiterbildungen"
+                  >Nicht-ärztliche Praxisassistenz</b-link
+                >
+              </li>
+              <li>
+                <b-link to="/karriere/fort-und-weiterbildungen/verah">
+                  Versorgungsassistentin in der Hausarztpraxis (VERAH®)
+                </b-link>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="card mb-1 bg-light-shade">
+          <h4 class="card-header h5 p-3">
+            Tätigkeitsgruppe 5
+          </h4>
+          <div class="card-body pl-5">
+            <ul>
+              <li>
+                Du führst leitungsbezogenen Tätigkeiten aus
+              </li>
+              <li>
+                Du kannst Fortbildungsmaßnahmen von insgesamt mindestens 360
+                Stunden und entsprechende Berufserfahrung vorweisen
+              </li>
+              <li>
+                Hierbei sind eine Fortbildung von mindestens 120 Stunden und
+                weitere Fortbildungseinheiten von mindestens 40 Stunden
+                innerhalb eines Zeitraums von 5 Jahren zu erbringen. Dieser
+                Zeitraum verlängert sich um die in Anspruch genommene
+                Elternzeit.
+              </li>
+            </ul>
+
+            <p>
+              <em>Ein Beispiel für eine solche Fortbildungsmaßnahme ist:</em>
+            </p>
+            <ul>
+              <li>
+                Fachwirtin für ambulante Medizinische
+                Versorgung/Arztfachhelferin gemäß § 54 BBiG
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="card mb-1 bg-light-shade">
+          <h4 class="card-header h5 p-3">
+            Tätigkeitsgruppe 6
+          </h4>
+          <div class="card-body pl-5">
+            <ul>
+              <li>
+                Du führst leitungs- und führungsbezogene Tätigkeiten aus
+              </li>
+              <li>
+                Du kannst Fortbildungsmaßnahmen von insgesamt mindestens 600
+                Stunden und entsprechende Berufserfahrung vorweisen
+              </li>
+            </ul>
+            <p>
+              <em>Ein Beispiel für eine solche Fortbildungsmaßnahme ist:</em>
+            </p>
+            <ul>
+              <li>
+                Betriebswirtin für Management im Gesundheitswesen gemäß § 54
+                BBiG
+              </li>
+              <li>
+                <b-link to="/karriere/fort-und-weiterbildungen"
+                  >Fachwirtin im Gesundheits- und Sozialwesen</b-link
+                >
+                gemäß § 53 BBiG
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
 
       <div class="row mb-4">
@@ -515,6 +860,29 @@
           <WeiterbildungenBanner class="mb-3" />
         </div>
       </div>
+
+      <h2 id="gehalt-teilzeit" class="mt-4">
+        MFA Gehalt {{ new Date().getFullYear() }} in Teilzeit
+      </h2>
+      <p>
+        Dein Gehalt als ArzthelferIn in Teilzeit kannst Du Dir mit Hilfe des
+        <b-link to="#gehaltsrechner">Gehaltsrechners</b-link> ausrechnen.
+      </p>
+      <p>
+        Arbeitest Du <strong>25 Stunden pro Woche in Teilzeit</strong>, kommst
+        Du laut Gehaltstabelle aus dem Tarifvertrag beispielsweise auf ein
+        monatliches
+        <strong>Grundgehalt zwischen 1.354,- und 2.720,- Euro (brutto)</strong>
+        in Abhängigkeit von Deinen Berufsjahren und absolvierten
+        Fortbildungsstunden.
+      </p>
+      <p>
+        Bei <strong>30 Stunden pro Woche in Teilzeit</strong>, kommst Du laut
+        Gehaltstabelle aus dem Tarifvertrag auf ein monatliches
+        <strong>Grundgehalt zwischen 1.625,- und 3.264,- Euro (brutto)</strong>
+        in Abhängigkeit von Deinen Berufsjahren und absolvierten
+        Fortbildungsstunden.
+      </p>
 
       <h2 id="gehalt-ausbildung">
         MFA Ausbildung Gehalt {{ new Date().getFullYear() }} – nach Tarifvertrag
@@ -591,369 +959,6 @@
         header="Mit neuem Job zu mehr Gehalt?"
         class="my-5 mx-auto"
       />
-
-      <h2 id="berufsjahre">
-        Anrechnung von Berufsjahren
-      </h2>
-      <p>
-        Ein wichtiger Indikator für die Höhe des Verdienstes von MFA sind
-        Erfahrung und Expertise, die man sich im Laufe seines Berufslebens
-        aneignet. Je länger du im Beruf bist, desto mehr kannst du
-        logischerweise an Gehalt verlangen. Auch in den Tarifverhandlungen
-        werden Gehälter nach Berufsjahren und Tätigkeitsgruppen vereinbart.
-      </p>
-      <p>
-        Schauen wir uns einmal an, wie Du deine Berufsjahre berechnen kannst.
-      </p>
-      <p>
-        Die Anrechnung deiner Berufsjahre startet ab dem 1. des Monats, in dem
-        die Ausbildung beendet wurde.
-      </p>
-
-      <div class="example">
-        <p><strong>Beispiel:</strong></p>
-        <p class="pl-5">
-          <em>
-            Ausbildung am 16.07. beendet -> Anrechnung der Berufsjahre beginnt
-            ab 01.07.
-          </em>
-        </p>
-      </div>
-      <p>
-        Bei Beschäftigten in Teilzeit zählen die Berufsjahre genau wie bei
-        Vollzeit-Beschäftigung und werden komplett angerechnet.
-      </p>
-      <h2 id="auszeiten">
-        Mutterschutz, Elternzeit und Erziehungsurlaub
-      </h2>
-      <p>
-        Unterbrichst du die Arbeit für Mutterschutz, Elternzeit oder
-        Erziehungsurlaub, können diese Zeiten nur angerechnet werden, wenn du
-        dich in einem aktiven Arbeitsverhältnis befindest.
-      </p>
-      <p>
-        Zeiten für Mutterschutz werden dann voll bei den Berufsjahren
-        angerechnet.
-      </p>
-      <p>
-        Zeiten für Erziehungsurlaub bzw. Elternzeit werden nur zur Hälfte zu den
-        Berufsjahren gezählt. Arbeitest du während der Elternzeit in Teilzeit
-        als ArzthelferIn, werden die Zeiten jedoch voll dazu gerechnet.
-      </p>
-      <p>Zwei Beispiele zum besseren Verständnis.</p>
-      <div class="row my-3">
-        <div class="col mx-lg-4">
-          <div class="example">
-            <p><strong>Beispiel 1:</strong></p>
-            <p class="pl-5">
-              <em>
-                Eine Medizinische Fachangestellte geht am 15. August 2016 bei
-                errechnetem Geburtstermin am 30.09.2016 (6 Wochen vor dem
-                errechneten Entbindungstermin) bis zum 25.11.2016 (8 Wochen nach
-                der Entbindung) in den Mutterschutz und nimmt eine einjährige
-                Elternzeit in Anspruch. Sie kehrt am 01.10.2017 in Vollzeit in
-                die berufliche Tätigkeit als MFA zurück. Sie bekommt für diese
-                Zeit insgesamt 8,5 Monate bei den Berufsjahren angerechnet.
-              </em>
-            </p>
-          </div>
-        </div>
-        <div class="col mx-lg-4">
-          <div class="example">
-            <p><strong>Beispiel 2:</strong></p>
-            <p class="pl-5">
-              <em>
-                Eine Medizinische Fachangestellte geht am 15. August 2016 bei
-                errechnetem Geburtstermin am 30.09.2016 in Mutterschutz bis zum
-                25.11.2016 und nimmt anschließend eine einjährige Elternzeit in
-                Anspruch. Ab dem 01.04.2017 arbeitet sie während der Elternzeit
-                in Teilzeit 8 Stunden wöchentlich in der Praxis. Sie kehrt am
-                01.10.2017 aus der Elternzeit in die Praxis zurück. Sie bekommt
-                für diese Zeit insgesamt 11,5 Monate bei den Berufsjahren
-                angerechnet.
-              </em>
-            </p>
-          </div>
-        </div>
-      </div>
-      <h2 id="berufsnahe-taetigkeiten">
-        Anrechnung der Berufsjahre für MFA bei berufsnahen Tätigkeiten
-      </h2>
-      <p>
-        Bist du vor oder nach deiner Ausbildung einer berufsnahen Arbeit
-        nachgegangen (z.B. in einem Labor oder im Krankenhaus), werden die
-        Zeiten zur Hälfte angerechnet. Du musst allerdings deine Prüfung zur
-        Medizinischen Fachangestellten vor der Ärztekammer bestanden haben.
-      </p>
-      <div class="example">
-        <p><strong>Beispiel:</strong></p>
-        <p class="pl-5">
-          <em>
-            Eine Medizinische Fachangestellte arbeitet vor (oder nach) ihrer
-            Ausbildung vier Jahre in einer Zahnarztpraxis. Hier werden 2
-            Berufsjahre angerechnet.
-          </em>
-        </p>
-      </div>
-      <h2 id="taetigkeitsgruppen">
-        Tätigkeitsgruppen nach aktuellem Gehaltstarifvertrag für MFA
-      </h2>
-      <p>
-        Im Gehaltstarifvertrag für Medizinische Fachangestellte werden
-        vorhandene Kenntnisse und Qualifikationen in Tätigkeitsgruppen
-        eingeordnet und entsprechend im Gehalt widergespiegelt. Die Tätigkeiten
-        werden nach Grad der Selbstständigkeit, Anzahl der Fortbildungsstunden,
-        leitende Tätigkeiten und Verantwortung eingeteilt. Dies gibt dir eine
-        zusätzliche Orientierung, um dein Gehaltsniveau einschätzen zu können.
-        Hier steigern vor allem abgeschlossene
-        <b-link to="/karriere/fort-und-weiterbildungen"
-          >Fortbildungen und Weiterbildungen</b-link
-        >
-        das Gehaltsniveau.
-      </p>
-      <p>
-        Nach welchen Kriterien sich die Tätigkeitsgruppen aufteilen, zeigt dir
-        die nachfolgende Übersicht.
-      </p>
-      <div class="my-4">
-        <div class="card mb-1 bg-light-shade">
-          <header class="card-header p-3">
-            Tätigkeitsgruppe 1
-          </header>
-
-          <div class="card-body pl-5">
-            <ul>
-              <li>
-                Berufseinsteiger nach abgeschlossener Ausbildung zur
-                medizinischen Fachangestellten
-              </li>
-              <li>
-                Du führst Tätigkeiten nach Anweisungen des Arztes oder einer
-                erfahreneren Kollegin aus
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="card mb-1 bg-light-shade">
-          <header class="card-header p-3">
-            Tätigkeitsgruppe 2
-          </header>
-          <div class="card-body pl-5">
-            <ul>
-              <li>
-                Du kannst Tätigkeiten weitestgehend selbstständig ausführen
-              </li>
-              <li>
-                Du hast mind. 40 Fortbildungsstunden gesammelt und weist
-                vertiefte Kenntnisse und Fertigkeiten in einem Arbeitsbereich
-                auf
-              </li>
-            </ul>
-            <p>
-              <em>Fortbildungsmaßnahmen sind zum Beispiel:</em>
-            </p>
-            <ul>
-              <li>
-                Ambulante Versorgung älterer Menschen
-              </li>
-              <li>Wundbehandlung/ Wundmanagement</li>
-              <li>Hygienemanagement</li>
-              <li>Qualitätsmanagement</li>
-              <li>
-                Patientenbegleitung und Koordination
-              </li>
-              <li>Datenschutz und Datensicherheit</li>
-              <li>
-                Informations- und Kommunikationstechnik
-              </li>
-              <li>
-                Notfallmanagement/ Erweiterte Notfallkompetenz
-              </li>
-              <li>
-                <b-link
-                  to="/karriere/fort-und-weiterbildungen/impfassistentin-fachkraft-fuer-impfmanagement"
-                  >Impfassistenz</b-link
-                >
-              </li>
-              <li>Disease-Management-Programme</li>
-            </ul>
-          </div>
-        </div>
-        <div class="card mb-1 bg-light-shade">
-          <header class="card-header p-3">
-            Tätigkeitsgruppe 3
-          </header>
-          <div class="card-body pl-5">
-            <ul>
-              <li>
-                Du hast mindestens 80 Fortbildungsstunden gesammelt und/oder
-                weist entsprechende Berufserfahrung nach
-              </li>
-              <li>
-                Du führst Tätigkeiten in der Durchführung der Ausbildung der
-                Medizinischen Fachangestellten aus
-              </li>
-            </ul>
-
-            <p>
-              <em>Fortbildungsmaßnahmen sind zum Beispiel:</em>
-            </p>
-            <ul>
-              <li>
-                Elektronische Praxiskommunikation und Telematik
-              </li>
-              <li>
-                Prävention bei Jugendlichen und Erwachsenen
-              </li>
-              <li>
-                Prävention im Kindes- und Jugendalter
-              </li>
-              <li>
-                Strahlenschutzkurs lt. § 24 (2) Röntgenverordnung (90 Stunden)
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="card mb-1 bg-light-shade">
-          <header class="card-header p-3">
-            Tätigkeitsgruppe 4
-          </header>
-          <div class="card-body pl-5">
-            <ul>
-              <li>
-                Du führst Tätigkeiten komplett selbstständige aus
-              </li>
-              <li>
-                Du hast besonders vielseitige Fachkenntnisse die durch Aneignung
-                zusätzlicher umfassender Fertigkeiten, Kenntnisse und
-                Fähigkeiten in komplexen Arbeitsbereichen erworben
-              </li>
-              <li>
-                Du hast mindestens 120 Fortbildungsstunden gesammelt und/oder
-                übernimmst Tätigkeiten in der systematischen Planung,
-                Durchführung und Koordination der Ausbildung der Medizinischen
-                Fachangestellten
-              </li>
-            </ul>
-            <p>
-              <em>Fortbildungsmaßnahmen sind zum Beispiel:</em>
-            </p>
-            <ul>
-              <li>
-                <b-link
-                  to="/karriere/fort-und-weiterbildungen/ambulantes-operieren"
-                  >Ambulantes Operieren</b-link
-                >
-              </li>
-              <li>
-                <b-link
-                  to="/karriere/fort-und-weiterbildungen/ambulantes-operieren-in-der-augenheilkunde"
-                  >Ambulantes Operieren in der Augenheilkunde</b-link
-                >
-              </li>
-              <li>
-                Augenheilkundlich-technische Assistenz
-              </li>
-              <li>Dialyse</li>
-              <li>Ernährungsmedizin</li>
-              <li>Gastroenterologische Endoskopie</li>
-              <li>
-                <b-link
-                  to="/karriere/fort-und-weiterbildungen/onkologischer-fachassistentin"
-                  >Onkologie</b-link
-                >
-              </li>
-              <li>Palliativversorgung</li>
-              <li>Pneumologie</li>
-              <li>
-                Strahlenschutzkurs lt. § 24 (2) Röntgenverordnung (120 Stunden)
-              </li>
-              <li>
-                <b-link
-                  to="/karriere/fort-und-weiterbildungen/qualitaetsmanagementbeauftragte-r-qmb"
-                >
-                  Qualitätsmanagement
-                </b-link>
-              </li>
-              <li>Hygienemanagement</li>
-              <li>
-                <b-link to="/karriere/fort-und-weiterbildungen"
-                  >Nicht-ärztliche Praxisassistenz</b-link
-                >
-              </li>
-              <li>
-                <b-link to="/karriere/fort-und-weiterbildungen/verah">
-                  Versorgungsassistentin in der Hausarztpraxis (VERAH®)
-                </b-link>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="card mb-1 bg-light-shade">
-          <header class="card-header p-3">
-            Tätigkeitsgruppe 5
-          </header>
-          <div class="card-body pl-5">
-            <ul>
-              <li>
-                Du führst leitungsbezogenen Tätigkeiten aus
-              </li>
-              <li>
-                Du kannst Fortbildungsmaßnahmen von insgesamt mindestens 360
-                Stunden und entsprechende Berufserfahrung vorweisen
-              </li>
-              <li>
-                Hierbei sind eine Fortbildung von mindestens 120 Stunden und
-                weitere Fortbildungseinheiten von mindestens 40 Stunden
-                innerhalb eines Zeitraums von 5 Jahren zu erbringen. Dieser
-                Zeitraum verlängert sich um die in Anspruch genommene
-                Elternzeit.
-              </li>
-            </ul>
-
-            <p>
-              <em>Ein Beispiel für eine solche Fortbildungsmaßnahme ist:</em>
-            </p>
-            <ul>
-              <li>
-                Fachwirtin für ambulante Medizinische
-                Versorgung/Arztfachhelferin gemäß § 54 BBiG
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="card mb-1 bg-light-shade">
-          <header class="card-header p-3">
-            Tätigkeitsgruppe 6
-          </header>
-          <div class="card-body pl-5">
-            <ul>
-              <li>
-                Du führst leitungs- und führungsbezogene Tätigkeiten aus
-              </li>
-              <li>
-                Du kannst Fortbildungsmaßnahmen von insgesamt mindestens 600
-                Stunden und entsprechende Berufserfahrung vorweisen
-              </li>
-            </ul>
-            <p>
-              <em>Ein Beispiel für eine solche Fortbildungsmaßnahme ist:</em>
-            </p>
-            <ul>
-              <li>
-                Betriebswirtin für Management im Gesundheitswesen gemäß § 54
-                BBiG
-              </li>
-              <li>
-                <b-link to="/karriere/fort-und-weiterbildungen"
-                  >Fachwirtin im Gesundheits- und Sozialwesen</b-link
-                >
-                gemäß § 53 BBiG
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
 
       <h2 id="gehalt-im-oeffentlichen-dienst">
         MFA Gehalt im öffentlichen Dienst
@@ -1687,6 +1692,25 @@
       cursor: pointer;
       background-color: transparentize($primary, $amount: 0.1);
       color: $light;
+    }
+
+    ol {
+      counter-reset: item;
+
+      li {
+        counter-increment: item;
+      }
+
+      ol {
+        li {
+          display: block;
+        }
+
+        li:before {
+          content: counters(item, ".") ". ";
+          margin-left: -20px;
+        }
+      }
     }
 
     .checklist {

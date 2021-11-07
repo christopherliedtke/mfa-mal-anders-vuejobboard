@@ -47,31 +47,35 @@
               ZahnarzthelferIn</b-link
             >
           </li>
-          <li class="lead mt-3">
-            <b-link to="#gehaltsrechner"
-              >Gehaltsrechner für ZFA / ZahnarzthelferIn</b-link
-            >
-          </li>
-          <li class="lead mt-3">
-            <b-link to="#gehalt-ausbildung"
-              >ZFA Ausbildung {{ new Date().getFullYear() }} – Gehalt nach
-              Tarifvertrag</b-link
-            >
-          </li>
-          <li class="lead mt-3">
-            <b-link to="#berufsjahre">Anrechnung von Berufsjahren</b-link>
-          </li>
-          <li class="lead mt-3">
-            <b-link to="#auszeiten"
-              >Mutterschutz, Elternzeit und Erziehungsurlaub</b-link
-            >
-          </li>
-          <li class="lead mt-3">
-            <b-link to="#taetigkeitsgruppen"
-              >Tätigkeitsgruppen nach aktuellem Gehaltstarifvertrag für
-              MFA</b-link
-            >
-          </li>
+
+          <ol>
+            <li class="lead mt-3">
+              <b-link to="#gehaltsrechner"
+                >Gehaltsrechner für ZFA / ZahnarzthelferIn</b-link
+              >
+            </li>
+            <li class="lead mt-3">
+              <b-link to="#gehalt-ausbildung"
+                >ZFA Ausbildung {{ new Date().getFullYear() }} – Gehalt nach
+                Tarifvertrag</b-link
+              >
+            </li>
+            <li class="lead mt-3">
+              <b-link to="#berufsjahre">Anrechnung von Berufsjahren</b-link>
+            </li>
+            <li class="lead mt-3">
+              <b-link to="#auszeiten"
+                >Mutterschutz, Elternzeit und Erziehungsurlaub</b-link
+              >
+            </li>
+            <li class="lead mt-3">
+              <b-link to="#taetigkeitsgruppen"
+                >Tätigkeitsgruppen nach aktuellem Gehaltstarifvertrag für
+                MFA</b-link
+              >
+            </li>
+          </ol>
+
           <li class="lead mt-3">
             <b-link to="#gehalt-per-bundesland"
               >ZFA Gehalt nach Bundesland</b-link
@@ -394,9 +398,9 @@
         </div>
       </div>
 
-      <h2 id="gehalt-ausbildung">
+      <h3 id="gehalt-ausbildung">
         ZFA Ausbildung {{ new Date().getFullYear() }} – Gehalt nach Tarifvertrag
-      </h2>
+      </h3>
       <p>
         Wie für andere Ausbildungsberufe auch, ist für die Ausbildung von
         Medizinischen Fachangestellten laut Berufsbildungsgesetz eine Vergütug
@@ -451,9 +455,9 @@
         class="my-5 mx-auto"
       />
 
-      <h2 id="berufsjahre">
+      <h3 id="berufsjahre">
         Anrechnung von Berufsjahren
-      </h2>
+      </h3>
       <p>
         Ein wichtiger Indikator für die Höhe des Gehalts von ZFA sind Erfahrung
         und Expertise, die man sich im Laufe seines Berufslebens aneignet. Je
@@ -484,9 +488,9 @@
         Bei Beschäftigten in Teilzeit zählen die Berufsjahre genau wie bei
         Vollzeit-Beschäftigung und werden komplett angerechnet.
       </p>
-      <h2 id="auszeiten">
+      <h3 id="auszeiten">
         Mutterschutz, Elternzeit und Erziehungsurlaub
-      </h2>
+      </h3>
       <p>
         Unterbrichst du die Arbeit für Mutterschutz, Elternzeit oder
         Erziehungsurlaub, können diese Zeiten nur angerechnet werden, wenn du
@@ -538,9 +542,9 @@
         </div>
       </div>
 
-      <h2 id="taetigkeitsgruppen">
+      <h3 id="taetigkeitsgruppen">
         Tätigkeitsgruppen nach aktuellem Gehaltstarifvertrag für ZFA
-      </h2>
+      </h3>
       <p>
         Im Gehaltstarifvertrag für Zahnmedizinische Fachangestellte werden
         vorhandene Kenntnisse und Qualifikationen in Tätigkeitsgruppen
@@ -560,9 +564,9 @@
       </p>
       <div class="my-4">
         <div class="card mb-1 bg-light-shade">
-          <header class="card-header p-3">
+          <h4 class="card-header h5 p-3">
             Tätigkeitsgruppe 1
-          </header>
+          </h4>
           <div class="card-body pl-5">
             <ul>
               <li>
@@ -577,9 +581,9 @@
           </div>
         </div>
         <div class="card mb-1 bg-light-shade">
-          <header class="card-header p-3">
+          <h4 class="card-header h5 p-3">
             Tätigkeitsgruppe 2
-          </header>
+          </h4>
           <div class="card-body pl-5">
             <ul>
               <li>
@@ -602,9 +606,9 @@
           </div>
         </div>
         <div class="card mb-1 bg-light-shade">
-          <header class="card-header p-3">
+          <h4 class="card-header h5 p-3">
             Tätigkeitsgruppe 3
-          </header>
+          </h4>
           <div class="card-body pl-5">
             <ul>
               <li>
@@ -627,9 +631,9 @@
           </div>
         </div>
         <div class="card mb-1 bg-light-shade">
-          <header class="card-header p-3">
+          <h4 class="card-header h5 p-3">
             Tätigkeitsgruppe 4
-          </header>
+          </h4>
           <div class="card-body pl-5">
             <ul>
               <li>
@@ -658,9 +662,9 @@
           </div>
         </div>
         <div class="card mb-1 bg-light-shade">
-          <header class="card-header p-3">
+          <h4 class="card-header h5 p-3">
             Tätigkeitsgruppe 5
-          </header>
+          </h4>
           <div class="card-body pl-5">
             <ul>
               <li>
@@ -1106,6 +1110,25 @@
       cursor: pointer;
       background-color: transparentize($primary, $amount: 0.1);
       color: $light;
+    }
+
+    ol {
+      counter-reset: item;
+
+      li {
+        counter-increment: item;
+      }
+
+      ol {
+        li {
+          display: block;
+        }
+
+        li:before {
+          content: counters(item, ".") ". ";
+          margin-left: -20px;
+        }
+      }
     }
 
     .checklist {

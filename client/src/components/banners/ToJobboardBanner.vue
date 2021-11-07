@@ -1,5 +1,5 @@
 <template>
-  <div class="card text-center overflow-hidden shadow1 p-3">
+  <aside class="card text-center overflow-hidden shadow1 p-3">
     <div class="row no-gutters">
       <div class="col-md-3">
         <b-img-lazy
@@ -31,7 +31,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </aside>
 </template>
 
 <script>

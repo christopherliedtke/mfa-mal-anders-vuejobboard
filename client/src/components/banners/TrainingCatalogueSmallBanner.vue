@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex justify-content-center">
+  <aside class="d-flex justify-content-center">
     <router-link to="/karriere/fortbildungskatalog" class="text-dark">
       <div
         class="border-radius1 shadow1 px-2 py-3 d-flex justify-content-around align-items-center"
@@ -27,7 +27,7 @@
         </div>
       </div>
     </router-link>
-  </div>
+  </aside>
 </template>
 
 <script>

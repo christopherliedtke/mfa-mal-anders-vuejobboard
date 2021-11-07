@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <aside>
     <b-link href="https://www.delst.de/de/?ref=mfa-mal-anders">
       <b-img
         class="border-radius1"
@@ -10,7 +10,7 @@
         height="90"
       />
     </b-link>
-  </div>
+  </aside>
 </template>
 
 <script>
