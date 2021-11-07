@@ -247,242 +247,232 @@
         </p>
       </div>
 
-      <div>
-        <h3 class="h4 mt-5">
-          Gehaltstabelle MFA 2021 nach Gehaltstarifvertrag – gültig ab
-          01.01.2021
-        </h3>
-        <p>
-          Der Stundenlohn im Jahr 2021 für Medizinische Fachangestellte (MFA)
-          bewegt sich laut Gehaltstarifvertrag je nach Berufserfahrung und
-          erworbenen Qualifikationen durch Fort- und Weiterbildungen zwischen
-          12,51 €/h und 25,13 €/h. Über den
-          <b-link to="#gehaltsrechner">Gehaltsrechner</b-link> kannst Du Dir den
-          Stundenlohn bzw. Gehalt in Teilzeit für Deinen relevanten Bereich
-          errechnen, indem Du als Wochenarbeitszeit eine Stunde auswählst.
-        </p>
-        <b-table-simple class="mt-3" hover responsive table-variant="secondary">
-          <colgroup>
-            <col />
-          </colgroup>
-          <colgroup>
-            <col />
-            <col />
-            <col />
-            <col />
-            <col />
-            <col />
-          </colgroup>
-          <b-thead head-variant="primary">
-            <b-tr>
-              <b-th>Berufsjahr</b-th>
-              <b-th>Tätigkeitsgruppe I</b-th>
-              <b-th>Tätigkeitsgruppe II</b-th>
-              <b-th>Tätigkeitsgruppe III</b-th>
-              <b-th>Tätigkeitsgruppe IV</b-th>
-              <b-th>Tätigkeitsgruppe V</b-th>
-              <b-th>Tätigkeitsgruppe VI</b-th>
-            </b-tr>
-          </b-thead>
-          <b-tbody class="text-right">
-            <b-tr>
-              <b-th>1 - 4</b-th>
-              <b-td>2.088,40 €</b-td>
-              <b-td>2.245,03 €</b-td>
-              <b-td>2.349,45 €</b-td>
-              <b-td>2.506,08 €</b-td>
-              <b-td>2.714,92 €</b-td>
-              <b-td>3.028,18 €</b-td>
-            </b-tr>
-            <b-tr>
-              <b-th>5 - 8</b-th>
-              <b-td>2.267,70 €</b-td>
-              <b-td>2.437,78 €</b-td>
-              <b-td>2.551,16 €</b-td>
-              <b-td>2.721,24 €</b-td>
-              <b-td>2.948,01 €</b-td>
-              <b-td>3.288,17 €</b-td>
-            </b-tr>
-            <b-tr>
-              <b-th>9 - 12</b-th>
-              <b-td>2.411,95 €</b-td>
-              <b-td>2.592,85 €</b-td>
-              <b-td>2.713,44 €</b-td>
-              <b-td>2.894,34 €</b-td>
-              <b-td>3.135,54 €</b-td>
-              <b-td>3.497,33 €</b-td>
-            </b-tr>
-            <b-tr>
-              <b-th>13 - 16</b-th>
-              <b-td>2.480,05 €</b-td>
-              <b-td>2.666,05 €</b-td>
-              <b-td>2.790,06 €</b-td>
-              <b-td>2.976,06 €</b-td>
-              <b-td>3.224,07 €</b-td>
-              <b-td>3.596,07 €</b-td>
-            </b-tr>
-            <b-tr>
-              <b-th>17 - 20</b-th>
-              <b-td>2.743,71 €</b-td>
-              <b-td>2.949,49 €</b-td>
-              <b-td>3.086,67 €</b-td>
-              <b-td>3.292,45 €</b-td>
-              <b-td>3.566,82 €</b-td>
-              <b-td>3.978,38 €</b-td>
-            </b-tr>
-            <b-tr>
-              <b-th>21 - 24</b-th>
-              <b-td>2.793,71 €</b-td>
-              <b-td>3.003,24 €</b-td>
-              <b-td>3.142,92 €</b-td>
-              <b-td>3.352,45 €</b-td>
-              <b-td>3.631,82 €</b-td>
-              <b-td>4.050,88 €</b-td>
-            </b-tr>
-            <b-tr>
-              <b-th>25 - 28</b-th>
-              <b-td>2.843,71 €</b-td>
-              <b-td>3.056,99 €</b-td>
-              <b-td>3.199,17 €</b-td>
-              <b-td>3.412,45 €</b-td>
-              <b-td>3.696,82 €</b-td>
-              <b-td>4.123,38 €</b-td>
-            </b-tr>
-            <b-tr>
-              <b-th>ab 29</b-th>
-              <b-td>2.893,71 €</b-td>
-              <b-td>3.110,74 €</b-td>
-              <b-td>3.255,42 €</b-td>
-              <b-td>3.472,45 €</b-td>
-              <b-td>3.761,82 €</b-td>
-              <b-td>4.195,88 €</b-td>
-            </b-tr>
-          </b-tbody>
-        </b-table-simple>
+      <h3 class="h4 mt-5">
+        Gehaltstabelle MFA 2021 nach Gehaltstarifvertrag – gültig ab 01.01.2021
+      </h3>
+      <p>
+        Der Stundenlohn im Jahr 2021 für Medizinische Fachangestellte (MFA)
+        bewegt sich laut Gehaltstarifvertrag je nach Berufserfahrung und
+        erworbenen Qualifikationen durch Fort- und Weiterbildungen zwischen
+        12,51 €/h und 25,13 €/h. Über den
+        <b-link to="#gehaltsrechner">Gehaltsrechner</b-link> kannst Du Dir den
+        Stundenlohn bzw. Gehalt in Teilzeit für Deinen relevanten Bereich
+        errechnen, indem Du als Wochenarbeitszeit eine Stunde auswählst.
+      </p>
 
-        <h3 class="h4 mt-5">
-          Gehaltstabelle MFA 2022 nach Gehaltstarifvertrag – gültig ab
-          01.01.2022
-        </h3>
-        <p>
-          Nach Tarifvertrag gibt es für MFA in 2022 eine Gehaltserhöhung von 3%.
-          Die Gehaltstabelle für 2022 entspricht dieser Erhöhung.
-        </p>
-        <p>
-          Der Stundenlohn im Jahr 2022 für Medizinische Fachangestellte (MFA)
-          bewegt sich laut Gehaltstarifvertrag je nach Berufserfahrung und
-          erworbenen Qualifikationen durch Fort- und Weiterbildungen zwischen
-          12,88 €/h und 25,88 €/h.
-        </p>
-        <b-table-simple class="mt-3" hover responsive table-variant="secondary">
-          <colgroup>
-            <col />
-          </colgroup>
-          <colgroup>
-            <col />
-            <col />
-            <col />
-            <col />
-            <col />
-            <col />
-          </colgroup>
-          <b-thead head-variant="primary">
-            <b-tr>
-              <b-th>Berufsjahr</b-th>
-              <b-th>Tätigkeitsgruppe I</b-th>
-              <b-th>Tätigkeitsgruppe II</b-th>
-              <b-th>Tätigkeitsgruppe III</b-th>
-              <b-th>Tätigkeitsgruppe IV</b-th>
-              <b-th>Tätigkeitsgruppe V</b-th>
-              <b-th>Tätigkeitsgruppe VI</b-th>
-            </b-tr>
-          </b-thead>
-          <b-tbody class="text-right">
-            <b-tr>
-              <b-th>1 - 4</b-th>
-              <b-td>2.151,05 €</b-td>
-              <b-td>2.312,38 €</b-td>
-              <b-td>2.419,93 €</b-td>
-              <b-td>2.581,26 €</b-td>
-              <b-td>2.796,37 €</b-td>
-              <b-td>3.119,02 €</b-td>
-            </b-tr>
-            <b-tr>
-              <b-th>5 - 8</b-th>
-              <b-td>2.335,73 €</b-td>
-              <b-td>2.510,91 €</b-td>
-              <b-td>2.627,70 €</b-td>
-              <b-td>2.802,88 €</b-td>
-              <b-td>3.036,45 €</b-td>
-              <b-td>3.386,81 €</b-td>
-            </b-tr>
-            <b-tr>
-              <b-th>9 - 12</b-th>
-              <b-td>2.484,31 €</b-td>
-              <b-td>2.670,63 €</b-td>
-              <b-td>2.794,85 €</b-td>
-              <b-td>2.981,17 €</b-td>
-              <b-td>3.229,60 €</b-td>
-              <b-td>3.602,25 €</b-td>
-            </b-tr>
-            <b-tr>
-              <b-th>13 - 16</b-th>
-              <b-td>2.554,45 €</b-td>
-              <b-td>2.746,03 €</b-td>
-              <b-td>2.873,76 €</b-td>
-              <b-td>3.065,34 €</b-td>
-              <b-td>3.320,79 €</b-td>
-              <b-td>3.703,95 €</b-td>
-            </b-tr>
-            <b-tr>
-              <b-th>17 - 20</b-th>
-              <b-td>2.826,02 €</b-td>
-              <b-td>3.037,97 €</b-td>
-              <b-td>3.179,27 €</b-td>
-              <b-td>3.391,22 €</b-td>
-              <b-td>3.673,83 €</b-td>
-              <b-td>4.097,73 €</b-td>
-            </b-tr>
-            <b-tr>
-              <b-th>21 - 24</b-th>
-              <b-td>2.877,52 €</b-td>
-              <b-td>3.093,34 €</b-td>
-              <b-td>3.237,21 €</b-td>
-              <b-td>3.453,02 €</b-td>
-              <b-td>3.740,77 €</b-td>
-              <b-td>4.172,41 €</b-td>
-            </b-tr>
-            <b-tr>
-              <b-th>25 - 28</b-th>
-              <b-td>2.929,02 €</b-td>
-              <b-td>3.148,70 €</b-td>
-              <b-td>3.295,15 €</b-td>
-              <b-td>3.514,82 €</b-td>
-              <b-td>3.807,72 €</b-td>
-              <b-td>4.247,08 €</b-td>
-            </b-tr>
-            <b-tr>
-              <b-th>ab 29</b-th>
-              <b-td>2.980,52 €</b-td>
-              <b-td>3.204,06 €</b-td>
-              <b-td>3.353,08 €</b-td>
-              <b-td>3.576,62 €</b-td>
-              <b-td>3.874,67 €</b-td>
-              <b-td>4.321,76 €</b-td>
-            </b-tr>
-          </b-tbody>
-        </b-table-simple>
-        <p class="small text-muted">
-          Quelle:
-          <b-link
-            href="https://www.vmf-online.de/mfa/mfa-tarife"
-            target="_blank"
-            rel="noopener"
-            >Gehaltstarifvertrag 2021 für Medizinische Fachangestellte (MFA) /
-            ArzthelferInnen – AAA (2021)</b-link
-          >
-        </p>
+      <div class="table-responsive">
+        <table class="table table-secondary table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Berufsjahr</th>
+              <th scope="col">Tätigkeitsgruppe I</th>
+              <th scope="col">Tätigkeitsgruppe II</th>
+              <th scope="col">Tätigkeitsgruppe III</th>
+              <th scope="col">Tätigkeitsgruppe IV</th>
+              <th scope="col">Tätigkeitsgruppe V</th>
+              <th scope="col">Tätigkeitsgruppe VI</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>1 - 4</th>
+              <td>2.088,40 €</td>
+              <td>2.245,03 €</td>
+              <td>2.349,45 €</td>
+              <td>2.506,08 €</td>
+              <td>2.714,92 €</td>
+              <td>3.028,18 €</td>
+            </tr>
+            <tr>
+              <th>5 - 8</th>
+              <td>2.267,70 €</td>
+              <td>2.437,78 €</td>
+              <td>2.551,16 €</td>
+              <td>2.721,24 €</td>
+              <td>2.948,01 €</td>
+              <td>3.288,17 €</td>
+            </tr>
+            <tr>
+              <th>9 - 12</th>
+              <td>2.411,95 €</td>
+              <td>2.592,85 €</td>
+              <td>2.713,44 €</td>
+              <td>2.894,34 €</td>
+              <td>3.135,54 €</td>
+              <td>3.497,33 €</td>
+            </tr>
+            <tr>
+              <th>13 - 16</th>
+              <td>2.480,05 €</td>
+              <td>2.666,05 €</td>
+              <td>2.790,06 €</td>
+              <td>2.976,06 €</td>
+              <td>3.224,07 €</td>
+              <td>3.596,07 €</td>
+            </tr>
+            <tr>
+              <th>17 - 20</th>
+              <td>2.743,71 €</td>
+              <td>2.949,49 €</td>
+              <td>3.086,67 €</td>
+              <td>3.292,45 €</td>
+              <td>3.566,82 €</td>
+              <td>3.978,38 €</td>
+            </tr>
+            <tr>
+              <th>21 - 24</th>
+              <td>2.793,71 €</td>
+              <td>3.003,24 €</td>
+              <td>3.142,92 €</td>
+              <td>3.352,45 €</td>
+              <td>3.631,82 €</td>
+              <td>4.050,88 €</td>
+            </tr>
+            <tr>
+              <th>25 - 28</th>
+              <td>2.843,71 €</td>
+              <td>3.056,99 €</td>
+              <td>3.199,17 €</td>
+              <td>3.412,45 €</td>
+              <td>3.696,82 €</td>
+              <td>4.123,38 €</td>
+            </tr>
+            <tr>
+              <th>ab 29</th>
+              <td>2.893,71 €</td>
+              <td>3.110,74 €</td>
+              <td>3.255,42 €</td>
+              <td>3.472,45 €</td>
+              <td>3.761,82 €</td>
+              <td>4.195,88 €</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+      <p class="small text-muted">
+        Quelle:
+        <b-link
+          href="https://www.vmf-online.de/mfa/mfa-tarife"
+          target="_blank"
+          rel="noopener"
+          >Gehaltstarifvertrag 2021 für Medizinische Fachangestellte (MFA) /
+          ArzthelferInnen – AAA (2021)</b-link
+        >
+      </p>
+
+      <h3 class="h4 mt-5">
+        Gehaltstabelle MFA 2022 nach Gehaltstarifvertrag – gültig ab 01.01.2022
+      </h3>
+      <p>
+        Nach Tarifvertrag gibt es für MFA in 2022 eine Gehaltserhöhung von 3%.
+        Die Gehaltstabelle für 2022 entspricht dieser Erhöhung.
+      </p>
+      <p>
+        Der Stundenlohn im Jahr 2022 für Medizinische Fachangestellte (MFA)
+        bewegt sich laut Gehaltstarifvertrag je nach Berufserfahrung und
+        erworbenen Qualifikationen durch Fort- und Weiterbildungen zwischen
+        12,88 €/h und 25,88 €/h.
+      </p>
+
+      <div class="table-responsive">
+        <table class="table table-secondary table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Berufsjahr</th>
+              <th scope="col">Tätigkeitsgruppe I</th>
+              <th scope="col">Tätigkeitsgruppe II</th>
+              <th scope="col">Tätigkeitsgruppe III</th>
+              <th scope="col">Tätigkeitsgruppe IV</th>
+              <th scope="col">Tätigkeitsgruppe V</th>
+              <th scope="col">Tätigkeitsgruppe VI</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>1 - 4</th>
+              <td>2.151,05 €</td>
+              <td>2.312,38 €</td>
+              <td>2.419,93 €</td>
+              <td>2.581,26 €</td>
+              <td>2.796,37 €</td>
+              <td>3.119,02 €</td>
+            </tr>
+            <tr>
+              <th>5 - 8</th>
+              <td>2.335,73 €</td>
+              <td>2.510,91 €</td>
+              <td>2.627,70 €</td>
+              <td>2.802,88 €</td>
+              <td>3.036,45 €</td>
+              <td>3.386,81 €</td>
+            </tr>
+            <tr>
+              <th>9 - 12</th>
+              <td>2.484,31 €</td>
+              <td>2.670,63 €</td>
+              <td>2.794,85 €</td>
+              <td>2.981,17 €</td>
+              <td>3.229,60 €</td>
+              <td>3.602,25 €</td>
+            </tr>
+            <tr>
+              <th>13 - 16</th>
+              <td>2.554,45 €</td>
+              <td>2.746,03 €</td>
+              <td>2.873,76 €</td>
+              <td>3.065,34 €</td>
+              <td>3.320,79 €</td>
+              <td>3.703,95 €</td>
+            </tr>
+            <tr>
+              <th>17 - 20</th>
+              <td>2.826,02 €</td>
+              <td>3.037,97 €</td>
+              <td>3.179,27 €</td>
+              <td>3.391,22 €</td>
+              <td>3.673,83 €</td>
+              <td>4.097,73 €</td>
+            </tr>
+            <tr>
+              <th>21 - 24</th>
+              <td>2.877,52 €</td>
+              <td>3.093,34 €</td>
+              <td>3.237,21 €</td>
+              <td>3.453,02 €</td>
+              <td>3.740,77 €</td>
+              <td>4.172,41 €</td>
+            </tr>
+            <tr>
+              <th>25 - 28</th>
+              <td>2.929,02 €</td>
+              <td>3.148,70 €</td>
+              <td>3.295,15 €</td>
+              <td>3.514,82 €</td>
+              <td>3.807,72 €</td>
+              <td>4.247,08 €</td>
+            </tr>
+            <tr>
+              <th>ab 29</th>
+              <td>2.980,52 €</td>
+              <td>3.204,06 €</td>
+              <td>3.353,08 €</td>
+              <td>3.576,62 €</td>
+              <td>3.874,67 €</td>
+              <td>4.321,76 €</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small text-muted">
+        Quelle:
+        <b-link
+          href="https://www.vmf-online.de/mfa/mfa-tarife"
+          target="_blank"
+          rel="noopener"
+          >Gehaltstarifvertrag 2021 für Medizinische Fachangestellte (MFA) /
+          ArzthelferInnen – AAA (2021)</b-link
+        >
+      </p>
 
       <div class="bg-light-shade border-radius2 shadow1 my-5 p-3 p-md-4">
         <JobSearchSingleForm class="mb-3" placeholder="Neuen Job finden..." />
@@ -895,48 +885,43 @@
         ein Gehalt entsprechend der monatlichen Ausbildungsvergütung (brutto)
         wie folgt vorgesehen:
       </p>
-      <b-table-simple class="mt-4" hover responsive table-variant="secondary">
-        <colgroup>
-          <col />
-        </colgroup>
-        <colgroup>
-          <col />
-          <col />
-          <col />
-        </colgroup>
-        <b-thead head-variant="primary">
-          <b-tr>
-            <b-th colspan="1"> </b-th>
-            <b-th colspan="3" class="text-center"> Ausbildungsjahr</b-th>
-          </b-tr>
-          <b-tr>
-            <b-th>ab</b-th>
-            <b-th>1.</b-th>
-            <b-th>2.</b-th>
-            <b-th>3.</b-th>
-          </b-tr>
-        </b-thead>
-        <b-tbody>
-          <b-tr>
-            <b-th>01.01.2021</b-th>
-            <b-td>880,- €</b-td>
-            <b-td>935,- €</b-td>
-            <b-td>995,- €</b-td>
-          </b-tr>
-          <b-tr>
-            <b-th>01.01.2022</b-th>
-            <b-td>900,- €</b-td>
-            <b-td>965,- €</b-td>
-            <b-td>1.035,- €</b-td>
-          </b-tr>
-          <b-tr>
-            <b-th>01.01.2023</b-th>
-            <b-td>920,- €</b-td>
-            <b-td>995,- €</b-td>
-            <b-td>1.075,- €</b-td>
-          </b-tr>
-        </b-tbody>
-      </b-table-simple>
+
+      <div class="table-responsive">
+        <table class="table table-secondary table-striped">
+          <thead>
+            <tr>
+              <th colspan="1"></th>
+              <th colspan="3" class="text-center">Ausbildungsjahr</th>
+            </tr>
+            <tr>
+              <th scope="col">ab</th>
+              <th scope="col">1.</th>
+              <th scope="col">2.</th>
+              <th scope="col">3.</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>01.01.2021</th>
+              <td>880,- €</td>
+              <td>935,- €</td>
+              <td>995,- €</td>
+            </tr>
+            <tr>
+              <th>01.01.2022</th>
+              <td>900,- €</td>
+              <td>965,- €</td>
+              <td>1.035,- €</td>
+            </tr>
+            <tr>
+              <th>01.01.2023</th>
+              <td>920,- €</td>
+              <td>995,- €</td>
+              <td>1.075,- €</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <p class="small text-muted">
         Quelle:
         <b-link
@@ -947,6 +932,7 @@
           ArzthelferInnen – AAA (2021)</b-link
         >
       </p>
+
       <p>
         Auf unserer Seite findest Du auch weitere Informationen zur
         <b-link to="/karriere/mfa/ausbildung-berufsbild"
@@ -1554,9 +1540,6 @@
 </template>
 
 <script>
-  import Vue from "vue";
-  import { TableSimplePlugin } from "bootstrap-vue";
-  Vue.use(TableSimplePlugin);
   import Gehaltsrechner from "@/components/containers/Gehaltsrechner.vue";
   import JobsTeaserContainer from "@/components/containers/JobsTeaserContainer.vue";
   import JobSearchSingleForm from "@/components/forms/JobSearchSingleForm.vue";

@@ -5,7 +5,7 @@
       <router-view />
     </main>
     <Footer />
-    <Overlay v-if="$store.state.utils.overlay" />
+    <Overlay />
     <StarJobModal v-if="$store.state.utils.starJobModal" />
     <NewsletterSignUpPopUp />
   </div>
@@ -14,14 +14,15 @@
 <script>
   import Header from "@/components/layout/Header";
   import Footer from "@/components/layout/Footer";
+  import Overlay from "@/components/utils/Overlay";
   const NewsletterSignUpPopUp = () =>
     import(
       /* webpackChunkName: "newsletterSignUpPopUp" */ "@/components/popups/NewsletterSignUpPopUp.vue"
     );
-  const Overlay = () =>
-    import(/* webpackChunkName: "overlay" */ "@/components/utils/Overlay");
   const StarJobModal = () =>
-    import(/* webpackChunkName: "overlay" */ "@/components/utils/StarJobModal");
+    import(
+      /* webpackChunkName: "starJobModal" */ "@/components/utils/StarJobModal"
+    );
   export default {
     components: {
       Header,

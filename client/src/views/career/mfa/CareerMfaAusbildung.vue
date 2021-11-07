@@ -293,48 +293,42 @@
         werden.
       </p>
       <div class="my-5">
-        <b-table-simple hover responsive table-variant="secondary">
-          <colgroup>
-            <col />
-          </colgroup>
-          <colgroup>
-            <col />
-            <col />
-            <col />
-          </colgroup>
-          <b-thead head-variant="primary">
-            <b-tr>
-              <b-th colspan="1"> </b-th>
-              <b-th colspan="3" class="text-center"> Ausbildungsjahr</b-th>
-            </b-tr>
-            <b-tr>
-              <b-th>ab</b-th>
-              <b-th>1.</b-th>
-              <b-th>2.</b-th>
-              <b-th>3.</b-th>
-            </b-tr>
-          </b-thead>
-          <b-tbody>
-            <b-tr>
-              <b-th>01.01.2021</b-th>
-              <b-td>880,- €</b-td>
-              <b-td>935,- €</b-td>
-              <b-td>995,- €</b-td>
-            </b-tr>
-            <b-tr>
-              <b-th>01.01.2022</b-th>
-              <b-td>900,- €</b-td>
-              <b-td>965,- €</b-td>
-              <b-td>1.035,- €</b-td>
-            </b-tr>
-            <b-tr>
-              <b-th>01.01.2023</b-th>
-              <b-td>920,- €</b-td>
-              <b-td>995,- €</b-td>
-              <b-td>1.075,- €</b-td>
-            </b-tr>
-          </b-tbody>
-        </b-table-simple>
+        <div class="table-responsive">
+          <table class="table table-secondary table-striped">
+            <thead>
+              <tr>
+                <th colspan="1"></th>
+                <th colspan="3" class="text-center">Ausbildungsjahr</th>
+              </tr>
+              <tr>
+                <th scope="col">ab</th>
+                <th scope="col">1.</th>
+                <th scope="col">2.</th>
+                <th scope="col">3.</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>01.01.2021</th>
+                <td>880,- €</td>
+                <td>935,- €</td>
+                <td>995,- €</td>
+              </tr>
+              <tr>
+                <th>01.01.2022</th>
+                <td>900,- €</td>
+                <td>965,- €</td>
+                <td>1.035,- €</td>
+              </tr>
+              <tr>
+                <th>01.01.2023</th>
+                <td>920,- €</td>
+                <td>995,- €</td>
+                <td>1.075,- €</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <p class="small text-muted">
           Quelle:
           <b-link
@@ -458,9 +452,6 @@
 </template>
 
 <script>
-  import Vue from "vue";
-  import { TableSimplePlugin } from "bootstrap-vue";
-  Vue.use(TableSimplePlugin);
   import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
   import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
   import JobsTeaserContainer from "@/components/containers/JobsTeaserContainer.vue";

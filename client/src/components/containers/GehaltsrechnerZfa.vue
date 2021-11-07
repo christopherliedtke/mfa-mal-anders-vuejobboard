@@ -1,7 +1,7 @@
 <template>
   <div class="gehaltsrechner p-4 border-radius2 shadow1">
-    <h2 class="h3">
-      ZFA Gehaltsrechner {{ year }}
+    <h3>
+      ZFA Gehaltsrechner {{ year }}&nbsp;
       <div id="popover-zfa-gehaltsrechner">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -28,7 +28,7 @@
         Größe der Praxis. Du erhältst weitere Informationen zur noch besseren
         Einschätzung im folgenden Text und im Gehaltstarifvertrag des AAZ.
       </b-popover>
-    </h2>
+    </h3>
     <p>
       Gib Deine Daten ein und erhalte Dein Gehalt entsprechend des
       Gehaltstarifvertrags* {{ year }} für Zahnmedizinische Fachangestellte
@@ -232,7 +232,7 @@
     background-color: $primary;
     color: $light;
 
-    h2 > div {
+    h3 > div {
       display: inline-flex;
       justify-content: center;
       align-items: center;

@@ -1,24 +1,36 @@
 <template>
-  <b-overlay
-    :show="$store.state.utils.overlay"
-    style="z-index:9999"
-    variant="dark"
-    opacity="0.6"
-    blur="1px"
-    no-wrap
-    fixed
-    spinner-variant="primary"
-    spinner-type="grow"
-  >
-  </b-overlay>
+  <div :class="['overlay', { invisible: !$store.state.utils.overlay }]">
+    <div
+      class="position-absolute"
+      style="top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%);"
+    >
+      <span aria-hidden="true" class="spinner-grow spinner-grow-xl text-primary"
+        ><!----></span
+      >
+    </div>
+  </div>
 </template>
 
 <script>
-  import Vue from "vue";
-  import { BOverlay, BSpinner } from "bootstrap-vue";
-  Vue.component("BOverlay", BOverlay);
-  Vue.component("BSpinner", BSpinner);
   export default {
     name: "Overlay"
   };
 </script>
+
+<style lang="scss" scoped>
+  .overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: transparentize($dark, $amount: 0.5);
+    z-index: 99999;
+    transition: $transition1;
+    opacity: 1;
+
+    &.invisible {
+      opacity: 0;
+    }
+  }
+</style>

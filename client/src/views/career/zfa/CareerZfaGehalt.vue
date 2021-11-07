@@ -263,111 +263,103 @@
           Bereich errechnen, indem Du als Wochenarbeitszeit eine Stunde
           auswählst.
         </p>
-        <b-table-simple class="mt-3" hover responsive table-variant="secondary">
-          <colgroup>
-            <col />
-          </colgroup>
-          <colgroup>
-            <col />
-            <col />
-            <col />
-            <col />
-            <col />
-            <col />
-          </colgroup>
-          <b-thead head-variant="primary">
-            <b-tr>
-              <b-th>Berufsjahr</b-th>
-              <b-th>Tätigkeitsgruppe I</b-th>
-              <b-th>Tätigkeitsgruppe II</b-th>
-              <b-th>Tätigkeitsgruppe III</b-th>
-              <b-th>Tätigkeitsgruppe IV</b-th>
-              <b-th>Tätigkeitsgruppe V</b-th>
-            </b-tr>
-          </b-thead>
-          <b-tbody class="text-right">
-            <b-tr>
-              <b-th>1 - 3</b-th>
-              <b-td>2.105,00 €</b-td>
-              <b-td>2.263,00 €</b-td>
-              <b-td>2.473,50 €</b-td>
-              <b-td>2.631,50 €</b-td>
-              <b-td>2.736,50 €</b-td>
-            </b-tr>
-            <b-tr>
-              <b-th>4 - 6</b-th>
-              <b-td>2.182,00 €</b-td>
-              <b-td>2.346,00 €</b-td>
-              <b-td>2.564,00 €</b-td>
-              <b-td>2.727,50 €</b-td>
-              <b-td>2.837,00 €</b-td>
-            </b-tr>
-            <b-tr>
-              <b-th>7 - 9</b-th>
-              <b-td>2.288,50 €</b-td>
-              <b-td>2.460,50 €</b-td>
-              <b-td>2.689,00 €</b-td>
-              <b-td>2.861,00 €</b-td>
-              <b-td>2.975,50 €</b-td>
-            </b-tr>
-            <b-tr>
-              <b-th>10 - 12</b-th>
-              <b-td>2.368,50 €</b-td>
-              <b-td>2.546,50 €</b-td>
-              <b-td>2.783,00 €</b-td>
-              <b-td>2.961,00 €</b-td>
-              <b-td>3.079,50 €</b-td>
-            </b-tr>
-            <b-tr>
-              <b-th>13 - 15</b-th>
-              <b-td>2.442,00 €</b-td>
-              <b-td>2.625,50 €</b-td>
-              <b-td>2.869,50 €</b-td>
-              <b-td>3.052,50 €</b-td>
-              <b-td>3.175,50 €</b-td>
-            </b-tr>
-            <b-tr>
-              <b-th>16 - 18</b-th>
-              <b-td>2.512,00 €</b-td>
-              <b-td>2.701,00 €</b-td>
-              <b-td>2.952,00 €</b-td>
-              <b-td>3.140,00 €</b-td>
-              <b-td>3.266,50 €</b-td>
-            </b-tr>
-            <b-tr>
-              <b-th>19 - 21</b-th>
-              <b-td>2.582,00 €</b-td>
-              <b-td>2.776,50 €</b-td>
-              <b-td>3.034,50 €</b-td>
-              <b-td>3.227,50 €</b-td>
-              <b-td>3.357,50 €</b-td>
-            </b-tr>
-            <b-tr>
-              <b-th>22 - 24</b-th>
-              <b-td>2.652,00 €</b-td>
-              <b-td>2.852,00 €</b-td>
-              <b-td>3.117,00 €</b-td>
-              <b-td>3.315,00 €</b-td>
-              <b-td>3.448,50 €</b-td>
-            </b-tr>
-            <b-tr>
-              <b-th>25 - 27</b-th>
-              <b-td>2.722,00 €</b-td>
-              <b-td>2.927,50 €</b-td>
-              <b-td>3.199,50 €</b-td>
-              <b-td>3.402,50 €</b-td>
-              <b-td>3.539,50 €</b-td>
-            </b-tr>
-            <b-tr>
-              <b-th>ab 28</b-th>
-              <b-td>2.776,50 €</b-td>
-              <b-td>2.985,00 €</b-td>
-              <b-td>3.262,50 €</b-td>
-              <b-td>3.471,00 €</b-td>
-              <b-td>3.609,50 €</b-td>
-            </b-tr>
-          </b-tbody>
-        </b-table-simple>
+
+        <div class="table-responsive">
+          <table class="table table-secondary table-striped text-left">
+            <thead>
+              <tr>
+                <th>Berufsjahr</th>
+                <th>Tätigkeitsgruppe I</th>
+                <th>Tätigkeitsgruppe II</th>
+                <th>Tätigkeitsgruppe III</th>
+                <th>Tätigkeitsgruppe IV</th>
+                <th>Tätigkeitsgruppe V</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>1 - 3</th>
+                <td>2.105,00 €</td>
+                <td>2.263,00 €</td>
+                <td>2.473,50 €</td>
+                <td>2.631,50 €</td>
+                <td>2.736,50 €</td>
+              </tr>
+              <tr>
+                <th>4 - 6</th>
+                <td>2.182,00 €</td>
+                <td>2.346,00 €</td>
+                <td>2.564,00 €</td>
+                <td>2.727,50 €</td>
+                <td>2.837,00 €</td>
+              </tr>
+              <tr>
+                <th>7 - 9</th>
+                <td>2.288,50 €</td>
+                <td>2.460,50 €</td>
+                <td>2.689,00 €</td>
+                <td>2.861,00 €</td>
+                <td>2.975,50 €</td>
+              </tr>
+              <tr>
+                <th>10 - 12</th>
+                <td>2.368,50 €</td>
+                <td>2.546,50 €</td>
+                <td>2.783,00 €</td>
+                <td>2.961,00 €</td>
+                <td>3.079,50 €</td>
+              </tr>
+              <tr>
+                <th>13 - 15</th>
+                <td>2.442,00 €</td>
+                <td>2.625,50 €</td>
+                <td>2.869,50 €</td>
+                <td>3.052,50 €</td>
+                <td>3.175,50 €</td>
+              </tr>
+              <tr>
+                <th>16 - 18</th>
+                <td>2.512,00 €</td>
+                <td>2.701,00 €</td>
+                <td>2.952,00 €</td>
+                <td>3.140,00 €</td>
+                <td>3.266,50 €</td>
+              </tr>
+              <tr>
+                <th>19 - 21</th>
+                <td>2.582,00 €</td>
+                <td>2.776,50 €</td>
+                <td>3.034,50 €</td>
+                <td>3.227,50 €</td>
+                <td>3.357,50 €</td>
+              </tr>
+              <tr>
+                <th>22 - 24</th>
+                <td>2.652,00 €</td>
+                <td>2.852,00 €</td>
+                <td>3.117,00 €</td>
+                <td>3.315,00 €</td>
+                <td>3.448,50 €</td>
+              </tr>
+              <tr>
+                <th>25 - 27</th>
+                <td>2.722,00 €</td>
+                <td>2.927,50 €</td>
+                <td>3.199,50 €</td>
+                <td>3.402,50 €</td>
+                <td>3.539,50 €</td>
+              </tr>
+              <tr>
+                <th>ab 28</th>
+                <td>2.776,50 €</td>
+                <td>2.985,00 €</td>
+                <td>3.262,50 €</td>
+                <td>3.471,00 €</td>
+                <td>3.609,50 €</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <p class="small text-muted">
           Quelle:
           <b-link
@@ -409,36 +401,31 @@
         ZahnarzthelferInnen, die Ihre Ausbildung ab dem 01.01.2020 starten eine
         monatliche Ausbildungsvergütung (brutto) wie folgt vorgesehen:
       </p>
-      <b-table-simple class="mt-4" hover responsive table-variant="secondary">
-        <colgroup>
-          <col />
-        </colgroup>
-        <colgroup>
-          <col />
-          <col />
-          <col />
-        </colgroup>
-        <b-thead head-variant="primary">
-          <b-tr>
-            <b-th colspan="1"> </b-th>
-            <b-th colspan="3" class="text-center"> Ausbildungsjahr</b-th>
-          </b-tr>
-          <b-tr>
-            <b-th>ab</b-th>
-            <b-th>1.</b-th>
-            <b-th>2.</b-th>
-            <b-th>3.</b-th>
-          </b-tr>
-        </b-thead>
-        <b-tbody>
-          <b-tr>
-            <b-th>01.01.2021</b-th>
-            <b-td>870,- €</b-td>
-            <b-td>910,- €</b-td>
-            <b-td>970,- €</b-td>
-          </b-tr>
-        </b-tbody>
-      </b-table-simple>
+
+      <div class="table-responsive">
+        <table class="table table-secondary">
+          <thead>
+            <tr>
+              <th colspan="1"></th>
+              <th colspan="3" class="text-center">Ausbildungsjahr</th>
+            </tr>
+            <tr>
+              <th scope="col">ab</th>
+              <th scope="col">1.</th>
+              <th scope="col">2.</th>
+              <th scope="col">3.</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>01.01.2021</th>
+              <td>870,- €</td>
+              <td>910,- €</td>
+              <td>970,- €</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <p class="small text-muted">
         Quelle:
         <b-link
@@ -980,9 +967,6 @@
 </template>
 
 <script>
-  import Vue from "vue";
-  import { TableSimplePlugin } from "bootstrap-vue";
-  Vue.use(TableSimplePlugin);
   import GehaltsrechnerZfa from "@/components/containers/GehaltsrechnerZfa.vue";
   import JobsTeaserContainer from "@/components/containers/JobsTeaserContainer.vue";
   import JobSearchSingleForm from "@/components/forms/JobSearchSingleForm.vue";

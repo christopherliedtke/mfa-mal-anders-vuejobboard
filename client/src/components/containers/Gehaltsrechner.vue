@@ -1,7 +1,7 @@
 <template>
   <div class="gehaltsrechner p-4 border-radius2 shadow1">
     <h3>
-      MFA Gehaltsrechner {{ year }}
+      MFA Gehaltsrechner {{ year }}&nbsp;
       <div id="popover-mfa-gehaltsrechner">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -242,9 +242,9 @@
       justify-content: center;
       align-items: center;
       position: relative;
-      top: -10px;
-      width: 18px;
-      height: 18px;
+      top: -5px;
+      // width: 18px;
+      // height: 18px;
 
       svg {
         font-size: 11px;
