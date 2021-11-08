@@ -31,14 +31,9 @@
               </p>
             </div>
             <div>
-              <h2 class="h6">Links</h2>
               <ul class="list-unstyled">
                 <li>
-                  <a
-                    href="https://de.jooble.org/stellenangebote-medizin"
-                    target="_blank"
-                    >Jooble</a
-                  >
+                  <a href="https://de.jooble.org/" target="_blank">Jooble</a>
                 </li>
               </ul>
             </div>
@@ -115,9 +110,7 @@
             <router-link to="/karriere/fortbildungskatalog"
               >Fortbildungskatalog</router-link
             >
-            <router-link to="/karriere/bewerbungstipps"
-              >Bewerbungstipps</router-link
-            >
+            <router-link to="/karriere/bewerbung">Bewerbung</router-link>
             <router-link to="/karriere/mfa/gehalt"
               >MFA Gehalt | Gehaltsrechner</router-link
             >

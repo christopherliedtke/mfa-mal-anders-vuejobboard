@@ -88,11 +88,11 @@ const CareerZfaGehalt = () =>
     /* webpackPrefetch: true */
     "@/views/career/zfa/CareerZfaGehalt.vue"
   );
-const CareerBewerbungstipps = () =>
+const CareerBewerbung = () =>
   import(
     /* webpackChunkName: "career" */
     /* webpackPrefetch: true */
-    "@/views/career/CareerBewerbungstipps.vue"
+    "@/views/career/CareerBewerbung.vue"
   );
 
 const CareerJobsBerufsbilderHome = () =>
@@ -345,9 +345,9 @@ const routes = [
     }
   },
   {
-    path: "/karriere/bewerbungstipps",
-    name: "KarriereBewerbungstipps",
-    component: CareerBewerbungstipps,
+    path: "/karriere/bewerbung",
+    name: "KarriereBewerbung",
+    component: CareerBewerbung,
     meta: {
       public: true
     }
@@ -703,7 +703,7 @@ const router = new VueRouter({
     if (to.hash) {
       return {
         selector: to.hash,
-        // offset: { x: 0, y: 10 },
+        offset: { x: 0, y: 75 },
         behavior: "smooth"
       };
     } else if (savedPosition) {

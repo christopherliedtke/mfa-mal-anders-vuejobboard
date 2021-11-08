@@ -1526,6 +1526,9 @@
         von Teramed
       </p>
     </div>
+
+    <ScrollToTopBtn />
+
     <Head
       :title="
         `MFA Gehalt ${new Date().getFullYear()} | Gehaltsrechner | Tarifvertrag`
@@ -1550,6 +1553,8 @@
   import WeiterbildungenBanner from "@/components/banners/WeiterbildungenBanner.vue";
   import GehaltsverhandlungBanner from "@/components/banners/GehaltsverhandlungBanner.vue";
   import TrainingCatalogueSmallBanner from "@/components/banners/TrainingCatalogueSmallBanner.vue";
+  import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
+  import { scrollToHashMixin } from "@/mixins/scrollToHashMixin";
   export default {
     name: "CareerGehalt",
     components: {
@@ -1562,8 +1567,10 @@
       BerufsbilderBanner,
       WeiterbildungenBanner,
       GehaltsverhandlungBanner,
-      TrainingCatalogueSmallBanner
+      TrainingCatalogueSmallBanner,
+      ScrollToTopBtn
     },
+    mixins: [scrollToHashMixin],
     data() {
       return {
         title: `MFA Gehalt ${new Date().getFullYear()}`,
@@ -1652,19 +1659,6 @@
           }
         ]
       };
-    },
-    mounted() {
-      this.scrollToHash();
-    },
-    methods: {
-      scrollToHash() {
-        if (this.$route.hash) {
-          const elem = window.document.getElementById(
-            this.$route.hash.replace("#", "")
-          );
-          elem.scrollIntoView({ behavior: "smooth" });
-        }
-      }
     }
   };
 </script>

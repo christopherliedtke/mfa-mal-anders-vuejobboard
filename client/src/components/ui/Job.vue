@@ -437,7 +437,7 @@
           class="mr-2 mt-2"
           variant="outline-primary"
           size="sm"
-          to="/karriere/bewerbungstipps"
+          to="/karriere/bewerbung"
           >Bewerbungsvorlage</b-button
         >
       </div>

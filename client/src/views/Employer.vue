@@ -712,6 +712,8 @@
       </div>
     </div>
 
+    <ScrollToTopBtn />
+
     <Head
       title="Stellenanzeige schalten – MFA & ZFA finden!"
       desc="MFA mal anders ist das Jobportal speziell nur für Medizinische / Zahnmedizinische Fachangestellte. Gesucht – Gefunden! Mit günstigen Stellenanzeigen, die wirklich ankommen."
@@ -724,12 +726,16 @@
 <script>
   import JobAdTipsContainer from "@/components/containers/JobAdTipsContainer.vue";
   import PricingCard from "@/components/ui/PricingCard.vue";
+  import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
+  import { scrollToHashMixin } from "@/mixins/scrollToHashMixin";
   export default {
     name: "Employer",
     components: {
       JobAdTipsContainer,
-      PricingCard
+      PricingCard,
+      ScrollToTopBtn
     },
+    mixins: [scrollToHashMixin],
     data() {
       return {
         title: "Für Arbeitgeber",
@@ -827,28 +833,6 @@
           }
         ]
       };
-    },
-    mounted() {
-      this.scrollToHash();
-    },
-    methods: {
-      // startCounters() {
-      //   this.numbersAndFacts.forEach(element => {
-      //     setInterval(() => {
-      //       if (element.current < element.number) {
-      //         element.current = element.current + element.number / 100;
-      //       }
-      //     }, 1);
-      //   });
-      // },
-      scrollToHash() {
-        if (this.$route.hash) {
-          const elem = window.document.getElementById(
-            this.$route.hash.replace("#", "")
-          );
-          elem.scrollIntoView({ behavior: "smooth" });
-        }
-      }
     }
   };
 </script>

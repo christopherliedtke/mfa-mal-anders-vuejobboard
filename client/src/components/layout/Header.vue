@@ -44,12 +44,10 @@
               >
               <router-link to="/karriere/mfa/gehalt">MFA - Gehalt</router-link>
               <router-link to="/karriere/zfa/gehalt">ZFA - Gehalt</router-link>
+              <router-link to="/karriere/bewerbung">Bewerbung</router-link>
               <router-link
                 to="/blog/artikel/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
-                >Gehaltsverhandlung 2021</router-link
-              >
-              <router-link to="/karriere/bewerbungstipps"
-                >Bewerbungstipps</router-link
+                >Gehaltsverhandlung</router-link
               >
               <router-link to="/karriere/jobs-und-berufsbilder"
                 >Jobs & Berufsbilder</router-link
@@ -57,7 +55,7 @@
               <router-link to="/karriere/fort-und-weiterbildungen"
                 >Fort- & Weiterbildungen</router-link
               >
-              <router-link to="/karriere/fortbildungskatalog"
+              <router-link to="/karriere/fortbildungskatalog" class="ml-3"
                 >Fortbildungskatalog</router-link
               >
             </div>

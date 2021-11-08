@@ -30,8 +30,51 @@
         gehört und wie die Ausbildung zur Medizinischen Fachangestellten
         aussieht, beschreiben wir hier.
       </p>
-      <h2>
-        Welche Aufgaben erwarten mich als Medizinische Fachangestellte?
+
+      <nav
+        class="bg-light-shade border-radius1 my-4 p-4"
+        style="max-width: fit-content"
+      >
+        <h2 class="h4 bold">Inhalt</h2>
+        <ol class="text-tertiary pl-4">
+          <li class="lead mt-3">
+            <b-link to="#aufgaben">Aufgaben</b-link>
+          </li>
+          <li class="lead mt-3">
+            <b-link to="#faehigkeiten">Fähigkeiten</b-link>
+          </li>
+          <li class="lead mt-3">
+            <b-link to="#ausbildung-ablauf">Ablauf der Ausbildung </b-link>
+          </li>
+          <ol>
+            <li class="lead mt-3">
+              <b-link to="#ausbildung-inhalte">Inhalte der Ausbildung </b-link>
+            </li>
+            <li class="lead mt-3">
+              <b-link to="#ausbildung-pruefung"
+                >Zwischen- und Abschlussprüfung in der Ausbildung
+              </b-link>
+            </li>
+          </ol>
+
+          <li class="lead mt-3">
+            <b-link to="#ausbildung-gehalt">Gehalt in der Ausbildung </b-link>
+          </li>
+          <li class="lead mt-3">
+            <b-link to="#ausbildung-gehalt-danach"
+              >Gehalt nach der Ausbildung
+            </b-link>
+          </li>
+          <li class="lead mt-3">
+            <b-link to="#perspektiven"
+              >Perspektiven nach der Ausbildung
+            </b-link>
+          </li>
+        </ol>
+      </nav>
+
+      <h2 id="aufgaben">
+        Aufgaben als Medizinische Fachangestellte (MFA)
       </h2>
       <p>
         Von manchen Patienten als “Sprechstundenhilfe” betitelt, ist eine
@@ -97,8 +140,9 @@
           </div>
         </div>
       </div>
-      <h2>
-        Welche Fähigkeiten muss ich als Medizinische Fachangestellte haben?
+      <h2 id="faehigkeiten">
+        Fähigkeiten, die Du als Medizinische Fachangestellte (MFA) mitbringen
+        solltest
       </h2>
       <p>
         Als Medizinische Fachangestellte muss man nicht perfekt sein, aber man
@@ -141,8 +185,8 @@
           />
         </div>
       </div>
-      <h2>
-        Wie läuft die Ausbildung zur Medizinischen Fachangestellten ab?
+      <h2 id="ausbildung-ablauf">
+        Ablauf der Ausbildung zur Medizinischen Fachangestellten (MFA)
       </h2>
       <p>
         Die Ausbildung zur MFA findet berufsbegleitend statt. Das heißt,
@@ -175,11 +219,11 @@
         Ausbildungsjahr vermittelt werden müssen. Die Ausbildungspraxis schreibt
         einen Ausbildungsplan nieder, an dem sich die Azubis orientieren können.
       </p>
-      <h3>Inhalte der MFA Ausbildung</h3>
+      <h3 id="ausbildung-inhalte">Inhalte der MFA Ausbildung</h3>
       <div class="example">
-        <h3 class="h5">
+        <h4 class="h5">
           1. Ausbildungsjahr
-        </h3>
+        </h4>
         <p class="mb-0">
           Im ersten Ausbildungsjahr erlernt man zunächst viele Grundlagen, z.B.
           zum Arbeitsrecht und Datenschutz. Aber auch den richtigen Umgang mit
@@ -189,9 +233,9 @@
         </p>
       </div>
       <div class="example">
-        <h3 class="h5">
+        <h4 class="h5">
           2. Ausbildungsjahr
-        </h3>
+        </h4>
         <p class="mb-0">
           Im zweiten Lehrjahr kommen Aufgabenfelder aus dem Bereich des
           Praxismanagements hinzu, wie Abrechnung oder Qualitätsmanagement. Die
@@ -202,9 +246,9 @@
         </p>
       </div>
       <div class="example">
-        <h3 class="h5">
+        <h4 class="h5">
           3. Ausbildungsjahr
-        </h3>
+        </h4>
         <p class="mb-0">
           Im dritten Lehrjahr kommt das große Themenfeld der Prävention auf den
           Unterrichtsplan. Die Azubis lernen, wie Krankheiten vermieden werden
@@ -215,9 +259,9 @@
         </p>
       </div>
       <div class="example">
-        <h3 class="h5">
+        <h4 class="h5">
           Berichtsheft
-        </h3>
+        </h4>
         <p class="mb-0">
           Während der gesamten Ausbildungszeit müssen die Azubis ein
           Berichtsheft pflegen und ihre regelmäßigen Aufgaben sowie das
@@ -229,9 +273,9 @@
           abschließen zu können und zur Abschlussprüfung zugelassen zu werden.
         </p>
       </div>
-      <h2>
+      <h3 id="ausbildung-pruefung">
         Zwischen- und Abschlussprüfung
-      </h2>
+      </h3>
       <p>
         Am Ende des zweiten Ausbildungsjahres findet eine Zwischenprüfung statt,
         um den Wissensstand der Auszubildenden abzufragen. Die Prüfung ist
@@ -267,8 +311,8 @@
         Die Auszubildenden erhalten einen Ausbildungsbrief zur/zum Medizinischen
         Fachangestellten.
       </p>
-      <h2>
-        Wie hoch ist die Ausbildungsvergütung für Medizinische Fachangestellte?
+      <h2 id="ausbildung-gehalt">
+        Gehalt in der Ausbildung zur Medizinischen Fachangestellten
       </h2>
       <p>
         Der
@@ -292,7 +336,11 @@
         Glücklicherweise konnte die Vergütung mittlerweile fast verdoppelt
         werden.
       </p>
-      <div class="my-5">
+
+      <h3 class="h5">
+        Tabelle – Ausbildungsvergütung als Medizinische Fachangestellte (MFA)
+      </h3>
+      <div class="mb-5">
         <div class="table-responsive">
           <table class="table table-secondary table-striped">
             <thead>
@@ -346,9 +394,24 @@
         <JobsTeaserContainer employment-type="training" />
       </div>
 
-      <h2>
-        Welche Möglichkeiten habe ich nach der Ausbildung als Medizinische
-        Fachangestellte?
+      <h2 id="ausbildung-gehalt-danach">
+        Gehalt nach der Ausbildung zur Medizinischen Fachangestellten (MFA)
+      </h2>
+      <p>
+        Das Gehalt einer MFA orientiert sich an dem Tarifvertrag für
+        Medizinische Fachangestellte. Ausführliche Informationen zum Gehalt für
+        Medizinische Fachangestellte nach der Ausbildung, den Tätigkeitsgruppen
+        und Einteilung der Berufsjahre findest du
+        <b-link to="/karriere/mfa/gehalt">hier</b-link>.
+      </p>
+      <p>
+        Hast du noch Fragen zum Beruf oder der Ausbildung der Medizinischen
+        Fachangestellten? Dann schreib uns doch einfach
+        <b-link to="/kontakt">eine Nachricht</b-link>.
+      </p>
+
+      <h2 id="perspektiven">
+        Perspektiven nach der Ausbildung zur Medizinischen Fachangestellten
       </h2>
       <p>
         Hast du deine Ausbildung erstmal in der Tasche, wird es auch als
@@ -412,22 +475,7 @@
         oder Kassenärztliche Vereinigungen sind dabei einige Arbeitsorte für
         Medizinische Fachangestellte.
       </p>
-      <h2>
-        Wieviel verdient man nach der Ausbildung zur Medizinischen
-        Fachangestellten?
-      </h2>
-      <p>
-        Das Gehalt einer MFA orientiert sich an dem Tarifvertrag für
-        Medizinische Fachangestellte. Ausführliche Informationen zum Gehalt für
-        Medizinische Fachangestellte nach der Ausbildung, den Tätigkeitsgruppen
-        und Einteilung der Berufsjahre findest du
-        <b-link to="/karriere/mfa/gehalt">hier</b-link>.
-      </p>
-      <p>
-        Hast du noch Fragen zum Beruf oder der Ausbildung der Medizinischen
-        Fachangestellten? Dann schreib uns doch einfach
-        <b-link to="/kontakt">eine Nachricht</b-link>.
-      </p>
+
       <h2 class="h4">Quellen</h2>
       <p>
         Alle Inhalte über die Berufsausbildung zur/zum Medizinischen
@@ -441,6 +489,8 @@
       <ToJobboardBanner class="my-5" />
       <RandomTrainingsContainer />
     </div>
+
+    <ScrollToTopBtn />
 
     <Head
       :title="title"
@@ -457,6 +507,8 @@
   import JobsTeaserContainer from "@/components/containers/JobsTeaserContainer.vue";
   import ProfessionTypeContainer from "@/components/containers/ProfessionTypeContainer.vue";
   import JobSearchSingleForm from "@/components/forms/JobSearchSingleForm.vue";
+  import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
+  import { scrollToHashMixin } from "@/mixins/scrollToHashMixin";
   export default {
     name: "CareerMfaAusbildung",
     components: {
@@ -464,8 +516,10 @@
       ToJobboardBanner,
       JobsTeaserContainer,
       ProfessionTypeContainer,
-      JobSearchSingleForm
+      JobSearchSingleForm,
+      ScrollToTopBtn
     },
+    mixins: [scrollToHashMixin],
     data() {
       return {
         title: "MFA Ausbildung & Berufsbild",
@@ -537,3 +591,24 @@
     }
   };
 </script>
+
+<style lang="scss" scoped>
+  ol {
+    counter-reset: item;
+
+    li {
+      counter-increment: item;
+    }
+
+    ol {
+      li {
+        display: block;
+      }
+
+      li:before {
+        content: counters(item, ".") ". ";
+        margin-left: -20px;
+      }
+    }
+  }
+</style>

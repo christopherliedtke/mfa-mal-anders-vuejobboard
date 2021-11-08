@@ -190,7 +190,7 @@
                 >Gehalt</b-link
               >
               (inkl. Gehaltsrechner),
-              <b-link to="/karriere/bewerbungstipps" class="text-secondary"
+              <b-link to="/karriere/bewerbungs" class="text-secondary"
                 >Bewerbungen</b-link
               >
               und vieles, vieles mehr geben.
