@@ -149,9 +149,9 @@ router.post("/training-published", verifyToken, isAdmin, async (req, res) => {
                 <p>
                     <a href="${
                       process.env.WEBSITE_URL
-                    }/karriere/fortbildungskatalog">${
+                    }/karriere/fort-und-weiterbildung/fortbildungskatalog">${
         process.env.WEBSITE_URL
-      }/karriere/fortbildungskatalog</a>
+      }/karriere/fort-und-weiterbildung/fortbildungskatalog</a>
                 </p>
                 <p>
                     Sie können die Fortbildung jederzeit unter MEIN KONTO > FORTBILDUNGEN ändern bzw. deaktivieren. Sollten Sie noch Fragen oder Anregungen haben, melden Sie sich gern bei uns über unser <a href="${

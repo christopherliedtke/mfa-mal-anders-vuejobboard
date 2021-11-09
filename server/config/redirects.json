@@ -125,107 +125,167 @@
   },
   {
     "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen",
-    "new": "/karriere/fort-und-weiterbildungen"
+    "new": "/karriere/fort-und-weiterbildung"
   },
   {
     "old": "/page/mfa-career/fort-und-weiterbildungen",
-    "new": "/karriere/fort-und-weiterbildungen"
+    "new": "/karriere/fort-und-weiterbildung"
   },
   {
     "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/abrechnungsmanagerin",
-    "new": "/karriere/fort-und-weiterbildungen/abrechnungsmanagerin"
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/abrechnungsmanagerin"
   },
   {
     "old": "/page/mfa-career/fort-und-weiterbildungen/abrechnungsmanagerin",
-    "new": "/karriere/fort-und-weiterbildungen/abrechnungsmanagerin"
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/abrechnungsmanagerin"
   },
   {
     "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/ambulantes-operieren",
-    "new": "/karriere/fort-und-weiterbildungen/ambulantes-operieren"
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/ambulantes-operieren"
   },
   {
     "old": "/page/mfa-career/fort-und-weiterbildungen/ambulantes-operieren",
-    "new": "/karriere/fort-und-weiterbildungen/ambulantes-operieren"
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/ambulantes-operieren"
   },
   {
     "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/ambulantes-operieren-in-der-augenheilkunde",
-    "new": "/karriere/fort-und-weiterbildungen/ambulantes-operieren-in-der-augenheilkunde"
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/ambulantes-operieren-in-der-augenheilkunde"
   },
   {
     "old": "/page/mfa-career/fort-und-weiterbildungen/ambulantes-operieren-in-der-augenheilkunde",
-    "new": "/karriere/fort-und-weiterbildungen/ambulantes-operieren-in-der-augenheilkunde"
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/ambulantes-operieren-in-der-augenheilkunde"
   },
   {
     "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/fachwirt-im-gesundheitswesen",
-    "new": "/karriere/fort-und-weiterbildungen/fachwirtin-im-gesundheits-und-sozialwesen"
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/fachwirtin-im-gesundheits-und-sozialwesen"
   },
   {
     "old": "/page/mfa-career/fort-und-weiterbildungen/fachwirtin-im-gesundheits-und-sozialwesen",
-    "new": "/karriere/fort-und-weiterbildungen/fachwirtin-im-gesundheits-und-sozialwesen"
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/fachwirtin-im-gesundheits-und-sozialwesen"
   },
   {
     "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/gefaessassistentin",
-    "new": "/karriere/fort-und-weiterbildungen/gefaessassistentin"
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/gefaessassistentin"
   },
   {
     "old": "/page/mfa-career/fort-und-weiterbildungen/gefaessassistentin",
-    "new": "/karriere/fort-und-weiterbildungen/gefaessassistentin"
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/gefaessassistentin"
   },
   {
     "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/naepa-eva",
-    "new": "/karriere/fort-und-weiterbildungen/naepa-und-eva"
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/naepa-und-eva"
   },
   {
     "old": "/page/mfa-career/fort-und-weiterbildungen/naepa-und-eva",
-    "new": "/karriere/fort-und-weiterbildungen/naepa-und-eva"
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/naepa-und-eva"
   },
   {
     "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/onkologische-fachassistentin",
-    "new": "/karriere/fort-und-weiterbildungen/onkologischer-fachassistentin"
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/onkologischer-fachassistentin"
   },
   {
     "old": "/page/mfa-career/fort-und-weiterbildungen/onkologischer-fachassistentin",
-    "new": "/karriere/fort-und-weiterbildungen/onkologischer-fachassistentin"
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/onkologischer-fachassistentin"
   },
   {
     "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/physician-assistant",
-    "new": "/karriere/fort-und-weiterbildungen/physician-assistant"
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/physician-assistant"
   },
   {
     "old": "/page/mfa-career/fort-und-weiterbildungen/physician-assistant",
-    "new": "/karriere/fort-und-weiterbildungen/physician-assistant"
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/physician-assistant"
   },
   {
     "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/praxismanagerin",
-    "new": "/karriere/fort-und-weiterbildungen/praxismanagerin"
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/praxismanagerin"
   },
   {
     "old": "/page/mfa-career/fort-und-weiterbildungen/praxismanagerin",
-    "new": "/karriere/fort-und-weiterbildungen/praxismanagerin"
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/praxismanagerin"
   },
   {
     "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/weiterbildung-studynurse",
-    "new": "/karriere/fort-und-weiterbildungen/study-nurse"
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/study-nurse"
   },
   {
     "old": "/page/mfa-career/fort-und-weiterbildungen/study-nurse",
-    "new": "/karriere/fort-und-weiterbildungen/study-nurse"
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/study-nurse"
   },
   {
     "old": "/page/mfa-career/fort-und-weiterbildungen/medizinstudium",
-    "new": "/karriere/fort-und-weiterbildungen/medizinstudium"
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/medizinstudium"
   },
   {
     "old": "/page/mfa-career/fort-und-weiterbildungen/qualitaetsmanagementbeauftragte-r-qmb",
-    "new": "/karriere/fort-und-weiterbildungen/qualitaetsmanagementbeauftragte-r-qmb"
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/qualitaetsmanagementbeauftragte-r-qmb"
   },
   {
     "old": "/page/mfa-career/fort-und-weiterbildungen/zahnmedizinische-prophylaxeassistenz-zmp",
-    "new": "/karriere/fort-und-weiterbildungen/zahnmedizinische-prophylaxeassistenz-zmp"
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/zahnmedizinische-prophylaxeassistenz-zmp"
   },
   {
     "old": "/page/mfa-career/fort-und-weiterbildungen/zahnmedizinische-verwaltungsassistenz-zmv",
-    "new": "/karriere/fort-und-weiterbildungen/zahnmedizinische-verwaltungsassistenz-zmv"
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/zahnmedizinische-verwaltungsassistenz-zmv"
+  },
+  {
+    "old": "/karriere/fort-und-weiterbildungen",
+    "new": "/karriere/fort-und-weiterbildung/ueberblick"
+  },
+  {
+    "old": "/karriere/fort-und-weiterbildungen/abrechnungsmanagerin",
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/abrechnungsmanagerin"
+  },
+  {
+    "old": "/karriere/fort-und-weiterbildungen/ambulantes-operieren",
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/ambulantes-operieren"
+  },
+  {
+    "old": "/karriere/fort-und-weiterbildungen/ambulantes-operieren-in-der-augenheilkunde",
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/ambulantes-operieren-in-der-augenheilkunde"
+  },
+  {
+    "old": "/karriere/fort-und-weiterbildungen/fachwirtin-im-gesundheits-und-sozialwesen",
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/fachwirtin-im-gesundheits-und-sozialwesen"
+  },
+  {
+    "old": "/karriere/fort-und-weiterbildungen/gefaessassistentin",
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/gefaessassistentin"
+  },
+  {
+    "old": "/karriere/fort-und-weiterbildungen/naepa-und-eva",
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/naepa-und-eva"
+  },
+  {
+    "old": "/karriere/fort-und-weiterbildungen/onkologischer-fachassistentin",
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/onkologischer-fachassistentin"
+  },
+  {
+    "old": "/karriere/fort-und-weiterbildungen/physician-assistant",
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/physician-assistant"
+  },
+  {
+    "old": "/karriere/fort-und-weiterbildungen/praxismanagerin",
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/praxismanagerin"
+  },
+  {
+    "old": "/karriere/fort-und-weiterbildungen/study-nurse",
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/study-nurse"
+  },
+  {
+    "old": "/karriere/fort-und-weiterbildungen/medizinstudium",
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/medizinstudium"
+  },
+  {
+    "old": "/karriere/fort-und-weiterbildungen/qualitaetsmanagementbeauftragte-r-qmb",
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/qualitaetsmanagementbeauftragte-r-qmb"
+  },
+  {
+    "old": "/karriere/fort-und-weiterbildungen/zahnmedizinische-prophylaxeassistenz-zmp",
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/zahnmedizinische-prophylaxeassistenz-zmp"
+  },
+  {
+    "old": "/karriere/fort-und-weiterbildungen/zahnmedizinische-verwaltungsassistenz-zmv",
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/zahnmedizinische-verwaltungsassistenz-zmv"
   },
   {
     "old": "/fuer-mfa/jobs-und-berufsbilder",
@@ -373,6 +433,10 @@
   },
   {
     "old": "/karriere/fortbildungskalender",
-    "new": "/karriere/fortbildungskatalog"
+    "new": "/karriere/fort-und-weiterbildung/fortbildungskatalog"
+  },
+  {
+    "old": "/karriere/fortbildungskatalog",
+    "new": "/karriere/fort-und-weiterbildung/fortbildungskatalog"
   }
 ]

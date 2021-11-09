@@ -593,7 +593,7 @@
         leitende Tätigkeiten und Verantwortung eingeteilt. Dies gibt dir eine
         zusätzliche Orientierung, um dein Gehaltsniveau einschätzen zu können.
         Hier steigern vor allem abgeschlossene
-        <b-link to="/karriere/fort-und-weiterbildungen"
+        <b-link to="/karriere/fort-und-weiterbildung/ueberblick"
           >Fortbildungen und Weiterbildungen</b-link
         >
         das Gehaltsniveau.
@@ -658,7 +658,7 @@
               </li>
               <li>
                 <b-link
-                  to="/karriere/fort-und-weiterbildungen/impfassistentin-fachkraft-fuer-impfmanagement"
+                  to="/karriere/fort-und-weiterbildung/ueberblick/impfassistentin-fachkraft-fuer-impfmanagement"
                   >Impfassistenz</b-link
                 >
               </li>
@@ -728,13 +728,13 @@
             <ul>
               <li>
                 <b-link
-                  to="/karriere/fort-und-weiterbildungen/ambulantes-operieren"
+                  to="/karriere/fort-und-weiterbildung/ueberblick/ambulantes-operieren"
                   >Ambulantes Operieren</b-link
                 >
               </li>
               <li>
                 <b-link
-                  to="/karriere/fort-und-weiterbildungen/ambulantes-operieren-in-der-augenheilkunde"
+                  to="/karriere/fort-und-weiterbildung/ueberblick/ambulantes-operieren-in-der-augenheilkunde"
                   >Ambulantes Operieren in der Augenheilkunde</b-link
                 >
               </li>
@@ -746,7 +746,7 @@
               <li>Gastroenterologische Endoskopie</li>
               <li>
                 <b-link
-                  to="/karriere/fort-und-weiterbildungen/onkologischer-fachassistentin"
+                  to="/karriere/fort-und-weiterbildung/ueberblick/onkologischer-fachassistentin"
                   >Onkologie</b-link
                 >
               </li>
@@ -757,19 +757,19 @@
               </li>
               <li>
                 <b-link
-                  to="/karriere/fort-und-weiterbildungen/qualitaetsmanagementbeauftragte-r-qmb"
+                  to="/karriere/fort-und-weiterbildung/ueberblick/qualitaetsmanagementbeauftragte-r-qmb"
                 >
                   Qualitätsmanagement
                 </b-link>
               </li>
               <li>Hygienemanagement</li>
               <li>
-                <b-link to="/karriere/fort-und-weiterbildungen"
+                <b-link to="/karriere/fort-und-weiterbildung/ueberblick"
                   >Nicht-ärztliche Praxisassistenz</b-link
                 >
               </li>
               <li>
-                <b-link to="/karriere/fort-und-weiterbildungen/verah">
+                <b-link to="/karriere/fort-und-weiterbildung/ueberblick/verah">
                   Versorgungsassistentin in der Hausarztpraxis (VERAH®)
                 </b-link>
               </li>
@@ -832,7 +832,7 @@
                 BBiG
               </li>
               <li>
-                <b-link to="/karriere/fort-und-weiterbildungen"
+                <b-link to="/karriere/fort-und-weiterbildung/ueberblick"
                   >Fachwirtin im Gesundheits- und Sozialwesen</b-link
                 >
                 gemäß § 53 BBiG
@@ -1287,7 +1287,7 @@
         Gesamtpaket stimmen. Dazu zählen vor allem das Klima im Team, die
         Arbeitszeiten, der Weg zur Arbeit, interessante Aufgaben, die fordern
         und fördern (Stichwort
-        <b-link to="/karriere/fort-und-weiterbildungen"
+        <b-link to="/karriere/fort-und-weiterbildung/ueberblick"
           >Weiterbildungen und Fortbildungen</b-link
         >
         ) oder die Möglichkeit Home Office zu machen.

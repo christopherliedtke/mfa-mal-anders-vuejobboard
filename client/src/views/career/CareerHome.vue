@@ -27,7 +27,7 @@
         <p>
           Hier findest du
           <b-link to="/stellenangebote">Stellenangebote</b-link>,
-          <b-link to="/karriere/fort-und-weiterbildungen"
+          <b-link to="/karriere/fort-und-weiterbildung/ueberblick"
             >Fort- und Weiterbildungsmöglichkeiten</b-link
           >,
           <b-link :to="`/${$config.cms.postsPath}`">Praxishacks</b-link>
@@ -86,7 +86,7 @@
           </div>
           <div class="col">
             <b-link
-              to="/karriere/fort-und-weiterbildungen"
+              to="/karriere/fort-und-weiterbildung/ueberblick"
               class="icon-box shadow1"
             >
               <b-img-lazy
@@ -110,7 +110,7 @@
         </div>
         <div>
           <b-link
-            to="/karriere/fortbildungskatalog"
+            to="/karriere/fort-und-weiterbildung/fortbildungskatalog"
             class="d-flex flex-column flex-lg-row icon-box shadow1"
           >
             <b-img-lazy
@@ -230,8 +230,9 @@
       <p>
         Vielleicht möchtest du dich aber auch in deiner Fachrichtung
         spezialisieren? Finde eine
-        <b-link to="/karriere/fort-und-weiterbildungen">Weiterbildung</b-link>,
-        die zu dir und deinen Karrierezielen passt.
+        <b-link to="/karriere/fort-und-weiterbildung/ueberblick"
+          >Weiterbildung</b-link
+        >, die zu dir und deinen Karrierezielen passt.
       </p>
       <div class="row my-5">
         <div class="col my-2">

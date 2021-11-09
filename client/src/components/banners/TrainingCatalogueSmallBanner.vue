@@ -1,6 +1,9 @@
 <template>
   <aside class="d-flex justify-content-center">
-    <router-link to="/karriere/fortbildungskatalog" class="text-dark">
+    <router-link
+      to="/karriere/fort-und-weiterbildung/fortbildungskatalog"
+      class="text-dark"
+    >
       <div
         class="border-radius1 shadow1 px-2 py-3 d-flex justify-content-around align-items-center"
         style="max-width: 450px"

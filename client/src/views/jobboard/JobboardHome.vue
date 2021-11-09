@@ -395,7 +395,7 @@
             <BerufsbilderBanner class="mt-3 mb-5" />
             <b-link
               class="h2 text-primary"
-              to="/karriere/fort-und-weiterbildungen"
+              to="/karriere/fort-und-weiterbildung/ueberblick"
               >Fort- und Weiterbildungen für MFA & ZFA</b-link
             >
             <RandomTrainingsContainer class="mt-3" :number="2" />

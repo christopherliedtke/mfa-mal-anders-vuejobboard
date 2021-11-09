@@ -83,7 +83,7 @@
         </div>
         <div class="col">
           <b-link
-            to="/karriere/fort-und-weiterbildungen"
+            to="/karriere/fort-und-weiterbildung/ueberblick"
             class="icon-box shadow1"
           >
             <b-img-lazy
@@ -107,7 +107,7 @@
       </div>
       <div>
         <b-link
-          to="/karriere/fortbildungskatalog"
+          to="/karriere/fort-und-weiterbildung/fortbildungskatalog"
           class="d-flex flex-column flex-lg-row icon-box shadow1"
         >
           <b-img-lazy
@@ -177,7 +177,7 @@
               ZFA stärken und Dir Tipps und Hilfestellungen zu Themen wie
               <b-link
                 class="text-secondary"
-                to="/karriere/fort-und-weiterbildungen"
+                to="/karriere/fort-und-weiterbildung/ueberblick"
                 >Weiterbildungsmöglichkeiten</b-link
               >,
               <b-link
@@ -252,14 +252,16 @@
           </p>
           <p>
             Wir haben einige
-            <b-link to="/karriere/fort-und-weiterbildungen"
+            <b-link to="/karriere/fort-und-weiterbildung/ueberblick"
               >Fort- und Weiterbildungen</b-link
             >
             speziell für ArzthelferInnen (MFA & ZFA) für dich zusammengestellt
             und erweitern die Auswahl stetig, sodass du dich ein wenig
             inspirieren lassen kannst. Schau doch gleich mal rein!
           </p>
-          <b-button to="/karriere/fort-und-weiterbildungen" variant="primary"
+          <b-button
+            to="/karriere/fort-und-weiterbildung/ueberblick"
+            variant="primary"
             >Zu den Fort- und Weiterbildungen</b-button
           >
         </div>

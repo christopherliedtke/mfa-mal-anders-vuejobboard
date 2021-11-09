@@ -10,7 +10,9 @@
         Finde die richtige
         <strong class="text-primary">Fort- oder Weiterbildung</strong> für Dich!
       </p>
-      <b-button to="/karriere/fortbildungskatalog" variant="secondary"
+      <b-button
+        to="/karriere/fort-und-weiterbildung/fortbildungskatalog"
+        variant="secondary"
         >Zum Fortbildungskatalog</b-button
       >
     </div>

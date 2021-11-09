@@ -540,7 +540,7 @@
         leitende Tätigkeiten und Verantwortung eingeteilt. Dies gibt dir eine
         zusätzliche Orientierung, um dein Gehaltsniveau einschätzen zu können.
         Hier steigern vor allem abgeschlossene
-        <b-link to="/karriere/fort-und-weiterbildungen"
+        <b-link to="/karriere/fort-und-weiterbildung/ueberblick"
           >Fortbildungen und Weiterbildungen</b-link
         >
         das Gehaltsniveau.
@@ -722,7 +722,7 @@
         Gesamtpaket stimmen. Dazu zählen vor allem das Klima im Team, die
         Arbeitszeiten, der Weg zur Arbeit, interessante Aufgaben, die fordern
         und fördern (Stichwort
-        <b-link to="/karriere/fort-und-weiterbildungen"
+        <b-link to="/karriere/fort-und-weiterbildung/ueberblick"
           >Weiterbildungen und Fortbildungen</b-link
         >
         ) oder die Möglichkeit Home Office zu machen.

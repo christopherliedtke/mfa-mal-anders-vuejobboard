@@ -107,7 +107,8 @@
           </div>
           <nav>
             <router-link to="/stellenangebote">Stellenangebote</router-link>
-            <router-link to="/karriere/fortbildungskatalog"
+            <router-link
+              to="/karriere/fort-und-weiterbildung/fortbildungskatalog"
               >Fortbildungskatalog</router-link
             >
             <router-link to="/karriere/bewerbung">Bewerbung</router-link>

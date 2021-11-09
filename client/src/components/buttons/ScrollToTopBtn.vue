@@ -32,6 +32,7 @@
 <style lang="scss" scoped>
   .scroll-to-top-btn {
     position: fixed;
+    z-index: 2;
     bottom: 2vh;
     right: 2vh;
     width: 50px;

@@ -14,14 +14,14 @@
 
       <div class="mt-5">
         <h2>
-          <b-link to="/karriere/fort-und-weiterbildungen"
+          <b-link to="/karriere/fort-und-weiterbildung/ueberblick"
             >Fort- und Weiterbildungen aus unserer Übersicht</b-link
           >
         </h2>
         <p>
           Du bist noch nicht sicher, welche Fort- oder Weiterbildung die
           richtige für Dich ist? Hier eine Auswahl aus unserer
-          <b-link to="/karriere/fort-und-weiterbildungen"
+          <b-link to="/karriere/fort-und-weiterbildung/ueberblick"
             >Übersicht an Fort- und Weiterbildungen für Medizinische und
             Zahnmedizinische Fachangestellte (MFA & ZFA)</b-link
           >.
@@ -59,8 +59,12 @@
           { text: "Home", to: "/" },
           { text: "Karriere", to: "/karriere" },
           {
+            text: "Fort- & Weiterbildung",
+            to: "/karriere/fort-und-weiterbildung"
+          },
+          {
             text: "Fortbildungskatalog",
-            to: "/karriere/fortbildungskatalog"
+            to: "/karriere/fort-und-weiterbildung/fortbildungskatalog"
           },
           {
             text: "Fortbildung"
@@ -85,16 +89,26 @@
                       "item": "https://www.mfa-mal-anders.de/karriere"
                   },{
                       "@type": "ListItem",
-                      "position": 3,
-                      "name": "Fortbildungskatalog",
-                      "item": "https://www.mfa-mal-anders.de/karriere/fortbildungskatalog"
+                      "position": 4,
+                      "name": "Fort- & Weiterbildung",
+                      "item": "https://www.mfa-mal-anders.de/karriere/fort-und-weiterbildung"
                   },{
                       "@type": "ListItem",
                       "position": 4,
+                      "name": "Fortbildungskatalog",
+                      "item": "https://www.mfa-mal-anders.de/karriere/fort-und-weiterbildung/fortbildungskatalog"
+                  },{
+                      "@type": "ListItem",
+                      "position": 5,
                       "name": "Fortbildung",
-                      "item": "https://www.mfa-mal-anders.de/karriere/fortbildungskatalog/${this.$route.params.id}"
+                      "item": "https://www.mfa-mal-anders.de/karriere/fort-und-weiterbildung/fortbildungskatalog/${this.$route.params.id}/${this.$route.params.slug}"
                   }]
               }`
+          },
+          {
+            rel: "canonical",
+            href: `${this.$config.website.url}/karriere/fort-und-weiterbildung/fortbildungskatalog/${this.$route.params.id}/${this.$route.params.slug}`,
+            id: "canonical"
           }
         ]
       };

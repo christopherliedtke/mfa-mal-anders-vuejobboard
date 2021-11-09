@@ -2,7 +2,7 @@
   <div>
     <nav v-if="trainings" class="list-group">
       <b-link
-        to="/karriere/fort-und-weiterbildungen"
+        to="/karriere/fort-und-weiterbildung/ueberblick"
         class="h5 bold list-group-item list-group-item-action text-dark mb-0"
       >
         Fort- & Weiterbildungen
@@ -20,7 +20,7 @@
             )"
             :key="training.id"
             class="list-group-item list-group-item-action px-4"
-            :to="`/karriere/fort-und-weiterbildungen/${training.slug}`"
+            :to="`/karriere/fort-und-weiterbildung/ueberblick/${training.slug}`"
             :active="training.slug === $route.params.slug"
             >{{ training.title }}</b-link
           >

@@ -84,8 +84,13 @@
               },{
                 "@type": "ListItem",
                 "position": 3,
-                "name": "Fort- und Weiterbildungen",
-                "item": "https://www.mfa-mal-anders.de/karriere/fort-und-weiterbildungen"
+                "name": "Fort- und Weiterbildung",
+                "item": "https://www.mfa-mal-anders.de/karriere/fort-und-weiterbildung"
+              },{
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Überblick für MFA & ZFA",
+                "item": "https://www.mfa-mal-anders.de/karriere/fort-und-weiterbildung/ueberblick"
               },{
                 "@type": "ListItem",
                 "position": 4,
@@ -93,7 +98,7 @@
                   .split("-")
                   .map(elem => elem.charAt(0).toUpperCase() + elem.slice(1))
                   .join(" ")}",
-                "item": "https://www.mfa-mal-anders.de/karriere/fort-und-weiterbildungen/${
+                "item": "https://www.mfa-mal-anders.de/karriere/fort-und-weiterbildung/ueberblick/${
                   this.$route.params.slug
                 }"
               }]
@@ -113,12 +118,16 @@
           { text: "Home", to: "/" },
           { text: "Karriere", to: "/karriere" },
           {
-            text: "Fort- & Weiterbildungen",
-            to: "/karriere/fort-und-weiterbildungen"
+            text: "Fort- & Weiterbildung",
+            to: "/karriere/fort-und-weiterbildung"
+          },
+          {
+            text: "Überblick für MFA & ZFA",
+            to: "/karriere/fort-und-weiterbildung/ueberblick"
           },
           {
             text: this.training.title,
-            to: `/karriere/fort-und-weiterbildungen/${this.training.slug}`
+            to: `/karriere/fort-und-weiterbildung/ueberblick/${this.training.slug}`
           }
         ];
       }

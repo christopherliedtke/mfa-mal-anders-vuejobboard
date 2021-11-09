@@ -52,10 +52,22 @@
               <router-link to="/karriere/jobs-und-berufsbilder"
                 >Jobs & Berufsbilder</router-link
               >
-              <router-link to="/karriere/fort-und-weiterbildungen"
+              <router-link to="/karriere/fort-und-weiterbildung"
                 >Fort- & Weiterbildungen</router-link
               >
-              <router-link to="/karriere/fortbildungskatalog" class="ml-3"
+              <router-link
+                to="/karriere/fort-und-weiterbildung/ueberblick"
+                class="ml-3"
+                >Überblick für MFA & ZFA</router-link
+              >
+              <router-link
+                to="/blog/artikel/foerderung-und-finanzierung-von-weiterbildungen"
+                class="ml-3"
+                >Finanzierung und Förderung</router-link
+              >
+              <router-link
+                to="/karriere/fort-und-weiterbildung/fortbildungskatalog"
+                class="ml-3"
                 >Fortbildungskatalog</router-link
               >
             </div>
@@ -543,7 +555,7 @@
             }
 
             &.show {
-              max-height: 300px;
+              max-height: 350px;
               visibility: visible;
 
               @media screen and (max-width: $break-menu) {

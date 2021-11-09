@@ -120,6 +120,12 @@ const CareerFortWeiterbildungenHome = () =>
     /* webpackPrefetch: true */
     "@/views/career/fort-weiterbildungen/CareerFortWeiterbildungenHome.vue"
   );
+const CareerFortWeiterbildungenUeberblick = () =>
+  import(
+    /* webpackChunkName: "career-training" */
+    /* webpackPrefetch: true */
+    "@/views/career/fort-weiterbildungen/CareerFortWeiterbildungenUeberblick.vue"
+  );
 const CareerFortWeiterbildung = () =>
   import(
     /* webpackChunkName: "career-training" */
@@ -306,7 +312,7 @@ const routes = [
   },
   {
     path: "/unternehmen/:companyId/:name",
-    name: "CompanyViewWithName",
+    name: "CompanyViewWName",
     component: CompanyView,
     meta: {
       public: true
@@ -377,7 +383,7 @@ const routes = [
     }
   },
   {
-    path: "/karriere/fort-und-weiterbildungen",
+    path: "/karriere/fort-und-weiterbildung",
     name: "KarriereFortWeiterbildungen",
     component: CareerFortWeiterbildungenHome,
     meta: {
@@ -385,7 +391,15 @@ const routes = [
     }
   },
   {
-    path: "/karriere/fort-und-weiterbildungen/:slug",
+    path: "/karriere/fort-und-weiterbildung/ueberblick",
+    name: "KarriereFortWeiterbildungUeberblick",
+    component: CareerFortWeiterbildungenUeberblick,
+    meta: {
+      public: true
+    }
+  },
+  {
+    path: "/karriere/fort-und-weiterbildung/ueberblick/:slug",
     name: "KarriereFortWeiterbildung",
     component: CareerFortWeiterbildung,
     meta: {
@@ -393,7 +407,7 @@ const routes = [
     }
   },
   {
-    path: "/karriere/fortbildungskatalog",
+    path: "/karriere/fort-und-weiterbildung/fortbildungskatalog",
     name: "KarriereFortbildungskatalog",
     component: CareerFortWeiterbildungenCatalogue,
     meta: {
@@ -401,7 +415,7 @@ const routes = [
     }
   },
   {
-    path: "/karriere/fortbildungskatalog/:id",
+    path: "/karriere/fort-und-weiterbildung/fortbildungskatalog/:id",
     name: "KarriereFortbildungskatalogFortbildung",
     component: CareerFortWeiterbildungenCatalogueTraining,
     meta: {
@@ -409,7 +423,7 @@ const routes = [
     }
   },
   {
-    path: "/karriere/fortbildungskatalog/:id/:slug",
+    path: "/karriere/fort-und-weiterbildung/fortbildungskatalog/:id/:slug",
     name: "KarriereFortbildungskatalogFortbildungWSlug",
     component: CareerFortWeiterbildungenCatalogueTraining,
     meta: {

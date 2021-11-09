@@ -7,7 +7,7 @@
     >
       <article class="article-card">
         <b-link
-          :to="'/karriere/fort-und-weiterbildungen/' + training.slug"
+          :to="'/karriere/fort-und-weiterbildung/ueberblick/' + training.slug"
           :aria-label="training.title"
         >
           <div class="card">
@@ -32,7 +32,9 @@
               <p class="card-text" v-html="training.excerpt"></p>
 
               <b-button
-                :to="'/karriere/fort-und-weiterbildungen/' + training.slug"
+                :to="
+                  '/karriere/fort-und-weiterbildung/ueberblick/' + training.slug
+                "
                 variant="primary"
                 >Mehr</b-button
               >
@@ -45,19 +47,6 @@
 </template>
 
 <script>
-  import Vue from "vue";
-  import {
-    BCard,
-    BCardBody,
-    BCardImgLazy,
-    BCardTitle,
-    BCardText
-  } from "bootstrap-vue";
-  Vue.component("BCard", BCard);
-  Vue.component("BCardBody", BCardBody);
-  Vue.component("BCardImgLazy", BCardImgLazy);
-  Vue.component("BCardTitle", BCardTitle);
-  Vue.component("BCardText", BCardText);
   export default {
     name: "RandomTrainingsContainer",
     props: {

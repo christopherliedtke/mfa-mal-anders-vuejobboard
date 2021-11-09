@@ -22,7 +22,9 @@
         ArzthelferInnen!
       </p>
 
-      <b-button to="/karriere/fort-und-weiterbildungen" variant="primary"
+      <b-button
+        to="/karriere/fort-und-weiterbildung/ueberblick"
+        variant="primary"
         >Mehr erfahren!</b-button
       >
     </div>

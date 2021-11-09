@@ -125,10 +125,6 @@
 </template>
 
 <script>
-  import Vue from "vue";
-  import { BCard, BCardText } from "bootstrap-vue";
-  Vue.component("BCard", BCard);
-  Vue.component("BCardText", BCardText);
   import FortWeiterbildungenNav from "@/components/navs/FortWeiterbildungenNav.vue";
   import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
   export default {
@@ -139,13 +135,13 @@
     },
     data() {
       return {
-        title: "Fort- und Weiterbildungen für MFA & ZFA",
+        title: "Fort- und Weiterbildung für MFA & ZFA",
         breadcrumbs: [
           { text: "Home", to: "/" },
           { text: "Karriere", to: "/karriere" },
           {
-            text: "Fort- & Weiterbildungen",
-            to: "/karriere/fort-und-weiterbildungen"
+            text: "Fort- & Weiterbildung",
+            to: "/karriere/fort-und-weiterbildung"
           }
         ],
         snippet: [
@@ -168,8 +164,8 @@
                             },{
                                 "@type": "ListItem",
                                 "position": 3,
-                                "name": "Fort- und Weiterbildungen",
-                                "item": "https://www.mfa-mal-anders.de/karriere/fort-und-weiterbildungen"
+                                "name": "Fort- und Weiterbildung",
+                                "item": "https://www.mfa-mal-anders.de/karriere/fort-und-weiterbildung"
                             }]
                         }`
           }

@@ -110,7 +110,7 @@ const getTrainings = async () => {
         .map(elem =>
           writeUrl(
             process.env.WEBSITE_URL +
-              "/karriere/fort-und-weiterbildungen/" +
+              "/karriere/fort-und-weiterbildung/ueberblick/" +
               elem.slug,
             new Date(elem.modifiedGmt).toISOString()
           )
@@ -311,7 +311,7 @@ const getTrainingEvents = async () => {
       .map(trainingEvent =>
         writeUrl(
           process.env.WEBSITE_URL +
-            `/karriere/fortbildungskatalog/${trainingEvent._id}/${trainingEvent.slug}`,
+            `/karriere/fort-und-weiterbildung/fortbildungskatalog/${trainingEvent._id}/${trainingEvent.slug}`,
           new Date(trainingEvent.updatedAt).toISOString(),
           "weekly",
           0.5

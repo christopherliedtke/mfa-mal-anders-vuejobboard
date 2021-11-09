@@ -222,8 +222,12 @@
           { text: "Home", to: "/" },
           { text: "Karriere", to: "/karriere" },
           {
+            text: "Fort- & Weiterbildung",
+            to: "/karriere/fort-und-weiterbildung"
+          },
+          {
             text: "Fortbildungskatalog",
-            to: "/karriere/fortbildungskatalog"
+            to: "/karriere/fort-und-weiterbildung/fortbildungskatalog"
           }
         ],
         snippet: [
@@ -246,8 +250,13 @@
                 },{
                     "@type": "ListItem",
                     "position": 3,
+                    "name": "Fort- & Weiterbildung",
+                    "item": "https://www.mfa-mal-anders.de/karriere/fort-und-weiterbildung"
+                },{
+                    "@type": "ListItem",
+                    "position": 4,
                     "name": "Fortbildungskatalog",
-                    "item": "https://www.mfa-mal-anders.de/karriere/fortbildungskatalog"
+                    "item": "https://www.mfa-mal-anders.de/karriere/fort-und-weiterbildung/fortbildungskatalog"
                 }]
             }`
           },

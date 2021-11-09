@@ -465,7 +465,7 @@
       </p>
       <p>
         In unserer Rubrik
-        <b-link to="/karriere/fort-und-weiterbildungen"
+        <b-link to="/karriere/fort-und-weiterbildung/ueberblick"
           >Fort- und Weiterbildung</b-link
         >
         kannst du dich informieren, welche Möglichkeiten du als Medizinische
