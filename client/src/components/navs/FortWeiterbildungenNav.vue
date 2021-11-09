@@ -28,8 +28,8 @@
       </div>
     </nav>
     <div class="mt-3">
-      <TrainingCatalogueSmallBanner class="my-2" />
-      <SgdBanner class="my-2" />
+      <TrainingCatalogueSmallBanner v-if="showTrainingCatalogue" class="my-2" />
+      <SgdBanner v-if="showSgdBanner" class="my-2" />
     </div>
   </div>
 </template>
@@ -42,6 +42,16 @@
     components: {
       SgdBanner,
       TrainingCatalogueSmallBanner
+    },
+    props: {
+      showTrainingCatalogue: {
+        type: Boolean,
+        default: true
+      },
+      showSgdBanner: {
+        type: Boolean,
+        default: true
+      }
     },
     computed: {
       trainings() {

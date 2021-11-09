@@ -92,7 +92,9 @@
         if (this.$store.state.trainings.trainings.length > 0) {
           this.trainings = this.getRandom(
             this.$store.state.trainings.trainings,
-            this.number
+            this.number > this.$store.state.trainings.trainings.length
+              ? this.$store.state.trainings.trainings.length
+              : this.number
           );
         }
       }

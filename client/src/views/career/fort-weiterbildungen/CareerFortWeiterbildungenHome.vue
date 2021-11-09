@@ -6,10 +6,10 @@
     </div>
     <div class="container py-3 py-lg-5">
       <div class="row">
-        <div class="col-12 col-md-4 mb-4">
+        <div class="col-12 col-md-4 mb-4 order-2 order-lg-1">
           <FortWeiterbildungenNav />
         </div>
-        <div class="col-12 col-md-8 mb-5">
+        <div class="col-12 col-md-8 mb-5 order-1 order-lg-2">
           <b-img-lazy
             class="border-radius1 shadow1 mb-3 mb-lg-5"
             fluid
@@ -109,9 +109,10 @@
             Wir freuen uns über
             <b-link to="/kontakt">eure Nachrichten</b-link>.
           </p>
+          <TrainingCatalogueLargeBanner class="mt-5" />
         </div>
       </div>
-      <RandomTrainingsContainer class="mt-5" />
+      <RandomTrainingsContainer class="mt-3" />
     </div>
     <Head
       title="Fort- und Weiterbildung für ArzthelferInnen – MFA & ZFA"
@@ -127,11 +128,13 @@
 <script>
   import FortWeiterbildungenNav from "@/components/navs/FortWeiterbildungenNav.vue";
   import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
+  import TrainingCatalogueLargeBanner from "@/components/banners/TrainingCatalogueLargeBanner.vue";
   export default {
     name: "CareerFortWeiterbildungen",
     components: {
       FortWeiterbildungenNav,
-      RandomTrainingsContainer
+      RandomTrainingsContainer,
+      TrainingCatalogueLargeBanner
     },
     data() {
       return {
@@ -149,25 +152,25 @@
             id: "breadcrumbs",
             type: "application/ld+json",
             inner: `{
-                            "@context": "http://schema.org",
-                            "@type" : "BreadcrumbList",
-                            "itemListElement": [{
-                                "@type": "ListItem",
-                                "position": 1,
-                                "name": "MFA mal anders",
-                                "item": "https://www.mfa-mal-anders.de"
-                            },{
-                                "@type": "ListItem",
-                                "position": 2,
-                                "name": "Karriere",
-                                "item": "https://www.mfa-mal-anders.de/karriere"
-                            },{
-                                "@type": "ListItem",
-                                "position": 3,
-                                "name": "Fort- und Weiterbildung",
-                                "item": "https://www.mfa-mal-anders.de/karriere/fort-und-weiterbildung"
-                            }]
-                        }`
+                "@context": "http://schema.org",
+                "@type" : "BreadcrumbList",
+                "itemListElement": [{
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "MFA mal anders",
+                    "item": "https://www.mfa-mal-anders.de"
+                },{
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Karriere",
+                    "item": "https://www.mfa-mal-anders.de/karriere"
+                },{
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Fort- und Weiterbildung",
+                    "item": "https://www.mfa-mal-anders.de/karriere/fort-und-weiterbildung"
+                }]
+            }`
           }
         ]
       };

@@ -581,24 +581,3 @@
     }
   };
 </script>
-
-<style lang="scss" scoped>
-  ol {
-    counter-reset: item;
-
-    li {
-      counter-increment: item;
-    }
-
-    ol {
-      li {
-        display: block;
-      }
-
-      li:before {
-        content: counters(item, ".") ". ";
-        margin-left: -20px;
-      }
-    }
-  }
-</style>

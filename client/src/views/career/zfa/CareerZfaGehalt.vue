@@ -1090,25 +1090,6 @@
       color: $light;
     }
 
-    ol {
-      counter-reset: item;
-
-      li {
-        counter-increment: item;
-      }
-
-      ol {
-        li {
-          display: block;
-        }
-
-        li:before {
-          content: counters(item, ".") ". ";
-          margin-left: -20px;
-        }
-      }
-    }
-
     .checklist {
       background: url("~@/assets/img/money_motivation_.svg") 90% center
         no-repeat;
