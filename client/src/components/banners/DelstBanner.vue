@@ -1,6 +1,6 @@
 <template>
   <aside>
-    <b-link href="https://www.delst.de/de/?ref=mfa-mal-anders">
+    <b-link href="https://www.delst.de/de/?ref=mfa-mal-anders" target="_blank">
       <b-img
         class="border-radius1"
         fluid

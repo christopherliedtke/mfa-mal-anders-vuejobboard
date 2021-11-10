@@ -83,7 +83,7 @@
         </div>
         <div class="col">
           <b-link
-            to="/karriere/fort-und-weiterbildung/ueberblick"
+            to="/karriere/fort-und-weiterbildung"
             class="icon-box shadow1"
           >
             <b-img-lazy
@@ -177,7 +177,7 @@
               ZFA stärken und Dir Tipps und Hilfestellungen zu Themen wie
               <b-link
                 class="text-secondary"
-                to="/karriere/fort-und-weiterbildung/ueberblick"
+                to="/karriere/fort-und-weiterbildung"
                 >Weiterbildungsmöglichkeiten</b-link
               >,
               <b-link

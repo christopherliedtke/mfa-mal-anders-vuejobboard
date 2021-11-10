@@ -20,27 +20,11 @@ a {
 main {
   ul:not([role="tablist"]):not([role="menu"]),
   ol {
-    padding-inline-start: 2rem;
-    counter-reset: item;
-
     &.no-bullets {
       padding-inline-start: 0;
-    }
-
-    li {
-      margin-bottom: 0.75rem;
-      counter-increment: item;
-    }
-
-    ol {
-      li {
-        display: block;
-      }
-
-      li:before {
-        content: counters(item, ".") ". ";
-        margin-left: -20px;
-      }
+      list-style-type: none; /* Remove bullets */
+      padding: 0; /* Remove padding */
+      margin: 0; /* Remove margins */
     }
   }
 }

@@ -31,11 +31,8 @@
         aussieht, beschreiben wir hier.
       </p>
 
-      <nav
-        class="bg-light-shade border-radius1 my-4 p-4"
-        style="max-width: fit-content"
-      >
-        <h2 class="h4 bold">Inhalt</h2>
+      <nav class="content my-4 py-4 px-3 px-lg-5">
+        <h2 class="h1">Inhalt</h2>
         <ol class="text-tertiary pl-4">
           <li class="lead mt-3">
             <b-link to="#aufgaben">Aufgaben</b-link>
@@ -45,17 +42,19 @@
           </li>
           <li class="lead mt-3">
             <b-link to="#ausbildung-ablauf">Ablauf der Ausbildung </b-link>
+            <ol>
+              <li class="lead mt-3">
+                <b-link to="#ausbildung-inhalte"
+                  >Inhalte der Ausbildung
+                </b-link>
+              </li>
+              <li class="lead mt-3">
+                <b-link to="#ausbildung-pruefung"
+                  >Zwischen- und Abschlussprüfung in der Ausbildung
+                </b-link>
+              </li>
+            </ol>
           </li>
-          <ol>
-            <li class="lead mt-3">
-              <b-link to="#ausbildung-inhalte">Inhalte der Ausbildung </b-link>
-            </li>
-            <li class="lead mt-3">
-              <b-link to="#ausbildung-pruefung"
-                >Zwischen- und Abschlussprüfung in der Ausbildung
-              </b-link>
-            </li>
-          </ol>
 
           <li class="lead mt-3">
             <b-link to="#ausbildung-gehalt">Gehalt in der Ausbildung </b-link>
@@ -458,14 +457,15 @@
         Informationen über die drei großen Bildungsformen, Fortbildung,
         Weiterbildung und Studium, und welche davon für dich die Richtige ist,
         kannst du
-        <b-link to="/blog/artikel/fortbildung-weiterbildung-oder-studium"
+        <b-link
+          to="/karriere/fort-und-weiterbildung#fortbildung-weiterbildung-studium"
           >hier</b-link
         >
         nachlesen.
       </p>
       <p>
         In unserer Rubrik
-        <b-link to="/karriere/fort-und-weiterbildung/ueberblick"
+        <b-link to="/karriere/fort-und-weiterbildung"
           >Fort- und Weiterbildung</b-link
         >
         kannst du dich informieren, welche Möglichkeiten du als Medizinische

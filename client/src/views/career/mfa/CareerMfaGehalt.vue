@@ -40,50 +40,46 @@
         ArzthelferIn?
       </p>
 
-      <nav
-        class="bg-light-shade border-radius1 my-4 p-4"
-        style="max-width: fit-content"
-      >
-        <h2 class="h4 bold">Inhalt</h2>
+      <nav class="content my-4 py-4 px-3 px-lg-5">
+        <h2 class="h1">Inhalt</h2>
         <ol class="text-tertiary pl-4">
           <li class="lead mt-3">
             <b-link to="#gehaltstarifvertrag"
               >Tarifvertrag MFA {{ new Date().getFullYear() }} – für
               Medizinische Fachangestellte / ArzthelferIn</b-link
             >
+            <ol>
+              <li class="lead mt-3">
+                <b-link to="#gehaltsrechner"
+                  >Gehaltsrechner MFA – nach Berufsjahre, Fortbildungen,
+                  Arbeitszeit</b-link
+                >
+              </li>
+
+              <li class="lead mt-3">
+                <b-link to="#berufsjahre"
+                  >Anrechnung von Berufsjahren nach Gehaltstarifvertrag</b-link
+                >
+              </li>
+              <li class="lead mt-3">
+                <b-link to="#auszeiten"
+                  >Mutterschutz, Elternzeit und Erziehungsurlaub</b-link
+                >
+              </li>
+              <li class="lead mt-3">
+                <b-link to="#berufsnahe-taetigkeiten"
+                  >Anrechnung der Berufsjahre für MFA bei berufsnahen
+                  Tätigkeiten</b-link
+                >
+              </li>
+              <li class="lead mt-3">
+                <b-link to="#taetigkeitsgruppen"
+                  >Tätigkeitsgruppen nach aktuellem Gehaltstarifvertrag für
+                  MFA</b-link
+                >
+              </li>
+            </ol>
           </li>
-
-          <ol>
-            <li class="lead mt-3">
-              <b-link to="#gehaltsrechner"
-                >Gehaltsrechner MFA – nach Berufsjahre, Fortbildungen,
-                Arbeitszeit</b-link
-              >
-            </li>
-
-            <li class="lead mt-3">
-              <b-link to="#berufsjahre"
-                >Anrechnung von Berufsjahren nach Gehaltstarifvertrag</b-link
-              >
-            </li>
-            <li class="lead mt-3">
-              <b-link to="#auszeiten"
-                >Mutterschutz, Elternzeit und Erziehungsurlaub</b-link
-              >
-            </li>
-            <li class="lead mt-3">
-              <b-link to="#berufsnahe-taetigkeiten"
-                >Anrechnung der Berufsjahre für MFA bei berufsnahen
-                Tätigkeiten</b-link
-              >
-            </li>
-            <li class="lead mt-3">
-              <b-link to="#taetigkeitsgruppen"
-                >Tätigkeitsgruppen nach aktuellem Gehaltstarifvertrag für
-                MFA</b-link
-              >
-            </li>
-          </ol>
 
           <li class="lead mt-3">
             <b-link to="#gehalt-teilzeit">MFA Gehalt in Teilzeit</b-link>
@@ -593,7 +589,7 @@
         leitende Tätigkeiten und Verantwortung eingeteilt. Dies gibt dir eine
         zusätzliche Orientierung, um dein Gehaltsniveau einschätzen zu können.
         Hier steigern vor allem abgeschlossene
-        <b-link to="/karriere/fort-und-weiterbildung/ueberblick"
+        <b-link to="/karriere/fort-und-weiterbildung"
           >Fortbildungen und Weiterbildungen</b-link
         >
         das Gehaltsniveau.
@@ -764,7 +760,8 @@
               </li>
               <li>Hygienemanagement</li>
               <li>
-                <b-link to="/karriere/fort-und-weiterbildung/ueberblick"
+                <b-link
+                  to="/karriere/fort-und-weiterbildung/ueberblick/naepa-und-eva"
                   >Nicht-ärztliche Praxisassistenz</b-link
                 >
               </li>
@@ -832,7 +829,8 @@
                 BBiG
               </li>
               <li>
-                <b-link to="/karriere/fort-und-weiterbildung/ueberblick"
+                <b-link
+                  to="/karriere/fort-und-weiterbildung/ueberblick/fachwirtin-im-gesundheits-und-sozialwesen"
                   >Fachwirtin im Gesundheits- und Sozialwesen</b-link
                 >
                 gemäß § 53 BBiG
@@ -1287,7 +1285,7 @@
         Gesamtpaket stimmen. Dazu zählen vor allem das Klima im Team, die
         Arbeitszeiten, der Weg zur Arbeit, interessante Aufgaben, die fordern
         und fördern (Stichwort
-        <b-link to="/karriere/fort-und-weiterbildung/ueberblick"
+        <b-link to="/karriere/fort-und-weiterbildung"
           >Weiterbildungen und Fortbildungen</b-link
         >
         ) oder die Möglichkeit Home Office zu machen.

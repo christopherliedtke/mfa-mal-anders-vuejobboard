@@ -1,18 +1,23 @@
 <template>
-  <aside class="card text-center overflow-hidden shadow1 p-3">
+  <aside class="card overflow-hidden shadow1 p-3">
     <div
-      class="card-body d-flex flex-column justify-content-center align-items-center h-100 p-4"
+      class="card-body d-flex flex-column justify-content-start align-items-start h-100 p-4"
     >
-      <h3 class="h2 bold">{{ header }}</h3>
+      <!-- eslint-disable-next-line -->
+      <h2 class="h1" v-html="header"></h2>
+      <p class="lead bold text-primary">
+        Finde jetzt den passenden Anbieter für Deinen nächsten Karriereschritt
+      </p>
       <p>
         Egal ob online oder in Deiner Umgebung, für MFA oder ZFA, von Abrechnung
-        über Praxismanagement bis hin zu Medizinstudium... <br />
-        Finde die richtige
-        <strong class="text-primary">Fort- oder Weiterbildung</strong> für Dich!
+        über Praxismanagement bis hin zu Medizinstudium... In unserem
+        Fortbildungskatalog findest Du garantiert Deine nächste Fort- oder
+        Weiterbildung!
       </p>
       <b-button
         to="/karriere/fort-und-weiterbildung/fortbildungskatalog"
         variant="secondary"
+        size="lg"
         >Zum Fortbildungskatalog</b-button
       >
     </div>
@@ -25,7 +30,8 @@
     props: {
       header: {
         type: String,
-        default: "Unser Online Fortbildungskatalog!"
+        default:
+          "<strong>Online Fortbildungskatalog</strong> <br> speziell für MFA & ZFA!"
       }
     }
   };
@@ -33,9 +39,9 @@
 
 <style scoped lang="scss">
   .card {
-    background: radial-gradient(closest-side, #fffcfd88 0%, #fffcfdff 100%),
-      url("~@/assets/img/calendar.svg") center center;
-    background-size: cover;
+    background: radial-gradient(closest-side, #fffcfd99 0%, #fffcfdff 100%),
+      url("~@/assets/img/calendar.svg") right center no-repeat;
+    background-size: contain;
     background-blend-mode: lighten;
 
     .card-body {

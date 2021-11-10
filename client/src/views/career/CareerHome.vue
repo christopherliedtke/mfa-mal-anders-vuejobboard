@@ -27,7 +27,7 @@
         <p>
           Hier findest du
           <b-link to="/stellenangebote">Stellenangebote</b-link>,
-          <b-link to="/karriere/fort-und-weiterbildung/ueberblick"
+          <b-link to="/karriere/fort-und-weiterbildung"
             >Fort- und Weiterbildungsmöglichkeiten</b-link
           >,
           <b-link :to="`/${$config.cms.postsPath}`">Praxishacks</b-link>
@@ -86,7 +86,7 @@
           </div>
           <div class="col">
             <b-link
-              to="/karriere/fort-und-weiterbildung/ueberblick"
+              to="/karriere/fort-und-weiterbildung"
               class="icon-box shadow1"
             >
               <b-img-lazy

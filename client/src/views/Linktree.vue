@@ -16,7 +16,7 @@
         <b-button block to="/karriere/zfa/gehalt"
           >🧮 ZFA Gehaltsrechner</b-button
         >
-        <b-button block to="/karriere/fort-und-weiterbildung/ueberblick"
+        <b-button block to="/karriere/fort-und-weiterbildung"
           >🎓 Fort- und Weiterbildungen</b-button
         >
         <b-button

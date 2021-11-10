@@ -3,7 +3,11 @@
     <div
       v-for="training in trainings"
       :key="training.id"
-      :class="['col-12 mb-4', `col-md-${12 / 2}`, `col-lg-${12 / number}`]"
+      :class="[
+        'col-12 mb-4',
+        `col-md-${12 / 2}`,
+        `col-lg-${12 / (number === 3 ? 3 : 2)}`
+      ]"
     >
       <article class="article-card">
         <b-link
@@ -26,7 +30,7 @@
               fluid
             />
             <div class="card-body">
-              <h4 class="card-title">{{ training.title }}</h4>
+              <h2 class="card-title h4">{{ training.title }}</h2>
 
               <!-- eslint-disable-next-line -->
               <p class="card-text" v-html="training.excerpt"></p>

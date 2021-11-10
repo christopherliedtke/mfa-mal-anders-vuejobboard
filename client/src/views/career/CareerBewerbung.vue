@@ -38,64 +38,61 @@
         werden.
       </p>
 
-      <nav
-        class="bg-light-shade border-radius1 my-4 p-4"
-        style="max-width: fit-content"
-      >
-        <h2 class="h4 bold">Inhalt</h2>
+      <nav class="content my-4 py-4 px-3 px-lg-5">
+        <h2 class="h1">Inhalt</h2>
         <ol class="text-tertiary pl-4">
           <li class="lead mt-3">
             <b-link to="#anschreiben">Bewerbungsschreiben</b-link>
+            <ol>
+              <li class="lead mt-3">
+                <b-link to="#anschreiben-briefkopf">Briefkopf</b-link>
+              </li>
+              <li class="lead mt-3">
+                <b-link to="#anschreiben-betreff">Betreff</b-link>
+              </li>
+              <li class="lead mt-3">
+                <b-link to="#anschreiben-anrede">Anrede</b-link>
+              </li>
+              <li class="lead mt-3">
+                <b-link to="#anschreiben-einleitung">Einleitung</b-link>
+              </li>
+              <li class="lead mt-3">
+                <b-link to="#anschreiben-hauptteil">Hauptteil</b-link>
+                <ol>
+                  <li class="lead mt-3">
+                    <b-link to="#anschreiben-hauptteil-qualifikationen"
+                      >Qualifikationen</b-link
+                    >
+                  </li>
+                  <li class="lead mt-3">
+                    <b-link to="#anschreiben-hauptteil-motivation"
+                      >Motivation & Ziele</b-link
+                    >
+                  </li>
+                </ol>
+              </li>
+              <li class="lead mt-3">
+                <b-link to="#anschreiben-schlussteil">Schlussteil</b-link>
+                <ol>
+                  <li class="lead mt-3">
+                    <b-link to="#anschreiben-schlussteil-gehaltsvorstellungen"
+                      >Gehaltsvorstellungen</b-link
+                    >
+                  </li>
+                  <li class="lead mt-3">
+                    <b-link to="#anschreiben-schlussteil-eintrittsdatum"
+                      >Eintrittsdatum</b-link
+                    >
+                  </li>
+                  <li class="lead mt-3">
+                    <b-link to="#anschreiben-schlussteil-letzter-satz"
+                      >Letzter Satz</b-link
+                    >
+                  </li>
+                </ol>
+              </li>
+            </ol>
           </li>
-          <ol>
-            <li class="lead mt-3">
-              <b-link to="#anschreiben-briefkopf">Briefkopf</b-link>
-            </li>
-            <li class="lead mt-3">
-              <b-link to="#anschreiben-betreff">Betreff</b-link>
-            </li>
-            <li class="lead mt-3">
-              <b-link to="#anschreiben-anrede">Anrede</b-link>
-            </li>
-            <li class="lead mt-3">
-              <b-link to="#anschreiben-einleitung">Einleitung</b-link>
-            </li>
-            <li class="lead mt-3">
-              <b-link to="#anschreiben-hauptteil">Hauptteil</b-link>
-            </li>
-            <ol>
-              <li class="lead mt-3">
-                <b-link to="#anschreiben-hauptteil-qualifikationen"
-                  >Qualifikationen</b-link
-                >
-              </li>
-              <li class="lead mt-3">
-                <b-link to="#anschreiben-hauptteil-motivation"
-                  >Motivation & Ziele</b-link
-                >
-              </li>
-            </ol>
-            <li class="lead mt-3">
-              <b-link to="#anschreiben-schlussteil">Schlussteil</b-link>
-            </li>
-            <ol>
-              <li class="lead mt-3">
-                <b-link to="#anschreiben-schlussteil-gehaltsvorstellungen"
-                  >Gehaltsvorstellungen</b-link
-                >
-              </li>
-              <li class="lead mt-3">
-                <b-link to="#anschreiben-schlussteil-eintrittsdatum"
-                  >Eintrittsdatum</b-link
-                >
-              </li>
-              <li class="lead mt-3">
-                <b-link to="#anschreiben-schlussteil-letzter-satz"
-                  >Letzter Satz</b-link
-                >
-              </li>
-            </ol>
-          </ol>
           <li class="lead mt-3">
             <b-link to="#lebenslauf">Lebenslauf</b-link>
           </li>

@@ -11,10 +11,9 @@
         </div>
         <div class="col-12 col-md-8 mb-5">
           <RandomTrainingsContainer :number="100" class="" />
+          <TrainingCatalogueLargeBanner />
         </div>
       </div>
-
-      <TrainingCatalogueLargeBanner />
     </div>
     <Head
       title="Fort- und Weiterbildung für ArzthelferInnen – MFA & ZFA"
@@ -82,6 +81,11 @@
                   "item": "https://www.mfa-mal-anders.de/karriere/fort-und-weiterbildung/ueberblick"
               }]
             }`
+          },
+          {
+            id: "canonical",
+            rel: "canonical",
+            href: `${this.$config.website.url}/karriere/fort-und-weiterbildung`
           }
         ]
       };

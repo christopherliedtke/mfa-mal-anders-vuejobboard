@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div style="max-width: 600px" class="mx-auto">
     <nav v-if="trainings" class="list-group">
       <b-link
-        to="/karriere/fort-und-weiterbildung/ueberblick"
+        to="/karriere/fort-und-weiterbildung"
         class="h5 bold list-group-item list-group-item-action text-dark mb-0"
       >
         Fort- & Weiterbildungen

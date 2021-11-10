@@ -61,7 +61,12 @@
                 >Überblick für MFA & ZFA</router-link
               >
               <router-link
-                to="/blog/artikel/foerderung-und-finanzierung-von-weiterbildungen"
+                to="/karriere/fort-und-weiterbildung#fortbildung-weiterbildung-studium"
+                class="ml-3"
+                >Fortbildung | Weiterbildung | Studium</router-link
+              >
+              <router-link
+                to="/karriere/fort-und-weiterbildung#foerderung-finanzierung"
                 class="ml-3"
                 >Finanzierung und Förderung</router-link
               >
@@ -555,7 +560,7 @@
             }
 
             &.show {
-              max-height: 350px;
+              max-height: 450px;
               visibility: visible;
 
               @media screen and (max-width: $break-menu) {
