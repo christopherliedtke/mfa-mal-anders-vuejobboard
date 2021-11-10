@@ -139,9 +139,12 @@
         Vorweg klären wir zunächst ein paar Begrifflichkeiten und wie die
         vertragliche Lage aussieht.
       </p>
-      <h2 id="gehaltstarifvertrag">
-        Gehaltstarifvertag MFA {{ new Date().getFullYear() }} – für Medizinische
-        Fachangestellte / ArzthelferIn
+      <h2 id="gehaltstarifvertrag" class="my-4">
+        <span class="display-4"
+          >Gehaltstarifvertag MFA {{ new Date().getFullYear() }}</span
+        >
+        <br />
+        für Medizinische Fachangestellte / ArzthelferIn
       </h2>
       <div class="row">
         <div class="col">

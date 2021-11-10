@@ -106,9 +106,12 @@
         Gehaltsrechners für Zahnmedizinische Fachangestellte ganz einfach
         herausfinden.
       </p>
-      <h2 id="gehaltstarifvertrag">
-        Gehaltstarifvertrag {{ new Date().getFullYear() }} – ZFA /
-        ZahnarzthelferIn
+      <h2 id="gehaltstarifvertrag" class="my-4">
+        <span class="display-4"
+          >Gehaltstarifvertrag ZFA {{ new Date().getFullYear() }}</span
+        >
+        <br />
+        für ZahnarzthelferIn
       </h2>
       <div class="row">
         <div class="col">

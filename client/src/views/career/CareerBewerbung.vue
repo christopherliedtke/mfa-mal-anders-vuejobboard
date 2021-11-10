@@ -205,9 +205,9 @@
         dem Aussehen oder daran messen, ob du ein Bild deiner Bewerbung
         anhängst.
       </p>
-      <h2 id="anschreiben" class="mb-4">
-        Das Bewerbungsschreiben <br />
-        <span class="h4"
+      <h2 id="anschreiben" class="my-4">
+        <span class="display-4">Bewerbungsschreiben</span> <br />
+        <span class="h5"
           >für Medizinische Fachangestellte (MFA) & Zahnmedizinische
           Fachangestellte (ZFA)</span
         >
@@ -403,9 +403,9 @@
         Über eine Einladung zum persönlichen Gespräch freue ich mich.
       </blockquote>
 
-      <h2 id="lebenslauf" class="mb-4">
-        Der Lebenslauf <br />
-        <span class="h4"
+      <h2 id="lebenslauf" class="my-4">
+        <span class="display-4">Lebenslauf</span> <br />
+        <span class="h5"
           >für Medizinische Fachangestellte (MFA) & Zahnmedizinische
           Fachangestellte (ZFA)</span
         >

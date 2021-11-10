@@ -22,20 +22,6 @@
 
     <div class="container py-3 py-lg-5">
       <h2 class="display-4">Dein nächster Karriereschritt</h2>
-
-      <!-- <b-img-lazy
-            class="border-radius1 shadow1 mb-3 mb-lg-5"
-            fluid
-            srcset="/img/Banner_Weiterbildungsdschungel_1200-300x157.jpg 300w, /img/Banner_Weiterbildungsdschungel_1200-1024x538.jpg 1024w, /img/Banner_Weiterbildungsdschungel_1200-768x404.jpg 768w, /img/Banner_Weiterbildungsdschungel_1200.jpg 1200w"
-            sizes="(max-width: 992px) 100vw, 800px"
-            src="/img/Banner_Weiterbildungsdschungel_1200.jpg"
-            alt="Fort- und Weiterbildung für MFA & ZFA"
-            width="1200"
-            height="630"
-            blank-width="1200"
-            blank-height="630"
-            offset="1000"
-          /> -->
       <p>
         Als Medizinische & Zahnmedizinische Fachangestellte hast Du viele
         Möglichkeiten uns zu qualifizieren und im Job aufzusteigen oder sogar in
@@ -124,6 +110,15 @@
               </li>
             </ol>
           </li>
+          <li class="lead mt-3">
+            <b-link to="#bildungsurlaub">Bildungsurlaub</b-link>
+          </li>
+          <li class="lead mt-3">
+            <b-link to="#umschulung">Umschulung zur MFA & ZFA</b-link>
+          </li>
+          <li class="lead mt-3">
+            <b-link to="#quereinstieg">Quereinstieg als MFA & ZFA</b-link>
+          </li>
         </ol>
       </nav>
 
@@ -158,20 +153,17 @@
       />
 
       <p>
-        Die Liste ist noch lange nicht vollständig. Nach und nach erstellen wir
+        Die Liste ist noch lange nicht vollständig. Nach und nach stellen wir
         für dich eine grandiose Übersicht über deine Karrieremöglichkeiten in-
-        und außerhalb der Arztpraxis zusammenstellen.
+        und außerhalb der Arztpraxis zusammen.
       </p>
-      <p>
+      <div class="example shadow1">
         PS: Wenn du interessiert an einer bestimmten Weiterbildung für MFA / ZFA
-        bist, die wir noch nicht aufgeführt haben, schreib uns doch. Oder
+        bist, die wir noch nicht aufgeführt haben,
+        <b-link class="bold" to="/kontakt">schreib uns</b-link> doch. Oder
         vielleicht hast du schon eine Fortbildung gemacht von der deine
         Kolleginnen unbedingt wissen sollten?!
-      </p>
-      <p>
-        Wir freuen uns über
-        <b-link to="/kontakt">eure Nachrichten</b-link>.
-      </p>
+      </div>
 
       <RandomTrainingsContainer class="my-4" />
 
@@ -795,6 +787,109 @@
         Möglichkeit, die hier noch nicht aufgeführt ist?
         <b-link to="/kontakt">Lass es uns wissen</b-link>.
       </p>
+
+      <h2 id="bildungsurlaub" class="h1">
+        Bildungsurlaub – 5-10 Bildungstage pro Jahr
+      </h2>
+      <p>
+        Wusstest du eigentlich, dass du einen gesetzlichen Anspruch auf
+        Weiterbildung während der Arbeitszeit hast? Dir stehen je nach
+        Bundesland 5-10 Tage bezahlter Sonderurlaub zu.
+      </p>
+      <p>
+        Du kannst dich von der Arbeit beurlauben lassen, um neue Erkenntnisse zu
+        einem selbst gewählten Thema zu gewinnen. Es muss nicht zwingend eine
+        Fortbildung im medizinischen Bereich sein. Du könntest z.B. auch einen
+        Yogakurs oder Social Media Kurs machen oder eine neue Sprache lernen.
+      </p>
+      <p>
+        Das Gehalt wird während dieser Zeit vom Arbeitgeber weitergezahlt.
+      </p>
+      <p>
+        Der Anspruch auf Bildungsurlaub wird in den Gesetzen der einzelnen
+        Bundesländer geregelt. Bayern und Sachsen sind die einzigen Bundesländer
+        in denen es keinen Bildungsurlaub gibt. Auf
+        <a href="https://www.bildungsurlauber.de/bildungsurlaub" target="_blank"
+          >bildungsurlauber.de</a
+        >
+        kannst du ganz einfach einen Check machen und herausfinden, welchen
+        Anspruch du hast. Daneben findest du eine große Kursübersicht mit allen
+        anerkannten Kursen.
+      </p>
+
+      <h2 id="umschulung" class="h1">
+        Umschulung zur MFA & ZFA
+      </h2>
+      <p>
+        Den Beruf der Medizinischen und Zahnmedizinischen Fachangestellten
+        erlernt man durch eine 3-jährige Ausbildung (siehe
+        <b-link class="bold" to="/karriere/mfa/ausbildung-berufsbild"
+          >Ausbildung zur MFA</b-link
+        >). Alternativ kannst du auch eine Umschulung zur MFA absolvieren, wenn
+        du schon einen Ausbildungsabschluss in einem anderen Beruf hast. Die
+        Umschulung dauert ca. 24-30 Monate.
+      </p>
+      <p>
+        Es gibt unterschiedliche Modelle, um die Umschulung zur MFA / ZFA zu
+        machen. Oft findet die Umschulung rein schulisch statt. Hier empfiehlt
+        es sich ein Praktikum in einer Arztpraxis zu leisten, um bestimmte
+        Tätigkeiten, z.B. Blutabnehmen, EKG schreiben, auch einmal praktisch
+        ausgeführt zu haben. Oder du machst die Umschulung dual. D.h. dir werden
+        praktische Inhalte in der Arztpraxis beigebracht und theoretische
+        Inhalte an 1-2 Schultagen pro Woche vermittelt. Bei der rein schulischen
+        Variante liegt die Umschulungsdauer meist bei 24 Monaten. Du erhältst
+        bei der schulischen Umschulung kein Ausbildungsgeld. Das Arbeitsamt
+        unterstützt in vielen Fällen bei einer Zweitausbildung.
+      </p>
+      <p>
+        Viele Anbieter der Umschulung zur MFA & ZFA bieten dies auch in
+        Teilzeitmodellen an.
+      </p>
+      <p>
+        Auch im Rahmen der Umschulung findet die offizielle Abschlussprüfung mit
+        einem praktischen und schriftlichen Teil statt. Bei bestandener Prüfung
+        vor der Ärztekammer hast du den Berufsabschluss zur MFA / ZFA erworben.
+        Mit dem anerkannten Abschluss zur Medizinischen bzw. Zahnmedizinischen
+        Fachangestellten hast du sehr gute Chancen auf dem
+        <b-link class="bold" to="/stellenangebote">Arbeitsmarkt</b-link> eine
+        Anstellung zu finden.
+      </p>
+
+      <h2 id="quereinstieg" class="h1">
+        Quereinstieg als MFA & ZFA
+      </h2>
+      <p>
+        Für viele ist der Quereinstieg in einer Arztpraxis interessant. Wegen
+        des immer größer werdenden Problems des Fachkräftemangels sind viele
+        Praxen sehr offen für Bewerber aus anderen Branchen. Besonders
+        Kandidaten aus dem Hotel- und Gastgewerbe sind beliebt, da diese
+        Berufsgruppen bereits Erfahrung und die Motivation zur hohen
+        Serviceorientiertheit mitbringen.
+      </p>
+      <p>
+        Meist bietet sich hier die Gelegenheit für Quereinsteiger am
+        Praxisempfang bzw. der Rezeption zu starten und verwaltungstechnische
+        und organisatorische Aufgaben, wie Patientenannahme, Terminvergabe,
+        Telefonate, etc. auszuführen. Bei entsprechendem Interesse bieten viele
+        Praxen die Chance auch in medizinische Tätigkeiten im Bereich der
+        Diagnostik und Therapie eingearbeitet zu werden.
+      </p>
+      <p>
+        Mittlerweile gibt es
+        <b-link
+          class="bold"
+          to="/karriere/fort-und-weiterbildung/fortbildungskatalog"
+          >Fortbildungsanbieter</b-link
+        >
+        die berufsbegleitende Kurse für MFA & ZFA Quereinsteiger anbieten, um
+        die notwendigen theoretischen Inhalte von Praxisorganisation,
+        Abrechnung, Qualitätsmanagement und allgemeinen Grundlagen aus dem
+        Gesundheitswesen zu erwerben und sich schneller im neuen Job zurecht zu
+        finden.
+      </p>
+
+      <JobSearchSingleForm class="mt-5" />
+      <JobsTeaserContainer class="mt-4" />
     </div>
 
     <ScrollToTopBtn />
@@ -814,6 +909,8 @@
   import FortWeiterbildungenNav from "@/components/navs/FortWeiterbildungenNav.vue";
   import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
   import TrainingCatalogueLargeBanner from "@/components/banners/TrainingCatalogueLargeBanner.vue";
+  import JobSearchSingleForm from "@/components/forms/JobSearchSingleForm.vue";
+  import JobsTeaserContainer from "@/components/containers/JobsTeaserContainer.vue";
   import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
   import { scrollToHashMixin } from "@/mixins/scrollToHashMixin";
   export default {
@@ -822,6 +919,8 @@
       FortWeiterbildungenNav,
       RandomTrainingsContainer,
       TrainingCatalogueLargeBanner,
+      JobSearchSingleForm,
+      JobsTeaserContainer,
       ScrollToTopBtn
     },
     mixins: [scrollToHashMixin],
