@@ -52,6 +52,7 @@ body::-webkit-scrollbar-thumb {
     line-height: 0.75;
 
     & > .breadcrumb-item {
+      margin: 0.3rem 0;
       & > a {
         color: $light-shade;
 
