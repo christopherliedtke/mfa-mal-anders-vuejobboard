@@ -16,7 +16,7 @@
         <div
           class="card-body d-flex flex-column justify-content-center align-items-center h-100 p-4"
         >
-          <h3 class="h2 bold">{{ header }}</h3>
+          <h3 class="h1 bold">{{ header }}</h3>
           <p>
             Bist du auf der Suche nach einer
             <strong class="text-primary">neuen Herausforderung?</strong> <br />

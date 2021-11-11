@@ -425,6 +425,8 @@
       </div>
     </div>
 
+    <ScrollToTopBtn />
+
     <Head
       :title="
         `Stellenangebote ArzthelferIn | ${profession.active.join(' & ')} Jobs${
@@ -466,6 +468,7 @@
   import BerufsbilderBanner from "@/components/banners/BerufsbilderBanner.vue";
   import TrainingCatalogueSmallBanner from "@/components/banners/TrainingCatalogueSmallBanner.vue";
   import SubscribeNewsletterBtn from "@/components/buttons/SubscribeNewsletterBtn.vue";
+  import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
   export default {
     name: "Jobboard",
     components: {
@@ -476,7 +479,8 @@
       RandomTrainingsContainer,
       BerufsbilderBanner,
       TrainingCatalogueSmallBanner,
-      SubscribeNewsletterBtn
+      SubscribeNewsletterBtn,
+      ScrollToTopBtn
     },
     data() {
       return {

@@ -28,7 +28,7 @@
       <div>
         <span class="display-3 text-center d-block"
           ><span class="bold">{{ pricing.price / 100 }}</span
-          ><span>€</span></span
+          >€</span
         >
       </div>
       <div v-if="$config.payment.tax" class="small text-center">
@@ -38,7 +38,11 @@
     <hr class="bg-light-shade" />
     <div class="p-3 p-lg-4">
       <ul class="no-bullets">
-        <li v-for="desc in pricing.desc" :key="desc.html" class="d-flex">
+        <li
+          v-for="desc in pricing.desc"
+          :key="desc.html"
+          class="d-flex mb-2 mb-lg-3"
+        >
           <div>
             <svg
               v-if="desc.icon"
@@ -75,7 +79,7 @@
         </li>
       </ul>
       <b-button
-        class="mt-2 mt-lg-3"
+        class="mt-2 mt-lg-0"
         block
         :variant="active ? 'primary' : 'secondary'"
         @click="setPricingPackage(pricing.name)"

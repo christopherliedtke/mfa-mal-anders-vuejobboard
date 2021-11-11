@@ -250,12 +250,18 @@
         Gehaltstabelle MFA 2021 nach Gehaltstarifvertrag – gültig ab 01.01.2021
       </h3>
       <p>
+        Das Einstiegsgehalt für Medizinische Fachangestellte liegt nach der
+        Ausbildung im Jahr 2021 bei 2.088 € nach aktuellem Gehaltstarifvertrag.
+        Mit steigender Berufserfahrung und durch Absolvierung entsprechender
+        Weiterbildungen kann das monatliche Gehalt auf bis zu 4.196 € steigen.
+      </p>
+      <p>
         Der Stundenlohn im Jahr 2021 für Medizinische Fachangestellte (MFA)
         bewegt sich laut Gehaltstarifvertrag je nach Berufserfahrung und
         erworbenen Qualifikationen durch Fort- und Weiterbildungen zwischen
-        12,51 €/h und 25,13 €/h. Über den
+        12,51 €/h und 25,13 €/h. Über unseren
         <b-link to="#gehaltsrechner">Gehaltsrechner</b-link> kannst Du Dir den
-        Stundenlohn bzw. Gehalt in Teilzeit für Deinen relevanten Bereich
+        Stundenlohn bzw. das Gehalt in Teilzeit für Deinen relevanten Bereich
         errechnen, indem Du als Wochenarbeitszeit eine Stunde auswählst.
       </p>
 
@@ -365,6 +371,12 @@
       <p>
         Nach Tarifvertrag gibt es für MFA in 2022 eine Gehaltserhöhung von 3%.
         Die Gehaltstabelle für 2022 entspricht dieser Erhöhung.
+      </p>
+      <p>
+        Das Einstiegsgehalt für Medizinische Fachangestellte liegt nach der
+        Ausbildung im Jahr 2022 bei 2.151 € nach aktuellem Gehaltstarifvertrag.
+        Mit steigender Berufserfahrung und durch Absolvierung entsprechender
+        Weiterbildungen kann das monatliche Gehalt auf bis zu 4.322 € steigen.
       </p>
       <p>
         Der Stundenlohn im Jahr 2022 für Medizinische Fachangestellte (MFA)
