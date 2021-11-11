@@ -131,7 +131,9 @@
               >Stellenanzeige schalten</router-link
             >
 
-            <router-link class="mt-5" to="/ueber">Über uns</router-link>
+            <router-link class="mt-5" to="/ueber"
+              >Über <em>MFA mal anders</em></router-link
+            >
             <router-link to="/kontakt">Kontakt</router-link>
             <router-link to="/datenschutz">Datenschutzerklärung</router-link>
             <router-link to="/impressum">Impressum</router-link>

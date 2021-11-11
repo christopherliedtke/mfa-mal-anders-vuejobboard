@@ -53,7 +53,7 @@
                 >Jobs & Berufsbilder</router-link
               >
               <router-link to="/karriere/fort-und-weiterbildung"
-                >Fort- & Weiterbildungen</router-link
+                >Fort- & Weiterbildung</router-link
               >
               <router-link
                 to="/karriere/fort-und-weiterbildung/ueberblick"

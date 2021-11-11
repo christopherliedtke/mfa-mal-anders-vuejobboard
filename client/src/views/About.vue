@@ -27,8 +27,8 @@
       <div class="overlay"></div>
     </div>
 
-    <div class="container mt-3 mb-5" style="max-width: 1000px">
-      <h2 class="display-2 bold text-muted">MFA mal anders</h2>
+    <div id="intro" class="container mb-5" style="max-width: 1000px">
+      <h2 class="display-2 bold text-muted">MFA mal&nbsp;anders</h2>
       <p class="lead">
         Das Stellen- & Karriereportal speziell für Medizinische (MFA) und
         Zahnmedizinische (ZFA) Fachangestellte
@@ -56,7 +56,7 @@
         In Zahlen
       </h2>
       <p class="lead text-right">
-        Ein paar Zahlen & Fakten zu <em>MFA mal anders</em>
+        Ein paar Zahlen & Fakten zu <em>MFA&nbsp;mal&nbsp;anders</em>
       </p>
       <NumbersAndFacts class="my-5" />
     </div>
@@ -85,7 +85,7 @@
         Die GründerInnen
       </h2>
       <p class="lead text-right">
-        Wer steckt hinter der Idee von <em>MFA mal anders</em>
+        Wer steckt hinter der Idee von <em>MFA&nbsp;mal&nbsp;anders</em>
       </p>
 
       <div class="row row-cols-1 row-cols-lg-2 mt-5 pt-md-4">
@@ -107,7 +107,7 @@
           <p class="lead">
             Spezialistin im Gesundheitswesen
           </p>
-          <p class="text-justify">
+          <p class="text-md-justify">
             Als Praxismanagerin mit Führungsverantwortung, als Assistentin des
             Ärztlichen Direktors, als Referentin in der Qualitätssicherung sowie
             im Personalbereich als Recruiterin und HR Managerin. In allen meinen
@@ -115,7 +115,7 @@
             Unterschiedliche Sichtweisen von Arbeitgeber und Mitarbeitern,
             Konflikte im Team, Personalmangel.
           </p>
-          <p class="text-justify">
+          <p class="text-md-justify">
             Das ist der Grund, weshalb ich mich von meinem ursprünglich
             erlernten Beruf als ArzthelferIn entfernt und mich mehr und mehr auf
             das Thema Personalführung und Human Ressources spezialisiert habe.
@@ -139,7 +139,7 @@
             <span class="small text-muted">M.Sc.</span>
           </h3>
           <p class="lead">Technische Infrastruktur</p>
-          <p class="text-justify">
+          <p class="text-md-justify">
             Nach dem Studium habe ich über einige Jahre als Projektmanager in
             unterschiedlichen Themenbereichen gearbeitet. In dieser Funktion
             habe ich viel Erfahrung im Erstellen von validen Strategien und
@@ -148,7 +148,7 @@
             Dank meiner zusätzlichen Ausbildung zum Softwareentwickler konnten
             wir gemeinsam unsere Vision von MFA mal anders umsetzen.
           </p>
-          <p class="text-justify">
+          <p class="text-md-justify">
             Im Rahmen unserer Zusammenarbeit bin ich dabei speziell in der
             technischen Umsetzung der Karriereplattform verantwortlich und
             erarbeite zusammen mit Kristin strategische Ausrichtung.
@@ -164,7 +164,7 @@
           So erreichen Sie uns
         </p>
 
-        <div class="row row-cols-1 row-cols-md-3 mt-5">
+        <div class="row row-cols-1 row-cols-md-3 mt-lg-5">
           <div class="col mb-4">
             <p>
               Bei Anfragen oder Hinweisen können Sie uns gern jederzeit
