@@ -670,6 +670,7 @@
           company: {
             _id: "",
             name: "",
+            description: "",
             street: "",
             location: "",
             zipCode: "",
@@ -759,48 +760,48 @@
           const job = await this.$axios.get(`/graphql`, {
             params: {
               query: `
-                                query {
-                                    ${this.jobQuery}(_id: "${id}") {
-                                        _id
-                                        publishedAt
-                                        paidExpiresAt
-                                        refreshFrequency
-                                        title
-                                        description
-                                        profession
-                                        employmentType
-                                        applicationDeadline
-                                        simpleApplication
-                                        specialization
-                                        extJobUrl
-                                        applicationEmail
-                                        imageUrl
-                                        salaryMin
-                                        salaryMax
-                                        contactGender
-                                        contactTitle
-                                        contactFirstName
-                                        contactLastName
-                                        contactPosition
-                                        contactEmail
-                                        contactPhone
-                                        company {
-                                            _id
-                                            name
-                                            street
-                                            location
-                                            zipCode
-                                            state
-                                            country
-                                            geoCodeLat
-                                            geoCodeLng
-                                            size
-                                            url
-                                            logoUrl
-                                        }
-                                    }
-                                }
-                            `
+                query {
+                  ${this.jobQuery}(_id: "${id}") {
+                    _id
+                    publishedAt
+                    paidExpiresAt
+                    refreshFrequency
+                    title
+                    description
+                    profession
+                    employmentType
+                    applicationDeadline
+                    simpleApplication
+                    specialization
+                    extJobUrl
+                    applicationEmail
+                    imageUrl
+                    salaryMin
+                    salaryMax
+                    contactGender
+                    contactTitle
+                    contactFirstName
+                    contactLastName
+                    contactPosition
+                    contactEmail
+                    contactPhone
+                    company {
+                      _id
+                      name
+                      street
+                      location
+                      zipCode
+                      state
+                      country
+                      geoCodeLat
+                      geoCodeLng
+                      size
+                      url
+                      logoUrl
+                    }
+                  }
+                }
+              `
             }
           });
 
@@ -808,6 +809,7 @@
             job.data.data[this.jobQuery].company = {
               _id: "",
               name: "",
+              description: "",
               street: "",
               location: "",
               zipCode: "",
@@ -844,23 +846,24 @@
           const companies = await this.$axios.get(`/graphql`, {
             params: {
               query: `
-                                query {
-                                    myCompanies {
-                                        _id
-                                        name
-                                        street
-                                        location
-                                        zipCode
-                                        state
-                                        country
-                                        geoCodeLat
-                                        geoCodeLng
-                                        size
-                                        url
-                                        logoUrl
-                                    }
-                                }
-                            `
+                query {
+                  myCompanies {
+                    _id
+                    name
+                    description
+                    street
+                    location
+                    zipCode
+                    state
+                    country
+                    geoCodeLat
+                    geoCodeLng
+                    size
+                    url
+                    logoUrl
+                  }
+                }
+              `
             }
           });
 
@@ -962,8 +965,8 @@
       resetCompany() {
         for (const key in this.job.company) {
           this.job.company[key] = "";
-          this.selectedCompanyId = "";
         }
+        this.selectedCompanyId = "";
       },
       setCompany() {
         this.job.company = this.companies.find(

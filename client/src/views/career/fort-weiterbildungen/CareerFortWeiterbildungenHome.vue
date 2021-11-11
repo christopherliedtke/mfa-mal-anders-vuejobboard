@@ -7,7 +7,10 @@
     <div class="header-img">
       <b-img-lazy
         class="header-img"
-        srcset="/img/heart_300.jpg 300w, /img/heart_768.jpg 768w, /img/heart_1024.jpg 1024w, /img/heart_1920.jpg 1200w"
+        srcset="/img/heart_300.jpg 300w, 
+                /img/heart_768.jpg 768w, 
+                /img/heart_1024.jpg 1024w, 
+                /img/heart_1920.jpg 1200w"
         sizes="(max-width: 992px) 100vw, 800px"
         src="/img/heart_1920.jpg"
         alt="Fort- und Weiterbildung für MFA & ZFA"

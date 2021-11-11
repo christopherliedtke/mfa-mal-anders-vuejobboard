@@ -106,7 +106,9 @@
             </b-link>
           </div>
           <nav>
-            <router-link to="/stellenangebote">Stellenangebote</router-link>
+            <router-link to="/stellenangebote"
+              >Stellenangebote | MFA & ZFA</router-link
+            >
             <router-link
               to="/karriere/fort-und-weiterbildung/fortbildungskatalog"
               >Fortbildungskatalog</router-link
@@ -129,7 +131,8 @@
               >Stellenanzeige schalten</router-link
             >
 
-            <router-link class="mt-5" to="/kontakt">Kontakt</router-link>
+            <router-link class="mt-5" to="/ueber">Über uns</router-link>
+            <router-link to="/kontakt">Kontakt</router-link>
             <router-link to="/datenschutz">Datenschutzerklärung</router-link>
             <router-link to="/impressum">Impressum</router-link>
             <router-link to="/agbs">AGBs</router-link>

@@ -72,7 +72,7 @@
               <h2 class="display-4 bold">Über</h2>
               <!-- eslint-disable -->
               <div
-                v-if="company.description"
+                v-if="company.description && company.description != 'undefined'"
                 v-html="company.description"
               ></div>
               <!-- eslint-enable -->

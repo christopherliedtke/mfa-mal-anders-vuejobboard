@@ -56,6 +56,20 @@
       <template #cell(updatedAt)="row">
         {{ new Date(row.value).toLocaleString() }}
       </template>
+      <template #cell(user)="row">
+        {{
+          row.item.user
+            ? row.item.user.lastName + ", " + row.item.user.firstName
+            : ""
+        }}
+        <a
+          v-if="row.item.user && row.item.user.email"
+          :href="`mailto:${row.item.user.email}`"
+        >
+          {{ row.item.user.email }}</a
+        >
+        {{ row.item.user._id }}
+      </template>
       <template #cell(actions)="row">
         <b-button
           class="mr-2 mb-2"
@@ -304,6 +318,10 @@
             sortable: true
           },
           {
+            key: "user",
+            sortable: false
+          },
+          {
             key: "actions",
             sortable: false
           }
@@ -350,23 +368,30 @@
             params: {
               query: `
                 query {
-                    adminTrainings {
-                        _id
-                        createdAt
-                        updatedAt
-                        title
-                        published
-                        paid
-                        pending
-                        startAt
-                        startAnytime
-                        duration
-                        remote
-                        company
-                        location
-                        state
+                  adminTrainings {
+                    _id
+                    createdAt
+                    updatedAt
+                    user {
+                      _id
+                      email
+                      firstName
+                      lastName
                     }
+                    title
+                    published
+                    paid
+                    pending
+                    startAt
+                    startAnytime
+                    duration
+                    remote
+                    company
+                    location
+                    state
+                    
                 }
+              }
             `
             }
           });
@@ -399,19 +424,25 @@
               mutation {
                 updateTraining (_id: "${trainingId}" ${args}) {
                   _id
-                        createdAt
-                        updatedAt
-                        title
-                        published
-                        paid
-                        pending
-                        startAt
-                        startAnytime
-                        duration
-                        remote
-                        company
-                        location
-                        state
+                  createdAt
+                  updatedAt
+                  user {
+                    _id
+                    email
+                    firstName
+                    lastName
+                  }
+                  title
+                  published
+                  paid
+                  pending
+                  startAt
+                  startAnytime
+                  duration
+                  remote
+                  company
+                  location
+                  state
                 }
               }
             `
