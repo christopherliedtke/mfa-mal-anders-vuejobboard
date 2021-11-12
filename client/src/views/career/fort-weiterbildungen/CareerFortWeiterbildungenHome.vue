@@ -24,7 +24,9 @@
     </div>
 
     <div class="container pb-3 pb-lg-5">
-      <h2 class="display-3 bold text-muted">Dein nächster Karriereschritt</h2>
+      <h2 class="display-3 bold text-gray-dark">
+        Dein nächster Karriereschritt
+      </h2>
       <p>
         Als Medizinische & Zahnmedizinische Fachangestellte hast Du viele
         Möglichkeiten uns zu qualifizieren und im Job aufzusteigen oder sogar in

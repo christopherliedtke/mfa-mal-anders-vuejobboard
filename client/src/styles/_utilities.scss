@@ -154,6 +154,10 @@ h1.title {
   color: $tertiary;
 }
 
+.text-gray-dark {
+  color: $gray-dark;
+}
+
 .lead {
   @media screen and (max-width: $break-menu) {
     font-size: 1.1rem;

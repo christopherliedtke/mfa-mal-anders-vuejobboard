@@ -28,7 +28,7 @@
     </div>
 
     <div id="intro" class="container mb-5" style="max-width: 1000px">
-      <h2 class="display-2 bold text-muted">MFA mal&nbsp;anders</h2>
+      <h2 class="display-2 bold text-gray-dark">MFA mal&nbsp;anders</h2>
       <p class="lead">
         Das Stellen- & Karriereportal speziell für Medizinische (MFA) und
         Zahnmedizinische (ZFA) Fachangestellte
@@ -52,7 +52,7 @@
     </div>
 
     <div class="container my-5 pt-lg-5" style="max-width: 1000px">
-      <h2 id="zahlen" class="display-4 bold text-muted text-right">
+      <h2 id="zahlen" class="display-4 bold text-gray-dark text-right">
         In Zahlen
       </h2>
       <p class="lead text-right">
@@ -62,7 +62,7 @@
     </div>
 
     <div class="container my-5 " style="max-width: 1000px">
-      <h2 class="display-4 bold text-muted">
+      <h2 class="display-4 bold text-gray-dark">
         Kooperationen
       </h2>
       <p class="lead">
@@ -81,7 +81,7 @@
     </div>
 
     <div class="container my-5 " style="max-width: 1000px">
-      <h2 id="gruender" class="display-4 bold text-muted text-right">
+      <h2 id="gruender" class="display-4 bold text-gray-dark text-right">
         Die GründerInnen
       </h2>
       <p class="lead text-right">
@@ -151,13 +151,13 @@
           <p class="text-md-justify">
             Im Rahmen unserer Zusammenarbeit bin ich dabei speziell in der
             technischen Umsetzung der Karriereplattform verantwortlich und
-            erarbeite zusammen mit Kristin strategische Ausrichtung.
+            erarbeite zusammen mit Kristin die strategische Ausrichtung.
           </p>
         </div>
       </div>
 
       <div class="container my-lg-5" style="max-width: 1000px">
-        <h2 id="kontakt" class="display-4 bold text-muted">
+        <h2 id="kontakt" class="display-4 bold text-gray-dark">
           Kontakt
         </h2>
         <p class="lead">
