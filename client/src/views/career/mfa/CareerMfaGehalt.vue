@@ -141,7 +141,7 @@
       </p>
       <h2 id="gehaltstarifvertrag" class="my-4">
         <span class="display-4"
-          >Gehaltstarifvertag MFA {{ new Date().getFullYear() }}</span
+          >Gehaltstarifvertrag MFA {{ new Date().getFullYear() }}</span
         >
         <br />
         für Medizinische Fachangestellte / ArzthelferIn
@@ -155,7 +155,7 @@
             gegenüber der Arbeitsgemeinschaft zur Regelung der
             Arbeitsbedingungen der ArzthelferInnen / Medizinischen
             Fachangestellten (AAA). Die AAA ist die Tarifpartei der Arbeitgeber,
-            sprich der niedergelassenen Ärzte, mit der der Manteltarifvertag
+            sprich der niedergelassenen Ärzte, mit der der Manteltarifvertrag
             verhandelt wird.
           </p>
           <p>
@@ -868,8 +868,10 @@
         MFA Gehalt {{ new Date().getFullYear() }} in Teilzeit
       </h2>
       <p>
-        Dein Gehalt als ArzthelferIn in Teilzeit kannst Du Dir mit Hilfe des
-        <b-link to="#gehaltsrechner">Gehaltsrechners</b-link> ausrechnen.
+        Dein Gehalt als ArzthelferIn / MFA in Teilzeit kannst Du Dir mit Hilfe
+        des
+        <b-link to="#gehaltsrechner">Gehaltsrechners</b-link> berechnen. Hier
+        ist die offizielle Formel aus dem Tarifvertrag hinterlegt.
       </p>
       <p>
         Arbeitest Du <strong>25 Stunden pro Woche in Teilzeit</strong>, kommst

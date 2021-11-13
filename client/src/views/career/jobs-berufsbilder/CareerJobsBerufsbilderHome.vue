@@ -1,13 +1,16 @@
 <template>
   <div class="jobs-berufsbilder-home">
     <div class="title">
-      <h1>{{ title }}</h1>
+      <h1>
+        {{ title }}
+      </h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
     <div class="container py-3 py-lg-5">
       <div class="row">
         <div class="col-12 col-md-4 order-2 order-md-1 mb-4">
           <JobsBerufsbilderNav />
+          <TrainingCatalogueSmallBanner class="my-3" />
         </div>
         <div class="col order-1 order-md-2 mb-4">
           <b-img-lazy
@@ -78,17 +81,19 @@
   import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
   import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
   import ProfessionTypeContainer from "@/components/containers/ProfessionTypeContainer.vue";
+  import TrainingCatalogueSmallBanner from "@/components/banners/TrainingCatalogueSmallBanner.vue";
   export default {
     name: "CareerJobsBerufsbilderHome",
     components: {
       JobsBerufsbilderNav,
       RandomTrainingsContainer,
       ToJobboardBanner,
-      ProfessionTypeContainer
+      ProfessionTypeContainer,
+      TrainingCatalogueSmallBanner
     },
     data() {
       return {
-        title: `50+ Alternative Jobs für ArzthelferInnen ${new Date().getFullYear()} – MFA & ZFA`,
+        title: `50+ Alternative Jobs ${new Date().getFullYear()} für MFA & ZFA`,
         breadcrumbs: [
           { text: "Home", to: "/" },
           { text: "Karriere", to: "/karriere" },

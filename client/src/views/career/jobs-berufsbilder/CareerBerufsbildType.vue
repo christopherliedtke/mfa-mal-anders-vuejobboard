@@ -8,6 +8,7 @@
       <div class="row">
         <div class="col-12 col-md-4 mb-4">
           <JobsBerufsbilderNav />
+          <TrainingCatalogueSmallBanner class="my-3" />
         </div>
         <div class="col-12 col-md-8 mb-5">
           <!-- eslint-disable -->
@@ -85,6 +86,7 @@
   import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
   import JobsTeaserContainer from "@/components/containers/JobsTeaserContainer.vue";
   import JobSearchSingleForm from "@/components/forms/JobSearchSingleForm.vue";
+  import TrainingCatalogueSmallBanner from "@/components/banners/TrainingCatalogueSmallBanner.vue";
   export default {
     name: "CareerBerufsbildType",
     components: {
@@ -92,7 +94,8 @@
       RandomTrainingsContainer,
       ToJobboardBanner,
       JobsTeaserContainer,
-      JobSearchSingleForm
+      JobSearchSingleForm,
+      TrainingCatalogueSmallBanner
     },
     data() {
       return {
@@ -102,39 +105,35 @@
             id: "breadcrumbs",
             type: "application/ld+json",
             inner: `{
-                            "@context": "http://schema.org",
-                            "@type" : "BreadcrumbList",
-                            "itemListElement": [{
-                                "@type": "ListItem",
-                                "position": 1,
-                                "name": "MFA mal anders",
-                                "item": "https://www.mfa-mal-anders.de"
-                            },{
-                                "@type": "ListItem",
-                                "position": 2,
-                                "name": "Karriere",
-                                "item": "https://www.mfa-mal-anders.de/karriere"
-                            },{
-                                "@type": "ListItem",
-                                "position": 3,
-                                "name": "Jobs und Berufsbilder",
-                                "item": "https://www.mfa-mal-anders.de/karriere/jobs-und-berufsbilder"
-                            },{
-                                "@type": "ListItem",
-                                "position": 4,
-                                "name": "${this.$route.params.slug
-                                  .split("-")
-                                  .map(
-                                    elem =>
-                                      elem.charAt(0).toUpperCase() +
-                                      elem.slice(1)
-                                  )
-                                  .join("-")}",
-                                "item": "https://www.mfa-mal-anders.de/karriere/jobs-und-berufsbilder/${
-                                  this.$route.params.slug
-                                }"
-                            }]
-                        }`
+              "@context": "http://schema.org",
+              "@type" : "BreadcrumbList",
+              "itemListElement": [{
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "MFA mal anders",
+                  "item": "https://www.mfa-mal-anders.de"
+              },{
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Karriere",
+                  "item": "https://www.mfa-mal-anders.de/karriere"
+              },{
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "Jobs und Berufsbilder",
+                  "item": "https://www.mfa-mal-anders.de/karriere/jobs-und-berufsbilder"
+              },{
+                  "@type": "ListItem",
+                  "position": 4,
+                  "name": "${this.$route.params.slug
+                    .split("-")
+                    .map(elem => elem.charAt(0).toUpperCase() + elem.slice(1))
+                    .join("-")}",
+                  "item": "https://www.mfa-mal-anders.de/karriere/jobs-und-berufsbilder/${
+                    this.$route.params.slug
+                  }"
+              }]
+            }`
           }
         ]
       };

@@ -133,18 +133,18 @@
         Fort- und Weiterbildungen für MFA & ZFA – Der große Überblick
       </h2>
       <p>
-        Welche Fort- und Weiterbildungen gibt es speziell für Medizinische und
-        Zahnmedizinische Fachangestellte? In der Rubrik
+        Welche Fortbildungen – welche und Weiterbildungen gibt es speziell für
+        Medizinische und Zahnmedizinische Fachangestellte? In der Rubrik
         <b-link to="/karriere/fort-und-weiterbildung/ueberblick"
           >Fort- und Weiterbildungen – Überblick</b-link
         >
-        kannst du dich informieren, welche Möglichkeiten du als MFA oder ZFA in
-        und außerhalb der Arztpraxis hast.
+        kannst du dich informieren, welche Weiterbildungsmöglichkeiten du als
+        MFA oder ZFA in und außerhalb der Arztpraxis hast.
       </p>
       <p>
         Wir beschreiben anerkannte Fortbildungen der Ärztekammer, zertifizierte
         Weiterbildungen, Lehrgänge, Studiengänge und andere
-        Weiterentwicklungsmöglichkeiten für MFA & ZFA. Die Eckdaten wie Kosten,
+        Weiterbildungsmöglichkeiten für MFA & ZFA. Die Eckdaten wie Kosten,
         Dauer, Inhalte und Lernkonzepte werden für dich übersichtlich und
         verständlich dargestellt. Daneben zeigen wir dir vor allem auch, was du
         mit welchem Abschluss anschließend anfangen kannst. Und natürlich auch
@@ -205,10 +205,7 @@
         findest du übrigens einer Vielzahl an Fort- und Weiterbildungen
         unterschiedlicher Anbieter. Schau auch dort gern ein mal vorbei.
       </p>
-      <!-- <p class="lead">
-        Was sind die Unterschiede zwischen Fortbildung, Weiterbildung und
-        Studium?
-      </p> -->
+
       <b-img-lazy
         srcset="https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/09/MfaMalAnders_FortbildungWeiterbildungOderStudium_1200-300x158.jpg 300w, https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/09/MfaMalAnders_FortbildungWeiterbildungOderStudium_1200-1024x538.jpg 1024w, https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/09/MfaMalAnders_FortbildungWeiterbildungOderStudium_1200-768x403.jpg 768w, https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/09/MfaMalAnders_FortbildungWeiterbildungOderStudium_1200.jpg 1200w"
         src="https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/09/MfaMalAnders_FortbildungWeiterbildungOderStudium_1200.jpg"
@@ -224,6 +221,7 @@
         class="border-radius1 shadow1 mb-4"
         fluid
       />
+
       <h3 id="fortbildung">Fortbildung</h3>
       <p>
         Wenn du dich in deinem Beruf als MFA / ZFA weiter spezialisieren
@@ -293,6 +291,7 @@
         Das Wissen wird oft in relativ kurzer Zeit in Kursen oder Seminaren
         vermittelt.
       </p>
+
       <h3 id="studium">Studium</h3>
       <p>
         Ein Studium verhilft dir zu einem akademischen Grad. Es ist sehr
@@ -325,6 +324,7 @@
         ich kann dir auch sagen: es lohnt sich. Für deine berufliche und
         persönliche Entwicklung auf jeden Fall.
       </p>
+
       <div class="my-5 bg-light-shade border-radius2 shadow1 p-4">
         <h3 class=" display-4 text-center bold mb-4">Auf einen Blick</h3>
         <div class="row row-cols-1 row-cols-lg-3">

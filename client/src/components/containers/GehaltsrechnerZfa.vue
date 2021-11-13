@@ -131,7 +131,7 @@
         yearsOfExperienceOptions: [
           {
             value: null,
-            text: "Anzahl Berufsjahre..."
+            text: "Anzahl Berufsjahre*..."
           },
           {
             value: 2105,

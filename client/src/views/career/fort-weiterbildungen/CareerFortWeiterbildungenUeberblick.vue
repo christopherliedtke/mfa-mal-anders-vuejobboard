@@ -16,7 +16,7 @@
       </div>
     </div>
     <Head
-      title="Fort- und Weiterbildung für ArzthelferInnen – MFA & ZFA"
+      title="Fort- und Weiterbildung – Übersicht für MFA & ZFA"
       :desc="
         `Fortbildungen und Weiterbildungen für Medizinische & Zahnmedizinische Fachangestellte (MFA / ZFA) im Gesundheitswesen || Karriere | Gehalt ${new Date().getFullYear()} | Stellenangebote`
       "

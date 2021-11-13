@@ -9,6 +9,7 @@
         <div class="row">
           <div class="col-12 col-md-4 mb-4 order-2 order-lg-1">
             <JobsBerufsbilderNav />
+            <TrainingCatalogueSmallBanner class="my-3" />
           </div>
           <div class="col-12 col-md-8 order-1 order-lg-2 mb-5">
             <!-- eslint-disable-next-line -->
@@ -56,6 +57,7 @@
 
 <script>
   import JobsBerufsbilderNav from "@/components/navs/JobsBerufsbilderNav.vue";
+  import TrainingCatalogueSmallBanner from "@/components/banners/TrainingCatalogueSmallBanner.vue";
   import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
   import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
   import JobsTeaserContainer from "@/components/containers/JobsTeaserContainer.vue";
@@ -64,6 +66,7 @@
     name: "CareerBerufsbildProfession",
     components: {
       JobsBerufsbilderNav,
+      TrainingCatalogueSmallBanner,
       RandomTrainingsContainer,
       ToJobboardBanner,
       JobsTeaserContainer,
