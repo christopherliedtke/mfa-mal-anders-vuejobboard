@@ -10,12 +10,14 @@
     "build-report": "vue-cli-service build --modern --report"
   },
   "dependencies": {
+    "@tiptap/extension-link": "^2.0.0-beta.28",
+    "@tiptap/extension-placeholder": "^2.0.0-beta.43",
+    "@tiptap/starter-kit": "^2.0.0-beta.140",
+    "@tiptap/vue-2": "^2.0.0-beta.68",
     "axios": "^0.21.1",
     "bootstrap-vue": "^2.21.2",
     "chart.js": "^2.9.4",
     "core-js": "^3.6.4",
-    "tiptap": "^1.27.1",
-    "tiptap-extensions": "^1.29.1",
     "vue": "^2.6.11",
     "vue-chartjs": "^3.5.1",
     "vue-gtag": "^1.8.0",

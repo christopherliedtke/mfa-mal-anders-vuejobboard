@@ -193,6 +193,7 @@
         <TipTapEditor
           v-if="company.description || showCompanyDescription"
           :validated="validated"
+          :min-length="0"
           :content="company.description"
           placeholder="Beschreiben Sie hier Ihr Unternehmen..."
           @update-content="company.description = $event"
