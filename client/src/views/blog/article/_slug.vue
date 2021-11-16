@@ -45,6 +45,23 @@
         </div>
         <!-- eslint-disable-next-line -->
         <div class="mt-3" v-html="article.content"></div>
+        <p class="mt-4">
+          Hast Du Interesse an Themen rund um Deine Karriere im
+          Gesundheitswesen? Dann folge uns gern auf
+          <b-link
+            class="bold"
+            :href="`https://www.facebook.com/${$config.fb.path}`"
+            target="_blank"
+            >Facebook</b-link
+          >
+          und
+          <b-link
+            class="bold"
+            :href="`https://www.instagram.com/${$config.ig.path}`"
+            target="_blank"
+            >Instagram</b-link
+          >.
+        </p>
         <div
           class="d-flex flex-wrap justify-content-between align-items-center mt-5"
         >

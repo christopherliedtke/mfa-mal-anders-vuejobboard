@@ -334,8 +334,8 @@
           <div class="d-none d-lg-block mt-5">
             <TrainingCatalogueSmallBanner />
             <FacebookBtn class="mt-3 mr-1" content="Facebook" size="sm" />
-            <InstagramBtn class="mt-2 mr-1" content="" size="sm" />
-            <TwitterBtn class="mt-2 mr-1" content="" size="sm" />
+            <InstagramBtn class="mt-3 mr-1" content="" size="sm" />
+            <TwitterBtn class="mt-3 mr-1" content="" size="sm" />
           </div>
         </div>
         <div class="col-12 col-lg-8 pt-2">
