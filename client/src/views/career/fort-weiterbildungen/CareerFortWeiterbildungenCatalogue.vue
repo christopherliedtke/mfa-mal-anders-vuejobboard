@@ -131,9 +131,16 @@
               Nur Onlinefortbildungen
             </b-form-checkbox>
           </b-form>
+          <div class="mt-3">
+            <span
+              style="cursor: pointer"
+              class="text-danger small ml-2"
+              @click="resetFilter"
+              >Filter zurücksetzen</span
+            >
+          </div>
           <div class="d-none d-lg-block">
             <SgdBanner class="mt-4" />
-            <!-- <DelstBanner class="my-2" /> -->
           </div>
           <div class="small text-right my-3 pt-1">
             <b-link
@@ -162,11 +169,13 @@
 
           <div class="mt-5">
             <ToJobboardBanner class="mt-3" />
-            <BerufsbilderBanner class="mt-3" />
+            <BerufsbilderBanner class="my-3" />
           </div>
         </div>
       </div>
     </div>
+
+    <ScrollToTopBtn />
 
     <Head
       title="Fortbildungskatalog speziell für MFA & ZFA"
@@ -192,13 +201,15 @@
   import SgdBanner from "@/components/banners/SgdBanner.vue";
   import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
   import BerufsbilderBanner from "@/components/banners/BerufsbilderBanner.vue";
+  import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
   export default {
     name: "CareerFortWeiterbildungenCatalogue",
     components: {
       TrainingCatalogueCard,
       SgdBanner,
       ToJobboardBanner,
-      BerufsbilderBanner
+      BerufsbilderBanner,
+      ScrollToTopBtn
     },
     data() {
       return {
@@ -212,7 +223,8 @@
           remote: false,
           type: "",
           profession: "",
-          state: ""
+          state: "",
+          location: ""
         },
         error: false,
         companyStateOptions,
@@ -407,6 +419,30 @@
           state: this.$route.query.state || "",
           remote: this.$route.query.remote === "true" ? true : false
         };
+      },
+      resetFilter() {
+        this.filter = {
+          s: "",
+          type: "",
+          profession: "",
+          location: "",
+          state: "",
+          remote: false
+        };
+
+        // this.specialization = {
+        //   active: this.specializationOptions,
+        //   visible: false,
+        //   allSelected: true,
+        //   indeterminate: false
+        // };
+
+        // this.profession.active = this.professionOptions.map(
+        //   profession => profession.value
+        // );
+
+        this.setQuery();
+        this.getTrainings();
       }
     }
   };

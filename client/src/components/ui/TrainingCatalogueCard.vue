@@ -168,7 +168,7 @@
         :to="
           `/karriere/fort-und-weiterbildung/fortbildungskatalog/${training._id}/${training.slug}`
         "
-        target="_blank"
+        target="_self"
         class="mr-2 mt-2"
         variant="primary"
         size="sm"

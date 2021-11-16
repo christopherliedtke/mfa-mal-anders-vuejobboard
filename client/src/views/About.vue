@@ -39,16 +39,16 @@
         Themen wie Fort- und Weiterbildung, Gehalt, Ausbildung, Berufsbilder,
         Bewerbung und aktuelle Stellenangebote. Zusätzlich bieten wir
         attraktiven Arbeitgebern eine Plattform für die professionelle
-        Personalsuche – ideal für sämtliche Einrichtungen im Gesundheitswesen
-        (Arztpraxen, Medizinische Versorgungszentren, Zahnkliniken, Kliniken
-        etc.).
+        Personalsuche – ideal für verschiedenste Einrichtungen im
+        Gesundheitswesen (Arztpraxen, Medizinische Versorgungszentren,
+        Zahnkliniken, Kliniken etc.).
       </p>
       <p>
         MFA mal anders soll ein Ort sein, der Informationen über den Beruf der
-        MFA & ZFA vereint. Wir wollen eine Plattform bieten, auf der sich
-        Medizinische und Zahnmedizinische Angestellte vernetzen und austauschen
-        können. Wir stehen für Wertschätzung, Respekt und faire
-        Arbeitsbedingungen für Medizinische und Zahnmedizinische
+        MFA & ZFA vereint. Mit all unseren Kanälen wollen wir eine Plattform
+        bieten, auf der sich Medizinische und Zahnmedizinische Angestellte
+        vernetzen und austauschen können. Wir stehen für Wertschätzung, Respekt
+        und faire Arbeitsbedingungen für Medizinische und Zahnmedizinische
         Fachangestellte.
       </p>
     </div>
