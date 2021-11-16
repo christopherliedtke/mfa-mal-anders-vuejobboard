@@ -13,6 +13,7 @@ const cors = require("cors");
 const compression = require("compression");
 const csurf = require("csurf");
 const config = require("./config/config.js");
+const sitemapCache = require("./cache/sitemapCache");
 
 // #mongoDB
 const mongoose = require("./database/mongoDB");
@@ -20,7 +21,6 @@ const mongoose = require("./database/mongoDB");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 
-const { createSitemap } = require("./middleware/createSitemap");
 const { CRONNewsletter } = require("./middleware/CRONNewsletter");
 const { CRONRefreshJobs } = require("./middleware/CRONRefreshJobs");
 const { unpublishJobs } = require("./middleware/unpublishJobs");
@@ -39,9 +39,9 @@ if (process.env.HEROKU == "yes") {
 }
 
 // #Create Sitemap CRON job
-if (config.sitemap.active) {
-  createSitemap.start();
-}
+// if (config.sitemap.active) {
+//   createSitemap.start();
+// }
 
 // #Send Newsletter CRON job
 if (config.newsletter.active) {
@@ -101,8 +101,10 @@ app.use(
   })
 );
 
-app.get("/sitemap.xml", (req, res) => {
-  res.sendFile(__dirname + "/public/sitemap.xml");
+app.get("/sitemap.xml", async (req, res) => {
+  const sitemap = await sitemapCache.get("sitemap");
+  res.set("Content-Type", "text/xml");
+  res.send(sitemap);
 });
 
 // #Middleware for production

@@ -1,5 +1,5 @@
 const NodeCache = require("node-cache");
-const { Job } = require("../database/models/job");
+const createSitemap = require("../middleware/createSitemap");
 
 class Cache {
   constructor(ttlSeconds = 60 * 60) {
@@ -16,27 +16,15 @@ class Cache {
       return Promise.resolve(value);
     }
 
-    const internalJobs = await Job.find({
-      status: "published",
-      paid: true,
-      paidExpiresAt: { $gte: new Date() },
-      publishedAt: { $lte: new Date() },
-    })
-      .sort({
-        publishedAt: "desc",
-        paidAt: "desc",
-        createdAt: "desc",
-      })
-      .populate("company")
-      .populate("userId", "isAdmin");
+    const sitemap = await createSitemap();
 
     try {
-      this.cache.set("jobs", internalJobs);
+      this.cache.set("sitemap", sitemap);
     } catch (error) {
       console.log("error: ", error);
       return null;
     }
-    return this.cache.get("jobs");
+    return this.cache.get("sitemap");
   }
 
   del(keys) {
@@ -61,13 +49,13 @@ class Cache {
   }
 }
 
-const internalJobsCache = new Cache(60 * 60);
+const sitemapCache = new Cache(60 * 60);
 
-internalJobsCache.cache.on("expired", () => {
-  internalJobsCache.get("jobs");
+sitemapCache.cache.on("expired", () => {
+  sitemapCache.get("sitemap");
 });
-internalJobsCache.cache.on("flush", () => {
-  internalJobsCache.get("jobs");
+sitemapCache.cache.on("flush", () => {
+  sitemapCache.get("sitemap");
 });
 
-module.exports = internalJobsCache;
+module.exports = sitemapCache;

@@ -1,6 +1,5 @@
 const fs = require("fs");
 const axios = require("axios");
-const CronJob = require("cron").CronJob;
 const config = require("../config/config");
 const pagesSitemap = require("../config/sitemap.json");
 const { Job } = require("../database/models/job");
@@ -45,9 +44,10 @@ async function createSitemap() {
       trainingEvents +
       foot;
 
-    saveSitemap(__dirname + "/../public/sitemap.xml", sitemap);
+    return sitemap;
   } catch (error) {
     console.log("Error on createSitemap CRON: ", error);
+    return "";
   }
 }
 
@@ -353,18 +353,4 @@ function writeUrl(
     `;
 }
 
-function saveSitemap(filename, data) {
-  fs.writeFileSync(filename, data);
-}
-
-module.exports.createSitemap = new CronJob(
-  config.sitemap.interval,
-  function () {
-    createSitemap();
-  },
-  null, // onComplete
-  false, // start directly
-  "Europe/Berlin", // timezone
-  null, // context
-  config.sitemap.active // run on init
-);
+module.exports = createSitemap;
