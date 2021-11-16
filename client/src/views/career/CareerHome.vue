@@ -4,43 +4,39 @@
       <h1>{{ title }}</h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
-    <div class="container py-3 py-lg-5">
-      <div class="clearfix">
-        <h2 class="mb-4">
-          Verliebt in meinen Beruf - Dein Karriereportal für Medizinische &
-          Zahnmedizinische Fachangestellte
-        </h2>
-        <b-img-lazy
-          class="border-radius2 mb-3 mr-4"
-          left
-          src="@/assets/img/KristinMaurach_sitzendAufMauer_500.jpg"
-          style="width: 40vw; max-width: 250px"
-          blank-width="150"
-          blank-height="150"
-          offset="1000"
-        />
-        <p>
-          MFA mal anders ist ein Karriereportal speziell für Medizinische
-          Fachangestellte, die sich beruflich wie persönlich weiterentwickeln
-          wollen, um mehr aus ihrem Beruf und Leben raus zu holen.
-        </p>
-        <p>
-          Hier findest du
-          <b-link to="/stellenangebote">Stellenangebote</b-link>,
-          <b-link to="/karriere/fort-und-weiterbildung"
-            >Fort- und Weiterbildungsmöglichkeiten</b-link
-          >,
-          <b-link :to="`/${$config.cms.postsPath}`">Praxishacks</b-link>
-          und Informationen zur persönlichen sowie beruflichen
-          Weiterentwicklung.
-        </p>
-        <blockquote class="d-inline">
-          Unser Ziel: Den Beruf der MFA & ZFA stärken und wieder attraktiver
-          machen!
-        </blockquote>
-      </div>
 
+    <div class="header-img">
+      <b-img-lazy
+        class="header-img"
+        style="object-position: center 70%"
+        sizes="(max-width: 1920px) 100vw, 1920px"
+        srcset="
+          /img/coffeeMugBegin_qf1tz3_c_scale,w_350.jpg 350w,
+          /img/coffeeMugBegin_qf1tz3_c_scale,w_850.jpg 850w,
+          /img/coffeeMugBegin_qf1tz3_c_scale,w_1114.jpg 1114w,
+          /img/coffeeMugBegin_qf1tz3_c_scale,w_1403.jpg 1403w,
+          /img/coffeeMugBegin_qf1tz3_c_scale,w_1920.jpg 1920w
+        "
+        src="/img/coffeeMugBegin_qf1tz3_c_scale,w_1920.jpg"
+        alt="Fort- und Weiterbildung für MFA & ZFA"
+        width="1200"
+        height="513"
+        blank-width="1200"
+        blank-height="513"
+        offset="1000"
+      />
+      <div class="overlay"></div>
+    </div>
+
+    <div class="container">
       <div class="container my-3 my-md-5 px-0">
+        <h2 class="display-3 bold text-gray-dark">
+          Dein nächster Karriereschritt
+        </h2>
+        <p class="lead mb-4">
+          Informiere Dich über verschiedene Möglichkeiten im Gesundheitswesen
+          als Medizinische & Zahnmedizinische Fachangestellte
+        </p>
         <div class="row row-cols-1 row-cols-md-3 flex-lg-row-reverse">
           <div class="col">
             <b-link to="/stellenangebote" class="icon-box shadow1">
@@ -133,9 +129,46 @@
           </b-link>
         </div>
       </div>
-      <h2 class="my-4">
+
+      <div class="clearfix">
+        <h2 class="h1 mb-4 mb-md-5">
+          <span class="display-3 bold">Dein Karriereportal</span> <br />
+          für Medizinische & Zahnmedizinische Fachangestellte
+        </h2>
+        <b-img-lazy
+          class="border-radius2 shadow1 mb-3 mr-4"
+          left
+          src="@/assets/img/KristinMaurach_portrait_800.jpg"
+          style="width: 40vw; max-width: 250px; border-radius: 50% 50% 35px 50%"
+          blank-width="150"
+          blank-height="150"
+          offset="1000"
+        />
+        <p>
+          MFA mal anders ist ein Karriereportal speziell für Medizinische &
+          Zahnmedizinische Fachangestellte, die sich beruflich wie persönlich
+          weiterentwickeln wollen, um mehr aus ihrem beruflichen Leben
+          herauszuholen.
+        </p>
+        <p>
+          Hier findest du
+          <b-link to="/stellenangebote">Stellenangebote</b-link>,
+          <b-link to="/karriere/fort-und-weiterbildung"
+            >Fort- und Weiterbildungsmöglichkeiten</b-link
+          >,
+          <b-link :to="`/${$config.cms.postsPath}`">Praxishacks</b-link>
+          und Informationen zur persönlichen sowie beruflichen
+          Weiterentwicklung.
+        </p>
+        <blockquote class="d-inline">
+          Unser Ziel: Den Beruf der MFA & ZFA stärken und wieder attraktiver
+          machen!
+        </blockquote>
+      </div>
+
+      <h3 class="my-4">
         Wir helfen dir bei der Suche nach deinem Traumjob
-      </h2>
+      </h3>
       <div class="row">
         <div class="col-12 col-md-6">
           <p>
@@ -168,11 +201,11 @@
           </p>
         </div>
       </div>
-      <h2 class="my-4">
-        Wir helfen dir dabei einen Job zu finden, den du liebst. Und den du
-        verdienst.
-      </h2>
 
+      <h3 class="my-4">
+        Wir helfen dir dabei einen Job zu finden, den du liebst. Und den du
+        verdienst
+      </h3>
       <p>
         Viele Praxen haben zum Glück erkannt, dass ohne uns MFAs & ZFAs nichts
         läuft. Und das zeigen die Chefs in einem wertschätzenden Umgang,
@@ -201,7 +234,8 @@
       <div class="d-flex justify-content-center my-5">
         <ToJobboardBanner />
       </div>
-      <h2 class="my-4">Bock auf Veränderung?</h2>
+
+      <h3 class="my-4">Bock auf Veränderung?</h3>
       <p>
         Als MFA & ZFA hast du einen anspruchsvollen Job in der Arztpraxis. Es
         gibt aber auch viele Karrierechancen darüber hinaus.
@@ -242,7 +276,8 @@
           <BerufsbilderBanner />
         </div>
       </div>
-      <h2 class="my-4">MFAs & ZFAs sind vernetzt und halten zusammen</h2>
+
+      <h3 class="my-4">MFAs & ZFAs sind vernetzt und halten zusammen</h3>
       <p>
         Um unseren Beruf zu stärken und weiter voran zu bringen, müssen wir
         zusammenhalten.
@@ -280,9 +315,9 @@
         eure Stellenanzeige veröffentlichen.
       </p>
       <p>
-        Wenn du bereit bist, deiner Karriere als Medizinische Fachangestellte
-        neuen Aufschwung zu geben, reiche ich dir die Hand und begleite dich auf
-        deinem Weg.
+        Wenn du bereit bist, deiner Karriere als Medizinische oder
+        Zahnmedizinische Fachangestellte neuen Aufschwung zu geben, reiche ich
+        dir die Hand und begleite dich auf deinem Weg.
       </p>
       <p>
         Ich freue mich über jedes Feedback und da MFA mal anders eine
@@ -353,7 +388,7 @@
     },
     data() {
       return {
-        title: "Karriere machen als MFA & ZFA",
+        title: "Karriere für MFA & ZFA",
         breadcrumbs: [
           { text: "Home", to: "/" },
           { text: "Karriere", to: "/karriere" }

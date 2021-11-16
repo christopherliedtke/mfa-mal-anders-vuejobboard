@@ -126,7 +126,7 @@ h1.title {
   img {
     width: 100%;
     object-fit: cover;
-    object-position: center center;
+    object-position: center top;
     max-height: 35vh;
 
     @media screen and (max-width: $break-menu) {

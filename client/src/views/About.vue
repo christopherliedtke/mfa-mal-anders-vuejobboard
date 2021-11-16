@@ -45,7 +45,9 @@
       </p>
       <p>
         MFA mal anders soll ein Ort sein, der Informationen über den Beruf der
-        MFA & ZFA vereint. Wir stehen für Wertschätzung, Respekt und faire
+        MFA & ZFA vereint. Wir wollen eine Plattform bieten, auf der sich
+        Medizinische und Zahnmedizinische Angestellte vernetzen und austauschen
+        können. Wir stehen für Wertschätzung, Respekt und faire
         Arbeitsbedingungen für Medizinische und Zahnmedizinische
         Fachangestellte.
       </p>
@@ -138,14 +140,14 @@
             Liedtke <br />
             <span class="small text-muted">M.Sc.</span>
           </h3>
-          <p class="lead">Technische Infrastruktur</p>
+          <p class="lead">Produktmanager und Software Developer</p>
           <p class="text-md-justify">
             Nach dem Studium habe ich über einige Jahre als Projektmanager in
             unterschiedlichen Themenbereichen gearbeitet. In dieser Funktion
             habe ich viel Erfahrung im Erstellen von validen Strategien und
             Konzepten, aber speziell auch in der effizienten Projektorganisation
             gewinnen. Zum Thema Gesundheitswesen bin ich dank Kristin gekommen.
-            Dank meiner zusätzlichen Ausbildung zum Softwareentwickler konnten
+            Mit meiner zusätzlichen Ausbildung zum Softwareentwickler konnten
             wir gemeinsam unsere Vision von MFA mal anders umsetzen.
           </p>
           <p class="text-md-justify">
