@@ -58,7 +58,10 @@
       "value": "MFA",
       "text": "Medizinische Fachangestellte"
     },
-    { "value": "ZFA", "text": "Zahnmedizinische Fachangestellte" }
+    {
+      "value": "ZFA",
+      "text": "Zahnmedizinische Fachangestellte"
+    }
   ],
   "employmentTypeOptions": [
     { "value": "full", "text": "Vollzeit" },

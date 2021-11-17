@@ -49,7 +49,7 @@ class Cache {
   }
 }
 
-const sitemapCache = new Cache(60 * 60);
+const sitemapCache = new Cache(60 * 60 * 6);
 
 sitemapCache.cache.on("expired", () => {
   sitemapCache.get("sitemap");

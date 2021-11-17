@@ -4,12 +4,12 @@
       <h1>
         {{
           `Stellenangebote${
-            profession.active.length > 0
-              ? " – " + profession.active.join(" & ")
+            berufsgruppe.active.length > 0
+              ? " – " + berufsgruppe.active.join(" & ")
               : ""
           }
       `
-        }}{{ filter.location ? " | " + filter.location : "" }}
+        }}{{ filter.ort ? " | " + filter.ort : "" }}
       </h1>
       <b-breadcrumb :items="breadcrumbs" class="text-capitalize"></b-breadcrumb>
     </div>
@@ -45,8 +45,8 @@
               </template>
               <b-form-input
                 id="location-jobboard"
-                v-model="filter.location"
-                :class="[{ 'border-secondary': !!filter.location }]"
+                v-model="filter.ort"
+                :class="[{ 'border-secondary': !!filter.ort }]"
                 type="text"
                 placeholder="Ort oder PLZ..."
                 trim
@@ -59,7 +59,7 @@
                   class="px-2"
                   @click.prevent="
                     () => {
-                      filter.location = '';
+                      filter.ort = '';
                       getJobs();
                       setQuery();
                     }
@@ -178,7 +178,7 @@
                 </template>
                 <b-form-select
                   id="employmentType-jobboard"
-                  v-model="filter.employmentType"
+                  v-model="filter.anstellungsart"
                   class=""
                   @change="
                     () => {
@@ -204,7 +204,7 @@
               >
               <b-form-group id="profession-jobboard" class="pl-2">
                 <b-form-checkbox-group
-                  v-model="profession.active"
+                  v-model="berufsgruppe.active"
                   class="ml-1"
                   :options="professionOptions"
                   size="sm"
@@ -379,8 +379,8 @@
                 >Medizinischen Fachangestellten (MFA) / ArzthelferIn oder
                 Zahnmedizinischen Fachangestellten (ZFA)</em
               >{{
-                $route.query.location || $route.query.state
-                  ? ` in ${$route.query.location || $route.query.state}`
+                $route.query.ort || $route.query.state
+                  ? ` in ${$route.query.ort || $route.query.state}`
                   : ""
               }}? Dann
               <b-link to="/auth/register" class="bold">registrieren</b-link>
@@ -409,7 +409,7 @@
                   :to="`/stellenangebote/ort/${state.toLowerCase()}`"
                   @click="
                     () => {
-                      filter.location = state;
+                      filter.ort = state;
                       getJobs();
                     }
                   "
@@ -428,17 +428,27 @@
 
     <Head
       :title="
-        `Stellenangebote ArzthelferIn | ${profession.active.join(' & ')} Jobs${
-          filter.location ? ' | ' + filter.location : ''
-        }
-      `
+        `Stellenangebote ArzthelferIn | ${berufsgruppe.active.join(
+          ' & '
+        )} Jobs${filter.ort ? ' | ' + filter.ort : ''}`
       "
       :desc="
-        `Stellenangebote (Teilzeit | Vollzeit) für ArzthelferIn ✓ ${profession.active.join(
-          ' & '
-        )} Jobs ${
-          filter.location ? 'in ' + filter.location + ' ' : ''
-        }– Jobs speziell für Medizinische / Zahnmedizinische Fachangestellte.`
+        `Jobs für ${
+          berufsgruppe.active.includes('MFA')
+            ? 'Medizinische Fachangestellte (MFA)'
+            : ''
+        }${
+          berufsgruppe.active.includes('MFA') &&
+          berufsgruppe.active.includes('ZFA')
+            ? ' & '
+            : ''
+        }${
+          berufsgruppe.active.includes('ZFA')
+            ? 'Zahnmedizinische Fachangestellte (ZFA)'
+            : ''
+        }${
+          filter.ort ? ' in ' + filter.ort + ' & Umgebung' : ''
+        } ✓ Teilzeit | Vollzeit – MFA mal anders Stellenbörse`
       "
       img=""
       :script="snippet"
@@ -489,9 +499,8 @@
         jobsCount: 0,
         filter: {
           s: "",
-          employmentType: "",
-          location: "",
-          state: ""
+          anstellungsart: "",
+          ort: ""
         },
         specialization: {
           active: specializationOptions,
@@ -499,11 +508,11 @@
           allSelected: true,
           indeterminate: false
         },
-        profession: {
-          active: this.$route.query.profession
-            ? typeof this.$route.query.profession === "object"
-              ? this.$route.query.profession
-              : [this.$route.query.profession]
+        berufsgruppe: {
+          active: this.$route.query.berufsgruppe
+            ? typeof this.$route.query.berufsgruppe === "object"
+              ? this.$route.query.berufsgruppe
+              : [this.$route.query.berufsgruppe]
             : professionOptions.map(profession => profession.value)
         },
         employmentTypeOptions,
@@ -543,17 +552,11 @@
                     "name": "Stellenangebote",
                     "item": "https://www.mfa-mal-anders.de/stellenangebote"
                 }${
-                  this.$route.query.location || this.$route.query.state
+                  this.filter.ort
                     ? ',{"@type": "ListItem","position": 3,"name": "' +
-                      (this.$route.params.location ||
-                        this.$route.query.location ||
-                        this.$route.query.state) +
+                      this.filter.ort +
                       '","item": "https://www.mfa-mal-anders.de/stellenangebote/ort/' +
-                      (
-                        this.$route.params.location ||
-                        this.$route.query.location ||
-                        this.$route.query.state
-                      ).toLowerCase() +
+                      this.filter.ort.toLowerCase() +
                       '"}'
                     : ""
                 }]
@@ -561,18 +564,9 @@
           },
           {
             rel: "canonical",
-            href: `${this.$config.website.url}/stellenangebote${
-              this.$route.params.location ||
-              this.$route.query.location ||
-              this.$route.query.state
-                ? "/ort/" +
-                  (
-                    this.$route.params.location ||
-                    this.$route.query.location ||
-                    this.$route.query.state
-                  ).toLowerCase()
-                : ""
-            }`,
+            href: `${
+              this.$config.website.url
+            }/stellenangebote${this.getCanonical()}`,
             id: "canonical"
           }
         ];
@@ -583,12 +577,10 @@
           { text: "Stellenangebote", to: "/stellenangebote" }
         ];
 
-        if (this.filter.state || this.filter.location) {
+        if (this.filter.ort) {
           breadcrumbs.push({
-            text: this.filter.state || this.filter.location,
-            to: `/stellenangebote/ort/${(
-              this.filter.state || this.filter.location
-            ).toLowerCase()}`
+            text: this.filter.ort,
+            to: `/stellenangebote/ort/${this.filter.ort.toLowerCase()}`
           });
         }
 
@@ -608,7 +600,7 @@
           this.specialization.allSelected = false;
         }
       },
-      "profession.active"() {
+      "berufsgruppe.active"() {
         this.setQuery();
       }
     },
@@ -625,13 +617,12 @@
         let response = await this.$axios.get("/api/public-jobs", {
           params: {
             s: this.filter.s,
-            employmentType: this.filter.employmentType,
-            state: this.filter.state,
-            location: this.filter.location,
+            employmentType: this.filter.anstellungsart,
+            location: this.filter.ort,
             profession:
-              typeof this.$route.query.profession === "object"
-                ? this.$route.query.profession.join("+")
-                : this.$route.query.profession,
+              typeof this.$route.query.berufsgruppe === "object"
+                ? this.$route.query.berufsgruppe.join("+")
+                : this.$route.query.berufsgruppe,
             specialization:
               this.specialization.active.length ===
               this.specializationOptions.length
@@ -672,11 +663,12 @@
       setQuery() {
         const query = {
           ...this.filter,
-          profession:
-            typeof this.profession.active === "object" &&
-            this.profession.active.length === this.professionOptions.length
+          ort: this.filter.ort.replace(/ /g, "-").toLowerCase(),
+          berufsgruppe:
+            typeof this.berufsgruppe.active === "object" &&
+            this.berufsgruppe.active.length === this.professionOptions.length
               ? ""
-              : this.profession.active
+              : this.berufsgruppe.active
         };
 
         for (const key in query) {
@@ -695,22 +687,12 @@
       setFilter() {
         this.filter = {
           s: this.$route.query.s || "",
-          employmentType:
-            this.$route.query.employmentType ||
-            (this.$route.params.employmentType
-              ? employmentTypeOptions.find(
-                  opt =>
-                    opt.text.toLowerCase() ==
-                    this.$route.params.employmentType.toLowerCase()
-                ).value
-              : "") ||
-            "",
-          location: this.capitalize(
-            `${this.$route.params.location ||
-              this.$route.query.location ||
-              ""}${this.$route.query.state ? " " : ""}${this.$route.query
-              .state || ""}`
-          )
+          anstellungsart: this.$route.query.anstellungsart || "",
+          ort: this.capitalize(
+            `${this.$route.params.location || this.$route.query.ort || ""}${
+              this.$route.query.state ? " " + this.$route.query.state : ""
+            }`
+          ).replace(/-/g, " ")
         };
 
         if (this.$route.query.fachgebiet) {
@@ -728,8 +710,8 @@
 
         if (
           this.$route.query.s ||
-          this.$route.query.employmentType ||
-          this.$route.query.profession ||
+          this.$route.query.anstellungsart ||
+          this.$route.query.berufsgruppe ||
           this.$route.query.fachgebiet
         ) {
           this.showAdvancedSearch = true;
@@ -744,9 +726,8 @@
       resetFilter() {
         this.filter = {
           s: "",
-          employmentType: "",
-          location: "",
-          state: ""
+          anstellungsart: "",
+          ort: ""
         };
 
         this.specialization = {
@@ -756,7 +737,7 @@
           indeterminate: false
         };
 
-        this.profession.active = this.professionOptions.map(
+        this.berufsgruppe.active = this.professionOptions.map(
           profession => profession.value
         );
 
@@ -767,6 +748,23 @@
         return value.replace(/(^\w|((?<=-)(.)){1})|(\s+\w{1})/g, letter =>
           letter.toUpperCase()
         );
+      },
+      getCanonical() {
+        let canonical = "";
+        const location =
+          this.$route.params.location ||
+          this.$route.query.ort ||
+          this.$route.query.state;
+
+        if (location) {
+          canonical += "/ort/" + location.toLowerCase();
+        }
+
+        if (this.$route.query.berufsgruppe) {
+          canonical += "?berufsgruppe=" + this.$route.query.berufsgruppe;
+        }
+
+        return canonical;
       }
     }
   };

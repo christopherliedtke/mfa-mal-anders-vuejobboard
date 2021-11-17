@@ -274,7 +274,8 @@
           },
           {
             rel: "canonical",
-            href: `${this.$config.website.url + this.$route.fullPath}`,
+            href: `${this.$config.website.url +
+              "/karriere/fort-und-weiterbildung/fortbildungskatalog"}`,
             id: "canonical"
           }
         ]

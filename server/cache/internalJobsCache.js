@@ -27,8 +27,7 @@ class Cache {
         paidAt: "desc",
         createdAt: "desc",
       })
-      .populate("company")
-      .populate("userId", "isAdmin");
+      .populate("company");
 
     try {
       this.cache.set("jobs", internalJobs);

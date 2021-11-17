@@ -18,7 +18,7 @@
           /img/coffeeMugBegin_qf1tz3_c_scale,w_1920.jpg 1920w
         "
         src="/img/coffeeMugBegin_qf1tz3_c_scale,w_1920.jpg"
-        alt="Fort- und Weiterbildung für MFA & ZFA"
+        alt="Karriere starten für MFA & ZFA"
         width="1200"
         height="513"
         blank-width="1200"

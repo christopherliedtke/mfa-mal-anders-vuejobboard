@@ -2,13 +2,14 @@ const fs = require("fs");
 const axios = require("axios");
 const config = require("../config/config");
 const pagesSitemap = require("../config/sitemap.json");
+const textToSlug = require("../utils/textToSlug");
 const { Job } = require("../database/models/job");
 const { Company } = require("../database/models/company");
 const { Training } = require("../database/models/training");
 
 async function createSitemap() {
   try {
-    console.log("createSitemap() running...");
+    // console.log("createSitemap() running...");
     const head = writeHead();
     const foot = writeFoot();
 
@@ -218,9 +219,7 @@ const getJobboardStates = async () => {
     return states
       .map(state =>
         writeUrl(
-          process.env.WEBSITE_URL +
-            "/stellenangebote/ort/" +
-            state.toLowerCase(),
+          process.env.WEBSITE_URL + "/stellenangebote/ort/" + textToSlug(state),
           undefined,
           "daily",
           0.8
@@ -244,7 +243,7 @@ const getJobboardLocations = async () => {
         writeUrl(
           process.env.WEBSITE_URL +
             "/stellenangebote/ort/" +
-            location.toLowerCase(),
+            textToSlug(location),
           undefined,
           "daily",
           0.8
@@ -265,7 +264,7 @@ const getJobboardProfessions = async () => {
       .map(profession =>
         writeUrl(
           process.env.WEBSITE_URL +
-            "/stellenangebote?profession=" +
+            "/stellenangebote?berufsgruppe=" +
             profession.value
         )
       )
