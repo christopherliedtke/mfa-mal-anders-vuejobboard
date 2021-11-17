@@ -113,7 +113,12 @@
           class="mb-3"
           placeholder="Weitere Stellen finden..."
         />
-        <JobsTeaserContainer :location="company.location" />
+        <JobsTeaserContainer
+          :location="{
+            geoCodeLat: company.geoCodeLat,
+            geoCodeLng: company.geoCodeLng
+          }"
+        />
       </div>
 
       <Head

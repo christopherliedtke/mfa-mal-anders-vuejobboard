@@ -69,6 +69,10 @@
         type: String,
         default: ""
       },
+      location: {
+        type: Object,
+        default: null
+      },
       showMoreBtn: {
         type: Boolean,
         default: true
@@ -91,7 +95,7 @@
         jobs: []
       };
     },
-    created() {
+    mounted() {
       this.getPublicJobs();
     },
     methods: {
@@ -101,6 +105,8 @@
             s: this.searchTerm,
             employmentType: this.employmentType,
             profession: this.profession,
+            geoCodeLat: this.location ? this.location.geoCodeLat : undefined,
+            geoCodeLng: this.location ? this.location.geoCodeLng : undefined,
             limit: this.number
           }
         });

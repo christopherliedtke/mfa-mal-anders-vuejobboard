@@ -20,11 +20,11 @@ router.get("/", async (req, res) => {
       query.position = locations[0].position;
     } else {
       errors.push(
-        `Es konnte kein passender Ort für '${query.location}' gefunden werden. Bitte stelle sicher, dass Du den Ort bzw. die PLZ korrekt und komplett angegeben hast.`
+        `Es konnte kein passender Ort für '${query.location}' gefunden werden oder der Ortungsservice funktioniert aktuell nicht. Bitte stelle sicher, dass Du den Ort bzw. die PLZ korrekt und komplett angegeben hast.`
       );
 
-      res.json({ jobCount: 0, jobs: [], errors });
-      return;
+      // res.json({ jobCount: 0, jobs: [], errors });
+      // return;
     }
   }
 
@@ -36,20 +36,20 @@ router.get("/", async (req, res) => {
 
   jobs = jobs.flat();
 
-  // sort by distance from position
-  if (query.position) {
-    jobs = sortByPosition(query.position, jobs);
-  }
-
   jobs = filterJobs(jobs, query);
   const jobsCount = jobs.length;
+
+  if (jobsCount === 0) {
+    errors.push("Leider gibt es hierzu keine Ergebnisse.");
+  }
+
   jobs = sliceJobs(
     jobs,
     parseInt(query.limit) || undefined,
     parseInt(query.offset) || undefined
   );
 
-  res.json({ jobsCount, jobs });
+  res.json({ jobsCount, jobs, errors });
 });
 
 // #route:  GET /api/public-jobs/by-ids
@@ -146,7 +146,7 @@ function filterJobs(jobs, query) {
 
   //   filter searchTerm
   if (query.s) {
-    filteredJobs = jobs.filter(job => {
+    filteredJobs = filteredJobs.filter(job => {
       const s = query.s.toLowerCase().split(" ");
       const searchProp = [
         job.title,
@@ -163,7 +163,7 @@ function filterJobs(jobs, query) {
     });
   }
 
-  // sort by geocode
+  // sort by geocode || position
   if (query.geoCodeLat && query.geoCodeLng) {
     filteredJobs = sortByPosition(
       {
@@ -174,6 +174,8 @@ function filterJobs(jobs, query) {
         job => job.company.geoCodeLat && job.company.geoCodeLng
       )
     );
+  } else if (query.position) {
+    filteredJobs = sortByPosition(query.position, filteredJobs);
   }
 
   return filteredJobs;
