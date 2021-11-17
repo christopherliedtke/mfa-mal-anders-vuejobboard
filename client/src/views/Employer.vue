@@ -17,20 +17,21 @@
         <div class="bg-logo"></div>
         <div class="col-12 col-md-8" style="z-index: 1">
           <h2 class="display-4 bold mb-4">
-            <em>Motivierte</em> und <em>qualifizierte</em> MFA & ZFA{{
+            <em>Motivierte</em> und <em>qualifizierte</em> <br />
+            MFA & ZFA{{
               $route.query.location ? ` in ${$route.query.location}` : ""
             }}
             gesucht?
           </h2>
-          <h3 class="">
+          <h3 class="d-none d-md-block">
             <em>
-              Schalten Sie Ihre Stellenanzeige <br />
-              auf der reichweitenstärksten Karriereplattform <br />
-              speziell für MFA & ZFA
+              Die reichweitenstärkste Karriereplattform <br />
+              speziell für Medizinische Fachangestellte | Zahnmedizinische
+              Fachangestellte
             </em>
           </h3>
           <ul class="lead no-bullets my-4 my-lg-5">
-            <li class="d-flex">
+            <li class="d-flex mb-2">
               <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +52,7 @@
                 <span class="text-secondary">in wenigen Schritten</span>
               </div>
             </li>
-            <li class="d-flex">
+            <li class="d-flex mb-2">
               <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +74,7 @@
                 über unsere spezielle Karriereplattform
               </div>
             </li>
-            <li class="d-flex">
+            <li class="d-flex mb-2">
               <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -155,9 +156,10 @@
       <p class="bold display-4 text-center">
         Ihre Zielgruppe genau im Blick
       </p>
-      <p class="h3 text-center">
-        Stellenangebote nur für ArzthelferInnen – MFA & ZFA
-      </p>
+      <h3 class="text-center d-md-none">
+        Die reichweitenstärkste Karriereplattform speziell für <br />
+        Medizinische Fachangestellte&nbsp;| Zahnmedizinische Fachangestellte
+      </h3>
 
       <div class="row my-4 my-md-5">
         <div class="col">
@@ -182,7 +184,7 @@
             <h4 class="mt-2 mb-3">Genau Ihre Zielgruppe</h4>
             <p>
               Bei uns erreichen Sie
-              <strong>exklusiv motivierte ArzthelferInnen – MFA & ZFA</strong>
+              <strong>exklusiv motivierte MFA | ZFA | ArzthelferIn</strong>
               und damit genau Ihre Zielgruppe.
             </p>
           </div>
@@ -235,7 +237,19 @@
               <strong
                 >Sie erstellen Ihre Anzeige, wir sorgen für den Rest</strong
               >
-              - Reichweite auf MFA mal anders, Google Jobs, Facebook und
+              - Reichweite auf
+              <b-link to="/stellenangebote">MFA mal anders</b-link>,
+              <a
+                href="https://www.google.com/search?q=mfa+mal+anders&ibp=htl;jobs#htivrt=jobs&htilrad=-1.0"
+                target="_blank"
+                >Google Jobs</a
+              >,
+              <a
+                :href="`https://www.facebook.com/${$config.fb.path}`"
+                target="_blank"
+                >Facebook</a
+              >
+              und
               <b-link to="#mehr-informationen">mehr...</b-link>
             </p>
           </div>
@@ -291,7 +305,7 @@
         </h2>
         <div class="my-4  text-center text-lg-left">
           <p>
-            Mit MFA mal anders möchten wir Medizinischen Fachangestellten &
+            Mit MFA mal anders möchten wir Medizinischen Fachangestellten |
             Zahnmedizinischen Fachangestellten die Möglichkeit geben, einen
             attraktiven Job zu finden. Aber auch Ihnen als Arbeitgeber eine
             alternative Plattform bereitstellen, die Ihre Stellenangebote an die
@@ -317,7 +331,7 @@
           </div>
         </div>
         <p>
-          Sie haben die Möglichkeit, Ihre Stellenanzeige nach
+          Sie haben die Möglichkeit, Ihre Stellenanzeige nach der
           <b-link to="/auth/register">Registrierung</b-link> auf unserem Portal
           zu erstellen und in einer Vorschau zu betrachten. Anschließend können
           Sie Ihre Stellenanzeige mit einem der drei Pakete veröffentlichen.
@@ -402,7 +416,7 @@
     >
       <div class="container">
         <h2 class="bold mb-4">
-          Ihre Jobbörse nur für ArzthelferInnen – MFA & ZFA – MFA mal anders
+          Ihre Jobbörse nur für MFA | ZFA | ArzthelferIn – MFA mal anders
         </h2>
         <div class="row row-cols-1 row-cols-md-2">
           <div class="col">
@@ -435,10 +449,7 @@
                 Social Media, Google Jobs und auf unserer Webseite
               </strong>
               . Zusätzlich versenden wir Ihre Anzeige in unserem
-              <strong>
-                wöchentlichen Newsletter
-              </strong>
-              .
+              <strong> wöchentlichen Newsletter</strong>.
             </p>
           </div>
           <div class="col">
@@ -459,7 +470,8 @@
               hohe Streuverluste haben, ab. Da wir
               <strong>mehr als eine reine Jobbörse</strong> sind, erreichen wir
               mit unserem Angebot zudem eine deutlich größere Anzahl von
-              wirklich motivierten MFAs & ZFAs.
+              wirklich motivierten Medizinischen Fachangestellten |
+              Zahnmedizinischen Fachangestellten.
             </p>
             <p>
               Wir arbeiten
@@ -501,7 +513,7 @@
           href="/downloads/MfaMalAnders_Beispiel_Stellenanzeige.pdf"
           target="_blank"
           class="bold"
-          >Muster Stellenanzeige für MFA</b-link
+          >Muster Stellenanzeige für MFA | ZFA</b-link
         >
         zur Inspiration ansehen.
       </p>
