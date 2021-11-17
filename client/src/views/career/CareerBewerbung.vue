@@ -162,13 +162,14 @@
         Mit einer Top-Bewerbung zum Vorstellungsgespräch
       </h2>
       <p>
-        Auch wenn Medizinische und Zahnmedizinische Fachangestellte heute sehr
-        gefragt sind und sich Ihren Arbeitgeber in der Regel aussuchen können,
-        ist es immer von Vorteil, mit seiner Bewerbung positiv hervorzustechen.
-        Je nachdem, in welchem Bereich man sich bewirbt (Arztpraxis, MVZ,
-        Krankenhaus, Verwaltung ...) sind mehr oder weniger spezialisierte
-        Personaler für die Sichtung deiner Unterlagen verantwortlich. Auch die
-        Qualität und Quantität der Konkurrenz kann sehr unterschiedlich sein.
+        Auch wenn Medizinische Fachangestelle | Zahnmedizinische Fachangestellte
+        heute sehr gefragt sind und sich Ihren Arbeitgeber in der Regel
+        aussuchen können, ist es immer von Vorteil, mit seiner Bewerbung positiv
+        hervorzustechen. Je nachdem, in welchem Bereich man sich bewirbt
+        (Arztpraxis, MVZ, Krankenhaus, Verwaltung ...) sind mehr oder weniger
+        spezialisierte Personaler für die Sichtung deiner Unterlagen
+        verantwortlich. Auch die Qualität und Quantität der Konkurrenz kann sehr
+        unterschiedlich sein.
       </p>
       <p>
         Erfahrungsgemäß ist dies nicht besonders schwer positiv aufzufallen, da

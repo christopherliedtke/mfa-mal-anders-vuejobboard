@@ -43,7 +43,7 @@
 
     <Head
       title="Linktree | Sitemap"
-      desc="Dein Job- und Karriereportal für ArzthelferInnen – Medizinische / Zahnmedizinische Fachangestellte (MFA / ZFA) | Stellenangebote | Weiterbildungen | Alternative Jobs | Gehalt | Bewerbung"
+      desc="Dein Job- und Karriereportal für ArzthelferInnen – Zahnmedizinische | Medizinische Fachangestellte (ZFA / MFA) | Stellenangebote | Weiterbildungen | Alternative Jobs | Gehalt | Bewerbung"
       img=""
       :script="snippet"
     />

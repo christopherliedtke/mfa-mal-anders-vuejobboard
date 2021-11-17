@@ -28,7 +28,7 @@
         Dein nächster Karriereschritt
       </h2>
       <p>
-        Als Medizinische & Zahnmedizinische Fachangestellte hast Du viele
+        Als Zahnmedizinische | Medizinische Fachangestellte hast Du viele
         Möglichkeiten uns zu qualifizieren und im Job aufzusteigen oder sogar in
         anderen Bereichen des Gesundheitswesens Fuß zu fassen. Nur leider ist
         der Dschungel an Fortbildungen für Medizinische Fachangestellte so stark
@@ -133,8 +133,9 @@
         Fort- und Weiterbildungen für MFA & ZFA – Der große Überblick
       </h2>
       <p>
-        Welche Fortbildungen – welche und Weiterbildungen gibt es speziell für
-        Medizinische und Zahnmedizinische Fachangestellte? In der Rubrik
+        Welche Fortbildungen – welche Weiterbildungen gibt es speziell für
+        Medizinische Fachangestellte | Zahnmedizinische Fachangestellte? In der
+        Rubrik
         <b-link to="/karriere/fort-und-weiterbildung/ueberblick"
           >Fort- und Weiterbildungen – Überblick</b-link
         >
@@ -186,7 +187,7 @@
         machen es dabei nicht besser. Als ich mich damals für eine berufliche
         Weiterentwicklung entschieden hatte, war das wie die Suche nach der
         Nadel im Heuhaufen. Es gibt zwar viele Angebot für Medizinische
-        Fachangestellte und Zahnmedizinische Fachangestellte, aber die
+        Fachangestellte | Zahnmedizinische Fachangestellte, aber die
         Informationen muss man sich mühsam zusammen sammeln. Damit du dich für
         den richtigen Weg entscheiden kannst, solltest du zunächst wissen,
         welche Bildungsform für dich die Richtige ist. Und welche Türen, dir die
@@ -249,7 +250,7 @@
       </p>
       <p>
         Die meisten Fortbildungen werden von dem Arbeitgeber initiiert, weil es
-        für sie von Vorteil ist eine Medizinische Fachangestellte oder
+        für sie von Vorteil ist eine Medizinische Fachangestellte |
         Zahnmedizinische Fachangestellte mit einer speziellen
         Zusatzqualifikation zu haben und werden deshalb auch von ihm übernommen.
         Zudem sind bestimmte Fortbildungen pflichtgemäß in regelmäßigen
@@ -261,7 +262,7 @@
         Dagegen vermitteln Weiterbildungen eher allgemeine Inhalte und sind
         darauf ausgelegt, dass du zusätzliche Qualifikationen als MFA / ZFA
         erwirbst. Erste Vorbildungen, die du mit deiner Ausbildung zur
-        Medizinischen Fachangestellten bzw. Zahnmedizinischen Fachangestellten
+        Medizinischen Fachangestellten | Zahnmedizinischen Fachangestellten
         erhalten hast, werden erweitert oder vertieft. Dazu könntest du dir
         einen EKG-Kurs vorstellen, bei dem die verschiedenen Bilder von
         Herzrhythmusstörungen erläutert werden und deine Teilnahme mit einer
@@ -826,8 +827,8 @@
         Umschulung zur MFA & ZFA
       </h2>
       <p>
-        Den Beruf der Medizinischen und Zahnmedizinischen Fachangestellten
-        erlernt man durch eine 3-jährige Ausbildung (siehe
+        Den Beruf der Medizinischen Fachangestellten | Zahnmedizinischen
+        Fachangestellten erlernt man durch eine 3-jährige Ausbildung (siehe
         <b-link class="bold" to="/karriere/mfa/ausbildung-berufsbild"
           >Ausbildung zur MFA</b-link
         >). Alternativ kannst du auch eine Umschulung zur MFA absolvieren, wenn
@@ -854,8 +855,8 @@
         Auch im Rahmen der Umschulung findet die offizielle Abschlussprüfung mit
         einem praktischen und schriftlichen Teil statt. Bei bestandener Prüfung
         vor der Ärztekammer hast du den Berufsabschluss zur MFA / ZFA erworben.
-        Mit dem anerkannten Abschluss zur Medizinischen bzw. Zahnmedizinischen
-        Fachangestellten hast du sehr gute Chancen auf dem
+        Mit dem anerkannten Abschluss zur Medizinischen Fachangestellten |
+        Zahnmedizinischen Fachangestellten hast du sehr gute Chancen auf dem
         <b-link class="bold" to="/stellenangebote">Arbeitsmarkt</b-link> eine
         Anstellung zu finden.
       </p>
@@ -902,7 +903,7 @@
     <Head
       title="Fort- und Weiterbildung für ArzthelferInnen – MFA & ZFA"
       :desc="
-        `Fortbildungen und Weiterbildungen für Medizinische & Zahnmedizinische Fachangestellte (MFA & ZFA) im Gesundheitswesen || Überblick | Finanzierung | Studium`
+        `Fortbildungen und Weiterbildungen für Zahnmedizinische | Medizinische Fachangestellte (ZFA & MFA) im Gesundheitswesen || Überblick | Finanzierung | Studium`
       "
       img="/img/Banner_Weiterbildungsdschungel_1200.jpg"
       :script="snippet"

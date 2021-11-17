@@ -18,7 +18,7 @@
     <Head
       title="Fort- und Weiterbildung – Übersicht für MFA & ZFA"
       :desc="
-        `Fortbildungen und Weiterbildungen für Medizinische & Zahnmedizinische Fachangestellte (MFA / ZFA) im Gesundheitswesen || Karriere | Gehalt ${new Date().getFullYear()} | Stellenangebote`
+        `Fortbildungen und Weiterbildungen für Zahnmedizinische | Medizinische Fachangestellte (MFA / ZFA) im Gesundheitswesen || Karriere | Gehalt ${new Date().getFullYear()} | Stellenangebote`
       "
       img="/img/Banner_Weiterbildungsdschungel_1200.jpg"
       :script="snippet"

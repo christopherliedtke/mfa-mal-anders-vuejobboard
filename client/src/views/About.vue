@@ -7,6 +7,7 @@
     <div class="header-img">
       <b-img-lazy
         class="header-img"
+        style="object-position: center top"
         :srcset="
           `
           ${require('@/assets/img/medizinischesPersonal-1200x513_300.jpg')} 300w,
@@ -30,15 +31,15 @@
     <div id="intro" class="container mb-5" style="max-width: 1000px">
       <h2 class="display-2 bold text-gray-dark">MFA mal&nbsp;anders</h2>
       <p class="lead">
-        Das Stellen- & Karriereportal speziell für Medizinische (MFA) und
-        Zahnmedizinische (ZFA) Fachangestellte
+        Das Stellen- & Karriereportal speziell für Medizinische Fachangestellte
+        (MFA) | Zahnmedizinische Fachangestellte (ZFA)
       </p>
       <p>
         MFA mal anders ist Deutschlands größtes Karriereportal exklusiv für
-        Medizinische & Zahnmedizinische Fachangestellte. Wir informieren über
-        Themen wie Fort- und Weiterbildung, Gehalt, Ausbildung, Berufsbilder,
-        Bewerbung und aktuelle Stellenangebote. Zusätzlich bieten wir
-        attraktiven Arbeitgebern eine Plattform für die professionelle
+        Medizinische Fachangestellte & Zahnmedizinische Fachangestellte. Wir
+        informieren über Themen wie Fort- und Weiterbildung, Gehalt, Ausbildung,
+        Berufsbilder, Bewerbung und aktuelle Stellenangebote. Zusätzlich bieten
+        wir attraktiven Arbeitgebern eine Plattform für die professionelle
         Personalsuche – ideal für verschiedenste Einrichtungen im
         Gesundheitswesen (Arztpraxen, Medizinische Versorgungszentren,
         Zahnkliniken, Kliniken etc.).
@@ -48,8 +49,7 @@
         MFA & ZFA vereint. Mit all unseren Kanälen wollen wir eine Plattform
         bieten, auf der sich Medizinische und Zahnmedizinische Angestellte
         vernetzen und austauschen können. Wir stehen für Wertschätzung, Respekt
-        und faire Arbeitsbedingungen für Medizinische und Zahnmedizinische
-        Fachangestellte.
+        und faire Arbeitsbedingungen für MFA & ZFA.
       </p>
     </div>
 
@@ -73,9 +73,9 @@
       <p>
         Wir kooperieren mit verschiedenen Organisationen aus dem
         Gesundheitswesen, die sich für die Stärkung des Berufes der
-        Medizinischen & Zahnmedizinischen Fachangestellten einsetzen. Sollten
-        auch Sie Interesse an einer Kooperation mit uns haben, melden Sie sich
-        gern jederzeit über unser
+        Medizinischen Fachangestellten | Zahnmedizinischen Fachangestellten
+        einsetzen. Sollten auch Sie Interesse an einer Kooperation mit uns
+        haben, melden Sie sich gern jederzeit über unser
         <b-link class="bold" to="/kontakt">Kontaktformular</b-link>.
       </p>
 

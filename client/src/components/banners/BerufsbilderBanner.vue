@@ -22,8 +22,8 @@
 
       <p class="card-text">
         Hier findest du eine Auswahl von ganz unterschiedlichen Jobs und Berufen
-        inklusive vieler Alternativen für Medizinische & Zahnmedizinische
-        Fachangestellte / ArzthelferInnen!
+        inklusive vieler Alternativen für Medizinische Fachangestellte |
+        Zahnmedizinische Fachangestellte | ArzthelferInnen!
       </p>
 
       <b-button to="/karriere/jobs-und-berufsbilder" variant="primary"

@@ -291,12 +291,12 @@
         </h2>
         <div class="my-4  text-center text-lg-left">
           <p>
-            Mit MFA mal anders möchten wir Medizinischen & Zahnmedizinischen
-            Fachangestellten die Möglichkeit geben, einen attraktiven Job zu
-            finden. Aber auch Ihnen als Arbeitgeber eine alternative Plattform
-            bereitstellen, die Ihre Stellenangebote an die richtige Zielgruppe
-            ausspielt und so Ihre Chancen erhöht, qualifizierte Bewerbungen zu
-            erhalten.
+            Mit MFA mal anders möchten wir Medizinischen Fachangestellten &
+            Zahnmedizinischen Fachangestellten die Möglichkeit geben, einen
+            attraktiven Job zu finden. Aber auch Ihnen als Arbeitgeber eine
+            alternative Plattform bereitstellen, die Ihre Stellenangebote an die
+            richtige Zielgruppe ausspielt und so Ihre Chancen erhöht,
+            qualifizierte Bewerbungen zu erhalten.
           </p>
           <p>
             Zur Veröffentlichung Ihrer Stellenanzeige bieten wir verschiedene
@@ -424,8 +424,8 @@
             <p>
               Ihre Stellenanzeige ist bei uns bestens platziert. Im Gegensatz zu
               anderen allgemeinen Stellenbörsen, finden Sie hier ausschließlich
-              die richtige Zielgruppe für Ihr Unternehmen: Medizinische &
-              Zahnmedizinische Fachangestellte.
+              die richtige Zielgruppe für Ihr Unternehmen: Medizinische
+              Fachangestellte & Zahnmedizinische Fachangestellte.
             </p>
             <h3>Wo wir Ihre Stellenanzeige ausspielen</h3>
             <p>
@@ -630,7 +630,7 @@
 
     <Head
       title="Stellenanzeige schalten – MFA & ZFA finden!"
-      desc="MFA mal anders ist das Jobportal speziell nur für Medizinische / Zahnmedizinische Fachangestellte. Gesucht – Gefunden! Mit günstigen Stellenanzeigen, die wirklich ankommen."
+      desc="MFA mal anders ist das Jobportal für die Suche nach Zahnmedizinischen | Medizinischen Fachangestellten. Gesucht – Gefunden! Mit günstigen Stellenanzeigen, die wirklich ankommen."
       img=""
       :script="snippet"
     />

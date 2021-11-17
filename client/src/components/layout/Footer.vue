@@ -3,17 +3,21 @@
     <div class="container px-3 px-lg-5">
       <div class="row ros-cols-1 row-cols-lg-3">
         <div class="col order-3 order-lg-1">
-          <b-img
-            fluid
-            src="/img/MfaMalAnders_Logo_white.svg"
-            height="110"
-            width="220"
-            alt="MFA mal anders - Logo"
-            class="mb-4"
-          />
+          <b-link to="/">
+            <b-img
+              fluid
+              src="/img/MfaMalAnders_Logo_white.svg"
+              height="110"
+              width="220"
+              alt="MFA mal anders - Logo"
+              class="mb-4"
+            />
+          </b-link>
           <h2 class="h6">
-            Das Stellen- und Karriereportal für Medizinische & Zahnmedizinische
-            Fachangestellte.
+            Das Stellen- und Karriereportal für <br />
+            Medizinische Fachangestellte | <br />
+            Zahnmedizinische Fachangestellte | <br />
+            ArzthelferIn
           </h2>
           <div class="small" style="font-size: 65%">
             <div class="pt-5 mt-5">

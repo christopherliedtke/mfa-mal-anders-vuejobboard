@@ -180,7 +180,7 @@
     <Head
       title="Fortbildungskatalog speziell für MFA & ZFA"
       :desc="
-        `Deutschlands größte Übersicht an Fortbildungen / Weiterbildungen für Medizinische & Zahnmedizinische Fachangestellte (MFA / ZFA) || ArzthelferIn`
+        `Deutschlands größte Übersicht an Fortbildungen / Weiterbildungen für Zahnmedizinische | Medizinische Fachangestellte (MFA / ZFA) || ArzthelferIn`
       "
       img="/img/MfaMalAnders_Fortbildungskatalog_Banner_1200.jpg"
       :script="snippet"

@@ -20,7 +20,7 @@ module.exports.sendUnpublishedJobReminder = async () => {
       .populate("company")
       .populate("userId");
 
-    jobs.forEach(async (job) => {
+    jobs.forEach(async job => {
       if (!job.sentReminder) {
         console.log("Sending unpublishedJobReminder for : ", job._id);
 
@@ -74,7 +74,7 @@ module.exports.sendUnpublishedJobReminder = async () => {
                     <p>
                         <img src="cid:mfa-mal-anders-logo" width="60" style="margin-bottom: 1rem"/> <br>
                         <strong>MFA mal anders</strong> <br>
-                        Das Stellen- & Karriereportal für Medizinische / Zahnmedizinische Fachangestellte <br>
+                        Das Stellen- & Karriereportal für Medizinische Fachangestellte | Zahnmedizinische Fachangestellte <br>
                         <br>
                         Tel: <a href="tel:017663393957">0176 633 939 57</a> <br>
                         E-Mail: <a href="mailto:kontakt@mfa-mal-anders.de">kontakt@mfa-mal-anders.de</a> <br>

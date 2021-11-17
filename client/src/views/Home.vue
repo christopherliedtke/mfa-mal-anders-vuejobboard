@@ -22,8 +22,8 @@
             Weiterbildungen, Stellenangebote und vieles mehr<span
               class="d-none d-md-inline"
             >
-              – speziell für ArzthelferInnen | Medizinische & Zahnmedizinische
-              Fachangestellte (MFA / ZFA)</span
+              – speziell für ArzthelferInnen | Medizinische Fachangestellte
+              (MFA) | Zahnmedizinische Fachangestellte (ZFA)</span
             >.
           </p>
         </div>
@@ -243,12 +243,13 @@
           </h2>
           <h3 class="h4">Informiere Dich</h3>
           <p>
-            Als Medizinische / Zahnmedizinische Fachangestellte haben wir viele
-            Möglichkeiten uns zu qualifizieren und im Job aufzusteigen oder
-            sogar in anderen Bereichen des Gesundheitswesens Fuß zu fassen. Nur
-            leider ist der Dschungel an Weiterbildungen für Medizinische
-            Fachangestellte so stark bewachsen und undurchdringlich, dass es
-            nicht leicht fällt, den Durchblick zu behalten.
+            Als Medizinische Fachangestelle | Zahnmedizinische Fachangestellte
+            haben wir viele Möglichkeiten uns zu qualifizieren und im Job
+            aufzusteigen oder sogar in anderen Bereichen des Gesundheitswesens
+            Fuß zu fassen. Nur leider ist der Dschungel an Weiterbildungen für
+            Medizinische Fachangestellte so stark bewachsen und
+            undurchdringlich, dass es nicht leicht fällt, den Durchblick zu
+            behalten.
           </p>
           <p>
             Wir haben einige
@@ -284,7 +285,7 @@
 
     <Head
       title="Das Stellen- & Karriereportal nur für MFA & ZFA"
-      desc="Dein Job- und Karriereportal für ArzthelferInnen – Medizinische / Zahnmedizinische Fachangestellte (MFA / ZFA) | Stellenangebote | Weiterbildungen | Alternative Jobs | Gehalt | Bewerbung"
+      desc="Dein Job- und Karriereportal für ArzthelferInnen – Zahnmedizinische | Medizinische Fachangestellte (ZFA / MFA) | Stellenangebote | Weiterbildungen | Alternative Jobs | Gehalt | Bewerbung"
       img=""
       :script="snippet"
     />

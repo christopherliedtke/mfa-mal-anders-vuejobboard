@@ -22,8 +22,9 @@
           Du bist noch nicht sicher, welche Fort- oder Weiterbildung die
           richtige für Dich ist? Hier eine Auswahl aus unserer
           <b-link to="/karriere/fort-und-weiterbildung/ueberblick"
-            >Übersicht an Fort- und Weiterbildungen für Medizinische und
-            Zahnmedizinische Fachangestellte (MFA & ZFA)</b-link
+            >Übersicht an Fort- und Weiterbildungen für Medizinische
+            Fachangestellte | Zahnmedizinische Fachangestellte (MFA &
+            ZFA)</b-link
           >.
         </p>
 

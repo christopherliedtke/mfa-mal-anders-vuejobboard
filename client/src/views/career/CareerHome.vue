@@ -34,8 +34,8 @@
           Dein nächster Karriereschritt
         </h2>
         <p class="lead mb-4">
-          Informiere Dich über verschiedene Möglichkeiten im Gesundheitswesen
-          als Medizinische & Zahnmedizinische Fachangestellte
+          Informiere Dich über verschiedene Möglichkeiten als Medizinische
+          Fachangestellte | Zahnmedizinische Fachangestellte im Gesundheitswesen
         </p>
         <div class="row row-cols-1 row-cols-md-3 flex-lg-row-reverse">
           <div class="col">
@@ -133,7 +133,7 @@
       <div class="clearfix">
         <h2 class="h1 mb-4 mb-md-5">
           <span class="display-3 bold">Dein Karriereportal</span> <br />
-          für Medizinische & Zahnmedizinische Fachangestellte
+          für Medizinische Fachangestellte | Zahnmedizinische Fachangestellte
         </h2>
         <b-img-lazy
           class="border-radius2 shadow1 mb-3 mr-4"
@@ -145,10 +145,10 @@
           offset="1000"
         />
         <p>
-          MFA mal anders ist ein Karriereportal speziell für Medizinische &
-          Zahnmedizinische Fachangestellte, die sich beruflich wie persönlich
-          weiterentwickeln wollen, um mehr aus ihrem beruflichen Leben
-          herauszuholen.
+          MFA mal anders ist ein Karriereportal speziell für Medizinische
+          Fachangestellte & Zahnmedizinische Fachangestellte, die sich beruflich
+          wie persönlich weiterentwickeln wollen, um mehr aus ihrem beruflichen
+          Leben herauszuholen.
         </p>
         <p>
           Hier findest du
@@ -218,10 +218,10 @@
       <ul>
         <li>Leistungsgerechte Bezahlung</li>
         <li>
-          Tätigkeiten, die du mit einer Ausbildung zur ArzthelferIn
-          (Medizinischen & Zahnmedizinischen Fachangestellten) ausüben kannst –
+          Tätigkeiten, die du mit einer Ausbildung zur Medizinischen
+          Fachangestellten | Zahnmedizinischen Fachangestellten ausüben kannst –
           auch wenn der ausgeschriebene Job nicht immer der typische
-          ArzthelferIn-Job ist
+          ArzthelferIn Job ist
         </li>
         <li>
           Unbefristete Stellen oder befristete Stellen mit Aussicht auf
@@ -315,7 +315,7 @@
         eure Stellenanzeige veröffentlichen.
       </p>
       <p>
-        Wenn du bereit bist, deiner Karriere als Medizinische oder
+        Wenn du bereit bist, deiner Karriere als Medizinische Fachangestellte |
         Zahnmedizinische Fachangestellte neuen Aufschwung zu geben, reiche ich
         dir die Hand und begleite dich auf deinem Weg.
       </p>
@@ -366,7 +366,7 @@
     </div>
     <Head
       :title="title"
-      desc="Karriereportal für Medizinische & Zahnmedizinische Fachangestellte (MFA / ZFA) / ArzthelferIn || Jobperspektiven | Fortbildungen | Weiterbildungen | Gehalt | Bewerbung"
+      desc="Karriereportal für Zahnmedizinische | Medizinische Fachangestellte (ZFA / MFA) / ArzthelferIn || Jobperspektiven | Fortbildungen | Weiterbildungen | Gehalt | Bewerbung"
       img=""
       :script="snippet"
     />

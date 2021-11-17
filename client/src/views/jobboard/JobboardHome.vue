@@ -376,8 +376,8 @@
               Sie sind als attraktiver Arbeitergeber auf der Suche nach einer
               motivierten und kompetenten
               <em
-                >Medizinischen Fachangestellten (MFA) / ArzthelferIn oder
-                Zahnmedizinischen Fachangestellten (ZFA)</em
+                >Medizinischen Fachangestellten (MFA) | Zahnmedizinischen
+                Fachangestellten (ZFA) | ArzthelferIn</em
               >{{
                 $route.query.ort || $route.query.state
                   ? ` in ${$route.query.ort || $route.query.state}`
