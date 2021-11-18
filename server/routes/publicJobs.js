@@ -97,7 +97,7 @@ function filterJobs(jobs, query) {
   if (query.profession) {
     filteredJobs = filteredJobs.filter(
       job =>
-        job.profession &&
+        !job.profession ||
         job.profession.toLowerCase() === query.profession.toLowerCase()
     );
   }
