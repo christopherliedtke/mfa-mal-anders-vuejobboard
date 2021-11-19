@@ -11,12 +11,18 @@
         :class="['card', compact ? 'mb-2 mt-2 mt-lg-0' : 'mb-3 mt-3 mt-lg-0']"
       >
         <div class="card-text">
-          <div class="card-head position-relative">
+          <div
+            :class="[
+              'card-head position-relative',
+              `${job.refreshFrequency === 7 ? 'bg-secondary' : 'bg-primary'}`
+            ]"
+          >
             <!-- eslint-disable -->
             <h2
               :class="[
                 'h4',
-                { 'mobile-max-width-75': job.company.logoUrl && !compact }
+                { 'mobile-max-width-75': job.company.logoUrl && !compact },
+                { bold: job.refreshFrequency === 7 }
               ]"
               :style="
                 compact
@@ -266,7 +272,7 @@
         display: flex;
         justify-content: space-between;
         align-items: stretch;
-        background-color: lighten($primary, $amount: 0%);
+        // background-color: lighten($primary, $amount: 0%);
         color: $light;
         border-radius: 5px 5px 0 0;
         overflow: hidden;

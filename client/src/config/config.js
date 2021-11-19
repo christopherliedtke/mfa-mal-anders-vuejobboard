@@ -125,6 +125,11 @@ module.exports = {
         },
         {
           html:
+            '<span class="text-secondary bold">Farbliche Hervorhebung</span> Ihrer Stellenanzeige in der Stellenübersicht',
+          icon: "plus-circle"
+        },
+        {
+          html:
             'Wiederholter Versand Ihrer Stellenanzeige in unserem <span class="text-secondary bold" >wöchentlichen Job-Newsletter</span> alle 7 Tage',
           icon: "plus-circle"
         },
