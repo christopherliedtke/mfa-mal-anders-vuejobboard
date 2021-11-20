@@ -1,11 +1,13 @@
 <template>
-  <div>
+  <div id="admin-companies" class="container-fluid admin-container pt-3">
+    <h1 class="h2">Admin Companies</h1>
     <b-form id="company-filter" inline @submit.prevent>
       <b-input-group class="my-2 mr-2">
         <b-form-input
           v-model="filter.searchTerm"
           type="text"
           placeholder="Enter search term ..."
+          debounce="500"
         />
         <b-input-group-append>
           <b-button class="px-2" @click.prevent="filter.searchTerm = ''">
@@ -25,17 +27,24 @@
       </b-input-group>
       <div class="inline-block ml-3 my-3 my-lg-0">
         Number of Companies:
-        <strong>{{ computedCompanies.length }}</strong>
+        <strong>{{ filter.searchTerm ? count : companies.length }}</strong>
       </div>
     </b-form>
     <b-table
       responsive
       striped
       hover
+      small
       sticky-header="80vh"
-      :items="computedCompanies"
+      :items="companies"
       :fields="fields"
       primary-key="_id"
+      :filter="filter.searchTerm"
+      @filtered="
+        filteredItems => {
+          count = filteredItems.length;
+        }
+      "
     >
       <template #cell(user)="row">
         {{ row.item.userId.lastName + ", " + row.item.userId.firstName }}
@@ -132,19 +141,27 @@
     >
       Oh, something went wrong. Please try again later.
     </b-alert>
+
+    <AdminNavbar />
   </div>
 </template>
 
 <script>
+  import AdminNavbar from "@/components/layout/AdminNavbar.vue";
   import Vue from "vue";
-  import { BModal, VBModal } from "bootstrap-vue";
+  import { BModal, VBModal, BTable } from "bootstrap-vue";
   Vue.component("BModal", BModal);
-  Vue.directive("b-modal", VBModal);
+  Vue.directive("BModal", VBModal);
+  Vue.component("BTable", BTable);
   export default {
-    name: "AllCompaniesListAdmin",
+    name: "AdminCompanies",
+    components: {
+      AdminNavbar
+    },
     data() {
       return {
         companies: [],
+        count: 0,
         jobs: [],
         companyToDelete: {},
         error: false,
@@ -193,76 +210,41 @@
         ]
       };
     },
-    computed: {
-      computedCompanies: function() {
-        let companies = [...this.companies];
-
-        // filter search term
-        if (this.filter.searchTerm) {
-          companies = companies.filter(company => {
-            const searchTerm = this.filter.searchTerm.toLowerCase().split(" ");
-            const searchProp = [
-              company._id,
-              company.name,
-              company.street,
-              company.location,
-              company.state,
-              company.zipCode,
-              company.country,
-              company.userId._id,
-              company.userId.firstName,
-              company.userId.lastName,
-              company.userId.email
-            ]
-              .join(" ")
-              .toLowerCase();
-
-            if (searchTerm.every(term => searchProp.includes(term))) {
-              return company;
-            } else {
-              return;
-            }
-          });
-        }
-
-        return companies;
-      }
-    },
     created() {
       this.getAllCompanies();
     },
     methods: {
       async getAllCompanies() {
+        this.$store.dispatch("setOverlay", true);
+
         try {
           const response = await this.$axios.get("/graphql", {
             params: {
               query: `
-                                query {
-                                    companies {
-                                        _id
-                                        createdAt
-                                        updatedAt
-                                        name
-                                        street
-                                        zipCode
-                                        location
-                                        state
-                                        country
-                                        userId {
-                                            _id
-                                            createdAt
-                                            firstName
-                                            lastName
-                                            email
-                                        }
-                                        jobs {
-                                            _id
-                                        }
-                                        
-                                    }
-                                }
-                            
-                            `
+                query {
+                  companies {
+                    _id
+                    createdAt
+                    updatedAt
+                    name
+                    street
+                    zipCode
+                    location
+                    state
+                    country
+                    userId {
+                      _id
+                      createdAt
+                      firstName
+                      lastName
+                      email
+                    }
+                    jobs {
+                      _id
+                    }  
+                  }
+                }
+              `
             }
           });
 
@@ -280,6 +262,8 @@
             }
           );
         }
+
+        this.$store.dispatch("setOverlay", false);
       },
       // showDeleteCompanyModal(company) {
       //   this.companyToDelete = company;
@@ -287,14 +271,14 @@
       // },
       async deleteCompany(companyId) {
         try {
-          const response = await this.$axios.post("graphql", {
+          const response = await this.$axios.post("/graphql", {
             query: `
-                                mutation {
-                                    adminDeleteCompany(_id: "${companyId}") {
-                                        _id
-                                    }
-                                }
-                            `
+              mutation {
+                adminDeleteCompany(_id: "${companyId}") {
+                  _id
+                }
+              }
+            `
           });
 
           if (response.data.data.adminDeleteCompany._id) {

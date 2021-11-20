@@ -221,7 +221,7 @@
 
           <router-link
             v-if="$store.state.auth.user.isAdmin"
-            to="/admin"
+            to="/admin/users"
             @mouseenter.native="showSub('admin')"
             @mouseleave.native="hideSub('admin')"
           >
@@ -254,85 +254,14 @@
               </svg>
             </div>
             <div id="admin" ref="admin" class="sub-menu">
-              <router-link
-                to="/admin?tab=0"
-                :active="$route.path == '/admin?tab=0' && !$route.query.tab"
-                :active-class="
-                  $route.query.tab == 0 ? 'router-link-active' : ''
-                "
-                :exact-active-class="
-                  $route.query.tab == 0 ? 'router-link-active' : ''
-                "
-                >Jobs</router-link
-              >
-              <router-link
-                to="/admin?tab=1"
-                :active-class="
-                  $route.query.tab == 1 ? 'router-link-active' : ''
-                "
-                :exact-active-class="
-                  $route.query.tab == 1 ? 'router-link-active' : ''
-                "
-                >Companies</router-link
-              >
-              <router-link
-                to="/admin?tab=2"
-                :active-class="
-                  $route.query.tab == 2 ? 'router-link-active' : ''
-                "
-                :exact-active-class="
-                  $route.query.tab == 2 ? 'router-link-active' : ''
-                "
-                >Users</router-link
-              >
-              <router-link
-                to="/admin?tab=3"
-                :active-class="
-                  $route.query.tab == 3 ? 'router-link-active' : ''
-                "
-                :exact-active-class="
-                  $route.query.tab == 3 ? 'router-link-active' : ''
-                "
-                >Coupons</router-link
-              >
-              <router-link
-                to="/admin?tab=4"
-                :active-class="
-                  $route.query.tab == 4 ? 'router-link-active' : ''
-                "
-                :exact-active-class="
-                  $route.query.tab == 4 ? 'router-link-active' : ''
-                "
-                >Subscribers</router-link
-              >
-              <router-link
-                to="/admin?tab=5"
-                :active-class="
-                  $route.query.tab == 5 ? 'router-link-active' : ''
-                "
-                :exact-active-class="
-                  $route.query.tab == 5 ? 'router-link-active' : ''
-                "
-                >Payments</router-link
-              >
-              <router-link
-                to="/admin?tab=6"
-                :active-class="
-                  $route.query.tab == 6 ? 'router-link-active' : ''
-                "
-                :exact-active-class="
-                  $route.query.tab == 6 ? 'router-link-active' : ''
-                "
-                >Trainings</router-link
-              >
-              <router-link
-                to="/admin?tab=7"
-                :active-class="
-                  $route.query.tab == 7 ? 'router-link-active' : ''
-                "
-                :exact-active-class="
-                  $route.query.tab == 7 ? 'router-link-active' : ''
-                "
+              <router-link to="/admin/users">Users</router-link>
+              <router-link to="/admin/jobs">Jobs</router-link>
+              <router-link to="/admin/companies">Companies</router-link>
+              <router-link to="/admin/trainings">Trainings</router-link>
+              <router-link to="/admin/subscribers">Subscribers</router-link>
+              <router-link to="/admin/coupons">Coupons</router-link>
+              <router-link to="/admin/payments">Payments</router-link>
+              <router-link to="/admin/data-analytics"
                 >Data Analytics</router-link
               >
             </div>

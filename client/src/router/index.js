@@ -213,8 +213,8 @@ const UserDashboardCheckoutJob = () =>
   );
 
 // #Admin
-const AdminHome = () =>
-  import(/* webpackChunkName: "ad" */ "@/views/admin/AdminHome.vue");
+const AdminJobs = () =>
+  import(/* webpackChunkName: "ad" */ "@/views/admin/jobs/AdminJobs.vue");
 const AdminJobPreview = () =>
   import(
     /* webpackChunkName: "job-preview" */ "@/views/admin/jobs/preview/_jobId.vue"
@@ -223,21 +223,45 @@ const AdminEditJob = () =>
   import(
     /* webpackChunkName: "job_edit" */ "@/views/admin/jobs/edit/_jobId.vue"
   );
+const AdminCompanies = () =>
+  import(
+    /* webpackChunkName: "ad" */ "@/views/admin/companies/AdminCompanies.vue"
+  );
 const AdminEditCompany = () =>
   import(
     /* webpackChunkName: "company_edit" */ "@/views/admin/companies/edit/_companyId.vue"
   );
+const AdminUsers = () =>
+  import(/* webpackChunkName: "ad" */ "@/views/admin/users/AdminUsers.vue");
 const AdminEditUser = () =>
   import(
     /* webpackChunkName: "ad_user" */ "@/views/admin/users/edit/_userId.vue"
   );
+const AdminCoupons = () =>
+  import(/* webpackChunkName: "ad" */ "@/views/admin/coupons/AdminCoupons.vue");
 const AdminEditCoupon = () =>
   import(
     /* webpackChunkName: "ad_coupon" */ "@/views/admin/coupons/edit/_couponId.vue"
   );
+const AdminSubscribers = () =>
+  import(
+    /* webpackChunkName: "ad" */ "@/views/admin/subscribers/AdminSubscribers.vue"
+  );
+const AdminPayments = () =>
+  import(
+    /* webpackChunkName: "ad" */ "@/views/admin/payments/AdminPayments.vue"
+  );
 const AdminEditPayment = () =>
   import(
     /* webpackChunkName: "ad_payment" */ "@/views/admin/payments/edit/_paymentId.vue"
+  );
+const AdminTrainings = () =>
+  import(
+    /* webpackChunkName: "ad" */ "@/views/admin/trainings/AdminTrainings.vue"
+  );
+const AdminDataAnalytics = () =>
+  import(
+    /* webpackChunkName: "ad" */ "@/views/admin/data-analytics/AdminDataAnalytics.vue"
   );
 
 // #404
@@ -636,9 +660,9 @@ const routes = [
     }
   },
   {
-    path: "/admin",
-    name: "AdminHome",
-    component: AdminHome,
+    path: "/admin/jobs",
+    name: "AdminJobs",
+    component: AdminJobs,
     meta: {
       public: false,
       onlyAdmin: true
@@ -663,9 +687,27 @@ const routes = [
     }
   },
   {
+    path: "/admin/companies",
+    name: "AdminCompanies",
+    component: AdminCompanies,
+    meta: {
+      public: false,
+      onlyAdmin: true
+    }
+  },
+  {
     path: "/admin/companies/edit/:companyId",
     name: "AdminEditCompany",
     component: AdminEditCompany,
+    meta: {
+      public: false,
+      onlyAdmin: true
+    }
+  },
+  {
+    path: "/admin/users",
+    name: "AdminUsers",
+    component: AdminUsers,
     meta: {
       public: false,
       onlyAdmin: true
@@ -681,6 +723,15 @@ const routes = [
     }
   },
   {
+    path: "/admin/coupons",
+    name: "AdminCoupons",
+    component: AdminCoupons,
+    meta: {
+      public: false,
+      onlyAdmin: true
+    }
+  },
+  {
     path: "/admin/coupons/edit/:couponId",
     name: "AdminEditCoupon",
     component: AdminEditCoupon,
@@ -690,9 +741,45 @@ const routes = [
     }
   },
   {
+    path: "/admin/subscribers",
+    name: "AdminSubscribers",
+    component: AdminSubscribers,
+    meta: {
+      public: false,
+      onlyAdmin: true
+    }
+  },
+  {
+    path: "/admin/payments",
+    name: "AdminPayments",
+    component: AdminPayments,
+    meta: {
+      public: false,
+      onlyAdmin: true
+    }
+  },
+  {
     path: "/admin/payments/edit/:paymentId",
     name: "AdminEditPayment",
     component: AdminEditPayment,
+    meta: {
+      public: false,
+      onlyAdmin: true
+    }
+  },
+  {
+    path: "/admin/trainings",
+    name: "AdminTrainings",
+    component: AdminTrainings,
+    meta: {
+      public: false,
+      onlyAdmin: true
+    }
+  },
+  {
+    path: "/admin/data-analytics",
+    name: "AdminDataAnalytics",
+    component: AdminDataAnalytics,
     meta: {
       public: false,
       onlyAdmin: true

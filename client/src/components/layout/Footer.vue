@@ -179,6 +179,7 @@
     background-color: $primary;
     padding: 1rem 0;
     color: $light;
+    // z-index: 100;
     // margin-top: 2rem;
 
     hr {

@@ -326,6 +326,12 @@ nav {
   transform: rotate(90deg);
 }
 
+.admin-container {
+  @media screen and (min-width: $break-menu) {
+    padding-left: 4rem;
+  }
+}
+
 // #TipTapEditor
 .editor__content {
   &.is-invalid {

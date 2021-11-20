@@ -1,11 +1,13 @@
 <template>
-  <div>
+  <div id="admin-jobs" class="container-fluid admin-container pt-3">
+    <h1 class="h2">Admin Jobs</h1>
     <b-form id="job-filter" inline @submit.prevent>
       <b-input-group class="my-2 mr-2">
         <b-form-input
           v-model="filter.searchTerm"
           type="text"
           placeholder="Enter search term ..."
+          debounce="500"
         />
         <b-input-group-append>
           <b-button class="px-2" @click.prevent="filter.searchTerm = ''">
@@ -25,18 +27,25 @@
       </b-input-group>
       <div class="inline-block ml-3 my-3 my-lg-0">
         Number of Jobs:
-        <strong>{{ computedJobs.length }}</strong>
+        <strong>{{ filter.searchTerm ? count : jobs.length }}</strong>
       </div>
     </b-form>
-    <b-table
+    <BTable
       responsive
       striped
       hover
+      small
       sticky-header="80vh"
       :tbody-tr-class="rowClass"
-      :items="computedJobs"
+      :items="jobs"
       :fields="fields"
       primary-key="_id"
+      :filter="filter.searchTerm"
+      @filtered="
+        filteredItems => {
+          count = filteredItems.length;
+        }
+      "
     >
       <template #cell(user)="row">
         {{
@@ -294,7 +303,7 @@
           >Delete
         </b-button>
       </template>
-    </b-table>
+    </BTable>
     <BModal
       id="deleteJobModal"
       :title="`Delete ${jobToDelete.title}`"
@@ -316,22 +325,36 @@
     >
       Oh, something went wrong. Please try again later.
     </b-alert>
+
+    <AdminNavbar />
   </div>
 </template>
 
 <script>
   import socialShareJobToClipboard from "@/utils/socialShareJobToClipboard.js";
+  import AdminNavbar from "@/components/layout/AdminNavbar.vue";
   import Vue from "vue";
-  import { BModal, BDropdown, BDropdownItem, VBModal } from "bootstrap-vue";
+  import {
+    BModal,
+    BDropdown,
+    BDropdownItem,
+    VBModal,
+    BTable
+  } from "bootstrap-vue";
   Vue.component("BModal", BModal);
   Vue.component("BDropdown", BDropdown);
   Vue.component("BDropdownItem", BDropdownItem);
-  Vue.directive("b-modal", VBModal);
+  Vue.directive("BModal", VBModal);
+  Vue.component("BTable", BTable);
   export default {
-    name: "AllJobsListAdmin",
+    name: "AdminJobs",
+    components: {
+      AdminNavbar
+    },
     data() {
       return {
         jobs: [],
+        count: 0,
         jobToDelete: Object,
         error: false,
         filter: {
@@ -436,46 +459,6 @@
         ]
       };
     },
-    computed: {
-      computedJobs: {
-        get() {
-          let jobs = [...this.jobs];
-
-          // filter search term
-          if (this.filter.searchTerm) {
-            jobs = jobs.filter(job => {
-              const searchTerm = this.filter.searchTerm
-                .toLowerCase()
-                .split(" ");
-              const searchProp = [
-                job._id,
-                job.title,
-                job.company.name ? job.company.name : "",
-                job.company.street ? job.company.street : "",
-                job.company.location ? job.company.location : "",
-                job.company.state ? job.company.state : "",
-                job.company.zipCode ? job.company.zipCode : "",
-                job.company.country ? job.company.country : "",
-                job.userId._id ? job.userId._id : "",
-                job.userId.firstName ? job.userId.firstName : "",
-                job.userId.lastName ? job.userId.lastName : "",
-                job.userId.email ? job.userId.email : ""
-              ]
-                .join(" ")
-                .toLowerCase();
-
-              if (searchTerm.every(term => searchProp.includes(term))) {
-                return job;
-              } else {
-                return;
-              }
-            });
-          }
-
-          return jobs;
-        }
-      }
-    },
     created() {
       this.getAllJobs();
     },
@@ -488,42 +471,42 @@
             params: {
               query: `
                 query {
-                    adminJobs {
-                        _id
-                        createdAt
-                        updatedAt
-                        refreshFrequency
-                        status
-                        applicationDeadline
-                        paid
-                        paidExpiresAt
-                        publishedAt
-                        sentReminder
-                        title
-                        company {
-                            name
-                            street
-                            location
-                            state
-                            zipCode
-                            country
-                        }
-                        userId {
-                            _id
-                            createdAt
-                            firstName
-                            lastName
-                            email
-                        }
-                        payment {
-                            _id
-                            status
-                            amount
-                            paidAt
-                            paymentExpiresAt
-                            invoiceNo
-                        }
+                  adminJobs {
+                    _id
+                    createdAt
+                    updatedAt
+                    refreshFrequency
+                    status
+                    applicationDeadline
+                    paid
+                    paidExpiresAt
+                    publishedAt
+                    sentReminder
+                    title
+                    company {
+                      name
+                      street
+                      location
+                      state
+                      zipCode
+                      country
                     }
+                    userId {
+                      _id
+                      createdAt
+                      firstName
+                      lastName
+                      email
+                    }
+                    payment {
+                      _id
+                      status
+                      amount
+                      paidAt
+                      paymentExpiresAt
+                      invoiceNo
+                    }
+                  }
                 }
               `
             }
@@ -558,41 +541,41 @@
                   adminUpdateJob (_id: "${id}", ${key}: ${
               typeof value === "string" ? `"${value}"` : value
             }) {
+                _id
+                createdAt
+                updatedAt
+                refreshFrequency
+                status
+                applicationDeadline
+                paid
+                paidExpiresAt
+                publishedAt
+                title
+                company {
+                  name
+                  street
+                  location
+                  state
+                  zipCode
+                  country
+                }
+                userId {
                   _id
                   createdAt
-                  updatedAt
-                  refreshFrequency
+                  firstName
+                  lastName
+                  email
+                }
+                payment {
+                  _id
                   status
-                  applicationDeadline
-                  paid
-                  paidExpiresAt
-                  publishedAt
-                  title
-                  company {
-                      name
-                      street
-                      location
-                      state
-                      zipCode
-                      country
-                  }
-                  userId {
-                      _id
-                      createdAt
-                      firstName
-                      lastName
-                      email
-                  }
-                  payment {
-                          _id
-                          status
-                          amount
-                          paidAt
-                          paymentExpiresAt
-                          invoiceNo
-                      }
-                  }
+                  amount
+                  paidAt
+                  paymentExpiresAt
+                  invoiceNo
+                }
               }
+            }
           `
           });
 
@@ -663,13 +646,13 @@
         try {
           const response = await this.$axios.post("/graphql", {
             query: `
-                            mutation {
-                                adminDeleteJob(_id: "${jobId}") {
-                                    _id
-                                    status
-                                }
-                            }
-                        `
+              mutation {
+                adminDeleteJob(_id: "${jobId}") {
+                  _id
+                  status
+                }
+              }
+            `
           });
 
           if (response.data.errors) {

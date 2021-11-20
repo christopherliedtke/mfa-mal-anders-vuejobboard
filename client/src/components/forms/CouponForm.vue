@@ -84,7 +84,7 @@
       </b-input-group>
 
       <div class="d-flex justify-content-between my-4">
-        <b-button variant="outline-danger" :to="`/admin?tab=3`">
+        <b-button variant="outline-danger" :to="`/admin/coupons`">
           Cancel
         </b-button>
         <b-button variant="success" @click.prevent="onSubmit">
