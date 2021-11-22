@@ -83,7 +83,7 @@ export const saveJobMixin = {
         if (redirect) {
           this.hasHistory()
             ? this.$router.go(-1)
-            : this.$router.push("/user/dashboard?tab=1");
+            : this.$router.push("/user/stellenanzeigen");
         }
 
         return { success: true };

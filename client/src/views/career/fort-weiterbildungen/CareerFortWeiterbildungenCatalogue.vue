@@ -144,7 +144,7 @@
           </div>
           <div class="small text-right my-3 pt-1">
             <b-link
-              to="/auth/register?role=education&redirect=/user/dashboard?tab=4"
+              to="/auth/register?role=education&redirect=/user/fortbildungen"
               >Jetzt kostenfrei Fortbildung veröffentlichen</b-link
             >
           </div>

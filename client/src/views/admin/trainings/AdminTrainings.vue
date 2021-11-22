@@ -82,7 +82,7 @@
         <div class="d-flex">
           <b-button
             class="mr-2"
-            :to="`/user/dashboard/trainings/edit/${row.item._id}`"
+            :to="`/user/trainings/edit/${row.item._id}`"
             variant="primary"
             size="sm"
             ><svg

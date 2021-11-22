@@ -182,16 +182,16 @@ const TrainingResolvers = {
             <strong>Unternehmen:</strong> ${updatedTraining.company} <br>
             <strong>Link:</strong> <a href="${
               process.env.WEBSITE_URL +
-              "/user/dashboard/trainings/edit/" +
+              "/user/trainings/edit/" +
               updatedTraining._id
             }">${
           process.env.WEBSITE_URL +
-          "/user/dashboard/trainings/edit/" +
+          "/user/trainings/edit/" +
           updatedTraining._id
         }</a> <br>
             <strong>Admin-Übersicht:</strong> <a href="${
-              process.env.WEBSITE_URL + "/admin?tab=6"
-            }">${process.env.WEBSITE_URL + "/admin?tab=6"}</a> <br>
+              process.env.WEBSITE_URL + "/admin/trainings"
+            }">${process.env.WEBSITE_URL + "/admin/trainings"}</a> <br>
           </p>
         `,
       };

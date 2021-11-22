@@ -159,7 +159,7 @@
   <div v-else>
     <h2 class="mb-4 h4">{{ title }}</h2>
     <p v-if="intro">{{ intro }}</p>
-    <b-button v-if="$store.state.auth.loggedIn" to="/user/dashboard?tab=6"
+    <b-button v-if="$store.state.auth.loggedIn" to="/user/job-newsletter"
       >Jetzt Abonnieren</b-button
     >
   </div>

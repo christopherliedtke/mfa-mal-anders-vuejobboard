@@ -656,7 +656,7 @@
             }
           );
 
-          this.$router.push("/user/dashboard?tab=4");
+          this.$router.push("/user/fortbildungen");
         } catch (err) {
           this.$root.$bvToast.toast(
             "Beim Speichern Ihrer Fortbildung ist ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal, indem Sie die Seite neu laden.",

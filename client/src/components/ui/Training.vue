@@ -9,7 +9,7 @@
           v-if="$store.state.auth.user.isAdmin"
           class="border-radius1 bg-light-shade ml-2 p-2"
         >
-          <b-link :to="`/user/dashboard/trainings/edit/${training._id}`">
+          <b-link :to="`/user/trainings/edit/${training._id}`">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"

@@ -2,7 +2,7 @@
   <div>
     <b-button
       v-if="$store.state.auth.loggedIn && $store.state.auth.user.isEmployee"
-      to="/user/dashboard?tab=6"
+      to="/user/job-newsletter"
       >{{
         state ? "Abonniere Jobs für " + state : "Abonniere den Job Newsletter"
       }}</b-button

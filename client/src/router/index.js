@@ -187,29 +187,49 @@ const AuthAccountVerification = () =>
   );
 
 // #User
-const UserDashboardHome = () =>
+const UserAccount = () =>
+  import(/* webpackChunkName: "user" */ "@/views/user/account/UserAccount.vue");
+const UserJobs = () =>
+  import(/* webpackChunkName: "user" */ "@/views/user/jobs/UserJobs.vue");
+const UserJobPreview = () =>
   import(
-    /* webpackChunkName: "user" */ "@/views/user/dashboard/UserDashboardHome.vue"
+    /* webpackChunkName: "job-preview" */ "@/views/user/jobs/preview/_jobId.vue"
   );
-const UserDashboardJobPreview = () =>
+const UserEditJob = () =>
   import(
-    /* webpackChunkName: "job-preview" */ "@/views/user/dashboard/jobs/preview/_jobId.vue"
+    /* webpackChunkName: "job_edit" */ "@/views/user/jobs/edit/_jobId.vue"
   );
-const UserDashboardEditJob = () =>
+const UserCompanies = () =>
   import(
-    /* webpackChunkName: "job_edit" */ "@/views/user/dashboard/jobs/edit/_jobId.vue"
+    /* webpackChunkName: "user" */ "@/views/user/companies/UserCompanies.vue"
   );
-const UserDashboardEditCompany = () =>
+const UserEditCompany = () =>
   import(
-    /* webpackChunkName: "company_edit" */ "@/views/user/dashboard/companies/edit/_companyId.vue"
+    /* webpackChunkName: "company_edit" */ "@/views/user/companies/edit/_companyId.vue"
   );
-const UserDashboardEditTraining = () =>
+const UserPayments = () =>
   import(
-    /* webpackChunkName: "training_edit" */ "@/views/user/dashboard/trainings/edit/_trainingId.vue"
+    /* webpackChunkName: "user" */ "@/views/user/payments/UserPayments.vue"
   );
-const UserDashboardCheckoutJob = () =>
+const UserTrainings = () =>
   import(
-    /* webpackChunkName: "user_company" */ "@/views/user/dashboard/checkout/_jobId.vue"
+    /* webpackChunkName: "user" */ "@/views/user/trainings/UserTrainings.vue"
+  );
+const UserEditTraining = () =>
+  import(
+    /* webpackChunkName: "training_edit" */ "@/views/user/trainings/edit/_trainingId.vue"
+  );
+const UserStarredJobs = () =>
+  import(
+    /* webpackChunkName: "user" */ "@/views/user/starredJobs/UserStarredJobs.vue"
+  );
+const UserJobAlerts = () =>
+  import(
+    /* webpackChunkName: "user" */ "@/views/user/jobAlerts/UserJobAlerts.vue"
+  );
+const UserCheckoutJob = () =>
+  import(
+    /* webpackChunkName: "user_company" */ "@/views/user/checkout/_jobId.vue"
   );
 
 // #Admin
@@ -614,49 +634,97 @@ const routes = [
     }
   },
   {
-    path: "/user/dashboard",
-    name: "UserDashboardHome",
-    component: UserDashboardHome,
+    path: "/user/account",
+    name: "UserAccount",
+    component: UserAccount,
     meta: {
       public: false
     }
   },
   {
-    path: "/user/dashboard/jobs/edit/:jobId",
-    name: "UserDashboardEditJob",
-    component: UserDashboardEditJob,
+    path: "/user/stellenanzeigen",
+    name: "UserJobs",
+    component: UserJobs,
     meta: {
       public: false
     }
   },
   {
-    path: "/user/dashboard/jobs/preview/:jobId",
-    name: "UserDashboardJobPreview",
-    component: UserDashboardJobPreview,
+    path: "/user/jobs/edit/:jobId",
+    name: "UserEditJob",
+    component: UserEditJob,
     meta: {
       public: false
     }
   },
   {
-    path: "/user/dashboard/companies/edit/:companyId",
-    name: "UserDashboardEditCompany",
-    component: UserDashboardEditCompany,
+    path: "/user/jobs/preview/:jobId",
+    name: "UserJobPreview",
+    component: UserJobPreview,
     meta: {
       public: false
     }
   },
   {
-    path: "/user/dashboard/trainings/edit/:trainingId",
-    name: "UserDashboardEditTraining",
-    component: UserDashboardEditTraining,
+    path: "/user/unternehmen",
+    name: "UserCompanies",
+    component: UserCompanies,
     meta: {
       public: false
     }
   },
   {
-    path: "/user/dashboard/checkout/:jobId",
-    name: "UserDashboardCheckoutJob",
-    component: UserDashboardCheckoutJob,
+    path: "/user/zahlungen",
+    name: "UserPayments",
+    component: UserPayments,
+    meta: {
+      public: false
+    }
+  },
+  {
+    path: "/user/companies/edit/:companyId",
+    name: "UserEditCompany",
+    component: UserEditCompany,
+    meta: {
+      public: false
+    }
+  },
+  {
+    path: "/user/fortbildungen",
+    name: "UserTrainings",
+    component: UserTrainings,
+    meta: {
+      public: false
+    }
+  },
+  {
+    path: "/user/trainings/edit/:trainingId",
+    name: "UserEditTraining",
+    component: UserEditTraining,
+    meta: {
+      public: false
+    }
+  },
+  {
+    path: "/user/gespeicherte-stellenanzeigen",
+    name: "UserStarredJobs",
+    component: UserStarredJobs,
+    meta: {
+      public: false
+    }
+  },
+  {
+    path: "/user/job-newsletter",
+    name: "UserJobAlerts",
+    component: UserJobAlerts,
+    meta: {
+      public: false
+    }
+  },
+  {
+    path: "/user/checkout/:jobId",
+    name: "UserCheckoutJob",
+    component: UserCheckoutJob,
     meta: {
       public: false
     }
@@ -840,12 +908,12 @@ router.beforeEach((to, from, next) => {
   }
 
   if (!isPublic && onlyWhenPending && loggedIn && userActive) {
-    return next("/user/dashboard?tab=1");
+    return next("/user/stellenanzeigen");
   }
 
   if (loggedIn && onlyWhenLoggedOut) {
     return next(
-      to.query.redirect ? to.query.redirect : "/user/dashboard?tab=1"
+      to.query.redirect ? to.query.redirect : "/user/stellenanzeigen"
     );
   }
 

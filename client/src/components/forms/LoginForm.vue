@@ -110,11 +110,12 @@
           } else if (this.$store.state.auth.loggedIn) {
             if (this.$store.state.auth.user.isEmployee) {
               this.$router.push(
-                this.$route.query.redirect || "/user/dashboard?tab=5"
+                this.$route.query.redirect ||
+                  "/user/gespeicherte-stellenanzeigen"
               );
             } else {
               this.$router.push(
-                this.$route.query.redirect || "/user/dashboard?tab=1"
+                this.$route.query.redirect || "/user/stellenanzeigen"
               );
             }
           }

@@ -74,7 +74,7 @@ export const saveCompanyMixin = {
           if (redirect) {
             this.hasHistory && this.apiJobsSchema === "admin"
               ? this.$router.go(-1)
-              : this.$router.push("/user/dashboard?tab=2");
+              : this.$router.push("/user/unternehmen");
           }
 
           return {

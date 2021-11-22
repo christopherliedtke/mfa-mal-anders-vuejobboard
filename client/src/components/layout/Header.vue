@@ -86,7 +86,7 @@
         <nav id="secondary-nav" class="mt-3 mt-lg-0">
           <router-link
             v-if="$store.state.auth.loggedIn"
-            to="/user/dashboard"
+            to="/user/account"
             @mouseenter.native="showSub('account')"
             @mouseleave.native="hideSub('account')"
           >
@@ -131,59 +131,25 @@
               </svg>
             </div>
             <div id="account" ref="account" class="sub-menu">
-              <router-link
-                to="/user/dashboard?tab=0"
-                :active="$route.path == '/user/dashboard' && !$route.query.tab"
-                :active-class="
-                  $route.query.tab == 0 ? 'router-link-active' : ''
-                "
-                :exact-active-class="
-                  $route.query.tab == 0 ? 'router-link-active' : ''
-                "
-                >Account</router-link
-              >
+              <router-link to="/user/account">Account</router-link>
               <router-link
                 v-if="$store.state.auth.user.isEmployer"
-                to="/user/dashboard?tab=1"
-                :active-class="
-                  $route.query.tab == 1 ? 'router-link-active' : ''
-                "
-                :exact-active-class="
-                  $route.query.tab == 1 ? 'router-link-active' : ''
-                "
+                to="/user/stellenanzeigen"
                 >Stellenanzeigen</router-link
               >
               <router-link
                 v-if="$store.state.auth.user.isEmployer"
-                to="/user/dashboard?tab=2"
-                :active-class="
-                  $route.query.tab == 2 ? 'router-link-active' : ''
-                "
-                :exact-active-class="
-                  $route.query.tab == 2 ? 'router-link-active' : ''
-                "
+                to="/user/unternehmen"
                 >Unternehmen</router-link
               >
               <router-link
                 v-if="$store.state.auth.user.isEmployer"
-                to="/user/dashboard?tab=3"
-                :active-class="
-                  $route.query.tab == 3 ? 'router-link-active' : ''
-                "
-                :exact-active-class="
-                  $route.query.tab == 3 ? 'router-link-active' : ''
-                "
+                to="/user/zahlungen"
                 >Zahlungen</router-link
               >
               <router-link
                 v-if="$store.state.auth.user.isEducational"
-                to="/user/dashboard?tab=4"
-                :active-class="
-                  $route.query.tab == 4 ? 'router-link-active' : ''
-                "
-                :exact-active-class="
-                  $route.query.tab == 4 ? 'router-link-active' : ''
-                "
+                to="/user/fortbildungen"
                 >Fortbildungen</router-link
               >
               <router-link
@@ -193,13 +159,7 @@
                       ($store.state.starredJobs.starredJobs &&
                         $store.state.starredJobs.starredJobs.length > 0))
                 "
-                to="/user/dashboard?tab=5"
-                :active-class="
-                  $route.query.tab == 5 ? 'router-link-active' : ''
-                "
-                :exact-active-class="
-                  $route.query.tab == 5 ? 'router-link-active' : ''
-                "
+                to="/user/gespeicherte-stellenanzeigen"
                 >Gespeicherte Jobs</router-link
               >
               <router-link
@@ -207,13 +167,7 @@
                   $store.state.auth.user.isEmployee ||
                     $store.state.auth.user.isAdmin
                 "
-                to="/user/dashboard?tab=6"
-                :active-class="
-                  $route.query.tab == 6 ? 'router-link-active' : ''
-                "
-                :exact-active-class="
-                  $route.query.tab == 6 ? 'router-link-active' : ''
-                "
+                to="/user/job-newsletter"
                 >Job-Newsletter</router-link
               >
             </div>

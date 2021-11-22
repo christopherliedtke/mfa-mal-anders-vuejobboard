@@ -122,7 +122,7 @@
         localStorage.setItem("pricingPackage", pkg);
 
         if (!this.checkout) {
-          this.$router.push("/user/dashboard?tab=1");
+          this.$router.push("/user/stellenanzeigen");
         } else {
           this.$emit("update-pricing-package", pkg);
         }

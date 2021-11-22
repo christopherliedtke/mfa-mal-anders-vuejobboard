@@ -131,7 +131,7 @@
             <router-link class="mt-4" to="/fuer-arbeitgeber"
               >Für Arbeitgeber</router-link
             >
-            <router-link to="/user/dashboard?tab=1"
+            <router-link to="/user/stellenanzeigen"
               >Stellenanzeige schalten</router-link
             >
 

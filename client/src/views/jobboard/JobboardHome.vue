@@ -318,7 +318,7 @@
                   $store.state.starredJobs.starredJobs &&
                   $store.state.starredJobs.starredJobs.length > 0
               "
-              to="/user/dashboard?tab=4"
+              to="/user/gespeicherte-stellenanzeigen"
               variant="outline-secondary"
               size="sm"
               >Meine gespeicherten Jobs</b-button

@@ -103,7 +103,7 @@
               noAutoHide: true
             }
           );
-          this.$router.push("/user/dashboard?tab=1");
+          this.$router.push("/user/stellenanzeigen");
         } else {
           this.timeoutId = setTimeout(async () => {
             this.checkUserStatus();
