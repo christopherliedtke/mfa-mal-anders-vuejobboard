@@ -57,99 +57,101 @@
         {{ new Date(row.value).toLocaleString() }}
       </template>
       <template #cell(actions)="row">
-        <b-button
-          class="mr-2 mb-2"
-          :to="`/admin/users/edit/${row.item._id}`"
-          variant="primary"
-          size="sm"
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            class="bi bi-pencil-square mr-2"
-            viewBox="0 0 16 16"
+        <div class="d-flex">
+          <b-button
+            class="mr-2"
+            :to="`/admin/users/edit/${row.item._id}`"
+            variant="primary"
+            size="sm"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-pencil-square mr-2"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
+              />
+              <path
+                fill-rule="evenodd"
+                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
+              /></svg
+            >Edit
+          </b-button>
+          <BDropdown class="mr-2" size="sm" left variant="secondary">
+            <template #button-content>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-three-dots-vertical mr-2"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"
+                />
+              </svg>
+              Status
+            </template>
+            <BDropdownItem
+              class="mb-0"
+              variant="success"
+              @click.prevent="updateUserStatus(row.item._id, 'active')"
+              >active</BDropdownItem
+            >
+            <BDropdownItem
+              class="mb-0"
+              variant="warning"
+              @click.prevent="updateUserStatus(row.item._id, 'pending')"
+              >pending</BDropdownItem
+            >
+          </BDropdown>
+          <BDropdown class="mr-2" size="sm" left variant="info">
+            <template #button-content>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-envelope-fill mr-2"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"
+                />
+              </svg>
+              Email
+            </template>
+            <BDropdownItem
+              class="mb-0"
+              variant="success"
+              @click.prevent="sendActivationConfirmation(row.item._id)"
+              >confirm activation</BDropdownItem
+            >
+          </BDropdown>
+          <b-button
+            v-b-modal="'deleteUserModal'"
+            size="sm"
+            variant="danger"
+            @click="userToDelete = row.item"
           >
-            <path
-              d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
-            />
-            <path
-              fill-rule="evenodd"
-              d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
-            /></svg
-          >Edit
-        </b-button>
-        <BDropdown class="mr-2 mb-2" size="sm" left variant="secondary">
-          <template #button-content>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
               height="16"
               fill="currentColor"
-              class="bi bi-three-dots-vertical mr-2"
+              class="bi bi-trash-fill mr-2"
               viewBox="0 0 16 16"
             >
               <path
-                d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"
-              />
-            </svg>
-            Status
-          </template>
-          <BDropdownItem
-            class="mb-0"
-            variant="success"
-            @click.prevent="updateUserStatus(row.item._id, 'active')"
-            >active</BDropdownItem
-          >
-          <BDropdownItem
-            class="mb-0"
-            variant="warning"
-            @click.prevent="updateUserStatus(row.item._id, 'pending')"
-            >pending</BDropdownItem
-          >
-        </BDropdown>
-        <BDropdown class="mr-2 mb-2" size="sm" left variant="info">
-          <template #button-content>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              class="bi bi-envelope-fill mr-2"
-              viewBox="0 0 16 16"
-            >
-              <path
-                d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"
-              />
-            </svg>
-            Email
-          </template>
-          <BDropdownItem
-            class="mb-0"
-            variant="success"
-            @click.prevent="sendActivationConfirmation(row.item._id)"
-            >confirm activation</BDropdownItem
-          >
-        </BDropdown>
-        <b-button
-          v-b-modal="'deleteUserModal'"
-          size="sm"
-          variant="danger"
-          @click="userToDelete = row.item"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            class="bi bi-trash-fill mr-2"
-            viewBox="0 0 16 16"
-          >
-            <path
-              d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"
-            /></svg
-          >Delete
-        </b-button>
+                d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"
+              /></svg
+            >Delete
+          </b-button>
+        </div>
       </template>
     </b-table>
     <BModal
@@ -174,12 +176,12 @@
       Oh, something went wrong. Please try again later.
     </b-alert>
 
-    <AdminNavbar />
+    <AdminNav />
   </div>
 </template>
 
 <script>
-  import AdminNavbar from "@/components/layout/AdminNavbar.vue";
+  import AdminNav from "@/components/navs/AdminNav.vue";
   import Vue from "vue";
   import {
     BModal,
@@ -196,7 +198,7 @@
   export default {
     name: "AdminUsers",
     components: {
-      AdminNavbar
+      AdminNav
     },
     data() {
       return {

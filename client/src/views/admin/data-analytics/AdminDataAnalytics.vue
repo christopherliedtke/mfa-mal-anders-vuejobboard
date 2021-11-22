@@ -11,20 +11,20 @@
     />
     <NoOfJobsChart :jobs="jobs" class="mb-4" />
 
-    <AdminNavbar />
+    <AdminNav />
   </div>
 </template>
 
 <script>
   import PaymentOverviewChart from "@/components/charts/PaymentOverviewChart.vue";
   import NoOfJobsChart from "@/components/charts/NoOfJobsChart.vue";
-  import AdminNavbar from "@/components/layout/AdminNavbar.vue";
+  import AdminNav from "@/components/navs/AdminNav.vue";
   export default {
     name: "DataAnalyticsDashboard",
     components: {
       PaymentOverviewChart,
       NoOfJobsChart,
-      AdminNavbar
+      AdminNav
     },
     data() {
       return {

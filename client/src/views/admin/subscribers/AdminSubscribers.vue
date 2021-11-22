@@ -94,25 +94,27 @@
         {{ new Date(row.value).toLocaleString() }}
       </template>
       <template #cell(actions)="row">
-        <b-button
-          v-b-modal="'deleteSubscriberModal'"
-          size="sm"
-          variant="danger"
-          @click="subscriberToDelete = row.item"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            fill="currentColor"
-            class="bi bi-trash-fill mr-2"
-            viewBox="0 0 16 16"
+        <div class="d-flex">
+          <b-button
+            v-b-modal="'deleteSubscriberModal'"
+            size="sm"
+            variant="danger"
+            @click="subscriberToDelete = row.item"
           >
-            <path
-              d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"
-            /></svg
-          >Delete
-        </b-button>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-trash-fill mr-2"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"
+              /></svg
+            >Delete
+          </b-button>
+        </div>
       </template>
     </b-table>
     <BModal
@@ -137,12 +139,12 @@
       Oh, something went wrong. Please try again later.
     </b-alert>
 
-    <AdminNavbar />
+    <AdminNav />
   </div>
 </template>
 
 <script>
-  import AdminNavbar from "@/components/layout/AdminNavbar.vue";
+  import AdminNav from "@/components/navs/AdminNav.vue";
   import Vue from "vue";
   import { BModal, VBModal, BTable } from "bootstrap-vue";
   Vue.component("BModal", BModal);
@@ -151,7 +153,7 @@
   export default {
     name: "AdminSubscribers",
     components: {
-      AdminNavbar
+      AdminNav
     },
     data() {
       return {
