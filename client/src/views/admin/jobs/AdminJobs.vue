@@ -48,17 +48,19 @@
       "
     >
       <template #cell(user)="row">
-        {{
-          row.item.userId
-            ? row.item.userId.lastName + ", " + row.item.userId.firstName
-            : ""
-        }}
-        <a
-          v-if="row.item.userId && row.item.userId.email"
-          :href="`mailto:${row.item.userId.email}`"
-        >
-          {{ row.item.userId.email }}</a
-        >
+        <div v-if="row.item.userId">
+          {{
+            row.item.userId
+              ? row.item.userId.lastName + ", " + row.item.userId.firstName
+              : ""
+          }}
+          <a
+            v-if="row.item.userId && row.item.userId.email"
+            :href="`mailto:${row.item.userId.email}`"
+          >
+            {{ row.item.userId.email }}</a
+          >
+        </div>
       </template>
       <template #cell(createdAt)="row">
         {{ new Date(row.value).toLocaleString() }}
@@ -364,74 +366,87 @@
         fields: [
           {
             key: "_id",
-            label: "Job ID",
+            label: "JobID",
             sortable: false
           },
           {
             key: "title",
+            label: "Title",
             sortable: true
           },
           {
             key: "createdAt",
+            label: "CreatedAt",
             sortable: true
           },
           {
             key: "updatedAt",
+            label: "UpdatedAt",
             sortable: true
           },
           {
             key: "status",
+            label: "Status",
             sortable: true
           },
           {
             key: "paid",
+            label: "Paid",
             sortable: true
           },
           {
             key: "paidExpiresAt",
+            label: "PaidExpiresAt",
             sortable: true
           },
           {
             key: "publishedAt",
+            label: "PublishedAt",
             sortable: true
           },
           {
             key: "sentReminder",
+            label: "SentReminder",
             sortable: true
           },
           {
             key: "refreshFrequency",
+            label: "RefreshFrequency",
             sortable: true
           },
           {
             key: "applicationDeadline",
+            label: "ApplicationDeadline",
             sortable: true
           },
           {
             key: "payment._id",
-            label: "Payment ID",
+            label: "PaymentID",
             sortable: false
           },
           {
             key: "payment.status",
-            label: "Paid Status",
+            label: "PaidStatus",
             sortable: true
           },
           {
             key: "paidAt",
+            label: "PaidAt",
             sortable: true
           },
           {
             key: "paymentExpiresAt",
+            label: "PaymentExpiresAt",
             sortable: true
           },
           {
             key: "paidAmount",
+            label: "PaidAmount",
             sortable: true
           },
           {
             key: "payment.invoiceNo",
-            label: "Invoice No",
+            label: "InvoiceNo",
             sortable: true
           },
           {
@@ -441,19 +456,22 @@
           },
           {
             key: "location",
+            label: "Location",
             sortable: true
           },
           {
             key: "userId._id",
-            label: "User ID",
+            label: "UserID",
             sortable: false
           },
           {
             key: "user",
+            label: "User",
             sortable: true
           },
           {
             key: "actions",
+            label: "Actions",
             sortable: false
           }
         ]

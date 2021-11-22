@@ -50,7 +50,7 @@ const PaymentResolvers = {
         if (addObj.status === "paid") {
           addObj.paidAt = new Date();
           addObj.paymentExpiresAt = new Date(
-            new Date().setHours(24) +
+            new Date().setHours(23) +
               1000 *
                 60 *
                 60 *
@@ -127,7 +127,7 @@ const PaymentResolvers = {
         if (updateObj.status === "paid") {
           updateObj.paidAt = new Date();
           updateObj.paymentExpiresAt = new Date(
-            new Date().setHours(24) +
+            new Date().setHours(23) +
               1000 *
                 60 *
                 60 *

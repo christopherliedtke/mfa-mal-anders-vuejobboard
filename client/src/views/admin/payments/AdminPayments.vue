@@ -88,15 +88,17 @@
       <template #cell(fee)="row"> {{ row.value / 100 }}€ </template>
       <template #cell(taxes)="row"> {{ row.value / 100 }}€ </template>
       <template #cell(user)="row">
-        {{
-          row.value._id ? row.value.lastName + ", " + row.value.firstName : ""
-        }}
-        <a
-          v-if="row.value._id && row.value.email"
-          :href="`mailto:${row.value.email}`"
-        >
-          {{ row.value.email }}</a
-        >
+        <div v-if="row.value">
+          {{
+            row.value._id ? row.value.lastName + ", " + row.value.firstName : ""
+          }}
+          <a
+            v-if="row.value._id && row.value.email"
+            :href="`mailto:${row.value.email}`"
+          >
+            {{ row.value.email }}</a
+          >
+        </div>
       </template>
 
       <template #cell(actions)="row">
@@ -304,89 +306,106 @@
         fields: [
           {
             key: "_id",
-            label: "Payment ID",
+            label: "PaymentID",
             sortable: false
           },
           {
             key: "status",
+            label: "Status",
             sortable: true
           },
           {
             key: "createdAt",
+            label: "CreatedAt",
             sortable: true
           },
           {
             key: "updatedAt",
+            label: "UpdatedAt",
             sortable: true
           },
           {
             key: "paidAt",
+            label: "PaidAt",
             sortable: true
           },
           {
             key: "paymentExpiresAt",
+            label: "PaymentExpiresAt",
             sortable: true
           },
           {
-            key: "pricingPackage"
+            key: "pricingPackage",
+            label: "PricingPackage"
           },
           {
             key: "invoiceNo",
+            label: "InvoiceNo",
             sortable: true
           },
           {
             key: "invoiceDate",
+            label: "InvoiceDate",
             sortable: true
           },
           {
             key: "paymentType",
+            label: "PaymentType",
             sortable: true
           },
           {
             key: "stripePaymentIntent",
+            label: "StripePaymentIntent",
             sortable: true
           },
           {
             key: "receiptUrl",
+            label: "ReceiptUrl",
             sortable: true
           },
           {
             key: "receiptNumber",
+            label: "ReceiptNumber",
             sortable: true
           },
           {
             key: "amount",
+            label: "Amount",
             sortable: true
           },
           {
             key: "fee",
+            label: "Fee",
             sortable: true
           },
           {
             key: "taxes",
+            label: "Taxes",
             sortable: true
           },
           {
             key: "job._id",
-            label: "Job ID",
+            label: "JobID",
             sortable: true
           },
           {
             key: "job.title",
-            label: "Job Title",
+            label: "JobTitle",
             sortable: true
           },
           {
             key: "user._id",
-            label: "User ID",
+            label: "UserID",
             sortable: true
           },
           {
             key: "user",
+            label: "User",
             sortable: true
           },
           {
             key: "actions",
+            label: "Actions",
             sortable: false
           }
         ]

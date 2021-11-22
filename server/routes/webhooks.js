@@ -33,7 +33,7 @@ router.post("/checkout-completed", async (req, res) => {
 
     if (intent.status === "succeeded") {
       const paidExpiresAt = new Date(
-        new Date().setHours(24) +
+        new Date().setHours(23) +
           1000 *
             60 *
             60 *

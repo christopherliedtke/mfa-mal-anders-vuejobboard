@@ -166,49 +166,57 @@
         fields: [
           {
             key: "_id",
-            label: "Coupon ID",
+            label: "CouponID",
             sortable: false
           },
           {
             key: "code",
+            label: "Code",
             sortable: false
           },
           {
             key: "discount",
+            label: "Discount",
             sortable: true
           },
           {
             key: "usage",
+            label: "Usage",
             sortable: true
           },
           {
             key: "refreshFrequency",
+            label: "RefreshFrequency",
             sortable: true
           },
           {
             key: "userId._id",
-            label: "User ID",
+            label: "UserID",
             sortable: false
           },
           {
             key: "user",
+            label: "User",
             sortable: true
           },
           {
             key: "createdAt",
+            label: "CreatedAt",
             sortable: true
           },
           {
             key: "updatedAt",
+            label: "UpdatedAt",
             sortable: true
           },
           {
             key: "expireAt",
-            label: "Expires at",
+            label: "ExpireAt",
             sortable: true
           },
           {
             key: "actions",
+            label: "Actions",
             sortable: false
           }
         ]

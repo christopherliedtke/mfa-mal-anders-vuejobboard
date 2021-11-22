@@ -47,10 +47,12 @@
       "
     >
       <template #cell(user)="row">
-        {{ row.item.userId.lastName + ", " + row.item.userId.firstName }}
-        <a :href="`mailto:${row.item.userId.email}`">
-          {{ row.item.userId.email }}</a
-        >
+        <div v-if="row.item.userId">
+          {{ row.item.userId.lastName + ", " + row.item.userId.firstName }}
+          <a :href="`mailto:${row.item.userId.email}`">
+            {{ row.item.userId.email }}</a
+          >
+        </div>
       </template>
       <template #cell(createdAt)="row">
         {{ new Date(row.value).toLocaleString() }}
@@ -171,40 +173,47 @@
         fields: [
           {
             key: "_id",
-            label: "Company ID",
+            label: "CompanyID",
             sortable: false
           },
           {
             key: "name",
+            label: "Name",
             sortable: true
           },
           {
             key: "createdAt",
+            label: "CreatedAt",
             sortable: true
           },
           {
             key: "updatedAt",
+            label: "UpdatedAt",
             sortable: true
           },
           {
             key: "location",
+            label: "Location",
             sortable: false
           },
           {
             key: "numberOfJobs",
+            label: "NoOfJobs",
             sortable: false
           },
           {
             key: "userId._id",
-            label: "User ID",
+            label: "UserID",
             sortable: false
           },
           {
             key: "user",
+            label: "User",
             sortable: false
           },
           {
             key: "actions",
+            label: "Actions",
             sortable: false
           }
         ]

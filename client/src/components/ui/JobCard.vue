@@ -14,7 +14,11 @@
           <div
             :class="[
               'card-head position-relative',
-              `${job.refreshFrequency === 7 ? 'bg-secondary' : 'bg-primary'}`
+              `${
+                job.refreshFrequency && job.refreshFrequency <= 7
+                  ? 'bg-secondary'
+                  : 'bg-primary'
+              }`
             ]"
           >
             <!-- eslint-disable -->
@@ -22,7 +26,7 @@
               :class="[
                 'h4',
                 { 'mobile-max-width-75': job.company.logoUrl && !compact },
-                { bold: job.refreshFrequency === 7 }
+                { bold: job.refreshFrequency && job.refreshFrequency <= 7 }
               ]"
               :style="
                 compact

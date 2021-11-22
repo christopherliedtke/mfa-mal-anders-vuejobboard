@@ -212,47 +212,57 @@
         fields: [
           {
             key: "_id",
-            label: "User ID",
+            label: "UserID",
             sortable: false
           },
           {
             key: "firstName",
+            label: "FirstName",
             sortable: true
           },
           {
             key: "lastName",
+            label: "LastName",
             sortable: true
           },
           {
             key: "email",
+            label: "Email",
             sortable: true
           },
           {
             key: "createdAt",
+            label: "CreatedAt",
             sortable: true
           },
           {
             key: "updatedAt",
+            label: "UpdatedAt",
             sortable: true
           },
           {
             key: "status",
+            label: "Status",
             sortable: true
           },
           {
             key: "isEmployer",
+            label: "IsEmployer",
             sortable: true
           },
           {
             key: "isEducational",
+            label: "IsEducational",
             sortable: true
           },
           {
             key: "isEmployee",
+            label: "IsEmployee",
             sortable: true
           },
           {
             key: "actions",
+            label: "Actions",
             sortable: false
           }
         ]

@@ -263,7 +263,7 @@
           billingLocation: "",
           paidAt: new Date().setHours(0),
           paymentExpiresAt:
-            new Date().setHours(24) +
+            new Date().setHours(23) +
             1000 * 60 * 60 * 24 * this.$config.payment.minDuration
         },
         contactGenderOptions,

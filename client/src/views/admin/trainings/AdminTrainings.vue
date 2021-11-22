@@ -63,18 +63,20 @@
         {{ new Date(row.value).toLocaleString() }}
       </template>
       <template #cell(user)="row">
-        {{
-          row.item.user
-            ? row.item.user.lastName + ", " + row.item.user.firstName
-            : ""
-        }}
-        <a
-          v-if="row.item.user && row.item.user.email"
-          :href="`mailto:${row.item.user.email}`"
-        >
-          {{ row.item.user.email }}</a
-        >
-        {{ row.item.user._id }}
+        <div v-if="row.item.user">
+          {{
+            row.item.user
+              ? row.item.user.lastName + ", " + row.item.user.firstName
+              : ""
+          }}
+          <a
+            v-if="row.item.user && row.item.user.email"
+            :href="`mailto:${row.item.user.email}`"
+          >
+            {{ row.item.user.email }}</a
+          >
+          {{ row.item.user._id }}
+        </div>
       </template>
       <template #cell(actions)="row">
         <div class="d-flex">
@@ -292,59 +294,72 @@
         fields: [
           {
             key: "_id",
-            label: "Training ID",
+            label: "TrainingID",
             sortable: false
           },
           {
             key: "title",
+            label: "Title",
             sortable: true
           },
           {
             key: "createdAt",
+            label: "CreatedAt",
             sortable: true
           },
           {
             key: "updatedAt",
+            label: "UpdatedAt",
             sortable: true
           },
           {
             key: "published",
+            label: "Published",
             sortable: true
           },
           {
             key: "paid",
+            label: "Paid",
             sortable: true
           },
           {
             key: "pending",
+            label: "Pending",
             sortable: true
           },
           {
             key: "company",
+            label: "Company",
             sortable: true
           },
           {
             key: "startAt",
+            label: "StartAt",
             sortable: true
           },
           {
             key: "duration",
+            label: "Duration",
             sortable: true
           },
           {
             key: "remote",
+            label: "Remote",
             sortable: true
           },
           {
             key: "location",
+            label: "Location",
             sortable: true
           },
           {
             key: "user",
+            label: "User",
             sortable: false
           },
           {
             key: "actions",
+            label: "Actions",
             sortable: false
           }
         ]

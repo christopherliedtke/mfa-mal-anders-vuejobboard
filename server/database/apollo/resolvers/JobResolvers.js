@@ -302,7 +302,7 @@ function cleanUpJob(job, user) {
       job.publishedAt = new Date(job.publishedAt).setHours(0);
     }
     if (job.paidExpiresAt) {
-      job.paidExpiresAt = new Date(job.paidExpiresAt).setHours(24);
+      job.paidExpiresAt = new Date(job.paidExpiresAt).setHours(23);
     }
     if (job.paidExpiresAt && job.paidExpiresAt >= new Date()) {
       job.paid = true;
@@ -314,7 +314,7 @@ function cleanUpJob(job, user) {
     if (job.paid && !job.paidExpiresAt) {
       job.paidExpiresAt =
         job.paidExpiresAt ||
-        new Date().setHours(24) +
+        new Date().setHours(23) +
           1000 * 60 * 60 * 24 * config.payment.paymentExpirationDays;
     }
     if (job.paid === false) {

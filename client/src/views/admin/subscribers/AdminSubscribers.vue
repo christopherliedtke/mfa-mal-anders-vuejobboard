@@ -169,31 +169,37 @@
         fields: [
           {
             key: "_id",
-            label: "Subscriber ID",
+            label: "SubscriberID",
             sortable: false
           },
           {
             key: "email",
+            label: "Email",
             sortable: true
           },
           {
             key: "state",
+            label: "State",
             sortable: true
           },
           {
             key: "createdAt",
+            label: "CreatedAt",
             sortable: true
           },
           {
             key: "updatedAt",
+            label: "UpdatedAt",
             sortable: true
           },
           {
             key: "status",
+            label: "Status",
             sortable: true
           },
           {
             key: "actions",
+            label: "Actions",
             sortable: false
           }
         ],
