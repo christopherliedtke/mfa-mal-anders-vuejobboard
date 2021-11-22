@@ -214,7 +214,7 @@ const UserDashboardCheckoutJob = () =>
 
 // #Admin
 const AdminJobs = () =>
-  import(/* webpackChunkName: "ad" */ "@/views/admin/jobs/AdminJobs.vue");
+  import(/* webpackChunkName: "admin" */ "@/views/admin/jobs/AdminJobs.vue");
 const AdminJobPreview = () =>
   import(
     /* webpackChunkName: "job-preview" */ "@/views/admin/jobs/preview/_jobId.vue"
@@ -225,41 +225,45 @@ const AdminEditJob = () =>
   );
 const AdminCompanies = () =>
   import(
-    /* webpackChunkName: "ad" */ "@/views/admin/companies/AdminCompanies.vue"
+    /* webpackChunkName: "admin" */ "@/views/admin/companies/AdminCompanies.vue"
   );
 const AdminEditCompany = () =>
   import(
     /* webpackChunkName: "company_edit" */ "@/views/admin/companies/edit/_companyId.vue"
   );
 const AdminUsers = () =>
-  import(/* webpackChunkName: "ad" */ "@/views/admin/users/AdminUsers.vue");
+  import(/* webpackChunkName: "admin" */ "@/views/admin/users/AdminUsers.vue");
 const AdminEditUser = () =>
-  import(/* webpackChunkName: "ad" */ "@/views/admin/users/edit/_userId.vue");
+  import(
+    /* webpackChunkName: "admin" */ "@/views/admin/users/edit/_userId.vue"
+  );
 const AdminCoupons = () =>
-  import(/* webpackChunkName: "ad" */ "@/views/admin/coupons/AdminCoupons.vue");
+  import(
+    /* webpackChunkName: "admin" */ "@/views/admin/coupons/AdminCoupons.vue"
+  );
 const AdminEditCoupon = () =>
   import(
-    /* webpackChunkName: "ad" */ "@/views/admin/coupons/edit/_couponId.vue"
+    /* webpackChunkName: "admin" */ "@/views/admin/coupons/edit/_couponId.vue"
   );
 const AdminSubscribers = () =>
   import(
-    /* webpackChunkName: "ad" */ "@/views/admin/subscribers/AdminSubscribers.vue"
+    /* webpackChunkName: "admin" */ "@/views/admin/subscribers/AdminSubscribers.vue"
   );
 const AdminPayments = () =>
   import(
-    /* webpackChunkName: "ad" */ "@/views/admin/payments/AdminPayments.vue"
+    /* webpackChunkName: "admin" */ "@/views/admin/payments/AdminPayments.vue"
   );
 const AdminEditPayment = () =>
   import(
-    /* webpackChunkName: "ad" */ "@/views/admin/payments/edit/_paymentId.vue"
+    /* webpackChunkName: "admin" */ "@/views/admin/payments/edit/_paymentId.vue"
   );
 const AdminTrainings = () =>
   import(
-    /* webpackChunkName: "ad" */ "@/views/admin/trainings/AdminTrainings.vue"
+    /* webpackChunkName: "admin" */ "@/views/admin/trainings/AdminTrainings.vue"
   );
 const AdminDataAnalytics = () =>
   import(
-    /* webpackChunkName: "ad" */ "@/views/admin/data-analytics/AdminDataAnalytics.vue"
+    /* webpackChunkName: "admin" */ "@/views/admin/data-analytics/AdminDataAnalytics.vue"
   );
 
 // #404
