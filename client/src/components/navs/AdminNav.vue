@@ -1,5 +1,5 @@
 <template>
-  <nav class="d-none d-lg-block">
+  <nav id="admin-nav" class="d-none d-lg-block">
     <ul class="list-unstyled">
       <li>
         <router-link to="/admin/users"
@@ -152,12 +152,12 @@
 
 <script>
   export default {
-    name: "AdminNav"
+    name: "AdminNavbar"
   };
 </script>
 
-<style lang="scss" scoped>
-  nav {
+<style lang="scss">
+  #admin-nav {
     position: fixed;
     top: 0;
     bottom: 0;

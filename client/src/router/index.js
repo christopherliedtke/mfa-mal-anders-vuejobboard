@@ -234,14 +234,12 @@ const AdminEditCompany = () =>
 const AdminUsers = () =>
   import(/* webpackChunkName: "ad" */ "@/views/admin/users/AdminUsers.vue");
 const AdminEditUser = () =>
-  import(
-    /* webpackChunkName: "ad_user" */ "@/views/admin/users/edit/_userId.vue"
-  );
+  import(/* webpackChunkName: "ad" */ "@/views/admin/users/edit/_userId.vue");
 const AdminCoupons = () =>
   import(/* webpackChunkName: "ad" */ "@/views/admin/coupons/AdminCoupons.vue");
 const AdminEditCoupon = () =>
   import(
-    /* webpackChunkName: "ad_coupon" */ "@/views/admin/coupons/edit/_couponId.vue"
+    /* webpackChunkName: "ad" */ "@/views/admin/coupons/edit/_couponId.vue"
   );
 const AdminSubscribers = () =>
   import(
@@ -253,7 +251,7 @@ const AdminPayments = () =>
   );
 const AdminEditPayment = () =>
   import(
-    /* webpackChunkName: "ad_payment" */ "@/views/admin/payments/edit/_paymentId.vue"
+    /* webpackChunkName: "ad" */ "@/views/admin/payments/edit/_paymentId.vue"
   );
 const AdminTrainings = () =>
   import(
