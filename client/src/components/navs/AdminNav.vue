@@ -155,30 +155,3 @@
     name: "AdminNavbar"
   };
 </script>
-
-<style lang="scss">
-  #admin-nav {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    background-color: $primary;
-    color: $light;
-    z-index: 99;
-    padding: 90px 0.75rem;
-
-    li {
-      margin: 1.5rem 0;
-    }
-
-    a {
-      color: transparentize($color: $light, $amount: 0.3);
-
-      &:hover,
-      &.router-link-exact-active,
-      &.active {
-        color: $secondary;
-      }
-    }
-  }
-</style>
