@@ -574,8 +574,8 @@
           : job.company.logoUrl && !job.company.logoUrl.includes('.svg')
           ? job.company.logoUrl
           : job.profession === 'ZFA'
-          ? '/img/MfaMalAnders_NeuesStellenangebot_ZFA_1200.jpg'
-          : '/img/MfaMalAnders_NeuesStellenangebot_MFA_1200.jpg'
+          ? '/img/MfaMalAnders_NeuesStellenangebot_ZFA.jpg'
+          : '/img/MfaMalAnders_NeuesStellenangebot_MFA.jpg'
       "
       :twitter-card="
         job.imageUrl && !job.imageUrl.includes('.svg')

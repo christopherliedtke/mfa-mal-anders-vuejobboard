@@ -21,7 +21,7 @@
           </h2>
           <div class="small" style="font-size: 65%">
             <div class="pt-5 mt-5">
-              <h2 class="h6"><strong>Hinweis</strong></h2>
+              <h2 class="h6">Hinweis</h2>
               <p>
                 Hinter den mit (*) gekennzeichneten Links stecken
                 Affiliate-Links. Das heißt, wenn Du ein Produkt über den Link

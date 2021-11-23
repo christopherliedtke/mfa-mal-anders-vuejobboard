@@ -18,7 +18,7 @@
         <b-img-lazy
           v-if="training.logoUrl"
           fluid
-          blank-src="/img/MfaMalAnders_logo_circle_dark.svg"
+          blank-src="/img/MfaMalAnders_logo_circle_bgdark_white.svg"
           blank-width="90"
           offset="1000"
           height="70"
@@ -262,7 +262,7 @@
 
       .training-title {
         h2 {
-          font-family: $headings-font-family;
+          font-weight: bold;
           word-break: break-word;
         }
 

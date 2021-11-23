@@ -298,6 +298,9 @@ router.post("/checkout-completed", async (req, res) => {
                           }</a>
                           </p>
                           <p>
+                            Gern können Sie diesen Link nutzen, um beispielsweise auf Ihrer Webseite oder über Ihre Social Media Kanäle auf die offene Stelle aufmerksam zu machen. Unserer Erfahrung nach ist dies eine weitere hilfreiche Möglichkeit, potentielle BewerberInnen auf sich aufmerksam zu machen. 
+                          </p>
+                          <p>
                             Bitte beachten Sie, dass Ihre Stellenanzeige nur solange abrufbar ist, wie auch Ihre Bewerbungsfrist nicht überschritten ist. Über Ihre Zugangsdaten haben Sie weiterhin Zugriff auf Ihre Stellenanzeigen und können diese jederzeit anpassen.
                           </p>
                         `
@@ -338,10 +341,10 @@ router.post("/checkout-completed", async (req, res) => {
                 `,
         attachments: [
           {
-            filename: "MfaMalAnders_logo_circle_dark.png",
+            filename: "MfaMalAnders_logo_circle_bgdark_white.png",
             path:
               __dirname +
-              "/../../client/public/img/MfaMalAnders_logo_circle_dark.png",
+              "/../../client/public/img/MfaMalAnders_logo_circle_bgdark_white.png",
             cid: "mfa-mal-anders-logo", //same cid value as in the html img src
           },
         ],

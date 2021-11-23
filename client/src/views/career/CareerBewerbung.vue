@@ -11,9 +11,13 @@
       <b-img-lazy
         class="border-radius1 shadow1 mb-3 mb-lg-5 w-100"
         fluid
-        srcset="/img/MfaMalAnders_Bewerbungstipps_1200-300x157.jpg 300w, /img/MfaMalAnders_Bewerbungstipps_1200-1024x538.jpg 1024w, /img/MfaMalAnders_Bewerbungstipps_1200-768x404.jpg 768w, /img/MfaMalAnders_Bewerbungstipps_1200.jpg 1200w"
+        srcset="
+          /img/MfaMalAnders_Bewerbungstipps_mh2kqw_c_scale,w_350.jpg 350w,
+          /img/MfaMalAnders_Bewerbungstipps_mh2kqw_c_scale,w_745.jpg 745w,
+          /img/MfaMalAnders_Bewerbungstipps_mh2kqw_c_scale,w_1200.jpg 1200w
+        "
         sizes="(max-width: 1200px) 100vw, 1200px"
-        src="/img/MfaMalAnders_Bewerbungstipps_1200.jpg"
+        src="/img/MfaMalAnders_Bewerbungstipps_mh2kqw_c_scale,w_1200.jpg"
         alt="Banner - Schnell und einfach eine Top-Bewerbung schreiben"
         width="1200"
         height="630"
@@ -207,7 +211,7 @@
         anhängst.
       </p>
       <h2 id="anschreiben" class="my-4">
-        <span class="display-4">Bewerbungsschreiben</span> <br />
+        <span class="display-4 bold">Bewerbungsschreiben</span> <br />
         <span class="h5"
           >für Medizinische Fachangestellte (MFA) & Zahnmedizinische
           Fachangestellte (ZFA)</span
@@ -405,7 +409,7 @@
       </blockquote>
 
       <h2 id="lebenslauf" class="my-4">
-        <span class="display-4">Lebenslauf</span> <br />
+        <span class="display-4 bold">Lebenslauf</span> <br />
         <span class="h5"
           >für Medizinische Fachangestellte (MFA) & Zahnmedizinische
           Fachangestellte (ZFA)</span
@@ -513,8 +517,8 @@
     <ScrollToTopBtn />
 
     <Head
-      :title="title"
-      desc="Bewerbungstipps für Medizinische Fachangestellte (MFA / ZFA) / ArzthelferIn || Kostenlose Bewerbungsvorlage | Tipps und mehr"
+      :title="title + ' | Tipps | Beispiele | Vorlage'"
+      desc="Bewerbungstipps für Medizinische Fachangestellte (MFA / ZFA) / ArzthelferIn || Lebenslauf | Anschreiben | Tipps und mehr"
       img="/img/MfaMalAnders_Bewerbungstipps_1200.jpg"
       :script="snippet"
     />

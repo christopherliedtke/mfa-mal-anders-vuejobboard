@@ -35,7 +35,7 @@
     <Head
       :title="training ? training.title : ' | Fortbildungskatalog'"
       :desc="training ? training.excerpt : ''"
-      img="/img/MfaMalAnders_Fortbildungskatalog_Banner_1200.jpg"
+      img="/img/MfaMalAnders_Fortbildungskatalog.jpg"
       :script="snippet"
     />
   </div>

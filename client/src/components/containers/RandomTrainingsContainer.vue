@@ -16,6 +16,7 @@
         >
           <div class="card">
             <b-img-lazy
+              v-if="training.featuredImage.node.sourceUrl"
               class="card-img-top"
               :srcset="training.featuredImage.node.srcSet"
               sizes="(max-width: 768px) 100vw, (max-width: 992px) 50vw, 33vw"

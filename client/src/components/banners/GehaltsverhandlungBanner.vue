@@ -3,9 +3,13 @@
     <b-img-lazy
       fluid
       class="card-img-top"
-      srcset="https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/12/MfaMalAnders_Gehaltsverhandlung_1200-300x158.jpg 300w, https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/12/MfaMalAnders_Gehaltsverhandlung_1200-1024x538.jpg 1024w, https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/12/MfaMalAnders_Gehaltsverhandlung_1200-768x403.jpg 768w, https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/12/MfaMalAnders_Gehaltsverhandlung_1200.jpg 1200w"
+      srcset="
+        /img/MfaMalAnders_Gehaltsverhandlung_igfsqt_c_scale,w_350.jpg 350w,
+        /img/MfaMalAnders_Gehaltsverhandlung_igfsqt_c_scale,w_804.jpg 804w,
+        /img/MfaMalAnders_Gehaltsverhandlung_igfsqt_c_scale,w_1200.jpg 1200w
+      "
       sizes="(max-width: 768px) 100vw, 50vw"
-      src="https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/12/MfaMalAnders_Gehaltsverhandlung_1200.jpg"
+      src="/img/MfaMalAnders_Gehaltsverhandlung_igfsqt_c_scale,w_1200.jpg"
       alt="Banner - Jobs und Berufsbilder für MFA / ZFA und ArzthelferInnen"
       width="1200"
       height="630"

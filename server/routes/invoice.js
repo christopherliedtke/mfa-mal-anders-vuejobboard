@@ -181,7 +181,7 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
                 <p>
                     <img src="${
                       process.env.WEBSITE_URL
-                    }/img/MfaMalAnders_logo_circle_dark.png" alt="MFA mal anders - Logo" width="60" style="margin-bottom: 1rem"/> <br>
+                    }/img/MfaMalAnders_logo_circle_bgdark_white.png" alt="MFA mal anders - Logo" width="60" style="margin-bottom: 1rem"/> <br>
                     <strong>MFA mal anders</strong> <br>
                     Das Stellen- & Karriereportal für Medizinische Fachangestellte | Zahnmedizinische Fachangestellte <br>
                     <br>

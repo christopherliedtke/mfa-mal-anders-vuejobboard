@@ -182,7 +182,7 @@
       :desc="
         `Deutschlands größte Übersicht an Fortbildungen / Weiterbildungen für Zahnmedizinische | Medizinische Fachangestellte (MFA / ZFA) || ArzthelferIn`
       "
-      img="/img/MfaMalAnders_Fortbildungskatalog_Banner_1200.jpg"
+      img="/img/MfaMalAnders_Fortbildungskatalog.jpg"
       :script="snippet"
     />
   </div>

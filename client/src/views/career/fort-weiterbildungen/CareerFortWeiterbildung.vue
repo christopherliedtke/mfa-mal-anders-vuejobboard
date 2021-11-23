@@ -156,11 +156,6 @@
           vertical-align: top;
           padding-top: 1rem;
 
-          // &:first-child {
-          //     font-family: $headings-font-family;
-          //     font-size: 115%;
-          // }
-
           &:nth-child(2) {
             padding-left: 2rem;
           }

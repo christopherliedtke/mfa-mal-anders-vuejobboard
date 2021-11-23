@@ -83,7 +83,7 @@ function generateHeader(doc, sender) {
     .image(
       __dirname +
         "/../../client/public/img/" +
-        "MfaMalAnders_logo_circle_dark.png",
+        "MfaMalAnders_logo_circle_bgdark_white.png",
       500,
       40,
       {

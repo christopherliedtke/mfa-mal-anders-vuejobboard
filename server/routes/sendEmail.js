@@ -79,10 +79,10 @@ router.post("/job-published", verifyToken, isAdmin, async (req, res) => {
                 `,
       attachments: [
         {
-          filename: "MfaMalAnders_logo_circle_dark.png",
+          filename: "MfaMalAnders_logo_circle_bgdark_white.png",
           path:
             __dirname +
-            "/../../client/public/img/MfaMalAnders_logo_circle_dark.png",
+            "/../../client/public/img/MfaMalAnders_logo_circle_bgdark_white.png",
           cid: "mfa-mal-anders-logo", //same cid value as in the html img src
         },
       ],
@@ -179,10 +179,10 @@ router.post("/training-published", verifyToken, isAdmin, async (req, res) => {
                 `,
       attachments: [
         {
-          filename: "MfaMalAnders_logo_circle_dark.png",
+          filename: "MfaMalAnders_logo_circle_bgdark_white.png",
           path:
             __dirname +
-            "/../../client/public/img/MfaMalAnders_logo_circle_dark.png",
+            "/../../client/public/img/MfaMalAnders_logo_circle_bgdark_white.png",
           cid: "mfa-mal-anders-logo", //same cid value as in the html img src
         },
       ],

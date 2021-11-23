@@ -25,8 +25,7 @@
             <h2
               :class="[
                 'h4',
-                { 'mobile-max-width-75': job.company.logoUrl && !compact },
-                { bold: job.refreshFrequency && job.refreshFrequency <= 7 }
+                { 'mobile-max-width-75': job.company.logoUrl && !compact }
               ]"
               :style="
                 compact
@@ -284,6 +283,7 @@
         .h4 {
           margin: 0;
           padding: 1rem;
+          line-height: 1.3;
 
           &.mobile-max-width-75 {
             @media screen and (max-width: $break-menu) {

@@ -1,7 +1,7 @@
 <template>
-  <aside class="card overflow-hidden shadow1 p-3">
+  <aside class="card overflow-hidden shadow1 p-2 p-md-4">
     <div
-      class="card-body d-flex flex-column justify-content-start align-items-start h-100 p-4"
+      class="card-body d-flex flex-column justify-content-start align-items-start h-100"
     >
       <!-- eslint-disable-next-line -->
       <h2 class="h1" v-html="header"></h2>

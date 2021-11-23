@@ -1,6 +1,6 @@
 <template>
   <div class="gehaltsrechner p-4 border-radius2 shadow1">
-    <h3>
+    <h3 class="bold">
       MFA Gehaltsrechner {{ year }}&nbsp;
       <div id="popover-mfa-gehaltsrechner">
         <svg

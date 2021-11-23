@@ -3,10 +3,15 @@
     <b-img-lazy
       fluid
       class="card-img-top"
-      srcset="/img/Banner_Weiterbildungsdschungel_1200-300x157.jpg 300w, /img/Banner_Weiterbildungsdschungel_1200-1024x538.jpg 1024w, /img/Banner_Weiterbildungsdschungel_1200-768x404.jpg 768w, /img/Banner_Weiterbildungsdschungel_1200.jpg 1200w"
+      srcset="
+        /img/Weiterbildung_Weiterbildungsdschungel_ugahcj_c_scale,w_350.jpg 350w,
+        /img/Weiterbildung_Weiterbildungsdschungel_ugahcj_c_scale,w_624.jpg 624w,
+        /img/Weiterbildung_Weiterbildungsdschungel_ugahcj_c_scale,w_817.jpg 817w,
+        /img/Weiterbildung_Weiterbildungsdschungel_ugahcj_c_scale,w_1200.jpg 1200w
+      "
       sizes="(max-width: 768px) 100vw, 50vw"
-      src="/img/Banner_Weiterbildungsdschungel_1200.jpg"
-      alt="Banner - Fort- und Weiterbildungen für MFA / ZFA"
+      src="/img/Weiterbildung_Weiterbildungsdschungel_ugahcj_c_scale,w_1200.jpg"
+      alt="Fort- und Weiterbildungen für MFA / ZFA"
       width="1200"
       height="630"
       blank-width="1200"

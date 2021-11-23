@@ -130,9 +130,9 @@
         </div>
       </div>
 
-      <div class="clearfix">
+      <div class="clearfix pt-5">
         <h2 class="h1 mb-4 mb-md-5">
-          <span class="display-3 bold">Dein Karriereportal</span> <br />
+          <span class="display-3 bold d-block mb-1">Dein Karriereportal</span>
           für Medizinische Fachangestellte | Zahnmedizinische Fachangestellte
         </h2>
         <b-img-lazy
@@ -172,7 +172,7 @@
       <div class="row">
         <div class="col-12 col-md-6">
           <p>
-            Auf MFA mal anders berichte ich über Aufstiegsmöglichkeiten in der
+            Auf MFA mal anders berichten wir über Aufstiegsmöglichkeiten in der
             Arztpraxis, aber auch über Karrierechancen, die du als Medizinische
             Fachangestellte außerhalb der Praxis hast.
           </p>
@@ -180,13 +180,14 @@
             Gerade Berufe im Gesundheitswesen sind meist kein Zuckerschlecken.
             Ganz im Gegenteil – sie sind verdammt anstrengend, oftmals schlecht
             bezahlt und mit familienunfreundlichen Arbeitszeiten. Aber sie sind
-            auch sehr erfüllend. Deswegen machen wir diese Jobs doch, oder?!
-            Immer dieses Helfersyndrom – Fluch und Segen zugleich.
+            auch sehr erfüllend. Deswegen machen wir Medizinengel diese Jobs
+            doch, oder?! Immer dieses Helfersyndrom – Fluch und Segen zugleich.
           </p>
           <p>
             Trotzdem, es gibt auch Wege und Möglichkeiten mehr aus dem Beruf der
-            medizinischen Fachangestellten zu machen und wieder glücklicher und
-            zufriedener im Arbeitsalltag zu sein.
+            Medizinischen Fachangestellten | Zahnmedizinischen Fachangestellten
+            zu machen und wieder glücklicher und zufriedener im Arbeitsalltag zu
+            sein.
           </p>
         </div>
         <div class="col-12 col-md-6">
@@ -280,7 +281,7 @@
       <h3 class="my-4">MFAs & ZFAs sind vernetzt und halten zusammen</h3>
       <p>
         Um unseren Beruf zu stärken und weiter voran zu bringen, müssen wir
-        zusammenhalten.
+        Medizinengel zusammenhalten.
       </p>
       <p>
         Jobs, die schlecht bezahlt werden, sollten wir nicht annehmen.
@@ -294,14 +295,14 @@
         haben. Manchen fehlt hier das richtige Fingerspitzengefühl und
         wahrscheinlich “vergessen” einige neben der Patientenversorgung,
         Abrechnung, dem Zeitdruck etc. einen wertschätzenden Umgang mit ihren
-        “Praxisperlen”.
+        Praxisperlen.
       </p>
       <p>
-        Mfa mal anders unterstützt Praxen bei der Suche nach neuem Personal.
+        MFA mal anders unterstützt Praxen bei der Suche nach neuem Personal.
         Dabei sensibilisieren wir die Praxisinhaber stets für ein positives
-        Arbeitsklima und Mitarbeiterförderung- führung und – entwicklung. Das
-        bringt nicht nur dem Chef was, sondern der gesamten Praxis und die
-        Personalsuche erleichert sich ebenfalls.
+        Arbeitsklima und Mitarbeiterförderung, -führung und -entwicklung. Das
+        bringt nicht nur dem Chef etwas, sondern der gesamten Praxis und die
+        Personalsuche erleichert es ebenfalls.
       </p>
       <p>
         Wenn du auf der Suche nach einer tollen Praxis bist, schau regelmäßig
@@ -310,22 +311,23 @@
       </p>
       <p>
         Wenn du schon in einer tollen Praxis arbeitest und ihr neue Kollegen
-        sucht, kannst du
-        <b-link to="/fuer-arbeitgeber">hier</b-link>
-        eure Stellenanzeige veröffentlichen.
+        sucht, kannst du bei uns
+        <b-link to="/fuer-arbeitgeber"
+          >eure Stellenanzeige veröffentlichen</b-link
+        >.
       </p>
       <p>
         Wenn du bereit bist, deiner Karriere als Medizinische Fachangestellte |
-        Zahnmedizinische Fachangestellte neuen Aufschwung zu geben, reiche ich
-        dir die Hand und begleite dich auf deinem Weg.
+        Zahnmedizinische Fachangestellte neuen Aufschwung zu geben, reichen wir
+        dir die Hand und begleiten dich auf deinem Weg.
       </p>
       <p>
-        Ich freue mich über jedes Feedback und da MFA mal anders eine
-        Bereicherung für dich sein soll, kannst du mir gerne jederzeit Themen
+        Wir freuen uns über jedes Feedback und da MFA mal anders eine
+        Bereicherung für dich sein soll, kannst du uns gern jederzeit Themen
         nennen, die dich aktuell beschäftigen und über die hier berichtet werden
         soll.
       </p>
-      <p>Ich freue mich auf dich!</p>
+      <p>Wir freuen uns auf dich!</p>
       <p>Deine Kristin</p>
       <div class="mt-5">
         <b-link class="mr-3" to="/kontakt">

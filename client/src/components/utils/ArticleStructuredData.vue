@@ -28,7 +28,7 @@
                   "name": "MFA mal anders",
                   "logo": {
                     "@type": "ImageObject",
-                    "url": "/img/MfaMalAnders_logo_circle_dark.png"
+                    "url": "/img/MfaMalAnders_logo_circle_bgdark_white.png"
                   }
                 },
                 "image": this.article.featuredImage.node.sourceUrl,

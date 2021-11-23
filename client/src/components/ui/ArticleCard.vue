@@ -21,7 +21,7 @@
           fluid
         />
         <div class="card-body">
-          <h4 class="card-title">{{ article.title }}</h4>
+          <h4 class="card-title sr-only">{{ article.title }}</h4>
 
           <!-- eslint-disable-next-line -->
           <p class="card-text" v-html="article.excerpt"></p>

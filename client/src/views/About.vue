@@ -285,7 +285,7 @@
               "@context": "http://schema.org",
               "@type": "Organization",
               "url": this.$config.website.url,
-              "logo": "/img/MfaMalAnders_logo_circle_dark.png"
+              "logo": "/img/MfaMalAnders_logo_circle_bgdark_white.png"
             })
           }
         ]

@@ -129,8 +129,11 @@
 
       <TrainingCatalogueLargeBanner class="my-5" />
 
-      <h2 id="ueberblick" class="display-4">
-        Fort- und Weiterbildungen für MFA & ZFA – Der große Überblick
+      <h2 id="ueberblick">
+        <span class="display-4 bold d-block mb-1"
+          >Fort- und Weiterbildungen</span
+        >
+        für MFA & ZFA – Der große Überblick
       </h2>
       <p>
         Welche Fortbildungen – welche Weiterbildungen gibt es speziell für
@@ -163,7 +166,7 @@
         für dich eine grandiose Übersicht über deine Karrieremöglichkeiten in-
         und außerhalb der Arztpraxis zusammen.
       </p>
-      <div class="example shadow1">
+      <div class="example shadow1 my-4">
         PS: Wenn du interessiert an einer bestimmten Weiterbildung für MFA / ZFA
         bist, die wir noch nicht aufgeführt haben,
         <b-link class="bold" to="/kontakt">schreib uns</b-link> doch. Oder
@@ -173,7 +176,7 @@
 
       <RandomTrainingsContainer class="my-4" />
 
-      <h2 id="fortbildung-weiterbildung-studium" class="h1">
+      <h2 id="fortbildung-weiterbildung-studium" class="display-4 bold">
         Fortbildung, Weiterbildung oder Studium?
       </h2>
       <p>
@@ -208,8 +211,12 @@
       </p>
 
       <b-img-lazy
-        srcset="https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/09/MfaMalAnders_FortbildungWeiterbildungOderStudium_1200-300x158.jpg 300w, https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/09/MfaMalAnders_FortbildungWeiterbildungOderStudium_1200-1024x538.jpg 1024w, https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/09/MfaMalAnders_FortbildungWeiterbildungOderStudium_1200-768x403.jpg 768w, https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/09/MfaMalAnders_FortbildungWeiterbildungOderStudium_1200.jpg 1200w"
-        src="https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/09/MfaMalAnders_FortbildungWeiterbildungOderStudium_1200.jpg"
+        srcset="
+          /img/MfaMalAnders_FortbildungWeiterbildungOderStudium_je9igh_c_scale,w_350.jpg 350w,
+          /img/MfaMalAnders_FortbildungWeiterbildungOderStudium_je9igh_c_scale,w_642.jpg 642w,
+          /img/MfaMalAnders_FortbildungWeiterbildungOderStudium_je9igh_c_scale,w_1200.jpg 1200w
+        "
+        src="/img/MfaMalAnders_FortbildungWeiterbildungOderStudium_je9igh_c_scale,w_1200.jpg"
         sizes="(max-width: 768px) 100vw, 50vw"
         alt="Was sind die Unterschiede zwischen Fortbildung, Weiterbildung und
         Studium für MFA & ZFA?"
@@ -422,10 +429,14 @@
           class="card text-center bg-light-shade shadow1 mt-4 mb-5"
         >
           <b-img-lazy
-            srcset="https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/09/MfaMalAnders_In6SchrittenZurRichtigenWeiterbildung_1200-300x158.jpg 300w, https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/09/MfaMalAnders_In6SchrittenZurRichtigenWeiterbildung_1200-1024x538.jpg 1024w, https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/09/MfaMalAnders_In6SchrittenZurRichtigenWeiterbildung_1200-768x403.jpg 768w, https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/09/MfaMalAnders_In6SchrittenZurRichtigenWeiterbildung_1200.jpg 1200w"
-            src="https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/09/MfaMalAnders_In6SchrittenZurRichtigenWeiterbildung_1200.jpg"
+            srcset="
+              /img/MfaMalAnders_In6SchrittenZurRichtigenWeiterbildung_hibrhw_c_scale,w_350.jpg 350w,
+              /img/MfaMalAnders_In6SchrittenZurRichtigenWeiterbildung_hibrhw_c_scale,w_801.jpg 801w,
+              /img/MfaMalAnders_In6SchrittenZurRichtigenWeiterbildung_hibrhw_c_scale,w_1200.jpg 1200w
+            "
+            src="/img/MfaMalAnders_In6SchrittenZurRichtigenWeiterbildung_hibrhw_c_scale,w_1200.jpg"
             sizes="(max-width: 768px) 100vw, 50vw"
-            alt="Banner - In 6 Schritten zur richtigen Weiterbildung für MFA / ZFA und ArzthelferIn"
+            alt="In 6 Schritten zur richtigen Weiterbildung für MFA / ZFA und ArzthelferIn"
             width="1200"
             height="630"
             blank-width="1200"
@@ -455,7 +466,7 @@
 
       <TrainingCatalogueLargeBanner class="mt-4 mb-5" />
 
-      <h2 id="foerderung-finanzierung" class="h1">
+      <h2 id="foerderung-finanzierung" class="display-4 bold">
         Förderung und Finanzierung von Weiterbildungen
       </h2>
       <p class="lead">
@@ -479,8 +490,12 @@
         wahrsten Sinne des Wortes auszahlen.
       </p>
       <b-img-lazy
-        srcset="https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/09/MfaMalAnders_FoerderungUndFinanzierungVonWeiterbildungen_1200-300x158.jpg 300w, https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/09/MfaMalAnders_FoerderungUndFinanzierungVonWeiterbildungen_1200-1024x538.jpg 1024w, https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/09/MfaMalAnders_FoerderungUndFinanzierungVonWeiterbildungen_1200-768x403.jpg 768w, https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/09/MfaMalAnders_FoerderungUndFinanzierungVonWeiterbildungen_1200.jpg 1200w"
-        src="https://wordpress.mfa-mal-anders.de/wp-content/uploads/2020/09/MfaMalAnders_FoerderungUndFinanzierungVonWeiterbildungen_1200.jpg"
+        srcset="
+          /img/MfaMalAnders_FoerderungUndFinanzierungVonWeiterbildungen_gwmelv_c_scale,w_350.jpg 350w,
+          /img/MfaMalAnders_FoerderungUndFinanzierungVonWeiterbildungen_gwmelv_c_scale,w_785.jpg 785w,
+          /img/MfaMalAnders_FoerderungUndFinanzierungVonWeiterbildungen_gwmelv_c_scale,w_1200.jpg 1200w
+        "
+        src="/img/MfaMalAnders_FoerderungUndFinanzierungVonWeiterbildungen_gwmelv_c_scale,w_1200.jpg"
         sizes="(max-width: 768px) 100vw, 50vw"
         alt="Was sind die Unterschiede zwischen Fortbildung, Weiterbildung und
         Studium für MFA & ZFA?"
@@ -493,11 +508,11 @@
         class="border-radius1 shadow1 mb-4"
         fluid
       />
-      <p class="h3">
+      <p class="h3 bold">
         Welche Möglichkeit hast du als MFA & ZFA, um deine Weiterbildung zu
         finanzieren?
       </p>
-      <h3 id="chef-fragen" class="bold">Beim Chef nachfragen</h3>
+      <h3 id="chef-fragen">Beim Chef nachfragen</h3>
       <p>
         Das ist in vielen Situationen die einfachste und unkomplizierteste
         Lösung. Es kommt dabei aber auf die Art deiner
@@ -539,7 +554,7 @@
         Dafür bieten der Staat und die einzelnen Bundesländer einige
         Möglichkeiten, um dich zu unterstützen.
       </p>
-      <h3 id="bafoeg" class="bold">Aufstiegs-BAföG</h3>
+      <h3 id="bafoeg">Aufstiegs-BAföG</h3>
       <p>
         Das Aufstiegs-BAföG, früher auch Meister-BAföG genannt, unterstützt
         Arbeitnehmer, Berufsrückkehrer und Selbstständige, die sich per
@@ -570,7 +585,7 @@
         jeweiligen Beratungsstellen der Bundesländer findest du auf der
         Internetseite des Bundesministerium für Bildung und Forschung.
       </p>
-      <h3 id="bildungsgutschein" class="bold">Bildungsgutschein</h3>
+      <h3 id="bildungsgutschein">Bildungsgutschein</h3>
       <p>
         Mit dem
         <a
@@ -612,7 +627,7 @@
         hast, kann dir deine zuständige Agentur für Arbeit nach entsprechender
         Beratung mitteilen.
       </p>
-      <h3 id="bildungsprämie" class="bold">
+      <h3 id="bildungsprämie">
         Prämiengutschein (Bildungsprämie)
       </h3>
       <p>
@@ -655,7 +670,7 @@
         Forschung.
       </p>
 
-      <h3 id="bildungskredit" class="bold">Bildungskredit</h3>
+      <h3 id="bildungskredit">Bildungskredit</h3>
       <p>
         Der Bildungskredit unterstützt bei schulischen Ausbildungen und bei
         einem Studium.
@@ -689,7 +704,7 @@
         findest du auf der Seite des Bundesverwaltung.
       </p>
 
-      <h3 id="aufstiegsstipendium" class="bold">Aufstiegsstipendium</h3>
+      <h3 id="aufstiegsstipendium">Aufstiegsstipendium</h3>
       <p>
         Warst du eine besonders gute Schülerin während der Ausbildung? Und bist
         immer noch besonders motiviert und möchtest dich beruflich durch ein
@@ -720,7 +735,7 @@
         finden.
       </p>
 
-      <h3 id="weiterbildungsstipendium" class="bold">
+      <h3 id="weiterbildungsstipendium">
         Weiterbildungsstipendium
       </h3>
       <p>
@@ -746,7 +761,7 @@
         >.
       </p>
 
-      <h3 id="steuererklaerung" class="bold">
+      <h3 id="steuererklaerung">
         Kostenerstattung über die Steuererklärung
       </h3>
       <p>
@@ -759,7 +774,7 @@
         (Fahrt, Übernachtung, Verpflegung etc.) geltend machen.
       </p>
 
-      <h3 id="qualifizierungsoffensive" class="bold">
+      <h3 id="qualifizierungsoffensive">
         WEITER.BILDUNG! – die Qualifizierungs­offensive
       </h3>
       <p>
@@ -794,8 +809,9 @@
         <b-link to="/kontakt">Lass es uns wissen</b-link>.
       </p>
 
-      <h2 id="bildungsurlaub" class="h1">
-        Bildungsurlaub – 5-10 Bildungstage pro Jahr
+      <h2 id="bildungsurlaub">
+        <span class="display-4 bold">Bildungsurlaub</span> <br />
+        5-10 Bildungstage pro Jahr
       </h2>
       <p>
         Wusstest du eigentlich, dass du einen gesetzlichen Anspruch auf
@@ -823,7 +839,7 @@
         anerkannten Kursen.
       </p>
 
-      <h2 id="umschulung" class="h1">
+      <h2 id="umschulung" class="display-4 bold">
         Umschulung zur MFA & ZFA
       </h2>
       <p>
@@ -861,7 +877,7 @@
         Anstellung zu finden.
       </p>
 
-      <h2 id="quereinstieg" class="h1">
+      <h2 id="quereinstieg" class="display-4 bold">
         Quereinstieg als MFA & ZFA
       </h2>
       <p>
