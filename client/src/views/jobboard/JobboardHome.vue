@@ -745,7 +745,7 @@
         this.getJobs();
       },
       capitalize(value) {
-        return value.replace(/(^\w|((?<=-)(.)){1})|(\s+\w{1})/g, letter =>
+        return value.replace(/(^[a-z]| [a-z]|-[a-z])/g, letter =>
           letter.toUpperCase()
         );
       },
