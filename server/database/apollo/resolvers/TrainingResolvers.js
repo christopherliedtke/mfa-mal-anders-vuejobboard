@@ -29,7 +29,7 @@ const TrainingResolvers = {
         //     .join(""),
         //   "gi"
         // );
-        const searchStr = new RegExp(args.search.replace(/ /g, "|"), "gi");
+        const searchStr = new RegExp(args.search.replace(/(\s)/g, "|"), "gi");
 
         filter.$or = [
           "title",

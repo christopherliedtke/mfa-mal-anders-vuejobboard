@@ -104,7 +104,7 @@
       <template #cell(location)="row">
         {{
           row.item.company
-            ? row.item.company.street.replace(/ /g, "&nbsp;") +
+            ? row.item.company.street.replace(/(\s)/g, "&nbsp;") +
               ", " +
               row.item.company.location +
               "&nbsp;" +

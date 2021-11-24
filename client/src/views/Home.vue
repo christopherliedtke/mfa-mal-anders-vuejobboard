@@ -284,8 +284,8 @@
     </div>
 
     <Head
-      title="Das Stellen- & Karriereportal nur für MFA & ZFA"
-      desc="Dein Job- und Karriereportal für ArzthelferInnen – Zahnmedizinische | Medizinische Fachangestellte (ZFA / MFA) | Stellenangebote | Weiterbildungen | Alternative Jobs | Gehalt | Bewerbung"
+      title="Das Karriereportal nur für MFA & ZFA"
+      desc="MFA mal anders ist dein Job- und Karriereportal speziell für ArzthelferIn | Medizinische Fachangestellte (MFA) | Zahnmedizinische Fachangestellte (ZFA)"
       img=""
       :script="snippet"
     />

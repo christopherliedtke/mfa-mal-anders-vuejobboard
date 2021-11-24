@@ -663,7 +663,7 @@
       setQuery() {
         const query = {
           ...this.filter,
-          ort: this.filter.ort.replace(/ /g, "-").toLowerCase(),
+          ort: this.filter.ort.replace(/(\s)/g, "-").toLowerCase(),
           berufsgruppe:
             typeof this.berufsgruppe.active === "object" &&
             this.berufsgruppe.active.length === this.professionOptions.length

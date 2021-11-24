@@ -5,8 +5,7 @@ const state = {
 
 const getters = {
   overlay: state => state.overlay,
-  starJobModal: state => state.starJobModal,
-  toast: state => state.overlay
+  starJobModal: state => state.starJobModal
 };
 
 const actions = {
