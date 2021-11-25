@@ -54,6 +54,11 @@
               id: "desc"
             },
             {
+              name: "robots",
+              content: "max-image-preview:large",
+              id: "max-image-preview"
+            },
+            {
               property: "og:type",
               content: "website",
               id: "og-type"

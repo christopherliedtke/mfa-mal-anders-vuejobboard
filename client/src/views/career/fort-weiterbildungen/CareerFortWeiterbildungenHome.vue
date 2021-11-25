@@ -917,7 +917,7 @@
     <ScrollToTopBtn />
 
     <Head
-      title="Fort- und Weiterbildung für ArzthelferInnen – MFA & ZFA"
+      title="Fort- und Weiterbildung für MFA | ZFA | ArzthelferInnen"
       :desc="
         `Fortbildungen und Weiterbildungen für Zahnmedizinische | Medizinische Fachangestellte (ZFA & MFA) im Gesundheitswesen || Überblick | Finanzierung | Studium`
       "
