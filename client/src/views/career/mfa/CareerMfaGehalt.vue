@@ -67,14 +67,14 @@
                 >
               </li>
               <li class="lead mt-3">
-                <b-link to="#auszeiten"
-                  >Mutterschutz, Elternzeit und Erziehungsurlaub</b-link
-                >
-              </li>
-              <li class="lead mt-3">
                 <b-link to="#berufsnahe-taetigkeiten"
                   >Anrechnung der Berufsjahre für MFA bei berufsnahen
                   Tätigkeiten</b-link
+                >
+              </li>
+              <li class="lead mt-3">
+                <b-link to="#auszeiten"
+                  >Mutterschutz, Elternzeit und Erziehungsurlaub</b-link
                 >
               </li>
               <li class="lead mt-3">
@@ -526,6 +526,25 @@
         Bei Beschäftigten in Teilzeit zählen die Berufsjahre genau wie bei
         Vollzeit-Beschäftigung und werden komplett angerechnet.
       </p>
+      <h3 id="berufsnahe-taetigkeiten">
+        Anrechnung der Berufsjahre für MFA bei berufsnahen Tätigkeiten
+      </h3>
+      <p>
+        Bist du vor oder nach deiner Ausbildung einer berufsnahen Arbeit
+        nachgegangen (z.B. in einem Labor oder im Krankenhaus), werden die
+        Zeiten zur Hälfte angerechnet. Du musst allerdings deine Prüfung zur
+        Medizinischen Fachangestellten vor der Ärztekammer bestanden haben.
+      </p>
+      <div class="example">
+        <p><strong>Beispiel:</strong></p>
+        <p class="pl-5">
+          <em>
+            Eine Medizinische Fachangestellte arbeitet vor (oder nach) ihrer
+            Ausbildung vier Jahre in einer Zahnarztpraxis. Hier werden 2
+            Berufsjahre angerechnet.
+          </em>
+        </p>
+      </div>
       <h3 id="auszeiten">
         Mutterschutz, Elternzeit und Erziehungsurlaub
       </h3>
@@ -579,25 +598,7 @@
           </div>
         </div>
       </div>
-      <h3 id="berufsnahe-taetigkeiten">
-        Anrechnung der Berufsjahre für MFA bei berufsnahen Tätigkeiten
-      </h3>
-      <p>
-        Bist du vor oder nach deiner Ausbildung einer berufsnahen Arbeit
-        nachgegangen (z.B. in einem Labor oder im Krankenhaus), werden die
-        Zeiten zur Hälfte angerechnet. Du musst allerdings deine Prüfung zur
-        Medizinischen Fachangestellten vor der Ärztekammer bestanden haben.
-      </p>
-      <div class="example">
-        <p><strong>Beispiel:</strong></p>
-        <p class="pl-5">
-          <em>
-            Eine Medizinische Fachangestellte arbeitet vor (oder nach) ihrer
-            Ausbildung vier Jahre in einer Zahnarztpraxis. Hier werden 2
-            Berufsjahre angerechnet.
-          </em>
-        </p>
-      </div>
+
       <h3 id="taetigkeitsgruppen">
         Tätigkeitsgruppen nach aktuellem Gehaltstarifvertrag für MFA
       </h3>
@@ -1556,7 +1557,7 @@
       :desc="
         `Gehalt als Medizinische Fachangestellte (MFA) | Gehaltstarifvertrag ${new Date().getFullYear()} | Tätigkeitsgruppen || Gehaltsrechner Teilzeit / Vollzeit`
       "
-      img="/img/MfaMalAnders_Gehalt_1200_.jpg"
+      img="/img/MfaMalAnders_Gehalt_1200.jpg"
       :script="snippet"
     />
   </article>
