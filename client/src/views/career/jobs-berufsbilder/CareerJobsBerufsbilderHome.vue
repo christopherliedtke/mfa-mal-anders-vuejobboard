@@ -172,7 +172,7 @@
     <Head
       :title="title"
       desc="50+ Alternative Jobs / Berufe für Zahnmedizinische | Medizinische Fachangestellte (ZFA / MFA) / ArzthelferIn || Stellenangebote | Fortbildungen | Weiterbildungen"
-      img="/img/MfaMalAnders_50+Jobmoeglichkeiten_1200.jpg"
+      img="/img/MfaMalAnders_50_Jobmoeglichkeiten_pxsady_c_scale,w_1200.jpg"
       :script="snippet"
     />
   </div>

@@ -921,7 +921,7 @@
       :desc="
         `Fortbildungen und Weiterbildungen für Zahnmedizinische | Medizinische Fachangestellte (ZFA & MFA) im Gesundheitswesen || Überblick | Finanzierung | Studium`
       "
-      img="/img/Banner_Weiterbildungsdschungel_1200.jpg"
+      img="/img/Weiterbildung_Weiterbildungsdschungel_ugahcj_c_scale,w_1200.jpg"
       :script="snippet"
     />
   </div>

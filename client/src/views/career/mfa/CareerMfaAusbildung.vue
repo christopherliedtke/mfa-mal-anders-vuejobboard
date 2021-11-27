@@ -499,7 +499,7 @@
     <Head
       :title="title"
       desc="MFA / ArzthelferIn Ausbildung | Gehalt | Aufgabenbereiche | Anforderungsprofil | Berufsbild"
-      img="/img/MfaMalAnders_AusbildungBerufsbild_1200.jpg"
+      img="/img/MfaMalAnders_AusbildungBerufsbild_n5ixa0_c_scale,w_1200.jpg"
       :script="snippet"
     />
   </div>

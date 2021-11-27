@@ -519,7 +519,7 @@
     <Head
       :title="title + ' | Tipps | Beispiele | Vorlage'"
       desc="Bewerbungstipps für Medizinische Fachangestellte (MFA / ZFA) / ArzthelferIn || Lebenslauf | Anschreiben | Tipps und mehr"
-      img="/img/MfaMalAnders_Bewerbungstipps_1200.jpg"
+      img="/img/MfaMalAnders_Bewerbungstipps_mh2kqw_c_scale,w_1200.jpg"
       :script="snippet"
     />
   </div>

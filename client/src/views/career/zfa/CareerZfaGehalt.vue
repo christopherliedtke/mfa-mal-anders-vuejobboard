@@ -966,7 +966,7 @@
       :desc="
         `Gehalt als Zahnmedizinische Fachangestellte (ZFA) | Gehaltstarifvertrag ${new Date().getFullYear()} | Tätigkeitsgruppen || Gehaltsrechner Teilzeit / Vollzeit`
       "
-      img="/img/MfaMalAnders_GehaltZfa_1200.jpg"
+      img="/img/MfaMalAnders_GehaltZfa_hkucp5_c_scale,w_1200.jpg"
       :script="snippet"
     />
   </article>
