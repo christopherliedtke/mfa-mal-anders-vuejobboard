@@ -5,7 +5,12 @@ const UserType = gql`
     me: User
     meFromToken: User
     adminUser(_id: ID!): User
-    adminUsers: [User]
+    adminUsers(
+      isEmployer: Boolean
+      isEmployee: Boolean
+      isEducational: Boolean
+      isAdmin: Boolean
+    ): [User]
   }
 
   extend type Mutation {

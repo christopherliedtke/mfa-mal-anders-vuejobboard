@@ -25,9 +25,57 @@
           ></b-button>
         </b-input-group-append>
       </b-input-group>
-      <div class="inline-block ml-3 my-3 my-lg-0">
-        Number of Users:
-        <strong>{{ filter.searchTerm ? count : users.length }}</strong>
+      <div class="d-flex align-items-center ml-3 my-3 my-lg-0">
+        <div class="mr-3">
+          Number of Users:
+          <strong>{{ filter.searchTerm ? count : users.length }}</strong>
+        </div>
+        <b-form-group class="d-none d-lg-inline-block">
+          <b-form-checkbox
+            id="is-employer"
+            v-model="filter.isEmployer"
+            class="m-0"
+            :value="true"
+            :unchecked-value="false"
+            inline
+            @change="getAllUsers()"
+          >
+            isEmployer
+          </b-form-checkbox>
+          <b-form-checkbox
+            id="is-employee"
+            v-model="filter.isEmployee"
+            class="m-0"
+            :value="true"
+            :unchecked-value="false"
+            inline
+            @change="getAllUsers()"
+          >
+            isEmployee
+          </b-form-checkbox>
+          <b-form-checkbox
+            id="is-educational"
+            v-model="filter.isEducational"
+            class="m-0"
+            :value="true"
+            :unchecked-value="false"
+            inline
+            @change="getAllUsers()"
+          >
+            isEducational
+          </b-form-checkbox>
+          <b-form-checkbox
+            id="is-admin"
+            v-model="filter.isAdmin"
+            class="m-0"
+            :value="true"
+            :unchecked-value="false"
+            inline
+            @change="getAllUsers()"
+          >
+            isAdmin
+          </b-form-checkbox>
+        </b-form-group>
       </div>
     </b-form>
     <b-table
@@ -207,7 +255,11 @@
         userToDelete: Object,
         error: false,
         filter: {
-          searchTerm: ""
+          searchTerm: "",
+          isEmployer: true,
+          isEmployee: true,
+          isEducational: true,
+          isAdmin: true
         },
         fields: [
           {
@@ -261,6 +313,11 @@
             sortable: true
           },
           {
+            key: "isAdmin",
+            label: "isAdmin",
+            sortable: true
+          },
+          {
             key: "actions",
             label: "Actions",
             sortable: false
@@ -280,7 +337,12 @@
             params: {
               query: `
                   query {
-                    adminUsers {
+                    adminUsers(
+                      isEmployer: ${this.filter.isEmployer},
+                      isEmployee: ${this.filter.isEmployee},
+                      isEducational: ${this.filter.isEducational},
+                      isAdmin: ${this.filter.isAdmin}
+                    ) {
                       _id
                       createdAt
                       updatedAt
@@ -291,6 +353,7 @@
                       isEmployer
                       isEmployee
                       isEducational
+                      isAdmin
                     }
                   }
               `
@@ -462,3 +525,11 @@
     }
   };
 </script>
+
+<style lang="scss">
+  #admin-users {
+    label {
+      margin: 0 0.75rem 0 0;
+    }
+  }
+</style>

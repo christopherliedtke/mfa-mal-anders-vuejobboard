@@ -73,7 +73,20 @@ const UserResolvers = {
         throw new AuthenticationError("Missing permission!");
       }
 
-      const users = await User.find().sort({
+      const { isEmployer, isEmployee, isEducational, isAdmin } = args;
+
+      let filter = {
+        $or: [],
+      };
+
+      isEmployer ? filter.$or.push({ isEmployer }) : null;
+      isEmployee ? filter.$or.push({ isEmployee }) : null;
+      isEducational ? filter.$or.push({ isEducational }) : null;
+      isAdmin ? filter.$or.push({ isAdmin }) : null;
+
+      filter.$or.length == 0 ? (filter = {}) : null;
+
+      const users = await User.find(filter).sort({
         createdAt: "desc",
       });
 
