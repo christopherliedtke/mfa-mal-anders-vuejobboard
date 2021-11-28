@@ -299,22 +299,22 @@ const JobResolvers = {
 function cleanUpJob(job, user) {
   if (user.isAdmin) {
     if (job.publishedAt) {
-      job.publishedAt = new Date(job.publishedAt).setHours(0);
+      job.publishedAt = new Date(job.publishedAt).setHours(0, 0, 0, 0);
     }
     if (job.paidExpiresAt) {
-      job.paidExpiresAt = new Date(job.paidExpiresAt).setHours(23);
+      job.paidExpiresAt = new Date(job.paidExpiresAt).setHours(23, 59, 59, 999);
     }
     if (job.paidExpiresAt && job.paidExpiresAt >= new Date()) {
       job.paid = true;
       job.status = "published";
     }
     if (job.status === "published" && !job.publishedAt) {
-      job.publishedAt = new Date().setHours(0);
+      job.publishedAt = new Date().setHours(0, 0, 0, 0);
     }
     if (job.paid && !job.paidExpiresAt) {
       job.paidExpiresAt =
         job.paidExpiresAt ||
-        new Date().setHours(23) +
+        new Date().setHours(23, 59, 59, 999) +
           1000 * 60 * 60 * 24 * config.payment.paymentExpirationDays;
     }
     if (job.paid === false) {

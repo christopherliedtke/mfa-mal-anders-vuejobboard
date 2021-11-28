@@ -261,9 +261,9 @@
           billingStreet: "",
           billingZipCode: "",
           billingLocation: "",
-          paidAt: new Date().setHours(0),
+          paidAt: new Date().setHours(0, 0, 0, 0),
           paymentExpiresAt:
-            new Date().setHours(23) +
+            new Date().setHours(23, 59, 59, 999) +
             1000 * 60 * 60 * 24 * this.$config.payment.minDuration
         },
         contactGenderOptions,
@@ -276,7 +276,7 @@
           return new Date(this.payment.invoiceDate);
         },
         set(value) {
-          this.payment.invoiceDate = new Date(value).setHours(12);
+          this.payment.invoiceDate = new Date(value).getTime();
         }
       },
       paidAt: {
@@ -292,7 +292,12 @@
           return new Date(this.payment.paymentExpiresAt);
         },
         set(value) {
-          this.payment.paymentExpiresAt = new Date(value).setHours(23);
+          this.payment.paymentExpiresAt = new Date(value).setHours(
+            23,
+            59,
+            59,
+            999
+          );
         }
       }
     },

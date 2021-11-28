@@ -24,12 +24,8 @@ export const saveJobMixin = {
                                 applicationDeadline: ${
                                   job.applicationDeadline
                                     ? new Date(
-                                        new Date(
-                                          new Date(
-                                            job.applicationDeadline
-                                          ).setHours(23)
-                                        ).setMinutes(59)
-                                      ).setSeconds(59)
+                                        job.applicationDeadline
+                                      ).setHours(23, 59, 59, 999)
                                     : null
                                 }
                                 simpleApplication: ${job.simpleApplication}

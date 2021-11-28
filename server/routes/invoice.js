@@ -79,7 +79,7 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
       fee: 0,
       taxes: tax,
       paymentExpiresAt: new Date(
-        new Date().setHours(23) +
+        new Date().setHours(23, 59, 59, 999) +
           1000 *
             60 *
             60 *
