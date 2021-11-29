@@ -656,6 +656,20 @@ const UserResolvers = {
       return user;
     },
   },
+
+  JobSeek: {
+    user: async (jobSeek, args, context) => {
+      if (!context.user.isAdmin) {
+        throw new AuthenticationError("Missing permission!");
+      }
+
+      const user = await User.findOne({ _id: jobSeek.user });
+
+      delete user.password;
+
+      return user;
+    },
+  },
 };
 
 module.exports = UserResolvers;
