@@ -119,6 +119,8 @@
         :reset-button="true"
         :reset-value="''"
         label-reset-button="Zurücksetzen"
+        label-help=""
+        start-weekday="1"
       />
 
       <label for="simple-applcation">Nur mit Lebenslauf bewerben</label>

@@ -167,6 +167,14 @@
                   $store.state.auth.user.isEmployee ||
                     $store.state.auth.user.isAdmin
                 "
+                to="/user/stellengesuche"
+                >Stellengesuche</router-link
+              >
+              <router-link
+                v-if="
+                  $store.state.auth.user.isEmployee ||
+                    $store.state.auth.user.isAdmin
+                "
                 to="/user/job-newsletter"
                 >Job-Newsletter</router-link
               >

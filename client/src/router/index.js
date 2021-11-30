@@ -227,6 +227,14 @@ const UserJobAlerts = () =>
   import(
     /* webpackChunkName: "user" */ "@/views/user/jobAlerts/UserJobAlerts.vue"
   );
+const UserJobSeeks = () =>
+  import(
+    /* webpackChunkName: "user" */ "@/views/user/jobSeeks/UserJobSeeks.vue"
+  );
+const UserEditJobSeek = () =>
+  import(
+    /* webpackChunkName: "job_seek_edit" */ "@/views/user/jobSeeks/edit/_jobSeekId.vue"
+  );
 const UserCheckoutJob = () =>
   import(
     /* webpackChunkName: "user_company" */ "@/views/user/checkout/_jobId.vue"
@@ -717,6 +725,22 @@ const routes = [
     path: "/user/job-newsletter",
     name: "UserJobAlerts",
     component: UserJobAlerts,
+    meta: {
+      public: false
+    }
+  },
+  {
+    path: "/user/stellengesuche",
+    name: "UserJobSeeks",
+    component: UserJobSeeks,
+    meta: {
+      public: false
+    }
+  },
+  {
+    path: "/user/stellengesuche/edit/:jobSeekId",
+    name: "UserEditJobSeek",
+    component: UserEditJobSeek,
     meta: {
       public: false
     }

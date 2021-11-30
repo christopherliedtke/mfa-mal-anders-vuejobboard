@@ -16,13 +16,6 @@ const JobSeekType = gql`
       about: String!
       tasks: String!
       experiences: String!
-      gender: String
-      firstName: String!
-      lastName: String!
-      contactEmail: String!
-      birthDate: Float
-      imageUrl: String
-      zipCode: String
       isMfa: Boolean
       isZfa: Boolean
       qualifications: [String]
@@ -32,6 +25,14 @@ const JobSeekType = gql`
       miniJob: Boolean
       salaryMin: Float
       anonymized: Boolean
+      gender: String
+      firstName: String!
+      lastName: String!
+      contactEmail: String!
+      birthDate: Float
+      imageUrl: String
+      location: String
+      zipCode: String
       published: Boolean
     ): JobSeek
     updateJobSeek(
@@ -40,13 +41,6 @@ const JobSeekType = gql`
       about: String!
       tasks: String!
       experiences: String!
-      gender: String
-      firstName: String!
-      lastName: String!
-      contactEmail: String!
-      birthDate: Float
-      imageUrl: String
-      zipCode: String
       isMfa: Boolean
       isZfa: Boolean
       qualifications: [String]
@@ -56,6 +50,14 @@ const JobSeekType = gql`
       miniJob: Boolean
       salaryMin: Float
       anonymized: Boolean
+      gender: String
+      firstName: String!
+      lastName: String!
+      contactEmail: String!
+      birthDate: Float
+      imageUrl: String
+      location: String
+      zipCode: String
       published: Boolean
     ): JobSeek
     deleteJobSeek(_id: ID!): JobSeek
@@ -69,6 +71,15 @@ const JobSeekType = gql`
     about: String!
     tasks: String!
     experiences: String!
+    isMfa: Boolean
+    isZfa: Boolean
+    qualifications: [String]
+    partTime: Boolean
+    fullTime: Boolean
+    training: Boolean
+    miniJob: Boolean
+    salaryMin: Float
+    anonymized: Boolean
     gender: String
     firstName: String!
     lastName: String!
@@ -83,16 +94,7 @@ const JobSeekType = gql`
     country: String
     geoCodeLat: Float
     geoCodeLng: Float
-    isMfa: Boolean
-    isZfa: Boolean
-    qualifications: [String]
-    partTime: Boolean
-    fullTime: Boolean
-    training: Boolean
-    miniJob: Boolean
-    salaryMin: Float
     lastCheckedAt: Float
-    anonymized: Boolean
     published: Boolean
   }
 `;

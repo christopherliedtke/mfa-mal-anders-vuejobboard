@@ -215,6 +215,8 @@
             :reset-button="true"
             :reset-value="''"
             label-reset-button="Zurücksetzen"
+            label-help=""
+            start-weekday="1"
           />
           <label for="end-at">Enddatum</label>
           <BFormDatepicker
@@ -225,6 +227,8 @@
             :reset-button="true"
             :reset-value="''"
             label-reset-button="Zurücksetzen"
+            label-help=""
+            start-weekday="1"
           />
         </div>
       </b-form-group>

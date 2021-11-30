@@ -12,12 +12,18 @@ const JobSeekResolvers = {
         published: true,
       });
 
+      // ! delete non-anonymized & sensible data
+      // ! check for valid payment -> hide contact data
+
       return jobSeek;
     },
     publicJobSeeks: async (root, args) => {
       const jobSeeks = await JobSeek.find({
         published: true,
       });
+
+      // ! delete non-anonymized & sensible data
+      // ! check for valid payment -> hide contact data
 
       return jobSeeks;
     },
@@ -48,7 +54,7 @@ const JobSeekResolvers = {
         user: context.user._id,
       }).sort({ createdAt: "desc" });
 
-      // ? update all jobSeeks' lastCheckedAt field
+      // ! update all jobSeeks' lastCheckedAt field
 
       return jobSeeks;
     },

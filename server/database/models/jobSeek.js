@@ -24,6 +24,36 @@ const JobSeekSchema = new Schema(
       type: String,
       required: true,
     },
+    isMfa: {
+      type: Boolean,
+      default: false,
+    },
+    isZfa: {
+      type: Boolean,
+      default: false,
+    },
+    qualifications: {
+      type: [String],
+    },
+    partTime: {
+      type: Boolean,
+    },
+    fullTime: {
+      type: Boolean,
+    },
+    training: {
+      type: Boolean,
+    },
+    miniJob: {
+      type: Boolean,
+    },
+    salaryMin: {
+      type: Number,
+    },
+    anonymized: {
+      type: Boolean,
+      default: true,
+    },
     gender: {
       type: String,
     },
@@ -39,7 +69,7 @@ const JobSeekSchema = new Schema(
       type: String,
       default: function () {
         if (this.firstName && this.anonymized) {
-          return this.firstName.charAt(0);
+          return this.firstName.charAt(0) + ".";
         } else if (this.firstName) {
           return this.firstName;
         } else {
@@ -51,7 +81,7 @@ const JobSeekSchema = new Schema(
       type: String,
       default: function () {
         if (this.lastName && this.anonymized) {
-          return this.lastName.charAt(0);
+          return this.lastName.charAt(0) + ".";
         } else if (this.lastName) {
           return this.lastName;
         } else {
@@ -93,32 +123,6 @@ const JobSeekSchema = new Schema(
     geoCodeLng: {
       type: Number,
     },
-    isMfa: {
-      type: Boolean,
-      default: false,
-    },
-    isZfa: {
-      type: Boolean,
-      default: false,
-    },
-    qualifications: {
-      type: [String],
-    },
-    partTime: {
-      type: Boolean,
-    },
-    fullTime: {
-      type: Boolean,
-    },
-    training: {
-      type: Boolean,
-    },
-    miniJob: {
-      type: Boolean,
-    },
-    salaryMin: {
-      type: Number,
-    },
     lastCheckedAt: {
       type: Date,
       default: function () {
@@ -128,10 +132,6 @@ const JobSeekSchema = new Schema(
           return null;
         }
       },
-    },
-    anonymized: {
-      type: Boolean,
-      default: true,
     },
     published: {
       type: Boolean,

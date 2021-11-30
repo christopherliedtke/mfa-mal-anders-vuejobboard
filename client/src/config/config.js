@@ -28,7 +28,7 @@ module.exports = {
     path: "MfaMalAnders"
   },
   ig: {
-    path: "mfa.mal.anders"
+    path: "mfa.mal.anders/"
   },
   ga: {
     active: true,
