@@ -1,6 +1,7 @@
-const { AuthenticationError } = require("apollo-server-express");
+const { AuthenticationError, ApolloError } = require("apollo-server-express");
 const sanitizeHtml = require("sanitize-html");
 const s3 = require("../../../middleware/s3");
+const getLocation = require("../../../utils/geocoder");
 // const config = require("../../../config/config");
 const { JobSeek } = require("../../models/jobSeek");
 
@@ -85,7 +86,25 @@ const JobSeekResolvers = {
       if (!context.user._id) {
         throw new AuthenticationError("Must be logged in!");
       }
-      const addObj = cleanUpJobSeek({ ...args, user: context.user._id });
+
+      const locations = await getLocation(`${args.zipCode} ${args.location}`);
+
+      if (!locations) {
+        throw new ApolloError(
+          `Es konnte kein passender Ort für "${args.zipCode} ${args.location}" gefunden werden oder der Ortungsservice funktioniert aktuell nicht. Bitte überprüfe ggfls. Ort und PLZ.`
+        );
+      }
+
+      const addObj = cleanUpJobSeek({
+        ...args,
+        user: context.user._id,
+        location: locations[0].address.city,
+        zipCode: locations[0].address.postalCode,
+        state: locations[0].address.state,
+        country: locations[0].address.countryName,
+        geoCodeLat: locations[0].position.lat,
+        geoCodeLng: locations[0].position.lng,
+      });
 
       const newJobSeekObj = new JobSeek(addObj);
       const newJobSeek = await newJobSeekObj.save();
@@ -99,6 +118,8 @@ const JobSeekResolvers = {
 
       const updateObj = cleanUpJobSeek({ ...args });
       delete updateObj._id;
+
+      // ! get location
 
       const filter = { _id: args._id };
       if (!context.user.isAdmin) {

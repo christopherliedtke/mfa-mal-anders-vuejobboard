@@ -56,7 +56,7 @@
       />
 
       <label class="mb-0 mt-4"
-        >Abgeschlossene Ausbildung
+        >Abgeschlossene Ausbildung <br />
         <small class="text-muted"
           >Sonstige abgeschlossene Ausbildungen bitte bei QUALIFIKATIONEN
           angeben</small
@@ -136,7 +136,7 @@
       </div>
 
       <label for="min-salary"
-        >Dein Gehaltswunsch (monatlich brutto)
+        >Dein Gehaltswunsch (monatlich brutto) <br />
         <small class="text-muted"
           >Informiere Dich mit unserem
           <b-link
@@ -170,10 +170,10 @@
         name="anonymized"
         switch
       >
-        Meine Daten anonym veröffentlichen *
+        Meine Daten anonym veröffentlichen * <br />
         <span class="small text-muted"
-          >Deine E-Mail Adresse ist nicht öffentlich ersichtlich. Dein Name wird
-          mit Initialien abgekürzt – z.&nbsp;B. M.M. statt Maxi Mustermann</span
+          >Dein Name wird mit Initialien abgekürzt – z.&nbsp;B. M.M. statt Maxi
+          Mustermann</span
         >
       </b-form-checkbox>
 
@@ -212,7 +212,14 @@
         trim
       ></b-form-input>
 
-      <label for="email" required>E-Mail Adresse</label>
+      <label for="email"
+        >E-Mail Adresse * <br />
+        <small class="text-muted"
+          >Deine E-Mail Adresse ist nicht öffentlich ersichtlich. Nachrichten
+          von Arbeitgebern werden über unsere Plattform an diese E-Mail Adresse
+          weitergeleitet.</small
+        ></label
+      >
       <b-form-input
         id="email"
         v-model="jobSeek.contactEmail"
@@ -239,7 +246,8 @@
       /> -->
 
       <label for="file"
-        >Dein Bild <small>[optional] (jpg, png | max. 5MB)</small></label
+        >Dein Bild <br />
+        <small>[optional] (jpg, png | max. 5MB)</small></label
       >
       <ImageUploader
         :validated="validated"
@@ -270,7 +278,8 @@
       </div>
 
       <label for="location"
-        >Ort * <small class="text-muted">Dein Wohnort</small></label
+        >Ort * <br />
+        <small class="text-muted">Dein Wohnort</small></label
       >
       <b-form-input
         id="location"
@@ -285,7 +294,8 @@
       />
 
       <label for="zip-code"
-        >PLZ * <small class="text-muted">zu Deinem Wohnort</small></label
+        >PLZ * <br />
+        <small class="text-muted">zu Deinem Wohnort</small></label
       >
       <b-form-input
         id="zip-code"
@@ -296,7 +306,20 @@
         required
         trim
       />
+
+      <div class="d-flex justify-content-between my-4">
+        <b-button variant="outline-danger" @click.prevent="$router.go(-1)">
+          Abbrechen
+        </b-button>
+        <b-button variant="success" @click.prevent="onSubmit">
+          Speichern
+        </b-button>
+      </div>
     </b-form>
+
+    <b-alert v-if="error" class="mt-3" show dismissible variant="danger">{{
+      error
+    }}</b-alert>
   </div>
 </template>
 
@@ -317,6 +340,7 @@
     data() {
       return {
         jobSeek: {
+          _id: "",
           title: "",
           about: "",
           tasks: "",
@@ -363,7 +387,171 @@
     //     }
     //   }
     // },
+
+    async created() {
+      await this.getJobSeek();
+    },
     methods: {
+      async getJobSeek() {
+        if (this.$route.params.jobSeekId == "new") {
+          return null;
+        }
+
+        this.$store.dispatch("setOverlay", true);
+
+        try {
+          const jobSeek = await this.$axios.get("/graphql", {
+            params: {
+              query: `
+                query {
+                  myJobSeek(
+                    _id: "${this.$route.params.jobSeekId}"
+                  ) {
+                    _id
+                    title
+                    about
+                    experiences
+                    tasks
+                    isMfa
+                    isZfa
+                    qualifications
+                    partTime
+                    fullTime
+                    training
+                    miniJob
+                    salaryMin
+                    anonymized
+                    gender
+                    firstName
+                    lastName
+                    contactEmail
+                    imageUrl
+                    location
+                    zipCode
+                  }
+                }
+              `
+            }
+          });
+
+          if (jobSeek.data.errors) {
+            throw new Error();
+          }
+
+          this.jobSeek = jobSeek.data.data.myJobSeek;
+        } catch (err) {
+          this.$root.$bvToast.toast(
+            "Beim Laden des Stellengesuchs ist ein Fehler aufgetreten. Bitte versuche es noch einmal, indem Du die Seite neu lädst.",
+            {
+              title: `Fehler beim Laden`,
+              variant: "danger",
+              toaster: "b-toaster-bottom-right",
+              solid: true,
+              noAutoHide: true
+            }
+          );
+        }
+
+        this.$store.dispatch("setOverlay", false);
+      },
+      async onSubmit() {
+        this.error = false;
+
+        if (!this.formValidation()) {
+          this.error =
+            "Bitte fülle die erforderlichen Felder aus und beachte die Zeichenvorgaben!";
+
+          return null;
+        }
+
+        this.$store.dispatch("setOverlay", true);
+
+        let jobSeekMutationType;
+
+        this.jobSeek._id
+          ? (jobSeekMutationType = "updateJobSeek")
+          : (jobSeekMutationType = "addJobSeek");
+
+        try {
+          const jobSeekQuery = `
+                mutation {
+                  ${jobSeekMutationType}(
+                    ${
+                      jobSeekMutationType === "updateJobSeek"
+                        ? `_id: "${this.jobSeek._id}"`
+                        : ""
+                    }
+                    title: "${this.jobSeek.title}"
+                    about: "${this.jobSeek.about.replace(/"/g, '\\"')}"
+                    experiences: "${this.jobSeek.experiences.replace(
+                      /"/g,
+                      '\\"'
+                    )}"
+                    tasks: "${this.jobSeek.tasks.replace(/"/g, '\\"')}"
+                    isMfa: ${this.jobSeek.isMfa}
+                    isZfa: ${this.jobSeek.isZfa}
+                    qualifications: ${JSON.stringify(
+                      this.jobSeek.qualifications
+                    )}
+                    partTime: ${this.jobSeek.partTime}
+                    fullTime: ${this.jobSeek.fullTime}
+                    training: ${this.jobSeek.training}
+                    miniJob: ${this.jobSeek.miniJob}
+                    salaryMin: ${this.jobSeek.salaryMin}
+                    anonymized: ${this.jobSeek.anonymized}
+                    gender: "${this.jobSeek.gender}"
+                    firstName: "${this.jobSeek.firstName}"
+                    lastName: "${this.jobSeek.lastName}"
+                    contactEmail: "${this.jobSeek.contactEmail}"
+                    imageUrl: "${this.jobSeek.imageUrl}"
+                    location: "${this.jobSeek.location}"
+                    zipCode: "${this.jobSeek.zipCode}"
+                  ) {
+                    _id
+                  }
+                }
+              `;
+
+          const jobSeekQueryResponse = await this.$axios.post(`/graphql`, {
+            query: jobSeekQuery
+          });
+
+          if (jobSeekQueryResponse.data.errors) {
+            throw new Error(jobSeekQueryResponse.data.errors[0].message);
+          }
+
+          this.$gtag.event(jobSeekMutationType, {
+            event_label: `${this.jobSeek.title} | ${this.jobSeek.location} - ${jobSeekQueryResponse.data.data[jobSeekMutationType]._id}`
+          });
+
+          this.$root.$bvToast.toast(
+            "Das Stellengesuch wurde erfolgreich gespeichert.",
+            {
+              title: `Stellengesuch gespeichert`,
+              variant: "success",
+              toaster: "b-toaster-bottom-right",
+              solid: true
+            }
+          );
+
+          window.history.length > 2
+            ? this.$router.go(-1)
+            : this.$router.push("/user/stellengesuche");
+        } catch (err) {
+          this.$root.$bvToast.toast(
+            `Beim Speichern des Stellengesuchs ist ein Fehler aufgetreten. ${err}`,
+            {
+              title: `Fehler beim Speichern`,
+              variant: "danger",
+              toaster: "b-toaster-bottom-right",
+              solid: true,
+              noAutoHide: true
+            }
+          );
+        }
+
+        this.$store.dispatch("setOverlay", false);
+      },
       formatter(value) {
         return value.replaceAll('"', "'");
       },

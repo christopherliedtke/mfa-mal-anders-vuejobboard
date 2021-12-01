@@ -5,7 +5,8 @@
       {{ $route.params.jobSeekId === "new" ? "erstellen" : "bearbeiten" }}
     </h2>
     <p>
-      Bearbeite Dein Stellengesuch. Felder mit * sind Pflichtfelder.
+      Bearbeite Dein Stellengesuch. Felder mit * sind Pflichtfelder. Nach dem
+      Speichern ist das Stellengesuch nicht automatisch veröffentlicht.
     </p>
     <JobSeekForm />
   </div>

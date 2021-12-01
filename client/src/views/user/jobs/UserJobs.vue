@@ -273,7 +273,7 @@
 
       <BModal
         :id="job._id"
-        :title="`Delete ${job.title}`"
+        :title="`Lösche ${job.title}`"
         ok-title="Stellenanzeige löschen"
         cancel-title="Abbrechen"
         centered

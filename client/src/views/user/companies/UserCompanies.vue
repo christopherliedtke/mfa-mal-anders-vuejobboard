@@ -121,7 +121,7 @@
       </div>
       <BModal
         :id="company._id"
-        :title="`Delete ${company.name}`"
+        :title="`Lösche ${company.name}`"
         ok-title="Unternehmen löschen"
         cancel-title="Abbrechen"
         centered

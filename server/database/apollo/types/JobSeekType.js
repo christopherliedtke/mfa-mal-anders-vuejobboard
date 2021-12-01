@@ -14,8 +14,8 @@ const JobSeekType = gql`
     addJobSeek(
       title: String!
       about: String!
-      tasks: String!
       experiences: String!
+      tasks: String!
       isMfa: Boolean
       isZfa: Boolean
       qualifications: [String]
@@ -37,10 +37,10 @@ const JobSeekType = gql`
     ): JobSeek
     updateJobSeek(
       _id: ID!
-      title: String!
-      about: String!
-      tasks: String!
-      experiences: String!
+      title: String
+      about: String
+      experiences: String
+      tasks: String
       isMfa: Boolean
       isZfa: Boolean
       qualifications: [String]
@@ -51,9 +51,9 @@ const JobSeekType = gql`
       salaryMin: Float
       anonymized: Boolean
       gender: String
-      firstName: String!
-      lastName: String!
-      contactEmail: String!
+      firstName: String
+      lastName: String
+      contactEmail: String
       birthDate: Float
       imageUrl: String
       location: String
@@ -69,8 +69,8 @@ const JobSeekType = gql`
     updatedAt: Float
     title: String!
     about: String!
-    tasks: String!
     experiences: String!
+    tasks: String!
     isMfa: Boolean
     isZfa: Boolean
     qualifications: [String]

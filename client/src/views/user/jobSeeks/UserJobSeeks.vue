@@ -35,10 +35,52 @@
     <div
       v-for="jobSeek in myJobSeeks"
       :key="jobSeek._id"
-      class="card shadow1 bg-light my-3"
+      class="card shadow1 border-radius2 bg-light-shade my-3"
     >
       <div class="card-body">
-        <h4>{{ jobSeek.title }}</h4>
+        <div class="d-flex align-items-center mb-2">
+          <b-img-lazy
+            v-if="jobSeek.imageUrl"
+            :src="jobSeek.imageUrl"
+            width="70"
+            height="70"
+            class="img-fluid rounded-circle shadow1 mr-2"
+          />
+          <h4
+            class="d-inline-block m-0"
+            style="overflow: hidden; word-wrap: break-word"
+          >
+            {{ jobSeek.title }} |
+            <span class="text-muted lead"> {{ jobSeek.location }}</span>
+          </h4>
+        </div>
+        <div>
+          <span
+            v-if="jobSeek.published"
+            class="badge badge-pill badge-success mr-1"
+            >online</span
+          >
+          <span
+            v-if="!jobSeek.published"
+            class="badge badge-pill badge-danger mr-1"
+            >offline</span
+          >
+        </div>
+
+        <div class="my-3">
+          <div>
+            Erstellt:
+            <span class="text-muted">
+              {{ new Date(parseInt(jobSeek.createdAt)).toLocaleString() }}
+            </span>
+          </div>
+          <div>
+            Zuletzt aktualisiert:
+            <span class="text-muted">
+              {{ new Date(parseInt(jobSeek.updatedAt)).toLocaleString() }}
+            </span>
+          </div>
+        </div>
         <div class="d-flex justify-content-between align-items-end">
           <div>
             <b-button
@@ -64,6 +106,62 @@
               </svg>
               Bearbeiten</b-button
             >
+            <b-button
+              class="mr-2 mb-2 mb-md-0"
+              :to="`/user/stellengesuche/preview/${jobSeek._id}`"
+              target="_blank"
+              variant="info"
+              size="sm"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-eye-fill mr-2"
+                viewBox="0 0 16 16"
+              >
+                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                <path
+                  d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"
+                />
+              </svg>
+              Vorschau</b-button
+            >
+
+            <BDropdown
+              class="mr-2 mb-2 mb-md-0"
+              size="sm"
+              left
+              variant="secondary"
+            >
+              <template #button-content>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-three-dots-vertical mr-2"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"
+                  />
+                </svg>
+                Status ändern
+              </template>
+              <BDropdownItem
+                variant="danger"
+                :active="jobSeek.published === false"
+                @click.prevent="updateJobSeekStatus(jobSeek._id, false)"
+                >Offline</BDropdownItem
+              >
+              <BDropdownItem
+                variant="success"
+                :active="jobSeek.published === true"
+                @click.prevent="updateJobSeekStatus(jobSeek._id, true)"
+                >Online</BDropdownItem
+              >
+            </BDropdown>
           </div>
           <div>
             <b-button v-b-modal="jobSeek._id" variant="outline-danger" size="sm"
@@ -86,7 +184,7 @@
       </div>
       <BModal
         :id="jobSeek._id"
-        :title="`Delete ${jobSeek.title}`"
+        :title="`Lösche ${jobSeek.title}`"
         ok-title="Stellengesuch löschen"
         cancel-title="Abbrechen"
         centered
@@ -106,9 +204,11 @@
 <script>
   import UserNav from "@/components/navs/UserNav.vue";
   import Vue from "vue";
-  import { BModal, VBModal } from "bootstrap-vue";
+  import { BModal, VBModal, BDropdown, BDropdownItem } from "bootstrap-vue";
   Vue.component("BModal", BModal);
   Vue.directive("b-modal", VBModal);
+  Vue.component("BDropdown", BDropdown);
+  Vue.component("BDropdownItem", BDropdownItem);
   export default {
     name: "UserJobSeeks",
     components: {
@@ -135,7 +235,10 @@
                     _id
                     createdAt
                     updatedAt
+                    published
                     title
+                    location
+                    imageUrl
                   }
                 }
               `
@@ -158,9 +261,57 @@
 
         this.$store.dispatch("setOverlay", false);
       },
+      async updateJobSeekStatus(jobSeekId, status) {
+        this.$store.dispatch("setOverlay", true);
+
+        try {
+          const updatedJobSeek = await this.$axios.post("/graphql", {
+            query: `
+              mutation {
+                updateJobSeek (
+                  _id: "${jobSeekId}"
+                  published: ${status}
+                ) {
+                  _id
+                  createdAt
+                  updatedAt
+                  published
+                  title
+                  location
+                  imageUrl
+                }
+              }
+            `
+          });
+
+          if (updatedJobSeek.data.errors) {
+            throw new Error();
+          }
+
+          this.myJobSeeks.forEach((jobSeek, index) => {
+            if (jobSeek._id === jobSeekId) {
+              this.myJobSeeks[index].published =
+                updatedJobSeek.data.data.updateJobSeek.published;
+            }
+          });
+        } catch (err) {
+          this.$root.$bvToast.toast(
+            "Das Stellengesuch konnte nicht aktualisiert werden. Bitte versuche es später noch einmal.",
+            {
+              title: `Fehler beim Aktualisieren`,
+              variant: "danger",
+              toaster: "b-toaster-bottom-right",
+              solid: true,
+              noAutoHide: true
+            }
+          );
+        }
+
+        this.$store.dispatch("setOverlay", false);
+      },
       async deleteJobSeek(jobSeekId) {
         try {
-          const company = await this.$axios.post("/graphql", {
+          const jobSeek = await this.$axios.post("/graphql", {
             query: `
               mutation {
                 deleteJobSeek(_id: "${jobSeekId}") {
@@ -170,7 +321,7 @@
             `
           });
 
-          if (company.data.data.deleteJobSeek._id) {
+          if (jobSeek.data.data.deleteJobSeek._id) {
             this.myJobSeeks.forEach((jobSeek, index) => {
               if (jobSeek._id === jobSeekId) {
                 this.myJobSeeks.splice(index, 1);
