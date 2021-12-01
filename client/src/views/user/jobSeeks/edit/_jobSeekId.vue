@@ -8,7 +8,7 @@
       Bearbeite Dein Stellengesuch. Felder mit * sind Pflichtfelder. Nach dem
       Speichern ist das Stellengesuch nicht automatisch veröffentlicht.
     </p>
-    <JobSeekForm />
+    <JobSeekForm class="mt-4" />
   </div>
 </template>
 
