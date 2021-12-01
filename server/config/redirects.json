@@ -4,35 +4,19 @@
     "new": "/stellenangebote"
   },
   {
-    "old": "/page/about",
-    "new": "/ueber"
-  },
-  {
-    "old": "/2020/03/16/gehalt-fuer-medizinische-fachangestellte",
-    "new": "/karriere/mfa/gehalt"
-  },
-  {
     "old": "/page/mfa-career/gehalt",
     "new": "/karriere/mfa/gehalt"
-  },
-  {
-    "old": "/2019/12/29/lebenslauf-und-anschreiben-erstelle-schnell-und-unkompliziert-eine-top-bewerbung-mit-unserer-vorlage",
-    "new": "/karriere/bewerbung"
-  },
-  {
-    "old": "/page/mfa-career/bewerbungstipps",
-    "new": "/karriere/bewerbung"
   },
   {
     "old": "/karriere/bewerbungstipps",
     "new": "/karriere/bewerbung"
   },
   {
-    "old": "/page/blog",
-    "new": "/blog"
+    "old": "/article/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst",
+    "new": "/blog/artikel/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
   },
   {
-    "old": "/article/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst",
+    "old": "/blog/article/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst",
     "new": "/blog/artikel/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
   },
   {
@@ -40,7 +24,15 @@
     "new": "/blog/artikel/8-tipps-fuer-attraktive-stellenanzeigen-fuer-mfas"
   },
   {
+    "old": "/blog/article/8-tipps-fuer-attraktive-stellenanzeigen-fuer-mfas",
+    "new": "/blog/artikel/8-tipps-fuer-attraktive-stellenanzeigen-fuer-mfas"
+  },
+  {
     "old": "/article/tipps-fuer-einen-effizienten-bewerbungsprozess",
+    "new": "/blog/artikel/tipps-fuer-einen-effizienten-bewerbungsprozess"
+  },
+  {
+    "old": "/blog/article/tipps-fuer-einen-effizienten-bewerbungsprozess",
     "new": "/blog/artikel/tipps-fuer-einen-effizienten-bewerbungsprozess"
   },
   {
@@ -48,7 +40,15 @@
     "new": "/blog/artikel/4-tipps-wie-du-die-richtige-stelle-fuer-dich-findest"
   },
   {
+    "old": "/blog/article/4-tipps-wie-du-die-richtige-stelle-fuer-dich-findest",
+    "new": "/blog/artikel/4-tipps-wie-du-die-richtige-stelle-fuer-dich-findest"
+  },
+  {
     "old": "/article/was-macht-eigentlich-eine-verah-naepa",
+    "new": "/blog/artikel/was-macht-eigentlich-eine-verah-naepa"
+  },
+  {
+    "old": "/blog/article/was-macht-eigentlich-eine-verah-naepa",
     "new": "/blog/artikel/was-macht-eigentlich-eine-verah-naepa"
   },
   {
@@ -56,27 +56,31 @@
     "new": "/blog/artikel/was-macht-man-eigentlich-als-fachwirtin-im-gesundheits-und-sozialwesen"
   },
   {
-    "old": "/article/15-geschenke-fuer-mfa-arzthelferin",
-    "new": "/blog/artikel/10-geschenke-fuer-mfa-zfa-arzthelferin"
+    "old": "/blog/article/was-macht-man-eigentlich-als-fachwirtin-im-gesundheits-und-sozialwesen",
+    "new": "/blog/artikel/was-macht-man-eigentlich-als-fachwirtin-im-gesundheits-und-sozialwesen"
   },
   {
     "old": "/article/15-geschenke-fuer-mfa-arzthelferin",
     "new": "/blog/artikel/10-geschenke-fuer-mfa-zfa-arzthelferin"
   },
   {
-    "old": "/artikel/15-geschenke-fuer-mfa-arzthelferin",
+    "old": "/blog/article/15-geschenke-fuer-mfa-arzthelferin",
     "new": "/blog/artikel/10-geschenke-fuer-mfa-zfa-arzthelferin"
   },
   {
-    "old": "/2020/01/29/in-6-schritten-zur-richtigen-weiterbildung",
-    "new": "/blog/artikel/in-6-schritten-zur-richtigen-weiterbildung"
+    "old": "/blog/artikel/15-geschenke-fuer-mfa-arzthelferin",
+    "new": "/blog/artikel/10-geschenke-fuer-mfa-zfa-arzthelferin"
   },
   {
     "old": "/article/in-6-schritten-zur-richtigen-weiterbildung",
     "new": "/blog/artikel/in-6-schritten-zur-richtigen-weiterbildung"
   },
   {
-    "old": "/2020/01/18/foerderung-und-finanzierung-von-weiterbildungen",
+    "old": "/blog/article/in-6-schritten-zur-richtigen-weiterbildung",
+    "new": "/blog/artikel/in-6-schritten-zur-richtigen-weiterbildung"
+  },
+  {
+    "old": "/article/foerderung-und-finanzierung-von-weiterbildungen",
     "new": "/karriere/fort-und-weiterbildung#foerderung-finanzierung"
   },
   {
@@ -88,160 +92,36 @@
     "new": "/karriere/fort-und-weiterbildung#foerderung-finanzierung"
   },
   {
-    "old": "/2020/01/26/warum-es-mfa-mal-anders-gibt",
-    "new": "/blog/artikel/warum-es-mfa-mal-anders-gibt"
-  },
-  {
     "old": "/article/warum-es-mfa-mal-anders-gibt",
     "new": "/blog/artikel/warum-es-mfa-mal-anders-gibt"
   },
   {
-    "old": "/2020/02/05/schwierige-patienten",
-    "new": "/blog/artikel/souveraen-bei-schwierigen-patienten-chefs-kollegen"
+    "old": "/blog/article/warum-es-mfa-mal-anders-gibt",
+    "new": "/blog/artikel/warum-es-mfa-mal-anders-gibt"
   },
   {
     "old": "/article/souveraen-bei-schwierigen-patienten-chefs-kollegen",
     "new": "/blog/artikel/souveraen-bei-schwierigen-patienten-chefs-kollegen"
   },
   {
-    "old": "/2020/02/12/5-coole-teamevents-fuer-euren-naechsten-praxisausflug",
-    "new": "/blog/artikel/5-coole-teamevents-fuer-euren-naechsten-praxisausflug"
+    "old": "/blog/article/souveraen-bei-schwierigen-patienten-chefs-kollegen",
+    "new": "/blog/artikel/souveraen-bei-schwierigen-patienten-chefs-kollegen"
   },
   {
     "old": "/article/5-coole-teamevents-fuer-euren-naechsten-praxisausflug",
     "new": "/blog/artikel/5-coole-teamevents-fuer-euren-naechsten-praxisausflug"
   },
   {
-    "old": "/2020/06/12/fortbildung-weiterbildung-oder-studium-das-ist-hier-die-frage",
-    "new": "/karriere/fort-und-weiterbildung#fortbildung-weiterbildung-studium"
-  },
-  {
-    "old": "/blog/article/in-6-schritten-zur-richtigen-weiterbildung",
-    "new": "/karriere/fort-und-weiterbildung#fortbildung-weiterbildung-studium"
-  },
-  {
-    "old": "/blog/artikel/in-6-schritten-zur-richtigen-weiterbildung",
-    "new": "/karriere/fort-und-weiterbildung#fortbildung-weiterbildung-studium"
+    "old": "/blog/article/5-coole-teamevents-fuer-euren-naechsten-praxisausflug",
+    "new": "/blog/artikel/5-coole-teamevents-fuer-euren-naechsten-praxisausflug"
   },
   {
     "old": "/article/in-6-schritten-zur-richtigen-weiterbildung",
     "new": "/blog/artikel/in-6-schritten-zur-richtigen-weiterbildung"
   },
   {
-    "old": "/fuer-mfa",
-    "new": "/karriere"
-  },
-  {
-    "old": "/page/mfa-career",
-    "new": "/karriere"
-  },
-  {
-    "old": "/page/mfa-career/ausbildung-berufsbild",
-    "new": "/karriere/mfa/ausbildung-berufsbild"
-  },
-  {
-    "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen",
-    "new": "/karriere/fort-und-weiterbildung"
-  },
-  {
-    "old": "/page/mfa-career/fort-und-weiterbildungen",
-    "new": "/karriere/fort-und-weiterbildung"
-  },
-  {
-    "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/abrechnungsmanagerin",
-    "new": "/karriere/fort-und-weiterbildung/ueberblick/abrechnungsmanagerin"
-  },
-  {
-    "old": "/page/mfa-career/fort-und-weiterbildungen/abrechnungsmanagerin",
-    "new": "/karriere/fort-und-weiterbildung/ueberblick/abrechnungsmanagerin"
-  },
-  {
-    "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/ambulantes-operieren",
-    "new": "/karriere/fort-und-weiterbildung/ueberblick/ambulantes-operieren"
-  },
-  {
-    "old": "/page/mfa-career/fort-und-weiterbildungen/ambulantes-operieren",
-    "new": "/karriere/fort-und-weiterbildung/ueberblick/ambulantes-operieren"
-  },
-  {
-    "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/ambulantes-operieren-in-der-augenheilkunde",
-    "new": "/karriere/fort-und-weiterbildung/ueberblick/ambulantes-operieren-in-der-augenheilkunde"
-  },
-  {
-    "old": "/page/mfa-career/fort-und-weiterbildungen/ambulantes-operieren-in-der-augenheilkunde",
-    "new": "/karriere/fort-und-weiterbildung/ueberblick/ambulantes-operieren-in-der-augenheilkunde"
-  },
-  {
-    "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/fachwirt-im-gesundheitswesen",
-    "new": "/karriere/fort-und-weiterbildung/ueberblick/fachwirtin-im-gesundheits-und-sozialwesen"
-  },
-  {
-    "old": "/page/mfa-career/fort-und-weiterbildungen/fachwirtin-im-gesundheits-und-sozialwesen",
-    "new": "/karriere/fort-und-weiterbildung/ueberblick/fachwirtin-im-gesundheits-und-sozialwesen"
-  },
-  {
-    "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/gefaessassistentin",
-    "new": "/karriere/fort-und-weiterbildung/ueberblick/gefaessassistentin"
-  },
-  {
-    "old": "/page/mfa-career/fort-und-weiterbildungen/gefaessassistentin",
-    "new": "/karriere/fort-und-weiterbildung/ueberblick/gefaessassistentin"
-  },
-  {
-    "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/naepa-eva",
-    "new": "/karriere/fort-und-weiterbildung/ueberblick/naepa-und-eva"
-  },
-  {
-    "old": "/page/mfa-career/fort-und-weiterbildungen/naepa-und-eva",
-    "new": "/karriere/fort-und-weiterbildung/ueberblick/naepa-und-eva"
-  },
-  {
-    "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/onkologische-fachassistentin",
-    "new": "/karriere/fort-und-weiterbildung/ueberblick/onkologischer-fachassistentin"
-  },
-  {
-    "old": "/page/mfa-career/fort-und-weiterbildungen/onkologischer-fachassistentin",
-    "new": "/karriere/fort-und-weiterbildung/ueberblick/onkologischer-fachassistentin"
-  },
-  {
-    "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/physician-assistant",
-    "new": "/karriere/fort-und-weiterbildung/ueberblick/physician-assistant"
-  },
-  {
-    "old": "/page/mfa-career/fort-und-weiterbildungen/physician-assistant",
-    "new": "/karriere/fort-und-weiterbildung/ueberblick/physician-assistant"
-  },
-  {
-    "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/praxismanagerin",
-    "new": "/karriere/fort-und-weiterbildung/ueberblick/praxismanagerin"
-  },
-  {
-    "old": "/page/mfa-career/fort-und-weiterbildungen/praxismanagerin",
-    "new": "/karriere/fort-und-weiterbildung/ueberblick/praxismanagerin"
-  },
-  {
-    "old": "/fuer-mfa/weiterbildung-im-gesundheitswesen/weiterbildung-studynurse",
-    "new": "/karriere/fort-und-weiterbildung/ueberblick/study-nurse"
-  },
-  {
-    "old": "/page/mfa-career/fort-und-weiterbildungen/study-nurse",
-    "new": "/karriere/fort-und-weiterbildung/ueberblick/study-nurse"
-  },
-  {
-    "old": "/page/mfa-career/fort-und-weiterbildungen/medizinstudium",
-    "new": "/karriere/fort-und-weiterbildung/ueberblick/medizinstudium"
-  },
-  {
-    "old": "/page/mfa-career/fort-und-weiterbildungen/qualitaetsmanagementbeauftragte-r-qmb",
-    "new": "/karriere/fort-und-weiterbildung/ueberblick/qualitaetsmanagementbeauftragte-r-qmb"
-  },
-  {
-    "old": "/page/mfa-career/fort-und-weiterbildungen/zahnmedizinische-prophylaxeassistenz-zmp",
-    "new": "/karriere/fort-und-weiterbildung/ueberblick/zahnmedizinische-prophylaxeassistenz-zmp"
-  },
-  {
-    "old": "/page/mfa-career/fort-und-weiterbildungen/zahnmedizinische-verwaltungsassistenz-zmv",
-    "new": "/karriere/fort-und-weiterbildung/ueberblick/zahnmedizinische-verwaltungsassistenz-zmv"
+    "old": "/blog/article/in-6-schritten-zur-richtigen-weiterbildung",
+    "new": "/blog/artikel/in-6-schritten-zur-richtigen-weiterbildung"
   },
   {
     "old": "/karriere/fort-und-weiterbildungen",
@@ -304,144 +184,8 @@
     "new": "/karriere/fort-und-weiterbildung/ueberblick/zahnmedizinische-verwaltungsassistenz-zmv"
   },
   {
-    "old": "/fuer-mfa/jobs-und-berufsbilder",
-    "new": "/karriere/jobs-und-berufsbilder"
-  },
-  {
-    "old": "/page/mfa-career/jobs-und-berufsbilder",
-    "new": "/karriere/jobs-und-berufsbilder"
-  },
-  {
-    "old": "/fuer-mfa/jobs-und-berufsbilder/medizinisch-technische-jobs",
-    "new": "/karriere/jobs-und-berufsbilder/medizinisch-technisch"
-  },
-  {
-    "old": "/page/mfa-career/jobs-und-berufsbilder/medizinisch-technisch",
-    "new": "/karriere/jobs-und-berufsbilder/medizinisch-technisch"
-  },
-  {
-    "old": "/fuer-mfa/jobs-und-berufsbilder/jobs-in-der-beratung",
-    "new": "/karriere/jobs-und-berufsbilder/beratung"
-  },
-  {
-    "old": "/page/mfa-career/jobs-und-berufsbilder/beratung",
-    "new": "/karriere/jobs-und-berufsbilder/beratung"
-  },
-  {
-    "old": "/fuer-mfa/jobs-und-berufsbilder/jobs-in-der-verwaltung",
-    "new": "/karriere/jobs-und-berufsbilder/verwaltung"
-  },
-  {
-    "old": "/page/mfa-career/jobs-und-berufsbilder/verwaltung",
-    "new": "/karriere/jobs-und-berufsbilder/verwaltung"
-  },
-  {
-    "old": "/fuer-mfa/jobs-und-berufsbilder/jobs-im-management",
-    "new": "/karriere/jobs-und-berufsbilder/management"
-  },
-  {
-    "old": "/page/mfa-career/jobs-und-berufsbilder/management",
-    "new": "/karriere/jobs-und-berufsbilder/management"
-  },
-  {
-    "old": "/fuer-mfa/jobs-und-berufsbilder/jobs-in-der-forschung",
-    "new": "/karriere/jobs-und-berufsbilder/forschung"
-  },
-  {
-    "old": "/page/mfa-career/jobs-und-berufsbilder/forschung",
-    "new": "/karriere/jobs-und-berufsbilder/forschung"
-  },
-  {
-    "old": "/page/fuer-arbeitgeber",
-    "new": "/fuer-arbeitgeber"
-  },
-  {
     "old": "/stellenanzeigen/schalten",
     "new": "/fuer-arbeitgeber"
-  },
-  {
-    "old": "/jobboard?state=berlin",
-    "new": "/stellenangebote/ort/berlin"
-  },
-  {
-    "old": "/jobboard?state=bayern",
-    "new": "/stellenangebote/ort/bayern"
-  },
-  {
-    "old": "/jobboard?state=hamburg",
-    "new": "/stellenangebote/ort/hamburg"
-  },
-  {
-    "old": "/jobboard?state=niedersachsen",
-    "new": "/stellenangebote/ort/niedersachsen"
-  },
-  {
-    "old": "/jobboard?state=hessen",
-    "new": "/stellenangebote/ort/hessen"
-  },
-  {
-    "old": "/jobboard?state=rheinland-pfalz",
-    "new": "/stellenangebote/ort/rheinland-Pfalz"
-  },
-  {
-    "old": "/jobboard?state=brandenburg",
-    "new": "/stellenangebote/ort/brandenburg"
-  },
-  {
-    "old": "/jobboard?state=saarland",
-    "new": "/stellenangebote/ort/saarland"
-  },
-  {
-    "old": "/jobboard?state=thueringen",
-    "new": "/stellenangebote/ort/thueringen"
-  },
-  {
-    "old": "/jobboard?state=bremen",
-    "new": "/stellenangebote/ort/bremen"
-  },
-  {
-    "old": "/jobboard?state=mecklenburg-vorpommern",
-    "new": "/stellenangebote/ort/mecklenburg-vorpommern"
-  },
-  {
-    "old": "/jobboard?state=sachsen",
-    "new": "/stellenangebote/ort/sachsen"
-  },
-  {
-    "old": "/jobboard?state=sachsen-anhalt",
-    "new": "/stellenangebote/ort/sachsen-anhalt"
-  },
-  {
-    "old": "/jobboard?state=schleswig-holstein",
-    "new": "/stellenangebote/ort/schleswig-holstein"
-  },
-  {
-    "old": "/jobboard?state=baden-wuerttemberg",
-    "new": "/stellenangebote/ort/baden-wuerttemberg"
-  },
-  {
-    "old": "/jobboard/ort/koeln",
-    "new": "/stellenangebote/ort/koeln"
-  },
-  {
-    "old": "/jobboard/ort/berlin",
-    "new": "/stellenangebote/ort/berlin"
-  },
-  {
-    "old": "/jobboard/ort/hamburg",
-    "new": "/stellenangebote/ort/hamburg"
-  },
-  {
-    "old": "/jobboard/ort/muenchen",
-    "new": "/stellenangebote/ort/muenchen"
-  },
-  {
-    "old": "/jobboard?employmentType=part",
-    "new": "/stellenangebote?employmentType=part"
-  },
-  {
-    "old": "/jobboard?employmentType=full",
-    "new": "/stellenangebote?employmentType=full"
   },
   {
     "old": "/50-plus-alternative-jobs",
