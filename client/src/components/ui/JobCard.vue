@@ -342,10 +342,6 @@
               margin-right: 0.5rem;
             }
           }
-
-          // svg {
-          //   color: $primary;
-          // }
         }
 
         .badge {

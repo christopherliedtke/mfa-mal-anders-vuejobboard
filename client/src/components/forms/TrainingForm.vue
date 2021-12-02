@@ -137,59 +137,64 @@
         />
       </b-input-group>
 
-      <label for="training-duration">Dauer der Fortbildung</label>
-      <b-form-input
-        id="training-duration"
-        v-model="training.duration"
-        type="text"
-        lazy-formatter
-        :formatter="formatter"
-        :state="
-          validated
-            ? training.duration && training.duration.length <= 55
-              ? true
-              : null
-            : null
-        "
-        aria-describedby="duration-help duration-feedback"
-        placeholder="Dauer der Fortbildung eingeben..."
-        trim
-      />
-      <b-form-invalid-feedback id="duration-feedback" class="ml-2">
-        Bitte nutzen Sie maximal 55 Zeichen.
-      </b-form-invalid-feedback>
-      <b-form-text id="duration-help" class="ml-2"
-        ><span :class="[{ 'text-danger': training.duration.length > 55 }]">
-          {{ 55 - training.duration.length }} Zeichen verfügbar</span
-        ></b-form-text
-      >
-
-      <label for="training-effort">Zeitaufwand</label>
-      <b-form-input
-        id="training-effort"
-        v-model="training.effort"
-        type="text"
-        lazy-formatter
-        :formatter="formatter"
-        :state="
-          validated
-            ? training.effort && training.effort.length <= 55
-              ? true
-              : null
-            : null
-        "
-        aria-describedby="effort-help effort-feedback"
-        placeholder="z.B. 5 Stunden pro Woche..."
-        trim
-      />
-      <b-form-invalid-feedback id="effort-feedback" class="ml-2">
-        Bitte nutzen Sie maximal 55 Zeichen.
-      </b-form-invalid-feedback>
-      <b-form-text id="effort-help" class="ml-2"
-        ><span :class="[{ 'text-danger': training.effort.length > 55 }]">
-          {{ 55 - training.effort.length }} Zeichen verfügbar</span
-        ></b-form-text
-      >
+      <div class="row">
+        <div class="col-12 col-lg-6">
+          <label for="training-duration">Dauer der Fortbildung</label>
+          <b-form-input
+            id="training-duration"
+            v-model="training.duration"
+            type="text"
+            lazy-formatter
+            :formatter="formatter"
+            :state="
+              validated
+                ? training.duration && training.duration.length <= 55
+                  ? true
+                  : null
+                : null
+            "
+            aria-describedby="duration-help duration-feedback"
+            placeholder="Dauer der Fortbildung eingeben..."
+            trim
+          />
+          <b-form-invalid-feedback id="duration-feedback" class="ml-2">
+            Bitte nutzen Sie maximal 55 Zeichen.
+          </b-form-invalid-feedback>
+          <b-form-text id="duration-help" class="ml-2"
+            ><span :class="[{ 'text-danger': training.duration.length > 55 }]">
+              {{ 55 - training.duration.length }} Zeichen verfügbar</span
+            ></b-form-text
+          >
+        </div>
+        <div class="col-12 col-lg-6">
+          <label for="training-effort">Zeitaufwand</label>
+          <b-form-input
+            id="training-effort"
+            v-model="training.effort"
+            type="text"
+            lazy-formatter
+            :formatter="formatter"
+            :state="
+              validated
+                ? training.effort && training.effort.length <= 55
+                  ? true
+                  : null
+                : null
+            "
+            aria-describedby="effort-help effort-feedback"
+            placeholder="z.B. 5 Stunden pro Woche..."
+            trim
+          />
+          <b-form-invalid-feedback id="effort-feedback" class="ml-2">
+            Bitte nutzen Sie maximal 55 Zeichen.
+          </b-form-invalid-feedback>
+          <b-form-text id="effort-help" class="ml-2"
+            ><span :class="[{ 'text-danger': training.effort.length > 55 }]">
+              {{ 55 - training.effort.length }} Zeichen verfügbar</span
+            ></b-form-text
+          >
+        </div>
+      </div>
 
       <b-form-group>
         <label for="start-anytime" class="mt-4">Start der Fortbildung</label>
@@ -205,78 +210,96 @@
           size="sm"
         ></b-form-radio-group>
 
-        <div v-if="!training.startAnytime">
-          <label for="start-at">Nächstes Startdatum</label>
-          <BFormDatepicker
-            id="start-at"
-            v-model="startAt"
-            :state="validated ? true : null"
-            placeholder="Startet am..."
-            :reset-button="true"
-            :reset-value="''"
-            label-reset-button="Zurücksetzen"
-            label-help=""
-            start-weekday="1"
-          />
-          <label for="end-at">Enddatum</label>
-          <BFormDatepicker
-            id="end-at"
-            v-model="endAt"
-            :state="validated ? true : null"
-            placeholder="Endet am..."
-            :reset-button="true"
-            :reset-value="''"
-            label-reset-button="Zurücksetzen"
-            label-help=""
-            start-weekday="1"
-          />
+        <div v-if="!training.startAnytime" class="row">
+          <div class="col-12 col-lg-4">
+            <label for="start-at">Nächstes Startdatum</label>
+            <BFormDatepicker
+              id="start-at"
+              v-model="startAt"
+              :state="validated ? true : null"
+              placeholder="Startet am..."
+              :reset-button="true"
+              :reset-value="''"
+              label-reset-button="Zurücksetzen"
+              label-help=""
+              start-weekday="1"
+            />
+          </div>
+          <div class="col-12 col-lg-4">
+            <label for="end-at">Enddatum</label>
+            <BFormDatepicker
+              id="end-at"
+              v-model="endAt"
+              :state="validated ? true : null"
+              placeholder="Endet am..."
+              :reset-button="true"
+              :reset-value="''"
+              label-reset-button="Zurücksetzen"
+              label-help=""
+              start-weekday="1"
+            />
+          </div>
         </div>
       </b-form-group>
 
-      <label for="cost">Kosten für Fortbildung <small>[€]</small></label>
-      <b-form-input
-        id="cost"
-        v-model="cost"
-        type="number"
-        number
-        min="0"
-        :state="validated ? (cost ? true : null) : null"
-        placeholder="Kosten für Fortbildung eingeben..."
-      />
+      <div class="row">
+        <div class="col-12 col-lg-4">
+          <label for="cost">Kosten für Fortbildung</label>
+          <b-input-group>
+            <template #prepend>
+              <b-input-group-text>€</b-input-group-text>
+            </template>
+            <b-form-input
+              id="cost"
+              v-model="cost"
+              type="number"
+              number
+              min="0"
+              :state="validated ? (cost ? true : null) : null"
+              placeholder="Kosten für Fortbildung eingeben..."
+            />
+          </b-input-group>
+        </div>
+      </div>
 
-      <label for="profession">Berufsgruppe</label>
-      <b-form-select
-        id="profession"
-        v-model="training.profession"
-        :state="validated ? true : null"
-      >
-        <b-form-select-option value=""
-          >-- Alle Berufsgruppen --</b-form-select-option
-        >
-        <b-form-select-option
-          v-for="type in professionOptions"
-          :key="type.value"
-          :value="type.value"
-          >{{ type.text }}</b-form-select-option
-        ></b-form-select
-      >
-
-      <label for="training-type" required>Bereich</label>
-      <b-form-select
-        id="training-type"
-        v-model="training.type"
-        :state="validated ? (training.type ? true : false) : null"
-      >
-        <b-form-select-option value="" disabled
-          >-- Bereich auswählen --</b-form-select-option
-        >
-        <b-form-select-option
-          v-for="type in typeOptions"
-          :key="type"
-          :value="type"
-          >{{ type }}</b-form-select-option
-        >
-      </b-form-select>
+      <div class="row">
+        <div class="col-12 col-lg-4">
+          <label for="profession">Berufsgruppe</label>
+          <b-form-select
+            id="profession"
+            v-model="training.profession"
+            :state="validated ? true : null"
+          >
+            <b-form-select-option value=""
+              >-- Alle Berufsgruppen --</b-form-select-option
+            >
+            <b-form-select-option
+              v-for="type in professionOptions"
+              :key="type.value"
+              :value="type.value"
+              >{{ type.text }}</b-form-select-option
+            ></b-form-select
+          >
+        </div>
+        <div class="col-12 col-lg-4">
+          <label for="training-type" required>Bereich</label>
+          <b-form-select
+            id="training-type"
+            v-model="training.type"
+            :state="validated ? (training.type ? true : false) : null"
+          >
+            <b-form-select-option value="" disabled
+              >-- Bereich auswählen --</b-form-select-option
+            >
+            <b-form-select-option
+              v-for="type in typeOptions"
+              :key="type"
+              :value="type"
+              >{{ type }}</b-form-select-option
+            >
+          </b-form-select>
+        </div>
+      </div>
 
       <b-form-group>
         <label for="remote" class="mt-4">Ort der Fortbildung</label>
@@ -292,102 +315,121 @@
           size="sm"
         ></b-form-radio-group>
 
-        <div v-if="!training.remote">
-          <label for="training-location" class="mt-1"
-            >Ort <small>[Mehrere Orte mit Komma trennen]</small></label
-          >
-          <b-form-input
-            id="training-location"
-            v-model="training.location"
-            type="text"
-            lazy-formatter
-            :formatter="formatter"
-            :state="validated ? (training.title ? true : null) : null"
-            placeholder="Ort der Fortbildung eingeben..."
-            trim
-          />
-          <label for="training-state" class="mt-2"
-            >Bundesland
-            <small>['STRG' für Mehrfachauswahl gedrückt halten]</small></label
-          >
-          <b-form-select
-            id="training-state"
-            v-model="state"
-            :state="validated ? (state ? true : null) : null"
-            style="border-radius: 5px 0 0 5px"
-            multiple
-          >
-            <b-form-select-option value=""
-              >-- Bundesland auswählen --</b-form-select-option
+        <div v-if="!training.remote" class="row">
+          <div class="col-12">
+            <label for="training-location" class="mt-1">Ort</label>
+            <b-form-input
+              id="training-location"
+              v-model="training.location"
+              type="text"
+              lazy-formatter
+              :formatter="formatter"
+              :state="validated ? (training.title ? true : null) : null"
+              placeholder="Ort der Fortbildung eingeben..."
+              trim
+              aria-describedby="location-help"
+            />
+            <b-form-text id="location-help" class="ml-2"
+              >Mehrere Orte mit Komma trennen</b-form-text
             >
-            <b-form-select-option
-              v-for="stateOption in companyStateOptions"
-              :key="stateOption"
-              :value="stateOption"
-              >{{ stateOption }}</b-form-select-option
+          </div>
+          <div class="col-12 col-lg-4">
+            <label for="training-state" class="mt-2">Bundesland</label>
+            <b-form-select
+              id="training-state"
+              v-model="state"
+              :state="validated ? (state ? true : null) : null"
+              style="border-radius: 5px 0 0 5px"
+              multiple
+              aria-describedby="state-help"
             >
-          </b-form-select>
+              <b-form-select-option value=""
+                >-- Bundesland auswählen --</b-form-select-option
+              >
+              <b-form-select-option
+                v-for="stateOption in companyStateOptions"
+                :key="stateOption"
+                :value="stateOption"
+                >{{ stateOption }}</b-form-select-option
+              >
+            </b-form-select>
+            <b-form-text id="state-help" class="ml-2"
+              >'STRG' für Mehrfachauswahl gedrückt halten</b-form-text
+            >
+          </div>
         </div>
       </b-form-group>
 
-      <label for="company" required>Unternehmen</label>
-      <b-form-input
-        id="company"
-        v-model="training.company"
-        type="text"
-        lazy-formatter
-        :formatter="formatter"
-        :state="
-          validated
-            ? training.company && training.company.length <= 155
-              ? true
-              : false
-            : null
-        "
-        placeholder="Name des Fortbildungsunternehmens eingeben..."
-        required
-        trim
-      />
-
-      <label for="logo">Logo <small>(jpg, png | max. 5MB)</small></label>
-      <ImageUploader
-        id="logo"
-        :validated="validated"
-        :image-url="training.logoUrl"
-        :width="200"
-        :height="200"
-        fit="inside"
-        @update-url="training.logoUrl = $event"
-      />
-      <b-form-input
-        v-if="$store.state.auth.user.isAdmin"
-        v-model="training.logoUrl"
-        class="bg-light-shade mt-2"
-        type="url"
-        placeholder="ADMIN - URL to image (incl. https://)"
-      >
-      </b-form-input>
-      <div
-        class="position-relative d-flex justify-content-center align-items-center bg-secondary rounded mt-2"
-        style="width: 55px; height: 55px"
-      >
-        <b-img
-          v-if="training.logoUrl"
-          :src="training.logoUrl"
-          fluid
-          style="max-height: 100%; max-width: 100%"
-        />
-        <svg
-          v-else
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-          class="bi bi-box p-3"
-          viewBox="0 0 16 16"
-        >
-          <path
-            d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5 8 5.961 14.154 3.5 8.186 1.113zM15 4.239l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"
+      <div class="row">
+        <div class="col-12 col-lg-6">
+          <label for="company" required>Unternehmen</label>
+          <b-form-input
+            id="company"
+            v-model="training.company"
+            type="text"
+            lazy-formatter
+            :formatter="formatter"
+            :state="
+              validated
+                ? training.company && training.company.length <= 155
+                  ? true
+                  : false
+                : null
+            "
+            placeholder="Name des Fortbildungsunternehmens eingeben..."
+            required
+            trim
           />
-        </svg>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 col-lg-6">
+          <label for="logo">Logo</label>
+          <ImageUploader
+            id="logo"
+            :validated="validated"
+            :image-url="training.logoUrl"
+            :width="200"
+            :height="200"
+            fit="inside"
+            aria-describedby="logo-url-help"
+            @update-url="training.logoUrl = $event"
+          />
+          <b-form-text id="logo-url-help" class="ml-2"
+            ><span>jpg, png | max. 5MB</span></b-form-text
+          >
+          <b-form-input
+            v-if="$store.state.auth.user.isAdmin"
+            v-model="training.logoUrl"
+            class="bg-light-shade mt-2"
+            type="url"
+            placeholder="ADMIN - URL to image (incl. https://)"
+          >
+          </b-form-input>
+          <div
+            class="position-relative d-flex justify-content-center align-items-center bg-secondary rounded mt-2"
+            style="width: 55px; height: 55px"
+          >
+            <b-img
+              v-if="training.logoUrl"
+              :src="training.logoUrl"
+              fluid
+              style="max-height: 100%; max-width: 100%"
+            />
+            <svg
+              v-else
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              class="bi bi-box p-3"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5 8 5.961 14.154 3.5 8.186 1.113zM15 4.239l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"
+              />
+            </svg>
+          </div>
+        </div>
       </div>
 
       <div class="d-flex justify-content-between my-4">

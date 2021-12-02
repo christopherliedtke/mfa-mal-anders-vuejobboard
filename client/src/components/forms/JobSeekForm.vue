@@ -1,7 +1,10 @@
 <template>
   <div class="job-seek-form position-relative">
     <b-form id="job-seek-form">
-      <b-form-group class="mb-4">
+      <b-form-group
+        v-if="step === 1 || jobSeek._id || validated != null"
+        class="mb-4 mb-lg-5"
+      >
         <h3 class="bold mb-0">Über Dich und Deine Stellensuche</h3>
 
         <label for="title" required>Titel des Stellengesuchs</label>
@@ -136,41 +139,48 @@
           </b-form-checkbox>
         </div>
 
-        <label for="min-salary" class="mt-4"
-          >Dein Gehaltswunsch
-          <small class="text-muted">(monatlich brutto)</small>
-        </label>
-        <b-input-group style="max-width: 300px">
-          <template #prepend>
-            <b-input-group-text>€</b-input-group-text>
-          </template>
-          <b-form-input
-            id="min-salary"
-            v-model="jobSeek.salaryMin"
-            type="number"
-            step="1"
-            :state="validated ? (jobSeek.salaryMin ? true : null) : null"
-            placeholder="Min. Monatsgehalt eingeben..."
-            aria-describedby="min-salary-help"
-          />
-        </b-input-group>
-        <b-form-text id="min-salary-help"
-          ><span
-            >Informiere Dich mit unserem
-            <b-link
-              :to="
-                `/karriere/${
-                  jobSeek.isZfa ? 'zfa' : 'mfa'
-                }/gehalt#gehaltsrechner`
-              "
-              target="_blank"
-              >Gehaltsrechner</b-link
+        <div class="row">
+          <div class="col-12 col-lg-4">
+            <label for="min-salary" class="mt-4"
+              >Dein Gehaltswunsch
+              <small class="text-muted">(monatlich brutto)</small>
+            </label>
+            <b-input-group>
+              <template #prepend>
+                <b-input-group-text>€</b-input-group-text>
+              </template>
+              <b-form-input
+                id="min-salary"
+                v-model="jobSeek.salaryMin"
+                type="number"
+                step="1"
+                :state="validated ? (jobSeek.salaryMin ? true : null) : null"
+                placeholder="Min. Monatsgehalt eingeben..."
+                aria-describedby="min-salary-help"
+              />
+            </b-input-group>
+            <b-form-text id="min-salary-help"
+              ><span
+                >Informiere Dich mit unserem
+                <b-link
+                  :to="
+                    `/karriere/${
+                      jobSeek.isZfa ? 'zfa' : 'mfa'
+                    }/gehalt#gehaltsrechner`
+                  "
+                  target="_blank"
+                  >Gehaltsrechner</b-link
+                >
+              </span></b-form-text
             >
-          </span></b-form-text
-        >
+          </div>
+        </div>
       </b-form-group>
 
-      <b-form-group>
+      <b-form-group
+        v-if="step === 0 || jobSeek._id || validated != null"
+        class="mb-4 mb-lg-5"
+      >
         <h3 class="bold mb-0">Persönliche Daten</h3>
 
         <b-form-checkbox
@@ -297,53 +307,74 @@
               trim
             />
           </div>
-        </div>
-
-        <label for="file">Dein Bild </label>
-        <ImageUploader
-          :validated="validated"
-          :image-url="jobSeek.imageUrl"
-          :width="250"
-          :height="250"
-          fit="outside"
-          aria-describedby="image-help"
-          @update-url="jobSeek.imageUrl = $event"
-        />
-        <b-form-text id="image-help" class="ml-2"
-          ><span>[optional] (jpg, png | max. 5MB)</span></b-form-text
-        >
-        <div
-          class="position-relative d-flex justify-content-center align-items-center bg-secondary rounded mt-2 ml-2"
-          style="width: 85px; height: 85px"
-        >
-          <b-img
-            v-if="jobSeek.imageUrl"
-            :src="jobSeek.imageUrl"
-            class="border-radius1"
-            fluid
-          />
-          <svg
-            v-else
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            class="bi bi-person-circle p-3 text-light"
-            viewBox="0 0 16 16"
-          >
-            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-            <path
-              fill-rule="evenodd"
-              d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+          <div class="col-12 col-lg-7">
+            <label for="file">Dein Bild </label>
+            <ImageUploader
+              :validated="validated"
+              :image-url="jobSeek.imageUrl"
+              :width="250"
+              :height="250"
+              fit="outside"
+              aria-describedby="image-help"
+              @update-url="jobSeek.imageUrl = $event"
             />
-          </svg>
+            <b-form-text id="image-help" class="ml-2"
+              ><span>[optional] jpg, png | max. 5MB</span></b-form-text
+            >
+            <div
+              class="position-relative d-flex justify-content-center align-items-center bg-secondary rounded mt-2 ml-2"
+              style="width: 85px; height: 85px"
+            >
+              <b-img
+                v-if="jobSeek.imageUrl"
+                :src="jobSeek.imageUrl"
+                class="border-radius1"
+                fluid
+              />
+              <svg
+                v-else
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                class="bi bi-person-circle p-3 text-light"
+                viewBox="0 0 16 16"
+              >
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                <path
+                  fill-rule="evenodd"
+                  d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+                />
+              </svg>
+            </div>
+          </div>
         </div>
       </b-form-group>
 
       <div class="d-flex justify-content-between my-4">
-        <b-button variant="outline-danger" @click.prevent="$router.go(-1)">
-          Abbrechen
-        </b-button>
-        <b-button variant="success" @click.prevent="onSubmit">
+        <div>
+          <b-button
+            variant="outline-danger"
+            class="mr-2"
+            @click.prevent="$router.go(-1)"
+          >
+            Abbrechen
+          </b-button>
+          <b-button
+            v-if="step > 0 && !jobSeek._id && validated === null"
+            variant="outline-danger"
+            @click.prevent="step -= 1"
+          >
+            Zurück
+          </b-button>
+        </div>
+        <b-button
+          v-if="step === 1 || jobSeek._id"
+          variant="success"
+          @click.prevent="onSubmit"
+        >
           Speichern
+        </b-button>
+        <b-button v-else variant="success" @click.prevent="step = 1">
+          Weiter
         </b-button>
       </div>
     </b-form>
@@ -371,7 +402,10 @@
     data() {
       return {
         jobSeek: {
-          _id: "",
+          _id:
+            this.$route.params.jobSeekId != "new"
+              ? this.$route.params.jobSeekId
+              : "",
           title: "",
           about: "",
           tasks: "",
@@ -394,6 +428,7 @@
           zipCode: "",
           location: ""
         },
+        step: 0,
         contactGenderOptions,
         validated: null,
         success: "",

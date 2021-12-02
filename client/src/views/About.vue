@@ -146,7 +146,7 @@
             unterschiedlichen Themenbereichen gearbeitet. In dieser Funktion
             habe ich viel Erfahrung im Erstellen von validen Strategien und
             Konzepten, aber speziell auch in der effizienten Projektorganisation
-            gewinnen. Zum Thema Gesundheitswesen bin ich dank Kristin gekommen.
+            gewonnen. Zum Thema Gesundheitswesen bin ich dank Kristin gekommen.
             Mit meiner zusätzlichen Ausbildung zum Softwareentwickler konnten
             wir gemeinsam unsere Vision von MFA mal anders umsetzen.
           </p>

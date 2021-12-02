@@ -235,6 +235,10 @@ const UserEditJobSeek = () =>
   import(
     /* webpackChunkName: "job_seek_edit" */ "@/views/user/jobSeeks/edit/_jobSeekId.vue"
   );
+const UserJobSeekPreview = () =>
+  import(
+    /* webpackChunkName: "job_seek-preview" */ "@/views/user/jobSeeks/preview/_jobSeekId.vue"
+  );
 const UserCheckoutJob = () =>
   import(
     /* webpackChunkName: "user_company" */ "@/views/user/checkout/_jobId.vue"
@@ -741,6 +745,14 @@ const routes = [
     path: "/user/stellengesuche/edit/:jobSeekId",
     name: "UserEditJobSeek",
     component: UserEditJobSeek,
+    meta: {
+      public: false
+    }
+  },
+  {
+    path: "/user/stellengesuche/preview/:jobSeekId",
+    name: "UserJobSeekPreview",
+    component: UserJobSeekPreview,
     meta: {
       public: false
     }
