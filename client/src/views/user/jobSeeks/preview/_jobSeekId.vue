@@ -1,18 +1,28 @@
 <template>
   <div class="jobpage container py-5">
-    <JobSeekCard :job-seek="jobSeek" :link-disabled="true" />
+    <div class="row">
+      <div class="col-12 col-lg-8">
+        <JobSeekCard :job-seek="jobSeek" :link-disabled="true" />
+        <JobSeekCardPlaceholder v-if="!jobSeek" />
+      </div>
+    </div>
     <JobSeek :job-seek="jobSeek" :link-disabled="true" class="mt-5" />
+    <JobSeekPlaceholder v-if="!jobSeek" class="mt-5" />
   </div>
 </template>
 
 <script>
   import JobSeekCard from "@/components/ui/JobSeekCard.vue";
+  import JobSeekCardPlaceholder from "@/components/ui/JobSeekCardPlaceholder.vue";
   import JobSeek from "@/components/ui/JobSeek.vue";
+  import JobSeekPlaceholder from "@/components/ui/JobSeekPlaceholder.vue";
   export default {
     name: "UserJobSeekPreview",
     components: {
       JobSeekCard,
-      JobSeek
+      JobSeekCardPlaceholder,
+      JobSeek,
+      JobSeekPlaceholder
     },
     data() {
       return {
@@ -65,7 +75,6 @@
               `
             }
           });
-          console.log("jobSeek: ", jobSeek);
 
           if (jobSeek.data.errors) {
             throw new Error();

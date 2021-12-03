@@ -1,0 +1,392 @@
+<template>
+  <div class="jobseekboard">
+    <div class="title">
+      <h1>
+        Stellengesuche &ndash; MFA & ZFA{{
+          filter.ort ? " | " + filter.ort : ""
+        }}
+      </h1>
+      <b-breadcrumb :items="breadcrumbs" class="text-capitalize"></b-breadcrumb>
+    </div>
+
+    <div class="container py-3 py-lg-4">
+      <div class="row mt-2">
+        <div class="col-12 col-lg-4 pt-2 pr-lg-5">
+          <b-form
+            id="job-filter"
+            @submit.prevent="
+              () => {
+                getJobSeeks();
+                setQuery();
+              }
+            "
+          >
+            <label for="location-jobboard" class="sr-only">Ort / PLZ</label>
+            <b-input-group class="mb-2 mr-2">
+              <template #prepend>
+                <b-input-group-text class="bg-secondary text-light border-0"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-geo-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999zm2.493 8.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.319 1.319 0 0 0-.37.265.301.301 0 0 0-.057.09V14l.002.008a.147.147 0 0 0 .016.033.617.617 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.619.619 0 0 0 .146-.15.148.148 0 0 0 .015-.033L12 14v-.004a.301.301 0 0 0-.057-.09 1.318 1.318 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465-1.281 0-2.462-.172-3.34-.465-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411z"
+                    /></svg
+                ></b-input-group-text>
+              </template>
+              <b-form-input
+                id="location-jobboard"
+                v-model="filter.ort"
+                :class="[{ 'border-secondary': !!filter.ort }]"
+                type="text"
+                placeholder="Ort oder PLZ..."
+                trim
+                lazy
+                :formatter="capitalize"
+              />
+              <b-input-group-append>
+                <b-button
+                  aria-label="Zurücksetzen"
+                  class="px-2"
+                  @click.prevent="
+                    () => {
+                      filter.ort = '';
+                      getJobSeeks();
+                      setQuery();
+                    }
+                  "
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-x"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+                    /></svg
+                  ><span class="sr-only">Zurücksetzen</span></b-button
+                >
+              </b-input-group-append>
+            </b-input-group>
+
+            <div
+              style="cursor: pointer"
+              class="text-primary my-3 ml-2"
+              @click="showAdvancedSearch = !showAdvancedSearch"
+            >
+              Erweiterte Suche
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="12"
+                height="12"
+                fill="currentColor"
+                :class="[
+                  'bi bi-caret-right-fill animate ml-2 mb-1',
+                  { 'rotate-90': showAdvancedSearch }
+                ]"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"
+                />
+              </svg>
+            </div>
+            <b-collapse id="advanced-search" v-model="showAdvancedSearch">
+              <label for="employmentType-jobseekboard" class="sr-only"
+                >Anstellungsart</label
+              >
+              <b-input-group class="mb-2 mr-2">
+                <template #prepend>
+                  <b-input-group-text class="bg-secondary text-light border-0"
+                    ><svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-briefcase-fill"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v1.384l7.614 2.03a1.5 1.5 0 0 0 .772 0L16 5.884V4.5A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5z"
+                      />
+                      <path
+                        d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85v5.65z"
+                      /></svg
+                  ></b-input-group-text>
+                </template>
+                <b-form-select
+                  id="employmentType-jobseekboard"
+                  v-model="filter.anstellungsart"
+                  class=""
+                  @change="
+                    () => {
+                      getJobs();
+                      setQuery();
+                    }
+                  "
+                >
+                  <b-form-select-option :value="''"
+                    >Alle Anstellungsarten</b-form-select-option
+                  >
+                  <b-form-select-option
+                    v-for="type in employmentTypeOptions"
+                    :key="type.value"
+                    :value="type.value"
+                    >{{ type.text }}</b-form-select-option
+                  >
+                </b-form-select>
+              </b-input-group>
+
+              <div>
+                <span
+                  style="cursor: pointer"
+                  class="text-danger small ml-2"
+                  @click="resetFilter"
+                  >Filter zurücksetzen</span
+                >
+              </div>
+            </b-collapse>
+
+            <div class="mt-2">
+              <b-button variant="success" type="submit" block
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-search mr-2"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                  /></svg
+                >Stellengesuche finden</b-button
+              >
+            </div>
+          </b-form>
+        </div>
+
+        <div class="col-12 col-lg-8 pt-2">
+          <div v-if="!jobSeeks">
+            <JobSeekCardPlaceholder v-for="index in 25" :key="index" />
+          </div>
+          <div v-else-if="jobSeeks.length > 0">
+            <JobSeekCard
+              v-for="jobSeek in jobSeeks"
+              :key="jobSeek._id"
+              :job-seek="jobSeek"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ScrollToTopBtn />
+
+    <Head
+      :title="
+        `Stellengesuche ArzthelferIn | MFA | ZFA${
+          filter.ort ? ' in ' + filter.ort : ''
+        }`
+      "
+      :desc="
+        `Stellengesuche von Medizinische Fachangestellte (MFA) | Zahnmedizinische Fachangestellte (ZFA) ${
+          filter.ort ? ' in ' + filter.ort + ' & Umgebung' : ''
+        } ✓ Teilzeit | Vollzeit`
+      "
+      img=""
+      :script="snippet"
+    />
+  </div>
+</template>
+
+<script>
+  import Vue from "vue";
+  import { BSpinner, BCollapse } from "bootstrap-vue";
+  Vue.component("BSpinner", BSpinner);
+  Vue.component("BCollapse", BCollapse);
+
+  import { employmentTypeOptions } from "@/config/formDataConfig.json";
+
+  import JobSeekCard from "@/components/ui/JobSeekCard.vue";
+  import JobSeekCardPlaceholder from "@/components/ui/JobSeekCardPlaceholder.vue";
+  import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
+
+  export default {
+    name: "JobSeekBoardHome",
+    components: {
+      JobSeekCard,
+      JobSeekCardPlaceholder,
+      ScrollToTopBtn
+    },
+    data() {
+      return {
+        title: "",
+        jobSeeks: null,
+        filter: {
+          ort: "",
+          radius: null,
+          anstellungsart: "",
+          isMfa: false,
+          isZfa: false
+        },
+        showAdvancedSearch: false,
+        employmentTypeOptions,
+        loading: false
+      };
+    },
+    computed: {
+      snippet() {
+        return [
+          {
+            id: "breadcrumbs",
+            type: "application/ld+json",
+            inner: `{
+                "@context": "http://schema.org",
+                "@type" : "BreadcrumbList",
+                "itemListElement": [{
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "MFA mal anders",
+                    "item": "https://www.mfa-mal-anders.de"
+                },{
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Stellengesuche",
+                    "item": "https://www.mfa-mal-anders.de/stellengesuche"
+                }${
+                  this.filter.ort
+                    ? ',{"@type": "ListItem","position": 3,"name": "' +
+                      this.filter.ort +
+                      '","item": "https://www.mfa-mal-anders.de/stellengesuche/ort/' +
+                      this.filter.ort.toLowerCase() +
+                      '"}'
+                    : ""
+                }]
+              }`
+          },
+          {
+            rel: "canonical",
+            href: `${
+              this.$config.website.url
+            }/stellengesuche${this.getCanonical()}`,
+            id: "canonical"
+          }
+        ];
+      },
+      breadcrumbs() {
+        const breadcrumbs = [
+          { text: "Home", to: "/" },
+          { text: "Stellengesuche", to: "/stellengesuche" }
+        ];
+
+        if (this.filter.ort) {
+          breadcrumbs.push({
+            text: this.filter.ort,
+            to: `/stellengesuche/ort/${this.filter.ort.toLowerCase()}`
+          });
+        }
+
+        return breadcrumbs;
+      }
+    },
+    async created() {
+      this.setFilter();
+      this.getJobSeeks();
+    },
+    methods: {
+      async getJobSeeks(limit = "", offset = "") {
+        console.log("offset: ", offset);
+        console.log("limit: ", limit);
+
+        this.jobSeeks = offset ? this.jobSeeks : null;
+
+        // TODO get jobSeeks
+      },
+      async loadMoreJobSeeks() {
+        this.loading = false;
+
+        // if (
+        //   this.filteredJobs.length < this.jobsCount ||
+        //   this.filteredJobs.length === 0
+        // ) {
+        //   this.loading = true;
+        //   await this.getJobs(undefined, this.filteredJobs.length);
+        //   this.loading = false;
+        // }
+
+        // TODO implement load more btn in template
+      },
+      setQuery() {
+        const query = {
+          ...this.filter,
+          ort: this.filter.ort.replace(/(\s)/g, "-").toLowerCase()
+        };
+
+        for (const key in query) {
+          if (!query[key]) {
+            delete query[key];
+          }
+        }
+
+        this.$router
+          .replace({
+            query,
+            path: "/stellengesuche"
+          })
+          .catch(() => {});
+      },
+      setFilter() {
+        this.filter = {
+          ort: this.capitalize(
+            `${this.$route.params.location || this.$route.query.ort || ""}`
+          ).replace(/-/g, " "),
+          radius: parseInt(this.$route.query.radius) || null,
+          anstellungsart: this.$route.query.anstellungsart || ""
+        };
+
+        if (this.filter.radius || this.filter.anstellungsart) {
+          this.showAdvancedSearch = true;
+        }
+      },
+      resetFilter() {
+        this.filter = {
+          ort: "",
+          radius: null,
+          anstellungsart: "",
+          isMfa: false,
+          isZfa: false
+        };
+
+        this.setQuery();
+        this.getJobs();
+      },
+      capitalize(value) {
+        return value.replace(/(^[a-z]| [a-z]|-[a-z])/g, letter =>
+          letter.toUpperCase()
+        );
+      },
+      getCanonical() {
+        let canonical = "";
+        const location = this.$route.params.location || this.$route.query.ort;
+
+        if (location) {
+          canonical += "/ort/" + location.toLowerCase();
+        }
+
+        // if (this.$route.query.berufsgruppe) {
+        //   canonical += "?berufsgruppe=" + this.$route.query.berufsgruppe;
+        // }
+
+        return canonical;
+      }
+    }
+  };
+</script>

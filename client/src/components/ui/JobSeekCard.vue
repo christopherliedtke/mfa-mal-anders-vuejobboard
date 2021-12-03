@@ -8,40 +8,24 @@
     >
       <div class="card-body p-0 mb-2">
         <div class="row">
-          <div class="col-3 col-md-2 col-xl-1 order-2 order-md-1">
+          <div class="col-3 col-md-2 order-2">
             <b-img-lazy
               v-if="jobSeek.imageUrl"
               :src="jobSeek.imageUrl"
               width="75"
               height="75"
-              class="img-fluid rounded-circle shadow1 mr-md-2"
+              class="img-fluid rounded-circle shadow1"
             />
             <b-img-lazy
               v-else
               src="/img/person-circle.svg"
               width="75"
               height="75"
-              class="img-fluid rounded-circle shadow1 mr-md-2"
+              class="img-fluid rounded-circle shadow1"
               style="opacity: 0.15"
             />
-            <!-- <div v-else class="d-flex bg-light rounded-circle shadow1 mr-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              class="bi bi-person-circle"
-              viewBox="0 0 16 16"
-            >
-              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-              <path
-                fill-rule="evenodd"
-                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
-              />
-            </svg>
-          </div> -->
           </div>
-          <div class="col-9 col-md-10 col-xl-11 order-1 order-md-2 pr-0">
+          <div class="col-9 col-md-10  order-1 pr-0 pr-md-2">
             <h3
               class="h4 bold mb-1"
               style="overflow: hidden; word-wrap: break-word"
@@ -55,8 +39,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-0 col-md-2 col-xl-1"></div>
-        <div class="col-12 col-md-10 col-xl-11">
+        <div class="col-12 col-md-10">
           <div class="card-foot">
             <div v-if="jobSeek.location" class="icon">
               <svg
@@ -127,21 +110,6 @@
                   d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
                 />
               </svg>
-              <!-- <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              fill="currentColor"
-              class="bi bi-briefcase-fill"
-              viewBox="0 0 16 16"
-            >
-              <path
-                d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v1.384l7.614 2.03a1.5 1.5 0 0 0 .772 0L16 5.884V4.5A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5z"
-              />
-              <path
-                d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85v5.65z"
-              />
-            </svg> -->
               <span>
                 <span v-if="jobSeek.partTime">Teilzeit</span>
                 <span v-if="jobSeek.fullTime"

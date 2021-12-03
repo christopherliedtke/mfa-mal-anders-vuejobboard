@@ -108,210 +108,269 @@
             v-if="checkout.paymentMethod === 'invoice'"
             class="mt-4"
           >
-            <h5>Rechnungsadresse</h5>
+            <h5 class="bold mb-0">Rechnungsadresse</h5>
 
-            <label for="billingAddress-gender">Anrede</label>
-            <b-form-select
-              id="billingAddress-gender"
-              v-model="checkout.billingAddress.gender"
-              :state="
-                checkout.validated
-                  ? checkout.billingAddress.gender
-                    ? true
-                    : null
-                  : null
-              "
-            >
-              <b-form-select-option value=""
-                >-- Anrede auswählen --</b-form-select-option
-              >
-              <b-form-select-option
-                v-for="gender in contactGenderOptions"
-                :key="gender"
-                :value="gender"
-                >{{ gender }}</b-form-select-option
-              >
-            </b-form-select>
+            <div class="row">
+              <div class="col-12 col-lg-3">
+                <label for="billingAddress-gender">Anrede</label>
+                <b-form-select
+                  id="billingAddress-gender"
+                  v-model="checkout.billingAddress.gender"
+                  :state="
+                    checkout.validated
+                      ? checkout.billingAddress.gender
+                        ? true
+                        : null
+                      : null
+                  "
+                >
+                  <b-form-select-option value=""
+                    >-- Anrede auswählen --</b-form-select-option
+                  >
+                  <b-form-select-option
+                    v-for="gender in contactGenderOptions"
+                    :key="gender"
+                    :value="gender"
+                    >{{ gender }}</b-form-select-option
+                  >
+                </b-form-select>
+              </div>
+              <div class="col-12 col-lg-3">
+                <label for="billingAddress-title">Titel</label>
+                <b-form-select
+                  id="billingAddress-title"
+                  v-model="checkout.billingAddress.title"
+                  :state="
+                    checkout.validated
+                      ? checkout.billingAddress.title
+                        ? true
+                        : null
+                      : null
+                  "
+                >
+                  <b-form-select-option value=""
+                    >-- Titel auswählen --</b-form-select-option
+                  >
+                  <b-form-select-option
+                    v-for="contactTitle in contactTitleOptions"
+                    :key="contactTitle"
+                    :value="contactTitle"
+                    >{{ contactTitle }}</b-form-select-option
+                  >
+                </b-form-select>
+              </div>
+            </div>
 
-            <label for="billingAddress-title">Titel</label>
-            <b-form-select
-              id="billingAddress-title"
-              v-model="checkout.billingAddress.title"
-              :state="
-                checkout.validated
-                  ? checkout.billingAddress.title
-                    ? true
-                    : null
-                  : null
-              "
-            >
-              <b-form-select-option value=""
-                >-- Titel auswählen --</b-form-select-option
-              >
-              <b-form-select-option
-                v-for="contactTitle in contactTitleOptions"
-                :key="contactTitle"
-                :value="contactTitle"
-                >{{ contactTitle }}</b-form-select-option
-              >
-            </b-form-select>
+            <div class="row">
+              <div class="col-12 col-lg-3">
+                <label for="billingAddress-first-name">Vorname *</label>
+                <b-form-input
+                  id="billingAddress-first-name"
+                  v-model="checkout.billingAddress.firstName"
+                  type="text"
+                  :state="
+                    checkout.validated
+                      ? checkout.billingAddress.firstName
+                        ? true
+                        : false
+                      : null
+                  "
+                  placeholder="Vorname eingeben..."
+                  required
+                />
+              </div>
+              <div class="col-12 col-lg-3">
+                <label for="billingAddress-last-name">Nachname *</label>
+                <b-form-input
+                  id="billingAddress-last-name"
+                  v-model="checkout.billingAddress.lastName"
+                  type="text"
+                  :state="
+                    checkout.validated
+                      ? checkout.billingAddress.lastName
+                        ? true
+                        : false
+                      : null
+                  "
+                  placeholder="Nachname eingeben..."
+                  required
+                />
+              </div>
+            </div>
 
-            <label for="billingAddress-first-name">Vorname *</label>
-            <b-form-input
-              id="billingAddress-first-name"
-              v-model="checkout.billingAddress.firstName"
-              type="text"
-              :state="
-                checkout.validated
-                  ? checkout.billingAddress.firstName
-                    ? true
-                    : false
-                  : null
-              "
-              placeholder="Vorname eingeben..."
-              required
-            />
-            <label for="billingAddress-last-name">Nachname *</label>
-            <b-form-input
-              id="billingAddress-last-name"
-              v-model="checkout.billingAddress.lastName"
-              type="text"
-              :state="
-                checkout.validated
-                  ? checkout.billingAddress.lastName
-                    ? true
-                    : false
-                  : null
-              "
-              placeholder="Nachname eingeben..."
-              required
-            />
+            <div class="row">
+              <div class="col-12 col-lg-8">
+                <label for="billing-address-company">Unternehmen *</label>
+                <b-input
+                  id="billing-address-company"
+                  v-model="checkout.billingAddress.company"
+                  type="text"
+                  placeholder="Unternehmensname eingeben..."
+                  trim
+                  :state="
+                    checkout.validated
+                      ? checkout.billingAddress.company &&
+                        checkout.billingAddress.company.length <= 55
+                        ? true
+                        : false
+                      : null
+                  "
+                  aria-describedby="company-name-help company-name-feedback"
+                />
+                <b-form-invalid-feedback
+                  id="company-name-feedback"
+                  class="ml-2"
+                >
+                  Bitte nutzen Sie maximal 55 Zeichen.
+                </b-form-invalid-feedback>
+                <b-form-text id="company-name-help" class="ml-2"
+                  >Max. 55 Zeichen</b-form-text
+                >
+              </div>
+              <div class="col-12 col-lg-8">
+                <label for="billing-address-department">Abteilung</label>
+                <b-input
+                  id="billing-address-company"
+                  v-model="checkout.billingAddress.department"
+                  type="text"
+                  placeholder="Abteilung eingeben..."
+                  trim
+                  :state="
+                    checkout.validated
+                      ? checkout.billingAddress.department &&
+                        checkout.billingAddress.department.length <= 55
+                        ? true
+                        : !checkout.billingAddress.department
+                        ? null
+                        : false
+                      : null
+                  "
+                  aria-describedby="department-help department-feedback"
+                />
+                <b-form-invalid-feedback id="department-feedback" class="ml-2">
+                  Bitte nutzen Sie maximal 55 Zeichen.
+                </b-form-invalid-feedback>
+                <b-form-text id="department-help" class="ml-2"
+                  >Max. 55 Zeichen</b-form-text
+                >
+              </div>
+            </div>
 
-            <label for="billing-address-company">Unternehmen *</label>
-            <b-input
-              id="billing-address-company"
-              v-model="checkout.billingAddress.company"
-              type="text"
-              placeholder="Unternehmensname eingeben..."
-              trim
-              :state="
-                checkout.validated
-                  ? checkout.billingAddress.company &&
-                    checkout.billingAddress.company.length <= 55
-                    ? true
-                    : false
-                  : null
-              "
-              aria-describedby="company-name-help company-name-feedback"
-            />
-            <b-form-invalid-feedback id="company-name-feedback" class="ml-2">
-              Bitte nutzen Sie maximal 55 Zeichen.
-            </b-form-invalid-feedback>
-            <b-form-text id="company-name-help" class="ml-2"
-              >Max. 55 Zeichen</b-form-text
-            >
+            <div class="row">
+              <div class="col-12 col-lg-4">
+                <label for="billing-address-email">E-Mail Adresse *</label>
+                <b-input-group>
+                  <template #prepend>
+                    <b-input-group-text>@</b-input-group-text>
+                  </template>
+                  <b-input
+                    id="billing-address-email"
+                    v-model="checkout.billingAddress.email"
+                    type="text"
+                    placeholder="E-Mail Adresse eingeben..."
+                    trim
+                    :state="
+                      checkout.validated
+                        ? checkout.billingAddress.email
+                          ? true
+                          : false
+                        : null
+                    "
+                  />
+                </b-input-group>
+              </div>
+              <div class="col-12 col-lg-4">
+                <label for="billing-address-phone">Telefonnummer</label>
+                <b-input-group>
+                  <template #prepend>
+                    <b-input-group-text
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="18"
+                        fill="currentColor"
+                        class="bi bi-phone"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z"
+                        />
+                        <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" /></svg
+                    ></b-input-group-text>
+                  </template>
+                  <b-input
+                    id="billing-address-phone"
+                    v-model="checkout.billingAddress.phone"
+                    type="text"
+                    placeholder="Telefonnummer eingeben..."
+                    trim
+                    :state="
+                      checkout.validated
+                        ? checkout.billingAddress.phone
+                          ? true
+                          : null
+                        : null
+                    "
+                  />
+                </b-input-group>
+              </div>
+            </div>
 
-            <label for="billing-address-department">Abteilung</label>
-            <b-input
-              id="billing-address-company"
-              v-model="checkout.billingAddress.department"
-              type="text"
-              placeholder="Abteilung eingeben..."
-              trim
-              :state="
-                checkout.validated
-                  ? checkout.billingAddress.department &&
-                    checkout.billingAddress.department.length <= 55
-                    ? true
-                    : !checkout.billingAddress.department
-                    ? null
-                    : false
-                  : null
-              "
-              aria-describedby="department-help department-feedback"
-            />
-            <b-form-invalid-feedback id="department-feedback" class="ml-2">
-              Bitte nutzen Sie maximal 55 Zeichen.
-            </b-form-invalid-feedback>
-            <b-form-text id="department-help" class="ml-2"
-              >Max. 55 Zeichen</b-form-text
-            >
-
-            <label for="billing-address-email">E-Mail Adresse *</label>
-            <b-input
-              id="billing-address-email"
-              v-model="checkout.billingAddress.email"
-              type="text"
-              placeholder="E-Mail Adresse eingeben..."
-              trim
-              :state="
-                checkout.validated
-                  ? checkout.billingAddress.email
-                    ? true
-                    : false
-                  : null
-              "
-            />
-            <label for="billing-address-phone">Telefonnummer</label>
-            <b-input
-              id="billing-address-phone"
-              v-model="checkout.billingAddress.phone"
-              type="text"
-              placeholder="Telefonnummer eingeben..."
-              trim
-              :state="
-                checkout.validated
-                  ? checkout.billingAddress.phone
-                    ? true
-                    : null
-                  : null
-              "
-            />
-            <label for="billing-address-street">Straße und Hausnummer *</label>
-            <b-input
-              id="billing-address-street"
-              v-model="checkout.billingAddress.street"
-              type="text"
-              placeholder="Straße und Hausnummer eingeben..."
-              trim
-              :state="
-                checkout.validated
-                  ? checkout.billingAddress.street
-                    ? true
-                    : false
-                  : null
-              "
-            />
-            <label for="billing-address-zip-code">PLZ *</label>
-            <b-input
-              id="billing-address-zip-code"
-              v-model="checkout.billingAddress.zipCode"
-              type="text"
-              placeholder="PLZ eingeben..."
-              trim
-              :state="
-                checkout.validated
-                  ? checkout.billingAddress.zipCode
-                    ? true
-                    : false
-                  : null
-              "
-            />
-            <label for="billing-address-location">Ort *</label>
-            <b-input
-              id="billing-address-location"
-              v-model="checkout.billingAddress.location"
-              type="text"
-              placeholder="Ort eingeben..."
-              trim
-              :state="
-                checkout.validated
-                  ? checkout.billingAddress.location
-                    ? true
-                    : false
-                  : null
-              "
-            />
+            <div class="row">
+              <div class="col-12 col-lg-4">
+                <label for="billing-address-street"
+                  >Straße und Hausnummer *</label
+                >
+                <b-input
+                  id="billing-address-street"
+                  v-model="checkout.billingAddress.street"
+                  type="text"
+                  placeholder="Straße und Hausnummer eingeben..."
+                  trim
+                  :state="
+                    checkout.validated
+                      ? checkout.billingAddress.street
+                        ? true
+                        : false
+                      : null
+                  "
+                />
+              </div>
+              <div class="col-12 col-lg-4">
+                <label for="billing-address-zip-code">PLZ *</label>
+                <b-input
+                  id="billing-address-zip-code"
+                  v-model="checkout.billingAddress.zipCode"
+                  type="text"
+                  placeholder="PLZ eingeben..."
+                  trim
+                  :state="
+                    checkout.validated
+                      ? checkout.billingAddress.zipCode
+                        ? true
+                        : false
+                      : null
+                  "
+                />
+              </div>
+              <div class="col-12 col-lg-4">
+                <label for="billing-address-location">Ort *</label>
+                <b-input
+                  id="billing-address-location"
+                  v-model="checkout.billingAddress.location"
+                  type="text"
+                  placeholder="Ort eingeben..."
+                  trim
+                  :state="
+                    checkout.validated
+                      ? checkout.billingAddress.location
+                        ? true
+                        : false
+                      : null
+                  "
+                />
+              </div>
+            </div>
 
             <b-alert
               v-if="checkout.error"

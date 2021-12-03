@@ -347,6 +347,26 @@
             </div>
           </div>
         </div>
+
+        <b-form-checkbox
+          id="accepted"
+          v-model="jobSeek.accepted"
+          :state="validated ? jobSeek.accepted : null"
+          class="mt-3"
+          name="accepted"
+          switch
+        >
+          Ich habe die
+          <b-link href="/agbs" target="_blank">
+            AGBs
+          </b-link>
+          und
+          <b-link href="/datenschutz" target="_blank">
+            Datenschutzbestimmungen
+          </b-link>
+
+          gelesen und akzeptiere diese. *
+        </b-form-checkbox>
       </b-form-group>
 
       <div class="d-flex justify-content-between my-4">
@@ -426,7 +446,8 @@
           // birthDate: null,
           imageUrl: "",
           zipCode: "",
-          location: ""
+          location: "",
+          accepted: false
         },
         step: 0,
         contactGenderOptions,
@@ -494,6 +515,7 @@
                     imageUrl
                     location
                     zipCode
+                    accepted
                   }
                 }
               `
@@ -572,6 +594,7 @@
                     imageUrl: "${this.jobSeek.imageUrl}"
                     location: "${this.jobSeek.location}"
                     zipCode: "${this.jobSeek.zipCode}"
+                    accepted: ${this.jobSeek.accepted}
                   ) {
                     _id
                   }
@@ -632,7 +655,8 @@
           !this.jobSeek.lastName ||
           !this.jobSeek.contactEmail ||
           !this.jobSeek.zipCode ||
-          !this.jobSeek.location
+          !this.jobSeek.location ||
+          !this.jobSeek.accepted
           ? false
           : true;
       }

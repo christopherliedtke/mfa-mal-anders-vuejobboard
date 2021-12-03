@@ -34,6 +34,7 @@ const JobSeekType = gql`
       location: String
       zipCode: String
       published: Boolean
+      accepted: Boolean!
     ): JobSeek
     updateJobSeek(
       _id: ID!
@@ -59,6 +60,7 @@ const JobSeekType = gql`
       location: String
       zipCode: String
       published: Boolean
+      accepted: Boolean
     ): JobSeek
     deleteJobSeek(_id: ID!): JobSeek
   }
@@ -96,6 +98,7 @@ const JobSeekType = gql`
     geoCodeLng: Float
     lastCheckedAt: Float
     published: Boolean
+    accepted: Boolean
   }
 `;
 

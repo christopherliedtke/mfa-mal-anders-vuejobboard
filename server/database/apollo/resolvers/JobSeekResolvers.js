@@ -11,20 +11,22 @@ const JobSeekResolvers = {
       const jobSeek = await JobSeek.findOne({
         _id: args._id,
         published: true,
+        accepted: true,
       });
 
-      // ! delete non-anonymized & sensible data
-      // ! check for valid payment -> hide contact data
+      // TODO delete non-anonymized & sensible data
+      // TODO check for valid payment -> hide contact data
 
       return jobSeek;
     },
     publicJobSeeks: async (root, args) => {
       const jobSeeks = await JobSeek.find({
         published: true,
+        accepted: true,
       });
 
-      // ! delete non-anonymized & sensible data
-      // ! check for valid payment -> hide contact data
+      // TODO delete non-anonymized & sensible data
+      // TODO check for valid payment -> hide contact data
 
       return jobSeeks;
     },
@@ -55,7 +57,7 @@ const JobSeekResolvers = {
         user: context.user._id,
       }).sort({ createdAt: "desc" });
 
-      // ! update all jobSeeks' lastCheckedAt field
+      // TODO update all jobSeeks' lastCheckedAt field
 
       return jobSeeks;
     },
@@ -119,7 +121,7 @@ const JobSeekResolvers = {
       const updateObj = cleanUpJobSeek({ ...args });
       delete updateObj._id;
 
-      // ! get location
+      // TODO get location
 
       const filter = { _id: args._id };
       if (!context.user.isAdmin) {

@@ -165,6 +165,14 @@ const CompanyArchive = () =>
     "@/views/jobboard/archives/CompanyArchive.vue"
   );
 
+// #JobSeekBoard
+const JobSeekBoard = () =>
+  import(
+    /* webpackChunkName: "jobseekboard" */
+    /* webpackPrefetch: true */
+    "@/views/jobseekboard/JobSeekBoardHome.vue"
+  );
+
 // #Company
 const CompanyView = () =>
   import(
@@ -364,6 +372,14 @@ const routes = [
     path: "/unternehmen/:companyId/:name",
     name: "CompanyViewWName",
     component: CompanyView,
+    meta: {
+      public: true
+    }
+  },
+  {
+    path: "/stellengesuche",
+    name: "JobSeekBoard",
+    component: JobSeekBoard,
     meta: {
       public: true
     }

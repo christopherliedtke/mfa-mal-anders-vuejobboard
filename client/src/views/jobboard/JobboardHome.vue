@@ -452,7 +452,6 @@
       "
       img=""
       :script="snippet"
-      :link="link"
     />
   </div>
 </template>
@@ -462,6 +461,7 @@
   import { BSpinner, BCollapse } from "bootstrap-vue";
   Vue.component("BSpinner", BSpinner);
   Vue.component("BCollapse", BCollapse);
+
   import {
     employmentTypeOptions,
     companyStateOptions,
@@ -478,6 +478,7 @@
   import TrainingCatalogueSmallBanner from "@/components/banners/TrainingCatalogueSmallBanner.vue";
   import SubscribeNewsletterBtn from "@/components/buttons/SubscribeNewsletterBtn.vue";
   import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
+
   export default {
     name: "Jobboard",
     components: {
@@ -520,16 +521,7 @@
         companyStateOptions,
         specializationOptions,
         professionOptions,
-        jobboardView: this.$route.query.jobboardView || "list",
-        errors: null,
-        link: [
-          {
-            id: "mapsjs-ui",
-            rel: "stylesheet",
-            href: "https://js.api.here.com/v3/3.1/mapsjs-ui.css",
-            type: "text/css"
-          }
-        ]
+        errors: null
       };
     },
     computed: {
