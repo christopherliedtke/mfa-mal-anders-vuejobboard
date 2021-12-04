@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const textToSlug = require("../../utils/textToSlug");
 
 const JobSeekSchema = new Schema(
   {
@@ -123,16 +124,6 @@ const JobSeekSchema = new Schema(
     geoCodeLng: {
       type: Number,
     },
-    lastCheckedAt: {
-      type: Date,
-      default: function () {
-        if (this.updatedAt) {
-          return this.updatedAt;
-        } else {
-          return null;
-        }
-      },
-    },
     published: {
       type: Boolean,
       default: false,
@@ -140,6 +131,18 @@ const JobSeekSchema = new Schema(
     accepted: {
       type: Boolean,
       default: false,
+    },
+    slug: {
+      type: String,
+      default: function () {
+        if (this.title) {
+          return textToSlug(
+            `${this.title}${this.location ? "-in-" + this.location : ""}`
+          );
+        } else {
+          return "";
+        }
+      },
     },
   },
   { timestamps: true }

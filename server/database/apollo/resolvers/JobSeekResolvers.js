@@ -4,47 +4,82 @@ const s3 = require("../../../middleware/s3");
 const getLocation = require("../../../utils/geocoder");
 // const config = require("../../../config/config");
 const { JobSeek } = require("../../models/jobSeek");
+const publicJobSeeksCache = require("../../../cache/publicJobSeeksCache");
 
 const JobSeekResolvers = {
   Query: {
     publicJobSeek: async (root, args) => {
-      const jobSeek = await JobSeek.findOne({
-        _id: args._id,
-        published: true,
-        accepted: true,
-      });
+      const jobSeek = await JobSeek.findOne(
+        {
+          _id: args._id,
+          published: true,
+          accepted: true,
+        },
+        `
+        _id
+        updatedAt
+        title
+        about
+        experiences
+        tasks
+        qualifications
+        isMfa
+        isZfa
+        partTime
+        fullTime
+        training
+        miniJob
+        gender
+        publicFirstName
+        publicLastName
+        imageUrl
+        location
+        zipCode
+      `
+      );
 
-      // TODO delete non-anonymized & sensible data
-      // TODO check for valid payment -> hide contact data
+      // ? check for valid payment
 
       return jobSeek;
     },
     publicJobSeeks: async (root, args) => {
-      const jobSeeks = await JobSeek.find({
-        published: true,
-        accepted: true,
-      });
+      if (args.location) {
+        const locations = await getLocation(args.location);
 
-      // TODO delete non-anonymized & sensible data
-      // TODO check for valid payment -> hide contact data
+        if (locations) {
+          args.position = locations[0].position;
+        } else {
+          // TODO throw custom error (incl. frontend)
+          throw new Error(
+            `Es konnte kein passender Ort für '${args.location}' gefunden werden oder der Ortungsservice funktioniert aktuell nicht. Bitte stellen Sie sicher, dass der Ort bzw. die PLZ korrekt und komplett angegeben ist.`
+          );
+        }
+      }
 
-      return jobSeeks;
+      console.log("args: ", args);
+
+      let jobSeeks = await publicJobSeeksCache.get("jobSeeks");
+      const count = jobSeeks.length;
+
+      // TODO if location -> sort by geodata
+
+      jobSeeks = sliceJobSeeks(
+        [...jobSeeks],
+        args.limit || undefined,
+        args.skip
+      );
+
+      return { jobSeeks, count };
     },
     myJobSeek: async (root, args, context) => {
       if (!context.user._id) {
         throw new AuthenticationError("Must be logged in!");
       }
 
-      const jobSeek = await JobSeek.findOneAndUpdate(
-        {
-          _id: args._id,
-          user: context.user._id,
-        },
-        { lastCheckedAt: new Date().getTime() },
-        {
-          new: true,
-        }
-      );
+      const jobSeek = await JobSeek.findOne({
+        _id: args._id,
+        user: context.user._id,
+      });
 
       return jobSeek;
     },
@@ -57,7 +92,9 @@ const JobSeekResolvers = {
         user: context.user._id,
       }).sort({ createdAt: "desc" });
 
-      // TODO update all jobSeeks' lastCheckedAt field
+      await JobSeek.updateMany({
+        user: context.user._id,
+      });
 
       return jobSeeks;
     },
@@ -111,6 +148,8 @@ const JobSeekResolvers = {
       const newJobSeekObj = new JobSeek(addObj);
       const newJobSeek = await newJobSeekObj.save();
 
+      publicJobSeeksCache.flush();
+
       return newJobSeek;
     },
     updateJobSeek: async (root, args, context) => {
@@ -118,10 +157,25 @@ const JobSeekResolvers = {
         throw new AuthenticationError("Must be logged in!");
       }
 
-      const updateObj = cleanUpJobSeek({ ...args });
-      delete updateObj._id;
+      const locations = await getLocation(`${args.zipCode} ${args.location}`);
 
-      // TODO get location
+      if (!locations) {
+        throw new ApolloError(
+          `Es konnte kein passender Ort für "${args.zipCode} ${args.location}" gefunden werden oder der Ortungsservice funktioniert aktuell nicht. Bitte überprüfe ggfls. Ort und PLZ.`
+        );
+      }
+
+      const updateObj = cleanUpJobSeek({
+        ...args,
+        user: context.user._id,
+        location: locations[0].address.city,
+        zipCode: locations[0].address.postalCode,
+        state: locations[0].address.state,
+        country: locations[0].address.countryName,
+        geoCodeLat: locations[0].position.lat,
+        geoCodeLng: locations[0].position.lng,
+      });
+      delete updateObj._id;
 
       const filter = { _id: args._id };
       if (!context.user.isAdmin) {
@@ -131,6 +185,9 @@ const JobSeekResolvers = {
       const updatedJobSeek = await JobSeek.findOneAndUpdate(filter, updateObj, {
         new: true,
       });
+
+      publicJobSeeksCache.flush();
+
       return updatedJobSeek;
     },
     deleteJobSeek: async (root, args, context) => {
@@ -145,6 +202,9 @@ const JobSeekResolvers = {
       if (deletedJobSeek.imageUrl) {
         await s3.delete(deletedJobSeek.imageUrl);
       }
+
+      publicJobSeeksCache.flush();
+
       return deletedJobSeek;
     },
   },
@@ -231,6 +291,10 @@ function cleanUpJobSeek(jobSeek) {
   }
 
   return jobSeek;
+}
+
+function sliceJobSeeks(jobSeeks = [], limit = 1, offset = 0) {
+  return jobSeeks.slice(offset, offset + limit);
 }
 
 module.exports = JobSeekResolvers;

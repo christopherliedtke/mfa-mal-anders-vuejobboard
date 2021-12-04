@@ -3,7 +3,15 @@ const { gql } = require("graphql-modules");
 const JobSeekType = gql`
   extend type Query {
     publicJobSeek(_id: ID!): JobSeek
-    publicJobSeeks: [JobSeek]
+    publicJobSeeks(
+      limit: Float
+      skip: Float
+      location: String
+      radius: Float
+      employmentType: String
+      isMfa: Boolean
+      isZfa: Boolean
+    ): JobSeeksWithCount
     myJobSeek(_id: ID!): JobSeek
     myJobSeeks: [JobSeek]
     adminJobSeek(_id: ID!): JobSeek
@@ -28,6 +36,8 @@ const JobSeekType = gql`
       gender: String
       firstName: String!
       lastName: String!
+      publicFirstName: String!
+      publicLastName: String!
       contactEmail: String!
       birthDate: Float
       imageUrl: String
@@ -54,6 +64,8 @@ const JobSeekType = gql`
       gender: String
       firstName: String
       lastName: String
+      publicFirstName: String
+      publicLastName: String
       contactEmail: String
       birthDate: Float
       imageUrl: String
@@ -96,9 +108,14 @@ const JobSeekType = gql`
     country: String
     geoCodeLat: Float
     geoCodeLng: Float
-    lastCheckedAt: Float
     published: Boolean
     accepted: Boolean
+    slug: String
+  }
+
+  type JobSeeksWithCount {
+    jobSeeks: [JobSeek]
+    count: Float
   }
 `;
 

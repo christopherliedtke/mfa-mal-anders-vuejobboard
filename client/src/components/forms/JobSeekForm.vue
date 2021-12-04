@@ -590,6 +590,16 @@
                     gender: "${this.jobSeek.gender}"
                     firstName: "${this.jobSeek.firstName}"
                     lastName: "${this.jobSeek.lastName}"
+                    publicFirstName: "${
+                      this.jobSeek.anonymized
+                        ? this.jobSeek.firstName.charAt() + "."
+                        : this.jobSeek.firstName
+                    }"
+                    publicLastName: "${
+                      this.jobSeek.anonymized
+                        ? this.jobSeek.lastName.charAt() + "."
+                        : this.jobSeek.lastName
+                    }"
                     contactEmail: "${this.jobSeek.contactEmail}"
                     imageUrl: "${this.jobSeek.imageUrl}"
                     location: "${this.jobSeek.location}"

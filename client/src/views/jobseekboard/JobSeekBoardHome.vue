@@ -127,7 +127,7 @@
                   class=""
                   @change="
                     () => {
-                      getJobs();
+                      getJobSeeks();
                       setQuery();
                     }
                   "
@@ -142,6 +142,39 @@
                     >{{ type.text }}</b-form-select-option
                   >
                 </b-form-select>
+
+                <div class="d-flex flex-wrap mt-2">
+                  <b-form-checkbox
+                    id="is-mfa"
+                    v-model="filter.isMfa"
+                    class="mr-sm-4"
+                    name="is-mfa"
+                    switch
+                    @change="
+                      () => {
+                        getJobSeeks();
+                        setQuery();
+                      }
+                    "
+                  >
+                    MFA Ausbildung
+                  </b-form-checkbox>
+                  <b-form-checkbox
+                    id="is-zfa"
+                    v-model="filter.isZfa"
+                    class="mr-sm-4"
+                    name="is-zfa"
+                    switch
+                    @change="
+                      () => {
+                        getJobSeeks();
+                        setQuery();
+                      }
+                    "
+                  >
+                    ZFA Ausbildung
+                  </b-form-checkbox>
+                </div>
               </b-input-group>
 
               <div>
@@ -154,7 +187,7 @@
               </div>
             </b-collapse>
 
-            <div class="mt-2">
+            <div class="mt-2 mb-3">
               <b-button variant="success" type="submit" block
                 ><svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -183,6 +216,20 @@
               :key="jobSeek._id"
               :job-seek="jobSeek"
             />
+          </div>
+          <div class="d-flex justify-content-center">
+            <button
+              v-if="jobSeeks && jobSeeks.length < count"
+              class="btn btn-secondary"
+              @click="loadMoreJobSeeks()"
+            >
+              Weitere Laden
+            </button>
+            <BSpinner
+              v-else-if="loading"
+              variant="primary"
+              label="Lade weitere Stellengesuche..."
+            ></BSpinner>
           </div>
         </div>
       </div>
@@ -230,6 +277,7 @@
       return {
         title: "",
         jobSeeks: null,
+        count: null,
         filter: {
           ort: "",
           radius: null,
@@ -302,27 +350,86 @@
       this.getJobSeeks();
     },
     methods: {
-      async getJobSeeks(limit = "", offset = "") {
-        console.log("offset: ", offset);
+      async getJobSeeks(limit = null, skip = null) {
+        console.log("skip: ", skip);
         console.log("limit: ", limit);
 
-        this.jobSeeks = offset ? this.jobSeeks : null;
+        this.jobSeeks = skip ? this.jobSeeks : null;
 
-        // TODO get jobSeeks
+        try {
+          const jobSeeks = await this.$axios.get("/graphql", {
+            params: {
+              query: `
+                query {
+                  publicJobSeeks(
+                      limit: ${limit}
+                      skip: ${skip}
+                      location: "${this.filter.ort}"
+                      radius: ${this.filter.radius}
+                      employmentType: "${this.filter.anstellungsart}"
+                      isMfa: ${this.filter.isMfa}
+                      isZfa: ${this.filter.isZfa}
+                    ) {
+                    jobSeeks {
+                      _id
+                      title
+                      isMfa
+                      isZfa
+                      partTime
+                      fullTime
+                      training
+                      miniJob
+                      publicFirstName
+                      publicLastName
+                      imageUrl
+                      location
+                      slug
+                    }
+                    count
+                  }
+                }
+              `
+            }
+          });
+
+          console.log("jobSeeks: ", jobSeeks);
+
+          if (jobSeeks.data.errors) {
+            // TODO show error
+          }
+
+          this.count = jobSeeks.data.data.publicJobSeeks.count;
+          if (this.count === 0) {
+            // TODO show message
+          }
+
+          this.jobSeeks = [
+            ...(this.jobSeeks || ""),
+            ...jobSeeks.data.data.publicJobSeeks.jobSeeks
+          ];
+        } catch (err) {
+          this.$root.$bvToast.toast(
+            `Beim Laden der Stellengesuche ist ein Fehler aufgetreten. Bitte versuchen Sie die Seite neu zu laden.`,
+            {
+              title: `Fehler beim Laden`,
+              variant: "danger",
+              toaster: "b-toaster-bottom-right",
+              solid: true,
+              noAutoHide: true
+            }
+          );
+        }
       },
       async loadMoreJobSeeks() {
         this.loading = false;
 
-        // if (
-        //   this.filteredJobs.length < this.jobsCount ||
-        //   this.filteredJobs.length === 0
-        // ) {
-        //   this.loading = true;
-        //   await this.getJobs(undefined, this.filteredJobs.length);
-        //   this.loading = false;
-        // }
+        if (this.jobSeeks && this.jobSeeks.length < this.count) {
+          this.loading = true;
 
-        // TODO implement load more btn in template
+          await this.getJobSeeks(undefined, this.jobSeeks.length);
+
+          this.loading = false;
+        }
       },
       setQuery() {
         const query = {
@@ -345,6 +452,7 @@
       },
       setFilter() {
         this.filter = {
+          ...this.filter,
           ort: this.capitalize(
             `${this.$route.params.location || this.$route.query.ort || ""}`
           ).replace(/-/g, " "),
@@ -390,3 +498,12 @@
     }
   };
 </script>
+
+<style lang="scss">
+  .jobseekboard {
+    .custom-control-label {
+      justify-content: flex-start;
+      margin-top: 0.25rem;
+    }
+  }
+</style>

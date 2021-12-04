@@ -66,10 +66,7 @@
                     imageUrl
                     location
                     zipCode
-                    state
-                    geoCodeLat
-                    geoCodeLng
-                    lastCheckedAt
+                    slug
                   }
                 }
               `
