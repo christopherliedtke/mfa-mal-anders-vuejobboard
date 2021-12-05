@@ -107,13 +107,16 @@
                 type="number"
                 min="15"
                 step="5"
-                placeholder="Umkreis (km)..."
+                placeholder="Umkreis..."
                 debounce="500"
                 number
                 trim
                 lazy
               />
               <b-input-group-append>
+                <b-input-group-text class="bg-light text-muted px-2"
+                  >km</b-input-group-text
+                >
                 <b-button
                   aria-label="Zurücksetzen"
                   class="px-2"
@@ -292,6 +295,7 @@
             Leider konnten für Ihre Anfrage aktuell keine Stellengesuche
             gefunden werden.
           </div>
+
           <div class="d-flex justify-content-center">
             <button
               v-if="jobSeeks && jobSeeks.length < count"
@@ -511,11 +515,7 @@
       },
       async loadMoreJobSeeks() {
         if (this.jobSeeks && this.jobSeeks.length < this.count) {
-          this.loading = true;
-
           await this.getJobSeeks(undefined, this.jobSeeks.length);
-
-          this.loading = false;
         }
       },
       setQuery() {

@@ -3,7 +3,16 @@ const { gql } = require("graphql-modules");
 const JobType = gql`
   type Query {
     publicJob(_id: ID!): Job
-    publicJobs: [Job]
+    publicJobs(
+      limit: Float
+      skip: Float
+      s: String
+      location: String
+      radius: Float
+      employmentType: String
+      specialization: String
+      profession: String
+    ): PublicJobWithCount
     myJob(_id: ID!): Job
     myJobs: [Job]
     adminJob(_id: ID!): Job
@@ -162,6 +171,11 @@ const JobType = gql`
     contactPosition: String
     contactEmail: String
     contactPhone: String
+  }
+
+  type PublicJobWithCount {
+    jobs: [Job]
+    count: Float
   }
 
   extend type User {
