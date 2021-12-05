@@ -172,6 +172,12 @@ const JobSeekBoard = () =>
     /* webpackPrefetch: true */
     "@/views/jobseekboard/JobSeekBoardHome.vue"
   );
+const JobSeekView = () =>
+  import(
+    /* webpackChunkName: "jobseek" */
+    /* webpackPrefetch: true */
+    "@/views/jobseekboard/jobseek/JobSeekView.vue"
+  );
 
 // #Company
 const CompanyView = () =>
@@ -380,6 +386,30 @@ const routes = [
     path: "/stellengesuche",
     name: "JobSeekBoard",
     component: JobSeekBoard,
+    meta: {
+      public: true
+    }
+  },
+  {
+    path: "/stellengesuche/ort/:location",
+    name: "JobSeekboardWLocation",
+    component: JobSeekBoard,
+    meta: {
+      public: true
+    }
+  },
+  {
+    path: "/stellengesuche/gesuch/:jobSeekId",
+    name: "JobSeekView",
+    component: JobSeekView,
+    meta: {
+      public: true
+    }
+  },
+  {
+    path: "/stellengesuche/gesuch/:jobSeekId/:title",
+    name: "JobSeekViewWithTitle",
+    component: JobSeekView,
     meta: {
       public: true
     }

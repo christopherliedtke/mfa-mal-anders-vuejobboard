@@ -21,7 +21,7 @@
               }
             "
           >
-            <label for="location-jobboard" class="sr-only">Ort / PLZ</label>
+            <label for="location" class="sr-only">Ort / PLZ</label>
             <b-input-group class="mb-2 mr-2">
               <template #prepend>
                 <b-input-group-text class="bg-secondary text-light border-0"
@@ -40,11 +40,10 @@
                 ></b-input-group-text>
               </template>
               <b-form-input
-                id="location-jobboard"
+                id="location"
                 v-model="filter.ort"
-                :class="[{ 'border-secondary': !!filter.ort }]"
                 type="text"
-                placeholder="Ort oder PLZ..."
+                placeholder="PLZ oder Ort..."
                 trim
                 lazy
                 :formatter="capitalize"
@@ -76,9 +75,74 @@
               </b-input-group-append>
             </b-input-group>
 
+            <label for="radius" class="sr-only">Umkreisradius</label>
+            <b-input-group>
+              <template #prepend>
+                <b-input-group-text class="bg-secondary text-light border-0"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-bullseye"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+                    />
+                    <path
+                      d="M8 13A5 5 0 1 1 8 3a5 5 0 0 1 0 10zm0 1A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"
+                    />
+                    <path
+                      d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"
+                    />
+                    <path
+                      d="M9.5 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"
+                    /></svg
+                ></b-input-group-text>
+              </template>
+              <b-form-input
+                id="radius"
+                v-model="filter.radius"
+                type="number"
+                min="15"
+                step="5"
+                placeholder="Umkreis (km)..."
+                debounce="500"
+                number
+                trim
+                lazy
+              />
+              <b-input-group-append>
+                <b-button
+                  aria-label="Zurücksetzen"
+                  class="px-2"
+                  @click.prevent="
+                    () => {
+                      filter.radius = null;
+                      getJobSeeks();
+                      setQuery();
+                    }
+                  "
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-x"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+                    /></svg
+                  ><span class="sr-only">Zurücksetzen</span></b-button
+                >
+              </b-input-group-append>
+            </b-input-group>
+
             <div
               style="cursor: pointer"
-              class="text-primary my-3 ml-2"
+              class="text-primary mt-3 mb-2 ml-2"
               @click="showAdvancedSearch = !showAdvancedSearch"
             >
               Erweiterte Suche
@@ -98,11 +162,13 @@
                 />
               </svg>
             </div>
-            <b-collapse id="advanced-search" v-model="showAdvancedSearch">
-              <label for="employmentType-jobseekboard" class="sr-only"
-                >Anstellungsart</label
-              >
-              <b-input-group class="mb-2 mr-2">
+            <b-collapse
+              id="advanced-search"
+              v-model="showAdvancedSearch"
+              class="mb-3"
+            >
+              <label for="employmentType" class="sr-only">Anstellungsart</label>
+              <b-input-group class="mr-2">
                 <template #prepend>
                   <b-input-group-text class="bg-secondary text-light border-0"
                     ><svg
@@ -122,7 +188,7 @@
                   ></b-input-group-text>
                 </template>
                 <b-form-select
-                  id="employmentType-jobseekboard"
+                  id="employmentType"
                   v-model="filter.anstellungsart"
                   class=""
                   @change="
@@ -142,50 +208,50 @@
                     >{{ type.text }}</b-form-select-option
                   >
                 </b-form-select>
-
-                <div class="d-flex flex-wrap mt-2">
-                  <b-form-checkbox
-                    id="is-mfa"
-                    v-model="filter.isMfa"
-                    class="mr-sm-4"
-                    name="is-mfa"
-                    switch
-                    @change="
-                      () => {
-                        getJobSeeks();
-                        setQuery();
-                      }
-                    "
-                  >
-                    MFA Ausbildung
-                  </b-form-checkbox>
-                  <b-form-checkbox
-                    id="is-zfa"
-                    v-model="filter.isZfa"
-                    class="mr-sm-4"
-                    name="is-zfa"
-                    switch
-                    @change="
-                      () => {
-                        getJobSeeks();
-                        setQuery();
-                      }
-                    "
-                  >
-                    ZFA Ausbildung
-                  </b-form-checkbox>
-                </div>
               </b-input-group>
 
-              <div>
-                <span
-                  style="cursor: pointer"
-                  class="text-danger small ml-2"
-                  @click="resetFilter"
-                  >Filter zurücksetzen</span
+              <b-form-group class="d-flex flex-wrap mt-2">
+                <b-form-checkbox
+                  id="is-mfa"
+                  v-model="filter.isMfa"
+                  class="mr-sm-4"
+                  name="is-mfa"
+                  switch
+                  @change="
+                    () => {
+                      getJobSeeks();
+                      setQuery();
+                    }
+                  "
                 >
-              </div>
+                  MFA Ausbildung
+                </b-form-checkbox>
+                <b-form-checkbox
+                  id="is-zfa"
+                  v-model="filter.isZfa"
+                  class="mr-sm-4"
+                  name="is-zfa"
+                  switch
+                  @change="
+                    () => {
+                      getJobSeeks();
+                      setQuery();
+                    }
+                  "
+                >
+                  ZFA Ausbildung
+                </b-form-checkbox>
+              </b-form-group>
             </b-collapse>
+
+            <div>
+              <span
+                style="cursor: pointer"
+                class="text-danger small ml-2"
+                @click="resetFilter"
+                >Filter zurücksetzen</span
+              >
+            </div>
 
             <div class="mt-2 mb-3">
               <b-button variant="success" type="submit" block
@@ -207,7 +273,12 @@
         </div>
 
         <div class="col-12 col-lg-8 pt-2">
-          <div v-if="!jobSeeks">
+          <div v-if="errors">
+            <p v-for="(error, index) in errors" :key="index">
+              {{ error.message }}
+            </p>
+          </div>
+          <div v-else-if="!jobSeeks">
             <JobSeekCardPlaceholder v-for="index in 25" :key="index" />
           </div>
           <div v-else-if="jobSeeks.length > 0">
@@ -216,6 +287,10 @@
               :key="jobSeek._id"
               :job-seek="jobSeek"
             />
+          </div>
+          <div v-else-if="count === 0">
+            Leider konnten für Ihre Anfrage aktuell keine Stellengesuche
+            gefunden werden.
           </div>
           <div class="d-flex justify-content-center">
             <button
@@ -287,7 +362,8 @@
         },
         showAdvancedSearch: false,
         employmentTypeOptions,
-        loading: false
+        loading: false,
+        errors: null
       };
     },
     computed: {
@@ -351,10 +427,13 @@
     },
     methods: {
       async getJobSeeks(limit = null, skip = null) {
-        console.log("skip: ", skip);
-        console.log("limit: ", limit);
+        if (this.loading === true) {
+          return;
+        }
 
+        this.loading = true;
         this.jobSeeks = skip ? this.jobSeeks : null;
+        this.errors = null;
 
         try {
           const jobSeeks = await this.$axios.get("/graphql", {
@@ -365,7 +444,11 @@
                       limit: ${limit}
                       skip: ${skip}
                       location: "${this.filter.ort}"
-                      radius: ${this.filter.radius}
+                      radius: ${
+                        Number.isInteger(this.filter.radius)
+                          ? this.filter.radius
+                          : null
+                      }
                       employmentType: "${this.filter.anstellungsart}"
                       isMfa: ${this.filter.isMfa}
                       isZfa: ${this.filter.isZfa}
@@ -392,16 +475,20 @@
             }
           });
 
-          console.log("jobSeeks: ", jobSeeks);
-
           if (jobSeeks.data.errors) {
-            // TODO show error
+            if (
+              jobSeeks.data.errors.some(
+                error => error.extensions.exception.code == "NO_LOCATION"
+              )
+            ) {
+              this.errors = jobSeeks.data.errors;
+              return;
+            }
+
+            throw new Error();
           }
 
           this.count = jobSeeks.data.data.publicJobSeeks.count;
-          if (this.count === 0) {
-            // TODO show message
-          }
 
           this.jobSeeks = [
             ...(this.jobSeeks || ""),
@@ -419,10 +506,10 @@
             }
           );
         }
+
+        this.loading = false;
       },
       async loadMoreJobSeeks() {
-        this.loading = false;
-
         if (this.jobSeeks && this.jobSeeks.length < this.count) {
           this.loading = true;
 
@@ -457,10 +544,17 @@
             `${this.$route.params.location || this.$route.query.ort || ""}`
           ).replace(/-/g, " "),
           radius: parseInt(this.$route.query.radius) || null,
-          anstellungsart: this.$route.query.anstellungsart || ""
+          anstellungsart: this.$route.query.anstellungsart || "",
+          isMfa: !!this.$route.query.isMfa,
+          isZfa: !!this.$route.query.isZfa
         };
 
-        if (this.filter.radius || this.filter.anstellungsart) {
+        if (
+          this.filter.radius ||
+          this.filter.anstellungsart ||
+          this.filter.isMfa ||
+          this.filter.isZfa
+        ) {
           this.showAdvancedSearch = true;
         }
       },
@@ -474,7 +568,7 @@
         };
 
         this.setQuery();
-        this.getJobs();
+        this.getJobSeeks();
       },
       capitalize(value) {
         return value.replace(/(^[a-z]| [a-z]|-[a-z])/g, letter =>
@@ -488,10 +582,6 @@
         if (location) {
           canonical += "/ort/" + location.toLowerCase();
         }
-
-        // if (this.$route.query.berufsgruppe) {
-        //   canonical += "?berufsgruppe=" + this.$route.query.berufsgruppe;
-        // }
 
         return canonical;
       }

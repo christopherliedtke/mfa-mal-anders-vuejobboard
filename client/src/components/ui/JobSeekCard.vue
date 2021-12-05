@@ -2,7 +2,7 @@
   <article v-if="jobSeek">
     <b-link
       class="card job-seek-card bg-light-shade border-radius2 shadow1 p-4 mb-3"
-      :to="`/stellengesuche/${jobSeek._id}/${jobSeek.slug}`"
+      :to="`/stellengesuche/gesuch/${jobSeek._id}/${jobSeek.slug}`"
       target="_self"
       :disabled="linkDisabled"
     >

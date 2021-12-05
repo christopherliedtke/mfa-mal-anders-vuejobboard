@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const getLocation = async (q, country) => {
+const getLocation = async (q, country = "Deutschland") => {
   try {
     const location = await axios.get(
       `https://geocode.search.hereapi.com/v1/geocode?apiKey=${process.env.HERE_REST_APIKEY}`,
