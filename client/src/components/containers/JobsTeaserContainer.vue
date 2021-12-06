@@ -100,18 +100,58 @@
     },
     methods: {
       async getPublicJobs() {
-        const response = await this.$axios.get("/api/public-jobs", {
-          params: {
-            s: this.searchTerm,
-            employmentType: this.employmentType,
-            profession: this.profession,
-            geoCodeLat: this.location ? this.location.geoCodeLat : undefined,
-            geoCodeLng: this.location ? this.location.geoCodeLng : undefined,
-            limit: this.number
-          }
-        });
+        try {
+          const jobs = await this.$axios.get("/graphql", {
+            params: {
+              query: `
+                query {
+                  publicJobs (
+                    limit: ${this.number}
+                    s: "${this.searchTerm}"
+                    employmentType: "${this.employmentType}"
+                    profession: "${this.profession}"
+                    position: { 
+                      lat: ${
+                        this.location && this.location.geoCodeLat
+                          ? this.location.geoCodeLat
+                          : null
+                      },
+                      lng: ${
+                        this.location && this.location.geoCodeLng
+                          ? this.location.geoCodeLng
+                          : null
+                      }
+                    }
+                  ) {
+                    jobs {
+                      _id
+                      title
+                      description
+                      profession
+                      employmentType
+                      specialization
+                      salaryMin
+                      salaryMax
+                      slug
+                      company {
+                        name
+                        location
+                      }
+                    }
+                  }
+                }
+              `
+            }
+          });
 
-        this.jobs = response.data.jobs.length > 0 ? response.data.jobs : null;
+          if (jobs.data.errors) {
+            throw new Error();
+          }
+
+          this.jobs = jobs.data.data.publicJobs.jobs || null;
+        } catch (err) {
+          //
+        }
       }
     }
   };

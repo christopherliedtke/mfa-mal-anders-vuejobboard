@@ -1000,13 +1000,11 @@ router.beforeEach((to, from, next) => {
   }
 
   if (!isPublic && onlyWhenPending && loggedIn && userActive) {
-    return next("/user/stellenanzeigen");
+    return next("/user/account");
   }
 
   if (loggedIn && onlyWhenLoggedOut) {
-    return next(
-      to.query.redirect ? to.query.redirect : "/user/stellenanzeigen"
-    );
+    return next(to.query.redirect ? to.query.redirect : "/user/account");
   }
 
   next();

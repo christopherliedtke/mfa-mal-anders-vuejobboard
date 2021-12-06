@@ -306,7 +306,7 @@ router.post("/checkout-completed", async (req, res) => {
                         `
                     }
                     <p>
-                        Die zugehörige Rechnung zur getätigten Zahlung finden Sie in Ihrem Account unter MEIN KONTO -> ZAHLUNGEN. Diese können Sie dort herunterladen.
+                        Die zugehörige Rechnung zur getätigten Zahlung finden Sie in Ihrem Account unter KONTO -> ZAHLUNGEN. Diese können Sie dort herunterladen.
                     </p>
                     ${
                       pricingPackage === "Professional"

@@ -18,6 +18,7 @@
       >
         <nav id="primary-nav">
           <router-link to="/stellenangebote">Stellenangebote</router-link>
+          <router-link to="/stellengesuche">Stellengesuche</router-link>
 
           <router-link
             to="/karriere"
@@ -81,7 +82,7 @@
           <router-link to="/blog">Blog</router-link>
           <router-link to="/fuer-arbeitgeber">Für Arbeitgeber</router-link>
           <router-link to="/ueber">Über</router-link>
-          <router-link to="/kontakt">Kontakt</router-link>
+          <!-- <router-link to="/kontakt">Kontakt</router-link> -->
         </nav>
         <nav id="secondary-nav" class="mt-3 mt-lg-0">
           <router-link
@@ -115,7 +116,7 @@
                   />
                 </svg>
               </span>
-              <span>Mein Konto</span>
+              <span>Konto</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"

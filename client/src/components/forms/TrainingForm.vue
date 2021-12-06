@@ -71,7 +71,6 @@
         v-model="training.excerpt"
         type="text"
         rows="6"
-        max-rows="50"
         lazy-formatter
         wrap="hard"
         :formatter="formatter"

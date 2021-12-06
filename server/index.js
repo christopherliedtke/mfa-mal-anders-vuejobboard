@@ -73,9 +73,12 @@ if (process.env.PRERENDER_ACTIVE === "on") {
   app.use(prerender);
 }
 
+// #Cors implementation
+// TODO update for dev vs prod (consider webhooks)
 if (process.env.NODE_ENV != "production") {
   app.use(cors());
 }
+
 app.use(compression());
 app.use(express.json());
 
@@ -128,6 +131,7 @@ if (process.env.NODE_ENV == "production") {
 // #ApolloServer
 const apolloServer = new ApolloServer({
   schema: apolloSchema,
+  // cacheControl: { defaultMaxAge: 5 },
   context: ({ req }) => {
     const token = req.session && req.session.token ? req.session.token : "";
 

@@ -659,10 +659,9 @@
 
       <p class="small text-muted mt-4">
         <strong>Hinweis:</strong> Zu angelegten Unternehmen können Sie
-        <u>optional</u> und nach Bedarf im Anschluss unter MEIN KONTO >
-        UNTERNEHMEN über die 'Bearbeiten'-Funktion eine allgemeine
-        Unternehmensbeschreibung für Ihr individuelles Unternehmensprofil auf
-        MFA mal anders anlegen.
+        <u>optional</u> und nach Bedarf im Anschluss unter KONTO > UNTERNEHMEN
+        über die 'Bearbeiten'-Funktion eine allgemeine Unternehmensbeschreibung
+        für Ihr individuelles Unternehmensprofil auf MFA mal anders anlegen.
       </p>
 
       <div class="d-flex justify-content-between my-4">

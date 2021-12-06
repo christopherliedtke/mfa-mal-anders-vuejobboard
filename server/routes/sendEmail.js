@@ -6,6 +6,7 @@ const emailService = require("../utils/nodemailer");
 const config = require("../config/config");
 const { Job } = require("../database/models/job");
 const { Training } = require("../database/models/training");
+const { Payment } = require("../database/models/payment");
 const jobToAsanaTask = require("../utils/jobToAsanaTask");
 
 // #route:  POST /api/send-email/job-published
@@ -154,7 +155,7 @@ router.post("/training-published", verifyToken, isAdmin, async (req, res) => {
       }/karriere/fort-und-weiterbildung/fortbildungskatalog</a>
                 </p>
                 <p>
-                    Sie können die Fortbildung jederzeit unter MEIN KONTO > FORTBILDUNGEN ändern bzw. deaktivieren. Sollten Sie noch Fragen oder Anregungen haben, melden Sie sich gern bei uns über unser <a href="${
+                    Sie können die Fortbildung jederzeit unter KONTO > FORTBILDUNGEN ändern bzw. deaktivieren. Sollten Sie noch Fragen oder Anregungen haben, melden Sie sich gern bei uns über unser <a href="${
                       process.env.WEBSITE_URL
                     }/kontakt">Kontaktformular</a> oder direkt per Nachricht an <a href="mailto:kontakt@mfa-mal-anders.de">kontakt@mfa-mal-anders.de</a>.
                 </p>
@@ -200,6 +201,43 @@ router.post("/training-published", verifyToken, isAdmin, async (req, res) => {
   } catch (err) {
     res.json({ errors: [err] });
   }
+});
+
+// #route:  POST /api/send-email/contact-jobseek
+// #desc:   Handle jobseek contact request
+// #access: Private
+router.post("/contact-jobseek", verifyToken, async (req, res) => {
+  console.log("req.body: ", req.body);
+
+  try {
+    // check for current payment
+    const filter = {
+      user: req.user._id,
+      status: "paid",
+      paymentExpiresAt: {
+        $gt: new Date().getTime(),
+      },
+    };
+    const validPaymentCount = await Payment.countDocuments(filter);
+    // const validPaymentCount = 0;
+
+    console.log("validPaymentCount: ", validPaymentCount);
+
+    if (!validPaymentCount) {
+      throw new Error(
+        "Sie haben aktuell kein Stellenangebot auf MFA mal anders online. Ausschließlich verifizierte Arbeitgeber mit einer offenen Stelle auf unserem Portal haben die Möglichkeit, Jobsuchende direkt zu kontaktieren."
+      );
+    }
+
+    // TODO send mail to jobseeker
+    // TODO send copy to employer
+    // TODO send mail to admin
+  } catch (err) {
+    console.error(err);
+    res.json({ success: false, error: err.message });
+  }
+
+  res.json({ success: true });
 });
 
 module.exports = router;

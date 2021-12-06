@@ -40,7 +40,7 @@ const sendJobAdUnpublishedEmail = async () => {
                     }' auf unserem Portal 'MFA mal anders' abgelaufen ist und hoffen, sie konnten die offene Stelle erfolgreich besetzen.
                 </p>
                 <p>
-                    Sie haben die Möglichkeit, Ihre Stellenanzeige jederzeit auf <a href="https://www.mfa-mal-anders.de/auth/login">www.mfa-mal-anders.de</a> unter MEIN KONTO -> STELLENANZEIGEN zu reaktivieren.
+                    Sie haben die Möglichkeit, Ihre Stellenanzeige jederzeit auf <a href="https://www.mfa-mal-anders.de/auth/login">www.mfa-mal-anders.de</a> unter KONTO -> STELLENANZEIGEN zu reaktivieren.
                 </p>
                 <p>
                     Sollten Sie noch Fragen oder Anregungen haben, melden Sie sich gern bei uns.

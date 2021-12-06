@@ -256,7 +256,7 @@
               >
             </div>
 
-            <div class="mt-2 mb-3">
+            <div class="mt-2">
               <b-button variant="success" type="submit" block
                 ><svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -273,6 +273,11 @@
               >
             </div>
           </b-form>
+          <div class="small text-right mt-2 mb-2 pr-3 pt-1">
+            <b-link to="/auth/register?role=employee"
+              >Stellengesuch schalten</b-link
+            >
+          </div>
         </div>
 
         <div class="col-12 col-lg-8 pt-2">
@@ -309,6 +314,36 @@
               variant="primary"
               label="Lade weitere Stellengesuche..."
             ></BSpinner>
+          </div>
+
+          <div class="my-4 my-lg-5 clearfix">
+            <h2 class="h5 bold mb-3">
+              Ihre Stellenanzeige auf MFA mal anders?
+            </h2>
+            <b-img
+              style="max-width: 120px"
+              class="mr-3 mb-2"
+              fluid
+              left
+              src="~@/assets/img/undraw_Updates_re_o5af.svg"
+              alt="Stellenanzeige wird auf MFA mal anders veröffentlicht"
+            />
+            <p>
+              Sie sind als attraktiver Arbeitergeber auf der Suche nach einer
+              motivierten und kompetenten
+              <em
+                >Medizinischen Fachangestellten (MFA) | Zahnmedizinischen
+                Fachangestellten (ZFA) | ArzthelferIn</em
+              >{{
+                $route.query.ort || $route.query.state
+                  ? ` in ${$route.query.ort || $route.query.state}`
+                  : ""
+              }}? Dann
+              <b-link to="/auth/register" class="bold">registrieren</b-link>
+              Sie sich und schalten noch heute Ihre Stellenanzeige auf unserem
+              Karriereportal. <br />
+              <b-link to="/fuer-arbeitgeber" class="bold">Mehr erfahren</b-link>
+            </p>
           </div>
         </div>
       </div>

@@ -562,54 +562,49 @@
 
         try {
           const jobSeekQuery = `
-                mutation {
-                  ${jobSeekMutationType}(
-                    ${
-                      jobSeekMutationType === "updateJobSeek"
-                        ? `_id: "${this.jobSeek._id}"`
-                        : ""
-                    }
-                    title: "${this.jobSeek.title}"
-                    about: "${this.jobSeek.about.replace(/"/g, '\\"')}"
-                    experiences: "${this.jobSeek.experiences.replace(
-                      /"/g,
-                      '\\"'
-                    )}"
-                    tasks: "${this.jobSeek.tasks.replace(/"/g, '\\"')}"
-                    isMfa: ${this.jobSeek.isMfa}
-                    isZfa: ${this.jobSeek.isZfa}
-                    qualifications: ${JSON.stringify(
-                      this.jobSeek.qualifications
-                    )}
-                    partTime: ${this.jobSeek.partTime}
-                    fullTime: ${this.jobSeek.fullTime}
-                    training: ${this.jobSeek.training}
-                    miniJob: ${this.jobSeek.miniJob}
-                    salaryMin: ${this.jobSeek.salaryMin}
-                    anonymized: ${this.jobSeek.anonymized}
-                    gender: "${this.jobSeek.gender}"
-                    firstName: "${this.jobSeek.firstName}"
-                    lastName: "${this.jobSeek.lastName}"
-                    publicFirstName: "${
-                      this.jobSeek.anonymized
-                        ? this.jobSeek.firstName.charAt() + "."
-                        : this.jobSeek.firstName
-                    }"
-                    publicLastName: "${
-                      this.jobSeek.anonymized
-                        ? this.jobSeek.lastName.charAt() + "."
-                        : this.jobSeek.lastName
-                    }"
-                    contactEmail: "${this.jobSeek.contactEmail}"
-                    imageUrl: "${this.jobSeek.imageUrl}"
-                    location: "${this.jobSeek.location}"
-                    zipCode: "${this.jobSeek.zipCode}"
-                    accepted: ${this.jobSeek.accepted}
-                  ) {
-                    _id
-                  }
+            mutation {
+              ${jobSeekMutationType}(
+                ${
+                  jobSeekMutationType === "updateJobSeek"
+                    ? `_id: "${this.jobSeek._id}"`
+                    : ""
                 }
-              `;
+                title: "${this.jobSeek.title}"
+                about: "${this.jobSeek.about.replace(/"/g, '\\"')}"
+                experiences: "${this.jobSeek.experiences.replace(/"/g, '\\"')}"
+                tasks: "${this.jobSeek.tasks.replace(/"/g, '\\"')}"
+                isMfa: ${this.jobSeek.isMfa}
+                isZfa: ${this.jobSeek.isZfa}
+                qualifications: ${JSON.stringify(this.jobSeek.qualifications)}
+                partTime: ${this.jobSeek.partTime}
+                fullTime: ${this.jobSeek.fullTime}
+                training: ${this.jobSeek.training}
+                miniJob: ${this.jobSeek.miniJob}
+                salaryMin: ${this.jobSeek.salaryMin}
+                anonymized: ${this.jobSeek.anonymized}
+                gender: "${this.jobSeek.gender}"
+                firstName: "${this.jobSeek.firstName}"
+                lastName: "${this.jobSeek.lastName}"
+                publicFirstName: "${
+                  this.jobSeek.anonymized
+                    ? this.jobSeek.firstName.charAt() + "."
+                    : this.jobSeek.firstName
+                }"
+                publicLastName: "${
+                  this.jobSeek.anonymized
+                    ? this.jobSeek.lastName.charAt() + "."
+                    : this.jobSeek.lastName
+                }"
+                contactEmail: "${this.jobSeek.contactEmail}"
+                imageUrl: "${this.jobSeek.imageUrl}"
+                location: "${this.jobSeek.location}"
+                zipCode: "${this.jobSeek.zipCode}"
+                accepted: ${this.jobSeek.accepted}
+              ) {
+                _id
+              }
+            }
+          `;
 
           const jobSeekQueryResponse = await this.$axios.post(`/graphql`, {
             query: jobSeekQuery

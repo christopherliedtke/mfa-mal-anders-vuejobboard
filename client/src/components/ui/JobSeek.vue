@@ -151,7 +151,7 @@
       </div>
     </div>
 
-    <div class="d-flex flex-wrap justify-content-between mt-5">
+    <div class="d-flex flex-wrap justify-content-between mt-4 mt-lg-5">
       <b-button
         variant="outline-danger"
         class="mr-2"
@@ -160,30 +160,76 @@
         Zurück
       </b-button>
       <b-button
-        v-if="$store.state.auth.loggedIn"
+        v-if="!$store.state.auth.loggedIn"
         variant="secondary"
-        to=""
-        target="_self"
-        :disabled="linkDisabled"
-      >
-        Jetzt Kontaktieren
-      </b-button>
-      <b-button
-        v-else
-        variant="secondary"
-        to="/auth/login"
+        to="/auth/register"
         target="_self"
         :disabled="linkDisabled"
       >
         Jetzt Anmelden und Kontaktieren
       </b-button>
+      <b-button
+        v-else-if="!showContactForm"
+        variant="secondary"
+        target="_self"
+        :disabled="linkDisabled"
+        @click.prevent="checkEmployer()"
+      >
+        Jetzt Kontaktieren
+      </b-button>
+    </div>
+
+    <div v-if="showContactForm" class="mt-4">
+      <hr class="mb-4" />
+      <div v-if="loading" class="d-flex justify-content-center">
+        <BSpinner variant="primary" label="Lade Zahlungen..."></BSpinner>
+      </div>
+      <div v-else-if="!$store.state.auth.user.isEmployer">
+        <p>
+          Sie können nur als registrierter und verifizierter Arbeitgeber auf
+          Stellengesuche reagieren. Bei Problemen nehmen Sie bitte
+          <b-link class="bold" to="/kontakt" target="_blank">Kontakt</b-link> zu
+          uns auf.
+        </p>
+      </div>
+      <div v-else-if="!hasJobAdOnline">
+        <p>
+          Sie können nur als Arbeitgeber mit einer laufenden Stellenanzeige auf
+          Stellengesuche reagieren. Bei Problemen nehmen Sie bitte
+          <b-link class="bold" to="/kontakt" target="_blank">Kontakt</b-link> zu
+          uns auf.
+        </p>
+        <p>
+          Erstellen Sie jetzt eine
+          <b-link to="/user/stellenanzeigen" target="_blank" class="bold"
+            >Stellenanzeige</b-link
+          >.
+        </p>
+      </div>
+      <div v-else>
+        <JobSeekContactForm
+          :name="`${jobSeek.publicFirstName} ${jobSeek.publicLastName}`"
+        />
+      </div>
     </div>
   </article>
 </template>
 
 <script>
+  import Vue from "vue";
+  import { BSpinner } from "bootstrap-vue";
+  Vue.component("BSpinner", BSpinner);
+
+  const JobSeekContactForm = () =>
+    import(
+      /* webpackChunkName: "JobSeekContactForm" */ "@/components/forms/JobSeekContactForm.vue"
+    );
+
   export default {
     name: "JobSeek",
+    components: {
+      JobSeekContactForm
+    },
     props: {
       jobSeek: {
         type: Object,
@@ -192,6 +238,63 @@
       linkDisabled: {
         type: Boolean,
         default: false
+      }
+    },
+    data() {
+      return {
+        showContactForm: false,
+        hasJobAdOnline: false,
+        loading: false
+      };
+    },
+    methods: {
+      async checkEmployer() {
+        this.loading = true;
+        this.showContactForm = true;
+
+        try {
+          const payments = await this.$axios.get("/graphql", {
+            params: {
+              query: `
+                query {
+                  myPayments {
+                    _id
+                    status
+                    paymentExpiresAt
+                  }
+                }
+              `
+            }
+          });
+
+          if (payments.data.errors) {
+            throw new Error();
+          }
+
+          if (
+            payments.data.data.myPayments &&
+            payments.data.data.myPayments.some(
+              payment =>
+                payment.paymentExpiresAt > new Date().getTime() &&
+                payment.status === "paid"
+            )
+          ) {
+            this.hasJobAdOnline = true;
+          }
+        } catch (err) {
+          this.$root.$bvToast.toast(
+            `Beim Laden ist ein Fehler aufgetreten. Bitte versuchen Sie die Seite neu zu laden oder nehmen Sie ggfls. Kontakt über unser Kontaktformular zu uns auf.`,
+            {
+              title: `Fehler beim Laden`,
+              variant: "danger",
+              toaster: "b-toaster-bottom-right",
+              solid: true,
+              noAutoHide: true
+            }
+          );
+        }
+
+        this.loading = false;
       }
     }
   };
