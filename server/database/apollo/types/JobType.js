@@ -8,6 +8,7 @@ const JobType = gql`
       skip: Float
       s: String
       location: String
+      position: PositionInput
       radius: Float
       employmentType: String
       specialization: String
@@ -176,6 +177,11 @@ const JobType = gql`
   type PublicJobWithCount {
     jobs: [Job]
     count: Float
+  }
+
+  input PositionInput {
+    lat: Float
+    lng: Float
   }
 
   extend type User {

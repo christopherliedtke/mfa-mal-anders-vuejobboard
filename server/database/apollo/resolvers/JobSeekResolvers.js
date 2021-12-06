@@ -13,34 +13,9 @@ const publicJobSeeksCache = require("../../../cache/publicJobSeeksCache");
 const JobSeekResolvers = {
   Query: {
     publicJobSeek: async (root, args) => {
-      const jobSeek = await JobSeek.findOne(
-        {
-          _id: args._id,
-          published: true,
-          accepted: true,
-        },
-        `
-        _id
-        updatedAt
-        title
-        about
-        experiences
-        tasks
-        qualifications
-        isMfa
-        isZfa
-        partTime
-        fullTime
-        training
-        miniJob
-        gender
-        publicFirstName
-        publicLastName
-        imageUrl
-        location
-        zipCode
-      `
-      );
+      const jobSeeks = await publicJobSeeksCache.get("jobSeeks");
+
+      const jobSeek = jobSeeks.find(jobSeek => jobSeek._id == args._id);
 
       // ? check for valid payment
 
@@ -334,6 +309,10 @@ function sliceJobSeeks(jobSeeks = [], limit = 15, offset = 0) {
 }
 
 function sortJobSeeksByPosition(position, jobSeeks) {
+  if (!position.lat || !position.lng) {
+    return jobSeeks;
+  }
+
   return jobSeeks.sort((a, b) => {
     return (
       calcDistance(a.geoCodeLat, a.geoCodeLng, position.lat, position.lng) -
@@ -343,6 +322,10 @@ function sortJobSeeksByPosition(position, jobSeeks) {
 }
 
 function filterJobSeeksByDistance(radius, position, jobSeeks) {
+  if (!position.lat || !position.lng) {
+    return jobSeeks;
+  }
+
   return jobSeeks.filter(
     jobSeek =>
       calcDistance(

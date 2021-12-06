@@ -16,23 +16,9 @@ const textToSlug = require("../../../utils/textToSlug");
 const JobResolvers = {
   Query: {
     publicJob: async (root, args) => {
-      // TODO update w/ internalJobsCache
-      // TODO delete public-jobs route
-      // TODO delete external job caches
-      const job = await Job.findOne({
-        _id: args._id,
-        status: "published",
-        paid: true,
-        paidExpiresAt: { $gte: new Date() },
-        publishedAt: { $lte: new Date() },
-      });
+      const jobs = await internalJobsCache.get("jobs");
 
-      if (
-        job.applicationDeadline &&
-        job.applicationDeadline < new Date().getTime()
-      ) {
-        return null;
-      }
+      const job = jobs.find(job => job._id == args._id);
 
       return job;
     },
@@ -49,8 +35,6 @@ const JobResolvers = {
           );
         }
       }
-
-      console.log("args: ", args);
 
       let jobs = await internalJobsCache.get("jobs");
 
@@ -451,6 +435,10 @@ function sliceJobs(jobs = [], limit = 2, offset = 0) {
 }
 
 function sortJobsByPosition(position, jobs) {
+  if (!position.lat || !position.lng) {
+    return jobs;
+  }
+
   return jobs.sort((a, b) => {
     return (
       calcDistance(
@@ -470,6 +458,10 @@ function sortJobsByPosition(position, jobs) {
 }
 
 function filterJobsByDistance(radius, position, jobs) {
+  if (!position.lat || !position.lng) {
+    return jobs;
+  }
+
   return jobs.filter(
     job =>
       calcDistance(

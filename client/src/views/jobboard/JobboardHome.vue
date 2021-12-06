@@ -411,7 +411,9 @@
         </div>
         <div class="col-12 col-lg-8 pt-2">
           <div v-if="errors && errors.length > 0">
-            <p v-for="error in errors" :key="error">{{ error }}</p>
+            <p v-for="(error, index) in errors" :key="index">
+              {{ error.message }}
+            </p>
           </div>
 
           <div v-else-if="!jobs">
@@ -754,6 +756,7 @@
               )
             ) {
               this.errors = jobs.data.errors;
+              this.loading = false;
               return;
             }
 
