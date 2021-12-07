@@ -178,6 +178,12 @@ const JobSeekView = () =>
     /* webpackPrefetch: true */
     "@/views/jobseekboard/jobseek/JobSeekView.vue"
   );
+const JobSeeksInfoView = () =>
+  import(
+    /* webpackChunkName: "jobseek" */
+    /* webpackPrefetch: true */
+    "@/views/jobseekboard/JobSeeksInfoView.vue"
+  );
 
 // #Company
 const CompanyView = () =>
@@ -378,6 +384,14 @@ const routes = [
     path: "/unternehmen/:companyId/:name",
     name: "CompanyViewWName",
     component: CompanyView,
+    meta: {
+      public: true
+    }
+  },
+  {
+    path: "/stellengesuche/info",
+    name: "JobSeeksInfoView",
+    component: JobSeeksInfoView,
     meta: {
       public: true
     }

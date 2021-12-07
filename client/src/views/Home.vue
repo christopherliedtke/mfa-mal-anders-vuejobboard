@@ -63,22 +63,22 @@
           </b-link>
         </div>
         <div class="col">
-          <b-link to="/karriere/jobs-und-berufsbilder" class="icon-box shadow1">
+          <b-link to="/stellengesuche/info" class="icon-box shadow1">
             <b-img-lazy
               class="mr-4 mb-4 ml-4"
-              src="@/assets/img/health_.svg"
-              alt="Medizinische Fachangestellte im Untersuchungsraum"
+              src="@/assets/img/LinkedIn_Monochromatic.svg"
+              alt="Stellengesuche für MFA & ZFA"
               height="130"
               blank-width="167"
               blank-height="130"
               offset="1000"
             />
-            <h2 class="bold">Jobs & Berufsbilder</h2>
+            <h2 class="bold">Stellengesuche für MFA & ZFA</h2>
             <p>
-              Schau Dir unsere 50+ Jobs und Berufsbilder für ArzthelferInnen –
-              MFA & ZFA an! Deine Möglichkeiten sind größer als Du denkst.
+              Erstelle als MFA | ZFA Dein individuelles Stellengesuch und lasse
+              Dich von Arbeitgebern mit passenden Angeboten finden.
             </p>
-            <b-button variant="primary">Zu den Berufsbildern</b-button>
+            <b-button variant="primary">Stellengesuch erstellen</b-button>
           </b-link>
         </div>
         <div class="col">
@@ -89,7 +89,7 @@
             <b-img-lazy
               class="mr-4 mb-4 ml-4"
               src="@/assets/img/coach.svg"
-              alt="MFA studiert bei Weiterbildung"
+              alt="MFA | ZFA studiert bei Weiterbildung"
               height="130"
               blank-width="167"
               blank-height="130"
@@ -105,7 +105,31 @@
           </b-link>
         </div>
       </div>
-      <div>
+      <div class="mb-4">
+        <b-link
+          to="/karriere/jobs-und-berufsbilder"
+          class="d-flex flex-column flex-lg-row icon-box shadow1"
+        >
+          <b-img-lazy
+            class="mr-4 mb-4 ml-4"
+            src="@/assets/img/health_.svg"
+            alt="MFA liest Fortbildungskatalog"
+            height="130"
+            blank-width="167"
+            blank-height="130"
+            offset="1000"
+          />
+          <div>
+            <h2 class="bold">Jobs & Berufsbilder</h2>
+            <p>
+              Schau Dir unsere 50+ Jobs und Berufsbilder für ArzthelferInnen –
+              MFA & ZFA an! Deine Möglichkeiten sind größer als Du denkst.
+            </p>
+            <b-button variant="primary">Zu den Berufsbildern</b-button>
+          </div>
+        </b-link>
+      </div>
+      <div class="mb-4">
         <b-link
           to="/karriere/fort-und-weiterbildung/fortbildungskatalog"
           class="d-flex flex-column flex-lg-row icon-box shadow1"

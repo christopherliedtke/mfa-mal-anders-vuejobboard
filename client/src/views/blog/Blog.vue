@@ -5,14 +5,18 @@
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
     <div v-if="$config.cms.active && articles" class="container py-3 py-lg-5">
-      <div class="grid">
+      <div v-if="articles && articles.length > 0" class="grid">
         <ArticleCard
           v-for="article in articles"
           :key="article.id"
           :article="article"
         />
       </div>
+      <div v-else class="grid">
+        <ArticleCardPlaceholder v-for="index in 10" :key="index" />
+      </div>
     </div>
+
     <Head
       :title="title"
       desc="Interessante Artikel rund Praxisalltag, Tipps zu Weiterbildung und Karriere, Persönlichkeitsentwicklung und vieles mehr..."
@@ -24,10 +28,12 @@
 
 <script>
   import ArticleCard from "@/components/ui/ArticleCard.vue";
+  import ArticleCardPlaceholder from "@/components/ui/ArticleCardPlaceholder.vue";
   export default {
     name: "Blog",
     components: {
-      ArticleCard
+      ArticleCard,
+      ArticleCardPlaceholder
     },
     data() {
       return {

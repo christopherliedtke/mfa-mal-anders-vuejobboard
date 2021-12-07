@@ -274,9 +274,7 @@
             </div>
           </b-form>
           <div class="small text-right mt-2 mb-2 pr-3 pt-1">
-            <b-link to="/auth/register?role=employee"
-              >Stellengesuch schalten</b-link
-            >
+            <b-link to="/stellengesuche/info">Stellengesuch schalten</b-link>
           </div>
         </div>
 
@@ -347,6 +345,8 @@
           </div>
         </div>
       </div>
+
+      <RandomArticlesContainer />
     </div>
 
     <ScrollToTopBtn />
@@ -379,13 +379,15 @@
   import JobSeekCard from "@/components/ui/JobSeekCard.vue";
   import JobSeekCardPlaceholder from "@/components/ui/JobSeekCardPlaceholder.vue";
   import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
+  import RandomArticlesContainer from "../../components/containers/RandomArticlesContainer.vue";
 
   export default {
     name: "JobSeekBoardHome",
     components: {
       JobSeekCard,
       JobSeekCardPlaceholder,
-      ScrollToTopBtn
+      ScrollToTopBtn,
+      RandomArticlesContainer
     },
     data() {
       return {
