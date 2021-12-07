@@ -12,6 +12,9 @@
             <b-img-lazy
               v-if="jobSeek.imageUrl"
               :src="jobSeek.imageUrl"
+              :alt="
+                `Bild von ${jobSeek.publicFirstName} ${jobSeek.publicLastName}`
+              "
               width="75"
               height="75"
               class="img-fluid rounded-circle shadow1"
@@ -19,6 +22,9 @@
             <b-img-lazy
               v-else
               src="/img/person-circle.svg"
+              :alt="
+                `Platzhalter für Bild von ${jobSeek.publicFirstName} ${jobSeek.publicLastName}`
+              "
               width="75"
               height="75"
               class="img-fluid rounded-circle shadow1"

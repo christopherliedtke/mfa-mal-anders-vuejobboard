@@ -72,8 +72,13 @@
               placeholder="E-Mail Adresse eingeben..."
               autocomplete="email"
               trim
+              aria-describedby="email-help"
             />
           </b-input-group>
+          <b-form-text id="email-help" class="ml-1"
+            >Ihre E-Mail Adresse wird der/dem Jobsuchenden zum Antworten auf
+            Ihre Nachricht angezeigt.</b-form-text
+          >
         </div>
       </div>
 
@@ -81,16 +86,40 @@
       <b-form-textarea
         id="message"
         v-model="form.message"
-        type="text"
-        rows="8"
+        rows="10"
         lazy-formatter
-        wrap="hard"
         :formatter="formatter"
         :state="validated ? (form.message ? true : false) : null"
         placeholder="Ihre Nachricht eingeben..."
+        aria-describedby="message-help"
         required
         trim
       />
+      <b-form-text id="message-help" class="ml-1"
+        >Stellen Sie kurz Ihre offene Stelle mit Aufgabenbereichen,
+        Profilanforderungen und Benefits vor. Fügen Sie ggfls. einen Link zum
+        Stellenangebot ein. Gehen Sie auch darauf ein, warum die Person hinter
+        dem Stellengesuch zur Stelle passen würde.</b-form-text
+      >
+
+      <b-form-checkbox
+        id="accepted"
+        v-model="form.accepted"
+        :state="validated ? form.accepted : null"
+        name="accepted"
+        switch
+      >
+        Ich habe die
+        <b-link href="/agbs" target="_blank">
+          AGBs
+        </b-link>
+        und
+        <b-link href="/datenschutz" target="_blank">
+          Datenschutzbestimmungen
+        </b-link>
+
+        gelesen und akzeptiere diese. *
+      </b-form-checkbox>
 
       <div class="d-flex justify-content-between my-4">
         <b-button variant="outline-danger" @click.prevent="$router.go(-1)">
@@ -114,7 +143,7 @@
                 d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992a.252.252 0 0 1 .02-.022zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486-.943 1.179z"
               />
             </svg>
-            Erfolgreich versandt
+            Erfolgreich gesendet
           </span>
           <span v-else>Absenden</span>
         </b-button>
@@ -136,7 +165,7 @@
       dismissible
       variant="success"
     >
-      Ihre Nachricht wurder erfolgreich versandt. Sie erhalten eine Kopie Ihrer
+      Ihre Nachricht wurde erfolgreich gesendet. Sie erhalten eine Kopie Ihrer
       Nachricht an Ihre angegebene E-Mail Adresse. Wir wünschen Ihnen viel
       Erfolg im Gespräch{{ name ? " mit " + name : "" }}.</b-alert
     >
@@ -154,6 +183,10 @@
       name: {
         type: String,
         default: ""
+      },
+      jobSeekId: {
+        type: String,
+        default: ""
       }
     },
     data() {
@@ -164,7 +197,8 @@
           firstName: this.$store.state.auth.user.firstName || "",
           lastName: this.$store.state.auth.user.lastName || "",
           email: this.$store.state.auth.user.email || "",
-          message: ""
+          message: "",
+          accepted: false
         },
         validated: null,
         success: null,
@@ -183,34 +217,33 @@
           return null;
         }
 
+        this.$store.dispatch("setOverlay", true);
+
         try {
           const response = await this.$axios.post(
             "/api/send-email/contact-jobseek",
-            {
-              data: this.form
-            }
+            { ...this.form, jobSeekId: this.jobSeekId }
           );
-
-          console.log("response: ", response);
 
           if (response.data.error) {
             this.error = response.data.error;
-            return;
           }
 
-          this.success = response.data.success;
+          if (response.data.success) {
+            this.success = response.data.success;
 
-          this.$root.$bvToast.toast(
-            "Ihre Nachricht wurde erfolgreich versandt.",
-            {
-              title: `Nachricht versandt`,
-              variant: "success",
-              toaster: "b-toaster-bottom-right",
-              solid: true
-            }
-          );
+            this.$root.$bvToast.toast(
+              "Ihre Nachricht wurde erfolgreich versandt.",
+              {
+                title: `Nachricht versandt`,
+                variant: "success",
+                toaster: "b-toaster-bottom-right",
+                solid: true
+              }
+            );
 
-          this.resetForm();
+            this.resetForm();
+          }
         } catch (err) {
           this.$root.$bvToast.toast(
             `Es ist ein Fehler beim Versenden aufgetreten. Bitte versuchen Sie die Seite neu zu laden oder nehmen Sie ggfls. Kontakt über unser Kontaktformular zu uns auf.`,
@@ -223,6 +256,8 @@
             }
           );
         }
+
+        this.$store.dispatch("setOverlay", false);
       },
       resetForm() {
         this.validated = null;
@@ -233,7 +268,8 @@
           firstName: "",
           lastName: "",
           email: "",
-          message: ""
+          message: "",
+          accepted: false
         };
       },
       formatter(value) {
@@ -244,7 +280,8 @@
         return !this.form.firstName ||
           !this.form.lastName ||
           !this.form.email ||
-          !this.form.message
+          !this.form.message ||
+          !this.form.accepted
           ? false
           : true;
       }

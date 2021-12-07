@@ -5,6 +5,7 @@
         <b-img-lazy
           v-if="jobSeek.imageUrl"
           :src="jobSeek.imageUrl"
+          :alt="`Bild von ${jobSeek.publicFirstName} ${jobSeek.publicLastName}`"
           width="120"
           height="120"
           class="img-fluid rounded-circle shadow1 mr-md-2"
@@ -12,6 +13,9 @@
         <b-img-lazy
           v-else
           src="/img/person-circle.svg"
+          :alt="
+            `Platzhalter für Bild von ${jobSeek.publicFirstName} ${jobSeek.publicLastName}`
+          "
           width="120"
           height="120"
           class="img-fluid rounded-circle shadow1 mr-md-2"
@@ -209,6 +213,7 @@
       <div v-else>
         <JobSeekContactForm
           :name="`${jobSeek.publicFirstName} ${jobSeek.publicLastName}`"
+          :job-seek-id="jobSeek._id"
         />
       </div>
     </div>

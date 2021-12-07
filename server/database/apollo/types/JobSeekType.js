@@ -38,7 +38,6 @@ const JobSeekType = gql`
       lastName: String!
       publicFirstName: String!
       publicLastName: String!
-      contactEmail: String!
       birthDate: Float
       imageUrl: String
       location: String
@@ -66,7 +65,6 @@ const JobSeekType = gql`
       lastName: String
       publicFirstName: String
       publicLastName: String
-      contactEmail: String
       birthDate: Float
       imageUrl: String
       location: String
@@ -99,7 +97,6 @@ const JobSeekType = gql`
     lastName: String!
     publicFirstName: String
     publicLastName: String
-    contactEmail: String!
     birthDate: Float
     imageUrl: String
     location: String

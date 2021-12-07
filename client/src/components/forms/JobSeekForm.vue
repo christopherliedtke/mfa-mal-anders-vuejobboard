@@ -244,21 +244,28 @@
               </template>
               <b-form-input
                 id="email"
-                v-model="jobSeek.contactEmail"
+                v-model="$store.state.auth.user.email"
                 :state="
-                  validated ? (jobSeek.contactEmail ? true : false) : null
+                  validated
+                    ? $store.state.auth.user.email
+                      ? true
+                      : false
+                    : null
                 "
                 type="email"
                 placeholder="E-Mail Adresse eingeben..."
                 aria-describedby="email-help"
                 autocomplete="email"
                 trim
+                disabled
               />
             </b-input-group>
             <b-form-text id="email-help"
-              >Deine E-Mail Adresse ist nicht öffentlich ersichtlich.
-              Nachrichten von Arbeitgebern werden über unsere Plattform an diese
-              E-Mail Adresse weitergeleitet.</b-form-text
+              >Es wird Deine Account E-Mail Adresse genutzt. Diese kannst Du
+              unter KONTO > ACCOUNT ändern. Deine E-Mail Adresse ist
+              <u>nicht</u> öffentlich ersichtlich. Nachrichten von Arbeitgebern
+              werden über unsere Plattform an diese E-Mail Adresse
+              weitergeleitet.</b-form-text
             >
           </div>
         </div>
@@ -442,7 +449,6 @@
           gender: this.$store.state.auth.user.gender || "",
           firstName: this.$store.state.auth.user.firstName || "",
           lastName: this.$store.state.auth.user.lastName || "",
-          contactEmail: this.$store.state.auth.user.email || "",
           // birthDate: null,
           imageUrl: "",
           zipCode: "",
@@ -511,7 +517,6 @@
                     gender
                     firstName
                     lastName
-                    contactEmail
                     imageUrl
                     location
                     zipCode
@@ -595,7 +600,6 @@
                     ? this.jobSeek.lastName.charAt() + "."
                     : this.jobSeek.lastName
                 }"
-                contactEmail: "${this.jobSeek.contactEmail}"
                 imageUrl: "${this.jobSeek.imageUrl}"
                 location: "${this.jobSeek.location}"
                 zipCode: "${this.jobSeek.zipCode}"
@@ -658,7 +662,6 @@
           !this.jobSeek.experiences ||
           !this.jobSeek.firstName ||
           !this.jobSeek.lastName ||
-          !this.jobSeek.contactEmail ||
           !this.jobSeek.zipCode ||
           !this.jobSeek.location ||
           !this.jobSeek.accepted

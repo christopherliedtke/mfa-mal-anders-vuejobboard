@@ -90,11 +90,6 @@ const JobSeekSchema = new Schema(
         }
       },
     },
-    contactEmail: {
-      type: String,
-      required: true,
-      lowercase: true,
-    },
     birthDate: {
       type: Date,
     },

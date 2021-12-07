@@ -168,23 +168,26 @@ const JobSeekResolvers = {
         throw new AuthenticationError("Must be logged in!");
       }
 
-      const locations = await getLocation(`${args.zipCode} ${args.location}`);
+      if (args.zipCode && args.location) {
+        const locations = await getLocation(`${args.zipCode} ${args.location}`);
 
-      if (!locations) {
-        throw new ApolloError(
-          `Es konnte kein passender Ort für "${args.zipCode} ${args.location}" gefunden werden oder der Ortungsservice funktioniert aktuell nicht. Bitte überprüfe ggfls. Ort und PLZ.`
-        );
+        if (!locations) {
+          throw new ApolloError(
+            `Es konnte kein passender Ort für "${args.zipCode} ${args.location}" gefunden werden oder der Ortungsservice funktioniert aktuell nicht. Bitte überprüfe ggfls. Ort und PLZ.`
+          );
+        }
+
+        args.location = locations[0].address.city;
+        args.zipCode = locations[0].address.postalCode;
+        args.state = locations[0].address.state;
+        args.country = locations[0].address.countryName;
+        args.geoCodeLat = locations[0].position.lat;
+        args.geoCodeLng = locations[0].position.lng;
       }
 
       const updateObj = cleanUpJobSeek({
         ...args,
         user: context.user._id,
-        location: locations[0].address.city,
-        zipCode: locations[0].address.postalCode,
-        state: locations[0].address.state,
-        country: locations[0].address.countryName,
-        geoCodeLat: locations[0].position.lat,
-        geoCodeLng: locations[0].position.lng,
       });
       delete updateObj._id;
 

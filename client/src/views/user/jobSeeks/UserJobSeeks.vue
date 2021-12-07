@@ -294,9 +294,19 @@
                 updatedJobSeek.data.data.updateJobSeek.published;
             }
           });
+
+          this.$root.$bvToast.toast(
+            "Der Status des Stellengesuchs wurde erfolgreich aktualisiert.",
+            {
+              title: `Status aktualisiert`,
+              variant: "success",
+              toaster: "b-toaster-bottom-right",
+              solid: true
+            }
+          );
         } catch (err) {
           this.$root.$bvToast.toast(
-            "Das Stellengesuch konnte nicht aktualisiert werden. Bitte versuche es später noch einmal.",
+            "Der Status konnte nicht aktualisiert werden. Bitte versuche es später noch einmal.",
             {
               title: `Fehler beim Aktualisieren`,
               variant: "danger",
