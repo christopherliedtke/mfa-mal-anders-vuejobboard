@@ -38,11 +38,13 @@
         MFA mal anders ist Deutschlands größtes Karriereportal exklusiv für
         Medizinische Fachangestellte & Zahnmedizinische Fachangestellte. Wir
         informieren über Themen wie Fort- und Weiterbildung, Gehalt, Ausbildung,
-        Berufsbilder, Bewerbung und aktuelle Stellenangebote. Zusätzlich bieten
-        wir attraktiven Arbeitgebern eine Plattform für die professionelle
-        Personalsuche – ideal für verschiedenste Einrichtungen im
-        Gesundheitswesen (Arztpraxen, Medizinische Versorgungszentren,
-        Zahnkliniken, Kliniken etc.).
+        Berufsbilder, Bewerbung und mehr. Mit unserer Stellenbörse sowie der
+        Möglichkeit für MFA & ZFA Stellengesuche aufzugeben, leisten wir einen
+        Beitrag dazu, motivierte ArzthelferInnen und Arbeitgeber zusammen zu
+        bringen. Damit bieten wir attraktiven Arbeitgebern eine Plattform für
+        die professionelle Personalsuche – ideal für verschiedenste
+        Einrichtungen im Gesundheitswesen (Arztpraxen, Medizinische
+        Versorgungszentren, Zahnkliniken, Kliniken etc.).
       </p>
       <p>
         MFA mal anders soll ein Ort sein, der Informationen über den Beruf der

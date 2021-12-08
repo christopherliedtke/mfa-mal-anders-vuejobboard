@@ -1,6 +1,6 @@
 <template>
   <div v-if="job">
-    <article class="job position-relative">
+    <article class="job position-relative" style="word-break: break-word">
       <div class="mb-4 d-flex align-items-start justify-content-between">
         <div>
           <!-- eslint-disable-next-line -->

@@ -162,8 +162,10 @@
       </div>
     </article>
     <div class="container">
+      <JobSeeksLargeBanner class="my-4 my-lg-5" />
       <RandomArticlesContainer />
     </div>
+
     <Head
       v-if="article.seo.title"
       :title="article.seo.title"
@@ -178,6 +180,7 @@
 <script>
   import ArticleStructuredData from "@/components/utils/ArticleStructuredData.vue";
   import RandomArticlesContainer from "@/components/containers/RandomArticlesContainer.vue";
+  import JobSeeksLargeBanner from "@/components/banners/JobSeeksLargeBanner.vue";
   import FacebookShareBtn from "@/components/buttons/FacebookShareBtn.vue";
   import TwitterShareBtn from "@/components/buttons/TwitterShareBtn.vue";
   import WhatsAppShareBtn from "@/components/buttons/WhatsAppShareBtn.vue";
@@ -186,6 +189,7 @@
     components: {
       ArticleStructuredData,
       RandomArticlesContainer,
+      JobSeeksLargeBanner,
       FacebookShareBtn,
       TwitterShareBtn,
       WhatsAppShareBtn

@@ -96,13 +96,16 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
           state: state,
           websiteUrl: process.env.WEBSITE_URL,
           websiteName: config.website.name,
-          headerImg: `${
-            process.env.WEBSITE_URL
-          }/img/SocialCard_JobsDerWoche_${state
-            .replace(/\s+/g, "")
-            .replace("ü", "ue")}.jpg`,
+          headerImg: `${process.env.WEBSITE_URL}/img/MfaMalAnders_Stellengesuche.jpg`,
+          // headerImg: `${
+          //   process.env.WEBSITE_URL
+          // }/img/SocialCard_JobsDerWoche_${state
+          //   .replace(/\s+/g, "")
+          //   .replace("ü", "ue")}.jpg`,
           lightColor: "#fffcfd",
+          lightShadeColor: "#f7f6f9",
           primaryColor: "#6d0230",
+          secondaryColor: "#fda225",
           fbPath: config.social.fb.path,
           igPath: config.social.ig.path,
         });

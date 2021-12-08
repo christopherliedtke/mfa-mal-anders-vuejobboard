@@ -13,7 +13,7 @@
       v-if="jobSeek"
       :title="`${jobSeek.title || ''} | ${jobSeek.location || ''}`"
       :desc="`Stellengesuch – ${jobSeek.title || ''}`"
-      img=""
+      img="/img/MfaMalAnders_Stellengesuche.jpg"
       twitter-card="summary_large_image"
       :script="snippet"
     />
@@ -21,7 +21,6 @@
 </template>
 
 <script>
-  // TODO add general og-image
   import JobSeek from "@/components/ui/JobSeek.vue";
   import JobSeekPlaceholder from "@/components/ui/JobSeekPlaceholder.vue";
   export default {

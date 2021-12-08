@@ -10,7 +10,7 @@
           debounce="500"
         />
         <b-input-group-append>
-          <b-button class="px-2" @click.prevent="filter.searchTerm = ''">
+          <b-button class="px-2" @click.prevent="resetFilter">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -360,7 +360,7 @@
         jobToDelete: Object,
         error: false,
         filter: {
-          searchTerm: ""
+          searchTerm: this.$route.query.s || ""
         },
         socialShareJobToClipboard,
         fields: [
@@ -656,10 +656,6 @@
 
         this.$store.dispatch("setOverlay", false);
       },
-      // showDeleteJobModal(job) {
-      //   this.jobToDelete = job;
-      //   this.$bvModal.show("deleteJobModal");
-      // },
       async deleteJob(jobId) {
         try {
           const response = await this.$axios.post("/graphql", {
@@ -721,6 +717,16 @@
         ) {
           return "table-danger";
         }
+      },
+      resetFilter() {
+        this.filter.searchTerm = "";
+        const query = {};
+
+        this.$router
+          .replace({
+            query
+          })
+          .catch(() => {});
       }
     }
   };

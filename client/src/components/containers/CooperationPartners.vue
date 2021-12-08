@@ -88,7 +88,11 @@
             name: "Landarzt sein.",
             img: "/img/landarztSein_logo.png",
             url:
-              "https://www.landarzt-sein.de/?utm_source=mfa-mal-anders&utm_medium=linkref&utm_campaign=other"
+              "https://www.landarzt-sein.de/?utm_source=mfa-mal-anders&utm_medium=linkref&utm_campaign=other",
+            html: `
+              <p>Landarzt sein ist viel mehr, als nur eine Praxisbörse. Wir wollen das Landleben so positiv darstellen, wie wir es selbst kennengelernt haben und auf diese Weise neue Nachwuchsärzte davon überzeugen, dass es sich lohnt, diesen Weg einzuschlagen.</p>
+              <p><strong>…KURZ GESAGT: WIR ZIEHEN ÄRZTE AN(S) LAND!</strong></p>
+            `
           },
           {
             name: "Hausärzteverband HH",

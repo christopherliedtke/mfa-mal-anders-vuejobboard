@@ -2,7 +2,7 @@
   <div class="gehaltsrechner p-4 border-radius2 shadow1">
     <h3 class="bold">
       ZFA Gehaltsrechner {{ year }}&nbsp;
-      <div id="popover-zfa-gehaltsrechner">
+      <div id="popover-zfa-gehaltsrechner" class="d-inline-block">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"

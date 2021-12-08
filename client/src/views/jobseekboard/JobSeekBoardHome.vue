@@ -346,6 +346,7 @@
         </div>
       </div>
 
+      <JobSeeksLargeBanner class="mb-4 mb-lg-5" />
       <RandomArticlesContainer />
     </div>
 
@@ -362,7 +363,7 @@
           filter.ort ? ' in ' + filter.ort + ' & Umgebung' : ''
         } ✓ Teilzeit | Vollzeit`
       "
-      img=""
+      img="/img/MfaMalAnders_Stellengesuche.jpg"
       :script="snippet"
     />
   </div>
@@ -380,6 +381,7 @@
   import JobSeekCardPlaceholder from "@/components/ui/JobSeekCardPlaceholder.vue";
   import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
   import RandomArticlesContainer from "../../components/containers/RandomArticlesContainer.vue";
+  import JobSeeksLargeBanner from "@/components/banners/JobSeeksLargeBanner.vue";
 
   export default {
     name: "JobSeekBoardHome",
@@ -387,7 +389,8 @@
       JobSeekCard,
       JobSeekCardPlaceholder,
       ScrollToTopBtn,
-      RandomArticlesContainer
+      RandomArticlesContainer,
+      JobSeeksLargeBanner
     },
     data() {
       return {

@@ -317,6 +317,18 @@ const AdminDataAnalytics = () =>
   import(
     /* webpackChunkName: "admin" */ "@/views/admin/data-analytics/AdminDataAnalytics.vue"
   );
+const AdminJobSeeks = () =>
+  import(
+    /* webpackChunkName: "admin" */ "@/views/admin/jobseeks/AdminJobSeeks.vue"
+  );
+const AdminJobSeekPreview = () =>
+  import(
+    /* webpackChunkName: "job-preview" */ "@/views/admin/jobseeks/preview/_jobSeekId.vue"
+  );
+const AdminEditJobSeek = () =>
+  import(
+    /* webpackChunkName: "job_edit" */ "@/views/admin/jobseeks/edit/_jobSeekId.vue"
+  );
 
 // #404
 const NotFound = () =>
@@ -946,6 +958,33 @@ const routes = [
     path: "/admin/data-analytics",
     name: "AdminDataAnalytics",
     component: AdminDataAnalytics,
+    meta: {
+      public: false,
+      onlyAdmin: true
+    }
+  },
+  {
+    path: "/admin/jobseeks",
+    name: "AdminJobSeeks",
+    component: AdminJobSeeks,
+    meta: {
+      public: false,
+      onlyAdmin: true
+    }
+  },
+  {
+    path: "/admin/jobseeks/preview/:jobSeekId",
+    name: "AdminJobSeekPreview",
+    component: AdminJobSeekPreview,
+    meta: {
+      public: false,
+      onlyAdmin: true
+    }
+  },
+  {
+    path: "/admin/jobseeks/edit/:jobSeekId",
+    name: "AdminEditJobSeek",
+    component: AdminEditJobSeek,
     meta: {
       public: false,
       onlyAdmin: true

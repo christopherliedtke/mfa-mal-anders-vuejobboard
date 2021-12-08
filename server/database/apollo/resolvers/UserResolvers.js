@@ -592,6 +592,10 @@ const UserResolvers = {
         return job.userId;
       }
 
+      if (typeof job.userId === "object" && job.userId.createdAt) {
+        return job.userId;
+      }
+
       const user = await User.findOne({
         _id: job.userId,
       });
@@ -606,6 +610,7 @@ const UserResolvers = {
       if (!context.user.isAdmin) {
         return company.userId;
       }
+
       const user = await User.findOne({
         _id: company.userId,
       });
@@ -620,6 +625,7 @@ const UserResolvers = {
       if (!context.user.isAdmin) {
         return coupon.userId;
       }
+
       const user = await User.findOne({
         _id: coupon.userId,
       });

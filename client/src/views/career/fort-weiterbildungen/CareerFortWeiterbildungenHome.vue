@@ -127,7 +127,8 @@
         </ol>
       </nav>
 
-      <TrainingCatalogueLargeBanner class="my-5" />
+      <!-- <TrainingCatalogueLargeBanner class="my-5" /> -->
+      <JobSeeksLargeBanner class="my-5" />
 
       <h2 id="ueberblick">
         <span class="display-4 bold d-block mb-1"
@@ -931,6 +932,7 @@
   import FortWeiterbildungenNav from "@/components/navs/FortWeiterbildungenNav.vue";
   import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
   import TrainingCatalogueLargeBanner from "@/components/banners/TrainingCatalogueLargeBanner.vue";
+  import JobSeeksLargeBanner from "@/components/banners/JobSeeksLargeBanner.vue";
   import JobSearchSingleForm from "@/components/forms/JobSearchSingleForm.vue";
   import JobsTeaserContainer from "@/components/containers/JobsTeaserContainer.vue";
   import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
@@ -941,6 +943,7 @@
       FortWeiterbildungenNav,
       RandomTrainingsContainer,
       TrainingCatalogueLargeBanner,
+      JobSeeksLargeBanner,
       JobSearchSingleForm,
       JobsTeaserContainer,
       ScrollToTopBtn

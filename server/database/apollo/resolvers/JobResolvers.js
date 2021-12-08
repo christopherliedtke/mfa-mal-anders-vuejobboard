@@ -152,9 +152,14 @@ const JobResolvers = {
         throw new AuthenticationError("Missing permission!");
       }
 
-      const jobs = await Job.find().sort({
-        createdAt: "desc",
-      });
+      const jobs = await Job.find()
+        .sort({
+          createdAt: "desc",
+        })
+        .populate(
+          "userId",
+          "_id createdAt gender title firstName lastName email"
+        );
 
       return jobs;
     },

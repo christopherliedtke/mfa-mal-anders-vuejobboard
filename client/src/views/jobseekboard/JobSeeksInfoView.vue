@@ -51,10 +51,10 @@
               blank-height="130"
               offset="1000"
             />
-            <h2 class="bold">
+            <h3 class="h2 bold">
               Profil <br />
               erstellen
-            </h2>
+            </h3>
             <p>
               Melde Dich an und erstelle in ein paar Minuten Dein Profil mit
               relevanten Infos über Dich und Deine Anforderungen.
@@ -73,7 +73,7 @@
               blank-height="130"
               offset="1000"
             />
-            <h2 class="bold">Stellengesuch veröffentlichen</h2>
+            <h3 class="h2 bold">Stellengesuch veröffentlichen</h3>
             <p>
               Du hast volle Kontrolle und kannst Dein Stellengesuch jederzeit
               anonym veröffentlichen oder wieder offline nehmen.
@@ -92,13 +92,76 @@
               blank-height="130"
               offset="1000"
             />
-            <h2 class="bold">Anfragen erhalten</h2>
+            <h3 class="h2 bold">Anfragen erhalten</h3>
             <p>
               Erhalte Nachrichten von passenden Arbeitgebern, die sich für Dich
               und Dein Profil interessieren.
             </p>
             <b-button variant="primary">Jetzt Loslegen</b-button>
           </b-link>
+        </div>
+      </div>
+
+      <div class="d-flex flex-column align-items-center mt-4">
+        <b-button
+          href="#faq"
+          variant="outline-primary"
+          size="lg"
+          class="d-block d-lg-inline-block mx-1 my-1"
+          >Fragen oder Hilfe benötigt?</b-button
+        >
+      </div>
+    </div>
+
+    <div class="container-fluid bg-light-shade py-5">
+      <div class="container">
+        <h2 class="h1 bold text-center">
+          Unsere Stellengesuche
+        </h2>
+        <p class="lead text-center">
+          So könnte Dein
+          <b-link to="/stellengesuche">Stellengesuch in der Übersicht </b-link>
+          aussehen
+        </p>
+        <div class="row justify-content-center">
+          <div class="col-12 col-lg-8">
+            <JobSeekCard
+              :job-seek="{
+                _id: '0',
+                title:
+                  'MFA mit Abrechnungskenntnissen sucht Stelle in Orthopädie',
+                publicFirstName: 'Kristin',
+                publicLastName: 'Maurach',
+                location: 'Berlin',
+                isMfa: true,
+                fullTime: true,
+                imageUrl: require('@/assets/img/KristinMaurach_portrait_800.jpg'),
+                slug: '0'
+              }"
+              :link-disabled="true"
+              class="mt-3"
+            />
+            <JobSeekCard
+              :job-seek="{
+                _id: '0',
+                title:
+                  'MFA mit Abrechnungskenntnissen sucht Stelle in Orthopädie',
+                publicFirstName: 'K.',
+                publicLastName: 'M.',
+                location: 'Berlin',
+                isMfa: true,
+                fullTime: true,
+                slug: '0'
+              }"
+              :link-disabled="true"
+              class="mt-3"
+            />
+          </div>
+        </div>
+        <div class="d-flex justify-content-center mt-3">
+          <b-button to="/user/stellengesuche" variant="secondary"
+            >Jetzt Stellengesuch erstellen</b-button
+          >
         </div>
       </div>
     </div>
@@ -278,7 +341,6 @@
     </div>
 
     <div class="container-fluid bg-light-shade py-4">
-      <!-- // TODO FAQs -->
       <div id="faq" class="container my-4">
         <h2 class="h1 bold text-center mb-4">
           Häufige Fragen
@@ -286,31 +348,88 @@
         <div class="row row-cols-1 row-cols-md-2">
           <div class="col">
             <h3 class="h5 bold">
-              Lorem ipsum dolor sit amet?
+              Sind meine persönlichen Daten öffentlich?
             </h3>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Id
-              dignissimos, molestiae aut hic reprehenderit quae ducimus
-              architecto odio provident voluptate eveniet, dolores sint. Soluta
-              reiciendis ab saepe? Eaque eos consequuntur, exercitationem qui
-              itaque porro nostrum vero et tempore dolorem ut reprehenderit
-              animi nihil praesentium voluptate magnam eveniet natus quos illo
-              repellendus aspernatur ex. Dolores tenetur quod, debitis ipsa
-              deserunt accusantium.
+              Du entscheidest selbst, welche Deiner Daten öffentlich in Deinem
+              Stellengesuch angezeigt werden. Du hast die Möglichkeit, Deinen
+              Namen zu anonymisieren. Deine Kontaktdaten werden niemals
+              veröffentlicht. Erst, wenn Du auf eine Anfrage antworten möchtest,
+              gibst Du Deine Kontaktdaten preis. Du kannst ebenfalls frei
+              entscheiden, ob Du ein Bild von Dir mit dem Stellengesuch
+              veröffentlichen möchtest oder nicht.
+            </p>
+            <h3 class="h5 bold">
+              Wird mein Wohnort öffentlich angezeigt?
+            </h3>
+            <p>
+              Nein, weder erfassen wir Deinen konkreten Wohnort, noch wird
+              dieser an irgendeiner Stelle angezeigt. Du gibst lediglich den
+              PLZ-Bereich an, in dem Du nach einer neuen Stelle suchst. Dieser
+              wird verwendet, um das Matching zwischen Dir und den Arbeitgebern
+              zu vereinfachen.
+            </p>
+            <h3 class="h5 bold">
+              Kann ich meinen Stellengesuch ändern?
+            </h3>
+            <p>
+              Du kannst Dein Stellengesuch jederzeit ändern, online/offline
+              nehmen oder auch löschen. Du behältst die volle Kontrolle über
+              Deine Daten.
+            </p>
+            <h3 class="h5 bold">
+              Muss ich ein Bild für mein Stellengesuch bereitstellen?
+            </h3>
+            <p>
+              Nein, Du musst kein Bild für Dein Stellengesuch hochladen. Du
+              kannst ein Bild bereitstellen, aber die Entscheidung liegt allein
+              bei Dir!
+            </p>
+            <h3 class="h5 bold">
+              Wer kann mich kontaktieren?
+            </h3>
+            <p>
+              Dich können ausschließlich registrierte und verifizierte
+              Arbeitgeber, die auf MFA mal anders nach neuen MitarbeiterInnen
+              suchen, kontaktieren.
             </p>
           </div>
           <div class="col">
             <h3 class="h5 bold">
-              Lorem ipsum dolor sit amet consectetur?
+              Was passiert, wenn ein Arbeitgeber mich kontaktieren möchte?
             </h3>
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit
-              enim accusantium repellendus omnis quam veniam illum assumenda
-              recusandae soluta iusto perferendis ex voluptate magnam
-              perspiciatis iure quibusdam non, sit cum minima. Doloribus
-              explicabo inventore praesentium ipsam rerum veniam fuga, dolore
-              dolorum reprehenderit eveniet commodi voluptatem qui voluptatum
-              quo, perspiciatis quisquam?
+              Wenn ein Arbeitgeber Dich kontaktieren möchte, verfasst er als
+              Antwort auf Dein Stellengesuch eine Nachricht an Dich. Diese
+              Nachricht wird über unsere Plattform an Deine registrierte E-Mail
+              Adresse weitergeleitet. Der Arbeitgeber kann Deine Kontaktdaten zu
+              keiner Zeit einsehen. Sobald die Nachricht vom Arbeitgeber bei Dir
+              angekommen ist, hast Du die Möglichkeit, den Arbeitgeber direkt zu
+              kontaktieren.
+              <strong
+                >Du bleibst solange anonym, bis Du Dich entscheidest, dem
+                Arbeitgeber zu antworten</strong
+              >. Hierzu bekommst Du die E-Mail Adresse des Arbeitgebers zur
+              Verfügung gestellt.
+            </p>
+            <h3 class="h5 bold">
+              Kann ich mehrere Stellengesuche aufgeben?
+            </h3>
+            <p>
+              Ja, Du hast auch die Möglichkeit, mehrere Stellengesuche
+              z.&nbsp;B. für verschiedene Orte oder unterschiedliche
+              Aufgabenbereiche etc. zu erstellen und veröffentlichen.
+            </p>
+            <h3 class="h5 bold">
+              Arbeitet MFA mal anders mit Personalvermittlern zusammen?
+            </h3>
+            <p>
+              Nein, MFA mal anders ist eine unabhängige Plattform, die sich
+              direkt an MFA | ZFA richtet. Wir arbeiten ausdrücklich nicht mit
+              Personaldienstleitern o.&nbsp;ä. zusammen und fungieren auch nicht
+              als solche. Es gibt keinen Dritten, der zwischen Euch und dem
+              Arbeitgeber steht. Wir bieten lediglich die Plattform, die Euch
+              helfen soll, zusammen zu finden.
             </p>
           </div>
         </div>
@@ -336,15 +455,19 @@
     <Head
       title="Stellengesuch schalten – MFA & ZFA"
       desc="Jetzt von Arbeitgebern gefunden werden! Als MFA | ZFA ein Stellengesuch schalten auf MFA mal anders. Finde Deinen nächsten Job."
-      img=""
+      img="/img/MfaMalAnders_Stellengesuche.jpg"
       :script="snippet"
     />
   </div>
 </template>
 
 <script>
+  import JobSeekCard from "@/components/ui/JobSeekCard.vue";
   export default {
     name: "JobSeeksInfoView",
+    components: {
+      JobSeekCard
+    },
     data() {
       return {
         breadcrumbs: [

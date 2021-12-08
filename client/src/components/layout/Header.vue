@@ -219,6 +219,7 @@
             <div id="admin" ref="admin" class="sub-menu">
               <router-link to="/admin/users">Users</router-link>
               <router-link to="/admin/jobs">Jobs</router-link>
+              <router-link to="/admin/jobseeks">JobSeeks</router-link>
               <router-link to="/admin/companies">Companies</router-link>
               <router-link to="/admin/trainings">Trainings</router-link>
               <router-link to="/admin/subscribers">Subscribers</router-link>

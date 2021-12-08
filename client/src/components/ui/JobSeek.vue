@@ -19,7 +19,7 @@
           width="120"
           height="120"
           class="img-fluid rounded-circle shadow1 mr-md-2"
-          style="opacity: 0.15"
+          style="opacity: 0.1"
         />
       </div>
       <div class="col-9 col-md-10 col-xl-10 order-1 order-md-2 pr-0 pr-md-2">

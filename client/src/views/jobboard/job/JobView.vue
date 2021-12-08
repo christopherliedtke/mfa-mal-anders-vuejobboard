@@ -10,6 +10,7 @@
     <JobPlaceholder v-else-if="!job" class="mb-5" />
 
     <SimilarJobsContainer :job="job" :number="5" />
+    <JobSeeksLargeBanner class="mt-4 mt-lg-5" />
     <RandomTrainingsContainer :number="3" class="mt-4 mt-lg-5" />
 
     <Head
@@ -62,6 +63,7 @@
   import JobPlaceholder from "@/components/ui/JobPlaceholder.vue";
   import SimilarJobsContainer from "@/components/containers/SimilarJobsContainer.vue";
   import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
+  import JobSeeksLargeBanner from "@/components/banners/JobSeeksLargeBanner.vue";
   import { employmentTypeOptions } from "@/config/formDataConfig.json";
   export default {
     name: "JobView",
@@ -69,7 +71,8 @@
       Job,
       JobPlaceholder,
       SimilarJobsContainer,
-      RandomTrainingsContainer
+      RandomTrainingsContainer,
+      JobSeeksLargeBanner
     },
     data() {
       return {

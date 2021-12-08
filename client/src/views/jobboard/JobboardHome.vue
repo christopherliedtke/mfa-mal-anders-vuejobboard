@@ -403,7 +403,8 @@
           </div>
 
           <div class="d-none d-lg-block mt-5">
-            <TrainingCatalogueSmallBanner />
+            <!-- <TrainingCatalogueSmallBanner /> -->
+            <JobSeeksSmallBanner />
             <FacebookBtn class="mt-3 mr-1" content="Facebook" size="sm" />
             <InstagramBtn class="mt-3 mr-1" content="" size="sm" />
             <TwitterBtn class="mt-3 mr-1" content="" size="sm" />
@@ -471,6 +472,7 @@
               <b-link to="/fuer-arbeitgeber" class="bold">Mehr erfahren</b-link>
             </p>
           </div>
+          <JobSeeksLargeBanner class="mt-3" />
           <TrainingCatalogueSmallBanner class="d-lg-none mt-3" />
           <div class="mt-4 mt-lg-5">
             <BerufsbilderBanner class="mt-3 mb-5" />
@@ -559,6 +561,8 @@
   import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
   import BerufsbilderBanner from "@/components/banners/BerufsbilderBanner.vue";
   import TrainingCatalogueSmallBanner from "@/components/banners/TrainingCatalogueSmallBanner.vue";
+  import JobSeeksLargeBanner from "@/components/banners/JobSeeksLargeBanner.vue";
+  import JobSeeksSmallBanner from "@/components/banners/JobSeeksSmallBanner.vue";
   import SubscribeNewsletterBtn from "@/components/buttons/SubscribeNewsletterBtn.vue";
   import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
 
@@ -573,6 +577,8 @@
       RandomTrainingsContainer,
       BerufsbilderBanner,
       TrainingCatalogueSmallBanner,
+      JobSeeksLargeBanner,
+      JobSeeksSmallBanner,
       SubscribeNewsletterBtn,
       ScrollToTopBtn
     },

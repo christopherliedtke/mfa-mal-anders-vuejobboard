@@ -1,7 +1,7 @@
 <template>
-  <aside class="card overflow-hidden shadow1 p-2 p-md-4">
+  <aside class="card overflow-hidden shadow1 p-4 p-md-5">
     <div
-      class="card-body d-flex flex-column justify-content-start align-items-start h-100"
+      class="card-body d-flex flex-column justify-content-start align-items-start h-100 p-0"
     >
       <!-- eslint-disable-next-line -->
       <h2 class="h1" v-html="header"></h2>
@@ -17,7 +17,6 @@
       <b-button
         to="/karriere/fort-und-weiterbildung/fortbildungskatalog"
         variant="secondary"
-        size="lg"
         >Zum Fortbildungskatalog</b-button
       >
     </div>
