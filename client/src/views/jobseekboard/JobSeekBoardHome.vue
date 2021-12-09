@@ -276,6 +276,13 @@
           <div class="small text-right mt-2 mb-2 pr-3 pt-1">
             <b-link to="/stellengesuche/info">Stellengesuch schalten</b-link>
           </div>
+
+          <div class="d-none d-lg-block mt-5">
+            <JobSeeksSmallBanner />
+            <FacebookBtn class="mt-3 mr-1" content="Facebook" size="sm" />
+            <InstagramBtn class="mt-3 mr-1" content="" size="sm" />
+            <TwitterBtn class="mt-3 mr-1" content="" size="sm" />
+          </div>
         </div>
 
         <div class="col-12 col-lg-8 pt-2">
@@ -382,6 +389,10 @@
   import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
   import RandomArticlesContainer from "../../components/containers/RandomArticlesContainer.vue";
   import JobSeeksLargeBanner from "@/components/banners/JobSeeksLargeBanner.vue";
+  import JobSeeksSmallBanner from "@/components/banners/JobSeeksSmallBanner.vue";
+  import FacebookBtn from "@/components/buttons/FacebookBtn.vue";
+  import InstagramBtn from "@/components/buttons/InstagramBtn.vue";
+  import TwitterBtn from "@/components/buttons/TwitterBtn.vue";
 
   export default {
     name: "JobSeekBoardHome",
@@ -390,7 +401,11 @@
       JobSeekCardPlaceholder,
       ScrollToTopBtn,
       RandomArticlesContainer,
-      JobSeeksLargeBanner
+      JobSeeksLargeBanner,
+      JobSeeksSmallBanner,
+      FacebookBtn,
+      InstagramBtn,
+      TwitterBtn
     },
     data() {
       return {
