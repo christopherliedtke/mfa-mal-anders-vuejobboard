@@ -35,6 +35,7 @@ class Cache {
         fullTime
         training
         miniJob
+        salaryMin
         gender
         publicFirstName
         publicLastName
