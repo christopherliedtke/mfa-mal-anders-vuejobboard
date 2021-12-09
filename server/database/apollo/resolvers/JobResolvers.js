@@ -156,6 +156,7 @@ const JobResolvers = {
         .sort({
           createdAt: "desc",
         })
+        .populate("company")
         .populate(
           "userId",
           "_id createdAt gender title firstName lastName email"

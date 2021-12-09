@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const sanitizeHtml = require("sanitize-html");
+const mongoose = require("mongoose");
 const config = require("../../../config/config");
 const errorMsg = require("../../../config/errorMsg.json");
 const jwt = require("jsonwebtoken");
@@ -592,7 +593,10 @@ const UserResolvers = {
         return job.userId;
       }
 
-      if (typeof job.userId === "object" && job.userId.createdAt) {
+      if (
+        job.userId instanceof Object &&
+        job.userId instanceof mongoose.Types.ObjectId === false
+      ) {
         return job.userId;
       }
 

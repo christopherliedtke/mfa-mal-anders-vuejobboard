@@ -2,13 +2,26 @@ const express = require("express");
 const router = express.Router();
 const verifyToken = require("../middleware/verifyToken");
 const isAdmin = require("../middleware/isAdmin");
+const fs = require("fs");
+const path = require("path");
 const emailService = require("../utils/nodemailer");
+const Handlebars = require("handlebars");
 const config = require("../config/config");
+const sanitizeHtml = require("sanitize-html");
 const { Job } = require("../database/models/job");
 const { Training } = require("../database/models/training");
 const { Payment } = require("../database/models/payment");
 const { JobSeek } = require("../database/models/jobSeek");
 const jobToAsanaTask = require("../utils/jobToAsanaTask");
+
+Handlebars.registerHelper("currentYear", () => {
+  return new Date().getFullYear();
+});
+
+const jobSeekerContactTemplate = fs.readFileSync(
+  path.join(__dirname, "../templates/jobseeker_contact_email.hbs"),
+  "utf8"
+);
 
 // #route:  POST /api/send-email/job-published
 // #desc:   Handle invoice request
@@ -243,83 +256,34 @@ router.post("/contact-jobseek", verifyToken, async (req, res) => {
     }
 
     // send mail to jobseeker
+    const template = Handlebars.compile(jobSeekerContactTemplate);
+    const htmlToJobSeeker = template({
+      jobSeekId: jobSeek._id,
+      jobSeekTitle: jobSeek.title,
+      message: sanitizeHtml(req.body.message),
+      to: jobSeek.firstName,
+      from: `${req.user.gender ? req.user.gender + " " : ""}${
+        req.user.title ? req.user.title + " " : ""
+      }${req.user.firstName} ${req.user.lastName}`,
+      replyTo: req.body.email,
+      websiteUrl: process.env.WEBSITE_URL,
+      websiteName: config.website.name,
+      headerImg: `${process.env.WEBSITE_URL}/img/MfaMalAnders_StellengesuchNeueNachricht.jpg`,
+      lightColor: "#fffcfd",
+      lightShadeColor: "#f7f6f9",
+      primaryColor: "#6d0230",
+      secondaryColor: "#fda225",
+      fbPath: config.social.fb.path,
+      igPath: config.social.ig.path,
+    });
+
     const mailDataToJobSeeker = {
       from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
       to: jobSeek.user.email,
       bcc: [config.website.contactEmail],
       replyTo: req.body.email,
-      subject: `Kontaktaufnahme zu Deinem Stellengesuch auf 'MFA mal anders'`,
-      html: `
-        <p>
-          Hallo ${jobSeek.firstName},
-        </p>
-        <p>
-            Auf Dein Stellengesuch <a href="${
-              process.env.WEBSITE_URL
-            }/stellengesuche/${jobSeek._id}" target="_blank">${
-        jobSeek.title
-      }</a> auf <a href="${
-        process.env.WEBSITE_URL
-      }" target="_blank">MFA mal anders</a> hat ${
-        req.user.gender ? req.user.gender + " " : ""
-      }${req.user.title ? req.user.title + " " : ""}${req.user.firstName} ${
-        req.user.lastName
-      } mit geantwortet:
-        </p>
-        <p style="color: #0000001a">__</p>
-
-        <p style="color: #6c757d; font-style: italic">
-            ${req.body.message}
-        </p>
-
-        <p style="color: #0000001a">__</p>
-        <p>
-            Du kannst ${req.user.gender ? req.user.gender + " " : ""}${
-        req.user.title ? req.user.title + " " : ""
-      }${req.user.firstName} ${
-        req.user.lastName
-      } über den Antwort-Button Deines E-Mail Programms oder direkt an <a href="mailto:${
-        req.user.email
-      }">${req.user.email}
-          </a> antworten.
-        </p>
-        <p>
-            Wir wünschen Dir viel Erfolg in dem Gespräch und bei der weiteren Stellensuche.
-        </p>
-        <p>
-            <small style="color: #6c757d">Solltest Du nicht mehr auf der Suche nach einer neuen Stelle sein, bitten wir Dich, Dein Stellengesuch auf MFA mal anders unter KONTO > STELLENGESUCHE auf OFFLINE zu setzen. In diesem Fall möchten wir Dich ebenso bitten, ${
-              req.user.gender ? req.user.gender + " " : ""
-            }${req.user.title ? req.user.title + " " : ""}${
-        req.user.firstName
-      } ${req.user.lastName} mit einem kurzen Hinweis abzusagen.</small>
-        </p>
-        <p>
-            Viele Grüße
-        </p>
-        <p>
-            Kristin Maurach
-        </p>
-        <p>__</p>
-        <p>
-            <img src="cid:mfa-mal-anders-logo" width="60" style="margin-bottom: 1rem"/> <br>
-            <strong>MFA mal anders</strong> <br>
-            Das Stellen- & Karriereportal für Medizinische Fachangestellte | Zahnmedizinische Fachangestellte Fachangestellte <br>
-            <br>
-            E-Mail: <a href="mailto:kontakt@mfa-mal-anders.de">kontakt@mfa-mal-anders.de</a> <br>
-            Webseite: <a href="${process.env.WEBSITE_URL}">${
-        process.env.WEBSITE_URL
-      }</a>
-        </p>
-        `,
-      attachments: [
-        {
-          filename: "MfaMalAnders_logo_circle_bgdark_white.png",
-          path:
-            __dirname +
-            "/../../client/public/img/MfaMalAnders_logo_circle_bgdark_white.png",
-          cid: "mfa-mal-anders-logo", //same cid value as in the html img src
-        },
-      ],
+      subject: `Neue Nachricht zu Deinem Stellengesuch auf 'MFA mal anders'`,
+      html: htmlToJobSeeker,
     };
 
     const sentEmailToJobSeeker = await emailService.sendMail(
@@ -359,7 +323,7 @@ router.post("/contact-jobseek", verifyToken, async (req, res) => {
         <p style="color: #0000001a">__</p>
 
         <p style="color: #6c757d; font-style: italic">
-            ${req.body.message}
+            ${sanitizeHtml(req.body.message)}
         </p>
 
         <p style="color: #0000001a">__</p>
@@ -367,10 +331,7 @@ router.post("/contact-jobseek", verifyToken, async (req, res) => {
             Wir wünschen Ihnen viel Erfolg in dem Gespräch und bei der Stellenbesetzung. Sollten Sie noch Fragen oder Hinweise für uns haben, melden Sie sich gern bei uns.
         </p>
         <p>
-            Mit freundlichen Grüßen
-        </p>
-        <p>
-            Kristin Maurach
+            Ihr Team von <em>MFA mal anders</em>
         </p>
         <p>__</p>
         <p>

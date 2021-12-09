@@ -38,6 +38,8 @@
       :default-state="state"
       intro="Erhalte unsere aktuellen Stellenangebote wöchentlich direkt in Dein Postfach."
       :social="true"
+      :title-bold="true"
+      :show-job-seek-btn="true"
       @close="closePopUp"
     />
   </BModal>
