@@ -158,7 +158,7 @@
     <div class="d-flex flex-wrap justify-content-between mt-4 mt-lg-5">
       <b-button
         variant="outline-danger"
-        class="mr-2"
+        class="mr-2 mt-2"
         @click.prevent="$router.go(-1)"
       >
         Zurück
@@ -166,6 +166,7 @@
       <b-button
         v-if="!$store.state.auth.loggedIn"
         variant="secondary"
+        class="mt-2"
         to="/auth/register"
         target="_self"
         :disabled="linkDisabled"
@@ -175,6 +176,7 @@
       <b-button
         v-else-if="!showContactForm"
         variant="secondary"
+        class="mt-2"
         target="_self"
         :disabled="linkDisabled"
         @click.prevent="checkEmployer()"

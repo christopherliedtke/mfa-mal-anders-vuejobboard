@@ -318,7 +318,7 @@ router.post("/contact-jobseek", verifyToken, async (req, res) => {
         <p>
             Ihre Nachricht an ${jobSeek.publicFirstName} ${
           jobSeek.publicLastName
-        } wurde erfolgreich versandt. Hiermit erhalten Sie eine Kopie der Nachricht.
+        } wurde erfolgreich versandt. Anbei erhalten Sie eine Kopie Ihrer Nachricht.
         </p>
         <p style="color: #0000001a">__</p>
 
