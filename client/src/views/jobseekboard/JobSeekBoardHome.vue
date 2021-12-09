@@ -277,7 +277,7 @@
             <b-link to="/stellengesuche/info">Stellengesuch schalten</b-link>
           </div>
 
-          <div class="d-none d-lg-block mt-5">
+          <div class="d-none d-lg-block my-5">
             <JobSeeksSmallBanner />
             <FacebookBtn class="mt-3 mr-1" content="Facebook" size="sm" />
             <InstagramBtn class="mt-3 mr-1" content="" size="sm" />
