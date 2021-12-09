@@ -743,6 +743,7 @@
                       salaryMin
                       salaryMax
                       slug
+                      refreshFrequency
                       company {
                         name
                         location

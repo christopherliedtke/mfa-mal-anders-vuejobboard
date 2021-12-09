@@ -132,10 +132,12 @@
                       specialization
                       salaryMin
                       salaryMax
+                      refreshFrequency
                       slug
                       company {
                         name
                         location
+                        logoUrl
                       }
                     }
                   }
