@@ -746,6 +746,7 @@
                       company {
                         name
                         location
+                        logoUrl
                       }
                     }
                     count
