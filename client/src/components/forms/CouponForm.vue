@@ -65,6 +65,8 @@
           :value-as-date="true"
           :state="validated && coupon.expireAt ? true : null"
           placeholder="Choose a date"
+          label-help=""
+          start-weekday="1"
         />
         <b-input-group-append>
           <b-button class="px-2" @click.prevent="coupon.expireAt = null"

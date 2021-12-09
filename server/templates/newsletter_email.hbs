@@ -25,6 +25,7 @@
             body {
                 margin: 0;
                 padding: 0;
+                color: #0f0106;
             }
 
             table,
@@ -184,7 +185,7 @@
                 class="block-grid"
                 style="
                   min-width: 320px;
-                  max-width: 500px;
+                  max-width: 600px;
                   overflow-wrap: break-word;
                   word-wrap: break-word;
                   word-break: break-word;
@@ -206,10 +207,10 @@
                     class="col num12"
                     style="
                       min-width: 320px;
-                      max-width: 500px;
+                      max-width: 600px;
                       display: table-cell;
                       vertical-align: top;
-                      width: 500px;
+                      width: 600px;
                     "
                   >
                     <div class="col_cont" style="width: 100% !important">
@@ -237,7 +238,7 @@
                         >
                           <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr style="line-height:0px"><td style="padding-right: 0px;padding-left: 0px;" align="center"><![endif]-->
                           <a
-                            href="{{websiteUrl}}"
+                            href="{{websiteUrl}}/stellengesuche"
                             style="outline: none"
                             tabindex="-1"
                             target="_blank"
@@ -253,10 +254,10 @@
                                 height: auto;
                                 border: 0;
                                 width: 100%;
-                                max-width: 500px;
+                                max-width: 600px;
                                 display: block;
                               "
-                              width="500"
+                              width="600"
                             /></a>
                           <!--[if mso]></td></tr></table><![endif]-->
                         </div>
@@ -275,7 +276,7 @@
                 class="block-grid"
                 style="
                   min-width: 320px;
-                  max-width: 500px;
+                  max-width: 600px;
                   overflow-wrap: break-word;
                   word-wrap: break-word;
                   word-break: break-word;
@@ -297,10 +298,10 @@
                     class="col num12"
                     style="
                       min-width: 320px;
-                      max-width: 500px;
+                      max-width: 600px;
                       display: table-cell;
                       vertical-align: top;
-                      width: 500px;
+                      width: 600px;
                     "
                   >
                     <div class="col_cont" style="width: 100% !important">
@@ -311,17 +312,14 @@
                           border-left: 0px solid transparent;
                           border-bottom: 0px solid transparent;
                           border-right: 0px solid transparent;
-                          padding-top: 20px;
-                          padding-bottom: 20px;
-                          padding-right: 0px;
-                          padding-left: 0px;
+                          padding: 1rem 2rem;
+                          background-color: {{lightShadeColor}};
                         "
                       >
                         <!--<![endif]-->
                         <div
                           style="
                             font-size: 16px;
-                            text-align: center;
                             font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
                           "
                         >
@@ -337,20 +335,33 @@
                                 drücken die Daumen für Bewerbung und Co.
                               </p>
                             </div>
-                              <div
-                                style="margin: 2rem 0; padding: 1.5rem 0; border-top: solid 2px {{primaryColor}}"
-                              >
-                                {{#each jobs}}
-                                  <a
-                                    href="{{../websiteUrl}}/stellenangebote/job/{{this._id}}"
-                                    target="_blank"
-                                    style="margin-bottom: 1rem; font-size: 16px; display: inline-block; cursor: pointer; border: none; color: {{../primaryColor}}; text-decoration: none" 
-                                  >
-                                    {{this.title}}
-                                    |
-                                    {{this.location}}
-                                  </a>
+                            <div
+                              style="margin: 2rem 0; padding: 1.5rem 0; border-top: solid 2px rgba(15, 1, 6, 0.1); border-bottom: solid 2px rgba(15, 1, 6, 0.1); text-align: center"
+                            >
+                              {{#each jobs}}
+                              <div>
+                                <a
+                                  href="{{../websiteUrl}}/stellenangebote/job/{{this._id}}"
+                                  target="_blank"
+                                  style="margin: 0.5rem; font-size: 16px; display: inline-block; cursor: pointer; border: none; color: {{../primaryColor}}; text-decoration: none" 
+                                >
+                                  {{this.title}}
+                                  |
+                                  {{this.location}}
+                                </a>
+                              </div>
                               {{/each}}
+                            </div>
+                            <div style="font-size: 15px; background-color: {{lightShadeColor}}; padding: 0.8rem 1.5rem; border-radius: 35px; box-shadow: 0px 0px 10px 0px rgba(15, 1, 6, 0.1); margin: 2rem 0;">
+                              <p><strong>Übrigens:</strong> Wusstest Du, dass Du Dich jetzt einfach und bequem von passenden Arbeitgebern auf MFA mal anders kontaktieren lassen kannst?</p>
+                              <p>Du kannst dir jetzt ganz einfach ein <a
+                                  href="{{websiteUrl}}/stellengesuche/info"
+                                  target="_blank"
+                                  style="cursor: pointer; border: none; color: {{secondaryColor}}; text-decoration: none" 
+                                >
+                                  <strong>Stellengesuch anlegen</strong>
+                                </a> und Arbeitgeber aus dem Gesundheitswesen bewerben sich bei dir. 
+                              </p>
                             </div>
                           </div>
                         </div>
@@ -369,7 +380,7 @@
                 class="block-grid"
                 style="
                   min-width: 320px;
-                  max-width: 500px;
+                  max-width: 600px;
                   overflow-wrap: break-word;
                   word-wrap: break-word;
                   word-break: break-word;
@@ -391,10 +402,10 @@
                     class="col num12"
                     style="
                       min-width: 320px;
-                      max-width: 500px;
+                      max-width: 600px;
                       display: table-cell;
                       vertical-align: top;
-                      width: 500px;
+                      width: 600px;
                     "
                   >
                     <div class="col_cont" style="width: 100% !important">
@@ -562,6 +573,14 @@
                                 "
                               >Stellenangebote</a>
                               <a
+                                href="{{websiteUrl}}/stellengesuche"
+                                style="
+                                  color: {{lightColor}};
+                                  text-decoration: none;
+                                  margin: 0 0.5rem;
+                                "
+                              >Stellengesuche</a>
+                              <a
                                 href="{{websiteUrl}}/fuer-arbeitgeber"
                                 style="
                                   color: {{lightColor}};
@@ -719,7 +738,7 @@
                                 color: {{lightColor}};
                                 text-decoration: none;
                               "
-                            >Datenschutzerklärung</a>
+                            >AGBs</a>
                             |
                             <a
                               href="{{websiteUrl}}/datenschutz"
@@ -727,7 +746,7 @@
                                 color: {{lightColor}};
                                 text-decoration: none;
                               "
-                            >AGBs</a>
+                            >Datenschutzerklärung</a>
                             <div
                               style="margin: 1rem 0 0 0;"
                             >

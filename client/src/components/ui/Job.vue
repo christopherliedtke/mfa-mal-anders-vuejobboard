@@ -1,10 +1,6 @@
 <template>
-  <div v-if="!job.title && !error">
-    <JobPlaceholder class="mb-5" />
-    <JobCardPlaceholder v-for="index in 5" :key="index" class="mb-3" />
-  </div>
-  <div v-else-if="job.title">
-    <article class="job position-relative">
+  <div v-if="job">
+    <article class="job position-relative" style="word-break: break-word">
       <div class="mb-4 d-flex align-items-start justify-content-between">
         <div>
           <!-- eslint-disable-next-line -->
@@ -541,68 +537,14 @@
       </div>
     </article>
 
-    <SimilarJobsContainer :job="job" :number="5" />
-
-    <RandomTrainingsContainer :number="3" class="mt-4 mt-lg-5" />
-
-    <Head
-      :title="
-        `${job.title} | ${
-          job.employmentType
-            ? employmentTypeOptions.filter(
-                option => option.value === job.employmentType
-              )[0].text
-            : ''
-        } | ${job.company.location}`
-      "
-      :desc="
-        `Stellenangebot – ${job.title} | ${job.company.name} | ${
-          job.employmentType
-            ? employmentTypeOptions.filter(
-                option => option.value === job.employmentType
-              )[0].text
-            : ''
-        } | ${job.company.location}${
-          job.company.state != job.company.location
-            ? ', ' + job.company.state
-            : ''
-        }`
-      "
-      :img="
-        job.imageUrl && !job.imageUrl.includes('.svg')
-          ? job.imageUrl
-          : job.company.logoUrl && !job.company.logoUrl.includes('.svg')
-          ? job.company.logoUrl
-          : job.profession === 'ZFA'
-          ? '/img/MfaMalAnders_NeuesStellenangebot_ZFA.jpg'
-          : '/img/MfaMalAnders_NeuesStellenangebot_MFA.jpg'
-      "
-      :twitter-card="
-        job.imageUrl && !job.imageUrl.includes('.svg')
-          ? 'summary_large_image'
-          : job.company.logoUrl && !job.company.logoUrl.includes('.svg')
-          ? 'summary'
-          : 'summary_large_image'
-      "
-      :script="snippet"
-      :link="link"
-    />
     <JobStructuredData :job="job" />
-  </div>
 
-  <div v-else>
-    <p class="h5">
-      Diese Stellenanzeige scheint nicht (mehr) zu existieren.
-    </p>
-    <b-button class="mt-3" variant="outline-primary" to="/stellenangebote"
-      >Zurück zur Stellenübersicht</b-button
-    >
+    <Head :link="link" />
   </div>
 </template>
 
 <script>
   import socialShareJobToClipboard from "@/utils/socialShareJobToClipboard.js";
-  import SimilarJobsContainer from "@/components/containers/SimilarJobsContainer.vue";
   import {
     employmentTypeOptions,
     companySizeOptions
@@ -615,13 +557,9 @@
   import EmailShareBtn from "@/components/buttons/EmailShareBtn.vue";
   import TwitterShareBtn from "@/components/buttons/TwitterShareBtn.vue";
   import SubscribeNewsletterBtn from "@/components/buttons/SubscribeNewsletterBtn.vue";
-  import JobPlaceholder from "@/components/ui/JobPlaceholder.vue";
-  import JobCardPlaceholder from "@/components/ui/JobCardPlaceholder.vue";
-  import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
   export default {
     name: "Job",
     components: {
-      SimilarJobsContainer,
       HereMapSingleJob,
       JobStructuredData,
       FacebookShareBtn,
@@ -629,16 +567,16 @@
       EmailShareBtn,
       TwitterShareBtn,
       SubscribeNewsletterBtn,
-      StarJob,
-      JobPlaceholder,
-      JobCardPlaceholder,
-      RandomTrainingsContainer
+      StarJob
     },
-    props: { apiJobsSchema: { type: String, default: "private" } },
+    props: {
+      job: {
+        type: Object,
+        default: null
+      }
+    },
     data() {
       return {
-        job: Object,
-        error: false,
         employmentTypeOptions,
         companySizeOptions,
         socialShareJobToClipboard,
@@ -652,154 +590,7 @@
         ]
       };
     },
-    computed: {
-      jobQuery: function() {
-        return this.apiJobsSchema === "admin"
-          ? "adminJob"
-          : this.apiJobsSchema === "private"
-          ? "myJob"
-          : "publicJob";
-      },
-      snippet: function() {
-        return [
-          {
-            id: "breadcrumbs",
-            type: "application/ld+json",
-            inner: `{
-              "@context": "http://schema.org",
-              "@type" : "BreadcrumbList",
-              "itemListElement": [
-                {
-                    "@type": "ListItem",
-                    "position": 1,
-                    "name": "MFA mal anders",
-                    "item": "https://www.mfa-mal-anders.de"
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 2,
-                    "name": "Stellenangebote",
-                    "item": "https://www.mfa-mal-anders.de/stellenangebote"
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 3,
-                    "name": "Stellenangebot",
-                    "item": "https://www.mfa-mal-anders.de/stellenangebote/job/${this.job._id}"
-                }
-              ]
-            }`
-          },
-          {
-            id: "canonical",
-            rel: "canonical",
-            href: `${this.$config.website.url}/stellenangebote/job/${this.job._id}/${this.job.slug}`
-          }
-        ];
-      }
-    },
-    watch: {
-      "$route.params.jobId"() {
-        this.getJob(this.$route.params.jobId);
-      }
-    },
-    created() {
-      this.getJob(this.$route.params.jobId);
-    },
     methods: {
-      async getJob(jobId) {
-        if (this.jobQuery === "publicJob") {
-          try {
-            const response = await this.$axios.get(
-              `/api/public-jobs/job/${jobId}`
-            );
-
-            if (response.data.job) {
-              this.job = response.data.job;
-            } else {
-              throw new Error();
-            }
-          } catch (err) {
-            // this.error = true;
-
-            this.$root.$bvToast.toast(
-              "Diese Stellenanzeige ist nicht oder nicht mehr verfügbar.",
-              {
-                title: `Stellenanzeige nicht verfügbar`,
-                variant: "warning",
-                toaster: "b-toaster-bottom-right",
-                solid: true,
-                noAutoHide: true
-              }
-            );
-
-            this.$router.push("/stellenangebote");
-          }
-        } else {
-          try {
-            const job = await this.$axios.get(`/graphql`, {
-              params: {
-                query: `
-                  query {
-                    ${this.jobQuery}(_id: "${jobId}") {
-                      _id
-                      createdAt
-                      updatedAt
-                      publishedAt
-                      paidAt
-                      paid
-                      paidExpiresAt
-                      title
-                      description
-                      profession
-                      employmentType
-                      applicationDeadline
-                      simpleApplication
-                      extJobUrl
-                      applicationEmail
-                      imageUrl
-                      salaryMin
-                      salaryMax
-                      specialization
-                      contactGender
-                      contactTitle
-                      contactFirstName
-                      contactLastName
-                      contactPosition
-                      contactEmail
-                      contactPhone
-                      company {
-                        _id
-                        name
-                        street
-                        location
-                        zipCode
-                        state
-                        country
-                        geoCodeLat
-                        geoCodeLng
-                        size
-                        url
-                        logoUrl
-                        slug
-                      }
-                    }
-                  }
-                `
-              }
-            });
-
-            if (job.data.data[this.jobQuery]) {
-              this.job = job.data.data[this.jobQuery];
-            } else {
-              this.$router.push("/stellenangebote");
-              throw new Error();
-            }
-          } catch (err) {
-            this.error = true;
-          }
-        }
-      },
       track(eventAction, eventLabel) {
         this.$gtag.event(eventAction, {
           event_label: eventLabel

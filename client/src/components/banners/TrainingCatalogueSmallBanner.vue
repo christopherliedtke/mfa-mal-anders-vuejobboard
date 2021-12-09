@@ -38,20 +38,3 @@
     name: "TrainingCatalogueSmallBanner"
   };
 </script>
-
-<style scoped lang="scss">
-  .card {
-    background: radial-gradient(closest-side, #fffcfd88 0%, #fffcfdff 100%),
-      image-set(
-          url("~@/assets/img/medizinischesPersonal-1200x513.jpg") 1x,
-          url("~@/assets/img/medizinischesPersonal.jpg") 2x
-        )
-        center center;
-    background-size: cover;
-    background-blend-mode: lighten;
-
-    .card-body {
-      background-color: #fffcfd77;
-    }
-  }
-</style>

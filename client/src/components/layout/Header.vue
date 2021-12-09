@@ -18,6 +18,7 @@
       >
         <nav id="primary-nav">
           <router-link to="/stellenangebote">Stellenangebote</router-link>
+          <router-link to="/stellengesuche">Stellengesuche</router-link>
 
           <router-link
             to="/karriere"
@@ -81,7 +82,7 @@
           <router-link to="/blog">Blog</router-link>
           <router-link to="/fuer-arbeitgeber">Für Arbeitgeber</router-link>
           <router-link to="/ueber">Über</router-link>
-          <router-link to="/kontakt">Kontakt</router-link>
+          <router-link class="d-lg-none" to="/kontakt">Kontakt</router-link>
         </nav>
         <nav id="secondary-nav" class="mt-3 mt-lg-0">
           <router-link
@@ -115,7 +116,7 @@
                   />
                 </svg>
               </span>
-              <span>Mein Konto</span>
+              <span>Konto</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -167,6 +168,14 @@
                   $store.state.auth.user.isEmployee ||
                     $store.state.auth.user.isAdmin
                 "
+                to="/user/stellengesuche"
+                >Stellengesuche</router-link
+              >
+              <router-link
+                v-if="
+                  $store.state.auth.user.isEmployee ||
+                    $store.state.auth.user.isAdmin
+                "
                 to="/user/job-newsletter"
                 >Job-Newsletter</router-link
               >
@@ -210,6 +219,7 @@
             <div id="admin" ref="admin" class="sub-menu">
               <router-link to="/admin/users">Users</router-link>
               <router-link to="/admin/jobs">Jobs</router-link>
+              <router-link to="/admin/jobseeks">JobSeeks</router-link>
               <router-link to="/admin/companies">Companies</router-link>
               <router-link to="/admin/trainings">Trainings</router-link>
               <router-link to="/admin/subscribers">Subscribers</router-link>
@@ -253,6 +263,28 @@
               <span class="sr-only">Registrieren</span>
             </b-button>
           </div>
+          <b-button
+            class="d-none d-lg-flex px-3"
+            variant="outline-primary"
+            size="lg"
+            to="/kontakt"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="currentColor"
+              class="bi bi-envelope-plus-fill"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 4.697v4.974A4.491 4.491 0 0 0 12.5 8a4.49 4.49 0 0 0-1.965.45l-.338-.207L16 4.697Z"
+              />
+              <path
+                d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm-3.5-2a.5.5 0 0 0-.5.5v1h-1a.5.5 0 0 0 0 1h1v1a.5.5 0 0 0 1 0v-1h1a.5.5 0 0 0 0-1h-1v-1a.5.5 0 0 0-.5-.5Z"
+              />
+            </svg>
+            <span class="sr-only">Kontakt</span>
+          </b-button>
         </nav>
       </div>
 
@@ -329,7 +361,7 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 70px;
+    // height: 70px;
     z-index: 1000;
     transition: ease-in-out 0.3s;
 
@@ -363,11 +395,11 @@
       .nav-wrapper {
         flex-grow: 1;
         display: flex;
-        padding: 1rem;
+        // padding: 1rem;
 
         @media screen and (max-width: $break-menu) {
           position: fixed;
-          padding-bottom: 70px;
+          padding: 1rem 0.5rem 70px 0.5rem;
           left: 0;
           top: 60px;
           bottom: 0;

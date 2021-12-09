@@ -1,21 +1,31 @@
 <template>
-  <div class="row">
-    <div
-      v-for="article in articles"
-      :key="article.id"
-      :class="['col-12 mb-4', `col-md-${12 / 2}`, `col-lg-${12 / number}`]"
-    >
-      <ArticleCard :article="article" />
+  <div>
+    <div v-if="articles && articles.length > 0" class="row">
+      <ArticleCard
+        v-for="article in articles"
+        :key="article.id"
+        :class="['col-12 mb-4', `col-md-${12 / 2}`, `col-lg-${12 / number}`]"
+        :article="article"
+      />
+    </div>
+    <div v-else class="row">
+      <ArticleCardPlaceholder
+        v-for="index in number"
+        :key="index"
+        :class="['col-12 mb-4', `col-md-${12 / 2}`, `col-lg-${12 / number}`]"
+      />
     </div>
   </div>
 </template>
 
 <script>
   import ArticleCard from "@/components/ui/ArticleCard.vue";
+  import ArticleCardPlaceholder from "@/components/ui/ArticleCardPlaceholder.vue";
   export default {
     name: "RandomArticlesContainer",
     components: {
-      ArticleCard
+      ArticleCard,
+      ArticleCardPlaceholder
     },
     props: {
       number: {
@@ -25,7 +35,7 @@
     },
     data() {
       return {
-        articles: Array
+        articles: null
       };
     },
     watch: {

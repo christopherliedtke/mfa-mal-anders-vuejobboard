@@ -46,7 +46,6 @@
               <b-form-input
                 id="location-jobboard"
                 v-model="filter.ort"
-                :class="[{ 'border-secondary': !!filter.ort }]"
                 type="text"
                 placeholder="Ort oder PLZ..."
                 trim
@@ -80,9 +79,77 @@
               </b-input-group-append>
             </b-input-group>
 
+            <label for="radius" class="sr-only">Umkreisradius</label>
+            <b-input-group>
+              <template #prepend>
+                <b-input-group-text class="bg-secondary text-light border-0"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-bullseye"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+                    />
+                    <path
+                      d="M8 13A5 5 0 1 1 8 3a5 5 0 0 1 0 10zm0 1A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"
+                    />
+                    <path
+                      d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"
+                    />
+                    <path
+                      d="M9.5 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"
+                    /></svg
+                ></b-input-group-text>
+              </template>
+              <b-form-input
+                id="radius"
+                v-model="filter.radius"
+                type="number"
+                min="15"
+                step="5"
+                placeholder="Umkreis..."
+                debounce="500"
+                number
+                trim
+                lazy
+              />
+              <b-input-group-append>
+                <b-input-group-text class="bg-light text-muted px-2"
+                  >km</b-input-group-text
+                >
+                <b-button
+                  aria-label="Zurücksetzen"
+                  class="px-2"
+                  @click.prevent="
+                    () => {
+                      filter.radius = null;
+                      getJobs();
+                      setQuery();
+                    }
+                  "
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    class="bi bi-x"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"
+                    /></svg
+                  ><span class="sr-only">Zurücksetzen</span></b-button
+                >
+              </b-input-group-append>
+            </b-input-group>
+
             <div
               style="cursor: pointer"
-              class="text-primary my-3 ml-2"
+              class="text-primary  mt-3 mb-2 ml-2"
               @click="showAdvancedSearch = !showAdvancedSearch"
             >
               Erweiterte Suche
@@ -102,7 +169,11 @@
                 />
               </svg>
             </div>
-            <b-collapse id="advanced-search" v-model="showAdvancedSearch">
+            <b-collapse
+              id="advanced-search"
+              v-model="showAdvancedSearch"
+              class="mb-3"
+            >
               <label for="s-jobboard" class="sr-only">Suchbegriff</label>
               <b-input-group class="mb-2 mr-2">
                 <template #prepend>
@@ -280,16 +351,16 @@
                   ></b-form-checkbox-group>
                 </b-form-group>
               </BCollapse>
-              <div>
-                <span
-                  style="cursor: pointer"
-                  class="text-danger small ml-2"
-                  @click="resetFilter"
-                  >Filter zurücksetzen</span
-                >
-              </div>
             </b-collapse>
 
+            <div>
+              <span
+                style="cursor: pointer"
+                class="text-danger small ml-2"
+                @click="resetFilter"
+                >Filter zurücksetzen</span
+              >
+            </div>
             <div class="mt-2">
               <b-button variant="success" type="submit" block
                 ><svg
@@ -332,31 +403,43 @@
           </div>
 
           <div class="d-none d-lg-block mt-5">
-            <TrainingCatalogueSmallBanner />
+            <!-- <TrainingCatalogueSmallBanner /> -->
+            <JobSeeksSmallBanner />
             <FacebookBtn class="mt-3 mr-1" content="Facebook" size="sm" />
             <InstagramBtn class="mt-3 mr-1" content="" size="sm" />
             <TwitterBtn class="mt-3 mr-1" content="" size="sm" />
           </div>
         </div>
         <div class="col-12 col-lg-8 pt-2">
-          <JobboardList
-            id="job-list"
-            class="mb-4"
-            :jobs="filteredJobs"
-            :nojobs="nojobs"
-            :errors="errors"
-          ></JobboardList>
+          <div v-if="errors && errors.length > 0">
+            <p v-for="(error, index) in errors" :key="index">
+              {{ error.message }}
+            </p>
+          </div>
+
+          <div v-else-if="!jobs">
+            <JobCardPlaceholder v-for="index in 25" :key="index" class="mb-3" />
+          </div>
+
+          <div v-else-if="jobs.length > 0" class="position-relative">
+            <JobCard v-for="job in jobs" :key="job._id" :job="job" />
+          </div>
+
+          <div v-else-if="count === 0">
+            Leider konnten für die Anfrage aktuell keine Stellenangebote
+            gefunden werden.
+          </div>
 
           <div class="d-flex justify-content-center">
             <button
-              v-if="!nojobs && !loading && filteredJobs.length < jobsCount"
+              v-if="jobs && jobs.length < count"
               class="btn btn-secondary"
               @click="loadMoreJobs()"
             >
               Weitere Laden
             </button>
             <BSpinner
-              v-else-if="loading && !nojobs"
+              v-else-if="loading"
               variant="primary"
               label="Lade weitere Stellenanzeigen..."
             ></BSpinner>
@@ -389,6 +472,7 @@
               <b-link to="/fuer-arbeitgeber" class="bold">Mehr erfahren</b-link>
             </p>
           </div>
+          <JobSeeksLargeBanner class="mt-3" />
           <TrainingCatalogueSmallBanner class="d-lg-none mt-3" />
           <div class="mt-4 mt-lg-5">
             <BerufsbilderBanner class="mt-3 mb-5" />
@@ -452,7 +536,6 @@
       "
       img=""
       :script="snippet"
-      :link="link"
     />
   </div>
 </template>
@@ -462,6 +545,7 @@
   import { BSpinner, BCollapse } from "bootstrap-vue";
   Vue.component("BSpinner", BSpinner);
   Vue.component("BCollapse", BCollapse);
+
   import {
     employmentTypeOptions,
     companyStateOptions,
@@ -469,38 +553,45 @@
     professionOptions
   } from "@/config/formDataConfig.json";
 
-  import JobboardList from "@/components/ui/JobboardList.vue";
+  import JobCard from "@/components/ui/JobCard.vue";
+  import JobCardPlaceholder from "@/components/ui/JobCardPlaceholder.vue";
   import FacebookBtn from "@/components/buttons/FacebookBtn.vue";
   import InstagramBtn from "@/components/buttons/InstagramBtn.vue";
   import TwitterBtn from "@/components/buttons/TwitterBtn.vue";
   import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
   import BerufsbilderBanner from "@/components/banners/BerufsbilderBanner.vue";
   import TrainingCatalogueSmallBanner from "@/components/banners/TrainingCatalogueSmallBanner.vue";
+  import JobSeeksLargeBanner from "@/components/banners/JobSeeksLargeBanner.vue";
+  import JobSeeksSmallBanner from "@/components/banners/JobSeeksSmallBanner.vue";
   import SubscribeNewsletterBtn from "@/components/buttons/SubscribeNewsletterBtn.vue";
   import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
+
   export default {
     name: "Jobboard",
     components: {
-      JobboardList,
+      JobCard,
+      JobCardPlaceholder,
       FacebookBtn,
       InstagramBtn,
       TwitterBtn,
       RandomTrainingsContainer,
       BerufsbilderBanner,
       TrainingCatalogueSmallBanner,
+      JobSeeksLargeBanner,
+      JobSeeksSmallBanner,
       SubscribeNewsletterBtn,
       ScrollToTopBtn
     },
     data() {
       return {
-        filteredJobs: [],
+        jobs: null,
+        count: 0,
         loading: false,
-        nojobs: false,
-        jobsCount: 0,
         filter: {
           s: "",
           anstellungsart: "",
-          ort: ""
+          ort: "",
+          radius: null
         },
         specialization: {
           active: specializationOptions,
@@ -520,16 +611,7 @@
         companyStateOptions,
         specializationOptions,
         professionOptions,
-        jobboardView: this.$route.query.jobboardView || "list",
-        errors: null,
-        link: [
-          {
-            id: "mapsjs-ui",
-            rel: "stylesheet",
-            href: "https://js.api.here.com/v3/3.1/mapsjs-ui.css",
-            type: "text/css"
-          }
-        ]
+        errors: null
       };
     },
     computed: {
@@ -609,55 +691,104 @@
       this.getJobs();
     },
     methods: {
-      async getJobs(limit = "", offset = "") {
+      async getJobs(limit = null, skip = null) {
+        if (this.loading == true) {
+          return;
+        }
+
+        this.loading = true;
         this.errors = null;
-        this.nojobs = false;
-        this.filteredJobs = offset > 0 ? this.filteredJobs : [];
+        this.jobs = skip ? this.jobs : null;
 
-        let response = await this.$axios.get("/api/public-jobs", {
-          params: {
-            s: this.filter.s,
-            employmentType: this.filter.anstellungsart,
-            location: this.filter.ort,
-            profession:
-              typeof this.$route.query.berufsgruppe === "object"
-                ? this.$route.query.berufsgruppe.join("+")
-                : this.$route.query.berufsgruppe,
-            specialization:
-              this.specialization.active.length ===
-              this.specializationOptions.length
-                ? ""
-                : typeof this.specialization.active === "object"
-                ? this.specialization.active.join("+")
-                : this.specialization.active,
-            limit,
-            offset
+        try {
+          const jobs = await this.$axios.get("/graphql", {
+            params: {
+              query: `
+                query {
+                  publicJobs (
+                    limit: ${limit}
+                    skip: ${skip}
+                    s: "${this.filter.s}"
+                    location: "${this.filter.ort}"
+                    radius: ${
+                      Number.isInteger(this.filter.radius)
+                        ? this.filter.radius
+                        : null
+                    }
+                    employmentType: "${this.filter.anstellungsart}",
+                    specialization: "${
+                      this.specialization.active.length ===
+                      this.specializationOptions.length
+                        ? ""
+                        : typeof this.specialization.active === "object"
+                        ? this.specialization.active.join("+")
+                        : this.specialization.active
+                    }"
+                    profession: "${
+                      this.berufsgruppe.active.length ===
+                      this.professionOptions.length
+                        ? ""
+                        : typeof this.berufsgruppe.active === "object"
+                        ? this.berufsgruppe.active.join("+")
+                        : this.berufsgruppe.active
+                    }"
+                  ) {
+                    jobs {
+                      _id
+                      title
+                      description
+                      profession
+                      employmentType
+                      specialization
+                      salaryMin
+                      salaryMax
+                      slug
+                      company {
+                        name
+                        location
+                      }
+                    }
+                    count
+                  }
+                }
+              `
+            }
+          });
+
+          if (jobs.data.errors) {
+            if (
+              jobs.data.errors.some(
+                error => error.extensions.exception.code == "NO_LOCATION"
+              )
+            ) {
+              this.errors = jobs.data.errors;
+              this.loading = false;
+              return;
+            }
+
+            throw new Error();
           }
-        });
 
-        if (response.data.errors) {
-          this.errors = response.data.errors;
+          this.jobs = [...(this.jobs || ""), ...jobs.data.data.publicJobs.jobs];
+          this.count = jobs.data.data.publicJobs.count;
+        } catch (err) {
+          this.$root.$bvToast.toast(
+            `Beim Laden der Stellenangebote ist ein Fehler aufgetreten. Bitte versuche die Seite neu zu laden.`,
+            {
+              title: `Fehler beim Laden`,
+              variant: "danger",
+              toaster: "b-toaster-bottom-right",
+              solid: true,
+              noAutoHide: true
+            }
+          );
         }
 
-        this.filteredJobs = [...this.filteredJobs, ...response.data.jobs];
-        this.jobsCount = response.data.jobsCount;
-
-        if (this.filteredJobs.length === 0) {
-          this.nojobs = true;
-        } else {
-          this.nojobs = false;
-        }
+        this.loading = false;
       },
       async loadMoreJobs() {
-        this.loading = false;
-
-        if (
-          this.filteredJobs.length < this.jobsCount ||
-          this.filteredJobs.length === 0
-        ) {
-          this.loading = true;
-          await this.getJobs(undefined, this.filteredJobs.length);
-          this.loading = false;
+        if (this.jobs && this.jobs.length < this.count) {
+          await this.getJobs(undefined, this.jobs.length);
         }
       },
       setQuery() {
@@ -692,7 +823,8 @@
             `${this.$route.params.location || this.$route.query.ort || ""}${
               this.$route.query.state ? " " + this.$route.query.state : ""
             }`
-          ).replace(/-/g, " ")
+          ).replace(/-/g, " "),
+          radius: parseInt(this.$route.query.radius) || null
         };
 
         if (this.$route.query.fachgebiet) {
@@ -727,7 +859,8 @@
         this.filter = {
           s: "",
           anstellungsart: "",
-          ort: ""
+          ort: "",
+          radius: null
         };
 
         this.specialization = {

@@ -11,6 +11,7 @@ function string_to_slug(str) {
   str = str.toLowerCase();
   str = str
     .replace(/&amp;/g, "-")
+    .replace(/&shy;/g, "-")
     .replace(/ß/g, "ss")
     .replace(/ä/g, "ae")
     .replace(/ö/g, "oe")

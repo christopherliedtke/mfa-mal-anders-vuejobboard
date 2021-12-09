@@ -165,6 +165,26 @@ const CompanyArchive = () =>
     "@/views/jobboard/archives/CompanyArchive.vue"
   );
 
+// #JobSeekBoard
+const JobSeekBoard = () =>
+  import(
+    /* webpackChunkName: "jobseekboard" */
+    /* webpackPrefetch: true */
+    "@/views/jobseekboard/JobSeekBoardHome.vue"
+  );
+const JobSeekView = () =>
+  import(
+    /* webpackChunkName: "jobseek" */
+    /* webpackPrefetch: true */
+    "@/views/jobseekboard/jobseek/JobSeekView.vue"
+  );
+const JobSeeksInfoView = () =>
+  import(
+    /* webpackChunkName: "jobseek" */
+    /* webpackPrefetch: true */
+    "@/views/jobseekboard/JobSeeksInfoView.vue"
+  );
+
 // #Company
 const CompanyView = () =>
   import(
@@ -227,6 +247,18 @@ const UserJobAlerts = () =>
   import(
     /* webpackChunkName: "user" */ "@/views/user/jobAlerts/UserJobAlerts.vue"
   );
+const UserJobSeeks = () =>
+  import(
+    /* webpackChunkName: "user" */ "@/views/user/jobSeeks/UserJobSeeks.vue"
+  );
+const UserEditJobSeek = () =>
+  import(
+    /* webpackChunkName: "job_seek_edit" */ "@/views/user/jobSeeks/edit/_jobSeekId.vue"
+  );
+const UserJobSeekPreview = () =>
+  import(
+    /* webpackChunkName: "job_seek-preview" */ "@/views/user/jobSeeks/preview/_jobSeekId.vue"
+  );
 const UserCheckoutJob = () =>
   import(
     /* webpackChunkName: "user_company" */ "@/views/user/checkout/_jobId.vue"
@@ -284,6 +316,18 @@ const AdminTrainings = () =>
 const AdminDataAnalytics = () =>
   import(
     /* webpackChunkName: "admin" */ "@/views/admin/data-analytics/AdminDataAnalytics.vue"
+  );
+const AdminJobSeeks = () =>
+  import(
+    /* webpackChunkName: "admin" */ "@/views/admin/jobseeks/AdminJobSeeks.vue"
+  );
+const AdminJobSeekPreview = () =>
+  import(
+    /* webpackChunkName: "job-preview" */ "@/views/admin/jobseeks/preview/_jobSeekId.vue"
+  );
+const AdminEditJobSeek = () =>
+  import(
+    /* webpackChunkName: "job_edit" */ "@/views/admin/jobseeks/edit/_jobSeekId.vue"
   );
 
 // #404
@@ -352,6 +396,46 @@ const routes = [
     path: "/unternehmen/:companyId/:name",
     name: "CompanyViewWName",
     component: CompanyView,
+    meta: {
+      public: true
+    }
+  },
+  {
+    path: "/stellengesuche/info",
+    name: "JobSeeksInfoView",
+    component: JobSeeksInfoView,
+    meta: {
+      public: true
+    }
+  },
+  {
+    path: "/stellengesuche",
+    name: "JobSeekBoard",
+    component: JobSeekBoard,
+    meta: {
+      public: true
+    }
+  },
+  {
+    path: "/stellengesuche/ort/:location",
+    name: "JobSeekboardWLocation",
+    component: JobSeekBoard,
+    meta: {
+      public: true
+    }
+  },
+  {
+    path: "/stellengesuche/gesuch/:jobSeekId",
+    name: "JobSeekView",
+    component: JobSeekView,
+    meta: {
+      public: true
+    }
+  },
+  {
+    path: "/stellengesuche/gesuch/:jobSeekId/:title",
+    name: "JobSeekViewWithTitle",
+    component: JobSeekView,
     meta: {
       public: true
     }
@@ -722,6 +806,30 @@ const routes = [
     }
   },
   {
+    path: "/user/stellengesuche",
+    name: "UserJobSeeks",
+    component: UserJobSeeks,
+    meta: {
+      public: false
+    }
+  },
+  {
+    path: "/user/stellengesuche/edit/:jobSeekId",
+    name: "UserEditJobSeek",
+    component: UserEditJobSeek,
+    meta: {
+      public: false
+    }
+  },
+  {
+    path: "/user/stellengesuche/preview/:jobSeekId",
+    name: "UserJobSeekPreview",
+    component: UserJobSeekPreview,
+    meta: {
+      public: false
+    }
+  },
+  {
     path: "/user/checkout/:jobId",
     name: "UserCheckoutJob",
     component: UserCheckoutJob,
@@ -855,6 +963,33 @@ const routes = [
       onlyAdmin: true
     }
   },
+  {
+    path: "/admin/jobseeks",
+    name: "AdminJobSeeks",
+    component: AdminJobSeeks,
+    meta: {
+      public: false,
+      onlyAdmin: true
+    }
+  },
+  {
+    path: "/admin/jobseeks/preview/:jobSeekId",
+    name: "AdminJobSeekPreview",
+    component: AdminJobSeekPreview,
+    meta: {
+      public: false,
+      onlyAdmin: true
+    }
+  },
+  {
+    path: "/admin/jobseeks/edit/:jobSeekId",
+    name: "AdminEditJobSeek",
+    component: AdminEditJobSeek,
+    meta: {
+      public: false,
+      onlyAdmin: true
+    }
+  },
   { path: "/404", component: NotFound, meta: { public: true } },
   { path: "*", redirect: "/stellenangebote" }
 ];
@@ -918,13 +1053,11 @@ router.beforeEach((to, from, next) => {
   }
 
   if (!isPublic && onlyWhenPending && loggedIn && userActive) {
-    return next("/user/stellenanzeigen");
+    return next("/user/account");
   }
 
   if (loggedIn && onlyWhenLoggedOut) {
-    return next(
-      to.query.redirect ? to.query.redirect : "/user/stellenanzeigen"
-    );
+    return next(to.query.redirect ? to.query.redirect : "/user/account");
   }
 
   next();

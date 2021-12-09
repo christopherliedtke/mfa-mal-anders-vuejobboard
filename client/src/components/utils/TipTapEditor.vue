@@ -232,8 +232,8 @@
     <editor-content
       :class="{
         'editor__content': true,
-        'is-invalid': validated && html.length < minLength,
-        'is-valid': validated && html.length >= minLength
+        'is-invalid': validated && content.length < minLength,
+        'is-valid': validated && content.length >= minLength
       }"
       :editor="editor"
     />

@@ -81,7 +81,24 @@
         >
       </li>
       <li
-        v-if="$store.state.auth.user.isEmployee"
+        v-if="
+          $store.state.auth.user.isEmployee || $store.state.auth.user.isAdmin
+        "
+        class="nav-item"
+        role="presentation"
+      >
+        <b-link
+          to="/user/stellengesuche"
+          role="tab"
+          class="nav-link"
+          active-class="active"
+          >Stellengesuche</b-link
+        >
+      </li>
+      <li
+        v-if="
+          $store.state.auth.user.isEmployee || $store.state.auth.user.isAdmin
+        "
         class="nav-item"
         role="presentation"
       >

@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-5 px-0">
-    <div v-if="similarJobs.length > 0">
+    <div v-if="job && similarJobs.length > 0">
       <JobCard
         v-for="similarJob in similarJobs"
         :key="similarJob.id"
@@ -43,7 +43,7 @@
     data() {
       return {
         similarJobs: [],
-        loading: true
+        loading: false
       };
     },
     watch: {
@@ -55,19 +55,54 @@
       this.getSimilarJobs(this.job);
     },
     methods: {
-      async getSimilarJobs(job = {}) {
-        const response = await this.$axios.get("/api/public-jobs", {
-          params: {
-            limit: this.number + 1,
-            geoCodeLat: job.company ? job.company.geoCodeLat : undefined,
-            geoCodeLng: job.company ? job.company.geoCodeLng : undefined
-          }
-        });
+      async getSimilarJobs(job) {
+        if (!job) {
+          return;
+        }
+
+        this.loading = true;
+
+        try {
+          const jobs = await this.$axios.get("/graphql", {
+            params: {
+              query: `
+                query {
+                  publicJobs (
+                    limit: ${this.number + 1}
+                    position: { 
+                      lat: ${job.company.geoCodeLat || null},
+                      lng: ${job.company.geoCodeLng || null}
+                    }
+                  ) {
+                    jobs {
+                      _id
+                      title
+                      description
+                      profession
+                      employmentType
+                      specialization
+                      salaryMin
+                      salaryMax
+                      slug
+                      company {
+                        name
+                        location
+                      }
+                    }
+                  }
+                }
+              `
+            }
+          });
+
+          this.similarJobs = jobs.data.data.publicJobs.jobs
+            .filter(similarJob => job._id != similarJob._id)
+            .slice(0, this.number);
+        } catch (err) {
+          //
+        }
 
         this.loading = false;
-        this.similarJobs = response.data.jobs
-          .filter(similarJob => job._id != similarJob._id)
-          .slice(0, this.number);
       }
     }
   };

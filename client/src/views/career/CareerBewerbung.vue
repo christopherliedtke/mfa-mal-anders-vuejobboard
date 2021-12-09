@@ -176,7 +176,7 @@
         unterschiedlich sein.
       </p>
       <p>
-        Erfahrungsgemäß ist dies nicht besonders schwer positiv aufzufallen, da
+        Erfahrungsgemäß ist es nicht besonders schwer positiv aufzufallen, da
         viele MitbewerberInnen oftmals nicht in der Lage sind, eine fehlerfreie
         und ansehnliche Bewerbung zusammenzustellen. Mit unseren Tipps gehörst
         Du garantiert nicht zu dieser Gruppe.
@@ -210,8 +210,11 @@
         dem Aussehen oder daran messen, ob du ein Bild deiner Bewerbung
         anhängst.
       </p>
+
+      <JobSeeksLargeBanner class="my-4 my-lg-5" />
+
       <h2 id="anschreiben" class="my-4">
-        <span class="display-4 bold">Bewerbungsschreiben</span> <br />
+        <span class="display-4 bold">Bewerbungs&shy;schreiben</span> <br />
         <span class="h5"
           >für Medizinische Fachangestellte (MFA) & Zahnmedizinische
           Fachangestellte (ZFA)</span
@@ -528,6 +531,7 @@
 <script>
   import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
   import RandomArticlesContainer from "@/components/containers/RandomArticlesContainer.vue";
+  import JobSeeksLargeBanner from "@/components/banners/JobSeeksLargeBanner.vue";
   import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
   import { scrollToHashMixin } from "@/mixins/scrollToHashMixin";
   export default {
@@ -535,6 +539,7 @@
     components: {
       ToJobboardBanner,
       RandomArticlesContainer,
+      JobSeeksLargeBanner,
       ScrollToTopBtn
     },
     mixins: [scrollToHashMixin],

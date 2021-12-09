@@ -2,6 +2,7 @@
   <b-button
     variant="primary"
     :size="size"
+    :disabled="!$route.meta.public"
     class="facebook-share-btn"
     :href="
       `https://www.facebook.com/sharer/sharer.php?u=${url}${

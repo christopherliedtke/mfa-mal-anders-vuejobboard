@@ -1,59 +1,70 @@
 <template>
-  <div class="row">
-    <div
+  <div v-if="trainings" class="row">
+    <article
       v-for="training in trainings"
       :key="training.id"
       :class="[
-        'col-12 mb-4',
+        'article-card col-12 mb-4',
         `col-md-${12 / 2}`,
         `col-lg-${12 / (number === 3 ? 3 : 2)}`
       ]"
     >
-      <article class="article-card">
-        <b-link
-          :to="'/karriere/fort-und-weiterbildung/ueberblick/' + training.slug"
-          :aria-label="training.title"
-        >
-          <div class="card">
-            <b-img-lazy
-              v-if="training.featuredImage.node.sourceUrl"
-              class="card-img-top"
-              :srcset="training.featuredImage.node.srcSet"
-              sizes="(max-width: 768px) 100vw, (max-width: 992px) 50vw, 33vw"
-              :src="training.featuredImage.node.sourceUrl"
-              :alt="training.featuredImage.node.altText"
-              width="1200"
-              height="630"
-              blank-width="1200"
-              blank-height="630"
-              blank-color="#f7f6f9"
-              offset="1000"
-              fluid
-            />
-            <div class="card-body">
-              <h2 class="card-title h4">{{ training.title }}</h2>
+      <b-link
+        :to="'/karriere/fort-und-weiterbildung/ueberblick/' + training.slug"
+        :aria-label="training.title"
+      >
+        <div class="card">
+          <b-img-lazy
+            v-if="training.featuredImage.node.sourceUrl"
+            class="card-img-top"
+            :srcset="training.featuredImage.node.srcSet"
+            sizes="(max-width: 768px) 100vw, (max-width: 992px) 50vw, 33vw"
+            :src="training.featuredImage.node.sourceUrl"
+            :alt="training.featuredImage.node.altText"
+            width="1200"
+            height="630"
+            blank-width="1200"
+            blank-height="630"
+            blank-color="#f7f6f9"
+            offset="1000"
+            fluid
+          />
+          <div class="card-body">
+            <h2 class="card-title h4">{{ training.title }}</h2>
 
-              <!-- eslint-disable-next-line -->
-              <p class="card-text" v-html="training.excerpt"></p>
+            <!-- eslint-disable-next-line -->
+            <p class="card-text" v-html="training.excerpt"></p>
 
-              <b-button
-                :to="
-                  '/karriere/fort-und-weiterbildung/ueberblick/' + training.slug
-                "
-                variant="primary"
-                >Mehr</b-button
-              >
-            </div>
+            <b-button
+              :to="
+                '/karriere/fort-und-weiterbildung/ueberblick/' + training.slug
+              "
+              variant="primary"
+              >Mehr</b-button
+            >
           </div>
-        </b-link>
-      </article>
-    </div>
+        </div>
+      </b-link>
+    </article>
+  </div>
+  <div v-else class="row">
+    <WeiterbildungCardPlaceholder
+      v-for="index in number"
+      :key="index"
+      :class="[
+        'article-card col-12 mb-4',
+        `col-md-${12 / 2}`,
+        `col-lg-${12 / (number === 3 ? 3 : 2)}`
+      ]"
+    />
   </div>
 </template>
 
 <script>
+  import WeiterbildungCardPlaceholder from "../ui/WeiterbildungCardPlaceholder.vue";
   export default {
     name: "RandomTrainingsContainer",
+    components: { WeiterbildungCardPlaceholder },
     props: {
       number: {
         type: Number,
@@ -62,7 +73,7 @@
     },
     data() {
       return {
-        trainings: Array
+        trainings: null
       };
     },
     watch: {

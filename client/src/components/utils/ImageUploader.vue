@@ -127,3 +127,10 @@
     }
   };
 </script>
+
+<style lang="scss">
+  .custom-file-label {
+    border-radius: $border-radius2;
+    margin-left: 0;
+  }
+</style>

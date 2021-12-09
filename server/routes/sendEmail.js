@@ -2,11 +2,26 @@ const express = require("express");
 const router = express.Router();
 const verifyToken = require("../middleware/verifyToken");
 const isAdmin = require("../middleware/isAdmin");
+const fs = require("fs");
+const path = require("path");
 const emailService = require("../utils/nodemailer");
+const Handlebars = require("handlebars");
 const config = require("../config/config");
+const sanitizeHtml = require("sanitize-html");
 const { Job } = require("../database/models/job");
 const { Training } = require("../database/models/training");
+const { Payment } = require("../database/models/payment");
+const { JobSeek } = require("../database/models/jobSeek");
 const jobToAsanaTask = require("../utils/jobToAsanaTask");
+
+Handlebars.registerHelper("currentYear", () => {
+  return new Date().getFullYear();
+});
+
+const jobSeekerContactTemplate = fs.readFileSync(
+  path.join(__dirname, "../templates/jobseeker_contact_email.hbs"),
+  "utf8"
+);
 
 // #route:  POST /api/send-email/job-published
 // #desc:   Handle invoice request
@@ -154,7 +169,7 @@ router.post("/training-published", verifyToken, isAdmin, async (req, res) => {
       }/karriere/fort-und-weiterbildung/fortbildungskatalog</a>
                 </p>
                 <p>
-                    Sie können die Fortbildung jederzeit unter MEIN KONTO > FORTBILDUNGEN ändern bzw. deaktivieren. Sollten Sie noch Fragen oder Anregungen haben, melden Sie sich gern bei uns über unser <a href="${
+                    Sie können die Fortbildung jederzeit unter KONTO > FORTBILDUNGEN ändern bzw. deaktivieren. Sollten Sie noch Fragen oder Anregungen haben, melden Sie sich gern bei uns über unser <a href="${
                       process.env.WEBSITE_URL
                     }/kontakt">Kontaktformular</a> oder direkt per Nachricht an <a href="mailto:kontakt@mfa-mal-anders.de">kontakt@mfa-mal-anders.de</a>.
                 </p>
@@ -199,6 +214,163 @@ router.post("/training-published", verifyToken, isAdmin, async (req, res) => {
     res.json({ success: true });
   } catch (err) {
     res.json({ errors: [err] });
+  }
+});
+
+// #route:  POST /api/send-email/contact-jobseek
+// #desc:   Handle jobseek contact request
+// #access: Private
+router.post("/contact-jobseek", verifyToken, async (req, res) => {
+  try {
+    if (!req.body.accepted) {
+      throw new Error(
+        "Sie müssen AGBs und Datenschutzerklärung gelesen und akzeptiert haben, um Ihre Nachricht zu versenden."
+      );
+    }
+    // check for current payment
+    const filter = {
+      user: req.user._id,
+      status: "paid",
+      paymentExpiresAt: {
+        $gt: new Date().getTime(),
+      },
+    };
+    const validPaymentCount = await Payment.countDocuments(filter);
+
+    if (!validPaymentCount) {
+      throw new Error(
+        "Sie haben aktuell kein Stellenangebot auf MFA mal anders online. Ausschließlich verifizierte Arbeitgeber mit einer offenen Stelle auf unserem Portal haben die Möglichkeit, Jobsuchende direkt zu kontaktieren."
+      );
+    }
+
+    // get jobSeek
+    const jobSeek = await JobSeek.findOne({ _id: req.body.jobSeekId }).populate(
+      "user",
+      "email"
+    );
+
+    if (!jobSeek) {
+      throw new Error(
+        "Beim Senden Ihrer Nachricht ist ein Fehler aufgetreten. Bitte versuchen Sie es später noch einmal oder kontaktieren Sie uns über unser Kontaktformular."
+      );
+    }
+
+    // send mail to jobseeker
+    const template = Handlebars.compile(jobSeekerContactTemplate);
+    const htmlToJobSeeker = template({
+      jobSeekId: jobSeek._id,
+      jobSeekTitle: jobSeek.title,
+      message: sanitizeHtml(req.body.message),
+      to: jobSeek.firstName,
+      from: `${req.user.gender ? req.user.gender + " " : ""}${
+        req.user.title ? req.user.title + " " : ""
+      }${req.user.firstName} ${req.user.lastName}`,
+      replyTo: req.body.email,
+      websiteUrl: process.env.WEBSITE_URL,
+      websiteName: config.website.name,
+      headerImg: `${process.env.WEBSITE_URL}/img/MfaMalAnders_StellengesuchNeueNachricht.jpg`,
+      lightColor: "#fffcfd",
+      lightShadeColor: "#f7f6f9",
+      primaryColor: "#6d0230",
+      secondaryColor: "#fda225",
+      fbPath: config.social.fb.path,
+      igPath: config.social.ig.path,
+    });
+
+    const mailDataToJobSeeker = {
+      from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
+      to: jobSeek.user.email,
+      bcc: [config.website.contactEmail],
+      replyTo: req.body.email,
+      subject: `Neue Nachricht zu Deinem Stellengesuch auf 'MFA mal anders'`,
+      html: htmlToJobSeeker,
+    };
+
+    const sentEmailToJobSeeker = await emailService.sendMail(
+      mailDataToJobSeeker
+    );
+    console.info("sentEmailToJobSeeker: ", sentEmailToJobSeeker);
+
+    if (sentEmailToJobSeeker.accepted.length == 0) {
+      throw new Error(
+        `Die Nachricht konnte nicht an ${jobSeek.publicFirstName} ${jobSeek.publicLastName} versandt werden. Bitte versuchen Sie es noch einmal oder kontaktieren Sie uns über unser Kontaktformular.`
+      );
+    }
+
+    // send copy to employer
+    try {
+      const mailDataToEmployer = {
+        from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
+        to: jobSeek.user.email,
+        subject: `Ihre Kontaktaufnahme zum Stellengesuch auf 'MFA mal anders'`,
+        html: `
+        <p>
+          ${
+            req.user.gender == "Frau"
+              ? "Sehr geehrte"
+              : req.user.gender == "Herr"
+              ? "Sehr geehrter"
+              : "Sehr geehrte/r"
+          } ${req.user.gender ? req.user.gender + " " : ""}${
+          req.user.title ? req.user.title + " " : ""
+        }${req.user.firstName} ${req.user.lastName},
+        </p>
+        <p>
+            Ihre Nachricht an ${jobSeek.publicFirstName} ${
+          jobSeek.publicLastName
+        } wurde erfolgreich versandt. Hiermit erhalten Sie eine Kopie der Nachricht.
+        </p>
+        <p style="color: #0000001a">__</p>
+
+        <p style="color: #6c757d; font-style: italic">
+            ${sanitizeHtml(req.body.message)}
+        </p>
+
+        <p style="color: #0000001a">__</p>
+        <p>
+            Wir wünschen Ihnen viel Erfolg in dem Gespräch und bei der Stellenbesetzung. Sollten Sie noch Fragen oder Hinweise für uns haben, melden Sie sich gern bei uns.
+        </p>
+        <p>
+            Ihr Team von <em>MFA mal anders</em>
+        </p>
+        <p>__</p>
+        <p>
+            <img src="cid:mfa-mal-anders-logo" width="60" style="margin-bottom: 1rem"/> <br>
+            <strong>MFA mal anders</strong> <br>
+            Das Stellen- & Karriereportal für Medizinische Fachangestellte | Zahnmedizinische Fachangestellte Fachangestellte <br>
+            <br>
+            E-Mail: <a href="mailto:kontakt@mfa-mal-anders.de">kontakt@mfa-mal-anders.de</a> <br>
+            Webseite: <a href="${process.env.WEBSITE_URL}">${
+          process.env.WEBSITE_URL
+        }</a>
+        </p>
+        `,
+        attachments: [
+          {
+            filename: "MfaMalAnders_logo_circle_bgdark_white.png",
+            path:
+              __dirname +
+              "/../../client/public/img/MfaMalAnders_logo_circle_bgdark_white.png",
+            cid: "mfa-mal-anders-logo", //same cid value as in the html img src
+          },
+        ],
+      };
+
+      const sentEmailToEmployer = await emailService.sendMail(
+        mailDataToEmployer
+      );
+      console.info("sentEmailToEmployer: ", sentEmailToEmployer);
+    } catch (err) {
+      console.error(
+        "Error on /api/send-email/contact-jobseek -> sentEmailToEmployer: ",
+        err
+      );
+    }
+
+    res.json({ success: true });
+  } catch (err) {
+    console.error("Error on /api/send-email/contact-jobseek: ", err);
+    res.json({ success: false, error: err.message });
   }
 });
 

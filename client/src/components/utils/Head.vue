@@ -82,7 +82,7 @@
               property: "og:image",
               content: this.img.match(/https?:\/\//gi)
                 ? this.img
-                : window.location.origin + this.img ||
+                : (this.img && window.location.origin + this.img) ||
                   window.location.origin + `/img/MfaMalAnders_Banner_1200.jpg`,
               id: "og-image"
             },
@@ -115,7 +115,7 @@
               property: "twitter:image",
               content: this.img.match(/https?:\/\//gi)
                 ? this.img
-                : window.location.origin + this.img ||
+                : (this.img && window.location.origin + this.img) ||
                   window.location.origin + `/img/MfaMalAnders_Banner_1200.jpg`,
               id: "twitter-image"
             },

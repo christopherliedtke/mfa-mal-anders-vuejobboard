@@ -397,6 +397,8 @@
         <JobsTeaserContainer employment-type="training" />
       </div>
 
+      <JobSeeksLargeBanner class="mb-4 mb-lg-5" />
+
       <h2 id="ausbildung-gehalt-danach">
         Gehalt nach der Ausbildung zur Medizinischen Fachangestellten (MFA)
       </h2>
@@ -511,6 +513,7 @@
   import JobsTeaserContainer from "@/components/containers/JobsTeaserContainer.vue";
   import ProfessionTypeContainer from "@/components/containers/ProfessionTypeContainer.vue";
   import JobSearchSingleForm from "@/components/forms/JobSearchSingleForm.vue";
+  import JobSeeksLargeBanner from "@/components/banners/JobSeeksLargeBanner.vue";
   import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
   import { scrollToHashMixin } from "@/mixins/scrollToHashMixin";
   export default {
@@ -521,6 +524,7 @@
       JobsTeaserContainer,
       ProfessionTypeContainer,
       JobSearchSingleForm,
+      JobSeeksLargeBanner,
       ScrollToTopBtn
     },
     mixins: [scrollToHashMixin],

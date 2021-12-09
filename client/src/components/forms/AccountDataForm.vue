@@ -1,71 +1,96 @@
 -<template>
   <div class="account-data-form position-relative mb-3">
     <b-form id="account-data-form">
-      <label for="user-gender">Anrede</label>
-      <b-form-select
-        id="user-gender"
-        v-model="user.gender"
-        :state="validated ? (user.gender ? true : null) : null"
-        :disabled="disabled"
-      >
-        <b-form-select-option :value="''"
-          >-- Anrede auswählen --</b-form-select-option
-        >
-        <b-form-select-option
-          v-for="title in contactGenderOptions"
-          :key="title"
-          :value="title"
-          >{{ title }}</b-form-select-option
-        >
-      </b-form-select>
-      <label for="user-title">Titel</label>
-      <b-form-select
-        id="user-title"
-        v-model="user.title"
-        :state="validated ? (user.title ? true : null) : null"
-        :disabled="disabled"
-      >
-        <b-form-select-option :value="''"
-          >-- Titel auswählen --</b-form-select-option
-        >
-        <b-form-select-option
-          v-for="title in contactTitleOptions"
-          :key="title"
-          :value="title"
-          >{{ title }}</b-form-select-option
-        >
-      </b-form-select>
-      <label for="first-name" required>Vorname</label>
-      <b-form-input
-        id="first-name"
-        v-model="user.firstName"
-        type="text"
-        :state="validated ? (user.firstName ? true : false) : null"
-        placeholder="Vorname eingeben..."
-        required
-        :disabled="disabled"
-      />
-      <label for="last-name" required>Nachname</label>
-      <b-form-input
-        id="last-name"
-        v-model="user.lastName"
-        type="text"
-        :state="validated ? (user.lastName ? true : false) : null"
-        placeholder="Nachname eingeben..."
-        required
-        :disabled="disabled"
-      />
-      <label for="email" required>E-Mail Adresse</label>
-      <b-form-input
-        id="email"
-        v-model="user.email"
-        type="email"
-        :state="validated ? (user.email ? true : false) : null"
-        placeholder="E-Mail Adresse eingeben..."
-        required
-        :disabled="disabled"
-      />
-      <label for="role" class="d-block">Rolle</label>
+      <div class="row">
+        <div class="col-12 col-lg-3">
+          <label for="user-gender">Anrede</label>
+          <b-form-select
+            id="user-gender"
+            v-model="user.gender"
+            :state="validated ? (user.gender ? true : null) : null"
+            :disabled="disabled"
+          >
+            <b-form-select-option :value="''"
+              >-- Anrede auswählen --</b-form-select-option
+            >
+            <b-form-select-option
+              v-for="title in contactGenderOptions"
+              :key="title"
+              :value="title"
+              >{{ title }}</b-form-select-option
+            >
+          </b-form-select>
+        </div>
+        <div class="col-12 col-lg-3">
+          <label for="user-title">Titel</label>
+          <b-form-select
+            id="user-title"
+            v-model="user.title"
+            :state="validated ? (user.title ? true : null) : null"
+            :disabled="disabled"
+          >
+            <b-form-select-option :value="''"
+              >-- Titel auswählen --</b-form-select-option
+            >
+            <b-form-select-option
+              v-for="title in contactTitleOptions"
+              :key="title"
+              :value="title"
+              >{{ title }}</b-form-select-option
+            >
+          </b-form-select>
+        </div>
+        <div class="col-12 col-lg-4"></div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 col-lg-3">
+          <label for="first-name" required>Vorname</label>
+          <b-form-input
+            id="first-name"
+            v-model="user.firstName"
+            type="text"
+            :state="validated ? (user.firstName ? true : false) : null"
+            placeholder="Vorname eingeben..."
+            required
+            :disabled="disabled"
+          />
+        </div>
+        <div class="col-12 col-lg-3">
+          <label for="last-name" required>Nachname</label>
+          <b-form-input
+            id="last-name"
+            v-model="user.lastName"
+            type="text"
+            :state="validated ? (user.lastName ? true : false) : null"
+            placeholder="Nachname eingeben..."
+            required
+            :disabled="disabled"
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 col-lg-6">
+          <label for="email" required>E-Mail Adresse</label>
+          <b-input-group>
+            <template #prepend>
+              <b-input-group-text>@</b-input-group-text>
+            </template>
+            <b-form-input
+              id="email"
+              v-model="user.email"
+              type="email"
+              :state="validated ? (user.email ? true : false) : null"
+              placeholder="E-Mail Adresse eingeben..."
+              required
+              :disabled="disabled"
+            />
+          </b-input-group>
+        </div>
+      </div>
+
+      <label for="role" class="d-block mt-4 mb-0">Rolle</label>
       <b-form-checkbox
         id="is-employer"
         v-model="user.isEmployer"

@@ -30,7 +30,7 @@
               Fachangestellte
             </em>
           </h3>
-          <ul class="lead no-bullets my-4 my-lg-5">
+          <ul class="lead no-bullets my-4 mt-lg-5">
             <li class="d-flex mb-2">
               <span>
                 <svg
@@ -96,7 +96,7 @@
                 und unsere MFA & ZFA Community
               </div>
             </li>
-            <li class="d-flex">
+            <li class="d-flex mb-2">
               <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -124,6 +124,27 @@
                 >
               </div>
             </li>
+            <!-- <li class="d-flex">
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="25"
+                  fill="currentColor"
+                  class="bi bi-check-lg mr-3"
+                  style="vertical-align: top;"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"
+                  />
+                </svg>
+              </span>
+              <div>
+                Erhalten Sie Zugriff auf unsere Stellengesuche mit der
+                Möglichkeit Kontakt zu potentiellen MitarbeiterInnen aufzunehmen
+              </div>
+            </li> -->
           </ul>
 
           <div class="my-3">
@@ -211,9 +232,9 @@
                 ab
                 {{ $config.pricingPackages[0].price / 100 }}
                 {{ $config.payment.currency }}
-                für {{ $config.pricingPackages[0].duration }} Tage
-              </strong>
-              <span v-if="$config.payment.tax" class="small"> (zzgl. USt.)</span
+                für {{ $config.pricingPackages[0].duration }} Tage</strong
+              ><span v-if="$config.payment.tax" class="small">
+                (zzgl. USt.)</span
               >.
             </p>
           </div>
@@ -339,6 +360,12 @@
           anhand unserer vorgegebenen Struktur zu erstellen. Wir setzen uns dann
           umgehend mit Ihnen in Verbindung, um Ihre Stellenanzeige gemeinsam für
           die Veröffentlichung und Reichweitenmaximierung zu optimieren.
+        </p>
+        <p>
+          Mit der Veröffentlichung Ihrer Stellenanzeige bekommen Sie zusätzlich
+          die Möglichkeit, auf unsere
+          <b-link to="/stellengesuche">Stellengesuche</b-link> zu antworten und
+          Kontakt zu potentiellen neuen MitarbeiterInnen aufzunehmen.
         </p>
         <p>
           Gern bieten wir Ihnen nach Absprache auch individuelle Pakete an, wenn

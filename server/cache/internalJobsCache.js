@@ -6,7 +6,7 @@ class Cache {
     this.cache = new NodeCache({
       stdTTL: ttlSeconds,
       checkperiod: ttlSeconds * 0.2,
-      useClones: false,
+      useClones: true,
     });
   }
 

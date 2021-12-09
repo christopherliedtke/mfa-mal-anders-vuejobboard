@@ -7,6 +7,8 @@ const getLocation = async (q, country) => {
       {
         params: {
           q: `${q}${country ? "+" + country : ""}`,
+          // at: "52.51604,13.37691",
+          in: "countryCode:DEU,AUT,CHE",
         },
         timeout: 5000,
       }

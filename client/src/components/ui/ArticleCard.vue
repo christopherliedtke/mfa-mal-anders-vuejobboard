@@ -83,6 +83,7 @@
       border: none;
       background-color: $light-shade;
       box-shadow: $shadow1;
+      border-radius: $border-radius1;
       transition: $transition1;
 
       &:hover {

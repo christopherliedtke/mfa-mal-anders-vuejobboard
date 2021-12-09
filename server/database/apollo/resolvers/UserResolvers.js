@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const sanitizeHtml = require("sanitize-html");
+const mongoose = require("mongoose");
 const config = require("../../../config/config");
 const errorMsg = require("../../../config/errorMsg.json");
 const jwt = require("jsonwebtoken");
@@ -592,6 +593,13 @@ const UserResolvers = {
         return job.userId;
       }
 
+      if (
+        job.userId instanceof Object &&
+        job.userId instanceof mongoose.Types.ObjectId === false
+      ) {
+        return job.userId;
+      }
+
       const user = await User.findOne({
         _id: job.userId,
       });
@@ -606,6 +614,7 @@ const UserResolvers = {
       if (!context.user.isAdmin) {
         return company.userId;
       }
+
       const user = await User.findOne({
         _id: company.userId,
       });
@@ -620,6 +629,7 @@ const UserResolvers = {
       if (!context.user.isAdmin) {
         return coupon.userId;
       }
+
       const user = await User.findOne({
         _id: coupon.userId,
       });
@@ -650,6 +660,20 @@ const UserResolvers = {
       }
 
       const user = await User.findOne({ _id: training.user });
+
+      delete user.password;
+
+      return user;
+    },
+  },
+
+  JobSeek: {
+    user: async (jobSeek, args, context) => {
+      if (!context.user.isAdmin) {
+        throw new AuthenticationError("Missing permission!");
+      }
+
+      const user = await User.findOne({ _id: jobSeek.user });
 
       delete user.password;
 

@@ -3,16 +3,12 @@ module.exports = {
     name: "MFA mal anders",
     url: "https://www.mfa-mal-anders.de",
     contactEmail: "kontakt@mfa-mal-anders.de"
-    // googleCustomSearchUrl: "https://cse.google.com/cse?cx=7f5c5e15bf2d73a5d"
   },
   cms: {
     url: "https://wordpress.mfa-mal-anders.de/graphql",
     active: true,
     postsPath: "/blog",
     postsPageTitle: "Blog"
-  },
-  externalJobs: {
-    active: false
   },
   jobboardMap: {
     active: false
@@ -28,7 +24,7 @@ module.exports = {
     path: "MfaMalAnders"
   },
   ig: {
-    path: "mfa.mal.anders"
+    path: "mfa.mal.anders/"
   },
   ga: {
     active: true,
@@ -144,13 +140,6 @@ module.exports = {
     }
   ],
   payment: {
-    // minCost: 3900,
-    // mediumCost: 6500,
-    // largeCost: 12000,
-    // xLargeCost: 25000,
-    // maxCost: 30000,
-    // refreshCost: 15000,
-    // invoiceCost: 500,
     currency: "EUR",
     minDuration: 60,
     tax:

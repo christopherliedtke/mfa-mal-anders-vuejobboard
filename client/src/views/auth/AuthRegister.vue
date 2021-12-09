@@ -2,30 +2,39 @@
   <div class="register auth-container container">
     <RegisterForm>
       <template #intro>
-        <h1 class="h2 text-center mb-0">
+        <h2 class="h1 bold text-center mt-3 mt-lg-4 mb-0">
           {{
             $route.query.role === "employee"
-              ? "Registrierung als MFA/  ZFA"
+              ? "MFA | ZFA"
               : $route.query.role === "education"
-              ? "Registrierung als Fortbildungsanbieter"
-              : "Registrierung als Arbeitgeber"
+              ? "Fortbildungsanbieter"
+              : "Arbeitgeber"
           }}
-        </h1>
+        </h2>
 
         <div v-if="$route.query.role == 'education'" class="mt-4">
-          <p class="bold text-left text-md-center">
-            Sie möchten eine Fortbildung bei uns veröffentlichen?
+          <p class="text-left text-md-center">
+            Sie möchten eine Fortbildung un unserem
+            <b-link
+              to="/karriere/fort-und-weiterbildung/fortbildungskatalog"
+              target="_blank"
+              class="bold"
+              >Fortbildungskatalog</b-link
+            >
+            veröffentlichen?
           </p>
         </div>
         <div v-else-if="$route.query.role == 'employee'" class="mt-4">
-          <!-- <p class="bold text-left text-md-center">
-            TEST
-          </p> -->
+          <p class="text-left text-md-center">
+            Du möchtest ein Stellengesuch schalten oder unseren Job Newsletter
+            abonnieren?
+          </p>
         </div>
 
         <div v-else class="mt-4">
-          <p class="bold text-left text-md-center">
-            Sie möchten eine Stellenanzeige bei uns schalten?
+          <p class="text-left text-md-center">
+            Sie möchten eine Stellenanzeige bei uns schalten und auf
+            Stellengesuche antworten?
           </p>
 
           <div class="row row-cols-md-3 d-none d-md-flex my-4 text-center">
@@ -94,7 +103,12 @@
           </div>
           <p class="">
             Registrieren Sie sich jetzt und veröffentlichen Sie noch heute Ihre
-            Stellenanzeige!
+            Stellenanzeige! Zusätzlich bekommen Sie mit einer laufenden
+            Stellenanzeige die Möglichkeit, auf unsere
+            <b-link class="bold" to="/stellengesuche" target="_blank"
+              >Stellengesuche von MFA & ZFA</b-link
+            >
+            zu antworten.
           </p>
         </div>
       </template>

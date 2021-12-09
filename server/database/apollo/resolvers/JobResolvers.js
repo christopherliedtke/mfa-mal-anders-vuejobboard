@@ -1,9 +1,13 @@
-const { AuthenticationError } = require("apollo-server-express");
+const {
+  AuthenticationError,
+  UserInputError,
+} = require("apollo-server-express");
 const config = require("../../../config/config.js");
 const { googleIndexing } = require("../../../middleware/googleJobIndexing");
 const recachePrerender = require("../../../middleware/recachePrerender");
 const sanitizeHtml = require("sanitize-html");
 const s3 = require("../../../middleware/s3");
+const getLocation = require("../../../utils/geocoder");
 const { Job } = require("../../models/job");
 const { Company } = require("../../models/company");
 const internalJobsCache = require("../../../cache/internalJobsCache");
@@ -12,40 +16,94 @@ const textToSlug = require("../../../utils/textToSlug");
 const JobResolvers = {
   Query: {
     publicJob: async (root, args) => {
-      const job = await Job.findOne({
-        _id: args._id,
-        status: "published",
-        paid: true,
-        paidExpiresAt: { $gte: new Date() },
-        publishedAt: { $lte: new Date() },
-      });
+      const jobs = await internalJobsCache.get("jobs");
 
-      if (
-        job.applicationDeadline &&
-        job.applicationDeadline < new Date().getTime()
-      ) {
-        return null;
-      }
+      const job = jobs.find(job => job._id == args._id);
 
       return job;
     },
-    publicJobs: async () => {
-      const jobs = await Job.find({
-        status: "published",
-        paid: true,
-        paidExpiresAt: { $gte: new Date() },
-        publishedAt: { $lte: new Date() },
-      }).sort({
-        publishedAt: "desc",
-        paidAt: "desc",
-        createdAt: "desc",
-      });
+    publicJobs: async (root, args) => {
+      if (args.location) {
+        const locations = await getLocation(args.location);
 
-      return jobs.filter(
-        job =>
-          !job.applicationDeadline ||
-          job.applicationDeadline >= new Date().getTime()
-      );
+        if (locations) {
+          args.position = locations[0].position;
+        } else {
+          throw new UserInputError(
+            `Es konnte kein passender Ort für '${args.location}' gefunden werden oder der Ortungsservice funktioniert aktuell nicht. Bitte stellen Sie sicher, dass der Ort bzw. die PLZ korrekt und komplett angegeben ist.`,
+            { code: "NO_LOCATION" }
+          );
+        }
+      }
+
+      let jobs = await internalJobsCache.get("jobs");
+
+      // filter by profession
+      if (args.profession) {
+        jobs = jobs.filter(
+          job =>
+            !job.profession ||
+            job.profession.toLowerCase() === args.profession.toLowerCase()
+        );
+      }
+
+      // filter by employmentType
+      if (args.employmentType) {
+        jobs = jobs.filter(
+          job =>
+            job.employmentType &&
+            job.employmentType
+              .toLowerCase()
+              .includes(args.employmentType.toLowerCase())
+        );
+      }
+
+      // filter by specialization
+      if (args.specialization) {
+        jobs = jobs.filter(
+          job =>
+            job.specialization &&
+            args.specialization
+              .toLowerCase()
+              .includes(job.specialization.toLowerCase())
+        );
+      }
+
+      // filter by searchTerm
+      if (args.s) {
+        jobs = jobs.filter(job => {
+          const s = args.s.toLowerCase().split(" ");
+          const searchProp = [
+            job.title,
+            job.description,
+            job.company.name,
+            job.company.state,
+            job.company.location,
+            job.company.zipCode,
+          ]
+            .join(" ")
+            .toLowerCase();
+
+          return s.every(term => searchProp.includes(term));
+        });
+      }
+
+      // sort by position
+      if (args.position) {
+        jobs = sortJobsByPosition(args.position, jobs);
+
+        if (args.radius) {
+          jobs = filterJobsByDistance(args.radius, args.position, jobs);
+        }
+      }
+
+      const count = jobs.length;
+      jobs = sliceJobs(jobs, args.limit || undefined, args.skip);
+
+      return {
+        jobs,
+        count,
+      };
     },
     myJob: async (root, args, context) => {
       if (!context.user._id) {
@@ -94,9 +152,15 @@ const JobResolvers = {
         throw new AuthenticationError("Missing permission!");
       }
 
-      const jobs = await Job.find().sort({
-        createdAt: "desc",
-      });
+      const jobs = await Job.find()
+        .sort({
+          createdAt: "desc",
+        })
+        .populate("company")
+        .populate(
+          "userId",
+          "_id createdAt gender title firstName lastName email"
+        );
 
       return jobs;
     },
@@ -370,6 +434,68 @@ async function getJobSlug(job) {
   const company = await Company.findOne({ _id: job.company }, "location");
 
   return textToSlug(job.title + (company ? " in " + company.location : ""));
+}
+
+function sliceJobs(jobs = [], limit = 2, offset = 0) {
+  return jobs.slice(offset, offset + limit);
+}
+
+function sortJobsByPosition(position, jobs) {
+  if (!position.lat || !position.lng) {
+    return jobs;
+  }
+
+  return jobs.sort((a, b) => {
+    return (
+      calcDistance(
+        a.company.geoCodeLat,
+        a.company.geoCodeLng,
+        position.lat,
+        position.lng
+      ) -
+      calcDistance(
+        b.company.geoCodeLat,
+        b.company.geoCodeLng,
+        position.lat,
+        position.lng
+      )
+    );
+  });
+}
+
+function filterJobsByDistance(radius, position, jobs) {
+  if (!position.lat || !position.lng) {
+    return jobs;
+  }
+
+  return jobs.filter(
+    job =>
+      calcDistance(
+        job.company.geoCodeLat,
+        job.company.geoCodeLng,
+        position.lat,
+        position.lng
+      ) /
+        1000 <
+      radius
+  );
+}
+
+function calcDistance(lat1, lon1, lat2, lon2) {
+  const R = 6371000; // metres
+  const φ1 = (lat1 * Math.PI) / 180; // φ, λ in radians
+  const φ2 = (lat2 * Math.PI) / 180;
+  const Δφ = ((lat2 - lat1) * Math.PI) / 180;
+  const Δλ = ((lon2 - lon1) * Math.PI) / 180;
+
+  const a =
+    Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
+    Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+  const d = R * c; // in metres
+
+  return d;
 }
 
 module.exports = JobResolvers;

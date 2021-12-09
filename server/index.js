@@ -73,9 +73,12 @@ if (process.env.PRERENDER_ACTIVE === "on") {
   app.use(prerender);
 }
 
+// #Cors implementation
+// TODO update for dev vs prod (consider webhooks)
 if (process.env.NODE_ENV != "production") {
   app.use(cors());
 }
+
 app.use(compression());
 app.use(express.json());
 
@@ -128,6 +131,7 @@ if (process.env.NODE_ENV == "production") {
 // #ApolloServer
 const apolloServer = new ApolloServer({
   schema: apolloSchema,
+  // cacheControl: { defaultMaxAge: 5 },
   context: ({ req }) => {
     const token = req.session && req.session.token ? req.session.token : "";
 
@@ -147,8 +151,6 @@ app.use("/api/invoice", require("./routes/invoice"));
 app.use("/api/send-email", require("./routes/sendEmail"));
 app.use("/api/admin", require("./routes/admin"));
 app.use("/api/prerender", require("./routes/prerender"));
-app.use("/api/external-jobs", require("./routes/externalJobs"));
-app.use("/api/public-jobs", require("./routes/publicJobs"));
 
 // #Serve the built static files in production
 app.use("*", (req, res) => {

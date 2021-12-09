@@ -1,20 +1,29 @@
 <template>
   <div>
-    <div class="btn-group d-flex mb-4" role="group">
+    <h1 class="h3 text-center mb-3">
+      Registrierung als
+    </h1>
+    <div class="btn-group btn-group-sm d-flex mb-4" role="group">
       <b-button
         :variant="isEmployer ? 'primary' : 'outline-primary'"
+        class="py-2 py-lg-3"
+        style="border-top-left-radius: 35px; border-bottom-left-radius: 35px; flex-basis: 0"
         @click="toggleRole('employer')"
-        >Ich bin Arbeitgeber</b-button
+        >Arbeitgeber</b-button
       >
       <b-button
         :variant="isEmployee ? 'primary' : 'outline-primary'"
+        class="py-2 py-lg-3 "
+        style="flex-basis: 0"
         @click="toggleRole('employee')"
-        >Ich bin MFA/ZFA</b-button
+        >MFA&nbsp;|&nbsp;ZFA</b-button
       >
       <b-button
         :variant="isEducational ? 'primary' : 'outline-primary'"
+        class="py-2 py-lg-3 "
+        style="border-top-right-radius: 35px; border-bottom-right-radius: 35px; flex-basis: 0"
         @click="toggleRole('education')"
-        >Ich bin Fortbildungs-anbieter</b-button
+        >Fortbildungs&shy;anbieter</b-button
       >
     </div>
 

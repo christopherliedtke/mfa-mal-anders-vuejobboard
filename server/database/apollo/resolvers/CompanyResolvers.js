@@ -1,5 +1,6 @@
 const { AuthenticationError } = require("apollo-server-express");
 const sanitizeHtml = require("sanitize-html");
+const mongoose = require("mongoose");
 const s3 = require("../../../middleware/s3");
 const { Company } = require("../../models/company");
 
@@ -113,6 +114,13 @@ const CompanyResolvers = {
 
   Job: {
     company: async job => {
+      if (
+        job.company instanceof Object &&
+        job.company instanceof mongoose.Types.ObjectId === false
+      ) {
+        return job.company;
+      }
+
       const company = await Company.findOne({ _id: job.company });
       return company;
     },
