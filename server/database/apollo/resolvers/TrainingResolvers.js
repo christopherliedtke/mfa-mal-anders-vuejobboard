@@ -96,6 +96,10 @@ const TrainingResolvers = {
         user: context.user._id,
       }).sort({ createdAt: "desc" });
 
+      await Training.updateMany({
+        user: context.user._id,
+      });
+
       return trainings;
     },
     adminTraining: async (root, args, context) => {

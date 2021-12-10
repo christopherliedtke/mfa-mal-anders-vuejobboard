@@ -319,8 +319,8 @@
             <ImageUploader
               :validated="validated"
               :image-url="jobSeek.imageUrl"
-              :width="250"
-              :height="250"
+              :width="200"
+              :height="200"
               fit="cover"
               aria-describedby="image-help"
               @update-url="jobSeek.imageUrl = $event"

@@ -47,7 +47,7 @@
                 id="location-jobboard"
                 v-model="filter.ort"
                 type="text"
-                placeholder="Ort oder PLZ..."
+                placeholder="PLZ oder Ort..."
                 trim
                 lazy
                 :formatter="capitalize"

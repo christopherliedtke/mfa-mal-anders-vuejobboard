@@ -37,6 +37,17 @@
 
 <style scoped lang="scss">
   .card {
+    background: linear-gradient(
+      120deg,
+      #fffcfdff 0%,
+      #fffcfdcc 60%,
+      #fffcfd00 100%
+    );
+
+    @media screen and (max-width: $break-menu) {
+      background: radial-gradient(closest-side, #fffcfdbb 0%, #fffcfdff 100%);
+    }
+
     .card-body {
       background: linear-gradient(
           120deg,
@@ -46,13 +57,13 @@
         ),
         url("~@/assets/img/LinkedIn_Monochromatic.svg") right center no-repeat;
       background-size: contain;
-      background-blend-mode: lighten;
 
       @media screen and (max-width: $break-menu) {
-        background: radial-gradient(closest-side, #fffcfdbb 0%, #fffcfdff 100%),
+        background: radial-gradient(closest-side, #fffcfd88 0%, #fffcfdff 100%),
           url("~@/assets/img/LinkedIn_Monochromatic.svg") center center
             no-repeat;
       }
+      //
     }
   }
 </style>
