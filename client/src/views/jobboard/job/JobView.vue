@@ -1,5 +1,5 @@
 <template>
-  <div class="jobpage container py-5">
+  <div class="jobpage container py-4 py-lg-5">
     <div v-if="error">
       {{ error }}
       <div class="mt-3">
