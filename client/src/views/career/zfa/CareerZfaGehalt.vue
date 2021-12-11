@@ -2,7 +2,7 @@
   <article class="salary">
     <div class="title">
       <h1>
-        {{ title }} <br />
+        {{ title }} {{ year }} <br />
         <span class="h3">für Zahnmedizinische Fachangestellte</span>
       </h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
@@ -19,7 +19,7 @@
         sizes="(max-width: 1200px) 100vw, 1200px"
         src="/img/MfaMalAnders_GehaltZfa_hkucp5_c_scale,w_1200.jpg"
         :alt="
-          `ZFA / Zahnmedizinische Fachangestellte Gehalt ${new Date().getFullYear()} - Berechne Dein Gehalt mit unserem Gehaltsrechner`
+          `ZFA / Zahnmedizinische Fachangestellte Gehalt ${year} - Berechne Dein Gehalt mit unserem Gehaltsrechner`
         "
         width="1200"
         height="630"
@@ -44,8 +44,7 @@
         <ol class="text-tertiary pl-4">
           <li class="lead mt-3">
             <b-link to="#gehaltstarifvertrag"
-              >Gehaltstarifvertrag {{ new Date().getFullYear() }} – ZFA /
-              ZahnarzthelferIn</b-link
+              >Gehaltstarifvertrag {{ year }} – ZFA / ZahnarzthelferIn</b-link
             >
             <ol>
               <li class="lead mt-3">
@@ -55,8 +54,7 @@
               </li>
               <li class="lead mt-3">
                 <b-link to="#gehalt-ausbildung"
-                  >ZFA Ausbildung {{ new Date().getFullYear() }} – Gehalt nach
-                  Tarifvertrag</b-link
+                  >ZFA Ausbildung {{ year }} – Gehalt nach Tarifvertrag</b-link
                 >
               </li>
               <li class="lead mt-3">
@@ -111,9 +109,7 @@
         herausfinden.
       </p>
       <h2 id="gehaltstarifvertrag" class="mb-4 mt-5">
-        <span class="display-4 bold"
-          >Gehaltstarifvertrag ZFA {{ new Date().getFullYear() }}</span
-        >
+        <span class="display-4 bold">Gehaltstarifvertrag ZFA {{ year }}</span>
         <br />
         für ZahnarzthelferIn
       </h2>
@@ -259,14 +255,13 @@
           01.07.2021
         </h3>
         <p>
-          Der Stundenlohn im Jahr {{ new Date().getFullYear() }} für
-          Zahnmedizinische Fachangestellte (ZFA) bewegt sich laut
-          Gehaltstarifvertrag je nach Berufserfahrung und erworbenen
-          Qualifikationen durch Fort- und Weiterbildungen zwischen 12,60 €/h und
-          21,61 €/h. <b-link to="#gehaltsrechner">Gehaltsrechner</b-link> kannst
-          Du Dir den Stundenlohn bzw. Gehalt in Teilzeit für Deinen relevanten
-          Bereich errechnen, indem Du als Wochenarbeitszeit eine Stunde
-          auswählst.
+          Der Stundenlohn im Jahr {{ year }} für Zahnmedizinische
+          Fachangestellte (ZFA) bewegt sich laut Gehaltstarifvertrag je nach
+          Berufserfahrung und erworbenen Qualifikationen durch Fort- und
+          Weiterbildungen zwischen 12,60 €/h und 21,61 €/h.
+          <b-link to="#gehaltsrechner">Gehaltsrechner</b-link> kannst Du Dir den
+          Stundenlohn bzw. Gehalt in Teilzeit für Deinen relevanten Bereich
+          errechnen, indem Du als Wochenarbeitszeit eine Stunde auswählst.
         </p>
 
         <div class="table-responsive">
@@ -396,7 +391,7 @@
       </div>
 
       <h3 id="gehalt-ausbildung">
-        ZFA Ausbildung {{ new Date().getFullYear() }} – Gehalt nach Tarifvertrag
+        ZFA Ausbildung {{ year }} – Gehalt nach Tarifvertrag
       </h3>
       <p>
         Wie für andere Ausbildungsberufe auch, ist für die Ausbildung von
@@ -962,11 +957,9 @@
     <ScrollToTopBtn />
 
     <Head
-      :title="
-        `ZFA Gehalt ${new Date().getFullYear()} | Gehaltsrechner | Tarifvertrag`
-      "
+      :title="`ZFA Gehalt ${year} | Gehaltsrechner | Tarifvertrag`"
       :desc="
-        `Gehalt als Zahnmedizinische Fachangestellte (ZFA) | Gehaltstarifvertrag ${new Date().getFullYear()} | Tätigkeitsgruppen || Gehaltsrechner Teilzeit / Vollzeit`
+        `Gehalt als Zahnmedizinische Fachangestellte (ZFA) | Gehaltstarifvertrag ${year} | Tätigkeitsgruppen || Gehaltsrechner Teilzeit / Vollzeit`
       "
       img="/img/MfaMalAnders_GehaltZfa_hkucp5_c_scale,w_1200.jpg"
       :script="snippet"
@@ -1007,7 +1000,10 @@
     mixins: [scrollToHashMixin],
     data() {
       return {
-        title: `ZFA Gehalt ${new Date().getFullYear()}`,
+        title: `ZFA Gehalt`,
+        year: new Date(
+          new Date().getTime() + 1000 * 60 * 60 * 24 * 30
+        ).getFullYear(),
         breadcrumbs: [
           { text: "Home", to: "/" },
           { text: "Karriere", to: "/karriere" },

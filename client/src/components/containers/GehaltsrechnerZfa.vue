@@ -127,7 +127,9 @@
           hoursOfEducation: null,
           workingHours: 38.89
         },
-        year: new Date().getFullYear(),
+        year: new Date(
+          new Date().getTime() + 1000 * 60 * 60 * 24 * 30
+        ).getFullYear(),
         yearsOfExperienceOptions: [
           {
             value: null,

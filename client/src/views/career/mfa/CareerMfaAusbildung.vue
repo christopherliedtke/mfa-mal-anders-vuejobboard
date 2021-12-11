@@ -500,7 +500,11 @@
 
     <Head
       :title="title"
-      desc="MFA / ArzthelferIn Ausbildung | Gehalt | Aufgabenbereiche | Anforderungsprofil | Berufsbild"
+      :desc="
+        `Medizinische Fachangestellte Ausbildung ${new Date(
+          new Date().getTime() + 1000 * 60 * 60 * 24 * 30
+        ).getFullYear()} | Gehalt | Aufgabenbereiche | Anforderungsprofil | Berufsbild`
+      "
       img="/img/MfaMalAnders_AusbildungBerufsbild_n5ixa0_c_scale,w_1200.jpg"
       :script="snippet"
     />
@@ -572,7 +576,7 @@
               "name": "Medizinische Fachangstellte (MFA) / ArzthelferIn",
               "mainEntityOfPage": {
                 "@type": "WebPage",
-                "lastReviewed": "2021-05-27T12:20:00-05:00"
+                "lastReviewed": "2021-12-11T12:20:00-05:00"
               },
               "description": "Medizinische Fachangestellte (MFA) oder auch ArzthelferInnen arbeiten meist in Arztpraxen, aber auch Krankenhäusern und anderen Pflegeeinrichtungen und unterstützen Ärzte bei der Behandlung von Patienten sowie der Organisation des gesamten Betriebsablaufs.",
               "estimatedSalary": [

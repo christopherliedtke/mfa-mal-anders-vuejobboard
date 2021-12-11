@@ -40,6 +40,10 @@ body::-webkit-scrollbar-thumb {
 
   h1 {
     margin: 0;
+    max-width: 1140px;
+    padding: 0 15px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .breadcrumb {
