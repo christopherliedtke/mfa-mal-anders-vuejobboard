@@ -149,7 +149,7 @@
 
           const innerElement = document.createElement("img");
           innerElement.classList.add("icon-inner");
-          innerElement.src = markerObject.logoUrl || "/img/favicon.ico";
+          innerElement.src = markerObject.logoUrl || "/img/favicon.png";
 
           outerElement.appendChild(innerElement);
 
