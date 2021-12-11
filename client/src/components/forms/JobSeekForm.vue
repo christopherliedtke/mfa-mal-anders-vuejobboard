@@ -43,17 +43,19 @@
           @update-content="jobSeek.about = $event"
         />
 
-        <label for="experiences" required>Meine Berufserfahrung</label>
+        <label for="experiences">Meine Berufserfahrung</label>
         <TipTapEditor
           :validated="validated"
+          :min-length="0"
           :content="jobSeek.experiences"
           placeholder="In welchen Bereichen hast Du Berufserfahrung? Wofür warst Du in vergangenen bzw. Deiner aktuellen Anstellung verantwortlich? Was zeichnet Dich hier aus?"
           @update-content="jobSeek.experiences = $event"
         />
 
-        <label for="tasks" required>Gewünschte Aufgabenbereiche</label>
+        <label for="tasks">Gewünschte Aufgabenbereiche</label>
         <TipTapEditor
           :validated="validated"
+          :min-length="0"
           :content="jobSeek.tasks"
           placeholder="Welche Aufgabenbereiche möchtest Du gern übernehmen? An welchen Aufgabenbereichen bist Du ggfls. nicht interessiert?"
           @update-content="jobSeek.tasks = $event"
@@ -308,7 +310,7 @@
               v-model="jobSeek.zipCode"
               type="text"
               :state="validated ? (jobSeek.zipCode ? true : false) : null"
-              placeholder="PLZ eingeben..."
+              placeholder="PLZ..."
               aria-describedby="zip-code-help"
               required
               trim
@@ -658,8 +660,6 @@
         return !this.jobSeek.title ||
           this.jobSeek.title.length > 155 ||
           !this.jobSeek.about ||
-          !this.jobSeek.tasks ||
-          !this.jobSeek.experiences ||
           !this.jobSeek.firstName ||
           !this.jobSeek.lastName ||
           !this.jobSeek.zipCode ||

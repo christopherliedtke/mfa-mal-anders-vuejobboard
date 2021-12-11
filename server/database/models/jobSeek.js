@@ -19,11 +19,11 @@ const JobSeekSchema = new Schema(
     },
     tasks: {
       type: String,
-      required: true,
+      default: "",
     },
     experiences: {
       type: String,
-      required: true,
+      default: "",
     },
     isMfa: {
       type: Boolean,

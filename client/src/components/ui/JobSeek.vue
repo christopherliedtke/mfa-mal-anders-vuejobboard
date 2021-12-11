@@ -49,7 +49,9 @@
             </svg>
             <span
               >{{ jobSeek.location }}
-              <span v-if="jobSeek.zipCode">({{ jobSeek.zipCode }})</span></span
+              <span v-if="jobSeek.zipCode"
+                >(PLZ: {{ jobSeek.zipCode.substring(0, 3) }}XX)</span
+              ></span
             >
           </div>
           <div v-if="jobSeek.isZfa" class="icon">
@@ -127,9 +129,12 @@
       <h3 class="bold">Über mich</h3>
       <!-- eslint-disable-next-line -->
       <div v-html="jobSeek.about"></div>
-      <h3 class="bold">Meine Berufserfahrung</h3>
-      <!-- eslint-disable-next-line -->
-      <div v-html="jobSeek.experiences"></div>
+
+      <div v-if="jobSeek.experiences">
+        <h3 class="bold">Meine Berufserfahrung</h3>
+        <!-- eslint-disable-next-line -->
+        <div v-html="jobSeek.experiences"></div>
+      </div>
       <div v-if="jobSeek.qualifications.length > 0">
         <h4 class="h5">Zusätzliche Qualifikationen & Weiterbildungen</h4>
         <ul>
@@ -141,9 +146,12 @@
           </li>
         </ul>
       </div>
-      <h3 class="bold">Gesuchte Aufgabenbereiche</h3>
-      <!-- eslint-disable-next-line -->
-      <div v-html="jobSeek.tasks"></div>
+
+      <div v-if="jobSeek.tasks">
+        <h3 class="bold">Gesuchte Aufgabenbereiche</h3>
+        <!-- eslint-disable-next-line -->
+        <div v-html="jobSeek.tasks"></div>
+      </div>
       <div v-if="jobSeek.salaryMin" class="mt-4 mt-lg-5">
         <p>
           Mein Gehaltswunsch:

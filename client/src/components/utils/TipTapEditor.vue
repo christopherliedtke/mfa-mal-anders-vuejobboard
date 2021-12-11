@@ -268,7 +268,7 @@
       return {
         editor: null,
         // json: "",
-        html: "",
+        // html: "",
         watchCounter: 0
       };
     },
@@ -277,7 +277,7 @@
         if (this.content && this.watchCounter === 0) {
           this.watchCounter++;
           this.setContent(this.content);
-          this.html = this.content;
+          // this.html = this.content;
         }
       }
     },
@@ -296,7 +296,11 @@
         ],
         content: this.content,
         onUpdate: ({ editor }) => {
-          this.$emit("update-content", editor.getHTML());
+          if (editor.getHTML() == "<p></p>") {
+            this.$emit("update-content", "");
+          } else {
+            this.$emit("update-content", editor.getHTML());
+          }
         }
       });
 
