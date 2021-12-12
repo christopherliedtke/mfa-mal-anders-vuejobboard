@@ -103,7 +103,16 @@
               noAutoHide: true
             }
           );
-          this.$router.push("/user/stellenanzeigen");
+
+          if (this.$store.state.auth.user.isEmployer) {
+            this.$router.push("/user/stellenanzeigen");
+          } else if (this.$store.state.auth.user.isEducational) {
+            this.$router.push("/user/fortbildungen");
+          } else if (this.$store.state.auth.user.isEmployee) {
+            this.$router.push("/user/stellengesuche");
+          } else {
+            this.$router.push("/user/account");
+          }
         } else {
           this.timeoutId = setTimeout(async () => {
             this.checkUserStatus();

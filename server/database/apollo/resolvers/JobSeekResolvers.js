@@ -87,10 +87,15 @@ const JobSeekResolvers = {
         throw new AuthenticationError("Must be logged in!");
       }
 
-      const jobSeek = await JobSeek.findOne({
+      const filter = {
         _id: args._id,
-        user: context.user._id,
-      });
+      };
+
+      if (!context.user.isAdmin) {
+        filter.user = context.user._id;
+      }
+
+      const jobSeek = await JobSeek.findOne(filter);
 
       return jobSeek;
     },
@@ -190,7 +195,7 @@ const JobSeekResolvers = {
 
       const updateObj = cleanUpJobSeek({
         ...args,
-        user: context.user._id,
+        // user: context.user._id,
       });
       delete updateObj._id;
 
