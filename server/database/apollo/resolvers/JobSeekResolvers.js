@@ -103,9 +103,12 @@ const JobSeekResolvers = {
         user: context.user._id,
       }).sort({ createdAt: "desc" });
 
-      await JobSeek.updateMany({
-        user: context.user._id,
-      });
+      await JobSeek.updateMany(
+        {
+          user: context.user._id,
+        },
+        { updatedAt: new Date().getTime() }
+      );
 
       return jobSeeks;
     },
