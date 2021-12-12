@@ -96,12 +96,12 @@ const TrainingResolvers = {
         user: context.user._id,
       }).sort({ createdAt: "desc" });
 
-      await Training.updateMany(
-        {
-          user: context.user._id,
-        },
-        { updatedAt: new Date().getTime() }
-      );
+      // await Training.updateMany(
+      //   {
+      //     user: context.user._id,
+      //   },
+      //   { updatedAt: new Date().getTime() }
+      // );
 
       return trainings;
     },
