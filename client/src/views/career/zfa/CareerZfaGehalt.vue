@@ -957,7 +957,7 @@
     <ScrollToTopBtn />
 
     <Head
-      :title="`ZFA Gehalt ${year} | Gehaltsrechner | Tarifvertrag`"
+      :title="`ZFA Gehalt ${year} || Gehaltsrechner | Tarifvertrag`"
       :desc="
         `Gehalt als Zahnmedizinische Fachangestellte (ZFA) | Gehaltstarifvertrag ${year} | Tätigkeitsgruppen || Gehaltsrechner Teilzeit / Vollzeit`
       "

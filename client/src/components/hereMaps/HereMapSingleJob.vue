@@ -71,6 +71,9 @@
         const innerElement = document.createElement("img");
         innerElement.classList.add("icon-inner");
         innerElement.src = job.company.logoUrl || "/img/favicon.png";
+        innerElement.alt =
+          "Logo - " +
+          (job.company.logoUrl ? job.company.name : "MFA mal anders");
 
         outerElement.appendChild(innerElement);
 

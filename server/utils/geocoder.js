@@ -19,6 +19,8 @@ const getLocation = async (q, country) => {
       return null;
     }
 
+    // console.log("location.data.items: ", location.data.items);
+
     return location.data.items;
   } catch (err) {
     console.info("Error in getGeocode(): ", err);

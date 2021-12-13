@@ -2,7 +2,7 @@
   <article v-if="training" class="training">
     <div v-if="training._id" class="header mb-3 mb-md-4">
       <div class="training-title">
-        <h1 class="h2 bold">{{ training.title }}</h1>
+        <p class="h2 bold">{{ training.title }}</p>
         <!-- eslint-disable-next-line -->
         <span class="text-muted lead" v-html="training.company"></span>
         <span

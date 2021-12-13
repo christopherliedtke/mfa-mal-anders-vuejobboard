@@ -1552,7 +1552,7 @@
     <ScrollToTopBtn />
 
     <Head
-      :title="`MFA Gehalt ${year} | Gehaltsrechner | Tarifvertrag`"
+      :title="`MFA Gehalt ${year} || Gehaltsrechner | Tarifvertrag`"
       :desc="
         `Gehalt als Medizinische Fachangestellte (MFA) | Gehaltstarifvertrag ${year} | Tätigkeitsgruppen || Gehaltsrechner Teilzeit / Vollzeit`
       "

@@ -188,6 +188,7 @@
             class="my-4"
             fluid
             src="~@/assets/img/profile_mfa.svg"
+            alt="Profil einer Medizinischen Fachangestellten (MFA)"
           />
         </div>
       </div>
