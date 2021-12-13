@@ -53,6 +53,9 @@
                 </b-link>
               </li>
               <li class="lead mt-3">
+                <b-link to="#lernfelder">Lernfelder </b-link>
+              </li>
+              <li class="lead mt-3">
                 <b-link to="#ausbildung-pruefung"
                   >Zwischen- und Abschlussprüfung in der Ausbildung
                 </b-link>
@@ -276,6 +279,147 @@
           abschließen zu können und zur Abschlussprüfung zugelassen zu werden.
         </p>
       </div>
+
+      <h3 id="lernfelder">
+        Lernfelder
+      </h3>
+      <p>
+        Für jedes Lehrjahr gibt es Lernfelder. Insgesamt werden 12 Lernfelder in
+        den 3 Ausbildungsjahren zur MFA behandelt. Die Inhalte der Lernfelder
+        werden theoretisch in der Berufsschule vermittelt. Den praktischen Bezug
+        erlernt man in der Arztpraxis oder ggfls. auch in Praxishospitationen in
+        anderen Fachrichtungen.
+      </p>
+      <div class="mb-5">
+        <div class="table-responsive">
+          <table class="table table-secondary table-striped">
+            <thead>
+              <tr>
+                <th colspan="1"></th>
+                <th colspan="3" class="text-center">Lehrjahr</th>
+              </tr>
+              <tr>
+                <th scope="col">Lernfeld</th>
+                <th scope="col">1</th>
+                <th scope="col">2</th>
+                <th scope="col">3</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1. Im Beruf und Gesundheitswesen orientieren</td>
+                <td>60h</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>2. Patienten empfangen & begleiten</td>
+                <td>80h</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>
+                  3. Praxishygiene und Schutz vor Infektionskrankheiten
+                  organisieren
+                </td>
+                <td>80h</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>
+                  4. Bei Diagnostik und Therapie von Erkrankungen des
+                  Bewegungsapparates assistieren
+                </td>
+                <td>60h</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>
+                  5. Zwischenfällen vorbeugen und in Notfallsituationen Hilfe
+                  leisten
+                </td>
+                <td></td>
+                <td>80h</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>
+                  6. Waren beschaffen und verwalten
+                </td>
+                <td></td>
+                <td>80h</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>
+                  7. Praxisabläufe im Team organisieren
+                </td>
+                <td></td>
+                <td>60h</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>
+                  8. Patienten bei diagnostischen und therapeutischen Maßnahmen
+                  der Erkrankungen des Urogenitalsystems begleiten
+                </td>
+                <td></td>
+                <td>60h</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>
+                  9. Patienten bei diagnostischen und therapeutischen Maßnahmen
+                  der Erkrankungen des Verdauungssystems begleiten
+                </td>
+                <td></td>
+                <td></td>
+                <td>80h</td>
+              </tr>
+              <tr>
+                <td>
+                  10. Patienten bei kleinen chirurgischen Behandlungen begleiten
+                  und Wunden versorgen
+                </td>
+                <td></td>
+                <td></td>
+                <td>40h</td>
+              </tr>
+              <tr>
+                <td>
+                  11. Patienten bei der Prävention begleiten
+                </td>
+                <td></td>
+                <td></td>
+                <td>80h</td>
+              </tr>
+              <tr>
+                <td>
+                  12. Berufliche Perspektiven entwickeln
+                </td>
+                <td></td>
+                <td></td>
+                <td>80h</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="small text-muted">
+          Quelle:
+          <b-link
+            href="https://www.bundesaerztekammer.de/fileadmin/user_upload/downloads/MFA_Verordnung_05052006.pdf"
+            target="_blank"
+            rel="noopener"
+          >
+            Verordnung über die Berufsausbildung zum Medizinischen
+            Fachangestellten / zur Medizinischen Fachangestellten (2006)</b-link
+          >
+        </p>
+      </div>
+
       <h3 id="ausbildung-pruefung">
         Zwischen- und Abschlussprüfung
       </h3>
@@ -597,6 +741,11 @@
                 }
               ]
             }`
+          },
+          {
+            id: "canonical",
+            rel: "canonical",
+            href: `${this.$config.website.url}/karriere/mfa/ausbildung-berufsbild`
           }
         ]
       };

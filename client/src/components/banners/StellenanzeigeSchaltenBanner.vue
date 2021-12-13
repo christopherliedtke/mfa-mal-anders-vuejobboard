@@ -33,7 +33,7 @@
       </div>
       <div class="col-md-4">
         <b-img-lazy
-          class="p-3 pl-md-3 pr-md-0 w-100 h-100"
+          class="p-0 w-100 h-100"
           src="@/assets/img/medical_research.svg"
           alt="Bewerbungsgespräch zwischen Arzt und MFA / ZFA / ArzthelferIn"
           blank-width="248"

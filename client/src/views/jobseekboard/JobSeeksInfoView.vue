@@ -41,7 +41,10 @@
 
       <div class="row row-cols-1 row-cols-md-3">
         <div class="col">
-          <b-link to="/user/stellengesuche" class="icon-box shadow1">
+          <b-link
+            to="/auth/register?role=employee&redirect=%2Fuser%2Fstellengesuche"
+            class="icon-box shadow1"
+          >
             <b-img-lazy
               class="mr-4 mb-4 ml-4"
               src="@/assets/img/LinkedIn_Monochromatic.svg"
@@ -63,7 +66,10 @@
           </b-link>
         </div>
         <div class="col">
-          <b-link to="/user/stellengesuche" class="icon-box shadow1">
+          <b-link
+            to="/auth/register?role=employee&redirect=%2Fuser%2Fstellengesuche"
+            class="icon-box shadow1"
+          >
             <b-img-lazy
               class="mr-4 mb-4 ml-4"
               src="@/assets/img/Campaign launch_Monochromatic.svg"
@@ -82,7 +88,10 @@
           </b-link>
         </div>
         <div class="col">
-          <b-link to="/user/stellengesuche" class="icon-box shadow1">
+          <b-link
+            to="/auth/register?role=employee&redirect=%2Fuser%2Fstellengesuche"
+            class="icon-box shadow1"
+          >
             <b-img-lazy
               class="mr-4 mb-4 ml-4"
               src="@/assets/img/new_message.svg"
@@ -159,7 +168,9 @@
           </div>
         </div>
         <div class="d-flex justify-content-center mt-3">
-          <b-button to="/user/stellengesuche" variant="secondary"
+          <b-button
+            to="/auth/register?role=employee&redirect=%2Fuser%2Fstellengesuche"
+            variant="secondary"
             >Jetzt Stellengesuch erstellen</b-button
           >
         </div>
@@ -442,7 +453,7 @@
             >Kontakt</b-button
           >
           <b-button
-            to="/auth/register?role=employee"
+            to="/auth/register?role=employee&redirect=%2Fuser%2Fstellengesuche"
             variant="secondary"
             size="lg"
             class="d-block d-md-inline-block my-2 mr-md-2"

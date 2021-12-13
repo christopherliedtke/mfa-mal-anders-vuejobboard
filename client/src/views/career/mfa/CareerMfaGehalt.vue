@@ -1681,6 +1681,11 @@
                 }
               ]
             }`
+          },
+          {
+            id: "canonical",
+            rel: "canonical",
+            href: `${this.$config.website.url}/karriere/mfa/gehalt`
           }
         ]
       };

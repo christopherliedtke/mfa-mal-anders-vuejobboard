@@ -133,7 +133,7 @@ const JobSeekResolvers = {
         throw new AuthenticationError("Missing persmission!");
       }
 
-      const jobSeek = await JobSeek.find({}).sort({ startAt: "desc" });
+      const jobSeek = await JobSeek.find({}).sort({ createdAt: "desc" });
 
       return jobSeek;
     },

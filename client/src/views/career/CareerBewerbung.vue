@@ -575,6 +575,11 @@
                                 "item": "https://www.mfa-mal-anders.de/karriere/bewerbungs"
                             }]
                         }`
+          },
+          {
+            id: "canonical",
+            rel: "canonical",
+            href: `${this.$config.website.url}/karriere/bewerbung`
           }
         ]
       };

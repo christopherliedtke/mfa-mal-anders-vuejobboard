@@ -5,6 +5,9 @@
       <div class="container position-relative py-3 py-lg-5">
         <nav class="d-flex flex-column align-items-center">
           <b-button block to="/">📌 mfa-mal-anders.de</b-button>
+          <b-button block to="/stellengesuche/info"
+            >🔎 Stellengesuch schalten</b-button
+          >
           <b-button block to="/stellenangebote"
             >📬 Aktuelle Stellenangebote</b-button
           >
@@ -133,7 +136,7 @@
       background-blend-mode: normal;
 
       .btn {
-        border-radius: $border-radius1;
+        border-radius: $border-radius2;
         padding: 1rem 1.5rem;
         background-color: transparentize($light, $amount: 0.5);
         color: $dark;
@@ -143,6 +146,7 @@
         &:hover {
           background-color: transparentize($light, $amount: 0.8);
           border-color: $primary;
+          color: $primary;
         }
       }
     }

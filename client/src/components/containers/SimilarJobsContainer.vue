@@ -87,6 +87,7 @@
                       company {
                         name
                         location
+                        logoUrl
                       }
                     }
                   }

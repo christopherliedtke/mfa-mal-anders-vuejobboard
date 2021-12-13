@@ -1,7 +1,7 @@
 <template>
   <header id="header" ref="header" :class="{ hide: hideNavbar }">
     <div id="navbar" class="container">
-      <router-link to="/stellenangebote">
+      <router-link to="/">
         <b-img
           class="header-logo"
           src="/img/MfaMalAnders_Logo_white.svg"
