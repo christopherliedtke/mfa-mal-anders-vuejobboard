@@ -1078,11 +1078,6 @@
                                 }
                             ]
                         }`
-          },
-          {
-            id: "canonical",
-            rel: "canonical",
-            href: `${this.$config.website.url}/karriere/zfa/gehalt`
           }
         ]
       };

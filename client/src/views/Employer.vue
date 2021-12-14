@@ -719,11 +719,6 @@
                 "item": "https://www.mfa-mal-anders.de/fuer-arbeitgeber"
               }]
             }`
-          },
-          {
-            id: "canonical",
-            rel: "canonical",
-            href: `${this.$config.website.url}/fuer-arbeitgeber`
           }
         ]
       };

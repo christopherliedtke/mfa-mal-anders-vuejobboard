@@ -984,11 +984,6 @@
                     "item": "https://www.mfa-mal-anders.de/karriere/fort-und-weiterbildung"
                 }]
             }`
-          },
-          {
-            id: "canonical",
-            rel: "canonical",
-            href: `${this.$config.website.url}/karriere/fort-und-weiterbildung`
           }
         ]
       };

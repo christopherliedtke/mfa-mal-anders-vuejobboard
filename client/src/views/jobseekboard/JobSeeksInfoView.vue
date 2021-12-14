@@ -502,7 +502,7 @@
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Für Arbeitgeber",
-                "item": "https://www.mfa-mal-anders.de/fuer-arbeitgeber"
+                "item": "https://www.mfa-mal-anders.de/stellengesuche/info"
               }]
             }`
           }
