@@ -268,31 +268,52 @@
         this.showContactForm = true;
 
         try {
-          const payments = await this.$axios.get("/graphql", {
-            params: {
-              query: `
-                query {
-                  myPayments {
-                    _id
-                    status
-                    paymentExpiresAt
+          const response = await Promise.all([
+            this.$axios.get("/graphql", {
+              params: {
+                query: `
+                  query {
+                    myPayments {
+                      _id
+                      status
+                      paymentExpiresAt
+                    }
                   }
-                }
-              `
-            }
-          });
+                `
+              }
+            }),
+            this.$axios.get("/graphql", {
+              params: {
+                query: `
+                  query {
+                    myJobs {
+                      _id
+                      paidExpiresAt
+                    }
+                  }
+                `
+              }
+            })
+          ]);
 
-          if (payments.data.errors) {
+          const payments = response[0];
+          const jobs = response[1];
+
+          if (payments.data.errors && jobs.data.errors) {
             throw new Error();
           }
 
           if (
-            payments.data.data.myPayments &&
-            payments.data.data.myPayments.some(
-              payment =>
-                payment.paymentExpiresAt > new Date().getTime() &&
-                payment.status === "paid"
-            )
+            (payments.data.data.myPayments &&
+              payments.data.data.myPayments.some(
+                payment =>
+                  payment.paymentExpiresAt > new Date().getTime() &&
+                  payment.status === "paid"
+              )) ||
+            (jobs.data.data.myJobs &&
+              jobs.data.data.myJobs.some(
+                job => job.paidExpiresAt > new Date().getTime()
+              ))
           ) {
             this.hasJobAdOnline = true;
           }

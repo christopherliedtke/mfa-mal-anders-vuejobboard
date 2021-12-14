@@ -237,6 +237,11 @@
             sortable: true
           },
           {
+            key: "wasPublic",
+            label: "WasPublic",
+            sortable: true
+          },
+          {
             key: "firstName",
             label: "FirstName",
             sortable: true
@@ -281,6 +286,7 @@
                     createdAt
                     updatedAt
                     published
+                    wasPublic
                     title
                     firstName
                     lastName
@@ -328,9 +334,12 @@
                   createdAt
                   updatedAt
                   published
+                  wasPublic
                   title
+                  firstName
+                  lastName
                   location
-                  imageUrl
+                  zipCode
                 }
               }
             `

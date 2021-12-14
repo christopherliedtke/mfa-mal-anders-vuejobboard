@@ -123,6 +123,10 @@ const JobSeekSchema = new Schema(
       type: Boolean,
       default: false,
     },
+    wasPublic: {
+      type: Boolean,
+      default: false,
+    },
     accepted: {
       type: Boolean,
       default: false,

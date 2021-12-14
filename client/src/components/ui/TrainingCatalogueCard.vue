@@ -28,7 +28,7 @@
       </div>
       <div class="training-title">
         <!-- eslint-disable-next-line -->
-        <h2 class="h4" v-html="training.title"></h2>
+        <h2 class="h4 mb-2" v-html="training.title"></h2>
         <!-- eslint-disable-next-line -->
         <span class="text-muted" v-html="training.company"></span>
       </div>

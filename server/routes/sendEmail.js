@@ -227,17 +227,28 @@ router.post("/contact-jobseek", verifyToken, async (req, res) => {
         "Sie müssen AGBs und Datenschutzerklärung gelesen und akzeptiert haben, um Ihre Nachricht zu versenden."
       );
     }
-    // check for current payment
-    const filter = {
+    // check for current payment or job
+    const filterPayments = {
       user: req.user._id,
       status: "paid",
       paymentExpiresAt: {
         $gt: new Date().getTime(),
       },
     };
-    const validPaymentCount = await Payment.countDocuments(filter);
 
-    if (!validPaymentCount) {
+    const filterJobs = {
+      userId: req.user._id,
+      paidExpiresAt: {
+        $gt: new Date().getTime(),
+      },
+    };
+
+    const validCounts = await Promise.all([
+      Payment.countDocuments(filterPayments),
+      Job.countDocuments(filterJobs),
+    ]);
+
+    if (validCounts.every(count => !count)) {
       throw new Error(
         "Sie haben aktuell kein Stellenangebot auf MFA mal anders online. Ausschließlich verifizierte Arbeitgeber mit einer offenen Stelle auf unserem Portal haben die Möglichkeit, Jobsuchende direkt zu kontaktieren."
       );

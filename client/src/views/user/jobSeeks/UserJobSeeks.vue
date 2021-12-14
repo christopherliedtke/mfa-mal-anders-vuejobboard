@@ -127,41 +127,46 @@
               </svg>
               Vorschau</b-button
             >
-
-            <BDropdown
+            <b-button
+              v-if="!jobSeek.published"
               class="mr-2 mb-2 mb-md-0"
+              variant="success"
               size="sm"
-              left
-              variant="secondary"
+              @click.prevent="updateJobSeekStatus(jobSeek._id, true)"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-check-circle-fill mr-2"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
+                />
+              </svg>
+              Jetzt Veröffentlichen</b-button
             >
-              <template #button-content>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-three-dots-vertical mr-2"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"
-                  />
-                </svg>
-                Status ändern
-              </template>
-              <BDropdownItem
-                variant="danger"
-                :active="jobSeek.published === false"
-                @click.prevent="updateJobSeekStatus(jobSeek._id, false)"
-                >Offline</BDropdownItem
+            <b-button
+              v-else
+              class="mr-2 mb-2 mb-md-0"
+              variant="danger"
+              size="sm"
+              @click.prevent="updateJobSeekStatus(jobSeek._id, false)"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-x-circle-fill mr-2"
+                viewBox="0 0 16 16"
               >
-              <BDropdownItem
-                variant="success"
-                :active="jobSeek.published === true"
-                @click.prevent="updateJobSeekStatus(jobSeek._id, true)"
-                >Online</BDropdownItem
-              >
-            </BDropdown>
+                <path
+                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"
+                />
+              </svg>
+              Offline nehmen</b-button
+            >
           </div>
           <div>
             <b-button v-b-modal="jobSeek._id" variant="outline-danger" size="sm"
@@ -204,11 +209,9 @@
 <script>
   import UserNav from "@/components/navs/UserNav.vue";
   import Vue from "vue";
-  import { BModal, VBModal, BDropdown, BDropdownItem } from "bootstrap-vue";
+  import { BModal, VBModal } from "bootstrap-vue";
   Vue.component("BModal", BModal);
   Vue.directive("b-modal", VBModal);
-  Vue.component("BDropdown", BDropdown);
-  Vue.component("BDropdownItem", BDropdownItem);
   export default {
     name: "UserJobSeeks",
     components: {

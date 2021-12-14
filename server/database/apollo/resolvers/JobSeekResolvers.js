@@ -197,6 +197,10 @@ const JobSeekResolvers = {
         ...args,
         // user: context.user._id,
       });
+
+      if (args.published) {
+        updateObj.wasPublic = true;
+      }
       delete updateObj._id;
 
       const filter = { _id: args._id };
@@ -242,7 +246,7 @@ function cleanUpJobSeek(jobSeek) {
           // "aside",
           // "footer",
           // "header",
-          // "h1",
+          "h1",
           "h2",
           "h3",
           "h4",
@@ -308,6 +312,10 @@ function cleanUpJobSeek(jobSeek) {
           // "thead",
           // "tr",
         ],
+        transformTags: {
+          h1: "h3",
+          h2: "h4",
+        },
       });
     }
   }

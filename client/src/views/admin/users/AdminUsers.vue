@@ -436,6 +436,7 @@
                   isEmployer
                   isEmployee
                   isEducational
+                  isAdmin
                 }
               }
             `

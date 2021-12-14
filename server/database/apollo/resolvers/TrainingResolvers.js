@@ -254,7 +254,7 @@ function cleanUpTraining(training, user) {
           // "aside",
           // "footer",
           // "header",
-          // "h1",
+          "h1",
           "h2",
           "h3",
           "h4",
@@ -320,6 +320,10 @@ function cleanUpTraining(training, user) {
           // "thead",
           // "tr",
         ],
+        transformTags: {
+          h1: "h3",
+          h2: "h4",
+        },
       });
     }
   }

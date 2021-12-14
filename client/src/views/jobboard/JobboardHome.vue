@@ -472,39 +472,256 @@
               <b-link to="/fuer-arbeitgeber" class="bold">Mehr erfahren</b-link>
             </p>
           </div>
-          <JobSeeksLargeBanner class="mt-3" />
-          <TrainingCatalogueSmallBanner class="d-lg-none mt-3" />
-          <div class="mt-4 mt-lg-5">
-            <BerufsbilderBanner class="mt-3 mb-5" />
-            <b-link
-              class="h2 text-primary"
-              to="/karriere/fort-und-weiterbildung"
-              >Fort- und Weiterbildungen für MFA & ZFA</b-link
-            >
-            <RandomTrainingsContainer class="mt-3" :number="2" />
-          </div>
-          <div class="mt-5">
-            <p class="small">
-              Stellenangebote, Stellen, Jobs, Jobangebote für Medizinische
-              Fachangestellte (MFA), Arzthelferin, Zahnmedizinische
-              Fachangestellte (ZFA), ZMF, ZMV, MTRA in
-              <span v-for="(state, index) in companyStateOptions" :key="state">
-                <b-link
-                  :to="`/stellenangebote/ort/${state.toLowerCase()}`"
-                  @click="
-                    () => {
-                      filter.ort = state;
-                      getJobs();
-                    }
-                  "
-                  >{{ state }}</b-link
-                ><span v-if="index < companyStateOptions.length - 1"
-                  >,
-                </span></span
-              >.
-            </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <JobSeeksLargeBanner class="mt-2 mt-lg-3" />
+      <TrainingCatalogueSmallBanner class="d-lg-none mt-3" />
+    </div>
+
+    <div class="container-fluid bg-light-shade my-4 my-lg-5 px-0">
+      <div class="container py-4 py-lg-5">
+        <h2 class="lead bold">
+          MFA & ZFA Jobs nach Stadt
+        </h2>
+        <ul class="list-group list-group-flush mb-4">
+          <li class="list-group-item bg-light-shade">
+            <b-link to="/stellenangebote/ort/berlin"
+              >{{
+                berufsgruppe.active.length > 0
+                  ? berufsgruppe.active.join(" & ")
+                  : "MFA & ZFA"
+              }}
+              Jobs in Berlin
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="10"
+                height="10"
+                fill="currentColor"
+                class="bi bi-chevron-right"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+                /></svg
+            ></b-link>
+          </li>
+          <li class="list-group-item bg-light-shade">
+            <b-link to="/stellenangebote/ort/bremen"
+              >MFA & ZFA Jobs in Bremen
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="10"
+                height="10"
+                fill="currentColor"
+                class="bi bi-chevron-right"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+                /></svg
+            ></b-link>
+          </li>
+          <li class="list-group-item bg-light-shade">
+            <b-link to="/stellenangebote/ort/dueseldorf"
+              >MFA & ZFA Jobs in Düsseldorf
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="10"
+                height="10"
+                fill="currentColor"
+                class="bi bi-chevron-right"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+                /></svg
+            ></b-link>
+          </li>
+          <li class="list-group-item bg-light-shade">
+            <b-link to="/stellenangebote/ort/hamburg"
+              >MFA & ZFA Jobs in Hamburg
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="10"
+                height="10"
+                fill="currentColor"
+                class="bi bi-chevron-right"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+                /></svg
+            ></b-link>
+          </li>
+          <li class="list-group-item bg-light-shade">
+            <b-link to="/stellenangebote/ort/hannover"
+              >MFA & ZFA Jobs in Hannover
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="10"
+                height="10"
+                fill="currentColor"
+                class="bi bi-chevron-right"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+                /></svg
+            ></b-link>
+          </li>
+          <li class="list-group-item bg-light-shade">
+            <b-link to="/stellenangebote/ort/koeln"
+              >MFA & ZFA Jobs in Köln
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="10"
+                height="10"
+                fill="currentColor"
+                class="bi bi-chevron-right"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+                /></svg
+            ></b-link>
+          </li>
+          <li class="list-group-item bg-light-shade">
+            <b-link to="/stellenangebote/ort/muenchen"
+              >MFA & ZFA Jobs in München
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="10"
+                height="10"
+                fill="currentColor"
+                class="bi bi-chevron-right"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+                /></svg
+            ></b-link>
+          </li>
+
+          <li class="list-group-item bg-light-shade">
+            <b-link to="/stellenangebote/ort/stuttgart"
+              >MFA & ZFA Jobs in Stuttgart
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="10"
+                height="10"
+                fill="currentColor"
+                class="bi bi-chevron-right"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
+                /></svg
+            ></b-link>
+          </li>
+        </ul>
+
+        <h2 class="lead bold mt-4">
+          Auf der Suche nach Stellenangeboten für Medizinische Fachangestellte
+          (MFA) | Zahnmedizinische Fachangestellte (ZFA)?
+        </h2>
+        <p>
+          Stellenangebote für Medizinische Fachangestellte und Zahnmedizinische
+          Fachangestellte gibt es im Internet zur Genüge. Wenn du als MFA & ZFA
+          einen neuen Job suchst, könntest du in kürzester Zeit einen neuen
+          Arbeitsplatz antreten. Nicht nur die Arztpraxen und Zahnarztpraxen,
+          auch andere Arbeitgeber im Gesundheitswesen suchen händeringend nach
+          Personal und haben viele attraktive Stellenangebote für Medizinische
+          Fachangestellte und Zahnmedizinische Fachangestellte zu bieten. Mit
+          unseren
+          <router-link
+            to="/blog/artikel/4-tipps-wie-du-die-richtige-stelle-fuer-dich-findest"
+            ><strong
+              >4 Tipps, wie du die richtige Stelle für dich findest</strong
+            ></router-link
+          >
+          zeigen wir Dir, worüber Du Dir im Vorhinein Gedanken machen und worauf
+          Du bei der Stellensuche achten solltest.
+        </p>
+        <p>
+          Auf MFA mal anders findest Du passende Jobs für Medizinische
+          Fachangestellte (MFA) | Zahnmedizinische Fachangestellte (ZFA) von
+          attraktiven Arbeitergebern in ganz Deutschland. Hier findest Du
+          Stellenangebote in Vollzeit und Teilzeit in verschiedenen
+          Fachgebieten. Außerdem hast Du die Möglichkeit, als ein
+          <router-link to="/stellengesuche/info" class="bold"
+            >Stellengesuch als MFA | ZFA</router-link
+          >
+          zu schalten und Dich von passenden Arbeitgebern ansprechen zu lassen.
+        </p>
+
+        <h2 class="lead bold mt-4">
+          Gehalt für Medizinische Fachangestellte (MFA) | Zahnmedizinische
+          Fachangestellte (ZFA)
+        </h2>
+        <p>
+          In unserem großen
+          <router-link to="/karriere/mfa/gehalt" class="bold"
+            >Gehaltsreport für MFA</router-link
+          >
+          oder
+          <router-link to="/karriere/zfa/gehalt" class="bold">ZFA</router-link>
+          bekommst Du alle relevanten Informationen zu Gehaltstarifverträgen,
+          Gehalt nach Bundesländern, Gehalt in Teilzeit oder Vollzeit und noch
+          viel mehr. Zusätzlich kannst Du mit dem
+          <router-link to="/karriere/mfa/gehalt#gehaltsrechner" class="bold"
+            >Gehaltsrechner für MFA</router-link
+          >
+          bzw. dem
+          <router-link to="/karriere/zfa/gehalt#gehaltsrechner" class="bold"
+            >Gehaltsrechner für ZFA</router-link
+          >
+          herausfinden, wie viel Gehalt Dir laut aktuellem Tarifvertrag im Jahr
+          {{ new Date().getFullYear() }} mindestens zusteht.
+        </p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row mt-5 mb-3">
+        <div class="col-12 col-lg-4 mb-4">
+          <BerufsbilderBanner class="" />
+        </div>
+        <div class="col-12 col-lg-8 mb-4">
+          <div class="">
+            <RandomTrainingsContainer class="" :number="2" />
           </div>
         </div>
+      </div>
+
+      <div class="mt-5 mb-4">
+        <p class="small">
+          Stellenangebote, Stellen, Jobs, Jobangebote für Medizinische
+          Fachangestellte (MFA), Arzthelferin, Zahnmedizinische Fachangestellte
+          (ZFA), ZMF, ZMV, MTRA in
+          <span v-for="(state, index) in companyStateOptions" :key="state">
+            <b-link
+              :to="`/stellenangebote/ort/${state.toLowerCase()}`"
+              @click="
+                () => {
+                  filter.ort = state;
+                  getJobs();
+                }
+              "
+              >{{ state }}</b-link
+            ><span v-if="index < companyStateOptions.length - 1">, </span></span
+          >.
+        </p>
       </div>
     </div>
 
@@ -512,9 +729,9 @@
 
     <Head
       :title="
-        `Stellenangebote ArzthelferIn | ${berufsgruppe.active.join(
-          ' & '
-        )} Jobs${filter.ort ? ' | ' + filter.ort : ''}`
+        `Stellenangebote für ${berufsgruppe.active.join(' & ')} | Jobs${
+          filter.ort ? ' in ' + filter.ort : ''
+        }`
       "
       :desc="
         `Jobs für ${

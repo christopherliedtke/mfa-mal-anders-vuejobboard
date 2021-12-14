@@ -27,9 +27,9 @@
         blank-height="630"
       />
       <p>
-        Beim Thema Gehalt geht es der/dem ZFA bzw. ZahnarzthelferIn ähnlich wie
-        den MFA-KollegenInnen: Es könnte etwas mehr sein. Kommt es zu
-        Gehaltsfragen, z.B. in einem Vorstellungsgespräch, fehlt vielen das
+        Beim Thema Gehalt geht es der/dem ZFA | ZMF bzw. ZahnarzthelferIn
+        ähnlich wie den MFA-KollegenInnen: Es könnte etwas mehr sein. Kommt es
+        zu Gehaltsfragen, z.B. in einem Vorstellungsgespräch, fehlt vielen das
         Gespür für eine konkrete Zahl. Man möchte mit seinen
         <b-link
           to="/blog/artikel/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
@@ -111,7 +111,7 @@
       <h2 id="gehaltstarifvertrag" class="mb-4 mt-5">
         <span class="display-4 bold">Gehaltstarifvertrag ZFA {{ year }}</span>
         <br />
-        für ZahnarzthelferIn
+        für Zahnmedizinische Fachangestellte / ZahnarzthelferIn
       </h2>
       <div class="row">
         <div class="col">
