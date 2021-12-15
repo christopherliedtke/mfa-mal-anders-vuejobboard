@@ -71,7 +71,6 @@
               <div>
                 Erreichen Sie exklusiv
                 <span class="text-secondary">engagierte MFA & ZFA</span>
-                über unsere spezielle Karriereplattform
               </div>
             </li>
             <li class="d-flex mb-2">
@@ -91,7 +90,9 @@
                 </svg>
               </span>
               <div>
-                <span class="text-secondary">Erhalten Sie mehr Reichweite</span>
+                <span class="text-secondary"
+                  >Erhalten Sie mehr relevante Reichweite</span
+                >
                 über unseren Jobnewsletter, Google, Google Jobs, Social Media
                 und unsere MFA & ZFA Community
               </div>
@@ -171,18 +172,15 @@
     </div>
 
     <div id="vorteile" class="container my-5 py-3 py-lg-5">
-      <h2 class="h5 text-center">
-        Stellenanzeige schalten bei MFA mal anders
+      <h2 class="display-4 bold text-center">
+        Warum MFA mal anders?
       </h2>
-      <p class="bold display-4 text-center">
-        Ihre Zielgruppe genau im Blick
+      <p class="h3 text-center">
+        Die Jobbörse speziell für Medizinische Fachangestellte&nbsp;& <br />
+        Zahnmedizinische Fachangestellte
       </p>
-      <h3 class="text-center d-md-none">
-        Die reichweitenstärkste Karriereplattform speziell für <br />
-        Medizinische Fachangestellte&nbsp;| Zahnmedizinische Fachangestellte
-      </h3>
 
-      <div class="row my-4 my-md-5">
+      <div class="row row-cols-1 row-cols-lg-3 my-4 my-md-5">
         <div class="col">
           <div class="icon-box shadow1 py-5 px-4">
             <svg
@@ -202,7 +200,7 @@
               />
               <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
             </svg>
-            <h4 class="mt-2 mb-3">Genau Ihre Zielgruppe</h4>
+            <h4 class="bold mt-2 mb-3">Speziell für MFA & ZFA</h4>
             <p>
               Bei uns erreichen Sie
               <strong>exklusiv motivierte MFA | ZFA | ArzthelferIn</strong>
@@ -224,18 +222,14 @@
                 d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2.5 1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-2zm0 3a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z"
               />
             </svg>
-            <h4 class="mt-2 mb-3">Niedrige Kosten</h4>
+            <h4 class="bold mt-2 mb-3">Kosteneffizient</h4>
             <p>
-              Veröffentlichen Sie Ihre Stellenanzeige und wählen Sie eines
-              unserer Pakete
-              <strong>
-                ab
-                {{ $config.pricingPackages[0].price / 100 }}
-                {{ $config.payment.currency }}
-                für {{ $config.pricingPackages[0].duration }} Tage</strong
-              ><span v-if="$config.payment.tax" class="small">
-                (zzgl. USt.)</span
-              >.
+              Als Spezial Karriereplattform sprechen wir Ihre Zielgruppe
+              passgenau an und können so ein
+              <router-link to="#preise"
+                ><strong>attraktives Preismodell</strong></router-link
+              >
+              anbieten.
             </p>
           </div>
         </div>
@@ -246,19 +240,17 @@
               width="50"
               height="50"
               fill="currentColor"
-              class="bi bi-puzzle-fill"
+              class="bi bi-broadcast"
               viewBox="0 0 16 16"
             >
               <path
-                d="M3.112 3.645A1.5 1.5 0 0 1 4.605 2H7a.5.5 0 0 1 .5.5v.382c0 .696-.497 1.182-.872 1.469a.459.459 0 0 0-.115.118.113.113 0 0 0-.012.025L6.5 4.5v.003l.003.01c.004.01.014.028.036.053a.86.86 0 0 0 .27.194C7.09 4.9 7.51 5 8 5c.492 0 .912-.1 1.19-.24a.86.86 0 0 0 .271-.194.213.213 0 0 0 .036-.054l.003-.01v-.008a.112.112 0 0 0-.012-.025.459.459 0 0 0-.115-.118c-.375-.287-.872-.773-.872-1.469V2.5A.5.5 0 0 1 9 2h2.395a1.5 1.5 0 0 1 1.493 1.645L12.645 6.5h.237c.195 0 .42-.147.675-.48.21-.274.528-.52.943-.52.568 0 .947.447 1.154.862C15.877 6.807 16 7.387 16 8s-.123 1.193-.346 1.638c-.207.415-.586.862-1.154.862-.415 0-.733-.246-.943-.52-.255-.333-.48-.48-.675-.48h-.237l.243 2.855A1.5 1.5 0 0 1 11.395 14H9a.5.5 0 0 1-.5-.5v-.382c0-.696.497-1.182.872-1.469a.459.459 0 0 0 .115-.118.113.113 0 0 0 .012-.025L9.5 11.5v-.003l-.003-.01a.214.214 0 0 0-.036-.053.859.859 0 0 0-.27-.194C8.91 11.1 8.49 11 8 11c-.491 0-.912.1-1.19.24a.859.859 0 0 0-.271.194.214.214 0 0 0-.036.054l-.003.01v.002l.001.006a.113.113 0 0 0 .012.025c.016.027.05.068.115.118.375.287.872.773.872 1.469v.382a.5.5 0 0 1-.5.5H4.605a1.5 1.5 0 0 1-1.493-1.645L3.356 9.5h-.238c-.195 0-.42.147-.675.48-.21.274-.528.52-.943.52-.568 0-.947-.447-1.154-.862C.123 9.193 0 8.613 0 8s.123-1.193.346-1.638C.553 5.947.932 5.5 1.5 5.5c.415 0 .733.246.943.52.255.333.48.48.675.48h.238l-.244-2.855z"
+                d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"
               />
             </svg>
-            <h4 class="mt-2 mb-3">Einfach und bequem</h4>
+            <h4 class="bold mt-2 mb-3">Reichweite erhöhen</h4>
             <p>
-              <strong
-                >Sie erstellen Ihre Anzeige, wir sorgen für den Rest</strong
-              >
-              - Reichweite auf
+              Sie erstellen Ihre Anzeige, wir sorgen für den Rest &ndash;
+              <strong>Relevante Reichweite auf </strong>
               <b-link to="/stellenangebote">MFA mal anders</b-link>,
               <a
                 href="https://www.google.com/search?q=mfa+mal+anders&ibp=htl;jobs#htivrt=jobs&htilrad=-1.0"
@@ -275,6 +267,19 @@
             </p>
           </div>
         </div>
+      </div>
+
+      <div class="text-center">
+        <strong
+          >Sie benötigen Hilfe beim Erstellen einer attraktiven
+          Stellenanzeige?</strong
+        >
+        Kein Problem, mit unserem
+        <router-link to="#preise" class="bold"
+          >Stellenpaket Professional</router-link
+        >
+        erhalten Sie persönliche und professionelle Unterstützung beim Verfassen
+        Ihrer Stellenanzeige.
       </div>
       <div class="d-flex flex-column align-items-center mt-4">
         <div class="mb-3">
