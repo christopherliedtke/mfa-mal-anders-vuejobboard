@@ -122,9 +122,8 @@
           let number = this.jobs.filter(
             job =>
               job[this.options.type] &&
-              new Date(job[this.options.type])
-                .setHours(0, 0, 0, 0)
-                .valueOf() === new Date(date).setHours(0, 0, 0, 0).valueOf() &&
+              new Date(job[this.options.type]).setHours(0, 0, 0, 0) ===
+                new Date(date).setHours(0, 0, 0, 0) &&
               job.userId.isAdmin === this.options.onlyAdmin
           ).length;
 

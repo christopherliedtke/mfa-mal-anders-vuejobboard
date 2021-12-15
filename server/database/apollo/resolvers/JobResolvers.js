@@ -159,7 +159,7 @@ const JobResolvers = {
         .populate("company")
         .populate(
           "userId",
-          "_id createdAt gender title firstName lastName email"
+          "_id createdAt gender title firstName lastName email isAdmin"
         );
 
       return jobs;
