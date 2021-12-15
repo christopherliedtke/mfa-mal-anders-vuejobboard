@@ -1,5 +1,5 @@
 <template>
-  <div class="row row-cols-1 row-cols-md-2 d-flex justify-content-center">
+  <div class="row row-cols-1 row-cols-lg-2 d-flex justify-content-center">
     <div
       v-for="partner in partners"
       :key="partner.name"

@@ -369,15 +369,22 @@
         <p>
           Mit der Veröffentlichung Ihrer Stellenanzeige bekommen Sie zusätzlich
           die Möglichkeit, auf unsere
-          <b-link to="/stellengesuche">Stellengesuche</b-link> zu antworten und
-          Kontakt zu potentiellen neuen MitarbeiterInnen aufzunehmen.
+          <router-link class="bold" to="/stellengesuche"
+            >Stellengesuche</router-link
+          >
+          zu antworten und Kontakt zu potentiellen neuen MitarbeiterInnen
+          aufzunehmen.
         </p>
         <p>
-          Gern bieten wir Ihnen nach Absprache auch individuelle Pakete an, wenn
-          Sie beispielsweise eine Stellenanzeige dauerhaft bei uns schalten
-          möchten. Kontaktieren Sie uns dazu gern über unser
-          <b-link to="/kontakt?role=employer&subject=Stellenpakete"
-            >Kontaktformular</b-link
+          <strong
+            >Gern bieten wir Ihnen nach Absprache auch individuelle Pakete
+            an</strong
+          >, wenn Sie beispielsweise eine Stellenanzeige dauerhaft bei uns
+          schalten möchten. Kontaktieren Sie uns dazu gern über unser
+          <router-link
+            class="bold"
+            to="/kontakt?role=employer&subject=Stellenpakete"
+            >Kontaktformular</router-link
           >.
         </p>
       </div>
@@ -448,78 +455,164 @@
     >
       <div class="container">
         <h2 class="bold mb-4">
-          Ihre Jobbörse nur für MFA | ZFA | ArzthelferIn – MFA mal anders
+          Ihre Jobbörse nur für MFA | ZFA | ArzthelferIn
         </h2>
-        <div class="row row-cols-1 row-cols-md-2">
-          <div class="col">
-            <p>
-              Wir bieten speziell Arztpraxen, MVZs und allen weiteren
-              Einrichtungen aus dem Gesundheitswesen eine vertrauensvolle
-              Plattform mit
-              <strong>Fokus auf Ihre Zielgruppe</strong>.
-            </p>
-            <p>
-              Aufgrund persönlicher Erfahrungen als MFA und im
-              Gesundheitsbereich bringen wir als Initiatoren von MFA mal anders
-              detaillierte Branchenkenntnisse mit. Da wir um die
-              <strong>
-                Probleme beim Finden von qualifiziertem Personal
-              </strong>
-              wissen, können wir unser Angebot punktgenau ausrichten.
-            </p>
-            <p>
-              Ihre Stellenanzeige ist bei uns bestens platziert. Im Gegensatz zu
-              anderen allgemeinen Stellenbörsen, finden Sie hier ausschließlich
-              die richtige Zielgruppe für Ihr Unternehmen: Medizinische
-              Fachangestellte & Zahnmedizinische Fachangestellte.
-            </p>
-            <h3>Wo wir Ihre Stellenanzeige ausspielen</h3>
-            <p>
-              Ihre Stellenanzeige wird dort ausgespielt, wo Sie Ihre Zielgruppe
-              findet: bei
-              <strong>
-                Social Media, Google Jobs und auf unserer Webseite
-              </strong>
-              . Zusätzlich versenden wir Ihre Anzeige in unserem
-              <strong> wöchentlichen Newsletter</strong>.
-            </p>
-          </div>
-          <div class="col">
-            <p>
-              Erhöhen Sie die Chance, dass Ihre Stellenanzeige von der richtigen
-              Person gesehen wird.
-            </p>
-            <b-img
-              class="p-2 p-md-4"
-              right
-              style="max-width: 50%"
-              src="@/assets/img/marketing_.svg"
-              alt="Stellenanzeige für MFA / ZFA wird über verschiedene Kanäle veröffentlicht"
-            />
-            <p>
-              Damit grenzen wir uns gezielt von allgemeinen Jobbörsen, die eine
-              breite Masse an unterschiedlichen Berufsgruppen ansprechen und
-              hohe Streuverluste haben, ab. Da wir
-              <strong>mehr als eine reine Jobbörse</strong> sind, erreichen wir
-              mit unserem Angebot zudem eine deutlich größere Anzahl von
-              wirklich motivierten Medizinischen Fachangestellten |
-              Zahnmedizinischen Fachangestellten.
-            </p>
-            <p>
-              Wir arbeiten
-              <strong>nicht mit Personalvermittlern</strong>,
-              <strong>Zeitarbeitsfirmen oder Headhuntern</strong>
-              zusammen.
-            </p>
 
-            <p>
-              Bei uns können Sie Ihre Stellenanzeige zudem
-              <strong>kostengünstig</strong> veröffentlichen und so Ihrem Budget
-              anpassen sowie zusätzliche Reichweite und qualifizierte
-              Bewerbungen erzielen.
-            </p>
+        <p>
+          Wir bieten speziell Arztpraxen, MVZs und allen anderen Einrichtungen
+          aus dem Gesundheitswesen eine vertrauensvolle Plattform mit Fokus auf
+          Ihre Zielgruppe.
+        </p>
+        <p>
+          Aufgrund persönlicher Erfahrungen als MFA und im Gesundheitsbereich
+          bringen wir als Initiatoren von MFA mal anders detaillierte
+          Branchenkenntnisse mit. Da wir um die Probleme beim Finden von
+          qualifiziertem Personal wissen, können wir unser Angebot punktgenau
+          ausrichten.
+        </p>
+        <p>
+          Ihre Stellenanzeige ist bei uns bestens platziert. Im Gegensatz zu
+          anderen allgemeinen Stellenbörsen, finden Sie hier ausschließlich die
+          richtige Zielgruppe für Ihr Unternehmen: Medizinische Fachangestellte
+          & Zahnmedizinische Fachangestellte.
+        </p>
+        <h3>Wo wir Ihre Stellenanzeige ausspielen</h3>
+        <p>
+          Ihre Stellenanzeige wird dort ausgespielt, wo Sie Ihre Zielgruppe
+          findet: bei
+          <strong
+            >Social Media<span class="text-muted">*</span>, Google Jobs und auf
+            unserer Webseite</strong
+          >. Zusätzlich versenden wir Ihre Anzeige in unserem
+          <strong> wöchentlichen Newsletter</strong>.
+        </p>
+
+        <div
+          class="row row-cols-2 row-cols-md-3 row-cols-lg-6 my-4 my-lg-5 py-4  border-radius2 shadow1"
+        >
+          <div class="col d-flex justify-content-center text-primary py-3">
+            <b-img-lazy
+              src="/img/MfaMalAnders_logo_circle_bgdark_white.svg"
+              alt="Logo - MFA mal anders - Das Stellen- und Karriereportal für MFA & ZFA"
+              width="75px"
+              height="75px"
+            />
+          </div>
+          <div class="col d-flex justify-content-center text-secondary py-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="75"
+              height="75"
+              fill="currentColor"
+              class="bi bi-envelope"
+              viewBox="0 0 16 16"
+              alt="Newsletter Logo"
+            >
+              <path
+                d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"
+              />
+            </svg>
+          </div>
+          <div class="col d-flex justify-content-center text-secondary py-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="75"
+              height="75"
+              alt="Google Logo"
+            >
+              <g transform="matrix(1, 0, 0, 1, 27.009001, -39.238998)">
+                <path
+                  fill="#4285F4"
+                  d="M -3.264 51.509 C -3.264 50.719 -3.334 49.969 -3.454 49.239 L -14.754 49.239 L -14.754 53.749 L -8.284 53.749 C -8.574 55.229 -9.424 56.479 -10.684 57.329 L -10.684 60.329 L -6.824 60.329 C -4.564 58.239 -3.264 55.159 -3.264 51.509 Z"
+                />
+                <path
+                  fill="#34A853"
+                  d="M -14.754 63.239 C -11.514 63.239 -8.804 62.159 -6.824 60.329 L -10.684 57.329 C -11.764 58.049 -13.134 58.489 -14.754 58.489 C -17.884 58.489 -20.534 56.379 -21.484 53.529 L -25.464 53.529 L -25.464 56.619 C -23.494 60.539 -19.444 63.239 -14.754 63.239 Z"
+                />
+                <path
+                  fill="#FBBC05"
+                  d="M -21.484 53.529 C -21.734 52.809 -21.864 52.039 -21.864 51.239 C -21.864 50.439 -21.724 49.669 -21.484 48.949 L -21.484 45.859 L -25.464 45.859 C -26.284 47.479 -26.754 49.299 -26.754 51.239 C -26.754 53.179 -26.284 54.999 -25.464 56.619 L -21.484 53.529 Z"
+                />
+                <path
+                  fill="#EA4335"
+                  d="M -14.754 43.989 C -12.984 43.989 -11.404 44.599 -10.154 45.789 L -6.734 42.369 C -8.804 40.429 -11.514 39.239 -14.754 39.239 C -19.444 39.239 -23.494 41.939 -25.464 45.859 L -21.484 48.949 C -20.534 46.099 -17.884 43.989 -14.754 43.989 Z"
+                />
+              </g>
+            </svg>
+          </div>
+          <div class="col d-flex justify-content-center text-primary py-3">
+            <b-img-lazy
+              src="~@/assets/img/GOOGLE-JOBS-LOGO.png"
+              alt="Google For Jobs Logo"
+              height="75px"
+            />
+          </div>
+          <div
+            class="col d-flex justify-content-center py-3"
+            style="color: #4267B2"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="75"
+              height="75"
+              fill="currentColor"
+              class="bi bi-facebook"
+              viewBox="0 0 16 16"
+              alt="Facebook Logo"
+            >
+              <path
+                d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"
+              />
+            </svg>
+          </div>
+          <div class="col d-flex justify-content-center text-secondary py-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="75"
+              height="75"
+              fill="currentColor"
+              class="bi bi-instagram"
+              viewBox="0 0 16 16"
+              alt="Instagram Logo"
+            >
+              <path
+                d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"
+              />
+            </svg>
           </div>
         </div>
+
+        <p>
+          Erhöhen Sie die Chance, dass Ihre Stellenanzeige von der richtigen
+          Person gesehen wird.
+        </p>
+        <p>
+          Damit grenzen wir uns gezielt von allgemeinen Jobbörsen, die eine
+          breite Masse an unterschiedlichen Berufsgruppen ansprechen und hohe
+          Streuverluste haben, ab. Da wir
+          <strong>mehr als eine reine Jobbörse</strong> sind, erreichen wir mit
+          unserem Angebot zudem eine deutlich größere Anzahl von wirklich
+          motivierten Medizinischen Fachangestellten | Zahnmedizinischen
+          Fachangestellten.
+        </p>
+        <p>
+          Wir arbeiten
+          <strong>nicht mit Personalvermittlern</strong>,
+          <strong>Zeitarbeitsfirmen oder Headhuntern</strong>
+          zusammen.
+        </p>
+        <!-- <p>
+          Bei uns können Sie Ihre Stellenanzeige zudem
+          <strong>kostengünstig</strong> veröffentlichen und so Ihrem Budget
+          anpassen sowie zusätzliche Reichweite und qualifizierte Bewerbungen
+          erzielen.
+        </p> -->
+        <p class="text-right mb-0">
+          <small class="text-muted"
+            >* Abhängig vom gewählten Stellenpaket</small
+          >
+        </p>
       </div>
     </div>
 

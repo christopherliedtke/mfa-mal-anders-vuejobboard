@@ -234,9 +234,9 @@ const getJobboardStates = async () => {
 
 const getJobboardLocations = async () => {
   try {
-    const jobs = await Job.find({}, "company").populate("company");
+    const companies = await Company.find({}, "location");
 
-    const locations = [...new Set(jobs.map(job => job.company.location))];
+    const locations = [...new Set(companies.map(company => company.location))];
 
     return locations
       .map(location =>
