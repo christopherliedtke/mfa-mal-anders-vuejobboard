@@ -336,6 +336,8 @@
         text-align: left;
         word-wrap: break-word;
         max-width: 100%;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
 
         svg {
           vertical-align: top;

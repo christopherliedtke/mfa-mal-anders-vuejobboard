@@ -54,11 +54,11 @@
                 {
                   id: "A",
                   type: "linear",
-                  position: "left",
+                  position: "right",
                   ticks: {
                     min: 0,
                     suggestedMax: 4000,
-                    stepSize: 200,
+                    stepSize: 500,
                     callback: this.numberToCurrencyString
                   },
                   gridLines: {
@@ -69,11 +69,11 @@
                 {
                   id: "B",
                   type: "linear",
-                  position: "right",
+                  position: "left",
                   ticks: {
                     min: 0,
                     suggestedMax: 40,
-                    stepSize: 2
+                    stepSize: 5
                   },
                   gridLines: {
                     color: "#eeefff",
@@ -207,9 +207,9 @@
       },
       numberToCurrencyString(value) {
         return (
-          Math.round(isNaN(value) ? value.parseInt() : value)
-            .toString()
-            .replace(/\B(?=(\d{3})+(?!\d))/g, "'") + "€"
+          (Math.round(isNaN(value) ? value.parseInt() : value) / 1000).toFixed(
+            1
+          ) + "k €"
         );
       }
     }
