@@ -484,137 +484,39 @@
     <div class="container-fluid bg-light-shade my-4 my-lg-5 px-0">
       <div class="container py-4 py-lg-5">
         <h2 class="lead bold">
-          MFA & ZFA Jobs nach Stadt
+          {{
+            berufsgruppe.active.length > 0
+              ? berufsgruppe.active.join(" & ")
+              : "MFA & ZFA"
+          }}
+          Stellenangebote nach Stadt
         </h2>
         <ul class="list-group list-group-flush mb-4">
-          <li class="list-group-item bg-light-shade">
-            <b-link to="/stellenangebote/ort/berlin"
+          <li
+            v-for="city in cities"
+            :key="city.slug"
+            class="list-group-item bg-light-shade"
+          >
+            <b-link
+              :to="
+                `/stellenangebote/ort/${city.slug}${
+                  berufsgruppe.active.length == 1
+                    ? '?berufsgruppe=' + berufsgruppe.active[0]
+                    : ''
+                }`
+              "
+              @click="
+                () => {
+                  filter.ort = city.name;
+                  getJobs();
+                }
+              "
               >{{
                 berufsgruppe.active.length > 0
                   ? berufsgruppe.active.join(" & ")
                   : "MFA & ZFA"
               }}
-              Jobs in Berlin
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="10"
-                height="10"
-                fill="currentColor"
-                class="bi bi-chevron-right"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-                /></svg
-            ></b-link>
-          </li>
-          <li class="list-group-item bg-light-shade">
-            <b-link to="/stellenangebote/ort/bremen"
-              >MFA & ZFA Jobs in Bremen
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="10"
-                height="10"
-                fill="currentColor"
-                class="bi bi-chevron-right"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-                /></svg
-            ></b-link>
-          </li>
-          <li class="list-group-item bg-light-shade">
-            <b-link to="/stellenangebote/ort/dueseldorf"
-              >MFA & ZFA Jobs in Düsseldorf
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="10"
-                height="10"
-                fill="currentColor"
-                class="bi bi-chevron-right"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-                /></svg
-            ></b-link>
-          </li>
-          <li class="list-group-item bg-light-shade">
-            <b-link to="/stellenangebote/ort/hamburg"
-              >MFA & ZFA Jobs in Hamburg
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="10"
-                height="10"
-                fill="currentColor"
-                class="bi bi-chevron-right"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-                /></svg
-            ></b-link>
-          </li>
-          <li class="list-group-item bg-light-shade">
-            <b-link to="/stellenangebote/ort/hannover"
-              >MFA & ZFA Jobs in Hannover
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="10"
-                height="10"
-                fill="currentColor"
-                class="bi bi-chevron-right"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-                /></svg
-            ></b-link>
-          </li>
-          <li class="list-group-item bg-light-shade">
-            <b-link to="/stellenangebote/ort/koeln"
-              >MFA & ZFA Jobs in Köln
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="10"
-                height="10"
-                fill="currentColor"
-                class="bi bi-chevron-right"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-                /></svg
-            ></b-link>
-          </li>
-          <li class="list-group-item bg-light-shade">
-            <b-link to="/stellenangebote/ort/muenchen"
-              >MFA & ZFA Jobs in München
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="10"
-                height="10"
-                fill="currentColor"
-                class="bi bi-chevron-right"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-                /></svg
-            ></b-link>
-          </li>
-
-          <li class="list-group-item bg-light-shade">
-            <b-link to="/stellenangebote/ort/stuttgart"
-              >MFA & ZFA Jobs in Stuttgart
+              Jobs in {{ city.name }}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="10"
@@ -688,6 +590,55 @@
           >
           herausfinden, wie viel Gehalt Dir laut aktuellem Tarifvertrag im Jahr
           {{ new Date().getFullYear() }} mindestens zusteht.
+        </p>
+
+        <h2 class="lead bold mt-4">
+          Häufige Fragen
+        </h2>
+        <h3 class="lead">
+          Welche Aufgaben hat man im Job als MFA?
+        </h3>
+        <p>
+          Je nachdem, wie eine Praxis organisiert ist sowie Praxisgröße und
+          Fachrichtung, werden MFAs als Allrounder eingesetzt und erledigen
+          quasi alle anfallenden Aufgaben in der Praxis. Neben der
+          Sprechstundenorganisation und Patientenbetreuung, gibt es zahlreiche
+          Tätigkeiten für eine MFA, die für den Patienten nicht ersichtlich
+          sind. Der Beruf vereint bürokratische, organisatorische und
+          medizinische Aufgaben. Mehr erfährst Du in unserem Artikel über
+          <router-link to="/karriere/mfa/ausbildung-berufsbild" class="bold"
+            >Ausbildung und Berufsbild für Medizinische
+            Fachangestellte</router-link
+          >.
+        </p>
+        <h3 class="lead">
+          Welche Weiterbildungen kann man als MFA | ZFA machen?
+        </h3>
+        <p>
+          Als MFA | ZFA hast Du vielerlei Möglichkeiten Fortbildungen,
+          Weiterbildungen bis hin zu einem Studium abzuschließen, um Deine
+          Jobmöglichkeiten und Karriereperspektiven zu erweitern. In unserer
+          großen
+          <router-link class="bold" to="/karriere/fort-und-weiterbildung"
+            >Übersicht an Fortbildungen, Weiterbildungen & Studium</router-link
+          >
+          findest Du verschiedenste Alternativen, bei denen auch für Dich
+          sicherlich etwas dabei ist.
+        </p>
+        <h3 class="lead">
+          Welche alternativen Jobmöglichkeiten und Arbeitsorte gibt es für MFA &
+          ZFA?
+        </h3>
+        <p>
+          In unserer Liste von
+          <router-link to="/karriere/jobs-und-berufsbilder" class="bold"
+            >50+ Alternativen Jobs und Berufsbildern</router-link
+          >
+          findest Du eine Reihe von interessanten Möglichkeiten für MFA und ZFA.
+          Von der Medizinischen Fachangestellten bei der Polizei, über die
+          Arbeit als MFA | ZFA beim Gesundheitsamt bis hin zur Arbeit als
+          SachbearbeiterIn bei einer Krankenkasse und viele weitere mehr, ist
+          einiges dabei.
         </p>
       </div>
     </div>
@@ -783,6 +734,24 @@
   import SubscribeNewsletterBtn from "@/components/buttons/SubscribeNewsletterBtn.vue";
   import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
 
+  const cities = [
+    { name: "Berlin", slug: "berlin" },
+    { name: "Bochum", slug: "bochum" },
+    { name: "Bonn", slug: "bonn" },
+    { name: "Bremen", slug: "bremen" },
+    { name: "Dortmund", slug: "dortmund" },
+    { name: "Duisburg", slug: "duisburg" },
+    { name: "Düsseldorf", slug: "duesseldorf" },
+    { name: "Essen", slug: "essen" },
+    { name: "Frankfurt am Main", slug: "frankfurt-am-main" },
+    { name: "Hamburg", slug: "hamburg" },
+    { name: "Hannover", slug: "hannover" },
+    { name: "Köln", slug: "koeln" },
+    { name: "München", slug: "muenchen" },
+    { name: "Stuttgart", slug: "stuttgart" },
+    { name: "Wuppertal", slug: "wuppertal" }
+  ];
+
   export default {
     name: "Jobboard",
     components: {
@@ -828,6 +797,7 @@
         companyStateOptions,
         specializationOptions,
         professionOptions,
+        cities: Object.freeze(cities),
         errors: null
       };
     },
