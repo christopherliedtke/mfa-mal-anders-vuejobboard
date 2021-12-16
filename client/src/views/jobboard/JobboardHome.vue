@@ -720,6 +720,7 @@
     specializationOptions,
     professionOptions
   } from "@/config/formDataConfig.json";
+  import textToSlug from "@/utils/textToSlug.js";
 
   import JobCard from "@/components/ui/JobCard.vue";
   import JobCardPlaceholder from "@/components/ui/JobCardPlaceholder.vue";
@@ -792,11 +793,11 @@
               : [this.$route.query.berufsgruppe]
             : professionOptions.map(profession => profession.value)
         },
-        employmentTypeOptions,
         showAdvancedSearch: false,
-        companyStateOptions,
-        specializationOptions,
-        professionOptions,
+        employmentTypeOptions: Object.freeze(employmentTypeOptions),
+        companyStateOptions: Object.freeze(companyStateOptions),
+        specializationOptions: Object.freeze(specializationOptions),
+        professionOptions: Object.freeze(professionOptions),
         cities: Object.freeze(cities),
         errors: null
       };
@@ -983,7 +984,7 @@
       setQuery() {
         const query = {
           ...this.filter,
-          ort: this.filter.ort.replace(/(\s)/g, "-").toLowerCase(),
+          ort: textToSlug(this.filter.ort),
           berufsgruppe:
             typeof this.berufsgruppe.active === "object" &&
             this.berufsgruppe.active.length === this.professionOptions.length

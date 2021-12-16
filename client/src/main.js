@@ -114,6 +114,8 @@ Vue.use(VueGtag, {
     config.ga.active && window.location.origin.includes(config.website.url)
 });
 
+// const isDev = process.env.NODE_ENV !== "production";
+// Vue.config.performance = isDev;
 Vue.config.productionTip = false;
 
 new Vue({

@@ -49,7 +49,7 @@ const actions = {
 
 const mutations = {
   setProfessions: (state, professions) => {
-    state.professions = professions;
+    state.professions = Object.freeze(professions);
   }
 };
 

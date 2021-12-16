@@ -383,6 +383,7 @@
   Vue.component("BCollapse", BCollapse);
 
   import { employmentTypeOptions } from "@/config/formDataConfig.json";
+  import textToSlug from "@/utils/textToSlug.js";
 
   import JobSeekCard from "@/components/ui/JobSeekCard.vue";
   import JobSeekCardPlaceholder from "@/components/ui/JobSeekCardPlaceholder.vue";
@@ -420,7 +421,7 @@
           isZfa: false
         },
         showAdvancedSearch: false,
-        employmentTypeOptions,
+        employmentTypeOptions: Object.freeze(employmentTypeOptions),
         loading: false,
         errors: null
       };
@@ -576,7 +577,7 @@
       setQuery() {
         const query = {
           ...this.filter,
-          ort: this.filter.ort.replace(/(\s)/g, "-").toLowerCase()
+          ort: textToSlug(this.filter.ort)
         };
 
         for (const key in query) {

@@ -52,7 +52,7 @@ const actions = {
 
 const mutations = {
   setTrainings: (state, trainings) => {
-    state.trainings = trainings;
+    state.trainings = Object.freeze(trainings);
   }
 };
 

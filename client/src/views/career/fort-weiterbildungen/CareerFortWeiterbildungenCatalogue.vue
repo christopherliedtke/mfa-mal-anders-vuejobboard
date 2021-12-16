@@ -227,9 +227,9 @@
           location: ""
         },
         error: false,
-        companyStateOptions,
-        professionOptions,
-        typeOptions,
+        companyStateOptions: Object.freeze(companyStateOptions),
+        professionOptions: Object.freeze(professionOptions),
+        typeOptions: Object.freeze(typeOptions),
         breadcrumbs: [
           { text: "Home", to: "/" },
           { text: "Karriere", to: "/karriere" },

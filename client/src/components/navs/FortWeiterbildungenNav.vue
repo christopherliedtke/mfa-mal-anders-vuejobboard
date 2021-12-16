@@ -75,9 +75,9 @@
 
         return categories;
       }
-    },
-    created() {
-      this.$store.dispatch("getTrainings");
     }
+    // created() {
+    //   this.$store.dispatch("getTrainings");
+    // }
   };
 </script>

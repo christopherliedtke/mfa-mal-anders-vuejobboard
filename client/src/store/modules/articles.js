@@ -71,7 +71,7 @@ const actions = {
 
 const mutations = {
   setArticles: (state, articles) => {
-    state.articles = articles;
+    state.articles = Object.freeze(articles);
   }
 };
 
