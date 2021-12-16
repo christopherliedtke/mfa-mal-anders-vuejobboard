@@ -56,15 +56,23 @@
       </b-input-group-append>
     </b-input-group>
 
-    <button class="btn btn-primary my-3" @click.prevent="onSubmit">
+    <b-btn
+      variant="secondary"
+      block
+      class="mt-3 mb-4"
+      @click.prevent="onSubmit"
+    >
       Login
-    </button>
+    </b-btn>
     <p>
       Noch nicht registriert? Jetzt
-      <b-link to="/auth/register">Registrieren</b-link>.
+      <b-link to="/auth/register"><strong>Registrieren</strong></b-link
+      >.
     </p>
     <p>
-      <b-link to="/auth/password-reset">Passwort vergessen?</b-link>
+      <b-link to="/auth/password-reset"
+        ><strong>Passwort vergessen?</strong></b-link
+      >
     </p>
     <div v-if="errors" class="error mt-3">
       <b-alert
@@ -73,6 +81,7 @@
         show
         dismissible
         variant="danger"
+        class="border-radius2"
         >{{ error.message }}</b-alert
       >
     </div>

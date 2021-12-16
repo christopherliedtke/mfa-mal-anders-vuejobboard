@@ -1043,7 +1043,7 @@ router.beforeEach((to, from, next) => {
 
   if (!isPublic && !loggedIn) {
     return next({
-      path: "/auth/register",
+      path: "/auth/login",
       query: { redirect: to.fullPath }
     });
   }

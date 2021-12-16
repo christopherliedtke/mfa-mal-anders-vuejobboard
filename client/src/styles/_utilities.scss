@@ -318,16 +318,17 @@ nav {
 }
 
 .auth-container {
+  // position: relative;
   max-width: 500px;
-  background-color: $light-shade;
-  border-radius: $border-radius1;
-  box-shadow: $shadow1;
   padding: 2.5rem 1.5rem;
   margin: 0 auto;
 
   @media screen and (min-width: $break-menu) {
     padding: 2.5rem;
     margin: 2.5rem auto;
+    background-color: $light-shade;
+    border-radius: $border-radius1;
+    box-shadow: $shadow1;
   }
 }
 

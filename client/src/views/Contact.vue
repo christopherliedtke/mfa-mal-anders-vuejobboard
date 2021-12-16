@@ -45,20 +45,20 @@
             id: "breadcrumbs",
             type: "application/ld+json",
             inner: `{
-                            "@context": "http://schema.org",
-                            "@type" : "BreadcrumbList",
-                            "itemListElement": [{
-                                "@type": "ListItem",
-                                "position": 1,
-                                "name": "MFA mal anders",
-                                "item": "https://www.mfa-mal-anders.de"
-                            },{
-                                "@type": "ListItem",
-                                "position": 2,
-                                "name": "Kontakt",
-                                "item": "https://www.mfa-mal-anders.de/kontakt"
-                            }]
-                        }`
+              "@context": "http://schema.org",
+              "@type" : "BreadcrumbList",
+              "itemListElement": [{
+                "@type": "ListItem",
+                "position": 1,
+                "name": "MFA mal anders",
+                "item": "https://www.mfa-mal-anders.de"
+              },{
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Kontakt",
+                "item": "https://www.mfa-mal-anders.de/kontakt"
+              }]
+            }`
           }
         ]
       };
@@ -68,8 +68,8 @@
 
 <style lang="scss" scoped>
   .contact {
-    background: url("~@/assets/img/new_message.svg") center center no-repeat
-      transparentize($light, $amount: 0.3);
+    background: url("/img/MfaMalAnders_logo_circle_bgdark_white.svg") center
+      center no-repeat transparentize($light, $amount: 0.05);
     background-size: 50vh;
     background-blend-mode: lighten;
   }

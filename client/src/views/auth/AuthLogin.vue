@@ -1,24 +1,17 @@
 <template>
-  <div class="login auth-container container">
-    <h1 class="h2 bold text-center">{{ title }}</h1>
-    <div
-      class="mx-auto my-3 bg-primary rounded-circle"
-      style="width: 75px; height: 75px"
-    >
-      <div>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-          class="bi bi-unlock-fill text-light p-4"
-          viewBox="0 0 16 16"
-        >
-          <path
-            d="M11 1a2 2 0 0 0-2 2v4a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h5V3a3 3 0 0 1 6 0v4a.5.5 0 0 1-1 0V3a2 2 0 0 0-2-2z"
-          />
-        </svg>
-      </div>
+  <div class="login auth-container container position-relative">
+    <div class="bg-logo" style="opacity: 0.025"></div>
+    <div class="position-relative">
+      <h1 class="display-3 bold text-center">{{ title }}</h1>
+      <p class="text-center h3">MFA mal anders</p>
+      <b-img
+        src="/img/MfaMalAnders_logo_circle_bgdark_white.svg"
+        width="90px"
+        height="90px"
+        class="d-block mx-auto my-4"
+      />
+      <LoginForm />
     </div>
-    <LoginForm />
 
     <Head :title="title" desc="Anmelden bei MFA mal anders" img="" />
   </div>
@@ -31,7 +24,7 @@
     components: { LoginForm },
     data() {
       return {
-        title: "Anmeldung"
+        title: "Login"
       };
     }
   };

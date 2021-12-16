@@ -1,6 +1,7 @@
 <template>
-  <div class="register auth-container container">
-    <RegisterForm>
+  <div class="register auth-container container position-relative">
+    <div class="bg-logo" style="opacity: 0.025"></div>
+    <RegisterForm class="position-relative">
       <template #intro>
         <h2 class="h1 bold text-center mt-3 mt-lg-4 mb-0">
           {{
@@ -101,14 +102,19 @@
               <h3 class="h6">Veröffentlichen</h3>
             </div>
           </div>
-          <p class="">
+          <p class="text-center">
             Registrieren Sie sich jetzt und veröffentlichen Sie noch heute Ihre
-            Stellenanzeige! Zusätzlich bekommen Sie mit einer laufenden
+            Stellenanzeige! <br />
+            Weitere Informationen gibt es unter
+            <b-link to="/fuer-arbeitgeber"
+              ><strong>Für Arbeitgeber</strong></b-link
+            >.
+            <!-- Zusätzlich bekommen Sie mit einer laufenden
             Stellenanzeige die Möglichkeit, auf unsere
             <b-link class="bold" to="/stellengesuche" target="_blank"
               >Stellengesuche von MFA & ZFA</b-link
             >
-            zu antworten.
+            zu antworten. -->
           </p>
         </div>
       </template>

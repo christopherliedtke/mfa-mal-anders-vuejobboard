@@ -143,9 +143,9 @@
         name="firstName"
       ></b-form-input>
 
-      <button class="btn btn-primary my-3" @click.prevent="onSubmit">
+      <b-btn class="my-3" variant="secondary" block @click.prevent="onSubmit">
         Absenden
-      </button>
+      </b-btn>
     </b-form>
 
     <b-alert v-if="error" class="mt-3" show dismissible variant="danger">{{

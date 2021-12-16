@@ -143,6 +143,7 @@
         show
         dismissible
         variant="danger"
+        class="border-radius2"
         >{{ error.message }}</b-alert
       >
     </div>

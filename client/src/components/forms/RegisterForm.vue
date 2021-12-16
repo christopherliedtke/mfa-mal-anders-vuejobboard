@@ -203,24 +203,27 @@
 
         gelesen und akzeptiere diese. *
       </b-form-checkbox>
-      <button class="btn btn-primary my-3" @click.prevent="onSubmit">
+      <b-btn class="my-3" variant="secondary" block @click.prevent="onSubmit">
         Registrieren
-      </button>
-      <p>
-        Bereits registriert? Jetzt
-        <b-link to="/auth/login">Anmelden</b-link>.
-      </p>
-      <div v-if="errors" class="error mt-3">
-        <b-alert
-          v-for="error in errors"
-          :key="error.message"
-          show
-          dismissible
-          variant="danger"
-          >{{ error.message }}</b-alert
-        >
-      </div>
+      </b-btn>
     </b-form>
+
+    <p>
+      Bereits registriert? Jetzt
+      <b-link to="/auth/login"><strong>Einloggen</strong></b-link
+      >.
+    </p>
+    <div v-if="errors" class="error mt-3">
+      <b-alert
+        v-for="error in errors"
+        :key="error.message"
+        show
+        dismissible
+        variant="danger"
+        class="border-radius2"
+        >{{ error.message }}</b-alert
+      >
+    </div>
   </div>
 </template>
 
