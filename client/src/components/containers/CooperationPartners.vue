@@ -6,7 +6,7 @@
       class="col d-flex flex-column justify-content-start align-items-center"
     >
       <b-link :href="partner.url" target="_blank">
-        <img
+        <b-img-lazy
           fluid
           :src="partner.img"
           :alt="`Logo - ${partner.name}`"
@@ -17,7 +17,7 @@
       <!-- eslint-disable-next-line -->
       <div v-html="partner.html"></div>
       <b-button
-        v-if="partner.html"
+        v-if="partner.html && partner.url"
         class="align-self-start"
         size="sm"
         variant="outline-primary"
@@ -38,7 +38,7 @@
         partners: [
           {
             name: "PKV Institut",
-            img: "/img/pkvverlag_logo.png",
+            img: "/img/pkvverlag_logo2.png",
             url:
               "https://www.pkv-institut.de/?utm_source=MFA%20mal%20anders&utm_medium=affiliate",
             html: `
@@ -49,7 +49,7 @@
           },
           {
             name: "Hausärzteverband Westfalen-Lippe",
-            img: "/img/hvwl_logo.png",
+            img: "/img/hvwl_logo2.png",
             url:
               "https://www.hausaerzteverband-wl.de/index.php/hausaerzte/personal-finden-mfa-mal-anders",
             html: `
@@ -86,7 +86,7 @@
           },
           {
             name: "Landarzt sein.",
-            img: "/img/landarztSein_logo.png",
+            img: "/img/landarztSein_logo2.png",
             url:
               "https://www.landarzt-sein.de/?utm_source=mfa-mal-anders&utm_medium=linkref&utm_campaign=other",
             html: `
@@ -96,12 +96,12 @@
           },
           {
             name: "Hausärzteverband HH",
-            img: "/img/hzv-logo-hamburg2.png",
+            img: "/img/hzv-logo-hamburg3.png",
             url: "https://www.hausaerzteverband-hamburg.de/"
           },
           {
             name: "Ihre „gesunde“ Arztpraxis",
-            img: "/img/ihreGesundeArztpraxis_logo2.png",
+            img: "/img/ihreGesundeArztpraxis_logo3.png",
             url: "https://www.facebook.com/ihregesundearztpraxis/"
           }
         ]
