@@ -924,7 +924,7 @@
                     jobs {
                       _id
                       title
-                      description
+                      excerpt
                       profession
                       employmentType
                       specialization

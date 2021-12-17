@@ -1,6 +1,6 @@
 <template>
   <b-form>
-    <label for="email">E-Mail Addresse</label>
+    <label for="email" required>E-Mail Addresse</label>
     <b-form-input
       id="email"
       v-model="email"
@@ -9,7 +9,7 @@
       autocomplete="email"
       trim
     ></b-form-input>
-    <label for="password">Passwort</label>
+    <label for="password" required>Passwort</label>
     <b-input-group>
       <b-form-input
         id="password"

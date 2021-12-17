@@ -48,16 +48,8 @@
               />
             </div>
           </div>
-          <div v-if="!compact" class="card-content">
-            <!-- eslint-disable -->
-            <p
-              class="mb-0"
-              v-html="
-                job.description.replace(/<[^>]+>/g, ' ').substring(0, 200) +
-                  '...'
-              "
-            ></p>
-            <!-- eslint-enable -->
+          <div v-if="!compact && job.excerpt" class="card-content">
+            <p>{{ job.excerpt }}</p>
           </div>
           <hr v-if="!compact" />
           <div

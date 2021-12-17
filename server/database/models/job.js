@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const textToSlug = require("../../utils/textToSlug");
+const sanitizeHtml = require("sanitize-html");
 const Schema = mongoose.Schema;
 
 const JobSchema = new Schema(
@@ -49,6 +50,21 @@ const JobSchema = new Schema(
     description: {
       type: String,
       required: true,
+    },
+    excerpt: {
+      type: String,
+      default: function () {
+        if (this.description) {
+          return (
+            sanitizeHtml(this.description, {
+              allowedTags: [],
+              allowedAttributes: {},
+            }).substring(0, 200) + "..."
+          );
+        } else {
+          return "";
+        }
+      },
     },
     slug: {
       type: String,

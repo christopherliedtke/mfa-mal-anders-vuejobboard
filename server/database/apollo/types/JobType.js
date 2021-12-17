@@ -154,6 +154,7 @@ const JobType = gql`
     updatedAt: Float
     title: String!
     description: String!
+    excerpt: String
     slug: String
     profession: String
     employmentType: String!

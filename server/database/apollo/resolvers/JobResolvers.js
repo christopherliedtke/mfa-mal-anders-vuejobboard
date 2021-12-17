@@ -36,6 +36,7 @@ const JobResolvers = {
         }
       }
 
+      console.log("getting publicJobs from cache");
       let jobs = await internalJobsCache.get("jobs");
 
       // filter by profession
