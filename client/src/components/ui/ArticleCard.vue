@@ -3,14 +3,10 @@
     <b-link :to="'/blog/artikel/' + article.slug" :aria-label="article.title">
       <div class="card mb-2">
         <b-img-lazy
-          :srcset="
-            article.featuredImage ? article.featuredImage.node.srcSet : ''
-          "
-          :src="
-            article.featuredImage ? article.featuredImage.node.sourceUrl : ''
-          "
+          :srcset="article.featuredImage ? article.featuredImage.srcSet : ''"
+          :src="article.featuredImage ? article.featuredImage.sourceUrl : ''"
           sizes="(max-width: 768px) 100vw, 50vw"
-          :alt="article.featuredImage ? article.featuredImage.node.altText : ''"
+          :alt="article.featuredImage ? article.featuredImage.altText : ''"
           width="1200"
           height="630"
           blank-width="1200"
@@ -29,13 +25,13 @@
 
           <div class="d-flex justify-content-between">
             <div
-              v-if="article.author.node.avatar"
+              v-if="article.author.avatarUrl"
               class="d-flex align-items-center"
             >
               <b-img-lazy
                 class="mr-2 rounded-circle"
-                :src="article.author.node.avatar.url"
-                :alt="article.author.node.name"
+                :src="article.author.avatarUrl"
+                :alt="article.author.firstName"
                 height="96"
                 width="96"
                 blank-width="96"
@@ -43,8 +39,8 @@
                 style="width: auto; height: 37.5px"
                 offset="1000"
               />
-              <div v-if="article.author.node.name" class="mr-3">
-                {{ article.author.node.name }}
+              <div v-if="article.author.firstName" class="mr-3">
+                {{ article.author.firstName }}
               </div>
             </div>
             <b-button variant="primary">Weiterlesen</b-button>
@@ -52,9 +48,9 @@
         </div>
 
         <span
-          v-if="article.tags.nodes.length > 0"
+          v-if="article.tags.length > 0"
           class="badge badge-pill badge-secondary"
-          >{{ article.tags.nodes[0].name }}</span
+          >{{ article.tags[0] }}</span
         >
       </div>
     </b-link>

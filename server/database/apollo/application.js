@@ -9,6 +9,7 @@ const StarredJobModule = require("./modules/StarredJobModule");
 const JobAlertModule = require("./modules/JobAlertModule");
 const TrainingModule = require("./modules/TrainingModule");
 const JobSeekModule = require("./modules/JobSeekModule");
+const ArticleModule = require("./modules/ArticleModule");
 
 const application = createApplication({
   modules: [
@@ -22,6 +23,7 @@ const application = createApplication({
     JobAlertModule,
     TrainingModule,
     JobSeekModule,
+    ArticleModule,
   ],
 });
 

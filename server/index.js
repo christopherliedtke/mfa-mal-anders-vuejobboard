@@ -5,6 +5,7 @@ const { ApolloServer } = require("apollo-server-express");
 
 const application = require("./database/apollo/application");
 const apolloSchema = application.createSchemaForApollo();
+const { ApolloServerPluginLandingPageGraphQLPlayground } = require("apollo-server-core");
 
 const app = express();
 
@@ -138,6 +139,7 @@ async function startServer() {
 
       return { user, session: req.session };
     },
+    plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
   });
 
   await apolloServer.start();

@@ -47,20 +47,20 @@
             id: "breadcrumbs",
             type: "application/ld+json",
             inner: `{
-                            "@context": "http://schema.org",
-                            "@type" : "BreadcrumbList",
-                            "itemListElement": [{
-                                "@type": "ListItem",
-                                "position": 1,
-                                "name": "MFA mal anders",
-                                "item": "https://www.mfa-mal-anders.de"
-                            },{
-                                "@type": "ListItem",
-                                "position": 2,
-                                "name": "Blog",
-                                "item": "https://www.mfa-mal-anders.de/blog"
-                            }]
-                        }`
+              "@context": "http://schema.org",
+              "@type" : "BreadcrumbList",
+              "itemListElement": [{
+                "@type": "ListItem",
+                "position": 1,
+                "name": "MFA mal anders",
+                "item": "https://www.mfa-mal-anders.de"
+              },{
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": "https://www.mfa-mal-anders.de/blog"
+              }]
+            }`
           }
         ]
       };

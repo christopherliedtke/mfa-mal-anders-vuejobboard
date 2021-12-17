@@ -12,59 +12,32 @@ const getters = {
 const actions = {
   async getArticles({ commit }) {
     if (config.cms.active && state.articles.length === 0) {
-      const response = await axios.post(config.cms.url, {
-        query: `
-          query MyQuery {
-              posts(first: 100, where: {orderby: {field: DATE, order: DESC}}) {
-                  nodes {
-                      id
-                      title
-                      content
-                      excerpt
-                      date
-                      modified
-                      slug
-                      author {
-                          node {
-                              avatar {
-                                  url
-                              }
-                              firstName
-                              lastName
-                              name
-                              seo {
-                                  social {
-                                  facebook
-                                  instagram
-                                  }
-                              }
-                              url
-                          }
-                      }
-                      featuredImage {
-                          node {
-                              altText
-                              sourceUrl
-                              srcSet
-                              sizes
-                          }
-                      }
-                      seo {
-                          metaDesc
-                          title
-                      }
-                      tags {
-                          nodes {
-                              name
-                          }
-                      }
+      const response = await axios.get("/graphql", {
+        params: {
+          query: `
+                query {
+                  articles {
+                    title
+                    excerpt
+                    slug
+                    tags
+                    author {
+                      firstName
+                      avatarUrl
+                    }
+                    featuredImage {
+                      sourceUrl
+                      srcSet
+                      sizes
+                      altText
+                    }
                   }
-              }
-          }
-        `
+                }
+              `
+        }
       });
 
-      commit("setArticles", response.data.data.posts.nodes);
+      commit("setArticles", response.data.data.articles);
     }
   }
 };

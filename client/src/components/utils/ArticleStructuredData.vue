@@ -18,10 +18,8 @@
                 "headline": this.article.title,
                 "author": {
                   "@type": "Person",
-                  "name": `${this.article.author.node.firstName} ${this.article.author.node.lastName}`,
-                  "image": this.article.author.node.avatar
-                    ? this.article.author.node.avatar.url
-                    : ""
+                  "name": `${this.article.author.firstName} ${this.article.author.lastName}`,
+                  "image": this.article.author.avataUrl || ""
                 },
                 "publisher": {
                   "@type": "Organization",
@@ -31,9 +29,9 @@
                     "url": "/img/MfaMalAnders_logo_circle_bgdark_white.png"
                   }
                 },
-                "image": this.article.featuredImage.node.sourceUrl,
+                "image": this.article.featuredImage.sourceUrl,
                 "datePublished": this.article.date,
-                "dateModofied": this.article.modified
+                "dateModified": this.article.modified
               })
             }
           ];
