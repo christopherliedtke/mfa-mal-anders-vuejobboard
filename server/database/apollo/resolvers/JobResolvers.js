@@ -193,7 +193,12 @@ const JobResolvers = {
         throw new AuthenticationError("Must be logged in!");
       }
 
-      let updateObj = { ...args, slug: await getJobSlug(args) };
+      let updateObj = { ...args };
+
+      if (args.title) {
+        updateObj.slug = await getJobSlug(args);
+      }
+
       delete updateObj._id;
 
       updateObj = cleanUpJob(updateObj, context.user);
@@ -256,8 +261,11 @@ const JobResolvers = {
 
       let updateObj = {
         ...args,
-        slug: await getJobSlug(args),
       };
+
+      if (args.title) {
+        updateObj.slug = await getJobSlug(args);
+      }
 
       delete updateObj._id;
 
