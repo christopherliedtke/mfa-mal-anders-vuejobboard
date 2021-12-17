@@ -129,39 +129,43 @@ if (process.env.NODE_ENV == "production") {
 }
 
 // #ApolloServer
-const apolloServer = new ApolloServer({
-  schema: apolloSchema,
-  // cacheControl: { defaultMaxAge: 5 },
-  context: ({ req }) => {
-    const token = req.session && req.session.token ? req.session.token : "";
+async function startServer() {
+  const apolloServer = new ApolloServer({
+    schema: apolloSchema,
+    context: ({ req }) => {
+      const token = req.session && req.session.token ? req.session.token : "";
+      const user = apolloVerifyToken(token);
 
-    const user = apolloVerifyToken(token);
+      return { user, session: req.session };
+    },
+  });
 
-    return { user, session: req.session };
-  },
-});
-apolloServer.applyMiddleware({ app, path: "/graphql", cors: true });
+  await apolloServer.start();
+  apolloServer.applyMiddleware({ app, path: "/graphql", cors: true });
 
-// #Routes w csrf protection
-app.use("/api/contact", require("./routes/contact"));
-app.use("/api/newsletter", require("./routes/newsletter"));
-app.use("/api/images", require("./routes/images"));
-app.use("/api/stripe", require("./routes/stripe"));
-app.use("/api/invoice", require("./routes/invoice"));
-app.use("/api/send-email", require("./routes/sendEmail"));
-app.use("/api/admin", require("./routes/admin"));
-app.use("/api/prerender", require("./routes/prerender"));
+  // #Routes w csrf protection
+  app.use("/api/contact", require("./routes/contact"));
+  app.use("/api/newsletter", require("./routes/newsletter"));
+  app.use("/api/images", require("./routes/images"));
+  app.use("/api/stripe", require("./routes/stripe"));
+  app.use("/api/invoice", require("./routes/invoice"));
+  app.use("/api/send-email", require("./routes/sendEmail"));
+  app.use("/api/admin", require("./routes/admin"));
+  app.use("/api/prerender", require("./routes/prerender"));
 
-// #Serve the built static files in production
-app.use("*", (req, res) => {
-  res.sendFile(__dirname + "/public/index.html");
-});
+  // #Serve the built static files in production
+  app.use("*", (req, res) => {
+    res.sendFile(__dirname + "/public/index.html");
+  });
 
-const server = app.listen(process.env.PORT, () =>
-  console.log(
-    `Server listening on port ${process.env.PORT} in ${process.env.NODE_ENV} mode`
-  )
-);
+  const server = app.listen(process.env.PORT, () =>
+    console.log(
+      `Server listening on port ${process.env.PORT} in ${process.env.NODE_ENV} mode`
+    )
+  );
 
-// #Set custom request timeout
-server.setTimeout(20000);
+  // #Set custom request timeout
+  server.setTimeout(20000);
+}
+
+startServer();

@@ -1,5 +1,5 @@
 <template>
-  <b-form>
+  <b-form @keydown.enter="onSubmit">
     <label for="email" required>E-Mail Addresse</label>
     <b-form-input
       id="email"
