@@ -16,7 +16,7 @@
             <div v-html="profession.content"></div>
             <b-button
               :to="
-                `/karriere/jobs-und-berufsbilder/${profession.berufsbildTypes.nodes[0].slug}`
+                `/karriere/jobs-und-berufsbilder/${profession.professionType.slug}`
               "
               size="sm"
               >Zurück</b-button
@@ -47,7 +47,7 @@
     </div>
 
     <Head
-      :title="title"
+      :title="profession.seo.title"
       :desc="profession.seo.metaDesc"
       img=""
       :script="snippet"
@@ -74,75 +74,68 @@
     },
     data() {
       return {
+        profession: null,
         snippet: [
           {
             id: "breadcrumbs",
             type: "application/ld+json",
             inner: `{
-                            "@context": "http://schema.org",
-                            "@type" : "BreadcrumbList",
-                            "itemListElement": [{
-                                "@type": "ListItem",
-                                "position": 1,
-                                "name": "MFA mal anders",
-                                "item": "https://www.mfa-mal-anders.de"
-                            },{
-                                "@type": "ListItem",
-                                "position": 2,
-                                "name": "Karriere",
-                                "item": "https://www.mfa-mal-anders.de/karriere"
-                            },{
-                                "@type": "ListItem",
-                                "position": 3,
-                                "name": "Jobs und Berufsbilder",
-                                "item": "https://www.mfa-mal-anders.de/karriere/jobs-und-berufsbilder"
-                            },{
-                                "@type": "ListItem",
-                                "position": 4,
-                                "name": "${this.$route.params.slug
-                                  .split("-")
-                                  .map(
-                                    elem =>
-                                      elem.charAt(0).toUpperCase() +
-                                      elem.slice(1)
-                                  )
-                                  .join("-")}",
-                                "item": "https://www.mfa-mal-anders.de/karriere/jobs-und-berufsbilder/${
-                                  this.$route.params.slug
-                                }"
-                            },{
-                                "@type": "ListItem",
-                                "position": 5,
-                                "name": "${this.$route.params.profession
-                                  .split("-")
-                                  .map(
-                                    elem =>
-                                      elem.charAt(0).toUpperCase() +
-                                      elem.slice(1)
-                                  )
-                                  .join("-")}",
-                                "item": "https://www.mfa-mal-anders.de/karriere/jobs-und-berufsbilder/${
-                                  this.$route.params.slug
-                                }/${this.$route.params.profession}"
-                            }]
-                        }`
+              "@context": "http://schema.org",
+              "@type" : "BreadcrumbList",
+              "itemListElement": [{
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "MFA mal anders",
+                  "item": "https://www.mfa-mal-anders.de"
+              },{
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Karriere",
+                  "item": "https://www.mfa-mal-anders.de/karriere"
+              },{
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "Jobs und Berufsbilder",
+                  "item": "https://www.mfa-mal-anders.de/karriere/jobs-und-berufsbilder"
+              },{
+                  "@type": "ListItem",
+                  "position": 4,
+                  "name": "${this.$route.params.slug
+                    .split("-")
+                    .map(elem => elem.charAt(0).toUpperCase() + elem.slice(1))
+                    .join("-")}",
+                  "item": "https://www.mfa-mal-anders.de/karriere/jobs-und-berufsbilder/${
+                    this.$route.params.slug
+                  }"
+              },{
+                  "@type": "ListItem",
+                  "position": 5,
+                  "name": "${this.$route.params.profession
+                    .split("-")
+                    .map(elem => elem.charAt(0).toUpperCase() + elem.slice(1))
+                    .join("-")}",
+                  "item": "https://www.mfa-mal-anders.de/karriere/jobs-und-berufsbilder/${
+                    this.$route.params.slug
+                  }/${this.$route.params.profession}"
+              }]
+          }`
           }
         ]
       };
     },
     computed: {
-      title() {
-        return `MFA & ZFA Berufsbilder – ${
-          this.profession ? this.profession.title : ""
-        }`;
-      },
-      profession() {
-        return this.$store.state.professions.professions.find(
-          profession =>
-            profession.slug.toLowerCase() ==
-            this.$route.params.profession.toLowerCase()
-        );
-      },
+      // title() {
+      //   return `MFA & ZFA Berufsbilder – ${
+      //     this.profession ? this.profession.title : ""
+      //   }`;
+      // },
+      // profession() {
+      //   return this.$store.state.professions.professions.find(
+      //     profession =>
+      //       profession.slug.toLowerCase() ==
+      //       this.$route.params.profession.toLowerCase()
+      //   );
+      // },
       breadcrumbs() {
         return [
           { text: "Home", to: "/" },
@@ -152,7 +145,7 @@
             to: "/karriere/jobs-und-berufsbilder"
           },
           {
-            text: this.profession.berufsbildTypes.nodes[0].name,
+            text: this.profession.professionType.name,
             to: `/karriere/jobs-und-berufsbilder/${this.$route.params.slug}`
           },
           {
@@ -162,8 +155,48 @@
         ];
       }
     },
+    watch: {
+      async "$route.params.profession"() {
+        await this.getProfession();
+      }
+    },
     created() {
-      this.$store.dispatch("getProfessions");
+      this.getProfession();
+    },
+    methods: {
+      async getProfession() {
+        try {
+          const profession = await this.$axios.get("/graphql", {
+            params: {
+              query: `
+                query {
+                  profession(slug: "${this.$route.params.profession}") {
+                    title
+                    content
+                    professionType {
+                      name
+                      slug
+
+                    }
+                    seo {
+                      title
+                      metaDesc
+                    }
+                  }
+                }
+              `
+            }
+          });
+
+          if (!profession.data.data.profession) {
+            throw new Error();
+          }
+
+          this.profession = profession.data.data.profession;
+        } catch (err) {
+          this.$router.push("/karriere/jobs-und-berufsbilder");
+        }
+      }
     }
   };
 </script>

@@ -31,21 +31,6 @@
           "Verwaltung"
         ]
       };
-    },
-    // computed: {
-    //   berufsbilderTypes() {
-    //     let data = this.$store.state.professions.professions.map(profession =>
-    //       profession.berufsbildTypes.nodes.length > 0
-    //         ? profession.berufsbildTypes.nodes[0].name
-    //         : null
-    //     );
-    //     return data
-    //       .filter((value, index) => value && data.indexOf(value) === index)
-    //       .sort();
-    //   }
-    // },
-    created() {
-      this.$store.dispatch("getProfessions");
     }
   };
 </script>

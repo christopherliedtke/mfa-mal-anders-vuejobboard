@@ -39,39 +39,52 @@
       };
     },
     watch: {
-      "$route"(to, from) {
+      $route(to, from) {
         if (to != from) {
           this.getArticles();
         }
-      },
-      "$store.state.articles.articles"() {
-        this.getArticles();
       }
     },
     async created() {
-      this.$store.dispatch("getArticles");
       this.getArticles();
     },
     methods: {
-      getRandom(arr, n) {
-        var result = new Array(n),
-          len = arr.length,
-          taken = new Array(len);
-        if (n > len)
-          throw new RangeError("getRandom: more elements taken than available");
-        while (n--) {
-          var x = Math.floor(Math.random() * len);
-          result[n] = arr[x in taken ? taken[x] : x];
-          taken[x] = --len in taken ? taken[len] : len;
-        }
-        return result;
-      },
-      getArticles() {
-        if (this.$store.state.articles.articles.length > 0) {
-          this.articles = this.getRandom(
-            this.$store.state.articles.articles,
-            this.number
-          );
+      async getArticles() {
+        try {
+          const articles = await this.$axios.get("/graphql", {
+            params: {
+              query: `
+                query {
+                  articles(random: ${true}, limit: ${this.number}, exclude: "${
+                this.$route.params.slug ? this.$route.params.slug : ""
+              }") {
+                    title
+                    excerpt
+                    slug
+                    tags
+                    author {
+                      firstName
+                      avatarUrl
+                    }
+                    featuredImage {
+                      sourceUrl
+                      srcSet
+                      sizes
+                      altText
+                    }
+                  }
+                }
+              `
+            }
+          });
+
+          if (!articles.data.data.articles) {
+            return;
+          }
+
+          this.articles = articles.data.data.articles;
+        } catch (err) {
+          return;
         }
       }
     }

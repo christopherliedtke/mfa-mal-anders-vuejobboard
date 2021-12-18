@@ -15,7 +15,7 @@
               v-if="training.featuredImage"
               class="border-radius1 shadow1 mb-3 mb-lg-5"
               fluid
-              :src="training.featuredImage.node.sourceUrl"
+              :src="training.featuredImage.sourceUrl"
               :alt="`Banner - ${training.title}`"
               width="1200"
               height="630"
@@ -43,7 +43,7 @@
       v-if="training"
       :title="training.seo && training.seo.title"
       :desc="training.seo && training.seo.metaDesc"
-      :img="training.featuredImage && training.featuredImage.node.sourceUrl"
+      :img="training.featuredImage && training.featuredImage.sourceUrl"
       :script="snippet"
     />
   </div>
@@ -64,6 +64,7 @@
     },
     data() {
       return {
+        training: null,
         snippet: [
           {
             id: "breadcrumbs",
@@ -108,11 +109,6 @@
       };
     },
     computed: {
-      training() {
-        return this.$store.state.trainings.trainings.find(
-          training => training.slug === this.$route.params.slug
-        );
-      },
       breadcrumbs() {
         return [
           { text: "Home", to: "/" },
@@ -132,8 +128,49 @@
         ];
       }
     },
+    watch: {
+      async "$route.params.slug"() {
+        await this.getTraining();
+      }
+    },
     created() {
-      this.$store.dispatch("getTrainings");
+      this.getTraining();
+    },
+    methods: {
+      async getTraining() {
+        try {
+          const training = await this.$axios.get("/graphql", {
+            params: {
+              query: `
+                query {
+                  weiterbildung(slug: "${this.$route.params.slug}") {
+                    title
+                    content
+                    featuredImage {
+                      sourceUrl
+                      srcSet
+                      sizes
+                      altText
+                    }
+                    seo {
+                      title
+                      metaDesc
+                    }
+                  }
+                }
+              `
+            }
+          });
+
+          if (!training.data.data.weiterbildung) {
+            throw new Error();
+          }
+
+          this.training = training.data.data.weiterbildung;
+        } catch (err) {
+          this.$router.push("/karriere/fort-und-weiterbildung/ueberblick");
+        }
+      }
     }
   };
 </script>

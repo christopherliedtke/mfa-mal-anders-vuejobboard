@@ -1,7 +1,7 @@
 <template>
-  <div v-if="berufsbilder" class="berufsbild-type">
+  <div v-if="professions" class="berufsbild-type">
     <div class="title">
-      <h1>{{ title }}</h1>
+      <h1>MFA & ZFA Berufsbilder – {{ professions[0].professionType.name }}</h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
     <div class="container py-3 py-lg-5">
@@ -13,27 +13,27 @@
         <div class="col-12 col-md-8 mb-5">
           <!-- eslint-disable -->
           <div
-            v-if="berufsbilder[0].berufsbildTypes.nodes[0].description"
+            v-if="professions[0].professionType.description"
             class="mb-4"
-            v-html="berufsbilder[0].berufsbildTypes.nodes[0].description"
+            v-html="professions[0].professionType.description"
           ></div>
           <!-- eslint-enable -->
           <nav class="list-group">
             <div
-              v-for="berufsbild in berufsbilder"
-              :id="berufsbild.slug"
-              :key="berufsbild.slug"
+              v-for="profession in professions"
+              :id="profession.slug"
+              :key="profession.slug"
               class="list-group-item mb-0 p-3"
               style="font-size: larger; color: inherit"
             >
               <b-link
-                v-if="berufsbild.content"
+                v-if="profession.content"
                 :to="
-                  `/karriere/jobs-und-berufsbilder/${berufsbild.berufsbildTypes.nodes[0].slug}/${berufsbild.slug}`
+                  `/karriere/jobs-und-berufsbilder/${profession.professionType.slug}/${profession.slug}`
                 "
                 class="bold text-primary hover-text-secondary"
               >
-                {{ berufsbild.title }}
+                {{ profession.title }}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -47,7 +47,7 @@
                   />
                 </svg>
               </b-link>
-              <span v-else class="text-muted">{{ berufsbild.title }}</span>
+              <span v-else class="text-muted">{{ profession.title }}</span>
             </div>
           </nav>
 
@@ -72,8 +72,8 @@
     </div>
 
     <Head
-      :title="title"
-      :desc="berufsbilder[0].berufsbildTypes.nodes[0].seo.metaDesc"
+      :title="`MFA & ZFA Berufsbilder – ${professions[0].professionType.name}`"
+      :desc="professions[0].professionType.metaDesc"
       img=""
       :script="snippet"
     />
@@ -99,6 +99,7 @@
     },
     data() {
       return {
+        professions: null,
         visible: null,
         snippet: [
           {
@@ -139,21 +140,6 @@
       };
     },
     computed: {
-      title() {
-        return `MFA & ZFA Berufsbilder – ${this.berufsbilder[0].berufsbildTypes.nodes[0].name}`;
-      },
-      berufsbilder() {
-        if (this.$store.state.professions.professions.length > 0) {
-          return this.$store.state.professions.professions.filter(
-            berufsbild =>
-              berufsbild.berufsbildTypes.nodes[0].name.toLowerCase() ===
-              this.$route.params.slug.toLowerCase()
-          );
-        } else {
-          return null;
-        }
-      },
-      /** @returns { array } */
       breadcrumbs() {
         return [
           { text: "Home", to: "/" },
@@ -163,16 +149,52 @@
             to: "/karriere/jobs-und-berufsbilder"
           },
           {
-            text: this.berufsbilder[0].berufsbildTypes.nodes[0].name,
-            to: `/karriere/jobs-und-berufsbilder/${this.berufsbilder[0].slug}`
+            text: this.professions[0].professionType.name,
+            to: `/karriere/jobs-und-berufsbilder/${this.$route.params.slug}`
           }
         ];
       }
     },
+    watch: {
+      async "$route.params.slug"() {
+        await this.getProfessions();
+      }
+    },
     created() {
-      this.$store.dispatch("getProfessions");
+      this.getProfessions();
     },
     methods: {
+      async getProfessions() {
+        try {
+          const professions = await this.$axios.get("/graphql", {
+            params: {
+              query: `
+                query {
+                  professions(type: "${this.$route.params.slug}") {
+                    title
+                    content
+                    slug
+                    professionType {
+                      name
+                      description
+                      slug
+                      metaDesc
+                    }
+                  }
+                }
+              `
+            }
+          });
+
+          if (!professions.data.data.professions) {
+            return;
+          }
+
+          this.professions = professions.data.data.professions;
+        } catch (err) {
+          return;
+        }
+      },
       setVisible(id) {
         if (this.visible === id) {
           this.visible = null;

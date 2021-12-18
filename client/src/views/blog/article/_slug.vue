@@ -10,7 +10,7 @@
           <b-img-lazy
             v-if="article.featuredImage"
             :srcset="article.featuredImage ? article.featuredImage.srcSet : ''"
-            sizes="100vw"
+            sizes="(max-width: 1200px) 100vw, 1200px"
             :src="article.featuredImage ? article.featuredImage.sourceUrl : ''"
             :alt="article.featuredImage ? article.featuredImage.altText : ''"
             width="1200"

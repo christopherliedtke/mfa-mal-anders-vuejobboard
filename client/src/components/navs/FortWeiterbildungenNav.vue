@@ -15,7 +15,7 @@
         <h4 class="h5 bold pt-3 pb-1 px-3 mb-0">{{ category }}</h4>
         <div class="list-group list-group-flush">
           <b-link
-            v-for="training in trainings.filter(
+            v-for="training in computedTrainings.filter(
               training => training.category === category
             )"
             :key="training.id"
@@ -53,21 +53,24 @@
         default: true
       }
     },
+    data() {
+      return {
+        trainings: null
+      };
+    },
     computed: {
-      trainings() {
-        return this.$store.state.trainings.trainings.map(training => {
+      computedTrainings() {
+        return this.trainings.map(training => {
           training.category =
-            training.categories.nodes.length > 0
-              ? training.categories.nodes[0].name
+            training.categories.length > 0
+              ? training.categories[0]
               : "Allgemein";
           return training;
         });
       },
       categories() {
-        let categories = this.$store.state.trainings.trainings.map(training =>
-          training.categories.nodes.length > 0
-            ? training.categories.nodes[0].name
-            : "Allgemein"
+        let categories = this.trainings.map(training =>
+          training.categories.length > 0 ? training.categories[0] : "Allgemein"
         );
         categories = categories
           .filter((item, index) => categories.indexOf(item) === index)
@@ -75,9 +78,36 @@
 
         return categories;
       }
+    },
+    created() {
+      this.getTrainings();
+    },
+    methods: {
+      async getTrainings() {
+        try {
+          const trainings = await this.$axios.get("/graphql", {
+            params: {
+              query: `
+                query {
+                  weiterbildungen {
+                    title
+                    slug
+                    categories
+                  }
+                }
+              `
+            }
+          });
+
+          if (!trainings.data.data.weiterbildungen) {
+            return;
+          }
+
+          this.trainings = trainings.data.data.weiterbildungen;
+        } catch (err) {
+          return;
+        }
+      }
     }
-    // created() {
-    //   this.$store.dispatch("getTrainings");
-    // }
   };
 </script>

@@ -3,7 +3,7 @@ const { gql } = require("graphql-modules");
 const ArticleType = gql`
   extend type Query {
     article(slug: String!): Article
-    articles: [Article]
+    articles(limit: Float, random: Boolean, exclude: String): [Article]
   }
 
   type Article {

@@ -17,7 +17,6 @@ class Cache {
     }
 
     if (key === "articles") {
-      // TODO get articles
       const articles = await getArticles();
 
       try {
@@ -30,8 +29,7 @@ class Cache {
     }
 
     if (key === "weiterbildungen") {
-      // TODO get weiterbildungen
-      const weiterbildungen = null;
+      const weiterbildungen = await getWeiterbildungen();
 
       try {
         this.cache.set("weiterbildungen", weiterbildungen);
@@ -44,7 +42,7 @@ class Cache {
 
     if (key === "professions") {
       // TODO get professions
-      const professions = null;
+      const professions = await getProfessions();
 
       try {
         this.cache.set("professions", professions);
@@ -80,18 +78,18 @@ class Cache {
   }
 }
 
-const sitemapCache = new Cache(60 * 60 * 6);
+const wpContentCache = new Cache(60 * 60 * 6);
 
-sitemapCache.cache.on("expired", key => {
-  sitemapCache.get(key);
+wpContentCache.cache.on("expired", key => {
+  wpContentCache.get(key);
 });
-sitemapCache.cache.on("flush", () => {
-  sitemapCache.get("articles");
-  sitemapCache.get("weiterbildungen");
-  sitemapCache.get("professions");
+wpContentCache.cache.on("flush", () => {
+  wpContentCache.get("articles");
+  wpContentCache.get("weiterbildungen");
+  wpContentCache.get("professions");
 });
 
-module.exports = sitemapCache;
+module.exports = wpContentCache;
 
 async function getArticles() {
   let articles = null;
@@ -181,4 +179,130 @@ async function getArticles() {
   }
 
   return articles;
+}
+
+async function getWeiterbildungen() {
+  let weiterbildungen = null;
+
+  try {
+    weiterbildungen = await axios.post(process.env.WP_API_URL, {
+      query: `
+          query MyQuery {
+            weiterbildungen(first: 100, where: {orderby: {field: TITLE, order: ASC}}) {
+              nodes {
+                id
+                title
+                content
+                excerpt
+                slug
+                featuredImage {
+                  node {
+                    altText
+                    sourceUrl
+                    srcSet
+                    sizes
+                  }
+                }
+                seo {
+                  metaDesc
+                  title
+                }
+                categories {
+                  nodes {
+                    name
+                  }
+                }
+              }
+            }
+          }
+        `,
+    });
+
+    weiterbildungen = weiterbildungen.data.data.weiterbildungen.nodes.map(
+      weiterbildung => {
+        return {
+          id: weiterbildung.id,
+          title: weiterbildung.title,
+          content: weiterbildung.content,
+          excerpt: weiterbildung.excerpt,
+          slug: weiterbildung.slug,
+          featuredImage: {
+            sourceUrl: weiterbildung.featuredImage.node.sourceUrl,
+            srcSet: weiterbildung.featuredImage.node.srcSet,
+            sizes: weiterbildung.featuredImage.node.sizes,
+            altText: weiterbildung.featuredImage.node.altText,
+          },
+          seo: {
+            title: weiterbildung.seo.title,
+            metaDesc: weiterbildung.seo.metaDesc,
+          },
+          categories: weiterbildung.categories.nodes.map(
+            category => category.name
+          ),
+        };
+      }
+    );
+  } catch (err) {
+    console.error("Error in getWeiterbildungen() for wpContentCache: ", err);
+  }
+
+  return weiterbildungen;
+}
+
+async function getProfessions() {
+  let professions = null;
+
+  try {
+    professions = await axios.post(process.env.WP_API_URL, {
+      query: `
+          query MyQuery {
+            berufsbilder(first: 100, where: {orderby: {field: TITLE, order: ASC}}) {
+              nodes {
+                id
+                title
+                content
+                slug
+                berufsbildTypes {
+                  nodes {
+                    name
+                    description
+                    slug
+                    seo {
+                      metaDesc
+                    }
+                  }
+                }
+                seo {
+                  metaDesc
+                  title
+                }
+              }
+            }
+          }
+        `,
+    });
+
+    professions = professions.data.data.berufsbilder.nodes.map(profession => {
+      return {
+        id: profession.id,
+        title: profession.title,
+        content: profession.content,
+        slug: profession.slug,
+        professionType: {
+          name: profession.berufsbildTypes.nodes[0].name,
+          description: profession.berufsbildTypes.nodes[0].description,
+          slug: profession.berufsbildTypes.nodes[0].slug,
+          metaDesc: profession.berufsbildTypes.nodes[0].seo.metaDesc,
+        },
+        seo: {
+          title: profession.seo.title,
+          metaDesc: profession.seo.metaDesc,
+        },
+      };
+    });
+  } catch (err) {
+    console.error("Error in getWeiterbildungen() for wpContentCache: ", err);
+  }
+
+  return professions;
 }

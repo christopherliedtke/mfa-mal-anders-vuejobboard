@@ -228,6 +228,7 @@
               <router-link to="/admin/data-analytics"
                 >Data Analytics</router-link
               >
+              <router-link to="/admin/tools">Tools</router-link>
             </div>
           </router-link>
           <div v-if="$store.state.auth.loggedIn"><LogoutBtn /></div>

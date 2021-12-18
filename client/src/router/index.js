@@ -40,7 +40,7 @@ const Blog = () =>
   );
 const Article = () =>
   import(
-    /* webpackChunkName: "blog" */
+    /* webpackChunkName: "blog-article" */
     /* webpackPrefetch: true */
     "@/views/blog/article/_slug.vue"
   );
@@ -66,81 +66,81 @@ const NewsletterUnsubscriptionSuccess = () =>
 // #Career
 const CareerHome = () =>
   import(
-    /* webpackChunkName: "career" */
+    /* webpackChunkName: "career-home" */
     /* webpackPrefetch: true */
     "@/views/career/CareerHome.vue"
   );
 const CareerMfaAusbildung = () =>
   import(
-    /* webpackChunkName: "career" */
+    /* webpackChunkName: "career-mfa-education" */
     /* webpackPrefetch: true */
     "@/views/career/mfa/CareerMfaAusbildung.vue"
   );
 const CareerMfaGehalt = () =>
   import(
-    /* webpackChunkName: "career-mfa-gehalt" */
+    /* webpackChunkName: "career-mfa-salary" */
     /* webpackPrefetch: true */
     "@/views/career/mfa/CareerMfaGehalt.vue"
   );
 const CareerZfaGehalt = () =>
   import(
-    /* webpackChunkName: "career-zfa-gehalt" */
+    /* webpackChunkName: "career-zfa-salary" */
     /* webpackPrefetch: true */
     "@/views/career/zfa/CareerZfaGehalt.vue"
   );
 const CareerBewerbung = () =>
   import(
-    /* webpackChunkName: "career" */
+    /* webpackChunkName: "career-application" */
     /* webpackPrefetch: true */
     "@/views/career/CareerBewerbung.vue"
   );
 
 const CareerJobsBerufsbilderHome = () =>
   import(
-    /* webpackChunkName: "career-profession" */
+    /* webpackChunkName: "career-profession-home" */
     /* webpackPrefetch: true */
     "@/views/career/jobs-berufsbilder/CareerJobsBerufsbilderHome.vue"
   );
 const CareerBerufsbildType = () =>
   import(
-    /* webpackChunkName: "career-profession" */
+    /* webpackChunkName: "career-profession-type" */
     /* webpackPrefetch: true */
     "@/views/career/jobs-berufsbilder/CareerBerufsbildType.vue"
   );
 const CareerBerufsbildProfession = () =>
   import(
-    /* webpackChunkName: "career-profession" */
+    /* webpackChunkName: "career-profession-single" */
     /* webpackPrefetch: true */
     "@/views/career/jobs-berufsbilder/CareerBerufsbildProfession.vue"
   );
 
 const CareerFortWeiterbildungenHome = () =>
   import(
-    /* webpackChunkName: "career-training" */
+    /* webpackChunkName: "career-training-home" */
     /* webpackPrefetch: true */
     "@/views/career/fort-weiterbildungen/CareerFortWeiterbildungenHome.vue"
   );
 const CareerFortWeiterbildungenUeberblick = () =>
   import(
-    /* webpackChunkName: "career-training" */
+    /* webpackChunkName: "career-training-overview" */
     /* webpackPrefetch: true */
     "@/views/career/fort-weiterbildungen/CareerFortWeiterbildungenUeberblick.vue"
   );
 const CareerFortWeiterbildung = () =>
   import(
-    /* webpackChunkName: "career-training" */
+    /* webpackChunkName: "career-training-single" */
     /* webpackPrefetch: true */
     "@/views/career/fort-weiterbildungen/CareerFortWeiterbildung.vue"
   );
 const CareerFortWeiterbildungenCatalogue = () =>
   import(
-    /* webpackChunkName: "career-training" */
+    /* webpackChunkName: "career-training-catalogue" */
     /* webpackPrefetch: true */
     "@/views/career/fort-weiterbildungen/CareerFortWeiterbildungenCatalogue.vue"
   );
 const CareerFortWeiterbildungenCatalogueTraining = () =>
   import(
-    /* webpackChunkName: "career-training" */
+    /* webpackChunkName: "career-training-catalogue-training" */
     /* webpackPrefetch: true */
     "@/views/career/fort-weiterbildungen/training/_id.vue"
   );
@@ -160,8 +160,7 @@ const JobView = () =>
   );
 const CompanyArchive = () =>
   import(
-    /* webpackChunkName: "job" */
-    /* webpackPrefetch: true */
+    /* webpackChunkName: "company-archive" */
     "@/views/jobboard/archives/CompanyArchive.vue"
   );
 
@@ -180,7 +179,7 @@ const JobSeekView = () =>
   );
 const JobSeeksInfoView = () =>
   import(
-    /* webpackChunkName: "jobseek" */
+    /* webpackChunkName: "jobseek-info" */
     /* webpackPrefetch: true */
     "@/views/jobseekboard/JobSeeksInfoView.vue"
   );
@@ -317,6 +316,8 @@ const AdminDataAnalytics = () =>
   import(
     /* webpackChunkName: "admin" */ "@/views/admin/data-analytics/AdminDataAnalytics.vue"
   );
+const AdminTools = () =>
+  import(/* webpackChunkName: "admin" */ "@/views/admin/tools/AdminTools.vue");
 const AdminJobSeeks = () =>
   import(
     /* webpackChunkName: "admin" */ "@/views/admin/jobseeks/AdminJobSeeks.vue"
@@ -958,6 +959,15 @@ const routes = [
     path: "/admin/data-analytics",
     name: "AdminDataAnalytics",
     component: AdminDataAnalytics,
+    meta: {
+      public: false,
+      onlyAdmin: true
+    }
+  },
+  {
+    path: "/admin/tools",
+    name: "AdminTools",
+    component: AdminTools,
     meta: {
       public: false,
       onlyAdmin: true
