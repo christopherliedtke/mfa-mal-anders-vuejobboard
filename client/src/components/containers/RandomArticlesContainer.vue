@@ -69,7 +69,6 @@
                     featuredImage {
                       sourceUrl
                       srcSet
-                      sizes
                       altText
                     }
                   }

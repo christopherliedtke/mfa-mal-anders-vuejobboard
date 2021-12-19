@@ -28,7 +28,6 @@ const actions = {
                     featuredImage {
                       sourceUrl
                       srcSet
-                      sizes
                       altText
                     }
                   }

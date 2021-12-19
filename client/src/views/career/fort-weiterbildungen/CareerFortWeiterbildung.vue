@@ -15,13 +15,14 @@
               v-if="training.featuredImage"
               class="border-radius1 shadow1 mb-3 mb-lg-5"
               fluid
+              :srcset="training.featuredImage.srcSet"
+              sizes="(max-width: 576px) 100vw, 768px"
               :src="training.featuredImage.sourceUrl"
               :alt="`Banner - ${training.title}`"
               width="1200"
               height="630"
               blank-width="1200"
               blank-height="630"
-              offset="1000"
             />
             <!-- eslint-disable-next-line -->
             <div v-html="training.content"></div>
@@ -149,7 +150,6 @@
                     featuredImage {
                       sourceUrl
                       srcSet
-                      sizes
                       altText
                     }
                     seo {

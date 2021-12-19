@@ -255,7 +255,6 @@
                     featuredImage {
                       sourceUrl
                       srcSet
-                      sizes
                       altText
                     }
                     seo {

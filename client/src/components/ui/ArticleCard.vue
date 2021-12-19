@@ -5,7 +5,7 @@
         <b-img-lazy
           :srcset="article.featuredImage ? article.featuredImage.srcSet : ''"
           :src="article.featuredImage ? article.featuredImage.sourceUrl : ''"
-          sizes="(max-width: 768px) 100vw, 50vw"
+          sizes="(max-width: 768px) 100vw, 600px"
           :alt="article.featuredImage ? article.featuredImage.altText : ''"
           width="1200"
           height="630"

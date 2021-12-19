@@ -16,7 +16,7 @@
           /img/MfaMalAnders_Bewerbungstipps_mh2kqw_c_scale,w_745.jpg 745w,
           /img/MfaMalAnders_Bewerbungstipps_mh2kqw_c_scale,w_1200.jpg 1200w
         "
-        sizes="(max-width: 1200px) 100vw, 1200px"
+        sizes="100vw"
         src="/img/MfaMalAnders_Bewerbungstipps_mh2kqw_c_scale,w_1200.jpg"
         alt="Banner - Schnell und einfach eine Top-Bewerbung schreiben"
         width="1200"

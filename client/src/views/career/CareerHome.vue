@@ -9,7 +9,7 @@
       <b-img-lazy
         class="header-img"
         style="object-position: center 70%"
-        sizes="(max-width: 1920px) 100vw, 1920px"
+        sizes="100vw"
         srcset="
           /img/coffeeMugBegin_qf1tz3_c_scale,w_350.jpg 350w,
           /img/coffeeMugBegin_qf1tz3_c_scale,w_850.jpg 850w,

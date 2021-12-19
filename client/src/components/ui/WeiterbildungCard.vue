@@ -9,7 +9,7 @@
           v-if="training.featuredImage.sourceUrl"
           class="card-img-top"
           :srcset="training.featuredImage.srcSet"
-          sizes="(max-width: 768px) 100vw, (max-width: 992px) 50vw, 1200px"
+          sizes="(max-width: 576px) 100vw, 600px"
           :src="training.featuredImage.sourceUrl"
           :alt="training.featuredImage.altText"
           width="1200"

@@ -11,7 +11,7 @@
                 /img/heart_768.jpg 768w, 
                 /img/heart_1024.jpg 1024w, 
                 /img/heart_1920.jpg 1200w"
-        sizes="(max-width: 992px) 100vw, 800px"
+        sizes="100vw"
         src="/img/heart_1920.jpg"
         alt="Fort- und Weiterbildung für MFA & ZFA"
         width="1920"

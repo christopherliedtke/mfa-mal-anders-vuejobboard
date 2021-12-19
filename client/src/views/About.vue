@@ -16,7 +16,7 @@
           ${require('@/assets/img/medizinischesPersonal-1200x513.jpg')} 1200w
         `
         "
-        sizes="(max-width: 992px) 100vw, 800px"
+        sizes="100vw"
         src="@/assets/img/medizinischesPersonal-1200x513.jpg"
         alt="Fort- und Weiterbildung für MFA & ZFA"
         width="1200"
