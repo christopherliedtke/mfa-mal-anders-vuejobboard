@@ -645,13 +645,11 @@
 
     <div class="container">
       <div class="row mt-5 mb-3">
-        <div class="col-12 col-lg-4 mb-4">
-          <BerufsbilderBanner class="" />
-        </div>
         <div class="col-12 col-lg-8 mb-4">
-          <div class="">
-            <RandomTrainingsContainer class="" :number="2" />
-          </div>
+          <TrainingCatalogueLargeBanner />
+        </div>
+        <div class="col-12 col-lg-4 mb-4">
+          <BerufsbilderBanner />
         </div>
       </div>
 
@@ -727,9 +725,9 @@
   import FacebookBtn from "@/components/buttons/FacebookBtn.vue";
   import InstagramBtn from "@/components/buttons/InstagramBtn.vue";
   import TwitterBtn from "@/components/buttons/TwitterBtn.vue";
-  import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
   import BerufsbilderBanner from "@/components/banners/BerufsbilderBanner.vue";
   import TrainingCatalogueSmallBanner from "@/components/banners/TrainingCatalogueSmallBanner.vue";
+  import TrainingCatalogueLargeBanner from "@/components/banners/TrainingCatalogueLargeBanner.vue";
   import JobSeeksLargeBanner from "@/components/banners/JobSeeksLargeBanner.vue";
   import JobSeeksSmallBanner from "@/components/banners/JobSeeksSmallBanner.vue";
   import SubscribeNewsletterBtn from "@/components/buttons/SubscribeNewsletterBtn.vue";
@@ -761,9 +759,9 @@
       FacebookBtn,
       InstagramBtn,
       TwitterBtn,
-      RandomTrainingsContainer,
       BerufsbilderBanner,
       TrainingCatalogueSmallBanner,
+      TrainingCatalogueLargeBanner,
       JobSeeksLargeBanner,
       JobSeeksSmallBanner,
       SubscribeNewsletterBtn,

@@ -13,7 +13,7 @@
               class="mb-4"
             />
           </b-link>
-          <h2 class="h6">
+          <h2 class="h6" style="line-height: 1.3">
             Das Stellen- und Karriereportal für <br />
             Medizinische Fachangestellte | <br />
             Zahnmedizinische Fachangestellte | <br />
@@ -112,6 +112,9 @@
           <nav>
             <router-link to="/stellenangebote"
               >Stellenangebote | MFA & ZFA</router-link
+            >
+            <router-link to="/stellengesuche"
+              >Stellengesuche | MFA & ZFA</router-link
             >
             <router-link
               to="/karriere/fort-und-weiterbildung/fortbildungskatalog"

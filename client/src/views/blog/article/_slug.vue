@@ -274,7 +274,7 @@
 
           this.article = article.data.data.article;
         } catch (err) {
-          this.$router.push("/");
+          this.$router.push("/blog");
         }
       }
     }

@@ -324,6 +324,14 @@
       </div>
     </div>
 
+    <div class="container mb-4 mb-lg-5">
+      <h2 class="text-center">Feedback</h2>
+      <h3 class="display-4 text-center bold mb-4 mb-lg-5">
+        Was unsere Kunden sagen
+      </h3>
+      <TestimonialsContainer />
+    </div>
+
     <div class="container-fluid bg-light-shade py-4 py-lg-5 px-0">
       <div id="preise" class="container">
         <h2 class=" display-4 bold text-center">
@@ -403,51 +411,6 @@
       </h2>
       <NumbersAndFacts class="mt-5" />
     </div>
-
-    <!-- <div id="testimonials" class="container mb-5 pb-md-5" fluid>
-      <h2 class="h4 text-center">Feedback</h2>
-      <h3 class="h1 text-center bold mb-4">Was unsere Kunden sagen</h3>
-      <div
-        style="max-width: 600px"
-        class="container position-relative bg-light-shade border-radius2 shadow1 p-5"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="120"
-          height="120"
-          viewBox="0 0 512 512"
-          class="position-absolute text-primary icon-transparent"
-          style="right: 15%; top: 25%;"
-        >
-          <path
-            data-v-64b4b916=""
-            fill="currentColor"
-            d="M464 32H336c-26.5 0-48 21.5-48 48v128c0 26.5 21.5 48 48 48h80v64c0 35.3-28.7 64-64 64h-8c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h8c88.4 0 160-71.6 160-160V80c0-26.5-21.5-48-48-48zm-288 0H48C21.5 32 0 53.5 0 80v128c0 26.5 21.5 48 48 48h80v64c0 35.3-28.7 64-64 64h-8c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h8c88.4 0 160-71.6 160-160V80c0-26.5-21.5-48-48-48z"
-            class=""
-          ></path>
-        </svg>
-        <div class="row">
-          <div class="col-12 col-md-3 d-flex py-2 px-4">
-            <b-img
-              class="rounded-circle shadow1"
-              height="100"
-              src="@/assets/img/kinderarztpraxis_ostertor_200.jpg"
-            />
-          </div>
-          <div class="col-12 col-md-9 d-flex flex-column py-2">
-            <p>
-              Durch die Online-Suche haben wir deutlich mehr und auch besser
-              qualifizierte Zuschriften erhalten. Vielen Dank noch einmal für
-              Ihre Unterstützung und die wertvollen Tipps.
-            </p>
-            <p class="h6 mb-0">
-              &ndash; Franziska Fritz |
-              <em>Kinderarztpraxis Ostertor</em>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div> -->
 
     <div
       id="mehr-informationen"
@@ -778,6 +741,7 @@
   import JobAdTipsContainer from "@/components/containers/JobAdTipsContainer.vue";
   import NumbersAndFacts from "@/components/containers/NumbersAndFacts.vue";
   import CooperationPartners from "@/components/containers/CooperationPartners.vue";
+  import TestimonialsContainer from "@/components/containers/TestimonialsContainer.vue";
   import PricingCard from "@/components/ui/PricingCard.vue";
   import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
   import { scrollToHashMixin } from "@/mixins/scrollToHashMixin";
@@ -787,6 +751,7 @@
       JobAdTipsContainer,
       NumbersAndFacts,
       CooperationPartners,
+      TestimonialsContainer,
       PricingCard,
       ScrollToTopBtn
     },
@@ -826,12 +791,6 @@
 
 <style lang="scss" scoped>
   .employer {
-    #testimonials {
-      .icon-transparent {
-        opacity: 0.1;
-      }
-    }
-
     #hero {
       @media screen and (min-width: 768px) {
         background: linear-gradient(
