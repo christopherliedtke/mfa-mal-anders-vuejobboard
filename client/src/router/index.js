@@ -1,6 +1,4 @@
 import Vue from "vue";
-import config from "@/config/config.js";
-
 import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
@@ -554,15 +552,15 @@ const routes = [
     }
   },
   {
-    path: config.cms.postsPath,
-    name: config.cms.postsPageTitle,
+    path: "/blog",
+    name: "Blog",
     component: Blog,
     meta: {
       public: true
     }
   },
   {
-    path: config.cms.postsPath + "/article/:slug",
+    path: "/blog/article/:slug",
     name: "Article",
     component: Article,
     meta: {
@@ -570,7 +568,7 @@ const routes = [
     }
   },
   {
-    path: config.cms.postsPath + "/artikel/:slug",
+    path: "/blog/artikel/:slug",
     name: "Article2",
     component: Article,
     meta: {

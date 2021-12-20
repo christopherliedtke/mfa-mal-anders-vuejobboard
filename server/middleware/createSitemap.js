@@ -6,6 +6,7 @@ const textToSlug = require("../utils/textToSlug");
 const { Job } = require("../database/models/job");
 const { Company } = require("../database/models/company");
 const { Training } = require("../database/models/training");
+const { JobSeek } = require("../database/models/jobSeek");
 
 async function createSitemap() {
   try {
@@ -29,6 +30,7 @@ async function createSitemap() {
     const jobboardProfessions = await getJobboardProfessions();
     const companies = await getCompanies();
     const trainingEvents = await getTrainingEvents();
+    const jobSeeks = await getJobSeeks();
 
     const sitemap =
       head +
@@ -43,6 +45,7 @@ async function createSitemap() {
       jobboardProfessions +
       companies +
       trainingEvents +
+      jobSeeks +
       foot;
 
     return sitemap;
@@ -302,7 +305,7 @@ const getCompanies = async () => {
 const getTrainingEvents = async () => {
   try {
     const trainingEvents = await Training.find(
-      {},
+      { published: true },
       "_id title company slug updatedAt"
     );
 
@@ -318,7 +321,31 @@ const getTrainingEvents = async () => {
       )
       .join(" ");
   } catch (err) {
-    console.log("Error on getCompanies() in createSitemap: ", err);
+    console.log("Error on getTrainingEvents() in createSitemap: ", err);
+    return "";
+  }
+};
+
+const getJobSeeks = async () => {
+  try {
+    const jobSeeks = await JobSeek.find(
+      { published: true },
+      "_id title location slug updatedAt"
+    );
+
+    return jobSeeks
+      .map(jobSeek =>
+        writeUrl(
+          process.env.WEBSITE_URL +
+            `/stellengesuche/gesuch/${jobSeek._id}/${jobSeek.slug}`,
+          new Date(jobSeek.updatedAt).toISOString(),
+          "weekly",
+          0.5
+        )
+      )
+      .join(" ");
+  } catch (err) {
+    console.log("Error on getJobSeeks() in createSitemap: ", err);
     return "";
   }
 };

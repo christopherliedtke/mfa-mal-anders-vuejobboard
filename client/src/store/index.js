@@ -2,8 +2,6 @@ import Vue from "vue";
 import Vuex from "vuex";
 import auth from "@/store/modules/auth";
 import articles from "@/store/modules/articles";
-// import trainings from "@/store/modules/trainings";
-// import professions from "@/store/modules/professions";
 import utils from "@/store/modules/utils";
 import starredJobs from "@/store/modules/starredJobs";
 
@@ -13,8 +11,6 @@ export default new Vuex.Store({
   modules: {
     auth,
     articles,
-    // trainings,
-    // professions,
     utils,
     starredJobs
   }

@@ -33,7 +33,7 @@
         </nav>
       </div>
     </div>
-    <div v-if="$config.cms.active && articles" class="container py-3 py-lg-5">
+    <div v-if="articles" class="container py-3 py-lg-5">
       <div class="grid">
         <ArticleCard
           v-for="article in articles"

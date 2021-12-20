@@ -1,5 +1,5 @@
 <template>
-  <div id="testimonials" class="row justify-content-center">
+  <div id="testimonials" class="row flex-lg-row-reverse justify-content-center">
     <div
       v-for="testimonial in testimonials"
       :key="testimonial.company"
@@ -20,7 +20,7 @@
           ></path>
         </svg>
         <div class="row">
-          <div class="col-12 d-flex justify-content-center py-2 px-4">
+          <div class="col-12 d-flex  justify-content-center py-2 px-4">
             <b-img-lazy
               class="rounded-circle shadow1"
               height="100"
@@ -54,18 +54,18 @@
       return {
         testimonials: Object.freeze([
           {
-            name: "Franziska Fritz",
-            company: "Kinderarztpraxis Ostertor",
-            text:
-              "Durch die Online-Suche haben wir deutlich mehr und auch besser qualifizierte Zuschriften erhalten. Vielen Dank noch einmal für Ihre Unterstützung und die wertvollen Tipps.",
-            imgUrl: require("@/assets/img/kinderarztpraxis_ostertor_200.jpg")
-          },
-          {
             name: "Dr. Jörg Schröder",
             company: "Endodontologische Privatpraxis Berlin",
             text:
               "MFA mal anders war für unsere Praxis eine durchweg positive Erfahrung. Bereits einen Tag nach der Veröffentlichung unserer Stellenanzeige hat sich eine erste Bewerberin gemeldet. Nach vier Wochen hatten wir das perfekte Match gefunden. Mein besonderer Dank gilt Frau Maurach für ihre sehr professionelle Unterstützung unserer Bewerberinnensuche.",
             imgUrl: require("@/assets/img/DrJoergSchroeder.jpg")
+          },
+          {
+            name: "Franziska Fritz",
+            company: "Kinderarztpraxis Ostertor",
+            text:
+              "Durch die Online-Suche haben wir deutlich mehr und auch besser qualifizierte Zuschriften erhalten. Vielen Dank noch einmal für Ihre Unterstützung und die wertvollen Tipps.",
+            imgUrl: require("@/assets/img/kinderarztpraxis_ostertor_200.jpg")
           }
         ])
       };

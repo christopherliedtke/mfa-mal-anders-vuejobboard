@@ -1,5 +1,4 @@
 import axios from "@/utils/axios";
-import config from "@/config/config.js";
 
 const state = {
   articles: []
@@ -11,7 +10,7 @@ const getters = {
 
 const actions = {
   async getArticles({ commit }) {
-    if (config.cms.active && state.articles.length === 0) {
+    if (state.articles.length === 0) {
       const response = await axios.get("/graphql", {
         params: {
           query: `

@@ -35,7 +35,7 @@
     name: "CooperationPartners",
     data() {
       return {
-        partners: [
+        partners: Object.freeze([
           {
             name: "PKV Institut",
             img: "/img/pkvverlag_logo2.png",
@@ -104,7 +104,7 @@
             img: "/img/ihreGesundeArztpraxis_logo3.png",
             url: "https://www.facebook.com/ihregesundearztpraxis/"
           }
-        ]
+        ])
       };
     }
   };

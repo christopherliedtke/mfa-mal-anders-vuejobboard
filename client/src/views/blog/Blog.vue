@@ -4,7 +4,7 @@
       <h1>{{ title }}</h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
-    <div v-if="$config.cms.active && articles" class="container py-3 py-lg-5">
+    <div v-if="articles" class="container py-3 py-lg-5">
       <div v-if="articles && articles.length > 0" class="grid">
         <ArticleCard
           v-for="article in articles"
@@ -37,7 +37,7 @@
     },
     data() {
       return {
-        title: this.$config.cms.postsPageTitle,
+        title: "Blog",
         breadcrumbs: [
           { text: "Home", to: "/" },
           { text: "Blog", to: "/blog" }

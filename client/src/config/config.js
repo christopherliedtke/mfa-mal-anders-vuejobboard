@@ -4,12 +4,6 @@ module.exports = {
     url: "https://www.mfa-mal-anders.de",
     contactEmail: "kontakt@mfa-mal-anders.de"
   },
-  cms: {
-    url: "https://wordpress.mfa-mal-anders.de/graphql",
-    active: true,
-    postsPath: "/blog",
-    postsPageTitle: "Blog"
-  },
   jobboardMap: {
     active: false
   },

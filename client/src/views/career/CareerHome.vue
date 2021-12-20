@@ -177,7 +177,7 @@
           <b-link to="/karriere/fort-und-weiterbildung"
             >Fort- und Weiterbildungsmöglichkeiten</b-link
           >,
-          <b-link :to="`/${$config.cms.postsPath}`">Praxishacks</b-link>
+          <b-link to="/blog">Praxishacks</b-link>
           und Informationen zur persönlichen sowie beruflichen
           Weiterentwicklung.
         </p>
