@@ -41,7 +41,7 @@
         <div class="mt-3" v-html="article.content"></div>
         <p class="mt-4">
           Hast Du Interesse an Themen rund um Deine Karriere im
-          Gesundheitswesen? Dann folge uns gern auf
+          Gesundheitswesen? Dann folge MFA mal anders gern auf
           <b-link
             class="bold"
             :href="`https://www.facebook.com/${$config.fb.path}`"
