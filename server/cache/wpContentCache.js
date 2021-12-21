@@ -155,23 +155,29 @@ async function getArticles() {
         modified: article.modified,
         slug: article.slug,
         author: {
-          firstName: article.author.node.firstName,
-          lastName: article.author.node.lastName,
-          avatarUrl: article.author.node.avatar.url,
-          fbUrl: article.author.node.seo.social.facebook,
-          igUrl: article.author.node.seo.social.instagram,
+          firstName: article.author ? article.author.node.firstName : "",
+          lastName: article.author ? article.author.node.lastName : "",
+          avatarUrl: article.author ? article.author.node.avatar.url : "",
+          fbUrl: article.author ? article.author.node.seo.social.facebook : "",
+          igUrl: article.author ? article.author.node.seo.social.instagram : "",
         },
         featuredImage: {
-          sourceUrl: article.featuredImage.node.sourceUrl,
-          srcSet: article.featuredImage.node.srcSet,
-          sizes: article.featuredImage.node.sizes,
-          altText: article.featuredImage.node.altText,
+          sourceUrl: article.featuredImage
+            ? article.featuredImage.node.sourceUrl
+            : "",
+          srcSet: article.featuredImage
+            ? article.featuredImage.node.srcSet
+            : "",
+          sizes: article.featuredImage ? article.featuredImage.node.sizes : "",
+          altText: article.featuredImage
+            ? article.featuredImage.node.altText
+            : "",
         },
         seo: {
-          title: article.seo.title,
-          metaDesc: article.seo.metaDesc,
+          title: article.seo ? article.seo.title : "",
+          metaDesc: article.seo ? article.seo.metaDesc : "",
         },
-        tags: article.tags.nodes.map(tag => tag.name),
+        tags: article.tags ? article.tags.nodes.map(tag => tag.name) : [],
       };
     });
   } catch (err) {
@@ -227,18 +233,26 @@ async function getWeiterbildungen() {
           excerpt: weiterbildung.excerpt,
           slug: weiterbildung.slug,
           featuredImage: {
-            sourceUrl: weiterbildung.featuredImage.node.sourceUrl,
-            srcSet: weiterbildung.featuredImage.node.srcSet,
-            sizes: weiterbildung.featuredImage.node.sizes,
-            altText: weiterbildung.featuredImage.node.altText,
+            sourceUrl: weiterbildung.featuredImage
+              ? weiterbildung.featuredImage.node.sourceUrl
+              : "",
+            srcSet: weiterbildung.featuredImage
+              ? weiterbildung.featuredImage.node.srcSet
+              : "",
+            sizes: weiterbildung.featuredImage
+              ? weiterbildung.featuredImage.node.sizes
+              : "",
+            altText: weiterbildung.featuredImage
+              ? weiterbildung.featuredImage.node.altText
+              : "",
           },
           seo: {
-            title: weiterbildung.seo.title,
-            metaDesc: weiterbildung.seo.metaDesc,
+            title: weiterbildung.seo ? weiterbildung.seo.title : "",
+            metaDesc: weiterbildung.seo ? weiterbildung.seo.metaDesc : "",
           },
-          categories: weiterbildung.categories.nodes.map(
-            category => category.name
-          ),
+          categories: weiterbildung.categories
+            ? weiterbildung.categories.nodes.map(category => category.name)
+            : [],
         };
       }
     );
@@ -289,14 +303,22 @@ async function getProfessions() {
         content: profession.content,
         slug: profession.slug,
         professionType: {
-          name: profession.berufsbildTypes.nodes[0].name,
-          description: profession.berufsbildTypes.nodes[0].description,
-          slug: profession.berufsbildTypes.nodes[0].slug,
-          metaDesc: profession.berufsbildTypes.nodes[0].seo.metaDesc,
+          name: profession.berufsbildTypes
+            ? profession.berufsbildTypes.nodes[0].name
+            : "",
+          description: profession.berufsbildTypes
+            ? profession.berufsbildTypes.nodes[0].description
+            : "",
+          slug: profession.berufsbildTypes
+            ? profession.berufsbildTypes.nodes[0].slug
+            : "",
+          metaDesc: profession.berufsbildTypes
+            ? profession.berufsbildTypes.nodes[0].seo.metaDesc
+            : "",
         },
         seo: {
-          title: profession.seo.title,
-          metaDesc: profession.seo.metaDesc,
+          title: profession.seo ? profession.seo.title : "",
+          metaDesc: profession.seo ? profession.seo.metaDesc : "",
         },
       };
     });

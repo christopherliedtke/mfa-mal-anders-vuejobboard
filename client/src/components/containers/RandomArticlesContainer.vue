@@ -3,7 +3,7 @@
     <div v-if="articles && articles.length > 0" class="row">
       <ArticleCard
         v-for="article in articles"
-        :key="article.id"
+        :key="article.slug"
         :class="['col-12 mb-4', `col-md-${12 / 2}`, `col-lg-${12 / number}`]"
         :article="article"
       />

@@ -1,5 +1,5 @@
 <template>
-  <article class="weiterbildung-card">
+  <article v-if="training.title" class="weiterbildung-card">
     <b-link
       :to="'/karriere/fort-und-weiterbildung/ueberblick/' + training.slug"
       :aria-label="training.title"

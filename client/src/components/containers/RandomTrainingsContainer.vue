@@ -2,7 +2,7 @@
   <div v-if="trainings" class="row">
     <div
       v-for="training in trainings"
-      :key="training.id"
+      :key="training.slug"
       :class="[
         'article-card col-12 mb-4',
         `col-md-${12 / 2}`,
