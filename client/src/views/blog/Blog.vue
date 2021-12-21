@@ -8,7 +8,7 @@
       <div v-if="articles && articles.length > 0" class="grid">
         <ArticleCard
           v-for="article in articles"
-          :key="article.id"
+          :key="article.slug"
           :article="article"
         />
       </div>
