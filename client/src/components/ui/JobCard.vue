@@ -49,7 +49,7 @@
             </div>
           </div>
           <div v-if="!compact && job.excerpt" class="card-content">
-            <p>{{ job.excerpt }}</p>
+            <p class="mb-0">{{ job.excerpt }}</p>
           </div>
           <hr v-if="!compact" />
           <div
