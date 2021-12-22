@@ -56,10 +56,15 @@ const JobSchema = new Schema(
       default: function () {
         if (this.description) {
           return (
-            sanitizeHtml(this.description, {
-              allowedTags: [],
-              allowedAttributes: {},
-            }).substring(0, 200) + "..."
+            sanitizeHtml(
+              this.description.replace(/<\/([a-z, 0-9]*)>/g, "</$1> "),
+              {
+                allowedTags: [],
+                allowedAttributes: {},
+              }
+            )
+              .substring(0, 200)
+              .trim() + "..."
           );
         } else {
           return "";
