@@ -5,7 +5,9 @@ const { ApolloServer } = require("apollo-server-express");
 
 const application = require("./database/apollo/application");
 const apolloSchema = application.createSchemaForApollo();
-const { ApolloServerPluginLandingPageGraphQLPlayground } = require("apollo-server-core");
+const {
+  ApolloServerPluginLandingPageGraphQLPlayground,
+} = require("apollo-server-core");
 
 const app = express();
 
@@ -126,7 +128,9 @@ if (process.env.NODE_ENV == "production") {
     res.cookie("XSRF-TOKEN", req.csrfToken());
     next();
   });
-  app.use(express.static(__dirname + "/public"));
+  app.use(
+    express.static(__dirname + "/public", { maxAge: 1000 * 60 * 60 * 24 * 7 })
+  );
 }
 
 // #ApolloServer
