@@ -86,14 +86,20 @@
         min="0"
         placeholder="Fee eingeben..."
       />
+      <label for="tax-rate">Tax Rate</label>
+      <b-form-select id="tax-rate" v-model="payment.taxRate">
+        <b-form-select-option :value="0">0%</b-form-select-option>
+        <b-form-select-option :value="0.19">19%</b-form-select-option>
+      </b-form-select>
       <label for="taxes">Taxes [Cents]</label>
       <b-form-input
         id="taxes"
-        v-model="payment.taxes"
+        v-model="taxes"
         type="number"
         min="0"
         placeholder="Taxes eingeben..."
         trim
+        readonly
       />
       <label for="billing-email">Billing Email Address</label>
       <b-form-input
@@ -249,7 +255,7 @@
           pricingPackage: "",
           amount: 0,
           fee: 0,
-          taxes: 0,
+          taxRate: 0,
           billingEmail: "",
           billingPhone: "",
           billingCompany: "",
@@ -264,7 +270,7 @@
           paidAt: new Date().setHours(0, 0, 0, 0),
           paymentExpiresAt:
             new Date().setHours(23, 59, 59, 999) +
-            1000 * 60 * 60 * 24 * this.$config.payment.minDuration
+            1000 * 60 * 60 * 24 * this.$config.pricingPackages[0].duration
         },
         contactGenderOptions,
         contactTitleOptions
@@ -299,6 +305,9 @@
             999
           );
         }
+      },
+      taxes() {
+        return this.payment.amount * this.payment.taxRate;
       }
     },
     created() {
@@ -330,7 +339,7 @@
                     pricingPackage
                     amount
                     fee
-                    taxes
+                    taxRate
                     billingEmail
                     billingPhone
                     billingCompany
@@ -404,7 +413,8 @@
                   pricingPackage: "${this.payment.pricingPackage}"
                   amount: ${this.payment.amount}
                   fee: ${this.payment.fee}
-                  taxes: ${this.payment.taxes}
+                  taxes: ${this.taxes}
+                  taxeRate: ${this.payment.taxeRate}
                   billingEmail: "${this.payment.billingEmail}"
                   billingPhone: "${this.payment.billingPhone}"
                   billingCompany: "${this.payment.billingCompany}"

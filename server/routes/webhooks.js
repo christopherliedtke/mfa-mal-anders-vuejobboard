@@ -22,9 +22,11 @@ router.post("/checkout-completed", async (req, res) => {
   const { jobId, userId, couponId, pricingPackage } =
     req.body.data.object.metadata;
 
-  let { refreshFrequency } = req.body.data.object.metadata;
-  const amount = req.body.data.object["amount_total"];
-  const tax = Math.round(amount * config.invoice.sender(new Date()).tax);
+  let { refreshFrequency, taxRate, amount } = req.body.data.object.metadata;
+  // const amount = req.body.data.object["amount_total"];
+  // const taxRate = Math.round(
+  //   amount * config.invoice.sender(new Date()).taxRate
+  // );
 
   try {
     const intent = await stripe.paymentIntents.retrieve(
@@ -63,7 +65,7 @@ router.post("/checkout-completed", async (req, res) => {
         paymentType: "stripe",
         pricingPackage,
         amount,
-        taxes: tax,
+        taxRate: taxRate,
         fee: config.stripe.feeFix + config.stripe.feeVar * amount,
         billingEmail: succeededCharge["billing_details"].email,
         billingCompany: job ? job.company.name : "",
@@ -172,14 +174,16 @@ router.post("/checkout-completed", async (req, res) => {
           "000000".slice(0, 6 - payment.invoiceNo.toString().length) +
           payment.invoiceNo.toString()
         }] - ${pricingPackage} | ${
-          payment.amount / 100
+          parseInt(
+            payment.amount + Math.round(payment.amount * payment.taxRate)
+          ) / 100
         }€ - Veröffentlichung Stellenanzeige '${updatedJob.title}'`,
         html: `
-                    <h2>Veröffentlichung einer neuen Stelle</h2>
-                    <p>
-                    <strong>InvoiceNo:</strong> <a href="${
-                      process.env.WEBSITE_URL
-                    }/api/invoice/download/${payment._id}" target="_blank">${
+          <h2>Veröffentlichung einer neuen Stelle</h2>
+          <p>
+          <strong>InvoiceNo:</strong> <a href="${
+            process.env.WEBSITE_URL
+          }/api/invoice/download/${payment._id}" target="_blank">${
           "RE-" +
           "000000".slice(0, 6 - payment.invoiceNo.toString().length) +
           payment.invoiceNo.toString()

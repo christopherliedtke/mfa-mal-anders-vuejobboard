@@ -59,8 +59,7 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
     }
 
     amount = Math.round(parseInt(amount) * (1 - discount));
-    const tax = Math.round(amount * config.invoice.sender(new Date()).tax);
-    amount += tax;
+    const taxRate = config.invoice.sender(new Date()).taxRate;
 
     const lastInvoiceNo = await Payment.find({}, "invoiceNo")
       .sort({ invoiceNo: -1 })
@@ -77,7 +76,7 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
       pricingPackage,
       amount,
       fee: 0,
-      taxes: tax,
+      taxRate: taxRate,
       paymentExpiresAt: new Date(
         new Date().setHours(23, 59, 59, 999) +
           1000 *
@@ -140,7 +139,9 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
         "000000".slice(0, 6 - payment.invoiceNo.toString().length) +
         payment.invoiceNo.toString()
       }] - ${pricingPackage} | ${
-        parseInt(payment.amount) / 100
+        parseInt(
+          payment.amount + Math.round(payment.amount * payment.taxRate)
+        ) / 100
       }€ - Veröffentlichung Ihrer Stellenanzeige '${jobTitle}'`,
       html: `
                 <p>

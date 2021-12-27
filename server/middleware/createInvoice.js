@@ -205,7 +205,7 @@ function generateBody(doc, payment, sender) {
     .fontSize(8)
     .text(
       `Zahlungsbedingungen: Der Rechnungsbetrag ist innerhalb von 14 Tagen ohne Abzüge ab Rechnungseingang fällig.${
-        !sender.tax
+        !payment.taxRate
           ? " Gemäß § 19 UStG erheben wir keine Umsatzsteuer und weisen diese folglich auch nicht aus. Die Preise sind Endpreise."
           : ""
       }`,
@@ -321,32 +321,31 @@ function generateInvoiceTable(doc, payment, position) {
     "1",
     // Stückpreis
     (
-      (parseInt(
+      parseInt(
         payment.amount -
           (payment.paymentType === "invoice" && !payment.pricingPackage
             ? config.invoice.feeFix
             : 0)
-      ) -
-        payment.taxes) /
-      100
+      ) / 100
     )
       .toFixed(2)
       .toString()
       .replace(".", ","),
     // USt. %
-    config.invoice.sender(payment.invoiceDate).tax * 100,
+    payment.taxRate * 100,
     // USt.
-    (payment.taxes / 100).toFixed(2).toString().replace(".", ","),
+    (Math.round(payment.amount * payment.taxRate) / 100)
+      .toFixed(2)
+      .toString()
+      .replace(".", ","),
     // Netto
     (
-      (parseInt(
+      parseInt(
         payment.amount -
           (payment.paymentType === "invoice" && !payment.pricingPackage
             ? config.invoice.feeFix
             : 0)
-      ) -
-        payment.taxes) /
-      100
+      ) / 100
     )
       .toFixed(2)
       .toString()
@@ -366,13 +365,9 @@ function generateInvoiceTable(doc, payment, position) {
       // Stückpreis
       (config.invoice.feeFix / 100).toFixed(2).toString().replace(".", ","),
       // USt. %
-      config.invoice.sender(payment.invoiceDate).tax * 100,
+      payment.taxRate * 100,
       // USt.
-      (
-        (config.invoice.feeFix *
-          config.invoice.sender(payment.invoiceDate).tax) /
-        100
-      )
+      (Math.round(config.invoice.feeFix * payment.taxRate) / 100)
         .toFixed(2)
         .toString()
         .replace(".", ","),
@@ -397,12 +392,12 @@ function generateInvoiceTable(doc, payment, position) {
     // USt. %
     "",
     // USt.
-    (payment.taxes / 100).toFixed(2).toString().replace(".", ","),
-    // Netto
-    (parseInt(payment.amount - payment.taxes) / 100)
+    (Math.round(payment.amount * payment.taxRate) / 100)
       .toFixed(2)
       .toString()
-      .replace(".", ",")
+      .replace(".", ","),
+    // Netto
+    (parseInt(payment.amount) / 100).toFixed(2).toString().replace(".", ",")
   );
 
   doc.font("Helvetica-Bold");
@@ -423,7 +418,10 @@ function generateInvoiceTable(doc, payment, position) {
     // USt.
     "",
     // Netto
-    (parseInt(payment.amount) / 100).toFixed(2).toString().replace(".", ",")
+    ((payment.amount + Math.round(payment.amount * payment.taxRate)) / 100)
+      .toFixed(2)
+      .toString()
+      .replace(".", ",")
   );
 
   return invoiceTableTop + 125;

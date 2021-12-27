@@ -36,7 +36,7 @@ module.exports = {
   pricingPackages: [
     {
       name: "Basis",
-      price: 8900,
+      price: 14900,
       duration: 60,
       desc: [
         {
@@ -65,7 +65,7 @@ module.exports = {
     },
     {
       name: "Standard",
-      price: 14900,
+      price: 19900,
       duration: 90,
       badge: "beliebt",
       desc: [
@@ -97,7 +97,7 @@ module.exports = {
     },
     {
       name: "Professional",
-      price: 45900,
+      price: 59900,
       duration: 90,
       desc: [
         {
@@ -135,8 +135,7 @@ module.exports = {
   ],
   payment: {
     currency: "EUR",
-    minDuration: 60,
-    tax:
+    taxRate:
       new Date().getTime() < new Date("2022-01-01 00:00:00").getTime()
         ? 0
         : 0.19

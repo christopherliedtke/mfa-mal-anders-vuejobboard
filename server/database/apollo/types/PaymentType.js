@@ -20,6 +20,7 @@ const PaymentType = gql`
       amount: Float
       fee: Float
       taxes: Float
+      taxRate: Float
       billingEmail: String
       billingPhone: String
       billingCompany: String
@@ -47,6 +48,7 @@ const PaymentType = gql`
       amount: Float
       fee: Float
       taxes: Float
+      taxRate: Float
       billingEmail: String
       billingPhone: String
       billingCompany: String
@@ -77,6 +79,7 @@ const PaymentType = gql`
     amount: Float
     fee: Float
     taxes: Float
+    taxRate: Float
     billingEmail: String
     billingPhone: String
     billingCompany: String

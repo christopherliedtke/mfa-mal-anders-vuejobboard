@@ -54,6 +54,10 @@ const PaymentSchema = new Schema(
       type: Number,
       default: 0,
     },
+    taxRate: {
+      type: Number,
+      default: 0,
+    },
     billingEmail: {
       type: String,
     },

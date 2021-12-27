@@ -28,19 +28,19 @@ module.exports = {
     pricingPackages: [
       {
         name: "Basis",
-        price: 8900,
+        price: 14900,
         duration: 60,
         refreshFrequency: 0,
       },
       {
         name: "Standard",
-        price: 14900,
+        price: 19900,
         duration: 90,
         refreshFrequency: 14,
       },
       {
         name: "Professional",
-        price: 45900,
+        price: 59900,
         duration: 90,
         refreshFrequency: 7,
       },
@@ -178,7 +178,7 @@ function getInvoiceSender(date = new Date()) {
       },
       email: "kontakt@mfa-mal-anders.de",
       taxNum: "32/437/01653",
-      tax: getTax(date),
+      taxRate: getTaxRate(date),
       bankAccount: {
         receiver: "Kristin Maurach Rekruiting",
         bank: "Holvi Payment Services",
@@ -197,7 +197,7 @@ function getInvoiceSender(date = new Date()) {
       },
       email: "kontakt@mfa-mal-anders.de",
       taxNum: "36/420/00195",
-      tax: getTax(date),
+      taxRate: getTaxRate(date),
       bankAccount: {
         receiver: "MFA mal anders - Kristin Maurach & Christopher Liedtke GbR",
         bank: "solarisBank AG",
@@ -210,7 +210,7 @@ function getInvoiceSender(date = new Date()) {
   return sender;
 }
 
-function getTax(date = new Date()) {
+function getTaxRate(date = new Date()) {
   return new Date(date).getTime() < new Date("2022-01-01 00:00:00").getTime()
     ? 0
     : 0.19;

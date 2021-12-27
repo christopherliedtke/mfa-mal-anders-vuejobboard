@@ -65,7 +65,7 @@
           .replace(".", ",")
       }}
       {{ $config.payment.currency }} pro Stellenanzeige à
-      {{ $config.payment.minDuration }} Tage an, der für den Betrieb der
+      {{ $config.pricingPackages[0].duration }} Tage an, der für den Betrieb der
       IT-Infrastruktur und der Pflege des Portals unerlässlich ist.
     </p>
   </div>

@@ -95,11 +95,13 @@
                   height="16"
                 />
                 GooglePay <br />
-                <span class="small">Sofortige Veröffentlichung</span>
+                <span class="small text-muted">Sofortige Veröffentlichung</span>
               </b-form-radio>
               <b-form-radio value="invoice"
                 >Rechnung <br />
-                <span class="small">Veröffentlichung nach Geldeingang</span>
+                <span class="small text-muted"
+                  >Veröffentlichung nach Geldeingang</span
+                >
               </b-form-radio>
             </b-form-radio-group>
           </b-form-group>
@@ -505,9 +507,9 @@
             100
         );
 
-        const tax = Math.round(amount * this.$config.payment.tax);
+        const taxRate = this.$config.payment.taxRate;
 
-        return (amount + tax) / 100;
+        return Math.round(amount * (1 + taxRate)) / 100;
       },
       refreshFrequencyComputed() {
         let value = 0;
