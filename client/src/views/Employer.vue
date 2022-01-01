@@ -120,9 +120,7 @@
                   {{ $config.pricingPackages[0].price / 100 }}
                   {{ $config.payment.currency }}</b-link
                 >
-                <span v-if="$config.payment.tax" class="small">
-                  (zzgl. USt.)</span
-                >
+                <span class="small"> (zzgl. USt.)</span>
               </div>
             </li>
             <!-- <li class="d-flex">

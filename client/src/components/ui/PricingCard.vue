@@ -31,7 +31,7 @@
           >€</span
         >
       </div>
-      <div v-if="$config.payment.tax" class="small text-center">
+      <div class="small text-center">
         (zzgl. USt.)
       </div>
     </div>

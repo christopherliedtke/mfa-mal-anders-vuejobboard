@@ -24,7 +24,7 @@
                   .replace(".", ",")
               }}
               {{ $config.payment.currency }}</strong
-            ><span v-if="$config.payment.tax" class="small"> (zzgl. USt)</span>.
+            ><span class="small"> (zzgl. USt)</span>.
           </p>
           <b-button to="/fuer-arbeitgeber" variant="secondary" size="md"
             >Stellenanzeige schalten</b-button
