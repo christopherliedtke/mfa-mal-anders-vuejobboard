@@ -241,6 +241,7 @@
       :title="title"
       desc="Unsere Vision | Kooperationen | Zahlen & Fakten |  Die GründerInnen"
       img=""
+      :script="snippet"
     />
   </div>
 </template>
