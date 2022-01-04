@@ -8,6 +8,7 @@ const jwt = require("jsonwebtoken");
 const Handlebars = require("handlebars");
 const cryptoRandomString = require("crypto-random-string");
 const emailService = require("../../../utils/nodemailer");
+const mg = require("../../../utils/mailgunMailer");
 const { hash, compare } = require("../../../utils/bcrypt");
 const {
   UserInputError,
@@ -416,7 +417,8 @@ const UserResolvers = {
           html: html,
         };
 
-        const emailSent = await emailService.sendMail(emailData);
+        // const emailSent = await emailService.sendMail(emailData);
+        const emailSent = await mg.messages().send(emailData);
         console.info("sendMail() for user activation email: ", user, emailSent);
       } catch (err) {
         console.error("Error on sending account activation email: ", user, err);

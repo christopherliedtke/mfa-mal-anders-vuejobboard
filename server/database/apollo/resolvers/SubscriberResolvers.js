@@ -9,7 +9,7 @@ const errorMsg = require("../../../config/errorMsg.json");
 const sanitizeHtml = require("sanitize-html");
 const config = require("../../../config/config");
 const Handlebars = require("handlebars");
-const emailService = require("../../../utils/nodemailer");
+// const emailService = require("../../../utils/nodemailer");
 const mg = require("../../../utils/mailgunMailer");
 const { Subscriber } = require("../../models/subscriber");
 

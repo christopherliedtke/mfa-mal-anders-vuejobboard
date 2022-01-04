@@ -86,7 +86,9 @@
       </template>
       <template #cell(amount)="row"> {{ row.value / 100 }}€ </template>
       <template #cell(fee)="row"> {{ row.value / 100 }}€ </template>
-      <template #cell(taxes)="row"> {{ row.value / 100 }}€ </template>
+      <template #cell(taxes)="row">
+        {{ (row.item.amount * (row.item.taxRate || 0)) / 100 }}€
+      </template>
       <template #cell(user)="row">
         <div v-if="row.value">
           {{
@@ -379,6 +381,11 @@
             sortable: true
           },
           {
+            key: "taxRate",
+            label: "TaxRate",
+            sortable: false
+          },
+          {
             key: "taxes",
             label: "Taxes",
             sortable: true
@@ -438,6 +445,7 @@
                     paymentType
                     pricingPackage
                     amount
+                    taxRate
                     fee
                     taxes
                     job {
@@ -497,6 +505,7 @@
                 paymentType
                 pricingPackage
                 amount
+                taxRate
                 fee
                 taxes
                 job {
