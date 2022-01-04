@@ -1078,7 +1078,7 @@
           this.$route.query.state;
 
         if (location) {
-          canonical += "/ort/" + location.toLowerCase();
+          canonical += "/ort/" + textToSlug(location);
         }
 
         if (this.$route.query.berufsgruppe) {
