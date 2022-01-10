@@ -44,6 +44,8 @@ const PaymentResolvers = {
         throw new AuthenticationError("Missing permission!");
       }
 
+      console.log("args: ", args);
+
       let addObj = { ...args };
 
       if (addObj.status && !addObj.paymentExpiresAt) {

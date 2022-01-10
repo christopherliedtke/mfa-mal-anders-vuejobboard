@@ -76,6 +76,7 @@
         v-model="payment.amount"
         type="number"
         min="0"
+        number
         placeholder="Amount eingeben..."
       />
       <label for="fee">Fee [Cents]</label>
@@ -84,6 +85,7 @@
         v-model="payment.fee"
         type="number"
         min="0"
+        number
         placeholder="Fee eingeben..."
       />
       <label for="tax-rate">Tax Rate</label>
@@ -97,6 +99,7 @@
         v-model="taxes"
         type="number"
         min="0"
+        number
         placeholder="Taxes eingeben..."
         trim
         readonly
@@ -413,8 +416,7 @@
                   pricingPackage: "${this.payment.pricingPackage}"
                   amount: ${this.payment.amount}
                   fee: ${this.payment.fee}
-                  taxes: ${this.taxes}
-                  taxeRate: ${this.payment.taxeRate}
+                  taxRate: ${this.payment.taxRate}
                   billingEmail: "${this.payment.billingEmail}"
                   billingPhone: "${this.payment.billingPhone}"
                   billingCompany: "${this.payment.billingCompany}"
