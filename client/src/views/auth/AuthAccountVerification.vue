@@ -7,8 +7,10 @@
     <p>
       Bitte
       <strong
-        >überprüfen Sie in den nächsten Minuten Ihr E-Mail Postfach</strong
-      >
+        >überprüfen Sie in den nächsten Minuten Ihr E-Mail Postfach
+      </strong>
+      für
+      <em class="text-secondary bold">{{ $store.state.auth.user.email }}</em>
       und bestätigen Sie Ihre E-Mail Adresse über den Aktivierungslink.
       <strong>
         Bitte überprüfen Sie gegebenenfalls auch Ihren Spam Ordner.
