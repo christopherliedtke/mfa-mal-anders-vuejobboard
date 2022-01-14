@@ -45,12 +45,12 @@ module.exports = {
         },
         {
           html:
-            'Integration <span class="text-secondary bold">Logo & Titelbild</span> in Stellenanzeige für individuelles Branding'
+            'Integration <span class="text-secondary bold">Logo & Titelbild</span> in Stellenanzeige auf <span class="italic text-primary">MFA mal anders</span> für individuelles Branding'
         },
-        {
-          html:
-            'Veröffentlichung im <span class="text-secondary bold">MFA mal anders</span> Stellenportal'
-        },
+        // {
+        //   html:
+        //     'Veröffentlichung im <span class="text-secondary bold">MFA mal anders</span> Stellenportal'
+        // },
         {
           html:
             'Listung bei <span class="text-secondary bold">Google Jobs</span> &ndash; Ihre Anzeige in den organischen Suchergebnissen von Google'
@@ -58,6 +58,10 @@ module.exports = {
         {
           html:
             'Einmaliger Versand Ihrer Stellenanzeige in unserem <span class="text-secondary bold" >wöchentlichen Job-Newsletter</span>'
+        },
+        {
+          html:
+            'Option auf Kontaktaufnahme zu qualifiziertem Fachpersonal aus unseren <a href="/stellengesuche" target="_blank" class="text-secondary bold" >Stellengesuchen</a>'
         }
       ],
       primary: "primary",

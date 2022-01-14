@@ -66,15 +66,20 @@ router.post("/job-published", verifyToken, isAdmin, async (req, res) => {
                   Gern können Sie diesen Link nutzen, um beispielsweise auf Ihrer Webseite oder über Ihre Social Media Kanäle auf die offene Stelle aufmerksam zu machen. Unserer Erfahrung nach ist dies eine weitere hilfreiche Möglichkeit, potentielle BewerberInnen auf sich aufmerksam zu machen. 
                 </p>
                 <p>
-                    Bitte beachten Sie, dass Ihre Stellenanzeige nur solange abrufbar ist, wie auch Ihre Bewerbungsfrist nicht überschritten ist. Über Ihre Zugangsdaten haben Sie weiterhin Zugriff auf Ihre Stellenanzeigen und können diese jederzeit anpassen.
+                  Mit Ihrer aktiven Stellenanzeige haben Sie zusätzlich die Möglichkeit, auf <a href="${
+                    process.env.WEBSITE_URL
+                  }/stellengesuche" target="_blank"><strong>Stellengesuche</strong></a> über unser Portal zu antworten und qualifiziertes Fachpersonal direkt anzusprechen. Das Angebot für Stellensuchende befindet sich aktuell noch im Aufbau, wird jedoch stetig erweitert.
                 </p>
                 <p>
-                    Sollten Sie noch Fragen, Anregungen oder weiteren Beratungsbedarf haben, melden Sie sich gern bei uns über unser <a href="${
-                      process.env.WEBSITE_URL
-                    }/kontakt">Kontaktformular</a> oder direkt per Nachricht an <a href="mailto:kontakt@mfa-mal-anders.de">kontakt@mfa-mal-anders.de</a>.
+                  Bitte beachten Sie, dass Ihre Stellenanzeige nur solange abrufbar ist, wie auch Ihre Bewerbungsfrist nicht überschritten ist. Über Ihre Zugangsdaten haben Sie weiterhin Zugriff auf Ihre Stellenanzeigen und können diese jederzeit anpassen.
                 </p>
                 <p>
-                    Wir wünschen Ihnen viele qualifizierte BewerberInnen und verbleiben mit freundlichen Grüßen
+                  Sollten Sie noch Fragen, Anregungen oder weiteren Beratungsbedarf haben, melden Sie sich gern bei uns über unser <a href="${
+                    process.env.WEBSITE_URL
+                  }/kontakt">Kontaktformular</a> oder direkt per Nachricht an <a href="mailto:kontakt@mfa-mal-anders.de">kontakt@mfa-mal-anders.de</a>.
+                </p>
+                <p>
+                  Wir wünschen Ihnen viele qualifizierte BewerberInnen und verbleiben mit freundlichen Grüßen
                 </p>
                 <p>
                     Kristin Maurach

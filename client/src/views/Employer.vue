@@ -379,7 +379,8 @@
             >Stellengesuche</router-link
           >
           zu antworten und Kontakt zu potentiellen neuen MitarbeiterInnen
-          aufzunehmen.
+          aufzunehmen. Die Stellengesuche befinden sich aktuell im Aufbau und
+          werden stetig erweitert.
         </p>
         <p>
           <strong
