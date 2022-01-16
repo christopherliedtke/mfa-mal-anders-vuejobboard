@@ -38,13 +38,15 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
         };
       })
       .concat(
-        jobAlerts.map(jobAlert => {
-          return {
-            role: "jobAlert",
-            email: jobAlert.user.email,
-            state: jobAlert.state,
-          };
-        })
+        jobAlerts
+          .filter(alert => alert.user)
+          .map(jobAlert => {
+            return {
+              role: "jobAlert",
+              email: jobAlert.user.email,
+              state: jobAlert.state,
+            };
+          })
       );
 
     // collect jobs to send w newsletter
