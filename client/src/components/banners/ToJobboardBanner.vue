@@ -1,7 +1,7 @@
 <template>
-  <aside class="card text-center overflow-hidden shadow1 p-3">
-    <div class="row no-gutters">
-      <div class="col-md-3">
+  <aside class="card overflow-hidden shadow1">
+    <div class="row no-gutters p-3">
+      <div v-if="!compact" class="col-md-3">
         <b-img-lazy
           class="p-4 w-100 h-100"
           src="@/assets/img/search_engine__monochromatic.svg"
@@ -12,19 +12,20 @@
           fluid
         ></b-img-lazy>
       </div>
-      <div class="col-md-9">
-        <div
-          class="card-body d-flex flex-column justify-content-center align-items-center h-100 p-4"
-        >
-          <h3 class="h1 bold">{{ header }}</h3>
-          <p>
-            Bist du auf der Suche nach einer
-            <strong class="text-primary">neuen Herausforderung?</strong> <br />
-            Du willst Dich
-            <strong class="text-primary">beruflich weiterentwickeln?</strong>
-            <br />
-            Finde bei uns Deinen nächsten Job!
-          </p>
+      <div class="col">
+        <div class="card-body p-3 p-lg-4">
+          <h3 :class="['bold', compact ? 'h2' : 'h1']">{{ header }}</h3>
+          <slot name="desc">
+            <p>
+              Bist du auf der Suche nach einer
+              <strong class="text-primary">neuen Herausforderung?</strong>
+              <br />
+              Du willst Dich
+              <strong class="text-primary">beruflich weiterentwickeln?</strong>
+              <br />
+              Finde bei uns Deinen nächsten Job!
+            </p>
+          </slot>
           <b-button to="/stellenangebote" variant="secondary"
             >Zu den Stellenangeboten</b-button
           >
@@ -41,6 +42,10 @@
       header: {
         type: String,
         default: "Der richtige Job für Dich!"
+      },
+      compact: {
+        type: Boolean,
+        default: false
       }
     }
   };
@@ -57,8 +62,8 @@
     background-size: cover;
     background-blend-mode: lighten;
 
-    .card-body {
-      background-color: #fffcfd77;
+    .row {
+      background-color: #fffcfd66;
     }
   }
 </style>

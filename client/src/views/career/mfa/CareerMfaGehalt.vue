@@ -221,6 +221,24 @@
         </div>
         <div class="col">
           <Gehaltsrechner id="gehaltsrechner" class="my-4" />
+          <ToJobboardBanner
+            header="Jetzt passenden Job zu Deinem Gehaltswunsch finden!"
+            :compact="true"
+            class="my-4 mx-auto"
+          >
+            <template #desc
+              ><p>
+                Bist Du unzufrieden mit Deinem aktuellen Gehalt?
+                <br />
+                Du willst Dich
+                <strong class="text-primary"
+                  >beruflich weiterentwickeln?</strong
+                >
+                <br />
+                Finde in unserer Stellenbörse Deinen nächsten Job!
+              </p></template
+            >
+          </ToJobboardBanner>
           <GehaltsverhandlungBanner class="mb-4" />
           <FacebookBtn
             class="mb-4 mr-1"
