@@ -38,6 +38,15 @@
         class="bg-light-shade border-radius1 p-3 mt-3"
       >
         <h6>ADMIN</h6>
+        <label for="user-id">User ID</label>
+        <b-form-input
+          id="user-id"
+          v-model="job.userId._id"
+          type="text"
+          placeholder="User ID eingeben..."
+          trim
+          required
+        />
         <label for="published-at">publishedAt</label>
         <BFormDatepicker
           v-model="publishedAt"
@@ -710,6 +719,7 @@
       return {
         job: {
           _id: this.$route.params.jobId,
+          userId: { _id: undefined },
           publishedAt: 0,
           paidExpiresAt: 0,
           refreshFrequency: 0,
@@ -829,6 +839,9 @@
                 query {
                   ${this.jobQuery}(_id: "${id}") {
                     _id
+                    userId {
+                      _id
+                    }
                     publishedAt
                     paidExpiresAt
                     refreshFrequency

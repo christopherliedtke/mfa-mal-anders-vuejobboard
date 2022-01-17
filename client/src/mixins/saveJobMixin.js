@@ -3,56 +3,56 @@ export const saveJobMixin = {
     async saveJob(mutationType, job, redirect = false) {
       try {
         const jobQuery = `
-                        mutation {
-                            ${mutationType}(
-                                ${
-                                  mutationType === "updateJob" ||
-                                  mutationType === "adminUpdateJob"
-                                    ? `_id: "${job._id}"`
-                                    : ""
-                                } 
-                                title: "${job.title}"
-                                publishedAt: ${job.publishedAt}
-                                paidExpiresAt: ${job.paidExpiresAt}
-                                refreshFrequency: ${job.refreshFrequency}
-                                description: "${job.description.replace(
-                                  /"/g,
-                                  '\\"'
-                                )}"
-                                profession: "${job.profession}"
-                                employmentType: "${job.employmentType}"
-                                applicationDeadline: ${
-                                  job.applicationDeadline
-                                    ? new Date(
-                                        job.applicationDeadline
-                                      ).setHours(23, 59, 59, 999)
-                                    : null
-                                }
-                                simpleApplication: ${job.simpleApplication}
-                                specialization: "${job.specialization}"
-                                extJobUrl: "${
-                                  !/^https?:\/\//i.test(job.extJobUrl) &&
-                                  job.extJobUrl
-                                    ? "https://" + job.extJobUrl
-                                    : job.extJobUrl
-                                }"
-                                applicationEmail: "${job.applicationEmail}"
-                                imageUrl: "${job.imageUrl}"
-                                salaryMin: "${job.salaryMin}"
-                                salaryMax: "${job.salaryMax}"
-                                contactGender: "${job.contactGender}"
-                                contactTitle: "${job.contactTitle}"
-                                contactFirstName: "${job.contactFirstName}"
-                                contactLastName: "${job.contactLastName}"
-                                contactPosition: "${job.contactPosition}"
-                                contactEmail: "${job.contactEmail}"
-                                contactPhone: "${job.contactPhone}"
-                                company: "${job.company._id}"
-                            ) {
-                                _id
-                            }
-                        }
-                    `;
+          mutation {
+            ${mutationType}(
+              ${
+                mutationType === "updateJob" ||
+                mutationType === "adminUpdateJob"
+                  ? `_id: "${job._id}"`
+                  : ""
+              }
+              ${
+                mutationType === "adminAddJob" ||
+                mutationType === "adminUpdateJob"
+                  ? `userId: "${job.userId._id}"`
+                  : ""
+              }
+              title: "${job.title}"
+              publishedAt: ${job.publishedAt}
+              paidExpiresAt: ${job.paidExpiresAt}
+              refreshFrequency: ${job.refreshFrequency}
+              description: "${job.description.replace(/"/g, '\\"')}"
+              profession: "${job.profession}"
+              employmentType: "${job.employmentType}"
+              applicationDeadline: ${
+                job.applicationDeadline
+                  ? new Date(job.applicationDeadline).setHours(23, 59, 59, 999)
+                  : null
+              }
+              simpleApplication: ${job.simpleApplication}
+              specialization: "${job.specialization}"
+              extJobUrl: "${
+                !/^https?:\/\//i.test(job.extJobUrl) && job.extJobUrl
+                  ? "https://" + job.extJobUrl
+                  : job.extJobUrl
+              }"
+              applicationEmail: "${job.applicationEmail}"
+              imageUrl: "${job.imageUrl}"
+              salaryMin: "${job.salaryMin}"
+              salaryMax: "${job.salaryMax}"
+              contactGender: "${job.contactGender}"
+              contactTitle: "${job.contactTitle}"
+              contactFirstName: "${job.contactFirstName}"
+              contactLastName: "${job.contactLastName}"
+              contactPosition: "${job.contactPosition}"
+              contactEmail: "${job.contactEmail}"
+              contactPhone: "${job.contactPhone}"
+              company: "${job.company._id}"
+            ) {
+              _id
+            }
+          }
+      `;
 
         const jobQueryResponse = await this.$axios.post(`/graphql`, {
           query: jobQuery

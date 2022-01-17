@@ -135,7 +135,11 @@
           <div>
             <b-button
               class="mr-2 mb-2 mb-md-0"
-              :to="`/user/jobs/edit/${job._id}`"
+              :to="
+                `/${
+                  $store.state.auth.user.isAdmin ? 'admin' : 'user'
+                }/jobs/edit/${job._id}`
+              "
               variant="primary"
               size="sm"
               ><svg

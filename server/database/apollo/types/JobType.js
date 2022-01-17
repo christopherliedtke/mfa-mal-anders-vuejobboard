@@ -79,6 +79,7 @@ const JobType = gql`
     ): Job
     deleteJob(_id: ID!): Job
     adminAddJob(
+      userId: ID
       status: String
       title: String
       description: String
@@ -108,6 +109,7 @@ const JobType = gql`
     ): Job
     adminUpdateJob(
       _id: ID!
+      userId: ID
       status: String
       title: String
       description: String

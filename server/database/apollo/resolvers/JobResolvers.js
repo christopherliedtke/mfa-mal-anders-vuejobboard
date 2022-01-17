@@ -238,7 +238,7 @@ const JobResolvers = {
 
       let addObj = {
         ...args,
-        userId: context.user._id,
+        userId: args.userId || context.user._id,
         slug: await getJobSlug(args),
       };
 

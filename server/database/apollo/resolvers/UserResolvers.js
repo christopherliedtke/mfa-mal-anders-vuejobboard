@@ -487,6 +487,8 @@ const UserResolvers = {
         throw new ApolloError(errorMsg.general);
       }
 
+      console.info("deletedUser: ", deletedUser);
+
       return deletedUser;
     },
     adminUserActivationConfirmation: async (root, args, context) => {
