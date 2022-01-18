@@ -10,7 +10,6 @@ const { JobSeek } = require("../database/models/jobSeek");
 
 async function createSitemap() {
   try {
-    // console.log("createSitemap() running...");
     const head = writeHead();
     const foot = writeFoot();
 
@@ -21,32 +20,20 @@ async function createSitemap() {
       .map(elem => writeUrl(process.env.WEBSITE_URL + elem, lastBuild))
       .join(" ");
 
-    const articles = await getArticles();
-    const trainings = await getTrainings();
-    const professions = await getProfessions();
-    const jobs = await getJobs();
-    const jobboardStates = await getJobboardStates();
-    const jobboardLocations = await getJobboardLocations();
-    const jobboardProfessions = await getJobboardProfessions();
-    const companies = await getCompanies();
-    const trainingEvents = await getTrainingEvents();
-    const jobSeeks = await getJobSeeks();
+    const dynamicPages = await Promise.all([
+      getArticles(),
+      getTrainings(),
+      getProfessions(),
+      getJobs(),
+      getJobboardStates(),
+      getJobboardLocations(),
+      getJobboardProfessions(),
+      getCompanies(),
+      getTrainingEvents(),
+      getJobSeeks(),
+    ]);
 
-    const sitemap =
-      head +
-      root +
-      pages +
-      articles +
-      trainings +
-      professions +
-      jobs +
-      jobboardStates +
-      jobboardLocations +
-      jobboardProfessions +
-      companies +
-      trainingEvents +
-      jobSeeks +
-      foot;
+    const sitemap = head + root + pages + dynamicPages.join("") + foot;
 
     return sitemap;
   } catch (error) {
