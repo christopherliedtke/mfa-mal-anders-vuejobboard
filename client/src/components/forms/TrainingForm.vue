@@ -43,15 +43,6 @@
           name="published"
           size="sm"
         ></b-form-radio-group>
-        <label for="paid">paid</label>
-        <b-form-radio-group
-          id="paid"
-          v-model="training.paid"
-          class="mb-2"
-          :options="[true, false]"
-          name="paid"
-          size="sm"
-        ></b-form-radio-group>
         <label for="pending">pending</label>
         <b-form-radio-group
           id="pending"
@@ -59,6 +50,15 @@
           class="mb-2"
           :options="[true, false]"
           name="pending"
+          size="sm"
+        ></b-form-radio-group>
+        <label for="is-sponsored">isSponsored</label>
+        <b-form-radio-group
+          id="is-sponsored"
+          v-model="training.isSponsored"
+          class="mb-2"
+          :options="[true, false]"
+          name="is-sponsored"
           size="sm"
         ></b-form-radio-group>
       </b-form-group>
@@ -486,7 +486,7 @@
           extUrl: "",
           published: this.$store.state.auth.user.isAdmin ? true : false,
           pending: false,
-          paid: this.$store.state.auth.user.isAdmin ? true : false
+          isSponsored: this.$store.state.auth.user.isAdmin ? true : false
         },
         validated: null,
         success: false,
@@ -582,7 +582,7 @@
                     extUrl
                     published
                     pending
-                    paid
+                    isSponsored
                   }
                 }
               `
@@ -659,7 +659,7 @@
                   }"
                   published: ${this.training.published}
                   pending: ${this.training.pending}
-                  paid: ${this.training.paid}
+                  isSponsored: ${this.training.isSponsored}
                 ) {
                   _id
                   title
@@ -681,7 +681,7 @@
                   extUrl
                   published
                   pending
-                  paid
+                  isSponsored
                 }
               }
             `
@@ -741,11 +741,3 @@
     }
   };
 </script>
-
-//
-<style lang="scss" scoped>
-  //   label[required]::after {
-  //     content: " *";
-  //   }
-  //
-</style>

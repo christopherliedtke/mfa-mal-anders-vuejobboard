@@ -19,6 +19,7 @@ const TrainingResolvers = {
     publicTrainings: async (root, args) => {
       const filter = {
         published: true,
+        pending: false,
       };
 
       if (args.search) {
@@ -66,9 +67,10 @@ const TrainingResolvers = {
 
       const trainings = await Training.find(filter)
         .sort({
-          // startAt: "asc",
-          startAnytime: "desc",
-          updatedAt: "desc",
+          isSponsored: -1,
+          title: 1,
+          // startAnytime: "desc",
+          // updatedAt: "desc",
         })
         .skip(args.skip ? args.skip : 0)
         .limit(args.limit ? args.limit : 10);
@@ -243,6 +245,7 @@ function cleanUpTraining(training, user) {
     // delete training.published;
     delete training.paid;
     delete training.pending;
+    delete training.isSponsored;
   }
 
   for (const key in training) {

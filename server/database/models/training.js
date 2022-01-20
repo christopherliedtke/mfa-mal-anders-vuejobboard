@@ -85,6 +85,10 @@ const TrainingSchema = new Schema(
     },
     paid: {
       type: Boolean,
+      default: true,
+    },
+    isSponsored: {
+      type: Boolean,
       default: false,
     },
     slug: {

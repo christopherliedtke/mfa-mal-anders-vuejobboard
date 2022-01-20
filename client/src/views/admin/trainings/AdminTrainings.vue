@@ -132,7 +132,7 @@
             >
           </BDropdown>
 
-          <BDropdown class="mr-2" size="sm" left variant="secondary">
+          <!-- <BDropdown class="mr-2" size="sm" left variant="secondary">
             <template #button-content>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -159,7 +159,7 @@
               @click.prevent="updateTraining(row.item._id, 'paid: false')"
               >unpaid</BDropdownItem
             >
-          </BDropdown>
+          </BDropdown> -->
 
           <BDropdown class="mr-2" size="sm" left variant="secondary">
             <template #button-content>
@@ -318,8 +318,8 @@
             sortable: true
           },
           {
-            key: "paid",
-            label: "Paid",
+            key: "isSponsored",
+            label: "IsSponsored",
             sortable: true
           },
           {
@@ -389,7 +389,7 @@
                     }
                     title
                     published
-                    paid
+                    isSponsored
                     pending
                     startAt
                     startAnytime
@@ -442,7 +442,7 @@
                   }
                   title
                   published
-                  paid
+                  isSponsored
                   pending
                   startAt
                   startAnytime
@@ -564,7 +564,7 @@
         if (!item.published || item.pending) {
           return "table-warning";
         }
-        if (item.published && item.paid) {
+        if (item.published) {
           return "table-success";
         }
       }

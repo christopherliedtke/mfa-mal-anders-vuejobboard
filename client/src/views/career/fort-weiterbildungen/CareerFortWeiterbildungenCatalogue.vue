@@ -328,6 +328,7 @@
                           cost
                           extUrl
                           slug
+                          isSponsored
                         }
                     }
                   `
