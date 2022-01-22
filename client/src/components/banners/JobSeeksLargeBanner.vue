@@ -63,7 +63,6 @@
           url("~@/assets/img/LinkedIn_Monochromatic.svg") center center
             no-repeat;
       }
-      //
     }
   }
 </style>

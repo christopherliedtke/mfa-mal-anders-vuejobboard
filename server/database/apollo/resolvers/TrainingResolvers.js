@@ -12,6 +12,7 @@ const TrainingResolvers = {
         _id: args._id,
         // $or: [{ startAt: { $gte: new Date() } }, { startAnytime: true }],
         published: true,
+        pending: false,
       });
 
       return training;

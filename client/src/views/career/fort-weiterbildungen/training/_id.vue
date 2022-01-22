@@ -6,11 +6,15 @@
     </div>
 
     <div class="container py-4 py-lg-5">
-      <Training v-if="training" :training="training" />
-      <span v-else class="h5"
-        >Fortbildung konnte nicht gefunden/geladen werden.</span
-      >
-      <ToJobboardBanner v-if="training" class="mt-5" />
+      <div v-if="error">
+        <span class="h5"
+          >Fortbildung konnte nicht gefunden/geladen werden.</span
+        >
+      </div>
+      <Training v-else-if="training" :training="training" />
+      <TrainingCatalogueEventPlaceholder v-else />
+
+      <ToJobboardBanner class="mt-5" />
 
       <div class="mt-5">
         <h2>
@@ -43,18 +47,20 @@
 
 <script>
   import Training from "@/components/ui/Training.vue";
+  import TrainingCatalogueEventPlaceholder from "@/components/ui/TrainingCatalogueEventPlaceholder.vue";
   import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
   import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
   export default {
     name: "CareerFortWeiterbildungCatalogueTraining",
     components: {
       Training,
+      TrainingCatalogueEventPlaceholder,
       ToJobboardBanner,
       RandomTrainingsContainer
     },
     data() {
       return {
-        training: {},
+        training: null,
         error: false,
         breadcrumbs: [
           { text: "Home", to: "/" },
@@ -151,7 +157,6 @@
             throw new Error("Fortbildungen konnten nicht geladen werden!");
           }
 
-          //   this.trainings = [];
           this.training = training.data.data.publicTraining;
         } catch (err) {
           this.training = null;
