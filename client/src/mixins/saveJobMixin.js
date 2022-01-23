@@ -12,8 +12,9 @@ export const saveJobMixin = {
                   : ""
               }
               ${
-                mutationType === "adminAddJob" ||
-                mutationType === "adminUpdateJob"
+                (mutationType === "adminAddJob" ||
+                  mutationType === "adminUpdateJob") &&
+                job.userId._id
                   ? `userId: "${job.userId._id}"`
                   : ""
               }
