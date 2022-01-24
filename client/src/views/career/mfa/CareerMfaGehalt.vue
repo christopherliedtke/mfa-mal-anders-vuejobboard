@@ -31,9 +31,9 @@
       <p>
         Sobald es um das Thema Gehalt geht, fehlt uns als MFA bzw. ArzthelferIn
         oft das Gespür für eine konkrete Zahl. Ein typisches Beispiel, das du
-        bestimmt auch kennst: Du hast dich gerade auf einen Job beworben. Der
-        zukünftige Chef fragt dich nach deinen Gehaltsvorstellungen. Natürlich
-        willst du nicht zu dreist sein und das potenzielle Jobangebot durch zu
+        bestimmt auch kennst: Du hast Dich gerade auf einen Job beworben. Der
+        zukünftige Chef fragt Dich nach deinen Gehaltsvorstellungen. Natürlich
+        willst Du nicht zu dreist sein und das potenzielle Jobangebot durch zu
         hohe Gehaltswünsche in Gefahr bringen. Deshalb gehen viele Medizinische
         Fachangestellte bei der
         <b-link
@@ -129,16 +129,16 @@
         geht, finde ich das einfach nur sehr schade und traurig.
       </p>
       <p>
-        Damit dir das nicht passiert, bekommst du in diesem Artikel
+        Damit Dir das nicht passiert, bekommst Du in diesem Artikel
         Informationen über Gehalt, Tarifverträge und Tätigkeitsgruppen für
-        Medizinische Fachangestellte. Mit diesem Wissen, kannst du deinen
+        Medizinische Fachangestellte. Mit diesem Wissen, kannst Du deinen
         eigenen Marktwert einordnen und selbstbewusst für einen
         leistungsorientierten und fairen Lohn einstehen. In unserem Artikel über
         <b-link
           to="/blog/artikel/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
           >Gehaltsverhandlungen</b-link
         >
-        geben wir dir zusätzlich 9 Tipps, wie du dein Wunschgehalt erzielst.
+        geben wir Dir zusätzlich 9 Tipps, wie Du dein Wunschgehalt erzielst.
       </p>
       <p>
         Vorweg klären wir zunächst ein paar Begrifflichkeiten und wie die
@@ -183,17 +183,17 @@
           <p>
             Neben dem offiziellen Tarifvertrag existieren zahlreiche
             Gehaltstarifverträge von privaten Unternehmen, Krankenhäusern, dem
-            öffentlichen Dienst (z.B. wenn du bei der Kassenärztlichen
+            öffentlichen Dienst (z.B. wenn Du bei der Kassenärztlichen
             Vereinigung arbeitest) und kirchlichen Trägern (wie der Caritas, der
             Diakonie oder der Johanniter).
           </p>
           <p>
             Es kommt im privaten Bereich oftmals zu einer außertariflichen
-            Bezahlung. Das muss nicht unbedingt negativ für dich ausfallen.
+            Bezahlung. Das muss nicht unbedingt negativ für Dich ausfallen.
             Viele MFA werden dadurch übertariflich bezahlt.
           </p>
           <p>
-            Wenn dein Chef kein Mitglied im AAA ist, du aber darauf bestehst,
+            Wenn dein Chef kein Mitglied im AAA ist, Du aber darauf bestehst,
             dass dein Gehalt nach Tarifvertrag bezahlt wird, kannst du
             alternativ mit deinem Arbeitgeber vereinbaren, dass er sich
             freiwillig daran hält. Hier ist es ratsam, eine entsprechende
@@ -205,7 +205,7 @@
             Vorteil: er wird regelmäßig neu verhandelt. Dein Verdienst wird
             somit beinahe jährlich immer etwas angepasst und erhöht. Ist dein
             Chef verpflichtet nach Tarifvertrag zu zahlen oder hält sich
-            freiwillig daran, musst du also selbst keine
+            freiwillig daran, musst Du also selbst keine
             <b-link
               to="/blog/artikel/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
               >Gehaltsverhandlungen</b-link
@@ -214,7 +214,7 @@
           </p>
           <p>
             Daneben bietet der Gehaltstarifvertrag für Medizinische
-            Fachangestellte dir vor allem eine gute Orientierung, um deinen
+            Fachangestellte Dir vor allem eine gute Orientierung, um deinen
             Marktwert einzuschätzen – bezüglich Qualifikation und Erfahrung.
           </p>
           <TrainingCatalogueSmallBanner class="my-2" />
@@ -520,7 +520,7 @@
       <p>
         Ein wichtiger Indikator für die Höhe des Verdienstes von MFA sind
         Erfahrung und Expertise, die man sich im Laufe seines Berufslebens
-        aneignet. Je länger du im Beruf bist, desto mehr kannst du
+        aneignet. Je länger Du im Beruf bist, desto mehr kannst du
         logischerweise an Gehalt verlangen. Auch in den Tarifverhandlungen
         werden Gehälter nach Berufsjahren und Tätigkeitsgruppen vereinbart.
       </p>
@@ -549,7 +549,7 @@
         Anrechnung der Berufsjahre für MFA bei berufsnahen Tätigkeiten
       </h3>
       <p>
-        Bist du vor oder nach deiner Ausbildung einer berufsnahen Arbeit
+        Bist Du vor oder nach deiner Ausbildung einer berufsnahen Arbeit
         nachgegangen (z.B. in einem Labor oder im Krankenhaus), werden die
         Zeiten zur Hälfte angerechnet. Du musst allerdings deine Prüfung zur
         Medizinischen Fachangestellten vor der Ärztekammer bestanden haben.
@@ -568,9 +568,9 @@
         Mutterschutz, Elternzeit und Erziehungsurlaub
       </h3>
       <p>
-        Unterbrichst du die Arbeit für Mutterschutz, Elternzeit oder
+        Unterbrichst Du die Arbeit für Mutterschutz, Elternzeit oder
         Erziehungsurlaub, können diese Zeiten nur angerechnet werden, wenn du
-        dich in einem aktiven Arbeitsverhältnis befindest.
+        Dich in einem aktiven Arbeitsverhältnis befindest.
       </p>
       <p>
         Zeiten für Mutterschutz werden dann voll bei den Berufsjahren
@@ -578,7 +578,7 @@
       </p>
       <p>
         Zeiten für Erziehungsurlaub bzw. Elternzeit werden nur zur Hälfte zu den
-        Berufsjahren gezählt. Arbeitest du während der Elternzeit in Teilzeit
+        Berufsjahren gezählt. Arbeitest Du während der Elternzeit in Teilzeit
         als ArzthelferIn, werden die Zeiten jedoch voll dazu gerechnet.
       </p>
       <p>Zwei Beispiele zum besseren Verständnis.</p>
@@ -626,7 +626,7 @@
         vorhandene Kenntnisse und Qualifikationen in Tätigkeitsgruppen
         eingeordnet und entsprechend im Gehalt widergespiegelt. Die Tätigkeiten
         werden nach Grad der Selbstständigkeit, Anzahl der Fortbildungsstunden,
-        leitende Tätigkeiten und Verantwortung eingeteilt. Dies gibt dir eine
+        leitende Tätigkeiten und Verantwortung eingeteilt. Dies gibt Dir eine
         zusätzliche Orientierung, um dein Gehaltsniveau einschätzen zu können.
         Hier steigern vor allem abgeschlossene
         <b-link to="/karriere/fort-und-weiterbildung"
@@ -1334,13 +1334,13 @@
       </p>
       <p>
         Wenn das angebotene Gehalt auf den ersten Blick nicht besonders reizvoll
-        ist, erkundige dich nach zusätzlich möglichen Benefits. Das können
+        ist, erkundige Dich nach zusätzlich möglichen Benefits. Das können
         monetäre oder nicht monetäre Sonderleistungen sein. Das
         (unzufriedenstellende) Gehalt wird dadurch kompensiert und der Job bzw.
         den Arbeitgeber attraktiver.
       </p>
       <p>
-        Inwiefern sich ein Benefit für dich wirklich lohnt, entscheidet oft die
+        Inwiefern sich ein Benefit für Dich wirklich lohnt, entscheidet oft die
         individuelle Lebenslage. Prüfe deshalb die angebotenen Zusatzleistungen
         eines Arbeitgebers und gehe zur Not auch in die
         <b-link
@@ -1378,7 +1378,7 @@
         Unzufriedenheit im Job. Denn noch einmal: Gehalt ist nicht alles. Es
         muss aber ein gewisses Level haben mit dem man seinen Lebensunterhalt
         ohne Schwierigkeiten finanzieren kann. Auf der anderen Seite macht viel
-        Geld auch nicht glücklich, wenn dir die Aufgaben, der Chef oder das Team
+        Geld auch nicht glücklich, wenn Dir die Aufgaben, der Chef oder das Team
         Bauchschmerzen bereiten und jeden Arbeitstag zur Zumutung werden lassen.
       </p>
       <div class="checklist border-radius1 shadow1 my-5">
@@ -1438,7 +1438,7 @@
                 />
               </svg>
             </span>
-            Tätigkeiten aufschreiben, die du ausführst oder im neuen Job
+            Tätigkeiten aufschreiben, die Du ausführst oder im neuen Job
             ausführen sollst
           </li>
           <li>
@@ -1523,10 +1523,10 @@
       </div>
 
       <p>
-        Ich hoffe, dir mit diesem Artikel ein besseres Gespür für die Berechnung
+        Ich hoffe, Dir mit diesem Artikel ein besseres Gespür für die Berechnung
         deines Gehalts als MFA / ArzthelferIn bei unterschiedlichen Stufen an
         Erfahrungen und Tätigkeitsfelder vermitteln zu können. Mein Appell: Trau
-        dich, selbstbewusst für dein Wissen und deine bisherige berufliche
+        Dich, selbstbewusst für dein Wissen und deine bisherige berufliche
         Erfahrung einzustehen und ein
         <b-link
           to="/blog/artikel/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"

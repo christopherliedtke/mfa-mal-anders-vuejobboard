@@ -23,7 +23,7 @@
       >
         Der Gehaltsrechner gibt Dir eine erste grobe Richtung für Dein zu
         erwartendes Grundgehalt als Medizinische Fachangestellte vor. Wichtige
-        weitere Faktoren sind die tatsächliche Verantwortung, die du übernimmst,
+        weitere Faktoren sind die tatsächliche Verantwortung, die Du übernimmst,
         der Standort (Bundesland etc.), aber beispielsweise auch die Größe der
         Praxis. Du erhältst weitere Informationen zur noch besseren Einschätzung
         im folgenden Text und im Gehaltstarifvertrag des AAA.

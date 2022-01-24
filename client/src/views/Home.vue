@@ -182,13 +182,13 @@
               nicht so recht, was ich dagegen tun kann, wie ich es schaffe, dass
               ich wieder glücklicher im Job werde. Ob mir eine Weiterbildungen
               etwas bringt? Und wenn ja: welche? Mein Gehalt damals war echt
-              nicht viel. Im Anbetracht dessen, was ich an Tätigkeiten
+              nicht viel. In Anbetracht dessen, was ich an Tätigkeiten
               übernommen habe, nicht angemessen.
             </p>
           </div>
           <div class="col">
             <p>
-              Die Gesellschaft und Politik spricht immer nur von katastrophalen
+              Gesellschaft und Politik sprechen immer nur von katastrophalen
               Zuständen in der Pflege, zu wenig Pflegepersonal und unter welchem
               Zeitdruck Ärzte stehen. Der Beruf der MFA & ZFA findet gar keine
               Beachtung. Obwohl unser Job auch nicht immer Zuckerschlecken ist
@@ -280,8 +280,8 @@
             <b-link to="/karriere/fort-und-weiterbildung/ueberblick"
               >Fort- und Weiterbildungen</b-link
             >
-            speziell für ArzthelferInnen (MFA & ZFA) für dich zusammengestellt
-            und erweitern die Auswahl stetig, sodass du dich ein wenig
+            speziell für ArzthelferInnen (MFA & ZFA) für Dich zusammengestellt
+            und erweitern die Auswahl stetig, sodass Du Dich ein wenig
             inspirieren lassen kannst. Schau doch gleich mal rein!
           </p>
           <b-button

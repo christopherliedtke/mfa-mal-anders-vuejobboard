@@ -87,24 +87,24 @@
         </ol>
       </nav>
       <p>
-        In diesem Artikel geben wir dir die Informationen an die Hand, die du
+        In diesem Artikel geben wir Dir die Informationen an die Hand, die du
         benötigst, um DEIN Gehalt anhand von Berufserfahrung und Qualifikationen
         zu berechnen.
       </p>
       <p>
         Zunächst ein paar Informationen und Begrifflichkeiten aus dem
         Tarifvertrag und Tätigkeitsgruppen für Zahnmedizinische Fachangestellte.
-        Mit diesem Wissen, kannst du deinen eigenen Marktwert einordnen und
+        Mit diesem Wissen, kannst Du deinen eigenen Marktwert einordnen und
         selbstbewusst für einen leistungsorientierten und fairen Lohn einstehen.
         In unserem Artikel über
         <b-link
           to="/blog/artikel/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
           >Gehaltsverhandlungen</b-link
         >
-        geben wir dir zusätzlich 9 Tipps, wie du dein Wunschgehalt erzielst.
+        geben wir Dir zusätzlich 9 Tipps, wie Du dein Wunschgehalt erzielst.
       </p>
       <p>
-        Ob du ausreichend verdienst oder zu wenig, kannst du anhand unseres
+        Ob Du ausreichend verdienst oder zu wenig, kannst Du anhand unseres
         Gehaltsrechners für Zahnmedizinische Fachangestellte ganz einfach
         herausfinden.
       </p>
@@ -160,18 +160,18 @@
           <p>
             Neben dem offiziellen Tarifvertrag existieren zahlreiche
             Gehaltstarifverträge von privaten Unternehmen, Zahnkliniken, dem
-            öffentlichen Dienst (z.B. wenn du bei der Kassenzahnärztlichen
+            öffentlichen Dienst (z.B. wenn Du bei der Kassenzahnärztlichen
             Vereinigung arbeitest) und kirchlichen Trägern (wie der Caritas, der
             Diakonie oder der Johanniter).
           </p>
           <p>
             Es kommt im privaten Bereich oftmals zu einer außertariflichen
-            Bezahlung. Das muss nicht unbedingt negativ für dich ausfallen.
+            Bezahlung. Das muss nicht unbedingt negativ für Dich ausfallen.
             Viele Zahnmedizinische Fachangestellte werden dadurch übertariflich
             bezahlt. Letztlich ist das Gehalt immer Verhandlungssache.
           </p>
           <p>
-            Wenn dein Arbeitgeber kein Mitglied im AAZ ist, du aber darauf
+            Wenn dein Arbeitgeber kein Mitglied im AAZ ist, Du aber darauf
             bestehst, dass dein Gehalt nach Tarifvertrag bezahlt wird, kannst du
             alternativ mit deinem Arbeitgeber vereinbaren, dass er sich
             freiwillig daran hält. Hier ist es ratsam, eine entsprechende
@@ -183,7 +183,7 @@
             Vorteil: er wird regelmäßig neu verhandelt. Das Gehalt wird somit
             beinahe jährlich immer etwas angepasst und erhöht. Ist dein Chef
             verpflichtet nach Tarifvertrag zu zahlen oder hält sich freiwillig
-            daran, musst du also selbst keine
+            daran, musst Du also selbst keine
             <b-link
               to="/blog/artikel/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
               >Gehaltsverhandlungen</b-link
@@ -195,7 +195,7 @@
         <div class="col">
           <p>
             Daneben bietet der Gehaltstarifvertrag für Zahnmedizinische
-            Fachangestellte dir vor allem eine gute Orientierung, um deinen
+            Fachangestellte Dir vor allem eine gute Orientierung, um deinen
             Marktwert einzuschätzen – bezüglich Qualifikation und Erfahrung.
           </p>
           <p>
@@ -208,7 +208,7 @@
             Tarifvertrag für ZFA aufgenommen wurde.
           </p>
           <p>
-            Hier findest du den
+            Hier findest Du den
             <b-link
               href="https://www.vmf-online.de/zfa/zfa-tarife"
               target="_blank"
@@ -466,14 +466,14 @@
       <p>
         Ein wichtiger Indikator für die Höhe des Gehalts von ZFA sind Erfahrung
         und Expertise, die man sich im Laufe seines Berufslebens aneignet. Je
-        länger du im Beruf bist, desto mehr kannst du logischerweise an Gehalt
+        länger Du im Beruf bist, desto mehr kannst Du logischerweise an Gehalt
         verlangen. Auch in den Tarifverhandlungen werden Gehälter nach
         Berufsjahren und sogenannten Tätigkeitsgruppen vereinbart. Je mehr
-        Wissen du vor allem durch Fort- und Weiterbildungen anhäufst, desto
+        Wissen Du vor allem durch Fort- und Weiterbildungen anhäufst, desto
         höher die Tätigkeitsgruppe.
       </p>
       <h3 class="h4 bold">
-        So berechnest du deine Berufsjahre:
+        So berechnest Du deine Berufsjahre:
       </h3>
       <p>
         Die Anrechnung deiner Berufsjahre startet ab dem 1. des Monats, in dem
@@ -497,9 +497,9 @@
         Mutterschutz, Elternzeit und Erziehungsurlaub
       </h3>
       <p>
-        Unterbrichst du die Arbeit für Mutterschutz, Elternzeit oder
+        Unterbrichst Du die Arbeit für Mutterschutz, Elternzeit oder
         Erziehungsurlaub, können diese Zeiten nur angerechnet werden, wenn du
-        dich in einem aktiven Arbeitsverhältnis befindest.
+        Dich in einem aktiven Arbeitsverhältnis befindest.
       </p>
       <p>
         Zeiten für Mutterschutz werden dann voll bei den Berufsjahren
@@ -507,7 +507,7 @@
       </p>
       <p>
         Zeiten für Erziehungsurlaub bzw. Elternzeit werden nur zur Hälfte zu den
-        Berufsjahren gezählt. Arbeitest du während der Elternzeit in Teilzeit
+        Berufsjahren gezählt. Arbeitest Du während der Elternzeit in Teilzeit
         als ZahnarzthelferIn, werden die Zeiten jedoch voll dazu gerechnet.
       </p>
       <p>Zwei Beispiele zum besseren Verständnis.</p>
@@ -555,7 +555,7 @@
         vorhandene Kenntnisse und Qualifikationen in Tätigkeitsgruppen
         eingeordnet und entsprechend im Gehalt widergespiegelt. Die Tätigkeiten
         werden nach Grad der Selbstständigkeit, Anzahl der Fortbildungsstunden,
-        leitende Tätigkeiten und Verantwortung eingeteilt. Dies gibt dir eine
+        leitende Tätigkeiten und Verantwortung eingeteilt. Dies gibt Dir eine
         zusätzliche Orientierung, um dein Gehaltsniveau einschätzen zu können.
         Hier steigern vor allem abgeschlossene
         <b-link to="/karriere/fort-und-weiterbildung"
@@ -747,13 +747,13 @@
       </p>
       <p>
         Wenn das angebotene Gehalt auf den ersten Blick nicht besonders reizvoll
-        ist, erkundige dich nach zusätzlich möglichen Benefits. Das können
+        ist, erkundige Dich nach zusätzlich möglichen Benefits. Das können
         monetäre oder nichtmonetäre Sonderleistungen sein. Das
         (unzufriedenstellende) Gehalt wird dadurch kompensiert und der Job bzw.
         den Arbeitgeber attraktiver.
       </p>
       <p>
-        Inwiefern sich ein Benefit für dich wirklich lohnt, entscheidet oft die
+        Inwiefern sich ein Benefit für Dich wirklich lohnt, entscheidet oft die
         individuelle Lebenslage. Prüfe deshalb die angebotenen Zusatzleistungen
         eines Arbeitgebers und gehe zur Not auch in die
         <b-link
@@ -795,11 +795,11 @@
         Unzufriedenheit im Job. Denn noch einmal: Gehalt ist nicht alles. Es
         muss aber ein gewisses Level haben mit dem man seinen Lebensunterhalt
         ohne Schwierigkeiten finanzieren kann. Auf der anderen Seite macht viel
-        Geld auch nicht glücklich, wenn dir die Aufgaben, der Chef oder das Team
+        Geld auch nicht glücklich, wenn Dir die Aufgaben, der Chef oder das Team
         Bauchschmerzen bereiten und jeden Arbeitstag zur Zumutung werden lassen.
       </p>
       <p>
-        Für mehr praktische Tipps, lese dir unseren Artikel über
+        Für mehr praktische Tipps, lese Dir unseren Artikel über
         <b-link
           to="/blog/artikel/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
           >Gehaltsverhandlungen</b-link
@@ -863,7 +863,7 @@
                 />
               </svg>
             </span>
-            Tätigkeiten aufschreiben, die du ausführst oder im neuen Job
+            Tätigkeiten aufschreiben, die Du ausführst oder im neuen Job
             ausführen sollst
           </li>
           <li>
@@ -948,10 +948,10 @@
       </div>
 
       <p>
-        Ich hoffe, dir mit diesem Artikel ein besseres Gespür für die Berechnung
+        Ich hoffe, Dir mit diesem Artikel ein besseres Gespür für die Berechnung
         deines Gehalts als ZFA / ZahnarzthelferIn bei unterschiedlichen Stufen
         an Erfahrungen und Tätigkeitsfelder vermitteln zu können. Mein Appell:
-        Trau dich, selbstbewusst für dein Wissen und deine bisherige berufliche
+        Trau Dich, selbstbewusst für dein Wissen und deine bisherige berufliche
         Erfahrung einzustehen und ein
         <b-link
           to="/blog/artikel/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"

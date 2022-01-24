@@ -188,13 +188,13 @@
       </div>
 
       <h3 class="my-4">
-        Wir helfen dir bei der Suche nach deinem Traumjob
+        Wir helfen Dir bei der Suche nach deinem Traumjob
       </h3>
       <div class="row">
         <div class="col-12 col-md-6">
           <p>
             Auf MFA mal anders berichten wir über Aufstiegsmöglichkeiten in der
-            Arztpraxis, aber auch über Karrierechancen, die du als Medizinische
+            Arztpraxis, aber auch über Karrierechancen, die Du als Medizinische
             Fachangestellte außerhalb der Praxis hast.
           </p>
           <p>
@@ -216,8 +216,8 @@
             MFA mal anders ist ein Netzwerk unter Gleichgesinnten. Um deinen
             beruflichen Weg im Gesundheitswesen zu finden und erfolgreich deine
             Ziele zu erreichen. Mit Fachwissen und persönlichen Erfahrungen
-            stehen wir dir zur Seite und unterstützen dich – egal, ob es darum
-            geht für dich die passende Fort- oder Weiterbildung zu finden, einen
+            stehen wir Dir zur Seite und unterstützen Dich – egal, ob es darum
+            geht für Dich die passende Fort- oder Weiterbildung zu finden, einen
             neuen Job zu finden, deine Gehaltswünsche durchzusetzen oder einfach
             nur durch den Praxisalltagswahnsinn zu helfen.
           </p>
@@ -225,7 +225,7 @@
       </div>
 
       <h3 class="my-4">
-        Wir helfen dir dabei einen Job zu finden, den du liebst. Und den du
+        Wir helfen Dir dabei einen Job zu finden, den Du liebst. Und den du
         verdienst
       </h3>
       <p>
@@ -240,7 +240,7 @@
       <ul>
         <li>Leistungsgerechte Bezahlung</li>
         <li>
-          Tätigkeiten, die du mit einer Ausbildung zur Medizinischen
+          Tätigkeiten, die Du mit einer Ausbildung zur Medizinischen
           Fachangestellten | Zahnmedizinischen Fachangestellten ausüben kannst –
           auch wenn der ausgeschriebene Job nicht immer der typische
           ArzthelferIn Job ist
@@ -259,19 +259,19 @@
 
       <h3 class="my-4">Bock auf Veränderung?</h3>
       <p>
-        Als MFA & ZFA hast du einen anspruchsvollen Job in der Arztpraxis. Es
+        Als MFA & ZFA hast Du einen anspruchsvollen Job in der Arztpraxis. Es
         gibt aber auch viele Karrierechancen darüber hinaus.
       </p>
       <p>
         Durch deine Ausbildung als MFA & ZFA und mit wachsender Berufserfahrung
-        hast du dir eine Vielzahl an Fähigkeiten und Kompetenzen angeeignet.
+        hast Du Dir eine Vielzahl an Fähigkeiten und Kompetenzen angeeignet.
       </p>
       <p>
         Du bist Organisationstalent, hast medizinisches Wissen, bist Profi im
         Office Management, Assistenz des Arztes bei chirurgischen Eingriffen,
         hast Abrechnungskenntnisse und weißt, wie man professionell mit
         Patienten- bzw. Kunden umgeht. Und dies sind nur ein Paar deiner
-        Eigenschaften, die dich zu einer begehrten Fachkraft machen. Auch bei
+        Eigenschaften, die Dich zu einer begehrten Fachkraft machen. Auch bei
         Arbeitgebern außerhalb der Arztpraxis.
       </p>
       <p>
@@ -279,16 +279,16 @@
         einem Unternehmen, das dem Gesundheitswesen angehört, sein.
       </p>
       <p>
-        Auf Mfa mal anders findest du deshalb auch viele alternative
-        Jobmöglichkeiten, die du mit deinen Kenntnissen und Fähigkeiten als
+        Auf Mfa mal anders findest Du deshalb auch viele alternative
+        Jobmöglichkeiten, die Du mit deinen Kenntnissen und Fähigkeiten als
         Medizinische Fachangestellte ausüben kannst.
       </p>
       <p>
-        Vielleicht möchtest du dich aber auch in deiner Fachrichtung
+        Vielleicht möchtest Du Dich aber auch in deiner Fachrichtung
         spezialisieren? Finde eine
         <b-link to="/karriere/fort-und-weiterbildung/ueberblick"
           >Weiterbildung</b-link
-        >, die zu dir und deinen Karrierezielen passt.
+        >, die zu Dir und deinen Karrierezielen passt.
       </p>
       <div class="row my-5">
         <div class="col my-2">
@@ -326,29 +326,29 @@
         Personalsuche erleichert es ebenfalls.
       </p>
       <p>
-        Wenn du auf der Suche nach einer tollen Praxis bist, schau regelmäßig
+        Wenn Du auf der Suche nach einer tollen Praxis bist, schau regelmäßig
         auf unserer
         <b-link to="/stellenangebote">Stellenbörse</b-link> vorbei.
       </p>
       <p>
-        Wenn du schon in einer tollen Praxis arbeitest und ihr neue Kollegen
-        sucht, kannst du bei uns
+        Wenn Du schon in einer tollen Praxis arbeitest und ihr neue Kollegen
+        sucht, kannst Du bei uns
         <b-link to="/fuer-arbeitgeber"
           >eure Stellenanzeige veröffentlichen</b-link
         >.
       </p>
       <p>
-        Wenn du bereit bist, deiner Karriere als Medizinische Fachangestellte |
+        Wenn Du bereit bist, deiner Karriere als Medizinische Fachangestellte |
         Zahnmedizinische Fachangestellte neuen Aufschwung zu geben, reichen wir
-        dir die Hand und begleiten dich auf deinem Weg.
+        Dir die Hand und begleiten Dich auf deinem Weg.
       </p>
       <p>
         Wir freuen uns über jedes Feedback und da MFA mal anders eine
-        Bereicherung für dich sein soll, kannst du uns gern jederzeit Themen
-        nennen, die dich aktuell beschäftigen und über die hier berichtet werden
+        Bereicherung für Dich sein soll, kannst Du uns gern jederzeit Themen
+        nennen, die Dich aktuell beschäftigen und über die hier berichtet werden
         soll.
       </p>
-      <p>Wir freuen uns auf dich!</p>
+      <p>Wir freuen uns auf Dich!</p>
       <p>Deine Kristin</p>
       <div class="mt-5">
         <b-link class="mr-3" to="/kontakt">

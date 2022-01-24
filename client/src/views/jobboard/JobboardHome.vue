@@ -539,17 +539,17 @@
         </h2>
         <p>
           Stellenangebote für Medizinische Fachangestellte und Zahnmedizinische
-          Fachangestellte gibt es im Internet zur Genüge. Wenn du als MFA & ZFA
-          einen neuen Job suchst, könntest du in kürzester Zeit einen neuen
+          Fachangestellte gibt es im Internet zur Genüge. Wenn Du als MFA & ZFA
+          einen neuen Job suchst, könntest Du in kürzester Zeit einen neuen
           Arbeitsplatz antreten. Nicht nur die Arztpraxen und Zahnarztpraxen,
           auch andere Arbeitgeber im Gesundheitswesen suchen händeringend nach
           Personal und haben viele attraktive Stellenangebote für Medizinische
           Fachangestellte und Zahnmedizinische Fachangestellte zu bieten. Mit
           unseren
           <router-link
-            to="/blog/artikel/4-tipps-wie-du-die-richtige-stelle-fuer-dich-findest"
+            to="/blog/artikel/4-tipps-wie-du-die-richtige-stelle-fuer-Dich-findest"
             ><strong
-              >4 Tipps, wie du die richtige Stelle für dich findest</strong
+              >4 Tipps, wie Du die richtige Stelle für Dich findest</strong
             ></router-link
           >
           zeigen wir Dir, worüber Du Dir im Vorhinein Gedanken machen und worauf

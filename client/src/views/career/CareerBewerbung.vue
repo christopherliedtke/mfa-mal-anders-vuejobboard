@@ -26,8 +26,8 @@
         offset="1000"
       />
       <p>
-        Hast du eine Stellenanzeige entdeckt, die dir richtig gut gefällt? Am
-        liebsten würdest du dich bewerben, wäre da nicht der innere
+        Hast Du eine Stellenanzeige entdeckt, die Dir richtig gut gefällt? Am
+        liebsten würdest Du Dich bewerben, wäre da nicht der innere
         Schweinehund, dem es vor der Erstellung der Bewerbungsunterlagen graut.
       </p>
       <p>
@@ -129,7 +129,7 @@
       </nav>
 
       <blockquote>
-        Bevor du dich nicht bewirbst und dir einen tollen Job entgehen lässt,
+        Bevor Du Dich nicht bewirbst und Dir einen tollen Job entgehen lässt,
         nutze unsere Vorlage für eine Top Bewerbung inklusive Anschreiben und
         Lebenslauf.
       </blockquote>
@@ -183,15 +183,15 @@
       </p>
       <h3 class="h5 bold">Der erste Eindruck muss stimmen</h3>
       <p>
-        Die Bewerbung muss optisch ansprechend aussehen. Dafür brauchst du keine
+        Die Bewerbung muss optisch ansprechend aussehen. Dafür brauchst Du keine
         Skills eines Grafikers, um eine gut strukturierte und übersichtliche
-        Bewerbung zu erstellen. In unserer Vorlage musst du nur noch deinen Text
+        Bewerbung zu erstellen. In unserer Vorlage musst Du nur noch deinen Text
         einfügen.
       </p>
       <p>
         Tipp: Passe die Farben in deiner Bewerbung denen des Unternehmens an.
-        Das vermittelt direkt, dass du dich mit der Firma beschäftigt hast und
-        dich mit ihr identifizierst. Es wird bei der Person, die deine Bewerbung
+        Das vermittelt direkt, dass Du Dich mit der Firma beschäftigt hast und
+        Dich mit ihr identifizierst. Es wird bei der Person, die deine Bewerbung
         sichtet, ein positives Gefühl erzeugen. Außerdem wirken deine Unterlagen
         individueller.
       </p>
@@ -202,12 +202,12 @@
         mehr in den Anforderungen an eine Bewerbung.
       </p>
       <p>
-        Wenn du ein Bild von dir mitschicken möchtest, sollte es von guter
+        Wenn Du ein Bild von Dir mitschicken möchtest, sollte es von guter
         Qualität und kein offensichtliches Selfie oder Urlaubsfoto sein. Es muss
         nicht im Blazer sein, sollte aber seriös und sympathisch aussehen. Falls
-        du kein Foto von dir hast, muss du kein schlechtes Gewissen haben, wenn
-        du keins mitschickst. Ein Arbeitgeber sollte deine Qualitäten nicht nach
-        dem Aussehen oder daran messen, ob du ein Bild deiner Bewerbung
+        Du kein Foto von Dir hast, muss Du kein schlechtes Gewissen haben, wenn
+        Du keins mitschickst. Ein Arbeitgeber sollte deine Qualitäten nicht nach
+        dem Aussehen oder daran messen, ob Du ein Bild deiner Bewerbung
         anhängst.
       </p>
 
@@ -281,7 +281,7 @@
       <p>
         Beginne mit einer kleinen Einleitung, die nicht mehr als 2-3 kurze Sätze
         beinhaltet. Wecke bei dem Gegenüber Interesse, beschreibe deine aktuelle
-        Situation und warum du dich auf die Stelle bewerben willst.
+        Situation und warum Du Dich auf die Stelle bewerben willst.
       </p>
       <p>
         Fragen, die Du in Deiner Einleitung bereits beantworten kannst:
@@ -322,7 +322,7 @@
       <h4 id="anschreiben-hauptteil-qualifikationen">Deine Qualifikationen</h4>
       <p>
         Beschreibe als nächstes deine Fertigkeiten, die zur Stelle passen.
-        Orientiere dich hier an der Stellenanzeige und finde Beispiele aus
+        Orientiere Dich hier an der Stellenanzeige und finde Beispiele aus
         deiner bisherigen beruflichen Praxis und deinen Erfahrungen, die dazu
         passen. Erwähne auch Fortbildungen und Weiterbildungen, die für die
         Stelle relevant sein können.
@@ -335,14 +335,14 @@
         alt="Person bearbeitet Bewerbungsunterlagen am Schreibtisch"
       />
       <p>
-        Nenne zusätzlich ein konkretes Projekt oder Aufgabengebiet, in dem du in
+        Nenne zusätzlich ein konkretes Projekt oder Aufgabengebiet, in dem Du in
         der Vergangenheit gearbeitet hast. Dies sollte wieder zur Stelle und dem
         genannten Aufgabenprofil passen.
       </p>
       <p>
-        Ein Beispiel: Du bewirbst dich auf eine Stelle als Praxismanager/in in
+        Ein Beispiel: Du bewirbst Dich auf eine Stelle als Praxismanager/in in
         einer Praxis, die von Papier- auf digitale Akten umstellen will. Vor ein
-        paar Jahren hast du das Prozedere bei deinem alten Arbeitgeber schon
+        paar Jahren hast Du das Prozedere bei deinem alten Arbeitgeber schon
         durchlaufen. Nutze die Erfahrung und erzähle davon:
       </p>
       <p>
@@ -352,16 +352,16 @@
         Einführung eines Online-Dokumentensystems.“
       </p>
       <p>
-        Erwähne auch Erfolge, die du in deinem Beruf erzielt hast. Beziehe dich
+        Erwähne auch Erfolge, die Du in deinem Beruf erzielt hast. Beziehe Dich
         hierbei am besten auf Projekte und Aufgabengebieten, die zur Stelle
-        passen. Zum Beispiel, dass du für das Impfmanagement verantwortlich
+        passen. Zum Beispiel, dass Du für das Impfmanagement verantwortlich
         warst und ihr die durchschnittliche Impfquote in der Praxis durch dein
         Engagement deutlich erhöhen konntet.
       </p>
       <h4 id="anschreiben-hauptteil-motivation">Motivation und Ziele</h4>
       <p>
-        Im letzten Absatz beschreibst du, was dich motiviert bei dem
-        ausgewählten Unternehmen zu arbeiten. Warum möchtest du ausgerechnet in
+        Im letzten Absatz beschreibst du, was Dich motiviert bei dem
+        ausgewählten Unternehmen zu arbeiten. Warum möchtest Du ausgerechnet in
         der Praxis oder der Firma arbeiten? Bessere Entwicklungsmöglichkeiten?
         Kleineres, familiäreres Team?
       </p>
@@ -379,7 +379,7 @@
         notwendig. Möchtest Du jedoch auf Nummer sicher gehen, dass Dein
         Gehaltswunsch zum Budget der Stelle passt, ist es empfehlenswert hier
         einen Wert anzugeben. Wenn Du unsicher bist, wie viel Gehalt Du
-        verlangen kannst, schau dir unseren
+        verlangen kannst, schau Dir unseren
         <b-link to="/karriere/mfa/gehalt#gehaltsrechner"
           >MFA Gehaltsrechner</b-link
         >
@@ -451,8 +451,8 @@
       <h4 id="lebenslauf-aufbau-berufliche-stationen">Berufliche Stationen</h4>
       <p>
         Liste deine beruflichen Stationen auf und schreibe immer 2-3 Beispiele
-        zu den Aufgaben, die du bei den einzelnen Arbeitgebern hattest. Das
-        macht deinen Lebenslauf etwas lebendiger und hebt dich von anderen
+        zu den Aufgaben, die Du bei den einzelnen Arbeitgebern hattest. Das
+        macht deinen Lebenslauf etwas lebendiger und hebt Dich von anderen
         Bewerbern ab. Auch Praktika und Ausbildung gehören hierher. Achte
         darauf, dass Dein Lebenslauf speziell an dieser Stelle lückenlos ist.
         Hast Du berufliche Auszeiten genommen, gib diese an. Idealerweise kannst
@@ -464,7 +464,7 @@
       </p>
       <h4 id="lebenslauf-aufbau-bildung">Bildung</h4>
       <p>
-        Deinen Bildungsweg kannst du ganz klassisch mit Name der Schule/
+        Deinen Bildungsweg kannst Du ganz klassisch mit Name der Schule/
         Einrichtung, Dauer und dem erworbenen Abschluss aufführen. Bei guten und
         sehr guten Noten erwähne deine Abschlussnote. Man darf ruhig ein
         bisschen prahlen 😊.
@@ -473,10 +473,10 @@
         Besondere Qualifikationen und Kenntnisse
       </h4>
       <p>
-        Gut ist immer, wenn du zusätzliche Qualifikationen erworben hast, die
-        dich im Berufsleben weiterbringen. Diese solltest du unbedingt erwähnen.
+        Gut ist immer, wenn Du zusätzliche Qualifikationen erworben hast, die
+        Dich im Berufsleben weiterbringen. Diese solltest Du unbedingt erwähnen.
         Dazu zählen z. B. Weiterbildungen, Fortbildungen, ein berufsbegleitendes
-        Studium oder auch erworbene Kenntnisse, die du dir privat angeeignet
+        Studium oder auch erworbene Kenntnisse, die Du Dir privat angeeignet
         hast.
       </p>
       <p>
@@ -492,15 +492,15 @@
         beruflichen Leben an der einen oder anderen Stelle weiterbringen.
       </p>
       <p>
-        In der Mustervorlage findest du im Lebenslauf einen kleinen Abschnitt
-        „Über mich“. Beschreibe dich in einem Satz oder stichpunktartig. Beziehe
-        dich hier am besten auf die Anforderungen und Fertigkeiten von der
+        In der Mustervorlage findest Du im Lebenslauf einen kleinen Abschnitt
+        „Über mich“. Beschreibe Dich in einem Satz oder stichpunktartig. Beziehe
+        Dich hier am besten auf die Anforderungen und Fertigkeiten von der
         Stellenanzeige und hebe deine Stärken hervor, die für die Stelle wichtig
         sind.
       </p>
       <p>
         Und jetzt, erstelle schnell deine Top-Bewerbung für deinen Traumjob. Mfa
-        mal anders drückt dir die Daumen für die Bewerbung und wünscht viel
+        mal anders drückt Dir die Daumen für die Bewerbung und wünscht viel
         Erfolg!
       </p>
       <div class="d-flex justify-content-center my-5">

@@ -21,7 +21,7 @@
           </div>
           <h3 class="bold">Beratung</h3>
           <p>
-            Jobs, bei denen du aufgrund deines Expertenwissens andere Menschen
+            Jobs, bei denen Du aufgrund deines Expertenwissens andere Menschen
             berätst.
           </p>
           <b-button
@@ -54,7 +54,7 @@
           </div>
           <h3 class="bold">Forschung</h3>
           <p>
-            Jobs, bei denen du zum medizinischen Fortschritt beitragen kannst.
+            Jobs, bei denen Du zum medizinischen Fortschritt beitragen kannst.
           </p>
           <b-button
             :to="`/karriere/jobs-und-berufsbilder/forschung`"
@@ -126,7 +126,7 @@
           </div>
           <h3 class="bold">Management</h3>
           <p>
-            Jobs, bei denen du betriebswirtschaftliche Aufgaben und
+            Jobs, bei denen Du betriebswirtschaftliche Aufgaben und
             Personalverantwortung übernehmen kannst.
           </p>
           <b-button

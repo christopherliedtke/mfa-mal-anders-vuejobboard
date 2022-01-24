@@ -198,11 +198,11 @@
       <p>
         Die Ausbildung zur MFA findet berufsbegleitend statt. Das heißt,
         praktische Kenntnisse werden in der Ausbildungspraxis vermittelt und
-        theoretisches Wissen erlernst du in der Berufsschule.
+        theoretisches Wissen erlernst Du in der Berufsschule.
       </p>
       <p>
         Zur Berufsschule gehst du, je nach Bundesland, 1-2 mal die Woche. In der
-        Berufsschule lernst du alles, was du im Berufsalltag benötigst. Dazu
+        Berufsschule lernst Du alles, was Du im Berufsalltag benötigst. Dazu
         zählen medizinische Inhalte, wie die Lehre der Anatomie, Pathologie und
         Physiologie, um den Körper, seine normalen Funktionen und Krankheiten zu
         verstehen. Daneben behandelt ihr verwaltungstechnischen Lehrstoff über
@@ -234,7 +234,7 @@
         <p class="mb-0">
           Im ersten Ausbildungsjahr erlernt man zunächst viele Grundlagen, z.B.
           zum Arbeitsrecht und Datenschutz. Aber auch den richtigen Umgang mit
-          Patienten und wie du bei Untersuchungen oder Therapien richtig
+          Patienten und wie Du bei Untersuchungen oder Therapien richtig
           assisierst. Oft ist hier noch ein/e erfahrene/r KollegIn dabei, um dir
           zu helfen.
         </p>
@@ -555,7 +555,7 @@
         <b-link to="/karriere/mfa/gehalt">hier</b-link>.
       </p>
       <p>
-        Hast du noch Fragen zum Beruf oder der Ausbildung der Medizinischen
+        Hast Du noch Fragen zum Beruf oder der Ausbildung der Medizinischen
         Fachangestellten? Dann schreib uns doch einfach
         <b-link to="/kontakt">eine Nachricht</b-link>.
       </p>
@@ -564,7 +564,7 @@
         Perspektiven nach der Ausbildung zur Medizinischen Fachangestellten
       </h2>
       <p>
-        Hast du deine Ausbildung erstmal in der Tasche, wird es auch als
+        Hast Du deine Ausbildung erstmal in der Tasche, wird es auch als
         ausgelernt MFA garantiert nicht langweilig. Jeder kann sich entsprechend
         seiner Fähigkeiten und Interessen auf bestimmte Tätigkeiten
         spezialisieren, z. B. als
@@ -579,12 +579,12 @@
       </p>
       <p>
         Das Wissen einer MFA über Medizin, Therapien, Untersuchungen oder
-        Abrechnung nimmt im Laufe der Berufstätigkeit stetig zu. So wirst du auf
+        Abrechnung nimmt im Laufe der Berufstätigkeit stetig zu. So wirst Du auf
         dem Arbeitsmarkt immer beliebt sein und keine Schwierigkeiten haben,
         eine Anstellung zu finden. Auch andere Arbeitgeber aus dem
         Gesundheitswesen schätzen die breiten Fähigkeiten von Medizinischen
         Fachangestellten. Sie versuchen auf sich aufmerksam zu machen durch
-        attraktive Stellenangebote, die dir andere Möglichkeiten außerhalb der
+        attraktive Stellenangebote, die Dir andere Möglichkeiten außerhalb der
         Arztpraxis bieten.
       </p>
       <p>
@@ -606,7 +606,7 @@
       </p>
       <p>
         Informationen über die drei großen Bildungsformen, Fortbildung,
-        Weiterbildung und Studium, und welche davon für dich die Richtige ist,
+        Weiterbildung und Studium, und welche davon für Dich die Richtige ist,
         kannst du
         <b-link
           to="/karriere/fort-und-weiterbildung#fortbildung-weiterbildung-studium"
@@ -619,7 +619,7 @@
         <b-link to="/karriere/fort-und-weiterbildung"
           >Fort- und Weiterbildung</b-link
         >
-        kannst du dich informieren, welche Möglichkeiten du als Medizinische
+        kannst Du Dich informieren, welche Möglichkeiten Du als Medizinische
         Fachangestellte in und außerhalb der Arztpraxis hast. Krankenhäuser,
         Medizinische Versorgungszentren, Rehakliniken, Gesundheitsämter,
         Medizinische Schreibbüros, Pflegedienste, Krankenkassen, Ärztekammern
@@ -630,7 +630,7 @@
       <h2 class="h4">Quellen</h2>
       <p>
         Alle Inhalte über die Berufsausbildung zur/zum Medizinischen
-        Fachangestellten kannst du in der entsprechenden
+        Fachangestellten kannst Du in der entsprechenden
         <b-link
           href="https://www.bundesaerztekammer.de/fileadmin/user_upload/downloads/MFA_Verordnung_05052006.pdf"
           >Berufsverordnung</b-link

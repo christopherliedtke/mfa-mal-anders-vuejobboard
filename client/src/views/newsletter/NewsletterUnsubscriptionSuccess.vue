@@ -3,7 +3,7 @@
     <h1 class="title">{{ title }}</h1>
     <div class="container py-3 py-lg-5">
       <p>
-        Du hast dich erfolgreich von unserem Job-Newsletter abgemeldet.
+        Du hast Dich erfolgreich von unserem Job-Newsletter abgemeldet.
       </p>
       <b-button to="/stellenangebote" variant="secondary"
         >Weiter zur Stellenbörse</b-button

@@ -36,8 +36,8 @@
         Durchblick zu behalten.
       </p>
       <p>
-        MFA mal anders bietet dir die Informationen, die du brauchst. Und das
-        komprimiert und zusammengefasst auf einer Seite. Ohne, dass du dich
+        MFA mal anders bietet Dir die Informationen, die Du brauchst. Und das
+        komprimiert und zusammengefasst auf einer Seite. Ohne, dass Du Dich
         endlos durchs Internet klicken musst, um einen Überblick über deine
         Chancen zu bekommen.
       </p>
@@ -66,7 +66,7 @@
                 <b-link to="#studium">Studium</b-link>
               </li>
               <li class="lead mt-3">
-                <b-link to="#das-richtige-fuer-dich"
+                <b-link to="#das-richtige-fuer-Dich"
                   >Was ist das Richtige für Dich?</b-link
                 >
               </li>
@@ -143,17 +143,17 @@
         <b-link to="/karriere/fort-und-weiterbildung/ueberblick"
           >Fort- und Weiterbildungen – Überblick</b-link
         >
-        kannst du dich informieren, welche Weiterbildungsmöglichkeiten du als
+        kannst Du Dich informieren, welche Weiterbildungsmöglichkeiten Du als
         MFA oder ZFA in und außerhalb der Arztpraxis hast.
       </p>
       <p>
         Wir beschreiben anerkannte Fortbildungen der Ärztekammer, zertifizierte
         Weiterbildungen, Lehrgänge, Studiengänge und andere
         Weiterbildungsmöglichkeiten für MFA & ZFA. Die Eckdaten wie Kosten,
-        Dauer, Inhalte und Lernkonzepte werden für dich übersichtlich und
-        verständlich dargestellt. Daneben zeigen wir dir vor allem auch, was du
+        Dauer, Inhalte und Lernkonzepte werden für Dich übersichtlich und
+        verständlich dargestellt. Daneben zeigen wir Dir vor allem auch, was du
         mit welchem Abschluss anschließend anfangen kannst. Und natürlich auch
-        wo. Das Gesundheitswesen bietet dir zahlreiche Karrierewege.
+        wo. Das Gesundheitswesen bietet Dir zahlreiche Karrierewege.
       </p>
 
       <FortWeiterbildungenNav
@@ -164,14 +164,14 @@
 
       <p>
         Die Liste ist noch lange nicht vollständig. Nach und nach stellen wir
-        für dich eine grandiose Übersicht über deine Karrieremöglichkeiten in-
+        für Dich eine grandiose Übersicht über deine Karrieremöglichkeiten in-
         und außerhalb der Arztpraxis zusammen.
       </p>
       <div class="example shadow1 my-4">
-        PS: Wenn du interessiert an einer bestimmten Weiterbildung für MFA / ZFA
+        PS: Wenn Du interessiert an einer bestimmten Weiterbildung für MFA / ZFA
         bist, die wir noch nicht aufgeführt haben,
         <b-link class="bold" to="/kontakt">schreib uns</b-link> doch. Oder
-        vielleicht hast du schon eine Fortbildung gemacht von der deine
+        vielleicht hast Du schon eine Fortbildung gemacht von der deine
         Kolleginnen unbedingt wissen sollten?!
       </div>
 
@@ -181,7 +181,7 @@
         Fortbildung, Weiterbildung oder Studium?
       </h2>
       <p>
-        Gute Frage! Wann solltest du eine Weiterbildung machen? Wann lieber
+        Gute Frage! Wann solltest Du eine Weiterbildung machen? Wann lieber
         studieren? Und worin liegt eigentlich der Unterscheid zwischen einer
         Fortbildung und einer Weiterbildung?
       </p>
@@ -192,13 +192,13 @@
         Weiterentwicklung entschieden hatte, war das wie die Suche nach der
         Nadel im Heuhaufen. Es gibt zwar viele Angebot für Medizinische
         Fachangestellte | Zahnmedizinische Fachangestellte, aber die
-        Informationen muss man sich mühsam zusammen sammeln. Damit du dich für
-        den richtigen Weg entscheiden kannst, solltest du zunächst wissen,
-        welche Bildungsform für dich die Richtige ist. Und welche Türen, dir die
+        Informationen muss man sich mühsam zusammen sammeln. Damit Du Dich für
+        den richtigen Weg entscheiden kannst, solltest Du zunächst wissen,
+        welche Bildungsform für Dich die Richtige ist. Und welche Türen, Dir die
         einzelnen Entwicklungsmöglichkeiten bieten.
       </p>
       <p>
-        Um dir mehr Klarheit und Durchblick für deinen Karriereweg zu geben, ist
+        Um Dir mehr Klarheit und Durchblick für deinen Karriereweg zu geben, ist
         dieser Artikel über die Unterschiede der drei großen Bildungsformen
         entstanden.
       </p>
@@ -207,7 +207,7 @@
         <a href="/karriere/fort-und-weiterbildung/fortbildungskatalog"
           >Fortbildungskatalog</a
         >
-        findest du übrigens einer Vielzahl an Fort- und Weiterbildungen
+        findest Du übrigens einer Vielzahl an Fort- und Weiterbildungen
         unterschiedlicher Anbieter. Schau auch dort gern ein mal vorbei.
       </p>
 
@@ -233,7 +233,7 @@
 
       <h3 id="fortbildung">Fortbildung</h3>
       <p>
-        Wenn du dich in deinem Beruf als MFA / ZFA weiter spezialisieren
+        Wenn Du Dich in deinem Beruf als MFA / ZFA weiter spezialisieren
         möchtest, fällt das unter den Begriff der Fortbildungen. Deine
         bisheriges Wissen in dem Beruf wird erweitert, angepasst, erhalten oder
         für den weiteren Aufstieg ausgebaut. An einem Beispiel aus der Praxis,
@@ -248,7 +248,7 @@
           to="/karriere/fort-und-weiterbildung/ueberblick/onkologischer-fachassistentin"
           >Fachassistentin Onkologie</b-link
         >
-        macht dich zur Spezialistin dafür. Du erweiterst dein Wissen im Beruf
+        macht Dich zur Spezialistin dafür. Du erweiterst dein Wissen im Beruf
         der MFA. Durch deine zusätzliche Qualifizierung steigt auch dein Gehalt.
         Ein anderes Beispiel hierfür sind Röntgenscheine. Durch regelmäßige
         Fortbildungen bleibt dein Wissen über die Röntgen- und Strahlenheilkunde
@@ -268,15 +268,15 @@
       <h3 id="weiterbildung">Weiterbildung</h3>
       <p>
         Dagegen vermitteln Weiterbildungen eher allgemeine Inhalte und sind
-        darauf ausgelegt, dass du zusätzliche Qualifikationen als MFA / ZFA
-        erwirbst. Erste Vorbildungen, die du mit deiner Ausbildung zur
+        darauf ausgelegt, dass Du zusätzliche Qualifikationen als MFA / ZFA
+        erwirbst. Erste Vorbildungen, die Du mit deiner Ausbildung zur
         Medizinischen Fachangestellten | Zahnmedizinischen Fachangestellten
-        erhalten hast, werden erweitert oder vertieft. Dazu könntest du dir
+        erhalten hast, werden erweitert oder vertieft. Dazu könntest Du dir
         einen EKG-Kurs vorstellen, bei dem die verschiedenen Bilder von
         Herzrhythmusstörungen erläutert werden und deine Teilnahme mit einer
         anschließenden Teilnahmebescheinigung belegt wird. Dein Wissen wird bei
         dem Kurs vertieft und erweitert. Eine Zusatzqualifikation oder einen
-        zusätzlichen Titel erlangst du dadurch aber nicht.
+        zusätzlichen Titel erlangst Du dadurch aber nicht.
       </p>
       <p>
         Mit Weiterbildungen können auch erweiterte Bildungsabschlüsse nachgeholt
@@ -293,7 +293,7 @@
         >.
       </p>
       <p>
-        Auch Umschulungen, die dir zu beruflichen Qualifizierungen in einem ganz
+        Auch Umschulungen, die Dir zu beruflichen Qualifizierungen in einem ganz
         neuen Beruf verhelfen, zählen zu den Weiterbildungen.
       </p>
       <p>
@@ -303,17 +303,17 @@
 
       <h3 id="studium">Studium</h3>
       <p>
-        Ein Studium verhilft dir zu einem akademischen Grad. Es ist sehr
-        theoretisch ausgelegt und befähigt dich zu wissenschaftlichen Arbeiten.
+        Ein Studium verhilft Dir zu einem akademischen Grad. Es ist sehr
+        theoretisch ausgelegt und befähigt Dich zu wissenschaftlichen Arbeiten.
         Viele Studiengänge können heute auch ohne Abitur absolviert werden, wie
         z.B. das
         <b-link to="/karriere/fort-und-weiterbildung/ueberblick/medizinstudium"
           >Medizinstudium</b-link
         >. Voraussetzungen für die Studienzulassung sind meist eine
         abgeschlossene Berufsausbildung und eine gewisse Anzahl an Berufsjahren.
-        Heute gibt es viele Fernstudium-Anbieter, die es dir als MFA / ZFA
+        Heute gibt es viele Fernstudium-Anbieter, die es Dir als MFA / ZFA
         ermöglichen neben dem Beruf zu studieren und einen Studienabschluss
-        erwerben. Ein akademischer Abschluss öffnet dir neue Türen in
+        erwerben. Ein akademischer Abschluss öffnet Dir neue Türen in
         unterschiedlichen Sparten des Gesundheitswesens und verhilft zu besserem
         Gehalt. Viele Arbeitgeber fordern ein abgeschlossenes Studium für
         Führungspositionen.
@@ -328,9 +328,9 @@
         damals in der Schule.
       </p>
       <p>
-        Ich will dir das Studieren nicht madig machen. Ich spreche aus Erfahrung
+        Ich will Dir das Studieren nicht madig machen. Ich spreche aus Erfahrung
         und weiß, wie anstrengend ein berufsbegleitendes Studium sein kann. Aber
-        ich kann dir auch sagen: es lohnt sich. Für deine berufliche und
+        ich kann Dir auch sagen: es lohnt sich. Für deine berufliche und
         persönliche Entwicklung auf jeden Fall.
       </p>
 
@@ -371,22 +371,22 @@
         </div>
       </div>
 
-      <h3 id="das-richtige-fuer-dich">Was ist das Richtige für Dich?</h3>
+      <h3 id="das-richtige-fuer-Dich">Was ist das Richtige für Dich?</h3>
       <p>
-        Was für dich die richtige Weiterbildungsform ist, hängt davon ob, welche
-        beruflichen Ziele du hast. Was möchtest du im Laufe der Jahre noch
+        Was für Dich die richtige Weiterbildungsform ist, hängt davon ob, welche
+        beruflichen Ziele Du hast. Was möchtest Du im Laufe der Jahre noch
         erreichen?
       </p>
       <p>
-        Wenn du MFA / ZFA mit Leib und Seele bist und auch bleiben möchtest,
-        könnte eine Fortbildung für dich das Richtige sein. Du kannst dich in
+        Wenn Du MFA / ZFA mit Leib und Seele bist und auch bleiben möchtest,
+        könnte eine Fortbildung für Dich das Richtige sein. Du kannst Dich in
         einem medizinischen Bereich spezialisieren und verantwortungsvollere
-        Aufgaben übernehmen. Durch die Zusatzqualifikation kannst du mehr Gehalt
+        Aufgaben übernehmen. Durch die Zusatzqualifikation kannst Du mehr Gehalt
         erlangen. Das hat mit den
         <b-link to="/karriere/mfa/gehalt#taetigkeitsgruppen"
           >Tätigkeitsgruppen</b-link
         >
-        zu tun. Lese dir hierzu unseren Artikel über
+        zu tun. Lese Dir hierzu unseren Artikel über
         <b-link to="/karriere/mfa/gehalt"
           >Gehalt für Medizinische Fachangestellte</b-link
         >
@@ -396,24 +396,24 @@
         >.
       </p>
       <p>
-        Vielleicht möchtest du auch auf lange Sicht raus aus der Praxis und mehr
+        Vielleicht möchtest Du auch auf lange Sicht raus aus der Praxis und mehr
         verwaltungsbezogene Aufgaben erledigen. Dann könnte die Fortbildung zum
         <b-link
           to="/karriere/fort-und-weiterbildung/ueberblick/fachwirtin-im-gesundheits-und-sozialwesen"
           >Fachwirt im Gesundheits- und Sozialwesen</b-link
         >
-        etwas für dich sein.
+        etwas für Dich sein.
       </p>
       <p>
-        Wenn du zufrieden mit deiner jetzigen Tätigkeit und Position in der
-        Praxis bist, solltest du in deinem eigenen Interesse dazu bereit sein,
-        dich regelmäßig fortzubilden. Gerade in unserer Branche gibt es ständig
+        Wenn Du zufrieden mit deiner jetzigen Tätigkeit und Position in der
+        Praxis bist, solltest Du in deinem eigenen Interesse dazu bereit sein,
+        Dich regelmäßig fortzubilden. Gerade in unserer Branche gibt es ständig
         neue medizinische Techniken, geänderte Vorgaben von den Krankenkassen
         bzw. Kassenärztlichen Vereinigungen oder neue Gesetze, die unsere
         alltägliche Arbeit betreffen. Hier gilt es auf dem Laufenden zu bleiben.
       </p>
       <p>
-        Natürlich solltest du auch den Zeitfaktor nicht außer Acht lassen.
+        Natürlich solltest Du auch den Zeitfaktor nicht außer Acht lassen.
         Zusätzlich zu Familie und Kindern kann ein Studium zur großen
         Herausforderung werden.
       </p>
@@ -421,7 +421,7 @@
         PS: Für viele Bildungsmaßnahmen gibt es
         <b-link to="/karriere/fort-und-weiterbildung#foerderung-finanzierung"
           >Förderungen und andere Finanzierungsmöglichkeiten</b-link
-        >, die für dich auch interessant sein können.
+        >, die für Dich auch interessant sein können.
       </p>
 
       <div class="d-flex justify-content-center">
@@ -450,10 +450,10 @@
 
           <div class="card-body">
             <h4 class="card-title">
-              Die richtige Weiterbildung für dich?!
+              Die richtige Weiterbildung für Dich?!
             </h4>
             <p class="card-text">
-              Hier findest du eine kleine Anleitung, wie du Schritt für Schritt
+              Hier findest Du eine kleine Anleitung, wie Du Schritt für Schritt
               vorgehen kannst.
             </p>
             <b-button
@@ -471,23 +471,23 @@
         Förderung und Finanzierung von Weiterbildungen
       </h2>
       <p class="lead">
-        Weiterbildung finanzieren – sei schlau und informiere dich!
+        Weiterbildung finanzieren – sei schlau und informiere Dich!
       </p>
       <p>
         Wer in seine Bildung investiert, investiert auch in sich. So platt
         dieser Spruch auch kling, es stimmt. Weiterbildung kostet. Und das oft
         nicht wenig. Die Preisspanne kann von ein paar Hundert bis zu ein paar
-        Tausend Euro reichen. Dein Geld ist zwar gut in dich angelegt, aber
+        Tausend Euro reichen. Dein Geld ist zwar gut in Dich angelegt, aber
         nicht jeder hat höhere Summen locker in der Brieftaschen liegen, um sich
         seine Weiterbildung zu finanzieren.
       </p>
       <p>
         Allerdings, es gibt Hoffnung damit dein Traum von einem besseren Job
         nicht an dem mangelndem Kleingeld zerplatzen soll. Viele Seiten bieten
-        finanzielle Unterstützung in unterschiedlicher Form an, die du in
-        Anspruch nehmen kannst. Lass dich also von hohen Kursgebühren nicht
-        abschrecken. Wenn du weißt, welche finanziellen Förderungsmöglichkeiten
-        du ausschöpfen kannst, kann sich die Weiterbildung für dich auch im
+        finanzielle Unterstützung in unterschiedlicher Form an, die Du in
+        Anspruch nehmen kannst. Lass Dich also von hohen Kursgebühren nicht
+        abschrecken. Wenn Du weißt, welche finanziellen Förderungsmöglichkeiten
+        Du ausschöpfen kannst, kann sich die Weiterbildung für Dich auch im
         wahrsten Sinne des Wortes auszahlen.
       </p>
       <b-img-lazy
@@ -510,7 +510,7 @@
         fluid
       />
       <p class="h3 bold">
-        Welche Möglichkeit hast du als MFA & ZFA, um deine Weiterbildung zu
+        Welche Möglichkeit hast Du als MFA & ZFA, um deine Weiterbildung zu
         finanzieren?
       </p>
       <h3 id="chef-fragen">Beim Chef nachfragen</h3>
@@ -520,10 +520,10 @@
         <b-link to="/karriere/fort-und-weiterbildung/ueberblick"
           >Weiterbildung</b-link
         >
-        an. Angenommen, du arbeitest in einer chirurgischen Praxis, in der auch
-        operiert wird. Bisher hast du hauptsächlich den laufenden
+        an. Angenommen, Du arbeitest in einer chirurgischen Praxis, in der auch
+        operiert wird. Bisher hast Du hauptsächlich den laufenden
         Sprechstundenbetrieb organisiert. Dich interessiert aber die Arbeit im
-        OP sehr und du schlägst deinem Chef vor, die
+        OP sehr und Du schlägst deinem Chef vor, die
         <b-link
           to="/karriere/fort-und-weiterbildung/ueberblick/ambulantes-operieren"
           >Fortbildung Ambulantes Operieren</b-link
@@ -534,12 +534,12 @@
       </p>
       <p>
         In manchen Fällen, besonders wenn die Kursgebühren in den
-        Tausender-Bereichen liegen, wollen einige Arbeitgeber, dass du dich für
+        Tausender-Bereichen liegen, wollen einige Arbeitgeber, dass Du Dich für
         eine gewisse Dauer dazu verpflichtest in der Praxis zu bleiben. Im
         Arbeitsrecht nennt man das, die Rückzahlungsklausel. Dafür müssen einige
         Voraussetzungen erfüllt sein, damit dein Arbeitgeber diese Klausel
         anwenden darf. Welche das sind und wie hoch die Bindungsdauer je nach
-        Fortbildungsdauer ist, findest du z. B.
+        Fortbildungsdauer ist, findest Du z. B.
         <a
           href="https://www.arbeitsrecht-weltweit.de/2018/03/01/rueckzahlung-von-fortbildungskosten-was-ist-moeglich/"
           target="_blank"
@@ -547,13 +547,13 @@
         >.
       </p>
       <p>
-        Falls du dich beruflich umorientieren möchtest und eine Weiterbildung im
+        Falls Du Dich beruflich umorientieren möchtest und eine Weiterbildung im
         Auge hast, die deiner Praxis keine Vorteile bringt, wird es schwierig
         werden, dass dein Chef sich an den Kosten beteiligen wird.
       </p>
       <p>
         Dafür bieten der Staat und die einzelnen Bundesländer einige
-        Möglichkeiten, um dich zu unterstützen.
+        Möglichkeiten, um Dich zu unterstützen.
       </p>
       <h3 id="bafoeg">Aufstiegs-BAföG</h3>
       <p>
@@ -561,7 +561,7 @@
         Arbeitnehmer, Berufsrückkehrer und Selbstständige, die sich per
         Aufstiegsfortbildung weiterbilden möchten. Unter einer
         Aufstiegsfortbildung versteht man eine Fortbildung, die auf dem
-        Ausbildungsberuf aufbaut und die dich für einen größeren
+        Ausbildungsberuf aufbaut und die Dich für einen größeren
         Verantwortungsbereich mit höherem Gehalt qualifiziert. Förderungsfähig
         wäre z. B. die Fortbildung zum
         <b-link
@@ -570,7 +570,7 @@
         >. Das Aufstiegs-BAföG gilt auch Fernstudiengänge.
       </p>
       <p>
-        Die Förderung beinhaltet Zuschüsse, die du nicht zurück zahlen musst.
+        Die Förderung beinhaltet Zuschüsse, die Du nicht zurück zahlen musst.
         Außerdem besteht die Möglichkeit, ein zinsgünstiges Darlehen bei der
         Kreditanstalt für Wiederaufbau (KfW) über die Differenz zwischen
         Zuschussanteil und maximalem Förderbetrag abzuschließen (ähnlich wie ein
@@ -583,7 +583,7 @@
           target="_blank"
           >Anspruch auf Aufstiegs-BAföG</a
         >, die Beantragung sowie Antragsformulare und Kontaktdaten zu den
-        jeweiligen Beratungsstellen der Bundesländer findest du auf der
+        jeweiligen Beratungsstellen der Bundesländer findest Du auf der
         Internetseite des Bundesministerium für Bildung und Forschung.
       </p>
       <h3 id="bildungsgutschein">Bildungsgutschein</h3>
@@ -600,7 +600,7 @@
         mit dem Bildungsgutschein ebenso nachgeholt werden, wie Lehrgänge, die
         einer drohenden Arbeitslosigkeit entgegenwirken sollen. Wenn die
         zuständige Agentur für Arbeit eine Weiterbildung für notwendig hält,
-        bekommst du den Bildungsgutschein ausgehändigt. Dieser kann bei einem
+        bekommst Du den Bildungsgutschein ausgehändigt. Dieser kann bei einem
         zugelassen Anbieter eingelöst werden. Übernommen werden neben den
         Lehrgangskosten auch Kosten zum Beispiel für Prüfungen, Bücher, Fahrten,
         Unterkunft und Verpflegung oder Kinderbetreuung. Welche Bildungsziele
@@ -625,7 +625,7 @@
           target="_blank"
           >Anspruch auf einen Bildungsgutschein</a
         >
-        hast, kann dir deine zuständige Agentur für Arbeit nach entsprechender
+        hast, kann Dir deine zuständige Agentur für Arbeit nach entsprechender
         Beratung mitteilen.
       </p>
       <h3 id="bildungsprämie">
@@ -659,7 +659,7 @@
       </p>
       <p>
         Der Prämiengutschein kann jährlich neu beantragt werden. So könntest du
-        dir jedes Jahr eine Weiterbildung mithilfe des Prämiengutscheins
+        Dir jedes Jahr eine Weiterbildung mithilfe des Prämiengutscheins
         finanzieren.
       </p>
       <p>
@@ -667,7 +667,7 @@
         <a href="https://www.bildungspraemie.info/" target="_blank"
           >Infos zur Bildungsprämie</a
         >
-        findest du auf der Webseite des Bundesministerium für Bildung und
+        findest Du auf der Webseite des Bundesministerium für Bildung und
         Forschung.
       </p>
 
@@ -702,15 +702,15 @@
           target="_blank"
           >Informationen zum Bildungskredit</a
         >
-        findest du auf der Seite des Bundesverwaltung.
+        findest Du auf der Seite des Bundesverwaltung.
       </p>
 
       <h3 id="aufstiegsstipendium">Aufstiegsstipendium</h3>
       <p>
-        Warst du eine besonders gute Schülerin während der Ausbildung? Und bist
-        immer noch besonders motiviert und möchtest dich beruflich durch ein
+        Warst Du eine besonders gute Schülerin während der Ausbildung? Und bist
+        immer noch besonders motiviert und möchtest Dich beruflich durch ein
         Studium weiterqualifizieren? Dann könnte das Aufstiegsstipendium des
-        Bundesministeriums für Bildung und Forschung für dich in Frage kommen.
+        Bundesministeriums für Bildung und Forschung für Dich in Frage kommen.
         Es richtet sich an Fachkräfte, die nach der Ausbildung bereits
         mindestens zwei Jahre Berufserfahrung haben.
       </p>
@@ -721,13 +721,13 @@
         mindestens Note 1,9 oder 87 Punkte und mehr). Eine weitere Möglichkeit
         ist die besonders erfolgreiche Teilnahme an einem überregionalen
         beruflichen Leistungswettbewerb (Platzierung unter den ersten drei).
-        Sollten die ersten beiden Voraussetzungen für dich nicht zutreffen kann
+        Sollten die ersten beiden Voraussetzungen für Dich nicht zutreffen kann
         auch ein begründeter Vorschlag des Arbeitgebers für die Bewerbung um ein
         Aufstiegsstipendium qualifizieren.
       </p>
       <p>
         Alle Informationen zum Aufstiegsstipendium sowie zu die Beantragung
-        kannst du auf der
+        kannst Du auf der
         <a
           href="https://www.sbb-stipendien.de/aufstiegsstipendium.html"
           target="_blank"
@@ -750,11 +750,11 @@
       <p>
         Die Voraussetzungen sind die gleichen wie bei dem Aufstiegsstipendium.
         Allerdings muss man bei Aufnahme in das Programm unter 25 Jahre sein.
-        Die Bewerbung richtest du in dem Fall an die Ärztekammer, bei die damals
+        Die Bewerbung richtest Du in dem Fall an die Ärztekammer, bei die damals
         deinen Ausbildungsvertrag gegengezeichnet hat.
       </p>
       <p>
-        Weitere Infos zum Weiterbildungsstipendium findest du wieder bei der
+        Weitere Infos zum Weiterbildungsstipendium findest Du wieder bei der
         <a
           href="https://www.sbb-stipendien.de/weiterbildungsstipendium/programmziele.html"
           target="_blank"
@@ -766,7 +766,7 @@
         Kostenerstattung über die Steuererklärung
       </h3>
       <p>
-        Die Kosten für eine Weiterbildung kannst du auch von der Steuer
+        Die Kosten für eine Weiterbildung kannst Du auch von der Steuer
         absetzen. Bis zu 1000 Euro erkennt das Finanzamt bei Arbeitnehmern
         pauschal als Werbungskosten an. Wie hoch deine Rückzahlung ausfällt,
         hängt davon ab ,wie das Finanzamt deine Weiterbildung einordnet. Du
@@ -786,7 +786,7 @@
       </p>
       <p>
         Alle Informationen unter welchen Voraussetzungen dein Unternehmen von
-        der Qualifizierungsoffensive profitiert, findest du auf der Seite der
+        der Qualifizierungsoffensive profitiert, findest Du auf der Seite der
         <a
           href="https://www.arbeitsagentur.de/unternehmen/finanziell/foerderung-von-weiterbildung"
           target="_blank"
@@ -794,18 +794,18 @@
         >.
       </p>
       <p class="mt-4">
-        Das waren 9 Möglichkeiten in der Kurzübersicht, die dir eine finanzielle
+        Das waren 9 Möglichkeiten in der Kurzübersicht, die Dir eine finanzielle
         Hilfe sein können, um in deine Karriere als MFA oder ZFA zu investieren.
         Natürlich sind nicht für jeden die 9 Möglichkeiten der Finanzierung
-        nutzbar, um deine Weiterbildung zu finanzieren. Dies soll für dich
+        nutzbar, um deine Weiterbildung zu finanzieren. Dies soll für Dich
         lediglich ein Überblick über deine eventuellen Chancen auf die
         Reduzierung von Weiterbildungskosten sein. Welche Form der Förderung für
-        dich in Frage kommen könnte, findest du heraus, wenn du dich bei den
+        Dich in Frage kommen könnte, findest Du heraus, wenn Du Dich bei den
         einzelnen Stellen direkt informierst.
       </p>
       <p>
-        Hast du bereits Erfahrung mit einer der 9 Förderungen gemacht und kannst
-        erzählen, wie das genau abgelaufen ist? Oder kennst du noch eine andere
+        Hast Du bereits Erfahrung mit einer der 9 Förderungen gemacht und kannst
+        erzählen, wie das genau abgelaufen ist? Oder kennst Du noch eine andere
         Möglichkeit, die hier noch nicht aufgeführt ist?
         <b-link to="/kontakt">Lass es uns wissen</b-link>.
       </p>
@@ -815,12 +815,12 @@
         5-10 Bildungstage pro Jahr
       </h2>
       <p>
-        Wusstest du eigentlich, dass du einen gesetzlichen Anspruch auf
+        Wusstest Du eigentlich, dass Du einen gesetzlichen Anspruch auf
         Weiterbildung während der Arbeitszeit hast? Dir stehen je nach
         Bundesland 5-10 Tage bezahlter Sonderurlaub zu.
       </p>
       <p>
-        Du kannst dich von der Arbeit beurlauben lassen, um neue Erkenntnisse zu
+        Du kannst Dich von der Arbeit beurlauben lassen, um neue Erkenntnisse zu
         einem selbst gewählten Thema zu gewinnen. Es muss nicht zwingend eine
         Fortbildung im medizinischen Bereich sein. Du könntest z.B. auch einen
         Yogakurs oder Social Media Kurs machen oder eine neue Sprache lernen.
@@ -835,8 +835,8 @@
         <a href="https://www.bildungsurlauber.de/bildungsurlaub" target="_blank"
           >bildungsurlauber.de</a
         >
-        kannst du ganz einfach einen Check machen und herausfinden, welchen
-        Anspruch du hast. Daneben findest du eine große Kursübersicht mit allen
+        kannst Du ganz einfach einen Check machen und herausfinden, welchen
+        Anspruch Du hast. Daneben findest Du eine große Kursübersicht mit allen
         anerkannten Kursen.
       </p>
 
@@ -848,8 +848,8 @@
         Fachangestellten erlernt man durch eine 3-jährige Ausbildung (siehe
         <b-link class="bold" to="/karriere/mfa/ausbildung-berufsbild"
           >Ausbildung zur MFA</b-link
-        >). Alternativ kannst du auch eine Umschulung zur MFA absolvieren, wenn
-        du schon einen Ausbildungsabschluss in einem anderen Beruf hast. Die
+        >). Alternativ kannst Du auch eine Umschulung zur MFA absolvieren, wenn
+        Du schon einen Ausbildungsabschluss in einem anderen Beruf hast. Die
         Umschulung dauert ca. 24-30 Monate.
       </p>
       <p>
@@ -857,7 +857,7 @@
         machen. Oft findet die Umschulung rein schulisch statt. Hier empfiehlt
         es sich ein Praktikum in einer Arztpraxis zu leisten, um bestimmte
         Tätigkeiten, z.B. Blutabnehmen, EKG schreiben, auch einmal praktisch
-        ausgeführt zu haben. Oder du machst die Umschulung dual. D.h. dir werden
+        ausgeführt zu haben. Oder Du machst die Umschulung dual. D.h. Dir werden
         praktische Inhalte in der Arztpraxis beigebracht und theoretische
         Inhalte an 1-2 Schultagen pro Woche vermittelt. Bei der rein schulischen
         Variante liegt die Umschulungsdauer meist bei 24 Monaten. Du erhältst
@@ -871,9 +871,9 @@
       <p>
         Auch im Rahmen der Umschulung findet die offizielle Abschlussprüfung mit
         einem praktischen und schriftlichen Teil statt. Bei bestandener Prüfung
-        vor der Ärztekammer hast du den Berufsabschluss zur MFA / ZFA erworben.
+        vor der Ärztekammer hast Du den Berufsabschluss zur MFA / ZFA erworben.
         Mit dem anerkannten Abschluss zur Medizinischen Fachangestellten |
-        Zahnmedizinischen Fachangestellten hast du sehr gute Chancen auf dem
+        Zahnmedizinischen Fachangestellten hast Du sehr gute Chancen auf dem
         <b-link class="bold" to="/stellenangebote">Arbeitsmarkt</b-link> eine
         Anstellung zu finden.
       </p>

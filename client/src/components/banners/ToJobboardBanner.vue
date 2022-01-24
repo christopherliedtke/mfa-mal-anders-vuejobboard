@@ -17,7 +17,7 @@
           <h3 :class="['bold', compact ? 'h2' : 'h1']">{{ header }}</h3>
           <slot name="desc">
             <p>
-              Bist du auf der Suche nach einer
+              Bist Du auf der Suche nach einer
               <strong class="text-primary">neuen Herausforderung?</strong>
               <br />
               Du willst Dich

@@ -26,7 +26,7 @@
       </h3>
 
       <p class="card-text">
-        Hier findest du eine Auswahl von ganz unterschiedlichen Jobs und Berufen
+        Hier findest Du eine Auswahl von ganz unterschiedlichen Jobs und Berufen
         inklusive vieler Alternativen für Medizinische Fachangestellte |
         Zahnmedizinische Fachangestellte | ArzthelferInnen!
       </p>

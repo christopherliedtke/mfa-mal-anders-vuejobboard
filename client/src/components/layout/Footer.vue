@@ -30,7 +30,7 @@
               <p>
                 <strong
                   >Wichtig: Der Preis erhöht sich dadurch nicht für
-                  dich.</strong
+                  Dich.</strong
                 >
               </p>
             </div>
