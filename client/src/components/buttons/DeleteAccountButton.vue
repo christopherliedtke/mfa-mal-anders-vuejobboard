@@ -125,7 +125,7 @@
         if (response.data.errors) {
           this.errors = response.data.errors;
         } else {
-          this.$gtag.event("delete_account", {
+          this.$gtag.event("user_delete", {
             event_label: this.$store.state.auth.user._id
           });
 

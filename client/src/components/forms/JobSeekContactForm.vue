@@ -242,7 +242,7 @@
               }
             );
 
-            this.$gtag.event("contact_jobseeker", {
+            this.$gtag.event("jobseek_contact", {
               event_label: `${this.jobSeekId} by ${this.$store.state.auth.user._id}`
             });
 

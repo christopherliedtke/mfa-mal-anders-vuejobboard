@@ -234,7 +234,7 @@
               }
             );
 
-            this.$gtag.event("contact_send_email");
+            this.$gtag.event("contact_form");
           } else {
             throw new Error();
           }

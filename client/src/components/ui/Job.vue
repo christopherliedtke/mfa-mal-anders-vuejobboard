@@ -482,7 +482,7 @@
               target="_blank"
               @click="
                 track(
-                  'job_email',
+                  'job_mail',
                   `${job.title} | ${job.company.name} - ${job._id}`
                 )
               "

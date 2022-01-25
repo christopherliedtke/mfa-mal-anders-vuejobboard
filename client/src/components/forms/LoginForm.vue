@@ -129,7 +129,7 @@
             }
           }
 
-          this.$gtag.event("login", {
+          this.$gtag.event("user_login", {
             method: "local",
             event_label: this.$store.state.auth.user._id
           });
