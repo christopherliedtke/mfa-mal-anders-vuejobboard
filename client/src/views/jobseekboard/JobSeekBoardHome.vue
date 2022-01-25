@@ -2,9 +2,12 @@
   <div class="jobseekboard">
     <div class="title">
       <h1>
-        Stellengesuche &ndash; MFA & ZFA{{
-          filter.ort ? " | " + filter.ort : ""
-        }}
+        <strong>Stellengesuche</strong> <br />
+        <span class="h4"
+          >Qualifizierte MFA & ZFA finden{{
+            filter.ort ? " in " + filter.ort : ""
+          }}</span
+        >
       </h1>
       <b-breadcrumb :items="breadcrumbs" class="text-capitalize"></b-breadcrumb>
     </div>

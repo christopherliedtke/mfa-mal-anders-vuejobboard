@@ -133,7 +133,7 @@
             style="border-radius: 50% 50% 50% 35px"
             fluid
             src="@/assets/img/ChristopherLiedtke.jpeg"
-            alt="Portrait Kristin Maurach"
+            alt="Portrait Christopher Liedtke"
             width="200"
             height="200"
           />

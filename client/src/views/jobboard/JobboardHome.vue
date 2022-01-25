@@ -2,14 +2,16 @@
   <div class="jobboard">
     <div class="title">
       <h1>
-        {{
-          `Stellenangebote${
+        <strong>Stellenangebote</strong> <br />
+        <span class="h4"
+          >{{
             berufsgruppe.active.length > 0
-              ? " – " + berufsgruppe.active.join(" & ")
+              ? berufsgruppe.active.join(" & ")
               : ""
-          }
-      `
-        }}{{ filter.ort ? " | " + filter.ort : "" }}
+          }}
+          Jobs {{ filter.ort ? " in " + filter.ort : "" }} gesucht –
+          gefunden!</span
+        >
       </h1>
       <b-breadcrumb :items="breadcrumbs" class="text-capitalize"></b-breadcrumb>
     </div>
@@ -485,11 +487,17 @@
       <div class="container py-4 py-lg-5">
         <h2 class="lead bold">
           {{
-            berufsgruppe.active.length > 0
-              ? berufsgruppe.active.join(" & ")
-              : "MFA & ZFA"
+            berufsgruppe.active.some(str => str == "MFA")
+              ? "Medizinische Fachangestellte"
+              : ""
           }}
-          Stellenangebote nach Stadt
+          {{ berufsgruppe.active.length > 1 ? " & " : "" }}
+          {{
+            berufsgruppe.active.some(str => str == "ZFA")
+              ? "Zahnmedizinische Fachangestellte"
+              : ""
+          }}
+          &ndash; Stellenangebote nach Stadt
         </h2>
         <ul class="list-group list-group-flush mb-4">
           <li

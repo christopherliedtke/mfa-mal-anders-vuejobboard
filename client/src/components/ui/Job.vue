@@ -337,7 +337,7 @@
           target="_blank"
           @click="
             track(
-              'apply_visit_hp',
+              'job_visit_website',
               `${job.title} | ${job.company.name} - ${job._id}`
             )
           "
@@ -404,7 +404,7 @@
           target="_blank"
           @click="
             track(
-              'apply_now',
+              'job_apply',
               `${job.title} | ${job.company.name} - ${job._id}`
             )
           "
@@ -463,7 +463,7 @@
               target="_blank"
               @click="
                 track(
-                  'apply_phone',
+                  'job_phone',
                   `${job.title} | ${job.company.name} - ${job._id}`
                 )
               "
@@ -482,7 +482,7 @@
               target="_blank"
               @click="
                 track(
-                  'apply_email',
+                  'job_email',
                   `${job.title} | ${job.company.name} - ${job._id}`
                 )
               "

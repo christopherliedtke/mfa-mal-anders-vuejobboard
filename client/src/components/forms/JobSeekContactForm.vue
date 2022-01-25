@@ -242,6 +242,10 @@
               }
             );
 
+            this.$gtag.event("contact_jobseeker", {
+              event_label: `${this.jobSeekId} by ${this.$store.state.auth.user._id}`
+            });
+
             this.resetForm();
           }
         } catch (err) {
