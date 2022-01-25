@@ -2,7 +2,7 @@
   <div class="jobs-berufsbilder-home">
     <div class="title">
       <h1>
-        {{ title }}
+        <strong>{{ title }}</strong>
       </h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>

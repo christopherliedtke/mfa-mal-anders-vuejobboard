@@ -2,8 +2,8 @@
   <article class="salary">
     <div class="title">
       <h1>
-        {{ title }} {{ year }} <br />
-        <span class="h3">für Zahnmedizinische Fachangestellte</span>
+        <strong>{{ title }} {{ year }}</strong> <br />
+        <span class="h4">für Zahnmedizinische Fachangestellte</span>
       </h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>

@@ -1,7 +1,10 @@
 <template>
   <div>
     <div class="title">
-      <h1>{{ title }}</h1>
+      <h1>
+        <strong>Fortbildungskatalog</strong> <br />
+        <span class="h4">Fort- und Weiterbildungen für MFA & ZFA</span>
+      </h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
 
@@ -213,7 +216,6 @@
     },
     data() {
       return {
-        title: "Fortbildungskatalog für MFA & ZFA",
         trainings: [{}, {}, {}, {}, {}],
         getTrainingsTimeoutId: null,
         loadMoreTrainingsTimeoutId: null,

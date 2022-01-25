@@ -1,7 +1,7 @@
 <template>
   <div class="impressum">
     <div class="title">
-      <h1>{{ title }}</h1>
+      <h1 class="bold">{{ title }}</h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
     <div class="container py-3 py-lg-5">

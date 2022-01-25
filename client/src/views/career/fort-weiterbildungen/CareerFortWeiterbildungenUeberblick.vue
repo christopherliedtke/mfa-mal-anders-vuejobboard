@@ -1,7 +1,10 @@
 <template>
   <div>
     <div class="title">
-      <h1>{{ title }}</h1>
+      <h1>
+        <strong>Fort- und Weiterbildungen</strong> <br />
+        <span class="h4">Übersicht für MFA & ZFA</span>
+      </h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
     <div class="container py-3 py-lg-5">
@@ -39,7 +42,6 @@
     },
     data() {
       return {
-        title: "Fort- und Weiterbildungen für MFA & ZFA",
         breadcrumbs: [
           { text: "Home", to: "/" },
           { text: "Karriere", to: "/karriere" },

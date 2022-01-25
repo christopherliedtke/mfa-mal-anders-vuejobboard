@@ -2,8 +2,8 @@
   <div>
     <div class="title">
       <h1>
-        {{ title }} <br />
-        <span class="h3">Tipps | Beispiele | Vorlage</span>
+        <strong>{{ title }}</strong> <br />
+        <span class="h4">Tipps | Beispiele | Vorlage</span>
       </h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>

@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <div class="title">
-      <h1>{{ title }}</h1>
+      <h1 class="bold">{{ title }}</h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
     <div class="header-img">
