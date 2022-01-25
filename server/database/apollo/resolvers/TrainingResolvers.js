@@ -45,6 +45,10 @@ const TrainingResolvers = {
             [elem]: { $regex: searchStr },
           };
         });
+
+        // filter.$text = {
+        //   $search: args.search,
+        // };
       }
 
       if (args.type) {
