@@ -13,6 +13,7 @@ const TrainingResolvers = {
         // $or: [{ startAt: { $gte: new Date() } }, { startAnytime: true }],
         published: true,
         pending: false,
+        paid: true,
       });
 
       return training;
@@ -21,6 +22,7 @@ const TrainingResolvers = {
       const filter = {
         published: true,
         pending: false,
+        paid: true,
       };
 
       if (args.search) {
@@ -40,6 +42,7 @@ const TrainingResolvers = {
           "company",
           "location",
           "state",
+          "graduation",
         ].map(elem => {
           return {
             [elem]: { $regex: searchStr },
@@ -247,6 +250,13 @@ function cleanUpTraining(training, user) {
     training.paid === undefined
   ) {
     training.published = true;
+    training.pending = false;
+    training.paid = true;
+  }
+
+  if (user.isAdmin && training.published) {
+    training.published = true;
+    training.pending = false;
     training.paid = true;
   }
 

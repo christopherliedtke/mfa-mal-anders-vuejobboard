@@ -161,7 +161,7 @@
             >
           </BDropdown> -->
 
-          <BDropdown class="mr-2" size="sm" left variant="secondary">
+          <!-- <BDropdown class="mr-2" size="sm" left variant="secondary">
             <template #button-content>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -188,7 +188,7 @@
               @click.prevent="updateTraining(row.item._id, 'pending: false')"
               >false</BDropdownItem
             >
-          </BDropdown>
+          </BDropdown> -->
 
           <BDropdown class="mr-2" size="sm" left variant="info">
             <template #button-content>
@@ -328,6 +328,11 @@
             sortable: true
           },
           {
+            key: "paid",
+            label: "Paid",
+            sortable: true
+          },
+          {
             key: "company",
             label: "Company",
             sortable: true
@@ -391,6 +396,7 @@
                     published
                     isSponsored
                     pending
+                    paid
                     startAt
                     startAnytime
                     duration
@@ -444,6 +450,7 @@
                   published
                   isSponsored
                   pending
+                  paid
                   startAt
                   startAnytime
                   duration

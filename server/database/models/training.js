@@ -91,7 +91,11 @@ const TrainingSchema = new Schema(
     },
     paid: {
       type: Boolean,
-      default: true,
+      default: false,
+    },
+    verified: {
+      type: Boolean,
+      default: false,
     },
     isSponsored: {
       type: Boolean,

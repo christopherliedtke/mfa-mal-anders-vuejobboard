@@ -34,24 +34,6 @@
         class="bg-light-shade border-radius1 p-3 mt-3"
       >
         <h6>ADMIN</h6>
-        <label for="published">published</label>
-        <b-form-radio-group
-          id="published"
-          v-model="training.published"
-          class="mb-2"
-          :options="[true, false]"
-          name="published"
-          size="sm"
-        ></b-form-radio-group>
-        <label for="pending">pending</label>
-        <b-form-radio-group
-          id="pending"
-          v-model="training.pending"
-          class="mb-2"
-          :options="[true, false]"
-          name="pending"
-          size="sm"
-        ></b-form-radio-group>
         <label for="is-sponsored">isSponsored</label>
         <b-form-radio-group
           id="is-sponsored"
@@ -495,8 +477,6 @@
           effort: "",
           cost: null,
           extUrl: "",
-          published: this.$store.state.auth.user.isAdmin ? true : false,
-          pending: false,
           isSponsored: this.$store.state.auth.user.isAdmin ? true : false
         },
         validated: null,
@@ -561,8 +541,6 @@
                     effort
                     cost
                     extUrl
-                    published
-                    pending
                     isSponsored
                   }
                 }
@@ -638,8 +616,6 @@
                       ? "https://" + this.training.extUrl
                       : this.training.extUrl
                   }"
-                  published: ${this.training.published}
-                  pending: ${this.training.pending}
                   isSponsored: ${this.training.isSponsored}
                 ) {
                   _id
@@ -660,8 +636,6 @@
                   effort
                   cost
                   extUrl
-                  published
-                  pending
                   isSponsored
                 }
               }
