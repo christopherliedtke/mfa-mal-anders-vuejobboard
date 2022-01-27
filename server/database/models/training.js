@@ -50,6 +50,12 @@ const TrainingSchema = new Schema(
       type: String,
       required: true,
     },
+    eventType: {
+      type: String,
+    },
+    graduation: {
+      type: String,
+    },
     profession: {
       type: String,
       default: "",

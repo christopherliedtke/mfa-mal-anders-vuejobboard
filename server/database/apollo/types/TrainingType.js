@@ -8,6 +8,8 @@ const TrainingType = gql`
       skip: Int
       search: String
       type: String
+      eventType: String
+      graduation: String
       profession: String
       state: String
       remote: Boolean
@@ -30,6 +32,8 @@ const TrainingType = gql`
       company: String!
       logoUrl: String
       type: String!
+      eventType: String
+      graduation: String
       profession: String
       startAt: Float
       endAt: Float
@@ -54,6 +58,8 @@ const TrainingType = gql`
       company: String
       logoUrl: String
       type: String
+      eventType: String
+      graduation: String
       profession: String
       startAt: Float
       endAt: Float
@@ -84,6 +90,8 @@ const TrainingType = gql`
     company: String!
     logoUrl: String
     type: String!
+    eventType: String
+    graduation: String
     profession: String
     startAt: Float
     endAt: Float

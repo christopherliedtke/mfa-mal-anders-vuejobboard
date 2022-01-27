@@ -73,7 +73,33 @@
                 >{{ state }}</b-form-select-option
               >
             </b-form-select>
-            <label for="type-jobboard" class="sr-only">Bereich</label>
+
+            <label for="event-type-training" class="sr-only"
+              >Veranstaltungsart</label
+            >
+            <b-form-select
+              id="event-type-training"
+              v-model="filter.eventType"
+              class="my-1 mr-2"
+              @change="
+                () => {
+                  getTrainings();
+                  setQuery();
+                }
+              "
+            >
+              <b-form-select-option :value="''"
+                >Alle Veranstaltungsarten</b-form-select-option
+              >
+              <b-form-select-option
+                v-for="type in eventTypeOptions"
+                :key="type"
+                :value="type"
+                >{{ type }}</b-form-select-option
+              >
+            </b-form-select>
+
+            <label for="type-training" class="sr-only">Bereich</label>
             <b-form-select
               id="type-training"
               v-model="filter.type"
@@ -95,6 +121,7 @@
                 >{{ type }}</b-form-select-option
               >
             </b-form-select>
+
             <label for="profession-training" class="sr-only"
               >Berufsgruppe</label
             >
@@ -131,7 +158,7 @@
                 }
               "
             >
-              Nur Onlinefortbildungen
+              Nur Online / Fern
             </b-form-checkbox>
           </b-form>
           <div class="mt-3">
@@ -145,7 +172,7 @@
           <div class="d-none d-lg-block">
             <SgdBanner class="mt-4" />
           </div>
-          <div class="small text-right my-3 pt-1">
+          <div class="small text-right mt-3 pt-1">
             <b-link
               to="/auth/register?role=education&redirect=/user/fortbildungen"
               >Jetzt kostenfrei Fortbildung veröffentlichen</b-link
@@ -199,7 +226,8 @@
   import {
     companyStateOptions,
     professionOptions,
-    typeOptions
+    typeOptions,
+    eventTypeOptions
   } from "@/config/formDataConfig.json";
   import SgdBanner from "@/components/banners/SgdBanner.vue";
   import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
@@ -224,6 +252,7 @@
           s: "",
           remote: false,
           type: "",
+          eventType: "",
           profession: "",
           state: "",
           location: ""
@@ -232,6 +261,7 @@
         companyStateOptions: Object.freeze(companyStateOptions),
         professionOptions: Object.freeze(professionOptions),
         typeOptions: Object.freeze(typeOptions),
+        eventTypeOptions: Object.freeze(eventTypeOptions),
         breadcrumbs: [
           { text: "Home", to: "/" },
           { text: "Karriere", to: "/karriere" },
@@ -309,6 +339,7 @@
                         skip: ${offset}
                         search: "${this.filter.s}"
                         type: "${this.filter.type}"
+                        eventType: "${this.filter.eventType}"
                         profession: "${this.filter.profession}"
                         state: "${this.filter.state}"
                         remote: ${this.filter.remote}
@@ -320,10 +351,10 @@
                           company
                           logoUrl
                           type
+                          eventType
+                          graduation
                           remote
                           startAnytime
-                          startAt
-                          endAt
                           location
                           duration
                           effort
@@ -418,6 +449,7 @@
         this.filter = {
           s: this.$route.query.s || "",
           type: this.$route.query.type || "",
+          eventType: this.$route.query.eventType || "",
           profession: this.$route.query.profession || "",
           location: this.$route.query.location || "",
           state: this.$route.query.state || "",
@@ -428,6 +460,7 @@
         this.filter = {
           s: "",
           type: "",
+          eventType: "",
           profession: "",
           location: "",
           state: "",

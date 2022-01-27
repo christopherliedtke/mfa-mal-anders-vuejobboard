@@ -55,6 +55,10 @@ const TrainingResolvers = {
         filter.type = args.type;
       }
 
+      if (args.eventType) {
+        filter.eventType = args.eventType;
+      }
+
       if (args.profession) {
         filter.profession = { $in: [null, "", args.profession] };
       }
@@ -128,7 +132,7 @@ const TrainingResolvers = {
         throw new AuthenticationError("Missing persmission!");
       }
 
-      const trainings = await Training.find({}).sort({ startAt: "desc" });
+      const trainings = await Training.find({}).sort({ createdAt: "desc" });
 
       return trainings;
     },

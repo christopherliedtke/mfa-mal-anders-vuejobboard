@@ -137,6 +137,46 @@
       </b-input-group>
 
       <div class="row">
+        <div class="col-12 col-lg-4">
+          <label for="training-event-type" required>Veranstaltungsart</label>
+          <b-form-select
+            id="training-event-type"
+            v-model="training.eventType"
+            :state="validated ? (training.eventType ? true : false) : null"
+          >
+            <b-form-select-option value="" disabled
+              >-- Art auswählen --</b-form-select-option
+            >
+            <b-form-select-option
+              v-for="type in eventTypeOptions"
+              :key="type"
+              :value="type"
+              >{{ type }}</b-form-select-option
+            >
+          </b-form-select>
+        </div>
+
+        <div class="col-12 col-lg-4">
+          <label for="training-graduation" required>Abschluss</label>
+          <b-form-select
+            id="training-graduation"
+            v-model="training.graduation"
+            :state="validated ? (training.eventType ? true : false) : null"
+          >
+            <b-form-select-option value="" disabled
+              >-- Abschluss auswählen --</b-form-select-option
+            >
+            <b-form-select-option
+              v-for="type in graduationOptions"
+              :key="type"
+              :value="type"
+              >{{ type }}</b-form-select-option
+            >
+          </b-form-select>
+        </div>
+
+        <div class="w-100"></div>
+
         <div class="col-12 col-lg-6">
           <label for="training-duration">Dauer der Fortbildung</label>
           <b-form-input
@@ -203,42 +243,11 @@
           class="mb-2"
           :options="[
             { value: true, text: 'Start jederzeit' },
-            { value: false, text: 'Feste Startdaten' }
+            { value: false, text: 'Termine regelmäßig / auf Anfrage' }
           ]"
           name="start-anytime"
           size="sm"
         ></b-form-radio-group>
-
-        <div v-if="!training.startAnytime" class="row">
-          <div class="col-12 col-lg-4">
-            <label for="start-at">Nächstes Startdatum</label>
-            <BFormDatepicker
-              id="start-at"
-              v-model="startAt"
-              :state="validated ? true : null"
-              placeholder="Startet am..."
-              :reset-button="true"
-              :reset-value="''"
-              label-reset-button="Zurücksetzen"
-              label-help=""
-              start-weekday="1"
-            />
-          </div>
-          <div class="col-12 col-lg-4">
-            <label for="end-at">Enddatum</label>
-            <BFormDatepicker
-              id="end-at"
-              v-model="endAt"
-              :state="validated ? true : null"
-              placeholder="Endet am..."
-              :reset-button="true"
-              :reset-value="''"
-              label-reset-button="Zurücksetzen"
-              label-help=""
-              start-weekday="1"
-            />
-          </div>
-        </div>
       </b-form-group>
 
       <div class="row">
@@ -301,14 +310,14 @@
       </div>
 
       <b-form-group>
-        <label for="remote" class="mt-4">Ort der Fortbildung</label>
+        <label for="remote" class="mt-4">Unterrichtsform</label>
         <b-form-radio-group
           id="remote"
           v-model="training.remote"
           class="mb-2"
           :options="[
-            { value: false, text: 'Vor Ort / Hybrid' },
-            { value: true, text: 'Nur Online' }
+            { value: false, text: 'Präsenz / Hybrid' },
+            { value: true, text: 'Online / Fern' }
           ]"
           name="remote"
           size="sm"
@@ -456,7 +465,9 @@
   import {
     professionOptions,
     companyStateOptions,
-    typeOptions
+    typeOptions,
+    eventTypeOptions,
+    graduationOptions
   } from "@/config/formDataConfig.json";
   export default {
     name: "TrainingForm",
@@ -477,9 +488,9 @@
           company: "",
           logoUrl: "",
           type: "",
+          eventType: "",
+          graduation: "",
           profession: "",
-          startAt: null,
-          endAt: null,
           duration: "",
           effort: "",
           cost: null,
@@ -493,42 +504,12 @@
         error: false,
         professionOptions,
         companyStateOptions,
-        typeOptions
+        typeOptions,
+        eventTypeOptions,
+        graduationOptions
       };
     },
     computed: {
-      startAt: {
-        get() {
-          if (this.training.startAt) {
-            return new Date(this.training.startAt);
-          } else {
-            return "";
-          }
-        },
-        set(value) {
-          if (value) {
-            this.training.startAt = new Date(value).getTime();
-          } else {
-            this.training.startAt = null;
-          }
-        }
-      },
-      endAt: {
-        get() {
-          if (this.training.endAt) {
-            return new Date(this.training.endAt);
-          } else {
-            return "";
-          }
-        },
-        set(value) {
-          if (value) {
-            this.training.endAt = new Date(value).getTime();
-          } else {
-            this.training.endAt = null;
-          }
-        }
-      },
       cost: {
         get() {
           return this.training.cost;
@@ -573,9 +554,9 @@
                     company
                     logoUrl
                     type
+                    eventType
+                    graduation
                     profession
-                    startAt
-                    endAt
                     duration
                     effort
                     cost
@@ -643,9 +624,9 @@
                     this.training.logoUrl ? this.training.logoUrl : ""
                   }"
                   type: "${this.training.type}"
+                  eventType: "${this.training.eventType}"
+                  graduation: "${this.training.graduation}"
                   profession: "${this.training.profession}"
-                  startAt: ${this.training.startAt}
-                  endAt: ${this.training.endAt}
                   duration: "${
                     this.training.duration ? this.training.duration : ""
                   }"
@@ -672,9 +653,9 @@
                   company
                   logoUrl
                   type
+                  eventType
+                  graduation
                   profession
-                  startAt
-                  endAt
                   duration
                   effort
                   cost
@@ -736,6 +717,8 @@
           !this.training.extUrl ||
           !this.training.company ||
           !this.training.type ||
+          !this.training.eventType ||
+          !this.training.graduation ||
           this.training.effort.length > 55 ||
           this.training.duration.length > 55
           ? false

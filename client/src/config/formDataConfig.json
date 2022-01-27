@@ -107,5 +107,14 @@
     "Management",
     "Verwaltung",
     "Forschung"
+  ],
+  "eventTypeOptions": ["Seminar / Kurs", "Studium"],
+  "graduationOptions": [
+    "Teilnahmebescheinigung",
+    "Zertifikat",
+    "IHK-Zertifikat",
+    "Bachelor",
+    "Master",
+    "Andere"
   ]
 }

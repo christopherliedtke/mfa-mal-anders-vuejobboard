@@ -138,6 +138,8 @@
                         company
                         logoUrl
                         type
+                        eventType
+                        graduation
                         remote
                         startAnytime
                         startAt
