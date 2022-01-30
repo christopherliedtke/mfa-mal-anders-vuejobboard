@@ -580,7 +580,8 @@
 
     <div id="tipps-stellenanzeigen" class="container mb-5">
       <h2 class="bold mb-4">
-        Tipps für Ihre Stellenanzeige
+        8 Tipps &ndash; Stellenanzeige für Medizinische Fachangestellte (MFA) &
+        Zahnmedizinische Fachangestellte (ZFA)
       </h2>
       <p>
         Ihre Stellenanzeige ist eine Einladung für BewerberInnen zum Dialog –

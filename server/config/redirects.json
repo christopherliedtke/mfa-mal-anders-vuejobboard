@@ -21,11 +21,11 @@
   },
   {
     "old": "/article/8-tipps-fuer-attraktive-stellenanzeigen-fuer-mfas",
-    "new": "/blog/artikel/8-tipps-fuer-attraktive-stellenanzeigen-fuer-mfas"
+    "new": "/fuer-arbeitgeber#tipps-stellenanzeigen"
   },
   {
     "old": "/blog/article/8-tipps-fuer-attraktive-stellenanzeigen-fuer-mfas",
-    "new": "/blog/artikel/8-tipps-fuer-attraktive-stellenanzeigen-fuer-mfas"
+    "new": "/fuer-arbeitgeber#tipps-stellenanzeigen"
   },
   {
     "old": "/article/tipps-fuer-einen-effizienten-bewerbungsprozess",
@@ -194,6 +194,10 @@
   {
     "old": "/karriere/fortbildungskalender",
     "new": "/karriere/fort-und-weiterbildung/fortbildungskatalog"
+  },
+  {
+    "old": "/blog/artikel/8-tipps-fuer-attraktive-stellenanzeigen-fuer-mfas",
+    "new": "/fuer-arbeitgeber#tipps-stellenanzeigen"
   },
   {
     "old": "/karriere/fortbildungskatalog",
