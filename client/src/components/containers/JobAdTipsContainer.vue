@@ -36,7 +36,7 @@
     </div>
     <div class="col-12 col-md-8 d-flex align-items-center">
       <div
-        class="bg-light-shade border-radius1 shadow3 m-3 p-4 position-relative"
+        class="bg-light-shade border-radius1 shadow1 m-3 p-4 position-relative"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

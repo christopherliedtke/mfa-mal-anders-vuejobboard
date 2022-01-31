@@ -8,9 +8,7 @@
       Bearbeiten Sie hier Ihre Stellenanzeige.
       <strong
         >Beachten Sie auch unsere
-        <b-link
-          href="/blog/artikel/8-tipps-fuer-attraktive-stellenanzeigen-fuer-mfas"
-          target="_blank"
+        <b-link href="/fuer-arbeitgeber#tipps-stellenanzeigen" target="_blank"
           >Tipps
         </b-link>
       </strong>
@@ -34,9 +32,7 @@
         placement="bottomleft"
       >
         <template #title>Tipps für Ihre Stellenanzeige</template>
-        <b-link
-          href="/blog/artikel/8-tipps-fuer-attraktive-stellenanzeigen-fuer-mfas"
-          target="_blank"
+        <b-link href="/fuer-arbeitgeber#tipps-stellenanzeigen" target="_blank"
           >Hier</b-link
         >
         haben wir Ihnen aus unseren Erfahrungen einige Tipps für eine attraktive
