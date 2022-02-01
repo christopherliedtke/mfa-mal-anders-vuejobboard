@@ -122,6 +122,21 @@
           >
         </div>
         <div class="col-12 col-lg-4">
+          <label for="simple-applcation">Nur mit Lebenslauf bewerben</label>
+          <b-form-select
+            id="simple-application"
+            v-model="job.simpleApplication"
+            :state="validated ? true : null"
+          >
+            <b-form-select-option
+              v-for="type in simpleApplicationOptions"
+              :key="type.value"
+              :value="type.value"
+              >{{ type.text }}</b-form-select-option
+            ></b-form-select
+          >
+        </div>
+        <!-- <div class="col-12 col-lg-4">
           <label for="application-deadline">Bewerbungsfrist</label>
           <BFormDatepicker
             id="application-deadline"
@@ -139,22 +154,7 @@
             >Stellenanzeige geht nach diesem Datum automatisch
             offline</b-form-text
           >
-        </div>
-        <div class="col-12 col-lg-4">
-          <label for="simple-applcation">Nur mit Lebenslauf bewerben</label>
-          <b-form-select
-            id="simple-application"
-            v-model="job.simpleApplication"
-            :state="validated ? true : null"
-          >
-            <b-form-select-option
-              v-for="type in simpleApplicationOptions"
-              :key="type.value"
-              :value="type.value"
-              >{{ type.text }}</b-form-select-option
-            ></b-form-select
-          >
-        </div>
+        </div> -->
       </div>
 
       <label for="description" required>Stellenbeschreibung</label>

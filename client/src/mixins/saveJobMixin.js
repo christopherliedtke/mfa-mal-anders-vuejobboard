@@ -25,11 +25,7 @@ export const saveJobMixin = {
               description: "${job.description.replace(/"/g, '\\"')}"
               profession: "${job.profession}"
               employmentType: "${job.employmentType}"
-              applicationDeadline: ${
-                job.applicationDeadline
-                  ? new Date(job.applicationDeadline).setHours(23, 59, 59, 999)
-                  : null
-              }
+              applicationDeadline: ${null}
               simpleApplication: ${job.simpleApplication}
               specialization: "${job.specialization}"
               extJobUrl: "${
