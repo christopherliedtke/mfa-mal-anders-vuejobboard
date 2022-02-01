@@ -15,7 +15,7 @@
           />
         </svg>
         <div class="display-4 bold mb-3">
-          410.000+
+          710.000+
         </div>
         <p>Menschen sehen uns monatlich bei Google</p>
       </div>
@@ -33,7 +33,7 @@
           />
         </svg>
         <div class="display-4 bold mb-3">
-          33.000+
+          30.000+
         </div>
         <p>Monatliche Reichweite bei Facebook</p>
       </div>
@@ -53,12 +53,12 @@
           ></path>
         </svg>
         <div class="display-4 bold mb-3">
-          58.000+
+          111.000+
         </div>
         <p>Monatliche Seitenaufrufe auf der Webseite</p>
       </div>
     </div>
-    <p class="mt-4 small text-muted text-right">Stand: 11/2021</p>
+    <p class="mt-4 small text-muted text-right">Stand: 01/2022</p>
   </div>
 </template>
 
