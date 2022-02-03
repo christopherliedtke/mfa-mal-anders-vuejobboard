@@ -15,6 +15,7 @@ const sslRedirect = require("heroku-ssl-redirect");
 const cors = require("cors");
 const compression = require("compression");
 const csurf = require("csurf");
+// const rateLimit = require("express-rate-limit");
 const config = require("./config/config.js");
 const sitemapCache = require("./cache/sitemapCache");
 
@@ -40,6 +41,16 @@ prerender.crawlerUserAgents = config.prerender.userAgents;
 if (process.env.HEROKU == "yes") {
   app.use(sslRedirect());
 }
+
+// # Rate Limiter
+// const limiter = rateLimit({
+//   windowMs: 10 * 60 * 1000, // 10 minutes
+//   max: 100, // Limit each IP to 100 requests per `window` (here, per 10 minutes)
+//   standardHeaders: false, // Return rate limit info in the `RateLimit-*` headers
+//   legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+// });
+// app.use("/api", limiter);
+// app.use("/graphql", limiter);
 
 // #Create Sitemap CRON job
 // if (config.sitemap.active) {
