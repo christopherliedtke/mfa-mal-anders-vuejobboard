@@ -220,8 +220,8 @@
       salaryPerHour() {
         return (
           Math.round(
-            ((this.form.yearsOfExperience * this.form.hoursOfEducation) / 167) *
-              (100 + (this.year - 2021) * 3)
+            ((this.form.yearsOfExperience * this.form.hoursOfEducation) / 169) *
+              100
           ) / 100
         );
       }
