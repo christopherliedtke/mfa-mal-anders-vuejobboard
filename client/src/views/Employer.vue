@@ -601,10 +601,19 @@
           href="/downloads/MfaMalAnders_Beispiel_Stellenanzeige.pdf"
           target="_blank"
           class="bold"
-          >Muster Stellenanzeige für MFA | ZFA</b-link
+          >Beispiel & Muster Stellenanzeige für MFA | ZFA | ArzthelferIn</b-link
         >
         zur Inspiration ansehen.
       </p>
+
+      <div class="d-flex justify-content-center mt-4 mb-5">
+        <b-button
+          variant="primary"
+          href="/downloads/MfaMalAnders_Beispiel_Stellenanzeige.pdf"
+          target="_blank"
+          >Download Muster-Stellenanzeige</b-button
+        >
+      </div>
 
       <JobAdTipsContainer class="my-4" />
     </div>
