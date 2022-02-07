@@ -402,6 +402,16 @@ function cleanUpJob(job, user) {
     delete job.paidAmount;
   }
 
+  if (job.description) {
+    job.excerpt =
+      sanitizeHtml(job.description.replace(/<\/([a-z, 0-9]*)>/g, "</$1> "), {
+        allowedTags: [],
+        allowedAttributes: {},
+      })
+        .substring(0, 200)
+        .trim() + "...";
+  }
+
   for (const key in job) {
     if (typeof job[key] === "string" && key != "extJobUrl") {
       job[key] = sanitizeHtml(job[key], {
