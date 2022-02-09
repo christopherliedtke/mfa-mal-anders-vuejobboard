@@ -33,6 +33,9 @@ const PaymentSchema = new Schema(
     stripePaymentIntent: {
       type: String,
     },
+    stripeInvoice: {
+      type: String,
+    },
     receiptUrl: {
       type: String,
     },
