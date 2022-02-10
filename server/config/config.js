@@ -16,33 +16,99 @@ module.exports = {
   },
   payment: {
     currency: "eur",
-    // tax: 0,
-    // paymentExpirationDays: 60,
-    // minPricePerJob: 3900,
-    // refreshFrequencies: [
-    //   {
-    //     amount: 15000,
-    //     refreshAfterDays: 14,
-    //   },
-    // ],
     pricingPackages: [
       {
         name: "Basis",
+        stripeProductId: "prod_L7VuawNfGaMriT",
+        stripePriceId: "price_1KRGsSBqHbQO3NhwsxZ5H50X",
         price: 14900,
         duration: 60,
         refreshFrequency: 0,
+        primary: "primary",
+        accent: "light-shade",
+        desc: [
+          {
+            html: 'Stellenanzeige für <span class="text-secondary bold">60 Tage</span> online',
+          },
+          {
+            html: 'Integration <span class="text-secondary bold">Logo & Titelbild</span> in Stellenanzeige auf <span class="italic text-primary">MFA mal anders</span> für individuelles Branding',
+          },
+          {
+            html: 'Listung bei <span class="text-secondary bold">Google Jobs</span> &ndash; Ihre Anzeige in den organischen Suchergebnissen von Google',
+          },
+          {
+            html: 'Einmaliger Versand Ihrer Stellenanzeige in unserem <span class="text-secondary bold" >wöchentlichen Job-Newsletter</span>',
+          },
+          {
+            html: 'Option auf Kontaktaufnahme zu qualifiziertem Fachpersonal aus unseren <a href="/stellengesuche" target="_blank" class="text-secondary bold" >Stellengesuchen</a>',
+          },
+        ],
       },
       {
         name: "Standard",
+        stripeProductId: "prod_L7WJ4NyiuoR6Bh",
+        stripePriceId: "price_1KRHH7BqHbQO3Nhwup8i3Zv9",
         price: 19900,
         duration: 90,
         refreshFrequency: 14,
+        primary: "light",
+        accent: "primary",
+        badge: "beliebt",
+        badgeBg: "secondary",
+        desc: [
+          { html: '<span class="bold">Basis Features</span>' },
+          {
+            html: 'Stellenanzeige für <span class="text-secondary bold">90 Tage</span> online',
+            icon: "plus-circle",
+          },
+          {
+            html: '<span class="text-secondary bold">Datumsupdate alle 14 Tage</span> &ndash; Ihre Stellenanzeige rutscht nach oben',
+            icon: "plus-circle",
+          },
+          {
+            html: 'Wiederholter Versand Ihrer Stellenanzeige in unserem <span class="text-secondary bold" >wöchentlichen Job-Newsletter</span> alle 14 Tage',
+            icon: "plus-circle",
+          },
+          {
+            html: 'Social Boost durch Veröffentlichung Ihrer Stellenanzeige <span class="text-secondary bold">auf unserem Facebook-Kanal sowie in speziellen Facebook-Gruppen</span> für MFA & ZFA',
+            icon: "plus-circle",
+          },
+        ],
       },
       {
         name: "Professional",
+        stripeProductId: "prod_L7WLaDtMk27gkx",
+        stripePriceId: "price_1KRHIzBqHbQO3NhwWyMSu3mf",
         price: 59900,
         duration: 90,
         refreshFrequency: 7,
+        primary: "light",
+        accent: "secondary",
+        desc: [
+          {
+            html: '<span class="bold">Basis & Standard Features</span>',
+          },
+          {
+            html: '<span class="text-secondary bold">Persönliche Beratung</span> zur Erstellung, Veröffentlichung und Optimierung Ihrer Stellenanzeige',
+            icon: "plus-circle",
+          },
+          {
+            html: '<span class="text-secondary bold">Datumsupdate alle 7 Tage</span> &ndash; Ihre Stellenanzeige rutscht nach oben',
+            icon: "plus-circle",
+          },
+          {
+            html: '<span class="text-secondary bold">Farbliche Hervorhebung</span> Ihrer Stellenanzeige in der Stellenübersicht',
+            icon: "plus-circle",
+          },
+          {
+            html: 'Wiederholter Versand Ihrer Stellenanzeige in unserem <span class="text-secondary bold" >wöchentlichen Job-Newsletter</span> alle 7 Tage',
+            icon: "plus-circle",
+          },
+          {
+            html: 'Optional &ndash; Vereinbarung zusätzl. Marketingbudget zum Schalten von <span class="text-secondary bold">Google & Social Media Werbeanzeigen</span> zur Reichweitenmaximierung',
+            icon: "plus-circle",
+          },
+        ],
       },
     ],
   },

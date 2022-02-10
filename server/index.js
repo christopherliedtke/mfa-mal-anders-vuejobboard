@@ -154,6 +154,7 @@ async function startServer() {
   app.use("/api/newsletter", require("./routes/newsletter"));
   app.use("/api/images", require("./routes/images"));
   app.use("/api/stripe", require("./routes/stripe"));
+  app.use("/api/products", require("./routes/products"));
   app.use("/api/invoice", require("./routes/invoice"));
   app.use("/api/send-email", require("./routes/sendEmail"));
   app.use("/api/admin", require("./routes/admin"));

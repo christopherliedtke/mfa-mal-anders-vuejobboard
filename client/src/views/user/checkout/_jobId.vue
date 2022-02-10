@@ -13,14 +13,14 @@
 
         <div class="row row-cols-1 row-cols-lg-3 mb-4">
           <div
-            v-for="pricingPackage in $config.pricingPackages"
+            v-for="pricingPackage in pricingPackages"
             :key="pricingPackage.name"
             class="col"
           >
             <PricingCard
               :pricing="pricingPackage"
               :checkout="true"
-              :active="pricingPackage.name === checkout.pricingPackage"
+              :active="pricingPackage.name === checkout.pricingPackage.name"
               @update-pricing-package="updatePricingPackage"
             />
           </div>
@@ -466,8 +466,10 @@
       return {
         title: "Zahlung – Stellenanzeige veröffentlichen",
         job: Object,
+        pricingPackages: null,
         checkout: {
-          pricingPackage: localStorage.getItem("pricingPackage") || "Standard",
+          pricingPackage: null,
+          // pricingPackage: localStorage.getItem("pricingPackage") || "Standard",
           paymentMethod: "stripe",
           amount: null,
           coupon: {
@@ -499,19 +501,27 @@
     },
     computed: {
       amountComputed() {
-        const amount = Math.round(
-          this.$config.pricingPackages.find(
-            pkg => pkg.name === this.checkout.pricingPackage
-          ).price *
-            (1 - this.checkout.coupon.discount) *
-            100
-        );
+        let amount = 0;
+        if (!this.pricingPackages) {
+          return amount;
+        }
 
-        const taxRate = this.$config.payment.taxRate;
+        if (this.checkout.pricingPackage) {
+          amount = Math.round(
+            this.checkout.pricingPackage.stripePrice.price *
+              (1 - this.checkout.coupon.discount) *
+              100
+          );
 
-        return Math.round(amount * (1 + taxRate)) / 100;
+          const taxRate = this.$config.payment.taxRate;
+
+          amount = Math.round(amount * (1 + taxRate)) / 100;
+        }
+
+        return amount;
       },
       refreshFrequencyComputed() {
+        // TODO update
         let value = 0;
         if (this.checkout.coupon.refreshFrequency) {
           value = this.checkout.coupon.refreshFrequency;
@@ -519,8 +529,8 @@
         return value;
       }
     },
-    async mounted() {
-      await this.getJob();
+    async created() {
+      await Promise.all([this.getJob(), this.getPricingPackages()]);
 
       if (this.job.company.name) {
         this.setBillingAddress();
@@ -584,8 +594,29 @@
 
         this.$store.dispatch("setOverlay", false);
       },
+      async getPricingPackages() {
+        try {
+          const response = await this.$axios.get(
+            "/api/products/job-ad-packages"
+          );
+
+          if (!response.data.jobAdPackages) {
+            throw new Error("Stellenpakete konnten nicht geladen werden");
+          }
+          this.pricingPackages = response.data.jobAdPackages;
+
+          this.updatePricingPackage(localStorage.getItem("pricingPackage"));
+        } catch (err) {
+          // TODO handle error
+        }
+      },
       updatePricingPackage(pkg) {
-        this.checkout.pricingPackage = pkg;
+        const pricingPackage = this.pricingPackages.find(
+          pricingPackage => pricingPackage.name === pkg
+        );
+
+        this.checkout.pricingPackage =
+          pricingPackage || this.pricingPackages[1];
       },
       async setBillingAddress() {
         if (this.$store.state.auth.loggedIn && this.$store.state.auth.user) {

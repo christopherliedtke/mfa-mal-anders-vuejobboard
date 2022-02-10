@@ -117,7 +117,9 @@
                 Veröffentlichen Sie Ihre Stellenanzeige
                 <b-link class="text-secondary" href="#preise"
                   >ab
-                  {{ $config.pricingPackages[0].price / 100 }}
+                  <span v-if="pricingPackages">{{
+                    pricingPackages[0].stripePrice.price / 100
+                  }}</span>
                   {{ $config.payment.currency }}</b-link
                 >
                 <span class="small"> (zzgl. USt.)</span>
@@ -355,7 +357,7 @@
         </div>
         <div class="row row-cols-1 row-cols-lg-3 mb-4">
           <div
-            v-for="pricingPackage in $config.pricingPackages"
+            v-for="pricingPackage in pricingPackages"
             :key="pricingPackage.name"
             class="col"
           >
@@ -792,8 +794,18 @@
               }]
             }`
           }
-        ]
+        ],
+        pricingPackages: null
       };
+    },
+    async created() {
+      await this.getPricingPackages();
+    },
+    methods: {
+      async getPricingPackages() {
+        const response = await this.$axios.get("/api/products/job-ad-packages");
+        this.pricingPackages = response.data.jobAdPackages;
+      }
     }
   };
 </script>
