@@ -355,7 +355,8 @@
             Reichweite Ihrer Stellenanzeige zu optimieren.
           </p>
         </div>
-        <div class="row row-cols-1 row-cols-lg-3 mb-4">
+
+        <div v-if="pricingPackages" class="row row-cols-1 row-cols-lg-3 mb-4">
           <div
             v-for="pricingPackage in pricingPackages"
             :key="pricingPackage.name"
@@ -364,6 +365,13 @@
             <PricingCard :pricing="pricingPackage" />
           </div>
         </div>
+
+        <div v-else class="row row-cols-1 row-cols-lg-3 mb-4">
+          <div v-for="index in 3" :key="index" class="col">
+            <PricingCardPlaceholder />
+          </div>
+        </div>
+
         <p>
           Sie haben die Möglichkeit, Ihre Stellenanzeige nach der
           <b-link to="/auth/register">Registrierung</b-link> auf unserem Portal
@@ -754,6 +762,7 @@
   import CooperationPartners from "@/components/containers/CooperationPartners.vue";
   import TestimonialsContainer from "@/components/containers/TestimonialsContainer.vue";
   import PricingCard from "@/components/ui/PricingCard.vue";
+  import PricingCardPlaceholder from "@/components/ui/PricingCardPlaceholder.vue";
   import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
   import { scrollToHashMixin } from "@/mixins/scrollToHashMixin";
   export default {
@@ -764,6 +773,7 @@
       CooperationPartners,
       TestimonialsContainer,
       PricingCard,
+      PricingCardPlaceholder,
       ScrollToTopBtn
     },
     mixins: [scrollToHashMixin],
@@ -803,8 +813,28 @@
     },
     methods: {
       async getPricingPackages() {
-        const response = await this.$axios.get("/api/products/job-ad-packages");
-        this.pricingPackages = response.data.jobAdPackages;
+        try {
+          const response = await this.$axios.get(
+            "/api/products/job-ad-packages"
+          );
+
+          if (!response.data.jobAdPackages) {
+            throw new Error("Stellenpakete konnten nicht geladen werden");
+          }
+
+          this.pricingPackages = response.data.jobAdPackages;
+        } catch (err) {
+          this.$root.$bvToast.toast(
+            "Unsere Stellenpakete konnten nicht geladen werden. Bitte versuchen Sie es noch einmal, indem Sie die Seite neu laden.",
+            {
+              title: `Fehler beim Laden`,
+              variant: "danger",
+              toaster: "b-toaster-bottom-right",
+              solid: true,
+              noAutoHide: true
+            }
+          );
+        }
       }
     }
   };

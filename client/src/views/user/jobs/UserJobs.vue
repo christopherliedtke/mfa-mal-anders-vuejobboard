@@ -225,7 +225,7 @@
               class="mr-2 mb-2 mb-md-0"
               variant="success"
               size="sm"
-              :to="`/user/checkout/${job._id}`"
+              :to="`/user/checkout/job/${job._id}`"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"

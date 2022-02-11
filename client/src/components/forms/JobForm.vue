@@ -824,8 +824,7 @@
         if (this.$store.state.auth.user.isAdmin) {
           this.publishedAt = new Date();
           this.paidExpiresAt = new Date(
-            new Date().valueOf() +
-              1000 * 60 * 60 * 24 * this.$config.pricingPackages[0].duration
+            new Date().valueOf() + 1000 * 60 * 60 * 24 * 60
           );
         }
       },

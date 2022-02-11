@@ -258,7 +258,7 @@ const UserJobSeekPreview = () =>
   );
 const UserCheckoutJob = () =>
   import(
-    /* webpackChunkName: "user_company" */ "@/views/user/checkout/_jobId.vue"
+    /* webpackChunkName: "user_company" */ "@/views/user/checkout/job/_jobId.vue"
   );
 
 // #Admin
@@ -829,7 +829,7 @@ const routes = [
     }
   },
   {
-    path: "/user/checkout/:jobId",
+    path: "/user/checkout/job/:jobId",
     name: "UserCheckoutJob",
     component: UserCheckoutJob,
     meta: {
