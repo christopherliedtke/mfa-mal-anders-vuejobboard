@@ -205,9 +205,9 @@
 
             <div class="row">
               <div class="col-12 col-lg-8">
-                <label for="customer-company">Unternehmen *</label>
+                <label for="customer-name" required>Rechnungsempfänger</label>
                 <b-input
-                  id="customer-company"
+                  id="customer-name"
                   v-model="checkout.customer.name"
                   type="text"
                   placeholder="Unternehmensname eingeben..."
@@ -219,15 +219,41 @@
                         : false
                       : null
                   "
+                  aria-describedby="name-help"
+                />
+                <b-form-text id="name-help" class="ml-2"
+                  >z. B. Unternehmen (ggfls. + Abteilung), Name</b-form-text
+                >
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12 col-lg-4">
+                <label for="customer-address-line1" required
+                  >Straße und Hausnummer</label
+                >
+                <b-input
+                  id="customer-address-line1"
+                  v-model="checkout.customer.address.line1"
+                  type="text"
+                  placeholder="Straße und Hausnummer eingeben..."
+                  trim
+                  :state="
+                    checkout.validated
+                      ? checkout.customer.address.line1
+                        ? true
+                        : false
+                      : null
+                  "
                 />
               </div>
-              <div class="col-12 col-lg-8">
-                <label for="customer-address-department">Abteilung</label>
+              <div class="col-12 col-lg-4">
+                <label for="customer-address-line2">Adresszusatz</label>
                 <b-input
-                  id="customer-address-company"
+                  id="customer-address-lin2"
                   v-model="checkout.customer.address.line2"
                   type="text"
-                  placeholder="Abteilung eingeben..."
+                  placeholder="Adresszusatz eingeben..."
                   trim
                   :state="
                     checkout.validated
@@ -240,11 +266,46 @@
                   "
                 />
               </div>
+              <div class="w-100"></div>
+              <div class="col-12 col-lg-4">
+                <label for="dustomer-address-postal-code" required>PLZ</label>
+                <b-input
+                  id="dustomer-address-postal-code"
+                  v-model="checkout.customer.address.postal_code"
+                  type="text"
+                  placeholder="PLZ eingeben..."
+                  trim
+                  :state="
+                    checkout.validated
+                      ? checkout.customer.address.postal_code
+                        ? true
+                        : false
+                      : null
+                  "
+                />
+              </div>
+              <div class="col-12 col-lg-4">
+                <label for="customer-address-city" required>Ort</label>
+                <b-input
+                  id="customer-address-city"
+                  v-model="checkout.customer.address.city"
+                  type="text"
+                  placeholder="Ort eingeben..."
+                  trim
+                  :state="
+                    checkout.validated
+                      ? checkout.customer.address.city
+                        ? true
+                        : false
+                      : null
+                  "
+                />
+              </div>
             </div>
 
             <div class="row">
               <div class="col-12 col-lg-4">
-                <label for="customer-email">E-Mail Adresse *</label>
+                <label for="customer-email" required>E-Mail Adresse</label>
                 <b-input-group>
                   <template #prepend>
                     <b-input-group-text>@</b-input-group-text>
@@ -299,62 +360,6 @@
                     "
                   />
                 </b-input-group>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-12 col-lg-4">
-                <label for="customer-address-line1"
-                  >Straße und Hausnummer *</label
-                >
-                <b-input
-                  id="customer-address-line1"
-                  v-model="checkout.customer.address.line1"
-                  type="text"
-                  placeholder="Straße und Hausnummer eingeben..."
-                  trim
-                  :state="
-                    checkout.validated
-                      ? checkout.customer.address.line1
-                        ? true
-                        : false
-                      : null
-                  "
-                />
-              </div>
-              <div class="col-12 col-lg-4">
-                <label for="dustomer-address-postal-code">PLZ *</label>
-                <b-input
-                  id="dustomer-address-postal-code"
-                  v-model="checkout.customer.address.postal_code"
-                  type="text"
-                  placeholder="PLZ eingeben..."
-                  trim
-                  :state="
-                    checkout.validated
-                      ? checkout.customer.address.postal_code
-                        ? true
-                        : false
-                      : null
-                  "
-                />
-              </div>
-              <div class="col-12 col-lg-4">
-                <label for="customer-address-city">Ort *</label>
-                <b-input
-                  id="customer-address-city"
-                  v-model="checkout.customer.address.city"
-                  type="text"
-                  placeholder="Ort eingeben..."
-                  trim
-                  :state="
-                    checkout.validated
-                      ? checkout.customer.address.city
-                        ? true
-                        : false
-                      : null
-                  "
-                />
               </div>
             </div>
 
@@ -623,20 +628,40 @@
           return null;
         }
 
-        // TODO send data to /api/checkout/create-invoice
-        const response = await this.$axios.post(
-          "/api/checkout/create-invoice",
-          {
-            stripePrice: this.checkout.pricingPackage.stripePrice.id,
-            coupon: this.checkout.coupon ? this.checkout.coupon.id : null,
-            customer: this.checkout.customer,
-            accepted: this.checkout.accepted
-          }
-        );
+        this.$store.dispatch("setOverlay", true);
 
-        console.log("response: ", response);
+        try {
+          // TODO send data to /api/checkout/create-invoice
+          const response = await this.$axios.post(
+            "/api/checkout/create-invoice",
+            {
+              customer: this.checkout.customer,
+              coupons: this.checkout.coupon ? [this.checkout.coupon.id] : null,
+              invoiceItems: [
+                {
+                  stripePrice: this.checkout.pricingPackage.stripePrice.id
+                }
+              ],
+              accepted: this.checkout.accepted
+            }
+          );
 
-        // TODO forward to hosted invoice url
+          console.log("response: ", response);
+
+          // TODO forward to hosted invoice url
+        } catch (err) {
+          console.log("err.response: ", err.response);
+
+          this.$root.$bvToast.toast(err.response.statusText, {
+            title: `Es ist ein Fehler aufgetreten`,
+            variant: "danger",
+            toaster: "b-toaster-bottom-right",
+            solid: true,
+            noAutoHide: true
+          });
+        }
+
+        this.$store.dispatch("setOverlay", false);
       },
       // async sendInvoice() {
       //   if (!this.validateBillingAddress()) {

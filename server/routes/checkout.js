@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const verifyToken = require("../middleware/verifyToken");
+const { User } = require("../database/models/user");
 const stripe = require("stripe")(process.env.STRIPE_SK);
 
 // #route:  POST /api/checkout/create-invoice
@@ -9,31 +10,70 @@ const stripe = require("stripe")(process.env.STRIPE_SK);
 router.post("/create-invoice", verifyToken, async (req, res) => {
   console.log("req.body: ", req.body);
 
-  // TODO check for stripe customerId
+  let { customer, coupons, invoiceItems, accepted } = req.body;
 
-  // TODO create & attach stripe customer to user || update stripe customer
-  // https://stripe.com/docs/api/customers
-  // incl. user._id
+  try {
+    if (
+      !customer ||
+      !customer.name ||
+      !customer.email ||
+      !customer.address ||
+      !invoiceItems ||
+      !accepted
+    ) {
+      return res.status(400).send("Bad request");
+    }
 
-  // TODO get price from stripe
-  // https://stripe.com/docs/api/prices
+    const user = await User.findOne(
+      { _id: req.user._id },
+      "_id stripeCustomerId"
+    );
 
-  // TODO check for discounts
-  // https://stripe.com/docs/api/promotion_codes/list
+    console.log("user: ", user);
 
-  // TODO create invoice items for customer w/ discounts
-  // https://stripe.com/docs/api/invoiceitems
+    // TODO create & attach stripe customer to user || update stripe customer
+    // https://stripe.com/docs/api/customers
+    customer.metadata = { userId: req.user._id, acceptedTimeStamp: new Date() };
 
-  // TODO create invoice & auto send
-  // https://stripe.com/docs/api/invoices
-  // https://stripe.com/docs/invoicing/integration
+    if (user.stripeCustomerId) {
+      customer = await stripe.customers.update(user.stripeCustomerId, customer);
+    } else {
+      customer = await stripe.customers.create(customer);
+      await User.findOneAndUpdate(
+        { _id: req.user._id },
+        { stripeCustomerId: customer.id }
+      );
+    }
 
-  // TODO save payment reference w/ invoice id through webhook /+ save to gdrive
-  // incl. status = open
+    console.log("customer: ", customer);
 
-  // TODO set job online or others
+    if (!customer) {
+      throw new Error("Customer could not be created/updated w/ stripe");
+    }
 
-  res.sendStatus(200);
+    // TODO get price from stripe
+    // https://stripe.com/docs/api/prices
+
+    // TODO check for discounts
+    // https://stripe.com/docs/api/promotion_codes/list
+
+    // TODO create invoice items for customer w/ discounts
+    // https://stripe.com/docs/api/invoiceitems
+
+    // TODO create invoice & auto send
+    // https://stripe.com/docs/api/invoices
+    // https://stripe.com/docs/invoicing/integration
+
+    // TODO save payment reference w/ invoice id through webhook /+ save to gdrive
+    // incl. status = open
+
+    // TODO set job online or others
+
+    res.sendStatus(200);
+  } catch (err) {
+    console.error("err: ", err);
+    res.sendStatus(500);
+  }
 });
 
 // TODO update checkout frontend page

@@ -21,19 +21,6 @@ class Cache {
 
     await Promise.all(
       jobAdPackages.map(async jobAdPackage => {
-        // const product = await stripe.products.retrieve(
-        //   jobAdPackage.stripeProduct
-        // );
-
-        // if (product.id) {
-        //   jobAdPackage.stripeProduct = {
-        //     id: product.id,
-        //     name: product.name,
-        //     duration: product.metadata.duration,
-        //     refreshFrequency: product.metadata.refreshFrequency,
-        //   };
-        // }
-
         const price = await stripe.prices.retrieve(jobAdPackage.stripePrice);
 
         if (!price.error) {
