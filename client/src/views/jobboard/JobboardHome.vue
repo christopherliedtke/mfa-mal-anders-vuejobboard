@@ -715,6 +715,7 @@
 </template>
 
 <script>
+  import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
   import Vue from "vue";
   import { BSpinner, BCollapse } from "bootstrap-vue";
   Vue.component("BSpinner", BSpinner);
@@ -739,7 +740,6 @@
   import JobSeeksLargeBanner from "@/components/banners/JobSeeksLargeBanner.vue";
   import JobSeeksSmallBanner from "@/components/banners/JobSeeksSmallBanner.vue";
   import SubscribeNewsletterBtn from "@/components/buttons/SubscribeNewsletterBtn.vue";
-  import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
 
   const cities = [
     { name: "Berlin", slug: "berlin" },

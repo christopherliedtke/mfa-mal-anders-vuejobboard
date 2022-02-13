@@ -1581,6 +1581,7 @@
 </template>
 
 <script>
+  import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
   import Gehaltsrechner from "@/components/containers/Gehaltsrechner.vue";
   import JobsTeaserContainer from "@/components/containers/JobsTeaserContainer.vue";
   import JobSearchSingleForm from "@/components/forms/JobSearchSingleForm.vue";
@@ -1592,7 +1593,6 @@
   import GehaltsverhandlungBanner from "@/components/banners/GehaltsverhandlungBanner.vue";
   import TrainingCatalogueSmallBanner from "@/components/banners/TrainingCatalogueSmallBanner.vue";
   import JobSeeksLargeBanner from "@/components/banners/JobSeeksLargeBanner.vue";
-  import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
   import { scrollToHashMixin } from "@/mixins/scrollToHashMixin";
   export default {
     name: "CareerGehalt",

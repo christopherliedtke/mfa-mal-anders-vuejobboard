@@ -529,10 +529,10 @@
 </template>
 
 <script>
+  import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
   import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
   import RandomArticlesContainer from "@/components/containers/RandomArticlesContainer.vue";
   import JobSeeksLargeBanner from "@/components/banners/JobSeeksLargeBanner.vue";
-  import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
   import { scrollToHashMixin } from "@/mixins/scrollToHashMixin";
   export default {
     name: "CareerBewerbung",

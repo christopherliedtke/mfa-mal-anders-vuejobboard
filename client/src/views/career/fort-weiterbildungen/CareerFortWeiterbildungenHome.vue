@@ -929,13 +929,13 @@
 </template>
 
 <script>
+  import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
   import FortWeiterbildungenNav from "@/components/navs/FortWeiterbildungenNav.vue";
   import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
   import TrainingCatalogueLargeBanner from "@/components/banners/TrainingCatalogueLargeBanner.vue";
   import JobSeeksLargeBanner from "@/components/banners/JobSeeksLargeBanner.vue";
   import JobSearchSingleForm from "@/components/forms/JobSearchSingleForm.vue";
   import JobsTeaserContainer from "@/components/containers/JobsTeaserContainer.vue";
-  import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
   import { scrollToHashMixin } from "@/mixins/scrollToHashMixin";
   export default {
     name: "CareerFortWeiterbildungen",

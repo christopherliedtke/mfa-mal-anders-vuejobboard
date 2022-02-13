@@ -439,11 +439,11 @@
 </template>
 
 <script>
+  import TipTapEditor from "@/components/utils/TipTapEditor.vue";
+  import ImageUploader from "@/components/utils/ImageUploader.vue";
   import Vue from "vue";
   import { BFormDatepicker } from "bootstrap-vue";
   Vue.component("BFormDatepicker", BFormDatepicker);
-  import TipTapEditor from "@/components/utils/TipTapEditor.vue";
-  import ImageUploader from "@/components/utils/ImageUploader.vue";
   import {
     professionOptions,
     companyStateOptions,
