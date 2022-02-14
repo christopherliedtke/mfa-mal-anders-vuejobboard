@@ -205,12 +205,12 @@
 
             <div class="row">
               <div class="col-12 col-lg-8">
-                <label for="customer-name" required>Rechnungsempfänger</label>
+                <label for="customer-name" required>RechnungsempfängerIn</label>
                 <b-input
                   id="customer-name"
                   v-model="checkout.customer.name"
                   type="text"
-                  placeholder="Unternehmensname eingeben..."
+                  placeholder="RechnungsempfängerIn eingeben..."
                   trim
                   :state="
                     checkout.validated
@@ -222,7 +222,7 @@
                   aria-describedby="name-help"
                 />
                 <b-form-text id="name-help" class="ml-2"
-                  >z. B. Unternehmen (ggfls. + Abteilung), Name</b-form-text
+                  >z. B. Unternehmen (ggfls. + Abteilung) oder Name</b-form-text
                 >
               </div>
             </div>
@@ -300,6 +300,30 @@
                       : null
                   "
                 />
+              </div>
+              <div class="col-12 col-lg-4">
+                <label for="company-country" required>Land</label>
+                <b-form-select
+                  id="checkout-country"
+                  v-model="checkout.customer.address.country"
+                  :state="
+                    checkout.validated
+                      ? checkout.customer.address.country
+                        ? true
+                        : false
+                      : null
+                  "
+                >
+                  <b-form-select-option value=""
+                    >-- Land auswählen --</b-form-select-option
+                  >
+                  <b-form-select-option
+                    v-for="country in checkoutCountryOptions"
+                    :key="country.value"
+                    :value="country.value"
+                    >{{ country.text }}</b-form-select-option
+                  >
+                </b-form-select>
               </div>
             </div>
 
@@ -414,8 +438,10 @@
             }}
             {{ $config.payment.currency }} | Rechnung anfordern
           </b-button> -->
+          <span></span>
           <b-button
             class="mb-2"
+            size="lg"
             variant="success"
             :disabled="!checkout.accepted || !checkout.pricingPackage"
             @click="startCheckout()"
@@ -426,7 +452,8 @@
                 .toString()
                 .replace(".", ",")
             }}
-            {{ $config.payment.currency }} | Jetzt bezahlen
+            {{ $config.payment.currency }} | Rechnung anfordern und
+            Veröffentlichen
           </b-button>
         </div>
       </div>
@@ -439,6 +466,7 @@
 <script>
   import PricingCard from "@/components/ui/PricingCard.vue";
   import PricingCardPlaceholder from "@/components/ui/PricingCardPlaceholder.vue";
+  import { checkoutCountryOptions } from "@/config/formDataConfig.json";
   export default {
     name: "UserCheckoutJob",
     components: { PricingCard, PricingCardPlaceholder },
@@ -461,13 +489,15 @@
               city: "",
               line1: "",
               line2: null,
-              postal_code: ""
+              postal_code: "",
+              country: ""
             }
           },
           accepted: false,
           validated: false,
           error: false
-        }
+        },
+        checkoutCountryOptions
       };
     },
     computed: {
@@ -524,6 +554,7 @@
                       zipCode
                       location
                       state
+                      country
                       size
                     }
                     payment {
@@ -605,7 +636,8 @@
               city: this.job.company.location,
               postal_code: this.job.company.zipCode,
               line1: this.job.company.street,
-              line2: null
+              line2: null,
+              country: ""
             }
           };
         }
@@ -617,7 +649,8 @@
           !this.checkout.customer.email ||
           !this.checkout.customer.address.city ||
           !this.checkout.customer.address.line1 ||
-          !this.checkout.customer.address.postal_code
+          !this.checkout.customer.address.postal_code ||
+          !this.checkout.customer.address.country
           ? false
           : true;
       },
@@ -639,7 +672,8 @@
               coupons: this.checkout.coupon ? [this.checkout.coupon.id] : null,
               invoiceItems: [
                 {
-                  stripePrice: this.checkout.pricingPackage.stripePrice.id
+                  price: this.checkout.pricingPackage.stripePrice.id,
+                  metadata: { type: "single_job", jobId: this.job._id }
                 }
               ],
               accepted: this.checkout.accepted
@@ -649,16 +683,23 @@
           console.log("response: ", response);
 
           // TODO forward to hosted invoice url
+          if (response.status === 200) {
+            window.location.href = response.data.url;
+          }
         } catch (err) {
           console.log("err.response: ", err.response);
 
-          this.$root.$bvToast.toast(err.response.statusText, {
-            title: `Es ist ein Fehler aufgetreten`,
-            variant: "danger",
-            toaster: "b-toaster-bottom-right",
-            solid: true,
-            noAutoHide: true
-          });
+          this.$root.$bvToast.toast(
+            err.response.data ||
+              "Bitte versuchen Sie es später noch einmal oder kontaktieren Sie uns über das Kontaktformular.",
+            {
+              title: `Es ist ein Fehler aufgetreten`,
+              variant: "danger",
+              toaster: "b-toaster-bottom-right",
+              solid: true,
+              noAutoHide: true
+            }
+          );
         }
 
         this.$store.dispatch("setOverlay", false);

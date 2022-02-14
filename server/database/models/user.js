@@ -55,7 +55,7 @@ const UserSchema = new Schema(
       type: Boolean,
       required: true,
     },
-    stripeCustomer: {
+    stripeCustomerId: {
       type: String,
       unique: true,
     },

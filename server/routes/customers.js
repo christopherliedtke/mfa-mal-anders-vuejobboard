@@ -9,13 +9,13 @@ const stripe = require("stripe")(process.env.STRIPE_SK);
 // #access: Private
 router.get("/me", verifyToken, async (req, res) => {
   try {
-    const user = await User.findOne({ _id: req.user._id }, "stripeCustomer");
+    const user = await User.findOne({ _id: req.user._id }, "stripeCustomerId");
 
-    if (!user.stripeCustomer) {
+    if (!user.stripeCustomerId) {
       throw new Error("Customer does not exist for this user.");
     }
 
-    const customer = await stripe.customers.retrieve(user.stripeCustomer);
+    const customer = await stripe.customers.retrieve(user.stripeCustomerId);
 
     if (!customer) {
       throw new Error("Could not find customer.");
@@ -31,6 +31,7 @@ router.get("/me", verifyToken, async (req, res) => {
           line1: customer.address.line1,
           line2: customer.address.line2,
           postal_code: customer.address.postal_code,
+          country: customer.address.country,
         },
       },
     });
