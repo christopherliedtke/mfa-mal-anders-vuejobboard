@@ -42,11 +42,11 @@
         role="presentation"
       >
         <b-link
-          to="/user/zahlungen"
+          to="/user/rechnungen"
           role="tab"
           class="nav-link"
           active-class="active"
-          >Zahlungen</b-link
+          >Rechnungen</b-link
         >
       </li>
       <li

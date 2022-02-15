@@ -145,8 +145,8 @@
               >
               <router-link
                 v-if="$store.state.auth.user.isEmployer"
-                to="/user/zahlungen"
-                >Zahlungen</router-link
+                to="/user/rechnungen"
+                >Rechnungen</router-link
               >
               <router-link
                 v-if="$store.state.auth.user.isEducational"
@@ -224,7 +224,7 @@
               <router-link to="/admin/trainings">Trainings</router-link>
               <router-link to="/admin/subscribers">Subscribers</router-link>
               <router-link to="/admin/coupons">Coupons</router-link>
-              <router-link to="/admin/payments">Payments</router-link>
+              <router-link to="/admin/invoices">Invoices</router-link>
               <router-link to="/admin/data-analytics"
                 >Data Analytics</router-link
               >

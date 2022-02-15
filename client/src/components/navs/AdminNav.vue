@@ -132,7 +132,7 @@
       </li>
 
       <li>
-        <router-link to="/admin/payments"
+        <router-link to="/admin/invoices"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"

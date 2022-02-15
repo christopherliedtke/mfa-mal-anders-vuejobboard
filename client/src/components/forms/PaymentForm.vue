@@ -454,7 +454,7 @@
             }
           );
 
-          this.$router.push("/admin/payments");
+          this.$router.push("/admin/invoices");
         } catch (err) {
           this.$root.$bvToast.toast(err.message, {
             title: `Fehler beim Speichern`,

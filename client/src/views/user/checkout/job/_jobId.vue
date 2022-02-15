@@ -668,6 +668,7 @@
           const response = await this.$axios.post(
             "/api/checkout/create-invoice",
             {
+              jobId: this.job._id,
               customer: this.checkout.customer,
               coupons: this.checkout.coupon ? [this.checkout.coupon.id] : null,
               invoiceItems: [
@@ -682,9 +683,13 @@
 
           console.log("response: ", response);
 
-          // TODO forward to hosted invoice url
           if (response.status === 200) {
-            window.location.href = response.data.url;
+            // window.location.href = response.data.hosted_invoice_url;
+            // window.open(response.data.hosted_invoice_url, "_blank");
+            window.open(response.data.invoice_pdf, "_blank");
+
+            // TODO show toast for success
+            // TODO forward to user invoices page
           }
         } catch (err) {
           console.log("err.response: ", err.response);

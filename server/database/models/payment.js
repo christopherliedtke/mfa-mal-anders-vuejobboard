@@ -5,14 +5,40 @@ const PaymentSchema = new Schema(
   {
     job: {
       type: Schema.Types.ObjectId,
-      required: true,
       ref: "Job",
     },
     user: {
       type: Schema.Types.ObjectId,
-      required: true,
       ref: "User",
     },
+    stripeInvoiceId: {
+      type: String,
+    },
+    stripeInvoiceStatus: {
+      type: String,
+    },
+    stripeHostedInvoiceUrl: {
+      type: String,
+    },
+    stripeInvoicePdf: {
+      type: String,
+    },
+    stripeReceiptUrl: {
+      type: String,
+    },
+    total: {
+      type: Number,
+    },
+    tax: {
+      type: Number,
+    },
+    number: {
+      type: String,
+    },
+    finalizedAt: {
+      type: Date,
+    },
+    // !legacy
     coupon: {
       type: Schema.Types.ObjectId,
       ref: "Coupon",
@@ -22,7 +48,6 @@ const PaymentSchema = new Schema(
     },
     invoiceNo: {
       type: Number,
-      default: 0,
     },
     invoiceDate: {
       type: Date,

@@ -757,7 +757,7 @@ const routes = [
     }
   },
   {
-    path: "/user/zahlungen",
+    path: "/user/rechnungen",
     name: "UserPayments",
     component: UserPayments,
     meta: {
@@ -927,7 +927,7 @@ const routes = [
     }
   },
   {
-    path: "/admin/payments",
+    path: "/admin/invoices",
     name: "AdminPayments",
     component: AdminPayments,
     meta: {
@@ -936,7 +936,7 @@ const routes = [
     }
   },
   {
-    path: "/admin/payments/edit/:paymentId",
+    path: "/admin/invoices/edit/:paymentId",
     name: "AdminEditPayment",
     component: AdminEditPayment,
     meta: {

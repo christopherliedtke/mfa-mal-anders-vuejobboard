@@ -2,7 +2,9 @@ const express = require("express");
 const router = express.Router();
 const verifyToken = require("../middleware/verifyToken");
 const { User } = require("../database/models/user");
+const { Payment } = require("../database/models/payment");
 const { stripeTaxId } = require("../config/taxes.json");
+const { job } = require("cron");
 const stripe = require("stripe")(process.env.STRIPE_SK);
 
 // #route:  POST /api/checkout/create-invoice
@@ -19,7 +21,7 @@ router.post("/create-invoice", verifyToken, async (req, res) => {
       );
   }
 
-  let { customer, coupons, invoiceItems, accepted } = req.body;
+  let { customer, coupons, invoiceItems, accepted, jobId } = req.body;
 
   try {
     if (
@@ -125,7 +127,34 @@ router.post("/create-invoice", verifyToken, async (req, res) => {
 
     console.log("invoice: ", invoice);
 
-    res.json({ url: invoice.hosted_invoice_url });
+    try {
+      const filter = { stripeInvoiceId: invoice.id };
+      const update = {
+        stripeInvoiceStatus: invoice.status,
+        stripeHostedInvoiceUrl: invoice.hosted_invoice_url,
+        stripeInvoicePdf: invoice.invoice_pdf,
+        total: invoice.total,
+        tax: invoice.tax,
+        number: invoice.number,
+        finalizedAt: invoice.status_transitions.finalized_at * 1000,
+        user: req.user._id,
+        job: jobId || null,
+      };
+
+      const payment = await Payment.findOneAndUpdate(filter, update, {
+        new: true,
+        upsert: true,
+      });
+
+      console.log("payment: ", payment);
+    } catch (error) {
+      console.error("Error when saving payment in checkout: ", error);
+    }
+
+    res.json({
+      hosted_invoice_url: invoice.hosted_invoice_url,
+      invoice_pdf: invoice.invoice_pdf,
+    });
   } catch (err) {
     console.error("err: ", err);
     res.sendStatus(500);

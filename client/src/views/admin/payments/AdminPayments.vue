@@ -1,6 +1,6 @@
 <template>
   <div id="admin-payments" class="container-fluid admin-container pt-3">
-    <h1 class="h2">Admin Payments</h1>
+    <h1 class="h2">Admin Invoices</h1>
     <b-form id="payment-filter" inline @submit.prevent>
       <b-input-group class="my-2 mr-2">
         <b-form-input
@@ -27,7 +27,7 @@
       </b-input-group>
       <b-button
         class="my-2 mr-2"
-        :to="`/admin/payments/edit/new`"
+        :to="`/admin/invoices/edit/new`"
         variant="outline-primary"
         size="sm"
         ><svg
@@ -107,7 +107,7 @@
         <div class="d-flex">
           <b-button
             class="mr-2"
-            :to="`/admin/payments/edit/${row.item._id}`"
+            :to="`/admin/invoices/edit/${row.item._id}`"
             variant="primary"
             size="sm"
             ><svg
