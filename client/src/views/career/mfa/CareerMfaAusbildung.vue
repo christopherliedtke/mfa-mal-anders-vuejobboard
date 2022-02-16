@@ -657,13 +657,13 @@
 </template>
 
 <script>
+  import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
   import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
   import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
   import JobsTeaserContainer from "@/components/containers/JobsTeaserContainer.vue";
   import ProfessionTypeContainer from "@/components/containers/ProfessionTypeContainer.vue";
   import JobSearchSingleForm from "@/components/forms/JobSearchSingleForm.vue";
   import JobSeeksLargeBanner from "@/components/banners/JobSeeksLargeBanner.vue";
-  import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
   import { scrollToHashMixin } from "@/mixins/scrollToHashMixin";
   export default {
     name: "CareerMfaAusbildung",

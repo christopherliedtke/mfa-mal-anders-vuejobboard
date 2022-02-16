@@ -380,6 +380,7 @@
 </template>
 
 <script>
+  import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
   import Vue from "vue";
   import { BSpinner, BCollapse } from "bootstrap-vue";
   Vue.component("BSpinner", BSpinner);
@@ -390,7 +391,6 @@
 
   import JobSeekCard from "@/components/ui/JobSeekCard.vue";
   import JobSeekCardPlaceholder from "@/components/ui/JobSeekCardPlaceholder.vue";
-  import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
   import RandomArticlesContainer from "../../components/containers/RandomArticlesContainer.vue";
   import JobSeeksLargeBanner from "@/components/banners/JobSeeksLargeBanner.vue";
   import JobSeeksSmallBanner from "@/components/banners/JobSeeksSmallBanner.vue";

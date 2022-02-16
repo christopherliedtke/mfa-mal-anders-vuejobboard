@@ -220,14 +220,14 @@
 </template>
 
 <script>
+  import TipTapEditor from "@/components/utils/TipTapEditor.vue";
+  import ImageUploader from "@/components/utils/ImageUploader.vue";
   import { saveCompanyMixin } from "@/mixins/saveCompanyMixin";
   import {
     companyStateOptions,
     companyCountryOptions,
     companySizeOptions
   } from "@/config/formDataConfig.json";
-  import ImageUploader from "@/components/utils/ImageUploader.vue";
-  import TipTapEditor from "@/components/utils/TipTapEditor.vue";
   export default {
     name: "CompanyForm",
     components: {

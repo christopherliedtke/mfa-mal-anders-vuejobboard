@@ -219,6 +219,7 @@
 </template>
 
 <script>
+  import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
   import Vue from "vue";
   import { BSpinner } from "bootstrap-vue";
   Vue.component("BSpinner", BSpinner);
@@ -232,7 +233,6 @@
   import SgdBanner from "@/components/banners/SgdBanner.vue";
   import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
   import BerufsbilderBanner from "@/components/banners/BerufsbilderBanner.vue";
-  import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
   export default {
     name: "CareerFortWeiterbildungenCatalogue",
     components: {

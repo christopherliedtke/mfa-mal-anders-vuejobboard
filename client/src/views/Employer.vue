@@ -757,13 +757,13 @@
 </template>
 
 <script>
+  import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
   import JobAdTipsContainer from "@/components/containers/JobAdTipsContainer.vue";
   import NumbersAndFacts from "@/components/containers/NumbersAndFacts.vue";
   import CooperationPartners from "@/components/containers/CooperationPartners.vue";
   import TestimonialsContainer from "@/components/containers/TestimonialsContainer.vue";
   import PricingCard from "@/components/ui/PricingCard.vue";
   import PricingCardPlaceholder from "@/components/ui/PricingCardPlaceholder.vue";
-  import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
   import { scrollToHashMixin } from "@/mixins/scrollToHashMixin";
   export default {
     name: "Employer",

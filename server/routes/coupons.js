@@ -10,6 +10,8 @@ router.get("/promotion-code", verifyToken, async (req, res) => {
   try {
     const { code } = req.query;
 
+    // console.log(code);
+
     if (!code) {
       throw new Error("Kein Promotion Code eingegeben.");
     }

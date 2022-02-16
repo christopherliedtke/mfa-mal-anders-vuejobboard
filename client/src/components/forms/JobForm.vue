@@ -689,6 +689,8 @@
 </template>
 
 <script>
+  import TipTapEditor from "@/components/utils/TipTapEditor.vue";
+  import ImageUploader from "@/components/utils/ImageUploader.vue";
   import { saveCompanyMixin } from "@/mixins/saveCompanyMixin";
   import { saveJobMixin } from "@/mixins/saveJobMixin";
   import {
@@ -702,8 +704,6 @@
     companyCountryOptions,
     companySizeOptions
   } from "@/config/formDataConfig.json";
-  import TipTapEditor from "@/components/utils/TipTapEditor.vue";
-  import ImageUploader from "@/components/utils/ImageUploader.vue";
   import { BFormDatepicker } from "bootstrap-vue";
   import Vue from "vue";
   Vue.component("BFormDatepicker", BFormDatepicker);
