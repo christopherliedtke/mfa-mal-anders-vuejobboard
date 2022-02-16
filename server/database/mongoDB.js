@@ -5,10 +5,6 @@ mongoose
     dbName: process.env.MDB_NAME,
     user: process.env.MDB_USER,
     pass: process.env.MDB_PASSWORD,
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
   })
   .then(() => console.log("-----> mongoDB connected..."))
   .catch(err =>
