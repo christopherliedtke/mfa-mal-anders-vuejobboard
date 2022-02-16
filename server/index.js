@@ -1,4 +1,4 @@
-require("dotenv").config({ path: "./.env.dev" });
+require("dotenv").config({ path: "./.env.local" });
 const express = require("express");
 const apolloVerifyToken = require("./middleware/apolloVerifyToken");
 const { ApolloServer } = require("apollo-server-express");
@@ -76,6 +76,9 @@ if (process.env.PRERENDER_ACTIVE === "on") {
   app.use(prerender);
 }
 
+// #Routes w/o csrf protection
+app.use("/api/webhooks", require("./routes/webhooks"));
+
 // #Cors implementation
 // TODO update for dev vs prod (consider webhooks)
 if (process.env.NODE_ENV != "production") {
@@ -84,9 +87,6 @@ if (process.env.NODE_ENV != "production") {
 
 app.use(compression());
 app.use(express.json());
-
-// #Routes w/o csrf protection
-app.use("/api/webhooks", require("./routes/webhooks"));
 
 // #Express Session
 app.use(

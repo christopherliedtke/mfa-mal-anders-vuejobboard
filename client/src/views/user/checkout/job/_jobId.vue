@@ -688,8 +688,18 @@
             // window.open(response.data.hosted_invoice_url, "_blank");
             window.open(response.data.invoice_pdf, "_blank");
 
-            // TODO show toast for success
+            this.$root.$bvToast.toast(
+              "Sie erhalten die Rechnung per E-Mail die Rechnung zur Zahlung per Link sowie im Anhang als PDF.",
+              {
+                title: `Es ist ein Fehler aufgetreten`,
+                variant: "success",
+                toaster: "b-toaster-bottom-right",
+                solid: true,
+                noAutoHide: false
+              }
+            );
             // TODO forward to user invoices page
+            this.$router.push("/user/rechnungen");
           }
         } catch (err) {
           console.log("err.response: ", err.response);

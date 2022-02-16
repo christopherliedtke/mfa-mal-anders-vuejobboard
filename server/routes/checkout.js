@@ -161,17 +161,12 @@ router.post("/create-invoice", verifyToken, async (req, res) => {
   }
 });
 
-// TODO save payment reference w/ invoice id through webhook /+ save to gdrive
-// incl. status = open
-
-// TODO set job online or others
-
 // TODO update checkout frontend page
-
-// TODO create webhook to set payment to paid
 
 // TODO flush jobAdPackageCache in webhooks for updated products / prices
 
 // TODO handle open invoice for published jobs
+
+// TODO update admin payments
 
 module.exports = router;

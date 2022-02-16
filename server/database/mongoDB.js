@@ -9,6 +9,7 @@ mongoose
     useUnifiedTopology: true,
     useCreateIndex: true,
     useFindAndModify: false,
+    ignoreUndefined: true,
   })
   .then(() => console.log("-----> mongoDB connected..."))
   .catch(err =>

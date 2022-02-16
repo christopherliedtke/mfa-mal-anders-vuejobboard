@@ -15,6 +15,146 @@ const jobToAsanaTask = require("../utils/jobToAsanaTask");
 
 const stripe = require("stripe")(process.env.STRIPE_SK);
 
+// #route:  POST /api/webhooks/stripe/invoice-updated
+// #desc:   Upsert payment when invoice updated
+// #access: Public
+router.post(
+  "/stripe/invoice-updated",
+  express.raw({ type: "application/json" }),
+  async (req, res) => {
+    try {
+      const endpointSecret = process.env.STRIPE_ENDPOINT_SECRET_INVOICE_UPDATED;
+      const sig = req.headers["stripe-signature"];
+
+      let event;
+
+      try {
+        event = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
+      } catch (err) {
+        res.status(400).send(`Webhook Error: ${err.message}`);
+        return;
+      }
+
+      // console.log("event: ", event);
+
+      const invoice = event.data.object;
+      // const invoice = await stripe.invoices.retrieve(event.data.object.id, {
+      //   expand: ["lines.data.invoice_item.price.product"],
+      // });
+
+      // console.log("invoice: ", invoice);
+
+      if (!invoice) {
+        throw new Error("Invoice object is not valid.");
+      }
+
+      // const filter = { stripeInvoiceId: invoice.id };
+      // const update = {
+      //   stripeInvoiceStatus: invoice.status,
+      //   stripeHostedInvoiceUrl: invoice.hosted_invoice_url,
+      //   stripeInvoicePdf: invoice.invoice_pdf,
+      //   total: invoice.total,
+      //   tax: invoice.tax,
+      //   number: invoice.number,
+      //   finalizedAt: invoice.status_transitions.finalized_at * 1000,
+      // };
+
+      // Payment.findOneAndUpdate(filter, update, {
+      //   new: true,
+      //   upsert: event.type == "invoice.finalized",
+      // });
+
+      if (event.type == "invoice.finalized" || event.type == "invoice.paid") {
+        // retrieve invoiceItems w/ product
+        let invoiceItems = await stripe.invoiceItems.list({
+          invoice: invoice.id,
+          expand: ["data.price.product"],
+        });
+
+        console.log("invoiceItems: ", invoiceItems);
+
+        // for each invoiceItem check job metadata -> jobId
+        // invoiceItems = invoiceItems.filter(
+        //   invoiceItem => invoiceItem.metadata.jobId
+        // );
+
+        const jobs = await Promise.all(
+          invoiceItems
+            .filter(invoiceItem => invoiceItem.metadata.jobId)
+            .map(invoiceItem =>
+              Job.findOneAndUpdate(
+                { _id: invoiceItem.metadata.jobId },
+                {
+                  status:
+                    event.type == "invoice.finalized" &&
+                    invoiceItem.price.product.metadata.publish_immediately
+                      ? "published"
+                      : undefined,
+                  paid: invoice.paid,
+                  stripeInvoiceStatus: invoice.status,
+                  publishedAt: invoiceItem.price.product.metadata
+                    .publish_immediately
+                    ? invoice.status_transitions.finalized_at * 1000
+                    : undefined,
+                  paidExpiresAt: invoiceItem.price.product.metadata
+                    .publish_immediately
+                    ? new Date(
+                        invoice.status_transitions.finalized_at * 1000
+                      ).setHours(23, 59, 59, 999) +
+                      1000 *
+                        60 *
+                        60 *
+                        24 *
+                        parseInt(
+                          invoiceItem.price.product.metadata.duration || 60
+                        )
+                    : undefined,
+                  refreshFrequency: parseInt(
+                    invoiceItem.price.product.metadata.refreshFrequency || 0
+                  ),
+                }
+              )
+            )
+        );
+
+        console.log("jobs: ", jobs);
+
+        // TODO send notification to admin
+
+        if (event.type == "invoice.finalized") {
+          // TODO save invoice to gdrive
+        }
+
+        if (event.type == "invoice.paid") {
+          // await Promise.all(jobs.map(job => jobToAsanaTask(job)));
+        }
+
+        internalJobsCache.flush();
+
+        // jobs.forEach(job => {
+        //   googleIndexing(
+        //     process.env.WEBSITE_URL +
+        //       config.googleIndexing.pathPrefix +
+        //       job._id +
+        //       "/" +
+        //       job.slug,
+        //     "URL_UPDATED"
+        //   );
+
+        //   recachePrerender(
+        //     `${process.env.WEBSITE_URL}/stellenangebote/job/${job._id}`
+        //   );
+        // });
+      }
+    } catch (error) {
+      console.error("Error in /invoice-updated webhook: ", error);
+    }
+    res.send();
+  }
+);
+
+// TODO add product update webhook
+
 // #route:  POST /api/webhooks/checkout-completed
 // #desc:   Check if payment is completed and update job
 // #access: Private
