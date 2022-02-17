@@ -16,25 +16,21 @@ const jobToAsanaTask = async (
 
       const payment = payments[0] || null;
 
-      const dataMailToAsana = {
-        from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
-        to: to,
-        subject: `[${payment ? payment.paymentType : "paymentNotFound"}${
-          payment
-            ? " RE-" +
-              "000000".slice(0, 6 - payment.invoiceNo.toString().length) +
-              payment.invoiceNo.toString()
-            : ""
-        }] - ${payment ? payment.pricingPackage : ""} | ${
-          payment ? payment.amount / 100 : ""
-        }€ - ${job.title}`,
-        html: `${
-          process.env.WEBSITE_URL + config.googleIndexing.pathPrefix + job._id
-        }`,
-      };
+      if (payment) {
+        const dataMailToAsana = {
+          from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
+          to: to,
+          subject: `[${payment.number}] | ${payment.total / 100}€ - ${
+            job.title
+          }`,
+          html: `${
+            process.env.WEBSITE_URL + config.googleIndexing.pathPrefix + job._id
+          }`,
+        };
 
-      const sentEmail = await emailService.sendMail(dataMailToAsana);
-      console.info("sentEmail: ", sentEmail);
+        const sentEmail = await emailService.sendMail(dataMailToAsana);
+        console.info("sentEmail: ", sentEmail);
+      }
     }
   } catch (err) {
     console.log("Error in jobToAsanaTask(): ", err);

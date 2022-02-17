@@ -38,6 +38,12 @@ const PaymentSchema = new Schema(
     finalizedAt: {
       type: Date,
     },
+    paidAt: {
+      type: Date,
+    },
+    paymentExpiresAt: {
+      type: Date,
+    },
     // !legacy
     coupon: {
       type: Schema.Types.ObjectId,
@@ -124,12 +130,6 @@ const PaymentSchema = new Schema(
     },
     billingLocation: {
       type: String,
-    },
-    paidAt: {
-      type: Date,
-    },
-    paymentExpiresAt: {
-      type: Date,
     },
   },
   { timestamps: true }

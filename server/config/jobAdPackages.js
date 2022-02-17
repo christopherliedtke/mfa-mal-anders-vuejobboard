@@ -2,8 +2,7 @@ module.exports = [
   {
     id: "1",
     name: "Basis",
-    // stripeProduct: "prod_L7VuawNfGaMriT",
-    stripePrice: "price_1KRGsSBqHbQO3NhwsxZ5H50X",
+    stripePrice: process.env.STRIPE_PRICE_ID_BASIS,
     primary: "primary",
     accent: "light-shade",
     productFeatures: [
@@ -27,8 +26,7 @@ module.exports = [
   {
     id: "2",
     name: "Standard",
-    // stripeProduct: "prod_L7WJ4NyiuoR6Bh",
-    stripePrice: "price_1KRHH7BqHbQO3Nhwup8i3Zv9",
+    stripePrice: process.env.STRIPE_PRICE_ID_STANDARD,
     primary: "light",
     accent: "primary",
     badge: "beliebt",
@@ -56,8 +54,7 @@ module.exports = [
   {
     id: "3",
     name: "Professional",
-    // stripeProduct: "prod_L7WLaDtMk27gkx",
-    stripePrice: "price_1KRHIzBqHbQO3NhwWyMSu3mf",
+    stripePrice: process.env.STRIPE_PRICE_ID_PROFESSIONAL,
     primary: "light",
     accent: "secondary",
     productFeatures: [

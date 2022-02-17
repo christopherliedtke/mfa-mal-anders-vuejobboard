@@ -161,12 +161,6 @@ router.post("/create-invoice", verifyToken, async (req, res) => {
   }
 });
 
-// TODO update checkout frontend page
-
-// TODO flush jobAdPackageCache in webhooks for updated products / prices
-
-// TODO handle open invoice for published jobs
-
-// TODO update admin payments
+// TODO update admin jobs page
 
 module.exports = router;

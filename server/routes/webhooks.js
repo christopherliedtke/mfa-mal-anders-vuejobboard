@@ -69,6 +69,9 @@ router.post(
         tax: invoice.tax,
         number: invoice.number,
         finalizedAt: invoice.status_transitions.finalized_at * 1000,
+        paidAt: invoice.status_transitions.paid_at
+          ? invoice.status_transitions.paid_at * 1000
+          : undefined,
       };
 
       const payment = await Payment.findOneAndUpdate(filter, update, {
@@ -86,11 +89,6 @@ router.post(
 
         console.log("invoiceItems: ", invoiceItems);
 
-        // for each invoiceItem check job metadata -> jobId
-        // invoiceItems = invoiceItems.filter(
-        //   invoiceItem => invoiceItem.metadata.jobId
-        // );
-
         const jobs = await Promise.all(
           invoiceItems.data
             .filter(invoiceItem => invoiceItem.metadata.jobId)
@@ -103,6 +101,7 @@ router.post(
                     invoiceItem.price.product.metadata.publish_immediately
                       ? "published"
                       : undefined,
+                  paymentId: payment._id,
                   paid: invoice.paid,
                   stripeInvoiceStatus: invoice.status,
                   publishedAt: invoiceItem.price.product.metadata
@@ -149,25 +148,25 @@ router.post(
         }
 
         if (event.type == "invoice.paid") {
-          // await Promise.all(jobs.map(job => jobToAsanaTask(job)));
+          await Promise.all(jobs.map(job => jobToAsanaTask(job)));
         }
 
         internalJobsCache.flush();
 
-        // jobs.forEach(job => {
-        //   googleIndexing(
-        //     process.env.WEBSITE_URL +
-        //       config.googleIndexing.pathPrefix +
-        //       job._id +
-        //       "/" +
-        //       job.slug,
-        //     "URL_UPDATED"
-        //   );
+        jobs.forEach(job => {
+          googleIndexing(
+            process.env.WEBSITE_URL +
+              config.googleIndexing.pathPrefix +
+              job._id +
+              "/" +
+              job.slug,
+            "URL_UPDATED"
+          );
 
-        //   recachePrerender(
-        //     `${process.env.WEBSITE_URL}/stellenangebote/job/${job._id}`
-        //   );
-        // });
+          recachePrerender(
+            `${process.env.WEBSITE_URL}/stellenangebote/job/${job._id}`
+          );
+        });
       }
     } catch (error) {
       console.error("Error in /invoice-updated webhook: ", error);
@@ -177,6 +176,7 @@ router.post(
 );
 
 // TODO add product update webhook
+// flush jobAdPackageCache in webhooks for updated products / prices
 
 // #route:  POST /api/webhooks/checkout-completed
 // #desc:   Check if payment is completed and update job

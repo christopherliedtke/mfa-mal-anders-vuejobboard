@@ -7,7 +7,7 @@ const JobSchema = new Schema(
   {
     status: {
       type: String,
-      default: "draft",
+      default: "unpublished",
     },
     publishedAt: {
       type: Date,

@@ -81,6 +81,13 @@
       <template #cell(applicationDeadline)="row">
         {{ row.value && new Date(row.value).toLocaleString() }}
       </template>
+      <template #cell(paymentId)="row">
+        <b-link
+          v-if="row.item.payment"
+          :to="`/admin/invoices?s=${row.item.payment._id}`"
+          >{{ row.item.payment._id }}</b-link
+        >
+      </template>
       <template #cell(paymentExpiresAt)="row">
         {{
           row.item.payment &&
@@ -390,6 +397,11 @@
             sortable: true
           },
           {
+            key: "stripeInvoiceStatus",
+            label: "StripeInvoiceStatus",
+            sortable: true
+          },
+          {
             key: "paid",
             label: "Paid",
             sortable: true
@@ -420,7 +432,7 @@
             sortable: true
           },
           {
-            key: "payment._id",
+            key: "paymentId",
             label: "PaymentID",
             sortable: false
           },
@@ -495,6 +507,7 @@
                     updatedAt
                     refreshFrequency
                     status
+                    stripeInvoiceStatus
                     applicationDeadline
                     paid
                     paidExpiresAt
@@ -564,6 +577,7 @@
                 updatedAt
                 refreshFrequency
                 status
+                stripeInvoiceStatus
                 applicationDeadline
                 paid
                 paidExpiresAt
@@ -696,7 +710,7 @@
         if (!item || type !== "row") return;
         if (
           item.status === "published" &&
-          item.paid === true &&
+          (item.paid === true || item.stripeInvoiceStatus === "paid") &&
           item.publishedAt <= new Date() &&
           (item.paidExpiresAt >= new Date() ||
             (item.payment && item.payment.paymentExpiresAt >= new Date())) &&
@@ -705,7 +719,10 @@
         ) {
           return "table-success";
         }
-        if (item.status === "invoice-pending") {
+        if (
+          item.status === "invoice-pending" ||
+          item.stripeInvoiceStatus === "open"
+        ) {
           return "table-warning";
         }
         if (
