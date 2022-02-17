@@ -144,6 +144,10 @@ async function startServer() {
       return { user, session: req.session };
     },
     plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
+    formatError: err => {
+      console.error("ApolloServerError: ", err);
+      return err;
+    },
   });
 
   await apolloServer.start();
