@@ -10,7 +10,10 @@ const getLocation = async (q, country) => {
           // at: "52.51604,13.37691",
           in: "countryCode:DEU,AUT,CHE",
         },
-        timeout: 5000,
+        timeout: 6000,
+        headers: {
+          "accept-encoding": "gzip,deflate",
+        },
       }
     );
 
