@@ -78,6 +78,8 @@ router.post(
         //   invoiceItem => invoiceItem.metadata.jobId
         // );
 
+        // TODO check for applied coupons wrt refreshFrequency, duration
+
         const jobs = await Promise.all(
           invoiceItems
             .filter(invoiceItem => invoiceItem.metadata.jobId)
