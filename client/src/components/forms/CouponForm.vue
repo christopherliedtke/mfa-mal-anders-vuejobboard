@@ -221,7 +221,7 @@
                                 ${
                                   this.coupon.userId._id
                                     ? `userId: "${this.coupon.userId._id}"`
-                                    : ""
+                                    : `userId: ${null}`
                                 }
                             ) {
                                 _id

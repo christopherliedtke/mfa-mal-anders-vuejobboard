@@ -691,11 +691,11 @@
             this.$root.$bvToast.toast(
               "Sie erhalten die Rechnung per E-Mail die Rechnung zur Zahlung per Link sowie im Anhang als PDF.",
               {
-                title: `Es ist ein Fehler aufgetreten`,
+                title: `Rechnung erfolgreich angefordert`,
                 variant: "success",
                 toaster: "b-toaster-bottom-right",
                 solid: true,
-                noAutoHide: false
+                noAutoHide: true
               }
             );
             // TODO forward to user invoices page

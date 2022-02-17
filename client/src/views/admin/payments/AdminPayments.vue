@@ -312,8 +312,18 @@
             sortable: false
           },
           {
+            key: "stripeInvoiceId",
+            label: "StripeInvoiceId",
+            sortable: true
+          },
+          {
             key: "status",
             label: "Status",
+            sortable: true
+          },
+          {
+            key: "stripeInvoiceStatus",
+            label: "StripeInvoiceStatus",
             sortable: true
           },
           {
@@ -432,7 +442,15 @@
                 query {
                   payments {
                     _id
+                    stripeInvoiceId
                     status
+                    stripeInvoiceStatus
+                    stripeHostedInvoiceUrl
+                    stripeInvoicePdf
+                    total
+                    tax
+                    number
+                    finalizedAt
                     createdAt
                     updatedAt
                     paidAt
@@ -492,7 +510,15 @@
               typeof value === "string" ? `"${value}"` : value
             }) {
                 _id
+                stripeInvoiceId
                 status
+                stripeInvoiceStatus
+                stripeHostedInvoiceUrl
+                stripeInvoicePdf
+                total
+                tax
+                number
+                finalizedAt
                 createdAt
                 updatedAt
                 paidAt

@@ -35,37 +35,50 @@ router.post(
         return;
       }
 
-      // console.log("event: ", event);
+      console.log("event.type: ", event.type);
+
+      if (
+        [
+          "invoice.finalized",
+          "invoice.updated",
+          "invoice.voided",
+          "invoice.paid",
+        ].every(eventType => eventType != event.type)
+      ) {
+        res.send();
+        return;
+      }
 
       const invoice = event.data.object;
       // const invoice = await stripe.invoices.retrieve(event.data.object.id, {
       //   expand: ["lines.data.invoice_item.price.product"],
       // });
 
-      // console.log("invoice: ", invoice);
+      console.log("invoice: ", invoice);
 
       if (!invoice) {
         throw new Error("Invoice object is not valid.");
       }
 
-      // const filter = { stripeInvoiceId: invoice.id };
-      // const update = {
-      //   stripeInvoiceStatus: invoice.status,
-      //   stripeHostedInvoiceUrl: invoice.hosted_invoice_url,
-      //   stripeInvoicePdf: invoice.invoice_pdf,
-      //   total: invoice.total,
-      //   tax: invoice.tax,
-      //   number: invoice.number,
-      //   finalizedAt: invoice.status_transitions.finalized_at * 1000,
-      // };
+      const filter = { stripeInvoiceId: invoice.id };
+      const update = {
+        stripeInvoiceStatus: invoice.status,
+        stripeHostedInvoiceUrl: invoice.hosted_invoice_url,
+        stripeInvoicePdf: invoice.invoice_pdf,
+        total: invoice.total,
+        tax: invoice.tax,
+        number: invoice.number,
+        finalizedAt: invoice.status_transitions.finalized_at * 1000,
+      };
 
-      // Payment.findOneAndUpdate(filter, update, {
-      //   new: true,
-      //   upsert: event.type == "invoice.finalized",
-      // });
+      const payment = await Payment.findOneAndUpdate(filter, update, {
+        new: true,
+        upsert: event.type == "invoice.finalized",
+      });
+
+      console.log("payment: ", payment);
 
       if (event.type == "invoice.finalized" || event.type == "invoice.paid") {
-        // retrieve invoiceItems w/ product
         let invoiceItems = await stripe.invoiceItems.list({
           invoice: invoice.id,
           expand: ["data.price.product"],
@@ -78,10 +91,8 @@ router.post(
         //   invoiceItem => invoiceItem.metadata.jobId
         // );
 
-        // TODO check for applied coupons wrt refreshFrequency, duration
-
         const jobs = await Promise.all(
-          invoiceItems
+          invoiceItems.data
             .filter(invoiceItem => invoiceItem.metadata.jobId)
             .map(invoiceItem =>
               Job.findOneAndUpdate(
@@ -111,10 +122,20 @@ router.post(
                           invoiceItem.price.product.metadata.duration || 60
                         )
                     : undefined,
-                  refreshFrequency: parseInt(
-                    invoiceItem.price.product.metadata.refreshFrequency || 0
+                  refreshFrequency: Math.max(
+                    parseInt(
+                      invoiceItem.price.product.metadata.refreshFrequency || 0
+                    ),
+                    parseInt(
+                      invoice.discount &&
+                        invoice.discount.coupon &&
+                        invoice.discount.coupon.metadata.refreshFrequency
+                        ? invoice.discount.coupon.metadata.refreshFrequency
+                        : 0
+                    )
                   ),
-                }
+                },
+                { new: true }
               )
             )
         );
