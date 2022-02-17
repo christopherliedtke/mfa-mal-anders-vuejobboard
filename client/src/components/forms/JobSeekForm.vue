@@ -447,7 +447,7 @@
           fullTime: true,
           training: false,
           miniJob: false,
-          salaryMin: 0,
+          salaryMin: null,
           anonymized: true,
           gender: this.$store.state.auth.user.gender || "",
           firstName: this.$store.state.auth.user.firstName || "",
@@ -588,7 +588,7 @@
                 fullTime: ${this.jobSeek.fullTime}
                 training: ${this.jobSeek.training}
                 miniJob: ${this.jobSeek.miniJob}
-                salaryMin: ${this.jobSeek.salaryMin}
+                salaryMin: ${this.jobSeek.salaryMin || null}
                 anonymized: ${this.jobSeek.anonymized}
                 gender: "${this.jobSeek.gender}"
                 firstName: "${this.jobSeek.firstName}"
@@ -640,9 +640,7 @@
             }
           );
 
-          window.history.length > 2
-            ? this.$router.go(-1)
-            : this.$router.push("/user/stellengesuche");
+          this.$router.push("/user/stellengesuche");
         } catch (err) {
           this.$root.$bvToast.toast(
             `Beim Speichern des Stellengesuchs ist ein Fehler aufgetreten. ${err}`,
