@@ -954,7 +954,7 @@
           if (jobs.data.errors) {
             if (
               jobs.data.errors.some(
-                error => error.extensions.exception.code == "NO_LOCATION"
+                error => error.extensions.argumentName == "location"
               )
             ) {
               this.errors = jobs.data.errors;

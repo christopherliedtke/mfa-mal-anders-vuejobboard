@@ -541,10 +541,11 @@
           if (jobSeeks.data.errors) {
             if (
               jobSeeks.data.errors.some(
-                error => error.extensions.exception.code == "NO_LOCATION"
+                error => error.extensions.argumentName == "location"
               )
             ) {
               this.errors = jobSeeks.data.errors;
+              this.loading = false;
               return;
             }
 
