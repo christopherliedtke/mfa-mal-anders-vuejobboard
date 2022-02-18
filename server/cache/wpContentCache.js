@@ -41,7 +41,6 @@ class Cache {
     }
 
     if (key === "professions") {
-      // TODO get professions
       const professions = await getProfessions();
 
       try {

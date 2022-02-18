@@ -132,4 +132,3 @@
     }
   };
 </script>
-// TODO Add placeholders

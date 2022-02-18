@@ -664,7 +664,6 @@
         this.$store.dispatch("setOverlay", true);
 
         try {
-          // TODO send data to /api/checkout/create-invoice
           const response = await this.$axios.post(
             "/api/checkout/create-invoice",
             {
@@ -681,15 +680,13 @@
             }
           );
 
-          console.log("response: ", response);
+          // console.log("response: ", response);
 
           if (response.status === 200) {
-            // window.location.href = response.data.hosted_invoice_url;
-            // window.open(response.data.hosted_invoice_url, "_blank");
             window.open(response.data.invoice_pdf, "_blank");
 
             this.$root.$bvToast.toast(
-              "Sie erhalten die Rechnung per E-Mail die Rechnung zur Zahlung per Link sowie im Anhang als PDF.",
+              "Sie erhalten die Rechnung per E-Mail inkl. Zahlungslink sowie als PDF Anhang.",
               {
                 title: `Rechnung erfolgreich angefordert`,
                 variant: "success",
@@ -698,7 +695,7 @@
                 noAutoHide: true
               }
             );
-            // TODO forward to user invoices page
+
             this.$router.push("/user/rechnungen");
           }
         } catch (err) {

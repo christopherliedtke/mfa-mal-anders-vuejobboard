@@ -56,7 +56,7 @@
             >bezahlt</span
           >
           <span v-if="!job.paid" class="badge badge-pill badge-warning mr-1"
-            >unbezahlt</span
+            >Zahlungseingang ausstehend</span
           >
           <span
             v-if="

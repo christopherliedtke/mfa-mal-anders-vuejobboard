@@ -76,11 +76,10 @@ if (process.env.PRERENDER_ACTIVE === "on") {
   app.use(prerender);
 }
 
-// #Routes w/o csrf protection
+// #Routes w/o csrf protection && cors protection && compression && express.json
 app.use("/api/webhooks", require("./routes/webhooks"));
 
 // #Cors implementation
-// TODO update for dev vs prod (consider webhooks)
 if (process.env.NODE_ENV != "production") {
   app.use(cors());
 }
@@ -145,7 +144,14 @@ async function startServer() {
     },
     plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
     formatError: err => {
-      console.error("ApolloServerError: ", err);
+      if (
+        (err.path.includes("company") &&
+          err.extensions.exception.path === "_id") ||
+        err.extensions.code === "BAD_USER_INPUT"
+      ) {
+        return err;
+      }
+      console.error(err);
       return err;
     },
   });

@@ -757,6 +757,7 @@
 </template>
 
 <script>
+  // TODO check faq for new payment solution
   import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
   import JobAdTipsContainer from "@/components/containers/JobAdTipsContainer.vue";
   import NumbersAndFacts from "@/components/containers/NumbersAndFacts.vue";

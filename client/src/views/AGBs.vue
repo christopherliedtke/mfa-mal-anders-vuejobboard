@@ -314,6 +314,7 @@
 </template>
 
 <script>
+  // TODO check for payment regulations
   export default {
     name: "AGBs",
     data() {

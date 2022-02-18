@@ -58,7 +58,8 @@
             <span
               v-if="
                 payment.status === 'pending' ||
-                  payment.stripeInvoiceStatus === 'open'
+                  payment.stripeInvoiceStatus === 'open' ||
+                  payment.stripeInvoiceStatus === 'uncollectible'
               "
               class="badge badge-pill badge-warning mr-1"
               >offen</span
@@ -113,7 +114,8 @@
             <div
               v-if="
                 payment.stripeHostedInvoiceUrl &&
-                  payment.stripeInvoiceStatus === 'open'
+                  (payment.stripeInvoiceStatus === 'open' ||
+                    payment.stripeInvoiceStatus === 'uncollectible')
               "
             >
               <b-button

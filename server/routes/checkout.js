@@ -3,8 +3,7 @@ const router = express.Router();
 const verifyToken = require("../middleware/verifyToken");
 const { User } = require("../database/models/user");
 const { Payment } = require("../database/models/payment");
-const { stripeTaxId } = require("../config/taxes.json");
-const { job } = require("cron");
+// const { job } = require("cron");
 const stripe = require("stripe")(process.env.STRIPE_SK);
 
 // #route:  POST /api/checkout/create-invoice
@@ -90,7 +89,7 @@ router.post("/create-invoice", verifyToken, async (req, res) => {
       invoice = await stripe.invoices.create({
         customer: customer.id,
         collection_method: "send_invoice",
-        default_tax_rates: [stripeTaxId],
+        default_tax_rates: [process.env.STRIPE_TAX_ID],
         days_until_due: 14,
         auto_advance: true,
         discounts:
@@ -160,7 +159,5 @@ router.post("/create-invoice", verifyToken, async (req, res) => {
     res.sendStatus(500);
   }
 });
-
-// TODO update admin jobs page
 
 module.exports = router;
