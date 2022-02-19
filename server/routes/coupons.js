@@ -3,32 +3,40 @@ const router = express.Router();
 const verifyToken = require("../middleware/verifyToken");
 const stripe = require("stripe")(process.env.STRIPE_SK);
 
-// #route:  GET /api/coupons/promotion-code
-// #desc:   Fetch stripe coupon from promotion-code
+// #route:  GET /api/coupons/coupon-by-promotion-code
+// #desc:   Fetch valid stripe coupon from promotion-code
 // #access: Private
-router.get("/promotion-code", verifyToken, async (req, res) => {
+router.get("/coupon-by-promotion-code", verifyToken, async (req, res) => {
   try {
-    const { code } = req.query;
+    const { code, product } = req.query;
 
     // console.log(code);
+    // console.log("product: ", product);
 
     if (!code) {
-      throw new Error("Kein Promotion Code eingegeben.");
+      throw new Error("Kein Aktionscode eingegeben.");
     }
 
-    const promotionCodes = await stripe.promotionCodes.list({ code });
+    const promotionCodes = await stripe.promotionCodes.list({
+      code,
+      active: true,
+      expand: ["data.coupon.applies_to"],
+    });
 
-    if (!promotionCodes) {
-      throw new Error("Promotion Code wurde nicht gefunden.");
+    if (!promotionCodes.data || promotionCodes.data.length === 0) {
+      throw new Error("Aktionscode ist nicht gültig.");
     }
 
     const coupon = promotionCodes.data[0].coupon;
 
-    res.json({ coupon });
-  } catch (err) {
-    // console.error("err: ", err);
+    if (coupon.applies_to && !coupon.applies_to.products.includes(product)) {
+      throw new Error("Aktionscode ist nur auf bestimmte Produkte anwendbar.");
+    }
 
-    res.json({ error: err });
+    res.json({ coupon });
+  } catch (error) {
+    // console.error("error: ", error);
+    res.json({ error: error.message });
   }
 });
 

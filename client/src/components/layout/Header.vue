@@ -223,7 +223,7 @@
               <router-link to="/admin/companies">Companies</router-link>
               <router-link to="/admin/trainings">Trainings</router-link>
               <router-link to="/admin/subscribers">Subscribers</router-link>
-              <router-link to="/admin/coupons">Coupons</router-link>
+              <!-- <router-link to="/admin/coupons">Coupons</router-link> -->
               <router-link to="/admin/invoices">Invoices</router-link>
               <router-link to="/admin/data-analytics"
                 >Data Analytics</router-link

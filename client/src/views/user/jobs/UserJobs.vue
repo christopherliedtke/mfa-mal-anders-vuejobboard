@@ -55,7 +55,14 @@
             class="badge badge-pill badge-success mr-1"
             >bezahlt</span
           >
-          <span v-if="!job.paid" class="badge badge-pill badge-warning mr-1"
+          <span
+            v-if="!job.paid && !job.stripeInvoiceStatus"
+            class="badge badge-pill badge-warning mr-1"
+            >unbezahlt</span
+          >
+          <span
+            v-if="job.stripeInvoiceStatus === 'open'"
+            class="badge badge-pill badge-warning mr-1"
             >Zahlungseingang ausstehend</span
           >
           <span

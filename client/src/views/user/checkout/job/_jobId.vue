@@ -62,7 +62,7 @@
             </b-input-group-append>
           </b-input-group>
           <b-form-invalid-feedback :state="checkout.couponValidationState">
-            Ihr eingegebener Aktionscode ist nicht gültig.
+            {{ checkout.promotionCodeErr }}
           </b-form-invalid-feedback>
           <b-form-valid-feedback
             v-if="checkout.coupon"
@@ -495,7 +495,8 @@
           },
           accepted: false,
           validated: false,
-          error: false
+          error: false,
+          promotionCodeErr: null
         },
         checkoutCountryOptions
       };
@@ -522,6 +523,11 @@
         }
 
         return amount;
+      }
+    },
+    watch: {
+      "checkout.pricingPackage"() {
+        if (this.checkout.promotionCode) this.validatePromotionCode();
       }
     },
     async created() {
@@ -826,20 +832,32 @@
       async validatePromotionCode() {
         this.$store.dispatch("setOverlay", true);
 
-        this.checkout.couponValidationState = null;
+        try {
+          this.checkout.couponValidationState = null;
 
-        const response = await this.$axios.get("/api/coupons/promotion-code", {
-          params: {
-            code: this.checkout.promotionCode
+          const response = await this.$axios.get(
+            "/api/coupons/coupon-by-promotion-code",
+            {
+              params: {
+                code: this.checkout.promotionCode,
+                product: this.checkout.pricingPackage.stripePrice.stripeProduct
+              }
+            }
+          );
+
+          if (response.data.error) {
+            // console.log("response: ", response);
+
+            this.checkout.couponValidationState = false;
+            this.checkout.coupon = null;
+            this.checkout.promotionCodeErr = response.data.error;
+          } else {
+            this.checkout.couponValidationState = true;
+            this.checkout.coupon = response.data.coupon;
+            this.checkout.promotionCodeErr = null;
           }
-        });
-
-        if (response.data.error) {
-          this.checkout.couponValidationState = false;
-          this.checkout.coupon = null;
-        } else {
-          this.checkout.couponValidationState = true;
-          this.checkout.coupon = response.data.coupon;
+        } catch (error) {
+          //
         }
 
         this.$store.dispatch("setOverlay", false);

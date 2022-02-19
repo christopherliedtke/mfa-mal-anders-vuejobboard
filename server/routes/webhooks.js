@@ -7,6 +7,7 @@ const recachePrerender = require("../middleware/recachePrerender");
 const emailService = require("../utils/nodemailer");
 const internalJobsCache = require("../cache/internalJobsCache");
 // const createInvoice = require("../middleware/createInvoice");
+const { User } = require("../database/models/user");
 const { Job } = require("../database/models/job");
 const { Payment } = require("../database/models/payment");
 // const { UsedCoupon } = require("../database/models/usedCoupon");
@@ -64,8 +65,6 @@ router.post(
         throw new Error("Invoice object is not valid.");
       }
 
-      // TODO check if user w/ customerId exists and attach user._id || attach to customer.metadata.userId
-
       const filter = { stripeInvoiceId: invoice.id };
       const update = {
         stripeInvoiceStatus: invoice.status,
@@ -86,6 +85,10 @@ router.post(
       });
 
       console.log("payment: ", payment);
+
+      if (!payment.user) {
+        attachUserToPayment(invoice.customer, payment._id);
+      }
 
       if (event.type == "invoice.finalized" || event.type == "invoice.paid") {
         let invoiceItems = await stripe.invoiceItems.list({
@@ -183,6 +186,41 @@ router.post(
     res.send();
   }
 );
+
+async function attachUserToPayment(stripeCustomerId, paymentId) {
+  try {
+    if (!stripeCustomerId || !paymentId) {
+      throw new Error(
+        `stripeCustomerId: ${stripeCustomerId} or paymentId: ${paymentId} not provided!`
+      );
+    }
+    const user = await User.findOne({ stripeCustomerId });
+
+    if (user) {
+      await Payment.findOneAndUpdate({ _id: paymentId }, { user: user._id });
+    } else {
+      const customer = await stripe.customers.retrieve(stripeCustomerId);
+
+      if (!customer || customer.error) {
+        console.error(
+          "Customer not found in attachUserToPayment(): ",
+          customer.error
+        );
+      }
+
+      if (customer.metadata.userId) {
+        await Payment.findOneAndUpdate(
+          { _id: paymentId },
+          { user: customer.metadata.userId }
+        );
+      }
+    }
+  } catch (error) {
+    console.error("Error in attachUserToPayment(): ", error);
+  }
+
+  return;
+}
 
 async function remoteInvoiceToGDrive(remoteUrl, filename) {
   try {
