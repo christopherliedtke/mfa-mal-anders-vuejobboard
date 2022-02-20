@@ -38,7 +38,7 @@ router.post(
         return;
       }
 
-      console.log("event.type: ", event.type);
+      // console.log("event.type: ", event.type);
 
       if (
         [
@@ -57,9 +57,9 @@ router.post(
         return;
       }
 
-      const invoice = event.data.object;
+      const invoice = await stripe.invoices.retrieve(event.data.object.id);
 
-      console.log("invoice: ", invoice);
+      // console.log("invoice: ", invoice);
 
       if (!invoice) {
         throw new Error("Invoice object is not valid.");
@@ -84,9 +84,9 @@ router.post(
         upsert: event.type == "invoice.finalized",
       });
 
-      console.log("payment: ", payment);
+      // console.log("payment: ", payment);
 
-      if (!payment.user) {
+      if (event.type == "invoice.finalized" && !payment.user) {
         attachUserToPayment(invoice.customer, payment._id);
       }
 
@@ -96,7 +96,7 @@ router.post(
           expand: ["data.price.product"],
         });
 
-        console.log("invoiceItems: ", invoiceItems);
+        // console.log("invoiceItems: ", invoiceItems);
 
         const jobs = await Promise.all(
           invoiceItems.data
@@ -106,8 +106,9 @@ router.post(
                 { _id: invoiceItem.metadata.jobId },
                 {
                   status:
-                    event.type == "invoice.finalized" &&
-                    invoiceItem.price.product.metadata.publish_immediately
+                    (event.type == "invoice.finalized" &&
+                      invoiceItem.price.product.metadata.publish_immediately) ||
+                    event.type == "invoice.paid"
                       ? "published"
                       : undefined,
                   paymentId: payment._id,
@@ -117,19 +118,21 @@ router.post(
                     .publish_immediately
                     ? invoice.status_transitions.finalized_at * 1000
                     : undefined,
-                  paidExpiresAt: invoiceItem.price.product.metadata
-                    .publish_immediately
-                    ? new Date(
-                        invoice.status_transitions.finalized_at * 1000
-                      ).setHours(23, 59, 59, 999) +
-                      1000 *
-                        60 *
-                        60 *
-                        24 *
-                        parseInt(
-                          invoiceItem.price.product.metadata.duration || 60
-                        )
-                    : undefined,
+                  paidExpiresAt:
+                    (event.type == "invoice.finalized" &&
+                      invoiceItem.price.product.metadata.publish_immediately) ||
+                    event.type == "invoice.paid"
+                      ? new Date(
+                          invoice.status_transitions.finalized_at * 1000
+                        ).setHours(23, 59, 59, 999) +
+                        1000 *
+                          60 *
+                          60 *
+                          24 *
+                          parseInt(
+                            invoiceItem.price.product.metadata.duration || 60
+                          )
+                      : undefined,
                   refreshFrequency: Math.max(
                     parseInt(
                       invoiceItem.price.product.metadata.refreshFrequency || 0
@@ -148,12 +151,13 @@ router.post(
             )
         );
 
-        console.log("jobs: ", jobs);
+        // console.log("jobs: ", jobs);
 
         if (jobs) {
           if (event.type == "invoice.paid") {
             Promise.all(jobs.map(job => jobToAsanaTask(job)));
             // if (config.facebook.autoPost) postToFacebook();
+            // sendOrderConfirmation(invoice);
           }
 
           internalJobsCache.flush();
@@ -256,6 +260,9 @@ async function sendAdminNotification(invoice, jobs) {
           <strong>StripeInvoiceNo:</strong> <a href="https://dashboard.stripe.com/search?query=${
             invoice.number
           }" target="_blank">${invoice.number}</a>  <br>
+          <strong>StripeCustomer:</strong> <a href="https://dashboard.stripe.com/search?query=${
+            invoice.customer
+          }" target="_blank">${invoice.customer}</a>  <br>
           <strong><a href="${
             invoice.invoice_pdf
           }" target="_blank">Download</a></strong>  <br>
@@ -266,13 +273,15 @@ async function sendAdminNotification(invoice, jobs) {
       `,
     };
 
-    if (jobs) {
+    if (jobs && Array.isArray(jobs) && jobs.length > 0) {
       dataMailToAdmin.html += jobs
         .map(
           job =>
             `<p><strong>Stellentitel: </strong><a href="${process.env.WEBSITE_URL}/admin/jobs/preview/${job._id}" target="_blank">${job.title}</a> | <a href="${process.env.WEBSITE_URL}/admin/jobs?s=${job._id}" target="_blank">${job._id}</a></p>`
         )
         .join("");
+    } else {
+      dataMailToAdmin.html += `<p><strong>NO JOBS ATTACHED --> CHECK INVOICE</p>`;
     }
 
     await emailService.sendMail(dataMailToAdmin);
@@ -282,6 +291,134 @@ async function sendAdminNotification(invoice, jobs) {
 
   return;
 }
+
+// async function sendOrderConfirmation(invoice) {
+//   try {
+//     if (!invoice) {
+//       throw new Error("Missing invoice in sendOrderConfirmation()");
+//     }
+
+//     if (!invoice.customer_email) {
+//       throw new Error(
+//         "Missing invoice.customer_email in sendOrderConfirmation()"
+//       );
+//     }
+
+//     const dataMailToCustomer = {
+//       from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
+//       to: invoice.customer_email,
+//       subject: `Auftragsbestätigung - Ihr Auftrag auf 'MFA mal anders'`,
+//       html: `
+//                      <p>${
+//                        updatedJob.userId.gender === "Herr"
+//                          ? "Sehr geehrter Herr " +
+//                            (updatedJob.userId.title != "null"
+//                              ? updatedJob.userId.title + " "
+//                              : "") +
+//                            updatedJob.userId.lastName +
+//                            ","
+//                          : updatedJob.userId.gender === "Frau"
+//                          ? "Sehr geehrte Frau " +
+//                            (updatedJob.userId.title != "null"
+//                              ? updatedJob.userId.title + " "
+//                              : "") +
+//                            updatedJob.userId.lastName +
+//                            ","
+//                          : "Sehr geehrte Damen und Herren,"
+//                      }</p>
+//                      <p>
+//                          vielen Dank für die Veröffentlichung Ihrer Stellenanzeige <strong>'${
+//                            updatedJob.title
+//                          }'</strong> auf unserem Stellen- und Karriereportal speziell für MFA & ZFA – 'MFA mal anders'.
+//                      </p>
+//                      ${
+//                        pricingPackage === "Professional"
+//                          ? `
+//                            <p>
+//                              Mit Ihrem gewählten Stellenpaket "${pricingPackage}" erhalten Sie eine individuelle, persönliche Beratung zur Optimierung Ihrer Stellenanzeige. Wir werden Sie innerhalb von 2 Werktagen direkt kontaktieren und das weitere Vorgehen mit Ihnen besprechen. Ihre Stellenanzeige wird nach der Optimierung und Absprache mit Ihnen von uns veröffentlicht. Die Laufzeit beginnt natürlich erst nach erfolgter Veröffentlichung.
+//                            </p>
+//                          `
+//                          : `
+//                            <p>
+//                            Ihre Stellenanzeige ist ab sofort für ${
+//                              config.payment.pricingPackages.find(
+//                                pkg =>
+//                                  pkg.name.toLowerCase() ===
+//                                  pricingPackage.toLowerCase()
+//                              ).duration
+//                            } Tage unter folgendem Link abrufbar: <a href="${
+//                              process.env.WEBSITE_URL +
+//                              config.googleIndexing.pathPrefix +
+//                              jobId
+//                            }">${
+//                              process.env.WEBSITE_URL +
+//                              config.googleIndexing.pathPrefix +
+//                              jobId
+//                            }</a>
+//                            </p>
+//                            <p>
+//                              Gern können Sie diesen Link nutzen, um beispielsweise auf Ihrer Webseite oder über Ihre Social Media Kanäle auf die offene Stelle aufmerksam zu machen. Unserer Erfahrung nach ist dies eine weitere hilfreiche Möglichkeit, potentielle BewerberInnen auf sich aufmerksam zu machen.
+//                            </p>
+//                            <p>
+//                              Mit Ihrer aktiven Stellenanzeige haben Sie zusätzlich die Möglichkeit, auf <a href="${
+//                                process.env.WEBSITE_URL
+//                              }/stellengesuche" target="_blank"><strong>Stellengesuche</strong></a> über unser Portal zu antworten und qualifiziertes Fachpersonal direkt anzusprechen. Das Angebot für Stellensuchende befindet sich aktuell noch im Aufbau, wird jedoch stetig erweitert.
+//                            </p>
+//                            <p>
+//                              Bitte beachten Sie, dass Ihre Stellenanzeige nur solange abrufbar ist, wie auch Ihre Bewerbungsfrist nicht überschritten ist. Über Ihre Zugangsdaten haben Sie weiterhin Zugriff auf Ihre Stellenanzeigen und können diese jederzeit anpassen.
+//                            </p>
+//                          `
+//                      }
+//                      <p>
+//                          Die zugehörige Rechnung zur getätigten Zahlung finden Sie in Ihrem Account unter KONTO -> RECHNUNGEN. Diese können Sie dort herunterladen.
+//                      </p>
+//                      ${
+//                        pricingPackage === "Professional"
+//                          ? `
+//                            <p>
+//                              Mit freundlichen Grüßen
+//                            </p>
+//                          `
+//                          : `
+//                            <p>
+//                              Sollten Sie noch Fragen, Anregungen oder weiteren Beratungsbedarf haben, melden Sie sich gern bei uns über unser <a href="${process.env.WEBSITE_URL}/kontakt">Kontaktformular</a> oder direkt per Nachricht an <a href="mailto:${config.website.contactEmail}">${config.website.contactEmail}</a>.
+//                            </p>
+//                            <p>
+//                              Wir wünschen Ihnen viele qualifizierte BewerberInnen und verbleiben mit freundlichen Grüßen
+//                            </p>
+//                          `
+//                      }
+
+//                      <p>Kristin Maurach</p>
+//                      <p>__</p>
+//                      <p>
+//                          <img src="cid:mfa-mal-anders-logo" width="60" style="margin-bottom: 1rem"/> <br>
+//                          <strong>MFA mal anders</strong> <br>
+//                          Das Stellen- & Karriereportal für Medizinische Fachangestellte | Zahnmedizinische Fachangestellte Fachangestellte <br>
+//                          <br>
+//                          Tel: <a href="tel:017663393957">0176 633 939 57</a> <br>
+//                          E-Mail: <a href="mailto:kontakt@mfa-mal-anders.de">kontakt@mfa-mal-anders.de</a> <br>
+//                          Webseite: <a href="${process.env.WEBSITE_URL}">${
+//         process.env.WEBSITE_URL
+//       }</a>
+//                      </p>
+//                  `,
+//       attachments: [
+//         {
+//           filename: "MfaMalAnders_logo_circle_bgdark_white.png",
+//           path:
+//             __dirname +
+//             "/../../client/public/img/MfaMalAnders_logo_circle_bgdark_white.png",
+//           cid: "mfa-mal-anders-logo", //same cid value as in the html img src
+//         },
+//       ],
+//     };
+
+//     emailService.sendMail(dataMailToCustomer);
+//   } catch (error) {
+//     //
+//   }
+// }
 
 // router.get("/download-invoice", async (req, res) => {
 //   remoteInvoiceToGDrive(

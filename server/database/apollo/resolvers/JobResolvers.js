@@ -349,6 +349,10 @@ const JobResolvers = {
         throw new AuthenticationError("Must be logged in!");
       }
 
+      if (!payment.job) {
+        return null;
+      }
+
       const job = await Job.findOne({ _id: payment.job });
 
       return job;

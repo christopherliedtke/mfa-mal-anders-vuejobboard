@@ -10,7 +10,7 @@ const stripe = require("stripe")(process.env.STRIPE_SK);
 // #desc:   Create a session id for a user
 // #access: Private
 router.post("/create-invoice", verifyToken, async (req, res) => {
-  console.log("req.body: ", req.body);
+  // console.log("req.body: ", req.body);
 
   if (!req.user) {
     return res
@@ -60,7 +60,7 @@ router.post("/create-invoice", verifyToken, async (req, res) => {
       );
     }
 
-    console.log("customer: ", customer);
+    console.log("customer upserted in checkout: ", customer);
 
     if (!customer) {
       throw new Error("Customer could not be created/updated w/ stripe.");
@@ -75,7 +75,7 @@ router.post("/create-invoice", verifyToken, async (req, res) => {
         )
       );
 
-      console.log("newInvoiceItems: ", newInvoiceItems);
+      console.info("newInvoiceItems created in checkout: ", newInvoiceItems);
     } catch (error) {
       console.error("Error on creating invoiceItems in checkout: ", error);
       return res
@@ -92,12 +92,18 @@ router.post("/create-invoice", verifyToken, async (req, res) => {
         default_tax_rates: [process.env.STRIPE_TAX_ID],
         days_until_due: 14,
         auto_advance: true,
+        metadata: {},
         discounts:
           coupons && coupons.length > 0
             ? coupons.map(coupon => {
                 return { coupon };
               })
             : [],
+        footer: `Sie können den Rechnungsbetrag über den Zahlungslink oder per Überweisung an das folgende Konto begleichen:\n\n   Empfänger: MFA mal anders – K. Maurach \u0026 C. Liedtke GbR\n   Bank: solarisbank AG\n   IBAN: DE43 1101 0100 2124 2828 90\n   BIC: SOBKDEBBXXX\n   Verwendungszweck: Rechnungsnummer\n\nSollten noch Fragen oder Wünsche offen geblieben sein, nehmen Sie gern Kontakt zu uns auf.\n\n${
+          invoiceItems.some(item => item.metadata.jobId)
+            ? "Der Leistungszeitpunkt entspricht dem Rechnungsdatum."
+            : ""
+        }`,
       });
     } catch (error) {
       console.error("Error on create invoice in checkout: ", error);
@@ -124,7 +130,7 @@ router.post("/create-invoice", verifyToken, async (req, res) => {
     //   console.error("Error when sending invoice in checkout: ", error);
     // }
 
-    console.log("invoice: ", invoice);
+    console.info("invoice created in checkout: ", invoice);
 
     try {
       const filter = { stripeInvoiceId: invoice.id };
@@ -137,7 +143,7 @@ router.post("/create-invoice", verifyToken, async (req, res) => {
         number: invoice.number,
         finalizedAt: invoice.status_transitions.finalized_at * 1000,
         user: req.user._id,
-        job: jobId || null,
+        job: jobId || undefined,
       };
 
       const payment = await Payment.findOneAndUpdate(filter, update, {
@@ -145,7 +151,7 @@ router.post("/create-invoice", verifyToken, async (req, res) => {
         upsert: true,
       });
 
-      console.log("payment: ", payment);
+      console.info("payment created in checkout: ", payment);
     } catch (error) {
       console.error("Error when saving payment in checkout: ", error);
     }

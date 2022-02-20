@@ -21,7 +21,7 @@
           widerspricht.
         </p>
 
-        <h2>II. Kontaktdaten der Verantwortlichen</h2>
+        <h2>II. Vertragspartner</h2>
 
         <p>
           MFA mal anders – Kristin Maurach und Christopher Liedtke GbR<br />Vertretungsberechtigte
@@ -32,7 +32,7 @@
         <h2>III. Leistungen</h2>
 
         <p>
-          MFA mal anders stellt auf ihrer Webseite eine Online-Stellenbörse zur
+          MFA mal anders stellt auf seiner Webseite eine Online-Stellenbörse zur
           Verfügung. Arbeitgeber können freie Stellen veröffentlichen bzw. MFA
           mal anders mit der Personalsuche- und Beschaffung beauftragen.
         </p>
@@ -49,9 +49,8 @@
             Für die Veröffentlichung einer Stellenanzeige des Kunden kommt ein
             Vertrag zustande, indem der Kunde nach erfolgter Registrierung das
             Online-Formular zur Erstellung einer Stellenanzeige ausfüllt, die
-            AGBs bestätigt und den Zahlungsprozess absolviert bzw. eine Rechnung
-            für die Veröffentlichung der Stellenanzeige anfordert. Der Kunde
-            erhält nach Auftragserteilung eine Auftragsbestätigung per E-Mail.
+            AGBs bestätigt und eine Rechnung für die kostenpflichtige
+            Veröffentlichung der Stellenanzeige anfordert.
           </li>
           <li>
             Sofern der Kunde MFA mal anders mit der Personalsuche und
@@ -66,8 +65,8 @@
         <ol>
           <li>
             Der Kunde kann innerhalb von 14 Tagen nach Erhalt der
-            Auftragsbestätigung kündigen. Es kann in schriftlicher Form oder als
-            Nachricht per E-Mail
+            Auftragsbestätigung in Form einer Rechnung kündigen. Es kann in
+            schriftlicher Form oder als Nachricht per E-Mail
             an&nbsp;kontakt(at)mfa-mal-anders.de&nbsp;gekündigt werden.
           </li>
           <li>
@@ -76,13 +75,63 @@
           </li>
         </ol>
 
-        <h2>VI. Widerrufsrecht</h2>
+        <h2>VI. Widerrufsbelehrung</h2>
+
+        <h3>Widerrufsrecht</h3>
 
         <p>
           Der Kunde hat das Recht innerhalb von 14 Tagen ohne Angabe von Gründen
-          den Vertrag zu widerrufen. Dies muss in schriftlicher Form per Post an
-          die im Impressum angegebene Adresse oder als Nachricht per E-Mail
-          an&nbsp;kontakt(at)mfa-mal-anders.de&nbsp;erfolgen.
+          den Vertrag zu widerrufen. Die Widerrufsfrist beträgt vierzehn Tage
+          des Vertragsschlusses.
+        </p>
+
+        <p>
+          Um Ihr Widerrufsrecht auszuüben, müssen Sie uns (MFA mal anders - K.
+          Maurach & C. Liedtke GbR, Am Bauernwäldchen 38, 12559 Berlin,
+          kontakt(at)mfa-mal-anders.de) mittels einer eindeutigen Erklärung
+          (z.B. ein mit der Post versandter Brief oder E-Mail) über Ihren
+          Entschluss, diesen Vertrag zu widerrufen, informieren.
+        </p>
+
+        <p>
+          Zur Wahrung der Widerrufsfrist reicht es aus, dass Sie die Mitteilung
+          über die Ausübung des Widerrufsrechts vor Ablauf der Widerrufsfrist
+          absenden.
+        </p>
+
+        <h3>Folgen des Widerrufs</h3>
+
+        <p>
+          Wenn Sie diesen Vertrag widerrufen, haben wir Ihnen alle Zahlungen,
+          die wir von Ihnen erhalten haben, einschließlich der Lieferkosten (mit
+          Ausnahme der zusätzlichen Kosten, die sich daraus ergeben, dass Sie
+          eine andere Art der Lieferung als die von uns angebotene, günstigste
+          Standardlieferung gewählt haben), unverzüglich und spätestens binnen
+          vierzehn Tagen ab dem Tag zurückzuzahlen, an dem die Mitteilung über
+          Ihren Widerruf dieses Vertrags bei uns eingegangen ist.
+        </p>
+
+        <p>
+          Für diese Rückzahlung verwenden wir dasselbe Zahlungsmittel, das Sie
+          bei der ursprünglichen Transaktion eingesetzt haben, es sei denn, mit
+          Ihnen wurde ausdrücklich etwas anderes vereinbart; in keinem Fall
+          werden Ihnen wegen dieser Rückzahlung Entgelte berechnet.
+        </p>
+
+        <h3>Muster-Widerrufsformular</h3>
+
+        <p>
+          An: MFA mal anders - K. Maurach & C. Liedtke GbR, Am Bauernwäldchen
+          38, 12559 Berlin, kontakt(at)mfa-mal-anders.de <br />
+          <br />
+          Hiermit widerrufe(n) ich/wir (*) den von mir/uns (*)abgeschlossenen
+          Vertrag über die Erbringung der folgenden Dienstleistung: <br />
+          Dienstleistung: <br />
+          Bestellt am: <br />
+          Name des/der Verbraucher(s): <br />
+          Anschrift des/der Verbraucher(s): <br />
+          Unterschrift des/der Verbraucher(s) (nur bei Mitteilung auf Papier):
+          Datum:
         </p>
 
         <h2>VII. Preise</h2>
@@ -95,10 +144,6 @@
             Leistungen. Eine nähere Beschreibung der Stellenpakete ist unter
             <a href="/fuer-arbeitgeber">„Für Arbeitgeber“</a> zu finden.
           </li>
-          <li>
-            Gemäß § 19 UStG erheben wir keine Umsatzsteuer und weisen diese
-            folglich auch nicht aus. Die Preise sind Endpreise.
-          </li>
         </ol>
 
         <h2>VIII. Zahlungsmethoden und Fälligkeit der Zahlung</h2>
@@ -106,19 +151,16 @@
         <ol>
           <li>
             Mit dem Auftrag zur Veröffentlichung einer Stellenanzeige erhält der
-            Kunde eine ausgewiesene Rechnung.
+            Kunde eine ausgewiesene Rechnung, die gleichzeitig als
+            Auftragsbestätigung dient.
           </li>
           <li>
-            Den Preis zahlt der Kunde über eine der angebotenen Zahlungsmethoden
-            über die sichere Stripe Zahlungsplattform (Kreditkarte, GiroPay,
-            Google Pay) auf der Webseite. Im Falle einer Zahlung per
-            Kreditkarte, GiroPay oder Google Pay wird der gewählte Betrag dem
-            Konto des Kunden unmittelbar belastet und der Kunde erhält im
-            direkten Anschluss einen Zahlungsbeleg über den gezahlten Betrag.
+            Den Rechnungsbetrag zahlt der Kunde über eine der angebotenen
+            Zahlungsmethoden, wie auf der Rechnung ausgewiesen.
           </li>
           <li>
-            Im Falle einer gesonderten Zahlung per Rechnung ist der Betrag
-            innerhalb von 14 Tagen an das angegebene Konto zu überweisen.
+            Rechnungsbeträge sind innerhalb von 14 Tagen an das angegebene Konto
+            zu überweisen.
           </li>
           <li>
             Nach Zahlungseingang erhält der Kunde einen Beleg bzw. eine
@@ -198,10 +240,6 @@
             Gewünschtes Bewerberprofil; Was Sie BewerberInnen bieten.
           </li>
           <li>
-            Die angegebene Mitarbeiterzahl muss der tatsächlichen
-            Unternehmensgröße entsprechen.
-          </li>
-          <li>
             Das angegebene Unternehmen muss den tatsächlichen Unternehmensnamen
             widerspiegeln.
           </li>
@@ -211,6 +249,11 @@
           </li>
           <li>Der korrekte Arbeitsort muss angegeben werden.</li>
           <li>Pro Stellenanzeige kann nur ein Arbeitsort angegeben werden.</li>
+          <li>
+            Bewerbungen dürfen nicht über Dritte (Personaldienstleiter,
+            Headhunter, Personalvermittler) laufen, sondern müssen direkt an den
+            entsprechenden Arbeitgeber gehen.
+          </li>
         </ol>
 
         <h2>XII. Gewährleistung/Haftung</h2>
@@ -306,6 +349,8 @@
           verfolgten wirtschaftlichen Zweck möglichst nahe kommt. Entsprechendes
           gilt für die Ausfüllung etwaiger Regelungslücken.
         </p>
+
+        <p>Stand: 20.02.2022</p>
       </div>
     </div>
 
@@ -314,7 +359,6 @@
 </template>
 
 <script>
-  // TODO check for payment regulations
   export default {
     name: "AGBs",
     data() {

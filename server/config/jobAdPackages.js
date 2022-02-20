@@ -42,7 +42,7 @@ module.exports = [
         icon: "plus-circle",
       },
       {
-        html: 'Wiederholter Versand Ihrer Stellenanzeige in unserem <span class="text-secondary bold" >wöchentlichen Job-Newsletter</span> alle 14 Tage',
+        html: 'Wiederholter Versand Ihrer Stellenanzeige in unserem <span class="text-secondary bold" >wöchentlichen Job-Newsletter alle 14 Tage</span>',
         icon: "plus-circle",
       },
       {
@@ -62,23 +62,23 @@ module.exports = [
         html: '<span class="bold">Basis & Standard Features</span>',
       },
       {
-        html: '<span class="text-secondary bold">Persönliche Beratung</span> zur Erstellung, Veröffentlichung und Optimierung Ihrer Stellenanzeige',
-        icon: "plus-circle",
-      },
-      {
         html: '<span class="text-secondary bold">Datumsupdate alle 7 Tage</span> &ndash; Ihre Stellenanzeige rutscht nach oben',
         icon: "plus-circle",
       },
       {
-        html: '<span class="text-secondary bold">Farbliche Hervorhebung</span> Ihrer Stellenanzeige in der Stellenübersicht',
+        html: '<span class="text-secondary bold">Farbliche Hervorhebung</span> Ihrer Stellenanzeige in unserer Stellenbörse',
         icon: "plus-circle",
       },
       {
-        html: 'Wiederholter Versand Ihrer Stellenanzeige in unserem <span class="text-secondary bold" >wöchentlichen Job-Newsletter</span> alle 7 Tage',
+        html: 'Wiederholter Versand Ihrer Stellenanzeige in unserem <span class="text-secondary bold" >wöchentlichen Job-Newsletter alle 7 Tage</span>',
         icon: "plus-circle",
       },
       {
-        html: 'Optional &ndash; Vereinbarung zusätzl. Marketingbudget zum Schalten von <span class="text-secondary bold">Google & Social Media Werbeanzeigen</span> zur Reichweitenmaximierung',
+        html: 'Inkl. <span class="text-secondary bold">100€ Google Ads Budget</span> &ndash; Ihre Stelle als Werbeaneige in den Google Suchergebnissen für Ihren Standort',
+        icon: "plus-circle",
+      },
+      {
+        html: '<span class="text-secondary bold">Persönlicher Ansprechpartner</span> mit Tipps zur Optimierung Ihrer Stellenanzeige',
         icon: "plus-circle",
       },
     ],

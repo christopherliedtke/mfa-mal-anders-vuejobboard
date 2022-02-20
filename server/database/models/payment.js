@@ -6,10 +6,12 @@ const PaymentSchema = new Schema(
     job: {
       type: Schema.Types.ObjectId,
       ref: "Job",
+      // default: null,
     },
     user: {
       type: Schema.Types.ObjectId,
       ref: "User",
+      // defaut: null,
     },
     stripeInvoiceId: {
       type: String,

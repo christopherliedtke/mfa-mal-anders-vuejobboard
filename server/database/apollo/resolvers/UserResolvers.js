@@ -649,6 +649,10 @@ const UserResolvers = {
         throw new AuthenticationError("Missing permission!");
       }
 
+      if (!payment.user) {
+        return null;
+      }
+
       const user = await User.findOne({ _id: payment.user });
 
       delete user.password;

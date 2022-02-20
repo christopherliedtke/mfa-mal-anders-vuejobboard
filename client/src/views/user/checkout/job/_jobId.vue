@@ -415,7 +415,11 @@
               Datenschutzbestimmungen
             </b-link>
 
-            gelesen und akzeptiere diese.
+            gelesen und akzeptiere diese. Ich verlange ausdrücklich und stimme
+            gleichzeitig zu, dass MFA mal anders - K. Maurach & C. Liedtke GbR
+            mit der in Auftrag gegebenen Dienstleistung vor Ablauf der
+            Widerrufsfrist beginnt. Ich weiß, dass mein Widerrufsrecht bei
+            vollständiger Erfüllung des Vertrages erlischt.
           </b-form-checkbox>
         </b-form>
       </div>
@@ -453,7 +457,7 @@
                 .replace(".", ",")
             }}
             {{ $config.payment.currency }} | Rechnung anfordern und
-            Veröffentlichen
+            kostenpflichtig Veröffentlichen
           </b-button>
         </div>
       </div>
