@@ -127,10 +127,10 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
     await saveInvoiceToGDrive(invoice.path, invoice.fileName);
 
     const emailDataToCustomer = {
-      from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
+      from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
       to: payment.billingEmail,
-      replyTo: config.website.contactEmail,
-      bcc: [config.website.contactEmail],
+      replyTo: process.env.CONTACT_EMAIL_ADRESS,
+      bcc: [process.env.CONTACT_EMAIL_ADRESS],
       subject: `[Rechnung ${
         "RE-" +
         "000000".slice(0, 6 - payment.invoiceNo.toString().length) +

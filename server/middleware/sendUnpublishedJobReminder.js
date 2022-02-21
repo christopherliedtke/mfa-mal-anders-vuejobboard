@@ -25,7 +25,7 @@ module.exports.sendUnpublishedJobReminder = async () => {
         console.log("Sending unpublishedJobReminder for : ", job._id);
 
         const emailData = {
-          from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
+          from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
           to: job.userId.email,
           subject: `Ihre Stellenanzeige bei 'MFA mal anders'`,
           html: `
@@ -52,14 +52,14 @@ module.exports.sendUnpublishedJobReminder = async () => {
                         }'</strong> auf unserem Portal MFA mal anders. Wir haben bemerkt, dass Sie Ihre erstellte Stellenanzeige bisher nicht veröffentlicht haben.
                     </p>
                     <p>
-                        Gern möchten Wir unsere Unterstützung anbieten, insofern Sie weiter Informationen, Beratung oder Hilfe bei der Veröffentlichung Ihrer Stellenanzeige benötigen.
+                        Gern möchten Wir unsere Unterstützung anbieten, insofern Sie weitere Informationen, Beratung oder Hilfe bei der Veröffentlichung Ihrer Stellenanzeige benötigen.
                     </p>
                     <p>
                         Melden Sie sich gern bei uns über unser <a href="${
                           process.env.WEBSITE_URL
                         }/kontakt">Kontaktformular</a> oder direkt per Nachricht an <a href="mailto:${
-            config.website.contactEmail
-          }">${config.website.contactEmail}</a>.
+            process.env.CONTACT_EMAIL_ADRESS
+          }">${process.env.CONTACT_EMAIL_ADRESS}</a>.
                     </p>
                     <p>
                         Nach erfolgreichem <a href="${

@@ -1,7 +1,7 @@
 module.exports = {
   website: {
     name: "MFA mal anders",
-    contactEmail: "kontakt@mfa-mal-anders.de",
+    // contactEmail: "kontakt@mfa-mal-anders.de",
     emailFrom: "MFA mal anders",
     newsletterSuccessPath: "/newsletter/subscription-successful",
     newsletterUnsubscribeSuccessPath: "/newsletter/unsubscribed-successful",

@@ -21,8 +21,8 @@ router.post("/send", async (req, res) => {
   } else {
     try {
       const data = {
-        from: `${form.firstName} ${form.lastName} <${config.website.contactEmail}>`,
-        to: config.website.contactEmail,
+        from: `${form.firstName} ${form.lastName} <${process.env.CONTACT_EMAIL_ADRESS}>`,
+        to: process.env.CONTACT_EMAIL_ADRESS,
         replyTo: `${form.email}`,
         subject: `${form.subject}`,
         html: `

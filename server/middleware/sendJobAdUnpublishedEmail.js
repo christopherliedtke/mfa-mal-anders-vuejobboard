@@ -15,10 +15,10 @@ const sendJobAdUnpublishedEmail = async () => {
     .filter(job => !job.userId.isAdmin)
     .map(job => {
       return {
-        from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
+        from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
         to: job.userId.email,
-        replyTo: config.website.contactEmail,
-        bcc: config.website.contactEmail,
+        replyTo: process.env.CONTACT_EMAIL_ADRESS,
+        bcc: process.env.CONTACT_EMAIL_ADRESS,
         subject: `[Stellenanzeige abgelaufen] – '${job.title}'`,
         html: `
                 <p>

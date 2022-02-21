@@ -35,7 +35,7 @@ router.post("/job-published", verifyToken, isAdmin, async (req, res) => {
       .populate("userId");
 
     const emailData = {
-      from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
+      from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
       to: job.userId.email,
       subject: `Veröffentlichung Ihrer Stellenanzeige auf 'MFA mal anders'`,
       html: `
@@ -144,7 +144,7 @@ router.post("/training-published", verifyToken, isAdmin, async (req, res) => {
 
     // send email to user
     const emailData = {
-      from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
+      from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
       to: training.user.email,
       subject: `Veröffentlichung Ihrer Fortbildung auf 'MFA mal anders'`,
       html: `
@@ -294,9 +294,9 @@ router.post("/contact-jobseek", verifyToken, async (req, res) => {
     });
 
     const mailDataToJobSeeker = {
-      from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
+      from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
       to: jobSeek.user.email,
-      bcc: [config.website.contactEmail],
+      bcc: [process.env.CONTACT_EMAIL_ADRESS],
       replyTo: req.body.email,
       subject: `Neue Nachricht zu Deinem Stellengesuch auf 'MFA mal anders'`,
       html: htmlToJobSeeker,
@@ -316,7 +316,7 @@ router.post("/contact-jobseek", verifyToken, async (req, res) => {
     // send copy to employer
     try {
       const mailDataToEmployer = {
-        from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
+        from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
         to: jobSeek.user.email,
         subject: `Ihre Kontaktaufnahme zum Stellengesuch auf 'MFA mal anders'`,
         html: `

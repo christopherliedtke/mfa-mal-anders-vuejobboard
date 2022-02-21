@@ -18,7 +18,7 @@ const jobToAsanaTask = async (
 
       if (payment) {
         const dataMailToAsana = {
-          from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
+          from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
           to: to,
           subject: `[${payment.number}] | ${payment.total / 100}€ - ${
             job.title

@@ -314,7 +314,7 @@ const UserResolvers = {
       });
 
       const emailData = {
-        from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
+        from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
         to: args.email,
         subject: `Ihr Code für den Passwort Reset auf ${config.website.name}`,
         text: `
@@ -408,7 +408,7 @@ const UserResolvers = {
         });
 
         const emailData = {
-          from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
+          from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
           to: user.email,
           subject: `E-Mail bestätigen für ${config.website.name}`,
           text: `
@@ -501,7 +501,7 @@ const UserResolvers = {
       });
 
       const emailData = {
-        from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
+        from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
         to: user.email,
         subject: `Aktivierung Ihres Accounts für ${config.website.name}`,
         html: `

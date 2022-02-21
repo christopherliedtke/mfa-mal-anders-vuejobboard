@@ -260,8 +260,8 @@ async function remoteInvoiceToGDrive(remoteUrl, filename) {
 async function sendAdminNotification(invoice, jobs) {
   try {
     const dataMailToAdmin = {
-      from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
-      to: config.website.contactEmail,
+      from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
+      to: process.env.CONTACT_EMAIL_ADRESS,
       subject: `[${invoice.number} - ${invoice.status.toUpperCase()}] | ${
         invoice.total / 100
       }€`,
@@ -323,7 +323,7 @@ async function sendOrderConfirmation(invoice, jobs) {
     }
 
     const dataMailToCustomer = {
-      from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
+      from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
       to: invoice.customer_email,
       subject: `Auftragsbestätigung - Ihr Auftrag auf 'MFA mal anders'`,
       html: `
@@ -354,8 +354,8 @@ async function sendOrderConfirmation(invoice, jobs) {
           Sollten Sie noch Fragen, Anregungen oder weiteren Beratungsbedarf haben, melden Sie sich gern bei uns über unser <a href="${
             process.env.WEBSITE_URL
           }/kontakt">Kontaktformular</a> oder direkt per Nachricht an <a href="mailto:${
-        config.website.contactEmail
-      }">${config.website.contactEmail}</a>.
+        process.env.CONTACT_EMAIL_ADRESS
+      }">${process.env.CONTACT_EMAIL_ADRESS}</a>.
         </p>
 
         <p>
@@ -560,8 +560,8 @@ router.get("/download-invoice", async (req, res) => {
 //       await jobToAsanaTask(updatedJob);
 
 //       const dataMailToAdmin = {
-//         from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
-//         to: config.website.contactEmail,
+//         from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
+//         to: process.env.CONTACT_EMAIL_ADRESS,
 //         subject: `[Stripe ${
 //           "RE-" +
 //           "000000".slice(0, 6 - payment.invoiceNo.toString().length) +
@@ -643,7 +643,7 @@ router.get("/download-invoice", async (req, res) => {
 //       emailService.sendMail(dataMailToAdmin);
 
 //       const dataMailToCustomer = {
-//         from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
+//         from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
 //         to: updatedJob.userId.email,
 //         subject: `Veröffentlichung Ihrer Stellenanzeige auf 'MFA mal anders'`,
 //         html: `
@@ -719,7 +719,7 @@ router.get("/download-invoice", async (req, res) => {
 //                         `
 //                         : `
 //                           <p>
-//                             Sollten Sie noch Fragen, Anregungen oder weiteren Beratungsbedarf haben, melden Sie sich gern bei uns über unser <a href="${process.env.WEBSITE_URL}/kontakt">Kontaktformular</a> oder direkt per Nachricht an <a href="mailto:${config.website.contactEmail}">${config.website.contactEmail}</a>.
+//                             Sollten Sie noch Fragen, Anregungen oder weiteren Beratungsbedarf haben, melden Sie sich gern bei uns über unser <a href="${process.env.WEBSITE_URL}/kontakt">Kontaktformular</a> oder direkt per Nachricht an <a href="mailto:${process.env.CONTACT_EMAIL_ADRESS}">${process.env.CONTACT_EMAIL_ADRESS}</a>.
 //                           </p>
 //                           <p>
 //                             Wir wünschen Ihnen viele qualifizierte BewerberInnen und verbleiben mit freundlichen Grüßen
