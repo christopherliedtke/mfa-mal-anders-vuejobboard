@@ -3,6 +3,9 @@ module.exports = [
     id: "1",
     name: "Basis",
     stripePrice: process.env.STRIPE_PRICE_ID_BASIS,
+    duration: 60, // !legacy
+    price: 14900, // !legacy
+    refreshFrequency: 0, // !legacy
     primary: "primary",
     accent: "light-shade",
     productFeatures: [
@@ -27,6 +30,9 @@ module.exports = [
     id: "2",
     name: "Standard",
     stripePrice: process.env.STRIPE_PRICE_ID_STANDARD,
+    duration: 90, // !legacy
+    price: 19900, // !legacy
+    refreshFrequency: 14, // !legacy
     primary: "light",
     accent: "primary",
     badge: "beliebt",
@@ -55,6 +61,9 @@ module.exports = [
     id: "3",
     name: "Professional",
     stripePrice: process.env.STRIPE_PRICE_ID_PROFESSIONAL,
+    duration: 90, // !legacy
+    price: 59900, // !legacy
+    refreshFrequency: 7, // !legacy
     primary: "light",
     accent: "secondary",
     productFeatures: [
@@ -74,7 +83,7 @@ module.exports = [
         icon: "plus-circle",
       },
       {
-        html: 'Inkl. <span class="text-secondary bold">100€ Google Ads Budget</span> &ndash; Ihre Stelle als Werbeaneige in den Google Suchergebnissen für Ihren Standort',
+        html: 'Inkl. <span class="text-secondary bold">100€ Google Ads Budget</span> &ndash; Ihre Stelle als Werbeanzeige in den Google Suchergebnissen für Ihren Standort',
         icon: "plus-circle",
       },
       {

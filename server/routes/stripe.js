@@ -3,6 +3,7 @@ const router = express.Router();
 const verifyToken = require("../middleware/verifyToken");
 const validateCoupon = require("../middleware/validateCoupon");
 const config = require("../config/config");
+const jobAdPackages = require("../config/jobAdPackages.js");
 
 const stripe = require("stripe")(process.env.STRIPE_SK);
 
@@ -27,10 +28,10 @@ router.post("/job/create-session-id", verifyToken, async (req, res) => {
 
     const { pricingPackage, code } = req.body;
 
-    let amount = config.payment.pricingPackages.find(
+    let amount = jobAdPackages.find(
       pkg => pkg.name.toLowerCase() === pricingPackage.toLowerCase()
     ).price;
-    let refreshFrequency = config.payment.pricingPackages.find(
+    let refreshFrequency = jobAdPackages.find(
       pkg => pkg.name.toLowerCase() === pricingPackage.toLowerCase()
     ).refreshFrequency;
 
@@ -68,7 +69,7 @@ router.post("/job/create-session-id", verifyToken, async (req, res) => {
       line_items: [
         {
           price_data: {
-            currency: config.payment.currency,
+            currency: "eur",
             product_data: {
               name: req.body.title,
               description: `Veröffentlichung Ihrer Stellenanzeige "${req.body.title}" auf ${config.website.name} | Paket '${pricingPackage}'`,

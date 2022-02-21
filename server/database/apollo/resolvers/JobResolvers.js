@@ -390,8 +390,7 @@ function cleanUpJob(job, user) {
     if (job.paid && !job.paidExpiresAt) {
       job.paidExpiresAt =
         job.paidExpiresAt ||
-        new Date().setHours(23, 59, 59, 999) +
-          1000 * 60 * 60 * 24 * config.payment.paymentExpirationDays;
+        new Date().setHours(23, 59, 59, 999) + 1000 * 60 * 60 * 24 * 60;
     }
     if (job.paid === false) {
       job.paidExpiresAt = new Date(0);

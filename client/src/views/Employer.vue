@@ -119,8 +119,8 @@
                   >ab
                   <span v-if="pricingPackages">{{
                     pricingPackages[0].stripePrice.price / 100
-                  }}</span>
-                  {{ $config.payment.currency }}</b-link
+                  }}</span
+                  >€</b-link
                 >
                 <span class="small"> (zzgl. USt.)</span>
               </div>

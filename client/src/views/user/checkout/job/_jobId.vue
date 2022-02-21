@@ -439,8 +439,7 @@
                 .toFixed(2)
                 .toString()
                 .replace(".", ",")
-            }}
-            {{ $config.payment.currency }} | Rechnung anfordern
+            }}€ | Rechnung anfordern
           </b-button> -->
           <span></span>
           <b-button
@@ -455,9 +454,7 @@
                 .toFixed(2)
                 .toString()
                 .replace(".", ",")
-            }}
-            {{ $config.payment.currency }} | Rechnung anfordern und
-            kostenpflichtig Veröffentlichen
+            }}€ | Rechnung anfordern und kostenpflichtig Veröffentlichen
           </b-button>
         </div>
       </div>

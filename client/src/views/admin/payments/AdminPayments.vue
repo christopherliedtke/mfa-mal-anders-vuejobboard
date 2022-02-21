@@ -25,7 +25,7 @@
           ></b-button>
         </b-input-group-append>
       </b-input-group>
-      <b-button
+      <!-- <b-button
         class="my-2 mr-2"
         :to="`/admin/invoices/edit/new`"
         variant="outline-primary"
@@ -43,7 +43,7 @@
             d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
           /></svg
         >Neue Zahlung</b-button
-      >
+      > -->
       <div class="inline-block my-2 my-lg-0">
         Number of Payments:
         <strong>{{ filter.searchTerm ? count : payments.length }}</strong>
