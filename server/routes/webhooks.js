@@ -312,7 +312,7 @@ async function sendOrderConfirmation(invoice, jobs) {
       throw new Error("Missing invoice in sendOrderConfirmation()");
     }
 
-    if (invoice.metadata.no_confirmation) {
+    if (!invoice.metadata.send_confirmation) {
       return;
     }
 
@@ -325,25 +325,23 @@ async function sendOrderConfirmation(invoice, jobs) {
     const dataMailToCustomer = {
       from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
       to: invoice.customer_email,
-      subject: `Auftragsbestätigung - Ihr Auftrag auf 'MFA mal anders'`,
+      subject: `Auftragsbestätigung - Ihr Auftrag auf 'MFA-mal-anders.de'`,
       html: `
-        <p>Guten Tag${
-          invoice.cusomer_name ? ` ${invoice.customer_name}` : ""
-        },</p>
+        <p>Guten Tag,</p>
         <p>
-          vielen Dank für Ihr Bestellung und Ihr Vertrauen. Ihre Bestellung ist erfolgreich bei uns eingegangen und wird nun verarbeitet. Die Rechnung zu Ihrer Bestellung inklusive aller beauftragter Positionen erhalten Sie in einer separaten E-Mail.
+          vielen Dank für Ihr Bestellung und Ihr Vertrauen. Ihr Auftrag ist erfolgreich bei uns eingegangen und wird nun verarbeitet. Die Rechnung zu Ihrem Auftrag inklusive sämtlicher Positionen erhalten Sie in einer separaten E-Mail.
         </p>
 
         ${
           Array.isArray(jobs) && jobs.length > 0
             ? `
               <p>
-                Ihre beauftragten Stellenanzeigen sind ab sofort auf MFA mal anders veröffentlicht. Gern können Sie die Links zu Ihren Stellenanzeigen beispielsweise auf Ihrer Webseite oder über Ihre Social Media Kanäle ebenfalls veröffentlichen. Unserer Erfahrung nach ist dies eine weitere gute Möglichkeit, potentielle BewerberInnen auf sich aufmerksam zu machen.
+                Jede beauftragte Stellenanzeige ist ab sofort auf <em>MFA mal anders</em> veröffentlicht. Gern können Sie die Links zu Ihren Stellenanzeigen beispielsweise auf Ihrer Webseite oder über Ihre Social Media Kanäle veröffentlichen. Unserer Erfahrung nach ist dies eine weitere gute Möglichkeit, potentielle BewerberInnen auf sich aufmerksam zu machen.
               </p>
-              <p>
+              <p style="margin-left:1rem">
                 ${jobs.map(
                   job =>
-                    `<a href="${process.env.WEBSITE_URL}/stellenangebote/job/${job._id}" target="_blank">${job.title}</a><br>`
+                    `<a href="${process.env.WEBSITE_URL}/stellenangebote/job/${job._id}" target="_blank"><strong>${job.title}</strong></a><br>`
                 )}
               </p>
             `
@@ -369,8 +367,9 @@ async function sendOrderConfirmation(invoice, jobs) {
           <strong>MFA mal anders</strong> <br>
           Das Stellen- & Karriereportal für Medizinische Fachangestellte | Zahnmedizinische Fachangestellte Fachangestellte <br>
           <br>
-          Tel: <a href="tel:017663393957">0176 633 939 57</a> <br>
-          E-Mail: <a href="mailto:kontakt@mfa-mal-anders.de">kontakt@mfa-mal-anders.de</a> <br>
+          E-Mail: <a href="mailto:${process.env.CONTACT_EMAIL_ADRESS}">${
+        process.env.CONTACT_EMAIL_ADRESS
+      }</a> <br>
           Webseite: <a href="${process.env.WEBSITE_URL}">${
         process.env.WEBSITE_URL
       }</a>
@@ -734,8 +733,7 @@ router.get("/download-invoice", async (req, res) => {
 //                         <strong>MFA mal anders</strong> <br>
 //                         Das Stellen- & Karriereportal für Medizinische Fachangestellte | Zahnmedizinische Fachangestellte Fachangestellte <br>
 //                         <br>
-//                         Tel: <a href="tel:017663393957">0176 633 939 57</a> <br>
-//                         E-Mail: <a href="mailto:kontakt@mfa-mal-anders.de">kontakt@mfa-mal-anders.de</a> <br>
+//                         E-Mail: <a href="mailto:${process.env.CONTACT_EMAIL_ADRESS}">${process.env.CONTACT_EMAIL_ADRESS}</a> <br>
 //                         Webseite: <a href="${process.env.WEBSITE_URL}">${
 //           process.env.WEBSITE_URL
 //         }</a>

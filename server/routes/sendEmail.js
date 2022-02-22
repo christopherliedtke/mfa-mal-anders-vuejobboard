@@ -76,7 +76,9 @@ router.post("/job-published", verifyToken, isAdmin, async (req, res) => {
                 <p>
                   Sollten Sie noch Fragen, Anregungen oder weiteren Beratungsbedarf haben, melden Sie sich gern bei uns über unser <a href="${
                     process.env.WEBSITE_URL
-                  }/kontakt">Kontaktformular</a> oder direkt per Nachricht an <a href="mailto:kontakt@mfa-mal-anders.de">kontakt@mfa-mal-anders.de</a>.
+                  }/kontakt">Kontaktformular</a> oder direkt per Nachricht an <a href="mailto:${
+        process.env.CONTACT_EMAIL_ADRESS
+      }">${process.env.CONTACT_EMAIL_ADRESS}</a>.
                 </p>
                 <p>
                   Wir wünschen Ihnen viele qualifizierte BewerberInnen und verbleiben mit freundlichen Grüßen
@@ -90,8 +92,9 @@ router.post("/job-published", verifyToken, isAdmin, async (req, res) => {
                     <strong>MFA mal anders</strong> <br>
                     Das Stellen- & Karriereportal für Medizinische Fachangestellte | Zahnmedizinische Fachangestellte <br>
                     <br>
-                    Tel: <a href="tel:017663393957">0176 633 939 57</a> <br>
-                    E-Mail: <a href="mailto:kontakt@mfa-mal-anders.de">kontakt@mfa-mal-anders.de</a> <br>
+                    E-Mail: <a href="mailto:${
+                      process.env.CONTACT_EMAIL_ADRESS
+                    }">${process.env.CONTACT_EMAIL_ADRESS}</a> <br>
                     Webseite: <a href="${process.env.WEBSITE_URL}">${
         process.env.WEBSITE_URL
       }</a>
@@ -176,7 +179,9 @@ router.post("/training-published", verifyToken, isAdmin, async (req, res) => {
                 <p>
                     Sie können die Fortbildung jederzeit unter KONTO > FORTBILDUNGEN ändern bzw. deaktivieren. Sollten Sie noch Fragen oder Anregungen haben, melden Sie sich gern bei uns über unser <a href="${
                       process.env.WEBSITE_URL
-                    }/kontakt">Kontaktformular</a> oder direkt per Nachricht an <a href="mailto:kontakt@mfa-mal-anders.de">kontakt@mfa-mal-anders.de</a>.
+                    }/kontakt">Kontaktformular</a> oder direkt per Nachricht an <a href="mailto:${
+        process.env.CONTACT_EMAIL_ADRESS
+      }">${process.env.CONTACT_EMAIL_ADRESS}</a>.
                 </p>
                 <p>
                     Mit freundlichen Grüßen
@@ -190,8 +195,9 @@ router.post("/training-published", verifyToken, isAdmin, async (req, res) => {
                     <strong>MFA mal anders</strong> <br>
                     Das Stellen- & Karriereportal für Medizinische Fachangestellte | Zahnmedizinische Fachangestellte Fachangestellte <br>
                     <br>
-                    Tel: <a href="tel:017663393957">0176 633 939 57</a> <br>
-                    E-Mail: <a href="mailto:kontakt@mfa-mal-anders.de">kontakt@mfa-mal-anders.de</a> <br>
+                    E-Mail: <a href="mailto:${
+                      process.env.CONTACT_EMAIL_ADRESS
+                    }">${process.env.CONTACT_EMAIL_ADRESS}</a> <br>
                     Webseite: <a href="${process.env.WEBSITE_URL}">${
         process.env.WEBSITE_URL
       }</a>
@@ -355,7 +361,9 @@ router.post("/contact-jobseek", verifyToken, async (req, res) => {
             <strong>MFA mal anders</strong> <br>
             Das Stellen- & Karriereportal für Medizinische Fachangestellte | Zahnmedizinische Fachangestellte Fachangestellte <br>
             <br>
-            E-Mail: <a href="mailto:kontakt@mfa-mal-anders.de">kontakt@mfa-mal-anders.de</a> <br>
+            E-Mail: <a href="mailto:${process.env.CONTACT_EMAIL_ADRESS}">${
+          process.env.CONTACT_EMAIL_ADRESS
+        }</a> <br>
             Webseite: <a href="${process.env.WEBSITE_URL}">${
           process.env.WEBSITE_URL
         }</a>
