@@ -329,14 +329,18 @@ async function sendOrderConfirmation(invoice, jobs) {
       html: `
         <p>Guten Tag,</p>
         <p>
-          vielen Dank für Ihr Bestellung und Ihr Vertrauen. Ihr Auftrag ist erfolgreich bei uns eingegangen und wird nun verarbeitet. Die Rechnung zu Ihrem Auftrag inklusive sämtlicher Positionen erhalten Sie in einer separaten E-Mail.
+          vielen Dank für Ihr Bestellung und Ihr Vertrauen. Ihr Auftrag ist erfolgreich bei uns eingegangen und wird nun verarbeitet. Die dazugehörige Rechnung inklusive sämtlicher Positionen erhalten Sie in einer separaten E-Mail.
         </p>
 
         ${
           Array.isArray(jobs) && jobs.length > 0
             ? `
               <p>
-                Jede beauftragte Stellenanzeige ist ab sofort auf <em>MFA mal anders</em> veröffentlicht. Gern können Sie die Links zu Ihren Stellenanzeigen beispielsweise auf Ihrer Webseite oder über Ihre Social Media Kanäle veröffentlichen. Unserer Erfahrung nach ist dies eine weitere gute Möglichkeit, potentielle BewerberInnen auf sich aufmerksam zu machen.
+                Ihre ${
+                  jobs.length > 1
+                    ? "Stellenanzeigen sind"
+                    : "Stellenanzeige ist"
+                } ab sofort entsprechend des gebuchten Stellenpakets auf <em>MFA mal anders</em> veröffentlicht. Gern können Sie Links zu Ihren Stellenanzeigen beispielsweise auf Ihrer Webseite oder über Ihre Social Media Kanäle veröffentlichen. Unserer Erfahrung nach ist dies eine weitere gute Möglichkeit, potentielle BewerberInnen auf sich aufmerksam zu machen.
               </p>
               <p style="margin-left:1rem">
                 ${jobs.map(
