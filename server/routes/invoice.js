@@ -5,6 +5,7 @@ const verifyToken = require("../middleware/verifyToken");
 const validateCoupon = require("../middleware/validateCoupon");
 const emailService = require("../utils/nodemailer");
 const config = require("../config/config");
+const jobAdPackages = require("../config/jobAdPackages.js");
 const { Job } = require("../database/models/job");
 const { Payment } = require("../database/models/payment");
 const createInvoice = require("../middleware/createInvoice");
@@ -29,10 +30,10 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
       billingAddress,
     } = req.body;
 
-    let amount = config.payment.pricingPackages.find(
+    let amount = jobAdPackages.find(
       pkg => pkg.name.toLowerCase() === pricingPackage.toLowerCase()
     ).price;
-    let refreshFrequency = config.payment.pricingPackages.find(
+    let refreshFrequency = jobAdPackages.find(
       pkg => pkg.name.toLowerCase() === pricingPackage.toLowerCase()
     ).refreshFrequency;
 
@@ -79,11 +80,7 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
       taxRate: taxRate,
       paymentExpiresAt: new Date(
         new Date().setHours(23, 59, 59, 999) +
-          1000 *
-            60 *
-            60 *
-            24 *
-            config.payment.pricingPackages.map(pkg => pkg.duration).sort()[0]
+          1000 * 60 * 60 * 24 * jobAdPackages.map(pkg => pkg.duration).sort()[0]
       ),
       job: jobId,
       user: req.user._id,
@@ -130,10 +127,10 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
     await saveInvoiceToGDrive(invoice.path, invoice.fileName);
 
     const emailDataToCustomer = {
-      from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
+      from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
       to: payment.billingEmail,
-      replyTo: config.website.contactEmail,
-      bcc: [config.website.contactEmail],
+      replyTo: process.env.CONTACT_EMAIL_ADRESS,
+      bcc: [process.env.CONTACT_EMAIL_ADRESS],
       subject: `[Rechnung ${
         "RE-" +
         "000000".slice(0, 6 - payment.invoiceNo.toString().length) +
@@ -186,8 +183,9 @@ router.post("/get-invoice", verifyToken, async (req, res) => {
                     <strong>MFA mal anders</strong> <br>
                     Das Stellen- & Karriereportal für Medizinische Fachangestellte | Zahnmedizinische Fachangestellte <br>
                     <br>
-                    Tel: <a href="tel:017663393957">0176 633 939 57</a> <br>
-                    E-Mail: <a href="mailto:kontakt@mfa-mal-anders.de">kontakt@mfa-mal-anders.de</a> <br>
+                    E-Mail: <a href="mailto:${
+                      process.env.CONTACT_EMAIL_ADRESS
+                    }">${process.env.CONTACT_EMAIL_ADRESS}</a> <br>
                     Webseite: <a href="${process.env.WEBSITE_URL}">${
         process.env.WEBSITE_URL
       }</a>

@@ -11,7 +11,6 @@ const ProfessionResolvers = {
       let professions = await wpContentCache.get("professions");
 
       if (args.type) {
-        // TODO handle type requests
         professions = professions.filter(
           profession => profession.professionType.slug == args.type
         );

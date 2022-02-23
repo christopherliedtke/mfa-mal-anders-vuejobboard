@@ -1,4 +1,4 @@
-require("dotenv").config({ path: "./.env.dev" });
+require("dotenv").config({ path: "./.env.local" });
 const express = require("express");
 const apolloVerifyToken = require("./middleware/apolloVerifyToken");
 const { ApolloServer } = require("apollo-server-express");
@@ -76,17 +76,16 @@ if (process.env.PRERENDER_ACTIVE === "on") {
   app.use(prerender);
 }
 
+// #Routes w/o csrf protection && cors protection && compression && express.json
+app.use("/api/webhooks", require("./routes/webhooks"));
+
 // #Cors implementation
-// TODO update for dev vs prod (consider webhooks)
 if (process.env.NODE_ENV != "production") {
   app.use(cors());
 }
 
 app.use(compression());
 app.use(express.json());
-
-// #Routes w/o csrf protection
-app.use("/api/webhooks", require("./routes/webhooks"));
 
 // #Express Session
 app.use(
@@ -145,7 +144,14 @@ async function startServer() {
     },
     plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
     formatError: err => {
-      console.error("ApolloServerError: ", err);
+      if (
+        (err.path.includes("company") &&
+          err.extensions.exception.path === "_id") ||
+        err.extensions.code === "BAD_USER_INPUT"
+      ) {
+        return err;
+      }
+      console.error(err);
       return err;
     },
   });
@@ -158,6 +164,10 @@ async function startServer() {
   app.use("/api/newsletter", require("./routes/newsletter"));
   app.use("/api/images", require("./routes/images"));
   app.use("/api/stripe", require("./routes/stripe"));
+  app.use("/api/customers", require("./routes/customers"));
+  app.use("/api/products", require("./routes/products"));
+  app.use("/api/coupons", require("./routes/coupons"));
+  app.use("/api/checkout", require("./routes/checkout"));
   app.use("/api/invoice", require("./routes/invoice"));
   app.use("/api/send-email", require("./routes/sendEmail"));
   app.use("/api/admin", require("./routes/admin"));

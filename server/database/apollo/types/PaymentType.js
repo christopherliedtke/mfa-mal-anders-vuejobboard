@@ -68,6 +68,16 @@ const PaymentType = gql`
 
   type Payment {
     _id: ID!
+    stripeInvoiceId: String
+    stripeInvoiceStatus: String
+    stripePaymentIntentStatus: String
+    stripeHostedInvoiceUrl: String
+    stripeInvoicePdf: String
+    stripeReceiptUrl: String
+    total: Float
+    tax: Float
+    number: String
+    finalizedAt: Float
     status: String
     invoiceNo: Float
     invoiceDate: Float

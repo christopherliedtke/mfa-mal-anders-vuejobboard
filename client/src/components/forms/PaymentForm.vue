@@ -64,7 +64,7 @@
           >-- Choose Pricing Package --</b-form-select-option
         >
         <b-form-select-option
-          v-for="pkg in $config.pricingPackages"
+          v-for="pkg in pricingPackages"
           :key="pkg.name"
           :value="pkg.name"
           >{{ pkg.name }}</b-form-select-option
@@ -273,8 +273,15 @@
           paidAt: new Date().setHours(0, 0, 0, 0),
           paymentExpiresAt:
             new Date().setHours(23, 59, 59, 999) +
-            1000 * 60 * 60 * 24 * this.$config.pricingPackages[0].duration
+            1000 *
+              60 *
+              60 *
+              24 *
+              (this.pricingPackages && this.getPricingPackages.length > 0
+                ? this.pricingPackages[0].duration
+                : 60)
         },
+        pricingPackages: [],
         contactGenderOptions,
         contactTitleOptions
       };
@@ -317,6 +324,7 @@
       if (this.$route.params.paymentId != "new") {
         this.getPayment(this.$route.params.paymentId);
       }
+      this.getPricingPackages();
     },
     methods: {
       async getPayment(id) {
@@ -384,6 +392,30 @@
         }
 
         this.$store.dispatch("setOverlay", false);
+      },
+      async getPricingPackages() {
+        try {
+          const response = await this.$axios.get(
+            "/api/products/job-ad-packages"
+          );
+
+          if (!response.data.jobAdPackages) {
+            throw new Error("Stellenpakete konnten nicht geladen werden");
+          }
+
+          this.pricingPackages = response.data.jobAdPackages;
+        } catch (err) {
+          this.$root.$bvToast.toast(
+            "Unsere Stellenpakete konnten nicht geladen werden. Bitte versuchen Sie es noch einmal, indem Sie die Seite neu laden.",
+            {
+              title: `Fehler beim Laden`,
+              variant: "danger",
+              toaster: "b-toaster-bottom-right",
+              solid: true,
+              noAutoHide: true
+            }
+          );
+        }
       },
       async onSubmit() {
         this.$store.dispatch("setOverlay", true);
@@ -454,7 +486,7 @@
             }
           );
 
-          this.$router.push("/admin/payments");
+          this.$router.push("/admin/invoices");
         } catch (err) {
           this.$root.$bvToast.toast(err.message, {
             title: `Fehler beim Speichern`,

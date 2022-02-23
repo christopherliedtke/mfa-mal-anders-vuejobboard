@@ -192,8 +192,8 @@ const TrainingResolvers = {
       );
 
       const dataMailToAdmin = {
-        from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
-        to: config.website.contactEmail,
+        from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
+        to: process.env.CONTACT_EMAIL_ADRESS,
         subject: `[Einreichung neue Fortbildung] - ${updatedTraining.title}`,
         html: `
           <h2>Einreichung einer neuen Fortbildung</h2>

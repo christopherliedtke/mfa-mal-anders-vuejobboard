@@ -139,7 +139,7 @@
                   new Date(payment.paidAt).getMonth() === month &&
                   new Date(payment.paidAt).getFullYear() === year
               )
-              .map(payment => payment.amount - payment.fee - payment.taxes)
+              .map(payment => payment.amount || payment.total)
               .reduce(
                 (accumulator, currentValue) => accumulator + currentValue,
                 0
@@ -153,7 +153,7 @@
                 new Date(payment.paidAt).getMonth() === month &&
                 new Date(payment.paidAt).getFullYear() === year
             )
-            .map(payment => payment.amount)
+            .map(payment => payment.amount || payment.total)
             .reduce(currentValue => 1 + currentValue, 0);
 
           numbers.push(number);

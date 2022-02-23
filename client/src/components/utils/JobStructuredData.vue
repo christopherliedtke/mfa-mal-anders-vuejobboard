@@ -20,9 +20,7 @@
                 "description": this.job.description
                   .replace(/"/g, "'")
                   .replace(/h1|h2|h3|h4|h5|h6/g, "p"),
-                "datePosted": new Date(
-                  this.job.publishedAt || ""
-                ).toISOString(),
+                "datePosted": new Date(this.job.publishedAt || 0).toISOString(),
                 "hiringOrganization": {
                   "@type": "Organization",
                   "name": this.job.company.name || "",

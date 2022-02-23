@@ -7,7 +7,7 @@ const JobSchema = new Schema(
   {
     status: {
       type: String,
-      default: "draft",
+      default: "unpublished",
     },
     publishedAt: {
       type: Date,
@@ -15,6 +15,9 @@ const JobSchema = new Schema(
     paid: {
       type: Boolean,
       default: false,
+    },
+    stripeInvoiceStatus: {
+      type: String,
     },
     paidAt: {
       type: Date,

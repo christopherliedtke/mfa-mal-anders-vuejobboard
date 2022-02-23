@@ -314,7 +314,7 @@ const UserResolvers = {
       });
 
       const emailData = {
-        from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
+        from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
         to: args.email,
         subject: `Ihr Code für den Passwort Reset auf ${config.website.name}`,
         text: `
@@ -408,7 +408,7 @@ const UserResolvers = {
         });
 
         const emailData = {
-          from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
+          from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
           to: user.email,
           subject: `E-Mail bestätigen für ${config.website.name}`,
           text: `
@@ -501,7 +501,7 @@ const UserResolvers = {
       });
 
       const emailData = {
-        from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
+        from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
         to: user.email,
         subject: `Aktivierung Ihres Accounts für ${config.website.name}`,
         html: `
@@ -538,8 +538,9 @@ const UserResolvers = {
                         <strong>MFA mal anders</strong> <br>
                         Das Stellen- & Karriereportal für Medizinische Fachangestellte | Zahnmedizinische Fachangestellte <br>
                         <br>
-                        Tel: <a href="tel:017663393957">0176 633 939 57</a> <br>
-                        E-Mail: <a href="mailto:kontakt@mfa-mal-anders.de">kontakt@mfa-mal-anders.de</a> <br>
+                        E-Mail: <a href="mailto:${
+                          process.env.CONTACT_EMAIL_ADRESS
+                        }">${process.env.CONTACT_EMAIL_ADRESS}</a> <br>
                         Webseite: <a href="${process.env.WEBSITE_URL}">${
           process.env.WEBSITE_URL
         }</a>
@@ -647,6 +648,10 @@ const UserResolvers = {
     user: async (payment, args, context) => {
       if (!context.user.isAdmin) {
         throw new AuthenticationError("Missing permission!");
+      }
+
+      if (!payment.user) {
+        return null;
       }
 
       const user = await User.findOne({ _id: payment.user });

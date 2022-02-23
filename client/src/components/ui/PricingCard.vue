@@ -27,7 +27,7 @@
     <div class="p-3">
       <div>
         <span class="display-3 text-center d-block"
-          ><span class="bold">{{ pricing.price / 100 }}</span
+          ><span class="bold">{{ pricing.stripePrice.price / 100 }}</span
           >€</span
         >
       </div>
@@ -39,7 +39,7 @@
     <div class="p-3 p-lg-4">
       <ul class="no-bullets">
         <li
-          v-for="desc in pricing.desc"
+          v-for="desc in pricing.productFeatures"
           :key="desc.html"
           class="d-flex mb-2 mb-lg-3"
         >
@@ -100,9 +100,11 @@
         type: Object,
         default: () => {
           return {
-            price: 0,
+            stripePrice: {
+              price: 0
+            },
             name: "kA",
-            desc: ["kA"],
+            productFeatures: ["kA"],
             primary: "primary",
             accent: "light-shade"
           };

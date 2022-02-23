@@ -55,27 +55,33 @@
             class="badge badge-pill badge-success mr-1"
             >bezahlt</span
           >
-          <span v-if="!job.paid" class="badge badge-pill badge-warning mr-1"
+          <span
+            v-if="!job.paid && !job.stripeInvoiceStatus"
+            class="badge badge-pill badge-warning mr-1"
             >unbezahlt</span
+          >
+          <span
+            v-if="job.stripeInvoiceStatus === 'open'"
+            class="badge badge-pill badge-warning mr-1"
+            >Zahlungseingang ausstehend</span
           >
           <span
             v-if="
               job.status === 'published' &&
                 job.paidExpiresAt >= new Date() &&
                 (!job.applicationDeadline ||
-                  job.applicationDeadline >= new Date().getTime()) &&
-                job.paid
+                  job.applicationDeadline >= new Date().getTime())
             "
             class="badge badge-pill badge-success mr-1"
             >online</span
           >
-          <span
-            v-if="job.status === 'draft'"
+          <!-- <span
+            v-if="job.status !== 'draft'"
             class="badge badge-pill badge-light mr-1"
             >Entwurf</span
-          >
+          > -->
           <span
-            v-if="job.status === 'unpublished'"
+            v-if="job.status !== 'published'"
             class="badge badge-pill badge-danger mr-1"
             >offline</span
           >
@@ -181,7 +187,53 @@
               </svg>
               Vorschau</b-button
             >
-            <BDropdown
+            <b-button
+              v-if="
+                job.status != 'published' &&
+                  (job.paid || job.stripeInvoiceStatus)
+              "
+              class="mr-2 mb-2 mb-md-0"
+              variant="success"
+              size="sm"
+              @click.prevent="updateJobStatus(job._id, 'published')"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-check-circle-fill mr-2"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
+                />
+              </svg>
+              Veröffentlichen</b-button
+            >
+            <b-button
+              v-if="
+                job.status == 'published' &&
+                  (job.paid || job.stripeInvoiceStatus)
+              "
+              class="mr-2 mb-2 mb-md-0"
+              variant="danger"
+              size="sm"
+              @click.prevent="updateJobStatus(job._id, 'unpublished')"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-x-circle-fill mr-2"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"
+                />
+              </svg>
+              Offline nehmen</b-button
+            >
+            <!-- <BDropdown
               v-if="job.paid && job.paidExpiresAt >= new Date()"
               class="mr-2 mb-2 mb-md-0"
               size="sm"
@@ -219,13 +271,13 @@
                 @click.prevent="updateJobStatus(job._id, 'unpublished')"
                 >Offline</BDropdownItem
               >
-            </BDropdown>
+            </BDropdown> -->
             <b-button
               v-if="job.paidExpiresAt < new Date() && !job.payment"
               class="mr-2 mb-2 mb-md-0"
               variant="success"
               size="sm"
-              :to="`/user/checkout/${job._id}`"
+              :to="`/user/checkout/job/${job._id}`"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -237,7 +289,7 @@
                 <path
                   d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
                 /></svg
-              >Jetzt bezahlen</b-button
+              >Jetzt veröffentlichen</b-button
             >
             <b-button
               v-if="
@@ -248,7 +300,7 @@
               class="mr-2 mb-2 mb-md-0"
               variant="light"
               size="sm"
-              >Rechnung in Bearbeitung</b-button
+              >Rechnung offen</b-button
             >
           </div>
           <div>
@@ -296,11 +348,9 @@
 
 <script>
   import Vue from "vue";
-  import { BModal, VBModal, BDropdown, BDropdownItem } from "bootstrap-vue";
+  import { BModal, VBModal } from "bootstrap-vue";
   Vue.component("BModal", BModal);
   Vue.directive("b-modal", VBModal);
-  Vue.component("BDropdown", BDropdown);
-  Vue.component("BDropdownItem", BDropdownItem);
   import UserNav from "@/components/navs/UserNav.vue";
   export default {
     name: "UserJobs",
@@ -333,6 +383,7 @@
                         updatedAt
                         publishedAt
                         status
+                        stripeInvoiceStatus
                         paid
                         paidExpiresAt
                         applicationDeadline

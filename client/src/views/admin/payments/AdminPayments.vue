@@ -1,6 +1,6 @@
 <template>
   <div id="admin-payments" class="container-fluid admin-container pt-3">
-    <h1 class="h2">Admin Payments</h1>
+    <h1 class="h2">Admin Invoices</h1>
     <b-form id="payment-filter" inline @submit.prevent>
       <b-input-group class="my-2 mr-2">
         <b-form-input
@@ -25,9 +25,9 @@
           ></b-button>
         </b-input-group-append>
       </b-input-group>
-      <b-button
+      <!-- <b-button
         class="my-2 mr-2"
-        :to="`/admin/payments/edit/new`"
+        :to="`/admin/invoices/edit/new`"
         variant="outline-primary"
         size="sm"
         ><svg
@@ -43,7 +43,7 @@
             d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
           /></svg
         >Neue Zahlung</b-button
-      >
+      > -->
       <div class="inline-block my-2 my-lg-0">
         Number of Payments:
         <strong>{{ filter.searchTerm ? count : payments.length }}</strong>
@@ -66,6 +66,22 @@
         }
       "
     >
+      <template #cell(stripeInvoiceId)="row">
+        <b-link
+          v-if="row.value"
+          :href="`https://dashboard.stripe.com/search?query=${row.value}`"
+          target="_blank"
+          >{{ row.value }}</b-link
+        >
+      </template>
+      <template #cell(number)="row">
+        <b-link
+          v-if="row.value"
+          :href="`https://dashboard.stripe.com/search?query=${row.value}`"
+          target="_blank"
+          >{{ row.value }}</b-link
+        >
+      </template>
       <template #cell(createdAt)="row">
         {{ new Date(row.value).toLocaleString() }}
       </template>
@@ -75,20 +91,25 @@
       <template #cell(invoiceDate)="row">
         {{ row.value && new Date(row.value).toLocaleString() }}
       </template>
+      <template #cell(finalizedAt)="row">
+        {{ row.value && new Date(row.value).toLocaleString() }}
+      </template>
       <template #cell(paidAt)="row">
         {{ row.value && new Date(row.value).toLocaleString() }}
       </template>
       <template #cell(paymentExpiresAt)="row">
         {{ row.value && new Date(row.value).toLocaleString() }}
       </template>
-      <template #cell(receiptUrl)="row">
+      <!-- <template #cell(receiptUrl)="row">
         <b-link v-if="row.value" :href="row.value" target="_blank">Link</b-link>
-      </template>
+      </template> -->
       <template #cell(amount)="row"> {{ row.value / 100 }}€ </template>
-      <template #cell(fee)="row"> {{ row.value / 100 }}€ </template>
+      <template #cell(total)="row"> {{ row.value / 100 }}€ </template>
+      <!-- <template #cell(fee)="row"> {{ row.value / 100 }}€ </template> -->
       <template #cell(taxes)="row">
         {{ (row.item.amount * (row.item.taxRate || 0)) / 100 }}€
       </template>
+      <template #cell(tax)="row"> {{ row.value / 100 }}€ </template>
       <template #cell(user)="row">
         <div v-if="row.value">
           {{
@@ -106,8 +127,9 @@
       <template #cell(actions)="row">
         <div class="d-flex">
           <b-button
+            v-if="!row.item.stripeInvoiceId"
             class="mr-2"
-            :to="`/admin/payments/edit/${row.item._id}`"
+            :to="`/admin/invoices/edit/${row.item._id}`"
             variant="primary"
             size="sm"
             ><svg
@@ -127,8 +149,41 @@
               />
             </svg>
           </b-button>
+          <!-- <b-button
+            v-else
+            class="mr-2"
+            :href="
+              `https://dashboard.stripe.com/search?query=${row.item.stripeInvoiceId}`
+            "
+            target="_blank"
+            variant="primary"
+            size="sm"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-pencil-square mr-2"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
+              />
+              <path
+                fill-rule="evenodd"
+                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
+              />
+            </svg>
+            Open Stripe
+          </b-button> -->
 
-          <BDropdown class="mr-2" size="sm" left variant="secondary">
+          <BDropdown
+            v-if="!row.item.stripeInvoiceId"
+            class="mr-2"
+            size="sm"
+            left
+            variant="secondary"
+          >
             <template #button-content>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -165,7 +220,13 @@
               >Cancelled</BDropdownItem
             >
           </BDropdown>
-          <BDropdown class="mr-2" size="sm" left variant="info">
+          <BDropdown
+            v-if="!row.item.stripeInvoiceId"
+            class="mr-2"
+            size="sm"
+            left
+            variant="info"
+          >
             <template #button-content>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -188,7 +249,9 @@
               >Send job published</BDropdownItem
             >
           </BDropdown>
+
           <b-button
+            v-if="!row.item.stripeInvoiceId"
             class="mr-2"
             size="sm"
             variant="info"
@@ -211,6 +274,31 @@
               /></svg
             >Invoice
           </b-button>
+          <b-button
+            v-else
+            class="mr-2"
+            size="sm"
+            variant="info"
+            :href="row.item.stripeInvoicePdf"
+            target="_blank"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-download mr-2"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"
+              />
+              <path
+                d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"
+              /></svg
+            >Invoice
+          </b-button>
+
           <BDropdown class="mr-2" size="sm" left variant="primary">
             <template #button-content>
               <svg
@@ -302,7 +390,7 @@
         count: 0,
         paymentToDelete: Object,
         filter: {
-          searchTerm: ""
+          searchTerm: this.$route.query.s || ""
         },
         socialShareJobToClipboard,
         fields: [
@@ -310,6 +398,26 @@
             key: "_id",
             label: "PaymentID",
             sortable: false
+          },
+          {
+            key: "stripeInvoiceId",
+            label: "StripeInvoiceId",
+            sortable: true
+          },
+          {
+            key: "number",
+            label: "InvoiceNo",
+            sortable: true
+          },
+          {
+            key: "invoiceNo",
+            label: "InvoiceNoLegacy",
+            sortable: true
+          },
+          {
+            key: "stripeInvoiceStatus",
+            label: "StripeInvoiceStatus",
+            sortable: true
           },
           {
             key: "status",
@@ -336,38 +444,48 @@
             label: "PaymentExpiresAt",
             sortable: true
           },
+          // {
+          //   key: "pricingPackage",
+          //   label: "PricingPackage"
+          // },
           {
-            key: "pricingPackage",
-            label: "PricingPackage"
-          },
-          {
-            key: "invoiceNo",
-            label: "InvoiceNo",
+            key: "finalizedAt",
+            label: "FinalizedAt",
             sortable: true
           },
           {
             key: "invoiceDate",
-            label: "InvoiceDate",
+            label: "InvoiceDateLegacy",
+            sortable: true
+          },
+          // {
+          //   key: "paymentType",
+          //   label: "PaymentType",
+          //   sortable: true
+          // },
+          // {
+          //   key: "stripePaymentIntent",
+          //   label: "StripePaymentIntent",
+          //   sortable: true
+          // },
+          // {
+          //   key: "receiptUrl",
+          //   label: "ReceiptUrl",
+          //   sortable: true
+          // },
+          // {
+          //   key: "receiptNumber",
+          //   label: "ReceiptNumber",
+          //   sortable: true
+          // },
+          {
+            key: "total",
+            label: "Total",
             sortable: true
           },
           {
-            key: "paymentType",
-            label: "PaymentType",
-            sortable: true
-          },
-          {
-            key: "stripePaymentIntent",
-            label: "StripePaymentIntent",
-            sortable: true
-          },
-          {
-            key: "receiptUrl",
-            label: "ReceiptUrl",
-            sortable: true
-          },
-          {
-            key: "receiptNumber",
-            label: "ReceiptNumber",
+            key: "tax",
+            label: "Tax",
             sortable: true
           },
           {
@@ -375,19 +493,19 @@
             label: "Amount",
             sortable: true
           },
-          {
-            key: "fee",
-            label: "Fee",
-            sortable: true
-          },
-          {
-            key: "taxRate",
-            label: "TaxRate",
-            sortable: false
-          },
+          // {
+          //   key: "fee",
+          //   label: "Fee",
+          //   sortable: true
+          // },
+          // {
+          //   key: "taxRate",
+          //   label: "TaxRate",
+          //   sortable: false
+          // },
           {
             key: "taxes",
-            label: "Taxes",
+            label: "TaxesLegacy",
             sortable: true
           },
           {
@@ -432,9 +550,17 @@
                 query {
                   payments {
                     _id
+                    stripeInvoiceId
                     status
+                    stripeInvoiceStatus
+                    stripeHostedInvoiceUrl
+                    stripeInvoicePdf
+                    total
+                    tax
+                    number
                     createdAt
                     updatedAt
+                    finalizedAt
                     paidAt
                     paymentExpiresAt
                     stripePaymentIntent
@@ -492,9 +618,17 @@
               typeof value === "string" ? `"${value}"` : value
             }) {
                 _id
+                stripeInvoiceId
                 status
+                stripeInvoiceStatus
+                stripeHostedInvoiceUrl
+                stripeInvoicePdf
+                total
+                tax
+                number
                 createdAt
                 updatedAt
+                finalizedAt
                 paidAt
                 paymentExpiresAt
                 stripePaymentIntent
@@ -631,13 +765,16 @@
       },
       rowClass(item, type) {
         if (!item || type !== "row") return;
-        if (item.status === "pending") {
+        if (item.status === "pending" || item.stripeInvoiceStatus === "open") {
           return "table-warning";
         }
-        if (item.status === "paid" && item.paymentExpiresAt >= new Date()) {
+        if (item.status === "paid" || item.stripeInvoiceStatus === "paid") {
           return "table-success";
         }
-        if (item.status === "cancelled" || item.paymentExpiresAt < new Date()) {
+        if (
+          item.status === "cancelled" ||
+          item.stripeInvoiceStatus === "void"
+        ) {
           return "table-danger";
         }
       }

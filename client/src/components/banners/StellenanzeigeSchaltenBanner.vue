@@ -15,16 +15,10 @@
             und erreichen Sie noch heute unsere große Community von MFAs & ZFAs!
             Mit unserem
             <strong class="text-primary">individuellen Paketen</strong>
-            veröffentlichen Sie Ihre Stellenanzeige bereits ab
+            veröffentlichen Sie Ihre Stellenanzeige
             <strong class="text-primary"
-              >{{
-                ($config.pricingPackages[0].price / 100)
-                  .toFixed(2)
-                  .toString()
-                  .replace(".", ",")
-              }}
-              {{ $config.payment.currency }}</strong
-            ><span class="small"> (zzgl. USt)</span>.
+              >unkompliziert und auf Ihren Bedarf abgestimmt</strong
+            >.
           </p>
           <b-button to="/fuer-arbeitgeber" variant="secondary" size="md"
             >Stellenanzeige schalten</b-button

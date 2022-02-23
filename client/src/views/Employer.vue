@@ -117,8 +117,10 @@
                 Veröffentlichen Sie Ihre Stellenanzeige
                 <b-link class="text-secondary" href="#preise"
                   >ab
-                  {{ $config.pricingPackages[0].price / 100 }}
-                  {{ $config.payment.currency }}</b-link
+                  <span v-if="pricingPackages">{{
+                    pricingPackages[0].stripePrice.price / 100
+                  }}</span
+                  >€</b-link
                 >
                 <span class="small"> (zzgl. USt.)</span>
               </div>
@@ -267,7 +269,7 @@
         </div>
       </div>
 
-      <div class="text-center">
+      <!-- <div class="text-center">
         <strong
           >Sie benötigen Hilfe beim Erstellen einer attraktiven
           Stellenanzeige?</strong
@@ -278,7 +280,7 @@
         >
         erhalten Sie persönliche und professionelle Unterstützung beim Verfassen
         Ihrer Stellenanzeige.
-      </div>
+      </div> -->
       <div class="d-flex flex-column align-items-center mt-4">
         <div class="mb-3">
           <b-button
@@ -353,24 +355,29 @@
             Reichweite Ihrer Stellenanzeige zu optimieren.
           </p>
         </div>
-        <div class="row row-cols-1 row-cols-lg-3 mb-4">
+
+        <div v-if="pricingPackages" class="row row-cols-1 row-cols-lg-3 mb-4">
           <div
-            v-for="pricingPackage in $config.pricingPackages"
+            v-for="pricingPackage in pricingPackages"
             :key="pricingPackage.name"
             class="col"
           >
             <PricingCard :pricing="pricingPackage" />
           </div>
         </div>
+
+        <div v-else class="row row-cols-1 row-cols-lg-3 mb-4">
+          <div v-for="index in 3" :key="index" class="col">
+            <PricingCardPlaceholder />
+          </div>
+        </div>
+
         <p>
           Sie haben die Möglichkeit, Ihre Stellenanzeige nach der
-          <b-link to="/auth/register">Registrierung</b-link> auf unserem Portal
-          zu erstellen und in einer Vorschau zu betrachten. Anschließend können
-          Sie Ihre Stellenanzeige mit einem der drei Pakete veröffentlichen.
-          Auch für das Professional Paket bitten wir Sie, Ihre Stellenanzeige
-          anhand unserer vorgegebenen Struktur zu erstellen. Wir setzen uns dann
-          umgehend mit Ihnen in Verbindung, um Ihre Stellenanzeige gemeinsam für
-          die Veröffentlichung und Reichweitenmaximierung zu optimieren.
+          <b-link class="bold" to="/auth/register">Registrierung</b-link> auf
+          unserem Portal zu erstellen und in einer Vorschau zu betrachten.
+          Anschließend können Sie Ihre Stellenanzeige mit einem der drei Pakete
+          veröffentlichen.
         </p>
         <p>
           Mit der Veröffentlichung Ihrer Stellenanzeige bekommen Sie zusätzlich
@@ -379,8 +386,7 @@
             >Stellengesuche</router-link
           >
           zu antworten und Kontakt zu potentiellen neuen MitarbeiterInnen
-          aufzunehmen. Die Stellengesuche befinden sich aktuell im Aufbau und
-          werden stetig erweitert.
+          aufzunehmen.
         </p>
         <p>
           <strong
@@ -441,10 +447,9 @@
         <h3>Wo wir Ihre Stellenanzeige ausspielen</h3>
         <p>
           Ihre Stellenanzeige wird dort ausgespielt, wo Sie Ihre Zielgruppe
-          findet: bei
-          <strong
-            >Social Media<span class="text-muted">*</span>, Google Jobs und auf
-            unserer Webseite</strong
+          findet: auf <strong>unserer Webseite</strong>, bei
+          <strong>Google Jobs</strong> und über
+          <strong>Social Media<span class="text-muted">*</span></strong
           >. Zusätzlich versenden wir Ihre Anzeige in unserem
           <strong> wöchentlichen Newsletter</strong>.
         </p>
@@ -562,7 +567,8 @@
           Wir arbeiten
           <strong>nicht mit Personalvermittlern</strong>,
           <strong>Zeitarbeitsfirmen oder Headhuntern</strong>
-          zusammen.
+          zusammen, da wir sicherstellen möchten, dass Arbeitgeber und
+          potentielle Arbeitnehmer direkt miteinander ins Gespräch kommen.
         </p>
         <!-- <p>
           Bei uns können Sie Ihre Stellenanzeige zudem
@@ -628,29 +634,26 @@
             Welche Zahlungsarten stehen zur Verfügung?
           </h3>
           <p>
-            Für die Zahlung Ihrer Stellenanzeige können Sie eine Kreditkarte
-            nutzen, per GooglePay oder per GiroPay bezahlen. Bei diesen
-            Zahlungsmethoden wird Ihre Stellenanzeige sofort veröffentlicht.
-            Ebenso steht Ihnen die Zahlung per Rechnung zur Verfügung. Bitte
-            beachten Sie hierbei, dass Ihre Stellenanzeige erst dann
-            veröffentlicht wird, wenn Ihre Zahlung bei uns eingegangen ist.
+            Für die Zahlung Ihrer Stellenanzeige fordern Sie über unsere
+            Plattform eine Rechnung an. Anschließend können Sie per Kreditkarte,
+            GiroPay, Sofortüberweisung oder manueller Überweisung auf unser
+            Verrechnungskonto den Rechnungsbetrag begleichen.
           </p>
           <h3 class="h5 bold">
             Wie lange dauert es bis zur Veröffentlichung meiner Stellenanzeige?
           </h3>
           <p>
-            Je nach Zahlungsmethode ist Ihre Stellenanzeige sofort online
-            (GiroPay, GooglePay, Kreditkarte) oder Zahlung auf Rechnung erst
-            nach erfolgtem Zahlungseingang.
+            Nach erfolgreicher Rechnungsanforderung geht wird Ihre
+            Stellenanzeige sofort auf unserer Plattform veröffentlicht.
           </p>
-          <h3 class="h5 bold">
+          <!-- <h3 class="h5 bold">
             Kann ich auch per Rechnung zahlen?
           </h3>
           <p>
             Ja, die Möglichkeit besteht. Ihre Stellenanzeige wird von uns
             freigeschaltet sobald wir einen Zahlungseingang von Ihnen verbuchen
             können.
-          </p>
+          </p> -->
           <h3 class="h5 bold">
             Kann ich meine Stellenanzeige im Nachhinein ändern?
           </h3>
@@ -665,11 +668,11 @@
           <p>
             Die Laufzeit Ihrer Stellenanzeige können Sie über die verfügbaren
             Stellenpakete auswählen. Die Mindestlaufzeit beträgt 60 Tage. Ihre
-            Stelle ist so lange online, wie Ihre gewählte Laufzeit sowie Ihre
-            angegebene Bewerbungsfrist nicht abgelaufen sind. Über Ihren Account
-            können Sie Ihre Stellenanzeige jederzeit selbst offline nehmen oder
-            löschen. Für individuelle Stellenpakete können Sie uns direkt über
-            das
+            Stelle ist so lange online, wie Ihre gewählte Laufzeit sowie ggfls.
+            Ihre angegebene Bewerbungsfrist nicht abgelaufen sind. Über Ihren
+            Account können Sie Ihre Stellenanzeige jederzeit selbst offline
+            nehmen oder löschen. Für individuelle Stellenpakete können Sie uns
+            direkt über das
             <b-link to="/kontakt?role=employer">Kontaktformular</b-link>
             kontaktieren.
           </p>
@@ -683,21 +686,22 @@
             wird diese automatisch bei Google Jobs gelistet (es kann ein wenig
             Zeit in Anspruch nehmen, bis Google Ihre Anzeige integriert).
             Darüber hinaus verteilen wir Ihre Stellenanzeige über unseren Jobs
-            Newsletter sowie je nach Paket über unsere Social Media Kanäle.
+            Newsletter sowie je nach Paket über unsere Social Media Kanäle und
+            weitere.
           </p>
           <h3 class="h5 bold">
             Ich benötige Hilfe bei der Erstellung einer attraktiven
             Stellenanzeige. Kann ich Unterstützung von Ihnen bekommen?
           </h3>
           <p>
-            In unserem "Professional" Paket erhalten Sie individuelle und
-            persönliche Beratung bei der Erstellung und Optimierung Ihrer
-            Stellenanzeige. Zudem geben wir Ihnen mit unseren
-            <b-link href="#tipps-stellenanzeigen"
+            In unserem "Professional" Paket erhalten Sie nach der Erstellung
+            Ihrer Stellenanzeige zusärtliche Tipps zur Optimierung durch Ihren
+            persönlichen Ansprechpartner. Zudem geben wir Ihnen mit unseren
+            <b-link class="bold" to="#tipps-stellenanzeigen"
               >Tipps für attraktive Stellenanzeigen</b-link
             >
-            wichtige Hinweise an die Hand. Benötigen Sie darüber hinaus Hilfe,
-            melden Sie sich gern auch über das
+            wichtige Hinweise inkl. einer Musterstellenanzeige an die Hand.
+            Haben Sie darüber hinaus Fragen, melden Sie sich gern auch über das
             <b-link to="/kontakt?role=employer">Kontaktformular</b-link> bei
             uns.
           </p>
@@ -753,6 +757,7 @@
   import CooperationPartners from "@/components/containers/CooperationPartners.vue";
   import TestimonialsContainer from "@/components/containers/TestimonialsContainer.vue";
   import PricingCard from "@/components/ui/PricingCard.vue";
+  import PricingCardPlaceholder from "@/components/ui/PricingCardPlaceholder.vue";
   import { scrollToHashMixin } from "@/mixins/scrollToHashMixin";
   export default {
     name: "Employer",
@@ -762,6 +767,7 @@
       CooperationPartners,
       TestimonialsContainer,
       PricingCard,
+      PricingCardPlaceholder,
       ScrollToTopBtn
     },
     mixins: [scrollToHashMixin],
@@ -792,8 +798,38 @@
               }]
             }`
           }
-        ]
+        ],
+        pricingPackages: null
       };
+    },
+    async created() {
+      await this.getPricingPackages();
+    },
+    methods: {
+      async getPricingPackages() {
+        try {
+          const response = await this.$axios.get(
+            "/api/products/job-ad-packages"
+          );
+
+          if (!response.data.jobAdPackages) {
+            throw new Error("Stellenpakete konnten nicht geladen werden");
+          }
+
+          this.pricingPackages = response.data.jobAdPackages;
+        } catch (err) {
+          this.$root.$bvToast.toast(
+            "Unsere Stellenpakete konnten nicht geladen werden. Bitte versuchen Sie es noch einmal, indem Sie die Seite neu laden.",
+            {
+              title: `Fehler beim Laden`,
+              variant: "danger",
+              toaster: "b-toaster-bottom-right",
+              solid: true,
+              noAutoHide: true
+            }
+          );
+        }
+      }
     }
   };
 </script>

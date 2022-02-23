@@ -114,7 +114,7 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
 
         const data = {
           from: `${config.website.emailFrom} <newsletter@${process.env.MG_DOMAIN}>`,
-          to: config.website.contactEmail,
+          to: process.env.CONTACT_EMAIL_ADRESS,
           bcc: stateReceivers.join(", "),
           subject: `Dein Job-Newsletter für ${state} – ${config.website.name}`,
           html: html,

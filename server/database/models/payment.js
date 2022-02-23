@@ -5,14 +5,51 @@ const PaymentSchema = new Schema(
   {
     job: {
       type: Schema.Types.ObjectId,
-      required: true,
       ref: "Job",
+      // default: null,
     },
     user: {
       type: Schema.Types.ObjectId,
-      required: true,
       ref: "User",
+      // defaut: null,
     },
+    stripeInvoiceId: {
+      type: String,
+    },
+    stripeInvoiceStatus: {
+      type: String,
+    },
+    stripePaymentIntentStatus: {
+      type: String,
+    },
+    stripeHostedInvoiceUrl: {
+      type: String,
+    },
+    stripeInvoicePdf: {
+      type: String,
+    },
+    stripeReceiptUrl: {
+      type: String,
+    },
+    total: {
+      type: Number,
+    },
+    tax: {
+      type: Number,
+    },
+    number: {
+      type: String,
+    },
+    finalizedAt: {
+      type: Date,
+    },
+    paidAt: {
+      type: Date,
+    },
+    paymentExpiresAt: {
+      type: Date,
+    },
+    // !legacy
     coupon: {
       type: Schema.Types.ObjectId,
       ref: "Coupon",
@@ -22,7 +59,6 @@ const PaymentSchema = new Schema(
     },
     invoiceNo: {
       type: Number,
-      default: 0,
     },
     invoiceDate: {
       type: Date,
@@ -31,6 +67,9 @@ const PaymentSchema = new Schema(
       type: String,
     },
     stripePaymentIntent: {
+      type: String,
+    },
+    stripeInvoice: {
       type: String,
     },
     receiptUrl: {
@@ -96,12 +135,6 @@ const PaymentSchema = new Schema(
     },
     billingLocation: {
       type: String,
-    },
-    paidAt: {
-      type: Date,
-    },
-    paymentExpiresAt: {
-      type: Date,
     },
   },
   { timestamps: true }

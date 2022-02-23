@@ -98,6 +98,7 @@
           input-id="qualifications"
           placeholder="Eingeben und Enter drücken..."
           duplicate-tag-text="Doppelte Qualifikation(en)"
+          add-button-text="+"
           tag-pills
           remove-on-delete
           tag-class="text-light"

@@ -15,10 +15,10 @@ const sendJobAdUnpublishedEmail = async () => {
     .filter(job => !job.userId.isAdmin)
     .map(job => {
       return {
-        from: `${config.website.emailFrom} <${config.website.contactEmail}>`,
+        from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
         to: job.userId.email,
-        replyTo: config.website.contactEmail,
-        bcc: config.website.contactEmail,
+        replyTo: process.env.CONTACT_EMAIL_ADRESS,
+        bcc: process.env.CONTACT_EMAIL_ADRESS,
         subject: `[Stellenanzeige abgelaufen] – '${job.title}'`,
         html: `
                 <p>
@@ -57,8 +57,9 @@ const sendJobAdUnpublishedEmail = async () => {
                     <strong>MFA mal anders</strong> <br>
                     Das Stellen- & Karriereportal für Medizinische Fachangestellte | Zahnmedizinische Fachangestellte <br>
                     <br>
-                    Tel: <a href="tel:017663393957">0176 633 939 57</a> <br>
-                    E-Mail: <a href="mailto:kontakt@mfa-mal-anders.de">kontakt@mfa-mal-anders.de</a> <br>
+                    E-Mail: <a href="mailto:${
+                      process.env.CONTACT_EMAIL_ADRESS
+                    }">${process.env.CONTACT_EMAIL_ADRESS}</a> <br>
                     Webseite: <a href="${process.env.WEBSITE_URL}">${
           process.env.WEBSITE_URL
         }</a>

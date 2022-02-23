@@ -30,7 +30,7 @@ const JobSeekResolvers = {
         } else {
           throw new UserInputError(
             `Es konnte kein passender Ort für '${args.location}' gefunden werden oder der Ortungsservice funktioniert aktuell nicht. Bitte stellen Sie sicher, dass der Ort bzw. die PLZ korrekt und komplett angegeben ist.`,
-            { code: "NO_LOCATION" }
+            { argumentName: "location" }
           );
         }
       }

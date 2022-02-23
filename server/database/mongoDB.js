@@ -5,6 +5,7 @@ mongoose
     dbName: process.env.MDB_NAME,
     user: process.env.MDB_USER,
     pass: process.env.MDB_PASSWORD,
+    ignoreUndefined: true,
   })
   .then(() => console.log("-----> mongoDB connected..."))
   .catch(err =>

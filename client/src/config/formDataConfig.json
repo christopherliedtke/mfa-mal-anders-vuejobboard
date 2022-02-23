@@ -77,6 +77,17 @@
   "contactGenderOptions": ["Frau", "Herr"],
   "contactTitleOptions": ["Dr.", "Prof.", "Prof. Dr.", "Dipl. med."],
   "companyCountryOptions": ["Deutschland", "Österreich", "Schweiz"],
+  "checkoutCountryOptions": [
+    { "value": "DE", "text": "Deutschland" },
+    {
+      "value": "AT",
+      "text": "Österreich"
+    },
+    {
+      "value": "CH",
+      "text": "Schweiz"
+    }
+  ],
   "companyStateOptions": [
     "Baden-Württemberg",
     "Bayern",

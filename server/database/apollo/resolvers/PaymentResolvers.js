@@ -1,5 +1,6 @@
 const { AuthenticationError, ApolloError } = require("apollo-server-express");
 const config = require("../../../config/config.js");
+const jobAdPackages = require("../../../config/jobAdPackages.js");
 const { Payment } = require("../../models/payment");
 const { Job } = require("../../models/job");
 const { googleIndexing } = require("../../../middleware/googleJobIndexing");
@@ -57,7 +58,7 @@ const PaymentResolvers = {
                 60 *
                 60 *
                 24 *
-                (config.payment.pricingPackages.find(
+                (jobAdPackages.find(
                   pkg =>
                     pkg.name.toLowerCase() ===
                     addObj.pricingPackage.toLowerCase()
@@ -134,7 +135,7 @@ const PaymentResolvers = {
                 60 *
                 60 *
                 24 *
-                (config.payment.pricingPackages.find(
+                (jobAdPackages.find(
                   pkg =>
                     pkg.name.toLowerCase() ===
                     updateObj.pricingPackage.toLowerCase()
