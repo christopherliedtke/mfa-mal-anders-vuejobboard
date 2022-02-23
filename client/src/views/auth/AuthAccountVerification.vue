@@ -13,7 +13,8 @@
       <em class="text-secondary bold">{{ $store.state.auth.user.email }}</em>
       und bestätigen Sie Ihre E-Mail Adresse über den Aktivierungslink.
       <strong>
-        Bitte überprüfen Sie gegebenenfalls auch Ihren Spam Ordner.
+        Bitte überprüfen Sie gegebenenfalls auch Ihren Spam Ordner und stellen
+        Sie sicher, dass Sie Ihre E-Mail Adresse korrekt eingegeben haben.
       </strong>
     </p>
     <p>Keine E-Mail erhalten?</p>
