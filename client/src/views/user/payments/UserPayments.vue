@@ -57,12 +57,18 @@
             >
             <span
               v-if="
-                payment.status === 'pending' ||
+                (payment.status === 'pending' ||
                   payment.stripeInvoiceStatus === 'open' ||
-                  payment.stripeInvoiceStatus === 'uncollectible'
+                  payment.stripeInvoiceStatus === 'uncollectible') &&
+                  payment.stripePaymentIntentStatus != 'processing'
               "
               class="badge badge-pill badge-warning mr-1"
               >offen</span
+            >
+            <span
+              v-if="payment.stripePaymentIntentStatus == 'processing'"
+              class="badge badge-pill badge-warning mr-1"
+              >Zahlungsabwicklung läuft</span
             >
             <span
               v-if="
@@ -115,7 +121,8 @@
               v-if="
                 payment.stripeHostedInvoiceUrl &&
                   (payment.stripeInvoiceStatus === 'open' ||
-                    payment.stripeInvoiceStatus === 'uncollectible')
+                    payment.stripeInvoiceStatus === 'uncollectible') &&
+                  payment.stripePaymentIntentStatus != 'processing'
               "
             >
               <b-button
@@ -136,7 +143,39 @@
                     d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2.5 1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-2zm0 3a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm3 0a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z"
                   />
                 </svg>
-                Rechnung bezahlen</b-button
+                Rechnung online bezahlen</b-button
+              >
+            </div>
+            <div
+              v-if="
+                payment.stripeHostedInvoiceUrl &&
+                  payment.stripeInvoiceStatus === 'paid'
+              "
+            >
+              <b-button
+                class="mr-2 mb-2 mb-md-0"
+                :href="payment.stripeHostedInvoiceUrl"
+                target="_blank"
+                variant="primary"
+                size="sm"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-box-arrow-up-right mr-2"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
+                  />
+                </svg>
+                Zahlungsbeleg anzeigen</b-button
               >
             </div>
             <div
@@ -285,9 +324,9 @@
                     _id
                     stripeInvoiceId
                     stripeInvoiceStatus
+                    stripePaymentIntentStatus
                     stripeHostedInvoiceUrl
                     stripeInvoicePdf
-                    stripeReceiptUrl
                     finalizedAt
                     number
                     createdAt

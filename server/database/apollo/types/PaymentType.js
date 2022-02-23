@@ -70,6 +70,7 @@ const PaymentType = gql`
     _id: ID!
     stripeInvoiceId: String
     stripeInvoiceStatus: String
+    stripePaymentIntentStatus: String
     stripeHostedInvoiceUrl: String
     stripeInvoicePdf: String
     stripeReceiptUrl: String

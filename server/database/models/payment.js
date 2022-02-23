@@ -19,6 +19,9 @@ const PaymentSchema = new Schema(
     stripeInvoiceStatus: {
       type: String,
     },
+    stripePaymentIntentStatus: {
+      type: String,
+    },
     stripeHostedInvoiceUrl: {
       type: String,
     },

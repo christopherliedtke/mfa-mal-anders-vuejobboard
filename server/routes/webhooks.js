@@ -57,7 +57,9 @@ router.post(
         return;
       }
 
-      const invoice = await stripe.invoices.retrieve(event.data.object.id);
+      const invoice = await stripe.invoices.retrieve(event.data.object.id, {
+        expand: ["payment_intent"],
+      });
 
       // console.log("invoice: ", invoice);
 
@@ -70,6 +72,9 @@ router.post(
         stripeInvoiceStatus: invoice.status,
         stripeHostedInvoiceUrl: invoice.hosted_invoice_url,
         stripeInvoicePdf: invoice.invoice_pdf,
+        stripePaymentIntentStatus: invoice.payment_intent
+          ? invoice.payment_intent.status
+          : null,
         total: invoice.total,
         tax: invoice.tax,
         number: invoice.number,
@@ -162,16 +167,7 @@ router.post(
             Promise.all(jobs.map(job => jobToAsanaTask(job)));
             // if (config.facebook.autoPost) postToFacebook();
 
-            try {
-              stripe.paymentIntents.update(invoice.payment_intent, {
-                description: invoice.number,
-              });
-            } catch (error) {
-              console.error(
-                "Error attaching invoiceNo to paymentIntens in /invoice-updated: ",
-                error
-              );
-            }
+            attachInvoiceNoToPaymentIntent(invoice);
           }
 
           internalJobsCache.flush();
@@ -204,6 +200,21 @@ router.post(
     res.send();
   }
 );
+
+async function attachInvoiceNoToPaymentIntent(invoice) {
+  try {
+    if (invoice.payment_intent) {
+      await stripe.paymentIntents.update(invoice.payment_intent, {
+        description: invoice.number,
+      });
+    }
+  } catch (error) {
+    console.error(
+      "Error attaching invoiceNo to paymentIntens in /invoice-updated: ",
+      error
+    );
+  }
+}
 
 async function attachUserToPayment(stripeCustomerId, paymentId) {
   try {
