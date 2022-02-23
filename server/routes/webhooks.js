@@ -167,7 +167,7 @@ router.post(
             Promise.all(jobs.map(job => jobToAsanaTask(job)));
             // if (config.facebook.autoPost) postToFacebook();
 
-            attachInvoiceNoToPaymentIntent(invoice);
+            attachInvoiceNoToPaymentIntent(invoice.payment_intent, invoice);
           }
 
           internalJobsCache.flush();
@@ -201,10 +201,10 @@ router.post(
   }
 );
 
-async function attachInvoiceNoToPaymentIntent(invoice) {
+async function attachInvoiceNoToPaymentIntent(paymentIntent, invoice) {
   try {
-    if (invoice.payment_intent) {
-      await stripe.paymentIntents.update(invoice.payment_intent, {
+    if (paymentIntent) {
+      await stripe.paymentIntents.update(paymentIntent.id, {
         description: invoice.number,
       });
     }
