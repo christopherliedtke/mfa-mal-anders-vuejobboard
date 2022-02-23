@@ -19,21 +19,21 @@ class Cache {
 
     const jobAdPackages = [...packages];
 
-    await Promise.all(
-      jobAdPackages.map(async jobAdPackage => {
-        const price = await stripe.prices.retrieve(jobAdPackage.stripePrice);
-
-        if (!price.error) {
-          jobAdPackage.stripePrice = {
-            id: price.id,
-            price: price.unit_amount,
-            stripeProduct: price.product,
-          };
-        }
-      })
-    );
-
     try {
+      await Promise.all(
+        jobAdPackages.map(async jobAdPackage => {
+          const price = await stripe.prices.retrieve(jobAdPackage.stripePrice);
+
+          if (!price.error) {
+            jobAdPackage.stripePrice = {
+              id: price.id,
+              price: price.unit_amount,
+              stripeProduct: price.product,
+            };
+          }
+        })
+      );
+
       this.cache.set("jobAdPackages", jobAdPackages);
     } catch (error) {
       console.log("error: ", error);
