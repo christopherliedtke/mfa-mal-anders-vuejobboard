@@ -22,6 +22,13 @@ class Cache {
     try {
       await Promise.all(
         jobAdPackages.map(async jobAdPackage => {
+          if (typeof jobAdPackage.stripePrice != "string") {
+            console.error(
+              "jobAdPackage.stripePrice is not a string: ",
+              jobAdPackage.stripePrice
+            );
+          }
+
           const price = await stripe.prices.retrieve(jobAdPackage.stripePrice);
 
           if (!price.error) {
@@ -37,6 +44,7 @@ class Cache {
       this.cache.set("jobAdPackages", jobAdPackages);
     } catch (error) {
       console.log("error: ", error);
+      this.cache.set("jobAdPackages", undefined);
       return null;
     }
     return this.cache.get("jobAdPackages");
