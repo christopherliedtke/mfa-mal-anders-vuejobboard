@@ -78,130 +78,11 @@
               {{ checkout.coupon.metadata.refreshFrequency }} Tage.</span
             >
           </b-form-valid-feedback>
+
           <hr class="mt-4" />
-
-          <!-- <label for="payment-method" class="bold">Zahlungsart auswählen</label>
-          <b-form-group>
-            <b-form-radio-group
-              id="payment-method"
-              v-model="checkout.paymentMethod"
-              stacked
-            >
-              <b-form-radio value="stripe">
-                <b-img
-                  src="@/assets/img/Mastercard_2019_logo.svg"
-                  height="16"
-                />
-                Kreditkarte |
-                <b-img src="@/assets/img/640px-Giropay.png" height="16" />
-
-                GiroPay |
-                <b-img
-                  src="@/assets/img/Google_Pay_(GPay)_Logo.svg"
-                  height="16"
-                />
-                GooglePay <br />
-                <span class="small text-muted">Sofortige Veröffentlichung</span>
-              </b-form-radio>
-              <b-form-radio value="invoice"
-                >Rechnung <br />
-                <span class="small text-muted"
-                  >Veröffentlichung nach Geldeingang</span
-                >
-              </b-form-radio>
-            </b-form-radio-group>
-          </b-form-group> -->
 
           <b-form-group class="mt-4">
             <h5 class="bold mb-0">Rechnungsadresse</h5>
-
-            <!-- <div class="row">
-              <div class="col-12 col-lg-3">
-                <label for="billingAddress-gender">Anrede</label>
-                <b-form-select
-                  id="billingAddress-gender"
-                  v-model="checkout.billingAddress.gender"
-                  :state="
-                    checkout.validated
-                      ? checkout.billingAddress.gender
-                        ? true
-                        : null
-                      : null
-                  "
-                >
-                  <b-form-select-option value=""
-                    >-- Anrede auswählen --</b-form-select-option
-                  >
-                  <b-form-select-option
-                    v-for="gender in contactGenderOptions"
-                    :key="gender"
-                    :value="gender"
-                    >{{ gender }}</b-form-select-option
-                  >
-                </b-form-select>
-              </div>
-              <div class="col-12 col-lg-3">
-                <label for="billingAddress-title">Titel</label>
-                <b-form-select
-                  id="billingAddress-title"
-                  v-model="checkout.billingAddress.title"
-                  :state="
-                    checkout.validated
-                      ? checkout.billingAddress.title
-                        ? true
-                        : null
-                      : null
-                  "
-                >
-                  <b-form-select-option value=""
-                    >-- Titel auswählen --</b-form-select-option
-                  >
-                  <b-form-select-option
-                    v-for="contactTitle in contactTitleOptions"
-                    :key="contactTitle"
-                    :value="contactTitle"
-                    >{{ contactTitle }}</b-form-select-option
-                  >
-                </b-form-select>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-12 col-lg-3">
-                <label for="billingAddress-first-name">Vorname *</label>
-                <b-form-input
-                  id="billingAddress-first-name"
-                  v-model="checkout.billingAddress.firstName"
-                  type="text"
-                  :state="
-                    checkout.validated
-                      ? checkout.billingAddress.firstName
-                        ? true
-                        : false
-                      : null
-                  "
-                  placeholder="Vorname eingeben..."
-                  required
-                />
-              </div>
-              <div class="col-12 col-lg-3">
-                <label for="billingAddress-last-name">Nachname *</label>
-                <b-form-input
-                  id="billingAddress-last-name"
-                  v-model="checkout.billingAddress.lastName"
-                  type="text"
-                  :state="
-                    checkout.validated
-                      ? checkout.billingAddress.lastName
-                        ? true
-                        : false
-                      : null
-                  "
-                  placeholder="Nachname eingeben..."
-                  required
-                />
-              </div>
-            </div> -->
 
             <div class="row">
               <div class="col-12 col-lg-8">
@@ -428,19 +309,6 @@
           >Abbrechen</b-button
         >
         <div>
-          <!-- <b-button
-            v-if="checkout.paymentMethod === 'invoice'"
-            class="mr-2 mb-2"
-            variant="success"
-            :disabled="!checkout.accepted"
-            @click.prevent="sendInvoice"
-            >{{
-              (amountComputed / 100)
-                .toFixed(2)
-                .toString()
-                .replace(".", ",")
-            }}€ | Rechnung anfordern
-          </b-button> -->
           <span></span>
           <b-button
             class="mb-2"
@@ -687,8 +555,6 @@
             }
           );
 
-          // console.log("response: ", response);
-
           if (response.status === 200) {
             window.open(response.data.invoice_pdf, "_blank");
 
@@ -702,6 +568,18 @@
                 noAutoHide: true
               }
             );
+
+            this.$gtag.event("begin_checkout", {
+              value: this.amountComputed / 100,
+              currency: "EUR",
+              items: [
+                {
+                  id: this.job._id,
+                  name: this.job.title,
+                  price: this.amountComputed / 100
+                }
+              ]
+            });
 
             this.$router.push("/user/rechnungen");
           }
@@ -723,113 +601,6 @@
 
         this.$store.dispatch("setOverlay", false);
       },
-      // async sendInvoice() {
-      //   if (!this.validateBillingAddress()) {
-      //     this.checkout.error =
-      //       "Bitte füllen Sie die erforderlichen Felder aus und beachten Sie die Zeichenvorgaben!";
-      //     return null;
-      //   }
-
-      //   this.$store.dispatch("setOverlay", true);
-
-      //   try {
-      //     const response = await this.$axios.post("/api/invoice/get-invoice", {
-      //       jobId: this.job._id,
-      //       jobTitle: this.job.title,
-      //       pricingPackage: this.checkout.pricingPackage,
-      //       // amount: this.checkout.amount,
-      //       paymentMethod: this.checkout.paymentMethod,
-      //       promotionCode: this.checkout.promotionCode,
-      //       refreshFrequency: this.refreshFrequencyComputed,
-      //       billingAddress: this.checkout.billingAddress
-      //     });
-
-      //     if (!response.data.success) {
-      //       throw new Error("Invoice could not be sent!");
-      //     }
-
-      //     this.$root.$bvToast.toast(
-      //       "Vielen Dank! Ihre Rechnung wurde erfolgreich angefordert. Sie erhalten die gewünschte Rechnung in Kürze auf die angegebene E-Mail Adresse.",
-      //       {
-      //         title: `Rechnung angefordert`,
-      //         variant: "success",
-      //         toaster: "b-toaster-bottom-right",
-      //         solid: true,
-      //         noAutoHide: true
-      //       }
-      //     );
-
-      //     await this.downloadInvoice(
-      //       response.data.paymentId,
-      //       response.data.invoiceNo
-      //     );
-
-      //     this.$gtag.event("begin_checkout", {
-      //       value: this.checkout.amount / 100,
-      //       currency: "EUR",
-      //       items: [
-      //         {
-      //           id: this.job._id,
-      //           name: this.job.title,
-      //           coupon: this.checkout.coupon.code,
-      //           price: this.checkout.amount,
-      //           category: this.checkout.paymentMethod
-      //         }
-      //       ]
-      //     });
-      //   } catch (err) {
-      //     this.$root.$bvToast.toast(
-      //       "Bei der Verarbeitung Ihrer Daten ist leider ein Fehler aufgetreten. Bitte versuchen Sie es später noch einmal.",
-      //       {
-      //         title: `Fehler bei Rechnungsanforderung`,
-      //         variant: "danger",
-      //         toaster: "b-toaster-bottom-right",
-      //         solid: true,
-      //         noAutoHide: true
-      //       }
-      //     );
-      //   } finally {
-      //     this.$store.dispatch("setOverlay", false);
-      //     this.$router.push("/user/stellenanzeigen");
-      //   }
-      // },
-      // async downloadInvoice(paymentId, invoiceNo) {
-      //   if (!paymentId || !invoiceNo) {
-      //     return;
-      //   }
-
-      //   const invoice = await this.$axios.get(
-      //     `/api/invoice/download/${paymentId}`,
-      //     { responseType: "blob" }
-      //   );
-
-      //   const fileURL = window.URL.createObjectURL(new Blob([invoice.data]));
-      //   const fileLink = document.createElement("a");
-
-      //   fileLink.href = fileURL;
-      //   fileLink.setAttribute(
-      //     "download",
-      //     `${"RE-" +
-      //       "000000".slice(0, 6 - invoiceNo.toString().length) +
-      //       invoiceNo.toString()}.pdf`
-      //   );
-      //   fileLink.setAttribute("target", "_blank");
-      //   fileLink.classList.add("d-none");
-      //   document.body.appendChild(fileLink);
-
-      //   fileLink.click();
-      // },
-      // async startStripeCheckout() {
-      //   await this.initStripeCheckout(
-      //     "job",
-      //     this.job._id,
-      //     this.job.title,
-      //     this.checkout.coupon.code,
-      //     this.checkout.pricingPackage,
-      //     this.checkout.accepted,
-      //     "/user/stellenanzeigen"
-      //   );
-      // },
       async validatePromotionCode() {
         this.$store.dispatch("setOverlay", true);
 
@@ -847,8 +618,6 @@
           );
 
           if (response.data.error) {
-            // console.log("response: ", response);
-
             this.checkout.couponValidationState = false;
             this.checkout.coupon = null;
             this.checkout.promotionCodeErr = response.data.error;
@@ -858,7 +627,8 @@
             this.checkout.promotionCodeErr = null;
           }
         } catch (error) {
-          //
+          this.checkout.couponValidationState = false;
+          this.checkout.coupon = null;
         }
 
         this.$store.dispatch("setOverlay", false);

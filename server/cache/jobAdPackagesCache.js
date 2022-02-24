@@ -17,27 +17,33 @@ class Cache {
       return Promise.resolve(value);
     }
 
-    const jobAdPackages = [...packages];
-
     try {
-      await Promise.all(
-        jobAdPackages.map(async jobAdPackage => {
+      const jobAdPackages = await Promise.all(
+        packages.map(async jobAdPackage => {
           if (typeof jobAdPackage.stripePrice != "string") {
             console.error(
               "jobAdPackage.stripePrice is not a string: ",
               jobAdPackage.stripePrice
             );
+
+            throw new Error(
+              `jobAdPackage.stripePrice is not a string: ${jobAdPackage.stripePrice}`
+            );
           }
 
           const price = await stripe.prices.retrieve(jobAdPackage.stripePrice);
 
-          if (!price.error) {
-            jobAdPackage.stripePrice = {
-              id: price.id,
-              price: price.unit_amount,
-              stripeProduct: price.product,
-            };
+          if (price.error) {
+            throw new Error(`Error in getting stripe price: ${price.error}`);
           }
+
+          const stripePrice = {
+            id: price.id,
+            price: price.unit_amount,
+            stripeProduct: price.product,
+          };
+
+          return { ...jobAdPackage, stripePrice };
         })
       );
 

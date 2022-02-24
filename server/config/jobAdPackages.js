@@ -30,6 +30,7 @@ module.exports = [
     id: "2",
     name: "Standard",
     stripePrice: process.env.STRIPE_PRICE_ID_STANDARD,
+    // stripePrice: 1,
     duration: 90, // !legacy
     price: 19900, // !legacy
     refreshFrequency: 14, // !legacy
