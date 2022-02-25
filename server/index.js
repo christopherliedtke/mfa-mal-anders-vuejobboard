@@ -116,9 +116,9 @@ app.get("/sitemap.xml", async (req, res) => {
 if (process.env.NODE_ENV == "production") {
   app.use(csurf());
   app.use(function (err, req, res, next) {
+    // handle CSRF token errors here
     if (err.code !== "EBADCSRFTOKEN") return next(err);
 
-    // handle CSRF token errors here
     res.sendStatus(403);
   });
 

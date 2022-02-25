@@ -10,8 +10,6 @@ const stripe = require("stripe")(process.env.STRIPE_SK);
 // #desc:   Create a session id for a user
 // #access: Private
 router.post("/create-invoice", verifyToken, async (req, res) => {
-  // console.log("req.body: ", req.body);
-
   if (!req.user) {
     return res
       .status(401)
@@ -39,8 +37,6 @@ router.post("/create-invoice", verifyToken, async (req, res) => {
       { _id: req.user._id },
       "_id stripeCustomerId"
     );
-
-    // console.log("user: ", user);
 
     customer.metadata = {
       userId: req.user._id,
@@ -123,12 +119,11 @@ router.post("/create-invoice", verifyToken, async (req, res) => {
       return res.status(400).send("Rechnung konnte nicht erstellt werden.");
     }
 
-    // Invoice will be sent to customer automatically in live mode
-    // try {
-    //   await stripe.invoices.sendInvoice(invoice.id);
-    // } catch (error) {
-    //   console.error("Error when sending invoice in checkout: ", error);
-    // }
+    try {
+      await stripe.invoices.sendInvoice(invoice.id);
+    } catch (error) {
+      console.error("Error when manually sending invoice in checkout: ", error);
+    }
 
     console.info("invoice created in checkout: ", invoice);
 
