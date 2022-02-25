@@ -186,7 +186,7 @@
                 </svg>
               </div>
               {{
-                job.paid
+                job.status == "published"
                   ? timeSince(new Date(job.publishedAt || job.paidAt))
                   : "-"
               }}

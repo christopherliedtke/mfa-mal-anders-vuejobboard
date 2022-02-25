@@ -49,6 +49,7 @@
                     myJob(_id: "${jobId}") {
                       _id
                       updatedAt
+                      status
                       publishedAt
                       paidAt
                       paid
