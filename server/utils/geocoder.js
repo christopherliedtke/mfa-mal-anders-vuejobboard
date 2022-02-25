@@ -26,7 +26,7 @@ const getLocation = async (q, country) => {
 
     return location.data.items;
   } catch (err) {
-    if (err.response.status === 429) {
+    if (err.response.response.status === 429) {
       console.error("Error in getGeocode(): ", err.message);
     } else {
       console.error("Error in getGeocode(): ", err);

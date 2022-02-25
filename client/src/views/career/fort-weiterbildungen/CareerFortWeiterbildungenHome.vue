@@ -29,8 +29,8 @@
       </h2>
       <p>
         Als Zahnmedizinische | Medizinische Fachangestellte hast Du viele
-        Möglichkeiten uns zu qualifizieren und im Job aufzusteigen oder sogar in
-        anderen Bereichen des Gesundheitswesens Fuß zu fassen. Nur leider ist
+        Möglichkeiten Dich zu qualifizieren und im Job aufzusteigen oder sogar
+        in anderen Bereichen des Gesundheitswesens Fuß zu fassen. Nur leider ist
         der Dschungel an Fortbildungen für Medizinische Fachangestellte so stark
         bewachsen und undurchdringlich, dass es nicht leicht fällt, den
         Durchblick zu behalten.
