@@ -107,13 +107,13 @@ const UserResolvers = {
       const user = await User.findOne({ email: args.email });
 
       if (!user) {
-        throw new ApolloError(errorMsg.auth.noMatch);
+        throw new UserInputError(errorMsg.auth.noMatch);
       }
 
       const pwCheckSuccess = await compare(args.password, user.password);
 
       if (!pwCheckSuccess) {
-        throw new ApolloError(errorMsg.auth.pwNoMatch);
+        throw new UserInputError(errorMsg.auth.pwNoMatch);
       }
 
       delete user.password;

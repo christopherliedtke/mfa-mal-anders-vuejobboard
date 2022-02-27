@@ -80,6 +80,20 @@
             Ihre Nachricht angezeigt.</b-form-text
           >
         </div>
+        <div class="col-12 col-lg-8">
+          <label for="job" class="d-block">Ihre freie Stellenanzeige</label>
+          <b-form-select id="job" v-model="form.jobId">
+            <b-form-select-option value=""
+              >-- Stellenanzeige auswählen --</b-form-select-option
+            >
+            <b-form-select-option
+              v-for="job in myJobs"
+              :key="job.value"
+              :value="job.value"
+              >{{ job.text }}</b-form-select-option
+            >
+          </b-form-select>
+        </div>
       </div>
 
       <label for="message" class="h5 mt-4">Ihre Nachricht *</label>
@@ -198,8 +212,10 @@
           lastName: this.$store.state.auth.user.lastName || "",
           email: this.$store.state.auth.user.email || "",
           message: "",
+          jobId: "",
           accepted: false
         },
+        myJobs: null,
         validated: null,
         success: null,
         error: false,
@@ -207,7 +223,49 @@
         contactTitleOptions
       };
     },
+    async created() {
+      await this.getMyJobs();
+    },
     methods: {
+      async getMyJobs() {
+        this.$store.dispatch("setOverlay", true);
+
+        try {
+          const myJobs = await this.$axios.get("/graphql", {
+            params: {
+              query: `
+                query {
+                  myJobs {
+                    _id
+                    title
+                    status
+                    company {
+                      name
+                    }
+                  }
+                }
+              `
+            }
+          });
+
+          if (!myJobs.data.data.myJobs) {
+            return null;
+          }
+
+          this.myJobs = myJobs.data.data.myJobs
+            .filter(job => job.status == "published")
+            .map(job => {
+              return {
+                value: job._id,
+                text: `${job.title} | ${job.company.name}`
+              };
+            });
+        } catch (error) {
+          //
+        }
+
+        this.$store.dispatch("setOverlay", false);
+      },
       async onSubmit() {
         this.error = false;
 

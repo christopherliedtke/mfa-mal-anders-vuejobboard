@@ -220,6 +220,7 @@
                     v-model="checkout.customer.email"
                     type="text"
                     placeholder="E-Mail Adresse eingeben..."
+                    disabled
                     trim
                     :state="
                       checkout.validated
@@ -230,6 +231,12 @@
                     "
                   />
                 </b-input-group>
+                <b-form-text id="email-help" class="ml-2"
+                  >Konto E-Mail-Adresse <br />
+                  <small
+                    >(Kann nur über Ihr Account-Profil geändert werden)</small
+                  ></b-form-text
+                >
               </div>
               <div class="col-12 col-lg-4">
                 <label for="customer-phone">Telefonnummer</label>

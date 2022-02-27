@@ -282,6 +282,7 @@ router.post("/contact-jobseek", verifyToken, async (req, res) => {
     const htmlToJobSeeker = template({
       jobSeekId: jobSeek._id,
       jobSeekTitle: jobSeek.title,
+      jobId: req.body.jobId,
       message: sanitizeHtml(req.body.message),
       to: jobSeek.firstName,
       from: `${req.user.gender ? req.user.gender + " " : ""}${

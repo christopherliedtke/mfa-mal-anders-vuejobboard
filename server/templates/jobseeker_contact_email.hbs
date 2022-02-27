@@ -259,6 +259,15 @@
                                 <p style="color: #6c757d; font-style: italic">
                                   {{message}}
                                 </p>
+                                {{#if jobId}}
+                                  <p style="color: #6c757d; font-style: italic">
+                                    Stellenangebot:
+                                    <strong><a
+                                        href="{{websiteUrl}}/stellenangebote/job/{{jobId}}"
+                                        target="_blank"
+                                      >{{websiteUrl}}/stellenangebote/job/{{jobId}}</a></strong>
+                                  </p>
+                                {{/if}}
                               </div>
                               <p>Du kannst ganz einfach über den Antwort-Button
                                 in Deinem E-Mail Programm oder direkt an
