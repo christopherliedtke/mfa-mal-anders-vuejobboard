@@ -45,10 +45,10 @@
         if (!user.data.data.meFromToken) {
           this.$store.dispatch("logout");
         }
-      }
 
-      if (this.$store.state.auth.loggedIn) {
-        this.$store.dispatch("getStarredJobs");
+        if (this.$store.state.auth.loggedIn) {
+          this.$store.dispatch("getStarredJobs");
+        }
       }
     },
     methods: {
