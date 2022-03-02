@@ -999,7 +999,7 @@ const routes = [
     }
   },
   { path: "/404", component: NotFound, meta: { public: true } },
-  { path: "*", redirect: "/stellenangebote" }
+  { path: "*", redirect: "/404" }
 ];
 
 const router = new VueRouter({

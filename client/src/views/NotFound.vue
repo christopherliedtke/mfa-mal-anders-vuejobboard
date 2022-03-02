@@ -1,30 +1,64 @@
 <template>
-  <div>
-    <h1 class="title">Seite nicht gefunden</h1>
-    <div class="container my-5">
+  <div class="container-fluid not-found" style="height: 100vh">
+    <div class="container d-flex flex-column align-items-center">
+      <h1 class="display-1 bold text-light text-center mt-5 pt-lg-5">
+        Seite nicht gefunden
+      </h1>
       <b-img
-        class="p-5"
+        class="mb-5"
         fluid
         src="@/assets/img/404_page_not_found_.svg"
-        style="max-height: 400px"
+        style="max-height: 300px"
       />
       <div class="text-center mx-auto" style="max-width: 500px">
-        <p>
-          Tut uns Leid, diese Seite existiert leider nicht mehr oder ist während
-          unseres Re-Launches umgezogen. Schau Dich doch auf unserer Seite
-          einmal um.
+        <p class="text-light bold">
+          Tut uns Leid, diese Seite konnten wir nicht finden. Auf unserer
+          Startseite gibt es mehr zu entdecken.
         </p>
-        <b-button to="/stellenangebote" class="mr-2" variant="secondary"
+        <b-button class="mr-2" variant="primary" to="/"
+          >Zur Startseite</b-button
+        >
+        <b-button to="/stellenangebote" variant="secondary"
           >Zur Stellenbörse</b-button
         >
-        <b-button variant="primary" to="/">Zur Startseite</b-button>
       </div>
     </div>
+
+    <Head
+      title="404 | Seite nicht gefunden"
+      desc="Diese Seite existiert nicht."
+      img=""
+    />
   </div>
 </template>
 
 <script>
   export default {
-    name: "NotFound"
+    name: "NotFound",
+    head: {
+      meta() {
+        return [
+          {
+            name: "robots",
+            content: "noindex",
+            id: "noindex"
+          }
+        ];
+      }
+    }
   };
 </script>
+
+<style lang="scss" scoped>
+  .not-found {
+    background: linear-gradient(0deg, #fffcfd 0%, #fffcfd66 25%, #6d023077 100%),
+      image-set(
+          url("~@/assets/img/medizinischesPersonal-1200x513.jpg") 1x,
+          url("~@/assets/img/medizinischesPersonal.jpg") 2x
+        )
+        center center;
+
+    background-size: cover;
+    background-blend-mode: normal;
+  }
+</style>
