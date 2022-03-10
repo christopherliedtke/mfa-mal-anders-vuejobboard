@@ -114,6 +114,25 @@ Vue.use(VueGtag, {
     config.ga.active && window.location.origin.includes(config.website.url)
 });
 
+import VueMatomo from "vue-matomo";
+Vue.use(VueMatomo, {
+  host: config.matomo.host,
+  siteId: config.matomo.siteId,
+  trackerFileName: "matomo",
+  router: router,
+  enableLinkTracking: true,
+  requireConsent: false,
+  trackInitialView: true,
+  disableCookies: true,
+  enableHeartBeatTimer: true,
+  heartBeatTimerInterval: 15,
+  debug: false,
+  userId: undefined,
+  cookieDomain: undefined,
+  domains: config.matomo.domains,
+  preInitActions: []
+});
+
 const isDev = process.env.NODE_ENV !== "production";
 Vue.config.performance = isDev;
 Vue.config.productionTip = false;

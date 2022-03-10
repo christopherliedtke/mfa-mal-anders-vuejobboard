@@ -44,6 +44,9 @@
 
         if (!user.data.data.meFromToken) {
           this.$store.dispatch("logout");
+        } else {
+          this.$matomo &&
+            this.$matomo.setUserId(user.data.data.meFromToken._id);
         }
 
         if (this.$store.state.auth.loggedIn) {

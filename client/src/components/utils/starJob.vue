@@ -96,6 +96,9 @@
           this.$gtag.event("job_add_star", {
             event_label: this.jobId
           });
+
+          this.$matomo &&
+            this.$matomo.trackEvent("engagement", "job_add_star", this.jobId);
         } else {
           this.active = false;
           await this.$store.dispatch("deleteStarredJob", this.jobId);
@@ -103,6 +106,13 @@
           this.$gtag.event("job_delete_star", {
             event_label: this.jobId
           });
+
+          this.$matomo &&
+            this.$matomo.trackEvent(
+              "engagement",
+              "job_delete_star",
+              this.jobId
+            );
         }
       }
     }

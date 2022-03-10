@@ -68,6 +68,15 @@ export const saveJobMixin = {
           }
         );
 
+        this.$matomo &&
+          this.$matomo.trackEvent(
+            "engagement",
+            `job_${/update/gi.test(mutationType) ? "update" : "add"}${
+              /admin/gi.test(mutationType) ? "_admin" : ""
+            }`,
+            `${job.title} | ${job.company.state} - ${jobQueryResponse.data.data[mutationType]._id}`
+          );
+
         this.$root.$bvToast.toast(
           "Die Stellenanzeige wurde erfolgreich gespeichert.",
           {

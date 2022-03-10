@@ -588,6 +588,14 @@
               ]
             });
 
+            this.$matomo &&
+              this.$matomo.trackEvent(
+                "commerce",
+                "begin_checkout",
+                this.job._id,
+                this.amountComputed / 100
+              );
+
             this.$router.push("/user/rechnungen");
           }
         } catch (err) {

@@ -26,6 +26,11 @@ module.exports = {
     anonymizeIP: true,
     storage: "none"
   },
+  matomo: {
+    host: "https://matomo.mfa-mal-anders.de",
+    siteId: 1,
+    domains: "*.mfa-mal-anders.de"
+  },
   maps: {
     defaultCenter: {
       lat: 51.241,

@@ -595,6 +595,9 @@
         this.$gtag.event(eventAction, {
           event_label: eventLabel
         });
+
+        this.$matomo &&
+          this.$matomo.trackEvent("engagement", eventAction, eventLabel);
       },
       timeSince(date) {
         const seconds = Math.floor((new Date() - date) / 1000);
