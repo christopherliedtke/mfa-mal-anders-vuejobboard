@@ -50,7 +50,7 @@
         <!-- eslint-disable-next-line -->
         <h4 v-html="job.title"></h4>
         <div>
-          <span
+          <!-- <span
             v-if="job.paidExpiresAt >= new Date() && job.paid"
             class="badge badge-pill badge-success mr-1"
             >bezahlt</span
@@ -59,7 +59,7 @@
             v-if="!job.paid && !job.stripeInvoiceStatus"
             class="badge badge-pill badge-warning mr-1"
             >unbezahlt</span
-          >
+          > -->
           <span
             v-if="job.stripeInvoiceStatus === 'open'"
             class="badge badge-pill badge-warning mr-1"

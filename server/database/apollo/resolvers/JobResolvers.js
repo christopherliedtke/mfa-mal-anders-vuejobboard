@@ -380,7 +380,11 @@ function cleanUpJob(job, user) {
     if (job.paidExpiresAt) {
       job.paidExpiresAt = new Date(job.paidExpiresAt).setHours(23, 59, 59, 999);
     }
-    if (job.paidExpiresAt && job.paidExpiresAt >= new Date()) {
+    if (
+      job.paidExpiresAt &&
+      job.paidExpiresAt >= new Date() &&
+      job.userId == user._id
+    ) {
       job.paid = true;
       job.status = "published";
     }

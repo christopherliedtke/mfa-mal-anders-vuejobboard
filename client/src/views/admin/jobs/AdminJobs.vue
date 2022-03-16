@@ -187,14 +187,14 @@
               @click.prevent="updateJob(row.item._id, 'status', 'draft')"
               >Draft</BDropdownItem
             >
-            <!-- <BDropdownItem
-                        :active="row.item.status === 'invoice-pending'"
-                        variant="secondary"
-                        @click.prevent="
-                            updateJob(row.item._id, 'status', 'invoice-pending')
-                        "
-                        >Invoice pending</BDropdownItem
-                    > -->
+            <BDropdownItem
+              :active="row.item.status === 'invoice-pending'"
+              variant="secondary"
+              @click.prevent="
+                updateJob(row.item._id, 'status', 'invoice-pending')
+              "
+              >Invoice pending</BDropdownItem
+            >
             <BDropdownItem
               :active="row.item.status === 'published'"
               variant="success"
