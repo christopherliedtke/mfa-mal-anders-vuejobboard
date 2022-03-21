@@ -67,15 +67,16 @@ module.exports.sendUnpublishedJobReminder = async () => {
                         }/login">Login</a> können Sie Ihre Stellenanzeige jederzeit weiter bearbeiten.
                     </p>
                     <p>
-                        Ich freue mich darauf, von Ihnen zu hören und verbleibe mit freundlichen Grüßen
+                        Wir freuen uns darauf, von Ihnen zu hören und verbleiben mit freundlichen Grüßen
                     </p>
-                    <p>Kristin Maurach</p>
+                    <p>Ihr <em>MFA mal anders</em> Team</p>
                     <p>__</p>
                     <p>
                         <img src="cid:mfa-mal-anders-logo" width="60" style="margin-bottom: 1rem"/> <br>
                         <strong>MFA mal anders</strong> <br>
                         Das Stellen- & Karriereportal für Medizinische Fachangestellte | Zahnmedizinische Fachangestellte <br>
                         <br>
+                        Telefon: <a href="tel:+4917645282858">+49 176 / 45 28 28 58</a> <br>
                         E-Mail: <a href="mailto:${
                           process.env.CONTACT_EMAIL_ADRESS
                         }">${process.env.CONTACT_EMAIL_ADRESS}</a> <br>

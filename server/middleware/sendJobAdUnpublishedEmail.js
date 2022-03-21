@@ -49,7 +49,7 @@ const sendJobAdUnpublishedEmail = async () => {
                     Mit freundlichen Grüßen
                 </p>
                 <p>
-                    Kristin Maurach
+                    Ihr <em>MFA mal anders</em> Team
                 </p>
                 <p>__</p>
                 <p>

@@ -174,7 +174,7 @@
           labels: dates.reverse(),
           datasets: [
             {
-              label: "Monthly Net Turnover",
+              label: "Monthly Gross Turnover",
               yAxisID: "A",
               backgroundColor: "#6d0230cc",
               data: amounts.reverse(),
@@ -191,7 +191,7 @@
               barPercentage: 0.5
             },
             {
-              label: "Ave. Net Amount Paid per Payment",
+              label: "Ave. Gross Amount Paid per Payment",
               yAxisID: "A",
               backgroundColor: "#17a2b888",
               borderColor: "#17a2b888",

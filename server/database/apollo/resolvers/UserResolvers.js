@@ -528,9 +528,9 @@ const UserResolvers = {
                       process.env.WEBSITE_URL
                     }/kontakt">Kontaktformular</a>.
                     </p>
-                    <p>Mit freundlichen Grüßen</p>
+                    <p>Viele Grüße</p>
                     <p>
-                        Kristin Maurach
+                        Ihr <em>MFA mal anders</em> Team
                     </p>
                     <p>__</p>
                     <p>

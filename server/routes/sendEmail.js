@@ -84,7 +84,7 @@ router.post("/job-published", verifyToken, isAdmin, async (req, res) => {
                   Wir wünschen Ihnen viele qualifizierte BewerberInnen und verbleiben mit freundlichen Grüßen
                 </p>
                 <p>
-                    Kristin Maurach
+                    Ihr <em>MFA mal anders</em> Team
                 </p>
                 <p>__</p>
                 <p>
@@ -92,6 +92,7 @@ router.post("/job-published", verifyToken, isAdmin, async (req, res) => {
                     <strong>MFA mal anders</strong> <br>
                     Das Stellen- & Karriereportal für Medizinische Fachangestellte | Zahnmedizinische Fachangestellte <br>
                     <br>
+                    Telefon: <a href="tel:+4917645282858">+49 176 / 45 28 28 58</a> <br>
                     E-Mail: <a href="mailto:${
                       process.env.CONTACT_EMAIL_ADRESS
                     }">${process.env.CONTACT_EMAIL_ADRESS}</a> <br>
@@ -184,10 +185,10 @@ router.post("/training-published", verifyToken, isAdmin, async (req, res) => {
       }">${process.env.CONTACT_EMAIL_ADRESS}</a>.
                 </p>
                 <p>
-                    Mit freundlichen Grüßen
+                    Viele Grüße
                 </p>
                 <p>
-                    Kristin Maurach
+                    Ihr <em>MFA mal anders</em> Team
                 </p>
                 <p>__</p>
                 <p>
@@ -195,6 +196,7 @@ router.post("/training-published", verifyToken, isAdmin, async (req, res) => {
                     <strong>MFA mal anders</strong> <br>
                     Das Stellen- & Karriereportal für Medizinische Fachangestellte | Zahnmedizinische Fachangestellte Fachangestellte <br>
                     <br>
+                    Telefon: <a href="tel:+4917645282858">+49 176 / 45 28 28 58</a> <br>
                     E-Mail: <a href="mailto:${
                       process.env.CONTACT_EMAIL_ADRESS
                     }">${process.env.CONTACT_EMAIL_ADRESS}</a> <br>
@@ -354,7 +356,7 @@ router.post("/contact-jobseek", verifyToken, async (req, res) => {
             Wir wünschen Ihnen viel Erfolg in dem Gespräch und bei der Stellenbesetzung. Sollten Sie noch Fragen oder Hinweise für uns haben, melden Sie sich gern bei uns.
         </p>
         <p>
-            Ihr Team von <em>MFA mal anders</em>
+            Ihr <em>MFA mal anders</em> Team
         </p>
         <p>__</p>
         <p>
@@ -362,6 +364,7 @@ router.post("/contact-jobseek", verifyToken, async (req, res) => {
             <strong>MFA mal anders</strong> <br>
             Das Stellen- & Karriereportal für Medizinische Fachangestellte | Zahnmedizinische Fachangestellte Fachangestellte <br>
             <br>
+            Telefon: <a href="tel:+4917645282858">+49 176 / 45 28 28 58</a> <br>
             E-Mail: <a href="mailto:${process.env.CONTACT_EMAIL_ADRESS}">${
           process.env.CONTACT_EMAIL_ADRESS
         }</a> <br>

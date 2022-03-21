@@ -382,6 +382,7 @@ async function sendOrderConfirmation(invoice, jobs) {
           <strong>MFA mal anders</strong> <br>
           Das Stellen- & Karriereportal für Medizinische Fachangestellte | Zahnmedizinische Fachangestellte Fachangestellte <br>
           <br>
+          Telefon: <a href="tel:+4917645282858">+49 176 / 45 28 28 58</a> <br>
           E-Mail: <a href="mailto:${process.env.CONTACT_EMAIL_ADRESS}">${
         process.env.CONTACT_EMAIL_ADRESS
       }</a> <br>
