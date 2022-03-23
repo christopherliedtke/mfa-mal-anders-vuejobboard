@@ -326,7 +326,7 @@ router.post("/contact-jobseek", verifyToken, async (req, res) => {
     try {
       const mailDataToEmployer = {
         from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
-        to: jobSeek.user.email,
+        to: req.user.email,
         subject: `Ihre Kontaktaufnahme zum Stellengesuch auf 'MFA mal anders'`,
         html: `
         <p>
