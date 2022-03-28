@@ -132,6 +132,25 @@
             >
           </BDropdown>
 
+          <b-button
+            class="mr-2"
+            variant="danger"
+            size="sm"
+            @click.prevent="updateTraining(row.item._id, 'declined: true')"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-exclamation-circle-fill mr-2"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"
+              /></svg
+            >Decline
+          </b-button>
+
           <!-- <BDropdown class="mr-2" size="sm" left variant="secondary">
             <template #button-content>
               <svg
@@ -211,6 +230,12 @@
               variant="success"
               @click.prevent="sendPublishedEmail(row.item._id)"
               >send published</BDropdownItem
+            >
+            <BDropdownItem
+              class="mb-0"
+              variant="danger"
+              @click.prevent="sendDeclinedEmail(row.item._id)"
+              >send declined</BDropdownItem
             >
           </BDropdown>
 
@@ -328,6 +353,11 @@
             sortable: true
           },
           {
+            key: "declined",
+            label: "Declined",
+            sortable: true
+          },
+          {
             key: "paid",
             label: "Paid",
             sortable: true
@@ -397,6 +427,7 @@
                     isSponsored
                     pending
                     paid
+                    declined
                     startAt
                     startAnytime
                     duration
@@ -451,6 +482,7 @@
                   isSponsored
                   pending
                   paid
+                  declined
                   startAt
                   startAnytime
                   duration
@@ -566,8 +598,48 @@
           );
         }
       },
+      async sendDeclinedEmail(trainingId) {
+        try {
+          const message = window.prompt("Grund für die Ablehnung?");
+
+          if (!message) return null;
+
+          const response = await this.$axios.post(
+            "/api/send-email/training-declined",
+            {
+              trainingId,
+              message
+            }
+          );
+
+          if (response.data.errors) {
+            throw new Error("Email could not be sent.");
+          }
+
+          this.$root.$bvToast.toast("Die E-Mail wurde erfolgreich versandt.", {
+            title: `E-Mail versandt`,
+            variant: "success",
+            toaster: "b-toaster-bottom-right",
+            solid: true
+          });
+        } catch (err) {
+          this.$root.$bvToast.toast(
+            `E-Mail konnte nicht versandt werden. Error: ${err}`,
+            {
+              title: `Fehler beim Versenden`,
+              variant: "danger",
+              toaster: "b-toaster-bottom-right",
+              solid: true,
+              noAutoHide: true
+            }
+          );
+        }
+      },
       rowClass(item, type) {
         if (!item || type !== "row") return;
+        if (item.declined) {
+          return "table-danger";
+        }
         if (!item.published || item.pending) {
           return "table-warning";
         }

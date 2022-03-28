@@ -93,7 +93,7 @@ const TrainingSchema = new Schema(
       type: Boolean,
       default: false,
     },
-    verified: {
+    declined: {
       type: Boolean,
       default: false,
     },

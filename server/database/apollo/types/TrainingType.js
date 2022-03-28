@@ -70,6 +70,7 @@ const TrainingType = gql`
       published: Boolean
       pending: Boolean
       paid: Boolean
+      declined: Boolean
       isSponsored: Boolean
     ): Training
     submitTraining(_id: ID!): Training
@@ -102,6 +103,7 @@ const TrainingType = gql`
     published: Boolean
     pending: Boolean
     paid: Boolean
+    declined: Boolean
     isSponsored: Boolean
     slug: String
   }

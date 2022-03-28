@@ -230,6 +230,103 @@ router.post("/training-published", verifyToken, isAdmin, async (req, res) => {
   }
 });
 
+// #route:  POST /api/send-email/training-declined
+// #desc:   Send E-Mail to user when training is declined through admin
+// #access: Private
+router.post("/training-declined", verifyToken, isAdmin, async (req, res) => {
+  const { message } = req.body;
+
+  try {
+    const training = await Training.findOne({
+      _id: req.body.trainingId,
+    }).populate("user");
+
+    if (!training) {
+      throw new Error(
+        `Training could not be found for _id: ${req.body.trainingId}.`
+      );
+    }
+
+    // send email to user
+    const emailData = {
+      from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
+      to: training.user.email,
+      subject: `Ihre Fortbildung auf 'MFA mal anders'`,
+      html: `
+                <p>
+                    Sehr ${
+                      !training.user.gender || training.user.gender === "null"
+                        ? "geehrte/r Frau/Herr"
+                        : training.user.gender === "Frau"
+                        ? "geehrte Frau"
+                        : "geehrter Herr"
+                    }${
+        training.user.title && training.user.title != "null"
+          ? " " + training.user.title
+          : ""
+      } ${training.user.lastName},
+                </p>
+                <p>
+                    Wir haben Ihre eingereichte Fortbildung '${
+                      training.title
+                    }' geprüft. Leider konnten wir diese aus folgendem Grund nicht veröffentlichen:
+                </p>
+                <p>
+                    <em>${message}</em>
+                </p>
+                <p>
+                    Sollten Sie noch Fragen oder Anregungen haben, melden Sie sich gern bei uns über unser <a href="${
+                      process.env.WEBSITE_URL
+                    }/kontakt">Kontaktformular</a> oder direkt per Nachricht an <a href="mailto:${
+        process.env.CONTACT_EMAIL_ADRESS
+      }">${process.env.CONTACT_EMAIL_ADRESS}</a>.
+                </p>
+                <p>
+                    Viele Grüße
+                </p>
+                <p>
+                    Ihr <em>MFA mal anders</em> Team
+                </p>
+                <p>__</p>
+                <p>
+                    <img src="cid:mfa-mal-anders-logo" width="60" style="margin-bottom: 1rem"/> <br>
+                    <strong>MFA mal anders</strong> <br>
+                    Das Stellen- & Karriereportal für Medizinische Fachangestellte | Zahnmedizinische Fachangestellte Fachangestellte <br>
+                    <br>
+                    Telefon: <a href="tel:+4917645282858">+49 176 / 45 28 28 58</a> <br>
+                    E-Mail: <a href="mailto:${
+                      process.env.CONTACT_EMAIL_ADRESS
+                    }">${process.env.CONTACT_EMAIL_ADRESS}</a> <br>
+                    Webseite: <a href="${process.env.WEBSITE_URL}">${
+        process.env.WEBSITE_URL
+      }</a>
+                </p>
+                `,
+      attachments: [
+        {
+          filename: "MfaMalAnders_logo_circle_bgdark_white.png",
+          path:
+            __dirname +
+            "/../../client/public/img/MfaMalAnders_logo_circle_bgdark_white.png",
+          cid: "mfa-mal-anders-logo", //same cid value as in the html img src
+        },
+      ],
+    };
+
+    const sentEmail = await emailService.sendMail(emailData);
+
+    console.log("sentEmail: ", sentEmail);
+
+    if (sentEmail.accepted.length == 0) {
+      throw new Error("Email could not be sent by emailService");
+    }
+
+    res.json({ success: true });
+  } catch (err) {
+    res.json({ errors: [err] });
+  }
+});
+
 // #route:  POST /api/send-email/contact-jobseek
 // #desc:   Handle jobseek contact request
 // #access: Private

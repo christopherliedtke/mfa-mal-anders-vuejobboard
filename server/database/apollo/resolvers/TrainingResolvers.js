@@ -14,6 +14,7 @@ const TrainingResolvers = {
         published: true,
         pending: false,
         paid: true,
+        declined: { $ne: true },
       });
 
       return training;
@@ -23,6 +24,7 @@ const TrainingResolvers = {
         published: true,
         pending: false,
         paid: true,
+        declined: { $ne: true },
       };
 
       if (args.search) {
@@ -244,7 +246,12 @@ const TrainingResolvers = {
 };
 
 function cleanUpTraining(training, user) {
-  if (
+  if (user.isAdmin && training.declined) {
+    training.published = false;
+    training.pending = false;
+    training.paid = false;
+    training.declined = true;
+  } else if (
     user.isAdmin &&
     training.published === undefined &&
     training.paid === undefined
@@ -252,12 +259,12 @@ function cleanUpTraining(training, user) {
     training.published = true;
     training.pending = false;
     training.paid = true;
-  }
-
-  if (user.isAdmin && training.published) {
+    training.declined = false;
+  } else if (user.isAdmin && training.published) {
     training.published = true;
     training.pending = false;
     training.paid = true;
+    training.declined = false;
   }
 
   if (!user.isAdmin) {
@@ -349,6 +356,8 @@ function cleanUpTraining(training, user) {
       });
     }
   }
+
+  console.log("training: ", training);
 
   return training;
 }

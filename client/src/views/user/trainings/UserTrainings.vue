@@ -48,6 +48,11 @@
             >wird geprüft</span
           >
           <span
+            v-if="training.declined"
+            class="badge badge-pill badge-danger mr-1"
+            >abgelehnt</span
+          >
+          <span
             v-else-if="training.published && training.paid"
             class="badge badge-pill badge-success mr-1"
             >online</span
@@ -232,6 +237,7 @@
                     published
                     paid
                     pending
+                    declined
                   }
                 }
               `
