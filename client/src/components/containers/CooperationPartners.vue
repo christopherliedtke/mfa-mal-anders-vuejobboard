@@ -51,7 +51,7 @@
             name: "Hausärzteverband Westfalen-Lippe",
             img: "/img/hvwl_logo2.png",
             url:
-              "https://www.hausaerzteverband-wl.de/index.php/hausaerzte/personal-finden-mfa-mal-anders",
+              "https://www.hausaerzteverband-wl.de/index.php/mfa-lp/mfa-mal-anders",
             html: `
               <p>Der Hausärzteverband Westfalen-Lippe e.V. ist ein Zusammenschluss und
                 die Interessenvertretung hausärztlich tätiger Ärztinnen und Ärzte in
