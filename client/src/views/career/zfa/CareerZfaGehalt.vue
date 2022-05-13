@@ -194,17 +194,12 @@
         </div>
         <div class="col">
           <p>
-            Daneben bietet der Gehaltstarifvertrag für Zahnmedizinische
-            Fachangestellte Dir vor allem eine gute Orientierung, um deinen
+            Daneben bietet Dir der Gehaltstarifvertrag für Zahnmedizinische
+            Fachangestellte vor allem eine gute Orientierung, um deinen
             Marktwert einzuschätzen – bezüglich Qualifikation und Erfahrung.
           </p>
           <p>
-            Die letzte Gehaltserhöhung bzw. Tarifanpassung wurde zum 01.01.2020
-            wirksam. Anfangsgehälter für Zahnmedizinische Fachangestellte nach
-            der Ausbildung starten bei einem Bruttostundenlohn von 12,09 Euro.
-          </p>
-          <p>
-            Zum 01.07.2021 erfolgt eine weitere Tarifanpassung, die bereits im
+            Zum 01.07.2022 erfolgt eine weitere Tarifanpassung, die bereits im
             Tarifvertrag für ZFA aufgenommen wurde.
           </p>
           <p>
@@ -250,7 +245,7 @@
       <div class="bg-light-shade border-radius1 p-4 mb-4">
         <p class="h5">Übrigens</p>
         <p>
-          Laut offizieller Berechnung im Gehaltstarifvertrag 2020 bezieht sich
+          Laut offizieller Berechnung im Gehaltstarifvertrag 2022 bezieht sich
           das jeweils angegebene
           <strong
             >Vollzeit-Gehalt auf eine Wochenstundenarbeitszeit von 38,8953
@@ -269,14 +264,14 @@
 
       <div>
         <h3 class="h4 mt-5">
-          Gehaltstabelle ZFA 2021 nach Gehaltstarifvertrag – gültig ab
-          01.07.2021
+          Gehaltstabelle ZFA 2022 nach Gehaltstarifvertrag – gültig ab
+          01.07.2022
         </h3>
         <p>
           Der Stundenlohn im Jahr {{ year }} für Zahnmedizinische
           Fachangestellte (ZFA) bewegt sich laut Gehaltstarifvertrag je nach
           Berufserfahrung und erworbenen Qualifikationen durch Fort- und
-          Weiterbildungen zwischen 12,60 €/h und 21,61 €/h.
+          Weiterbildungen zwischen 13,14 €/h und 22,53 €/h.
           <b-link to="#gehaltsrechner">Gehaltsrechner</b-link> kannst Du Dir den
           Stundenlohn bzw. Gehalt in Teilzeit für Deinen relevanten Bereich
           errechnen, indem Du als Wochenarbeitszeit eine Stunde auswählst.
@@ -297,83 +292,83 @@
             <tbody>
               <tr>
                 <th>1 - 3</th>
-                <td>2.105,00 €</td>
-                <td>2.263,00 €</td>
-                <td>2.473,50 €</td>
-                <td>2.631,50 €</td>
-                <td>2.736,50 €</td>
+                <td>2.221,00 €</td>
+                <td>2.388,00 €</td>
+                <td>2.610,50 €</td>
+                <td>2.776,50 €</td>
+                <td>2.887,50 €</td>
               </tr>
               <tr>
                 <th>4 - 6</th>
-                <td>2.182,00 €</td>
-                <td>2.346,00 €</td>
-                <td>2.564,00 €</td>
-                <td>2.727,50 €</td>
-                <td>2.837,00 €</td>
+                <td>2.302,50 €</td>
+                <td>2.475,50 €</td>
+                <td>2.705,50 €</td>
+                <td>2.878,50 €</td>
+                <td>2.993,50 €</td>
               </tr>
               <tr>
                 <th>7 - 9</th>
-                <td>2.288,50 €</td>
-                <td>2.460,50 €</td>
-                <td>2.689,00 €</td>
-                <td>2.861,00 €</td>
-                <td>2.975,50 €</td>
+                <td>2.414,50 €</td>
+                <td>2.596,00 €</td>
+                <td>2.837,50 €</td>
+                <td>3.018,50 €</td>
+                <td>3.139,00 €</td>
               </tr>
               <tr>
                 <th>10 - 12</th>
-                <td>2.368,50 €</td>
-                <td>2.546,50 €</td>
-                <td>2.783,00 €</td>
-                <td>2.961,00 €</td>
-                <td>3.079,50 €</td>
+                <td>2.499,00 €</td>
+                <td>2.686,50 €</td>
+                <td>2.936,50 €</td>
+                <td>3.124,00 €</td>
+                <td>3.249,00 €</td>
               </tr>
               <tr>
                 <th>13 - 15</th>
-                <td>2.442,00 €</td>
-                <td>2.625,50 €</td>
-                <td>2.869,50 €</td>
-                <td>3.052,50 €</td>
-                <td>3.175,50 €</td>
+                <td>2.576,50 €</td>
+                <td>2.770,00 €</td>
+                <td>3.027,50 €</td>
+                <td>3.221,00 €</td>
+                <td>3.349,50 €</td>
               </tr>
               <tr>
                 <th>16 - 18</th>
-                <td>2.512,00 €</td>
-                <td>2.701,00 €</td>
-                <td>2.952,00 €</td>
-                <td>3.140,00 €</td>
-                <td>3.266,50 €</td>
+                <td>2.650,50 €</td>
+                <td>2.849,50 €</td>
+                <td>3.114,50 €</td>
+                <td>3.313,50 €</td>
+                <td>3.446,00 €</td>
               </tr>
               <tr>
                 <th>19 - 21</th>
-                <td>2.582,00 €</td>
-                <td>2.776,50 €</td>
-                <td>3.034,50 €</td>
-                <td>3.227,50 €</td>
-                <td>3.357,50 €</td>
+                <td>2.724,50 €</td>
+                <td>2.929,00 €</td>
+                <td>3.201,50 €</td>
+                <td>3.406,00 €</td>
+                <td>3.542,00 €</td>
               </tr>
               <tr>
                 <th>22 - 24</th>
-                <td>2.652,00 €</td>
-                <td>2.852,00 €</td>
-                <td>3.117,00 €</td>
-                <td>3.315,00 €</td>
-                <td>3.448,50 €</td>
+                <td>2.798,00 €</td>
+                <td>3.008,00 €</td>
+                <td>3.288,00 €</td>
+                <td>3.497,50 €</td>
+                <td>3.637,50 €</td>
               </tr>
               <tr>
                 <th>25 - 27</th>
-                <td>2.722,00 €</td>
-                <td>2.927,50 €</td>
-                <td>3.199,50 €</td>
-                <td>3.402,50 €</td>
-                <td>3.539,50 €</td>
+                <td>2.872,00 €</td>
+                <td>3.087,50 €</td>
+                <td>3.375,00 €</td>
+                <td>3.590,00 €</td>
+                <td>3.734,00 €</td>
               </tr>
               <tr>
                 <th>ab 28</th>
-                <td>2.776,50 €</td>
-                <td>2.985,00 €</td>
-                <td>3.262,50 €</td>
-                <td>3.471,00 €</td>
-                <td>3.609,50 €</td>
+                <td>2.929,50 €</td>
+                <td>3.149,50 €</td>
+                <td>3.442,50 €</td>
+                <td>3.662,00 €</td>
+                <td>3.808,50 €</td>
               </tr>
             </tbody>
           </table>
@@ -384,8 +379,8 @@
             href="https://www.vmf-online.de/zfa/zfa-tarife"
             target="_blank"
             rel="noopener"
-            >Gehaltstarifvertrag 2020 für Zahnmedizinische Fachangestellte (ZFA)
-            – AAZ (2020)</b-link
+            >Gehaltstarifvertrag 2022 für Zahnmedizinische Fachangestellte (ZFA)
+            – AAZ (2022)</b-link
           >
         </p>
       </div>
@@ -428,7 +423,7 @@
               <th colspan="3" class="text-center">Ausbildungsjahr</th>
             </tr>
             <tr>
-              <th scope="col">ab</th>
+              <th scope="col"></th>
               <th scope="col">1.</th>
               <th scope="col">2.</th>
               <th scope="col">3.</th>
@@ -436,10 +431,16 @@
           </thead>
           <tbody>
             <tr>
-              <th>01.01.2021</th>
+              <th>bis 30.11.2022</th>
               <td>870,- €</td>
               <td>910,- €</td>
               <td>970,- €</td>
+            </tr>
+            <tr>
+              <th>ab 01.12.2022</th>
+              <td>920,- €</td>
+              <td>995,- €</td>
+              <td>1.075,- €</td>
             </tr>
           </tbody>
         </table>
@@ -450,8 +451,8 @@
           href="https://www.vmf-online.de/zfa/zfa-tarife"
           target="_blank"
           rel="noopener"
-          >Gehaltstarifvertrag 2020 für Zahnmedizinische Fachangestellte (ZFA) –
-          AAZ (2020)</b-link
+          >Gehaltstarifvertrag 2022 für Zahnmedizinische Fachangestellte (ZFA) –
+          AAZ (2022)</b-link
         >
       </p>
 

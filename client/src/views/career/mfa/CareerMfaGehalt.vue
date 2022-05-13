@@ -62,6 +62,11 @@
               </li>
 
               <li class="lead mt-3">
+                <b-link to="#sonderzahlungen"
+                  >Sonderzahlungen nach Gehaltstarifvertrag</b-link
+                >
+              </li>
+              <li class="lead mt-3">
                 <b-link to="#berufsjahre"
                   >Anrechnung von Berufsjahren nach Gehaltstarifvertrag</b-link
                 >
@@ -270,7 +275,7 @@
         </p>
       </div>
 
-      <h3 class="h4 mt-5">
+      <!-- <h3 class="h4 mt-5">
         Gehaltstabelle MFA 2021 nach Gehaltstarifvertrag – gültig ab 01.01.2021
       </h3>
       <p>
@@ -387,7 +392,7 @@
           >Gehaltstarifvertrag 2021 für Medizinische Fachangestellte (MFA) /
           ArzthelferInnen – AAA (2021)</b-link
         >
-      </p>
+      </p> -->
 
       <h3 class="h4 mt-5">
         Gehaltstabelle MFA 2022 nach Gehaltstarifvertrag – gültig ab 01.01.2022
@@ -497,6 +502,44 @@
             </tr>
           </tbody>
         </table>
+      </div>
+      <p class="small text-muted">
+        Quelle:
+        <b-link
+          href="https://www.vmf-online.de/mfa/mfa-tarife"
+          target="_blank"
+          rel="noopener"
+          >Gehaltstarifvertrag 2021 für Medizinische Fachangestellte (MFA) /
+          ArzthelferInnen – AAA (2021)</b-link
+        >
+      </p>
+
+      <h3 id="sonderzahlungen" class="h4">
+        Sonderzahlungen
+      </h3>
+      <p>
+        Als Medizinische Fachangestellte / Arzthelferin hast Du laut
+        Gehaltstarifvertrag Anspruch auf eine
+        <strong>Sonderzahlung zu jedem 1. Dezember eines Kalenderjahres</strong
+        >, wenn Dein Arbeitsverhältnis seit mindestens 6 Monaten (bei
+        Auszubildenden 3 Monate) besteht. Zudem darf Deine Anstellung nicht
+        gekündigt sein, bzw. keine Vereinbarung über die Beendigung bestehen.
+      </p>
+      <p>
+        Die Höhe der Sonderzahlung hängt von der Dauer Deiner
+        Betriebszugehörigkeit ab:
+      </p>
+      <div class="example">
+        <ul class="mb-0">
+          <li>
+            1. Jahr der Betriebszugehörigkeit – 50% des regelmäßigen
+            Bruttomonatsgehalts
+          </li>
+          <li>
+            2. Jahr der Betriebszugehörigkeit ab 2022 – 70% des regelmäßigen
+            Bruttomonatsgehalts
+          </li>
+        </ul>
       </div>
       <p class="small text-muted">
         Quelle:

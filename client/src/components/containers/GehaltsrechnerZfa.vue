@@ -33,7 +33,7 @@
       Gib Deine Daten ein und erhalte Dein Gehalt entsprechend des
       Gehaltstarifvertrags* {{ year }} für Zahnmedizinische Fachangestellte
       (ZFA) / ZahnarzthelferInnen in Voll- oder Teilzeit. <br />
-      <span class="small">(Stand 2021 | gültig ab 01.07.2021) </span>
+      <span class="small">(Stand 2022 | gültig ab 01.07.2022) </span>
     </p>
     <b-form>
       <label for="years-of-experience" class="sr-only">Berufsjahre</label>
@@ -106,8 +106,8 @@
           href="https://www.vmf-online.de/zfa/zfa-tarife"
           target="_blank"
           rel="noopener"
-          >Gehaltstarifvertrag 2020 für Zahnmedizinische Fachangestellte (ZFA) –
-          AAZ (2020)</a
+          >Gehaltstarifvertrag 2022 für Zahnmedizinische Fachangestellte (ZFA) –
+          AAZ (2022)</a
         >
       </span>
     </p>
@@ -136,43 +136,43 @@
             text: "Anzahl Berufsjahre*..."
           },
           {
-            value: 2105,
+            value: 2221,
             text: "1 bis 3"
           },
           {
-            value: 2182,
+            value: 2302,
             text: "4 bis 6"
           },
           {
-            value: 2288.5,
+            value: 2414.5,
             text: "7 bis 9"
           },
           {
-            value: 2368.5,
+            value: 2499,
             text: "10 bis 12"
           },
           {
-            value: 2442,
+            value: 2576.5,
             text: "13 bis 15"
           },
           {
-            value: 2512,
+            value: 2650.5,
             text: "16 bis 18"
           },
           {
-            value: 2582,
+            value: 2724.5,
             text: "19 bis 21"
           },
           {
-            value: 2652,
+            value: 2798,
             text: "22 bis 24"
           },
           {
-            value: 2722,
+            value: 2872,
             text: "25 bis 27"
           },
           {
-            value: 2776.5,
+            value: 2929.5,
             text: "ab 28"
           }
         ],
