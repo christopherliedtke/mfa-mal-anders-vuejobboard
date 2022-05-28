@@ -24,10 +24,12 @@ const mongoose = require("./database/mongoDB");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 
-const { CRONNewsletter } = require("./middleware/CRONNewsletter");
-const { CRONRefreshJobs } = require("./middleware/CRONRefreshJobs");
-const { unpublishJobs } = require("./middleware/unpublishJobs");
-const { CRONUnpublishedJobs } = require("./middleware/CRONUnpublishedJobs");
+const { CRONNewsletter } = require("./CRON/CRONNewsletter");
+const { CRONRefreshJobs } = require("./CRON/CRONRefreshJobs");
+const { CRONUnpublishJobs } = require("./CRON/CRONUnpublishJobs");
+const {
+  CRONSendUnpublishedJobsReminder,
+} = require("./CRON/CRONSendUnpublishedJobsReminder");
 
 // #Set Up prerender.io
 const prerender = require("prerender-node").set(
@@ -41,11 +43,6 @@ if (process.env.HEROKU == "yes") {
   app.use(sslRedirect());
 }
 
-// #Create Sitemap CRON job
-// if (config.sitemap.active) {
-//   createSitemap.start();
-// }
-
 // #Send Newsletter CRON job
 if (config.newsletter.active) {
   CRONNewsletter.start();
@@ -58,12 +55,12 @@ if (config.refreshJobs.active) {
 
 // #Unpublish jobs CRON job
 if (config.unpublishJobs.active) {
-  unpublishJobs.start();
+  CRONUnpublishJobs.start();
 }
 
 // #UnpublishedJobsReminder CRON job
 if (config.unpublishedJobsReminder.active) {
-  CRONUnpublishedJobs.start();
+  CRONSendUnpublishedJobsReminder.start();
 }
 
 // #Redirects
@@ -163,7 +160,6 @@ async function startServer() {
   app.use("/api/contact", require("./routes/contact"));
   app.use("/api/newsletter", require("./routes/newsletter"));
   app.use("/api/images", require("./routes/images"));
-  app.use("/api/stripe", require("./routes/stripe"));
   app.use("/api/customers", require("./routes/customers"));
   app.use("/api/products", require("./routes/products"));
   app.use("/api/coupons", require("./routes/coupons"));

@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const textToSlug = require("../../utils/textToSlug");
+const textToSlug = require("../../lib/textToSlug");
 const { Schema } = mongoose;
 
 const TrainingSchema = new Schema(

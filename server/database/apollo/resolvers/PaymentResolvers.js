@@ -3,7 +3,7 @@ const config = require("../../../config/config.js");
 const jobAdPackages = require("../../../config/jobAdPackages.js");
 const { Payment } = require("../../models/payment");
 const { Job } = require("../../models/job");
-const { googleIndexing } = require("../../../middleware/googleJobIndexing");
+const { googleIndexing } = require("../../../lib/googleJobIndexing");
 const internalJobsCache = require("../../../cache/internalJobsCache");
 
 const PaymentResolvers = {

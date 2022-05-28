@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const textToSlug = require("../../utils/textToSlug");
+const textToSlug = require("../../lib/textToSlug");
 
 const JobSeekSchema = new Schema(
   {

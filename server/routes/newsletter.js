@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const verifyToken = require("../middleware/verifyToken");
 const isAdmin = require("../middleware/isAdmin");
-const { sendNewsletter } = require("../middleware/sendNewsletter");
+const { sendNewsletter } = require("../lib/sendNewsletter");
 
 // #route:  POST /api/newsletter/send
 // #desc:   Send newsletter

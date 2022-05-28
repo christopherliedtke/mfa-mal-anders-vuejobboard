@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const textToSlug = require("../../utils/textToSlug");
+const textToSlug = require("../../lib/textToSlug");
 const sanitizeHtml = require("sanitize-html");
 const Schema = mongoose.Schema;
 

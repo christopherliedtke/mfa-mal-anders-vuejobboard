@@ -93,10 +93,6 @@ const UserType = gql`
     userId: User
   }
 
-  extend type Coupon {
-    userId: User
-  }
-
   extend type Payment {
     user: User
   }

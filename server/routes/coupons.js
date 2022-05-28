@@ -10,9 +10,6 @@ router.get("/coupon-by-promotion-code", verifyToken, async (req, res) => {
   try {
     const { code, product } = req.query;
 
-    // console.log(code);
-    // console.log("product: ", product);
-
     if (!code) {
       throw new Error("Kein Aktionscode eingegeben.");
     }
@@ -35,7 +32,6 @@ router.get("/coupon-by-promotion-code", verifyToken, async (req, res) => {
 
     res.json({ coupon });
   } catch (error) {
-    // console.error("error: ", error);
     res.json({ error: error.message });
   }
 });

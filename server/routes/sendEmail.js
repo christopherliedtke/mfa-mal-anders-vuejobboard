@@ -4,7 +4,7 @@ const verifyToken = require("../middleware/verifyToken");
 const isAdmin = require("../middleware/isAdmin");
 const fs = require("fs");
 const path = require("path");
-const emailService = require("../utils/nodemailer");
+const emailService = require("../lib/nodemailer");
 const Handlebars = require("handlebars");
 const config = require("../config/config");
 const sanitizeHtml = require("sanitize-html");
@@ -12,14 +12,14 @@ const { Job } = require("../database/models/job");
 const { Training } = require("../database/models/training");
 const { Payment } = require("../database/models/payment");
 const { JobSeek } = require("../database/models/jobSeek");
-const jobToAsanaTask = require("../utils/jobToAsanaTask");
+const jobToAsanaTask = require("../lib/jobToAsanaTask");
 
 Handlebars.registerHelper("currentYear", () => {
   return new Date().getFullYear();
 });
 
 const jobSeekerContactTemplate = fs.readFileSync(
-  path.join(__dirname, "../templates/jobseeker_contact_email.hbs"),
+  path.join(__dirname, "../templates/email/jobseeker_contact_email.hbs"),
   "utf8"
 );
 

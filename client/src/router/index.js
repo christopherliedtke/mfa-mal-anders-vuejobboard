@@ -286,14 +286,6 @@ const AdminEditUser = () =>
   import(
     /* webpackChunkName: "admin" */ "@/views/admin/users/edit/_userId.vue"
   );
-const AdminCoupons = () =>
-  import(
-    /* webpackChunkName: "admin" */ "@/views/admin/coupons/AdminCoupons.vue"
-  );
-const AdminEditCoupon = () =>
-  import(
-    /* webpackChunkName: "admin" */ "@/views/admin/coupons/edit/_couponId.vue"
-  );
 const AdminSubscribers = () =>
   import(
     /* webpackChunkName: "admin" */ "@/views/admin/subscribers/AdminSubscribers.vue"
@@ -894,24 +886,6 @@ const routes = [
     path: "/admin/users/edit/:userId",
     name: "AdminEditUser",
     component: AdminEditUser,
-    meta: {
-      public: false,
-      onlyAdmin: true
-    }
-  },
-  {
-    path: "/admin/coupons",
-    name: "AdminCoupons",
-    component: AdminCoupons,
-    meta: {
-      public: false,
-      onlyAdmin: true
-    }
-  },
-  {
-    path: "/admin/coupons/edit/:couponId",
-    name: "AdminEditCoupon",
-    component: AdminEditCoupon,
     meta: {
       public: false,
       onlyAdmin: true

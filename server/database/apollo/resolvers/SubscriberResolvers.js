@@ -10,7 +10,7 @@ const sanitizeHtml = require("sanitize-html");
 const config = require("../../../config/config");
 const Handlebars = require("handlebars");
 // const emailService = require("../../../utils/nodemailer");
-const mg = require("../../../utils/mailgunMailer");
+const mg = require("../../../lib/mailgunMailer");
 const { Subscriber } = require("../../models/subscriber");
 
 const SubscriberResolvers = {
@@ -64,7 +64,7 @@ const SubscriberResolvers = {
         const subscriberActivationTemplate = fs.readFileSync(
           path.join(
             __dirname,
-            "../../../templates/subscriber_activation_email.hbs"
+            "../../../templates/email/subscriber_activation_email.hbs"
           ),
           "utf8"
         );

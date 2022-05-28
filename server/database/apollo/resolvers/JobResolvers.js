@@ -3,15 +3,15 @@ const {
   UserInputError,
 } = require("apollo-server-express");
 const config = require("../../../config/config.js");
-const { googleIndexing } = require("../../../middleware/googleJobIndexing");
-const recachePrerender = require("../../../middleware/recachePrerender");
+const { googleIndexing } = require("../../../lib/googleJobIndexing");
+const recachePrerender = require("../../../lib/recachePrerender").default;
 const sanitizeHtml = require("sanitize-html");
 const s3 = require("../../../middleware/s3");
-const getLocation = require("../../../utils/geocoder");
+const getLocation = require("../../../lib/geocoder");
 const { Job } = require("../../models/job");
 const { Company } = require("../../models/company");
 const internalJobsCache = require("../../../cache/internalJobsCache");
-const textToSlug = require("../../../utils/textToSlug");
+const textToSlug = require("../../../lib/textToSlug");
 
 const JobResolvers = {
   Query: {

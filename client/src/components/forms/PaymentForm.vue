@@ -19,14 +19,6 @@
         trim
         required
       />
-      <label for="coupon-id">Coupon ID</label>
-      <b-form-input
-        id="coupon-id"
-        v-model="payment.coupon"
-        type="text"
-        placeholder="Coupon ID eingeben..."
-        trim
-      />
       <label for="payment-status">Payment Status</label>
       <b-form-select id="payment-status" v-model="payment.status">
         <b-form-select-option :value="''"
@@ -250,7 +242,6 @@
           _id: this.$route.params.paymentId,
           user: null,
           job: null,
-          coupon: null,
           status: "",
           invoiceNo: 0,
           invoiceDate: new Date().getTime(),
@@ -376,9 +367,6 @@
 
           payment.data.data.payment.job = payment.data.data.payment.job._id;
           payment.data.data.payment.user = payment.data.data.payment.user._id;
-          payment.data.data.payment.coupon = payment.data.data.payment.coupon
-            ? payment.data.data.payment.coupon._id
-            : null;
 
           this.payment = payment.data.data.payment;
         } catch (err) {
@@ -436,11 +424,6 @@
                   }
                   user: "${this.payment.user}"
                   job: "${this.payment.job}"
-                  ${
-                    this.payment.coupon
-                      ? `coupon: "${this.payment.coupon}"`
-                      : ""
-                  }
                   status: "${this.payment.status}"
                   invoiceNo: ${this.payment.invoiceNo}
                   invoiceDate: ${this.payment.invoiceDate}

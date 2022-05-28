@@ -1,5 +1,5 @@
 const NodeCache = require("node-cache");
-const createSitemap = require("../middleware/createSitemap");
+const createSitemap = require("../lib/createSitemap");
 
 class Cache {
   constructor(ttlSeconds = 60 * 60) {

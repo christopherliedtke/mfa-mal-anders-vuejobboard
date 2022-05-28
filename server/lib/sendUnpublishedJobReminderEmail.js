@@ -1,9 +1,9 @@
 const config = require("../config/config.js");
-const emailService = require("../utils/nodemailer");
+const emailService = require("./nodemailer");
 
 const { Job } = require("../database/models/job");
 
-module.exports.sendUnpublishedJobReminder = async () => {
+module.exports.sendUnpublishedJobReminderEmail = async () => {
   console.log("sendUnpublishedJobReminder()...");
 
   try {

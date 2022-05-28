@@ -1,5 +1,5 @@
 const wpContentCache = require("../../../cache/wpContentCache");
-const getRandom = require("../../../utils/getRandomArray");
+const getRandom = require("../../../lib/getRandomArray");
 
 const WeiterbildungResolvers = {
   Query: {

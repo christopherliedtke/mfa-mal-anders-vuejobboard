@@ -2,13 +2,13 @@ const fs = require("fs");
 const path = require("path");
 const Handlebars = require("handlebars");
 const config = require("../config/config.js");
-const mg = require("../utils/mailgunMailer");
+const mg = require("./mailgunMailer");
 const { Subscriber } = require("../database/models/subscriber");
 const { Job } = require("../database/models/job");
 const { JobAlert } = require("../database/models/jobAlert");
 
 const newsletterTemplate = fs.readFileSync(
-  path.join(__dirname, "../templates/newsletter_email.hbs"),
+  path.join(__dirname, "../templates/email/newsletter_email.hbs"),
   "utf8"
 );
 

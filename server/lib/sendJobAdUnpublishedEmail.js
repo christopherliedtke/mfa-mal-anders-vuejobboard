@@ -1,6 +1,6 @@
 const config = require("../config/config");
 const { Job } = require("../database/models/job");
-const emailService = require("../utils/nodemailer");
+const emailService = require("./nodemailer");
 
 const sendJobAdUnpublishedEmail = async () => {
   const jobs = await Job.find({

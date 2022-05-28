@@ -7,9 +7,9 @@ const errorMsg = require("../../../config/errorMsg.json");
 const jwt = require("jsonwebtoken");
 const Handlebars = require("handlebars");
 const cryptoRandomString = require("crypto-random-string");
-const emailService = require("../../../utils/nodemailer");
-const mg = require("../../../utils/mailgunMailer");
-const { hash, compare } = require("../../../utils/bcrypt");
+const emailService = require("../../../lib/nodemailer");
+const mg = require("../../../lib/mailgunMailer");
+const { hash, compare } = require("../../../lib/bcrypt");
 const {
   UserInputError,
   ApolloError,
@@ -294,7 +294,10 @@ const UserResolvers = {
       });
 
       const passwordResetTemplate = fs.readFileSync(
-        path.join(__dirname, "../../../templates/password_reset_email.hbs"),
+        path.join(
+          __dirname,
+          "../../../templates/email/password_reset_email.hbs"
+        ),
         "utf8"
       );
 
@@ -387,7 +390,7 @@ const UserResolvers = {
         const accountVerificationTemplate = fs.readFileSync(
           path.join(
             __dirname,
-            "../../../templates/account_verification_email.hbs"
+            "../../../templates/email/account_verification_email.hbs"
           ),
           "utf8"
         );
@@ -622,21 +625,6 @@ const UserResolvers = {
 
       const user = await User.findOne({
         _id: company.userId,
-      });
-      delete user.password;
-
-      return user;
-    },
-  },
-
-  Coupon: {
-    userId: async (coupon, args, context) => {
-      if (!context.user.isAdmin) {
-        return coupon.userId;
-      }
-
-      const user = await User.findOne({
-        _id: coupon.userId,
       });
       delete user.password;
 

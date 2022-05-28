@@ -2,7 +2,7 @@ const { AuthenticationError } = require("apollo-server-express");
 const sanitizeHtml = require("sanitize-html");
 const s3 = require("../../../middleware/s3");
 const config = require("../../../config/config");
-const emailService = require("../../../utils/nodemailer");
+const emailService = require("../../../lib/nodemailer");
 const { Training } = require("../../models/training");
 
 const TrainingResolvers = {

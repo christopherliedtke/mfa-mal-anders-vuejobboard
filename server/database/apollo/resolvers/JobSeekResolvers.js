@@ -5,8 +5,7 @@ const {
 } = require("apollo-server-express");
 const sanitizeHtml = require("sanitize-html");
 const s3 = require("../../../middleware/s3");
-const getLocation = require("../../../utils/geocoder");
-// const config = require("../../../config/config");
+const getLocation = require("../../../lib/geocoder");
 const { JobSeek } = require("../../models/jobSeek");
 const publicJobSeeksCache = require("../../../cache/publicJobSeeksCache");
 
