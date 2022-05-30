@@ -69,7 +69,7 @@ const UserType = gql`
     _id: ID!
     createdAt: Float
     updatedAt: Float
-    accepted: Boolean!
+    accepted: Boolean
     status: String
     role: String
     isEmployer: Boolean
@@ -78,10 +78,10 @@ const UserType = gql`
     isAdmin: Boolean
     gender: String
     title: String
-    firstName: String!
-    lastName: String!
-    email: String!
-    password: String!
+    firstName: String
+    lastName: String
+    email: String
+    password: String
     token: String
   }
 

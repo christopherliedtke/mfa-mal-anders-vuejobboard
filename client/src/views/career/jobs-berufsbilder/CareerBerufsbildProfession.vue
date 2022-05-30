@@ -8,8 +8,8 @@
       <div class="container py-3 py-lg-5">
         <div class="row">
           <div class="col-12 col-md-4 mb-4 order-2 order-lg-1">
-            <JobsBerufsbilderNav />
-            <TrainingCatalogueSmallBanner class="my-3" />
+            <NavProfessions />
+            <BannerTrainingCatalogueSmall class="my-3" />
           </div>
           <div class="col-12 col-md-8 order-1 order-lg-2 mb-5">
             <!-- eslint-disable-next-line -->
@@ -23,12 +23,12 @@
             >
 
             <div class="bg-light-shade border-radius2 shadow1 my-5 p-3 p-md-4">
-              <JobSearchSingleForm
+              <SearchWidgetJob
                 class="mb-3"
                 placeholder="Passende Stelle finden..."
                 profession=""
               />
-              <JobsTeaserContainer
+              <JobListTeaser
                 profession=""
                 :number="2"
                 :cols-md="2"
@@ -36,14 +36,14 @@
               />
             </div>
 
-            <ToJobboardBanner class="mt-5" />
+            <BannerJobboard class="mt-5" />
           </div>
         </div>
       </div>
     </article>
 
     <div class="container">
-      <RandomTrainingsContainer />
+      <TrainingListRandom />
     </div>
 
     <Head
@@ -56,21 +56,21 @@
 </template>
 
 <script>
-  import JobsBerufsbilderNav from "@/components/navs/JobsBerufsbilderNav.vue";
-  import TrainingCatalogueSmallBanner from "@/components/banners/TrainingCatalogueSmallBanner.vue";
-  import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
-  import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
-  import JobsTeaserContainer from "@/components/containers/JobsTeaserContainer.vue";
-  import JobSearchSingleForm from "@/components/forms/JobSearchSingleForm.vue";
+  import NavProfessions from "@/components/NavProfessions.vue";
+  import BannerTrainingCatalogueSmall from "@/components/BannerTrainingCatalogueSmall.vue";
+  import TrainingListRandom from "@/components/TrainingListRandom.vue";
+  import BannerJobboard from "@/components/BannerJobboard.vue";
+  import JobListTeaser from "@/components/JobListTeaser.vue";
+  import SearchWidgetJob from "@/components/SearchWidgetJob.vue";
   export default {
     name: "CareerBerufsbildProfession",
     components: {
-      JobsBerufsbilderNav,
-      TrainingCatalogueSmallBanner,
-      RandomTrainingsContainer,
-      ToJobboardBanner,
-      JobsTeaserContainer,
-      JobSearchSingleForm
+      NavProfessions,
+      BannerTrainingCatalogueSmall,
+      TrainingListRandom,
+      BannerJobboard,
+      JobListTeaser,
+      SearchWidgetJob
     },
     data() {
       return {

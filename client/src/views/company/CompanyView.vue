@@ -1,7 +1,7 @@
 <template>
   <div class="container py-4 py-lg-5">
     <div v-if="!company">
-      <CompanyPlaceholder />
+      <CompanyItemPlaceholder />
     </div>
     <div v-else>
       <article class="company position-relative">
@@ -60,7 +60,7 @@
                 {{ company.country }}
               </p>
 
-              <HereMapSingleJob
+              <MapJobSingle
                 v-if="company.geoCodeLat && company.geoCodeLng"
                 :job="{ company }"
                 class="mb-4 mb-lg-0"
@@ -109,11 +109,8 @@
       </article>
 
       <div class="bg-light-shade border-radius2 shadow1 my-5 p-3 p-md-4">
-        <JobSearchSingleForm
-          class="mb-3"
-          placeholder="Weitere Stellen finden..."
-        />
-        <JobsTeaserContainer
+        <SearchWidgetJob class="mb-3" placeholder="Weitere Stellen finden..." />
+        <JobListTeaser
           :location="{
             geoCodeLat: company.geoCodeLat,
             geoCodeLng: company.geoCodeLng
@@ -142,19 +139,19 @@
 </template>
 
 <script>
-  import HereMapSingleJob from "@/components/hereMaps/HereMapSingleJob.vue";
-  import JobCard from "@/components/ui/JobCard.vue";
-  import CompanyPlaceholder from "@/components/ui/CompanyPlaceholder.vue";
-  import JobsTeaserContainer from "@/components/containers/JobsTeaserContainer.vue";
-  import JobSearchSingleForm from "@/components/forms/JobSearchSingleForm.vue";
+  import MapJobSingle from "@/components/MapJobSingle.vue";
+  import JobCard from "@/components/JobCard.vue";
+  import CompanyItemPlaceholder from "@/components/CompanyItemPlaceholder.vue";
+  import JobListTeaser from "@/components/JobListTeaser.vue";
+  import SearchWidgetJob from "@/components/SearchWidgetJob.vue";
   export default {
     name: "CompanyView",
     components: {
-      HereMapSingleJob,
+      MapJobSingle,
       JobCard,
-      CompanyPlaceholder,
-      JobsTeaserContainer,
-      JobSearchSingleForm
+      CompanyItemPlaceholder,
+      JobListTeaser,
+      SearchWidgetJob
     },
     data() {
       return {

@@ -4,18 +4,18 @@
       {{ error }}
     </div>
     <Job v-else-if="job" :job="job" />
-    <JobPlaceholder v-else-if="!job" class="mb-5" />
+    <JobItemPlaceholder v-else-if="!job" class="mb-5" />
   </div>
 </template>
 
 <script>
-  import Job from "@/components/ui/Job.vue";
-  import JobPlaceholder from "@/components/ui/JobPlaceholder.vue";
+  import Job from "@/components/JobItem.vue";
+  import JobItemPlaceholder from "@/components/JobItemPlaceholder.vue";
   export default {
     name: "AdminJobPreview",
     components: {
       Job,
-      JobPlaceholder
+      JobItemPlaceholder
     },
     data() {
       return {

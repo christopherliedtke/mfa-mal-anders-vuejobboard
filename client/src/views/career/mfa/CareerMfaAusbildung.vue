@@ -538,11 +538,11 @@
       </div>
 
       <div class="bg-light-shade border-radius2 shadow1 my-5 p-3 p-md-4">
-        <JobSearchSingleForm class="mb-3" placeholder="Ausbildung finden..." />
-        <JobsTeaserContainer employment-type="training" />
+        <SearchWidgetJob class="mb-3" placeholder="Ausbildung finden..." />
+        <JobListTeaser employment-type="training" />
       </div>
 
-      <JobSeeksLargeBanner class="mb-4 mb-lg-5" />
+      <BannerJobSeeksLarge class="mb-4 mb-lg-5" />
 
       <h2 id="ausbildung-gehalt-danach">
         Gehalt nach der Ausbildung zur Medizinischen Fachangestellten (MFA)
@@ -591,7 +591,7 @@
         Ganz allgemein haben wir die Kompetenzbereiche und Jobmöglichkeiten für
         Medizinische Fachangestellte / ArzthelferInnen in 5 Bereiche eingeteilt:
       </p>
-      <ProfessionTypeContainer class="my-4" :col-md="6" :col-lg="4" />
+      <TheProfessionTypeList class="my-4" :col-md="6" :col-lg="4" />
       <p>
         Jeder Bereich bietet verschiedene Möglichkeiten sich zu spezialisieren
         oder im Beruf und gehaltstechnisch aufzusteigen.
@@ -637,11 +637,11 @@
         >
         nachlesen.
       </p>
-      <ToJobboardBanner class="my-5" />
-      <RandomTrainingsContainer />
+      <BannerJobboard class="my-5" />
+      <TrainingListRandom />
     </div>
 
-    <ScrollToTopBtn />
+    <ScrollTopButton />
 
     <Head
       :title="title"
@@ -657,24 +657,24 @@
 </template>
 
 <script>
-  import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
-  import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
-  import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
-  import JobsTeaserContainer from "@/components/containers/JobsTeaserContainer.vue";
-  import ProfessionTypeContainer from "@/components/containers/ProfessionTypeContainer.vue";
-  import JobSearchSingleForm from "@/components/forms/JobSearchSingleForm.vue";
-  import JobSeeksLargeBanner from "@/components/banners/JobSeeksLargeBanner.vue";
+  import ScrollTopButton from "@/components/ScrollTopButton.vue";
+  import TrainingListRandom from "@/components/TrainingListRandom.vue";
+  import BannerJobboard from "@/components/BannerJobboard.vue";
+  import JobListTeaser from "@/components/JobListTeaser.vue";
+  import TheProfessionTypeList from "@/components/TheProfessionTypeList.vue";
+  import SearchWidgetJob from "@/components/SearchWidgetJob.vue";
+  import BannerJobSeeksLarge from "@/components/BannerJobSeeksLarge.vue";
   import { scrollToHashMixin } from "@/mixins/scrollToHashMixin";
   export default {
     name: "CareerMfaAusbildung",
     components: {
-      RandomTrainingsContainer,
-      ToJobboardBanner,
-      JobsTeaserContainer,
-      ProfessionTypeContainer,
-      JobSearchSingleForm,
-      JobSeeksLargeBanner,
-      ScrollToTopBtn
+      TrainingListRandom,
+      BannerJobboard,
+      JobListTeaser,
+      TheProfessionTypeList,
+      SearchWidgetJob,
+      BannerJobSeeksLarge,
+      ScrollTopButton
     },
     mixins: [scrollToHashMixin],
     data() {

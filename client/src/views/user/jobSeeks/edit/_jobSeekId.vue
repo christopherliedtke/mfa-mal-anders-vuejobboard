@@ -10,16 +10,16 @@
       <strong>nicht automatisch veröffentlicht</strong>. Die Veröffentlichung
       kannst Du anschließend in der Übersicht vornehmen.
     </p>
-    <JobSeekForm class="mt-4" />
+    <JobSeekDataForm class="mt-4" />
   </div>
 </template>
 
 <script>
-  import JobSeekForm from "@/components/forms/JobSeekForm.vue";
+  import JobSeekDataForm from "@/components/JobSeekDataForm.vue";
   export default {
     name: "UserEditJobSeek",
     components: {
-      JobSeekForm
+      JobSeekDataForm
     }
   };
 </script>

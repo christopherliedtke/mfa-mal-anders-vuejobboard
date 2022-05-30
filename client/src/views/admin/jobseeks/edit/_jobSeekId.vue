@@ -8,16 +8,16 @@
       Bearbeite Dein Stellengesuch. Felder mit * sind Pflichtfelder. Nach dem
       Speichern ist das Stellengesuch nicht automatisch veröffentlicht.
     </p>
-    <JobSeekForm class="mt-4" />
+    <JobSeekDataForm class="mt-4" />
   </div>
 </template>
 
 <script>
-  import JobSeekForm from "@/components/forms/JobSeekForm.vue";
+  import JobSeekDataForm from "@/components/JobSeekDataForm.vue";
   export default {
     name: "AdminEditJobSeek",
     components: {
-      JobSeekForm
+      JobSeekDataForm
     }
   };
 </script>

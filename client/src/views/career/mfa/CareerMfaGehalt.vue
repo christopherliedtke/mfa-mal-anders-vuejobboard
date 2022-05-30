@@ -222,11 +222,11 @@
             Fachangestellte Dir vor allem eine gute Orientierung, um deinen
             Marktwert einzuschätzen – bezüglich Qualifikation und Erfahrung.
           </p>
-          <TrainingCatalogueSmallBanner class="my-2" />
+          <BannerTrainingCatalogueSmall class="my-2" />
         </div>
         <div class="col">
-          <Gehaltsrechner id="gehaltsrechner" class="my-4" />
-          <ToJobboardBanner
+          <TheSalaryCalculatorMfa id="gehaltsrechner" class="my-4" />
+          <BannerJobboard
             header="Jetzt passenden Job zu Deinem Gehaltswunsch finden!"
             :compact="true"
             class="my-4 mx-auto"
@@ -243,17 +243,17 @@
                 Finde in unserer Stellenbörse Deinen nächsten Job!
               </p></template
             >
-          </ToJobboardBanner>
-          <GehaltsverhandlungBanner class="mb-4" />
-          <FacebookBtn
+          </BannerJobboard>
+          <BannerSalaryNegotiation class="mb-4" />
+          <SocialButtonFacebook
             class="mb-4 mr-1"
             content="Folgen und keine Neuigkeiten verpassen"
           />
-          <FacebookShareBtn class="mb-4" />
+          <SocialButtonFacebookShare class="mb-4" />
         </div>
       </div>
 
-      <JobSeeksLargeBanner class="my-4 my-lg-5" />
+      <BannerJobSeeksLarge class="my-4 my-lg-5" />
 
       <div class="bg-light-shade border-radius1 p-4 mb-4">
         <p class="h5">Übrigens</p>
@@ -553,8 +553,8 @@
       </p>
 
       <div class="bg-light-shade border-radius2 shadow1 my-5 p-3 p-md-4">
-        <JobSearchSingleForm class="mb-3" placeholder="Neuen Job finden..." />
-        <JobsTeaserContainer profession="" />
+        <SearchWidgetJob class="mb-3" placeholder="Neuen Job finden..." />
+        <JobListTeaser profession="" />
       </div>
 
       <h3 id="berufsjahre">
@@ -925,10 +925,10 @@
 
       <div class="row mb-4">
         <div class="col">
-          <BerufsbilderBanner class="mb-3" />
+          <BannerProfessions class="mb-3" />
         </div>
         <div class="col">
-          <WeiterbildungenBanner class="mb-3" />
+          <BannerTrainingOverview class="mb-3" />
         </div>
       </div>
 
@@ -1024,7 +1024,7 @@
         >.
       </p>
 
-      <ToJobboardBanner
+      <BannerJobboard
         header="Mit neuem Job zu mehr Gehalt?"
         class="my-5 mx-auto"
       />
@@ -1577,7 +1577,7 @@
         >.
       </p>
 
-      <ToJobboardBanner class="my-5 mx-auto" />
+      <BannerJobboard class="my-5 mx-auto" />
 
       <h2>Quellen</h2>
       <p>
@@ -1610,7 +1610,7 @@
       </p>
     </div>
 
-    <ScrollToTopBtn />
+    <ScrollTopButton />
 
     <Head
       :title="`MFA Gehalt ${year} || Gehaltsrechner | Tarifvertrag`"
@@ -1624,34 +1624,34 @@
 </template>
 
 <script>
-  import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
-  import Gehaltsrechner from "@/components/containers/Gehaltsrechner.vue";
-  import JobsTeaserContainer from "@/components/containers/JobsTeaserContainer.vue";
-  import JobSearchSingleForm from "@/components/forms/JobSearchSingleForm.vue";
-  import FacebookBtn from "@/components/buttons/FacebookBtn.vue";
-  import FacebookShareBtn from "@/components/buttons/FacebookShareBtn.vue";
-  import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
-  import BerufsbilderBanner from "@/components/banners/BerufsbilderBanner.vue";
-  import WeiterbildungenBanner from "@/components/banners/WeiterbildungenBanner.vue";
-  import GehaltsverhandlungBanner from "@/components/banners/GehaltsverhandlungBanner.vue";
-  import TrainingCatalogueSmallBanner from "@/components/banners/TrainingCatalogueSmallBanner.vue";
-  import JobSeeksLargeBanner from "@/components/banners/JobSeeksLargeBanner.vue";
+  import ScrollTopButton from "@/components/ScrollTopButton.vue";
+  import TheSalaryCalculatorMfa from "@/components/TheSalaryCalculatorMfa.vue";
+  import JobListTeaser from "@/components/JobListTeaser.vue";
+  import SearchWidgetJob from "@/components/SearchWidgetJob.vue";
+  import SocialButtonFacebook from "@/components/SocialButtonFacebook.vue";
+  import SocialButtonFacebookShare from "@/components/SocialButtonFacebookShare.vue";
+  import BannerJobboard from "@/components/BannerJobboard.vue";
+  import BannerProfessions from "@/components/BannerProfessions.vue";
+  import BannerTrainingOverview from "@/components/BannerTrainingOverview.vue";
+  import BannerSalaryNegotiation from "@/components/BannerSalaryNegotiation.vue";
+  import BannerTrainingCatalogueSmall from "@/components/BannerTrainingCatalogueSmall.vue";
+  import BannerJobSeeksLarge from "@/components/BannerJobSeeksLarge.vue";
   import { scrollToHashMixin } from "@/mixins/scrollToHashMixin";
   export default {
     name: "CareerGehalt",
     components: {
-      Gehaltsrechner,
-      JobsTeaserContainer,
-      JobSearchSingleForm,
-      FacebookBtn,
-      FacebookShareBtn,
-      ToJobboardBanner,
-      BerufsbilderBanner,
-      WeiterbildungenBanner,
-      GehaltsverhandlungBanner,
-      TrainingCatalogueSmallBanner,
-      JobSeeksLargeBanner,
-      ScrollToTopBtn
+      TheSalaryCalculatorMfa,
+      JobListTeaser,
+      SearchWidgetJob,
+      SocialButtonFacebook,
+      SocialButtonFacebookShare,
+      BannerJobboard,
+      BannerProfessions,
+      BannerTrainingOverview,
+      BannerSalaryNegotiation,
+      BannerTrainingCatalogueSmall,
+      BannerJobSeeksLarge,
+      ScrollTopButton
     },
     mixins: [scrollToHashMixin],
     data() {

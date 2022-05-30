@@ -1,7 +1,7 @@
 <template>
   <div class="password-reset auth-container container">
     <h1 class="h2 text-center">{{ title }}</h1>
-    <PasswordResetForm />
+    <AuthPasswordResetForm />
 
     <Head
       :title="title"
@@ -12,11 +12,11 @@
 </template>
 
 <script>
-  import PasswordResetForm from "@/components/forms/PasswordResetForm.vue";
+  import AuthPasswordResetForm from "@/components/AuthPasswordResetForm.vue";
   export default {
     name: "AuthPasswordReset",
     components: {
-      PasswordResetForm
+      AuthPasswordResetForm
     },
     data() {
       return {

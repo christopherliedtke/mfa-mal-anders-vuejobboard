@@ -120,9 +120,9 @@
             </div>
           </div>
           <div>
-            <FacebookShareBtn class="mb-2 mb-lg-0 mr-2" />
-            <TwitterShareBtn class="mb-2 mb-lg-0 mr-2" />
-            <WhatsAppShareBtn class="mb-2 mb-lg-0" />
+            <SocialButtonFacebookShare class="mb-2 mb-lg-0 mr-2" />
+            <SocialButtonTwitterShare class="mb-2 mb-lg-0 mr-2" />
+            <SocialButtonWhatsAppShare class="mb-2 mb-lg-0" />
           </div>
           <div
             v-if="article.tags.some(tag => tag == 'Erfahrungsbericht')"
@@ -137,8 +137,8 @@
       </div>
     </article>
     <div class="container">
-      <JobSeeksLargeBanner class="my-4 my-lg-5" />
-      <RandomArticlesContainer />
+      <BannerJobSeeksLarge class="my-4 my-lg-5" />
+      <ArticleListRandom />
     </div>
 
     <Head
@@ -148,26 +148,23 @@
       :img="article.featuredImage ? article.featuredImage.sourceUrl : ''"
       :script="snippet"
     />
-    <ArticleStructuredData :article="article" />
   </div>
 </template>
 
 <script>
-  import ArticleStructuredData from "@/components/utils/ArticleStructuredData.vue";
-  import RandomArticlesContainer from "@/components/containers/RandomArticlesContainer.vue";
-  import JobSeeksLargeBanner from "@/components/banners/JobSeeksLargeBanner.vue";
-  import FacebookShareBtn from "@/components/buttons/FacebookShareBtn.vue";
-  import TwitterShareBtn from "@/components/buttons/TwitterShareBtn.vue";
-  import WhatsAppShareBtn from "@/components/buttons/WhatsAppShareBtn.vue";
+  import ArticleListRandom from "@/components/ArticleListRandom.vue";
+  import BannerJobSeeksLarge from "@/components/BannerJobSeeksLarge.vue";
+  import SocialButtonFacebookShare from "@/components/SocialButtonFacebookShare.vue";
+  import SocialButtonTwitterShare from "@/components/SocialButtonTwitterShare.vue";
+  import SocialButtonWhatsAppShare from "@/components/SocialButtonWhatsAppShare.vue";
   export default {
     name: "Article",
     components: {
-      ArticleStructuredData,
-      RandomArticlesContainer,
-      JobSeeksLargeBanner,
-      FacebookShareBtn,
-      TwitterShareBtn,
-      WhatsAppShareBtn
+      ArticleListRandom,
+      BannerJobSeeksLarge,
+      SocialButtonFacebookShare,
+      SocialButtonTwitterShare,
+      SocialButtonWhatsAppShare
     },
     data() {
       return {
@@ -217,6 +214,31 @@
             }`
           },
           {
+            type: "application/ld+json",
+            id: "article-structured-data",
+            inner: JSON.stringify({
+              "@context": "http://schema.org",
+              "@type": "Article",
+              "headline": this.article.title,
+              "author": {
+                "@type": "Person",
+                "name": `${this.article.author.firstName} ${this.article.author.lastName}`,
+                "image": this.article.author.avataUrl || ""
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "MFA mal anders",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "/img/MfaMalAnders_logo_circle_bgdark_white.png"
+                }
+              },
+              "image": this.article.featuredImage.sourceUrl,
+              "datePublished": this.article.date,
+              "dateModified": this.article.modified
+            })
+          },
+          {
             id: "canonical",
             rel: "canonical",
             href: `${this.$config.website.url}/blog/artikel/${this.$route.params.slug}`
@@ -227,6 +249,9 @@
     watch: {
       async "$route.params.slug"() {
         await this.getArticle();
+      },
+      "article"() {
+        this.$emit("updateHead");
       }
     },
     async created() {

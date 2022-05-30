@@ -1,16 +1,16 @@
 <template>
   <div class="edit-payment container py-5">
     <h2>Zahlung bearbeiten</h2>
-    <PaymentForm />
+    <PaymentDataForm />
   </div>
 </template>
 
 <script>
-  import PaymentForm from "@/components/forms/PaymentForm.vue";
+  import PaymentDataForm from "@/components/PaymentDataForm.vue";
   export default {
     name: "AdminEditPayment",
     components: {
-      PaymentForm
+      PaymentDataForm
     }
   };
 </script>

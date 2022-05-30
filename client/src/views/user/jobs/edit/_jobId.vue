@@ -39,7 +39,7 @@
         Stellenanzeige zusammengestellt.
       </BPopover>
     </p>
-    <JobForm api-jobs-schema="private"></JobForm>
+    <JobDataForm api-jobs-schema="private"></JobDataForm>
   </div>
 </template>
 
@@ -47,11 +47,11 @@
   import { BPopover } from "bootstrap-vue";
   import Vue from "vue";
   Vue.component("BPopover", BPopover);
-  import JobForm from "@/components/forms/JobForm.vue";
+  import JobDataForm from "@/components/JobDataForm.vue";
   export default {
     name: "UserEditJob",
     components: {
-      JobForm
+      JobDataForm
     }
   };
 </script>

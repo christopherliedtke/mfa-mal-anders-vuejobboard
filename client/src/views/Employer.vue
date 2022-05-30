@@ -363,7 +363,7 @@
       <h3 class="display-4 text-center bold mb-4 mb-lg-5">
         Was unsere Kunden sagen
       </h3>
-      <TestimonialsContainer />
+      <TheTestimonials />
     </div>
 
     <div class="container-fluid bg-light-shade py-4 py-lg-5 px-0">
@@ -441,14 +441,14 @@
       <h2 class="display-4 text-center bold">
         Wir kooperieren mit
       </h2>
-      <CooperationPartners />
+      <TheCooperationPartners />
     </div>
 
     <div id="numbers-and-facts2" class="container mb-5 py-md-5">
       <h2 class="h1 text-center bold mb-4">
         Ein paar Zahlen und Fakten
       </h2>
-      <NumbersAndFacts class="mt-5" />
+      <TheNumbersAndFacts class="mt-5" />
     </div>
 
     <div
@@ -655,7 +655,7 @@
         >
       </div>
 
-      <JobAdTipsContainer class="my-4" />
+      <TheJobAdTipsList class="my-4" />
     </div>
 
     <div id="faq" class="container mb-5">
@@ -822,7 +822,7 @@
       </div>
     </div>
 
-    <ScrollToTopBtn />
+    <ScrollTopButton />
 
     <Head
       title="MFA & ZFA finden – Stellenanzeige schalten!"
@@ -834,24 +834,24 @@
 </template>
 
 <script>
-  import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
-  import JobAdTipsContainer from "@/components/containers/JobAdTipsContainer.vue";
-  import NumbersAndFacts from "@/components/containers/NumbersAndFacts.vue";
-  import CooperationPartners from "@/components/containers/CooperationPartners.vue";
-  import TestimonialsContainer from "@/components/containers/TestimonialsContainer.vue";
-  import PricingCard from "@/components/ui/PricingCard.vue";
-  import PricingCardPlaceholder from "@/components/ui/PricingCardPlaceholder.vue";
+  import ScrollTopButton from "@/components/ScrollTopButton.vue";
+  import TheJobAdTipsList from "@/components/TheJobAdTipsList.vue";
+  import TheNumbersAndFacts from "@/components/TheNumbersAndFacts.vue";
+  import TheCooperationPartners from "@/components/TheCooperationPartners.vue";
+  import TheTestimonials from "@/components/TheTestimonials.vue";
+  import PricingCard from "@/components/PricingCard.vue";
+  import PricingCardPlaceholder from "@/components/PricingCardPlaceholder.vue";
   import { scrollToHashMixin } from "@/mixins/scrollToHashMixin";
   export default {
     name: "Employer",
     components: {
-      JobAdTipsContainer,
-      NumbersAndFacts,
-      CooperationPartners,
-      TestimonialsContainer,
+      TheJobAdTipsList,
+      TheNumbersAndFacts,
+      TheCooperationPartners,
+      TheTestimonials,
       PricingCard,
       PricingCardPlaceholder,
-      ScrollToTopBtn
+      ScrollTopButton
     },
     mixins: [scrollToHashMixin],
     data() {

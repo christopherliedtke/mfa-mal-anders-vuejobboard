@@ -281,10 +281,14 @@
           </div>
 
           <div class="d-none d-lg-block my-5">
-            <JobSeeksSmallBanner />
-            <FacebookBtn class="mt-3 mr-1" content="Facebook" size="sm" />
-            <InstagramBtn class="mt-3 mr-1" content="" size="sm" />
-            <TwitterBtn class="mt-3 mr-1" content="" size="sm" />
+            <BannerJobSeeksSmall />
+            <SocialButtonFacebook
+              class="mt-3 mr-1"
+              content="Facebook"
+              size="sm"
+            />
+            <SocialButtonInstagram class="mt-3 mr-1" content="" size="sm" />
+            <SocialButtonTwitter class="mt-3 mr-1" content="" size="sm" />
           </div>
         </div>
 
@@ -356,11 +360,11 @@
         </div>
       </div>
 
-      <JobSeeksLargeBanner class="mb-4 mb-lg-5" />
-      <RandomArticlesContainer />
+      <BannerJobSeeksLarge class="mb-4 mb-lg-5" />
+      <ArticleListRandom />
     </div>
 
-    <ScrollToTopBtn />
+    <ScrollTopButton />
 
     <Head
       :title="
@@ -380,36 +384,36 @@
 </template>
 
 <script>
-  import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
+  import ScrollTopButton from "@/components/ScrollTopButton.vue";
   import Vue from "vue";
   import { BSpinner, BCollapse } from "bootstrap-vue";
   Vue.component("BSpinner", BSpinner);
   Vue.component("BCollapse", BCollapse);
 
   import { employmentTypeOptions } from "@/config/formDataConfig.json";
-  import textToSlug from "@/utils/textToSlug.js";
+  import textToSlug from "@/helpers/textToSlug.js";
 
-  import JobSeekCard from "@/components/ui/JobSeekCard.vue";
-  import JobSeekCardPlaceholder from "@/components/ui/JobSeekCardPlaceholder.vue";
-  import RandomArticlesContainer from "../../components/containers/RandomArticlesContainer.vue";
-  import JobSeeksLargeBanner from "@/components/banners/JobSeeksLargeBanner.vue";
-  import JobSeeksSmallBanner from "@/components/banners/JobSeeksSmallBanner.vue";
-  import FacebookBtn from "@/components/buttons/FacebookBtn.vue";
-  import InstagramBtn from "@/components/buttons/InstagramBtn.vue";
-  import TwitterBtn from "@/components/buttons/TwitterBtn.vue";
+  import JobSeekCard from "@/components/JobSeekCard.vue";
+  import JobSeekCardPlaceholder from "@/components/JobSeekCardPlaceholder.vue";
+  import ArticleListRandom from "../../components/ArticleListRandom.vue";
+  import BannerJobSeeksLarge from "@/components/BannerJobSeeksLarge.vue";
+  import BannerJobSeeksSmall from "@/components/BannerJobSeeksSmall.vue";
+  import SocialButtonFacebook from "@/components/SocialButtonFacebook.vue";
+  import SocialButtonInstagram from "@/components/SocialButtonInstagram.vue";
+  import SocialButtonTwitter from "@/components/SocialButtonTwitter.vue";
 
   export default {
     name: "JobSeekBoardHome",
     components: {
       JobSeekCard,
       JobSeekCardPlaceholder,
-      ScrollToTopBtn,
-      RandomArticlesContainer,
-      JobSeeksLargeBanner,
-      JobSeeksSmallBanner,
-      FacebookBtn,
-      InstagramBtn,
-      TwitterBtn
+      ScrollTopButton,
+      ArticleListRandom,
+      BannerJobSeeksLarge,
+      BannerJobSeeksSmall,
+      SocialButtonFacebook,
+      SocialButtonInstagram,
+      SocialButtonTwitter
     },
     data() {
       return {

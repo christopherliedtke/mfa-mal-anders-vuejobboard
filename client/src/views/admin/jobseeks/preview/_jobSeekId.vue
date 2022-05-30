@@ -6,23 +6,23 @@
         <JobSeekCardPlaceholder v-if="!jobSeek" />
       </div>
     </div>
-    <JobSeek :job-seek="jobSeek" :link-disabled="true" class="mt-5" />
-    <JobSeekPlaceholder v-if="!jobSeek" class="mt-5" />
+    <JobSeekItem :job-seek="jobSeek" :link-disabled="true" class="mt-5" />
+    <JobSeekItemPlaceholder v-if="!jobSeek" class="mt-5" />
   </div>
 </template>
 
 <script>
-  import JobSeekCard from "@/components/ui/JobSeekCard.vue";
-  import JobSeekCardPlaceholder from "@/components/ui/JobSeekCardPlaceholder.vue";
-  import JobSeek from "@/components/ui/JobSeek.vue";
-  import JobSeekPlaceholder from "@/components/ui/JobSeekPlaceholder.vue";
+  import JobSeekCard from "@/components/JobSeekCard.vue";
+  import JobSeekCardPlaceholder from "@/components/JobSeekCardPlaceholder.vue";
+  import JobSeekItem from "@/components/JobSeekItem.vue";
+  import JobSeekItemPlaceholder from "@/components/JobSeekItemPlaceholder.vue";
   export default {
     name: "AdminJobSeekPreview",
     components: {
       JobSeekCard,
       JobSeekCardPlaceholder,
-      JobSeek,
-      JobSeekPlaceholder
+      JobSeekItem,
+      JobSeekItemPlaceholder
     },
     data() {
       return {

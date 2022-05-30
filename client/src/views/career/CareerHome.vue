@@ -254,7 +254,7 @@
         </li>
       </ul>
       <div class="d-flex justify-content-center my-5">
-        <ToJobboardBanner />
+        <BannerJobboard />
       </div>
 
       <h3 class="my-4">Bock auf Veränderung?</h3>
@@ -292,10 +292,10 @@
       </p>
       <div class="row my-5">
         <div class="col my-2">
-          <WeiterbildungenBanner />
+          <BannerTrainingOverview />
         </div>
         <div class="col my-2">
-          <BerufsbilderBanner />
+          <BannerProfessions />
         </div>
       </div>
 
@@ -385,7 +385,7 @@
           {{ $config.website.contactEmail }}
         </b-link>
       </div>
-      <RandomTrainingsContainer class="mt-5" />
+      <TrainingListRandom class="mt-5" />
     </div>
     <Head
       :title="title"
@@ -397,17 +397,17 @@
 </template>
 
 <script>
-  import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
-  import WeiterbildungenBanner from "@/components/banners/WeiterbildungenBanner.vue";
-  import BerufsbilderBanner from "@/components/banners/BerufsbilderBanner.vue";
-  import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
+  import BannerJobboard from "@/components/BannerJobboard.vue";
+  import BannerTrainingOverview from "@/components/BannerTrainingOverview.vue";
+  import BannerProfessions from "@/components/BannerProfessions.vue";
+  import TrainingListRandom from "@/components/TrainingListRandom.vue";
   export default {
     name: "CareerHome",
     components: {
-      ToJobboardBanner,
-      WeiterbildungenBanner,
-      BerufsbilderBanner,
-      RandomTrainingsContainer
+      BannerJobboard,
+      BannerTrainingOverview,
+      BannerProfessions,
+      TrainingListRandom
     },
     data() {
       return {

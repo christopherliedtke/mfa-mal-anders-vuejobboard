@@ -1,4 +1,4 @@
-import axios from "@/utils/axios";
+import axios from "@/services/axios";
 import router from "@/router";
 
 const state = {

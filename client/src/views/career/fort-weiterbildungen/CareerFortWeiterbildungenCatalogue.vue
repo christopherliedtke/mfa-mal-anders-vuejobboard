@@ -170,7 +170,7 @@
             >
           </div>
           <div class="d-none d-lg-block">
-            <SgdBanner class="mt-4" />
+            <BannerSponsoredSgd class="mt-4" />
           </div>
           <div class="small text-right mt-3 pt-1">
             <b-link
@@ -198,14 +198,14 @@
           </div>
 
           <div class="mt-5">
-            <ToJobboardBanner class="mt-3" />
-            <BerufsbilderBanner class="my-3" />
+            <BannerJobboard class="mt-3" />
+            <BannerProfessions class="my-3" />
           </div>
         </div>
       </div>
     </div>
 
-    <ScrollToTopBtn />
+    <ScrollTopButton />
 
     <Head
       title="Fortbildungskatalog speziell für MFA & ZFA"
@@ -219,28 +219,28 @@
 </template>
 
 <script>
-  import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
+  import ScrollTopButton from "@/components/ScrollTopButton.vue";
   import Vue from "vue";
   import { BSpinner } from "bootstrap-vue";
   Vue.component("BSpinner", BSpinner);
-  import TrainingCatalogueCard from "@/components/ui/TrainingCatalogueCard.vue";
+  import TrainingCatalogueCard from "@/components/TrainingCatalogueCard.vue";
   import {
     companyStateOptions,
     professionOptions,
     typeOptions,
     eventTypeOptions
   } from "@/config/formDataConfig.json";
-  import SgdBanner from "@/components/banners/SgdBanner.vue";
-  import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
-  import BerufsbilderBanner from "@/components/banners/BerufsbilderBanner.vue";
+  import BannerSponsoredSgd from "@/components/BannerSponsoredSgd.vue";
+  import BannerJobboard from "@/components/BannerJobboard.vue";
+  import BannerProfessions from "@/components/BannerProfessions.vue";
   export default {
     name: "CareerFortWeiterbildungenCatalogue",
     components: {
       TrainingCatalogueCard,
-      SgdBanner,
-      ToJobboardBanner,
-      BerufsbilderBanner,
-      ScrollToTopBtn
+      BannerSponsoredSgd,
+      BannerJobboard,
+      BannerProfessions,
+      ScrollTopButton
     },
     data() {
       return {

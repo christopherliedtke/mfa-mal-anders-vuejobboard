@@ -46,13 +46,10 @@
         }
       "
     >
-      <template #cell(user)="row">
-        <div v-if="row.item.userId">
-          {{ row.item.userId.lastName + ", " + row.item.userId.firstName }}
-          <a :href="`mailto:${row.item.userId.email}`">
-            {{ row.item.userId.email }}</a
-          >
-        </div>
+      <template #cell(userId)="row">
+        <b-link :to="`/admin/users?s=${row.item.userId._id}`">
+          {{ row.item.userId._id }}
+        </b-link>
       </template>
       <template #cell(createdAt)="row">
         {{ new Date(row.value).toLocaleString() }}
@@ -144,12 +141,12 @@
       Oh, something went wrong. Please try again later.
     </b-alert>
 
-    <AdminNav />
+    <NavAdmin />
   </div>
 </template>
 
 <script>
-  import AdminNav from "@/components/navs/AdminNav.vue";
+  import NavAdmin from "@/components/NavAdmin.vue";
   import Vue from "vue";
   import { BModal, VBModal, BTable } from "bootstrap-vue";
   Vue.component("BModal", BModal);
@@ -158,7 +155,7 @@
   export default {
     name: "AdminCompanies",
     components: {
-      AdminNav
+      NavAdmin
     },
     data() {
       return {
@@ -202,13 +199,8 @@
             sortable: false
           },
           {
-            key: "userId._id",
+            key: "userId",
             label: "UserID",
-            sortable: false
-          },
-          {
-            key: "user",
-            label: "User",
             sortable: false
           },
           {
@@ -243,10 +235,6 @@
                     country
                     userId {
                       _id
-                      createdAt
-                      firstName
-                      lastName
-                      email
                     }
                     jobs {
                       _id
@@ -274,10 +262,6 @@
 
         this.$store.dispatch("setOverlay", false);
       },
-      // showDeleteCompanyModal(company) {
-      //   this.companyToDelete = company;
-      //   // this.$bvModal.show("deleteCompanyModal");
-      // },
       async deleteCompany(companyId) {
         try {
           const response = await this.$axios.post("/graphql", {

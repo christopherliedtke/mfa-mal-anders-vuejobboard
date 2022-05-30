@@ -340,8 +340,8 @@
 </template>
 
 <script>
-  import PricingCard from "@/components/ui/PricingCard.vue";
-  import PricingCardPlaceholder from "@/components/ui/PricingCardPlaceholder.vue";
+  import PricingCard from "@/components/PricingCard.vue";
+  import PricingCardPlaceholder from "@/components/PricingCardPlaceholder.vue";
   import { checkoutCountryOptions } from "@/config/formDataConfig.json";
   export default {
     name: "UserCheckoutJob",

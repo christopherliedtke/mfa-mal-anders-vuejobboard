@@ -7,16 +7,16 @@
       >
     </div>
 
-    <AdminNav />
+    <NavAdmin />
   </div>
 </template>
 
 <script>
-  import AdminNav from "@/components/navs/AdminNav.vue";
+  import NavAdmin from "@/components/NavAdmin.vue";
   export default {
     name: "DataAnalyticsDashboard",
     components: {
-      AdminNav
+      NavAdmin
     },
     methods: {
       async flushWpContentCache() {

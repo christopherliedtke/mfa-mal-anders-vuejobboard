@@ -54,7 +54,7 @@
 </template>
 
 <script>
-  import ArticleCard from "@/components/ui/ArticleCard.vue";
+  import ArticleCard from "@/components/ArticleCard.vue";
   export default {
     name: "Linktree",
     components: {

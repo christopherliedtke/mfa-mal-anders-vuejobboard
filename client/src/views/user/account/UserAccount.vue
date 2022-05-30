@@ -1,28 +1,28 @@
 <template>
   <div class="dashboard container py-3 py-lg-5">
-    <UserNav class="mb-3" />
+    <NavUser class="mb-3" />
 
     <h3>Mein Account</h3>
     <p>
       Hier können Sie Ihre Account-Daten ändern bzw. Ihren Account löschen.
     </p>
-    <AccountDataForm api-users-schema="private" />
-    <DeleteAccountButton />
+    <UserDataForm api-users-schema="private" />
+    <UserDeleteButton />
 
     <Head title="Mein Account" desc="" img="" />
   </div>
 </template>
 
 <script>
-  import DeleteAccountButton from "@/components/buttons/DeleteAccountButton.vue";
-  import AccountDataForm from "@/components/forms/AccountDataForm.vue";
-  import UserNav from "@/components/navs/UserNav.vue";
+  import UserDeleteButton from "@/components/UserDeleteButton.vue";
+  import UserDataForm from "@/components/UserDataForm.vue";
+  import NavUser from "@/components/NavUser.vue";
   export default {
     name: "MyAccount",
     components: {
-      DeleteAccountButton,
-      AccountDataForm,
-      UserNav
+      UserDeleteButton,
+      UserDataForm,
+      NavUser
     }
   };
 </script>

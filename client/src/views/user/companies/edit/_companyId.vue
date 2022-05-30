@@ -4,16 +4,16 @@
       Unternehmen
       {{ $route.params.companyId === "new" ? "erstellen" : "bearbeiten" }}
     </h2>
-    <CompanyForm api-jobs-schema="private"></CompanyForm>
+    <CompanyDataForm api-jobs-schema="private"></CompanyDataForm>
   </div>
 </template>
 
 <script>
-  import CompanyForm from "@/components/forms/CompanyForm.vue";
+  import CompanyDataForm from "@/components/CompanyDataForm.vue";
   export default {
     name: "UserEditCompany",
     components: {
-      CompanyForm
+      CompanyDataForm
     }
   };
 </script>

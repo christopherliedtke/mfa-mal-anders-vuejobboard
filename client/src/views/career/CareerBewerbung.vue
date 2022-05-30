@@ -211,7 +211,7 @@
         anhängst.
       </p>
 
-      <JobSeeksLargeBanner class="my-4 my-lg-5" />
+      <BannerJobSeeksLarge class="my-4 my-lg-5" />
 
       <h2 id="anschreiben" class="my-4">
         <span class="display-4 bold">Bewerbungs&shy;schreiben</span> <br />
@@ -513,11 +513,11 @@
         >
       </div>
 
-      <ToJobboardBanner class="my-5 mx-auto" />
-      <RandomArticlesContainer class="my-5 mx-auto" />
+      <BannerJobboard class="my-5 mx-auto" />
+      <ArticleListRandom class="my-5 mx-auto" />
     </div>
 
-    <ScrollToTopBtn />
+    <ScrollTopButton />
 
     <Head
       :title="title + ' | Tipps | Beispiele | Vorlage'"
@@ -529,18 +529,18 @@
 </template>
 
 <script>
-  import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
-  import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
-  import RandomArticlesContainer from "@/components/containers/RandomArticlesContainer.vue";
-  import JobSeeksLargeBanner from "@/components/banners/JobSeeksLargeBanner.vue";
+  import ScrollTopButton from "@/components/ScrollTopButton.vue";
+  import BannerJobboard from "@/components/BannerJobboard.vue";
+  import ArticleListRandom from "@/components/ArticleListRandom.vue";
+  import BannerJobSeeksLarge from "@/components/BannerJobSeeksLarge.vue";
   import { scrollToHashMixin } from "@/mixins/scrollToHashMixin";
   export default {
     name: "CareerBewerbung",
     components: {
-      ToJobboardBanner,
-      RandomArticlesContainer,
-      JobSeeksLargeBanner,
-      ScrollToTopBtn
+      BannerJobboard,
+      ArticleListRandom,
+      BannerJobSeeksLarge,
+      ScrollTopButton
     },
     mixins: [scrollToHashMixin],
     data() {

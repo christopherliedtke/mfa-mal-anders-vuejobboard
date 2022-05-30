@@ -5,16 +5,16 @@
       {{ $route.params.trainingId === "new" ? "erstellen" : "bearbeiten" }}
     </h2>
     <p>Bearbeiten Sie hier Ihre Fortbildung.</p>
-    <TrainingForm />
+    <TrainingDataForm />
   </div>
 </template>
 
 <script>
-  import TrainingForm from "@/components/forms/TrainingForm.vue";
+  import TrainingDataForm from "@/components/TrainingDataForm.vue";
   export default {
     name: "UserEditTraining",
     components: {
-      TrainingForm
+      TrainingDataForm
     }
   };
 </script>

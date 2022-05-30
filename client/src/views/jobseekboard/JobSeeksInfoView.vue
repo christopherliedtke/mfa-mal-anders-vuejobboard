@@ -473,7 +473,7 @@
 </template>
 
 <script>
-  import JobSeekCard from "@/components/ui/JobSeekCard.vue";
+  import JobSeekCard from "@/components/JobSeekCard.vue";
   export default {
     name: "JobSeeksInfoView",
     components: {

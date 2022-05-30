@@ -27,8 +27,8 @@
 </template>
 
 <script>
-  import ArticleCard from "@/components/ui/ArticleCard.vue";
-  import ArticleCardPlaceholder from "@/components/ui/ArticleCardPlaceholder.vue";
+  import ArticleCard from "@/components/ArticleCard.vue";
+  import ArticleCardPlaceholder from "@/components/ArticleCardPlaceholder.vue";
   export default {
     name: "Blog",
     components: {

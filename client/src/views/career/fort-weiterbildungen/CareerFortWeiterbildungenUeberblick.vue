@@ -10,11 +10,11 @@
     <div class="container py-3 py-lg-5">
       <div class="row">
         <div class="col-12 col-md-4 mb-4">
-          <FortWeiterbildungenNav />
+          <NavTrainings />
         </div>
         <div class="col-12 col-md-8 mb-5">
-          <RandomTrainingsContainer :number="100" class="" />
-          <TrainingCatalogueLargeBanner />
+          <TrainingListRandom :number="100" class="" />
+          <BannerTrainingCatalogueLarge />
         </div>
       </div>
     </div>
@@ -30,15 +30,15 @@
 </template>
 
 <script>
-  import FortWeiterbildungenNav from "@/components/navs/FortWeiterbildungenNav.vue";
-  import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
-  import TrainingCatalogueLargeBanner from "@/components/banners/TrainingCatalogueLargeBanner.vue";
+  import NavTrainings from "@/components/NavTrainings.vue";
+  import TrainingListRandom from "@/components/TrainingListRandom.vue";
+  import BannerTrainingCatalogueLarge from "@/components/BannerTrainingCatalogueLarge.vue";
   export default {
     name: "CareerFortWeiterbildungUeberblick",
     components: {
-      FortWeiterbildungenNav,
-      RandomTrainingsContainer,
-      TrainingCatalogueLargeBanner
+      NavTrainings,
+      TrainingListRandom,
+      BannerTrainingCatalogueLarge
     },
     data() {
       return {

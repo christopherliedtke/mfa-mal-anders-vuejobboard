@@ -1,7 +1,7 @@
 <template>
   <div class="register auth-container container position-relative">
     <div class="bg-logo" style="opacity: 0.025"></div>
-    <RegisterForm class="position-relative">
+    <AuthRegisterForm class="position-relative">
       <template #intro>
         <h2 class="h1 bold text-center mt-3 mt-lg-4 mb-0">
           {{
@@ -118,7 +118,7 @@
           </p>
         </div>
       </template>
-    </RegisterForm>
+    </AuthRegisterForm>
 
     <Head
       :title="title"
@@ -129,11 +129,11 @@
 </template>
 
 <script>
-  import RegisterForm from "@/components/forms/RegisterForm.vue";
+  import AuthRegisterForm from "@/components/AuthRegisterForm.vue";
   export default {
     name: "AuthRegister",
     components: {
-      RegisterForm
+      AuthRegisterForm
     },
     data() {
       return {

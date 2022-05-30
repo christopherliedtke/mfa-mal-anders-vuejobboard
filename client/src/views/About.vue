@@ -62,7 +62,7 @@
       <p class="lead text-right">
         Ein paar Zahlen & Fakten zu <em>MFA&nbsp;mal&nbsp;anders</em>
       </p>
-      <NumbersAndFacts class="my-5" />
+      <TheNumbersAndFacts class="my-5" />
     </div>
 
     <div class="container my-5 " style="max-width: 1000px">
@@ -81,7 +81,7 @@
         <b-link class="bold" to="/kontakt">Kontaktformular</b-link>.
       </p>
 
-      <CooperationPartners />
+      <TheCooperationPartners />
     </div>
 
     <div class="container my-5 " style="max-width: 1000px">
@@ -298,13 +298,13 @@
 </template>
 
 <script>
-  import NumbersAndFacts from "@/components/containers/NumbersAndFacts.vue";
-  import CooperationPartners from "@/components/containers/CooperationPartners.vue";
+  import TheNumbersAndFacts from "@/components/TheNumbersAndFacts.vue";
+  import TheCooperationPartners from "@/components/TheCooperationPartners.vue";
   export default {
     name: "Ueber",
     components: {
-      NumbersAndFacts,
-      CooperationPartners
+      TheNumbersAndFacts,
+      TheCooperationPartners
     },
     data() {
       return {

@@ -12,6 +12,7 @@ const { Job } = require("../../models/job");
 const { Company } = require("../../models/company");
 const internalJobsCache = require("../../../cache/internalJobsCache");
 const textToSlug = require("../../../lib/textToSlug");
+const mongoose = require("mongoose");
 
 const JobResolvers = {
   Query: {
@@ -161,6 +162,10 @@ const JobResolvers = {
           "userId",
           "_id createdAt gender title firstName lastName email isAdmin"
         );
+      // .populate(
+      //   "payment",
+      //   "_id status amount paidAt paymentExpiresAt invoiceNo"
+      // );
 
       return jobs;
     },
@@ -351,6 +356,13 @@ const JobResolvers = {
 
       if (!payment.job) {
         return null;
+      }
+
+      if (
+        payment.job instanceof Object &&
+        payment.job instanceof mongoose.Types.ObjectId === false
+      ) {
+        return payment.job;
       }
 
       const job = await Job.findOne({ _id: payment.job });

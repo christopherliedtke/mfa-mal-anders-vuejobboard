@@ -27,12 +27,12 @@
             >.
           </p>
         </div>
-        <JobSearchSingleForm />
+        <SearchWidgetJob />
       </div>
     </div>
 
     <div class="container mt-4 mt-lg-0">
-      <JobsTeaserContainer />
+      <JobListTeaser />
     </div>
 
     <div class="container my-3 my-md-5 py-3 py-md-5">
@@ -256,7 +256,7 @@
     </div>
 
     <div class="container my-5 py-0 py-md-5 d-flex justify-content-center">
-      <StellenanzeigeSchaltenBanner />
+      <BannerJobPublish />
     </div>
 
     <div class="container">
@@ -291,7 +291,7 @@
           >
         </div>
         <div class="col-12 col-md-8">
-          <RandomTrainingsContainer :number="2" />
+          <TrainingListRandom :number="2" />
         </div>
       </div>
     </div>
@@ -303,7 +303,7 @@
           Rund um Praxisalltag, Tipps zu Weiterbildung und Karriere,
           Persönlichkeitsentwicklung und vieles mehr...
         </h3>
-        <RandomArticlesContainer />
+        <ArticleListRandom />
       </div>
     </div>
 
@@ -317,19 +317,19 @@
 </template>
 
 <script>
-  import StellenanzeigeSchaltenBanner from "@/components/banners/StellenanzeigeSchaltenBanner.vue";
-  import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
-  import RandomArticlesContainer from "@/components/containers/RandomArticlesContainer.vue";
-  import JobsTeaserContainer from "@/components/containers/JobsTeaserContainer.vue";
-  import JobSearchSingleForm from "@/components/forms/JobSearchSingleForm.vue";
+  import BannerJobPublish from "@/components//BannerJobPublish.vue";
+  import TrainingListRandom from "@/components/TrainingListRandom.vue";
+  import ArticleListRandom from "@/components/ArticleListRandom.vue";
+  import JobListTeaser from "@/components/JobListTeaser.vue";
+  import SearchWidgetJob from "@/components/SearchWidgetJob.vue";
   export default {
     name: "Home",
     components: {
-      StellenanzeigeSchaltenBanner,
-      RandomTrainingsContainer,
-      RandomArticlesContainer,
-      JobsTeaserContainer,
-      JobSearchSingleForm
+      BannerJobPublish,
+      TrainingListRandom,
+      ArticleListRandom,
+      JobListTeaser,
+      SearchWidgetJob
     },
     data() {
       return {

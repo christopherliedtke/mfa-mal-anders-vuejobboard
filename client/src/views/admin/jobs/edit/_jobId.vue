@@ -1,16 +1,16 @@
 <template>
   <div class="edit-job container py-5">
     <h2>Stellenanzeige bearbeiten</h2>
-    <JobForm api-jobs-schema="admin"></JobForm>
+    <JobDataForm api-jobs-schema="admin"></JobDataForm>
   </div>
 </template>
 
 <script>
-  import JobForm from "@/components/forms/JobForm.vue";
+  import JobDataForm from "@/components/JobDataForm.vue";
   export default {
     name: "AdminEditJob",
     components: {
-      JobForm
+      JobDataForm
     }
   };
 </script>

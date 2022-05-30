@@ -21,7 +21,7 @@
         Dashboard</b-button
       >
     </div>
-    <PaymentOverviewChart
+    <ChartPaymentOverview
       :payments="
         payments
           .filter(
@@ -33,22 +33,22 @@
       "
       class="mb-4"
     />
-    <NoOfJobsChart :jobs="jobs" class="mb-4" />
+    <ChartJobOverview :jobs="jobs" class="mb-4" />
 
-    <AdminNav />
+    <NavAdmin />
   </div>
 </template>
 
 <script>
-  import PaymentOverviewChart from "@/components/charts/PaymentOverviewChart.vue";
-  import NoOfJobsChart from "@/components/charts/NoOfJobsChart.vue";
-  import AdminNav from "@/components/navs/AdminNav.vue";
+  import ChartPaymentOverview from "@/components/ChartPaymentOverview.vue";
+  import ChartJobOverview from "@/components/ChartJobOverview.vue";
+  import NavAdmin from "@/components/NavAdmin.vue";
   export default {
     name: "DataAnalyticsDashboard",
     components: {
-      PaymentOverviewChart,
-      NoOfJobsChart,
-      AdminNav
+      ChartPaymentOverview,
+      ChartJobOverview,
+      NavAdmin
     },
     data() {
       return {

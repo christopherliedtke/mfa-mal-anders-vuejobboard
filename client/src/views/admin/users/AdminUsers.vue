@@ -224,12 +224,12 @@
       Oh, something went wrong. Please try again later.
     </b-alert>
 
-    <AdminNav />
+    <NavAdmin />
   </div>
 </template>
 
 <script>
-  import AdminNav from "@/components/navs/AdminNav.vue";
+  import NavAdmin from "@/components/NavAdmin.vue";
   import Vue from "vue";
   import {
     BModal,
@@ -246,7 +246,7 @@
   export default {
     name: "AdminUsers",
     components: {
-      AdminNav
+      NavAdmin
     },
     data() {
       return {
@@ -255,7 +255,7 @@
         userToDelete: Object,
         error: false,
         filter: {
-          searchTerm: "",
+          searchTerm: this.$route.query.s || "",
           isEmployer: true,
           isEmployee: true,
           isEducational: true,

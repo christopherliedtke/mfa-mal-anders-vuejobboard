@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard container py-3 py-lg-5">
-    <UserNav class="mb-3" />
+    <NavUser class="mb-3" />
     <h3>Meine Job-Newsletter</h3>
 
     <b-form-group
@@ -21,12 +21,12 @@
 </template>
 
 <script>
-  import UserNav from "@/components/navs/UserNav.vue";
+  import NavUser from "@/components/NavUser.vue";
   import { companyStateOptions } from "@/config/formDataConfig.json";
   export default {
     name: "UserJobAlerts",
     components: {
-      UserNav
+      NavUser
     },
     data() {
       return {

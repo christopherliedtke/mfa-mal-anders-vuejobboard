@@ -10,7 +10,7 @@
         height="90px"
         class="d-block mx-auto my-4"
       />
-      <LoginForm />
+      <AuthLoginForm />
     </div>
 
     <Head :title="title" desc="Anmelden bei MFA mal anders" img="" />
@@ -18,10 +18,10 @@
 </template>
 
 <script>
-  import LoginForm from "@/components/forms/LoginForm.vue";
+  import AuthLoginForm from "@/components/AuthLoginForm.vue";
   export default {
     name: "AuthLogin",
-    components: { LoginForm },
+    components: { AuthLoginForm },
     data() {
       return {
         title: "Login"

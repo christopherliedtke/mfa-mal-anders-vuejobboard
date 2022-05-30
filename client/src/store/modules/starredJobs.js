@@ -1,4 +1,4 @@
-import axios from "@/utils/axios";
+import axios from "@/services/axios";
 import config from "@/config/config.js";
 
 const state = {

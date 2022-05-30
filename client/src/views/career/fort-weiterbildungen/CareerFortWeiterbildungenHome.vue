@@ -127,8 +127,8 @@
         </ol>
       </nav>
 
-      <!-- <TrainingCatalogueLargeBanner class="my-5" /> -->
-      <JobSeeksLargeBanner class="my-5" />
+      <!-- <BannerTrainingCatalogueLarge class="my-5" /> -->
+      <BannerJobSeeksLarge class="my-5" />
 
       <h2 id="ueberblick">
         <span class="display-4 bold d-block mb-1"
@@ -156,7 +156,7 @@
         wo. Das Gesundheitswesen bietet Dir zahlreiche Karrierewege.
       </p>
 
-      <FortWeiterbildungenNav
+      <NavTrainings
         class="my-4 my-lg-5"
         :show-training-catalogue="false"
         :show-sgd-banner="false"
@@ -175,7 +175,7 @@
         Kolleginnen unbedingt wissen sollten?!
       </div>
 
-      <RandomTrainingsContainer class="my-4" />
+      <TrainingListRandom class="my-4" />
 
       <h2 id="fortbildung-weiterbildung-studium" class="display-4 bold">
         Fortbildung, Weiterbildung oder Studium?
@@ -465,7 +465,7 @@
         </div>
       </div>
 
-      <TrainingCatalogueLargeBanner class="mt-4 mb-5" />
+      <BannerTrainingCatalogueLarge class="mt-4 mb-5" />
 
       <h2 id="foerderung-finanzierung" class="display-4 bold">
         Förderung und Finanzierung von Weiterbildungen
@@ -911,11 +911,11 @@
         finden.
       </p>
 
-      <JobSearchSingleForm class="mt-5" />
-      <JobsTeaserContainer class="mt-4" />
+      <SearchWidgetJob class="mt-5" />
+      <JobListTeaser class="mt-4" />
     </div>
 
-    <ScrollToTopBtn />
+    <ScrollTopButton />
 
     <Head
       title="Fort- und Weiterbildung für MFA | ZFA | ArzthelferInnen"
@@ -929,24 +929,24 @@
 </template>
 
 <script>
-  import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
-  import FortWeiterbildungenNav from "@/components/navs/FortWeiterbildungenNav.vue";
-  import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
-  import TrainingCatalogueLargeBanner from "@/components/banners/TrainingCatalogueLargeBanner.vue";
-  import JobSeeksLargeBanner from "@/components/banners/JobSeeksLargeBanner.vue";
-  import JobSearchSingleForm from "@/components/forms/JobSearchSingleForm.vue";
-  import JobsTeaserContainer from "@/components/containers/JobsTeaserContainer.vue";
+  import ScrollTopButton from "@/components/ScrollTopButton.vue";
+  import NavTrainings from "@/components/NavTrainings.vue";
+  import TrainingListRandom from "@/components/TrainingListRandom.vue";
+  import BannerTrainingCatalogueLarge from "@/components/BannerTrainingCatalogueLarge.vue";
+  import BannerJobSeeksLarge from "@/components/BannerJobSeeksLarge.vue";
+  import SearchWidgetJob from "@/components/SearchWidgetJob.vue";
+  import JobListTeaser from "@/components/JobListTeaser.vue";
   import { scrollToHashMixin } from "@/mixins/scrollToHashMixin";
   export default {
     name: "CareerFortWeiterbildungen",
     components: {
-      FortWeiterbildungenNav,
-      RandomTrainingsContainer,
-      TrainingCatalogueLargeBanner,
-      JobSeeksLargeBanner,
-      JobSearchSingleForm,
-      JobsTeaserContainer,
-      ScrollToTopBtn
+      NavTrainings,
+      TrainingListRandom,
+      BannerTrainingCatalogueLarge,
+      BannerJobSeeksLarge,
+      SearchWidgetJob,
+      JobListTeaser,
+      ScrollTopButton
     },
     mixins: [scrollToHashMixin],
     data() {

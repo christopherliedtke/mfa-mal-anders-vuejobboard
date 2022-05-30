@@ -32,7 +32,7 @@ import config from "@/config/config.js";
 Vue.prototype.$config = config;
 
 // #Global Axios Integration
-import axios from "@/utils/axios.js";
+import axios from "@/services/axios.js";
 Vue.prototype.$axios = axios;
 
 // #Bootstrap Integration
@@ -81,7 +81,7 @@ import "./styles/app.scss";
 
 // #Global Head Integration
 import VueHead from "vue-head";
-import Head from "@/components/utils/Head.vue";
+import Head from "@/components/Head.vue";
 Vue.component("Head", Head);
 Vue.use(VueHead, {
   separator: "–",

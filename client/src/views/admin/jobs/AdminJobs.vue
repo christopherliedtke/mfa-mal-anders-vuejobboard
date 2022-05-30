@@ -121,6 +121,11 @@
             : ""
         }}
       </template>
+      <template #cell(userId)="row">
+        <b-link :to="`/admin/users?s=${row.item.userId._id}`">
+          {{ row.item.userId._id }}
+        </b-link>
+      </template>
       <template #cell(actions)="row">
         <div class="d-flex">
           <b-button
@@ -335,13 +340,13 @@
       Oh, something went wrong. Please try again later.
     </b-alert>
 
-    <AdminNav />
+    <NavAdmin />
   </div>
 </template>
 
 <script>
-  import socialShareJobToClipboard from "@/utils/socialShareJobToClipboard.js";
-  import AdminNav from "@/components/navs/AdminNav.vue";
+  import socialShareJobToClipboard from "@/helpers/socialShareJobToClipboard.js";
+  import NavAdmin from "@/components/NavAdmin.vue";
   import Vue from "vue";
   import {
     BModal,
@@ -358,7 +363,7 @@
   export default {
     name: "AdminJobs",
     components: {
-      AdminNav
+      NavAdmin
     },
     data() {
       return {
@@ -426,41 +431,41 @@
             label: "RefreshFrequency",
             sortable: true
           },
-          {
-            key: "applicationDeadline",
-            label: "ApplicationDeadline",
-            sortable: true
-          },
-          {
-            key: "paymentId",
-            label: "PaymentID",
-            sortable: false
-          },
-          {
-            key: "payment.status",
-            label: "PaidStatus",
-            sortable: true
-          },
-          {
-            key: "paidAt",
-            label: "PaidAt",
-            sortable: true
-          },
-          {
-            key: "paymentExpiresAt",
-            label: "PaymentExpiresAt",
-            sortable: true
-          },
-          {
-            key: "paidAmount",
-            label: "PaidAmount",
-            sortable: true
-          },
-          {
-            key: "payment.invoiceNo",
-            label: "InvoiceNo",
-            sortable: true
-          },
+          // {
+          //   key: "applicationDeadline",
+          //   label: "ApplicationDeadline",
+          //   sortable: true
+          // },
+          // {
+          //   key: "paymentId",
+          //   label: "PaymentID",
+          //   sortable: false
+          // },
+          // {
+          //   key: "payment.status",
+          //   label: "PaidStatus",
+          //   sortable: true
+          // },
+          // {
+          //   key: "paidAt",
+          //   label: "PaidAt",
+          //   sortable: true
+          // },
+          // {
+          //   key: "paymentExpiresAt",
+          //   label: "PaymentExpiresAt",
+          //   sortable: true
+          // },
+          // {
+          //   key: "paidAmount",
+          //   label: "PaidAmount",
+          //   sortable: true
+          // },
+          // {
+          //   key: "payment.invoiceNo",
+          //   label: "InvoiceNo",
+          //   sortable: true
+          // },
           {
             key: "company.name",
             label: "Company",
@@ -472,7 +477,7 @@
             sortable: true
           },
           {
-            key: "userId._id",
+            key: "userId",
             label: "UserID",
             sortable: false
           },
@@ -508,7 +513,6 @@
                     refreshFrequency
                     status
                     stripeInvoiceStatus
-                    applicationDeadline
                     paid
                     paidExpiresAt
                     publishedAt
@@ -520,7 +524,6 @@
                       location
                       state
                       zipCode
-                      country
                     }
                     userId {
                       _id
@@ -528,14 +531,6 @@
                       firstName
                       lastName
                       email
-                    }
-                    payment {
-                      _id
-                      status
-                      amount
-                      paidAt
-                      paymentExpiresAt
-                      invoiceNo
                     }
                   }
                 }

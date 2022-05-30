@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard container py-3 py-lg-5">
-    <UserNav class="mb-3" />
+    <NavUser class="mb-3" />
 
     <h3>Meine Stellengesuche</h3>
     <p>
@@ -207,7 +207,7 @@
 </template>
 
 <script>
-  import UserNav from "@/components/navs/UserNav.vue";
+  import NavUser from "@/components/NavUser.vue";
   import Vue from "vue";
   import { BModal, VBModal } from "bootstrap-vue";
   Vue.component("BModal", BModal);
@@ -215,7 +215,7 @@
   export default {
     name: "UserJobSeeks",
     components: {
-      UserNav
+      NavUser
     },
     data() {
       return {

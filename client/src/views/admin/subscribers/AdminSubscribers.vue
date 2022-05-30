@@ -139,12 +139,12 @@
       Oh, something went wrong. Please try again later.
     </b-alert>
 
-    <AdminNav />
+    <NavAdmin />
   </div>
 </template>
 
 <script>
-  import AdminNav from "@/components/navs/AdminNav.vue";
+  import NavAdmin from "@/components/NavAdmin.vue";
   import Vue from "vue";
   import { BModal, VBModal, BTable } from "bootstrap-vue";
   Vue.component("BModal", BModal);
@@ -153,7 +153,7 @@
   export default {
     name: "AdminSubscribers",
     components: {
-      AdminNav
+      NavAdmin
     },
     data() {
       return {

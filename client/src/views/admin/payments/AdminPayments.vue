@@ -110,7 +110,20 @@
         {{ (row.item.amount * (row.item.taxRate || 0)) / 100 }}€
       </template>
       <template #cell(tax)="row"> {{ row.value / 100 }}€ </template>
-      <template #cell(user)="row">
+      <template #cell(jobId)="row">
+        <b-link v-if="row.item.job" :to="`/admin/jobs?s=${row.item.job._id}`">
+          {{ row.item.job._id }}
+        </b-link>
+      </template>
+      <template #cell(userId)="row">
+        <b-link
+          v-if="row.item.user"
+          :to="`/admin/users?s=${row.item.user._id}`"
+        >
+          {{ row.item.user._id }}
+        </b-link>
+      </template>
+      <!-- <template #cell(user)="row">
         <div v-if="row.value">
           {{
             row.value._id ? row.value.lastName + ", " + row.value.firstName : ""
@@ -122,7 +135,7 @@
             {{ row.value.email }}</a
           >
         </div>
-      </template>
+      </template> -->
 
       <template #cell(actions)="row">
         <div class="d-flex">
@@ -359,13 +372,13 @@
       </p></BModal
     >
 
-    <AdminNav />
+    <NavAdmin />
   </div>
 </template>
 
 <script>
-  import socialShareJobToClipboard from "@/utils/socialShareJobToClipboard.js";
-  import AdminNav from "@/components/navs/AdminNav.vue";
+  import socialShareJobToClipboard from "@/helpers/socialShareJobToClipboard.js";
+  import NavAdmin from "@/components/NavAdmin.vue";
   import Vue from "vue";
   import {
     BModal,
@@ -382,7 +395,7 @@
   export default {
     name: "AdminPayments",
     components: {
-      AdminNav
+      NavAdmin
     },
     data() {
       return {
@@ -509,7 +522,7 @@
             sortable: true
           },
           {
-            key: "job._id",
+            key: "jobId",
             label: "JobID",
             sortable: true
           },
@@ -518,14 +531,14 @@
             label: "JobTitle",
             sortable: true
           },
+          // {
+          //   key: "user._id",
+          //   label: "UserID",
+          //   sortable: true
+          // },
           {
-            key: "user._id",
+            key: "userId",
             label: "UserID",
-            sortable: true
-          },
-          {
-            key: "user",
-            label: "User",
             sortable: true
           },
           {
@@ -651,9 +664,6 @@
                 }
                 user {
                   _id
-                  firstName
-                  lastName
-                  email
                 }
               }
             }

@@ -62,7 +62,12 @@
       <template #cell(updatedAt)="row">
         {{ new Date(row.value).toLocaleString() }}
       </template>
-      <template #cell(user)="row">
+      <template #cell(userId)="row">
+        <b-link :to="`/admin/users?s=${row.item.user._id}`">
+          {{ row.item.user._id }}
+        </b-link>
+      </template>
+      <!-- <template #cell(user)="row">
         <div v-if="row.item.user">
           {{
             row.item.user
@@ -77,7 +82,7 @@
           >
           {{ row.item.user._id }}
         </div>
-      </template>
+      </template> -->
       <template #cell(actions)="row">
         <div class="d-flex">
           <b-button
@@ -283,12 +288,12 @@
       Oh, something went wrong. Please try again later.
     </b-alert>
 
-    <AdminNav />
+    <NavAdmin />
   </div>
 </template>
 
 <script>
-  import AdminNav from "@/components/navs/AdminNav.vue";
+  import NavAdmin from "@/components/NavAdmin.vue";
   import Vue from "vue";
   import {
     BModal,
@@ -305,7 +310,7 @@
   export default {
     name: "AdminTrainings",
     components: {
-      AdminNav
+      NavAdmin
     },
     data() {
       return {
@@ -388,8 +393,8 @@
             sortable: true
           },
           {
-            key: "user",
-            label: "User",
+            key: "userId",
+            label: "UserID",
             sortable: false
           },
           {
@@ -418,9 +423,6 @@
                     updatedAt
                     user {
                       _id
-                      email
-                      firstName
-                      lastName
                     }
                     title
                     published
@@ -473,9 +475,6 @@
                   updatedAt
                   user {
                     _id
-                    email
-                    firstName
-                    lastName
                   }
                   title
                   published

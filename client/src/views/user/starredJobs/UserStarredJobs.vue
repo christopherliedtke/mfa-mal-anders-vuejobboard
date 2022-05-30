@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard container py-3 py-lg-5">
-    <UserNav class="mb-3" />
+    <NavUser class="mb-3" />
 
     <div v-if="jobs.length > 0">
       <JobCard v-for="job in jobs" :key="job._id" :job="job" />
@@ -21,11 +21,11 @@
 </template>
 
 <script>
-  import JobCard from "@/components/ui/JobCard";
-  import UserNav from "@/components/navs/UserNav.vue";
+  import JobCard from "@/components/JobCard";
+  import NavUser from "@/components/NavUser.vue";
   export default {
     name: "UserStarredJobs",
-    components: { JobCard, UserNav },
+    components: { JobCard, NavUser },
     data() {
       return {
         jobs: []

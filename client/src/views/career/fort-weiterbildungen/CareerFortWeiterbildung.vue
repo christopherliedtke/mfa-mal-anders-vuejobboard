@@ -8,7 +8,7 @@
       <div class="container py-3 py-lg-5">
         <div class="row">
           <div class="col-12 col-md-4 order-2 order-md-1">
-            <FortWeiterbildungenNav />
+            <NavTrainings />
           </div>
           <div class="col-12 col-md-8 order-1 order-md-2 mb-4">
             <b-img-lazy
@@ -26,18 +26,18 @@
             />
             <!-- eslint-disable-next-line -->
             <div v-html="training.content"></div>
-            <TrainingCatalogueLargeBanner
+            <BannerTrainingCatalogueLarge
               header="Jetzt passende Fortbildung finden"
               class="mt-4"
             />
-            <ToJobboardBanner class="mt-4" />
+            <BannerJobboard class="mt-4" />
           </div>
         </div>
       </div>
     </article>
 
     <div class="container">
-      <RandomTrainingsContainer />
+      <TrainingListRandom />
     </div>
 
     <Head
@@ -51,17 +51,17 @@
 </template>
 
 <script>
-  import FortWeiterbildungenNav from "@/components/navs/FortWeiterbildungenNav.vue";
-  import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
-  import TrainingCatalogueLargeBanner from "@/components/banners/TrainingCatalogueLargeBanner.vue";
-  import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
+  import NavTrainings from "@/components/NavTrainings.vue";
+  import TrainingListRandom from "@/components/TrainingListRandom.vue";
+  import BannerTrainingCatalogueLarge from "@/components/BannerTrainingCatalogueLarge.vue";
+  import BannerJobboard from "@/components/BannerJobboard.vue";
   export default {
     name: "CareerFortWeiterbildung",
     components: {
-      FortWeiterbildungenNav,
-      RandomTrainingsContainer,
-      TrainingCatalogueLargeBanner,
-      ToJobboardBanner
+      NavTrainings,
+      TrainingListRandom,
+      BannerTrainingCatalogueLarge,
+      BannerJobboard
     },
     data() {
       return {

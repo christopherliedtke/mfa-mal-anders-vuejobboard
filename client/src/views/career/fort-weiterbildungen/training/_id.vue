@@ -11,10 +11,10 @@
           >Fortbildung konnte nicht gefunden/geladen werden.</span
         >
       </div>
-      <Training v-else-if="training" :training="training" />
-      <TrainingCatalogueEventPlaceholder v-else />
+      <TrainingCatalogueItem v-else-if="training" :training="training" />
+      <TrainingCatalogueItemPlaceholder v-else />
 
-      <ToJobboardBanner class="mt-5" />
+      <BannerJobboard class="mt-5" />
 
       <div class="mt-5">
         <h2>
@@ -32,7 +32,7 @@
           >.
         </p>
 
-        <RandomTrainingsContainer v-if="training" />
+        <TrainingListRandom v-if="training" />
       </div>
     </div>
 
@@ -46,17 +46,17 @@
 </template>
 
 <script>
-  import Training from "@/components/ui/Training.vue";
-  import TrainingCatalogueEventPlaceholder from "@/components/ui/TrainingCatalogueEventPlaceholder.vue";
-  import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
-  import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
+  import TrainingCatalogueItem from "@/components/TrainingCatalogueItem.vue";
+  import TrainingCatalogueItemPlaceholder from "@/components/TrainingCatalogueItemPlaceholder.vue";
+  import BannerJobboard from "@/components/BannerJobboard.vue";
+  import TrainingListRandom from "@/components/TrainingListRandom.vue";
   export default {
     name: "CareerFortWeiterbildungCatalogueTraining",
     components: {
-      Training,
-      TrainingCatalogueEventPlaceholder,
-      ToJobboardBanner,
-      RandomTrainingsContainer
+      TrainingCatalogueItem,
+      TrainingCatalogueItemPlaceholder,
+      BannerJobboard,
+      TrainingListRandom
     },
     data() {
       return {

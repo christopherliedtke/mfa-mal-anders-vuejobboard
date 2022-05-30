@@ -598,7 +598,8 @@ const UserResolvers = {
   Job: {
     userId: async (job, args, context) => {
       if (!context.user.isAdmin) {
-        return job.userId;
+        return null;
+        // return job.userId;
       }
 
       if (
@@ -611,6 +612,7 @@ const UserResolvers = {
       const user = await User.findOne({
         _id: job.userId,
       });
+
       delete user.password;
 
       return user;
@@ -618,17 +620,8 @@ const UserResolvers = {
   },
 
   Company: {
-    userId: async (company, args, context) => {
-      if (!context.user.isAdmin) {
-        return company.userId;
-      }
-
-      const user = await User.findOne({
-        _id: company.userId,
-      });
-      delete user.password;
-
-      return user;
+    userId: async company => {
+      return { _id: company.userId };
     },
   },
 
@@ -642,11 +635,13 @@ const UserResolvers = {
         return null;
       }
 
-      const user = await User.findOne({ _id: payment.user });
+      return { _id: payment.user };
 
-      delete user.password;
+      // const user = await User.findOne({ _id: payment.user });
 
-      return user;
+      // delete user.password;
+
+      // return user;
     },
   },
 
@@ -656,11 +651,13 @@ const UserResolvers = {
         throw new AuthenticationError("Missing permission!");
       }
 
-      const user = await User.findOne({ _id: training.user });
+      return { _id: training.user };
 
-      delete user.password;
+      // const user = await User.findOne({ _id: training.user });
 
-      return user;
+      // delete user.password;
+
+      // return user;
     },
   },
 
@@ -670,11 +667,13 @@ const UserResolvers = {
         throw new AuthenticationError("Missing permission!");
       }
 
-      const user = await User.findOne({ _id: jobSeek.user });
+      return { _id: jobSeek.user };
 
-      delete user.password;
+      // const user = await User.findOne({ _id: jobSeek.user });
 
-      return user;
+      // delete user.password;
+
+      // return user;
     },
   },
 };

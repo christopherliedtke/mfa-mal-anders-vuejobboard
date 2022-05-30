@@ -396,7 +396,7 @@
               size="sm"
               >Meine gespeicherten Jobs</b-button
             >
-            <SubscribeNewsletterBtn
+            <NewsletterSignUpModal
               v-else
               class="mt-2 mr-1 d-flex justify-content-end justify-content-lg-start"
               size="sm"
@@ -405,11 +405,15 @@
           </div>
 
           <div class="d-none d-lg-block mt-5">
-            <!-- <TrainingCatalogueSmallBanner /> -->
-            <JobSeeksSmallBanner />
-            <FacebookBtn class="mt-3 mr-1" content="Facebook" size="sm" />
-            <InstagramBtn class="mt-3 mr-1" content="" size="sm" />
-            <TwitterBtn class="mt-3 mr-1" content="" size="sm" />
+            <!-- <BannerTrainingCatalogueSmall /> -->
+            <BannerJobSeeksSmall />
+            <SocialButtonFacebook
+              class="mt-3 mr-1"
+              content="Facebook"
+              size="sm"
+            />
+            <SocialButtonInstagram class="mt-3 mr-1" content="" size="sm" />
+            <SocialButtonTwitter class="mt-3 mr-1" content="" size="sm" />
           </div>
         </div>
         <div class="col-12 col-lg-8 pt-2">
@@ -479,8 +483,8 @@
     </div>
 
     <div class="container">
-      <JobSeeksLargeBanner class="mt-2 mt-lg-3" />
-      <TrainingCatalogueSmallBanner class="d-lg-none mt-3" />
+      <BannerJobSeeksLarge class="mt-2 mt-lg-3" />
+      <BannerTrainingCatalogueSmall class="d-lg-none mt-3" />
     </div>
 
     <div class="container-fluid bg-light-shade my-4 my-lg-5 px-0">
@@ -654,10 +658,10 @@
     <div class="container">
       <div class="row mt-5 mb-3">
         <div class="col-12 col-lg-8 mb-4">
-          <TrainingCatalogueLargeBanner />
+          <BannerTrainingCatalogueLarge />
         </div>
         <div class="col-12 col-lg-4 mb-4">
-          <BerufsbilderBanner />
+          <BannerProfessions />
         </div>
       </div>
 
@@ -682,7 +686,7 @@
       </div>
     </div>
 
-    <ScrollToTopBtn />
+    <ScrollTopButton />
 
     <Head
       :title="
@@ -715,7 +719,7 @@
 </template>
 
 <script>
-  import ScrollToTopBtn from "@/components/buttons/ScrollToTopBtn.vue";
+  import ScrollTopButton from "@/components/ScrollTopButton.vue";
   import Vue from "vue";
   import { BSpinner, BCollapse } from "bootstrap-vue";
   Vue.component("BSpinner", BSpinner);
@@ -727,19 +731,19 @@
     specializationOptions,
     professionOptions
   } from "@/config/formDataConfig.json";
-  import textToSlug from "@/utils/textToSlug.js";
+  import textToSlug from "@/helpers/textToSlug.js";
 
-  import JobCard from "@/components/ui/JobCard.vue";
-  import JobCardPlaceholder from "@/components/ui/JobCardPlaceholder.vue";
-  import FacebookBtn from "@/components/buttons/FacebookBtn.vue";
-  import InstagramBtn from "@/components/buttons/InstagramBtn.vue";
-  import TwitterBtn from "@/components/buttons/TwitterBtn.vue";
-  import BerufsbilderBanner from "@/components/banners/BerufsbilderBanner.vue";
-  import TrainingCatalogueSmallBanner from "@/components/banners/TrainingCatalogueSmallBanner.vue";
-  import TrainingCatalogueLargeBanner from "@/components/banners/TrainingCatalogueLargeBanner.vue";
-  import JobSeeksLargeBanner from "@/components/banners/JobSeeksLargeBanner.vue";
-  import JobSeeksSmallBanner from "@/components/banners/JobSeeksSmallBanner.vue";
-  import SubscribeNewsletterBtn from "@/components/buttons/SubscribeNewsletterBtn.vue";
+  import JobCard from "@/components/JobCard.vue";
+  import JobCardPlaceholder from "@/components/JobCardPlaceholder.vue";
+  import SocialButtonFacebook from "@/components/SocialButtonFacebook.vue";
+  import SocialButtonInstagram from "@/components/SocialButtonInstagram.vue";
+  import SocialButtonTwitter from "@/components/SocialButtonTwitter.vue";
+  import BannerProfessions from "@/components/BannerProfessions.vue";
+  import BannerTrainingCatalogueSmall from "@/components/BannerTrainingCatalogueSmall.vue";
+  import BannerTrainingCatalogueLarge from "@/components/BannerTrainingCatalogueLarge.vue";
+  import BannerJobSeeksLarge from "@/components/BannerJobSeeksLarge.vue";
+  import BannerJobSeeksSmall from "@/components/BannerJobSeeksSmall.vue";
+  import NewsletterSignUpModal from "@/components/NewsletterSignUpModal.vue";
 
   const cities = [
     { name: "Berlin", slug: "berlin" },
@@ -764,16 +768,16 @@
     components: {
       JobCard,
       JobCardPlaceholder,
-      FacebookBtn,
-      InstagramBtn,
-      TwitterBtn,
-      BerufsbilderBanner,
-      TrainingCatalogueSmallBanner,
-      TrainingCatalogueLargeBanner,
-      JobSeeksLargeBanner,
-      JobSeeksSmallBanner,
-      SubscribeNewsletterBtn,
-      ScrollToTopBtn
+      SocialButtonFacebook,
+      SocialButtonInstagram,
+      SocialButtonTwitter,
+      BannerProfessions,
+      BannerTrainingCatalogueSmall,
+      BannerTrainingCatalogueLarge,
+      BannerJobSeeksLarge,
+      BannerJobSeeksSmall,
+      NewsletterSignUpModal,
+      ScrollTopButton
     },
     data() {
       return {

@@ -9,8 +9,8 @@
     <div class="container py-3 py-lg-5">
       <div class="row">
         <div class="col-12 col-md-4 order-2 order-md-1 mb-4">
-          <JobsBerufsbilderNav />
-          <TrainingCatalogueSmallBanner class="my-3" />
+          <NavProfessions />
+          <BannerTrainingCatalogueSmall class="my-3" />
         </div>
         <div class="col order-1 order-md-2 mb-4">
           <b-img-lazy
@@ -121,7 +121,7 @@
             >
             für MFA & ZFA in 5 Bereichen
           </h2>
-          <ProfessionTypeContainer class="mb-4" :col-md="12" :col-lg="6" />
+          <TheProfessionTypeList class="mb-4" :col-md="12" :col-lg="6" />
 
           <p>
             Das Gesundheitswesen besteht bekannterweise nicht nur aus
@@ -164,10 +164,10 @@
             wertschätzenden Arbeitgebern aus der Arztpraxis oder darüber hinaus.
           </p>
 
-          <ToJobboardBanner class="mt-5" />
+          <BannerJobboard class="mt-5" />
         </div>
       </div>
-      <RandomTrainingsContainer class="mt-5" />
+      <TrainingListRandom class="mt-5" />
     </div>
     <Head
       :title="title"
@@ -179,19 +179,19 @@
 </template>
 
 <script>
-  import JobsBerufsbilderNav from "@/components/navs/JobsBerufsbilderNav.vue";
-  import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
-  import ToJobboardBanner from "@/components/banners/ToJobboardBanner.vue";
-  import ProfessionTypeContainer from "@/components/containers/ProfessionTypeContainer.vue";
-  import TrainingCatalogueSmallBanner from "@/components/banners/TrainingCatalogueSmallBanner.vue";
+  import NavProfessions from "@/components/NavProfessions.vue";
+  import TrainingListRandom from "@/components/TrainingListRandom.vue";
+  import BannerJobboard from "@/components/BannerJobboard.vue";
+  import TheProfessionTypeList from "@/components/TheProfessionTypeList.vue";
+  import BannerTrainingCatalogueSmall from "@/components/BannerTrainingCatalogueSmall.vue";
   export default {
     name: "CareerJobsBerufsbilderHome",
     components: {
-      JobsBerufsbilderNav,
-      RandomTrainingsContainer,
-      ToJobboardBanner,
-      ProfessionTypeContainer,
-      TrainingCatalogueSmallBanner
+      NavProfessions,
+      TrainingListRandom,
+      BannerJobboard,
+      TheProfessionTypeList,
+      BannerTrainingCatalogueSmall
     },
     data() {
       return {

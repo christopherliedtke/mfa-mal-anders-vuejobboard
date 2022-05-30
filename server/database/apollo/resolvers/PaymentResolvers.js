@@ -22,7 +22,9 @@ const PaymentResolvers = {
         throw new AuthenticationError("Missing permission!");
       }
 
-      const payments = await Payment.find().sort({ updatedAt: "desc" });
+      const payments = await Payment.find()
+        .sort({ updatedAt: "desc" })
+        .populate("job");
 
       return payments;
     },

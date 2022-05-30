@@ -6,8 +6,8 @@
         <b-btn to="/stellengesuche">Zurück zu den Stellengesuchen</b-btn>
       </div>
     </div>
-    <JobSeek v-else-if="jobSeek" :job-seek="jobSeek" />
-    <JobSeekPlaceholder v-else-if="!jobSeek" />
+    <JobSeekItem v-else-if="jobSeek" :job-seek="jobSeek" />
+    <JobSeekItemPlaceholder v-else-if="!jobSeek" />
 
     <Head
       v-if="jobSeek"
@@ -21,13 +21,13 @@
 </template>
 
 <script>
-  import JobSeek from "@/components/ui/JobSeek.vue";
-  import JobSeekPlaceholder from "@/components/ui/JobSeekPlaceholder.vue";
+  import JobSeekItem from "@/components/JobSeekItem.vue";
+  import JobSeekItemPlaceholder from "@/components/JobSeekItemPlaceholder.vue";
   export default {
     name: "JobSeekView",
     components: {
-      JobSeek,
-      JobSeekPlaceholder
+      JobSeekItem,
+      JobSeekItemPlaceholder
     },
     data() {
       return {

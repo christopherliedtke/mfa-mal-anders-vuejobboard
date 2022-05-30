@@ -7,11 +7,11 @@
       </div>
     </div>
     <Job v-else-if="job" :job="job" />
-    <JobPlaceholder v-else-if="!job" class="mb-5" />
+    <JobItemPlaceholder v-else-if="!job" class="mb-5" />
 
-    <SimilarJobsContainer :job="job" :number="5" />
-    <JobSeeksLargeBanner class="mt-4 mt-lg-5" />
-    <RandomTrainingsContainer :number="3" class="mt-4 mt-lg-5" />
+    <JobListSimilar :job="job" :number="5" />
+    <BannerJobSeeksLarge class="mt-4 mt-lg-5" />
+    <TrainingListRandom :number="3" class="mt-4 mt-lg-5" />
 
     <Head
       v-if="job"
@@ -59,20 +59,20 @@
 </template>
 
 <script>
-  import Job from "@/components/ui/Job.vue";
-  import JobPlaceholder from "@/components/ui/JobPlaceholder.vue";
-  import SimilarJobsContainer from "@/components/containers/SimilarJobsContainer.vue";
-  import RandomTrainingsContainer from "@/components/containers/RandomTrainingsContainer.vue";
-  import JobSeeksLargeBanner from "@/components/banners/JobSeeksLargeBanner.vue";
+  import Job from "@/components/JobItem.vue";
+  import JobItemPlaceholder from "@/components/JobItemPlaceholder.vue";
+  import JobListSimilar from "@/components/JobListSimilar.vue";
+  import TrainingListRandom from "@/components/TrainingListRandom.vue";
+  import BannerJobSeeksLarge from "@/components/BannerJobSeeksLarge.vue";
   import { employmentTypeOptions } from "@/config/formDataConfig.json";
   export default {
     name: "JobView",
     components: {
       Job,
-      JobPlaceholder,
-      SimilarJobsContainer,
-      RandomTrainingsContainer,
-      JobSeeksLargeBanner
+      JobItemPlaceholder,
+      JobListSimilar,
+      TrainingListRandom,
+      BannerJobSeeksLarge
     },
     data() {
       return {

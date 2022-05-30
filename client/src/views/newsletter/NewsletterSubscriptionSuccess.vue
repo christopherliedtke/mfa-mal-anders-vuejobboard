@@ -8,7 +8,7 @@
       <b-button to="/stellenangebote" variant="secondary"
         >Weiter zur Stellenbörse</b-button
       >
-      <RandomArticlesContainer style="margin-top: 5rem" />
+      <ArticleListRandom style="margin-top: 5rem" />
     </div>
     <Head
       :title="title"
@@ -19,11 +19,11 @@
 </template>
 
 <script>
-  import RandomArticlesContainer from "@/components/containers/RandomArticlesContainer.vue";
+  import ArticleListRandom from "@/components/ArticleListRandom.vue";
   export default {
     name: "NewsletterSubscriptionSuccess",
     components: {
-      RandomArticlesContainer
+      ArticleListRandom
     },
     data() {
       return {
