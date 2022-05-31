@@ -1,11 +1,11 @@
 import { mount, createLocalVue } from "@vue/test-utils";
 import Vuex from "vuex";
-import Header from "@/components/layout/Header.vue";
+import TheHeader from "@/components/TheHeader.vue";
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
 
-describe("Check Header.vue for login btn when loggedIn: false", () => {
+describe("Check TheHeader.vue for login btn when loggedIn: false", () => {
   let store;
 
   store = new Vuex.Store({
@@ -17,7 +17,7 @@ describe("Check Header.vue for login btn when loggedIn: false", () => {
     }
   });
 
-  const wrapper = mount(Header, { store, localVue });
+  const wrapper = mount(TheHeader, { store, localVue });
 
   it("renders", () => {
     const allButtons = wrapper.findAll(".btn");
