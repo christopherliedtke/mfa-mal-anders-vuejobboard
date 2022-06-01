@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const verifyToken = require("../middleware/verifyToken");
-const recachePrerender = require("../lib/recachePrerender").default;
+const recachePrerender = require("../lib/recachePrerender");
 
 // #route:  GET /api/prerender/recache
 // #desc:   recache page with prerender
