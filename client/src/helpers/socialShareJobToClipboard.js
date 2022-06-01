@@ -3,7 +3,7 @@ export default function(job) {
 
   el.value = `${job.title} | 📍 ${job.company.location}\n\n📌 ${
     this.$config.website.url
-  }/stellenangebote/job/${
+  }/job/${
     job._id
   }\n\n#mfamalanders #medizinischefachangestellte #mfa #arzthelfer #arzthelferin #mfajobs #stellenangebot #stellenanzeige #verstärkunggesucht #${job.company.location
     .replace("-", "")

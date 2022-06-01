@@ -3,7 +3,7 @@
     <div v-if="error">
       {{ error }}
       <div class="mt-3">
-        <b-btn to="/stellenangebote">Zurück zu den Stellenangeboten</b-btn>
+        <b-btn to="/">Zurück zu den Stellenangeboten</b-btn>
       </div>
     </div>
     <Job v-else-if="job" :job="job" />
@@ -94,20 +94,14 @@
                 {
                     "@type": "ListItem",
                     "position": 1,
-                    "name": "MFA mal anders",
-                    "item": "https://www.mfa-mal-anders.de"
+                    "name": "Home",
+                    "item": "https://www.mfa-mal-anders.de/"
                 },
                 {
                     "@type": "ListItem",
                     "position": 2,
-                    "name": "Stellenangebote",
-                    "item": "https://www.mfa-mal-anders.de/stellenangebote"
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 3,
                     "name": "Stellenangebot",
-                    "item": "https://www.mfa-mal-anders.de/stellenangebote/job/${
+                    "item": "https://www.mfa-mal-anders.de/job/${
                       this.job ? this.job._id : ""
                     }"
                 }
@@ -117,7 +111,7 @@
           {
             id: "canonical",
             rel: "canonical",
-            href: `${this.$config.website.url}/stellenangebote/job/${
+            href: `${this.$config.website.url}/job/${
               this.job ? this.job._id : ""
             }/${this.job ? this.job.slug : ""}`
           }

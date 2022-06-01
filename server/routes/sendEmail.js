@@ -58,9 +58,9 @@ router.post("/job-published", verifyToken, isAdmin, async (req, res) => {
                     }' auf unserem Stellen- und Karriereportal speziell für MFA & ZFA – MFA mal anders. Diese ist ab sofort unter folgendem Link abrufbar:
                 </p>
                 <p>
-                    <a href="${process.env.WEBSITE_URL}/stellenangebote/job/${
-        job._id
-      }">${process.env.WEBSITE_URL}/stellenangebote/job/${job._id}</a>
+                    <a href="${process.env.WEBSITE_URL}/job/${job._id}">${
+        process.env.WEBSITE_URL
+      }/job/${job._id}</a>
                 </p>
                 <p>
                   Gern können Sie diesen Link nutzen, um beispielsweise auf Ihrer Webseite oder über Ihre Social Media Kanäle auf die offene Stelle aufmerksam zu machen. Unserer Erfahrung nach ist dies eine weitere hilfreiche Möglichkeit, potentielle BewerberInnen auf sich aufmerksam zu machen. 

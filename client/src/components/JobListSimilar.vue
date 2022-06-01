@@ -9,11 +9,7 @@
       />
       <div class="text-right mt-4">
         <b-button
-          :to="
-            `/stellenangebote/ort/${job.company.location
-              .toLowerCase()
-              .replace(' ', '-')}`
-          "
+          :to="`/?ort=${textToSlug(job.company.location)}`"
           variant="outline-primary"
         >
           Weitere Stellenangebote in der Nähe von {{ job.company.location }}
@@ -29,6 +25,7 @@
 <script>
   import JobCard from "@/components/JobCard.vue";
   import JobCardPlaceholder from "@/components/JobCardPlaceholder.vue";
+  import textToSlug from "@/helpers/textToSlug.js";
   export default {
     name: "JobListSimilar",
     components: {
@@ -43,7 +40,8 @@
     data() {
       return {
         similarJobs: [],
-        loading: false
+        loading: false,
+        textToSlug
       };
     },
     watch: {

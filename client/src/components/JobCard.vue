@@ -6,7 +6,7 @@
     >
       <span class="h2 bold text-danger">Abgelaufen</span>
     </div> -->
-    <b-link :to="`/stellenangebote/job/${job._id}/${job.slug}`" target="_self">
+    <b-link :to="`/job/${job._id}/${job.slug}`" target="_self">
       <div
         :class="['card', compact ? 'mb-2 mt-2 mt-lg-0' : 'mb-3 mt-3 mt-lg-0']"
       >

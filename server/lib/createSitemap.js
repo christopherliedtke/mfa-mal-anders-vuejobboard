@@ -182,11 +182,7 @@ const getJobs = async () => {
       return response
         .map(elem =>
           writeUrl(
-            process.env.WEBSITE_URL +
-              "/stellenangebote/job/" +
-              elem._id +
-              "/" +
-              elem.slug,
+            process.env.WEBSITE_URL + "/job/" + elem._id + "/" + elem.slug,
             new Date(elem.updatedAt).toISOString(),
             "weekly",
             0.8
@@ -204,16 +200,27 @@ const getJobs = async () => {
 
 const getJobboardStates = async () => {
   try {
+    const professionOptions =
+      require("../../client/src/config/formDataConfig.json").professionOptions;
     const states =
       require("../../client/src/config/formDataConfig.json").companyStateOptions;
-    return states
-      .map(state =>
-        writeUrl(
-          process.env.WEBSITE_URL + "/stellenangebote/ort/" + textToSlug(state),
-          undefined,
-          "daily",
-          0.8
-        )
+
+    return professionOptions
+      .map(profession =>
+        states
+          .map(state =>
+            writeUrl(
+              process.env.WEBSITE_URL +
+                "/" +
+                profession.value.toLowerCase() +
+                "/" +
+                textToSlug(state),
+              undefined,
+              "daily",
+              0.8
+            )
+          )
+          .join(" ")
       )
       .join(" ");
   } catch (err) {
@@ -224,20 +231,28 @@ const getJobboardStates = async () => {
 
 const getJobboardLocations = async () => {
   try {
+    const professionOptions =
+      require("../../client/src/config/formDataConfig.json").professionOptions;
     const companies = await Company.find({}, "location");
 
     const locations = [...new Set(companies.map(company => company.location))];
 
-    return locations
-      .map(location =>
-        writeUrl(
-          process.env.WEBSITE_URL +
-            "/stellenangebote/ort/" +
-            textToSlug(location),
-          undefined,
-          "daily",
-          0.8
-        )
+    return professionOptions
+      .map(profession =>
+        locations
+          .map(location =>
+            writeUrl(
+              process.env.WEBSITE_URL +
+                "/" +
+                profession.value.toLocaleLowerCase() +
+                "/" +
+                textToSlug(location),
+              undefined,
+              "daily",
+              0.8
+            )
+          )
+          .join(" ")
       )
       .join(" ");
   } catch (err) {
@@ -252,11 +267,7 @@ const getJobboardProfessions = async () => {
       require("../../client/src/config/formDataConfig.json").professionOptions;
     return professions
       .map(profession =>
-        writeUrl(
-          process.env.WEBSITE_URL +
-            "/stellenangebote?berufsgruppe=" +
-            profession.value
-        )
+        writeUrl(process.env.WEBSITE_URL + "/" + profession.value.toLowerCase())
       )
       .join(" ");
   } catch (err) {

@@ -47,13 +47,48 @@
     methods: {
       async getJobs() {
         this.$store.dispatch("setOverlay", true);
-        const jobs = await this.$axios.post("/api/public-jobs/by-ids", {
-          ids: this.$store.state.starredJobs.starredJobs.map(
-            starredJob => starredJob.job
-          )
+        // const jobs = await this.$axios.post("/api/public-jobs/by-ids", {
+        //   ids: this.$store.state.starredJobs.starredJobs.map(
+        //     starredJob => starredJob.job
+        //   )
+        // });
+
+        const jobs = await this.$axios.get("/graphql", {
+          params: {
+            query: `
+              query {
+                publicJobs (
+                  ids: ${JSON.stringify(
+                    this.$store.state.starredJobs.starredJobs.map(
+                      starredJob => starredJob.job
+                    )
+                  )}
+                ){
+                  jobs {
+                    _id
+                    title
+                    excerpt
+                    profession
+                    employmentType
+                    specialization
+                    salaryMin
+                    salaryMax
+                    slug
+                    refreshFrequency
+                    company {
+                      name
+                      location
+                      logoUrl
+                    }
+                  }
+                  count
+                }
+              }
+            `
+          }
         });
 
-        this.jobs = jobs.data.jobs;
+        this.jobs = jobs.data.data.publicJobs.jobs;
         this.$store.dispatch("setOverlay", false);
       }
     }

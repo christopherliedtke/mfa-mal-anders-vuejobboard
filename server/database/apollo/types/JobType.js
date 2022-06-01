@@ -13,6 +13,7 @@ const JobType = gql`
       employmentType: String
       specialization: String
       profession: String
+      ids: [String]
     ): PublicJobWithCount
     myJob(_id: ID!): Job
     myJobs: [Job]

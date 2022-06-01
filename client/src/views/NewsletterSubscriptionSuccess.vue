@@ -5,9 +5,7 @@
       <p>
         Deine Anmeldung für den Job-Newsletter war erfolgreich.
       </p>
-      <b-button to="/stellenangebote" variant="secondary"
-        >Weiter zur Stellenbörse</b-button
-      >
+      <b-button to="/" variant="secondary">Weiter zur Stellenbörse</b-button>
       <ArticleListRandom style="margin-top: 5rem" />
     </div>
     <Head

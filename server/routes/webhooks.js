@@ -179,9 +179,7 @@ router.post(
               "URL_UPDATED"
             );
 
-            recachePrerender(
-              `${process.env.WEBSITE_URL}/stellenangebote/job/${job._id}`
-            );
+            recachePrerender(`${process.env.WEBSITE_URL}/job/${job._id}`);
           });
         }
 
@@ -353,7 +351,7 @@ async function sendOrderConfirmation(invoice, jobs) {
               <p style="margin-left:1rem">
                 ${jobs.map(
                   job =>
-                    `<a href="${process.env.WEBSITE_URL}/stellenangebote/job/${job._id}" target="_blank"><strong>${job.title}</strong></a><br>`
+                    `<a href="${process.env.WEBSITE_URL}/job/${job._id}" target="_blank"><strong>${job.title}</strong></a><br>`
                 )}
               </p>
             `

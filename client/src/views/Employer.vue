@@ -203,9 +203,7 @@
             <h4 class="bold mt-2 mb-3">Speziell für MFA & ZFA</h4>
             <p>
               Über ein
-              <router-link to="/stellenangebote"
-                ><strong>Stellenangebot</strong></router-link
-              >
+              <router-link to="/"><strong>Stellenangebot</strong></router-link>
               auf <em>MFA mal anders</em> erreichen Sie
               <strong>exklusiv motivierte MFA | ZFA | ArzthelferIn</strong>
               und damit genau Ihre Zielgruppe.
@@ -285,7 +283,7 @@
             <p>
               Sie erstellen Ihre Anzeige, wir sorgen für den Rest &ndash;
               <strong>Relevante Reichweite auf </strong>
-              <b-link to="/stellenangebote">MFA mal anders</b-link>,
+              <b-link to="/">MFA mal anders</b-link>,
               <a
                 href="https://www.google.com/search?q=mfa+mal+anders&ibp=htl;jobs#htivrt=jobs&htilrad=-1.0"
                 target="_blank"

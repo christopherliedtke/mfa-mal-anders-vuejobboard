@@ -110,9 +110,7 @@
             </b-link>
           </div>
           <nav>
-            <router-link to="/stellenangebote"
-              >Stellenangebote | MFA & ZFA</router-link
-            >
+            <router-link to="/">Stellenangebote | MFA & ZFA</router-link>
             <router-link to="/stellengesuche"
               >Stellengesuche | MFA & ZFA</router-link
             >
@@ -127,7 +125,7 @@
             <router-link to="/karriere/zfa/gehalt"
               >ZFA Gehalt | Gehaltsrechner</router-link
             >
-            <router-link to="/stellenangebote/unternehmensverzeichnis"
+            <router-link to="/unternehmensverzeichnis"
               >Unternehmensverzeichnis</router-link
             >
 

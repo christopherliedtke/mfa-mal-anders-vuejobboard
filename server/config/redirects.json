@@ -1,7 +1,7 @@
 [
   {
     "old": "/404",
-    "new": "/stellenangebote"
+    "new": "/"
   },
   {
     "old": "/page/mfa-career/gehalt",
@@ -202,5 +202,9 @@
   {
     "old": "/karriere/fortbildungskatalog",
     "new": "/karriere/fort-und-weiterbildung/fortbildungskatalog"
+  },
+  {
+    "old": "/stellenangebote",
+    "new": "/"
   }
 ]

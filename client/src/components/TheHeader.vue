@@ -17,7 +17,7 @@
         @click="navCollapsed = true"
       >
         <nav id="primary-nav">
-          <router-link to="/stellenangebote">Stellenangebote</router-link>
+          <router-link to="/">Stellenangebote</router-link>
           <router-link to="/stellengesuche">Stellengesuche</router-link>
 
           <router-link
@@ -25,7 +25,7 @@
             @mouseenter.native="showSub('karriere')"
             @mouseleave.native="hideSub('karriere')"
             ><span
-              >Karriere
+              >Karriere und Beruf
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"

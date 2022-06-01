@@ -5,12 +5,12 @@ Vue.use(VueRouter);
 import store from "@/store";
 
 // #Views
-const Home = () =>
-  import(
-    /* webpackChunkName: "home" */
-    /* webpackPrefetch: true */
-    "@/views/Home.vue"
-  );
+// const Home = () =>
+//   import(
+//     /* webpackChunkName: "home" */
+//     /* webpackPrefetch: true */
+//     "@/views/Home.vue"
+//   );
 const Employer = () =>
   import(
     /* webpackChunkName: "employer" */
@@ -279,16 +279,16 @@ const NotFound = () =>
 
 // #Routes
 const routes = [
+  // {
+  //   path: "/",
+  //   name: "Home",
+  //   component: Home,
+  //   meta: {
+  //     public: true
+  //   }
+  // },
   {
     path: "/",
-    name: "Home",
-    component: Home,
-    meta: {
-      public: true
-    }
-  },
-  {
-    path: "/stellenangebote",
     name: "JobBoard",
     component: JobBoard,
     meta: {
@@ -296,15 +296,80 @@ const routes = [
     }
   },
   {
-    path: "/stellenangebote/ort/:location",
-    name: "JobBoardWLocation",
+    path: "/mfa",
+    name: "JobBoardMfa",
     component: JobBoard,
     meta: {
       public: true
     }
   },
   {
-    path: "/stellenangebote/job/:jobId",
+    path: "/mfa/:location",
+    name: "JobBoardMfaWLocation",
+    component: JobBoard,
+    meta: {
+      public: true
+    }
+  },
+  {
+    path: "/zfa",
+    name: "JobBoardZfa",
+    component: JobBoard,
+    meta: {
+      public: true
+    }
+  },
+  {
+    path: "/zfa/:location",
+    name: "JobBoardZfaWLocation",
+    component: JobBoard,
+    meta: {
+      public: true
+    }
+  },
+  {
+    path: "/ort/:location",
+    redirect: to => {
+      return { path: "/", query: { ort: to.params.location } };
+    }
+    // name: "JobBoardWLocation",
+    // component: JobBoard,
+    // meta: {
+    //   public: true
+    // }
+  },
+  {
+    path: "/stellenangebote",
+    // redirect: to => {
+    //   return { path: "/", query: to.query };
+    // }
+    name: "JobBoard_",
+    component: JobBoard,
+    meta: {
+      public: true
+    }
+  },
+  // {
+  //   path: "/stellenangebote/mfa",
+  //   name: "JobBoardMfa",
+  //   component: JobBoard,
+  //   meta: {
+  //     public: true
+  //   }
+  // },
+  {
+    path: "/stellenangebote/ort/:location",
+    redirect: to => {
+      return { path: "/", query: { ort: to.params.location } };
+    }
+    // name: "JobBoardWLocation",
+    // component: JobBoard,
+    // meta: {
+    //   public: true
+    // }
+  },
+  {
+    path: "/job/:jobId",
     name: "JobView",
     component: JobView,
     meta: {
@@ -312,7 +377,18 @@ const routes = [
     }
   },
   {
-    path: "/stellenangebote/job/:jobId/:title",
+    path: "/stellenangebote/job/:jobId",
+    redirect: to => {
+      return { path: "/job/:jobId", params: { jobId: to.params.jobId } };
+    }
+    // name: "JobView",
+    // component: JobView,
+    // meta: {
+    //   public: true
+    // }
+  },
+  {
+    path: "/job/:jobId/:title",
     name: "JobViewWithTitle",
     component: JobView,
     meta: {
@@ -320,7 +396,16 @@ const routes = [
     }
   },
   {
-    path: "/stellenangebote/unternehmensverzeichnis",
+    path: "/stellenangebote/job/:jobId/:title",
+    redirect: to => {
+      return {
+        path: "/job/:jobId/:title",
+        params: { jobId: to.params.jobId, title: to.params.title }
+      };
+    }
+  },
+  {
+    path: "/unternehmensverzeichnis",
     name: "JobBoardCompanyArchive",
     component: JobBoardCompanyArchive,
     meta: {

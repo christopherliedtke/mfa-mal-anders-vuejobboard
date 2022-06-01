@@ -89,6 +89,11 @@ const JobResolvers = {
         });
       }
 
+      // filter by ids
+      if (args.ids) {
+        jobs = jobs.filter(job => args.ids.some(id => id == job._id));
+      }
+
       // sort by position
       if (args.position) {
         jobs = sortJobsByPosition(args.position, jobs);
@@ -538,9 +543,7 @@ function recaching(job) {
     job.status === "published" &&
     job._id
   ) {
-    recachePrerender(
-      `${process.env.WEBSITE_URL}/stellenangebote/job/${job._id}`
-    );
+    recachePrerender(`${process.env.WEBSITE_URL}/job/${job._id}`);
   }
 }
 

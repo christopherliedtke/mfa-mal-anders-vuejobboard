@@ -5,9 +5,11 @@
         <strong>Stellenangebote</strong> <br />
         <span class="h4"
           >{{
-            berufsgruppe.active.length > 0
+            berufsgruppe.active.length === 1
               ? berufsgruppe.active.join(" & ")
-              : ""
+              : professionOptions
+                  .map(profession => profession.value)
+                  .join(" & ")
           }}
           Jobs {{ filter.ort ? " in " + filter.ort : "" }} gesucht –
           gefunden!</span
@@ -285,6 +287,7 @@
                   @change="
                     () => {
                       getJobs();
+                      setQuery();
                     }
                   "
                 ></b-form-checkbox-group>
@@ -511,7 +514,7 @@
           >
             <b-link
               :to="
-                `/stellenangebote/ort/${city.slug}${
+                `/?ort=${city.slug}${
                   berufsgruppe.active.length == 1
                     ? '?berufsgruppe=' + berufsgruppe.active[0]
                     : ''
@@ -672,7 +675,7 @@
           (ZFA), ZMF, ZMV, MTRA in
           <span v-for="(state, index) in companyStateOptions" :key="state">
             <b-link
-              :to="`/stellenangebote/ort/${state.toLowerCase()}`"
+              :to="`/?ort=${state.toLowerCase()}`"
               @click="
                 () => {
                   filter.ort = state;
@@ -690,9 +693,11 @@
 
     <Head
       :title="
-        `Stellenangebote für ${berufsgruppe.active.join(' & ')} | Jobs${
-          filter.ort ? ' in ' + filter.ort : ''
-        }`
+        `Stellenangebote für ${
+          berufsgruppe.active.length === 1
+            ? berufsgruppe.active.join(' & ')
+            : professionOptions.map(profession => profession.value).join(' & ')
+        } | Jobs${filter.ort ? ' in ' + filter.ort : ''}`
       "
       :desc="
         `Jobs für ${
@@ -797,11 +802,7 @@
           indeterminate: false
         },
         berufsgruppe: {
-          active: this.$route.query.berufsgruppe
-            ? typeof this.$route.query.berufsgruppe === "object"
-              ? this.$route.query.berufsgruppe
-              : [this.$route.query.berufsgruppe]
-            : professionOptions.map(profession => profession.value)
+          active: professionOptions.map(profession => profession.value)
         },
         showAdvancedSearch: false,
         employmentTypeOptions: Object.freeze(employmentTypeOptions),
@@ -824,44 +825,50 @@
                 "itemListElement": [{
                     "@type": "ListItem",
                     "position": 1,
-                    "name": "MFA mal anders",
-                    "item": "https://www.mfa-mal-anders.de"
-                },{
-                    "@type": "ListItem",
-                    "position": 2,
-                    "name": "Stellenangebote",
-                    "item": "https://www.mfa-mal-anders.de/stellenangebote"
+                    "name": "Home",
+                    "item": "https://www.mfa-mal-anders.de/"
                 }${
-                  this.filter.ort
-                    ? ',{"@type": "ListItem","position": 3,"name": "' +
-                      this.filter.ort +
-                      '","item": "https://www.mfa-mal-anders.de/stellenangebote/ort/' +
-                      this.filter.ort.toLowerCase() +
+                  this.berufsgruppe.active.length === 1
+                    ? ',{"@type": "ListItem","position": 2,"name": "' +
+                      this.berufsgruppe.active[0].toUpperCase() +
+                      '","item": "https://www.mfa-mal-anders.de/' +
+                      this.berufsgruppe.active[0].toLowerCase() +
                       '"}'
                     : ""
-                }]
+                }${
+              this.berufsgruppe.active.length === 1 && this.filter.ort
+                ? ',{"@type": "ListItem","position": 3,"name": "' +
+                  this.filter.ort +
+                  '","item": "https://www.mfa-mal-anders.de/' +
+                  this.berufsgruppe.active[0].toLowerCase() +
+                  "/" +
+                  this.filter.ort.toLowerCase() +
+                  '"}'
+                : ""
+            }]
               }`
           },
           {
             rel: "canonical",
-            href: `${
-              this.$config.website.url
-            }/stellenangebote${this.getCanonical()}`,
+            href: `${this.$config.website.url}/${this.getCanonical()}`,
             id: "canonical"
           }
         ];
       },
       breadcrumbs() {
-        const breadcrumbs = [
-          { text: "Home", to: "/" },
-          { text: "Stellenangebote", to: "/stellenangebote" }
-        ];
+        const breadcrumbs = [{ text: "Stellenangebote", href: "/" }];
 
-        if (this.filter.ort) {
+        if (this.berufsgruppe.active.length === 1) {
           breadcrumbs.push({
-            text: this.filter.ort,
-            to: `/stellenangebote/ort/${this.filter.ort.toLowerCase()}`
+            text: this.berufsgruppe.active[0].toUpperCase(),
+            href: `/${this.berufsgruppe.active[0].toLowerCase()}`
           });
+
+          if (this.filter.ort) {
+            breadcrumbs.push({
+              text: this.filter.ort
+            });
+          }
         }
 
         return breadcrumbs;
@@ -879,10 +886,10 @@
           this.specialization.indeterminate = true;
           this.specialization.allSelected = false;
         }
-      },
-      "berufsgruppe.active"() {
-        this.setQuery();
       }
+      // "berufsgruppe.active"() {
+      //   this.setQuery();
+      // }
     },
     async created() {
       this.setFilter();
@@ -996,10 +1003,9 @@
           ...this.filter,
           ort: textToSlug(this.filter.ort),
           berufsgruppe:
-            typeof this.berufsgruppe.active === "object" &&
-            this.berufsgruppe.active.length === this.professionOptions.length
-              ? ""
-              : this.berufsgruppe.active
+            this.berufsgruppe.active.length === 1
+              ? this.berufsgruppe.active
+              : ""
         };
 
         for (const key in query) {
@@ -1011,7 +1017,7 @@
         this.$router
           .replace({
             query,
-            path: "/stellenangebote"
+            path: "/"
           })
           .catch(() => {});
       },
@@ -1027,24 +1033,33 @@
           radius: parseInt(this.$route.query.radius) || null
         };
 
-        if (this.$route.query.fachgebiet) {
-          const specialization = this.specializationOptions.find(
-            elem => elem.toLowerCase() == this.$route.query.fachgebiet
-          );
+        // if (this.$route.query.berufsgruppe) {
+        // const professionStr = (Array.isArray(this.$route.query.berufsgruppe) ? this.$route.query.berufsgruppe.join() : this.$route.query.berufsgruppe) + this.$route.fullPath;
 
-          this.specialization = {
-            active: [specialization],
-            visible: true,
-            allSelected: false,
-            indeterminate: true
-          };
-        }
+        this.berufsgruppe.active = this.getBerufsgruppeActive();
+        // typeof this.$route.query.berufsgruppe === "object"
+        //   ? this.$route.query.berufsgruppe
+        //   : [this.$route.query.berufsgruppe];
+        // }
+
+        // if (this.$route.query.fachgebiet) {
+        //   const specialization = this.specializationOptions.find(elem =>
+        //     elem.toLowerCase().includes(this.$route.fullPath.toLowerCase())
+        //   );
+
+        //   this.specialization = {
+        //     active: [specialization],
+        //     visible: true,
+        //     allSelected: false,
+        //     indeterminate: true
+        //   };
+        // }
 
         if (
-          this.$route.query.s ||
-          this.$route.query.anstellungsart ||
-          this.$route.query.berufsgruppe ||
-          this.$route.query.fachgebiet
+          this.filter.s ||
+          this.filter.anstellungsart ||
+          this.berufsgruppe.active.length === 1 ||
+          this.specialization.length > 0
         ) {
           this.showAdvancedSearch = true;
         }
@@ -1082,20 +1097,43 @@
           letter.toUpperCase()
         );
       },
+      getBerufsgruppeActive() {
+        const berufsgruppe = this.professionOptions
+          .filter(profession =>
+            (
+              this.$route.path +
+              (Array.isArray(this.$route.query.berufsgruppe)
+                ? this.$route.query.berufsgruppe.join()
+                : this.$route.query.berufsgruppe)
+            )
+              .toLowerCase()
+              .includes(profession.value.toLowerCase())
+          )
+          .map(profession => profession.value);
+
+        return berufsgruppe.length === 1
+          ? berufsgruppe
+          : this.professionOptions.map(profession => profession.value);
+      },
       getCanonical() {
         let canonical = "";
-        const location =
-          this.$route.params.location ||
-          this.$route.query.ort ||
-          this.$route.query.state;
 
-        if (location) {
-          canonical += "/ort/" + textToSlug(location);
+        if (this.berufsgruppe.active.length === 1) {
+          canonical += this.berufsgruppe.active[0].toLowerCase();
+
+          if (this.filter.ort) {
+            canonical += "/" + textToSlug(this.filter.ort);
+          }
         }
 
-        if (this.$route.query.berufsgruppe) {
-          canonical += "?berufsgruppe=" + this.$route.query.berufsgruppe;
-        }
+        // const location =
+        //   this.$route.params.location ||
+        //   this.$route.query.ort ||
+        //   this.$route.query.state;
+
+        // if (this.$route.query.berufsgruppe) {
+        //   canonical += "?berufsgruppe=" + this.$route.query.berufsgruppe;
+        // }
 
         return canonical;
       }

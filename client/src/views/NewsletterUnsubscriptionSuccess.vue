@@ -5,9 +5,7 @@
       <p>
         Du hast Dich erfolgreich von unserem Job-Newsletter abgemeldet.
       </p>
-      <b-button to="/stellenangebote" variant="secondary"
-        >Weiter zur Stellenbörse</b-button
-      >
+      <b-button to="/" variant="secondary">Weiter zur Stellenbörse</b-button>
       <ArticleListRandom style="margin-top: 5rem" />
     </div>
     <Head :title="title" desc="Job-Newsletter Abmeldung erfolgreich" img="" />

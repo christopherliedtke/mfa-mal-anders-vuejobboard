@@ -171,7 +171,7 @@ module.exports = {
   },
   googleIndexing: {
     active: true,
-    pathPrefix: "/stellenangebote/job/",
+    pathPrefix: "/job/",
   },
   facebook: {
     autoPost: false,

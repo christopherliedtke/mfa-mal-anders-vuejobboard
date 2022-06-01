@@ -247,7 +247,7 @@
             }
           );
 
-          this.$router.push("/stellenangebote");
+          this.$router.push("/");
         }
       }
     }

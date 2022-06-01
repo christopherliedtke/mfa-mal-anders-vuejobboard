@@ -44,18 +44,17 @@
       return {
         companies: null,
         breadcrumbs: [
-          { text: "Home", to: "/" },
-          { text: "Stellenangebote", to: "/stellenangebote" },
+          { text: "Stellenangebote", to: "/" },
           {
             text: "Unternehmensverzeichnis",
-            to: "/stellenangebote/unternehmensverzeichnis"
+            to: "/unternehmensverzeichnis"
           }
         ],
         snippet: [
           {
             id: "canonical",
             rel: "canonical",
-            href: `${this.$config.website.url}/stellenangebote/unternehmensverzeichnis`
+            href: `${this.$config.website.url}/unternehmensverzeichnis`
           },
           {
             id: "breadcrumbs",
@@ -66,18 +65,13 @@
               "itemListElement": [{
                 "@type": "ListItem",
                 "position": 1,
-                "name": "MFA mal anders",
-                "item": "https://www.mfa-mal-anders.de"
+                "name": "Stellenangebote",
+                "item": "https://www.mfa-mal-anders.de/"
               },{
                 "@type": "ListItem",
                 "position": 2,
-                "name": "Stellenangebote",
-                "item": "https://www.mfa-mal-anders.de/stellenangebote"
-              },{
-                "@type": "ListItem",
-                "position": 3,
                 "name": "Unternehmensverzeichnis",
-                "item": "https://www.mfa-mal-anders.de/stellenangebote/unternehmensverzeichnis"
+                "item": "https://www.mfa-mal-anders.de/unternehmensverzeichnis"
               }]
             }`
           }
@@ -123,7 +117,7 @@
             }
           );
 
-          this.$router.push("/stellenangebote");
+          this.$router.push("/");
         }
       }
     }

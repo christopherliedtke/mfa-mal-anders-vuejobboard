@@ -17,9 +17,7 @@
             <b-link
               class="text-muted"
               :to="
-                `/stellenangebote/ort/${job.company.location
-                  .toLowerCase()
-                  .replace(' ', '-')}`
+                `/?ort=${job.company.location.toLowerCase().replace(' ', '-')}`
               "
               >{{ job.company.location
               }}{{
@@ -63,7 +61,7 @@
           <div class="head flex-column flex-sm-row order-1 order-sm-2">
             <b-link
               v-if="job.employmentType"
-              :to="`/stellenangebote?employmentType=${job.employmentType}`"
+              :to="`/?employmentType=${job.employmentType}`"
             >
               <div class="icon">
                 <svg
@@ -149,9 +147,7 @@
             </div>
             <b-link
               v-if="job.specialization && job.specialization != 'null'"
-              :to="
-                `/stellenangebote?fachgebiet=${job.specialization.toLowerCase()}`
-              "
+              :to="`/?fachgebiet=${job.specialization.toLowerCase()}`"
             >
               <div class="icon">
                 <svg
@@ -278,7 +274,7 @@
           </b-link>
           <b-link
             :href="
-              `https://developers.facebook.com/tools/debug/?q=https://www.mfa-mal-anders.de/stellenangebote/job/${job._id}`
+              `https://developers.facebook.com/tools/debug/?q=https://www.mfa-mal-anders.de/job/${job._id}`
             "
             target="_blank"
           >
@@ -414,11 +410,7 @@
         >
       </div>
       <div class="my-3">
-        <b-button
-          class="mr-2 mt-2"
-          variant="outline-primary"
-          size="sm"
-          to="/stellenangebote"
+        <b-button class="mr-2 mt-2" variant="outline-primary" size="sm" to="/"
           >Zurück zu Stellenangeboten</b-button
         >
         <b-button
