@@ -168,6 +168,7 @@
                       contactPosition
                       contactEmail
                       contactPhone
+                      slug
                       company {
                         _id
                         name
