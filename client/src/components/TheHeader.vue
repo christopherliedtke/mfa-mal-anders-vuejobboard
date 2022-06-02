@@ -17,7 +17,18 @@
         @click="navCollapsed = true"
       >
         <nav id="primary-nav">
-          <router-link to="/">Stellenangebote</router-link>
+          <router-link
+            to="/"
+            :class="[
+              {
+                'router-link-exact-active':
+                  $route.path === '/' ||
+                  $route.path.startsWith('/mfa') ||
+                  $route.path.startsWith('/zfa')
+              }
+            ]"
+            >Stellenangebote</router-link
+          >
           <router-link to="/stellengesuche">Stellengesuche</router-link>
 
           <router-link
