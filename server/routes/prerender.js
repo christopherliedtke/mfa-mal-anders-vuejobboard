@@ -11,6 +11,8 @@ router.post("/recache", verifyToken, async (req, res) => {
     res.json({ success: false });
   }
 
+  console.log(req.body.url);
+
   recachePrerender(req.body.url);
 
   res.json({ success: true });

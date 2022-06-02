@@ -41,6 +41,8 @@
         </b-link>
       </div>
 
+      <JobItemAdminPanel v-if="$store.state.auth.user.isAdmin" :job="job" />
+
       <hr />
 
       <div>
@@ -234,64 +236,6 @@
           :size="2"
         />
         <NewsletterSignUpModal :state="job.company.state" />
-        <div
-          v-if="$store.state.auth.user.isAdmin"
-          class="border-radius1 bg-light-shade ml-3 py-2 px-3"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            fill="currentColor"
-            style="cursor: pointer"
-            class="bi bi-share-fill text-info"
-            viewBox="0 0 16 16"
-            @click="socialShareJobToClipboard(job)"
-          >
-            <path
-              d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"
-            />
-          </svg>
-
-          <b-link :to="`/admin/jobs/edit/${job._id}`">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              fill="currentColor"
-              style="cursor: pointer"
-              class="bi bi-pencil-square text-info ml-3"
-              viewBox="0 0 16 16"
-            >
-              <path
-                d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
-              />
-              <path
-                fill-rule="evenodd"
-                d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
-              />
-            </svg>
-          </b-link>
-          <b-link
-            :href="
-              `https://developers.facebook.com/tools/debug/?q=https://www.mfa-mal-anders.de/job/${job._id}`
-            "
-            target="_blank"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              fill="currentColor"
-              class="bi bi-facebook text-info ml-3"
-              viewBox="0 0 16 16"
-            >
-              <path
-                d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"
-              />
-            </svg>
-          </b-link>
-        </div>
       </div>
 
       <div
@@ -534,7 +478,6 @@
 </template>
 
 <script>
-  import socialShareJobToClipboard from "@/helpers/socialShareJobToClipboard.js";
   import {
     employmentTypeOptions,
     companySizeOptions
@@ -547,6 +490,10 @@
   import SocialButtonTwitterShare from "@/components/SocialButtonTwitterShare.vue";
   import NewsletterSignUpModal from "@/components/NewsletterSignUpModal.vue";
   import { jobStructuredDataMixin } from "@/mixins/jobStructuredDataMixin.js";
+  const JobItemAdminPanel = () =>
+    import(
+      /* webpackChunkName: "JobItemAdminPanel" */ "@/components/JobItemAdminPanel.vue"
+    );
   export default {
     name: "JobItem",
     components: {
@@ -556,6 +503,7 @@
       SocialButtonEmailShare,
       SocialButtonTwitterShare,
       NewsletterSignUpModal,
+      JobItemAdminPanel,
       StarJob
     },
     mixins: [jobStructuredDataMixin],
@@ -569,7 +517,6 @@
       return {
         employmentTypeOptions,
         companySizeOptions,
-        socialShareJobToClipboard,
         link: [
           {
             id: "mapsjs-ui",

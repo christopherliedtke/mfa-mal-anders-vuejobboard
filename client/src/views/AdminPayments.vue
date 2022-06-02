@@ -312,30 +312,6 @@
             >Invoice
           </b-button>
 
-          <BDropdown class="mr-2" size="sm" left variant="primary">
-            <template #button-content>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-share-fill mr-2"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"
-                />
-              </svg>
-              Share
-            </template>
-            <BDropdownItem
-              class="mb-0"
-              variant="info"
-              @click.prevent="socialShareJobToClipboard(row.item.job)"
-              >Copy Text</BDropdownItem
-            >
-          </BDropdown>
-
           <b-button
             v-b-modal="'deletePaymentModal'"
             size="sm"
@@ -377,7 +353,6 @@
 </template>
 
 <script>
-  import socialShareJobToClipboard from "@/helpers/socialShareJobToClipboard.js";
   import NavAdmin from "@/components/NavAdmin.vue";
   import Vue from "vue";
   import {
@@ -405,7 +380,6 @@
         filter: {
           searchTerm: this.$route.query.s || ""
         },
-        socialShareJobToClipboard,
         fields: [
           {
             key: "_id",
