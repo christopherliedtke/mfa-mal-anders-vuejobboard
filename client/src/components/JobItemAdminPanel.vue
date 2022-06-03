@@ -2,23 +2,16 @@
   <div class="d-inline-block border-radius1 bg-light-shade py-2 px-3">
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="14"
-      height="14"
+      width="20"
+      height="20"
       fill="currentColor"
-      class="bi bi-clipboard-check text-info mr-1"
+      class="bi bi-facebook text-info mr-2"
       style="cursor: pointer"
       viewBox="0 0 16 16"
       @click="socialShareShortJobToClipboard(job)"
     >
       <path
-        fill-rule="evenodd"
-        d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"
-      />
-      <path
-        d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"
-      />
-      <path
-        d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"
+        d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"
       />
     </svg>
 
@@ -27,20 +20,13 @@
       width="20"
       height="20"
       fill="currentColor"
-      class="bi bi-clipboard-check text-info mr-2"
+      class="bi bi-blockquote-right text-info mr-2"
       style="cursor: pointer"
       viewBox="0 0 16 16"
-      @click="socialShareLongJobToClipboard(job)"
+      @click="copyDescription"
     >
       <path
-        fill-rule="evenodd"
-        d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"
-      />
-      <path
-        d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"
-      />
-      <path
-        d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"
+        d="M2.5 3a.5.5 0 0 0 0 1h11a.5.5 0 0 0 0-1h-11zm0 3a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1h-6zm0 3a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1h-6zm0 3a.5.5 0 0 0 0 1h11a.5.5 0 0 0 0-1h-11zm10.113-5.373a6.59 6.59 0 0 0-.445-.275l.21-.352c.122.074.272.17.452.287.18.117.35.26.51.428.156.164.289.351.398.562.11.207.164.438.164.692 0 .36-.072.65-.216.873-.145.219-.385.328-.721.328-.215 0-.383-.07-.504-.211a.697.697 0 0 1-.188-.463c0-.23.07-.404.211-.521.137-.121.326-.182.569-.182h.281a1.686 1.686 0 0 0-.123-.498 1.379 1.379 0 0 0-.252-.37 1.94 1.94 0 0 0-.346-.298zm-2.168 0A6.59 6.59 0 0 0 10 6.352L10.21 6c.122.074.272.17.452.287.18.117.35.26.51.428.156.164.289.351.398.562.11.207.164.438.164.692 0 .36-.072.65-.216.873-.145.219-.385.328-.721.328-.215 0-.383-.07-.504-.211a.697.697 0 0 1-.188-.463c0-.23.07-.404.211-.521.137-.121.327-.182.569-.182h.281a1.749 1.749 0 0 0-.117-.492 1.402 1.402 0 0 0-.258-.375 1.94 1.94 0 0 0-.346-.3z"
       />
     </svg>
 
@@ -195,7 +181,6 @@
 
 <script>
   import socialShareShortJobToClipboard from "@/helpers/socialShareShortJobToClipboard.js";
-  import socialShareLongJobToClipboard from "@/helpers/socialShareLongJobToClipboard.js";
   import ebayShareLongJobToClipboard from "@/helpers/ebayShareLongJobToClipboard.js";
   export default {
     name: "JobItemAdminPanel",
@@ -208,13 +193,20 @@
     data() {
       return {
         socialShareShortJobToClipboard,
-        socialShareLongJobToClipboard,
         ebayShareLongJobToClipboard
       };
     },
     computed: {
       url() {
         return window.origin + "/job/" + this.job._id;
+      }
+    },
+    methods: {
+      copyDescription() {
+        window
+          .getSelection()
+          .selectAllChildren(document.getElementById("job-description"));
+        document.execCommand("copy");
       }
     }
   };
