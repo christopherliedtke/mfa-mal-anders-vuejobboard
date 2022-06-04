@@ -207,6 +207,8 @@
           .getSelection()
           .selectAllChildren(document.getElementById("job-description"));
         document.execCommand("copy");
+
+        // window.getSelection().removeAllRanges();
       }
     }
   };
