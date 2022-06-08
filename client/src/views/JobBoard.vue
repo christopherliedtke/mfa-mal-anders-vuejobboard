@@ -697,10 +697,10 @@
           berufsgruppe.active.length === 1
             ? berufsgruppe.active.join(' & ')
             : professionOptions.map(profession => profession.value).join(' & ')
-        } | Jobs${filter.ort ? ' in ' + filter.ort : ''}`
+        }${filter.ort ? ' | Jobs in ' + filter.ort : ''}`
       "
       :desc="
-        `Jobs für ${
+        `Das Stellen- und Karriereportal speziell für ${
           berufsgruppe.active.includes('MFA')
             ? 'Medizinische Fachangestellte (MFA)'
             : ''
@@ -714,8 +714,8 @@
             ? 'Zahnmedizinische Fachangestellte (ZFA)'
             : ''
         }${
-          filter.ort ? ' in ' + filter.ort + ' & Umgebung' : ''
-        } ✓ Teilzeit | Vollzeit – MFA mal anders Stellenbörse`
+          filter.ort ? ' – ' + filter.ort + ' & Umgebung' : ''
+        } | MFA mal anders`
       "
       img=""
       :script="snippet"

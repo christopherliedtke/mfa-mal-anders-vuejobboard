@@ -55,13 +55,18 @@
             },
             {
               name: "robots",
-              content: "max-image-preview:large",
-              id: "max-image-preview"
+              content: "index,follow,max-image-preview:large",
+              id: "robots"
             },
             {
               property: "og:type",
               content: "website",
               id: "og-type"
+            },
+            {
+              property: "og:locale",
+              content: "de_DE",
+              id: "og-locale"
             },
             {
               property: "og:title",
@@ -77,6 +82,11 @@
               property: "og:url",
               content: window.location.origin + this.$route.path,
               id: "og-url"
+            },
+            {
+              property: "og:site_name",
+              content: "MFA mal anders",
+              id: "og-site-name"
             },
             {
               property: "og:image",

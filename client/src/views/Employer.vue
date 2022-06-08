@@ -283,17 +283,19 @@
             <p>
               Sie erstellen Ihre Anzeige, wir sorgen für den Rest &ndash;
               <strong>Relevante Reichweite auf </strong>
-              <b-link to="/">MFA mal anders</b-link>,
+              <b-link to="/" class="bold">MFA mal anders</b-link>,
               <a
                 href="https://www.google.com/search?q=mfa+mal+anders&ibp=htl;jobs#htivrt=jobs&htilrad=-1.0"
                 target="_blank"
+                class="bold"
                 >Google Jobs</a
               >,
-              <a
+              <span class="text-tertiary bold">Social Media</span>
+              <!-- <a
                 :href="`https://www.facebook.com/${$config.fb.path}`"
                 target="_blank"
                 >Facebook</a
-              >
+              > -->
               und
               <b-link to="#mehr-informationen">mehr...</b-link>
             </p>
@@ -405,6 +407,18 @@
         </div>
 
         <p>
+          <strong
+            >Gern bieten wir Ihnen nach Absprache auch individuelle Pakete
+            an</strong
+          >, wenn Sie beispielsweise eine Stellenanzeige dauerhaft bei uns
+          schalten möchten. Kontaktieren Sie uns dazu gern über unser
+          <router-link
+            class="bold"
+            to="/kontakt?role=employer&subject=Stellenpakete"
+            >Kontaktformular</router-link
+          >.
+        </p>
+        <p>
           Sie haben die Möglichkeit, Ihre Stellenanzeige nach der
           <b-link class="bold" to="/auth/register">Registrierung</b-link> auf
           unserem Portal zu erstellen und in einer Vorschau zu betrachten.
@@ -419,18 +433,6 @@
           >
           zu antworten und Kontakt zu potentiellen neuen MitarbeiterInnen
           aufzunehmen.
-        </p>
-        <p>
-          <strong
-            >Gern bieten wir Ihnen nach Absprache auch individuelle Pakete
-            an</strong
-          >, wenn Sie beispielsweise eine Stellenanzeige dauerhaft bei uns
-          schalten möchten. Kontaktieren Sie uns dazu gern über unser
-          <router-link
-            class="bold"
-            to="/kontakt?role=employer&subject=Stellenpakete"
-            >Kontaktformular</router-link
-          >.
         </p>
       </div>
     </div>
