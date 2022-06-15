@@ -372,6 +372,7 @@
           to="/karriere/bewerbung"
           >Bewerbungsvorlage</b-button
         >
+        <JobSeekButton size="sm" class="mt-3" />
       </div>
       <div
         v-if="
@@ -490,6 +491,7 @@
   import SocialButtonTwitterShare from "@/components/SocialButtonTwitterShare.vue";
   import NewsletterSignUpModal from "@/components/NewsletterSignUpModal.vue";
   import { jobStructuredDataMixin } from "@/mixins/jobStructuredDataMixin.js";
+  import JobSeekButton from "@/components/JobSeekButton.vue";
   const JobItemAdminPanel = () =>
     import(
       /* webpackChunkName: "JobItemAdminPanel" */ "@/components/JobItemAdminPanel.vue"
@@ -504,7 +506,8 @@
       SocialButtonTwitterShare,
       NewsletterSignUpModal,
       JobItemAdminPanel,
-      StarJob
+      StarJob,
+      JobSeekButton
     },
     mixins: [jobStructuredDataMixin],
     props: {
