@@ -120,15 +120,18 @@
         ArzthelferInnen – AAA (2021)</a
       >
     </p>
+    <JobSeekButton size="sm" block />
   </div>
 </template>
 
 <script>
   import { BPopover } from "bootstrap-vue";
   import Vue from "vue";
+  import JobSeekButton from "@/components/JobSeekButton.vue";
   Vue.component("BPopover", BPopover);
   export default {
     name: "TheSalaryCalculatorMfa",
+    components: { JobSeekButton },
     data() {
       return {
         form: {
