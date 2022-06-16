@@ -76,8 +76,12 @@
           {
             text: "Fortbildung"
           }
-        ],
-        snippet: [
+        ]
+      };
+    },
+    computed: {
+      snippet() {
+        return [
           {
             id: "breadcrumbs",
             type: "application/ld+json",
@@ -112,13 +116,28 @@
                   }]
               }`
           },
+          this.training
+            ? {
+                id: "course",
+                type: "application/ld+json",
+                inner: `{
+                  "@context": "http://schema.org",
+                  "@type" : "Course",
+                  "name": "${this.training.title}",
+                  "description": "${this.training.excerpt}",
+                  "provider": {
+                    "@type": "Organization",
+                    "name": "${this.training.company}"                  }
+              }`
+              }
+            : "",
           {
             rel: "canonical",
             href: `${this.$config.website.url}/karriere/fort-und-weiterbildung/fortbildungskatalog/${this.$route.params.id}/${this.$route.params.slug}`,
             id: "canonical"
           }
-        ]
-      };
+        ];
+      }
     },
     async created() {
       await this.getTraining();

@@ -882,6 +882,64 @@
                 "item": "https://www.mfa-mal-anders.de/fuer-arbeitgeber"
               }]
             }`
+          },
+          {
+            id: "faqs",
+            type: "application/ld+json",
+            inner: `{
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [{
+                "@type": "Question",
+                "name": "Welche Zahlungsarten stehen zur Verfügung?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Für die Zahlung Ihrer Stellenanzeige fordern Sie über unsere Plattform eine Rechnung an. Anschließend können Sie per Kreditkarte, GiroPay, Sofortüberweisung oder manueller Überweisung auf unser Verrechnungskonto den Rechnungsbetrag begleichen."
+                }
+              }, {
+                "@type": "Question",
+                "name": "Wie lange dauert es bis zur Veröffentlichung meiner Stellenanzeige?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Nach erfolgreicher Rechnungsanforderung wird Ihre Stellenanzeige sofort auf unserer Plattform veröffentlicht."
+                }
+              }, {
+                "@type": "Question",
+                "name": "Kann ich meine Stellenanzeige im Nachhinein ändern?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Über Ihren registrierten Account können Sie Ihre Stellenanzeige jederzeit anpassen. Die Änderungen werden sofort automatisch übernommen."
+                }
+              }, {
+                "@type": "Question",
+                "name": "Wie lange ist meine Stellenanzeige online?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Die Laufzeit Ihrer Stellenanzeige können Sie über die verfügbaren Stellenpakete auswählen. Die Mindestlaufzeit beträgt 60 Tage. Ihre Stelle ist so lange online, wie Ihre gewählte Laufzeit sowie ggfls. Ihre angegebene Bewerbungsfrist nicht abgelaufen sind. Über Ihren Account können Sie Ihre Stellenanzeige jederzeit selbst offline nehmen oder löschen. Für individuelle Stellenpakete können Sie uns direkt über das Kontaktformular kontaktieren."
+                }
+              }, {
+                "@type": "Question",
+                "name": "Wo wird meine Stellenanzeige veröffentlicht?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text":"Mit der Veröffentlichung Ihrer Stellenanzeige auf unserer Webseite wird diese automatisch bei Google Jobs gelistet (es kann ein wenig Zeit in Anspruch nehmen, bis Google Ihre Anzeige integriert). Darüber hinaus verteilen wir Ihre Stellenanzeige über unseren Jobs Newsletter sowie je nach Paket über unsere Social Media Kanäle und weitere."
+                }
+              }, {
+                "@type": "Question",
+                "name": "Ich benötige Hilfe bei der Erstellung einer attraktiven Stellenanzeige. Kann ich Unterstützung von Ihnen bekommen?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text":"In unserem 'Professional' Paket erhalten Sie nach der Erstellung Ihrer Stellenanzeige zusärtliche Tipps zur Optimierung durch Ihren persönlichen Ansprechpartner. Zudem geben wir Ihnen mit unseren Tipps für attraktive Stellenanzeigen wichtige Hinweise inkl. einer Musterstellenanzeige an die Hand. Haben Sie darüber hinaus Fragen, melden Sie sich gern auch über das Kontaktformular bei uns."
+                }
+              }, {
+                "@type": "Question",
+                "name": "Kann ich als Agentur eine Stellenanzeige veröffentlichen?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text":"Ja, Sie können als Vertreter einer Agentur Stellenanzeigen bei MFA mal anders veröffentlichen. Dazu registrieren Sie sich als Arbeitgeber und erstellen anschließend wie gewünscht Ihre Stellenanzeige. Die zu den Kunden zugehörigen Kontaktdaten (Unternehmen, AnsprechpartnerIn, E-Mail oder Link für Bewerbungen) können Sie individuell für jede Stellenanzeige hinterlegen. Da wir nicht mit Personalvermittlungen zusammen arbeiten, ist wichtig, dass Sie als Agentur nicht als Dritte im Bewerbungsprozess auftreten. D.h. Bewerbungen laufen ausschließlich über Ihre Kunden."
+                }
+              }]
+            }`
           }
         ],
         pricingPackages: null
