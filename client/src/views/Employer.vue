@@ -411,7 +411,8 @@
             >Gern bieten wir Ihnen nach Absprache auch individuelle Pakete
             an</strong
           >, wenn Sie beispielsweise eine Stellenanzeige dauerhaft bei uns
-          schalten möchten. Kontaktieren Sie uns dazu gern über unser
+          schalten oder eine zusätzliche Marketingkampagne (Google, Facebook,
+          Instagram) schalten möchten. Kontaktieren Sie uns dazu gern über unser
           <router-link
             class="bold"
             to="/kontakt?role=employer&subject=Stellenpakete"
@@ -481,9 +482,10 @@
         <h3>Wo wir Ihre Stellenanzeige ausspielen</h3>
         <p>
           Ihre Stellenanzeige wird dort ausgespielt, wo Sie Ihre Zielgruppe
-          findet: auf <strong>unserer Webseite</strong>, bei
-          <strong>Google Jobs</strong> und über
-          <strong>Social Media<span class="text-muted">*</span></strong
+          findet: auf <strong>unserer Plattform</strong>, sämtlichen
+          Suchmaschinen wie
+          <strong>Google, Google Jobs, Bing, Ecosia</strong> und mehr, sowie
+          über <strong>Social Media<span class="text-muted">*</span></strong
           >. Zusätzlich versenden wir Ihre Anzeige in unserem
           <strong> wöchentlichen Newsletter</strong>.
         </p>

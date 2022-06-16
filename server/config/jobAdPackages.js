@@ -83,7 +83,7 @@ module.exports = [
         icon: "plus-circle",
       },
       {
-        html: 'Inkl. <span class="text-secondary bold">100€ Google Ads Budget</span> &ndash; Ihre Stelle als Werbeanzeige in den Google Suchergebnissen für Ihren Standort',
+        html: '<span class="text-secondary bold">Google Ads Kampagne inkl. 100€ Start-Budget</span> &ndash; Ihre Stelle als Werbeanzeige in den Google Suchergebnissen speziell für Ihren Standort',
         icon: "plus-circle",
       },
       {
