@@ -1,39 +1,39 @@
 <template>
   <article v-if="training.title" class="weiterbildung-card">
-    <b-link
-      :to="'/karriere/fort-und-weiterbildung/ueberblick/' + training.slug"
-      :aria-label="training.title"
-    >
-      <div class="card">
-        <b-img-lazy
-          v-if="training.featuredImage.sourceUrl"
-          class="card-img-top"
-          :srcset="training.featuredImage.srcSet"
-          sizes="(max-width: 576px) 100vw, 600px"
-          :src="training.featuredImage.sourceUrl"
-          :alt="training.featuredImage.altText"
-          width="1200"
-          height="630"
-          blank-width="1200"
-          blank-height="630"
-          blank-color="#f7f6f9"
-          offset="1000"
-          fluid
-        />
-        <div class="card-body">
+    <div class="card">
+      <b-img-lazy
+        v-if="training.featuredImage.sourceUrl"
+        class="card-img-top"
+        :srcset="training.featuredImage.srcSet"
+        sizes="(max-width: 576px) 100vw, 600px"
+        :src="training.featuredImage.sourceUrl"
+        :alt="training.featuredImage.altText"
+        width="1200"
+        height="630"
+        blank-width="1200"
+        blank-height="630"
+        blank-color="#f7f6f9"
+        offset="1000"
+        fluid
+      />
+      <div class="card-body">
+        <b-link
+          :to="'/karriere/fort-und-weiterbildung/ueberblick/' + training.slug"
+          :aria-label="training.title"
+          class="text-reset stretched-link"
+        >
           <h2 class="card-title h4">{{ training.title }}</h2>
-
-          <!-- eslint-disable-next-line -->
+        </b-link>
+        <!-- eslint-disable-next-line -->
           <p class="card-text" v-html="training.excerpt"></p>
 
-          <b-button
-            :to="'/karriere/fort-und-weiterbildung/ueberblick/' + training.slug"
-            variant="primary"
-            >Mehr</b-button
-          >
-        </div>
+        <b-button
+          :to="'/karriere/fort-und-weiterbildung/ueberblick/' + training.slug"
+          variant="primary"
+          >Mehr</b-button
+        >
       </div>
-    </b-link>
+    </div>
   </article>
 </template>
 
