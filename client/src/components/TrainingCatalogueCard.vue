@@ -17,8 +17,20 @@
         />
       </div>
       <div class="training-title">
-        <!-- eslint-disable-next-line -->
-        <h2 class="h4 mb-2" v-html="training.title"></h2>
+        <b-link
+          :to="
+            training.desc
+              ? `/karriere/fort-und-weiterbildung/fortbildungskatalog/${training._id}/${training.slug}`
+              : ''
+          "
+          :href="!training.desc ? training.extUrl : ''"
+          :target="training.desc ? '_self' : '_blank'"
+          class="text-reset stretched-link"
+        >
+          <!-- eslint-disable-next-line -->
+          <h2 class="h4 mb-2" v-html="training.title"></h2>
+        </b-link>
+
         <!-- eslint-disable-next-line -->
         <span class="text-muted" v-html="training.company"></span>
       </div>
@@ -259,6 +271,7 @@
     }
 
     .header {
+      position: relative;
       display: flex;
       align-items: flex-start;
       // flex-wrap: wrap;

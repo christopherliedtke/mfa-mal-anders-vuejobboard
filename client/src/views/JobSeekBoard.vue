@@ -341,7 +341,7 @@
               alt="Stellenanzeige wird auf MFA mal anders veröffentlicht"
             />
             <p>
-              Sie sind als attraktiver Arbeitergeber auf der Suche nach einer
+              Sie sind als attraktiver Arbeitgeber auf der Suche nach einer
               motivierten und kompetenten
               <em
                 >Medizinischen Fachangestellten (MFA) | Zahnmedizinischen

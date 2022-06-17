@@ -2,9 +2,14 @@
   <aside class="card overflow-hidden shadow1 p-4 p-md-5">
     <div class="card-body p-0">
       <div class="row">
-        <div class="col-12 col-xl-9">
-          <!-- eslint-disable-next-line -->
+        <div class="position-static col-12 col-xl-9">
+          <router-link
+            to="/stellengesuche/info"
+            class="text-reset stretched-link"
+          >
+            <!-- eslint-disable-next-line -->
           <h2 class="display-4 bold" v-html="header"></h2>
+          </router-link>
           <p class="lead bold text-primary uppercase">
             Lass Dich jetzt von passenden Arbeitgebern finden
           </p>
@@ -14,9 +19,7 @@
             drehe den Bewerbungsprozess um. Lass Arbeitgeber Dich mit passenden
             Angeboten kontaktieren.
           </p>
-          <b-button to="/stellengesuche/info" variant="secondary"
-            >Mehr erfahren</b-button
-          >
+          <b-button variant="secondary">Mehr erfahren</b-button>
         </div>
       </div>
     </div>

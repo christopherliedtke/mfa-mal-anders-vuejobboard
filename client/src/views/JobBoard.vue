@@ -482,7 +482,7 @@
               alt="Stellenanzeige wird auf MFA mal anders veröffentlicht"
             />
             <p>
-              Sie sind als attraktiver Arbeitergeber auf der Suche nach einer
+              Sie sind als attraktiver Arbeitgeber auf der Suche nach einer
               motivierten und kompetenten
               <em
                 >Medizinischen Fachangestellten (MFA) | Zahnmedizinischen
@@ -590,7 +590,7 @@
         <p>
           Auf MFA mal anders findest Du passende Jobs für Medizinische
           Fachangestellte (MFA) | Zahnmedizinische Fachangestellte (ZFA) von
-          attraktiven Arbeitergebern in ganz Deutschland. Hier findest Du
+          attraktiven Arbeitgebern in ganz Deutschland. Hier findest Du
           Stellenangebote in Vollzeit und Teilzeit in verschiedenen
           Fachgebieten. Außerdem hast Du die Möglichkeit, als ein
           <router-link to="/stellengesuche/info" class="bold"

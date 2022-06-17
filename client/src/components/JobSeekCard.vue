@@ -1,11 +1,6 @@
 <template>
   <article v-if="jobSeek">
-    <b-link
-      class="card job-seek-card bg-light-shade border-radius2 shadow1 p-4 mb-3"
-      :to="`/stellengesuche/gesuch/${jobSeek._id}/${jobSeek.slug}`"
-      target="_self"
-      :disabled="linkDisabled"
-    >
+    <div class="card job-seek-card p-4 mb-3">
       <div class="card-body p-0">
         <div class="row">
           <div class="col-3 col-md-2 order-2">
@@ -31,13 +26,17 @@
               style="opacity: 0.1"
             />
           </div>
-          <div class="col-9 col-md-10  order-1 pr-0 pr-md-2">
-            <h3
-              class="h4 bold mb-1"
-              style="overflow: hidden; word-wrap: break-word"
+          <div class="col-9 col-md-10 order-1 pr-0 pr-md-2 position-static">
+            <b-link
+              :to="`/stellengesuche/gesuch/${jobSeek._id}/${jobSeek.slug}`"
+              target="_self"
+              :disabled="linkDisabled"
+              class=" stretched-link"
             >
-              {{ jobSeek.title }}
-            </h3>
+              <h3 class="h4 bold mb-1 text-break">
+                {{ jobSeek.title }}
+              </h3>
+            </b-link>
             <p class="text-muted mb-0">
               {{ jobSeek.publicFirstName }} {{ jobSeek.publicLastName }}
             </p>
@@ -139,7 +138,7 @@
         <div class="col-12 col-md-10">
         </div>
       </div> -->
-    </b-link>
+    </div>
   </article>
 </template>
 
@@ -170,23 +169,35 @@
     }
   }
 
-  .card-foot {
-    margin-top: 0.5rem;
-    color: transparentize($primary, $amount: 0.1);
-    display: flex;
-    align-items: flex-start;
-    flex-wrap: wrap;
+  .card {
+    border: none;
+    background-color: $light-shade;
+    border-radius: $border-radius2;
+    box-shadow: $shadow1;
+    transition: $transition1;
 
-    .icon {
-      display: flex;
-      justify-content: flex-start;
-      align-items: flex-start;
-      margin-right: 1rem;
+    &:hover {
+      box-shadow: $shadow2;
+    }
+
+    .card-foot {
       margin-top: 0.5rem;
+      color: transparentize($primary, $amount: 0.1);
+      display: flex;
+      align-items: flex-start;
+      flex-wrap: wrap;
 
-      svg {
-        min-width: 20px;
-        margin-right: 0.5rem;
+      .icon {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin-right: 1rem;
+        margin-top: 0.5rem;
+
+        svg {
+          min-width: 20px;
+          margin-right: 0.5rem;
+        }
       }
     }
   }
