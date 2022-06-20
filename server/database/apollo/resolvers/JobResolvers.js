@@ -13,11 +13,15 @@ const { Company } = require("../../models/company");
 const internalJobsCache = require("../../../cache/internalJobsCache");
 const textToSlug = require("../../../lib/textToSlug");
 const mongoose = require("mongoose");
+const jobliftCache = require("../../../cache/jobliftCache.js");
 
 const JobResolvers = {
   Query: {
     publicJob: async (root, args) => {
-      const jobs = await internalJobsCache.get("jobs");
+      const internalJobs = await internalJobsCache.get("jobs");
+      const jobliftJobs = await jobliftCache.get("jobs");
+
+      let jobs = [...internalJobs, ...jobliftJobs];
 
       const job = jobs.find(job => job._id == args._id);
 
@@ -37,7 +41,12 @@ const JobResolvers = {
         }
       }
 
-      let jobs = await internalJobsCache.get("jobs");
+      const internalJobs = await internalJobsCache.get("jobs");
+      const jobliftJobs = await jobliftCache.get("jobs");
+
+      // console.log("jobliftJobs: ", jobliftJobs);
+
+      let jobs = [...internalJobs, ...jobliftJobs];
 
       // filter by profession
       if (args.profession) {
@@ -563,6 +572,21 @@ function sortJobsByPosition(position, jobs) {
   }
 
   return jobs.sort((a, b) => {
+    if (
+      a.source === "joblift" &&
+      !b.source &&
+      calcDistance(
+        b.company.geoCodeLat,
+        b.company.geoCodeLng,
+        position.lat,
+        position.lng
+      ) /
+        1000 <
+        50
+    ) {
+      return false;
+    }
+
     return (
       calcDistance(
         a.company.geoCodeLat,

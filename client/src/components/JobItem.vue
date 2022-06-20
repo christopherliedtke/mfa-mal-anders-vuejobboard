@@ -300,7 +300,7 @@
             </svg> </strong
         ></b-link>
       </div>
-      <div class="mt-3">
+      <div v-if="job.company._id" class="mt-3">
         <b-link :to="`/unternehmen/${job.company._id}/${job.company.slug}`"
           >Unternehmensprofil –
           <!-- eslint-disable-next-line -->
@@ -428,9 +428,12 @@
       <div class="mt-4">
         <h2>Arbeitsort</h2>
         <p>
-          <b-link :to="`/unternehmen/${job.company._id}/${job.company.slug}`">{{
-            job.company.name
-          }}</b-link>
+          <b-link
+            v-if="job.company._id"
+            :to="`/unternehmen/${job.company._id}/${job.company.slug}`"
+            >{{ job.company.name }}</b-link
+          >
+          <span v-else>{{ job.company.name }}</span>
           <br v-if="job.company.name" />
           {{ job.company.street }} <br v-if="job.company.street" />
           {{ job.company.zipCode + " " + job.company.location }}
