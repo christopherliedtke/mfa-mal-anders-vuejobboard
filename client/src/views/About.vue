@@ -153,8 +153,8 @@
             wir gemeinsam unsere Vision von MFA mal anders umsetzen.
           </p>
           <p class="text-md-justify">
-            Im Rahmen unserer Zusammenarbeit bin ich dabei speziell in der
-            technischen Umsetzung der Karriereplattform verantwortlich und
+            Im Rahmen unserer Zusammenarbeit bin ich dabei speziell für die
+            technische Umsetzung der Karriereplattform verantwortlich und
             erarbeite zusammen mit Kristin die strategische Ausrichtung.
           </p>
         </div>

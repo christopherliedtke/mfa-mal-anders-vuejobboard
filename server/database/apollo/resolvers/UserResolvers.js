@@ -436,6 +436,18 @@ const UserResolvers = {
 
       const oldUserData = await User.findOne({ _id: context.user._id });
 
+      if (args.email.toLowerCase() != oldUserData.email.toLowerCase()) {
+        const existingUser = await User.findOne({
+          email: args.email.toLowerCase(),
+        });
+
+        if (existingUser) {
+          throw new UserInputError(
+            "Die E-Mail Adresse ist bereits für einen anderen Account registriert."
+          );
+        }
+      }
+
       const status =
         args.email.toLowerCase() === oldUserData.email.toLowerCase()
           ? oldUserData.status

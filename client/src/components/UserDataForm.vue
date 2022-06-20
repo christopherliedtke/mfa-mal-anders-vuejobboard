@@ -302,11 +302,20 @@
                 );
               }
             } else {
-              throw new Error("Beim Speichern ist ein Fehler aufgetreten.");
+              console.log(response);
+              throw new Error(
+                response.data.errors &&
+                response.data.errors[0] &&
+                response.data.errors[0].extensions.code === "BAD_USER_INPUT"
+                  ? response.data.errors[0].message
+                  : ""
+              );
             }
           } catch (err) {
+            console.log(err);
             this.$root.$bvToast.toast(
-              "Beim Speichern Ihrer Daten ist ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal.",
+              `${err.message ||
+                "Beim Speichern Ihrer Daten ist ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal."}`,
               {
                 title: `Fehler beim Speichern`,
                 variant: "danger",
