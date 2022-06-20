@@ -181,9 +181,7 @@ function filterJobliftJobs(job) {
     job.locations[0].location &&
     job.locations[0].location[0].zip &&
     job.locations[0].location[0].zip[0] &&
-    !job.fullDescription[0].match(
-      /onaldienst|onalservice|onalvermitt|onalmanage|onalberatu/gi
-    ) &&
+    !isRecruitingAgency(job) &&
     (checkMfa(job.title[0] + job.fullDescription[0]) ||
       checkZfa(job.title[0] + job.fullDescription[0]))
   );
@@ -199,8 +197,14 @@ function getEmploymentType(arr) {
   }
 }
 
+function isRecruitingAgency(job) {
+  return (job.fullDescription[0] + decode(job.company[0])).match(
+    /onaldienst|onalservice|onalvermitt|onalmanage|onalberatu|priomed/gi
+  );
+}
+
 function checkMfa(str) {
-  return str.match(/medizinische|mta|mfa|arzthelf|zfa/gi);
+  return str.match(/medizinische|mta|mfa|arzthelf/gi);
 }
 
 function checkZfa(str) {

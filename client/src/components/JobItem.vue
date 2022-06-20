@@ -7,12 +7,15 @@
           <h1 v-html="job.title"></h1>
           <span class="lead">
             <b-link
+              v-if="job.company._id"
               class="text-muted"
               :to="`/unternehmen/${job.company._id}/${job.company.slug}`"
             >
               <!-- eslint-disable-next-line -->
               <span v-html="job.company.name"></span>
             </b-link>
+            <!-- eslint-disable-next-line -->
+            <span v-else class="text-muted" v-html="job.company.name"></span>
             |
             <b-link
               class="text-muted"

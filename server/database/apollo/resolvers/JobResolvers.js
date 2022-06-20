@@ -582,7 +582,7 @@ function sortJobsByPosition(position, jobs) {
         position.lng
       ) /
         1000 <
-        50
+        40
     ) {
       return false;
     }
