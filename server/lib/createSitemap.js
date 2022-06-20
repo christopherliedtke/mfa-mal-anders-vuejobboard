@@ -7,6 +7,7 @@ const { Job } = require("../database/models/job");
 const { Company } = require("../database/models/company");
 const { Training } = require("../database/models/training");
 const { JobSeek } = require("../database/models/jobSeek");
+const jobLiftCache = require("../cache/jobliftCache");
 
 async function createSitemap() {
   try {
@@ -178,8 +179,12 @@ const getJobs = async () => {
       .populate("company", "location")
       .populate("userId", "isAdmin");
 
-    if (Array.isArray(response) && response.length > 0) {
-      return response
+    const jobliftJobs = await jobLiftCache.get("jobs");
+
+    const jobs = [...response, ...jobliftJobs];
+
+    if (Array.isArray(jobs) && jobs.length > 0) {
+      return jobs
         .map(elem =>
           writeUrl(
             process.env.WEBSITE_URL + "/job/" + elem._id + "/" + elem.slug,
@@ -234,8 +239,13 @@ const getJobboardLocations = async () => {
     const professionOptions =
       require("../../client/src/config/formDataConfig.json").professionOptions;
     const companies = await Company.find({}, "location");
+    const jobliftJobs = await jobLiftCache.get("jobs");
 
-    const locations = [...new Set(companies.map(company => company.location))];
+    let locations = companies
+      .map(company => company.location)
+      .concat(jobliftJobs.map(job => job.company.location));
+
+    locations = [...new Set(locations)];
 
     return professionOptions
       .map(profession =>

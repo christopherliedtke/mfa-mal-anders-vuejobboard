@@ -61,6 +61,9 @@ class Cache {
             publishedAt: new Date(
               job.publishDate ? job.publishDate[0] : ""
             ).getTime(),
+            updatedAt: new Date(
+              job.publishDate ? job.publishDate[0] : ""
+            ).getTime(),
             contactEmail:
               job.contact && job.contact[0].email
                 ? job.contact[0].email[0]
