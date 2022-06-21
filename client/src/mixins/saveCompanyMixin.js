@@ -1,25 +1,7 @@
-import { getHereServiceMixin } from "@/mixins/getHereServiceMixin.js";
 export const saveCompanyMixin = {
-  mixins: [getHereServiceMixin],
   methods: {
     async saveCompany(mutationType, company, redirect = false) {
       try {
-        const location = await this.getHereLocation(
-          `${company.street} ${company.location} ${company.zipCode} ${company.country}`
-        );
-        company.geoCodeLat =
-          location.position && location.position.lat
-            ? location.position.lat
-            : this.$config.maps.defaultCenter.lat;
-        company.geoCodeLng =
-          location.position && location.position.lng
-            ? location.position.lng
-            : this.$config.maps.defaultCenter.lng;
-        company.state =
-          location.address && location.address.state
-            ? location.address.state
-            : "";
-
         const companyQuery = `
           mutation {
             ${mutationType}(
@@ -34,10 +16,7 @@ export const saveCompanyMixin = {
               street: "${company.street}"
               location: "${company.location}", 
               zipCode: "${company.zipCode}"
-              state: "${company.state}", 
               country: "${company.country}", 
-              geoCodeLat: ${company.geoCodeLat}, 
-              geoCodeLng: ${company.geoCodeLng}, 
               size: "${company.size}"
               url: "${
                 !/^https?:\/\//i.test(company.url) && company.url
@@ -55,11 +34,12 @@ export const saveCompanyMixin = {
           query: companyQuery
         });
 
-        if (!response.data.data[mutationType]._id) {
-          this.error =
-            "Oh, da ist leider etwas schief gelaufen. Bitte versuchen Sie es noch einmal.";
-
-          return { success: false };
+        if (response.data.errors) {
+          throw new Error(
+            response.data.errors[0].extensions.argumentName === "location"
+              ? response.data.errors[0].message
+              : ""
+          );
         } else {
           this.$root.$bvToast.toast(
             "Das Unternehmen wurde erfolgreich gespeichert.",
@@ -83,8 +63,11 @@ export const saveCompanyMixin = {
           };
         }
       } catch (err) {
+        console.log(err);
         this.$root.$bvToast.toast(
-          "Beim Speichern des Unternehmens ist ein Fehler aufgetreten. Bitte versuchen Sie es noch einmal.",
+          err
+            ? err.message
+            : "Beim Speichern des Unternehmens ist ein Fehler aufgetreten. Bitte überprüfen Sie Ihre Eingaben und versuchen es noch einmal.",
           {
             title: `Fehler beim Speichern`,
             variant: "danger",

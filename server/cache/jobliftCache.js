@@ -83,7 +83,9 @@ class Cache {
                 job.locations &&
                 job.locations[0].location &&
                 job.locations[0].location[0].city
-                  ? job.locations[0].location[0].city[0]
+                  ? job.locations[0].location[0].city[0].replace(/\w\S*/g, w =>
+                      w.replace(/^\w/, c => c.toUpperCase())
+                    )
                   : "",
               state:
                 job.locations &&
