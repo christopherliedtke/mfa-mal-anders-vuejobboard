@@ -141,13 +141,13 @@ async function startServer() {
     },
     plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
     formatError: err => {
-      if (
-        (err.path.includes("company") &&
-          err.extensions.exception.path === "_id") ||
-        err.extensions.code === "BAD_USER_INPUT"
-      ) {
-        return err;
-      }
+      // if (
+      //   (err.path.includes("company") &&
+      //     err.extensions.exception.path === "_id") ||
+      //   err.extensions.code === "BAD_USER_INPUT"
+      // ) {
+      //   return err;
+      // }
       console.error(err);
       return err;
     },
