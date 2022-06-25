@@ -710,14 +710,21 @@
 
     <Head
       :title="
-        `Stellenangebote für ${
+        `${
           berufsgruppe.active.length === 1
-            ? berufsgruppe.active.join(' & ')
+            ? professionOptions
+                .filter(
+                  profession =>
+                    profession.value == berufsgruppe.active[0] &&
+                    profession.text
+                )
+                .map(profession => profession.text)
+                .join(' & ')
             : professionOptions.map(profession => profession.value).join(' & ')
-        }${filter.ort ? ' | Jobs in ' + filter.ort : ''}`
+        } Stellenangebote${filter.ort ? ' | ' + filter.ort : ''}`
       "
       :desc="
-        `Das Stellen- und Karriereportal speziell für ${
+        `Aktuelle Jobs speziell für ${
           berufsgruppe.active.includes('MFA')
             ? 'Medizinische Fachangestellte (MFA)'
             : ''
@@ -731,7 +738,11 @@
             ? 'Zahnmedizinische Fachangestellte (ZFA)'
             : ''
         }${
-          filter.ort ? ' – ' + filter.ort + ' & Umgebung' : ''
+          berufsgruppe.active.length == 0
+            ? 'Medizinische Fachangestellte (MFA) & Zahnmedizinische Fachangestellte (ZFA)'
+            : ''
+        }${
+          filter.ort ? ' in ' + filter.ort + ' & Umgebung' : ''
         } | MFA mal anders`
       "
       img=""
