@@ -94,7 +94,7 @@ const PaymentResolvers = {
                 ? "published"
                 : payment.status === "pending"
                 ? "invoice-pending"
-                : "draft",
+                : "unpublished",
             publishedAt:
               payment.status === "paid" &&
               payment.paymentExpiresAt >= new Date()
@@ -177,7 +177,7 @@ const PaymentResolvers = {
                 ? "published"
                 : updatedPayment.status === "pending"
                 ? "invoice-pending"
-                : "draft",
+                : "unpublished",
             publishedAt:
               updatedPayment.status === "paid" &&
               updatedPayment.paymentExpiresAt >= new Date()

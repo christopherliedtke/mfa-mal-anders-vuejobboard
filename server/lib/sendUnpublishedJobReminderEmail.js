@@ -11,6 +11,7 @@ module.exports.sendUnpublishedJobReminderEmail = async () => {
       paid: false,
       status: "unpublished",
       sentReminder: false,
+      publishedAt: { $exists: false },
       createdAt: {
         $lt: new Date(
           new Date().valueOf() -
