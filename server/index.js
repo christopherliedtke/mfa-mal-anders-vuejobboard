@@ -142,9 +142,11 @@ async function startServer() {
     plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
     formatError: err => {
       if (
-        err.path.includes("company") &&
-        err.extensions.exception.path === "_id" &&
-        err.extensions.exception.kind === "ObjectId"
+        (err.path.includes("company") &&
+          err.extensions.exception.path === "_id" &&
+          err.extensions.exception.kind === "ObjectId") ||
+        (err.path.includes("register") &&
+          err.extensions.argumentName === "passwordRequirements")
         // || err.extensions.code === "BAD_USER_INPUT"
       ) {
         return err;

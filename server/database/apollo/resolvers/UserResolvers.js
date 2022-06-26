@@ -163,7 +163,9 @@ const UserResolvers = {
           /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{6,}$/
         )
       ) {
-        throw new UserInputError(errorMsg.auth.pwRequirements);
+        throw new UserInputError(errorMsg.auth.pwRequirements, {
+          argumentName: "passwordRequirements",
+        });
       }
       if (!args.email.match(/\S+@\S+\.\S+/)) {
         throw new UserInputError(errorMsg.auth.notValidEmail);
