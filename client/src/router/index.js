@@ -296,7 +296,7 @@ const routes = [
     }
   },
   {
-    path: "/mfa",
+    path: "/mfa/:location?",
     name: "JobBoardMfa",
     component: JobBoard,
     meta: {
@@ -304,24 +304,8 @@ const routes = [
     }
   },
   {
-    path: "/mfa/:location",
-    name: "JobBoardMfaWLocation",
-    component: JobBoard,
-    meta: {
-      public: true
-    }
-  },
-  {
-    path: "/zfa",
+    path: "/zfa/:location?",
     name: "JobBoardZfa",
-    component: JobBoard,
-    meta: {
-      public: true
-    }
-  },
-  {
-    path: "/zfa/:location",
-    name: "JobBoardZfaWLocation",
     component: JobBoard,
     meta: {
       public: true
@@ -332,44 +316,21 @@ const routes = [
     redirect: to => {
       return { path: "/", query: { ort: to.params.location } };
     }
-    // name: "JobBoardWLocation",
-    // component: JobBoard,
-    // meta: {
-    //   public: true
-    // }
   },
   {
     path: "/stellenangebote",
-    // redirect: to => {
-    //   return { path: "/", query: to.query };
-    // }
-    name: "JobBoard_",
-    component: JobBoard,
-    meta: {
-      public: true
+    redirect: to => {
+      return { path: "/", query: to.query };
     }
   },
-  // {
-  //   path: "/stellenangebote/mfa",
-  //   name: "JobBoardMfa",
-  //   component: JobBoard,
-  //   meta: {
-  //     public: true
-  //   }
-  // },
   {
     path: "/stellenangebote/ort/:location",
     redirect: to => {
       return { path: "/", query: { ort: to.params.location } };
     }
-    // name: "JobBoardWLocation",
-    // component: JobBoard,
-    // meta: {
-    //   public: true
-    // }
   },
   {
-    path: "/job/:jobId",
+    path: "/job/:jobId/:title?",
     name: "JobView",
     component: JobView,
     meta: {
@@ -377,30 +338,13 @@ const routes = [
     }
   },
   {
-    path: "/stellenangebote/job/:jobId",
-    redirect: to => {
-      return { path: "/job/:jobId", params: { jobId: to.params.jobId } };
-    }
-    // name: "JobView",
-    // component: JobView,
-    // meta: {
-    //   public: true
-    // }
-  },
-  {
-    path: "/job/:jobId/:title",
-    name: "JobViewWithTitle",
-    component: JobView,
-    meta: {
-      public: true
-    }
-  },
-  {
-    path: "/stellenangebote/job/:jobId/:title",
+    path: "/stellenangebote/job/:jobId/:title?",
     redirect: to => {
       return {
-        path: "/job/:jobId/:title",
-        params: { jobId: to.params.jobId, title: to.params.title }
+        path: "/job/:jobId",
+        params: {
+          jobId: to.params.jobId
+        }
       };
     }
   },
@@ -413,16 +357,8 @@ const routes = [
     }
   },
   {
-    path: "/unternehmen/:companyId",
+    path: "/unternehmen/:companyId/:name?",
     name: "CompanyView",
-    component: CompanyView,
-    meta: {
-      public: true
-    }
-  },
-  {
-    path: "/unternehmen/:companyId/:name",
-    name: "CompanyViewWName",
     component: CompanyView,
     meta: {
       public: true
@@ -453,16 +389,8 @@ const routes = [
     }
   },
   {
-    path: "/stellengesuche/gesuch/:jobSeekId",
+    path: "/stellengesuche/gesuch/:jobSeekId/:title?",
     name: "JobSeekView",
-    component: JobSeekView,
-    meta: {
-      public: true
-    }
-  },
-  {
-    path: "/stellengesuche/gesuch/:jobSeekId/:title",
-    name: "JobSeekViewWithTitle",
     component: JobSeekView,
     meta: {
       public: true
@@ -565,16 +493,8 @@ const routes = [
     }
   },
   {
-    path: "/karriere/fort-und-weiterbildung/fortbildungskatalog/:id",
+    path: "/karriere/fort-und-weiterbildung/fortbildungskatalog/:id/:slug?",
     name: "CareerTrainingCatalogueItem",
-    component: CareerTrainingCatalogueItem,
-    meta: {
-      public: true
-    }
-  },
-  {
-    path: "/karriere/fort-und-weiterbildung/fortbildungskatalog/:id/:slug",
-    name: "CareerTrainingCatalogueItemWSlug",
     component: CareerTrainingCatalogueItem,
     meta: {
       public: true
