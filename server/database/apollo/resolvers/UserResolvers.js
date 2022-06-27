@@ -621,6 +621,8 @@ const UserResolvers = {
         job.userId instanceof mongoose.Types.ObjectId === false
       ) {
         return job.userId;
+      } else if (!job.userId) {
+        return { _id: "0" };
       }
 
       const user = await User.findOne({
