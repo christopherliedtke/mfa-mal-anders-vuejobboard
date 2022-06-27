@@ -30,6 +30,11 @@ const { CRONUnpublishJobs } = require("./CRON/CRONUnpublishJobs");
 const {
   CRONSendUnpublishedJobsReminder,
 } = require("./CRON/CRONSendUnpublishedJobsReminder");
+const jobLiftCache = require("./cache/jobliftCache");
+const internalJobsCache = require("./cache/internalJobsCache");
+const jobAdPackagesCache = require("./cache/jobAdPackagesCache");
+const internalJobSeeksCache = require("./cache/publicJobSeeksCache");
+const wpContentCache = require("./cache/wpContentCache");
 
 // #Set Up prerender.io
 const prerender = require("prerender-node").set(
@@ -177,11 +182,21 @@ async function startServer() {
     res.sendFile(__dirname + "/public/index.html");
   });
 
-  const server = app.listen(process.env.PORT, () =>
+  const server = app.listen(process.env.PORT, () => {
     console.log(
       `Server listening on port ${process.env.PORT} in ${process.env.NODE_ENV} mode`
-    )
-  );
+    );
+
+    // #Fill caches on server start
+    internalJobsCache.get("jobs");
+    jobLiftCache.get("jobs");
+    jobAdPackagesCache.get("jobAdPackages");
+    internalJobSeeksCache.get("jobSeeks");
+    wpContentCache.get("articles");
+    wpContentCache.get("weiterbildungen");
+    wpContentCache.get("professions");
+    sitemapCache.get("sitemap");
+  });
 
   // #Set custom request timeout
   server.setTimeout(20000);
