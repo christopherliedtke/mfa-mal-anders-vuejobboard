@@ -26,7 +26,7 @@
         <p>
           MFA mal anders – Kristin Maurach und Christopher Liedtke GbR<br />Vertretungsberechtigte
           Gesellschafter: Kristin Maurach und Christopher Liedtke<br />Am
-          Bauernwäldchen 38<br />12559 Berlin<br />E-Mail:&nbsp;kontakt(at)mfa-mal-anders.de
+          Espenweg 6<br />49808 Lingen (Ems)<br />E-Mail:&nbsp;kontakt(at)mfa-mal-anders.de
         </p>
 
         <h2>III. Leistungen</h2>
@@ -87,7 +87,7 @@
 
         <p>
           Um Ihr Widerrufsrecht auszuüben, müssen Sie uns (MFA mal anders - K.
-          Maurach & C. Liedtke GbR, Am Bauernwäldchen 38, 12559 Berlin,
+          Maurach & C. Liedtke GbR, Espenweg 6, 49808 Lingen (Ems),
           kontakt(at)mfa-mal-anders.de) mittels einer eindeutigen Erklärung
           (z.B. ein mit der Post versandter Brief oder E-Mail) über Ihren
           Entschluss, diesen Vertrag zu widerrufen, informieren.
@@ -121,8 +121,8 @@
         <h3>Muster-Widerrufsformular</h3>
 
         <p>
-          An: MFA mal anders - K. Maurach & C. Liedtke GbR, Am Bauernwäldchen
-          38, 12559 Berlin, kontakt(at)mfa-mal-anders.de <br />
+          An: MFA mal anders - K. Maurach & C. Liedtke GbR, Espenweg 6, 49808
+          Lingen (Ems), kontakt(at)mfa-mal-anders.de <br />
           <br />
           Hiermit widerrufe(n) ich/wir (*) den von mir/uns (*)abgeschlossenen
           Vertrag über die Erbringung der folgenden Dienstleistung: <br />

@@ -153,10 +153,14 @@ const UserResolvers = {
         !args.password ||
         !args.password2
       ) {
-        throw new UserInputError(errorMsg.auth.fillAll);
+        throw new UserInputError(errorMsg.auth.fillAll, {
+          argumentName: "registerRequirements",
+        });
       }
       if (args.password != args.password2) {
-        throw new UserInputError(errorMsg.auth.pwsNoMatch);
+        throw new UserInputError(errorMsg.auth.pwsNoMatch, {
+          argumentName: "registerRequirements",
+        });
       }
       if (
         !args.password.match(
@@ -164,20 +168,26 @@ const UserResolvers = {
         )
       ) {
         throw new UserInputError(errorMsg.auth.pwRequirements, {
-          argumentName: "passwordRequirements",
+          argumentName: "registerRequirements",
         });
       }
       if (!args.email.match(/\S+@\S+\.\S+/)) {
-        throw new UserInputError(errorMsg.auth.notValidEmail);
+        throw new UserInputError(errorMsg.auth.notValidEmail, {
+          argumentName: "registerRequirements",
+        });
       }
       if (args.acceptance != "accepted") {
-        throw new UserInputError(errorMsg.auth.termsOfUse);
+        throw new UserInputError(errorMsg.auth.termsOfUse, {
+          argumentName: "registerRequirements",
+        });
       }
 
       const existingUser = await User.findOne({ email: args.email });
 
       if (existingUser) {
-        throw new UserInputError(errorMsg.auth.emailRegistered);
+        throw new UserInputError(errorMsg.auth.emailRegistered, {
+          argumentName: "registerRequirements",
+        });
       }
 
       const hashedPw = await hash(args.password);

@@ -23,7 +23,7 @@
         <p>
           MFA mal anders – Kristin Maurach und Christopher Liedtke GbR<br />Vertretungsberechtigte
           Gesellschafter: Kristin Maurach und Christopher Liedtke<br />Am
-          Bauernwäldchen 38<br />12559 Berlin
+          Espenweg 6<br />49808 Lingen (Ems)
         </p>
 
         <p>
