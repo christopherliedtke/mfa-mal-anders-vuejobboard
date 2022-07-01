@@ -25,8 +25,8 @@
 
         <p>
           MFA mal anders – Kristin Maurach und Christopher Liedtke GbR<br />Vertretungsberechtigte
-          Gesellschafter: Kristin Maurach und Christopher Liedtke<br />Am
-          Espenweg 6<br />49808 Lingen (Ems)<br />E-Mail:&nbsp;kontakt(at)mfa-mal-anders.de
+          Gesellschafter: Kristin Maurach und Christopher Liedtke<br />Espenweg
+          6<br />49808 Lingen (Ems)<br />E-Mail:&nbsp;kontakt(at)mfa-mal-anders.de
         </p>
 
         <h2>III. Leistungen</h2>
