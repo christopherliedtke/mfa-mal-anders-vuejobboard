@@ -21,7 +21,7 @@ const uploader = multer({
   },
   fileFilter: function (req, file, cb) {
     if (file.mimetype != "image/png" && file.mimetype != "image/jpeg") {
-      return cb(new Error("Wrong mimeType in multer()"));
+      return cb(new Error(`Wrong mimeType in multer(): ${file.mimetype}`));
     }
 
     return cb(null, true);
@@ -34,7 +34,7 @@ const upload = (req, res, next) => {
       console.log("Multer error occured in multer(): ", err.code);
       res.json({ success: false });
     } else if (err) {
-      console.log("Unknown/Custom error occured in multer()", err);
+      console.log("Unknown/Custom error occured in multer()", err.message);
       res.json({ success: false });
     } else {
       next();
