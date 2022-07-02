@@ -68,7 +68,8 @@
     { "value": "part", "text": "Teilzeit" },
     { "value": "part_full", "text": "Teil- oder Vollzeit" },
     { "value": "training", "text": "Ausbildung" },
-    { "value": "mini", "text": "Minijob" }
+    { "value": "mini", "text": "Minijob" },
+    { "value": "freelance", "text": "Freie Mitarbeit" }
   ],
   "simpleApplicationOptions": [
     { "value": false, "text": "Nein" },

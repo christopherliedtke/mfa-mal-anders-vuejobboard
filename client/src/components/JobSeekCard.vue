@@ -128,6 +128,17 @@
                       >&nbsp;| </span
                     >450€&nbsp;Basis</span
                   >
+                  <span v-if="jobSeek.freelance"
+                    ><span
+                      v-if="
+                        jobSeek.fullTime ||
+                          jobSeek.partTime ||
+                          jobSeek.training ||
+                          jobseek.miniJob
+                      "
+                      >&nbsp;| </span
+                    >Freie Mitarbeit</span
+                  >
                 </span>
               </div>
             </div>

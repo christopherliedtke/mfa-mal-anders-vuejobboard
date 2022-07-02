@@ -31,6 +31,7 @@ const JobSeekType = gql`
       fullTime: Boolean
       training: Boolean
       miniJob: Boolean
+      freelance: Boolean
       salaryMin: Float
       anonymized: Boolean
       gender: String
@@ -58,6 +59,7 @@ const JobSeekType = gql`
       fullTime: Boolean
       training: Boolean
       miniJob: Boolean
+      freelance: Boolean
       salaryMin: Float
       anonymized: Boolean
       gender: String
@@ -90,6 +92,7 @@ const JobSeekType = gql`
     fullTime: Boolean
     training: Boolean
     miniJob: Boolean
+    freelance: Boolean
     salaryMin: Float
     anonymized: Boolean
     gender: String

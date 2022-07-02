@@ -529,6 +529,7 @@
                       fullTime
                       training
                       miniJob
+                      freelance
                       publicFirstName
                       publicLastName
                       imageUrl

@@ -140,6 +140,14 @@
           >
             450€ – Basis
           </b-form-checkbox>
+          <b-form-checkbox
+            id="freelance"
+            v-model="jobSeek.freelance"
+            class="mr-md-2"
+            name="freelance"
+          >
+            Freie Mitarbeit
+          </b-form-checkbox>
         </div>
 
         <div class="row">
@@ -447,6 +455,7 @@
           fullTime: true,
           training: false,
           miniJob: false,
+          freelance: false,
           salaryMin: null,
           anonymized: true,
           gender: this.$store.state.auth.user.gender || "",
@@ -515,6 +524,7 @@
                     fullTime
                     training
                     miniJob
+                    freelance
                     salaryMin
                     anonymized
                     gender
@@ -588,6 +598,7 @@
                 fullTime: ${this.jobSeek.fullTime}
                 training: ${this.jobSeek.training}
                 miniJob: ${this.jobSeek.miniJob}
+                freelance: ${this.jobSeek.freelance}
                 salaryMin: ${this.jobSeek.salaryMin || null}
                 anonymized: ${this.jobSeek.anonymized}
                 gender: "${this.jobSeek.gender}"

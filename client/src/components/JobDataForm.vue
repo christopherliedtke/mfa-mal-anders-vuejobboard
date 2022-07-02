@@ -763,7 +763,9 @@
         selectedCompanyId: "",
         professionOptions,
         specializationOptions,
-        employmentTypeOptions,
+        employmentTypeOptions: employmentTypeOptions.filter(
+          opt => opt.value !== "freelance"
+        ),
         simpleApplicationOptions,
         contactGenderOptions,
         contactTitleOptions,

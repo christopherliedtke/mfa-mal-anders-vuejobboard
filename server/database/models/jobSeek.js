@@ -48,6 +48,9 @@ const JobSeekSchema = new Schema(
     miniJob: {
       type: Boolean,
     },
+    freelance: {
+      type: Boolean,
+    },
     salaryMin: {
       type: Number,
     },

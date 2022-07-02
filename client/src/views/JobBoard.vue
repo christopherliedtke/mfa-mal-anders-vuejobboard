@@ -835,7 +835,9 @@
           active: professionOptions.map(profession => profession.value)
         },
         showAdvancedSearch: false,
-        employmentTypeOptions: Object.freeze(employmentTypeOptions),
+        employmentTypeOptions: Object.freeze(
+          employmentTypeOptions.filter(opt => opt.value !== "freelance")
+        ),
         companyStateOptions: Object.freeze(companyStateOptions),
         specializationOptions: Object.freeze(specializationOptions),
         professionOptions: Object.freeze(professionOptions),

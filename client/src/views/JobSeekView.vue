@@ -111,6 +111,7 @@
                     fullTime
                     training
                     miniJob
+                    freelance
                     salaryMin
                     gender
                     publicFirstName

@@ -113,11 +113,28 @@
                 ><span v-if="jobSeek.partTime">&nbsp;| </span>Vollzeit</span
               >
               <span v-if="jobSeek.training"
-                ><span v-if="jobSeek.fullTime">&nbsp;| </span>Ausbildung</span
+                ><span v-if="jobSeek.fullTime || jobSeek.partTime"
+                  >&nbsp;| </span
+                >Ausbildung</span
               >
               <span v-if="jobSeek.miniJob"
-                ><span v-if="jobSeek.training">&nbsp;| </span
+                ><span
+                  v-if="
+                    jobSeek.fullTime || jobSeek.partTime || jobSeek.training
+                  "
+                  >&nbsp;| </span
                 >450€&nbsp;Basis</span
+              >
+              <span v-if="jobSeek.freelance"
+                ><span
+                  v-if="
+                    jobSeek.fullTime ||
+                      jobSeek.partTime ||
+                      jobSeek.training ||
+                      jobseek.miniJob
+                  "
+                  >&nbsp;| </span
+                >Freie Mitarbeit</span
               >
             </span>
           </div>

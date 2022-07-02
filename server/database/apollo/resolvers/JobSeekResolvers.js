@@ -16,8 +16,6 @@ const JobSeekResolvers = {
 
       const jobSeek = jobSeeks.find(jobSeek => jobSeek._id == args._id);
 
-      // ? check for valid payment
-
       return jobSeek;
     },
     publicJobSeeks: async (root, args) => {
@@ -59,6 +57,8 @@ const JobSeekResolvers = {
           jobSeeks = jobSeeks.filter(jobSeek => jobSeek.training);
         } else if (args.employmentType === "mini") {
           jobSeeks = jobSeeks.filter(jobSeek => jobSeek.miniJob);
+        } else if (args.employmentType === "freelance") {
+          jobSeeks = jobSeeks.filter(jobSeek => jobSeek.freelance);
         }
       }
 
