@@ -21,11 +21,10 @@ class Cache {
       return Promise.resolve(value);
     }
 
-    const jobLiftXml = await axios.get(process.env.JOBLIFT_FEED_URL);
-
-    let jobLiftJobs;
-
     try {
+      const jobLiftXml = await axios.get(process.env.JOBLIFT_FEED_URL);
+
+      let jobLiftJobs;
       parseString(jobLiftXml.data, function (err, result) {
         // console.log("result.feed.job: ", result.feed.job);
         jobLiftJobs = result.feed.job.filter(filterJobliftJobs).map(job => {
