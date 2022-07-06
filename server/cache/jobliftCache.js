@@ -205,7 +205,7 @@ function isRecruitingAgency(job) {
 }
 
 function checkMfa(str) {
-  return str.match(/medizinische|mta|mfa|arzthelf/gi);
+  return str.match(/\bmedizinische|mta|mfa|\barzthelf/gi);
 }
 
 function checkZfa(str) {
