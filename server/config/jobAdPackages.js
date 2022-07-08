@@ -10,19 +10,19 @@ module.exports = [
     accent: "light-shade",
     productFeatures: [
       {
-        html: 'Stellenanzeige für <span class="text-secondary bold">60 Tage</span> online',
+        html: 'Stellenanzeige für <strong class="text-secondary">60 Tage</strong> online',
       },
       {
-        html: 'Integration <span class="text-secondary bold">Logo & Titelbild</span> in Stellenanzeige auf <span class="italic text-primary">MFA mal anders</span> für individuelles Branding',
+        html: 'Integration <strong class="text-secondary">Logo & Titelbild</strong> in Stellenanzeige auf <strong class="italic text-primary">MFA mal anders</strong> für individuelles Branding',
       },
       {
-        html: 'Optimierung für <span class="text-secondary bold">Google Jobs</span> &ndash; Ihre Anzeige in den organischen Suchergebnissen von Google',
+        html: 'Optimierung für <strong class="text-secondary">Google Jobs</strong> &ndash; Ihre Anzeige in den organischen Suchergebnissen von Google',
       },
       {
-        html: 'Einmaliger Versand Ihrer Stellenanzeige in unserem <span class="text-secondary bold" >wöchentlichen Job-Newsletter</span>',
+        html: 'Einmaliger Versand Ihrer Stellenanzeige in unserem <strong class="text-secondary" >wöchentlichen Job-Newsletter</strong>',
       },
       {
-        html: '<span class="text-secondary bold">Zugriff auf</span> qualifiziertes Fachpersonal aus unseren <a href="/stellengesuche" target="_blank" class="text-secondary bold" >Stellengesuchen</a>',
+        html: '<strong class="text-secondary">Zugriff auf</strong> qualifiziertes Fachpersonal aus unseren <a href="/stellengesuche" target="_blank" class="text-secondary" ><strong>Stellengesuchen</strong></a>',
       },
     ],
   },
@@ -38,21 +38,21 @@ module.exports = [
     badge: "beliebt",
     badgeBg: "secondary",
     productFeatures: [
-      { html: '<span class="bold">Basis Features</span>' },
+      { html: "<strong>Basis Features</strong>" },
       {
-        html: 'Stellenanzeige für <span class="text-secondary bold">90 Tage</span> online',
+        html: 'Stellenanzeige für <strong class="text-secondary">90 Tage</strong> online',
         icon: "plus-circle",
       },
       {
-        html: '<span class="text-secondary bold">Datumsupdate alle 14 Tage</span> &ndash; Ihre Stellenanzeige rutscht nach oben',
+        html: '<strong class="text-secondary">Datumsupdate alle 14 Tage</strong> &ndash; Ihre Stellenanzeige rutscht nach oben',
         icon: "plus-circle",
       },
       {
-        html: 'Wiederholter Versand Ihrer Stellenanzeige in unserem <span class="text-secondary bold" >wöchentlichen Job-Newsletter alle 14 Tage</span>',
+        html: 'Wiederholter Versand Ihrer Stellenanzeige in unserem <strong class="text-secondary" >wöchentlichen Job-Newsletter alle 14 Tage</strong>',
         icon: "plus-circle",
       },
       {
-        html: 'Social Boost durch Veröffentlichung Ihrer Stellenanzeige <span class="text-secondary bold">auf unserem Facebook-Kanal sowie in speziellen Facebook-Gruppen</span> für MFA & ZFA',
+        html: 'Social Boost durch Veröffentlichung Ihrer Stellenanzeige <strong class="text-secondary">auf unserem Facebook-Kanal sowie in speziellen Facebook-Gruppen</strong> für MFA & ZFA',
         icon: "plus-circle",
       },
     ],
@@ -68,26 +68,26 @@ module.exports = [
     accent: "secondary",
     productFeatures: [
       {
-        html: '<span class="bold">Basis & Standard Features</span>',
+        html: "<strong>Basis & Standard Features</strong>",
       },
       {
-        html: '<span class="text-secondary bold">Datumsupdate alle 7 Tage</span> &ndash; Ihre Stellenanzeige rutscht nach oben',
+        html: '<strong class="text-secondary">Datumsupdate alle 7 Tage</strong> &ndash; Ihre Stellenanzeige rutscht nach oben',
         icon: "plus-circle",
       },
       {
-        html: '<span class="text-secondary bold">Farbliche Hervorhebung</span> Ihrer Stellenanzeige in unserer Stellenbörse',
+        html: '<strong class="text-secondary">Farbliche Hervorhebung</strong> Ihrer Stellenanzeige in unserer Stellenbörse',
         icon: "plus-circle",
       },
       {
-        html: 'Wiederholter Versand Ihrer Stellenanzeige in unserem <span class="text-secondary bold" >wöchentlichen Job-Newsletter alle 7 Tage</span>',
+        html: 'Wiederholter Versand Ihrer Stellenanzeige in unserem <strong class="text-secondary">wöchentlichen Job-Newsletter alle 7 Tage</strong>',
         icon: "plus-circle",
       },
       {
-        html: '<span class="text-secondary bold">Google Ads Kampagne inkl. 100€ Start-Budget</span> &ndash; Ihre Stelle als Werbeanzeige in den Google Suchergebnissen speziell für Ihren Standort',
+        html: '<strong class="text-secondary">Persönlicher Ansprechpartner</strong> mit Tipps zur Optimierung Ihrer Stellenanzeige',
         icon: "plus-circle",
       },
       {
-        html: '<span class="text-secondary bold">Persönlicher Ansprechpartner</span> mit Tipps zur Optimierung Ihrer Stellenanzeige',
+        html: '<strong class="text-secondary">Google Ads oder Social Media Kampagne inkl. 100€ Start-Budget</strong> &ndash; Ihre Stelle als Werbeanzeige in den Google Suchergebnissen oder auf Facebook und Instagram <strong class="text-secondary">speziell für Ihren Standort</strong>',
         icon: "plus-circle",
       },
     ],

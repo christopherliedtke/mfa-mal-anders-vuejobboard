@@ -244,6 +244,8 @@ const UserResolvers = {
         { new: true }
       );
 
+      console.info(`User activated: ${user._id} ---> ${user.email}`);
+
       delete user.password;
 
       const token = jwt.sign(
