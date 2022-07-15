@@ -242,40 +242,14 @@
         v-if="job.videoUrl"
         class="position-relative d-flex justify-content-center bg-light-shade border-radius1"
       >
-        <iframe
-          class="border-radius1"
+        <video
+          :src="job.videoUrl"
+          class="border-radius1 mw-100 h-auto"
           width="560"
           height="315"
-          :src="job.videoUrl"
-        >
-        </iframe>
-        <div
-          v-if="cookieDisclaimer"
-          class="position-absolute bg-dark-50 border-radius1 d-flex justify-content-center align-items-center p-3"
-          style="top: 0; right: 0; bottom: 0; left:0"
-        >
-          <b-btn
-            variant="info"
-            size="sm"
-            @click="
-              () => {
-                cookieDisclaimer = false;
-              }
-            "
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="18"
-              height="18"
-              fill="currentColor"
-              class="bi bi-unlock-fill mr-2"
-              viewBox="0 0 16 16"
-            >
-              <path
-                d="M11 1a2 2 0 0 0-2 2v4a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h5V3a3 3 0 0 1 6 0v4a.5.5 0 0 1-1 0V3a2 2 0 0 0-2-2z"
-              /></svg
-            >Laden von YouTube-Inhalt und Cookies erlauben</b-btn
-          >
-        </div>
+          autobuffer
+          controls
+        ></video>
       </div>
 
       <div
@@ -593,7 +567,6 @@
     },
     data() {
       return {
-        cookieDisclaimer: true,
         employmentTypeOptions,
         companySizeOptions,
         link: [

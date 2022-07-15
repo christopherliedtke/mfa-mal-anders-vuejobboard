@@ -53,6 +53,15 @@
           this.$store.dispatch("getStarredJobs");
         }
       }
+
+      // #GA4 no cookies
+      // this.gtag.query("consent", "default", {
+      //   ad_storage: "denied",
+      //   analytics_storage: "denied",
+      //   functionality_storage: "denied",
+      //   personalization_storage: "denied",
+      //   security_storage: "denied"
+      // });
     },
     methods: {
       track() {
