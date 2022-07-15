@@ -87,7 +87,7 @@ module.exports = [
         icon: "plus-circle",
       },
       {
-        html: 'Optionale <strong class="text-secondary">Einbindung eines Image Videos</strong> in Ihre Stellenanzeige',
+        html: 'Optionale <strong class="text-secondary">Einbindung eines Image Videos</strong> in Ihrer Stellenanzeige',
         icon: "plus-circle",
       },
       {
