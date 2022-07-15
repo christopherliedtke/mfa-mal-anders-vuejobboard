@@ -87,6 +87,10 @@ module.exports = [
         icon: "plus-circle",
       },
       {
+        html: 'Optionale <strong class="text-secondary">Einbindung eines Image Videos</strong> in Ihre Stellenanzeige',
+        icon: "plus-circle",
+      },
+      {
         html: '<strong class="text-secondary">Google Ads oder Social Media Kampagne inkl. 100€ Start-Budget</strong> &ndash; Ihre Stelle als Werbeanzeige in den Google Suchergebnissen oder auf Facebook und Instagram <strong class="text-secondary">speziell für Ihren Standort</strong>',
         icon: "plus-circle",
       },
