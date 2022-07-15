@@ -92,6 +92,8 @@ Vue.use(VueHead, {
 import VueGtag from "vue-gtag";
 // GA tracking -> tracking in App.vue
 Vue.use(VueGtag, {
+  // disableScriptLoad: true,
+  // bootstrap: false,
   config: {
     id: config.ga.trackingCode,
     params: {
@@ -100,16 +102,24 @@ Vue.use(VueGtag, {
       send_page_view: false
     }
   },
-  // includes: [
-  //     {
-  //         id: "AW-797795882",
-  //         params: {
-  //             anonymize_ip: config.ga.anonymizeIP,
-  //             client_storage: config.ga.storage,
-  //             send_page_view: false
-  //         }
-  //     }
-  // ],
+  includes: [
+    {
+      id: "G-BF8L4F2PWL",
+      params: {
+        anonymize_ip: config.ga.anonymizeIP,
+        client_storage: config.ga.storage,
+        send_page_view: false
+      }
+    }
+    // {
+    //   id: "AW-797795882",
+    //   params: {
+    //     anonymize_ip: config.ga.anonymizeIP,
+    //     client_storage: config.ga.storage,
+    //     send_page_view: false
+    //   }
+    // }
+  ],
   enabled:
     config.ga.active && window.location.origin.includes(config.website.url)
 });
