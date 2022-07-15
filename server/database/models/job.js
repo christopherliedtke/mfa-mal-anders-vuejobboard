@@ -111,6 +111,10 @@ const JobSchema = new Schema(
     imageUrl: {
       type: String,
     },
+    videoUrl: {
+      type: String,
+      default: "",
+    },
     salaryMin: {
       type: String,
       default: "",

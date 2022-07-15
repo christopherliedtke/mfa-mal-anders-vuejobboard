@@ -64,6 +64,15 @@
           number
           placeholder="Anzeige wird nach X Tagen aktualisiert..."
         />
+        <label for="video-url">Video URL</label>
+        <b-form-input
+          id="video-url"
+          v-model="job.videoUrl"
+          type="text"
+          placeholder="Video URL eingeben..."
+          trim
+          required
+        />
       </div>
 
       <div class="row">
@@ -723,6 +732,7 @@
           publishedAt: 0,
           paidExpiresAt: 0,
           refreshFrequency: 0,
+          videoUrl: "",
           title: "",
           description:
             "<p>[Für eine attraktive Stellenanzeige sollten Sie mindestens folgende Punkte berücksichtigen. Bitte ersetzen Sie den hier stehenden Text entsprechend.]</p><p>[Schreiben Sie eine kurze Einleitung zu Ihrem Unternehmen.]</p><h3>Was wir Ihnen bieten</h3><p>[Was bieten Sie potentiellen BewerberInnen?]</p><h3>Ihre Aufgaben</h3><p>[Welche Aufgaben sollen von potentiellen BewerberInnen durchgeführt werden?]</p><h3>Ihr Profil</h3><p>[Was sollen potentielle BewerberInnen mitbringen?]</p>",
@@ -846,6 +856,7 @@
                     publishedAt
                     paidExpiresAt
                     refreshFrequency
+                    videoUrl
                     title
                     description
                     profession

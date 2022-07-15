@@ -107,6 +107,7 @@ const JobType = gql`
       paidExpiresAt: Float
       paidAmount: Float
       refreshFrequency: Float
+      videoUrl: String
     ): Job
     adminUpdateJob(
       _id: ID!
@@ -138,6 +139,7 @@ const JobType = gql`
       paidExpiresAt: Float
       paidAmount: Float
       refreshFrequency: Float
+      videoUrl: String
     ): Job
     adminDeleteJob(_id: ID!): Job
   }
@@ -154,6 +156,7 @@ const JobType = gql`
     paidAmount: Float
     sentReminder: Boolean
     refreshFrequency: Float
+    videoUrl: String
     createdAt: Float
     updatedAt: Float
     title: String!

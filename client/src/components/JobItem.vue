@@ -239,7 +239,20 @@
       </div>
 
       <div
-        v-if="job.imageUrl"
+        v-if="job.videoUrl"
+        class="d-flex justify-content-center bg-light-shade border-radius1"
+      >
+        <iframe
+          class="border-radius1"
+          width="560"
+          height="315"
+          :src="job.videoUrl"
+        >
+        </iframe>
+      </div>
+
+      <div
+        v-else-if="job.imageUrl"
         style="overflow: hidden"
         class="position-relative border-radius1 mx-auto mt-3"
       >
@@ -303,6 +316,38 @@
             </svg> </strong
         ></b-link>
       </div>
+
+      <div
+        v-if="job.videoUrl && job.imageUrl"
+        style="overflow: hidden"
+        class="position-relative border-radius1 mx-auto mt-3"
+      >
+        <b-img
+          fluid
+          center
+          style="object-fit: fill; z-index: -1"
+          class="blur position-absolute w-100"
+          :src="job.imageUrl"
+          :alt="
+            `Bild von ${job.company && job.company.name} zu ${job.title}${
+              job.company ? ' in ' + job.company.location : ''
+            }`
+          "
+        />
+
+        <b-img
+          class="title-img"
+          :src="job.imageUrl"
+          fluid
+          center
+          :alt="
+            `Bild von ${job.company && job.company.name} zu ${job.title}${
+              job.company ? ' in ' + job.company.location : ''
+            }`
+          "
+        />
+      </div>
+
       <div v-if="job.company._id" class="mt-3">
         <b-link :to="`/unternehmen/${job.company._id}/${job.company.slug}`"
           >Unternehmensprofil –
