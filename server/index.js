@@ -144,7 +144,26 @@ async function startServer() {
 
       return { user, session: req.session };
     },
-    plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
+    plugins: [
+      ApolloServerPluginLandingPageGraphQLPlayground(),
+      {
+        requestDidStart() {
+          return {
+            didEncounterErrors(requestContext) {
+              if (requestContext.errors) {
+                requestContext.errors.forEach(e =>
+                  console.error(
+                    e.message,
+                    e.locations,
+                    requestContext.request.query
+                  )
+                );
+              }
+            },
+          };
+        },
+      },
+    ],
     formatError: err => {
       if (
         (err.path.includes("company") &&
