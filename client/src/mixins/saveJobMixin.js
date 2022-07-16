@@ -21,7 +21,13 @@ export const saveJobMixin = {
               publishedAt: ${job.publishedAt}
               paidExpiresAt: ${job.paidExpiresAt}
               refreshFrequency: ${job.refreshFrequency}
-              videoUrl: "${job.videoUrl}"
+              ${
+                (mutationType === "adminAddJob" ||
+                  mutationType === "adminUpdateJob") &&
+                job.videoUrl
+                  ? `videoUrl: "${job.videoUrl}"`
+                  : ""
+              }
               title: "${job.title}"
               description: "${job.description.replace(/"/g, '\\"')}"
               profession: "${job.profession}"
