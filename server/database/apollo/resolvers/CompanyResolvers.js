@@ -38,6 +38,8 @@ const CompanyResolvers = {
         throw new AuthenticationError("Must be logged in!");
       }
 
+      console.info("addCompany: ", args);
+
       let addObj = { ...args, userId: context.user._id };
 
       const locations = await getLocation(
@@ -62,12 +64,16 @@ const CompanyResolvers = {
       const newCompanyObj = new Company(addObj);
       const company = await newCompanyObj.save();
 
+      console.info("newCompany: ", company);
+
       return company;
     },
     updateCompany: async (root, args, context) => {
       if (!context.user._id) {
         throw new AuthenticationError("Must be logged in!");
       }
+
+      console.info("updateCompany: ", args);
 
       let updateObj = { ...args };
       delete updateObj._id;
@@ -96,6 +102,8 @@ const CompanyResolvers = {
         updateObj,
         { new: true }
       );
+
+      console.info("updatedCompany: ", company);
 
       return company;
     },

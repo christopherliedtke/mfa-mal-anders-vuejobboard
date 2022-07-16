@@ -1036,7 +1036,7 @@
         this.$store.dispatch("setOverlay", false);
       },
       formatter(value) {
-        return value.replaceAll('"', "'");
+        return value.replace(/"/, "'").replace(/\\/g, "/");
       },
       formValidation() {
         this.validated = true;

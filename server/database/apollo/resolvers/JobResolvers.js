@@ -191,6 +191,8 @@ const JobResolvers = {
         throw new AuthenticationError("Must be logged in!");
       }
 
+      console.info("addJob: ", args);
+
       let addObj = {
         ...args,
         userId: context.user._id,
@@ -205,12 +207,16 @@ const JobResolvers = {
       indexing(newJob);
       recaching(newJob);
 
+      console.info("newJob: ", newJob);
+
       return newJob;
     },
     updateJob: async (root, args, context) => {
       if (!context.user._id) {
         throw new AuthenticationError("Must be logged in!");
       }
+
+      console.info("updateJob: ", args);
 
       let updateObj = { ...args };
 
@@ -232,6 +238,8 @@ const JobResolvers = {
 
       indexing(updatedJob);
       recaching(updatedJob);
+
+      console.info("updatedJob: ", updatedJob);
 
       return updatedJob;
     },
