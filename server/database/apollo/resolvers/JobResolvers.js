@@ -267,9 +267,10 @@ const JobResolvers = {
         ...args,
         userId: args.userId || context.user._id,
         slug: await getJobSlug(args),
+        // paidExpiresAt: args.userId ? new Date(0) : undefined,
       };
 
-      addObj = cleanUpJob(addObj, context.user);
+      addObj = cleanUpJob(addObj, { ...context.user, isAdmin: !args.userId });
 
       const newJobObj = new Job(addObj);
       const newJob = await newJobObj.save();
