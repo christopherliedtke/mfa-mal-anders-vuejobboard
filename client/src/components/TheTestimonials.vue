@@ -3,7 +3,7 @@
     <div
       v-for="testimonial in testimonials"
       :key="testimonial.company"
-      class="col-12 col-lg-6 mb-4"
+      class="col-12 col-lg-4 mb-4"
     >
       <div class="position-relative bg-light-shade border-radius2 shadow1 p-5">
         <svg
@@ -20,7 +20,7 @@
           ></path>
         </svg>
         <div class="row">
-          <div class="col-12 d-flex  justify-content-center py-2 px-4">
+          <div class="col-12 d-flex justify-content-center py-2 px-4">
             <b-img-lazy
               class="rounded-circle shadow1"
               height="100"
@@ -53,6 +53,13 @@
     data() {
       return {
         testimonials: Object.freeze([
+          {
+            name: "Dr. Mari Bjørnsgård-Riggenbach",
+            company: "MVZ Strahlentherapie Singen-Friedrichshafen",
+            text:
+              "Wir hatten mehrere Bewerbungen und konnten die Stelle schnell besetzen. Sollten wir wieder Personalbedarf in diesem Segment haben, würde ich sofort wieder bei MFA mal anders inserieren.",
+            imgUrl: require("@/assets/img/Logos_Str_Singen.jpg")
+          },
           {
             name: "Dr. Jörg Schröder",
             company: "Endodontologische Privatpraxis Berlin",
