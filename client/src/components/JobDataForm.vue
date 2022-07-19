@@ -1009,7 +1009,8 @@
         const savedCompany = await this.saveCompany(
           companyMutationType,
           this.job.company,
-          false
+          false,
+          this.job.userId ? this.job.userId._id : undefined
         );
 
         if (savedCompany.success) {

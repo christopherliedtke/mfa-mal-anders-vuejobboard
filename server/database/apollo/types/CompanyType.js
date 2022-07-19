@@ -21,6 +21,7 @@ const CompanyType = gql`
       url: String
       logoUrl: String
       size: String
+      userId: String
     ): Company
     updateCompany(
       _id: ID!
@@ -36,6 +37,7 @@ const CompanyType = gql`
       url: String
       logoUrl: String
       size: String
+      userId: String
     ): Company
     deleteCompany(_id: ID!): Company
     adminUpdateCompany(
@@ -52,6 +54,7 @@ const CompanyType = gql`
       url: String
       logoUrl: String
       size: String
+      userId: String
     ): Company
     adminDeleteCompany(_id: ID!): Company
   }

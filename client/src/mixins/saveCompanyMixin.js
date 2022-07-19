@@ -1,6 +1,11 @@
 export const saveCompanyMixin = {
   methods: {
-    async saveCompany(mutationType, company, redirect = false) {
+    async saveCompany(
+      mutationType,
+      company,
+      redirect = false,
+      userId = undefined
+    ) {
       try {
         const companyQuery = `
           mutation {
@@ -11,6 +16,7 @@ export const saveCompanyMixin = {
                   ? `_id: "${company._id}",`
                   : ""
               } 
+              ${userId ? `userId: "${userId}",` : ""} 
               name: "${company.name}", 
               description: "${company.description || ""}", 
               street: "${company.street}"

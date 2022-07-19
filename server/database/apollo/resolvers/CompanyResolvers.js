@@ -40,7 +40,7 @@ const CompanyResolvers = {
 
       console.info("addCompany: ", args);
 
-      let addObj = { ...args, userId: context.user._id };
+      let addObj = { ...args, userId: args.userId || context.user._id };
 
       const locations = await getLocation(
         `${args.street} ${args.location} ${args.zipCode}`,
@@ -98,7 +98,7 @@ const CompanyResolvers = {
       updateObj = cleanUpCompany(updateObj);
 
       const company = await Company.findOneAndUpdate(
-        { _id: args._id, userId: context.user._id },
+        { _id: args._id, userId: args.userId || context.user._id },
         updateObj,
         { new: true }
       );
