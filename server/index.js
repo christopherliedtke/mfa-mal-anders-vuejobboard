@@ -25,6 +25,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 
 const { CRONNewsletter } = require("./CRON/CRONNewsletter");
+const { CRONGenerateMatomoReport } = require("./CRON/CRONMatomo");
 const { CRONRefreshJobs } = require("./CRON/CRONRefreshJobs");
 const { CRONUnpublishJobs } = require("./CRON/CRONUnpublishJobs");
 const {
@@ -51,6 +52,11 @@ if (process.env.HEROKU == "yes") {
 // #Send Newsletter CRON job
 if (config.newsletter.active) {
   CRONNewsletter.start();
+}
+
+// #Generate Matomo report CRON job
+if (config.generateMatomoReport.active) {
+  CRONGenerateMatomoReport.start();
 }
 
 // #Refresh jobs CRON job

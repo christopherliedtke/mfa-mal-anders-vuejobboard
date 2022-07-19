@@ -195,4 +195,8 @@ module.exports = {
     active: true,
     interval: "0 0 0 * * *",
   },
+  generateMatomoReport: {
+    active: true,
+    interval: "0 0 * * * *",
+  },
 };
