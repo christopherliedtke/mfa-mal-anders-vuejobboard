@@ -509,16 +509,16 @@ const UserResolvers = {
         throw new UserInputError(errorMsg.auth.pwNoMatch);
       }
 
-      if (user.isEmployee) {
-        await JobSeek.deleteMany({ user: user._id });
-      }
-
       const deletedUser = await User.findOneAndDelete({
         _id: context.user._id,
       });
 
       if (!deletedUser) {
         throw new ApolloError(errorMsg.general);
+      }
+
+      if (deletedUser.isEmployee) {
+        JobSeek.deleteMany({ user: deletedUser._id });
       }
 
       console.info("deletedUser: ", deletedUser);
