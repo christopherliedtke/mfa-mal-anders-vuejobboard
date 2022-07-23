@@ -26,6 +26,7 @@ const MongoStore = require("connect-mongo")(session);
 
 const { CRONNewsletter } = require("./CRON/CRONNewsletter");
 const { CRONGenerateMatomoReport } = require("./CRON/CRONMatomo");
+const { CRONSendUserReminder } = require("./CRON/CRONSendUserReminder");
 const { CRONRefreshJobs } = require("./CRON/CRONRefreshJobs");
 const { CRONUnpublishJobs } = require("./CRON/CRONUnpublishJobs");
 const {
@@ -57,6 +58,11 @@ if (config.newsletter.active) {
 // #Generate Matomo report CRON job
 if (config.generateMatomoReport.active) {
   CRONGenerateMatomoReport.start();
+}
+
+// #Send user reminder if no job or jobseek
+if (config.sendUserReminder.active) {
+  CRONSendUserReminder.start();
 }
 
 // #Refresh jobs CRON job
@@ -152,23 +158,23 @@ async function startServer() {
     },
     plugins: [
       ApolloServerPluginLandingPageGraphQLPlayground(),
-      {
-        requestDidStart() {
-          return {
-            didEncounterErrors(requestContext) {
-              if (requestContext.errors) {
-                requestContext.errors.forEach(e =>
-                  console.error(
-                    e.message,
-                    e.locations,
-                    requestContext.request.query
-                  )
-                );
-              }
-            },
-          };
-        },
-      },
+      // {
+      //   requestDidStart() {
+      //     return {
+      //       didEncounterErrors(requestContext) {
+      //         if (requestContext.errors) {
+      //           requestContext.errors.forEach(e =>
+      //             console.error(
+      //               e.message,
+      //               e.locations,
+      //               requestContext.request.query
+      //             )
+      //           );
+      //         }
+      //       },
+      //     };
+      //   },
+      // },
     ],
     formatError: err => {
       if (

@@ -509,6 +509,7 @@
 
         if (response.data.customer) {
           this.checkout.customer = response.data.customer;
+          this.checkout.customer.email = this.$store.state.auth.user.email;
         } else {
           this.checkout.customer = {
             name: this.job.company.name,

@@ -83,6 +83,7 @@ const UserType = gql`
     email: String
     password: String
     token: String
+    sentReminder: Boolean
   }
 
   extend type Job {

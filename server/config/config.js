@@ -199,4 +199,9 @@ module.exports = {
     active: true,
     interval: "0 0 * * * *",
   },
+  sendUserReminder: {
+    active: false,
+    afterDays: 7,
+    interval: "0 0 17 * * 1-5",
+  },
 };

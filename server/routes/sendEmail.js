@@ -376,7 +376,10 @@ router.post("/contact-jobseek", verifyToken, async (req, res) => {
       );
     }
 
-    // send mail to jobseeker
+    console.info(
+      `Sending jobSeek contact ---> jobSeek: ${jobSeek._id}; userId: ${jobSeek.user._id}`
+    );
+
     const template = Handlebars.compile(jobSeekerContactTemplate);
     const htmlToJobSeeker = template({
       jobSeekId: jobSeek._id,

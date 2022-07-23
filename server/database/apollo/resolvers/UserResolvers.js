@@ -17,6 +17,7 @@ const {
 } = require("apollo-server-express");
 const { User } = require("../../models/user");
 const { Code } = require("../../models/secretCode");
+const { JobSeek } = require("../../models/jobSeek");
 
 const UserResolvers = {
   Query: {
@@ -506,6 +507,10 @@ const UserResolvers = {
 
       if (!pwCheckSuccess) {
         throw new UserInputError(errorMsg.auth.pwNoMatch);
+      }
+
+      if (user.isEmployee) {
+        await JobSeek.deleteMany({ user: user._id });
       }
 
       const deletedUser = await User.findOneAndDelete({

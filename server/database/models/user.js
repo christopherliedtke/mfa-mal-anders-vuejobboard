@@ -51,6 +51,10 @@ const UserSchema = new Schema(
       type: String,
       default: "pending",
     },
+    sentReminder: {
+      type: Boolean,
+      default: false,
+    },
     accepted: {
       type: Boolean,
       required: true,
