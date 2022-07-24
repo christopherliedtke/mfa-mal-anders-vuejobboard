@@ -18,6 +18,9 @@ const {
 const { User } = require("../../models/user");
 const { Code } = require("../../models/secretCode");
 const { JobSeek } = require("../../models/jobSeek");
+const { JobAlert } = require("../../models/jobAlert");
+const { StarredJob } = require("../../models/starredJob");
+const { Training } = require("../../models/training");
 
 const UserResolvers = {
   Query: {
@@ -517,9 +520,10 @@ const UserResolvers = {
         throw new ApolloError(errorMsg.general);
       }
 
-      if (deletedUser.isEmployee) {
-        JobSeek.deleteMany({ user: deletedUser._id });
-      }
+      JobSeek.deleteMany({ user: deletedUser._id });
+      JobAlert.deleteMany({ user: deletedUser._id });
+      StarredJob.deleteMany({ user: deletedUser._id });
+      Training.deleteMany({ user: deletedUser._id });
 
       console.info("deletedUser: ", deletedUser);
 
