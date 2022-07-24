@@ -25,7 +25,9 @@
       @ok="deleteAccount"
     >
       <p class="my-4">
-        Bist Du sicher, dass Du Deinen Account löschen möchtest?
+        Bist Du sicher, dass Du Deinen Account inkl. aller Daten (erstellte
+        Stellenanzeigen, Unternehmen, Stellengesuche, Fortbildungen etc.)
+        löschen möchtest?
       </p>
       <b-form>
         <label for="password">Passwort</label>
