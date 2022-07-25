@@ -32,6 +32,9 @@ const { CRONUnpublishJobs } = require("./CRON/CRONUnpublishJobs");
 const {
   CRONSendUnpublishedJobsReminder,
 } = require("./CRON/CRONSendUnpublishedJobsReminder");
+const {
+  CRONSendUnpublishedJobSeeksReminder,
+} = require("./CRON/CRONSendUnpublishedJobSeeksReminder");
 const jobLiftCache = require("./cache/jobliftCache");
 const internalJobsCache = require("./cache/internalJobsCache");
 const jobAdPackagesCache = require("./cache/jobAdPackagesCache");
@@ -78,6 +81,11 @@ if (config.unpublishJobs.active) {
 // #UnpublishedJobsReminder CRON job
 if (config.unpublishedJobsReminder.active) {
   CRONSendUnpublishedJobsReminder.start();
+}
+
+// #UnpublishedJobSeeksReminder CRON job
+if (config.unpublishedJobSeeksReminder.active) {
+  CRONSendUnpublishedJobSeeksReminder.start();
 }
 
 // #Redirects

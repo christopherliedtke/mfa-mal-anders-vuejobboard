@@ -187,6 +187,11 @@ module.exports = {
     interval: "0 0 17 * * *",
     prodInterval: "0 0 17 * * 1-5",
   },
+  unpublishedJobSeeksReminder: {
+    active: true,
+    afterDays: 4,
+    interval: "0 0 17 * * 1-5",
+  },
   refreshJobs: {
     active: true,
     interval: "0 0 0 * * *",

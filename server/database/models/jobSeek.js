@@ -130,6 +130,10 @@ const JobSeekSchema = new Schema(
       type: Boolean,
       default: false,
     },
+    sentReminder: {
+      type: Boolean,
+      default: false,
+    },
     accepted: {
       type: Boolean,
       default: false,

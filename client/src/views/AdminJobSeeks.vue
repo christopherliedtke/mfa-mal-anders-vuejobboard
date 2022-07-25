@@ -247,6 +247,11 @@
             sortable: true
           },
           {
+            key: "sentReminder",
+            label: "SentReminder",
+            sortable: true
+          },
+          {
             key: "firstName",
             label: "FirstName",
             sortable: true
@@ -297,6 +302,7 @@
                     updatedAt
                     published
                     wasPublic
+                    sentReminder
                     title
                     firstName
                     lastName
@@ -348,6 +354,7 @@
                   updatedAt
                   published
                   wasPublic
+                  sentReminder
                   title
                   firstName
                   lastName

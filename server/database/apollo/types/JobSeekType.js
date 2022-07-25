@@ -110,6 +110,7 @@ const JobSeekType = gql`
     geoCodeLng: Float
     published: Boolean
     wasPublic: Boolean
+    sentReminder: Boolean
     accepted: Boolean
     slug: String
   }
