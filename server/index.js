@@ -34,7 +34,7 @@ const {
 } = require("./CRON/CRONSendUnpublishedJobsReminder");
 const {
   CRONSendUnpublishedJobSeeksReminder,
-} = require("./CRON/CRONSendUnpublishedJobSeeksReminder");
+} = require("./CRON/CRONSendUnpublishedJobseeksReminder");
 const jobLiftCache = require("./cache/jobliftCache");
 const internalJobsCache = require("./cache/internalJobsCache");
 const jobAdPackagesCache = require("./cache/jobAdPackagesCache");
