@@ -190,7 +190,7 @@ module.exports = {
   unpublishedJobSeeksReminder: {
     active: true,
     afterDays: 4,
-    interval: "0 0 17 * * 1-5",
+    interval: "0 5 17 * * 1-5",
   },
   refreshJobs: {
     active: true,
@@ -207,6 +207,6 @@ module.exports = {
   sendUserReminder: {
     active: true,
     afterDays: 7,
-    interval: "0 0 17 * * 1-5",
+    interval: "0 10 17 * * 1-5",
   },
 };

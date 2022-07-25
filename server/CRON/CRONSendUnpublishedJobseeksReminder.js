@@ -44,29 +44,31 @@ const sendUnpublishedJobSeeksReminder = async () => {
 
   const template = Handlebars.compile(unpublishedJobSeeksReminderTemplate);
 
-  const emailData = jobSeeks.map(jobSeek => {
-    const htmlToEmployee = template({
-      to: `${jobSeek.user.firstName}`,
-      jobSeekTitle: jobSeek.title,
-      websiteUrl: process.env.WEBSITE_URL,
-      websiteName: config.website.name,
-      headerImg: `${process.env.WEBSITE_URL}/img/MfaMalAnders_Stellengesuche.jpg`,
-      lightColor: "#fffcfd",
-      lightShadeColor: "#f7f6f9",
-      primaryColor: "#6d0230",
-      secondaryColor: "#fda225",
-      fbPath: config.social.fb.path,
-      igPath: config.social.ig.path,
-    });
+  const emailData = jobSeeks
+    .filter(jobSeek => jobSeek.user)
+    .map(jobSeek => {
+      const htmlToEmployee = template({
+        to: `${jobSeek.user.firstName}`,
+        jobSeekTitle: jobSeek.title,
+        websiteUrl: process.env.WEBSITE_URL,
+        websiteName: config.website.name,
+        headerImg: `${process.env.WEBSITE_URL}/img/MfaMalAnders_Stellengesuche.jpg`,
+        lightColor: "#fffcfd",
+        lightShadeColor: "#f7f6f9",
+        primaryColor: "#6d0230",
+        secondaryColor: "#fda225",
+        fbPath: config.social.fb.path,
+        igPath: config.social.ig.path,
+      });
 
-    return {
-      from: "kontakt@mfa-mal-anders.de",
-      to: jobSeek.user.email,
-      subject: "Dein Stellengesuch auf MFA mal anders",
-      html: htmlToEmployee,
-      replyTo: "kontakt@mfa-mal-anders.de",
-    };
-  });
+      return {
+        from: "kontakt@mfa-mal-anders.de",
+        to: jobSeek.user.email,
+        subject: "Dein Stellengesuch auf MFA mal anders",
+        html: htmlToEmployee,
+        replyTo: "kontakt@mfa-mal-anders.de",
+      };
+    });
 
   const emailsSent = await Promise.all(
     emailData.map(data => sesMailTransporter.sendMail(data))
