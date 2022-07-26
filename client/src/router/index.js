@@ -671,7 +671,8 @@ const routes = [
     name: "UserJobs",
     component: UserJobs,
     meta: {
-      public: false
+      public: false,
+      onlyEmployer: true
     }
   },
   {
@@ -679,7 +680,8 @@ const routes = [
     name: "UserJobEdit",
     component: UserJobEdit,
     meta: {
-      public: false
+      public: false,
+      onlyEmployer: true
     }
   },
   {
@@ -687,7 +689,8 @@ const routes = [
     name: "UserJobPreview",
     component: UserJobPreview,
     meta: {
-      public: false
+      public: false,
+      onlyEmployer: true
     }
   },
   {
@@ -695,7 +698,8 @@ const routes = [
     name: "UserCompanies",
     component: UserCompanies,
     meta: {
-      public: false
+      public: false,
+      onlyEmployer: true
     }
   },
   {
@@ -703,7 +707,8 @@ const routes = [
     name: "UserPayments",
     component: UserPayments,
     meta: {
-      public: false
+      public: false,
+      onlyEmployer: true
     }
   },
   {
@@ -711,7 +716,8 @@ const routes = [
     name: "UserCompanyEdit",
     component: UserCompanyEdit,
     meta: {
-      public: false
+      public: false,
+      onlyEmployer: true
     }
   },
   {
@@ -719,7 +725,8 @@ const routes = [
     name: "UserTrainings",
     component: UserTrainings,
     meta: {
-      public: false
+      public: false,
+      onlyEducational: true
     }
   },
   {
@@ -727,7 +734,8 @@ const routes = [
     name: "UserTrainingEdit",
     component: UserTrainingEdit,
     meta: {
-      public: false
+      public: false,
+      onlyEducational: true
     }
   },
   {
@@ -735,7 +743,8 @@ const routes = [
     name: "UserStarredJobs",
     component: UserStarredJobs,
     meta: {
-      public: false
+      public: false,
+      onlyEmployee: true
     }
   },
   {
@@ -743,7 +752,8 @@ const routes = [
     name: "UserJobAlerts",
     component: UserJobAlerts,
     meta: {
-      public: false
+      public: false,
+      onlyEmployee: true
     }
   },
   {
@@ -751,7 +761,8 @@ const routes = [
     name: "UserJobSeeks",
     component: UserJobSeeks,
     meta: {
-      public: false
+      public: false,
+      onlyEmployee: true
     }
   },
   {
@@ -759,7 +770,8 @@ const routes = [
     name: "UserJobSeekEdit",
     component: UserJobSeekEdit,
     meta: {
-      public: false
+      public: false,
+      onlyEmployee: true
     }
   },
   {
@@ -767,7 +779,8 @@ const routes = [
     name: "UserJobSeekPreview",
     component: UserJobSeekPreview,
     meta: {
-      public: false
+      public: false,
+      onlyEmployee: true
     }
   },
   {
@@ -775,7 +788,8 @@ const routes = [
     name: "UserCheckoutJob",
     component: UserCheckoutJob,
     meta: {
-      public: false
+      public: false,
+      onlyEmployer: true
     }
   },
   {
@@ -964,10 +978,18 @@ router.beforeEach((to, from, next) => {
     record => record.meta.onlyWhenPending
   );
   const onlyAdmin = to.matched.some(record => record.meta.onlyAdmin);
+  const onlyEmployer = to.matched.some(record => record.meta.onlyEmployer);
+  const onlyEmployee = to.matched.some(record => record.meta.onlyEmployee);
+  const onlyEducational = to.matched.some(
+    record => record.meta.onlyEducational
+  );
 
   const loggedIn = store.getters.loggedIn;
   const userActive = store.getters.user.status === "active";
   const isAdmin = store.getters.user.isAdmin;
+  const isEmployer = store.getters.user.isEmployer;
+  const isEmployee = store.getters.user.isEmployee;
+  const isEducational = store.getters.user.isEducational;
 
   if (onlyAdmin && !isAdmin) {
     return next("/");
@@ -990,6 +1012,14 @@ router.beforeEach((to, from, next) => {
 
   if (loggedIn && onlyWhenLoggedOut) {
     return next(to.query.redirect ? to.query.redirect : "/user/account");
+  }
+
+  if (
+    (onlyEducational && !isEducational) ||
+    (onlyEmployer && !isEmployer) ||
+    (onlyEmployee && !isEmployee)
+  ) {
+    return next("/user/account?checkrole=true");
   }
 
   next();

@@ -90,7 +90,12 @@
         </div>
       </div>
 
-      <label for="role" class="d-block mt-4 mb-0">Rolle</label>
+      <label for="role" class="d-block mt-4 mb-0">Rolle </label>
+      <b-form-text v-if="$route.query.checkrole" class="ml-1"
+        ><span class="text-danger"
+          >Bitte überprüfe die hinterlegte Rolle für Deinen Account!</span
+        ></b-form-text
+      >
       <b-form-checkbox
         id="is-employer"
         v-model="user.isEmployer"
