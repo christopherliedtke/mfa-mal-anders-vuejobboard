@@ -8,7 +8,7 @@ const jwt = require("jsonwebtoken");
 const Handlebars = require("handlebars");
 const cryptoRandomString = require("crypto-random-string");
 const emailService = require("../../../lib/nodemailer");
-const mg = require("../../../lib/mailgunMailer");
+// const mg = require("../../../lib/mailgunMailer");
 const { hash, compare } = require("../../../lib/bcrypt");
 const {
   UserInputError,
@@ -21,6 +21,7 @@ const { JobSeek } = require("../../models/jobSeek");
 const { JobAlert } = require("../../models/jobAlert");
 const { StarredJob } = require("../../models/starredJob");
 const { Training } = require("../../models/training");
+const { sesMailTransporter } = require("../../../lib/ses");
 
 const UserResolvers = {
   Query: {
@@ -343,6 +344,7 @@ const UserResolvers = {
         `,
         html: html,
       };
+
       const email = await emailService.sendMail(emailData);
 
       if (email.accepted.length === 0) {
@@ -439,7 +441,9 @@ const UserResolvers = {
         };
 
         // const emailSent = await emailService.sendMail(emailData);
-        const emailSent = await mg.messages().send(emailData);
+        // const emailSent = await mg.messages().send(emailData);
+        const emailSent = await sesMailTransporter.sendMail(emailData);
+
         console.info("sendMail() for user activation email: ", user, emailSent);
       } catch (err) {
         console.error("Error on sending account activation email: ", user, err);
