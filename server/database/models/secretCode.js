@@ -14,7 +14,7 @@ const CodeSchema = new Schema(
     validUntil: {
       type: Date,
       default: () => {
-        return Date.now() + 1000 * 60 * 10;
+        return Date.now() + 1000 * 60 * 60;
       },
       expires: 0,
     },
