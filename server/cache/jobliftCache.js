@@ -103,7 +103,7 @@ class Cache {
                 job.locations[0].location &&
                 job.locations[0].location[0].country
                   ? job.locations[0].location[0].country[0]
-                  : "",
+                  : "Deutschland",
               geoCodeLat:
                 job.locations &&
                 job.locations[0].location &&
