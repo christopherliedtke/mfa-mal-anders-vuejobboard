@@ -110,14 +110,14 @@ class Cache {
                 job.locations[0].location[0].geo &&
                 job.locations[0].location[0].geo[0].geo_lat
                   ? parseFloat(job.locations[0].location[0].geo[0].geo_lat[0])
-                  : "",
+                  : 51.241,
               geoCodeLng:
                 job.locations &&
                 job.locations[0].location &&
                 job.locations[0].location[0].geo &&
                 job.locations[0].location[0].geo[0].geo_lon
                   ? parseFloat(job.locations[0].location[0].geo[0].geo_lon[0])
-                  : "",
+                  : 10.528,
             },
           };
         });
@@ -182,6 +182,12 @@ function filterJobliftJobs(job) {
     job.locations[0].location &&
     job.locations[0].location[0].zip &&
     job.locations[0].location[0].zip[0] &&
+    job.locations[0].location[0].geo &&
+    job.locations[0].location[0].geo[0] &&
+    job.locations[0].location[0].geo[0].geo_lon &&
+    job.locations[0].location[0].geo[0].geo_lon[0] &&
+    job.locations[0].location[0].geo[0].geo_lat &&
+    job.locations[0].location[0].geo[0].geo_lat[0] &&
     !isRecruitingAgency(job) &&
     (checkMfa(job.title[0] + job.fullDescription[0]) ||
       checkZfa(job.title[0] + job.fullDescription[0]))
