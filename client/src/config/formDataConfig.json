@@ -77,7 +77,7 @@
   ],
   "contactGenderOptions": ["Frau", "Herr"],
   "contactTitleOptions": ["Dr.", "Prof.", "Prof. Dr.", "Dipl. med."],
-  "companyCountryOptions": ["Deutschland", "Österreich", "Schweiz"],
+  "companyCountryOptions": ["Deutschland", "Österreich", "Schweiz", "Luxemburg"],
   "checkoutCountryOptions": [
     { "value": "DE", "text": "Deutschland" },
     {
@@ -87,6 +87,10 @@
     {
       "value": "CH",
       "text": "Schweiz"
+    },
+    {
+      "value": "LU",
+      "text": "Luxemburg"
     }
   ],
   "companyStateOptions": [

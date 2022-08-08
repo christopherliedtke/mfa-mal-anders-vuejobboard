@@ -17,7 +17,7 @@
       <p>
         Nicht was Du möchtest?
         <b-link to="/auth/register">Registrieren</b-link> oder
-        <b-link to="/login">Anmelden</b-link>!
+        <b-link to="/auth/login">Anmelden</b-link>!
       </p>
     </b-form>
     <b-form v-if="state === 1">

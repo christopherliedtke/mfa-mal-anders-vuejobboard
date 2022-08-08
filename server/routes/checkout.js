@@ -38,6 +38,9 @@ router.post("/create-invoice", verifyToken, async (req, res) => {
       "_id stripeCustomerId"
     );
 
+    //todo customer w/ reverse charge if not germany
+    // https://stripe.com/docs/tax/zero-tax#:~:text=Reverse%20charge,-While%20in%20most&text=Stripe%20Tax%20automatically%20applies%20the,but%20isn't%20charged%20tax.
+
     customer.metadata = {
       userId: req.user._id,
       acceptedTimeStamp: new Date(),
