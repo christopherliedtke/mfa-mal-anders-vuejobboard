@@ -205,6 +205,19 @@
                     >{{ country.text }}</b-form-select-option
                   >
                 </b-form-select>
+                <b-form-text
+                  v-if="
+                    checkout.customer.address.country &&
+                      checkout.customer.address.country != 'DE'
+                  "
+                  id="country-help"
+                  class="ml-2"
+                >
+                  <small
+                    >Kunden außerhalb von Deutschland unterliegen dem
+                    europäischen Reverse Charge Verfahren</small
+                  ></b-form-text
+                >
               </div>
             </div>
 
@@ -393,7 +406,11 @@
             );
           }
 
-          const taxRate = this.$config.payment.taxRate;
+          const taxRate =
+            !this.checkout.customer.address.country ||
+            this.checkout.customer.address.country == "DE"
+              ? this.$config.payment.taxRate
+              : 0;
 
           amount = Math.round(amount * (1 + taxRate));
         }
