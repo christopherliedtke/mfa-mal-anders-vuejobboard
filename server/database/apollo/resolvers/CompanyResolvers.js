@@ -47,6 +47,8 @@ const CompanyResolvers = {
         args.country
       );
 
+      console.log(locations);
+
       if (locations) {
         addObj.state = locations[0].address.state;
         addObj.geoCodeLng = locations[0].position.lng;

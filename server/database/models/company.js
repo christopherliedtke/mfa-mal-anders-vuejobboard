@@ -31,7 +31,7 @@ const CompanySchema = new Schema(
     },
     state: {
       type: String,
-      required: true,
+      // required: true,
     },
     country: {
       type: String,
