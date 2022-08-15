@@ -844,6 +844,7 @@
   import PricingCard from "@/components/PricingCard.vue";
   import PricingCardPlaceholder from "@/components/PricingCardPlaceholder.vue";
   import { scrollToHashMixin } from "@/mixins/scrollToHashMixin";
+  import { setPromotionCodeMixin } from "@/mixins/setPromotionCodeMixin";
   export default {
     name: "Employer",
     components: {
@@ -855,7 +856,7 @@
       PricingCardPlaceholder,
       ScrollTopButton
     },
-    mixins: [scrollToHashMixin],
+    mixins: [scrollToHashMixin, setPromotionCodeMixin],
     data() {
       return {
         title: "Für Arbeitgeber",

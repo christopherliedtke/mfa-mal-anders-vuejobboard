@@ -427,6 +427,8 @@
       await Promise.all([this.getJob(), this.getPricingPackages()]);
 
       await this.setBillingAddress();
+
+      await this.checkForPromotionCode();
     },
     methods: {
       async getJob() {
@@ -615,6 +617,8 @@
               );
 
             this.$router.push("/user/rechnungen");
+
+            localStorage.removeItem("promotionCode");
           }
         } catch (err) {
           console.log("err.response: ", err.response);
@@ -633,6 +637,12 @@
         }
 
         this.$store.dispatch("setOverlay", false);
+      },
+      async checkForPromotionCode() {
+        if (localStorage.getItem("promotionCode")) {
+          this.checkout.promotionCode = localStorage.getItem("promotionCode");
+          await this.validatePromotionCode();
+        }
       },
       async validatePromotionCode() {
         this.$store.dispatch("setOverlay", true);
