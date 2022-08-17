@@ -84,6 +84,8 @@ router.post("/create-invoice", verifyToken, async (req, res) => {
         .send("Rechnungsposten konnten nicht erstellt werden.");
     }
 
+    // todo implement coupon duration only once -> track usage of coupons independently
+
     // https://stripe.com/docs/api/invoices
     let invoice = null;
     try {

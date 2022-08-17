@@ -8,9 +8,9 @@ export const setPromotionCodeMixin = {
         localStorage.setItem("promotionCode", this.$route.query.promotion);
 
         this.$root.$bvToast.toast(
-          `Ihr Aktionscode ${localStorage.getItem(
+          `Ihr Aktionscode "${localStorage.getItem(
             "promotionCode"
-          )} wurde erfolgreich hinterlegt und wird bei der Veröffentlichung Ihrer Stellenanzeige verwendet.`,
+          )}" wurde erfolgreich hinterlegt und kann bei der Veröffentlichung Ihrer Stellenanzeige eingelöst werden.`,
           {
             title: `Aktionscode hinterlegt`,
             variant: "success",

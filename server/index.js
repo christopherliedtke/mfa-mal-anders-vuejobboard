@@ -150,7 +150,10 @@ if (process.env.NODE_ENV == "production") {
     next();
   });
   app.use(
-    express.static(__dirname + "/public", { maxAge: 1000 * 60 * 60 * 24 * 7 })
+    express.static(__dirname + "/public", {
+      maxAge: 1000 * 60 * 60 * 24 * 7,
+      acceptRanges: false,
+    })
   );
 }
 

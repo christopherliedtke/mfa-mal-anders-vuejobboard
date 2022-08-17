@@ -651,11 +651,12 @@
           this.checkout.couponValidationState = null;
 
           const response = await this.$axios.get(
-            "/api/coupons/coupon-by-promotion-code",
+            "/api/coupons/validate/coupon-by-promotion-code",
             {
               params: {
                 code: this.checkout.promotionCode,
-                product: this.checkout.pricingPackage.stripePrice.stripeProduct
+                product: this.checkout.pricingPackage.stripePrice.stripeProduct,
+                price: this.checkout.pricingPackage.stripePrice.price
               }
             }
           );
