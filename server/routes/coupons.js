@@ -1,11 +1,12 @@
 const express = require("express");
+const jobAdPackagesCache = require("../cache/jobAdPackagesCache");
 const { User } = require("../database/models/user");
 const router = express.Router();
 const verifyToken = require("../middleware/verifyToken");
 const stripe = require("stripe")(process.env.STRIPE_SK);
 
 // #route:  GET /api/coupons/validate/coupon-by-promotion-code
-// #desc:   Fetch valid stripe coupon from promotion-code
+// #desc:   Validate stripe coupon by promotion-code
 // #access: Private
 router.get(
   "/validate/coupon-by-promotion-code",
@@ -28,7 +29,6 @@ router.get(
         throw new Error("Aktionscode ist nicht gültig.");
       }
 
-      // todo check promotion code for first_time_transaction && promotionCodes.data[0].coupon.duration === "once" && check promotion code for restricted to customer
       if (
         promotionCodes.data[0].customer ||
         promotionCodes.data[0].restrictions.first_time_transaction ||
@@ -79,7 +79,6 @@ router.get(
         }
       }
 
-      // todo check promotion code for minimum_amount
       if (promotionCodes.data[0].restrictions.minimum_amount) {
         if (
           promotionCodes.data[0].restrictions.minimum_amount > parseInt(price)
@@ -109,5 +108,54 @@ router.get(
     }
   }
 );
+
+// #route:  GET /api/coupons/retrieve/coupon-by-promotion-code
+// #desc:   Fetch valid stripe coupon by promotion-code
+// #access: Public
+router.get("/retrieve/coupon-by-promotion-code", async (req, res) => {
+  let coupon = null;
+
+  try {
+    const { code } = req.query;
+
+    const promotionCodes = await stripe.promotionCodes.list({
+      code,
+      active: true,
+      expand: ["data.coupon.applies_to"],
+    });
+
+    if (!promotionCodes.data || promotionCodes.data.length === 0) {
+      throw new Error("Aktionscode ist nicht gültig.");
+    }
+
+    coupon = promotionCodes.data[0].coupon;
+
+    coupon = {
+      code: promotionCodes.data[0].code,
+      restrictions: promotionCodes.data[0].restrictions,
+      percent_off: promotionCodes.data[0].coupon.percent_off,
+      amount_off: promotionCodes.data[0].coupon.amount_off,
+      duration: promotionCodes.data[0].coupon.duration,
+      refreshFrequency: promotionCodes.data[0].coupon.metadata.refreshFrequency,
+    };
+
+    if (promotionCodes.data[0].coupon.applies_to) {
+      const jobAdPackages = await jobAdPackagesCache.get("jobAdPackages");
+
+      coupon.applies_to = jobAdPackages
+        .filter(pkg =>
+          promotionCodes.data[0].coupon.applies_to.products.some(
+            product => product === pkg.stripePrice.stripeProduct
+          )
+        )
+        .map(product => product.name);
+    }
+  } catch (error) {
+    console.error(error);
+    coupon = null;
+  }
+
+  res.json({ coupon });
+});
 
 module.exports = router;
