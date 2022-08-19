@@ -111,9 +111,11 @@
           {
             id: "canonical",
             rel: "canonical",
-            href: `${this.$config.website.url}/job/${
-              this.job ? this.job._id : ""
-            }/${this.job ? this.job.slug : ""}`
+            href: this.error
+              ? this.$config.website.url
+              : `${this.$config.website.url}/job/${
+                  this.job ? this.job._id : ""
+                }/${this.job ? this.job.slug : ""}`
           }
         ];
       }
@@ -196,9 +198,22 @@
           }
 
           if (!job.data.data.publicJob) {
-            this.jobSeek = {};
-            this.error = `Das Stellenangebot konnte nicht gefunden werden. Möglicherweise ist es bereits abgelaufen.`;
-            return;
+            this.job = null;
+            // this.error = `Das Stellenangebot konnte nicht gefunden werden. Möglicherweise ist es bereits abgelaufen.`;
+            // return;
+
+            this.$root.$bvToast.toast(
+              "Das Stellenangebot konnte nicht gefunden werden bzw. ist bereits abgelaufen.",
+              {
+                title: `Stellenangebot abgelaufen`,
+                variant: "info",
+                toaster: "b-toaster-bottom-right",
+                solid: false,
+                noAutoHide: true
+              }
+            );
+
+            this.$router.push("/");
           }
 
           this.job = job.data.data.publicJob;
