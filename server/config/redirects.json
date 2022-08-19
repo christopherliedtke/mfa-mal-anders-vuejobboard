@@ -153,7 +153,7 @@
   },
   {
     "old": "/karriere/fort-und-weiterbildungen/onkologischer-fachassistentin",
-    "new": "/karriere/fort-und-weiterbildung/ueberblick/onkologischer-fachassistentin"
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/mfa-in-der-onkologie"
   },
   {
     "old": "/karriere/fort-und-weiterbildungen/physician-assistant",
@@ -206,5 +206,9 @@
   {
     "old": "/stellenangebote",
     "new": "/"
+  },
+  {
+    "old": "/karriere/fort-und-weiterbildung/ueberblick/onkologischer-fachassistentin",
+    "new": "/karriere/fort-und-weiterbildung/ueberblick/mfa-in-der-onkologie"
   }
 ]
