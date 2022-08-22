@@ -133,10 +133,12 @@ router.get("/retrieve/coupon-by-promotion-code", async (req, res) => {
     coupon = {
       code: promotionCodes.data[0].code,
       restrictions: promotionCodes.data[0].restrictions,
+      expires_at: promotionCodes.data[0].expires_at,
       percent_off: promotionCodes.data[0].coupon.percent_off,
       amount_off: promotionCodes.data[0].coupon.amount_off,
       duration: promotionCodes.data[0].coupon.duration,
       refreshFrequency: promotionCodes.data[0].coupon.metadata.refreshFrequency,
+      redeem_by: promotionCodes.data[0].coupon.redeem_by,
     };
 
     if (promotionCodes.data[0].coupon.applies_to) {
