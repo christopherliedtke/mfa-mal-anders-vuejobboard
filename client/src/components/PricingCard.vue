@@ -27,7 +27,11 @@
     <div class="p-3">
       <div>
         <span class="display-3 text-center d-block"
-          ><span class="bold">{{ pricing.stripePrice.price / 100 }}</span
+          ><span class="bold">{{
+            (pricing.stripePrice.price / 100)
+              .toString()
+              .replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+          }}</span
           >€</span
         >
       </div>

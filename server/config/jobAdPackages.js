@@ -71,6 +71,14 @@ module.exports = [
         html: "<strong>Basis & Standard Features</strong>",
       },
       {
+        html: '<strong class="text-secondary">Google Ads & Social Media Kampagne inkl. je 100€ Start-Budget</strong> &ndash; Ihre Stelle als Werbeanzeige in den Google Suchergebnissen und auf Facebook & Instagram <strong class="text-secondary">speziell für Ihren Standort</strong>',
+        icon: "plus-circle",
+      },
+      {
+        html: '<strong class="text-secondary">Persönlicher Ansprechpartner</strong> mit Tipps zur Optimierung Ihrer Stellenanzeige',
+        icon: "plus-circle",
+      },
+      {
         html: '<strong class="text-secondary">Datumsupdate alle 7 Tage</strong> &ndash; Ihre Stellenanzeige rutscht nach oben',
         icon: "plus-circle",
       },
@@ -83,15 +91,7 @@ module.exports = [
         icon: "plus-circle",
       },
       {
-        html: '<strong class="text-secondary">Persönlicher Ansprechpartner</strong> mit Tipps zur Optimierung Ihrer Stellenanzeige',
-        icon: "plus-circle",
-      },
-      {
-        html: 'Optionale <strong class="text-secondary">Einbindung eines Image Videos</strong> in Ihrer Stellenanzeige',
-        icon: "plus-circle",
-      },
-      {
-        html: '<strong class="text-secondary">Google Ads oder Social Media Kampagne inkl. 100€ Start-Budget</strong> &ndash; Ihre Stelle als Werbeanzeige in den Google Suchergebnissen oder auf Facebook und Instagram <strong class="text-secondary">speziell für Ihren Standort</strong>',
+        html: 'Optionale <strong class="text-secondary">Einbindung eines vorhandenen Image Videos</strong> in Ihre Stellenanzeige',
         icon: "plus-circle",
       },
     ],
