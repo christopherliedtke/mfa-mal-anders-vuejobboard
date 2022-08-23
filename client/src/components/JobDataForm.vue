@@ -20,7 +20,7 @@
             : null
         "
         aria-describedby="title-help title-feedback"
-        placeholder="Titel der Stellenanzeige eingeben..."
+        placeholder="z.B. Praxismanagerin (m/w/d) für hausärztliche Gemeinschaftspraxis"
         required
         trim
       />
@@ -311,7 +311,7 @@
               type="number"
               step="1"
               :state="validated ? (job.salaryMin ? true : null) : null"
-              placeholder="Min. Monatsgehalt eingeben..."
+              placeholder="z.B. 2500"
               aria-describedby="min-salary-help"
             />
           </b-input-group>
@@ -329,7 +329,7 @@
               type="number"
               step="1"
               :state="validated ? (job.salaryMax ? true : null) : null"
-              placeholder="Max. Monatsgehalt eingeben..."
+              placeholder="z.B. 3000"
               aria-describedby="max-salary-help"
             />
           </b-input-group>
@@ -413,9 +413,12 @@
             lazy-formatter
             :formatter="formatter"
             :state="validated ? (job.contactPosition ? true : null) : null"
-            placeholder="Position eingeben..."
+            placeholder="z.B. Praxismanagerin / HR-Recruiter..."
             trim
           />
+          <b-form-text id="contact-position-help" class="ml-2"
+            >optional, falls relevant</b-form-text
+          >
         </div>
       </div>
 
@@ -464,7 +467,7 @@
               lazy-formatter
               :formatter="formatter"
               :state="validated ? (job.contactPhone ? true : null) : null"
-              placeholder="Telefonnummer eingeben..."
+              placeholder="030 123 45 678"
             />
           </b-input-group>
         </div>
