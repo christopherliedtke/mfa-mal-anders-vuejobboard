@@ -147,7 +147,7 @@
             Meta-Werbeplattform – insofern nicht abweichend vereinbart). Das
             Werbebudget wird auf den Werbeplattformen im "Pay per
             Click"-Verfahren verwendet, d.h. für jeden generierten Klick auf
-            ihre Werbeanzeige wird ein bestimmter Betrag des Werbebudgets
+            Ihre Werbeanzeige wird ein bestimmter Betrag des Werbebudgets
             aufgebraucht. Auf die Höhe des Betrags pro Klick, sowie die
             tatsächliche Auslieferung der Werbeanzeige hat
             <em>MFA mal anders</em> keinen Einfluss.
@@ -164,7 +164,7 @@
           </li>
           <li>
             Ihre Stellenanzeige wird in der Stellenbörse auf
-            <em>MFA mal anders</em> farblich gegenüber Bais- und
+            <em>MFA mal anders</em> farblich gegenüber Basis- und
             Standard-Stellenanzeigen hervorgehoben.
           </li>
           <li>
