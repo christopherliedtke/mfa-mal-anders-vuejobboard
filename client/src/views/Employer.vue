@@ -396,7 +396,7 @@
             :key="pricingPackage.name"
             class="col"
           >
-            <PricingCard :pricing="pricingPackage" />
+            <PricingCard :pricing="pricingPackage" :professional-more="true" />
           </div>
         </div>
 
@@ -438,19 +438,12 @@
       </div>
     </div>
 
-    <!-- <div id="professional" class="container my-4 my-md-5">
+    <div id="professional" class="container my-4 my-md-5">
       <h2 class="display-4 text-center bold">
         Unser Professional Paket
       </h2>
-      <h3 class="text-center">Was Sie mit dem Stellenpaket erhalten</h3>
+      <h3 class="text-center">Ihre Vorteile im Überblick</h3>
       <TheProfessionalPackageInfo />
-    </div> -->
-
-    <div class="container my-4 my-md-5">
-      <h2 class="display-4 text-center bold">
-        Wir kooperieren mit
-      </h2>
-      <TheCooperationPartners />
     </div>
 
     <div id="numbers-and-facts2" class="container mb-5 py-md-5">
@@ -458,6 +451,13 @@
         Ein paar Zahlen und Fakten
       </h2>
       <TheNumbersAndFacts class="mt-5" />
+    </div>
+
+    <div class="container my-4 my-md-5">
+      <h2 class="display-4 text-center bold">
+        Wir kooperieren mit
+      </h2>
+      <TheCooperationPartners />
     </div>
 
     <div
@@ -847,7 +847,7 @@
   import ScrollTopButton from "@/components/ScrollTopButton.vue";
   import TheJobAdTipsList from "@/components/TheJobAdTipsList.vue";
   import TheNumbersAndFacts from "@/components/TheNumbersAndFacts.vue";
-  // import TheProfessionalPackageInfo from "@/components/TheProfessionalPackageInfo.vue";
+  import TheProfessionalPackageInfo from "@/components/TheProfessionalPackageInfo.vue";
   import TheCooperationPartners from "@/components/TheCooperationPartners.vue";
   import TheTestimonials from "@/components/TheTestimonials.vue";
   import PricingCard from "@/components/PricingCard.vue";
@@ -863,8 +863,8 @@
       TheTestimonials,
       PricingCard,
       PricingCardPlaceholder,
-      ScrollTopButton
-      // TheProfessionalPackageInfo
+      ScrollTopButton,
+      TheProfessionalPackageInfo
     },
     mixins: [scrollToHashMixin, setPromotionCodeMixin],
     data() {

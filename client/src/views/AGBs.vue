@@ -38,8 +38,191 @@
         </p>
 
         <p>
-          Jobsuchende können ein Stellengesuch anlegen und von Arbeitgebern
-          kontaktiert werden.
+          Arbeitgeber können bei der Veröffentlichung Ihrer Stellenanzeige
+          zwischen drei Stellenpaketen wählen.
+        </p>
+
+        <h3>III.a Stellenpakete</h3>
+
+        <h4>Stellenpaket Basis</h4>
+
+        <p>
+          Im Stellenpaket Basis erhalten Kunden mit der Veröffentlichung der
+          Stellenanzeige folgende Leistungen:
+        </p>
+
+        <ul>
+          <li>
+            Stellenanzeige für 60 Tage auf
+            <em>MFA mal anders</em> veröffentlicht
+          </li>
+          <li>
+            Integration Ihres Logos, sowie ein Titelbild in der Stellenanzeige
+            auf
+            <em>MFA mal anders</em> für individuelles Branding
+          </li>
+          <li>
+            Optimierung der Stellenanzeige für Google Jobs – die Stellenanzeige
+            kann von Google als Stellenanzeige über struktrierte Daten
+            ausgelesen werden und in der <em>Google Jobs</em> Jobbörse
+            integriert werden. Wie schnell, für welche Dauer und ob Google diese
+            Integration vornimmt, kann von <em>MFA mal anders</em> nicht
+            beeinflusst werden.
+          </li>
+          <li>
+            Ihre Stellenanzeige wird einmalig für das passende deutsche
+            Bundesland in unserem wöchentlichen Newsletter an die entsprechenden
+            Abonnenten per E-Mail versandt.
+          </li>
+          <li>
+            Sie erhalten Zugriff auf unsere Stellengesuche und haben die
+            Möglichkeit, die Stellensuchenden über die Laufzeit Ihrer
+            Stellenanzeige zu kontaktieren.
+          </li>
+        </ul>
+
+        <h4>Stellenpaket Standard</h4>
+
+        <p>
+          Im Stellenpaket Standard erhalten Kunden mit der Veröffentlichung der
+          Stellenanzeige folgende Leistungen:
+        </p>
+
+        <ul>
+          <li>Sämtliche Leistungen aus dem Stellenpaket Basis</li>
+          <li>
+            Stellenanzeige für 90 Tage auf
+            <em>MFA mal anders</em> veröffentlicht
+          </li>
+          <li>
+            Datumsupdate alle 14 Tage – Ihre Stellenanzeige rutscht in der
+            Stellenbörse wieder nach oben.
+          </li>
+          <li>
+            Ihre Stellenanzeige wird alle 14 Tage für das passende deutsche
+            Bundesland in unserem wöchentlichen Newsletter an die entsprechenden
+            Abonnenten per E-Mail versandt.
+          </li>
+          <li>
+            Ihre Stellenanzeige wird von uns auf unserem Facebook-Kanal sowie in
+            spezielle Facebook-Gruppen für MFA & ZFA gepostet. Die Beiträge
+            müssen auf Facebook von den entsprechenden
+            Gruppen-AdministratorInnen freigegeben werden.
+            <em>MFA mal anders</em> hat keinen Einfluss darauf, ob und wann dies
+            geschieht.
+          </li>
+        </ul>
+
+        <h4>Stellenpaket Professional</h4>
+
+        <p>
+          Im Stellenpaket Professional erhalten Kunden mit der Veröffentlichung
+          der Stellenanzeige folgende Leistungen:
+        </p>
+
+        <ul>
+          <li>Sämtliche Leistungen aus dem Stellenpaket Basis & Standard</li>
+          <li>
+            Wie konzipieren, designen und schalten Ihre Stellenanzeige als
+            Werbeanzeige über GoogleAds und auf der Meta-Werbeplattform für
+            Facebook und Instagram. Die Werbeanzeige führt jeweils direkt auf
+            Ihre Stellenanzeige auf <em>MFA mal anders</em>.
+          </li>
+          <li>
+            Wir erstellen die Kampagne, Anzeigengruppe und Anzeige inkl. Texten
+            für eine responsive GoogleAds-Anzeige. Sie erhalten maximal drei
+            Revisionen für Änderungen bis zur finalen Version der Anzeige.
+          </li>
+          <li>
+            Wir erstellen die Kampagne, Anzeigengruppe und Anzeige inkl. Texten
+            und bis zu drei Bildern für die Werbeanzeige auf der
+            Meta-Werbeplattform (Facebook, Instagram). Ihre Werbeanzeige wird
+            mindestens in Facebook-Feed, Instagram-Feed, Instagram-Stories und
+            Instagram-Reels platziert, insofern nicht anderweitig vereinbart.
+            Sie erhalten maximal drei Revisionen für Änderungen bis zur finalen
+            Version der Anzeige.
+          </li>
+          <li>
+            Sie erhalten ein Werbebudget von 200€ (100€ GoogleAds , 100€
+            Meta-Werbeplattform – insofern nicht abweichend vereinbart). Das
+            Werbebudget wird auf den Werbeplattformen im "Pay per
+            Click"-Verfahren verwendet, d.h. für jeden generierten Klick auf
+            ihre Werbeanzeige wird ein bestimmter Betrag des Werbebudgets
+            aufgebraucht. Auf die Höhe des Betrags pro Klick, sowie die
+            tatsächliche Auslieferung der Werbeanzeige hat
+            <em>MFA mal anders</em> keinen Einfluss.
+          </li>
+          <li>
+            Die maximale Laufzeit der Werbeanzeigen richtet sich nach der
+            Laufzeit Ihrer Stellenanzeige und kann darüber hinaus nicht
+            verlängert werden.
+          </li>
+          <li>Sie können das Budget in Absprache im Nachhinein aufstocken.</li>
+          <li>
+            Sie werden von Ihrem persönlichen Ansprechpartner kontaktiert und
+            bekommen Tipps für die Optimierung Ihrer Stellenanzeige.
+          </li>
+          <li>
+            Ihre Stellenanzeige wird in der Stellenbörse auf
+            <em>MFA mal anders</em> farblich gegenüber Bais- und
+            Standard-Stellenanzeigen hervorgehoben.
+          </li>
+          <li>
+            Datumsupdate alle 7 Tage – Ihre Stellenanzeige rutscht in der
+            Stellenbörse wieder nach oben.
+          </li>
+          <li>
+            Ihre Stellenanzeige wird alle 7 Tage für das passende deutsche
+            Bundesland in unserem wöchentlichen Newsletter an die entsprechenden
+            Abonnenten per E-Mail versandt.
+          </li>
+          <li>
+            Sie erhalten die Möglichkeit, ein Video in Ihre Stellenanzeige
+            einzubetten. Dieses Video müssen Sie selbst liefern.
+          </li>
+        </ul>
+
+        <h3>III.b Stellengesuche</h3>
+
+        <p>
+          Jobsuchende können sich auf MFA mal anders einen Account anlegen und
+          ein Profil erstellen. Die Angabe der Daten ist freiwillig.
+        </p>
+
+        <p>
+          Der Jobsuchende ist damit einverstanden, dass personenbezogene Daten
+          im Rahmen des Stellengesuchs von MFA mal anders elektronisch
+          verarbeitet und gespeichert werden.
+        </p>
+
+        <p>
+          Der Jobsuchende kann selbst entscheiden, ob die Daten anonymisiert
+          (Initialen des Vor- und Nachnamen) und ohne Profilbild veröffentlicht
+          werden oder ob er diese preisgeben möchte.
+        </p>
+
+        <p>
+          Die Daten werden nicht an Dritte weitergegeben. Arbeitgeber, die bei
+          MFA mal anders ein aktuelles Stellenangebot veröffentlicht haben,
+          haben die Möglichkeit den Jobsuchenden zu kontaktieren. Die
+          Email-Adresse, des Jobsuchenden wird von MFA mal anders nicht an
+          Arbeitgeber weitergegeben oder sichtbar gemacht. Wenn der Jobsuchende
+          seinen Vor- und Nachname nicht anonymisiert sowie ein Profilbild
+          hochlädt, können Dritte diese auf der Webseite einsehen.
+        </p>
+
+        <p>Der Jobsuchende kann jederzeit seine Daten löschen.</p>
+
+        <p>
+          Der Jobsuchende verpflichtet sich vor Veröffentlichung seines
+          Stellengesuchs die AGBs und Datenschutzerklärung von MFA mal anders
+          gelesen und verstanden zu haben und willigt durch anklicken der beiden
+          vorgesehenen Kästchen in ihre Inhalte ein.
+        </p>
+
+        <p>
+          MFA mal anders verpflichtet sich, sämtliche ihr bekannt gewordenen
+          Informationen vertraulich zu behandeln.
         </p>
 
         <h2>IV. Vertragsabschluss</h2>
@@ -287,50 +470,7 @@
           verschaffen.
         </p>
 
-        <h2>XIV. Stellengesuche</h2>
-
-        <p>
-          Jobsuchende können sich auf MFA mal anders einen Account anlegen und
-          ein Profil erstellen. Die Angabe der Daten ist freiwillig.
-        </p>
-
-        <p>
-          Der Jobsuchende ist damit einverstanden, dass personenbezogene Daten
-          im Rahmen des Stellengesuchs von MFA mal anders elektronisch
-          verarbeitet und gespeichert werden.
-        </p>
-
-        <p>
-          Der Jobsuchende kann selbst entscheiden, ob die Daten anonymisiert
-          (Initialen des Vor- und Nachnamen) und ohne Profilbild veröffentlicht
-          werden oder ob er diese preisgeben möchte.
-        </p>
-
-        <p>
-          Die Daten werden nicht an Dritte weitergegeben. Arbeitgeber, die bei
-          MFA mal anders ein aktuelles Stellenangebot veröffentlicht haben,
-          haben die Möglichkeit den Jobsuchenden zu kontaktieren. Die
-          Email-Adresse, des Jobsuchenden wird von MFA mal anders nicht an
-          Arbeitgeber weitergegeben oder sichtbar gemacht. Wenn der Jobsuchende
-          seinen Vor- und Nachname nicht anonymisiert sowie ein Profilbild
-          hochlädt, können Dritte diese auf der Webseite einsehen.
-        </p>
-
-        <p>Der Jobsuchende kann jederzeit seine Daten löschen.</p>
-
-        <p>
-          Der Jobsuchende verpflichtet sich vor Veröffentlichung seines
-          Stellengesuchs die AGBs und Datenschutzerklärung von MFA mal anders
-          gelesen und verstanden zu haben und willigt durch anklicken der beiden
-          vorgesehenen Kästchen in ihre Inhalte ein.
-        </p>
-
-        <p>
-          MFA mal anders verpflichtet sich, sämtliche ihr bekannt gewordenen
-          Informationen vertraulich zu behandeln.
-        </p>
-
-        <h2>XV. Schlussbestimmungen</h2>
+        <h2>XIV. Schlussbestimmungen</h2>
 
         <p>
           Die Rechtsbeziehung zwischen den Vertragsparteien unterliegen
