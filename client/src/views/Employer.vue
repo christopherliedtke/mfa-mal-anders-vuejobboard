@@ -438,6 +438,14 @@
       </div>
     </div>
 
+    <!-- <div id="professional" class="container my-4 my-md-5">
+      <h2 class="display-4 text-center bold">
+        Unser Professional Paket
+      </h2>
+      <h3 class="text-center">Was Sie mit dem Stellenpaket erhalten</h3>
+      <TheProfessionalPackageInfo />
+    </div> -->
+
     <div class="container my-4 my-md-5">
       <h2 class="display-4 text-center bold">
         Wir kooperieren mit
@@ -839,6 +847,7 @@
   import ScrollTopButton from "@/components/ScrollTopButton.vue";
   import TheJobAdTipsList from "@/components/TheJobAdTipsList.vue";
   import TheNumbersAndFacts from "@/components/TheNumbersAndFacts.vue";
+  // import TheProfessionalPackageInfo from "@/components/TheProfessionalPackageInfo.vue";
   import TheCooperationPartners from "@/components/TheCooperationPartners.vue";
   import TheTestimonials from "@/components/TheTestimonials.vue";
   import PricingCard from "@/components/PricingCard.vue";
@@ -855,6 +864,7 @@
       PricingCard,
       PricingCardPlaceholder,
       ScrollTopButton
+      // TheProfessionalPackageInfo
     },
     mixins: [scrollToHashMixin, setPromotionCodeMixin],
     data() {

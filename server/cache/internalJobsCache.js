@@ -18,12 +18,11 @@ class Cache {
 
     const internalJobs = await Job.find({
       status: "published",
-      // paid: true,
       paidExpiresAt: { $gte: new Date() },
       publishedAt: { $lte: new Date() },
       $or: [
         { paid: true },
-        { stripeInvoiceStatus: { $exists: true, $nin: ["draft"] } },
+        { stripeInvoiceStatus: { $exists: true, $nin: ["draft", ""] } },
       ],
     })
       .sort({

@@ -9,13 +9,17 @@ module.exports.unpublishJobs = async () => {
 
     await Job.updateMany(
       {
-        paid: true,
+        $or: [
+          { paid: true },
+          { stripeInvoiceStatus: "paid" },
+          { stripeInvoiceStatus: "open" },
+        ],
         paidExpiresAt: {
           $lt: new Date(),
         },
         status: "published",
       },
-      { paid: false, status: "unpublished" }
+      { paid: false, stripeInvoiceStatus: "", status: "unpublished" }
     );
   } catch (error) {
     console.log("Error on unpublishJobs CRON: ", error);
