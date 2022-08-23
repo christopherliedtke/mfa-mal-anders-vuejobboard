@@ -149,10 +149,9 @@ router.post(
             )
         );
 
-        // console.log("jobs: ", jobs);
-
         if (event.type == "invoice.finalized") {
           sendOrderConfirmation(invoice, jobs);
+          Promise.all(jobs.map(job => jobToAsanaTask(job)));
         }
 
         if (event.type == "invoice.finalized" && !payment.user) {
@@ -161,9 +160,7 @@ router.post(
 
         if (jobs) {
           if (event.type == "invoice.paid") {
-            Promise.all(jobs.map(job => jobToAsanaTask(job)));
             // if (config.facebook.autoPost) postToFacebook();
-
             attachInvoiceNoToPaymentIntent(invoice.payment_intent, invoice);
           }
 
