@@ -294,7 +294,7 @@ async function sendAdminNotification(invoice, jobs) {
       dataMailToAdmin.html += jobs
         .map(
           job =>
-            `<p><strong>Stellentitel: </strong><a href="${process.env.WEBSITE_URL}/admin/jobs/preview/${job._id}" target="_blank">${job.title}</a> | <a href="${process.env.WEBSITE_URL}/admin/jobs?s=${job._id}" target="_blank">${job._id}</a></p>`
+            `<p><strong>Stellentitel: </strong><a href="${process.env.WEBSITE_URL}/job/${job._id}" target="_blank">${job.title}</a> | <a href="${process.env.WEBSITE_URL}/admin/jobs?s=${job._id}" target="_blank">${job._id}</a></p>`
         )
         .join("");
     } else {
