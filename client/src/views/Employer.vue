@@ -766,8 +766,11 @@
         </div>
       </div>
       <div class="d-flex flex-column align-items-center mt-4">
-        <div class="my-1">
-          <b-button to="/kontakt?role=employer" variant="primary" class="mx-1"
+        <div class="d-flex flex-wrap justify-content-center my-1">
+          <b-button
+            to="/kontakt?role=employer"
+            variant="primary"
+            class="mx-1 mb-1 mb-lg-0"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -788,7 +791,7 @@
             href="https://wa.me/4917645282858"
             target="_blank"
             variant="primary"
-            class="mx-1"
+            class="mx-1 mb-1 mb-lg-0"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -806,7 +809,7 @@
             href="tel:+4917645282858"
             target="_blank"
             variant="primary"
-            class="mx-1"
+            class="mx-1 mb-1 mb-lg-0"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
