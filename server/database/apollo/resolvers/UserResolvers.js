@@ -148,6 +148,8 @@ const UserResolvers = {
       context.session.token = token;
       user.token = token;
 
+      console.info(`User login: ${user._id} ---> ${user.email}`);
+
       return user;
     },
     register: async (root, args, context) => {
@@ -239,6 +241,8 @@ const UserResolvers = {
 
       context.session.token = token;
       user.token = token;
+
+      console.info(`User registered: ${user}`);
 
       return user;
     },
