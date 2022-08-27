@@ -153,23 +153,23 @@
         &copy; {{ new Date().getFullYear() }} MFA mal anders
       </p>
     </div>
-    <PrerenderRecacheButton
+    <!-- <PrerenderRecacheButton
       v-if="$store.state.auth.user.isAdmin && $route.meta.public"
-    />
+    /> -->
   </footer>
 </template>
 
 <script>
   import NewsletterSignUpForm from "@/components/NewsletterSignUpForm.vue";
-  const PrerenderRecacheButton = () =>
-    import(
-      /* webpackChunkName: "PrerenderRecacheButton" */ "@/components/PrerenderRecacheButton.vue"
-    );
+  // const PrerenderRecacheButton = () =>
+  //   import(
+  //     /* webpackChunkName: "PrerenderRecacheButton" */ "@/components/PrerenderRecacheButton.vue"
+  //   );
   export default {
     name: "TheFooter",
     components: {
-      NewsletterSignUpForm,
-      PrerenderRecacheButton
+      NewsletterSignUpForm
+      // PrerenderRecacheButton
     }
   };
 </script>

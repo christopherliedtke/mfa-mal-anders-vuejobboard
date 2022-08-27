@@ -17,7 +17,7 @@
   "dependencies": {
     "@aws-sdk/credential-provider-node": "^3.131.0",
     "apollo-server-express": "^3.5.0",
-    "aws-sdk": "^2.709.0",
+    "aws-sdk": "^2.1204.0",
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "caniuse-lite": "^1.0.30001237",
@@ -47,15 +47,16 @@
     "nodemailer": "^6.4.6",
     "pdfkit": "^0.11.0",
     "prerender-node": "^3.2.5",
+    "rendertron-middleware": "^0.1.5",
     "request": "^2.88.2",
     "sanitize-html": "^2.5.3",
-    "sharp": "^0.28.1",
+    "sharp": "^0.30.7",
     "stripe": "^8.203.0",
     "uid-safe": "^2.1.5",
     "xml2js": "^0.4.19"
   },
   "devDependencies": {
     "eslint": "^7.24.0",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.19"
   }
 }

@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const download = require("download");
 const config = require("../config/config");
-const recachePrerender = require("../lib/recachePrerender");
+// const recachePrerender = require("../lib/recachePrerender");
 const emailService = require("../lib/nodemailer");
 const internalJobsCache = require("../cache/internalJobsCache");
 const { User } = require("../database/models/user");
@@ -176,7 +176,7 @@ router.post(
               "URL_UPDATED"
             );
 
-            recachePrerender(`${process.env.WEBSITE_URL}/job/${job._id}`);
+            // recachePrerender(`${process.env.WEBSITE_URL}/job/${job._id}`);
           });
         }
 

@@ -4,7 +4,7 @@ const {
 } = require("apollo-server-express");
 const config = require("../../../config/config.js");
 const { googleIndexing } = require("../../../lib/googleJobIndexing");
-const recachePrerender = require("../../../lib/recachePrerender");
+// const recachePrerender = require("../../../lib/recachePrerender");
 const sanitizeHtml = require("sanitize-html");
 const s3 = require("../../../middleware/s3");
 const getLocation = require("../../../lib/geocoder");
@@ -561,7 +561,7 @@ function recaching(job) {
     job.status === "published" &&
     job._id
   ) {
-    recachePrerender(`${process.env.WEBSITE_URL}/job/${job._id}`);
+    // recachePrerender(`${process.env.WEBSITE_URL}/job/${job._id}`);
   }
 }
 
