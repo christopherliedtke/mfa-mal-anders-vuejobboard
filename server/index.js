@@ -42,14 +42,18 @@ const internalJobSeeksCache = require("./cache/publicJobSeeksCache");
 const wpContentCache = require("./cache/wpContentCache");
 
 // #Set Up rendertron
-const rendertron = require("rendertron-middleware");
+// const rendertron = require("rendertron-middleware");
 
 // #Set Up prerender.io
 // const prerender = require("prerender-node").set(
 //   "prerenderToken",
 //   process.env.PRERENDER_TOKEN
 // );
-// prerender.crawlerUserAgents = config.prerender.userAgents;
+const prerender = require("prerender-node").set(
+  "prerenderServiceUrl",
+  "http://prerender.mfa-mal-anders.de"
+);
+prerender.crawlerUserAgents = config.prerender.userAgents;
 
 // # SSL redirect
 if (process.env.HEROKU == "yes") {
@@ -97,17 +101,17 @@ if (config.redirect.active) {
 }
 
 // #Prerender w/ rendertron
-app.use(
-  rendertron.makeMiddleware({
-    proxyUrl: "https://rendertron.mfa-mal-anders.de/render",
-    timeout: 25000,
-  })
-);
+// app.use(
+//   rendertron.makeMiddleware({
+//     proxyUrl: "https://rendertron.mfa-mal-anders.de/render",
+//     timeout: 25000,
+//   })
+// );
 
 // #Prerender w/o googlebot
-// if (process.env.PRERENDER_ACTIVE === "on") {
-//   app.use(prerender);
-// }
+if (process.env.PRERENDER_ACTIVE === "on") {
+  app.use(prerender);
+}
 
 // #Routes w/o csrf protection && cors protection && compression && express.json
 app.use("/api/webhooks", require("./routes/webhooks"));
