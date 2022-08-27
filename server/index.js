@@ -49,10 +49,11 @@ const wpContentCache = require("./cache/wpContentCache");
 //   "prerenderToken",
 //   process.env.PRERENDER_TOKEN
 // );
-const prerender = require("prerender-node").set(
-  "prerenderServiceUrl",
-  "http://prerender.mfa-mal-anders.de"
-);
+// const prerender = require("prerender-node").set(
+//   "prerenderServiceUrl",
+//   "http://prerender.mfa-mal-anders.de"
+// );
+const prerender = require("prerender-node");
 prerender.crawlerUserAgents = config.prerender.userAgents;
 
 // # SSL redirect
