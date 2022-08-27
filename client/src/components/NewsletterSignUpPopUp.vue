@@ -67,15 +67,19 @@
       };
     },
     mounted() {
-      if (
-        !localStorage.getItem("nl-pop") &&
-        this.$route.path != "/fuer-arbeitgeber" &&
-        !this.$store.state.auth.loggedIn
-      ) {
-        setTimeout(() => {
-          this.modalVisible = true;
-        }, 10000);
-      }
+      document.onreadystatechange = () => {
+        if (document.readyState == "complete") {
+          if (
+            !localStorage.getItem("nl-pop") &&
+            this.$route.path != "/fuer-arbeitgeber" &&
+            !this.$store.state.auth.loggedIn
+          ) {
+            setTimeout(() => {
+              this.modalVisible = true;
+            }, 10000);
+          }
+        }
+      };
     },
     methods: {
       closePopUp() {
