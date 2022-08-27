@@ -100,7 +100,7 @@ if (config.redirect.active) {
 app.use(
   rendertron.makeMiddleware({
     proxyUrl: "https://rendertron.mfa-mal-anders.de/render",
-    timeout: 20000,
+    timeout: 25000,
   })
 );
 
@@ -178,6 +178,7 @@ async function startServer() {
 
       return { user, session: req.session };
     },
+    cache: "bounded",
     plugins: [
       ApolloServerPluginLandingPageGraphQLPlayground(),
       // {
@@ -252,7 +253,7 @@ async function startServer() {
   });
 
   // #Set custom request timeout
-  server.setTimeout(25000);
+  server.setTimeout(26000);
 }
 
 startServer();
