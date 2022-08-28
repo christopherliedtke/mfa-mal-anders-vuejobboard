@@ -69,17 +69,16 @@
     mounted() {
       document.onreadystatechange = () => {
         if (document.readyState == "complete") {
-          this.$nextTick(() => {
-            if (
-              !localStorage.getItem("nl-pop") &&
-              this.$route.path != "/fuer-arbeitgeber" &&
-              !this.$store.state.auth.loggedIn
-            ) {
-              setTimeout(() => {
-                this.modalVisible = true;
-              }, 5000);
-            }
-          });
+          if (window) window.prerenderReady = true;
+          if (
+            !localStorage.getItem("nl-pop") &&
+            this.$route.path != "/fuer-arbeitgeber" &&
+            !this.$store.state.auth.loggedIn
+          ) {
+            setTimeout(() => {
+              this.modalVisible = true;
+            }, 5000);
+          }
         }
       };
     },
