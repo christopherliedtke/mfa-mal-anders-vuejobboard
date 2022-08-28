@@ -66,15 +66,20 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
     }).populate("company");
 
     // set states to send newsletter for
-    const states = [...new Set(jobs.map(job => job.company.state))];
+    const states = [
+      ...new Set(
+        jobs.filter(job => job.company.state).map(job => job.company.state)
+      ),
+    ];
 
     // send newsletter for each state
     states.forEach(state => {
       const stateJobs = jobs
         .filter(
           job =>
+            job.company.state &&
             job.company.state.replace("ü", "ue").toLowerCase() ==
-            state.replace("ü", "ue").toLowerCase()
+              state.replace("ü", "ue").toLowerCase()
         )
         .map(job => {
           return {
