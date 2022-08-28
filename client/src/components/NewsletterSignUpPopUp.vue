@@ -70,6 +70,7 @@
       document.onreadystatechange = () => {
         if (document.readyState == "complete") {
           if (window) window.prerenderReady = true;
+
           if (
             !localStorage.getItem("nl-pop") &&
             this.$route.path != "/fuer-arbeitgeber" &&

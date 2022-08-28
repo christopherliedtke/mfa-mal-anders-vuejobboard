@@ -579,6 +579,9 @@
         ]
       };
     },
+    mounted() {
+      if (window) window.prerenderReady = true;
+    },
     methods: {
       track(eventAction, eventLabel) {
         this.$gtag.event(eventAction, {
