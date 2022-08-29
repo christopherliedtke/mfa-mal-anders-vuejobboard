@@ -97,9 +97,9 @@ if (config.unpublishedJobSeeksReminder.active) {
 }
 
 // #Redirects
-if (config.redirect.active) {
-  app.use(require("./middleware/redirect"));
-}
+// if (config.redirect.active) {
+//   app.use(require("./middleware/redirect"));
+// }
 
 // #Prerender w/ rendertron
 // app.use(
@@ -235,6 +235,11 @@ async function startServer() {
   app.use("/api/send-email", require("./routes/sendEmail"));
   app.use("/api/admin", require("./routes/admin"));
   // app.use("/api/prerender", require("./routes/prerender"));
+
+  // #Redirects
+  if (config.redirect.active) {
+    app.use(require("./middleware/redirect"));
+  }
 
   // #Serve the built static files in production
   app.use("*", (req, res) => {
