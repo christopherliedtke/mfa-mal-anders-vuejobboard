@@ -17,6 +17,7 @@ const {
 } = require("apollo-server-express");
 const { User } = require("../../models/user");
 const { Code } = require("../../models/secretCode");
+const { Job } = require("../../models/job");
 const { JobSeek } = require("../../models/jobSeek");
 const { JobAlert } = require("../../models/jobAlert");
 const { StarredJob } = require("../../models/starredJob");
@@ -532,6 +533,7 @@ const UserResolvers = {
       JobAlert.deleteMany({ user: deletedUser._id });
       StarredJob.deleteMany({ user: deletedUser._id });
       Training.deleteMany({ user: deletedUser._id });
+      Job.deleteMany({ userId: deletedUser._id, status: "unpublished" });
 
       console.info("deletedUser: ", deletedUser);
 
