@@ -40,6 +40,11 @@
             name: "robots",
             content: "noindex",
             id: "noindex"
+          },
+          {
+            name: "prerender-status-code",
+            content: "404",
+            id: "prerender-status-code"
           }
         ];
       }
