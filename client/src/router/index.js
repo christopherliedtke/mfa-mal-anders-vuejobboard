@@ -118,6 +118,12 @@ const CareerTrainingHome = () =>
     /* webpackPrefetch: true */
     "@/views/CareerTrainingHome.vue"
   );
+const CareerTrainingAffiliatePKV = () =>
+  import(
+    /* webpackChunkName: "career-training-affiliate" */
+    /* webpackPrefetch: true */
+    "@/views/CareerTrainingAffiliatePKV.vue"
+  );
 const CareerTrainingOverview = () =>
   import(
     /* webpackChunkName: "career-training-overview" */
@@ -464,6 +470,14 @@ const routes = [
     path: "/karriere/fort-und-weiterbildung",
     name: "CareerTrainingHome",
     component: CareerTrainingHome,
+    meta: {
+      public: true
+    }
+  },
+  {
+    path: "/karriere/fort-und-weiterbildung/pkv-institut",
+    name: "CareerTrainingAffiliatePKV",
+    component: CareerTrainingAffiliatePKV,
     meta: {
       public: true
     }

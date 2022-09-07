@@ -29,6 +29,7 @@
     </nav>
     <div class="mt-3">
       <BannerTrainingCatalogueSmall v-if="showTrainingCatalogue" class="my-2" />
+      <BannerSponsoredPkv v-if="showBannerSponsoredPkv" class="my-2" />
       <BannerSponsoredSgd v-if="showBannerSponsoredSgd" class="my-2" />
     </div>
   </div>
@@ -36,11 +37,13 @@
 
 <script>
   import BannerSponsoredSgd from "@/components/BannerSponsoredSgd.vue";
+  import BannerSponsoredPkv from "@/components/BannerSponsoredPkv.vue";
   import BannerTrainingCatalogueSmall from "@/components/BannerTrainingCatalogueSmall.vue";
   export default {
     name: "NavTrainings",
     components: {
       BannerSponsoredSgd,
+      BannerSponsoredPkv,
       BannerTrainingCatalogueSmall
     },
     props: {
@@ -49,6 +52,10 @@
         default: true
       },
       showBannerSponsoredSgd: {
+        type: Boolean,
+        default: true
+      },
+      showBannerSponsoredPkv: {
         type: Boolean,
         default: true
       }

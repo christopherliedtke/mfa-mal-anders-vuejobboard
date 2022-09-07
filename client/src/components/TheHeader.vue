@@ -73,6 +73,11 @@
                 >Überblick Fort- & Weiterbildungen</router-link
               >
               <router-link
+                to="/karriere/fort-und-weiterbildung/fortbildungskatalog"
+                class="ml-3"
+                >Fortbildungskatalog</router-link
+              >
+              <router-link
                 to="/karriere/fort-und-weiterbildung#fortbildung-weiterbildung-studium"
                 class="ml-3"
                 >Fortbildung | Weiterbildung | Studium</router-link
@@ -81,11 +86,6 @@
                 to="/karriere/fort-und-weiterbildung#foerderung-finanzierung"
                 class="ml-3"
                 >Finanzierung & Förderung</router-link
-              >
-              <router-link
-                to="/karriere/fort-und-weiterbildung/fortbildungskatalog"
-                class="ml-3"
-                >Fortbildungskatalog</router-link
               >
             </div>
           </router-link>

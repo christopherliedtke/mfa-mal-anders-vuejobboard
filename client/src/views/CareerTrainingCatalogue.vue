@@ -169,8 +169,9 @@
               >Filter zurücksetzen</span
             >
           </div>
-          <div class="d-none d-lg-block">
-            <BannerSponsoredSgd class="mt-4" />
+          <div class="d-none d-lg-block mt-4">
+            <BannerSponsoredPkv class="my-2" />
+            <BannerSponsoredSgd class="my-2" />
           </div>
           <div class="small text-right mt-3 pt-1">
             <b-link
@@ -231,6 +232,7 @@
     eventTypeOptions
   } from "@/config/formDataConfig.json";
   import BannerSponsoredSgd from "@/components/BannerSponsoredSgd.vue";
+  import BannerSponsoredPkv from "@/components/BannerSponsoredPkv.vue";
   import BannerJobboard from "@/components/BannerJobboard.vue";
   import BannerProfessions from "@/components/BannerProfessions.vue";
   export default {
@@ -238,6 +240,7 @@
     components: {
       TrainingCatalogueCard,
       BannerSponsoredSgd,
+      BannerSponsoredPkv,
       BannerJobboard,
       BannerProfessions,
       ScrollTopButton
