@@ -47,9 +47,9 @@
               alt="PKV Institut"
               width="100"
             />
-            <h3 class="h4 mb-3 bold text-primary">
+            <h2 class="h4 mb-3 bold text-primary">
               Zertifizierte Abrechnungs&shy;managerIn in der Arztpraxis
-            </h3>
+            </h2>
             <ul class="pl-4">
               <li>
                 Korrekt & vollständig abrechnen – alle Inhalte speziell auf die
@@ -93,9 +93,9 @@
               alt="PKV Institut"
               width="100"
             />
-            <h3 class="h4 mb-3 bold text-primary">
+            <h2 class="h4 mb-3 bold text-primary">
               Zertifizierte Abrechnungs&shy;managerIn in der Zahnarztpraxis
-            </h3>
+            </h2>
             <ul class="pl-4">
               <li>
                 Korrekt & vollständig abrechnen – alle Inhalte speziell auf die
@@ -139,9 +139,9 @@
               alt="PKV Institut"
               width="100"
             />
-            <h3 class="h4 mb-3 bold text-primary">
+            <h2 class="h4 mb-3 bold text-primary">
               Zertifizierte PraxismanagerIn in der Arztpraxis
-            </h3>
+            </h2>
             <ul class="pl-4">
               <li>
                 Team führen & Praxisleitung entlasten – alle Inhalte speziell
@@ -185,9 +185,9 @@
               alt="PKV Institut"
               width="100"
             />
-            <h3 class="h4 mb-3 bold text-primary">
+            <h2 class="h4 mb-3 bold text-primary">
               Zertifizierte Praxismanagerin in der Zahnarztpraxis
-            </h3>
+            </h2>
             <ul class="pl-4">
               <li>
                 Team führen & Praxisleitung entlasten – alle Inhalte speziell
@@ -230,9 +230,9 @@
               alt="PKV Institut"
               width="100"
             />
-            <h3 class="h4 mb-3 bold text-primary">
+            <h2 class="h4 mb-3 bold text-primary">
               Zertifizierte/r Qualitäts&shy;management&shy;beauftragte/r
-            </h3>
+            </h2>
             <ul class="pl-4">
               <li>
                 Praxisalltag erleichtern & hohe Standards gewährleisten – alle
@@ -276,9 +276,9 @@
               alt="PKV Institut"
               width="100"
             />
-            <h3 class="h4 mb-3 bold text-primary">
+            <h2 class="h4 mb-3 bold text-primary">
               Datenschutz&shy;beauftragte/r in der Arzt- und Zahnarztpraxis
-            </h3>
+            </h2>
             <ul class="pl-4">
               <li>
                 Aufgaben und Pflichten einer Datenschutzbeauftragten sicher

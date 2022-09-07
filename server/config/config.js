@@ -141,7 +141,7 @@ module.exports = {
       // "baiduspider",
       "facebookexternalhit",
       "twitterbot",
-      "bingbot",
+      // "bingbot",
       // "rogerbot",
       "linkedinbot",
       // "embedly",

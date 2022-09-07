@@ -30,6 +30,8 @@
       }
     },
     async mounted() {
+      if (window) window.prerenderReady = true;
+
       try {
         // Script is loaded, do something
         await this.$loadScript("https://js.api.here.com/v3/3.1/mapsjs-core.js");
