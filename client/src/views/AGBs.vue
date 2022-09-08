@@ -432,11 +432,6 @@
           </li>
           <li>Der korrekte Arbeitsort muss angegeben werden.</li>
           <li>Pro Stellenanzeige kann nur ein Arbeitsort angegeben werden.</li>
-          <li>
-            Bewerbungen dürfen nicht über Dritte (Personaldienstleiter,
-            Headhunter, Personalvermittler) laufen, sondern müssen direkt an den
-            entsprechenden Arbeitgeber gehen.
-          </li>
         </ol>
 
         <h2>XII. Gewährleistung/Haftung</h2>
@@ -490,7 +485,7 @@
           gilt für die Ausfüllung etwaiger Regelungslücken.
         </p>
 
-        <p>Stand: 20.02.2022</p>
+        <p>Stand: 08.09.2022</p>
       </div>
     </div>
 

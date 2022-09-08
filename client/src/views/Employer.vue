@@ -607,13 +607,6 @@
           motivierten Medizinischen Fachangestellten | Zahnmedizinischen
           Fachangestellten.
         </p>
-        <p>
-          Wir arbeiten
-          <strong>nicht mit Personalvermittlern</strong>,
-          <strong>Zeitarbeitsfirmen oder Headhuntern</strong>
-          zusammen, da wir sicherstellen möchten, dass Arbeitgeber und
-          potentielle Arbeitnehmer direkt miteinander ins Gespräch kommen.
-        </p>
         <!-- <p>
           Bei uns können Sie Ihre Stellenanzeige zudem
           <strong>kostengünstig</strong> veröffentlichen und so Ihrem Budget
@@ -758,10 +751,7 @@
             Arbeitgeber und erstellen anschließend wie gewünscht Ihre
             Stellenanzeige. Die zu den Kunden zugehörigen Kontaktdaten
             (Unternehmen, AnsprechpartnerIn, E-Mail oder Link für Bewerbungen)
-            können Sie individuell für jede Stellenanzeige hinterlegen. Da wir
-            nicht mit Personalvermittlungen zusammen arbeiten, ist wichtig, dass
-            Sie als Agentur nicht als Dritte im Bewerbungsprozess auftreten.
-            D.h. Bewerbungen laufen ausschließlich über Ihre Kunden.
+            können Sie individuell für jede Stellenanzeige hinterlegen.
           </p>
         </div>
       </div>
@@ -950,7 +940,7 @@
                 "name": "Kann ich als Agentur eine Stellenanzeige veröffentlichen?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text":"Ja, Sie können als Vertreter einer Agentur Stellenanzeigen bei MFA mal anders veröffentlichen. Dazu registrieren Sie sich als Arbeitgeber und erstellen anschließend wie gewünscht Ihre Stellenanzeige. Die zu den Kunden zugehörigen Kontaktdaten (Unternehmen, AnsprechpartnerIn, E-Mail oder Link für Bewerbungen) können Sie individuell für jede Stellenanzeige hinterlegen. Da wir nicht mit Personalvermittlungen zusammen arbeiten, ist wichtig, dass Sie als Agentur nicht als Dritte im Bewerbungsprozess auftreten. D.h. Bewerbungen laufen ausschließlich über Ihre Kunden."
+                  "text":"Ja, Sie können als Vertreter einer Agentur Stellenanzeigen bei MFA mal anders veröffentlichen. Dazu registrieren Sie sich als Arbeitgeber und erstellen anschließend wie gewünscht Ihre Stellenanzeige. Die zu den Kunden zugehörigen Kontaktdaten (Unternehmen, AnsprechpartnerIn, E-Mail oder Link für Bewerbungen) können Sie individuell für jede Stellenanzeige hinterlegen."
                 }
               }]
             }`

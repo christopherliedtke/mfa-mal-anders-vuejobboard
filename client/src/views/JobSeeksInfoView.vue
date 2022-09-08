@@ -277,8 +277,8 @@
             </svg>
             <h4 class="mt-2 mb-3">Direkter Kontakt</h4>
             <p>
-              Der Arbeitgeber nimmt direkt zu Dir Kontakt auf. Es gibt keine
-              Dritten dazwischen. Wir arbeiten nicht mit Personalvermittlern.
+              Der Arbeitgeber nimmt direkt zu Dir Kontakt auf. Als Plattform
+              stehen wir nicht als Dritte zwischen Dir und dem Arbeitgeber.
             </p>
           </div>
         </div>
@@ -431,7 +431,7 @@
               z.&nbsp;B. für verschiedene Orte oder unterschiedliche
               Aufgabenbereiche etc. zu erstellen und veröffentlichen.
             </p>
-            <h3 class="h5 bold">
+            <!-- <h3 class="h5 bold">
               Arbeitet MFA mal anders mit Personalvermittlern zusammen?
             </h3>
             <p>
@@ -441,7 +441,7 @@
               als solche. Es gibt keinen Dritten, der zwischen Euch und dem
               Arbeitgeber steht. Wir bieten lediglich die Plattform, die Euch
               helfen soll, zusammen zu finden.
-            </p>
+            </p> -->
           </div>
         </div>
         <div class="d-flex flex-column align-items-center mt-4">
