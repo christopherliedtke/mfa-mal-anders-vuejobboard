@@ -321,12 +321,20 @@
         </div>
       </div>
     </div>
+
+    <Head
+      title="PKV Institut – Dein Partner für berufliche Weiterentwicklung"
+      desc="Unser Kooperationspartner – PKV Institut – bietet Dir die passenden Fort- und Weiterbildungen für Deine Karriere in der Praxis"
+      img="/img/PKV-Institut-FLG-Logo_RGB_.jpeg"
+    />
   </div>
 </template>
 
 <script>
+  import Head from "../components/Head.vue";
   export default {
     name: "CareerTrainingAffiliatePKV",
+    components: { Head },
     data() {
       return {
         breadcrumbs: [
