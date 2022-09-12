@@ -169,20 +169,33 @@
         this.$store.dispatch("setOverlay", true);
         this.errors = [];
 
-        const user = await this.$axios.post("/graphql", {
-          query: `
-                            mutation {
-                                resetPasswordGetCode (email: "${this.email.toLowerCase()}") {
-                                    _id
-                                }
-                            }
-                        `
-        });
+        try {
+          const user = await this.$axios.post("/graphql", {
+            query: `
+                      mutation {
+                        resetPasswordGetCode (email: "${this.email.toLowerCase()}") {
+                          _id
+                        }
+                      }
+                    `
+          });
 
-        if (user.data.errors) {
-          this.errors = user.data.errors;
-        } else {
-          this.state = 1;
+          if (user.data.errors) {
+            this.errors = user.data.errors;
+          } else {
+            this.state = 1;
+          }
+        } catch (error) {
+          this.$root.$bvToast.toast(
+            "Beim zurücksetzen Ihres Passworts ist ein Fehler aufgetreten. Bitte laden Sie die Seite neu und versuchen es noch einmal. Sollte der Fehler wiederholt auftreten, melden Sie sich bitte über unser Kontaktformular, sodass wir Ihnen schnellstmöglich weiterhelfen können.",
+            {
+              title: `Fehler beim Zurücksetzen Ihres Passworts`,
+              variant: "danger",
+              toaster: "b-toaster-bottom-right",
+              solid: true,
+              noAutoHide: true
+            }
+          );
         }
 
         this.$store.dispatch("setOverlay", false);
@@ -191,37 +204,50 @@
         this.errors = [];
         this.$store.dispatch("setOverlay", true);
 
-        const user = await this.$axios.post("/graphql", {
-          query: `
-                        mutation {
-                            resetPasswordVerify(
-                                email: "${this.email.toLowerCase()}",
-                                password: "${this.password}",
-                                password2: "${this.password2}",
-                                code: "${this.secretCode}"
+        try {
+          const user = await this.$axios.post("/graphql", {
+            query: `
+                          mutation {
+                              resetPasswordVerify(
+                                  email: "${this.email.toLowerCase()}",
+                                  password: "${this.password}",
+                                  password2: "${this.password2}",
+                                  code: "${this.secretCode}"
+  
+                              ) {
+                                  _id
+                              }
+                          }
+                      `
+          });
 
-                            ) {
-                                _id
-                            }
-                        }
-                    `
-        });
+          if (user.data.errors) {
+            this.errors = user.data.errors;
+          } else {
+            this.$root.$bvToast.toast(
+              "Ihr neues Passwort wurde erfolgreich gespeichert. Bitte melden Sie sich mit dem neuen Passwort an.",
+              {
+                title: `Neues Passwort gespeichert`,
+                variant: "success",
+                toaster: "b-toaster-bottom-right",
+                solid: true,
+                autoHideDelay: 10000
+              }
+            );
 
-        if (user.data.errors) {
-          this.errors = user.data.errors;
-        } else {
+            this.$router.push({ path: "/auth/login" });
+          }
+        } catch (error) {
           this.$root.$bvToast.toast(
-            "Ihr neues Passwort wurde erfolgreich gespeichert. Bitte melden Sie sich mit dem neuen Passwort an.",
+            "Beim zurücksetzen Ihres Passworts ist ein Fehler aufgetreten. Bitte laden Sie die Seite neu und versuchen es noch einmal. Sollte der Fehler wiederholt auftreten, melden Sie sich bitte über unser Kontaktformular, sodass wir Ihnen schnellstmöglich weiterhelfen können.",
             {
-              title: `Neues Passwort gespeichert`,
-              variant: "success",
+              title: `Fehler beim Zurücksetzen Ihres Passworts`,
+              variant: "danger",
               toaster: "b-toaster-bottom-right",
               solid: true,
-              autoHideDelay: 10000
+              noAutoHide: true
             }
           );
-
-          this.$router.push({ path: "/auth/login" });
         }
 
         this.$store.dispatch("setOverlay", false);

@@ -155,8 +155,11 @@ if (process.env.NODE_ENV == "production") {
   app.use(csurf());
   app.use(function (err, req, res, next) {
     // handle CSRF token errors here
-    if (err.code !== "EBADCSRFTOKEN") return next(err);
+    if (err.code !== "EBADCSRFTOKEN") {
+      return next(err);
+    }
 
+    console.error(err);
     res.sendStatus(403);
   });
 

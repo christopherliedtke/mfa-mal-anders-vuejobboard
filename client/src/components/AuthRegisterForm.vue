@@ -259,58 +259,72 @@
     methods: {
       async onSubmit() {
         this.$store.dispatch("setOverlay", true);
+        this.errors = [];
 
-        const res = await this.$store.dispatch("auth", {
-          type: "register",
-          creds: {
-            gender: this.gender,
-            title: this.title,
-            firstName: this.firstName,
-            lastName: this.lastName,
-            email: this.email.toLowerCase(),
-            password: this.password,
-            password2: this.password2,
-            isEmployer: this.isEmployer,
-            isEmployee: this.isEmployee,
-            isEducational: this.isEducational,
-            acceptance: this.acceptance
-          }
-        });
+        try {
+          const res = await this.$store.dispatch("auth", {
+            type: "register",
+            creds: {
+              gender: this.gender,
+              title: this.title,
+              firstName: this.firstName,
+              lastName: this.lastName,
+              email: this.email.toLowerCase(),
+              password: this.password,
+              password2: this.password2,
+              isEmployer: this.isEmployer,
+              isEmployee: this.isEmployee,
+              isEducational: this.isEducational,
+              acceptance: this.acceptance
+            }
+          });
 
-        if (res.errors) {
-          this.errors = res.errors;
-        } else {
-          await this.$store.dispatch("getActivationEmail");
+          if (res.errors) {
+            this.errors = res.errors;
+          } else {
+            await this.$store.dispatch("getActivationEmail");
 
-          if (this.$store.state.auth.user._id) {
-            this.$gtag.event("user_register", {
-              method: "local",
-              event_label: `id: ${this.$store.state.auth.user._id}; type: ${
-                this.isEmployer
-                  ? "employer"
-                  : this.isEmployee
-                  ? "employee"
-                  : "educational"
-              }`
-            });
-
-            this.$matomo &&
-              this.$matomo.trackEvent(
-                "engagement",
-                "user_register",
-                `id: ${this.$store.state.auth.user._id}; type: ${
+            if (this.$store.state.auth.user._id) {
+              this.$gtag.event("user_register", {
+                method: "local",
+                event_label: `id: ${this.$store.state.auth.user._id}; type: ${
                   this.isEmployer
                     ? "employer"
                     : this.isEmployee
                     ? "employee"
                     : "educational"
                 }`
-              );
-            this.$matomo &&
-              this.$matomo.setUserId(this.$store.state.auth.user._id);
+              });
 
-            this.$router.push("/auth/account/verification");
+              this.$matomo &&
+                this.$matomo.trackEvent(
+                  "engagement",
+                  "user_register",
+                  `id: ${this.$store.state.auth.user._id}; type: ${
+                    this.isEmployer
+                      ? "employer"
+                      : this.isEmployee
+                      ? "employee"
+                      : "educational"
+                  }`
+                );
+              this.$matomo &&
+                this.$matomo.setUserId(this.$store.state.auth.user._id);
+
+              this.$router.push("/auth/account/verification");
+            }
           }
+        } catch (error) {
+          this.$root.$bvToast.toast(
+            "Bei Ihrer Registrierung ist ein Fehler aufgetreten. Bitte laden Sie die Seite neu und versuchen es noch einmal. Sollte der Fehler wiederholt auftreten, melden Sie sich bitte über unser Kontaktformular, sodass wir Ihnen schnellstmöglich weiterhelfen können.",
+            {
+              title: `Fehler bei der Registrierung`,
+              variant: "danger",
+              toaster: "b-toaster-bottom-right",
+              solid: true,
+              noAutoHide: true
+            }
+          );
         }
 
         this.$store.dispatch("setOverlay", false);

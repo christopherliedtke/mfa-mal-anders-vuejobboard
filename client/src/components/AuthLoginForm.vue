@@ -102,49 +102,63 @@
     methods: {
       async onSubmit() {
         this.$store.dispatch("setOverlay", true);
+        this.errors = [];
 
-        const res = await this.$store.dispatch("auth", {
-          type: "login",
-          creds: {
-            email: this.email.toLowerCase(),
-            password: this.password
-          }
-        });
-
-        if (res.errors) {
-          this.errors = res.errors;
-        } else {
-          if (this.$store.state.auth.user.status === "pending") {
-            this.$router.push("/auth/account/verification");
-          } else if (this.$store.state.auth.loggedIn) {
-            if (this.$store.state.auth.user.isEmployee) {
-              this.$router.push(
-                this.$route.query.redirect ||
-                  "/user/gespeicherte-stellenanzeigen"
-              );
-            } else {
-              this.$router.push(
-                this.$route.query.redirect || "/user/stellenanzeigen"
-              );
+        try {
+          const res = await this.$store.dispatch("auth", {
+            type: "login",
+            creds: {
+              email: this.email.toLowerCase(),
+              password: this.password
             }
+          });
 
-            this.$store.dispatch("getStarredJobs");
+          if (res.errors) {
+            this.errors = res.errors;
+          } else {
+            if (this.$store.state.auth.user.status === "pending") {
+              this.$router.push("/auth/account/verification");
+            } else if (this.$store.state.auth.loggedIn) {
+              if (this.$store.state.auth.user.isEmployee) {
+                this.$router.push(
+                  this.$route.query.redirect ||
+                    "/user/gespeicherte-stellenanzeigen"
+                );
+              } else {
+                this.$router.push(
+                  this.$route.query.redirect || "/user/stellenanzeigen"
+                );
+              }
 
-            this.$gtag.event("user_login", {
-              method: "local",
-              event_label: this.$store.state.auth.user._id
-            });
+              this.$store.dispatch("getStarredJobs");
 
-            this.$matomo &&
-              this.$matomo.trackEvent(
-                "engagement",
-                "user_login",
-                this.$store.state.auth.user._id
-              );
+              this.$gtag.event("user_login", {
+                method: "local",
+                event_label: this.$store.state.auth.user._id
+              });
 
-            this.$matomo &&
-              this.$matomo.setUserId(this.$store.state.auth.user._id);
+              this.$matomo &&
+                this.$matomo.trackEvent(
+                  "engagement",
+                  "user_login",
+                  this.$store.state.auth.user._id
+                );
+
+              this.$matomo &&
+                this.$matomo.setUserId(this.$store.state.auth.user._id);
+            }
           }
+        } catch (error) {
+          this.$root.$bvToast.toast(
+            "Beim Login ist ein Fehler aufgetreten. Bitte laden Sie die Seite neu und versuchen es noch einmal. Sollte der Fehler wiederholt auftreten, melden Sie sich bitte über unser Kontaktformular, sodass wir Ihnen schnellstmöglich weiterhelfen können.",
+            {
+              title: `Fehler beim Login`,
+              variant: "danger",
+              toaster: "b-toaster-bottom-right",
+              solid: true,
+              noAutoHide: true
+            }
+          );
         }
 
         this.$store.dispatch("setOverlay", false);
