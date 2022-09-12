@@ -159,7 +159,7 @@ if (process.env.NODE_ENV == "production") {
       return next(err);
     }
 
-    console.error(err);
+    console.error(err, req.body);
     res.sendStatus(403);
   });
 
