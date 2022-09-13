@@ -10,9 +10,13 @@ module.exports.CRONGenerateMatomoReport = new CronJob(
   "Europe/Berlin"
 );
 
-const generateMatomoReport = () => {
-  axios.get(
-    "https://matomo.mfa-mal-anders.de/misc/cron/archive.php?token_auth=" +
-      process.env.MATOMO_TOKEN
-  );
+const generateMatomoReport = async () => {
+  try {
+    await axios.get(
+      "https://matomo.mfa-mal-anders.de/misc/cron/archive.php?token_auth=" +
+        process.env.MATOMO_TOKEN
+    );
+  } catch (error) {
+    console.error("Error in generateMatomoReport: ", error);
+  }
 };
