@@ -31,13 +31,13 @@
       TheOverlay,
       TheStarJobModal
     },
-    watch: {
-      $route(to, from) {
-        if (from.path && to.path != from.path && this.$config.ga.active) {
-          this.track();
-        }
-      }
-    },
+    // watch: {
+    //   $route(to, from) {
+    //     if (from.path && to.path != from.path && this.$config.ga.active) {
+    //       this.track();
+    //     }
+    //   }
+    // },
     async created() {
       if (this.$store.state.auth.loggedIn && this.$store.state.auth.token) {
         const user = await this.$store.dispatch("fetchUserFromToken");
@@ -64,15 +64,15 @@
       // });
     },
     methods: {
-      track() {
-        this.$gtag.pageview({
-          page_title: this.$route.name,
-          page_path: this.$route.fullPath,
-          page_location: window.location.href,
-          anonymize_ip: this.$config.ga.anonymizeIP,
-          client_storage: this.$config.ga.storage
-        });
-      }
+      // track() {
+      //   this.$gtag.pageview({
+      //     page_title: this.$route.name,
+      //     page_path: this.$route.fullPath,
+      //     page_location: window.location.href,
+      //     anonymize_ip: this.$config.ga.anonymizeIP,
+      //     client_storage: this.$config.ga.storage
+      //   });
+      // }
     }
   };
 </script>

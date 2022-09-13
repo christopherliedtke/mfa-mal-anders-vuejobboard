@@ -646,12 +646,19 @@
             throw new Error("Training could not be saved.");
           }
 
-          this.$gtag.event(
-            `training_${/update/gi.test(mutationType) ? "update" : "add"}`,
-            {
-              event_label: `${this.training.title} | ${this.training.company} - ${training.data.data[mutationType]._id}`
-            }
-          );
+          // this.$gtag.event(
+          //   `training_${/update/gi.test(mutationType) ? "update" : "add"}`,
+          //   {
+          //     event_label: `${this.training.title} | ${this.training.company} - ${training.data.data[mutationType]._id}`
+          //   }
+          // );
+
+          this.$matomo &&
+            this.$matomo.trackEvent(
+              "engagement",
+              `training_${/update/gi.test(mutationType) ? "update" : "add"}`,
+              `${this.training.title} | ${this.training.company} - ${training.data.data[mutationType]._id}`
+            );
 
           this.$root.$bvToast.toast(
             "Die Fortbildung wurde erfolgreich gespeichert.",

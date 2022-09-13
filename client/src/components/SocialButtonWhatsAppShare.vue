@@ -52,10 +52,10 @@
     },
     methods: {
       track(eventAction, method, path) {
-        this.$gtag.event(eventAction, {
-          method: method,
-          content_id: path
-        });
+        // this.$gtag.event(eventAction, {
+        //   method: method,
+        //   content_id: path
+        // });
 
         this.$matomo &&
           this.$matomo.trackEvent(

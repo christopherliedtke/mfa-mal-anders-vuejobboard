@@ -285,16 +285,16 @@
             await this.$store.dispatch("getActivationEmail");
 
             if (this.$store.state.auth.user._id) {
-              this.$gtag.event("user_register", {
-                method: "local",
-                event_label: `id: ${this.$store.state.auth.user._id}; type: ${
-                  this.isEmployer
-                    ? "employer"
-                    : this.isEmployee
-                    ? "employee"
-                    : "educational"
-                }`
-              });
+              // this.$gtag.event("user_register", {
+              //   method: "local",
+              //   event_label: `id: ${this.$store.state.auth.user._id}; type: ${
+              //     this.isEmployer
+              //       ? "employer"
+              //       : this.isEmployee
+              //       ? "employee"
+              //       : "educational"
+              //   }`
+              // });
 
               this.$matomo &&
                 this.$matomo.trackEvent(

@@ -596,17 +596,17 @@
               }
             );
 
-            this.$gtag.event("begin_checkout", {
-              value: this.amountComputed / 100,
-              currency: "EUR",
-              items: [
-                {
-                  id: this.job._id,
-                  name: this.job.title,
-                  price: this.amountComputed / 100
-                }
-              ]
-            });
+            // this.$gtag.event("begin_checkout", {
+            //   value: this.amountComputed / 100,
+            //   currency: "EUR",
+            //   items: [
+            //     {
+            //       id: this.job._id,
+            //       name: this.job.title,
+            //       price: this.amountComputed / 100
+            //     }
+            //   ]
+            // });
 
             this.$matomo &&
               this.$matomo.trackEvent(

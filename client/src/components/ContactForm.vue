@@ -234,7 +234,7 @@
               }
             );
 
-            this.$gtag.event("contact_form");
+            // this.$gtag.event("contact_form");
 
             this.$matomo &&
               this.$matomo.trackEvent("engagement", "contact_send_email");

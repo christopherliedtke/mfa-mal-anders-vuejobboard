@@ -127,9 +127,9 @@
         if (response.data.errors) {
           this.errors = response.data.errors;
         } else {
-          this.$gtag.event("user_delete", {
-            event_label: this.$store.state.auth.user._id
-          });
+          // this.$gtag.event("user_delete", {
+          //   event_label: this.$store.state.auth.user._id
+          // });
 
           this.$matomo &&
             this.$matomo.trackEvent(

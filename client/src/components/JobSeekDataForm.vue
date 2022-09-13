@@ -632,14 +632,23 @@
             throw new Error(jobSeekQueryResponse.data.errors[0].message);
           }
 
-          this.$gtag.event(
-            jobSeekMutationType == "updateJobSeek"
-              ? "jobseek_update"
-              : "jobseek_add",
-            {
-              event_label: `${this.jobSeek.title} | ${this.jobSeek.location} - ${jobSeekQueryResponse.data.data[jobSeekMutationType]._id}`
-            }
-          );
+          // this.$gtag.event(
+          //   jobSeekMutationType == "updateJobSeek"
+          //     ? "jobseek_update"
+          //     : "jobseek_add",
+          //   {
+          //     event_label: `${this.jobSeek.title} | ${this.jobSeek.location} - ${jobSeekQueryResponse.data.data[jobSeekMutationType]._id}`
+          //   }
+          // );
+
+          this.$matomo &&
+            this.$matomo.trackEvent(
+              "engagement",
+              `jobseek_${
+                /updateJobSeek/gi.test(jobSeekMutationType) ? "update" : "add"
+              }`,
+              `${this.jobSeek.title} | ${this.jobSeek.location} - ${jobSeekQueryResponse.data.data[jobSeekMutationType]._id}`
+            );
 
           this.$root.$bvToast.toast(
             "Das Stellengesuch wurde erfolgreich gespeichert.",
