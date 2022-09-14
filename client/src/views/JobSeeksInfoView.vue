@@ -129,7 +129,9 @@
         </h2>
         <p class="lead text-center">
           So könnte Dein
-          <b-link to="/stellengesuche">Stellengesuch in der Übersicht </b-link>
+          <b-link to="/stellengesuche" class="bold"
+            >Stellengesuch in der Übersicht</b-link
+          >
           aussehen
         </p>
         <div class="row justify-content-center">

@@ -49,7 +49,8 @@
               </span>
               <div>
                 Einfach und bequem
-                <span class="text-secondary">in wenigen Schritten</span>
+                <span class="text-secondary">in wenigen Schritten</span> zu
+                Ihrer Stellenanzeige
               </div>
             </li>
             <li class="d-flex mb-2">
@@ -69,8 +70,12 @@
                 </svg>
               </span>
               <div>
-                Erreichen Sie exklusiv
-                <span class="text-secondary">engagierte MFA & ZFA</span>
+                Erreichen Sie
+                <span class="text-secondary">engagierte MFA & ZFA</span> und
+                erhalten exklusiv direkten
+                <b-link to="/stellengesuche" class="text-secondary"
+                  >Zugriff auf unsere Stellensuchenden</b-link
+                >
               </div>
             </li>
             <li class="d-flex mb-2">
