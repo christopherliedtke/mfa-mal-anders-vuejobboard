@@ -9,6 +9,9 @@ const JobSchema = new Schema(
       type: String,
       default: "unpublished",
     },
+    firstPublishedAt: {
+      type: Date,
+    },
     publishedAt: {
       type: Date,
     },

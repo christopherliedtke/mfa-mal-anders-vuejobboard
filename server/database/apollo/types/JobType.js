@@ -148,6 +148,7 @@ const JobType = gql`
     _id: String
     status: String
     stripeInvoiceStatus: String
+    firstPublishedAt: Float
     publishedAt: Float
     paid: Boolean
     paidAt: Float

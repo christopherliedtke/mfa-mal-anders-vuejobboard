@@ -112,6 +112,10 @@ router.post(
                   paymentId: payment._id,
                   paid: invoice.paid,
                   stripeInvoiceStatus: invoice.status,
+                  firstPublishedAt: invoiceItem.price.product.metadata
+                    .publish_immediately
+                    ? invoice.status_transitions.finalized_at * 1000
+                    : undefined,
                   publishedAt: invoiceItem.price.product.metadata
                     .publish_immediately
                     ? invoice.status_transitions.finalized_at * 1000

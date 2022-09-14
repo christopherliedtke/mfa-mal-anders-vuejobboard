@@ -68,6 +68,9 @@
       <template #cell(updatedAt)="row">
         {{ new Date(row.value).toLocaleString() }}
       </template>
+      <template #cell(firstPublishedAt)="row">
+        {{ row.value && new Date(row.value).toLocaleString() }}
+      </template>
       <template #cell(publishedAt)="row">
         {{ row.value && new Date(row.value).toLocaleString() }}
       </template>
@@ -412,6 +415,11 @@
             sortable: true
           },
           {
+            key: "firstPublishedAt",
+            label: "FirstPublishedAt",
+            sortable: true
+          },
+          {
             key: "publishedAt",
             label: "PublishedAt",
             sortable: true
@@ -515,6 +523,7 @@
                     stripeInvoiceStatus
                     paid
                     paidExpiresAt
+                    firstPublishedAt
                     publishedAt
                     sentReminder
                     title
@@ -576,6 +585,7 @@
                 applicationDeadline
                 paid
                 paidExpiresAt
+                firstPublishedAt
                 publishedAt
                 title
                 company {
