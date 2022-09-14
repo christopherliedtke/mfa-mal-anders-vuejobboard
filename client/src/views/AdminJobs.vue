@@ -126,6 +126,22 @@
           {{ row.item.userId._id }}
         </b-link>
       </template>
+      <template #cell(analytics)="row">
+        <AnalyticsPageViews
+          :url="`/job/${row.item._id}`"
+          :day="new Date()"
+          period="range"
+          :date-from="new Date(row.item.createdAt)"
+          :date-to="new Date()"
+        />
+        <AnalyticsJobApplications
+          :job-id="row.item._id"
+          :day="new Date()"
+          period="range"
+          :date-from="new Date(row.item.createdAt)"
+          :date-to="new Date()"
+        />
+      </template>
       <template #cell(actions)="row">
         <div class="d-flex">
           <b-button
@@ -323,6 +339,8 @@
 
 <script>
   import NavAdmin from "@/components/NavAdmin.vue";
+  import AnalyticsPageViews from "@/components/AnalyticsPageViews.vue";
+  import AnalyticsJobApplications from "@/components/AnalyticsJobApplications.vue";
   import Vue from "vue";
   import {
     BModal,
@@ -339,7 +357,9 @@
   export default {
     name: "AdminJobs",
     components: {
-      NavAdmin
+      NavAdmin,
+      AnalyticsPageViews,
+      AnalyticsJobApplications
     },
     data() {
       return {
@@ -459,6 +479,11 @@
           {
             key: "user",
             label: "User",
+            sortable: true
+          },
+          {
+            key: "analytics",
+            label: "Analytics",
             sortable: true
           },
           {
