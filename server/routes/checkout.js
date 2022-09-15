@@ -126,12 +126,6 @@ router.post("/create-invoice", verifyToken, async (req, res) => {
       return res.status(400).send("Rechnung konnte nicht erstellt werden.");
     }
 
-    try {
-      await stripe.invoices.sendInvoice(invoice.id);
-    } catch (error) {
-      console.error("Error when manually sending invoice in checkout: ", error);
-    }
-
     console.info("invoice created in checkout: ", invoice);
 
     try {
@@ -156,6 +150,12 @@ router.post("/create-invoice", verifyToken, async (req, res) => {
       console.info("payment created in checkout: ", payment);
     } catch (error) {
       console.error("Error when saving payment in checkout: ", error);
+    }
+
+    try {
+      await stripe.invoices.sendInvoice(invoice.id);
+    } catch (error) {
+      console.error("Error when manually sending invoice in checkout: ", error);
     }
 
     res.json({

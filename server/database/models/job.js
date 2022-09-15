@@ -22,6 +22,9 @@ const JobSchema = new Schema(
     stripeInvoiceStatus: {
       type: String,
     },
+    stripePriceId: {
+      type: String,
+    },
     paidAt: {
       type: Date,
     },

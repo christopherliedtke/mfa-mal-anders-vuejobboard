@@ -1,13 +1,11 @@
 const emailService = require("./nodemailer");
 const config = require("../config/config");
 const { Payment } = require("../database/models/payment");
+const jobAdPackages = require("../config/jobAdPackages");
 
-const jobToAsanaTask = async (
-  job,
-  to = process.env.ASANA_SHARETOSOCIALMEDIA_EMAIL
-) => {
+const jobToAsanaTask = async job => {
   try {
-    if (process.env.NODE_ENV == "production" && job && to) {
+    if (job) {
       const payments = await Payment.find({ job: job._id })
         .sort({
           createdAt: -1,
@@ -19,7 +17,7 @@ const jobToAsanaTask = async (
       if (payment) {
         const dataMailToAsana = {
           from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
-          to: to,
+          to: process.env.ASANA_SHARETOSOCIALMEDIA_EMAIL,
           subject: `[${payment.number}] | ${payment.total / 100}€ - ${
             job.title
           }`,
@@ -28,8 +26,21 @@ const jobToAsanaTask = async (
           }`,
         };
 
-        const sentEmail = await emailService.sendMail(dataMailToAsana);
-        console.info("sentEmail: ", sentEmail);
+        const sentEmailToAdmin = await emailService.sendMail(dataMailToAsana);
+        console.info("sentEmailToAdmin: ", sentEmailToAdmin);
+
+        if (
+          jobAdPackages.find(
+            pkg => pkg.shareByExternal && pkg.stripePrice == job.stripePriceId
+          )
+        ) {
+          dataMailToAsana.to = process.env.ASANA_SHARETOSOCIALMEDIA_EXT_EMAIL;
+
+          const sentEmailToExternal = await emailService.sendMail(
+            dataMailToAsana
+          );
+          console.info("sentEmailToExternal: ", sentEmailToExternal);
+        }
       }
     }
   } catch (err) {

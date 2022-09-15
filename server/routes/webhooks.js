@@ -95,7 +95,7 @@ router.post(
         });
 
         // console.log("invoiceItems: ", invoiceItems);
-
+        // todo attach stripePriceId
         const jobs = await Promise.all(
           invoiceItems.data
             .filter(invoiceItem => invoiceItem.metadata.jobId)
@@ -112,6 +112,7 @@ router.post(
                   paymentId: payment._id,
                   paid: invoice.paid,
                   stripeInvoiceStatus: invoice.status,
+                  stripePriceId: invoiceItem.price.id,
                   firstPublishedAt: invoiceItem.price.product.metadata
                     .publish_immediately
                     ? invoice.status_transitions.finalized_at * 1000
