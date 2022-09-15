@@ -75,7 +75,7 @@
           const clientVersion = document.getElementsByName("version")[0]
             .content;
 
-          const response = await this.$axios.post("/api/version/check", {
+          const response = await this.$axios.get("/api/version/check", {
             clientVersion
           });
 
@@ -85,7 +85,7 @@
               {
                 title: `Neue Version der Webseite`,
                 variant: "info",
-                toaster: "b-toaster-top-right",
+                toaster: "b-toaster-bottom-right",
                 solid: false,
                 noAutoHide: true
               }
