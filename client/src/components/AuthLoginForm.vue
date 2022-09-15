@@ -117,7 +117,9 @@
             this.errors = res.errors;
           } else {
             if (this.$store.state.auth.user.status === "pending") {
-              this.$router.push("/auth/account/verification");
+              this.$router.push(
+                this.$route.query.redirect || "/auth/account/verification"
+              );
             } else if (this.$store.state.auth.loggedIn) {
               if (this.$store.state.auth.user.isEmployee) {
                 this.$router.push(
