@@ -64,18 +64,21 @@
       // });
     },
     mounted() {
-      window.addEventListener("focus", this.checkVersion);
+      document.addEventListener("visibilitychange", this.checkVersion);
     },
     destroyed() {
-      window.removeEventListener("focus", this.checkVersion);
+      document.removeEventListener("visibilitychange", this.checkVersion);
     },
     methods: {
       async checkVersion() {
+        if (document.visibilityState !== "visible") {
+          return;
+        }
         try {
           const clientVersion = document.getElementsByName("version")[0]
             .content;
 
-          const response = await this.$axios.get("/api/version/check", {
+          const response = await this.$axios.post("/api/version/check", {
             clientVersion
           });
 
