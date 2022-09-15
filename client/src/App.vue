@@ -63,7 +63,40 @@
       //   security_storage: "denied"
       // });
     },
+    mounted() {
+      window.addEventListener("focus", this.checkVersion);
+    },
+    destroyed() {
+      window.removeEventListener("focus", this.checkVersion);
+    },
     methods: {
+      async checkVersion() {
+        try {
+          const clientVersion = document.getElementsByName("version")[0]
+            .content;
+
+          const response = await this.$axios.post("/api/version/check", {
+            clientVersion
+          });
+
+          if (response.data.checkPassed === false) {
+            this.$root.$bvToast.toast(
+              "Es ist eine neue Version der Webseite verfügbar. Du kannst die Seite neu laden, um auf dem aktuellen Stand zu sein.",
+              {
+                title: `Neue Version der Webseite`,
+                variant: "info",
+                toaster: "b-toaster-top-right",
+                solid: false,
+                noAutoHide: true
+              }
+            );
+
+            window.removeEventListener("focus", this.checkVersion);
+          }
+        } catch (error) {
+          //
+        }
+      }
       // track() {
       //   this.$gtag.pageview({
       //     page_title: this.$route.name,

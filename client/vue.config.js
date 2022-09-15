@@ -52,6 +52,12 @@ module.exports = {
     */
     config.plugins.delete("prefetch");
 
+    // set vue project version to htmlWebpackPlugin.options.version accessible in index.html
+    config.plugin("html").tap(args => {
+      args[0].version = process.env.npm_package_version;
+      return args;
+    });
+
     /* 
        Configure preload to load all chunks
        NOTE: use `allChunks` instead of `all` (deprecated)

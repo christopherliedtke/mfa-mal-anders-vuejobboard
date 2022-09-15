@@ -238,6 +238,7 @@ async function startServer() {
   app.use("/api/send-email", require("./routes/sendEmail"));
   app.use("/api/admin", require("./routes/admin"));
   app.use("/api/analytics", require("./routes/analytics"));
+  app.use("/api/version", require("./routes/version"));
   // app.use("/api/prerender", require("./routes/prerender"));
 
   // #Redirects
