@@ -116,7 +116,6 @@ if (process.env.PRERENDER_ACTIVE === "on") {
 
 // #Routes w/o csrf protection && cors protection && compression && express.json
 app.use("/api/webhooks", require("./routes/webhooks"));
-app.use("/api/version", require("./routes/version"));
 
 // #Cors implementation
 if (process.env.NODE_ENV != "production") {
@@ -125,6 +124,9 @@ if (process.env.NODE_ENV != "production") {
 
 app.use(compression());
 app.use(express.json());
+
+// # Routes w/o csrf protection && cors protection
+app.use("/api/version", require("./routes/version"));
 
 // #Express Session
 app.use(
