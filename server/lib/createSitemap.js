@@ -26,7 +26,7 @@ async function createSitemap() {
       getTrainings(),
       getProfessions(),
       getJobs(),
-      getJobboardStates(),
+      // getJobboardStates(),
       getJobboardLocations(),
       getJobboardProfessions(),
       getCompanies(),
@@ -203,45 +203,48 @@ const getJobs = async () => {
   }
 };
 
-const getJobboardStates = async () => {
-  try {
-    const professionOptions =
-      require("../../client/src/config/formDataConfig.json").professionOptions;
-    const states =
-      require("../../client/src/config/formDataConfig.json").companyStateOptions;
+// const getJobboardStates = async () => {
+//   try {
+//     const professionOptions =
+//       require("../../client/src/config/formDataConfig.json").professionOptions;
+//     const states =
+//       require("../../client/src/config/formDataConfig.json").companyStateOptions;
 
-    return professionOptions
-      .map(profession =>
-        states
-          .map(state =>
-            writeUrl(
-              process.env.WEBSITE_URL +
-                "/" +
-                profession.value.toLowerCase() +
-                "/" +
-                textToSlug(state),
-              undefined,
-              "daily",
-              0.8
-            )
-          )
-          .join(" ")
-      )
-      .join(" ");
-  } catch (err) {
-    console.log("Error on getJobboardStates() in createSitemap: ", err);
-    return "";
-  }
-};
+//     return professionOptions
+//       .map(profession =>
+//         states
+//           .map(state =>
+//             writeUrl(
+//               process.env.WEBSITE_URL +
+//                 "/" +
+//                 profession.value.toLowerCase() +
+//                 "/" +
+//                 textToSlug(state),
+//               undefined,
+//               "daily",
+//               0.8
+//             )
+//           )
+//           .join(" ")
+//       )
+//       .join(" ");
+//   } catch (err) {
+//     console.log("Error on getJobboardStates() in createSitemap: ", err);
+//     return "";
+//   }
+// };
 
 const getJobboardLocations = async () => {
   try {
     const professionOptions =
       require("../../client/src/config/formDataConfig.json").professionOptions;
     const companies = await Company.find({}, "location");
+    const locationsData = require("../config/locations.js");
     // const jobliftJobs = await jobLiftCache.get("jobs");
 
-    let locations = companies.map(company => company.location);
+    let locations = companies
+      .map(company => company.location)
+      .concat(locationsData);
     // .concat(jobliftJobs.map(job => job.company.location));
 
     locations = [...new Set(locations)];
@@ -257,7 +260,7 @@ const getJobboardLocations = async () => {
                 "/" +
                 textToSlug(location),
               undefined,
-              "daily",
+              "weekly",
               0.8
             )
           )
