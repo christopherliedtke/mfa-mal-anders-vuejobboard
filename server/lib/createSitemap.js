@@ -239,11 +239,10 @@ const getJobboardLocations = async () => {
     const professionOptions =
       require("../../client/src/config/formDataConfig.json").professionOptions;
     const companies = await Company.find({}, "location");
-    const jobliftJobs = await jobLiftCache.get("jobs");
+    // const jobliftJobs = await jobLiftCache.get("jobs");
 
-    let locations = companies
-      .map(company => company.location)
-      .concat(jobliftJobs.map(job => job.company.location));
+    let locations = companies.map(company => company.location);
+    // .concat(jobliftJobs.map(job => job.company.location));
 
     locations = [...new Set(locations)];
 
