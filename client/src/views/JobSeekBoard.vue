@@ -276,9 +276,9 @@
               >
             </div>
           </b-form>
-          <div class="small text-right mt-2 mb-2 pr-3 pt-1">
+          <!-- <div class="small text-right mt-2 mb-2 pr-3 pt-1">
             <b-link to="/stellengesuche/info">Stellengesuch schalten</b-link>
-          </div>
+          </div> -->
 
           <div class="d-none d-lg-block my-5">
             <BannerJobSeeksSmall />
@@ -302,6 +302,7 @@
             <JobSeekCardPlaceholder v-for="index in 25" :key="index" />
           </div>
           <div v-else-if="jobSeeks.length > 0">
+            <JobSeekButton class="mt-3 mt-lg-0 mb-3" block />
             <JobSeekCard
               v-for="jobSeek in jobSeeks"
               :key="jobSeek._id"
@@ -395,6 +396,7 @@
 
   import JobSeekCard from "@/components/JobSeekCard.vue";
   import JobSeekCardPlaceholder from "@/components/JobSeekCardPlaceholder.vue";
+  import JobSeekButton from "@/components/JobSeekButton.vue";
   import ArticleListRandom from "@/components/ArticleListRandom.vue";
   import BannerJobSeeksLarge from "@/components/BannerJobSeeksLarge.vue";
   import BannerJobSeeksSmall from "@/components/BannerJobSeeksSmall.vue";
@@ -407,6 +409,7 @@
     components: {
       JobSeekCard,
       JobSeekCardPlaceholder,
+      JobSeekButton,
       ScrollTopButton,
       ArticleListRandom,
       BannerJobSeeksLarge,
