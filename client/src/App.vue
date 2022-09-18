@@ -94,7 +94,7 @@
               }
             );
 
-            window.removeEventListener("focus", this.checkVersion);
+            document.removeEventListener("visibilitychange", this.checkVersion);
           }
         } catch (error) {
           //
