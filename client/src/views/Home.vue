@@ -27,7 +27,7 @@
             >.
           </p>
         </div>
-        <SearchWidgetJob />
+        <SearchWidgetJob size="lg" />
       </div>
     </div>
 

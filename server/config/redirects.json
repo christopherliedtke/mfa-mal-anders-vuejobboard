@@ -188,6 +188,10 @@
     "new": "/fuer-arbeitgeber"
   },
   {
+    "old": "/page/fuer-arbeitgeber",
+    "new": "/fuer-arbeitgeber"
+  },
+  {
     "old": "/50-plus-alternative-jobs",
     "new": "/karriere/jobs-und-berufsbilder"
   },

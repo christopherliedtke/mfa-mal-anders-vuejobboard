@@ -409,6 +409,17 @@ const routes = [
     }
   },
   {
+    path: "/jobboard/job/:jobId/:title?",
+    redirect: to => {
+      return {
+        path: "/job/:jobId",
+        params: {
+          jobId: to.params.jobId
+        }
+      };
+    }
+  },
+  {
     path: "/unternehmensverzeichnis",
     name: "JobBoardCompanyArchive",
     component: JobBoardCompanyArchive,
