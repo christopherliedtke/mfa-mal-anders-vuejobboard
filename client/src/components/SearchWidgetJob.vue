@@ -3,7 +3,7 @@
     <b-form
       @submit.prevent="
         $router.push(
-          `/?s=${searchTerm}&profession=${profession}&location=${location}`
+          `/jobs/?s=${searchTerm}&profession=${profession}&location=${location}`
         )
       "
     >
@@ -25,7 +25,7 @@
             class="shadow1"
             variant="secondary"
             :to="
-              `/?s=${searchTerm}&profession=${profession}&location=${location}`
+              `/jobs/?s=${searchTerm}&profession=${profession}&location=${location}`
             "
             ><svg
               xmlns="http://www.w3.org/2000/svg"
