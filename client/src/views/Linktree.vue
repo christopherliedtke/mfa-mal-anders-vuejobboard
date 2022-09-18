@@ -8,7 +8,7 @@
           <b-button block to="/stellengesuche/info"
             >🔎 Stellengesuch schalten</b-button
           >
-          <b-button block to="/">📬 Aktuelle Stellenangebote</b-button>
+          <b-button block to="/jobs">📬 Aktuelle Stellenangebote</b-button>
           <b-button block to="/karriere/jobs-und-berufsbilder"
             >💼 50+ Alternative Jobmöglichkeiten</b-button
           >

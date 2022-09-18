@@ -5,12 +5,12 @@ Vue.use(VueRouter);
 import store from "@/store";
 
 // #Views
-// const Home = () =>
-//   import(
-//     /* webpackChunkName: "home" */
-//     /* webpackPrefetch: true */
-//     "@/views/Home.vue"
-//   );
+const Home = () =>
+  import(
+    /* webpackChunkName: "home" */
+    /* webpackPrefetch: true */
+    "@/views/Home.vue"
+  );
 const Employer = () =>
   import(
     /* webpackChunkName: "employer" */
@@ -285,28 +285,28 @@ const NotFound = () =>
 
 // #Routes
 const routes = [
-  // {
-  //   path: "/",
-  //   name: "Home",
-  //   component: Home,
-  //   meta: {
-  //     public: true
-  //   }
-  // },
+  {
+    path: "/",
+    name: "Home",
+    component: Home,
+    meta: {
+      public: true
+    }
+  },
   // {
   //   path: "/",
   //   redirect: () => {
   //     return { path: "/jobs" };
   //   }
   // },
-  {
-    path: "/",
-    name: "JobBoardAsHome",
-    component: JobBoard,
-    meta: {
-      public: true
-    }
-  },
+  // {
+  //   path: "/",
+  //   name: "JobBoardAsHome",
+  //   component: JobBoard,
+  //   meta: {
+  //     public: true
+  //   }
+  // },
   {
     path: "/jobs/:location?",
     name: "JobBoard",

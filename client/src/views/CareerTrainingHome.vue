@@ -874,7 +874,7 @@
         vor der Ärztekammer hast Du den Berufsabschluss zur MFA / ZFA erworben.
         Mit dem anerkannten Abschluss zur Medizinischen Fachangestellten |
         Zahnmedizinischen Fachangestellten hast Du sehr gute Chancen auf dem
-        <b-link class="bold" to="/">Arbeitsmarkt</b-link> eine Anstellung zu
+        <b-link class="bold" to="/jobs">Arbeitsmarkt</b-link> eine Anstellung zu
         finden.
       </p>
 

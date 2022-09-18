@@ -44,7 +44,7 @@
       return {
         companies: null,
         breadcrumbs: [
-          { text: "Stellenangebote", to: "/" },
+          { text: "Home", to: "/" },
           {
             text: "Unternehmensverzeichnis",
             to: "/unternehmensverzeichnis"
@@ -65,8 +65,8 @@
               "itemListElement": [{
                 "@type": "ListItem",
                 "position": 1,
-                "name": "Stellenangebote",
-                "item": "https://www.mfa-mal-anders.de/"
+                "name": "Home",
+                "item": "https://www.mfa-mal-anders.de"
               },{
                 "@type": "ListItem",
                 "position": 2,

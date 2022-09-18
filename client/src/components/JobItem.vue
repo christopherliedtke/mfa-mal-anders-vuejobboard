@@ -400,7 +400,11 @@
         >
       </div>
       <div class="my-3">
-        <b-button class="mr-2 mt-2" variant="outline-primary" size="sm" to="/"
+        <b-button
+          class="mr-2 mt-2"
+          variant="outline-primary"
+          size="sm"
+          to="/jobs"
           >Zurück zu Stellenangeboten</b-button
         >
         <b-button

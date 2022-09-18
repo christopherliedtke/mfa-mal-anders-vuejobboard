@@ -347,6 +347,11 @@
                 "item": "https://www.mfa-mal-anders.de"
               }]
             }`
+          },
+          {
+            rel: "canonical",
+            href: `${this.$config.website.url}`,
+            id: "canonical"
           }
         ]
       };

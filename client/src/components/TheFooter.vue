@@ -110,7 +110,7 @@
             </b-link>
           </div>
           <nav>
-            <router-link to="/">Stellenangebote | MFA & ZFA</router-link>
+            <router-link to="/jobs">Stellenangebote | MFA & ZFA</router-link>
             <router-link to="/stellengesuche"
               >Stellengesuche | MFA & ZFA</router-link
             >

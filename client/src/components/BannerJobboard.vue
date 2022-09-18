@@ -26,7 +26,7 @@
               Finde bei uns Deinen nächsten Job!
             </p>
           </slot>
-          <b-button to="/" variant="secondary"
+          <b-button to="/jobs" variant="secondary"
             >Zu den Stellenangeboten</b-button
           >
         </div>

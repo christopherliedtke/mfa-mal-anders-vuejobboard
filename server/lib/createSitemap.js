@@ -28,7 +28,7 @@ async function createSitemap() {
       getJobs(),
       // getJobboardStates(),
       getJobboardLocations(),
-      getJobboardProfessions(),
+      // getJobboardProfessions(),
       getCompanies(),
       getTrainingEvents(),
       getJobSeeks(),
@@ -236,8 +236,8 @@ const getJobs = async () => {
 
 const getJobboardLocations = async () => {
   try {
-    const professionOptions =
-      require("../../client/src/config/formDataConfig.json").professionOptions;
+    // const professionOptions =
+    //   require("../../client/src/config/formDataConfig.json").professionOptions;
     const companies = await Company.find({}, "location");
     const locationsData = require("../config/locations.js");
     // const jobliftJobs = await jobLiftCache.get("jobs");
@@ -249,22 +249,14 @@ const getJobboardLocations = async () => {
 
     locations = [...new Set(locations)];
 
-    return professionOptions
-      .map(profession =>
-        locations
-          .map(location =>
-            writeUrl(
-              process.env.WEBSITE_URL +
-                "/" +
-                profession.value.toLocaleLowerCase() +
-                "/" +
-                textToSlug(location),
-              undefined,
-              "weekly",
-              0.8
-            )
-          )
-          .join(" ")
+    return locations
+      .map(location =>
+        writeUrl(
+          process.env.WEBSITE_URL + "/jobs" + "/" + textToSlug(location),
+          undefined,
+          "weekly",
+          0.8
+        )
       )
       .join(" ");
   } catch (err) {
@@ -273,20 +265,20 @@ const getJobboardLocations = async () => {
   }
 };
 
-const getJobboardProfessions = async () => {
-  try {
-    const professions =
-      require("../../client/src/config/formDataConfig.json").professionOptions;
-    return professions
-      .map(profession =>
-        writeUrl(process.env.WEBSITE_URL + "/" + profession.value.toLowerCase())
-      )
-      .join(" ");
-  } catch (err) {
-    console.log("Error on getJobboardProfessions() in createSitemap: ", err);
-    return "";
-  }
-};
+// const getJobboardProfessions = async () => {
+//   try {
+//     const professions =
+//       require("../../client/src/config/formDataConfig.json").professionOptions;
+//     return professions
+//       .map(profession =>
+//         writeUrl(process.env.WEBSITE_URL + "/" + profession.value.toLowerCase())
+//       )
+//       .join(" ");
+//   } catch (err) {
+//     console.log("Error on getJobboardProfessions() in createSitemap: ", err);
+//     return "";
+//   }
+// };
 
 const getCompanies = async () => {
   try {
