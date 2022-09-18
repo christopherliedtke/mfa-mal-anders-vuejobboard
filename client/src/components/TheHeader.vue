@@ -18,7 +18,7 @@
       >
         <nav id="primary-nav">
           <router-link
-            to="/"
+            to="/jobs"
             :class="[
               {
                 'router-link-exact-active':

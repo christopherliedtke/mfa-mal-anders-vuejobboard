@@ -460,7 +460,7 @@
                     ? ',{"@type": "ListItem","position": 3,"name": "' +
                       this.filter.ort +
                       '","item": "https://www.mfa-mal-anders.de/stellengesuche/ort/' +
-                      this.filter.ort.toLowerCase() +
+                      textToSlug(this.filter.ort) +
                       '"}'
                     : ""
                 }]

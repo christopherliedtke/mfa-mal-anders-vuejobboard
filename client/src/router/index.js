@@ -293,24 +293,72 @@ const routes = [
   //     public: true
   //   }
   // },
+  // {
+  //   path: "/",
+  //   redirect: () => {
+  //     return { path: "/jobs" };
+  //   }
+  // },
   {
     path: "/",
+    name: "JobBoardAsHome",
+    component: JobBoard,
+    meta: {
+      public: true
+    }
+  },
+  {
+    path: "/jobs/:location?",
     name: "JobBoard",
     component: JobBoard,
     meta: {
       public: true
     }
   },
+  // {
+  //   path: "/mfa/:location?",
+  //   name: "JobBoardMfa",
+  //   component: JobBoard,
+  //   meta: {
+  //     public: true
+  //   }
+  // },
   {
     path: "/mfa/:location?",
+    redirect: to => {
+      return {
+        path: "/jobs",
+        query: { ort: to.params.location, berufsgruppe: "mfa" }
+      };
+    }
+  },
+  {
+    path: "/jobs/mfa/:location?",
     name: "JobBoardMfa",
     component: JobBoard,
     meta: {
       public: true
     }
   },
+  // {
+  //   path: "/zfa/:location?",
+  //   name: "JobBoardZfa",
+  //   component: JobBoard,
+  //   meta: {
+  //     public: true
+  //   }
+  // },
   {
     path: "/zfa/:location?",
+    redirect: to => {
+      return {
+        path: "/jobs",
+        query: { ort: to.params.location, berufsgruppe: "zfa" }
+      };
+    }
+  },
+  {
+    path: "/jobs/zfa/:location?",
     name: "JobBoardZfa",
     component: JobBoard,
     meta: {
@@ -320,19 +368,25 @@ const routes = [
   {
     path: "/ort/:location",
     redirect: to => {
-      return { path: "/", query: { ort: to.params.location } };
+      return {
+        path: "/jobs/:location",
+        params: { location: to.params.location }
+      };
     }
   },
   {
     path: "/stellenangebote",
     redirect: to => {
-      return { path: "/", query: to.query };
+      return { path: "/jobs", query: to.query };
     }
   },
   {
     path: "/stellenangebote/ort/:location",
     redirect: to => {
-      return { path: "/", query: { ort: to.params.location } };
+      return {
+        path: "/jobs/:location",
+        params: { location: to.params.location }
+      };
     }
   },
   {

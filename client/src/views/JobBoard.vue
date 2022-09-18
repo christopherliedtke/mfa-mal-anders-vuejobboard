@@ -854,56 +854,81 @@
             inner: `{
                 "@context": "http://schema.org",
                 "@type" : "BreadcrumbList",
-                "itemListElement": [{
+                "itemListElement": [
+                  {
                     "@type": "ListItem",
                     "position": 1,
                     "name": "Home",
                     "item": "https://www.mfa-mal-anders.de/"
-                }${
-                  this.berufsgruppe.active.length === 1
-                    ? ',{"@type": "ListItem","position": 2,"name": "' +
-                      this.berufsgruppe.active[0].toUpperCase() +
-                      '","item": "https://www.mfa-mal-anders.de/' +
-                      this.berufsgruppe.active[0].toLowerCase() +
-                      '"}'
-                    : ""
-                }${
-              this.berufsgruppe.active.length === 1 && this.filter.ort
-                ? ',{"@type": "ListItem","position": 3,"name": "' +
-                  this.filter.ort +
-                  '","item": "https://www.mfa-mal-anders.de/' +
-                  this.berufsgruppe.active[0].toLowerCase() +
-                  "/" +
-                  this.filter.ort.toLowerCase() +
-                  '"}'
-                : ""
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Stellenangebote",
+                    "item": "https://www.mfa-mal-anders.de/jobs"
+                  },
+                  ${
+                    this.filter.ort
+                      ? `{
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "${this.filter.ort}",
+                    "item": "https://www.mfa-mal-anders.de/jobs/${textToSlug(
+                      this.filter.ort
+                    )}"
+                  }`
+                      : ""
+                  }
+                  
             }]
               }`
           },
           {
             rel: "canonical",
-            href: `${this.$config.website.url}/${this.getCanonical()}`,
+            href: `${this.$config.website.url}${this.canonical}`,
             id: "canonical"
           }
         ];
       },
       breadcrumbs() {
-        const breadcrumbs = [{ text: "Stellenangebote", href: "/" }];
+        const breadcrumbs = [{ text: "Stellenangebote", href: "/jobs" }];
 
-        if (this.berufsgruppe.active.length === 1) {
+        if (this.filter.ort) {
           breadcrumbs.push({
-            text: this.berufsgruppe.active[0].toUpperCase(),
-            href: `/${this.berufsgruppe.active[0].toLowerCase()}`
+            text: this.filter.ort,
+            href: `/jobs/${textToSlug(this.filter.ort)}`
           });
 
-          if (this.filter.ort) {
+          if (this.berufsgruppe.active.length === 1) {
             breadcrumbs.push({
-              text: this.filter.ort
+              text: this.berufsgruppe.active[0].toUpperCase()
             });
           }
         }
 
         return breadcrumbs;
+      },
+      canonical() {
+        let canonical = "/jobs";
+
+        // if (this.berufsgruppe.active.length === 1) {
+        //   canonical += this.berufsgruppe.active[0].toLowerCase();
+        if (this.filter.ort) {
+          canonical += "/" + textToSlug(this.filter.ort);
+        }
+
+        // }
+
+        // const location =
+        //   this.$route.params.location ||
+        //   this.$route.query.ort ||
+        //   this.$route.query.state;
+
+        // if (this.$route.query.berufsgruppe) {
+        //   canonical += "?berufsgruppe=" + this.$route.query.berufsgruppe;
+        // }
+
+        return canonical;
       }
     },
     watch: {
@@ -1049,7 +1074,7 @@
         this.$router
           .replace({
             query,
-            path: "/"
+            path: "/jobs"
           })
           .catch(() => {});
       },
@@ -1146,28 +1171,6 @@
         return berufsgruppe.length === 1
           ? berufsgruppe
           : this.professionOptions.map(profession => profession.value);
-      },
-      getCanonical() {
-        let canonical = "";
-
-        if (this.berufsgruppe.active.length === 1) {
-          canonical += this.berufsgruppe.active[0].toLowerCase();
-
-          if (this.filter.ort) {
-            canonical += "/" + textToSlug(this.filter.ort);
-          }
-        }
-
-        // const location =
-        //   this.$route.params.location ||
-        //   this.$route.query.ort ||
-        //   this.$route.query.state;
-
-        // if (this.$route.query.berufsgruppe) {
-        //   canonical += "?berufsgruppe=" + this.$route.query.berufsgruppe;
-        // }
-
-        return canonical;
       }
     }
   };
