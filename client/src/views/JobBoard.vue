@@ -531,7 +531,7 @@
           >
             <b-link
               :to="
-                `/?ort=${city.slug}${
+                `/jobs?ort=${city.slug}${
                   berufsgruppe.active.length == 1
                     ? '?berufsgruppe=' + berufsgruppe.active[0]
                     : ''
@@ -692,7 +692,7 @@
           (ZFA), ZMF, ZMV, MTRA in
           <span v-for="(state, index) in companyStateOptions" :key="state">
             <b-link
-              :to="`/?ort=${state.toLowerCase()}`"
+              :to="`/jobs?ort=${state.toLowerCase()}`"
               @click="
                 () => {
                   filter.ort = state;

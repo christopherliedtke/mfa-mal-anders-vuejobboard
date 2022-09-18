@@ -9,7 +9,7 @@
       />
       <div class="text-right mt-4">
         <b-button
-          :to="`/?ort=${textToSlug(job.company.location)}`"
+          :to="`/jobs?ort=${textToSlug(job.company.location)}`"
           variant="outline-primary"
         >
           Weitere Stellenangebote in der Nähe von {{ job.company.location }}

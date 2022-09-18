@@ -29,7 +29,7 @@
     <div v-if="showMoreBtn" class="d-flex justify-content-end mt-2">
       <b-button
         :to="
-          `/?s=${searchTerm}&anstellungsart=${employmentType}&berufsgruppe=${profession}`
+          `/jobs?s=${searchTerm}&anstellungsart=${employmentType}&berufsgruppe=${profession}`
         "
         variant="outline-primary"
         size="sm"
