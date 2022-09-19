@@ -43,7 +43,7 @@
       </h2>
       <div class="row row-cols-1 row-cols-md-3 flex-lg-row-reverse">
         <div class="col">
-          <b-link to="/stellenangebote" class="icon-box shadow1">
+          <b-link to="/jobs" class="icon-box shadow1">
             <b-img-lazy
               class="mr-4 mb-4 ml-4"
               src="@/assets/img/career_.svg"
@@ -63,7 +63,7 @@
           </b-link>
         </div>
         <div class="col">
-          <b-link to="/stellengesuche/info" class="icon-box shadow1">
+          <b-link to="/stellengesuche" class="icon-box shadow1">
             <b-img-lazy
               class="mr-4 mb-4 ml-4"
               src="@/assets/img/LinkedIn_Monochromatic.svg"
@@ -214,7 +214,7 @@
                 >Gehalt</b-link
               >
               (inkl. Gehaltsrechner),
-              <b-link to="/karriere/bewerbungs" class="text-secondary"
+              <b-link to="/karriere/bewerbung" class="text-secondary"
                 >Bewerbungen</b-link
               >
               und vieles, vieles mehr geben.
