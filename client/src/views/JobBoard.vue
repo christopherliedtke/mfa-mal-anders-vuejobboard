@@ -51,7 +51,7 @@
                 id="location-jobboard"
                 v-model="filter.ort"
                 type="text"
-                placeholder="PLZ oder Ort..."
+                placeholder="PLZ / Ort..."
                 trim
                 lazy
                 :formatter="capitalize"
@@ -200,7 +200,7 @@
                   v-model="filter.s"
                   :class="filter.s ? 'border-secondary' : ''"
                   type="text"
-                  placeholder="Suchbegriff..."
+                  placeholder="Jobtitel, Stichwort..."
                   lazy
                 />
                 <b-input-group-append>
@@ -472,7 +472,7 @@
           </div>
 
           <div class="my-4 clearfix">
-            <h2 class="h5 bold mb-3">Ihre Stellenanzeige hier?</h2>
+            <h2 class="h5 bold mb-3">Ihr Stellenangebot hier?</h2>
             <b-img
               style="max-width: 120px"
               class="mr-3 mb-2"
@@ -493,8 +493,8 @@
                   : ""
               }}? Dann
               <b-link to="/auth/register" class="bold">registrieren</b-link>
-              Sie sich und schalten noch heute Ihre Stellenanzeige auf unserem
-              Karriereportal. <br />
+              Sie sich und veröffentlichen Sie noch heute Ihr Stellenangebot auf
+              <em>MFA mal anders</em>. <br />
               <b-link to="/fuer-arbeitgeber" class="bold">Mehr erfahren</b-link>
             </p>
           </div>

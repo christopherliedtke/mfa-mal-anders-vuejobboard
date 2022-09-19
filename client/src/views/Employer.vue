@@ -159,7 +159,7 @@
               variant="secondary"
               size="lg"
               class="d-block d-md-inline-block my-2 mr-md-2"
-              >Stellenanzeige erstellen</b-button
+              >Stellenanzeige schalten</b-button
             >
             <b-button
               href="#vorteile"
@@ -207,9 +207,9 @@
             </svg>
             <h4 class="bold mt-2 mb-3">Speziell für MFA & ZFA</h4>
             <p>
-              Über ein
+              Über eine
               <router-link to="/jobs"
-                ><strong>Stellenangebot</strong></router-link
+                ><strong>Stellenanzeige</strong></router-link
               >
               auf <em>MFA mal anders</em> erreichen Sie
               <strong>exklusiv motivierte MFA | ZFA | ArzthelferIn</strong>
@@ -329,7 +329,7 @@
             variant="secondary"
             size="lg"
             class="d-block d-lg-inline-block mx-1 my-1"
-            >Stellenanzeige erstellen</b-button
+            >Stellenanzeige schalten</b-button
           >
           <b-button
             href="#preise"
@@ -380,18 +380,21 @@
         </h2>
         <div class="my-4  text-center text-lg-left">
           <p>
-            Mit MFA mal anders möchten wir Medizinischen Fachangestellten |
+            Mit der
+            <strong><b-link to="/jobs">Stellenbörse</b-link></strong> auf
+            <em>MFA mal anders</em> möchten wir Medizinischen Fachangestellten |
             Zahnmedizinischen Fachangestellten die Möglichkeit geben, einen
             attraktiven Job zu finden. Aber auch Ihnen als Arbeitgeber eine
-            alternative Plattform bereitstellen, die Ihre Stellenangebote an die
+            alternative Plattform bereitstellen, die Ihre Stellenanzeigen an die
             richtige Zielgruppe ausspielt und so Ihre Chancen erhöht,
             qualifizierte Bewerbungen zu erhalten.
           </p>
           <p>
-            Zur Veröffentlichung Ihrer Stellenanzeige bieten wir verschiedene
-            Pakete an, um Sie bei Ihrer MitarbeiterInnen-Suche optimal
-            unterstützen und ergänzen zu können. In der Regel empfehlen wir
-            Ihnen unser beliebtes
+            Zur Veröffentlichung Ihrer Stellenanzeige in unserer
+            <strong><b-link to="/jobs">Stellenbörse</b-link></strong> bieten wir
+            verschiedene Pakete an, um Sie bei Ihrer MitarbeiterInnen-Suche
+            optimal unterstützen und ergänzen zu können. In der Regel empfehlen
+            wir Ihnen unser beliebtes
             <strong class="text-secondary">Standard Paket</strong>, um die
             Reichweite Ihrer Stellenanzeige zu optimieren.
           </p>
@@ -609,8 +612,8 @@
           Damit grenzen wir uns gezielt von allgemeinen Jobbörsen, die eine
           breite Masse an unterschiedlichen Berufsgruppen ansprechen und hohe
           Streuverluste haben, ab. Da wir
-          <strong>mehr als eine reine Jobbörse</strong> sind, erreichen wir mit
-          unserem Angebot zudem eine deutlich größere Anzahl von wirklich
+          <strong>mehr als eine reine Stellenbörse</strong> sind, erreichen wir
+          mit unserem Angebot zudem eine deutlich größere Anzahl von wirklich
           motivierten Medizinischen Fachangestellten | Zahnmedizinischen
           Fachangestellten.
         </p>
