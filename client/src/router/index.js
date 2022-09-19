@@ -371,6 +371,7 @@ const routes = [
       return {
         path: "/jobs/:location",
         params: { location: to.params.location }
+        // query: { berufsgruppe: to.query.berufsgruppe }
       };
     }
   },
