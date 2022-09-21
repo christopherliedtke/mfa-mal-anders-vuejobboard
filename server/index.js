@@ -197,13 +197,14 @@ async function startServer() {
       //     return {
       //       didEncounterErrors(requestContext) {
       //         if (requestContext.errors) {
-      //           requestContext.errors.forEach(e =>
-      //             console.error(
-      //               e.message,
-      //               e.locations,
-      //               requestContext.request.query
-      //             )
-      //           );
+      //           // requestContext.errors.forEach(e =>
+      //           //   console.error(
+      //           //     e.message,
+      //           //     e.locations,
+      //           //     requestContext.request.query
+      //           //   )
+      //           // );
+      //           // console.log(requestContext);
       //         }
       //       },
       //     };

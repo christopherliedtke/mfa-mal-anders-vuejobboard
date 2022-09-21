@@ -113,6 +113,13 @@
 
       <div class="d-flex flex-column align-items-center mt-4">
         <b-button
+          to="/stellengesuche"
+          variant="secondary"
+          size="lg"
+          class="d-block d-lg-inline-block mx-1 my-1"
+          >Stellengesuche in Deiner Nähe</b-button
+        >
+        <b-button
           href="#faq"
           variant="outline-primary"
           size="lg"
