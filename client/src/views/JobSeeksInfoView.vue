@@ -113,16 +113,23 @@
 
       <div class="d-flex flex-column align-items-center mt-4">
         <b-button
-          to="/stellengesuche"
+          to="/auth/register?role=employee&redirect=%2Fuser%2Fstellengesuche"
           variant="secondary"
           size="lg"
           class="d-block d-lg-inline-block mx-1 my-1"
-          >Stellengesuche in Deiner Nähe</b-button
+          >Stellengesuche schalten</b-button
+        >
+        <b-button
+          to="/stellengesuche"
+          variant="outline-secondary"
+          size=""
+          class="d-block d-lg-inline-block mx-1 my-1"
+          >Stellengesuche in Deiner Nähe ansehen</b-button
         >
         <b-button
           href="#faq"
           variant="outline-primary"
-          size="lg"
+          size=""
           class="d-block d-lg-inline-block mx-1 my-1"
           >Fragen oder Hilfe benötigt?</b-button
         >
