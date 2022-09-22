@@ -130,21 +130,6 @@
             ></b-form-select
           >
         </div>
-        <div class="col-12 col-lg-4">
-          <label for="simple-applcation">Nur mit Lebenslauf bewerben</label>
-          <b-form-select
-            id="simple-application"
-            v-model="job.simpleApplication"
-            :state="validated ? true : null"
-          >
-            <b-form-select-option
-              v-for="type in simpleApplicationOptions"
-              :key="type.value"
-              :value="type.value"
-              >{{ type.text }}</b-form-select-option
-            ></b-form-select
-          >
-        </div>
         <!-- <div class="col-12 col-lg-4">
           <label for="application-deadline">Bewerbungsfrist</label>
           <BFormDatepicker
@@ -174,8 +159,41 @@
       />
 
       <div class="row">
+        <div class="col-12 col-lg-4">
+          <label for="simple-applcation">Kurzbewerbungen aktivieren</label>
+          <b-form-select
+            id="simple-application"
+            v-model="job.simpleApplication"
+            :state="validated ? true : null"
+          >
+            <b-form-select-option
+              v-for="type in simpleApplicationOptions"
+              :key="type.value"
+              :value="type.value"
+              >{{ type.text }}</b-form-select-option
+            ></b-form-select
+          >
+          <b-form-text id="simple-application-help" class="ml-2"
+            >empfohlen (höhere Bewerberzahl)
+            <b-link to="/kurzbewerbung/info" target="_blank"
+              >mehr erfahren<svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="12"
+                height="12"
+                fill="currentColor"
+                class="bi bi-caret-right-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"
+                /></svg></b-link
+          ></b-form-text>
+        </div>
+        <div class="w-100"></div>
         <div class="col-12 col-lg-6">
-          <label for="application-email">E-Mail Adresse für Bewerbungen</label>
+          <label for="application-email" :required="job.simpleApplication"
+            >E-Mail Adresse für Bewerbungen</label
+          >
           <b-input-group>
             <template #prepend>
               <b-input-group-text>@</b-input-group-text>
@@ -190,7 +208,8 @@
                 validated
                   ? job.applicationEmail
                     ? true
-                    : !job.applicationEmail && !job.extJobUrl
+                    : (!job.applicationEmail && !job.extJobUrl) ||
+                      (job.simpleApplication && !job.applcationEmail)
                     ? false
                     : null
                   : null
@@ -198,11 +217,30 @@
               placeholder="karriere@ihr-unternehmen.de"
               aria-describedby="application-email-feedback"
             />
+            <b-form-invalid-feedback
+              id="application-email-feedback"
+              :state="
+                validated
+                  ? job.applicationEmail
+                    ? true
+                    : (!job.applicationEmail && !job.extJobUrl) ||
+                      (job.simpleApplication && !job.applcationEmail)
+                    ? false
+                    : null
+                  : null
+              "
+              class="ml-2"
+            >
+              <span v-if="job.simpleApplication && !job.applcationEmail"
+                >Bitte E-Mail Adresse für Bewerbungen bzw. Kurzbewerbungen
+                angeben.</span
+              >
+              <span v-else-if="!job.applicationEmail && !job.extJobUrl"
+                >Bitte E-Mail Adresse für Bewerbungen oder URL zur Bewerbung auf
+                Bewerberportal angeben.</span
+              >
+            </b-form-invalid-feedback>
           </b-input-group>
-          <b-form-invalid-feedback id="application-email-feedback" class="ml-2">
-            Bitte E-Mail Adresse für Bewerbungen oder URL zur Bewerbung auf
-            Bewerberportal angeben.
-          </b-form-invalid-feedback>
         </div>
         <div class="col-12 col-lg-6">
           <label for="ext-job-url"
@@ -237,7 +275,9 @@
                 validated
                   ? job.extJobUrl
                     ? true
-                    : !job.applicationEmail && !job.extJobUrl
+                    : !job.applicationEmail &&
+                      !job.extJobUrl &&
+                      !job.simpleApplication
                     ? false
                     : null
                   : null
@@ -249,7 +289,21 @@
           <b-form-text id="ext-job-url-help" class="ml-2"
             >optional, wenn Bewerberportal vorhanden</b-form-text
           >
-          <b-form-invalid-feedback id="ext-job-url-feedback" class="ml-2">
+          <b-form-invalid-feedback
+            id="ext-job-url-feedback"
+            :state="
+              validated
+                ? job.extJobUrl
+                  ? true
+                  : !job.applicationEmail &&
+                    !job.extJobUrl &&
+                    !job.simpleApplication
+                  ? false
+                  : null
+                : null
+            "
+            class="ml-2"
+          >
             Bitte E-Mail Adresse für Bewerbungen oder URL zur Bewerbung auf
             Bewerberportal angeben.
           </b-form-invalid-feedback>
@@ -1049,6 +1103,7 @@
           !this.job.description ||
           !this.job.employmentType ||
           (!this.job.applicationEmail && !this.job.extJobUrl) ||
+          (this.job.simpleApplication && !this.job.applicationEmail) ||
           !this.job.company.name ||
           !this.job.company.country ||
           !this.job.company.location ||

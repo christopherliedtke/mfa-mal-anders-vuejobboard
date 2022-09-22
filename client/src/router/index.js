@@ -168,6 +168,18 @@ const JobBoardCompanyArchive = () =>
     "@/views/JobBoardCompanyArchive.vue"
   );
 
+// #SimpleApplication
+const SimpleApplicationInfoView = () =>
+  import(
+    /* webpackChunkName: "simple-application" */
+    "@/views/SimpleApplicationInfoView.vue"
+  );
+const SimpleApplicationView = () =>
+  import(
+    /* webpackChunkName: "simple-application" */
+    "@/views/SimpleApplicationView.vue"
+  );
+
 // #JobSeekBoard
 const JobSeekBoard = () =>
   import(
@@ -418,6 +430,22 @@ const routes = [
           jobId: to.params.jobId
         }
       };
+    }
+  },
+  {
+    path: "/kurzbewerbung/info",
+    name: "SimpleApplicationInfoView",
+    component: SimpleApplicationInfoView,
+    meta: {
+      public: true
+    }
+  },
+  {
+    path: "/kurzbewerbung/:jobId",
+    name: "SimpleApplicationView",
+    component: SimpleApplicationView,
+    meta: {
+      public: true
     }
   },
   {

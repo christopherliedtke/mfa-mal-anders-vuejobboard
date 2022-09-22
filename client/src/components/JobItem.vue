@@ -214,7 +214,7 @@
                 style="cursor: pointer"
                 class="badge badge-pill badge-secondary"
               >
-                # Einfach bewerben
+                # Kurzbewerbung
               </div>
             </div>
           </div>
@@ -375,22 +375,41 @@
       </div>
       <div class="mt-4">
         <b-button
+          v-if="job.simpleApplication"
           size="lg"
-          :variant="job.simpleApplication ? 'secondary' : 'primary'"
+          :to="`/kurzbewerbung/${job._id}`"
+          class="mr-2 mb-2"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="currentColor"
+            class="bi bi-arrow-right-circle-fill mr-2"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"
+            /></svg
+          >Bewerben in 2 Minuten</b-button
+        >
+        <b-button
+          :size="job.simpleApplication ? 'sm' : 'lg'"
+          :variant="job.simpleApplication ? 'outline-primary' : 'primary'"
           :href="
             job.applicationEmail
               ? `mailto:${job.applicationEmail}?subject=Bewerbung - ${job.title} über ${$config.website.name}`
               : job.extJobUrl
           "
           target="_blank"
+          class="mb-2"
           @click="
             track(
               'job_apply',
               `${job.title} | ${job.company.name} - ${job._id}`
             )
           "
-          >Jetzt
-          {{ job.simpleApplication ? "nur mit Lebenslauf" : "" }}
+        >
+          {{ job.simpleApplication ? "Konventionell" : "Jetzt" }}
           bewerben</b-button
         >
       </div>

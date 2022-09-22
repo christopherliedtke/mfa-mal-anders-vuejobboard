@@ -1003,6 +1003,7 @@
                       specialization
                       salaryMin
                       salaryMax
+                      simpleApplication
                       slug
                       refreshFrequency
                       company {

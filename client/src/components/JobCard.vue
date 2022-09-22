@@ -186,7 +186,7 @@
           </div>
           <div v-if="job.simpleApplication">
             <div class="badge badge-pill badge-secondary">
-              # Einfach bewerben
+              # Kurzbewerbung
             </div>
           </div>
         </div>
