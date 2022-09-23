@@ -461,6 +461,8 @@
     },
     methods: {
       async onSubmit() {
+        this.error = "";
+
         if (!this.formValidation()) {
           this.error =
             "Bitte füllen Sie die erforderlichen Felder aus und beachten Sie die Zeichenvorgaben!";
