@@ -492,7 +492,7 @@
     <div class="container-fluid bg-light-shade py-4 py-lg-5 px-0 mb-5">
       <div id="kurzbewerbung" class="container">
         <h2 class="display-4 text-center bold">
-          Unser Kurzbewerbung Modus
+          Unser Modus für Kurzbewerbungen
         </h2>
         <h3 class="text-center">Mehr KandidatInnen durch einfaches Bewerben</h3>
         <p>
@@ -530,7 +530,9 @@
             wenige Bewerbungen erhalten</strong
           >. Am Ende ist das persönliche Gespräch ohnehin entscheidend.
         </p>
-        <h3 class="text-center mt-4">Beispiel für den Kurzbewerbung-Modus</h3>
+        <h3 class="text-center mt-4">
+          Beispiel für Kurzbewerbung zum durchklicken
+        </h3>
         <SimpleApplicationDataForm
           class="mt-3 mt-lg-4"
           :job="{ profession: 'MFA', company: { name: 'Ihr Unternehmen' } }"

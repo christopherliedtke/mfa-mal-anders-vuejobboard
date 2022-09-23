@@ -474,7 +474,7 @@
 
         <p>
           <strong
-            >Besteht für mich eine Pflicht zur Bereitstellung von Daten</strong
+            >Besteht für mich eine Pflicht zur Bereitstellung von Daten?</strong
           >
         </p>
 
@@ -633,6 +633,19 @@
           oder es besteht hierzu besteht eine gesetzliche Verpflichtung gem.
           Art. 6 Abs. 1 lit. c. DSGVO. Die IP-Adressen werden spätestens nach 7
           Tagen anonymisiert oder gelöscht.
+        </p>
+
+        <h3>Kurzbewerbungsfunktion</h3>
+
+        <p>
+          Arbeitgeber können im Rahmen der Schaltung einer Stellenanzeige die
+          Kurzbewerbungsfunktion aktivieren. BewerberInnen haben die Möglichkeit
+          im Kurzbewerbungsverfahren einige Fragen zu beantworten Ihre
+          Kontaktdaten zu hinterlegen. Die dabei aufgenommenen Daten werden
+          direkt an den entsprechenden Arbeitgeber aus der entsprechenden
+          Stellenanzeige weitergeleitet und nicht von MFA mal anders
+          gespeichert. Dieser Weiterleitung muss von den BewerberInnen aktiv
+          zugestimmt werden.
         </p>
 
         <h3>Kommentare und Beiträge</h3>
