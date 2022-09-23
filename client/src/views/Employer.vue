@@ -508,7 +508,8 @@
         <p>
           Aktivieren Sie die Option <em>Kurzbewerbung</em> in Ihrer
           Stellenanzeige, müssen die KandidatInnen lediglich
-          <strong>wenige Fragen beantworten</strong>, die Ihnen einen ersten
+          <strong>wenige voreingestellte Fragen beantworten</strong>, die Ihnen
+          einen ersten
           <strong
             >Einblick in die aktuelle Situation sowie die individuellen
             Qualifikationen</strong
