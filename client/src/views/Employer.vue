@@ -185,7 +185,9 @@
         Zahnmedizinische Fachangestellte
       </p>
 
-      <div class="row row-cols-1 row-cols-lg-2 my-4 my-md-5">
+      <div
+        class="row row-cols-1 row-cols-lg-2 my-4 my-md-5 justify-content-center"
+      >
         <div class="col">
           <div class="icon-box shadow1 py-5 px-4">
             <svg
@@ -244,6 +246,37 @@
               >
               und können
               <strong>passendes Personal direkt kontaktieren</strong>.
+            </p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="icon-box shadow1 py-5 px-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="50"
+              height="50"
+              fill="currentColor"
+              class="bi bi-journal-plus"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M8 5.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 .5-.5z"
+              />
+              <path
+                d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"
+              />
+              <path
+                d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"
+              />
+            </svg>
+            <h4 class="bold mt-2 mb-3">Kurzbewerbungen</h4>
+            <p>
+              Mit unserem optionalen
+              <b-link to="#kurzbewerbung"><strong>Kurzbewerbung</strong></b-link
+              >-Modus senken Sie die Schwelle zum Abschicken einer Bewerbung und
+              <strong>vervielfachen</strong> in der Regel
+              <strong>die Anzahl passender KandidatInnen</strong>.
             </p>
           </div>
         </div>
@@ -454,6 +487,56 @@
       </h2>
       <h3 class="text-center">Ihre Vorteile im Überblick</h3>
       <TheProfessionalPackageInfo />
+    </div>
+
+    <div class="container-fluid bg-light-shade py-4 py-lg-5 px-0 mb-5">
+      <div id="kurzbewerbung" class="container">
+        <h2 class="display-4 text-center bold">
+          Unser Kurzbewerbung Modus
+        </h2>
+        <h3 class="text-center">Mehr KandidatInnen durch einfaches Bewerben</h3>
+        <p>
+          Sie haben optional die Möglichkeit, für Ihre Stellenanzeige die
+          Kurzbewerbung-Funktion zu aktivieren. Damit
+          <strong
+            >erleichtern Sie den potentiellen KandidatInnen den
+            Bewerbungsprozess</strong
+          >
+          erheblich und senken damit die Schwelle, auch tatsächlich eine
+          Bewerbung abzugeben.
+        </p>
+        <p>
+          Aktivieren Sie die Option <em>Kurzbewerbung</em> in Ihrer
+          Stellenanzeige, müssen die KandidatInnen lediglich
+          <strong>wenige Fragen beantworten</strong>, die Ihnen einen ersten
+          <strong
+            >Einblick in die aktuelle Situation sowie die individuellen
+            Qualifikationen</strong
+          >
+          der BewerberInnen geben. Mit diesen Informationen können Sie
+          entscheiden, ob Sie die BewerberInnen direkt einladen, vorher
+          zusätzlich einen Lebenslauf anfordern oder beispielsweise direkt
+          absagen möchten.
+        </p>
+        <p>
+          Es lässt sich sicherlich darüber streiten, wie einfach es
+          BewerberInnen gemacht werden sollte, aber in Zeiten von großem
+          Personalmangel im deutschen Gesundheitssystem gilt es erst einmal
+          überhaupt, qualifizierte KandidatInnen zu generieren. Deshalb
+          ermöglichen wir die Kurzbewerbungen und empfehlen wir diese Option zu
+          nutzen.
+          <strong
+            >Schließlich gilt: Lieber eine Bewerbung mehr aussortieren, als zu
+            wenige Bewerbungen erhalten</strong
+          >. Am Ende ist das persönliche Gespräch ohnehin entscheidend.
+        </p>
+        <h3 class="text-center mt-4">Beispiel für den Kurzbewerbung-Modus</h3>
+        <SimpleApplicationDataForm
+          class="mt-3 mt-lg-4"
+          :job="{ profession: 'MFA', company: { name: 'Ihr Unternehmen' } }"
+          :disabled="true"
+        />
+      </div>
     </div>
 
     <div id="numbers-and-facts2" class="container mb-5 py-md-5">
@@ -857,6 +940,7 @@
   import PricingCardPlaceholder from "@/components/PricingCardPlaceholder.vue";
   import { scrollToHashMixin } from "@/mixins/scrollToHashMixin";
   import { setPromotionCodeMixin } from "@/mixins/setPromotionCodeMixin";
+  import SimpleApplicationDataForm from "@/components/SimpleApplicationDataForm.vue";
   export default {
     name: "Employer",
     components: {
@@ -867,7 +951,8 @@
       PricingCard,
       PricingCardPlaceholder,
       ScrollTopButton,
-      TheProfessionalPackageInfo
+      TheProfessionalPackageInfo,
+      SimpleApplicationDataForm
     },
     mixins: [scrollToHashMixin, setPromotionCodeMixin],
     data() {

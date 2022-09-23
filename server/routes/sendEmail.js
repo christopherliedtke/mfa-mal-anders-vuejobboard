@@ -5,6 +5,7 @@ const isAdmin = require("../middleware/isAdmin");
 const fs = require("fs");
 const path = require("path");
 const emailService = require("../lib/nodemailer");
+const { sesMailTransporter } = require("../lib/ses");
 const Handlebars = require("handlebars");
 const config = require("../config/config");
 const sanitizeHtml = require("sanitize-html");
@@ -20,6 +21,11 @@ Handlebars.registerHelper("currentYear", () => {
 
 const jobSeekerContactTemplate = fs.readFileSync(
   path.join(__dirname, "../templates/email/jobseeker_contact_email.hbs"),
+  "utf8"
+);
+
+const shortApplicationEmailTemplate = fs.readFileSync(
+  path.join(__dirname, "../templates/email/short_application_email.hbs"),
   "utf8"
 );
 
@@ -499,6 +505,78 @@ router.post("/contact-jobseek", verifyToken, async (req, res) => {
   } catch (err) {
     console.error("Error on /api/send-email/contact-jobseek: ", err);
     res.json({ success: false, error: err.message });
+  }
+});
+
+// #route:  POST /api/send-email/send-application
+// #desc:   Handle send simple application
+// #access: Public
+router.post("/send-application", async (req, res) => {
+  const { application, jobId } = req.body;
+
+  try {
+    if (!application.accepted) {
+      throw new Error(
+        "Sie müssen AGBs und Datenschutzerklärung gelesen und akzeptiert haben, um Ihre Nachricht zu versenden."
+      );
+    }
+    const job = await Job.findOne({ _id: jobId }).populate("userId");
+
+    if (!job) {
+      throw new Error();
+    }
+
+    const template = Handlebars.compile(shortApplicationEmailTemplate);
+
+    const htmlToEmployer = template({
+      to: `${job.userId.gender ? job.userId.gender + " " : ""}${
+        job.userId.title ? job.userId.title + " " : ""
+      }${job.userId.lastName}`,
+      jobId: job._id,
+      jobTitle: job.title,
+      jobProfession: job.profession ? job.profession : "MFA / ZFA",
+      application: {
+        firstName: application.contactFirstName,
+        lastName: application.contactLastName,
+        email: application.contactEmail,
+        phone: application.contactPhone,
+        employmentStatus: application.employmentStatus,
+        training: application.training,
+        experience: application.experience,
+        specializations: application.specializations,
+        requirements: application.requirements,
+      },
+      websiteUrl: process.env.WEBSITE_URL,
+      websiteName: config.website.name,
+      headerImg: `${process.env.WEBSITE_URL}/img/MfaMalAnders_Banner_1200.jpg`,
+      lightColor: "#fffcfd",
+      lightShadeColor: "#f7f6f9",
+      primaryColor: "#6d0230",
+      secondaryColor: "#fda225",
+      fbPath: config.social.fb.path,
+      igPath: config.social.ig.path,
+    });
+
+    const emailData = {
+      from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
+      to:
+        process.env.NODE_ENV != "production"
+          ? process.env.CONTACT_EMAIL_ADRESS
+          : job.applicationEmail || job.userId.email,
+      bcc: process.env.CONTACT_EMAIL_ADRESS,
+      subject: `[Bewerbung] '${job.title}' auf MFA mal anders`,
+      html: htmlToEmployer,
+      replyTo: application.contactEmail,
+    };
+
+    const emailSent = await sesMailTransporter.sendMail(emailData);
+
+    console.info("emailSent for short application: ", emailSent);
+
+    res.sendStatus(200);
+  } catch (error) {
+    console.error("Error on /api/send-email/send-application: ", error);
+    res.status(400).json({ error: { message: error.message } });
   }
 });
 

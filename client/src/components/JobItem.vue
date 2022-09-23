@@ -379,6 +379,7 @@
           size="lg"
           :to="`/kurzbewerbung/${job._id}`"
           class="mr-2 mb-2"
+          :disabled="!$route.meta.public"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
@@ -402,6 +403,7 @@
           "
           target="_blank"
           class="mb-2"
+          :disabled="!$route.meta.public"
           @click="
             track(
               'job_apply',

@@ -169,11 +169,6 @@ const JobBoardCompanyArchive = () =>
   );
 
 // #SimpleApplication
-const SimpleApplicationInfoView = () =>
-  import(
-    /* webpackChunkName: "simple-application" */
-    "@/views/SimpleApplicationInfoView.vue"
-  );
 const SimpleApplicationView = () =>
   import(
     /* webpackChunkName: "simple-application" */
@@ -430,14 +425,6 @@ const routes = [
           jobId: to.params.jobId
         }
       };
-    }
-  },
-  {
-    path: "/kurzbewerbung/info",
-    name: "SimpleApplicationInfoView",
-    component: SimpleApplicationInfoView,
-    meta: {
-      public: true
     }
   },
   {

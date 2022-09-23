@@ -53,7 +53,8 @@ export const jobStructuredDataMixin = {
                     : "",
                   "unitText": "MONTH"
                 }
-              }
+              },
+              "directApply": this.job.applicationEmail ? true : false
             })
           }
         ];

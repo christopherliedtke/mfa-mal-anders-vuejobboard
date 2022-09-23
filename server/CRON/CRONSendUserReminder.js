@@ -79,7 +79,7 @@ const mailToEmployers = async () => {
     });
 
     return {
-      from: "kontakt@mfa-mal-anders.de",
+      from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
       to: employer.email,
       subject: "Ihre Stellenanzeige auf MFA mal anders",
       html: htmlToEmployer,
@@ -148,7 +148,7 @@ const mailToEmployees = async () => {
     });
 
     return {
-      from: "kontakt@mfa-mal-anders.de",
+      from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
       to: employee.email,
       subject: "Dein Stellengesuch auf MFA mal anders",
       html: htmlToEmployee,

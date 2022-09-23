@@ -95,7 +95,6 @@ router.post(
         });
 
         // console.log("invoiceItems: ", invoiceItems);
-        // todo attach stripePriceId
         const jobs = await Promise.all(
           invoiceItems.data
             .filter(invoiceItem => invoiceItem.metadata.jobId)

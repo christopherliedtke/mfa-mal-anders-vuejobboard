@@ -890,7 +890,10 @@
         ];
       },
       breadcrumbs() {
-        const breadcrumbs = [{ text: "Stellenangebote", href: "/jobs" }];
+        const breadcrumbs = [
+          { text: "Home", href: "/" },
+          { text: "Stellenangebote", href: "/jobs" }
+        ];
 
         if (this.filter.ort) {
           breadcrumbs.push({

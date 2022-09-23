@@ -504,13 +504,13 @@
           </div>
           <div class="col-9 d-flex align-items-center">
             <h3 class="h2 bold mb-0">
-              Einfaches Bewerben
+              Kurz-bewerbungen
             </h3>
           </div>
         </div>
         <p class="mb-0">
-          Ermöglichen Sie das einfache Bewerben nur per Lebenslauf. So können
-          Sie die innerliche Hürde für BewerberInnen beträchtlich senken. Das
+          Ermöglichen Sie das einfache Bewerben per Kurzbewerbung. So können Sie
+          die innerliche Hürde für BewerberInnen beträchtlich senken. Das
           persönliche Gespräch ist letztlich ohnehin entscheidend.
         </p>
       </div>
@@ -541,10 +541,11 @@
             Es lässt sich sicherlich darüber streiten, wie einfach es
             BewerberInnen gemacht werden sollte, aber in Zeiten von
             Personalmangel im deutschen Gesundheitssystem gilt es erst einmal
-            überhaupt darum, qualifizierte KandidatInnen zu generieren. Indem
-            Sie das einfache Bewerben nur per Lebenslauf ermöglichen, können Sie
-            die innerliche Hürde für BewerberInnen beträchtlich senken. Das
-            persönliche Gespräch ist letztlich ohnehin entscheidend.
+            überhaupt, qualifizierte KandidatInnen zu generieren. Indem Sie das
+            einfache Bewerben per
+            <b-link to="#kurzbewerbung">Kurzbewerbung</b-link> ermöglichen,
+            können Sie die innerliche Hürde für BewerberInnen beträchtlich
+            senken. Das persönliche Gespräch ist letztlich ohnehin entscheidend.
           </p>
         </div>
       </div>

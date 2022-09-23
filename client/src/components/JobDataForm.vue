@@ -175,7 +175,7 @@
           >
           <b-form-text id="simple-application-help" class="ml-2"
             >empfohlen (höhere Bewerberzahl)
-            <b-link to="/kurzbewerbung/info" target="_blank"
+            <b-link to="/fuer-arbeitgeber#kurzbewerbung" target="_blank"
               >mehr erfahren<svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="12"

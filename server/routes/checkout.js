@@ -38,7 +38,7 @@ router.post("/create-invoice", verifyToken, async (req, res) => {
       "_id stripeCustomerId"
     );
 
-    //todo customer w/ reverse charge if not germany
+    //customer w/ reverse charge if not germany
     // https://stripe.com/docs/tax/zero-tax#:~:text=Reverse%20charge,-While%20in%20most&text=Stripe%20Tax%20automatically%20applies%20the,but%20isn't%20charged%20tax.
 
     customer.metadata = {
@@ -83,8 +83,6 @@ router.post("/create-invoice", verifyToken, async (req, res) => {
         .status(400)
         .send("Rechnungsposten konnten nicht erstellt werden.");
     }
-
-    // todo implement coupon duration only once -> track usage of coupons independently
 
     // https://stripe.com/docs/api/invoices
     let invoice = null;
