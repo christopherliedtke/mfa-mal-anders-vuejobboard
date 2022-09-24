@@ -120,7 +120,7 @@
                 <span class="">Mehr passende KandidatInnen</span>
                 per optionaler
                 <b-link to="#kurzbewerbung" class="text-secondary"
-                  >2-Minuten&nbsp;Kurzbewerbung</b-link
+                  >2&#8209;Minuten&nbsp;Kurzbewerbung</b-link
                 >
               </div>
             </li>
