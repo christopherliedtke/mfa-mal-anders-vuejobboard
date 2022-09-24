@@ -31,7 +31,7 @@
             </em>
           </h3>
           <ul class="lead no-bullets my-4 mt-lg-5">
-            <li class="d-flex mb-2">
+            <!-- <li class="d-flex mb-2">
               <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +52,7 @@
                 <span class="text-secondary">in wenigen Schritten</span> zu
                 Ihrer Stellenanzeige
               </div>
-            </li>
+            </li> -->
             <li class="d-flex mb-2">
               <span>
                 <svg
@@ -70,12 +70,12 @@
                 </svg>
               </span>
               <div>
-                Erreichen Sie
-                <span class="text-secondary">engagierte MFA & ZFA</span> und
-                erhalten exklusiv direkten
+                <span class="text-secondary">Engagierte MFA & ZFA</span>
+                erreichen und exklusiv direkten
                 <b-link to="/stellengesuche" class="text-secondary"
                   >Zugriff auf unsere Stellensuchenden</b-link
                 >
+                erhalten
               </div>
             </li>
             <li class="d-flex mb-2">
@@ -95,9 +95,7 @@
                 </svg>
               </span>
               <div>
-                <span class="text-secondary"
-                  >Erhalten Sie mehr relevante Reichweite</span
-                >
+                <span class="text-secondary">Größere relevante Reichweite</span>
                 über unseren Jobnewsletter, Google, Google Jobs, Social Media
                 und unsere MFA & ZFA Community
               </div>
@@ -119,7 +117,31 @@
                 </svg>
               </span>
               <div>
-                Veröffentlichen Sie Ihre Stellenanzeige
+                <span class="">Mehr passende KandidatInnen</span>
+                per optionaler
+                <b-link to="#kurzbewerbung" class="text-secondary"
+                  >2-Minuten&nbsp;Kurzbewerbung</b-link
+                >
+              </div>
+            </li>
+            <li class="d-flex mb-2">
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="25"
+                  fill="currentColor"
+                  class="bi bi-check-lg mr-3"
+                  style="vertical-align: top;"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"
+                  />
+                </svg>
+              </span>
+              <div>
+                Stellenanzeige bereits
                 <b-link class="text-secondary" href="#preise"
                   >ab
                   <span v-if="pricingPackages">{{
@@ -127,7 +149,7 @@
                   }}</span
                   >€</b-link
                 >
-                <span class="small"> (zzgl. USt.)</span>
+                <span class="small"> (zzgl. USt.)</span> veröffentlichen
               </div>
             </li>
             <!-- <li class="d-flex">
@@ -272,9 +294,9 @@
             </svg>
             <h4 class="bold mt-2 mb-3">Kurzbewerbungen</h4>
             <p>
-              Mit unserem optionalen
+              Mit unserer optionalen
               <b-link to="#kurzbewerbung"><strong>Kurzbewerbung</strong></b-link
-              >-Modus senken Sie die Schwelle zum Abschicken einer Bewerbung und
+              >-Funktion senken Sie die Hürde zum Abschicken einer Bewerbung und
               <strong>vervielfachen</strong> in der Regel
               <strong>die Anzahl passender KandidatInnen</strong>.
             </p>
