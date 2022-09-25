@@ -563,7 +563,7 @@ router.post("/send-application", async (req, res) => {
         process.env.NODE_ENV != "production"
           ? process.env.CONTACT_EMAIL_ADRESS
           : job.applicationEmail || job.userId.email,
-      bcc: process.env.CONTACT_EMAIL_ADRESS,
+      bcc: "bewerbungen@mfa-mal-anders.de",
       subject: `[Bewerbung] '${job.title}' auf MFA mal anders`,
       html: htmlToEmployer,
       replyTo: application.contactEmail,

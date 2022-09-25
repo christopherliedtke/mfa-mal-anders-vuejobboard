@@ -1064,6 +1064,11 @@
                 }
               }]
             }`
+          },
+          {
+            rel: "canonical",
+            href: `${this.$config.website.url}/fuer-arbeitgeber`,
+            id: "canonical"
           }
         ],
         pricingPackages: null
