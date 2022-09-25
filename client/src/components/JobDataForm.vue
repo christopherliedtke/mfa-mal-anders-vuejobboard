@@ -160,7 +160,11 @@
 
       <div class="row">
         <div class="col-12 col-lg-4">
-          <label for="simple-applcation">Kurzbewerbungen aktivieren</label>
+          <label
+            for="simple-applcation"
+            class="bg-secondary text-light border-radius1 px-1"
+            >Kurzbewerbungen aktivieren</label
+          >
           <b-form-select
             id="simple-application"
             v-model="job.simpleApplication"
@@ -174,7 +178,7 @@
             ></b-form-select
           >
           <b-form-text id="simple-application-help" class="ml-2"
-            >empfohlen (höhere Bewerberzahl)
+            >beliebt & sehr empfohlen (erhöht Bewerberzahl) <br />
             <b-link to="/fuer-arbeitgeber#kurzbewerbung" target="_blank"
               >mehr erfahren<svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -797,7 +801,7 @@
           specialization: "",
           employmentType: "",
           applicationDeadline: null,
-          simpleApplication: false,
+          simpleApplication: true,
           extJobUrl: "",
           applicationEmail: "",
           imageUrl: "",
