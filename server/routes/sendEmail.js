@@ -517,9 +517,13 @@ router.post("/send-application", async (req, res) => {
   try {
     if (!application.accepted) {
       throw new Error(
-        "Sie müssen AGBs und Datenschutzerklärung gelesen und akzeptiert haben, um Ihre Nachricht zu versenden."
+        "Du musst die AGBs und Datenschutzerklärung gelesen und akzeptiert haben, um Deine Bewerbung zu versenden."
       );
     }
+    if (!/\S+@\S+\.\S+/.test(application.contactEmail)) {
+      throw new Error("Bitte gib eine gültige E-Mail Adresse ein.");
+    }
+
     const job = await Job.findOne({ _id: jobId }).populate("userId");
 
     if (!job) {
