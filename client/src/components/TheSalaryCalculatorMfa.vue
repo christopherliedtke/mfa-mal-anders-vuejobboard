@@ -43,8 +43,8 @@
         v-model="year"
         class="mt-2"
         :options="[
-          { text: 'Jahr 2021', value: 2021 },
-          { text: 'Jahr 2022', value: 2022 }
+          { text: 'Jahr 2022', value: 2022 },
+          { text: 'Jahr 2023', value: 2023 }
         ]"
       ></b-form-select>
       <label for="years-of-experience" class="sr-only">Berufsjahre</label>
@@ -222,7 +222,8 @@
               this.form.workingHours *
               4.33) /
               167) *
-              (100 + (this.year - 2021) * 3)
+              1.03 *
+              (100 + (this.year - 2022) * 2.6001255)
           ) / 100
         );
       },
@@ -230,7 +231,8 @@
         return (
           Math.round(
             ((this.form.yearsOfExperience * this.form.hoursOfEducation) / 167) *
-              (100 + (this.year - 2021) * 3)
+              1.03 *
+              (100 + (this.year - 2022) * 2.6001255)
           ) / 100
         );
       }

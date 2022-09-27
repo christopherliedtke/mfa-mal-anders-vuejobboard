@@ -245,15 +245,14 @@
       <div class="bg-light-shade border-radius1 p-4 mb-4">
         <p class="h5">Übrigens</p>
         <p>
-          Laut offizieller Berechnung im Gehaltstarifvertrag 2022 bezieht sich
-          das jeweils angegebene
-          <strong
-            >Vollzeit-Gehalt auf eine Wochenstundenarbeitszeit von 38,8953
-            Stunden</strong
-          >
-          <sup>1</sup>. Die Wochenstundenarbeitszeit für Vollzeit ist nicht
-          explizit im Vertrag angegeben, lässt sich jedoch aus der
-          Berechnungsformel für Teilzeitkräfte herleiten.
+          Mit der offiziellen Berechnungsformel für Teilzeitkräfte aus dem
+          Gehaltstarifvertrag 2022 gibt es leichte Abweichungen bei der
+          Anwendung auf eine Vollzeitstelle. Dies ist mit der Rundung von
+          Faktoren in der Berechnungsformel zu erklären. Die
+          Wochenstundenarbeitszeit für Vollzeit ist im Manteltarifvertrag als 39
+          Wochenstunden angegeben, beträgt mit den Abweichungen aus der
+          Berechnungsformel jedoch 38,8953 Wochenstunden
+          <sup>1</sup>.
         </p>
         <p class="small text-muted mb-0">
           <sup>1</sup> Wenn Ihr dies selbst prüfen möchtet, gebt die Arbeitszeit

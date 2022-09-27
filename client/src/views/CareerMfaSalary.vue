@@ -258,15 +258,14 @@
       <div class="bg-light-shade border-radius1 p-4 mb-4">
         <p class="h5">Übrigens</p>
         <p>
-          Laut offizieller Berechnung im Gehaltstarifvertrag 2021 bezieht sich
-          das jeweils angegebene
-          <strong
-            >Vollzeit-Gehalt auf eine Wochenstundenarbeitszeit von 38,5681
-            Stunden</strong
-          >
-          <sup>1</sup>. Die Wochenstundenarbeitszeit für Vollzeit ist nicht
-          explizit im Vertrag angegeben, lässt sich jedoch aus der
-          Berechnungsformel für Teilzeitkräfte herleiten.
+          Mit der offiziellen Berechnungsformel für Teilzeitkräfte aus dem
+          Gehaltstarifvertrag 2021 gibt es leichte Abweichungen bei der
+          Anwendung auf eine Vollzeitstelle. Dies ist mit der Rundung von
+          Faktoren in der Berechnungsformel zu erklären. Die
+          Wochenstundenarbeitszeit für Vollzeit ist im Manteltarifvertrag als
+          38,5 Wochenstunden angegeben, beträgt mit den Abweichungen aus der
+          Berechnungsformel jedoch 38,5681 Wochenstunden
+          <sup>1</sup>.
         </p>
         <p class="small text-muted mb-0">
           <sup>1</sup> Wenn Ihr dies selbst prüfen möchtet, gebt die Arbeitszeit
@@ -274,125 +273,6 @@
           Formel aus dem Gehaltstarifvertrag.
         </p>
       </div>
-
-      <!-- <h3 class="h4 mt-5">
-        Gehaltstabelle MFA 2021 nach Gehaltstarifvertrag – gültig ab 01.01.2021
-      </h3>
-      <p>
-        Das Einstiegsgehalt für Medizinische Fachangestellte liegt nach der
-        Ausbildung im Jahr 2021 bei 2.088 € nach aktuellem Gehaltstarifvertrag.
-        Mit steigender Berufserfahrung und durch Absolvierung entsprechender
-        Weiterbildungen kann das monatliche Gehalt auf bis zu 4.196 € steigen.
-      </p>
-      <p>
-        Der Stundenlohn im Jahr 2021 für Medizinische Fachangestellte (MFA)
-        bewegt sich laut Gehaltstarifvertrag je nach Berufserfahrung und
-        erworbenen Qualifikationen durch Fort- und Weiterbildungen zwischen
-        12,51 €/h und 25,13 €/h. Über unseren
-        <b-link to="#gehaltsrechner">Gehaltsrechner</b-link> kannst Du Dir den
-        Stundenlohn bzw. das Gehalt in Teilzeit für Deinen relevanten Bereich
-        errechnen, indem Du als Wochenarbeitszeit eine Stunde auswählst.
-      </p>
-
-      <div class="table-responsive">
-        <table class="table table-secondary table-striped">
-          <thead>
-            <tr>
-              <th scope="col">Berufsjahr</th>
-              <th scope="col">Tätigkeitsgruppe I</th>
-              <th scope="col">Tätigkeitsgruppe II</th>
-              <th scope="col">Tätigkeitsgruppe III</th>
-              <th scope="col">Tätigkeitsgruppe IV</th>
-              <th scope="col">Tätigkeitsgruppe V</th>
-              <th scope="col">Tätigkeitsgruppe VI</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>1 - 4</th>
-              <td>2.088,40 €</td>
-              <td>2.245,03 €</td>
-              <td>2.349,45 €</td>
-              <td>2.506,08 €</td>
-              <td>2.714,92 €</td>
-              <td>3.028,18 €</td>
-            </tr>
-            <tr>
-              <th>5 - 8</th>
-              <td>2.267,70 €</td>
-              <td>2.437,78 €</td>
-              <td>2.551,16 €</td>
-              <td>2.721,24 €</td>
-              <td>2.948,01 €</td>
-              <td>3.288,17 €</td>
-            </tr>
-            <tr>
-              <th>9 - 12</th>
-              <td>2.411,95 €</td>
-              <td>2.592,85 €</td>
-              <td>2.713,44 €</td>
-              <td>2.894,34 €</td>
-              <td>3.135,54 €</td>
-              <td>3.497,33 €</td>
-            </tr>
-            <tr>
-              <th>13 - 16</th>
-              <td>2.480,05 €</td>
-              <td>2.666,05 €</td>
-              <td>2.790,06 €</td>
-              <td>2.976,06 €</td>
-              <td>3.224,07 €</td>
-              <td>3.596,07 €</td>
-            </tr>
-            <tr>
-              <th>17 - 20</th>
-              <td>2.743,71 €</td>
-              <td>2.949,49 €</td>
-              <td>3.086,67 €</td>
-              <td>3.292,45 €</td>
-              <td>3.566,82 €</td>
-              <td>3.978,38 €</td>
-            </tr>
-            <tr>
-              <th>21 - 24</th>
-              <td>2.793,71 €</td>
-              <td>3.003,24 €</td>
-              <td>3.142,92 €</td>
-              <td>3.352,45 €</td>
-              <td>3.631,82 €</td>
-              <td>4.050,88 €</td>
-            </tr>
-            <tr>
-              <th>25 - 28</th>
-              <td>2.843,71 €</td>
-              <td>3.056,99 €</td>
-              <td>3.199,17 €</td>
-              <td>3.412,45 €</td>
-              <td>3.696,82 €</td>
-              <td>4.123,38 €</td>
-            </tr>
-            <tr>
-              <th>ab 29</th>
-              <td>2.893,71 €</td>
-              <td>3.110,74 €</td>
-              <td>3.255,42 €</td>
-              <td>3.472,45 €</td>
-              <td>3.761,82 €</td>
-              <td>4.195,88 €</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="small text-muted">
-        Quelle:
-        <b-link
-          href="https://www.vmf-online.de/mfa/mfa-tarife"
-          target="_blank"
-          rel="noopener"
-          >Gehaltstarifvertrag 2021 für Medizinische Fachangestellte (MFA) /
-          ArzthelferInnen – AAA (2021)</b-link
-        >
-      </p> -->
 
       <h3 class="h4 mt-5">
         Gehaltstabelle MFA 2022 nach Gehaltstarifvertrag – gültig ab 01.01.2022
@@ -499,6 +379,125 @@
               <td>3.576,62 €</td>
               <td>3.874,67 €</td>
               <td>4.321,76 €</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small text-muted">
+        Quelle:
+        <b-link
+          href="https://www.vmf-online.de/mfa/mfa-tarife"
+          target="_blank"
+          rel="noopener"
+          >Gehaltstarifvertrag 2021 für Medizinische Fachangestellte (MFA) /
+          ArzthelferInnen – AAA (2021)</b-link
+        >
+      </p>
+
+      <h3 class="h4 mt-5">
+        Gehaltstabelle MFA 2023 nach Gehaltstarifvertrag – gültig ab 01.01.2023
+      </h3>
+      <p>
+        Das Einstiegsgehalt für Medizinische Fachangestellte liegt nach der
+        Ausbildung im Jahr 2023 bei 2.207 € nach aktuellem Gehaltstarifvertrag.
+        Mit steigender Berufserfahrung und durch Absolvierung entsprechender
+        Weiterbildungen kann das monatliche Gehalt auf bis zu 4.434 € steigen.
+      </p>
+      <p>
+        Der Stundenlohn im Jahr 2023 für Medizinische Fachangestellte (MFA)
+        bewegt sich laut Gehaltstarifvertrag je nach Berufserfahrung und
+        erworbenen Qualifikationen durch Fort- und Weiterbildungen zwischen
+        13,22 €/h und 26,5 €/h. Über unseren
+        <b-link to="#gehaltsrechner">Gehaltsrechner</b-link> kannst Du Dir den
+        Stundenlohn bzw. das Gehalt in Teilzeit für Deinen relevanten Bereich
+        errechnen, indem Du als Wochenarbeitszeit eine Stunde auswählst.
+      </p>
+
+      <div class="table-responsive">
+        <table class="table table-secondary table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Berufsjahr</th>
+              <th scope="col">Tätigkeitsgruppe I</th>
+              <th scope="col">Tätigkeitsgruppe II</th>
+              <th scope="col">Tätigkeitsgruppe III</th>
+              <th scope="col">Tätigkeitsgruppe IV</th>
+              <th scope="col">Tätigkeitsgruppe V</th>
+              <th scope="col">Tätigkeitsgruppe VI</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>1 - 4</th>
+              <td>2.206,98 €</td>
+              <td>2.372,50 €</td>
+              <td>2.482,85 €</td>
+              <td>2.648,38 €</td>
+              <td>2.869,07 €</td>
+              <td>3.200,12 €</td>
+            </tr>
+            <tr>
+              <th>5 - 8</th>
+              <td>2.396,46 €</td>
+              <td>2.576,19 €</td>
+              <td>2.696,02 €</td>
+              <td>2.875,75 €</td>
+              <td>3.115,40 €</td>
+              <td>3.474,87 €</td>
+            </tr>
+            <tr>
+              <th>9 - 12</th>
+              <td>2.548,90 €</td>
+              <td>2.740,07 €</td>
+              <td>2.867,51 €</td>
+              <td>3.058,68 €</td>
+              <td>3.313,57 €</td>
+              <td>3.695,91 €</td>
+            </tr>
+            <tr>
+              <th>13 - 16</th>
+              <td>2.620,87 €</td>
+              <td>2.817,44 €</td>
+              <td>2.948,48 €</td>
+              <td>3.145,04 €</td>
+              <td>3.407,13 €</td>
+              <td>3.800,26 €</td>
+            </tr>
+            <tr>
+              <th>17 - 20</th>
+              <td>2.899,50 €</td>
+              <td>3.116,96 €</td>
+              <td>3.261,94 €</td>
+              <td>3.479,40 €</td>
+              <td>3.769,35 €</td>
+              <td>4.204,28 €</td>
+            </tr>
+            <tr>
+              <th>21 - 24</th>
+              <td>2.952,34 €</td>
+              <td>3.173,77 €</td>
+              <td>3.321,38 €</td>
+              <td>3.542,80 €</td>
+              <td>3.838,03 €</td>
+              <td>4.280,89 €</td>
+            </tr>
+            <tr>
+              <th>25 - 28</th>
+              <td>3.005,17 €</td>
+              <td>3.230,57 €</td>
+              <td>3.380,82 €</td>
+              <td>3.606,21 €</td>
+              <td>3.906,72 €</td>
+              <td>4.357,50 €</td>
+            </tr>
+            <tr>
+              <th>ab 29</th>
+              <td>3.058,01 €</td>
+              <td>3.287,37 €</td>
+              <td>3.440,26 €</td>
+              <td>3.669,61 €</td>
+              <td>3.975,41 €</td>
+              <td>4.434,13 €</td>
             </tr>
           </tbody>
         </table>
