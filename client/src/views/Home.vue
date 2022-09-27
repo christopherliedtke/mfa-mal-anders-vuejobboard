@@ -63,7 +63,7 @@
           </b-link>
         </div>
         <div class="col">
-          <b-link to="/stellengesuche" class="icon-box shadow1">
+          <b-link to="/stellengesuche/info" class="icon-box shadow1">
             <b-img-lazy
               class="mr-4 mb-4 ml-4"
               src="@/assets/img/LinkedIn_Monochromatic.svg"

@@ -129,7 +129,7 @@
       </b-input-group> -->
     </b-form>
     <div v-if="showAdJobLink" class="mt-2 text-right">
-      <b-link class="pt-3 pb-4 pl-3 small" to="/stellengesuche">
+      <b-link class="pt-3 pb-4 pl-3 small" to="/stellengesuche/info">
         Stellengesuch schalten
       </b-link>
     </div>

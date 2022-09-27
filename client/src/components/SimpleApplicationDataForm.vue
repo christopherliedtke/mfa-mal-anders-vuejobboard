@@ -374,14 +374,15 @@
         </p>
         <p>
           Übrigens, kennst Du schon unsere
-          <b-link to="/stellengesuche"><strong>Stellengesuche</strong></b-link
+          <b-link to="/stellengesuche/info"
+            ><strong>Stellengesuche</strong></b-link
           >? Du kannst Dein eigenes Stellengesuch schalten und Dich von
           passenden Arbeitgebern kontaktieren lassen. Lass Dich doch von
           Stellengesuchen in Deiner Nähe inspirieren.
         </p>
       </div>
-      <b-button to="/stellengesuche" variant="secondary" class="mb-2"
-        >Stellengesuche ansehen</b-button
+      <b-button to="/stellengesuche/info" variant="secondary" class="mb-2"
+        >Stellengesuch schalten</b-button
       >
       <b-button :to="`/job/${job._id}`" variant="outline-secondary" class="mb-2"
         >Zurück zur Stellenanzeige</b-button
