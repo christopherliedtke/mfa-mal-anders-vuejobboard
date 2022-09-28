@@ -1,9 +1,9 @@
 import copyToClipBoard from "@/helpers/copyToClipBoard";
 
 export default function(job) {
-  const text = `${job.title} | 📍 ${job.company.location}\n\n📌 ${
-    this.$config.website.url
-  }/job/${job._id}\n\n#mfamalanders #${
+  const text = `${job.title} | 📍 ${job.company.location}${
+    job.simpleApplication ? " | 🚀 Bewerben in 2 Minuten" : ""
+  }\n\n📌 ${this.$config.website.url}/job/${job._id}\n\n#mfamalanders #${
     job.profession === "ZFA" ? "zahn" : ""
   }medizinischefachangestellte #${
     job.profession === "ZFA" ? "zfa" : "mfa"
