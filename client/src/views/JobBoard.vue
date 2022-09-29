@@ -864,12 +864,12 @@
                   {
                     "@type": "ListItem",
                     "position": 2,
-                    "name": "Stellenangebote",
+                    "name": "Jobs",
                     "item": "https://www.mfa-mal-anders.de/jobs"
-                  },
+                  }
                   ${
                     this.filter.ort
-                      ? `{
+                      ? `,{
                     "@type": "ListItem",
                     "position": 3,
                     "name": "${this.filter.ort}",

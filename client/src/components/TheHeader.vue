@@ -392,6 +392,21 @@
         }
       }
 
+      .nav-wrapper::-webkit-scrollbar {
+        width: 0.4rem;
+      }
+
+      .nav-wrapper::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: $primary;
+      }
+
+      .nav-wrapper::-webkit-scrollbar-thumb {
+        background-color: transparentize($color: $secondary, $amount: 0.5);
+        border-radius: 10px;
+      }
+
       .nav-wrapper {
         flex-grow: 1;
         display: flex;

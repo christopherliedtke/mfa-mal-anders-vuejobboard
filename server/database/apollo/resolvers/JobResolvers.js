@@ -571,7 +571,7 @@ async function getJobSlug(job) {
   return textToSlug(job.title + (company ? " in " + company.location : ""));
 }
 
-function sliceJobs(jobs = [], limit = 25, offset = 0) {
+function sliceJobs(jobs = [], limit = 15, offset = 0) {
   return jobs.slice(offset, offset + limit);
 }
 
