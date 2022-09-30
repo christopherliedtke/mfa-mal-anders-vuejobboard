@@ -1056,15 +1056,15 @@ const router = new VueRouter({
 // #Handle Router error
 router.onError(err => {
   console.log("Error on Vue.Router: ", err);
-  // router.go(0);
+  alert(
+    "Bei der Navigation ist ein Fehler aufgetreten. Bitte laden Sie die Seite falls nötig neu."
+  );
 
-  // ? show request to reload page with reloadBtn on site
+  return { success: false };
 });
 
 // #Checks before routes
 router.beforeEach((to, from, next) => {
-  // console.log("router.app: ", router.app);
-
   const isPublic = to.matched.some(record => record.meta.public);
   const onlyWhenLoggedOut = to.matched.some(
     record => record.meta.onlyWhenLoggedOut

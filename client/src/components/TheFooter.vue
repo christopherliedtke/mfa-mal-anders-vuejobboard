@@ -4,13 +4,15 @@
       <div class="row ros-cols-1 row-cols-lg-3">
         <div class="col order-3 order-lg-1">
           <b-link to="/">
-            <b-img
+            <b-img-lazy
               fluid
               src="/img/MfaMalAnders_Logo_white.svg"
-              height="110"
               width="220"
+              height="110"
               alt="MFA mal anders - Logo"
               class="mb-4"
+              blank-width="220"
+              blank-height="110"
             />
           </b-link>
           <h2 class="h6" style="line-height: 1.3">

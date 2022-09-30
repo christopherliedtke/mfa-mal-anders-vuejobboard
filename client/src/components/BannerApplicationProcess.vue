@@ -4,11 +4,11 @@
   >
     <div class="row no-gutters">
       <div class="col-md-3">
-        <b-img
+        <b-img-lazy
           class="p-1 w-100 h-100"
           src="@/assets/img/profiling_monochromatic.svg"
           alt="Tipps für einen effizienten Bewerbungsprozess für MFAs / ZFAs / ArzthelferInnen"
-        ></b-img>
+        ></b-img-lazy>
       </div>
       <div class="col-md-9">
         <div

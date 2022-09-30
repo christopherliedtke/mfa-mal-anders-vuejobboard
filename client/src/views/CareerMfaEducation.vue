@@ -183,7 +183,7 @@
           </ul>
         </div>
         <div class="col d-flex justify-content-center align-items-center">
-          <b-img
+          <b-img-lazy
             style="max-width: 80%"
             class="my-4"
             fluid

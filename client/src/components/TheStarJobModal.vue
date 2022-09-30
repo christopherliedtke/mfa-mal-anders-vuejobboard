@@ -37,12 +37,13 @@
     <div class="py-2 px-3 ">
       <h2 class="h4 mb-4 bold">Für später speichern?</h2>
       <div class="clearfix mb-3">
-        <b-img
+        <b-img-lazy
           style="max-width: 150px"
           class="mr-4 mb-2"
           fluid
           left
           src="~@/assets/img/starredJobs.svg"
+          blank-width="150"
         />
         <p>
           Speichere Dir Jobs in Deinen Favouriten, um Dich später auf diese zu

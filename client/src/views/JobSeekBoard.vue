@@ -333,13 +333,14 @@
             <h2 class="h5 bold mb-3">
               Ihre Stellenanzeige auf MFA mal anders?
             </h2>
-            <b-img
+            <b-img-lazy
               style="max-width: 120px"
               class="mr-3 mb-2"
               fluid
               left
               src="~@/assets/img/undraw_Updates_re_o5af.svg"
               alt="Stellenanzeige wird auf MFA mal anders veröffentlicht"
+              blank-width="120"
             />
             <p>
               Sie sind als attraktiver Arbeitgeber auf der Suche nach einer

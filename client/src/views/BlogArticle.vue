@@ -26,11 +26,12 @@
             class="position-absolute d-flex align-items-center bg-light-shade border-radius2 px-3 py-1"
             style="bottom: 0; right: 5%"
           >
-            <b-img
+            <b-img-lazy
               :src="article.author.avatarUrl"
               :alt="article.author.firstName"
               class="mr-2 rounded-circle"
               style="height: 37.5px"
+              blank-height="38"
             />
             <div v-if="article.author.firstName">
               von {{ article.author.firstName }}
@@ -64,11 +65,12 @@
               v-if="article.author.avatarUrl"
               class="d-flex align-items-center mb-3"
             >
-              <b-img
+              <b-img-lazy
                 :src="article.author.avatarUrl"
                 :alt="article.author.firstName"
                 class="mr-3 rounded-circle"
                 style="height: 60px"
+                blank-height="60"
               />
               <div class="h6">
                 <span>

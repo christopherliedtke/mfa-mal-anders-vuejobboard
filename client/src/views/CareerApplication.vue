@@ -134,21 +134,25 @@
         Lebenslauf.
       </blockquote>
       <div class="d-flex justify-content-center mb-5">
-        <b-img
+        <b-img-lazy
           class="mx-3 shadow1"
           style="width: 35vw; max-width: 300px; height: auto"
           src="@/assets/img/Vorlage_Bewerbungsanschreiben_300.jpg"
           alt="Bild von Mustervorlage für Motivationsschreiben"
           width="300"
           height="425"
+          blank-width="300"
+          blank-height="425"
         />
-        <b-img
+        <b-img-lazy
           class="mx-3 shadow1"
           style="width: 35vw; max-width: 300px; height: auto"
           src="@/assets/img/Vorlage_Lebenslauf_300.jpg"
           alt="Bild von Mustervorlage für Lebenslauf"
           width="300"
           height="425"
+          blank-width="300"
+          blank-height="425"
         />
       </div>
 
@@ -327,7 +331,7 @@
         passen. Erwähne auch Fortbildungen und Weiterbildungen, die für die
         Stelle relevant sein können.
       </p>
-      <b-img
+      <b-img-lazy
         style="width: 50vw; max-width: 350px"
         class="pr-3 pr-md-5 pb-3"
         left
@@ -426,7 +430,7 @@
       <p>
         Was gehört alles in einen Lebenslauf? Hier geben wir Dir eine Übersicht.
       </p>
-      <b-img
+      <b-img-lazy
         style="width: 50vw; max-width: 350px"
         class="p-2"
         right
