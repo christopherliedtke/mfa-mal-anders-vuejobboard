@@ -523,10 +523,33 @@
           {{ job.company.zipCode + " " + job.company.location }}
           <br />
         </p>
+        <b-btn
+          class="mb-4"
+          size="sm"
+          variant="secondary"
+          @click="showMap = !showMap"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-geo-alt-fill mr-1"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"
+            /></svg
+          >Karte anzeigen</b-btn
+        >
         <MapJobSingle
-          v-if="job.company && job.company.geoCodeLat && job.company.geoCodeLng"
+          v-if="
+            showMap &&
+              job.company &&
+              job.company.geoCodeLat &&
+              job.company.geoCodeLng
+          "
           :job="job"
-          class="mt-4 mb-5"
+          class="mb-5"
         />
       </div>
       <div class="d-flex flex-wrap flex-column flex-md-row align-items-center">
@@ -557,8 +580,6 @@
         />
       </div>
     </article>
-
-    <Head :link="link" />
   </div>
 </template>
 
@@ -605,15 +626,8 @@
       return {
         employmentTypeOptions,
         companySizeOptions,
-        link: [
-          {
-            id: "mapsjs-ui",
-            rel: "stylesheet",
-            href: "https://js.api.here.com/v3/3.1/mapsjs-ui.css",
-            type: "text/css"
-          }
-        ],
-        textToSlug
+        textToSlug,
+        showMap: false
       };
     },
     mounted() {

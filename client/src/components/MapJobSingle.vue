@@ -2,6 +2,7 @@
   <div class="map">
     <!--In the following div the HERE Map will render-->
     <div v-show="showMap" ref="hereMap" class="map-container"></div>
+    <Head :link="link" />
   </div>
 </template>
 
@@ -19,7 +20,15 @@
         map: null,
         mapTypes: null,
         H: null,
-        showMap: true
+        showMap: true,
+        link: [
+          {
+            id: "mapsjs-ui",
+            rel: "stylesheet",
+            href: "https://js.api.here.com/v3/3.1/mapsjs-ui.css",
+            type: "text/css"
+          }
+        ]
       };
     },
     watch: {
