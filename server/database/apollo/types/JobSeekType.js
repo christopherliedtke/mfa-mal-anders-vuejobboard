@@ -118,6 +118,7 @@ const JobSeekType = gql`
   type JobSeeksWithCount {
     jobSeeks: [JobSeek]
     count: Float
+    location: String
   }
 `;
 

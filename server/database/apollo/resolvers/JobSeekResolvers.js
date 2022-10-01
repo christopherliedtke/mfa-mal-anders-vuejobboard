@@ -19,10 +19,15 @@ const JobSeekResolvers = {
       return jobSeek;
     },
     publicJobSeeks: async (root, args) => {
+      let location;
       if (args.location) {
         const locations = await getLocation(args.location);
 
         if (locations) {
+          location =
+            locations[0].address.city ||
+            locations[0].address.county ||
+            locations[0].address.state;
           args.position = locations[0].position;
         } else {
           throw new UserInputError(
@@ -79,7 +84,7 @@ const JobSeekResolvers = {
 
       jobSeeks = sliceJobSeeks(jobSeeks, args.limit || undefined, args.skip);
 
-      return { jobSeeks, count };
+      return { jobSeeks, count, location };
     },
     myJobSeek: async (root, args, context) => {
       if (!context.user._id) {

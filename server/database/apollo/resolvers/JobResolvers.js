@@ -28,10 +28,16 @@ const JobResolvers = {
       return job;
     },
     publicJobs: async (root, args) => {
+      let location;
       if (args.location) {
         const locations = await getLocation(args.location);
 
         if (locations) {
+          // console.log(locations[0]);
+          location =
+            locations[0].address.city ||
+            locations[0].address.county ||
+            locations[0].address.state;
           args.position = locations[0].position;
         } else {
           throw new UserInputError(
@@ -118,6 +124,7 @@ const JobResolvers = {
       return {
         jobs,
         count,
+        location,
       };
     },
     myJob: async (root, args, context) => {

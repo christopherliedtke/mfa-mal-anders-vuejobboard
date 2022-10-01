@@ -469,9 +469,7 @@
           },
           {
             rel: "canonical",
-            href: `${
-              this.$config.website.url
-            }/stellengesuche${this.getCanonical()}`,
+            href: `${this.$config.website.url}${this.canonical}`,
             id: "canonical"
           }
         ];
@@ -490,6 +488,19 @@
         }
 
         return breadcrumbs;
+      },
+      canonical() {
+        let canonical = "/stellengesuche";
+
+        if (this.filter.ort && !this.loading) {
+          if (!this.jobSeeks) {
+            canonical = "/404";
+          } else {
+            canonical += "/ort/" + textToSlug(this.filter.ort);
+          }
+        }
+
+        return canonical;
       }
     },
     async created() {
@@ -541,6 +552,7 @@
                       slug
                     }
                     count
+                    location
                   }
                 }
               `
@@ -561,12 +573,18 @@
             throw new Error();
           }
 
-          this.count = jobSeeks.data.data.publicJobSeeks.count;
+          // console.log(jobSeeks.data.data.publicJobSeeks);
 
           this.jobSeeks = [
             ...(this.jobSeeks || ""),
             ...jobSeeks.data.data.publicJobSeeks.jobSeeks
           ];
+
+          this.count = jobSeeks.data.data.publicJobSeeks.count;
+
+          if (jobSeeks.data.data.publicJobSeeks.location) {
+            this.filter.ort = jobSeeks.data.data.publicJobSeeks.location;
+          }
         } catch (err) {
           this.$root.$bvToast.toast(
             `Beim Laden der Stellengesuche ist ein Fehler aufgetreten. Bitte versuchen Sie die Seite neu zu laden.`,
@@ -643,16 +661,6 @@
         return value.replace(/(^[a-z]| [a-z]|-[a-z])/g, letter =>
           letter.toUpperCase()
         );
-      },
-      getCanonical() {
-        let canonical = "";
-        const location = this.$route.params.location || this.$route.query.ort;
-
-        if (location) {
-          canonical += "/ort/" + location.toLowerCase();
-        }
-
-        return canonical;
       }
     }
   };

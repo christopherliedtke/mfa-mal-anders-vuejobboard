@@ -11,8 +11,7 @@
                   .map(profession => profession.value)
                   .join(" & ")
           }}
-          Jobs {{ filter.ort ? " in " + filter.ort : "" }} gesucht –
-          gefunden!</span
+          Jobs {{ filter.ort ? " in " + filter.ort : "" }}</span
         >
       </h1>
       <b-breadcrumb :items="breadcrumbs" class="text-capitalize"></b-breadcrumb>
@@ -916,8 +915,12 @@
 
         // if (this.berufsgruppe.active.length === 1) {
         //   canonical += this.berufsgruppe.active[0].toLowerCase();
-        if (this.filter.ort) {
-          canonical += "/" + textToSlug(this.filter.ort);
+        if (this.filter.ort && !this.loading) {
+          if (!this.jobs) {
+            canonical = "/404";
+          } else {
+            canonical += "/" + textToSlug(this.filter.ort);
+          }
         }
 
         // }
@@ -1017,6 +1020,7 @@
                       }
                     }
                     count
+                    location
                   }
                 }
               `
@@ -1037,8 +1041,14 @@
             throw new Error();
           }
 
+          // console.log(jobs.data.data.publicJobs);
+
           this.jobs = [...(this.jobs || ""), ...jobs.data.data.publicJobs.jobs];
           this.count = jobs.data.data.publicJobs.count;
+
+          if (jobs.data.data.publicJobs.location) {
+            this.filter.ort = jobs.data.data.publicJobs.location;
+          }
         } catch (err) {
           this.$root.$bvToast.toast(
             `Beim Laden der Stellenangebote ist ein Fehler aufgetreten. Bitte versuche die Seite neu zu laden.`,

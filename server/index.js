@@ -250,6 +250,10 @@ async function startServer() {
   }
 
   // #Serve the built static files in production
+  app.use("/404", (req, res) => {
+    // res.status(404).sendFile(__dirname + "/public/index.html");
+    res.status(404).sendFile(__dirname + "/public/index.html");
+  });
   app.use("*", (req, res) => {
     res.sendFile(__dirname + "/public/index.html");
   });
