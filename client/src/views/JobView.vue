@@ -206,14 +206,14 @@
               "Das Stellenangebot konnte nicht gefunden werden bzw. ist bereits abgelaufen.",
               {
                 title: `Stellenangebot abgelaufen`,
-                variant: "info",
-                toaster: "b-toaster-bottom-right",
-                solid: false,
-                noAutoHide: true
+                variant: "danger",
+                toaster: "b-toaster-top-right",
+                solid: true,
+                noAutoHide: false
               }
             );
 
-            this.$router.push("/jobs");
+            this.$router.push("/404");
           }
 
           this.job = job.data.data.publicJob;

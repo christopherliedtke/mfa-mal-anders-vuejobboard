@@ -33,7 +33,7 @@ const JobResolvers = {
         const locations = await getLocation(args.location);
 
         if (locations) {
-          // console.log(locations[0]);
+          console.log(locations[0]);
           location =
             locations[0].address.city ||
             locations[0].address.county ||

@@ -69,7 +69,9 @@
           {
             id: "canonical",
             rel: "canonical",
-            href: `${this.$config.website.url}/stellengesuche/gesuch/${this.jobSeek._id}/${this.jobSeek.slug}`
+            href: this.error
+              ? `${this.$config.website.url}/404`
+              : `${this.$config.website.url}/stellengesuche/gesuch/${this.jobSeek._id}/${this.jobSeek.slug}`
           }
         ];
       }

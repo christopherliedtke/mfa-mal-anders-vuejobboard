@@ -133,7 +133,13 @@
             : "",
           {
             rel: "canonical",
-            href: `${this.$config.website.url}/karriere/fort-und-weiterbildung/fortbildungskatalog/${this.$route.params.id}/${this.$route.params.slug}`,
+            href: this.error
+              ? `${this.$config.website.url}/404`
+              : `${
+                  this.$config.website.url
+                }/karriere/fort-und-weiterbildung/fortbildungskatalog/${
+                  this.$route.params.id
+                }/${this.training ? this.training.slug : ""}`,
             id: "canonical"
           }
         ];
@@ -168,6 +174,7 @@
                         effort
                         cost
                         extUrl
+                        slug
                     }
                 }
             `

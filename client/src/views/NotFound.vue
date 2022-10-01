@@ -1,24 +1,26 @@
 <template>
   <div class="container-fluid not-found" style="height: 100vh">
     <div class="container d-flex flex-column align-items-center">
-      <h1 class="display-1 bold text-light text-center mt-5 pt-lg-5">
-        Seite nicht gefunden
+      <h1 class="display-2 bold text-light text-center mt-5 pt-lg-5">
+        404 – Seite nicht gefunden
       </h1>
       <b-img
         class="mb-5"
         fluid
         src="@/assets/img/404_page_not_found_.svg"
-        style="max-height: 300px"
+        style="max-height: 250px"
       />
       <div class="text-center mx-auto" style="max-width: 500px">
         <p class="text-light bold">
           Tut uns Leid, diese Seite konnten wir nicht finden. Auf unserer
           Startseite gibt es mehr zu entdecken.
         </p>
-        <b-button class="mr-2" variant="primary" to="/"
+        <b-button class="mr-2 mb-2" variant="primary" to="/"
           >Zur Startseite</b-button
         >
-        <b-button to="/jobs" variant="secondary">Zur Stellenbörse</b-button>
+        <b-button class="mb-2" to="/jobs" variant="secondary"
+          >Zur Stellenbörse</b-button
+        >
       </div>
     </div>
 
