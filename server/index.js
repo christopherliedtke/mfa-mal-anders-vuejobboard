@@ -9,7 +9,6 @@ const {
   ApolloServerPluginLandingPageGraphQLPlayground,
 } = require("apollo-server-core");
 
-const { logger } = require("./middleware/logger");
 const morgan = require("morgan");
 
 const app = express();
@@ -120,7 +119,6 @@ if (process.env.PRERENDER_ACTIVE === "on") {
 
 // #Log requests
 if (process.env.HTTP_LOGGER === "on") {
-  // app.use(logger);
   app.use(
     morgan("tiny", {
       skip: function (req, res) {
