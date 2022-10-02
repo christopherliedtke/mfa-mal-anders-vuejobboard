@@ -9,6 +9,9 @@ const {
   ApolloServerPluginLandingPageGraphQLPlayground,
 } = require("apollo-server-core");
 
+const { logger } = require("./middleware/logger");
+const morgan = require("morgan");
+
 const app = express();
 
 const sslRedirect = require("heroku-ssl-redirect");
@@ -54,6 +57,7 @@ const wpContentCache = require("./cache/wpContentCache");
 //   "http://prerender.mfa-mal-anders.de"
 // );
 const prerender = require("prerender-node");
+
 prerender.crawlerUserAgents = config.prerender.userAgents;
 
 // # SSL redirect
@@ -112,6 +116,18 @@ if (config.unpublishedJobSeeksReminder.active) {
 // #Prerender w/o googlebot
 if (process.env.PRERENDER_ACTIVE === "on") {
   app.use(prerender);
+}
+
+// #Log requests
+if (process.env.HTTP_LOGGER === "on") {
+  // app.use(logger);
+  app.use(
+    morgan("tiny", {
+      skip: function (req, res) {
+        return res.statusCode < 400;
+      },
+    })
+  );
 }
 
 // #Routes w/o csrf protection && cors protection && compression && express.json

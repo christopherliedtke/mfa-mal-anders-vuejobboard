@@ -149,7 +149,13 @@ const UserResolvers = {
       context.session.token = token;
       user.token = token;
 
-      console.info(`User login: ${user._id} ---> ${user.email}`);
+      console.info("User login ---> ", {
+        _id: user._id,
+        email: user.email,
+        isEmployee: user.isEmployee,
+        isEmployer: user.isEmployer,
+        isEducational: user.isEducational,
+      });
 
       return user;
     },
@@ -243,7 +249,13 @@ const UserResolvers = {
       context.session.token = token;
       user.token = token;
 
-      console.info(`User registered: ${user}`);
+      console.info("User registered ---> ", {
+        _id: user._id,
+        email: user.email,
+        isEmployee: user.isEmployee,
+        isEmployer: user.isEmployer,
+        isEducational: user.isEducational,
+      });
 
       return user;
     },
@@ -254,7 +266,10 @@ const UserResolvers = {
         { new: true }
       );
 
-      console.info(`User activated: ${user._id} ---> ${user.email}`);
+      console.info("User activated ---> ", {
+        _id: user._id,
+        email: user.email,
+      });
 
       delete user.password;
 
@@ -449,9 +464,17 @@ const UserResolvers = {
         // const emailSent = await mg.messages().send(emailData);
         const emailSent = await sesMailTransporter.sendMail(emailData);
 
-        console.info("sendMail() for user activation email: ", user, emailSent);
+        console.info(
+          "sendMail() for user activation email: ",
+          user.email,
+          emailSent
+        );
       } catch (err) {
-        console.error("Error on sending account activation email: ", user, err);
+        console.error(
+          "Error on sending account activation email: ",
+          user.email,
+          err
+        );
       }
 
       return { _id: user._id };
@@ -535,7 +558,7 @@ const UserResolvers = {
       Training.deleteMany({ user: deletedUser._id });
       Job.deleteMany({ userId: deletedUser._id, status: "unpublished" });
 
-      console.info("deletedUser: ", deletedUser);
+      console.info("deletedUser ---> ", deletedUser._id);
 
       return deletedUser;
     },
