@@ -15,15 +15,15 @@
               blank-height="110"
             />
           </b-link>
-          <h2 class="h6" style="line-height: 1.3">
+          <p class="h6" style="line-height: 1.3">
             Das Stellen- und Karriereportal für <br />
             Medizinische Fachangestellte | <br />
             Zahnmedizinische Fachangestellte | <br />
             ArzthelferIn
-          </h2>
+          </p>
           <div class="small" style="font-size: 65%">
             <div class="pt-5 mt-5">
-              <h2 class="h6">Hinweis</h2>
+              <p class="h6">Hinweis</p>
               <p>
                 Hinter den mit (*) gekennzeichneten Links stecken
                 Affiliate-Links. Das heißt, wenn Du ein Produkt über den Link

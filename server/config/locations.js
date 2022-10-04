@@ -518,7 +518,7 @@ module.exports = [
   "Rinteln",
   "Unterhaching",
   "Horb am Neckar",
-  "St. Wendel",
+  "Sankt Wendel",
   "Helmstedt",
   "Brilon",
   "Idstein",

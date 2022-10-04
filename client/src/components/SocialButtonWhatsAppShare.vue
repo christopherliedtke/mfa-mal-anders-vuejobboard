@@ -8,6 +8,7 @@
     "
     target="_blank"
     aria-label="WhatsApp"
+    rel="nofollow"
     @click="track('share', 'whatsapp', sharePath ? sharePath : $route.fullPath)"
   >
     <svg

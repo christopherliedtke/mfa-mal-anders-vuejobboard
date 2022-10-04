@@ -3,7 +3,7 @@
     v-if="!$store.state.auth.loggedIn || !$store.state.auth.user.isEmployee"
     class="newsletter-signup"
   >
-    <h2 :class="['mb-3 h3', { bold: titleBold }]">{{ title }}</h2>
+    <p :class="['mb-3 h3', { bold: titleBold }]">{{ title }}</p>
     <p v-if="intro">{{ intro }}</p>
     <b-form>
       <label class="sr-only sr-only-focusable" for="email2"

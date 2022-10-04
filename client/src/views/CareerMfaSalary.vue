@@ -824,7 +824,7 @@
               <li>Gastroenterologische Endoskopie</li>
               <li>
                 <b-link
-                  to="/karriere/fort-und-weiterbildung/ueberblick/onkologischer-fachassistentin"
+                  to="/karriere/fort-und-weiterbildung/ueberblick/mfa-in-der-onkologie"
                   >Onkologie</b-link
                 >
               </li>

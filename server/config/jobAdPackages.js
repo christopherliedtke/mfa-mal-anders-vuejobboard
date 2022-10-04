@@ -72,7 +72,7 @@ module.exports = [
         html: "<strong>Basis & Standard Features</strong>",
       },
       {
-        html: '<strong class="text-light bg-secondary">Google Ads & Social Media Kampagne inkl. 200€ Start-Budget</strong> &ndash; Ihre Stelle als professionelle Werbeanzeige in den Google Suchergebnissen und auf Facebook & Instagram <strong class="text-light bg-secondary">speziell für Ihren Standort</strong>',
+        html: '<strong class="text-light bg-secondary">Maximale Reichweite</strong> mit<br><strong class="text-light bg-secondary">Google Ads & Social Media Kampagne inkl. 200€ Start-Budget</strong> &ndash; Ihre Stelle als professionelle Werbeanzeige in den Google Suchergebnissen und auf Facebook & Instagram <strong class="text-light bg-secondary">speziell für Ihren Standort</strong>',
         icon: "plus-circle",
         more: true,
       },

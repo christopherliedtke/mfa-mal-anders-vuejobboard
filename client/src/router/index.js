@@ -580,6 +580,10 @@ const routes = [
     }
   },
   {
+    path: "/karriere/fort-und-weiterbildung/fortbildungskalender",
+    redirect: "/karriere/fort-und-weiterbildung/fortbildungskatalog"
+  },
+  {
     path: "/karriere/fort-und-weiterbildung/fortbildungskatalog",
     name: "CareerTrainingCatalogue",
     component: CareerTrainingCatalogue,

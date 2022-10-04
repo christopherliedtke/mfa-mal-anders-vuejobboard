@@ -10,6 +10,7 @@
       }`
     "
     target="_blank"
+    rel="nofollow"
     @click="track('share', 'facebook', sharePath ? sharePath : $route.fullPath)"
   >
     <svg

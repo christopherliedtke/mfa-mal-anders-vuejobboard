@@ -245,7 +245,7 @@
         palliativmedizinischen Versorgung der Patienten übernehmen. Die
         Fortbildung zur
         <b-link
-          to="/karriere/fort-und-weiterbildung/ueberblick/onkologischer-fachassistentin"
+          to="/karriere/fort-und-weiterbildung/ueberblick/mfa-in-der-onkologie"
           >Fachassistentin Onkologie</b-link
         >
         macht Dich zur Spezialistin dafür. Du erweiterst dein Wissen im Beruf
@@ -288,7 +288,7 @@
           >Fernstudiengänge</a
         >, wie der
         <b-link
-          to="/karriere/fort-und-weiterbildungen/fachwirtin-im-gesundheits-und-sozialwesen"
+          to="/karriere/fort-und-weiterbildung/ueberblick/fachwirtin-im-gesundheits-und-sozialwesen"
           >Fachwirt im Gesundheits- und Sozialwesen</b-link
         >.
       </p>
@@ -984,6 +984,11 @@
                     "item": "https://www.mfa-mal-anders.de/karriere/fort-und-weiterbildung"
                 }]
             }`
+          },
+          {
+            id: "canonical",
+            rel: "canonical",
+            href: `${this.$config.website.url}/karriere/fort-und-weiterbildung`
           }
         ]
       };

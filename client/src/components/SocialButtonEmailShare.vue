@@ -10,6 +10,7 @@
       }: ${url}${sharePath ? sharePath : ''}`
     "
     target="_blank"
+    rel="nofollow"
     aria-label="E-Mail"
     @click="track('share', 'email', sharePath)"
   >

@@ -23,12 +23,9 @@
         />
       </div>
       <div class="col-9 col-md-10 col-xl-10 order-1 order-md-2 pr-0 pr-md-2">
-        <h2
-          class="h1 bold mb-1"
-          style="overflow: hidden; word-wrap: break-word"
-        >
+        <h1 class="bold mb-1" style="overflow: hidden; word-wrap: break-word">
           {{ jobSeek.title }}
-        </h2>
+        </h1>
         <p class="lead text-muted mb-0">
           {{ jobSeek.publicFirstName }} {{ jobSeek.publicLastName }}
         </p>

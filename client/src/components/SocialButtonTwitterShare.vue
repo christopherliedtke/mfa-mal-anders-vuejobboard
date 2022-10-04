@@ -10,6 +10,7 @@
       }%0A%0A&hashtags=mfa,arzthelferIn,mfamalanders`
     "
     target="_blank"
+    rel="nofollow"
     aria-label="Twitter"
     @click="track('share', 'twitter', sharePath)"
   >

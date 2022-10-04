@@ -22,7 +22,7 @@
           :aria-label="training.title"
           class="text-reset stretched-link"
         >
-          <h2 class="card-title h4">{{ training.title }}</h2>
+          <p class="card-title h4">{{ training.title }}</p>
         </b-link>
         <!-- eslint-disable-next-line -->
           <p class="card-text" v-html="training.excerpt"></p>

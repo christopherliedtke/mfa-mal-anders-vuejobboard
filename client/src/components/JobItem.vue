@@ -395,6 +395,7 @@
           :to="`/kurzbewerbung/${job._id}`"
           class="mr-2 mb-2"
           :disabled="!$route.meta.public"
+          rel="nofollow"
           ><svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
