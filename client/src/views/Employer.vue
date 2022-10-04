@@ -946,8 +946,8 @@
     <ScrollTopButton />
 
     <Head
-      title="MFA & ZFA finden – Stellenanzeige schalten!"
-      desc="8 Tipps + Gratis Muster Stellenanzeige | MFA mal anders ist das Jobportal für Ihre Suche nach Zahnmedizinischen | Medizinischen Fachangestellten."
+      title="MFA & ZFA gesucht? – Stellenanzeige schalten!"
+      desc="MFA | ZFA gesucht? Jetzt Stellenanzeige schalten auf MFA mal anders! Die exklusive Jobbörse für Zahnmedizinischen | Medizinischen Fachangestellten."
       img=""
       :script="snippet"
     />
