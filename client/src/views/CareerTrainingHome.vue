@@ -24,9 +24,95 @@
     </div>
 
     <div class="container pb-3 pb-lg-5">
-      <h2 class="display-3 bold text-gray-dark">
+      <h2 class="display-3 bold text-gray-dark mb-4">
         Dein nächster Karriereschritt
       </h2>
+
+      <nav class="content mb-4 ml-lg-4 py-4 px-3 px-lg-5 float-lg-right">
+        <h2>Inhalt</h2>
+        <ol class="text-tertiary pl-4 m-0">
+          <li>
+            <b-link to="#ueberblick"
+              >Fort- und Weiterbildungen für MFA & ZFA – Der große
+              Überblick</b-link
+            >
+          </li>
+          <li>
+            <b-link to="#fortbildung-weiterbildung-studium"
+              >Fortbildung, Weiterbildung oder Studium?</b-link
+            >
+            <ol>
+              <li>
+                <b-link to="#fortbildung">Fortbildung</b-link>
+              </li>
+              <li>
+                <b-link to="#weiterbildung">Weiterbildung </b-link>
+              </li>
+              <li>
+                <b-link to="#studium">Studium</b-link>
+              </li>
+              <li>
+                <b-link to="#das-richtige-fuer-Dich"
+                  >Was ist das Richtige für Dich?</b-link
+                >
+              </li>
+            </ol>
+          </li>
+
+          <li>
+            <b-link to="#foerderung-finanzierung"
+              >Förderung und Finanzierung von Weiterbildungen</b-link
+            >
+            <ol>
+              <li>
+                <b-link to="#chef-fragen">Beim Chef nachfragen</b-link>
+              </li>
+              <li>
+                <b-link to="#bafoeg">Aufstiegs-BAföG</b-link>
+              </li>
+              <li>
+                <b-link to="#bildungsgutschein">Bildungsgutschein</b-link>
+              </li>
+              <li>
+                <b-link to="#bildungsprämie"
+                  >Prämiengutschein (Bildungsprämie)</b-link
+                >
+              </li>
+              <li>
+                <b-link to="#bildungskredit">Bildungskredit</b-link>
+              </li>
+              <li>
+                <b-link to="#aufstiegsstipendium">Aufstiegsstipendium</b-link>
+              </li>
+              <li>
+                <b-link to="#weiterbildungsstipendium"
+                  >Weiterbildungsstipendium</b-link
+                >
+              </li>
+              <li>
+                <b-link to="#steuererklaerung"
+                  >Kostenerstattung über die Steuererklärung</b-link
+                >
+              </li>
+              <li>
+                <b-link to="#qualifizierungsoffensive"
+                  >WEITER.BILDUNG! – die Qualifizierungs­offensive</b-link
+                >
+              </li>
+            </ol>
+          </li>
+          <li>
+            <b-link to="#bildungsurlaub">Bildungsurlaub</b-link>
+          </li>
+          <li>
+            <b-link to="#umschulung">Umschulung zur MFA & ZFA</b-link>
+          </li>
+          <li>
+            <b-link to="#quereinstieg">Quereinstieg als MFA & ZFA</b-link>
+          </li>
+        </ol>
+      </nav>
+
       <p>
         Als Zahnmedizinische | Medizinische Fachangestellte hast Du viele
         Möglichkeiten Dich zu qualifizieren und im Job aufzusteigen oder sogar
@@ -42,93 +128,8 @@
         Chancen zu bekommen.
       </p>
 
-      <nav class="content my-4 py-4 px-3 px-lg-5">
-        <h2 class="h1">Inhalt</h2>
-        <ol class="text-tertiary pl-4 m-0">
-          <li class="lead mt-3">
-            <b-link to="#ueberblick"
-              >Fort- und Weiterbildungen für MFA & ZFA – Der große
-              Überblick</b-link
-            >
-          </li>
-          <li class="lead mt-3">
-            <b-link to="#fortbildung-weiterbildung-studium"
-              >Fortbildung, Weiterbildung oder Studium?</b-link
-            >
-            <ol>
-              <li class="lead mt-3">
-                <b-link to="#fortbildung">Fortbildung</b-link>
-              </li>
-              <li class="lead mt-3">
-                <b-link to="#weiterbildung">Weiterbildung </b-link>
-              </li>
-              <li class="lead mt-3">
-                <b-link to="#studium">Studium</b-link>
-              </li>
-              <li class="lead mt-3">
-                <b-link to="#das-richtige-fuer-Dich"
-                  >Was ist das Richtige für Dich?</b-link
-                >
-              </li>
-            </ol>
-          </li>
-
-          <li class="lead mt-3">
-            <b-link to="#foerderung-finanzierung"
-              >Förderung und Finanzierung von Weiterbildungen</b-link
-            >
-            <ol>
-              <li class="lead mt-3">
-                <b-link to="#chef-fragen">Beim Chef nachfragen</b-link>
-              </li>
-              <li class="lead mt-3">
-                <b-link to="#bafoeg">Aufstiegs-BAföG</b-link>
-              </li>
-              <li class="lead mt-3">
-                <b-link to="#bildungsgutschein">Bildungsgutschein</b-link>
-              </li>
-              <li class="lead mt-3">
-                <b-link to="#bildungsprämie"
-                  >Prämiengutschein (Bildungsprämie)</b-link
-                >
-              </li>
-              <li class="lead mt-3">
-                <b-link to="#bildungskredit">Bildungskredit</b-link>
-              </li>
-              <li class="lead mt-3">
-                <b-link to="#aufstiegsstipendium">Aufstiegsstipendium</b-link>
-              </li>
-              <li class="lead mt-3">
-                <b-link to="#weiterbildungsstipendium"
-                  >Weiterbildungsstipendium</b-link
-                >
-              </li>
-              <li class="lead mt-3">
-                <b-link to="#steuererklaerung"
-                  >Kostenerstattung über die Steuererklärung</b-link
-                >
-              </li>
-              <li class="lead mt-3">
-                <b-link to="#qualifizierungsoffensive"
-                  >WEITER.BILDUNG! – die Qualifizierungs­offensive</b-link
-                >
-              </li>
-            </ol>
-          </li>
-          <li class="lead mt-3">
-            <b-link to="#bildungsurlaub">Bildungsurlaub</b-link>
-          </li>
-          <li class="lead mt-3">
-            <b-link to="#umschulung">Umschulung zur MFA & ZFA</b-link>
-          </li>
-          <li class="lead mt-3">
-            <b-link to="#quereinstieg">Quereinstieg als MFA & ZFA</b-link>
-          </li>
-        </ol>
-      </nav>
-
       <!-- <BannerTrainingCatalogueLarge class="my-5" /> -->
-      <BannerJobSeeksLarge class="my-5" />
+      <BannerJobSeeksLarge class="my-4" />
 
       <h2 id="ueberblick">
         <span class="display-4 bold d-block mb-1"

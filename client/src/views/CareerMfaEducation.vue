@@ -22,6 +22,51 @@
         blank-height="630"
         offset="1000"
       />
+
+      <nav class="content mb-4 ml-lg-4 py-4 px-3 px-lg-5 float-lg-right">
+        <h2>Inhalt</h2>
+        <ol class="text-tertiary pl-4">
+          <li>
+            <b-link to="#aufgaben">Aufgaben</b-link>
+          </li>
+          <li>
+            <b-link to="#faehigkeiten">Fähigkeiten</b-link>
+          </li>
+          <li>
+            <b-link to="#ausbildung-ablauf">Ablauf der Ausbildung </b-link>
+            <ol>
+              <li>
+                <b-link to="#ausbildung-inhalte"
+                  >Inhalte der Ausbildung
+                </b-link>
+              </li>
+              <li>
+                <b-link to="#lernfelder">Lernfelder </b-link>
+              </li>
+              <li>
+                <b-link to="#ausbildung-pruefung"
+                  >Zwischen- und Abschlussprüfung in der Ausbildung
+                </b-link>
+              </li>
+            </ol>
+          </li>
+
+          <li>
+            <b-link to="#ausbildung-gehalt">Gehalt in der Ausbildung </b-link>
+          </li>
+          <li>
+            <b-link to="#ausbildung-gehalt-danach"
+              >Gehalt nach der Ausbildung
+            </b-link>
+          </li>
+          <li>
+            <b-link to="#perspektiven"
+              >Perspektiven nach der Ausbildung
+            </b-link>
+          </li>
+        </ol>
+      </nav>
+
       <p>
         Die Medizinische Fachangestellte, kurz gesagt MFA oder in der früheren
         Berufsbezeichnung bis ins Jahr 2006 ArzthelferIn genannt, ist ein
@@ -34,50 +79,6 @@
         gehört und wie die Ausbildung zur Medizinischen Fachangestellten
         aussieht, beschreiben wir hier.
       </p>
-
-      <nav class="content my-4 py-4 px-3 px-lg-5">
-        <h2 class="h1">Inhalt</h2>
-        <ol class="text-tertiary pl-4">
-          <li class="lead mt-3">
-            <b-link to="#aufgaben">Aufgaben</b-link>
-          </li>
-          <li class="lead mt-3">
-            <b-link to="#faehigkeiten">Fähigkeiten</b-link>
-          </li>
-          <li class="lead mt-3">
-            <b-link to="#ausbildung-ablauf">Ablauf der Ausbildung </b-link>
-            <ol>
-              <li class="lead mt-3">
-                <b-link to="#ausbildung-inhalte"
-                  >Inhalte der Ausbildung
-                </b-link>
-              </li>
-              <li class="lead mt-3">
-                <b-link to="#lernfelder">Lernfelder </b-link>
-              </li>
-              <li class="lead mt-3">
-                <b-link to="#ausbildung-pruefung"
-                  >Zwischen- und Abschlussprüfung in der Ausbildung
-                </b-link>
-              </li>
-            </ol>
-          </li>
-
-          <li class="lead mt-3">
-            <b-link to="#ausbildung-gehalt">Gehalt in der Ausbildung </b-link>
-          </li>
-          <li class="lead mt-3">
-            <b-link to="#ausbildung-gehalt-danach"
-              >Gehalt nach der Ausbildung
-            </b-link>
-          </li>
-          <li class="lead mt-3">
-            <b-link to="#perspektiven"
-              >Perspektiven nach der Ausbildung
-            </b-link>
-          </li>
-        </ol>
-      </nav>
 
       <h2 id="aufgaben">
         Aufgaben als Medizinische Fachangestellte (MFA)

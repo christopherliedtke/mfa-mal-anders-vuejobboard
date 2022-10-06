@@ -525,6 +525,7 @@
           <br />
         </p>
         <b-btn
+          v-if="!showMap"
           class="mb-4"
           size="sm"
           variant="secondary"

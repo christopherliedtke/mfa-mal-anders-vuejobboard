@@ -39,21 +39,7 @@
     //   }
     // },
     async created() {
-      if (this.$store.state.auth.loggedIn && this.$store.state.auth.token) {
-        const user = await this.$store.dispatch("fetchUserFromToken");
-
-        if (!user.data.data.meFromToken) {
-          this.$store.dispatch("logout");
-        } else {
-          this.$matomo &&
-            this.$matomo.setUserId(user.data.data.meFromToken._id);
-        }
-
-        if (this.$store.state.auth.loggedIn) {
-          this.$store.dispatch("getStarredJobs");
-        }
-      }
-
+      await this.checkLoggedIn();
       // #GA4 no cookies
       // this.gtag.query("consent", "default", {
       //   ad_storage: "denied",
@@ -65,11 +51,39 @@
     },
     mounted() {
       document.addEventListener("visibilitychange", this.checkVersion);
+      document.addEventListener("visibilitychange", this.checkLoggedIn);
     },
     destroyed() {
       document.removeEventListener("visibilitychange", this.checkVersion);
+      document.removeEventListener("visibilitychange", this.checkLoggedIn);
     },
     methods: {
+      async checkLoggedIn() {
+        if (this.$store.state.auth.loggedIn || this.$store.state.auth.token) {
+          const user = await this.$store.dispatch("fetchUserFromToken");
+
+          if (!user.data.data.meFromToken) {
+            this.$store.dispatch("logout", "/auth/login");
+            this.$root.$bvToast.toast(
+              "Ihre Sitzung ist abgelaufen. Bitte loggen Sie sich erneut ein.",
+              {
+                title: `Sitzung abgelaufen`,
+                variant: "info",
+                toaster: "b-toaster-bottom-right",
+                solid: false,
+                noAutoHide: true
+              }
+            );
+          } else {
+            this.$matomo &&
+              this.$matomo.setUserId(user.data.data.meFromToken._id);
+          }
+
+          if (this.$store.state.auth.loggedIn) {
+            this.$store.dispatch("getStarredJobs");
+          }
+        }
+      },
       async checkVersion() {
         if (document.visibilityState !== "visible") {
           return;

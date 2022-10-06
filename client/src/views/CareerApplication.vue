@@ -25,6 +25,93 @@
         blank-height="630"
         offset="1000"
       />
+
+      <nav class="content mb-4 mr-lg-4 py-4 px-3 px-lg-5 float-lg-left">
+        <h2>Inhalt</h2>
+        <ol class="text-tertiary pl-4">
+          <li>
+            <b-link to="#anschreiben">Bewerbungsschreiben</b-link>
+            <ol>
+              <li>
+                <b-link to="#anschreiben-briefkopf">Briefkopf</b-link>
+              </li>
+              <li>
+                <b-link to="#anschreiben-betreff">Betreff</b-link>
+              </li>
+              <li>
+                <b-link to="#anschreiben-anrede">Anrede</b-link>
+              </li>
+              <li>
+                <b-link to="#anschreiben-einleitung">Einleitung</b-link>
+              </li>
+              <li>
+                <b-link to="#anschreiben-hauptteil">Hauptteil</b-link>
+                <ol>
+                  <li>
+                    <b-link to="#anschreiben-hauptteil-qualifikationen"
+                      >Qualifikationen</b-link
+                    >
+                  </li>
+                  <li>
+                    <b-link to="#anschreiben-hauptteil-motivation"
+                      >Motivation & Ziele</b-link
+                    >
+                  </li>
+                </ol>
+              </li>
+              <li>
+                <b-link to="#anschreiben-schlussteil">Schlussteil</b-link>
+                <ol>
+                  <li>
+                    <b-link to="#anschreiben-schlussteil-gehaltsvorstellungen"
+                      >Gehaltsvorstellungen</b-link
+                    >
+                  </li>
+                  <li>
+                    <b-link to="#anschreiben-schlussteil-eintrittsdatum"
+                      >Eintrittsdatum</b-link
+                    >
+                  </li>
+                  <li>
+                    <b-link to="#anschreiben-schlussteil-letzter-satz"
+                      >Letzter Satz</b-link
+                    >
+                  </li>
+                </ol>
+              </li>
+            </ol>
+          </li>
+          <li>
+            <b-link to="#lebenslauf">Lebenslauf</b-link>
+          </li>
+          <ol>
+            <li>
+              <b-link to="#lebenslauf-aufbau-persoenliche-daten"
+                >Persönliche Daten</b-link
+              >
+            </li>
+            <li>
+              <b-link to="#lebenslauf-aufbau-berufliche-stationen"
+                >Berufliche Stationen</b-link
+              >
+            </li>
+            <li>
+              <b-link to="#lebenslauf-aufbau-bildung">Bildung</b-link>
+            </li>
+            <li>
+              <b-link to="#lebenslauf-aufbau-besondere-qualifikationen"
+                >Besondere Qualifikationen und Kenntnisse</b-link
+              >
+            </li>
+            <li>
+              <b-link to="#lebenslauf-aufbau-hobbys"
+                >Hobbys und weitere Interessen und Tätigkeiten</b-link
+              >
+            </li>
+          </ol>
+        </ol>
+      </nav>
+
       <p>
         Hast Du eine Stellenanzeige entdeckt, die Dir richtig gut gefällt? Am
         liebsten würdest Du Dich bewerben, wäre da nicht der innere
@@ -42,97 +129,14 @@
         werden.
       </p>
 
-      <nav class="content my-4 py-4 px-3 px-lg-5">
-        <h2 class="h1">Inhalt</h2>
-        <ol class="text-tertiary pl-4">
-          <li class="lead mt-3">
-            <b-link to="#anschreiben">Bewerbungsschreiben</b-link>
-            <ol>
-              <li class="lead mt-3">
-                <b-link to="#anschreiben-briefkopf">Briefkopf</b-link>
-              </li>
-              <li class="lead mt-3">
-                <b-link to="#anschreiben-betreff">Betreff</b-link>
-              </li>
-              <li class="lead mt-3">
-                <b-link to="#anschreiben-anrede">Anrede</b-link>
-              </li>
-              <li class="lead mt-3">
-                <b-link to="#anschreiben-einleitung">Einleitung</b-link>
-              </li>
-              <li class="lead mt-3">
-                <b-link to="#anschreiben-hauptteil">Hauptteil</b-link>
-                <ol>
-                  <li class="lead mt-3">
-                    <b-link to="#anschreiben-hauptteil-qualifikationen"
-                      >Qualifikationen</b-link
-                    >
-                  </li>
-                  <li class="lead mt-3">
-                    <b-link to="#anschreiben-hauptteil-motivation"
-                      >Motivation & Ziele</b-link
-                    >
-                  </li>
-                </ol>
-              </li>
-              <li class="lead mt-3">
-                <b-link to="#anschreiben-schlussteil">Schlussteil</b-link>
-                <ol>
-                  <li class="lead mt-3">
-                    <b-link to="#anschreiben-schlussteil-gehaltsvorstellungen"
-                      >Gehaltsvorstellungen</b-link
-                    >
-                  </li>
-                  <li class="lead mt-3">
-                    <b-link to="#anschreiben-schlussteil-eintrittsdatum"
-                      >Eintrittsdatum</b-link
-                    >
-                  </li>
-                  <li class="lead mt-3">
-                    <b-link to="#anschreiben-schlussteil-letzter-satz"
-                      >Letzter Satz</b-link
-                    >
-                  </li>
-                </ol>
-              </li>
-            </ol>
-          </li>
-          <li class="lead mt-3">
-            <b-link to="#lebenslauf">Lebenslauf</b-link>
-          </li>
-          <ol>
-            <li class="lead mt-3">
-              <b-link to="#lebenslauf-aufbau-persoenliche-daten"
-                >Persönliche Daten</b-link
-              >
-            </li>
-            <li class="lead mt-3">
-              <b-link to="#lebenslauf-aufbau-berufliche-stationen"
-                >Berufliche Stationen</b-link
-              >
-            </li>
-            <li class="lead mt-3">
-              <b-link to="#lebenslauf-aufbau-bildung">Bildung</b-link>
-            </li>
-            <li class="lead mt-3">
-              <b-link to="#lebenslauf-aufbau-besondere-qualifikationen"
-                >Besondere Qualifikationen und Kenntnisse</b-link
-              >
-            </li>
-            <li class="lead mt-3">
-              <b-link to="#lebenslauf-aufbau-hobbys"
-                >Hobbys und weitere Interessen und Tätigkeiten</b-link
-              >
-            </li>
-          </ol>
-        </ol>
-      </nav>
+      <div class="clearfix"></div>
 
       <blockquote>
         Bevor Du Dich nicht bewirbst und Dir einen tollen Job entgehen lässt,
         nutze unsere Vorlage für eine Top Bewerbung inklusive Anschreiben und
         Lebenslauf.
       </blockquote>
+
       <div class="d-flex justify-content-center mb-5">
         <b-img-lazy
           class="mx-3 shadow1"
@@ -162,7 +166,7 @@
           variant="primary"
           size="lg"
           @click="track('download', 'bewerbungsunterlagen')"
-          >Download</b-button
+          >Download Bewerbungsvorlage</b-button
         >
       </div>
 

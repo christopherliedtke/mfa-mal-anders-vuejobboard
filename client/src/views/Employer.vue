@@ -546,7 +546,7 @@
           BewerberInnen gemacht werden sollte, aber in Zeiten von großem
           Personalmangel im deutschen Gesundheitssystem gilt es erst einmal
           überhaupt, qualifizierte KandidatInnen zu generieren. Deshalb
-          ermöglichen wir die Kurzbewerbungen und empfehlen wir diese Option zu
+          ermöglichen wir die Kurzbewerbungen und empfehlen diese Option zu
           nutzen.
           <strong
             >Schließlich gilt: Lieber eine Bewerbung mehr aussortieren, als zu
@@ -557,10 +557,16 @@
           Beispiel für Kurzbewerbung zum durchklicken
         </h3>
         <SimpleApplicationDataForm
-          class="mt-3 mt-lg-4"
+          class="mt-3 mt-lg-4 mb-4"
           :job="{ profession: 'MFA', company: { name: 'Ihr Unternehmen' } }"
           :disabled="true"
         />
+        <p>
+          <strong>Tipp:</strong> Das Optimum an Reichweite erreichen Sie
+          übrigens bei aktivierten Kurzbewerbungen in Verbindung mit unserem
+          <b-link to="#professional"><strong>Professional-Paket</strong></b-link
+          >.
+        </p>
       </div>
     </div>
 

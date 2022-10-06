@@ -724,7 +724,7 @@
         } Stellenangebote${filter.ort ? ' | ' + filter.ort : ''}`
       "
       :desc="
-        `Aktuelle Jobs speziell für ${
+        `Attraktive Stellenangebote für ${
           berufsgruppe.active.includes('MFA')
             ? 'Medizinische Fachangestellte (MFA)'
             : ''

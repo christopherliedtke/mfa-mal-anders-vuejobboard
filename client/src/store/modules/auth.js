@@ -168,7 +168,7 @@ const actions = {
 
     return user;
   },
-  logout({ commit }) {
+  logout({ commit }, redirect) {
     axios.post("/graphql", {
       query: `
         mutation {
@@ -187,7 +187,7 @@ const actions = {
     localStorage.clear();
     localStorage.setItem("nl-pop", "false");
 
-    router.push("/").catch(() => {});
+    router.push(redirect || "/").catch(() => {});
   }
 };
 

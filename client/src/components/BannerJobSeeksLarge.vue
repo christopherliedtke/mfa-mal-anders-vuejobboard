@@ -32,7 +32,7 @@
     props: {
       header: {
         type: String,
-        default: "<strong>Stellengesuch schalten</strong>"
+        default: "<strong>Stellen&shy;gesuch schalten</strong>"
       }
     }
   };
