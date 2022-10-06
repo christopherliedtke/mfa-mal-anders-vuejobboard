@@ -128,7 +128,7 @@
                     jobSeek.fullTime ||
                       jobSeek.partTime ||
                       jobSeek.training ||
-                      jobseek.miniJob
+                      jobSeek.miniJob
                   "
                   >&nbsp;| </span
                 >Freie Mitarbeit</span
