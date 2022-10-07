@@ -16,10 +16,7 @@
         <div v-if="$route.query.role == 'education'" class="mt-4">
           <p class="text-left text-md-center">
             Sie möchten eine Fortbildung un unserem
-            <b-link
-              to="/karriere/fort-und-weiterbildung/fortbildungskatalog"
-              target="_blank"
-              class="bold"
+            <b-link to="/fortbildungskatalog" target="_blank" class="bold"
               >Fortbildungskatalog</b-link
             >
             veröffentlichen?

@@ -116,8 +116,7 @@
             <router-link to="/stellengesuche"
               >Stellengesuche | MFA & ZFA</router-link
             >
-            <router-link
-              to="/karriere/fort-und-weiterbildung/fortbildungskatalog"
+            <router-link to="/fortbildungskatalog"
               >Fortbildungskatalog</router-link
             >
             <router-link to="/karriere/bewerbung">Bewerbung</router-link>

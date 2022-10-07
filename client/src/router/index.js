@@ -581,10 +581,19 @@ const routes = [
   },
   {
     path: "/karriere/fort-und-weiterbildung/fortbildungskalender",
-    redirect: "/karriere/fort-und-weiterbildung/fortbildungskatalog"
+    redirect: "/fortbildungskatalog"
   },
   {
     path: "/karriere/fort-und-weiterbildung/fortbildungskatalog",
+    redirect: "/fortbildungskatalog"
+    // name: "CareerTrainingCatalogue",
+    // component: CareerTrainingCatalogue,
+    // meta: {
+    //   public: true
+    // }
+  },
+  {
+    path: "/fortbildungskatalog",
     name: "CareerTrainingCatalogue",
     component: CareerTrainingCatalogue,
     meta: {
@@ -593,6 +602,23 @@ const routes = [
   },
   {
     path: "/karriere/fort-und-weiterbildung/fortbildungskatalog/:id/:slug?",
+    redirect: to => {
+      return {
+        path: "/fortbildungskatalog/:id/:slug?",
+        params: {
+          id: to.params.id,
+          slug: to.params.slug
+        }
+      };
+    }
+    // name: "CareerTrainingCatalogueItem",
+    // component: CareerTrainingCatalogueItem,
+    // meta: {
+    //   public: true
+    // }
+  },
+  {
+    path: "/fortbildungskatalog/:id/:slug?",
     name: "CareerTrainingCatalogueItem",
     component: CareerTrainingCatalogueItem,
     meta: {

@@ -127,7 +127,7 @@
         </div>
         <div class="mb-4">
           <b-link
-            to="/karriere/fort-und-weiterbildung/fortbildungskatalog"
+            to="/fortbildungskatalog"
             class="d-flex flex-column flex-lg-row icon-box shadow1"
           >
             <b-img-lazy

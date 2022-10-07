@@ -864,7 +864,7 @@
                   {
                     "@type": "ListItem",
                     "position": 2,
-                    "name": "Jobs",
+                    "name": "Stellenangebote",
                     "item": "https://www.mfa-mal-anders.de/jobs"
                   }
                   ${

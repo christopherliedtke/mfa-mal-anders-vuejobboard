@@ -69,14 +69,14 @@
         error: false,
         breadcrumbs: [
           { text: "Home", to: "/" },
-          { text: "Karriere", to: "/karriere" },
-          {
-            text: "Fort- & Weiterbildung",
-            to: "/karriere/fort-und-weiterbildung"
-          },
+          // { text: "Karriere", to: "/karriere" },
+          // {
+          //   text: "Fort- & Weiterbildung",
+          //   to: "/karriere/fort-und-weiterbildung"
+          // },
           {
             text: "Fortbildungskatalog",
-            to: "/karriere/fort-und-weiterbildung/fortbildungskatalog"
+            to: "/fortbildungskatalog"
           },
           {
             text: "Fortbildung"
@@ -101,23 +101,13 @@
                   },{
                       "@type": "ListItem",
                       "position": 2,
-                      "name": "Karriere",
-                      "item": "https://www.mfa-mal-anders.de/karriere"
-                  },{
-                      "@type": "ListItem",
-                      "position": 4,
-                      "name": "Fort- & Weiterbildung",
-                      "item": "https://www.mfa-mal-anders.de/karriere/fort-und-weiterbildung"
-                  },{
-                      "@type": "ListItem",
-                      "position": 4,
                       "name": "Fortbildungskatalog",
-                      "item": "https://www.mfa-mal-anders.de/karriere/fort-und-weiterbildung/fortbildungskatalog"
+                      "item": "https://www.mfa-mal-anders.de/fortbildungskatalog"
                   },{
                       "@type": "ListItem",
-                      "position": 5,
+                      "position": 3,
                       "name": "Fortbildung",
-                      "item": "https://www.mfa-mal-anders.de/karriere/fort-und-weiterbildung/fortbildungskatalog/${this.$route.params.id}/${this.$route.params.slug}"
+                      "item": "https://www.mfa-mal-anders.de/fortbildungskatalog/${this.$route.params.id}/${this.$route.params.slug}"
                   }]
               }`
           },
@@ -140,9 +130,7 @@
             rel: "canonical",
             href: this.error
               ? `${this.$config.website.url}/404`
-              : `${
-                  this.$config.website.url
-                }/karriere/fort-und-weiterbildung/fortbildungskatalog/${
+              : `${this.$config.website.url}/fortbildungskatalog/${
                   this.$route.params.id
                 }/${this.training ? this.training.slug : ""}`,
             id: "canonical"

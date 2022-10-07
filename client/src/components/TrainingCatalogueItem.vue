@@ -257,7 +257,7 @@
       <b-button
         v-if="training._id"
         class="mr-2 mb-2 mb-lg-0"
-        to="/karriere/fort-und-weiterbildung/fortbildungskatalog"
+        to="/fortbildungskatalog"
         variant="outline-primary"
         >Zurück zur Übersicht</b-button
       >

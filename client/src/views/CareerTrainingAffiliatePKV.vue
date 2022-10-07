@@ -312,10 +312,7 @@
             >
           </div>
 
-          <b-btn
-            class="mb-4"
-            variant="primary"
-            to="/karriere/fort-und-weiterbildung/fortbildungskatalog?s=pkv"
+          <b-btn class="mb-4" variant="primary" to="/fortbildungskatalog?s=pkv"
             >Weitere Fortbildungen vom PKV Institut</b-btn
           >
         </div>

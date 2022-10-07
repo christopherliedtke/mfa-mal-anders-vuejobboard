@@ -315,7 +315,7 @@ const getTrainingEvents = async () => {
       .map(trainingEvent =>
         writeUrl(
           process.env.WEBSITE_URL +
-            `/karriere/fort-und-weiterbildung/fortbildungskatalog/${trainingEvent._id}/${trainingEvent.slug}`,
+            `/fortbildungskatalog/${trainingEvent._id}/${trainingEvent.slug}`,
           new Date(trainingEvent.updatedAt).toISOString(),
           "weekly",
           0.5

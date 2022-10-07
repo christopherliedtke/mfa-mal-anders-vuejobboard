@@ -98,15 +98,9 @@
                     "item": "https://www.mfa-mal-anders.de/"
                 },
                 {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Jobs",
-                  "item": "https://www.mfa-mal-anders.de/jobs"
-                },
-                {
                     "@type": "ListItem",
-                    "position": 3,
-                    "name": "Job",
+                    "position": 2,
+                    "name": "Stellenangebot",
                     "item": "https://www.mfa-mal-anders.de/job/${
                       this.job ? this.job._id : ""
                     }"

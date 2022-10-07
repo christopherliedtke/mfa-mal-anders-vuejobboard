@@ -267,14 +267,14 @@
         eventTypeOptions: Object.freeze(eventTypeOptions),
         breadcrumbs: [
           { text: "Home", to: "/" },
-          { text: "Karriere", to: "/karriere" },
-          {
-            text: "Fort- & Weiterbildung",
-            to: "/karriere/fort-und-weiterbildung"
-          },
+          // { text: "Karriere", to: "/karriere" },
+          // {
+          //   text: "Fort- & Weiterbildung",
+          //   to: "/karriere/fort-und-weiterbildung"
+          // },
           {
             text: "Fortbildungskatalog",
-            to: "/karriere/fort-und-weiterbildung/fortbildungskatalog"
+            to: "/fortbildungskatalog"
           }
         ],
         snippet: [
@@ -292,25 +292,14 @@
                 },{
                     "@type": "ListItem",
                     "position": 2,
-                    "name": "Karriere",
-                    "item": "https://www.mfa-mal-anders.de/karriere"
-                },{
-                    "@type": "ListItem",
-                    "position": 3,
-                    "name": "Fort- & Weiterbildung",
-                    "item": "https://www.mfa-mal-anders.de/karriere/fort-und-weiterbildung"
-                },{
-                    "@type": "ListItem",
-                    "position": 4,
                     "name": "Fortbildungskatalog",
-                    "item": "https://www.mfa-mal-anders.de/karriere/fort-und-weiterbildung/fortbildungskatalog"
+                    "item": "https://www.mfa-mal-anders.de/fortbildungskatalog"
                 }]
             }`
           },
           {
             rel: "canonical",
-            href: `${this.$config.website.url +
-              "/karriere/fort-und-weiterbildung/fortbildungskatalog"}`,
+            href: `${this.$config.website.url + "/fortbildungskatalog"}`,
             id: "canonical"
           }
         ]

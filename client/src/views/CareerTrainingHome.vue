@@ -205,9 +205,7 @@
       </p>
       <p>
         In unserem
-        <a href="/karriere/fort-und-weiterbildung/fortbildungskatalog"
-          >Fortbildungskatalog</a
-        >
+        <a href="/fortbildungskatalog">Fortbildungskatalog</a>
         findest Du übrigens einer Vielzahl an Fort- und Weiterbildungen
         unterschiedlicher Anbieter. Schau auch dort gern ein mal vorbei.
       </p>
@@ -900,9 +898,7 @@
       </p>
       <p>
         Mittlerweile gibt es
-        <b-link
-          class="bold"
-          to="/karriere/fort-und-weiterbildung/fortbildungskatalog"
+        <b-link class="bold" to="/fortbildungskatalog"
           >Fortbildungsanbieter</b-link
         >
         die berufsbegleitende Kurse für MFA & ZFA Quereinsteiger anbieten, um

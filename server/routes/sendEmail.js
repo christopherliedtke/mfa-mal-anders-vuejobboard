@@ -177,11 +177,9 @@ router.post("/training-published", verifyToken, isAdmin, async (req, res) => {
                     }' geprüft. Diese ist ab sofort unter folgendem Link abrufbar:
                 </p>
                 <p>
-                    <a href="${
-                      process.env.WEBSITE_URL
-                    }/karriere/fort-und-weiterbildung/fortbildungskatalog">${
+                    <a href="${process.env.WEBSITE_URL}/fortbildungskatalog">${
         process.env.WEBSITE_URL
-      }/karriere/fort-und-weiterbildung/fortbildungskatalog</a>
+      }/fortbildungskatalog</a>
                 </p>
                 <p>
                     Sie können die Fortbildung jederzeit unter KONTO > FORTBILDUNGEN ändern bzw. deaktivieren. Sollten Sie noch Fragen oder Anregungen haben, melden Sie sich gern bei uns über unser <a href="${

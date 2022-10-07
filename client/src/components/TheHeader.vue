@@ -19,13 +19,16 @@
         <nav id="primary-nav">
           <router-link to="/jobs">Stellenangebote</router-link>
           <router-link to="/stellengesuche">Stellengesuche</router-link>
+          <router-link to="/fortbildungskatalog" class=""
+            >Fortbildungskatalog</router-link
+          >
 
           <router-link
             to="/karriere"
             @mouseenter.native="showSub('karriere')"
             @mouseleave.native="hideSub('karriere')"
             ><span
-              >Karriere und Beruf
+              >Karriere
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -53,6 +56,7 @@
               <router-link to="/karriere/jobs-und-berufsbilder"
                 >Jobs & Berufsbilder</router-link
               >
+
               <router-link to="/karriere/fort-und-weiterbildung"
                 >Fort- & Weiterbildung</router-link
               >
@@ -60,11 +64,6 @@
                 to="/karriere/fort-und-weiterbildung/ueberblick"
                 class="ml-3"
                 >Überblick Fort- & Weiterbildungen</router-link
-              >
-              <router-link
-                to="/karriere/fort-und-weiterbildung/fortbildungskatalog"
-                class="ml-3"
-                >Fortbildungskatalog</router-link
               >
               <router-link
                 to="/karriere/fort-und-weiterbildung#fortbildung-weiterbildung-studium"
@@ -80,8 +79,8 @@
           </router-link>
 
           <router-link to="/blog">Blog</router-link>
-          <router-link to="/fuer-arbeitgeber">Für Arbeitgeber</router-link>
-          <router-link to="/ueber">Über</router-link>
+          <router-link to="/fuer-arbeitgeber">Für&nbsp;Arbeitgeber</router-link>
+          <!-- <router-link to="/ueber">Über</router-link> -->
           <router-link class="d-lg-none" to="/kontakt">Kontakt</router-link>
         </nav>
         <nav id="secondary-nav" class="mt-3 mt-lg-0">
@@ -179,6 +178,7 @@
                 to="/user/job-newsletter"
                 >Job-Newsletter</router-link
               >
+              <AuthLogoutButton class="ml-lg-2 mt-3 mt-lg-2 mb-3 py-1 px-3" />
             </div>
           </router-link>
 
@@ -194,7 +194,7 @@
                 width="22"
                 height="22"
                 fill="currentColor"
-                class="bi bi-shield-lock-fill"
+                class="bi bi-shield-lock-fill mr-2"
                 viewBox="0 0 16 16"
               >
                 <path
@@ -202,6 +202,7 @@
                   d="M8 0c-.69 0-1.843.265-2.928.56-1.11.3-2.229.655-2.887.87a1.54 1.54 0 0 0-1.044 1.262c-.596 4.477.787 7.795 2.465 9.99a11.777 11.777 0 0 0 2.517 2.453c.386.273.744.482 1.048.625.28.132.581.24.829.24s.548-.108.829-.24a7.159 7.159 0 0 0 1.048-.625 11.775 11.775 0 0 0 2.517-2.453c1.678-2.195 3.061-5.513 2.465-9.99a1.541 1.541 0 0 0-1.044-1.263 62.467 62.467 0 0 0-2.887-.87C9.843.266 8.69 0 8 0zm0 5a1.5 1.5 0 0 1 .5 2.915l.385 1.99a.5.5 0 0 1-.491.595h-.788a.5.5 0 0 1-.49-.595l.384-1.99A1.5 1.5 0 0 1 8 5z"
                 />
               </svg>
+              <span>Admin</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -230,7 +231,7 @@
               <router-link to="/admin/tools">Tools</router-link>
             </div>
           </router-link>
-          <div v-if="$store.state.auth.loggedIn"><AuthLogoutButton /></div>
+          <!-- <div v-if="$store.state.auth.loggedIn"><AuthLogoutButton /></div> -->
           <div v-else class="d-flex">
             <b-button
               class="mr-1 px-4 py-1"
@@ -472,6 +473,7 @@
           .sub-menu {
             position: absolute;
             top: 100%;
+            left: 0;
             background-color: $primary;
             border-radius: $border-radius1;
             width: max-content;
@@ -484,7 +486,7 @@
               display: block;
               position: relative;
               top: 0%;
-              left: 0;
+              // left: 0;
               max-height: none;
               visibility: visible;
             }

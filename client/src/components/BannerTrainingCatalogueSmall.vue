@@ -1,9 +1,6 @@
 <template>
   <aside class="d-flex justify-content-center">
-    <router-link
-      to="/karriere/fort-und-weiterbildung/fortbildungskatalog"
-      class="text-dark"
-    >
+    <router-link to="/fortbildungskatalog" class="text-dark">
       <div
         class="border-radius1 shadow1 px-2 py-3 d-flex justify-content-around align-items-center"
         style="max-width: 450px"
@@ -11,7 +8,7 @@
         <b-img-lazy
           class="p-1"
           style="max-height: 60px"
-          src="@/assets/img/calendar.svg"
+          src="@/assets/img/Online_lesson_Monochromatic.svg"
           alt="Fortbildungskatalog für MFA / ZFA und ArzthelferInnen"
           blank-width="77"
           blank-height="60"

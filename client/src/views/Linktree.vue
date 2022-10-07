@@ -21,9 +21,7 @@
           <b-button block to="/karriere/fort-und-weiterbildung"
             >🎓 Fort- und Weiterbildungen</b-button
           >
-          <b-button
-            block
-            to="/karriere/fort-und-weiterbildung/fortbildungskatalog"
+          <b-button block to="/fortbildungskatalog"
             >📆 Fortbildungskatalog</b-button
           >
           <b-button block to="/blog">📰 Blog</b-button>

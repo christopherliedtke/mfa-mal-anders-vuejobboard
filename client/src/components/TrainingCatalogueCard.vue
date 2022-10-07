@@ -20,7 +20,7 @@
         <b-link
           :to="
             training.desc
-              ? `/karriere/fort-und-weiterbildung/fortbildungskatalog/${training._id}/${training.slug}`
+              ? `/fortbildungskatalog/${training._id}/${training.slug}`
               : ''
           "
           :href="!training.desc ? training.extUrl : ''"
@@ -186,9 +186,7 @@
     <div class="footer">
       <b-button
         v-if="training.desc"
-        :to="
-          `/karriere/fort-und-weiterbildung/fortbildungskatalog/${training._id}/${training.slug}`
-        "
+        :to="`/fortbildungskatalog/${training._id}/${training.slug}`"
         target="_self"
         class="mr-2 mt-2"
         variant="primary"

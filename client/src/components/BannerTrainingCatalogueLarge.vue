@@ -14,9 +14,7 @@
         Fortbildungskatalog findest Du garantiert Deine nächste Fort- oder
         Weiterbildung!
       </p>
-      <b-button
-        to="/karriere/fort-und-weiterbildung/fortbildungskatalog"
-        variant="secondary"
+      <b-button to="/fortbildungskatalog" variant="secondary"
         >Zum Fortbildungskatalog</b-button
       >
     </div>
@@ -39,7 +37,8 @@
 <style scoped lang="scss">
   .card {
     background: radial-gradient(closest-side, #fffcfd99 0%, #fffcfdff 100%),
-      url("~@/assets/img/calendar.svg") right center no-repeat;
+      url("~@/assets/img/Online_lesson_Monochromatic.svg") right center
+        no-repeat;
     background-size: contain;
     background-blend-mode: lighten;
 
