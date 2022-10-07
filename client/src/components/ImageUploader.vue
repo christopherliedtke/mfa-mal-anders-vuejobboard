@@ -87,7 +87,8 @@
           }
         } catch (err) {
           this.$root.$bvToast.toast(
-            `Das Bild konnte nicht gespeichert werden.`,
+            err.response?.data?.error?.message ||
+              `Das Bild konnte nicht gespeichert werden.`,
             {
               title: `Fehler beim Speichern`,
               variant: "danger",
@@ -101,7 +102,7 @@
         this.$store.dispatch("setOverlay", false);
       },
       async deleteImage() {
-        this.$store.dispatch("setOverlay", true);
+        // this.$store.dispatch("setOverlay", true);
         try {
           await this.$axios.post("/api/images/delete", {
             imageUrl: this.imageUrl
@@ -109,7 +110,7 @@
         } catch (err) {
           () => {};
         }
-        this.$store.dispatch("setOverlay", false);
+        // this.$store.dispatch("setOverlay", false);
       },
       resetFile() {
         this.$store.dispatch("setOverlay", true);

@@ -14,7 +14,7 @@ router.post("/create-invoice", verifyToken, async (req, res) => {
     return res
       .status(401)
       .send(
-        "Ihre Session ist abgelaufen. Bitte laden Sie die Seite neu und loggen Sie sich erneut ein."
+        "Ihre Sitzung ist abgelaufen. Bitte laden Sie die Seite neu und loggen Sie sich erneut ein."
       );
   }
 

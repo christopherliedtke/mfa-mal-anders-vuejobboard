@@ -10,6 +10,12 @@ const createInvoice = require("../lib/createInvoice");
 // #access: Private
 router.get("/download/:paymentId", verifyToken, async (req, res) => {
   try {
+    if (!req.user) {
+      throw new Error(
+        "Ihre Sitzung ist abgelaufen. Bitte laden Sie die Seite neu und loggen Sie sich erneut ein."
+      );
+    }
+
     const payment = await Payment.findOne({ _id: req.params.paymentId });
 
     if (!payment) {

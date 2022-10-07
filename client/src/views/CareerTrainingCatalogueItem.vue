@@ -1,7 +1,12 @@
 <template>
   <div>
     <div class="title">
-      <h1>Fortbildung &ndash; {{ training ? training.title : "" }}</h1>
+      <!-- eslint-disable -->
+      <h1>
+        Fortbildung &ndash;
+        <span v-html="training ? training.title : ''"></span>
+      </h1>
+      <!-- eslint-enable -->
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
 

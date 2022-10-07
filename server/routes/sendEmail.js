@@ -338,6 +338,11 @@ router.post("/training-declined", verifyToken, isAdmin, async (req, res) => {
 // #access: Private
 router.post("/contact-jobseek", verifyToken, async (req, res) => {
   try {
+    if (!req.user) {
+      throw new Error(
+        "Ihre Sitzung ist abgelaufen. Bitte laden Sie die Seite neu und loggen Sie sich erneut ein."
+      );
+    }
     if (!req.body.accepted) {
       throw new Error(
         "Sie müssen AGBs und Datenschutzerklärung gelesen und akzeptiert haben, um Ihre Nachricht zu versenden."

@@ -63,7 +63,10 @@
           const user = await this.$store.dispatch("fetchUserFromToken");
 
           if (!user.data.data.meFromToken) {
-            this.$store.dispatch("logout", "/auth/login");
+            this.$store.dispatch(
+              "logout",
+              `/auth/login?redirect=${this.$route.fullPath}`
+            );
             this.$root.$bvToast.toast(
               "Ihre Sitzung ist abgelaufen. Bitte loggen Sie sich erneut ein.",
               {

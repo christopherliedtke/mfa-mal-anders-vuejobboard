@@ -1,12 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const verifyToken = require("../middleware/verifyToken");
+const isAdmin = require("../middleware/isAdmin");
 const recachePrerender = require("../lib/recachePrerender");
 
 // #route:  GET /api/prerender/recache
 // #desc:   recache page with prerender
 // #access: Admin
-router.post("/recache", verifyToken, async (req, res) => {
+router.post("/recache", verifyToken, isAdmin, async (req, res) => {
   if (process.env.NODE_ENV === "production" && !req.user.isAdmin) {
     res.json({ success: false });
   }

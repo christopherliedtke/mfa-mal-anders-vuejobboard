@@ -9,6 +9,12 @@ const stripe = require("stripe")(process.env.STRIPE_SK);
 // #access: Private
 router.get("/me", verifyToken, async (req, res) => {
   try {
+    if (!req.user) {
+      throw new Error(
+        "Ihre Sitzung ist abgelaufen. Bitte laden Sie die Seite neu und loggen Sie sich erneut ein."
+      );
+    }
+
     const user = await User.findOne({ _id: req.user._id }, "stripeCustomerId");
 
     if (!user.stripeCustomerId) {

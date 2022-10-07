@@ -15,6 +15,12 @@ router.get(
     try {
       const { code, product, price } = req.query;
 
+      if (!req.user) {
+        throw new Error(
+          "Ihre Sitzung ist abgelaufen. Bitte laden Sie die Seite neu und loggen Sie sich erneut ein."
+        );
+      }
+
       if (!code) {
         throw new Error("Kein Aktionscode eingegeben.");
       }
