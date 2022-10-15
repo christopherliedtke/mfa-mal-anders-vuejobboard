@@ -461,6 +461,13 @@ function cleanUpJob(job, user) {
         .trim() + "...";
   }
 
+  if (job.applicationEmail) {
+    job.applicationEmail = job.applicationEmail.replace(/\s+/g, "");
+  }
+  if (job.contactEmail) {
+    job.contactEmail = job.contactEmail.replace(/\s+/g, "");
+  }
+
   for (const key in job) {
     if (typeof job[key] === "string" && key != "extJobUrl") {
       job[key] = sanitizeHtml(job[key], {

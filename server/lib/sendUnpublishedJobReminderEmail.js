@@ -22,14 +22,16 @@ module.exports.sendUnpublishedJobReminderEmail = async () => {
       .populate("company")
       .populate("userId");
 
-    jobs.forEach(async job => {
-      console.log("Sending unpublishedJobReminder for : ", job._id);
+    jobs
+      .filter(job => job.userId)
+      .forEach(async job => {
+        console.log("Sending unpublishedJobReminder for : ", job._id);
 
-      const emailData = {
-        from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
-        to: job.userId.email,
-        subject: `Ihre Stellenanzeige bei 'MFA mal anders'`,
-        html: `
+        const emailData = {
+          from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
+          to: job.userId.email,
+          subject: `Ihre Stellenanzeige bei 'MFA mal anders'`,
+          html: `
                     <p>${
                       job.userId.gender === "Herr"
                         ? "Sehr geehrter Herr " +
@@ -59,8 +61,8 @@ module.exports.sendUnpublishedJobReminderEmail = async () => {
                         Melden Sie sich gern bei uns über unser <a href="${
                           process.env.WEBSITE_URL
                         }/kontakt">Kontaktformular</a> oder direkt per Nachricht an <a href="mailto:${
-          process.env.CONTACT_EMAIL_ADRESS
-        }">${process.env.CONTACT_EMAIL_ADRESS}</a>.
+            process.env.CONTACT_EMAIL_ADRESS
+          }">${process.env.CONTACT_EMAIL_ADRESS}</a>.
                     </p>
                     <p>
                         Nach erfolgreichem <a href="${
@@ -82,24 +84,24 @@ module.exports.sendUnpublishedJobReminderEmail = async () => {
                           process.env.CONTACT_EMAIL_ADRESS
                         }">${process.env.CONTACT_EMAIL_ADRESS}</a> <br>
                         Webseite: <a href="${process.env.WEBSITE_URL}">${
-          process.env.WEBSITE_URL
-        }</a>
+            process.env.WEBSITE_URL
+          }</a>
                     </p>
                 `,
-        attachments: [
-          {
-            filename: "MfaMalAnders_logo_circle_bgdark_white.png",
-            path:
-              __dirname +
-              "/../../client/public/img/MfaMalAnders_logo_circle_bgdark_white.png",
-            cid: "mfa-mal-anders-logo", //same cid value as in the html img src
-          },
-        ],
-      };
+          attachments: [
+            {
+              filename: "MfaMalAnders_logo_circle_bgdark_white.png",
+              path:
+                __dirname +
+                "/../../client/public/img/MfaMalAnders_logo_circle_bgdark_white.png",
+              cid: "mfa-mal-anders-logo", //same cid value as in the html img src
+            },
+          ],
+        };
 
-      await emailService.sendMail(emailData);
-      await Job.updateOne({ _id: job._id }, { sentReminder: true });
-    });
+        await emailService.sendMail(emailData);
+        await Job.updateOne({ _id: job._id }, { sentReminder: true });
+      });
   } catch (err) {
     console.log("Error on sendUnpublishedJobReminder: ", err);
   }
