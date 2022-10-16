@@ -39,7 +39,7 @@
         </p>
         <div class="row row-cols-1 row-cols-md-3 flex-lg-row-reverse">
           <div class="col">
-            <b-link to="/jobs" class="icon-box shadow1">
+            <b-link to="/stellenangebote" class="icon-box shadow1">
               <b-img-lazy
                 class="mr-4 mb-4 ml-4"
                 src="@/assets/img/career_.svg"
@@ -173,7 +173,7 @@
         </p>
         <p>
           Hier findest du
-          <b-link to="/jobs">Stellenangebote</b-link>,
+          <b-link to="/stellenangebote">Stellenangebote</b-link>,
           <b-link to="/karriere/fort-und-weiterbildung"
             >Fort- und Weiterbildungsmöglichkeiten</b-link
           >,
@@ -328,7 +328,7 @@
       <p>
         Wenn Du auf der Suche nach einer tollen Praxis bist, schau regelmäßig
         auf unserer
-        <b-link to="/jobs">Stellenbörse</b-link> vorbei.
+        <b-link to="/stellenangebote">Stellenbörse</b-link> vorbei.
       </p>
       <p>
         Wenn Du schon in einer tollen Praxis arbeitest und ihr neue Kollegen

@@ -252,9 +252,12 @@ const getJobboardLocations = async () => {
     return locations
       .map(location =>
         writeUrl(
-          process.env.WEBSITE_URL + "/jobs" + "/" + textToSlug(location),
+          process.env.WEBSITE_URL +
+            "/stellenangebote" +
+            "/" +
+            textToSlug(location),
           undefined,
-          "weekly",
+          "daily",
           0.8
         )
       )

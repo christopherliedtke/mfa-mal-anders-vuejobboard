@@ -264,7 +264,7 @@
             <h4 class="bold mt-2 mb-3">Speziell für MFA & ZFA</h4>
             <p>
               Über eine
-              <router-link to="/jobs"
+              <router-link to="/stellenangebote"
                 ><strong>Stellenanzeige</strong></router-link
               >
               auf <em>MFA mal anders</em> erreichen Sie
@@ -376,7 +376,8 @@
             <p>
               Sie erstellen Ihre Anzeige, wir sorgen für den Rest &ndash;
               <strong>Relevante Reichweite auf </strong>
-              <b-link to="/jobs" class="bold">MFA mal anders</b-link>,
+              <b-link to="/stellenangebote" class="bold">MFA mal anders</b-link
+              >,
               <a
                 href="https://www.google.com/search?q=mfa+mal+anders&ibp=htl;jobs#htivrt=jobs&htilrad=-1.0"
                 target="_blank"
@@ -467,20 +468,20 @@
         <div class="my-4  text-center text-lg-left">
           <p>
             Mit der
-            <strong><b-link to="/jobs">Stellenbörse</b-link></strong> auf
-            <em>MFA mal anders</em> möchten wir Medizinischen Fachangestellten |
-            Zahnmedizinischen Fachangestellten die Möglichkeit geben, einen
-            attraktiven Job zu finden. Aber auch Ihnen als Arbeitgeber eine
-            alternative Plattform bereitstellen, die Ihre Stellenanzeigen an die
-            richtige Zielgruppe ausspielt und so Ihre Chancen erhöht,
-            qualifizierte Bewerbungen zu erhalten.
+            <strong><b-link to="/stellenangebote">Stellenbörse</b-link></strong>
+            auf <em>MFA mal anders</em> möchten wir Medizinischen
+            Fachangestellten | Zahnmedizinischen Fachangestellten die
+            Möglichkeit geben, einen attraktiven Job zu finden. Aber auch Ihnen
+            als Arbeitgeber eine alternative Plattform bereitstellen, die Ihre
+            Stellenanzeigen an die richtige Zielgruppe ausspielt und so Ihre
+            Chancen erhöht, qualifizierte Bewerbungen zu erhalten.
           </p>
           <p>
             Zur Veröffentlichung Ihrer Stellenanzeige in unserer
-            <strong><b-link to="/jobs">Stellenbörse</b-link></strong> bieten wir
-            verschiedene Pakete an, um Sie bei Ihrer MitarbeiterInnen-Suche
-            optimal unterstützen und ergänzen zu können. In der Regel empfehlen
-            wir Ihnen unser beliebtes
+            <strong><b-link to="/stellenangebote">Stellenbörse</b-link></strong>
+            bieten wir verschiedene Pakete an, um Sie bei Ihrer
+            MitarbeiterInnen-Suche optimal unterstützen und ergänzen zu können.
+            In der Regel empfehlen wir Ihnen unser beliebtes
             <strong class="text-secondary">Standard Paket</strong>, um die
             Reichweite Ihrer Stellenanzeige zu optimieren.
           </p>

@@ -17,7 +17,7 @@
         @click="navCollapsed = true"
       >
         <nav id="primary-nav">
-          <router-link to="/jobs">Stellenangebote</router-link>
+          <router-link to="/stellenangebote">Stellenangebote</router-link>
           <router-link to="/stellengesuche">Stellengesuche</router-link>
           <router-link to="/fortbildungskatalog" class=""
             >Fortbildungskatalog</router-link

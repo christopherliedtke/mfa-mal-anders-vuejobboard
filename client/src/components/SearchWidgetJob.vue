@@ -4,7 +4,7 @@
       class="row mx-1"
       @keydown.enter.prevent="
         $router.push(
-          `/jobs?s=${searchTerm}&berufsgruppe=${profession}&ort=${localLocation ||
+          `/stellenangebote?s=${searchTerm}&berufsgruppe=${profession}&ort=${localLocation ||
             location ||
             ''}`
         )
@@ -75,7 +75,7 @@
           variant="secondary"
           block
           :to="
-            `/jobs?s=${searchTerm}&berufsgruppe=${profession}&ort=${localLocation ||
+            `/stellenangebote?s=${searchTerm}&berufsgruppe=${profession}&ort=${localLocation ||
               location ||
               ''}`
           "
@@ -109,7 +109,7 @@
             class="shadow1"
             variant="secondary"
             :to="
-              `/jobs?s=${searchTerm}&berufsgruppe=${profession}&ort=${location}`
+              `/stellenangebote?s=${searchTerm}&berufsgruppe=${profession}&ort=${location}`
             "
             ><svg
               xmlns="http://www.w3.org/2000/svg"

@@ -3,7 +3,7 @@
     <div v-if="error">
       {{ error }}
       <div class="mt-3">
-        <b-btn to="/jobs">Zurück zu den Stellenangeboten</b-btn>
+        <b-btn to="/stellenangebote">Zurück zu den Stellenangeboten</b-btn>
       </div>
     </div>
     <Job v-else-if="job" :job="job" />

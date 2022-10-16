@@ -159,7 +159,7 @@
 
           <p>
             In unserer
-            <b-link class="bold" to="/jobs">Stellenbörse</b-link>
+            <b-link class="bold" to="/stellenangebote">Stellenbörse</b-link>
             findest Du außerdem regemäßig interessante Jobs für MFA | ZFA mit
             wertschätzenden Arbeitgebern aus der Arztpraxis oder darüber hinaus.
           </p>

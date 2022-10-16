@@ -2,7 +2,10 @@
   <div class="jobboard">
     <div class="title">
       <h1>
-        <strong>Stellenangebote</strong> <br />
+        <strong>
+          Stellenangebote
+        </strong>
+        <br />
         <span class="h4"
           >{{
             berufsgruppe.active.length === 1
@@ -531,7 +534,7 @@
           >
             <b-link
               :to="
-                `/jobs?ort=${city.slug}${
+                `/stellenangebote?ort=${city.slug}${
                   berufsgruppe.active.length == 1
                     ? '?berufsgruppe=' + berufsgruppe.active[0]
                     : ''
@@ -692,7 +695,7 @@
           (ZFA), ZMF, ZMV, MTRA in
           <span v-for="(state, index) in companyStateOptions" :key="state">
             <b-link
-              :to="`/jobs?ort=${state.toLowerCase()}`"
+              :to="`/stellenangebote/${textToSlug(state)}`"
               @click="
                 () => {
                   filter.ort = state;
@@ -710,7 +713,7 @@
 
     <Head
       :title="
-        `${
+        `Stellenangebote für ${
           berufsgruppe.active.length === 1
             ? professionOptions
                 .filter(
@@ -721,7 +724,7 @@
                 .map(profession => profession.text)
                 .join(' & ')
             : professionOptions.map(profession => profession.value).join(' & ')
-        } Stellenangebote${filter.ort ? ' | ' + filter.ort : ''}`
+        } ${filter.ort ? ' | ' + filter.ort : ''}`
       "
       :desc="
         `Attraktive Stellenangebote für ${
@@ -841,6 +844,7 @@
         companyStateOptions: Object.freeze(companyStateOptions),
         specializationOptions: Object.freeze(specializationOptions),
         professionOptions: Object.freeze(professionOptions),
+        textToSlug,
         cities: Object.freeze(cities),
         errors: null
       };
@@ -865,7 +869,7 @@
                     "@type": "ListItem",
                     "position": 2,
                     "name": "Stellenangebote",
-                    "item": "https://www.mfa-mal-anders.de/jobs"
+                    "item": "https://www.mfa-mal-anders.de/stellenangebote"
                   }
                   ${
                     this.filter.ort
@@ -873,7 +877,7 @@
                     "@type": "ListItem",
                     "position": 3,
                     "name": "${this.filter.ort}",
-                    "item": "https://www.mfa-mal-anders.de/jobs/${textToSlug(
+                    "item": "https://www.mfa-mal-anders.de/stellenangebote/${textToSlug(
                       this.filter.ort
                     )}"
                   }`
@@ -892,13 +896,13 @@
       breadcrumbs() {
         const breadcrumbs = [
           { text: "Home", href: "/" },
-          { text: "Stellenangebote", href: "/jobs" }
+          { text: "Stellenangebote", href: "/stellenangebote" }
         ];
 
         if (this.filter.ort) {
           breadcrumbs.push({
             text: this.filter.ort,
-            href: `/jobs/${textToSlug(this.filter.ort)}`
+            href: `/stellenangebote/${textToSlug(this.filter.ort)}`
           });
 
           if (this.berufsgruppe.active.length === 1) {
@@ -911,7 +915,7 @@
         return breadcrumbs;
       },
       canonical() {
-        let canonical = "/jobs";
+        let canonical = "/stellenangebote";
 
         // if (this.berufsgruppe.active.length === 1) {
         //   canonical += this.berufsgruppe.active[0].toLowerCase();
@@ -1088,7 +1092,7 @@
         this.$router
           .replace({
             query,
-            path: "/jobs"
+            path: "/stellenangebote"
           })
           .catch(() => {});
       },
@@ -1172,10 +1176,9 @@
         const berufsgruppe = this.professionOptions
           .filter(profession =>
             (
-              this.$route.path +
               (Array.isArray(this.$route.query.berufsgruppe)
                 ? this.$route.query.berufsgruppe.join()
-                : this.$route.query.berufsgruppe)
+                : this.$route.query.berufsgruppe) || ""
             )
               .toLowerCase()
               .includes(profession.value.toLowerCase())

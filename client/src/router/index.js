@@ -315,88 +315,122 @@ const routes = [
   //   }
   // },
   {
-    path: "/jobs/:location?",
+    path: "/stellenangebote/ort/:location",
+    redirect: to => {
+      return {
+        path: "/stellenangebote/:location",
+        params: { location: to.params.location }
+      };
+    }
+  },
+  {
+    path: "/stellenangebote/:location?",
     name: "JobBoard",
     component: JobBoard,
     meta: {
       public: true
     }
+    // redirect: to => {
+    //   return { path: "/jobs", query: to.query };
+    // }
   },
-  // {
-  //   path: "/mfa/:location?",
-  //   name: "JobBoardMfa",
-  //   component: JobBoard,
-  //   meta: {
-  //     public: true
-  //   }
-  // },
+
+  {
+    path: "/jobs/mfa/:location?",
+    redirect: to => {
+      return {
+        path: "/stellenangebote/:location?",
+        params: { location: to.params.location },
+        query: { berufsgruppe: "mfa" }
+      };
+    }
+    // name: "JobBoardMfa",
+    // component: JobBoard,
+    // meta: {
+    //   public: true
+    // }
+  },
+  {
+    path: "/jobs/zfa/:location?",
+    redirect: to => {
+      return {
+        path: "/stellenangebote/:location?",
+        params: { location: to.params.location },
+        query: { berufsgruppe: "zfa" }
+      };
+    }
+    // name: "JobBoardZfa",
+    // component: JobBoard,
+    // meta: {
+    //   public: true
+    // }
+  },
+  {
+    path: "/jobs",
+    redirect: "/stellenangebote"
+    // name: "JobBoard",
+    // component: JobBoard,
+    // meta: {
+    //   public: true
+    // }
+  },
+  {
+    path: "/jobs/:location?",
+    redirect: to => {
+      return {
+        path: "/stellenangebote/:location",
+        params: { location: to.params.location }
+        // query: { berufsgruppe: to.query.berufsgruppe }
+      };
+    }
+    // name: "JobBoard",
+    // component: JobBoard,
+    // meta: {
+    //   public: true
+    // }
+  },
   {
     path: "/mfa/:location?",
     redirect: to => {
       return {
-        path: "/jobs",
-        query: { ort: to.params.location, berufsgruppe: "mfa" }
+        path: "/stellenangebote/:location?",
+        params: { location: to.params.location },
+        query: { berufsgruppe: "mfa" }
       };
     }
+    //   name: "JobBoardMfa",
+    //   component: JobBoard,
+    //   meta: {
+    //     public: true
+    //   }
   },
-  {
-    path: "/jobs/mfa/:location?",
-    name: "JobBoardMfa",
-    component: JobBoard,
-    meta: {
-      public: true
-    }
-  },
-  // {
-  //   path: "/zfa/:location?",
-  //   name: "JobBoardZfa",
-  //   component: JobBoard,
-  //   meta: {
-  //     public: true
-  //   }
-  // },
   {
     path: "/zfa/:location?",
     redirect: to => {
       return {
-        path: "/jobs",
-        query: { ort: to.params.location, berufsgruppe: "zfa" }
+        path: "/stellenangebote/:location?",
+        params: { location: to.params.location },
+        query: { berufsgruppe: "zfa" }
       };
     }
+    // name: "JobBoardZfa",
+    //   component: JobBoard,
+    //   meta: {
+    //     public: true
+    //   }
   },
-  {
-    path: "/jobs/zfa/:location?",
-    name: "JobBoardZfa",
-    component: JobBoard,
-    meta: {
-      public: true
-    }
-  },
+
   {
     path: "/ort/:location",
     redirect: to => {
       return {
-        path: "/jobs/:location",
+        path: "/stellenangebote/:location",
         params: { location: to.params.location }
         // query: { berufsgruppe: to.query.berufsgruppe }
       };
     }
   },
-  {
-    path: "/stellenangebote",
-    redirect: to => {
-      return { path: "/jobs", query: to.query };
-    }
-  },
-  {
-    path: "/stellenangebote/ort/:location",
-    redirect: to => {
-      return {
-        path: "/jobs/:location",
-        params: { location: to.params.location }
-      };
-    }
-  },
+
   {
     path: "/job/:jobId/:title?",
     name: "JobView",

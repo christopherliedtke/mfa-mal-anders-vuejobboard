@@ -387,7 +387,7 @@
       <b-button :to="`/job/${job._id}`" variant="outline-secondary" class="mb-2"
         >Zurück zur Stellenanzeige</b-button
       >
-      <b-button to="/jobs" variant="outline-primary"
+      <b-button to="/stellenangebote" variant="outline-primary"
         >Zurück zur Stellenbörse</b-button
       >
     </div>

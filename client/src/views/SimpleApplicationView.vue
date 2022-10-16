@@ -98,7 +98,7 @@
               }
             );
 
-            this.$router.push("/jobs");
+            this.$router.push("/stellenangebote");
           }
 
           if (!this.job.simpleApplication) {

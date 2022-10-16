@@ -18,7 +18,7 @@
         <b-button class="mr-2 mb-2" variant="primary" to="/"
           >Zur Startseite</b-button
         >
-        <b-button class="mb-2" to="/jobs" variant="secondary"
+        <b-button class="mb-2" to="/stellenangebote" variant="secondary"
           >Zur Stellenbörse</b-button
         >
       </div>

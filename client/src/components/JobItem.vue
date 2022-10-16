@@ -19,7 +19,7 @@
             |
             <b-link
               class="text-muted"
-              :to="`/jobs?ort=${textToSlug(job.company.location)}`"
+              :to="`/stellenangebote/${textToSlug(job.company.location)}`"
               >{{ job.company.location
               }}{{
                 job.company.state && job.company.state != job.company.location
@@ -64,7 +64,7 @@
           <div class="head flex-column flex-sm-row order-1 order-sm-2">
             <b-link
               v-if="job.employmentType"
-              :to="`/jobs?anstellungsart=${job.employmentType}`"
+              :to="`/stellenangebote?anstellungsart=${job.employmentType}`"
             >
               <div class="icon">
                 <svg
@@ -436,7 +436,7 @@
           class="mr-2 mt-2"
           variant="outline-primary"
           size="sm"
-          to="/jobs"
+          to="/stellenangebote"
           >Zurück zu Stellenangeboten</b-button
         >
         <b-button
