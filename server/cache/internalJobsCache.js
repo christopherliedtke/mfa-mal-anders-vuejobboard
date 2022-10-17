@@ -1,5 +1,10 @@
 const NodeCache = require("node-cache");
 const { Job } = require("../database/models/job");
+const calcTimeSince = require("../lib/calcTimeSince");
+const {
+  employmentTypeOptions,
+} = require("../../client/src/config/formDataConfig.json");
+const generateJobStructuredData = require("../lib/generateJobStructuredData");
 
 class Cache {
   constructor(ttlSeconds = 60 * 60) {
@@ -30,7 +35,16 @@ class Cache {
         paidAt: "desc",
         createdAt: "desc",
       })
-      .populate("company");
+      .populate("company")
+      .lean();
+
+    internalJobs.forEach(job => {
+      job.timeSincePublished = calcTimeSince(job.publishedAt);
+      job.employmentTypeFull = employmentTypeOptions.find(
+        option => option.value === job.employmentType
+      ).text;
+      job.jobStructuredData = generateJobStructuredData(job);
+    });
 
     try {
       this.cache.set("jobs", internalJobs);

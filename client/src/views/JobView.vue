@@ -16,21 +16,13 @@
     <Head
       v-if="job"
       :title="
-        `${job.title || ''} | ${
-          job.employmentType
-            ? employmentTypeOptions.filter(
-                option => option.value === job.employmentType
-              )[0].text
-            : ''
-        } | ${job.company.location}`
+        `${job.title || ''} | ${job.employmentTypeFull} | ${
+          job.company.location
+        }`
       "
       :desc="
         `Stellenangebot – ${job.title || ''} | ${job.company.name || ''} | ${
-          job.employmentType
-            ? employmentTypeOptions.filter(
-                option => option.value === job.employmentType
-              )[0].text
-            : ''
+          job.employmentTypeFull
         } | ${job.company.location}${
           job.company.state != job.company.location
             ? ', ' + job.company.state
@@ -64,7 +56,6 @@
   import JobListSimilar from "@/components/JobListSimilar.vue";
   import TrainingListRandom from "@/components/TrainingListRandom.vue";
   import BannerJobSeeksLarge from "@/components/BannerJobSeeksLarge.vue";
-  import { employmentTypeOptions } from "@/config/formDataConfig.json";
   export default {
     name: "JobView",
     components: {
@@ -77,8 +68,7 @@
     data() {
       return {
         job: null,
-        error: null,
-        employmentTypeOptions
+        error: null
       };
     },
     computed: {
@@ -107,6 +97,11 @@
                 }
               ]
             }`
+          },
+          {
+            id: "job-structured-data",
+            type: "application/ld+json",
+            inner: this.job ? this.job.jobStructuredData : ""
           },
           {
             id: "canonical",
@@ -148,6 +143,7 @@
                       updatedAt
                       status
                       publishedAt
+                      timeSincePublished
                       paidAt
                       paid
                       paidExpiresAt
@@ -155,6 +151,7 @@
                       description
                       profession
                       employmentType
+                      employmentTypeFull
                       applicationDeadline
                       simpleApplication
                       extJobUrl
@@ -172,6 +169,7 @@
                       contactEmail
                       contactPhone
                       slug
+                      jobStructuredData
                       company {
                         _id
                         name

@@ -215,6 +215,7 @@
               }]
             }`
           },
+          // todo --> move to server
           {
             type: "application/ld+json",
             id: "article-structured-data",

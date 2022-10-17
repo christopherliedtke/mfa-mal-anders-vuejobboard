@@ -150,6 +150,7 @@ const JobType = gql`
     stripeInvoiceStatus: String
     firstPublishedAt: Float
     publishedAt: Float
+    timeSincePublished: String
     paid: Boolean
     paidAt: Float
     paidExpiresAt: Float
@@ -166,6 +167,7 @@ const JobType = gql`
     slug: String
     profession: String
     employmentType: String!
+    employmentTypeFull: String
     applicationDeadline: Float
     simpleApplication: Boolean!
     specialization: String
@@ -181,6 +183,7 @@ const JobType = gql`
     contactPosition: String
     contactEmail: String
     contactPhone: String
+    jobStructuredData: String
   }
 
   type PublicJobWithCount {

@@ -51,6 +51,7 @@
                       updatedAt
                       status
                       publishedAt
+                      timeSincePublished
                       paidAt
                       paid
                       paidExpiresAt

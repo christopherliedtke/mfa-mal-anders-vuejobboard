@@ -5,6 +5,11 @@ const { decode } = require("html-entities");
 const zipCodeToState = require("../lib/zipCodeToState");
 const sanitizeHtml = require("sanitize-html");
 const textToSlug = require("../lib/textToSlug");
+const calcTimeSince = require("../lib/calcTimeSince");
+const {
+  employmentTypeOptions,
+} = require("../../client/src/config/formDataConfig.json");
+const generateJobStructuredData = require("../lib/generateJobStructuredData");
 
 class Cache {
   constructor(ttlSeconds) {
@@ -54,12 +59,25 @@ class Cache {
               job.workingTimes && job.workingTimes[0].item
                 ? getEmploymentType(job.workingTimes[0].item)
                 : "",
+            employmentTypeFull:
+              job.workingTimes && job.workingTimes[0].item
+                ? (
+                    employmentTypeOptions.find(
+                      option =>
+                        option.value ===
+                        getEmploymentType(job.workingTimes[0].item)
+                    ) || { text: "" }
+                  ).text
+                : "",
             profession: getProfession(job.title[0] + job.fullDescription[0]),
             specialization: "",
             extJobUrl: job.url ? job.url[0] : "",
             publishedAt: new Date(
               job.publishDate ? job.publishDate[0] : ""
             ).getTime(),
+            timeSincePublished: calcTimeSince(
+              new Date(job.publishDate ? job.publishDate[0] : "").getTime()
+            ),
             updatedAt: new Date(
               job.publishDate ? job.publishDate[0] : ""
             ).getTime(),
@@ -120,6 +138,10 @@ class Cache {
                   : 10.528,
             },
           };
+        });
+
+        jobLiftJobs.forEach(job => {
+          job.jobStructuredData = generateJobStructuredData(job);
         });
 
         if (err) {
@@ -201,6 +223,8 @@ function getEmploymentType(arr) {
     return "part";
   } else if (arr.includes("fulltime")) {
     return "full";
+  } else {
+    return "";
   }
 }
 

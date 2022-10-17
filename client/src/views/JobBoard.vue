@@ -21,7 +21,7 @@
     </div>
     <div class="container py-3 py-lg-4">
       <div class="row mt-2">
-        <div class="col-12 col-lg-4 pt-2 px-2 pr-lg-5">
+        <nav class="col-12 col-lg-4 pt-2 px-2 pr-lg-5">
           <b-form
             id="job-filter"
             @submit.prevent="
@@ -56,7 +56,6 @@
                 placeholder="PLZ / Ort..."
                 trim
                 lazy
-                :formatter="capitalize"
               />
               <b-input-group-append>
                 <b-button
@@ -409,18 +408,18 @@
             />
           </div>
 
-          <div class="d-none d-lg-block mt-5">
+          <div class="d-none d-lg-block mt-4">
             <!-- <BannerTrainingCatalogueSmall /> -->
             <BannerJobSeeksSmall />
-            <SocialButtonFacebook
+            <!-- <SocialButtonFacebook
               class="mt-3 mr-1"
               content="Facebook"
               size="sm"
             />
             <SocialButtonInstagram class="mt-3 mr-1" content="" size="sm" />
-            <SocialButtonTwitter class="mt-3 mr-1" content="" size="sm" />
+            <SocialButtonTwitter class="mt-3 mr-1" content="" size="sm" /> -->
           </div>
-        </div>
+        </nav>
         <div class="col-12 col-lg-8 pt-2">
           <div v-if="errors && errors.length > 0">
             <p v-for="(error, index) in errors" :key="index">
@@ -460,7 +459,7 @@
 
           <div class="d-flex justify-content-center">
             <button
-              v-if="jobs && jobs.length < count"
+              v-if="jobs && jobs.length < count && !loading"
               class="btn btn-secondary"
               @click="loadMoreJobs()"
             >
@@ -534,7 +533,7 @@
           >
             <b-link
               :to="
-                `/stellenangebote?ort=${city.slug}${
+                `/stellenangebote/${city.slug}${
                   berufsgruppe.active.length == 1
                     ? '?berufsgruppe=' + berufsgruppe.active[0]
                     : ''
@@ -688,7 +687,7 @@
         </div>
       </div>
 
-      <div class="mt-5 mb-4">
+      <!-- <div class="mt-5 mb-4">
         <p class="small">
           Stellenangebote, Stellen, Jobs, Jobangebote für Medizinische
           Fachangestellte (MFA), Arzthelferin, Zahnmedizinische Fachangestellte
@@ -706,7 +705,7 @@
             ><span v-if="index < companyStateOptions.length - 1">, </span></span
           >.
         </p>
-      </div>
+      </div> -->
     </div>
 
     <ScrollTopButton />
@@ -763,7 +762,7 @@
 
   import {
     employmentTypeOptions,
-    companyStateOptions,
+    // companyStateOptions,
     specializationOptions,
     professionOptions
   } from "@/config/formDataConfig.json";
@@ -771,9 +770,9 @@
 
   import JobCard from "@/components/JobCard.vue";
   import JobCardPlaceholder from "@/components/JobCardPlaceholder.vue";
-  import SocialButtonFacebook from "@/components/SocialButtonFacebook.vue";
-  import SocialButtonInstagram from "@/components/SocialButtonInstagram.vue";
-  import SocialButtonTwitter from "@/components/SocialButtonTwitter.vue";
+  // import SocialButtonFacebook from "@/components/SocialButtonFacebook.vue";
+  // import SocialButtonInstagram from "@/components/SocialButtonInstagram.vue";
+  // import SocialButtonTwitter from "@/components/SocialButtonTwitter.vue";
   import BannerProfessions from "@/components/BannerProfessions.vue";
   import BannerTrainingCatalogueSmall from "@/components/BannerTrainingCatalogueSmall.vue";
   import BannerTrainingCatalogueLarge from "@/components/BannerTrainingCatalogueLarge.vue";
@@ -805,9 +804,9 @@
     components: {
       JobCard,
       JobCardPlaceholder,
-      SocialButtonFacebook,
-      SocialButtonInstagram,
-      SocialButtonTwitter,
+      // SocialButtonFacebook,
+      // SocialButtonInstagram,
+      // SocialButtonTwitter,
       BannerProfessions,
       BannerTrainingCatalogueSmall,
       BannerTrainingCatalogueLarge,
@@ -841,7 +840,7 @@
         employmentTypeOptions: Object.freeze(
           employmentTypeOptions.filter(opt => opt.value !== "freelance")
         ),
-        companyStateOptions: Object.freeze(companyStateOptions),
+        // companyStateOptions: Object.freeze(companyStateOptions),
         specializationOptions: Object.freeze(specializationOptions),
         professionOptions: Object.freeze(professionOptions),
         textToSlug,
@@ -920,11 +919,12 @@
         // if (this.berufsgruppe.active.length === 1) {
         //   canonical += this.berufsgruppe.active[0].toLowerCase();
         if (this.filter.ort && !this.loading) {
-          if (!this.jobs) {
-            canonical = "/404";
-          } else {
-            canonical += "/" + textToSlug(this.filter.ort);
-          }
+          canonical += "/" + textToSlug(this.filter.ort);
+          // if (!this.jobs) {
+          //   canonical = "/404";
+          // } else {
+          //   canonical += "/" + textToSlug(this.filter.ort);
+          // }
         }
 
         // }
@@ -1100,11 +1100,7 @@
         this.filter = {
           s: this.$route.query.s || "",
           anstellungsart: this.$route.query.anstellungsart || "",
-          ort: this.capitalize(
-            `${this.$route.params.location || this.$route.query.ort || ""}${
-              this.$route.query.state ? " " + this.$route.query.state : ""
-            }`
-          ).replace(/-/g, " "),
+          ort: this.$route.params.location || this.$route.query.ort || "",
           radius: parseInt(this.$route.query.radius) || null
         };
 
@@ -1167,11 +1163,11 @@
         this.setQuery();
         this.getJobs();
       },
-      capitalize(value) {
-        return value.replace(/(^[a-z]| [a-z]|-[a-z])/g, letter =>
-          letter.toUpperCase()
-        );
-      },
+      // capitalize(value) {
+      //   return value.replace(/(^[a-z]| [a-z]|-[a-z])/g, letter =>
+      //     letter.toUpperCase()
+      //   );
+      // },
       getBerufsgruppeActive() {
         const berufsgruppe = this.professionOptions
           .filter(profession =>

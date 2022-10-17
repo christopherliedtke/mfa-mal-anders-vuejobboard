@@ -19,7 +19,7 @@
             |
             <b-link
               class="text-muted"
-              :to="`/stellenangebote/${textToSlug(job.company.location)}`"
+              :to="`/stellenangebote/${job.company.location}`"
               >{{ job.company.location
               }}{{
                 job.company.state && job.company.state != job.company.location
@@ -62,10 +62,7 @@
             />
           </b-link>
           <div class="head flex-column flex-sm-row order-1 order-sm-2">
-            <b-link
-              v-if="job.employmentType"
-              :to="`/stellenangebote?anstellungsart=${job.employmentType}`"
-            >
+            <div>
               <div class="icon">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -80,12 +77,8 @@
                   />
                 </svg>
               </div>
-              {{
-                employmentTypeOptions.find(
-                  option => option.value === job.employmentType
-                ).text
-              }}
-            </b-link>
+              {{ job.employmentTypeFull }}
+            </div>
             <div v-if="job.company.size">
               <div class="icon">
                 <svg
@@ -178,11 +171,7 @@
                   />
                 </svg>
               </div>
-              {{
-                job.status == "published"
-                  ? timeSince(new Date(job.publishedAt || job.paidAt))
-                  : "-"
-              }}
+              {{ job.timeSincePublished || "–" }}
             </div>
             <div
               v-if="job.applicationDeadline"
@@ -525,7 +514,12 @@
           <br />
         </p>
         <b-btn
-          v-if="!showMap"
+          v-if="
+            !showMap &&
+              job.company &&
+              job.company.geoCodeLat &&
+              job.company.geoCodeLng
+          "
           class="mb-4"
           size="sm"
           variant="secondary"
@@ -543,16 +537,7 @@
             /></svg
           >Karte anzeigen</b-btn
         >
-        <MapJobSingle
-          v-if="
-            showMap &&
-              job.company &&
-              job.company.geoCodeLat &&
-              job.company.geoCodeLng
-          "
-          :job="job"
-          class="mb-5"
-        />
+        <MapJobSingle v-if="showMap" :job="job" class="mb-5" />
       </div>
       <div class="d-flex flex-wrap flex-column flex-md-row align-items-center">
         <StarJob
@@ -586,24 +571,21 @@
 </template>
 
 <script>
-  import {
-    employmentTypeOptions,
-    companySizeOptions
-  } from "@/config/formDataConfig.json";
   import StarJob from "@/components/StarJob";
-  import MapJobSingle from "@/components/MapJobSingle.vue";
+  const MapJobSingle = () =>
+    import(
+      /* webpackChunkName: "MapJobSingle" */ "@/components/MapJobSingle.vue"
+    );
+  const JobItemAdminPanel = () =>
+    import(
+      /* webpackChunkName: "JobItemAdminPanel" */ "@/components/JobItemAdminPanel.vue"
+    );
   import SocialButtonFacebookShare from "@/components/SocialButtonFacebookShare.vue";
   import SocialButtonWhatsAppShare from "@/components/SocialButtonWhatsAppShare.vue";
   import SocialButtonEmailShare from "@/components/SocialButtonEmailShare.vue";
   import SocialButtonTwitterShare from "@/components/SocialButtonTwitterShare.vue";
   import NewsletterSignUpModal from "@/components/NewsletterSignUpModal.vue";
   import JobSeekButton from "@/components/JobSeekButton.vue";
-  import { jobStructuredDataMixin } from "@/mixins/jobStructuredDataMixin.js";
-  import textToSlug from "@/helpers/textToSlug.js";
-  const JobItemAdminPanel = () =>
-    import(
-      /* webpackChunkName: "JobItemAdminPanel" */ "@/components/JobItemAdminPanel.vue"
-    );
   export default {
     name: "JobItem",
     components: {
@@ -617,7 +599,6 @@
       StarJob,
       JobSeekButton
     },
-    mixins: [jobStructuredDataMixin],
     props: {
       job: {
         type: Object,
@@ -626,9 +607,6 @@
     },
     data() {
       return {
-        employmentTypeOptions,
-        companySizeOptions,
-        textToSlug,
         showMap: false
       };
     },
@@ -643,42 +621,6 @@
 
         this.$matomo &&
           this.$matomo.trackEvent("engagement", eventAction, eventLabel);
-      },
-      timeSince(date) {
-        const seconds = Math.floor((new Date() - date) / 1000);
-
-        let interval = seconds / 31536000;
-
-        if (interval > 1) {
-          return (
-            "vor " +
-            Math.floor(interval) +
-            " Jahr" +
-            (Math.floor(interval) > 1 ? "en" : "")
-          );
-        }
-
-        interval = seconds / (60 * 60 * 24 * 7);
-        if (interval > 1) {
-          return (
-            "vor " +
-            Math.floor(interval) +
-            " Woche" +
-            (Math.floor(interval) > 1 ? "n" : "")
-          );
-        }
-
-        interval = seconds / 86400;
-        if (interval > 1) {
-          return (
-            "vor " +
-            Math.floor(interval) +
-            " Tag" +
-            (Math.floor(interval) > 1 ? "en" : "")
-          );
-        }
-
-        return "heute";
       }
     }
   };
