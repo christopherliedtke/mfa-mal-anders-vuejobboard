@@ -232,7 +232,7 @@
             </div>
           </router-link>
           <!-- <div v-if="$store.state.auth.loggedIn"><AuthLogoutButton /></div> -->
-          <div v-else class="d-flex">
+          <div v-if="!$store.state.auth.loggedIn" class="d-flex">
             <b-button
               class="mr-1 px-4 py-1"
               variant="secondary"

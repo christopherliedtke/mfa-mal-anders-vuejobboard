@@ -451,8 +451,9 @@ const UserResolvers = {
         });
 
         const emailData = {
-          from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
+          from: `${config.website.emailFrom} <noreply@${process.env.SES_DOMAIN}>`,
           to: user.email,
+          replyTo: "kontakt@mfa-mal-anders.de",
           subject: `E-Mail bestätigen für ${config.website.name}`,
           text: `
             Bitte nutzen Sie den folgenden Link, um Ihren Account auf ${config.website.name} zu aktivieren: ${process.env.WEBSITE_URL}/auth/account/verification/${user._id}
@@ -460,9 +461,16 @@ const UserResolvers = {
           html: html,
         };
 
+        let emailSent;
+
         // const emailSent = await emailService.sendMail(emailData);
-        // const emailSent = await mg.messages().send(emailData);
-        const emailSent = await sesMailTransporter.sendMail(emailData);
+        // if (/@t-online.de/g.test(user.email)) {
+        //   emailData.from = `${config.website.emailFrom} <noreply@${process.env.MG_DOMAIN}>`;
+        //   emailSent = await mg.messages().send(emailData);
+        // } else {
+        //   emailSent = await sesMailTransporter.sendMail(emailData);
+        // }
+        emailSent = await sesMailTransporter.sendMail(emailData);
 
         console.info(
           "sendMail() for user activation email: ",

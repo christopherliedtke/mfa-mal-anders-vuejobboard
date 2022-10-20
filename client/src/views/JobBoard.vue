@@ -10,9 +10,7 @@
           >{{
             berufsgruppe.active.length === 1
               ? berufsgruppe.active.join(" & ")
-              : professionOptions
-                  .map(profession => profession.value)
-                  .join(" & ")
+              : "MFA & ZFA"
           }}
           Jobs {{ filter.ort ? " in " + filter.ort : "" }}</span
         >
@@ -727,22 +725,11 @@
       "
       :desc="
         `Attraktive Stellenangebote für ${
-          berufsgruppe.active.includes('MFA')
-            ? 'Medizinische Fachangestellte (MFA)'
-            : ''
-        }${
-          berufsgruppe.active.includes('MFA') &&
-          berufsgruppe.active.includes('ZFA')
-            ? ' & '
-            : ''
-        }${
-          berufsgruppe.active.includes('ZFA')
-            ? 'Zahnmedizinische Fachangestellte (ZFA)'
-            : ''
-        }${
-          berufsgruppe.active.length == 0
-            ? 'Medizinische Fachangestellte (MFA) & Zahnmedizinische Fachangestellte (ZFA)'
-            : ''
+          berufsgruppe.active.length === 1
+            ? berufsgruppe.active.includes('MFA')
+              ? 'Medizinische Fachangestellte (MFA)'
+              : 'Zahnmedizinische Fachangestellte (ZFA)'
+            : 'Medizinische Fachangestellte (MFA) & Zahnmedizinische Fachangestellte (ZFA)'
         }${
           filter.ort ? ' in ' + filter.ort + ' & Umgebung' : ''
         } | MFA mal anders`
@@ -762,7 +749,6 @@
 
   import {
     employmentTypeOptions,
-    // companyStateOptions,
     specializationOptions,
     professionOptions
   } from "@/config/formDataConfig.json";
@@ -840,7 +826,6 @@
         employmentTypeOptions: Object.freeze(
           employmentTypeOptions.filter(opt => opt.value !== "freelance")
         ),
-        // companyStateOptions: Object.freeze(companyStateOptions),
         specializationOptions: Object.freeze(specializationOptions),
         professionOptions: Object.freeze(professionOptions),
         textToSlug,

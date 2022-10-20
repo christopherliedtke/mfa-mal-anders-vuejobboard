@@ -79,7 +79,7 @@ const mailToEmployers = async () => {
     });
 
     return {
-      from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
+      from: `${config.website.emailFrom} <noreply@${process.env.SES_DOMAIN}>`,
       to: employer.email,
       subject: "Ihre Stellenanzeige auf MFA mal anders",
       html: htmlToEmployer,
@@ -148,7 +148,7 @@ const mailToEmployees = async () => {
     });
 
     return {
-      from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
+      from: `${config.website.emailFrom} <noreply@${process.env.SES_DOMAIN}>`,
       to: employee.email,
       subject: "Dein Stellengesuch auf MFA mal anders",
       html: htmlToEmployee,

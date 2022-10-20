@@ -565,7 +565,7 @@ router.post("/send-application", async (req, res) => {
     });
 
     const emailData = {
-      from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
+      from: `${config.website.emailFrom} <noreply@${process.env.SES_DOMAIN}>`,
       to:
         process.env.NODE_ENV != "production"
           ? process.env.CONTACT_EMAIL_ADRESS

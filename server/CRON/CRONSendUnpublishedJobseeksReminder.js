@@ -62,7 +62,7 @@ const sendUnpublishedJobSeeksReminder = async () => {
       });
 
       return {
-        from: "kontakt@mfa-mal-anders.de",
+        from: `${config.website.emailFrom} <noreply@${process.env.SES_DOMAIN}>`,
         to: jobSeek.user.email,
         subject: "Dein Stellengesuch auf MFA mal anders",
         html: htmlToEmployee,
