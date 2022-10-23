@@ -120,7 +120,7 @@
                     jobSeek.fullTime || jobSeek.partTime || jobSeek.training
                   "
                   >&nbsp;| </span
-                >450€&nbsp;Basis</span
+                >520€&nbsp;Basis</span
               >
               <span v-if="jobSeek.freelance"
                 ><span
