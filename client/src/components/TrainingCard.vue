@@ -16,7 +16,7 @@
         offset="1000"
         fluid
       />
-      <div class="card-body">
+      <div class="card-body pb-0">
         <b-link
           :to="'/karriere/fort-und-weiterbildung/ueberblick/' + training.slug"
           :aria-label="training.title"
@@ -25,13 +25,13 @@
           <p class="card-title h4">{{ training.title }}</p>
         </b-link>
         <!-- eslint-disable-next-line -->
-          <p class="card-text" v-html="training.excerpt"></p>
+        <p class="card-text mb-0" v-html="training.excerpt"></p>
 
-        <b-button
+        <!-- <b-button
           :to="'/karriere/fort-und-weiterbildung/ueberblick/' + training.slug"
           variant="primary"
           >Mehr</b-button
-        >
+        > -->
       </div>
     </div>
   </article>

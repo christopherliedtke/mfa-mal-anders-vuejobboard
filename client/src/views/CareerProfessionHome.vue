@@ -121,7 +121,10 @@
             >
             für MFA & ZFA in 5 Bereichen
           </h2>
+
           <TheProfessionTypeList class="mb-4" :col-md="12" :col-lg="6" />
+
+          <BannerJobSeeksLarge class="mb-4" />
 
           <p>
             Das Gesundheitswesen besteht bekannterweise nicht nur aus
@@ -184,6 +187,7 @@
   import BannerJobboard from "@/components/BannerJobboard.vue";
   import TheProfessionTypeList from "@/components/TheProfessionTypeList.vue";
   import BannerTrainingCatalogueSmall from "@/components/BannerTrainingCatalogueSmall.vue";
+  import BannerJobSeeksLarge from "../components/BannerJobSeeksLarge.vue";
   export default {
     name: "CareerProfessionHome",
     components: {
@@ -191,7 +195,8 @@
       TrainingListRandom,
       BannerJobboard,
       TheProfessionTypeList,
-      BannerTrainingCatalogueSmall
+      BannerTrainingCatalogueSmall,
+      BannerJobSeeksLarge
     },
     data() {
       return {

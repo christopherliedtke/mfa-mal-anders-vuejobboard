@@ -385,7 +385,7 @@
           <div class="small text-right mt-2 mb-2 pr-3 pt-1">
             <b-link to="/fuer-arbeitgeber">Stellenanzeige schalten</b-link>
           </div>
-          <div class="mt-3 mt-lg-5 text-right text-lg-left">
+          <div class="mt-3 text-right">
             <b-button
               v-if="
                 $config.starredJobs.active &&
@@ -400,25 +400,15 @@
             >
             <NewsletterSignUpModal
               v-else
-              class="mt-2 mr-1 d-flex justify-content-end justify-content-lg-start"
+              class="mt-2 mr-1 d-flex justify-content-end justify-content-lg-end"
               size="sm"
               variant="secondary"
             />
-          </div>
-
-          <div class="d-none d-lg-block mt-4">
-            <!-- <BannerTrainingCatalogueSmall /> -->
-            <BannerJobSeeksSmall />
-            <!-- <SocialButtonFacebook
-              class="mt-3 mr-1"
-              content="Facebook"
-              size="sm"
-            />
-            <SocialButtonInstagram class="mt-3 mr-1" content="" size="sm" />
-            <SocialButtonTwitter class="mt-3 mr-1" content="" size="sm" /> -->
+            <BannerProfessions class="d-none d-lg-block mt-5" />
           </div>
         </nav>
-        <div class="col-12 col-lg-8 pt-2">
+
+        <section class="col-12 col-lg-8 pt-2">
           <div v-if="errors && errors.length > 0">
             <p v-for="(error, index) in errors" :key="index">
               {{ error.message }}
@@ -426,27 +416,11 @@
           </div>
 
           <div v-else-if="!jobs">
-            <JobCardPlaceholder v-for="index in 25" :key="index" class="mb-3" />
+            <JobCardPlaceholder v-for="index in 15" :key="index" class="mb-3" />
           </div>
 
           <div v-else-if="jobs.length > 0" class="position-relative">
             <JobSeekButton class="mt-3 mt-lg-0 mb-lg-3" block />
-            <!-- <b-btn to="/stellengesuche/info" block class="mt-3 mt-lg-0 mb-lg-2"
-              ><b-img-lazy
-                class="p-0 mr-2"
-                style="max-height: 30px"
-                src="@/assets/img/LinkedIn_Monochromatic.svg"
-                alt="Stellengesuche für MFA / ZFA und ArzthelferInnen"
-                blank-width="38"
-                blank-height="30"
-                offset="1000"
-                fluid
-              ></b-img-lazy>
-              <strong>Jetzt Stellengesuch schalten</strong
-              ><span class="d-none d-lg-inline">
-                &nbsp;– Arbeitgeber finden Dich!</span
-              >
-            </b-btn> -->
             <JobCard v-for="job in jobs" :key="job._id" :job="job" />
           </div>
 
@@ -497,214 +471,20 @@
               <em>MFA mal anders</em>. <br />
               <b-link to="/fuer-arbeitgeber" class="bold">Mehr erfahren</b-link>
             </p>
+
+            <BannerProfessions class="mt-5" />
           </div>
-        </div>
+        </section>
       </div>
     </div>
 
-    <div class="container">
-      <BannerJobSeeksLarge class="mt-2 mt-lg-3" />
-      <BannerTrainingCatalogueSmall class="d-lg-none mt-3" />
-    </div>
-
-    <div class="container-fluid bg-light-shade my-4 my-lg-5 px-0">
-      <div class="container py-4 py-lg-5">
-        <h2 class="lead bold">
-          {{
-            berufsgruppe.active.some(str => str == "MFA")
-              ? "Medizinische Fachangestellte"
-              : ""
-          }}
-          {{ berufsgruppe.active.length > 1 ? " & " : "" }}
-          {{
-            berufsgruppe.active.some(str => str == "ZFA")
-              ? "Zahnmedizinische Fachangestellte"
-              : ""
-          }}
-          &ndash; Stellenangebote nach Stadt
-        </h2>
-        <ul class="list-group list-group-flush mb-4">
-          <li
-            v-for="city in cities"
-            :key="city.slug"
-            class="list-group-item bg-light-shade"
-          >
-            <b-link
-              :to="
-                `/stellenangebote/${city.slug}${
-                  berufsgruppe.active.length == 1
-                    ? '?berufsgruppe=' + berufsgruppe.active[0]
-                    : ''
-                }`
-              "
-              @click="
-                () => {
-                  filter.ort = city.name;
-                  getJobs();
-                }
-              "
-              >{{
-                berufsgruppe.active.length > 0
-                  ? berufsgruppe.active.join(" & ")
-                  : "MFA & ZFA"
-              }}
-              Jobs in {{ city.name }}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="10"
-                height="10"
-                fill="currentColor"
-                class="bi bi-chevron-right"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
-                /></svg
-            ></b-link>
-          </li>
-        </ul>
-
-        <h2 class="lead bold mt-4">
-          Auf der Suche nach Stellenangeboten für Medizinische Fachangestellte
-          (MFA) | Zahnmedizinische Fachangestellte (ZFA)?
-        </h2>
-        <p>
-          Stellenangebote für Medizinische Fachangestellte und Zahnmedizinische
-          Fachangestellte gibt es im Internet zur Genüge. Wenn Du als MFA & ZFA
-          einen neuen Job suchst, könntest Du in kürzester Zeit einen neuen
-          Arbeitsplatz antreten. Nicht nur die Arztpraxen und Zahnarztpraxen,
-          auch andere Arbeitgeber im Gesundheitswesen suchen händeringend nach
-          Personal und haben viele attraktive Stellenangebote für Medizinische
-          Fachangestellte und Zahnmedizinische Fachangestellte zu bieten. Mit
-          unseren
-          <router-link
-            to="/blog/artikel/4-tipps-wie-du-die-richtige-stelle-fuer-Dich-findest"
-            ><strong
-              >4 Tipps, wie Du die richtige Stelle für Dich findest</strong
-            ></router-link
-          >
-          zeigen wir Dir, worüber Du Dir im Vorhinein Gedanken machen und worauf
-          Du bei der Stellensuche achten solltest.
-        </p>
-        <p>
-          Auf MFA mal anders findest Du passende Jobs für Medizinische
-          Fachangestellte (MFA) | Zahnmedizinische Fachangestellte (ZFA) von
-          attraktiven Arbeitgebern in ganz Deutschland. Hier findest Du
-          Stellenangebote in Vollzeit und Teilzeit in verschiedenen
-          Fachgebieten. Außerdem hast Du die Möglichkeit, als ein
-          <router-link to="/stellengesuche/info" class="bold"
-            >Stellengesuch als MFA | ZFA</router-link
-          >
-          zu schalten und Dich von passenden Arbeitgebern ansprechen zu lassen.
-        </p>
-
-        <h2 class="lead bold mt-4">
-          Gehalt für Medizinische Fachangestellte (MFA) | Zahnmedizinische
-          Fachangestellte (ZFA)
-        </h2>
-        <p>
-          In unserem großen
-          <router-link to="/karriere/mfa/gehalt" class="bold"
-            >Gehaltsreport für MFA</router-link
-          >
-          oder
-          <router-link to="/karriere/zfa/gehalt" class="bold">ZFA</router-link>
-          bekommst Du alle relevanten Informationen zu Gehaltstarifverträgen,
-          Gehalt nach Bundesländern, Gehalt in Teilzeit oder Vollzeit und noch
-          viel mehr. Zusätzlich kannst Du mit dem
-          <router-link to="/karriere/mfa/gehalt#gehaltsrechner" class="bold"
-            >Gehaltsrechner für MFA</router-link
-          >
-          bzw. dem
-          <router-link to="/karriere/zfa/gehalt#gehaltsrechner" class="bold"
-            >Gehaltsrechner für ZFA</router-link
-          >
-          herausfinden, wie viel Gehalt Dir laut aktuellem Tarifvertrag im Jahr
-          {{ new Date().getFullYear() }} mindestens zusteht.
-        </p>
-
-        <h2 class="lead bold mt-4">
-          Häufige Fragen
-        </h2>
-        <h3 class="lead">
-          Welche Aufgaben hat man im Job als MFA?
-        </h3>
-        <p>
-          Je nachdem, wie eine Praxis organisiert ist sowie Praxisgröße und
-          Fachrichtung, werden MFAs als Allrounder eingesetzt und erledigen
-          quasi alle anfallenden Aufgaben in der Praxis. Neben der
-          Sprechstundenorganisation und Patientenbetreuung, gibt es zahlreiche
-          Tätigkeiten für eine MFA, die für den Patienten nicht ersichtlich
-          sind. Der Beruf vereint bürokratische, organisatorische und
-          medizinische Aufgaben. Mehr erfährst Du in unserem Artikel über
-          <router-link to="/karriere/mfa/ausbildung-berufsbild" class="bold"
-            >Ausbildung und Berufsbild für Medizinische
-            Fachangestellte</router-link
-          >.
-        </p>
-        <h3 class="lead">
-          Welche Weiterbildungen kann man als MFA | ZFA machen?
-        </h3>
-        <p>
-          Als MFA | ZFA hast Du vielerlei Möglichkeiten Fortbildungen,
-          Weiterbildungen bis hin zu einem Studium abzuschließen, um Deine
-          Jobmöglichkeiten und Karriereperspektiven zu erweitern. In unserer
-          großen
-          <router-link class="bold" to="/karriere/fort-und-weiterbildung"
-            >Übersicht an Fortbildungen, Weiterbildungen & Studium</router-link
-          >
-          findest Du verschiedenste Alternativen, bei denen auch für Dich
-          sicherlich etwas dabei ist.
-        </p>
-        <h3 class="lead">
-          Welche alternativen Jobmöglichkeiten und Arbeitsorte gibt es für MFA &
-          ZFA?
-        </h3>
-        <p>
-          In unserer Liste von
-          <router-link to="/karriere/jobs-und-berufsbilder" class="bold"
-            >50+ Alternativen Jobs und Berufsbildern</router-link
-          >
-          findest Du eine Reihe von interessanten Möglichkeiten für MFA und ZFA.
-          Von der Medizinischen Fachangestellten bei der Polizei, über die
-          Arbeit als MFA | ZFA beim Gesundheitsamt bis hin zur Arbeit als
-          SachbearbeiterIn bei einer Krankenkasse und viele weitere mehr, ist
-          einiges dabei.
-        </p>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row mt-5 mb-3">
-        <div class="col-12 col-lg-8 mb-4">
-          <BannerTrainingCatalogueLarge />
-        </div>
-        <div class="col-12 col-lg-4 mb-4">
-          <BannerProfessions />
-        </div>
-      </div>
-
-      <!-- <div class="mt-5 mb-4">
-        <p class="small">
-          Stellenangebote, Stellen, Jobs, Jobangebote für Medizinische
-          Fachangestellte (MFA), Arzthelferin, Zahnmedizinische Fachangestellte
-          (ZFA), ZMF, ZMV, MTRA in
-          <span v-for="(state, index) in companyStateOptions" :key="state">
-            <b-link
-              :to="`/stellenangebote/${textToSlug(state)}`"
-              @click="
-                () => {
-                  filter.ort = state;
-                  getJobs();
-                }
-              "
-              >{{ state }}</b-link
-            ><span v-if="index < companyStateOptions.length - 1">, </span></span
-          >.
-        </p>
-      </div> -->
-    </div>
+    <JobBoardMore
+      v-if="
+        !$route.params.location &&
+          $route.query &&
+          Object.keys($route.query).length === 0
+      "
+    />
 
     <ScrollTopButton />
 
@@ -756,51 +536,24 @@
 
   import JobCard from "@/components/JobCard.vue";
   import JobCardPlaceholder from "@/components/JobCardPlaceholder.vue";
-  // import SocialButtonFacebook from "@/components/SocialButtonFacebook.vue";
-  // import SocialButtonInstagram from "@/components/SocialButtonInstagram.vue";
-  // import SocialButtonTwitter from "@/components/SocialButtonTwitter.vue";
   import BannerProfessions from "@/components/BannerProfessions.vue";
-  import BannerTrainingCatalogueSmall from "@/components/BannerTrainingCatalogueSmall.vue";
-  import BannerTrainingCatalogueLarge from "@/components/BannerTrainingCatalogueLarge.vue";
-  import BannerJobSeeksLarge from "@/components/BannerJobSeeksLarge.vue";
-  import BannerJobSeeksSmall from "@/components/BannerJobSeeksSmall.vue";
   import NewsletterSignUpModal from "@/components/NewsletterSignUpModal.vue";
   import JobSeekButton from "@/components/JobSeekButton.vue";
-
-  const cities = [
-    { name: "Berlin", slug: "berlin" },
-    { name: "Bochum", slug: "bochum" },
-    { name: "Bonn", slug: "bonn" },
-    { name: "Bremen", slug: "bremen" },
-    { name: "Dortmund", slug: "dortmund" },
-    { name: "Duisburg", slug: "duisburg" },
-    { name: "Düsseldorf", slug: "duesseldorf" },
-    { name: "Essen", slug: "essen" },
-    { name: "Frankfurt am Main", slug: "frankfurt-am-main" },
-    { name: "Hamburg", slug: "hamburg" },
-    { name: "Hannover", slug: "hannover" },
-    { name: "Köln", slug: "koeln" },
-    { name: "München", slug: "muenchen" },
-    { name: "Stuttgart", slug: "stuttgart" },
-    { name: "Wuppertal", slug: "wuppertal" }
-  ];
+  const JobBoardMore = () =>
+    import(
+      /* webpackChunkName: "JobBoardMore" */ "@/components/JobBoardMore.vue"
+    );
 
   export default {
     name: "JobBoard",
     components: {
       JobCard,
       JobCardPlaceholder,
-      // SocialButtonFacebook,
-      // SocialButtonInstagram,
-      // SocialButtonTwitter,
       BannerProfessions,
-      BannerTrainingCatalogueSmall,
-      BannerTrainingCatalogueLarge,
-      BannerJobSeeksLarge,
-      BannerJobSeeksSmall,
       NewsletterSignUpModal,
       ScrollTopButton,
-      JobSeekButton
+      JobSeekButton,
+      JobBoardMore
     },
     data() {
       return {
@@ -829,7 +582,6 @@
         specializationOptions: Object.freeze(specializationOptions),
         professionOptions: Object.freeze(professionOptions),
         textToSlug,
-        cities: Object.freeze(cities),
         errors: null
       };
     },

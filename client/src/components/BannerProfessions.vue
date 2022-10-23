@@ -1,5 +1,5 @@
 <template>
-  <aside class="card shadow1">
+  <aside class="card shadow1 position-relative">
     <b-img-lazy
       class="card-img-top"
       fluid
@@ -22,7 +22,12 @@
     />
     <div class="card-body text-center">
       <h3 class="h4 card-title">
-        Alternative Jobs und Berufsbilder für MFA / ZFA
+        <b-link
+          to="/karriere/jobs-und-berufsbilder"
+          class="stretched-link text-reset"
+        >
+          Alternative Jobs und Berufsbilder für MFA / ZFA
+        </b-link>
       </h3>
 
       <p class="card-text">
@@ -30,10 +35,6 @@
         inklusive vieler Alternativen für Medizinische Fachangestellte |
         Zahnmedizinische Fachangestellte | ArzthelferInnen!
       </p>
-
-      <b-button to="/karriere/jobs-und-berufsbilder" variant="primary"
-        >Mehr erfahren!</b-button
-      >
     </div>
   </aside>
 </template>
