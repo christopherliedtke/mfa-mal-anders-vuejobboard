@@ -159,7 +159,7 @@ const getProfessions = async () => {
       return "";
     }
   } catch (err) {
-    console.log("Error on getTrainings() in createSitemap: ", err);
+    console.log("Error on getProfessions() in createSitemap: ", err);
     return "";
   }
 };
@@ -198,7 +198,7 @@ const getJobs = async () => {
       return "";
     }
   } catch (err) {
-    console.log("Error on getTrainings() in createSitemap: ", err);
+    console.log("Error on getJobs() in createSitemap: ", err);
     return "";
   }
 };
