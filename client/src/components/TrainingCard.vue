@@ -78,5 +78,9 @@
       width: 100%;
       height: auto;
     }
+
+    .card-title {
+      font-weight: 600;
+    }
   }
 </style>

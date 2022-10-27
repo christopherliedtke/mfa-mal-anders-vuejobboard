@@ -3,7 +3,9 @@
     v-if="!$store.state.auth.loggedIn || !$store.state.auth.user.isEmployee"
     class="newsletter-signup"
   >
-    <p :class="['mb-3 h3', { bold: titleBold }]">{{ title }}</p>
+    <p class="mb-3 h3" :style="titleBold ? 'font-weight: 700' : ''">
+      {{ title }}
+    </p>
     <p v-if="intro">{{ intro }}</p>
     <b-form>
       <label class="sr-only sr-only-focusable" for="email2"

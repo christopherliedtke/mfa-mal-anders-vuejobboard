@@ -33,7 +33,7 @@
               :disabled="linkDisabled"
               class=" stretched-link"
             >
-              <h3 class="h4 bold mb-1 text-break">
+              <h3 class="h4 bold mb-1 text-break" style="font-weight: 700">
                 {{ jobSeek.title }}
               </h3>
             </b-link>

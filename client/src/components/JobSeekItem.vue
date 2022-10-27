@@ -140,12 +140,12 @@
     </div>
 
     <div>
-      <h3 class="bold">Über mich</h3>
+      <h3><strong>Über mich</strong></h3>
       <!-- eslint-disable-next-line -->
       <div v-html="jobSeek.about"></div>
 
       <div v-if="jobSeek.experiences">
-        <h3 class="bold">Meine Berufserfahrung</h3>
+        <h3><strong>Meine Berufserfahrung</strong></h3>
         <!-- eslint-disable-next-line -->
         <div v-html="jobSeek.experiences"></div>
       </div>
@@ -162,7 +162,7 @@
       </div>
 
       <div v-if="jobSeek.tasks">
-        <h3 class="bold">Gesuchte Aufgabenbereiche</h3>
+        <h3><strong>Gesuchte Aufgabenbereiche</strong></h3>
         <!-- eslint-disable-next-line -->
         <div v-html="jobSeek.tasks"></div>
       </div>

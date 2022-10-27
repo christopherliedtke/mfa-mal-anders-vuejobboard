@@ -1,7 +1,12 @@
 <template>
   <div v-if="professions" class="berufsbild-type">
     <div class="title">
-      <h1>MFA & ZFA Berufsbilder – {{ professions[0].professionType.name }}</h1>
+      <h1>
+        <strong
+          >MFA & ZFA Berufsbilder –
+          {{ professions[0].professionType.name }}</strong
+        >
+      </h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
     <div class="container py-3 py-lg-5">
@@ -31,7 +36,8 @@
                 :to="
                   `/karriere/jobs-und-berufsbilder/${profession.professionType.slug}/${profession.slug}`
                 "
-                class="bold text-primary hover-text-secondary"
+                class="text-primary hover-text-secondary"
+                style="font-weight: 600"
               >
                 {{ profession.title }}
                 <svg

@@ -46,7 +46,7 @@
           </div>
         </div>
         <div class="col order-2 order-lg-2">
-          <NewsletterSignUpForm :close-btn="false" />
+          <NewsletterSignUpForm :close-btn="false" :title-bold="true" />
         </div>
         <div class="col order-1 order-lg-3">
           <div class="mb-4">
@@ -214,7 +214,7 @@
         flex-direction: column;
 
         a {
-          padding: 0.4rem 0;
+          padding: 0.3rem 0;
           color: $light;
           font-family: $headings-font-family;
           font-size: 1.1rem;

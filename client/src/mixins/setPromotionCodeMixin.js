@@ -46,8 +46,6 @@ export const setPromotionCodeMixin = {
           const coupon = response.data.coupon;
           localStorage.setItem("promotionCode", coupon.code);
 
-          console.log(coupon);
-
           this.coupon = coupon;
 
           const h = this.$createElement;

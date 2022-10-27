@@ -22,7 +22,9 @@
           :aria-label="article.title"
           class="stretched-link"
         >
-          <h4 class="card-title">{{ article.title }}</h4>
+          <h4 class="card-title">
+            {{ article.title }}
+          </h4>
         </b-link>
 
         <!-- eslint-disable-next-line -->
@@ -109,6 +111,10 @@
       .card-img-top {
         width: 100%;
         height: auto;
+      }
+
+      .card-title {
+        font-weight: 600;
       }
     }
   }

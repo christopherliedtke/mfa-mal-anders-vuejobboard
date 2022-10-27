@@ -10,7 +10,7 @@
       offset="1000"
       fluid
     ></b-img-lazy>
-    <strong>Jetzt Stellengesuch schalten</strong
+    <strong style="font-weight: 600">Jetzt Stellengesuch schalten</strong
     ><span class="d-none d-lg-inline"> &nbsp;– Arbeitgeber finden Dich!</span>
   </b-btn>
 </template>

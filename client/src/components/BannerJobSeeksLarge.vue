@@ -8,7 +8,7 @@
             class="text-reset stretched-link"
           >
             <!-- eslint-disable-next-line -->
-          <h2 class="display-4 bold" v-html="header"></h2>
+            <h2 class="display-4" style="font-weight: 800" v-html="header"></h2>
           </router-link>
           <p class="lead bold text-primary uppercase">
             Lass Dich jetzt von passenden Arbeitgebern finden
@@ -32,7 +32,7 @@
     props: {
       header: {
         type: String,
-        default: "<strong>Stellen&shy;gesuch schalten</strong>"
+        default: "Stellen&shy;gesuch schalten"
       }
     }
   };

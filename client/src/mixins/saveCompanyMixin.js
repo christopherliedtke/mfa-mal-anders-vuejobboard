@@ -69,7 +69,7 @@ export const saveCompanyMixin = {
           };
         }
       } catch (err) {
-        console.log(err);
+        // console.log(err);
         this.$root.$bvToast.toast(
           err
             ? err.message

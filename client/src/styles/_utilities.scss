@@ -46,6 +46,10 @@ body::-webkit-scrollbar-thumb {
     margin-right: auto;
   }
 
+  .h4 {
+    font-weight: 300;
+  }
+
   .breadcrumb {
     justify-content: center;
     background-color: $primary;
@@ -54,6 +58,7 @@ body::-webkit-scrollbar-thumb {
     padding: 0.5rem 0;
     font-size: small;
     line-height: 0.75;
+    font-weight: 300;
 
     & > .breadcrumb-item {
       margin: 0.3rem 0;
@@ -226,7 +231,7 @@ a.icon-box {
 }
 
 .bold {
-  font-weight: bold;
+  font-weight: 800;
 }
 
 .italic {

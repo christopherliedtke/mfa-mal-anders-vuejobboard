@@ -6,13 +6,17 @@
       <div style="max-width: 850px" class="container p-0">
         <div class="hero-text mt-4 mb-5 my-lg-5 p-4">
           <h1>
-            <span class="bold display-2">
+            <span
+              class="display-2"
+              style="font-weight: 800; letter-spacing: -0.04em"
+            >
               MFA <br class="d-md-none" />
               mal anders
             </span>
             <br />
             <span
               class="h2 bg-primary text-light p-2 mt-2 border-radius1 d-inline-block"
+              style="font-weight: 600"
             >
               Das Stellen- & Karriereportal nur für MFA & ZFA
             </span>
@@ -299,7 +303,7 @@
     <div class="container-fluid bg-light-shade my-5 py-5 px-0">
       <div class="container">
         <h2 class="h1 bold display-4 text-center">Blog</h2>
-        <h3 class="h5 text-center mb-4">
+        <h3 class="lead text-center mb-4">
           Rund um Praxisalltag, Tipps zu Weiterbildung und Karriere,
           Persönlichkeitsentwicklung und vieles mehr...
         </h3>

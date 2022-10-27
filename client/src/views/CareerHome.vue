@@ -1,7 +1,9 @@
 <template>
   <div class="karriere">
     <div class="title">
-      <h1>{{ title }}</h1>
+      <h1>
+        <strong>{{ title }}</strong>
+      </h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
 

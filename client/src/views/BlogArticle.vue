@@ -2,7 +2,9 @@
   <div v-if="article">
     <article>
       <div class="title">
-        <h1>{{ article.title }}</h1>
+        <h1>
+          <strong>{{ article.title }}</strong>
+        </h1>
         <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
       </div>
       <div class="cms-article container mt-3 mb-5">

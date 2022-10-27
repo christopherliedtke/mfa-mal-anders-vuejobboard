@@ -454,7 +454,7 @@
         "
         class="mt-4"
       >
-        <h2>Kontakt für Bewerbungen</h2>
+        <h2><strong>Kontakt für Bewerbungen</strong></h2>
         <div class="mb-3">
           <div v-if="job.contactLastName">
             {{ job.contactGender != "null" ? job.contactGender + " " : "" }}
@@ -500,7 +500,7 @@
         </div>
       </div>
       <div class="mt-4">
-        <h2>Arbeitsort</h2>
+        <h2><strong>Arbeitsort</strong></h2>
         <p>
           <b-link
             v-if="job.company._id"

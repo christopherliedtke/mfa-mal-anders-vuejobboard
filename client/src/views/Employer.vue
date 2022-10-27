@@ -1,7 +1,9 @@
 <template>
   <div class="employer">
     <div class="title">
-      <h1 class="bold">{{ title }}</h1>
+      <h1>
+        <strong>{{ title }}</strong>
+      </h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
 
@@ -234,7 +236,7 @@
       <h2 class="display-4 bold text-center">
         Warum MFA mal anders?
       </h2>
-      <p class="h3 text-center">
+      <p class="h3 text-center" style="font-weight: 400">
         Die Jobbörse speziell für Medizinische Fachangestellte&nbsp;& <br />
         Zahnmedizinische Fachangestellte
       </p>
@@ -376,15 +378,15 @@
             <p>
               Sie erstellen Ihre Anzeige, wir sorgen für den Rest &ndash;
               <strong>Relevante Reichweite auf </strong>
-              <b-link to="/stellenangebote" class="bold">MFA mal anders</b-link
+              <b-link to="/stellenangebote"
+                ><strong>MFA mal anders</strong></b-link
               >,
               <a
                 href="https://www.google.com/search?q=mfa+mal+anders&ibp=htl;jobs#htivrt=jobs&htilrad=-1.0"
                 target="_blank"
-                class="bold"
-                >Google Jobs</a
+                ><strong>Google Jobs</strong></a
               >,
-              <span class="text-tertiary bold">Social Media</span>
+              <span class="text-tertiary"><strong>Social Media</strong></span>
               <!-- <a
                 :href="`https://www.facebook.com/${$config.fb.path}`"
                 target="_blank"
@@ -510,24 +512,22 @@
           >, wenn Sie beispielsweise eine Stellenanzeige dauerhaft bei uns
           schalten oder eine zusätzliche Marketingkampagne (Google, Facebook,
           Instagram) schalten möchten. Kontaktieren Sie uns dazu gern über unser
-          <router-link
-            class="bold"
-            to="/kontakt?role=employer&subject=Stellenpakete"
-            >Kontaktformular</router-link
+          <router-link to="/kontakt?role=employer&subject=Stellenpakete"
+            ><strong>Kontaktformular</strong></router-link
           >.
         </p>
         <p>
           Sie haben die Möglichkeit, Ihre Stellenanzeige nach der
-          <b-link class="bold" to="/auth/register">Registrierung</b-link> auf
-          unserem Portal zu erstellen und in einer Vorschau zu betrachten.
+          <b-link to="/auth/register"><strong>Registrierung</strong></b-link>
+          auf unserem Portal zu erstellen und in einer Vorschau zu betrachten.
           Anschließend können Sie Ihre Stellenanzeige mit einem der drei Pakete
           veröffentlichen.
         </p>
         <p>
           Mit der Veröffentlichung Ihrer Stellenanzeige bekommen Sie zusätzlich
           die Möglichkeit, auf unsere
-          <router-link class="bold" to="/stellengesuche"
-            >Stellengesuche</router-link
+          <router-link to="/stellengesuche"
+            ><strong>Stellengesuche</strong></router-link
           >
           zu antworten und Kontakt zu potentiellen neuen MitarbeiterInnen
           aufzunehmen.
@@ -548,7 +548,9 @@
         <h2 class="display-4 text-center bold">
           Unser Modus für Kurzbewerbungen
         </h2>
-        <h3 class="text-center">Mehr KandidatInnen durch einfaches Bewerben</h3>
+        <h3 class="text-center" style="font-weight: 400">
+          Mehr KandidatInnen durch einfaches Bewerben
+        </h3>
         <p>
           Sie haben optional die Möglichkeit, für Ihre Stellenanzeige die
           Kurzbewerbung-Funktion zu aktivieren. Damit
@@ -585,7 +587,7 @@
             wenige Bewerbungen erhalten</strong
           >. Am Ende ist das persönliche Gespräch ohnehin entscheidend.
         </p>
-        <h3 class="text-center mt-4">
+        <h3 class="text-center mt-4" style="font-weight: 400">
           Beispiel für Kurzbewerbung zum durchklicken
         </h3>
         <SimpleApplicationDataForm
@@ -799,8 +801,10 @@
         <b-link
           href="/downloads/MfaMalAnders_Beispiel_Stellenanzeige.pdf"
           target="_blank"
-          class="bold"
-          >Beispiel & Muster Stellenanzeige für MFA | ZFA | ArzthelferIn</b-link
+          ><strong
+            >Beispiel & Muster Stellenanzeige für MFA | ZFA |
+            ArzthelferIn</strong
+          ></b-link
         >
         zur Inspiration ansehen.
       </p>
@@ -890,8 +894,8 @@
             In unserem "Professional" Paket erhalten Sie nach der Erstellung
             Ihrer Stellenanzeige zusärtliche Tipps zur Optimierung durch Ihren
             persönlichen Ansprechpartner. Zudem geben wir Ihnen mit unseren
-            <b-link class="bold" to="#tipps-stellenanzeigen"
-              >Tipps für attraktive Stellenanzeigen</b-link
+            <b-link to="#tipps-stellenanzeigen"
+              ><strong>Tipps für attraktive Stellenanzeigen</strong></b-link
             >
             wichtige Hinweise inkl. einer Musterstellenanzeige an die Hand.
             Haben Sie darüber hinaus Fragen, melden Sie sich gern auch über das

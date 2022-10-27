@@ -296,6 +296,7 @@
           margin: 0;
           padding: 1rem;
           line-height: 1.3;
+          font-weight: 500;
 
           &.mobile-max-width-75 {
             @media screen and (max-width: $break-menu) {

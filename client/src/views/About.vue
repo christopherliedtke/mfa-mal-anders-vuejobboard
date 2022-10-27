@@ -1,7 +1,9 @@
 <template>
   <div class="about">
     <div class="title">
-      <h1 class="bold">{{ title }}</h1>
+      <h1>
+        <strong>{{ title }}</strong>
+      </h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
     <div class="header-img">
@@ -29,7 +31,9 @@
     </div>
 
     <div id="intro" class="container mb-5" style="max-width: 1000px">
-      <h2 class="display-2 bold text-gray-dark">MFA mal&nbsp;anders</h2>
+      <h2 class="display-2 bold text-gray-dark" style="letter-spacing: -0.04em">
+        MFA mal&nbsp;anders
+      </h2>
       <p class="lead">
         Das Stellen- & Karriereportal speziell für Medizinische Fachangestellte
         (MFA) | Zahnmedizinische Fachangestellte (ZFA)
@@ -78,7 +82,8 @@
         Medizinischen Fachangestellten | Zahnmedizinischen Fachangestellten
         einsetzen. Sollten auch Sie Interesse an einer Kooperation mit uns
         haben, melden Sie sich gern jederzeit über unser
-        <b-link class="bold" to="/kontakt">Kontaktformular</b-link>.
+        <b-link to="/kontakt"><strong>Kontaktformular</strong></b-link
+        >.
       </p>
 
       <TheCooperationPartners />
@@ -183,7 +188,7 @@
           </div>
           <div class="col-6 col-lg-2 mb-4">
             <b-link
-              class="d-flex flex-column align-items-center justify-content-center bold text-muted"
+              class="d-flex flex-column align-items-center justify-content-center text-muted"
               to="/kontakt"
             >
               <div
@@ -205,12 +210,12 @@
                   />
                 </svg>
               </div>
-              Kontaktformular
+              <strong>Kontaktformular</strong>
             </b-link>
           </div>
           <div class="col-6 col-lg-2 mb-4">
             <b-link
-              class="d-flex flex-column align-items-center justify-content-center bold text-muted"
+              class="d-flex flex-column align-items-center justify-content-center text-muted"
               href="mailto:kontakt@mfa-mal-anders.de"
               target="_blank"
             >
@@ -230,12 +235,12 @@
                   />
                 </svg>
               </div>
-              E-Mail
+              <strong>E-Mail</strong>
             </b-link>
           </div>
           <div class="col-6 col-lg-2 mb-4">
             <b-link
-              class="d-flex flex-column align-items-center justify-content-center bold text-muted"
+              class="d-flex flex-column align-items-center justify-content-center text-muted"
               href="https://wa.me/4917645282858"
               target="_blank"
             >
@@ -255,12 +260,12 @@
                   />
                 </svg>
               </div>
-              WhatsApp
+              <strong>WhatsApp</strong>
             </b-link>
           </div>
           <div class="col-6 col-lg-2 mb-4">
             <b-link
-              class="d-flex flex-column align-items-center justify-content-center bold text-muted"
+              class="d-flex flex-column align-items-center justify-content-center text-muted"
               href="tel:+4917645282858"
               target="_blank"
             >
@@ -281,7 +286,7 @@
                   <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
                 </svg>
               </div>
-              Telefon
+              <strong>Telefon</strong>
             </b-link>
           </div>
         </div>

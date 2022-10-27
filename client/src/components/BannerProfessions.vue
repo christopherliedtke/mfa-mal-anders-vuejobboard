@@ -21,7 +21,7 @@
       blank-color="#f7f6f9"
     />
     <div class="card-body text-center">
-      <h3 class="h4 card-title">
+      <h3 class="h4 card-title" style="font-weight: 700">
         <b-link
           to="/karriere/jobs-und-berufsbilder"
           class="stretched-link text-reset"

@@ -2,7 +2,9 @@
   <div v-if="training">
     <article class="fort-weiterbildung">
       <div class="title">
-        <h1>{{ training ? training.title : "" }}</h1>
+        <h1>
+          <strong>{{ training ? training.title : "" }}</strong>
+        </h1>
         <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
       </div>
       <div class="container py-3 py-lg-5">

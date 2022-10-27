@@ -59,8 +59,8 @@
         attraktiven Arbeitgebern in ganz Deutschland. Hier findest Du
         Stellenangebote in Vollzeit und Teilzeit in verschiedenen Fachgebieten.
         Außerdem hast Du die Möglichkeit, als ein
-        <router-link to="/stellengesuche/info" class="bold"
-          >Stellengesuch als MFA | ZFA</router-link
+        <router-link to="/stellengesuche/info"
+          ><strong>Stellengesuch als MFA | ZFA</strong></router-link
         >
         zu schalten und Dich von passenden Arbeitgebern ansprechen zu lassen.
       </p>
@@ -71,20 +71,22 @@
       </h2>
       <p>
         In unserem großen
-        <router-link to="/karriere/mfa/gehalt" class="bold"
-          >Gehaltsreport für MFA</router-link
+        <router-link to="/karriere/mfa/gehalt"
+          ><strong>Gehaltsreport für MFA</strong></router-link
         >
         oder
-        <router-link to="/karriere/zfa/gehalt" class="bold">ZFA</router-link>
+        <router-link to="/karriere/zfa/gehalt"
+          ><strong>ZFA</strong></router-link
+        >
         bekommst Du alle relevanten Informationen zu Gehaltstarifverträgen,
         Gehalt nach Bundesländern, Gehalt in Teilzeit oder Vollzeit und noch
         viel mehr. Zusätzlich kannst Du mit dem
-        <router-link to="/karriere/mfa/gehalt#gehaltsrechner" class="bold"
-          >Gehaltsrechner für MFA</router-link
+        <router-link to="/karriere/mfa/gehalt#gehaltsrechner"
+          ><strong>Gehaltsrechner für MFA</strong></router-link
         >
         bzw. dem
-        <router-link to="/karriere/zfa/gehalt#gehaltsrechner" class="bold"
-          >Gehaltsrechner für ZFA</router-link
+        <router-link to="/karriere/zfa/gehalt#gehaltsrechner"
+          ><strong>Gehaltsrechner für ZFA</strong></router-link
         >
         herausfinden, wie viel Gehalt Dir laut aktuellem Tarifvertrag im Jahr
         {{ new Date().getFullYear() }} mindestens zusteht.
@@ -104,9 +106,10 @@
         Tätigkeiten für eine MFA, die für den Patienten nicht ersichtlich sind.
         Der Beruf vereint bürokratische, organisatorische und medizinische
         Aufgaben. Mehr erfährst Du in unserem Artikel über
-        <router-link to="/karriere/mfa/ausbildung-berufsbild" class="bold"
-          >Ausbildung und Berufsbild für Medizinische
-          Fachangestellte</router-link
+        <router-link to="/karriere/mfa/ausbildung-berufsbild"
+          ><strong
+            >Ausbildung und Berufsbild für Medizinische Fachangestellte</strong
+          ></router-link
         >.
       </p>
       <h3 class="lead">
@@ -117,8 +120,10 @@
         Weiterbildungen bis hin zu einem Studium abzuschließen, um Deine
         Jobmöglichkeiten und Karriereperspektiven zu erweitern. In unserer
         großen
-        <router-link class="bold" to="/karriere/fort-und-weiterbildung"
-          >Übersicht an Fortbildungen, Weiterbildungen & Studium</router-link
+        <router-link to="/karriere/fort-und-weiterbildung"
+          ><strong
+            >Übersicht an Fortbildungen, Weiterbildungen & Studium</strong
+          ></router-link
         >
         findest Du verschiedenste Alternativen, bei denen auch für Dich
         sicherlich etwas dabei ist.
@@ -129,8 +134,8 @@
       </h3>
       <p>
         In unserer Liste von
-        <router-link to="/karriere/jobs-und-berufsbilder" class="bold"
-          >50+ Alternativen Jobs und Berufsbildern</router-link
+        <router-link to="/karriere/jobs-und-berufsbilder"
+          ><strong>50+ Alternativen Jobs und Berufsbildern</strong></router-link
         >
         findest Du eine Reihe von interessanten Möglichkeiten für MFA und ZFA.
         Von der Medizinischen Fachangestellten bei der Polizei, über die Arbeit

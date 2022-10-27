@@ -2,7 +2,9 @@
   <div v-if="profession">
     <article class="profession">
       <div class="title">
-        <h1>{{ profession.title }}</h1>
+        <h1>
+          <strong>{{ profession.title }}</strong>
+        </h1>
         <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
       </div>
       <div class="container py-3 py-lg-5">

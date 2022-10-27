@@ -3,8 +3,8 @@
     <div class="title">
       <!-- eslint-disable -->
       <h1>
-        Fortbildung &ndash;
-        <span v-html="training ? training.title : ''"></span>
+        <strong>Fortbildung &ndash;
+        <span v-html="training ? training.title : ''"></span></strong>
       </h1>
       <!-- eslint-enable -->
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>

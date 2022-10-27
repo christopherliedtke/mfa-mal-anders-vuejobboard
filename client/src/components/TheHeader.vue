@@ -356,7 +356,7 @@
 <style lang="scss">
   #header {
     background: $primary;
-    font-family: $headings-font-family;
+    // font-family: $headings-font-family;
     box-shadow: $shadow1;
     position: sticky;
     top: 0;
@@ -446,8 +446,9 @@
             position: relative;
             display: flex;
             align-items: center;
-            padding: 0.4rem 0.5rem;
+            padding: 0.2rem 0.5rem;
             color: transparentize($color: $light, $amount: 0.3);
+            // font-weight: 500;
 
             @media screen and (max-width: $break-menu) {
               flex-direction: column;
