@@ -24,7 +24,6 @@
             id="job-filter"
             @submit.prevent="
               () => {
-                getJobs();
                 setQuery();
               }
             "
@@ -62,7 +61,6 @@
                   @click.prevent="
                     () => {
                       filter.ort = '';
-                      getJobs();
                       setQuery();
                     }
                   "
@@ -130,7 +128,6 @@
                   @click.prevent="
                     () => {
                       filter.radius = null;
-                      getJobs();
                       setQuery();
                     }
                   "
@@ -209,7 +206,6 @@
                     @click.prevent="
                       () => {
                         filter.s = '';
-                        getJobs();
                         setQuery();
                       }
                     "
@@ -256,7 +252,6 @@
                   class=""
                   @change="
                     () => {
-                      getJobs();
                       setQuery();
                     }
                   "
@@ -285,7 +280,6 @@
                   stacked
                   @change="
                     () => {
-                      getJobs();
                       setQuery();
                     }
                   "
@@ -656,20 +650,12 @@
         // if (this.berufsgruppe.active.length === 1) {
         //   canonical += this.berufsgruppe.active[0].toLowerCase();
         if (this.filter.ort && !this.loading) {
-          canonical += "/" + textToSlug(this.filter.ort);
-          // if (!this.jobs) {
-          //   canonical = "/404";
-          // } else {
-          //   canonical += "/" + textToSlug(this.filter.ort);
-          // }
+          if (this.jobs) {
+            canonical += "/" + textToSlug(this.filter.ort);
+          }
         }
 
         // }
-
-        // const location =
-        //   this.$route.params.location ||
-        //   this.$route.query.ort ||
-        //   this.$route.query.state;
 
         // if (this.$route.query.berufsgruppe) {
         //   canonical += "?berufsgruppe=" + this.$route.query.berufsgruppe;
@@ -690,6 +676,10 @@
           this.specialization.indeterminate = true;
           this.specialization.allSelected = false;
         }
+      },
+      "$route.query"() {
+        this.setFilter();
+        this.getJobs();
       }
       // "berufsgruppe.active"() {
       //   this.setQuery();
@@ -827,7 +817,7 @@
         }
 
         this.$router
-          .replace({
+          .push({
             query,
             path: "/stellenangebote"
           })
