@@ -7,7 +7,7 @@
     <TheFooter />
     <TheOverlay />
     <TheStarJobModal v-if="$store.state.utils.starJobModal" />
-    <NewsletterSignUpPopUp />
+    <NewsletterSignUpPopUp v-if="loadNewsletterPopUp" />
   </div>
 </template>
 
@@ -31,13 +31,19 @@
       TheOverlay,
       TheStarJobModal
     },
-    // watch: {
-    //   $route(to, from) {
-    //     if (from.path && to.path != from.path && this.$config.ga.active) {
-    //       this.track();
-    //     }
-    //   }
-    // },
+    data() {
+      return {
+        loadNewsletterPopUp: false
+      };
+    },
+    watch: {
+      $route(to, from) {
+        if (from.path && to.path != from.path) {
+          // this.track();
+          this.loadNewsletterPopUp = true;
+        }
+      }
+    },
     async created() {
       await this.checkLoggedIn();
       // #GA4 no cookies

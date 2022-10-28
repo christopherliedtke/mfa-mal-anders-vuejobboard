@@ -190,7 +190,7 @@ const getJobs = async () => {
             process.env.WEBSITE_URL + "/job/" + elem._id + "/" + elem.slug,
             new Date(elem.updatedAt).toISOString(),
             "weekly",
-            0.8
+            0.6
           )
         )
         .join(" ");
