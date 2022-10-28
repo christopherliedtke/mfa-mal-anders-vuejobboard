@@ -281,6 +281,7 @@
           "
         />
       </div>
+      <h2 class="sr-only">Stellenbeschreibung</h2>
       <!-- eslint-disable-next-line -->
       <div id="job-description" class="mt-4" v-html="job.description"></div>
       <div v-if="job.company.url" class="mt-3">

@@ -28,7 +28,7 @@
       <b-form-select
         id="newsletter-state"
         v-model="form.state"
-        class="mt-2"
+        class="mt-3"
         :state="validated ? (form.state ? true : false) : null"
       >
         <b-form-select-option value="" disabled
