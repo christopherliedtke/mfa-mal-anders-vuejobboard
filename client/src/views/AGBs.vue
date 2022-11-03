@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="title">
-      <h1 class="bold">{{ title }}</h1>
+      <h1>
+        <strong>{{ title }}</strong>
+      </h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
     <div class="privacy-policy container py-5">
