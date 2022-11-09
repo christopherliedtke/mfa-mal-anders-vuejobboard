@@ -989,7 +989,7 @@
 
     <Head
       title="MFA & ZFA gesucht? – Stellenanzeige schalten!"
-      desc="MFA | ZFA gesucht? Jetzt Stellenanzeige schalten auf MFA mal anders! Die exklusive Jobbörse für Zahnmedizinischen | Medizinischen Fachangestellten."
+      desc="MFA | ZFA gesucht? Jetzt Stellenanzeige schalten auf MFA mal anders! Die exklusive Jobbörse für Zahnmedizinische | Medizinische Fachangestellten."
       img=""
       :script="snippet"
     />
