@@ -131,7 +131,7 @@
           workingHours: 38.89
         },
         year: new Date(
-          new Date().getTime() + 1000 * 60 * 60 * 24 * 30
+          new Date().getTime() + 1000 * 60 * 60 * 24 * 45
         ).getFullYear(),
         yearsOfExperienceOptions: [
           {

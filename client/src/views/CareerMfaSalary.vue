@@ -2,7 +2,7 @@
   <article class="salary">
     <div class="title">
       <h1>
-        <strong>{{ title }} {{ year }}</strong> <br />
+        <strong>MFA Gehalt 2023</strong> <br />
         <span class="h4">für Medizinische Fachangestellte / ArzthelferIn</span>
       </h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
@@ -13,15 +13,15 @@
         class="border-radius1 shadow1 mb-3 mb-lg-5"
         fluid
         srcset="
-          /img/MfaMalAnders_GehaltMfa_qsxksd_c_scale,w_350.jpg 350w,
-          /img/MfaMalAnders_GehaltMfa_qsxksd_c_scale,w_619.jpg 619w,
-          /img/MfaMalAnders_GehaltMfa_qsxksd_c_scale,w_919.jpg 919w,
-          /img/MfaMalAnders_GehaltMfa_qsxksd_c_scale,w_1200.jpg 1200w
+          /img/MfaMalAnders_GehaltMfa_x5gq6a_c_scale,w_350.jpg 350w,
+          /img/MfaMalAnders_GehaltMfa_x5gq6a_c_scale,w_624.jpg 624w,
+          /img/MfaMalAnders_GehaltMfa_x5gq6a_c_scale,w_847.jpg 847w,
+          /img/MfaMalAnders_GehaltMfa_x5gq6a_c_scale,w_1200.jpg 1200w
         "
         sizes="(max-width: 1200px) 100vw, 1200px"
-        src="/img/MfaMalAnders_GehaltMfa_qsxksd_c_scale,w_1200.jpg"
+        src="/img/MfaMalAnders_GehaltMfa_x5gq6a_c_scale,w_1200.jpg"
         :alt="
-          `MFA / Medizinische Fachangestellte / ArzthelferIn Gehalt ${year} - Berechne Dein Gehalt mit unserem Gehaltsrechner`
+          `MFA / Medizinische Fachangestellte / ArzthelferIn Gehalt 2023 - Berechne Dein Gehalt mit unserem Gehaltsrechner`
         "
         width="1200"
         height="630"
@@ -34,7 +34,7 @@
         <ol class="text-tertiary pl-4">
           <li>
             <b-link to="#gehaltstarifvertrag"
-              >Tarifvertrag MFA {{ year }} – für Medizinische Fachangestellte /
+              >Tarifvertrag MFA 2023 – für Medizinische Fachangestellte /
               ArzthelferIn</b-link
             >
             <ol>
@@ -80,8 +80,7 @@
           </li>
           <li>
             <b-link to="#gehalt-ausbildung"
-              >MFA Gehalt in der Ausbildung {{ year }} – nach
-              Tarifvertrag</b-link
+              >MFA Gehalt in der Ausbildung 2023 – nach Tarifvertrag</b-link
             >
           </li>
           <li>
@@ -176,7 +175,7 @@
         vertragliche Lage aussieht.
       </p>
       <h2 id="gehaltstarifvertrag" class="mb-4 mt-5">
-        <span class="display-4 bold">Gehaltstarifvertrag MFA {{ year }}</span>
+        <span class="display-4 bold">Gehaltstarifvertrag MFA 2023</span>
         <br />
         für Medizinische Fachangestellte / ArzthelferIn
       </h2>
@@ -317,7 +316,7 @@
         Der Stundenlohn im Jahr 2022 für Medizinische Fachangestellte (MFA)
         bewegt sich laut Gehaltstarifvertrag je nach Berufserfahrung und
         erworbenen Qualifikationen durch Fort- und Weiterbildungen zwischen
-        12,88 €/h und 25,88 €/h.
+        13,22 €/h und 26,55 €/h.
       </p>
 
       <div class="table-responsive">
@@ -958,7 +957,7 @@
       </div>
 
       <h2 id="gehalt-teilzeit" class="mt-4">
-        MFA Gehalt {{ year }} in Teilzeit
+        MFA Gehalt 2023 in Teilzeit
       </h2>
       <p>
         Dein Gehalt als ArzthelferIn / MFA in Teilzeit kannst Du Dir mit Hilfe
@@ -983,7 +982,7 @@
       </p>
 
       <h2 id="gehalt-ausbildung">
-        MFA Ausbildung Gehalt {{ year }} – nach Tarifvertrag
+        MFA Ausbildung Gehalt 2023 – nach Tarifvertrag
       </h2>
       <p>
         Wie für andere Ausbildungsberufe auch, ist für die Ausbildung von
@@ -1638,11 +1637,11 @@
     <ScrollTopButton />
 
     <Head
-      :title="`MFA Gehalt & Tarifvertrag ${year} || + Gehaltsrechner`"
+      :title="`MFA Gehalt & Tarifvertrag 2023 || + Gehaltsrechner`"
       :desc="
-        `Gehalt als Medizinische Fachangestellte (MFA) | Gehaltstarifvertrag ${year} | Tätigkeitsgruppen || Gehaltsrechner Teilzeit / Vollzeit`
+        `Gehalt als Medizinische Fachangestellte (MFA) | Gehaltstarifvertrag 2023 | Tätigkeitsgruppen || Gehaltsrechner Teilzeit / Vollzeit`
       "
-      img="/img/MfaMalAnders_GehaltMfa_qsxksd_c_scale,w_1200.jpg"
+      img="/img/MfaMalAnders_GehaltMfa_x5gq6a_c_scale,w_1200.jpg"
       :script="snippet"
     />
   </article>
@@ -1681,10 +1680,10 @@
     mixins: [scrollToHashMixin],
     data() {
       return {
-        title: `MFA Gehalt`,
-        year: new Date(
-          new Date().getTime() + 1000 * 60 * 60 * 24 * 30
-        ).getFullYear(),
+        // title: `MFA Gehalt`,
+        // year: new Date(
+        //   new Date().getTime() + 1000 * 60 * 60 * 24 * 30
+        // ).getFullYear(),
         breadcrumbs: [
           { text: "Home", to: "/" },
           { text: "Karriere", to: "/karriere" },
@@ -1730,10 +1729,10 @@
               },
               {
                 "@type": "Question",
-                "name": "Wie hoch ist der Stundenlohn für eine Medizinische Fachangestellte (MFA) / ArzthelferIn in ${this.year}?",
+                "name": "Wie hoch ist der Stundenlohn für eine Medizinische Fachangestellte (MFA) / ArzthelferIn in 2023?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Der Stundenlohn im Jahr ${this.year} für Medizinische Fachangestellte (MFA) / ArzthelferInnen bewegt sich laut Gehaltstarifvertrag je nach Berufserfahrung und erworbenen Qualifikationen durch Fort- und Weiterbildungen zwischen 12,51 €/h und 25,13 €/h."
+                  "text": "Der Stundenlohn im Jahr 2023 für Medizinische Fachangestellte (MFA) / ArzthelferInnen bewegt sich laut Gehaltstarifvertrag je nach Berufserfahrung und erworbenen Qualifikationen durch Fort- und Weiterbildungen zwischen 12,51 €/h und 25,13 €/h."
                 }
               }]
             }`

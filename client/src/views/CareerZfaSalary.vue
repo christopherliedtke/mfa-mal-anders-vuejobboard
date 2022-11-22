@@ -2,7 +2,7 @@
   <article class="salary">
     <div class="title">
       <h1>
-        <strong>{{ title }} {{ year }}</strong> <br />
+        <strong>ZFA Gehalt 2023</strong> <br />
         <span class="h4">für Zahnmedizinische Fachangestellte</span>
       </h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
@@ -19,7 +19,7 @@
         sizes="(max-width: 1200px) 100vw, 1200px"
         src="/img/MfaMalAnders_GehaltZfa_hkucp5_c_scale,w_1200.jpg"
         :alt="
-          `ZFA / Zahnmedizinische Fachangestellte Gehalt ${year} - Berechne Dein Gehalt mit unserem Gehaltsrechner`
+          `ZFA / Zahnmedizinische Fachangestellte Gehalt 2023 - Berechne Dein Gehalt mit unserem Gehaltsrechner`
         "
         width="1200"
         height="630"
@@ -32,7 +32,7 @@
         <ol class="text-tertiary pl-4">
           <li>
             <b-link to="#gehaltstarifvertrag"
-              >Gehaltstarifvertrag {{ year }} – ZFA / ZahnarzthelferIn</b-link
+              >Gehaltstarifvertrag 2023 – ZFA / ZahnarzthelferIn</b-link
             >
             <ol>
               <li>
@@ -42,7 +42,7 @@
               </li>
               <li>
                 <b-link to="#gehalt-ausbildung"
-                  >ZFA Ausbildung {{ year }} – Gehalt nach Tarifvertrag</b-link
+                  >ZFA Ausbildung 2023 – Gehalt nach Tarifvertrag</b-link
                 >
               </li>
               <li>
@@ -136,7 +136,7 @@
         herausfinden.
       </p>
       <h2 id="gehaltstarifvertrag" class="mb-4 mt-5">
-        <span class="display-4 bold">Gehaltstarifvertrag ZFA {{ year }}</span>
+        <span class="display-4 bold">Gehaltstarifvertrag ZFA 2023</span>
         <br />
         für Zahnmedizinische Fachangestellte / ZahnarzthelferIn
       </h2>
@@ -294,10 +294,10 @@
           01.07.2022
         </h3>
         <p>
-          Der Stundenlohn im Jahr {{ year }} für Zahnmedizinische
-          Fachangestellte (ZFA) bewegt sich laut Gehaltstarifvertrag je nach
-          Berufserfahrung und erworbenen Qualifikationen durch Fort- und
-          Weiterbildungen zwischen 13,14 €/h und 22,53 €/h.
+          Der Stundenlohn im Jahr 2023 für Zahnmedizinische Fachangestellte
+          (ZFA) bewegt sich laut Gehaltstarifvertrag je nach Berufserfahrung und
+          erworbenen Qualifikationen durch Fort- und Weiterbildungen zwischen
+          13,14 €/h und 22,53 €/h.
           <b-link to="#gehaltsrechner">Gehaltsrechner</b-link> kannst Du Dir den
           Stundenlohn bzw. Gehalt in Teilzeit für Deinen relevanten Bereich
           errechnen, indem Du als Wochenarbeitszeit eine Stunde auswählst.
@@ -430,7 +430,7 @@
       </div>
 
       <h3 id="gehalt-ausbildung">
-        ZFA Ausbildung {{ year }} – Gehalt nach Tarifvertrag
+        ZFA Ausbildung 2023 – Gehalt nach Tarifvertrag
       </h3>
       <p>
         Wie für andere Ausbildungsberufe auch, ist für die Ausbildung von
@@ -1002,9 +1002,9 @@
     <ScrollTopButton />
 
     <Head
-      :title="`ZFA Gehalt ${year} || Gehaltsrechner | Tarifvertrag`"
+      :title="`ZFA Gehalt 2023 || Gehaltsrechner | Tarifvertrag`"
       :desc="
-        `Gehalt als Zahnmedizinische Fachangestellte (ZFA) | Gehaltstarifvertrag ${year} | Tätigkeitsgruppen || Gehaltsrechner Teilzeit / Vollzeit`
+        `Gehalt als Zahnmedizinische Fachangestellte (ZFA) | Gehaltstarifvertrag 2023 | Tätigkeitsgruppen || Gehaltsrechner Teilzeit / Vollzeit`
       "
       img="/img/MfaMalAnders_GehaltZfa_hkucp5_c_scale,w_1200.jpg"
       :script="snippet"
@@ -1045,10 +1045,10 @@
     mixins: [scrollToHashMixin],
     data() {
       return {
-        title: `ZFA Gehalt`,
-        year: new Date(
-          new Date().getTime() + 1000 * 60 * 60 * 24 * 30
-        ).getFullYear(),
+        // title: `ZFA Gehalt`,
+        // year: new Date(
+        //   new Date().getTime() + 1000 * 60 * 60 * 24 * 30
+        // ).getFullYear(),
         breadcrumbs: [
           { text: "Home", to: "/" },
           { text: "Karriere", to: "/karriere" },
