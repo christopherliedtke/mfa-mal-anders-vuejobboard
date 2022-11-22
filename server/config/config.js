@@ -200,7 +200,7 @@ module.exports = {
   },
   unpublishJobs: {
     active: true,
-    interval: "0 0 0 * * *",
+    interval: "0 5 8 * * *",
   },
   generateMatomoReport: {
     active: true,
