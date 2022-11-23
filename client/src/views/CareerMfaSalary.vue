@@ -409,14 +409,8 @@
         </table>
       </div>
       <p class="small text-muted">
-        Quelle:
-        <b-link
-          href="https://www.vmf-online.de/mfa/mfa-tarife"
-          target="_blank"
-          rel="noopener"
-          >Gehaltstarifvertrag 2021 für Medizinische Fachangestellte (MFA) /
-          ArzthelferInnen – AAA (2021)</b-link
-        >
+        Quelle: Gehaltstarifvertrag 2021 für Medizinische Fachangestellte (MFA)
+        / ArzthelferInnen – AAA (2021)
       </p>
 
       <h3 class="h4 mt-5">
@@ -528,14 +522,8 @@
         </table>
       </div>
       <p class="small text-muted">
-        Quelle:
-        <b-link
-          href="https://www.vmf-online.de/mfa/mfa-tarife"
-          target="_blank"
-          rel="noopener"
-          >Gehaltstarifvertrag 2021 für Medizinische Fachangestellte (MFA) /
-          ArzthelferInnen – AAA (2021)</b-link
-        >
+        Quelle: Gehaltstarifvertrag 2021 für Medizinische Fachangestellte (MFA)
+        / ArzthelferInnen – AAA (2021)
       </p>
 
       <h3 id="sonderzahlungen" class="h4">
@@ -566,14 +554,8 @@
         </ul>
       </div>
       <p class="small text-muted">
-        Quelle:
-        <b-link
-          href="https://www.vmf-online.de/mfa/mfa-tarife"
-          target="_blank"
-          rel="noopener"
-          >Gehaltstarifvertrag 2021 für Medizinische Fachangestellte (MFA) /
-          ArzthelferInnen – AAA (2021)</b-link
-        >
+        Quelle: Gehaltstarifvertrag 2021 für Medizinische Fachangestellte (MFA)
+        / ArzthelferInnen – AAA (2021)
       </p>
 
       <div class="bg-light-shade border-radius2 shadow1 my-5 p-3 p-md-4">
@@ -1030,14 +1012,8 @@
         </table>
       </div>
       <p class="small text-muted">
-        Quelle:
-        <b-link
-          href="https://www.vmf-online.de/mfa/mfa-tarife"
-          target="_blank"
-          rel="noopener"
-          >Gehaltstarifvertrag 2021 für Medizinische Fachangestellte (MFA) /
-          ArzthelferInnen – AAA (2021)</b-link
-        >
+        Quelle: Gehaltstarifvertrag 2021 für Medizinische Fachangestellte (MFA)
+        / ArzthelferInnen – AAA (2021)
       </p>
 
       <p>
@@ -1605,12 +1581,7 @@
 
       <h2>Quellen</h2>
       <p>
-        <a
-          href="https://www.vmf-online.de/mfa/mfa-tarife"
-          target="_blank"
-          rel="noopener"
-          >Webseite VMF online</a
-        >
+        Webseite VMF online
       </p>
       <p>
         Die Ärztekammer Baden-Württemberg hat zum Thema Gehaltstarifvertrag eine

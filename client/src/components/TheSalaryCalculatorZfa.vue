@@ -101,14 +101,8 @@
     </b-form>
     <p class="small mt-4 source">
       <span>
-        *Quelle:
-        <a
-          href="https://www.vmf-online.de/zfa/zfa-tarife"
-          target="_blank"
-          rel="noopener"
-          >Gehaltstarifvertrag 2022 für Zahnmedizinische Fachangestellte (ZFA) –
-          AAZ (2022)</a
-        >
+        *Quelle: Gehaltstarifvertrag 2022 für Zahnmedizinische Fachangestellte
+        (ZFA) – AAZ (2022)
       </span>
     </p>
     <JobSeekButton size="sm" block />

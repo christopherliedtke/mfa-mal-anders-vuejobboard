@@ -111,14 +111,8 @@
       </p>
     </b-form>
     <p class="small mt-4 source">
-      *Quelle:
-      <a
-        href="https://www.vmf-online.de/mfa/mfa-tarife"
-        target="_blank"
-        rel="noopener"
-        >Gehaltstarifvertrag 2021 für Medizinische Fachangestellte (MFA) /
-        ArzthelferInnen – AAA (2021)</a
-      >
+      *Quelle: Gehaltstarifvertrag 2021 für Medizinische Fachangestellte (MFA) /
+      ArzthelferInnen – AAA (2021)
     </p>
     <JobSeekButton size="sm" block />
   </div>

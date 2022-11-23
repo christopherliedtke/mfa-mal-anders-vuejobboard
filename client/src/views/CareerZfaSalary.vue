@@ -226,18 +226,8 @@
             Marktwert einzuschätzen – bezüglich Qualifikation und Erfahrung.
           </p>
           <p>
-            Zum 01.07.2022 erfolgt eine weitere Tarifanpassung, die bereits im
+            Zum 01.07.2022 erfolgte eine weitere Tarifanpassung, die bereits im
             Tarifvertrag für ZFA aufgenommen wurde.
-          </p>
-          <p>
-            Hier findest Du den
-            <b-link
-              href="https://www.vmf-online.de/zfa/zfa-tarife"
-              target="_blank"
-              rel="noopener"
-              >aktuellen Gehaltstarifvertrag für Zahnmedizinische
-              Fachangestellte</b-link
-            >.
           </p>
           <TheSalaryCalculatorZfa id="gehaltsrechner" class="my-4" />
           <BannerJobboard
@@ -400,14 +390,8 @@
           </table>
         </div>
         <p class="small text-muted">
-          Quelle:
-          <b-link
-            href="https://www.vmf-online.de/zfa/zfa-tarife"
-            target="_blank"
-            rel="noopener"
-            >Gehaltstarifvertrag 2022 für Zahnmedizinische Fachangestellte (ZFA)
-            – AAZ (2022)</b-link
-          >
+          Quelle: Gehaltstarifvertrag 2022 für Zahnmedizinische Fachangestellte
+          (ZFA) – AAZ (2022)
         </p>
       </div>
 
@@ -472,14 +456,8 @@
         </table>
       </div>
       <p class="small text-muted">
-        Quelle:
-        <b-link
-          href="https://www.vmf-online.de/zfa/zfa-tarife"
-          target="_blank"
-          rel="noopener"
-          >Gehaltstarifvertrag 2022 für Zahnmedizinische Fachangestellte (ZFA) –
-          AAZ (2022)</b-link
-        >
+        Quelle: Gehaltstarifvertrag 2022 für Zahnmedizinische Fachangestellte
+        (ZFA) – AAZ (2022)
       </p>
 
       <BannerJobboard
@@ -990,12 +968,7 @@
 
       <h2>Quellen</h2>
       <p>
-        <a
-          href="https://www.vmf-online.de/zfa/zfa-tarife"
-          target="_blank"
-          rel="noopener"
-          >Webseite VMF online</a
-        >
+        Webseite VMF online
       </p>
     </div>
 
