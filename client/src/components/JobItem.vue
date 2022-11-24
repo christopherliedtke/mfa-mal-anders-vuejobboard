@@ -403,9 +403,8 @@
           :size="job.simpleApplication ? 'sm' : 'lg'"
           :variant="job.simpleApplication ? 'outline-primary' : 'primary'"
           :href="
-            job.applicationEmail
-              ? `mailto:${job.applicationEmail}?subject=Bewerbung - ${job.title} über ${$config.website.name}`
-              : job.extJobUrl
+            job.extJobUrl ||
+              `mailto:${job.applicationEmail}?subject=Bewerbung - ${job.title} über ${$config.website.name}`
           "
           target="_blank"
           class="mb-2"
