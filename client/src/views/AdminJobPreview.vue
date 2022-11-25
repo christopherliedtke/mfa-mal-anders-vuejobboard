@@ -63,6 +63,7 @@
                       extJobUrl
                       applicationEmail
                       imageUrl
+                      videoUrl
                       salaryMin
                       salaryMax
                       specialization
