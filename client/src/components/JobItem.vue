@@ -286,7 +286,7 @@
       <div id="job-description" class="mt-4" v-html="job.description"></div>
       <div v-if="job.company.url" class="mt-3">
         <b-link
-          ref="nofollow"
+          rel="nofollow"
           :href="job.company.url"
           target="_blank"
           @click="

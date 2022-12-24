@@ -31,6 +31,10 @@
       <BannerTrainingCatalogueSmall v-if="showTrainingCatalogue" class="my-2" />
       <BannerSponsoredPkv v-if="showBannerSponsoredPkv" class="my-2" />
       <BannerSponsoredSgd v-if="showBannerSponsoredSgd" class="my-2" />
+      <BannerSponsoredMedatixx
+        v-if="showBannerSponsoredMedatixx"
+        class="my-2"
+      />
     </div>
   </div>
 </template>
@@ -39,11 +43,13 @@
   import BannerSponsoredSgd from "@/components/BannerSponsoredSgd.vue";
   import BannerSponsoredPkv from "@/components/BannerSponsoredPkv.vue";
   import BannerTrainingCatalogueSmall from "@/components/BannerTrainingCatalogueSmall.vue";
+  import BannerSponsoredMedatixx from "@/components/BannerSponsoredMediatixx.vue";
   export default {
     name: "NavTrainings",
     components: {
       BannerSponsoredSgd,
       BannerSponsoredPkv,
+      BannerSponsoredMedatixx,
       BannerTrainingCatalogueSmall
     },
     props: {
@@ -56,6 +62,10 @@
         default: true
       },
       showBannerSponsoredPkv: {
+        type: Boolean,
+        default: true
+      },
+      showBannerSponsoredMedatixx: {
         type: Boolean,
         default: true
       }

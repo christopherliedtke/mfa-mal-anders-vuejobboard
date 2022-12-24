@@ -172,6 +172,7 @@
           <div class="d-none d-lg-block mt-4">
             <BannerSponsoredPkv class="my-2" />
             <BannerSponsoredSgd class="my-2" />
+            <BannerSponsoredMediatixx class="my-2" />
           </div>
           <div class="small text-right mt-3 pt-1">
             <b-link
@@ -233,6 +234,7 @@
   } from "@/config/formDataConfig.json";
   import BannerSponsoredSgd from "@/components/BannerSponsoredSgd.vue";
   import BannerSponsoredPkv from "@/components/BannerSponsoredPkv.vue";
+  import BannerSponsoredMediatixx from "@/components/BannerSponsoredMediatixx.vue";
   import BannerJobboard from "@/components/BannerJobboard.vue";
   import BannerProfessions from "@/components/BannerProfessions.vue";
   export default {
@@ -241,6 +243,7 @@
       TrainingCatalogueCard,
       BannerSponsoredSgd,
       BannerSponsoredPkv,
+      BannerSponsoredMediatixx,
       BannerJobboard,
       BannerProfessions,
       ScrollTopButton

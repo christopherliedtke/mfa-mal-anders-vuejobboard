@@ -1,5 +1,5 @@
 <template>
-  <aside>
+  <aside class="border-radius1 shadow1">
     <b-link
       href="https://pn.sgd.de/go.cgi?pid=13&wmid=45&cpid=1&prid=3&subid=&target=10_Prozent_Rabatt_auf_ueber_100_ausgewaehlte_Kurse"
       target="_blank"
