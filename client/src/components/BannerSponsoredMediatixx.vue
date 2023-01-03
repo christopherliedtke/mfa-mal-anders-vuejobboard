@@ -1,9 +1,6 @@
 <template>
   <aside class="border-radius1 shadow1">
-    <b-link
-      href="https://akademie.medatixx.de/fort-und-weiterbildung.html"
-      target="_blank"
-    >
+    <b-link href="https://akademie.medatixx.de" target="_blank">
       <b-img-lazy
         class="border-radius1"
         fluid
