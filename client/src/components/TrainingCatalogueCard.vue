@@ -5,17 +5,6 @@
       <div v-else>Regelmäßig / Auf Anfrage</div>
     </div>
     <div v-if="training._id" class="header">
-      <div v-if="training.logoUrl" class="logo-container">
-        <b-img-lazy
-          fluid
-          blank-src="/img/MfaMalAnders_logo_circle_bgdark_white.svg"
-          blank-width="90"
-          offset="1000"
-          height="70"
-          :src="training.logoUrl"
-          :alt="`Logo ${training.company}`"
-        />
-      </div>
       <div class="training-title">
         <b-link
           :to="
@@ -33,6 +22,17 @@
 
         <!-- eslint-disable-next-line -->
         <span class="text-muted" v-html="training.company"></span>
+      </div>
+      <div v-if="training.logoUrl" class="logo-container">
+        <b-img-lazy
+          fluid
+          blank-src="/img/MfaMalAnders_logo_circle_bgdark_white.svg"
+          blank-width="90"
+          offset="1000"
+          height="70"
+          :src="training.logoUrl"
+          :alt="`Logo ${training.company}`"
+        />
       </div>
     </div>
     <div v-else class="header">
@@ -271,6 +271,7 @@
     .header {
       position: relative;
       display: flex;
+      justify-content: flex-start;
       align-items: flex-start;
       // flex-wrap: wrap;
       border-top-left-radius: $border-radius1;
@@ -281,7 +282,13 @@
       // padding: 1rem 1rem 1rem 1rem;
       // border-bottom: 1px solid #ddd;
 
+      @media screen and (max-width: $break-menu) {
+        justify-content: space-between;
+      }
+
       .training-title {
+        order: 1;
+
         h2 {
           font-weight: bold;
           word-break: break-word;
@@ -289,33 +296,41 @@
 
         @media screen and (max-width: $break-menu) {
           padding-right: 0.5rem;
+          order: 0;
         }
       }
 
       .logo-container {
         display: flex;
-        justify-content: flex-start;
-        align-items: center;
+        justify-content: flex-end;
+        align-items: flex-start;
         // background-color: darken($light-shade, $amount: 1%);
-        padding: 0.5rem;
-        width: 110px;
-        min-width: 110px;
-        border-radius: 5px;
+        padding-right: 1rem;
+        // padding: 0 0 0 0.5rem;
+        width: 80px;
+        min-width: 80px;
+        // border-radius: 5px;
+        order: 0;
 
         @media screen and (max-width: $break-menu) {
           width: 60px;
           min-width: 60px;
-          padding: 1.8rem 0.5rem 1.5rem 0.5rem;
-          position: absolute;
-          top: 0;
-          right: 0;
+          // padding: 1.8rem 0.5rem 1.5rem 0.5rem;
+          // position: absolute;
+          // top: 0;
+          // right: 0;
+          padding-right: 0;
+          padding-left: 0.5rem;
           background-color: $light;
           border-bottom-right-radius: 0;
+          order: 1;
         }
 
         img {
-          max-height: 70px;
-          max-width: 80%;
+          aspect-ratio: 1.2;
+          object-fit: contain;
+          // max-height: 70px;
+          // max-width: 80%;
         }
       }
     }
