@@ -552,6 +552,12 @@ const UserResolvers = {
         throw new UserInputError(errorMsg.auth.pwNoMatch);
       }
 
+      JobSeek.deleteMany({ user: context.user._id });
+      JobAlert.deleteMany({ user: context.user._id });
+      StarredJob.deleteMany({ user: context.user._id });
+      Training.deleteMany({ user: context.user._id });
+      Job.deleteMany({ userId: context.user._id, status: "unpublished" });
+
       const deletedUser = await User.findOneAndDelete({
         _id: context.user._id,
       });
@@ -559,12 +565,6 @@ const UserResolvers = {
       if (!deletedUser) {
         throw new ApolloError(errorMsg.general);
       }
-
-      JobSeek.deleteMany({ user: deletedUser._id });
-      JobAlert.deleteMany({ user: deletedUser._id });
-      StarredJob.deleteMany({ user: deletedUser._id });
-      Training.deleteMany({ user: deletedUser._id });
-      Job.deleteMany({ userId: deletedUser._id, status: "unpublished" });
 
       console.info("deletedUser ---> ", deletedUser._id);
 
