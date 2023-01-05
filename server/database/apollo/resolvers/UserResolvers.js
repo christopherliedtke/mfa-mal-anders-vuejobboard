@@ -552,11 +552,15 @@ const UserResolvers = {
         throw new UserInputError(errorMsg.auth.pwNoMatch);
       }
 
-      JobSeek.deleteMany({ user: context.user._id });
-      JobAlert.deleteMany({ user: context.user._id });
-      StarredJob.deleteMany({ user: context.user._id });
-      Training.deleteMany({ user: context.user._id });
-      Job.deleteMany({ userId: context.user._id, status: "unpublished" });
+      const deletedItems = await Promise.all([
+        JobSeek.deleteMany({ user: context.user._id }),
+        JobAlert.deleteMany({ user: context.user._id }),
+        StarredJob.deleteMany({ user: context.user._id }),
+        Training.deleteMany({ user: context.user._id }),
+        Job.deleteMany({ userId: context.user._id, status: "unpublished" }),
+      ]);
+
+      console.info("deletedItems ---> ", deletedItems);
 
       const deletedUser = await User.findOneAndDelete({
         _id: context.user._id,
