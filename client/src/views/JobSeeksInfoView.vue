@@ -30,7 +30,7 @@
     <div class="container mt-4 mb-4 mb-lg-5">
       <h2 class="display-3 bold text-gray-dark">
         Lass Dich <br />
-        von Arbeitgeber finden
+        von Arbeitgebern finden
       </h2>
       <p class="lead">
         Du bist auf der Suche nach einer neuen Stelle, aber findest nicht das
