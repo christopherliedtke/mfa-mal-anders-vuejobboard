@@ -269,6 +269,7 @@ async function sendAdminNotification(invoice, jobs) {
     const dataMailToAdmin = {
       from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
       to: process.env.INVOICE_EMAIL_ADDRESS,
+      cc: process.env.BOOKKEEPING_EMAIL_ADDRESS,
       subject: `[${invoice.number} - ${invoice.status.toUpperCase()}] | ${
         invoice.total / 100
       }€`,
