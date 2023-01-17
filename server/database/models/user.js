@@ -63,6 +63,10 @@ const UserSchema = new Schema(
       type: String,
       unique: true,
     },
+    lexofficeCustomerId: {
+      type: String,
+      // unique: true,
+    },
   },
   { timestamps: true }
 );

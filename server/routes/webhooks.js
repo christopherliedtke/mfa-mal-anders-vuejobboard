@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const fs = require("fs");
 const download = require("download");
 const config = require("../config/config");
 // const recachePrerender = require("../lib/recachePrerender");
@@ -11,6 +12,7 @@ const { Payment } = require("../database/models/payment");
 const { googleIndexing } = require("../lib/googleJobIndexing");
 const saveInvoiceToGDrive = require("../lib/saveInvoiceToGDrive");
 const jobToAsanaTask = require("../lib/jobToAsanaTask");
+const saveInvoiceToLexoffice = require("../lib/saveInvoiceToLexoffice");
 // const { postToFacebook } = require("../lib/postToFacebook");
 
 const stripe = require("stripe")(process.env.STRIPE_SK);
@@ -187,7 +189,8 @@ router.post(
         sendAdminNotification(invoice, jobs);
 
         if (event.type == "invoice.finalized") {
-          remoteInvoiceToGDrive(invoice.invoice_pdf, invoice.number + ".pdf");
+          uploadInvoiceToExternalServices(invoice);
+          // remoteInvoiceToGDrive(invoice.invoice_pdf, invoice.number + ".pdf");
         }
       }
     } catch (error) {
@@ -247,22 +250,51 @@ async function attachUserToPayment(stripeCustomerId, paymentId) {
   return;
 }
 
-async function remoteInvoiceToGDrive(remoteUrl, filename) {
-  try {
-    if (!remoteUrl || !filename) {
-      throw new Error(
-        `remoteUrl or filename not given - argumtents: ${arguments}`
-      );
-    }
+async function uploadInvoiceToExternalServices(invoice) {
+  const remoteUrl = invoice.invoice_pdf;
+  const filename = invoice.number + ".pdf";
 
-    await download(remoteUrl, __dirname + "/../invoices/", { filename });
-    await saveInvoiceToGDrive(__dirname + "/../invoices/" + filename, filename);
-  } catch (error) {
-    console.error("Error on remoteInvoiceToGDrive: ", error);
+  if (!remoteUrl || !filename) {
+    console.error(`remoteUrl or filename not given - argumtents: ${arguments}`);
+
+    return;
   }
 
-  return;
+  try {
+    // download invoice
+    await download(remoteUrl, __dirname + "/../invoices/", { filename });
+    // invoice to gdrive
+    await saveInvoiceToGDrive(__dirname + "/../invoices/" + filename, filename);
+
+    // invoice to lexoffice
+    await saveInvoiceToLexoffice(
+      invoice,
+      __dirname + "/../invoices/" + filename
+    );
+
+    // unlink file
+    fs.unlink(__dirname + "/../invoices/" + filename, () => {});
+  } catch (error) {
+    console.error("Error on uploadInvoiceToExternalServices: ", error);
+  }
 }
+
+// async function remoteInvoiceToGDrive(remoteUrl, filename) {
+//   try {
+//     if (!remoteUrl || !filename) {
+//       throw new Error(
+//         `remoteUrl or filename not given - argumtents: ${arguments}`
+//       );
+//     }
+
+//     await download(remoteUrl, __dirname + "/../invoices/", { filename });
+//     await saveInvoiceToGDrive(__dirname + "/../invoices/" + filename, filename);
+//   } catch (error) {
+//     console.error("Error on remoteInvoiceToGDrive: ", error);
+//   }
+
+//   return;
+// }
 
 async function sendAdminNotification(invoice, jobs) {
   try {
@@ -412,12 +444,12 @@ async function sendOrderConfirmation(invoice, jobs) {
   }
 }
 
-router.get("/download-invoice", async (req, res) => {
-  remoteInvoiceToGDrive(
-    "https://pay.stripe.com/invoice/acct_1H7gA7BqHbQO3Nhw/test_YWNjdF8xSDdnQTdCcUhiUU8zTmh3LF9MQVRvTzczZHBUUHNRMVFkeFl1UjR0RE9VZ2xVVGRGLDM1NjQwNzU20200fBkQ9C8w/pdf?s=ap",
-    "testxy.pdf"
-  );
-  res.send();
-});
+// router.get("/download-invoice", async (req, res) => {
+//   remoteInvoiceToGDrive(
+//     "https://pay.stripe.com/invoice/acct_1H7gA7BqHbQO3Nhw/test_YWNjdF8xSDdnQTdCcUhiUU8zTmh3LF9MQVRvTzczZHBUUHNRMVFkeFl1UjR0RE9VZ2xVVGRGLDM1NjQwNzU20200fBkQ9C8w/pdf?s=ap",
+//     "testxy.pdf"
+//   );
+//   res.send();
+// });
 
 module.exports = router;
