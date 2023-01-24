@@ -43,6 +43,7 @@ const saveInvoiceToLexoffice = async (invoice, filePath) => {
 
     if (user) {
       lexofficeCustomer = {
+        version: 0,
         roles: {
           customer: {},
         },
@@ -116,8 +117,6 @@ const saveInvoiceToLexoffice = async (invoice, filePath) => {
         voucher.contactId = user.lexofficeCustomerId;
       } else {
         // create lexoffice customer
-        lexofficeCustomer.version = 0;
-
         const config = {
           method: "post",
           url: process.env.LEXOFFICE_RESOURCE_URL + "/contacts",
