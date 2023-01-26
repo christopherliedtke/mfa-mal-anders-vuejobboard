@@ -614,8 +614,6 @@ function sortJobsByPosition(position, jobs) {
     return +(a.value > b.value) || +(a.value === b.value) - 1;
   });
 
-  console.log(distances);
-
   return distances.map(function (e) {
     return jobs[e.index];
   });
