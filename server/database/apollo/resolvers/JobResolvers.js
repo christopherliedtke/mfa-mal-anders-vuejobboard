@@ -595,7 +595,7 @@ function sortJobsByPosition(position, jobs) {
   }
 
   return jobs.sort((a, b) => {
-    if (a.company.noLocation && !b.company.noLocation) {
+    if (a.company.noLocation && b.company.noLocation) {
       return 0;
     }
 
