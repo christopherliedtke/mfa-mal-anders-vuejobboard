@@ -594,54 +594,80 @@ function sortJobsByPosition(position, jobs) {
     return jobs;
   }
 
-  return jobs.sort((a, b) => {
-    if (a.company.noLocation && b.company.noLocation) {
-      return 0;
-    }
-
-    if (!a.company.noLocation && b.company.noLocation) {
-      return (
-        calcDistance(
-          a.company.geoCodeLat,
-          a.company.geoCodeLng,
-          position.lat,
-          position.lng
-        ) /
-          1000 -
-        29
-      );
-    }
-
-    if (
-      a.source === "joblift" &&
-      !b.source &&
-      calcDistance(
-        b.company.geoCodeLat,
-        b.company.geoCodeLng,
-        position.lat,
-        position.lng
-      ) /
-        1000 <
-        40
-    ) {
-      return false;
-    }
-
-    return (
-      calcDistance(
-        a.company.geoCodeLat,
-        a.company.geoCodeLng,
-        position.lat,
-        position.lng
-      ) -
-      calcDistance(
-        b.company.geoCodeLat,
-        b.company.geoCodeLng,
-        position.lat,
-        position.lng
-      )
-    );
+  const distances = jobs.map(function (e, i) {
+    return {
+      index: i,
+      value: e.company.noLocation
+        ? 29
+        : calcDistance(
+            e.company.geoCodeLat,
+            e.company.geoCodeLng,
+            position.lat,
+            position.lng
+          ) /
+            1000 +
+          (e.source == "joblift" ? 40 : 0),
+    };
   });
+
+  distances.sort(function (a, b) {
+    return +(a.value > b.value) || +(a.value === b.value) - 1;
+  });
+
+  console.log(distances);
+
+  return distances.map(function (e) {
+    return jobs[e.index];
+  });
+
+  // return jobs.sort((a, b) => {
+  //   if (a.company.noLocation && b.company.noLocation) {
+  //     return 0;
+  //   }
+
+  //   if (!a.company.noLocation && b.company.noLocation) {
+  //     return (
+  //       calcDistance(
+  //         a.company.geoCodeLat,
+  //         a.company.geoCodeLng,
+  //         position.lat,
+  //         position.lng
+  //       ) /
+  //         1000 -
+  //       29
+  //     );
+  //   }
+
+  //   if (
+  //     a.source === "joblift" &&
+  //     !b.source &&
+  //     calcDistance(
+  //       b.company.geoCodeLat,
+  //       b.company.geoCodeLng,
+  //       position.lat,
+  //       position.lng
+  //     ) /
+  //       1000 <
+  //       40
+  //   ) {
+  //     return false;
+  //   }
+
+  //   return (
+  //     calcDistance(
+  //       a.company.geoCodeLat,
+  //       a.company.geoCodeLng,
+  //       position.lat,
+  //       position.lng
+  //     ) -
+  //     calcDistance(
+  //       b.company.geoCodeLat,
+  //       b.company.geoCodeLng,
+  //       position.lat,
+  //       position.lng
+  //     )
+  //   );
+  // });
 }
 
 function filterJobsByDistance(radius, position, jobs) {
@@ -658,7 +684,7 @@ function filterJobsByDistance(radius, position, jobs) {
         position.lng
       ) /
         1000 <
-      radius
+        radius || job.company.noLocation
   );
 }
 

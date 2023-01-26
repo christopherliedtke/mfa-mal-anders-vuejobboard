@@ -96,6 +96,7 @@ class Cache {
             company: {
               _id: "",
               name: job.company ? decode(job.company[0]) : "",
+              noLocation: false,
               location:
                 job.locations &&
                 job.locations[0].location &&
