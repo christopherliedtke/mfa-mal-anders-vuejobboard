@@ -510,9 +510,12 @@
             v-if="job.company._id"
             :to="`/unternehmen/${job.company._id}/${job.company.slug}`"
             class="d-block"
-            >{{ job.company.name }}</b-link
           >
-          <span v-else class="d-block">{{ job.company.name }}</span>
+            <!-- eslint-disable-next-line -->
+            <span v-html="job.company.name"></span
+          ></b-link>
+          <!-- eslint-disable-next-line -->
+          <span v-else class="d-block" v-html="job.company.name"></span>
 
           <div v-if="job.company.noLocation">
             <span>Deutschlandweit</span>
