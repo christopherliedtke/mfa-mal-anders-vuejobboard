@@ -46,6 +46,7 @@
             <b-form-input
               id="promotion-code"
               v-model="checkout.promotionCode"
+              class="h-auto"
               type="text"
               placeholder="Aktionscode eingeben..."
               trim

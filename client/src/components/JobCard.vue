@@ -86,7 +86,7 @@
             <!-- eslint-disable-next-line -->
               <span v-html="job.company.name"></span>
           </div>
-          <div v-if="job.company.location">
+          <div v-if="job.company.location || job.company.noLocation">
             <div class="icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -102,7 +102,9 @@
                 />
               </svg>
             </div>
-            {{ job.company.location }}
+            {{
+              job.company.noLocation ? "Deutschlandweit" : job.company.location
+            }}
           </div>
           <div v-if="job.employmentType">
             <div class="icon">

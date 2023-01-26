@@ -17,17 +17,24 @@ const CompanySchema = new Schema(
       type: String,
       default: "",
     },
+    noLocation: {
+      type: Boolean,
+      default: false,
+    },
     street: {
       type: String,
-      required: true,
+      // required: true,
+      default: "",
     },
     location: {
       type: String,
-      required: true,
+      // required: true,
+      default: "",
     },
     zipCode: {
       type: String,
-      required: true,
+      // required: true,
+      default: "",
     },
     state: {
       type: String,

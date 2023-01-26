@@ -11,6 +11,7 @@ const CompanyType = gql`
     addCompany(
       name: String
       description: String
+      noLocation: Boolean
       street: String
       zipCode: String
       location: String
@@ -27,6 +28,7 @@ const CompanyType = gql`
       _id: ID!
       name: String
       description: String
+      noLocation: Boolean
       street: String
       zipCode: String
       location: String
@@ -44,6 +46,7 @@ const CompanyType = gql`
       _id: ID!
       name: String
       description: String
+      noLocation: Boolean
       street: String
       zipCode: String
       location: String
@@ -65,6 +68,7 @@ const CompanyType = gql`
     updatedAt: Float
     name: String
     description: String
+    noLocation: Boolean
     street: String
     zipCode: String
     location: String

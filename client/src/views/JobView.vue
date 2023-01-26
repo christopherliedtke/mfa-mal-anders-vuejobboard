@@ -173,6 +173,7 @@
                       company {
                         _id
                         name
+                        noLocation
                         street
                         location
                         zipCode

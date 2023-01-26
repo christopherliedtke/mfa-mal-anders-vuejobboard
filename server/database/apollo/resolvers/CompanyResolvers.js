@@ -42,23 +42,25 @@ const CompanyResolvers = {
 
       let addObj = { ...args, userId: args.userId || context.user._id };
 
-      const locations = await getLocation(
-        `${args.street} ${args.location} ${args.zipCode}`,
-        args.country
-      );
-
-      console.log(locations);
-
-      if (locations) {
-        addObj.state = locations[0].address.state;
-        addObj.geoCodeLng = locations[0].position.lng;
-        addObj.geoCodeLat = locations[0].position.lat;
-      } else {
-        console.error("Error in getLocation(): ", addObj);
-        throw new UserInputError(
-          `Es konnte kein passender Ort für '${args.street}, ${args.zipCode} ${args.location}' gefunden werden oder der Ortungsservice funktioniert aktuell nicht. Bitte stellen Sie sicher, dass die Unternehmensadresse korrekt und komplett angegeben ist.`,
-          { argumentName: "location" }
+      if (!args.noLocation) {
+        const locations = await getLocation(
+          `${args.street} ${args.location} ${args.zipCode}`,
+          args.country
         );
+
+        console.log(locations);
+
+        if (locations) {
+          addObj.state = locations[0].address.state;
+          addObj.geoCodeLng = locations[0].position.lng;
+          addObj.geoCodeLat = locations[0].position.lat;
+        } else {
+          console.error("Error in getLocation(): ", addObj);
+          throw new UserInputError(
+            `Es konnte kein passender Ort für '${args.street}, ${args.zipCode} ${args.location}' gefunden werden oder der Ortungsservice funktioniert aktuell nicht. Bitte stellen Sie sicher, dass die Unternehmensadresse korrekt und komplett angegeben ist.`,
+            { argumentName: "location" }
+          );
+        }
       }
 
       addObj = cleanUpCompany(addObj);
@@ -80,21 +82,23 @@ const CompanyResolvers = {
       let updateObj = { ...args };
       delete updateObj._id;
 
-      const locations = await getLocation(
-        `${args.street} ${args.location} ${args.zipCode}`,
-        args.country
-      );
-
-      if (locations) {
-        updateObj.state = locations[0].address.state;
-        updateObj.geoCodeLng = locations[0].position.lng;
-        updateObj.geoCodeLat = locations[0].position.lat;
-      } else {
-        console.error("Error in getLocation(): ", updateObj);
-        throw new UserInputError(
-          `Es konnte kein passender Ort für '${args.street}, ${args.zipCode} ${args.location}' gefunden werden oder der Ortungsservice funktioniert aktuell nicht. Bitte stellen Sie sicher, dass die Unternehmensadresse korrekt und komplett angegeben ist.`,
-          { argumentName: "location" }
+      if (!args.noLocation) {
+        const locations = await getLocation(
+          `${args.street} ${args.location} ${args.zipCode}`,
+          args.country
         );
+
+        if (locations) {
+          updateObj.state = locations[0].address.state;
+          updateObj.geoCodeLng = locations[0].position.lng;
+          updateObj.geoCodeLat = locations[0].position.lat;
+        } else {
+          console.error("Error in getLocation(): ", updateObj);
+          throw new UserInputError(
+            `Es konnte kein passender Ort für '${args.street}, ${args.zipCode} ${args.location}' gefunden werden oder der Ortungsservice funktioniert aktuell nicht. Bitte stellen Sie sicher, dass die Unternehmensadresse korrekt und komplett angegeben ist.`,
+            { argumentName: "location" }
+          );
+        }
       }
 
       updateObj = cleanUpCompany(updateObj);
@@ -133,21 +137,23 @@ const CompanyResolvers = {
       let updateObj = { ...args };
       delete updateObj._id;
 
-      const locations = await getLocation(
-        `${args.street} ${args.location} ${args.zipCode}`,
-        args.country
-      );
-
-      if (locations) {
-        updateObj.state = locations[0].address.state;
-        updateObj.geoCodeLng = locations[0].position.lng;
-        updateObj.geoCodeLat = locations[0].position.lat;
-      } else {
-        console.error("Error in getLocation(): ", updateObj);
-        throw new UserInputError(
-          `Es konnte kein passender Ort für '${args.street}, ${args.zipCode} ${args.location}' gefunden werden oder der Ortungsservice funktioniert aktuell nicht. Bitte stellen Sie sicher, dass die Unternehmensadresse korrekt und komplett angegeben ist.`,
-          { argumentName: "location" }
+      if (!args.noLocation) {
+        const locations = await getLocation(
+          `${args.street} ${args.location} ${args.zipCode}`,
+          args.country
         );
+
+        if (locations) {
+          updateObj.state = locations[0].address.state;
+          updateObj.geoCodeLng = locations[0].position.lng;
+          updateObj.geoCodeLat = locations[0].position.lat;
+        } else {
+          console.error("Error in getLocation(): ", updateObj);
+          throw new UserInputError(
+            `Es konnte kein passender Ort für '${args.street}, ${args.zipCode} ${args.location}' gefunden werden oder der Ortungsservice funktioniert aktuell nicht. Bitte stellen Sie sicher, dass die Unternehmensadresse korrekt und komplett angegeben ist.`,
+            { argumentName: "location" }
+          );
+        }
       }
 
       updateObj = cleanUpCompany(updateObj);

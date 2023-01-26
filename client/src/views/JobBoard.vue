@@ -746,6 +746,7 @@
                       refreshFrequency
                       company {
                         name
+                        noLocation
                         location
                         logoUrl
                       }

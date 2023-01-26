@@ -17,7 +17,11 @@
             <!-- eslint-disable-next-line -->
             <span v-else class="text-muted" v-html="job.company.name"></span>
             |
+            <span v-if="job.company.noLocation" class="text-muted"
+              >Deutschlandweit</span
+            >
             <b-link
+              v-else
               class="text-muted"
               :to="`/stellenangebote/${job.company.location}`"
               >{{ job.company.location
@@ -501,18 +505,26 @@
       </div>
       <div class="mt-4">
         <h2><strong>Arbeitsort</strong></h2>
-        <p>
+        <div>
           <b-link
             v-if="job.company._id"
             :to="`/unternehmen/${job.company._id}/${job.company.slug}`"
+            class="d-block"
             >{{ job.company.name }}</b-link
           >
-          <span v-else>{{ job.company.name }}</span>
-          <br v-if="job.company.name" />
-          {{ job.company.street }} <br v-if="job.company.street" />
-          {{ job.company.zipCode + " " + job.company.location }}
+          <span v-else class="d-block">{{ job.company.name }}</span>
+
+          <div v-if="job.company.noLocation">
+            <span>Deutschlandweit</span>
+          </div>
+          <div v-else>
+            <span class="d-block">{{ job.company.street }} </span>
+            <span class="d-block">{{
+              job.company.zipCode + " " + job.company.location
+            }}</span>
+          </div>
           <br />
-        </p>
+        </div>
         <b-btn
           v-if="
             !showMap &&

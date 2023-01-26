@@ -71,8 +71,12 @@
           type="text"
           placeholder="Video URL eingeben..."
           trim
-          required
         />
+        <label for="no-location">noLocation</label>
+        <b-form-select id="no-location" v-model="job.company.noLocation">
+          <b-form-select-option :value="true">ja</b-form-select-option>
+          <b-form-select-option :value="false">nein</b-form-select-option>
+        </b-form-select>
       </div>
 
       <div class="row">
@@ -221,30 +225,30 @@
               placeholder="karriere@ihr-unternehmen.de"
               aria-describedby="application-email-feedback"
             />
-            <b-form-invalid-feedback
-              id="application-email-feedback"
-              :state="
-                validated
-                  ? job.applicationEmail
-                    ? true
-                    : (!job.applicationEmail && !job.extJobUrl) ||
-                      (job.simpleApplication && !job.applcationEmail)
-                    ? false
-                    : null
-                  : null
-              "
-              class="ml-2"
-            >
-              <span v-if="job.simpleApplication && !job.applcationEmail"
-                >Bitte E-Mail Adresse für Bewerbungen bzw. Kurzbewerbungen
-                angeben.</span
-              >
-              <span v-else-if="!job.applicationEmail && !job.extJobUrl"
-                >Bitte E-Mail Adresse für Bewerbungen oder URL zur Bewerbung auf
-                Bewerberportal angeben.</span
-              >
-            </b-form-invalid-feedback>
           </b-input-group>
+          <b-form-invalid-feedback
+            id="application-email-feedback"
+            :state="
+              validated
+                ? job.applicationEmail
+                  ? true
+                  : (!job.applicationEmail && !job.extJobUrl) ||
+                    (job.simpleApplication && !job.applcationEmail)
+                  ? false
+                  : null
+                : null
+            "
+            class="ml-2"
+          >
+            <span v-if="job.simpleApplication && !job.applcationEmail"
+              >Bitte E-Mail Adresse für Bewerbungen bzw. Kurzbewerbungen
+              angeben.</span
+            >
+            <span v-else-if="!job.applicationEmail && !job.extJobUrl"
+              >Bitte E-Mail Adresse für Bewerbungen oder URL zur Bewerbung auf
+              Bewerberportal angeben.</span
+            >
+          </b-form-invalid-feedback>
         </div>
         <div class="col-12 col-lg-6">
           <label for="ext-job-url"
@@ -818,6 +822,7 @@
             _id: "",
             name: "",
             description: "",
+            noLocation: false,
             street: "",
             location: "",
             zipCode: "",
@@ -940,6 +945,7 @@
                     company {
                       _id
                       name
+                      noLocation
                       street
                       location
                       zipCode
@@ -962,6 +968,7 @@
               _id: "",
               name: "",
               description: "",
+              noLocation: false,
               street: "",
               location: "",
               zipCode: "",
@@ -1003,6 +1010,7 @@
                     _id
                     name
                     description
+                    noLocation
                     street
                     location
                     zipCode
@@ -1109,17 +1117,34 @@
           (!this.job.applicationEmail && !this.job.extJobUrl) ||
           (this.job.simpleApplication && !this.job.applicationEmail) ||
           !this.job.company.name ||
-          !this.job.company.country ||
-          !this.job.company.location ||
-          !this.job.company.street ||
-          !this.job.company.zipCode
+          ((!this.job.company.country ||
+            !this.job.company.location ||
+            !this.job.company.street ||
+            !this.job.company.zipCode) &&
+            !this.job.company.noLocation)
           ? false
           : true;
       },
       resetCompany() {
-        for (const key in this.job.company) {
-          this.job.company[key] = "";
-        }
+        // for (const key in this.job.company) {
+        //   this.job.company[key] = "";
+        // }
+        this.job.company = {
+          _id: "",
+          name: "",
+          description: "",
+          noLocation: false,
+          street: "",
+          location: "",
+          zipCode: "",
+          state: "",
+          country: this.companyCountryOptions[0],
+          geoCodeLat: null,
+          geoCodeLng: null,
+          size: "",
+          url: "",
+          logoUrl: ""
+        };
         this.selectedCompanyId = "";
       },
       setCompany() {

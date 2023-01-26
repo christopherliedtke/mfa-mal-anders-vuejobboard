@@ -595,6 +595,23 @@ function sortJobsByPosition(position, jobs) {
   }
 
   return jobs.sort((a, b) => {
+    if (a.company.noLocation && !b.company.noLocation) {
+      return 0;
+    }
+
+    if (!a.company.noLocation && b.company.noLocation) {
+      return (
+        calcDistance(
+          a.company.geoCodeLat,
+          a.company.geoCodeLng,
+          position.lat,
+          position.lng
+        ) /
+          1000 -
+        29
+      );
+    }
+
     if (
       a.source === "joblift" &&
       !b.source &&

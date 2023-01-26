@@ -18,6 +18,7 @@ export const saveCompanyMixin = {
               } 
               ${userId ? `userId: "${userId}",` : ""} 
               name: "${company.name}", 
+              noLocation: ${company.noLocation},
               description: "${company.description || ""}", 
               street: "${company.street}"
               location: "${company.location}", 
