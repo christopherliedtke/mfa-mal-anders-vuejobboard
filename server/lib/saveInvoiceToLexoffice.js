@@ -31,9 +31,23 @@ const saveInvoiceToLexoffice = async (invoice, filePath) => {
         return {
           amount: (
             line.amount / 100 +
-            line.tax_amounts[0].amount / 100
+            line.tax_amounts.reduce(
+              (accumulator, currentValue) => accumulator + currentValue.amount,
+              0
+            ) /
+              100 -
+            line.discount_amounts.reduce(
+              (accumulator, currentValue) => accumulator + currentValue.amount,
+              0
+            ) /
+              100
           ).toFixed(2),
-          taxAmount: (line.tax_amounts[0].amount / 100).toFixed(2),
+          taxAmount: (
+            line.tax_amounts.reduce(
+              (accumulator, currentValue) => accumulator + currentValue.amount,
+              0
+            ) / 100
+          ).toFixed(2),
           taxRatePercent: 19,
           categoryId: "8f8664a1-fd86-11e1-a21f-0800200c9a66",
         };
