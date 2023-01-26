@@ -142,7 +142,7 @@
                   : ""
               }}
             </div>
-            <div>
+            <div v-if="job.specialization">
               <div class="icon">
                 <svg
                   role="img"
