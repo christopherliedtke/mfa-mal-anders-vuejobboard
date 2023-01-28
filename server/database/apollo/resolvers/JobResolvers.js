@@ -595,18 +595,22 @@ function sortJobsByPosition(position, jobs) {
   }
 
   const distances = jobs.map(function (e, i) {
+    const distance =
+      calcDistance(
+        e.company.geoCodeLat,
+        e.company.geoCodeLng,
+        position.lat,
+        position.lng
+      ) / 1000;
+
     return {
       index: i,
-      value: e.company.noLocation
-        ? 29
-        : calcDistance(
-            e.company.geoCodeLat,
-            e.company.geoCodeLng,
-            position.lat,
-            position.lng
-          ) /
-            1000 +
-          (e.source == "joblift" ? 40 : 0),
+      value:
+        e.source == "joblift" && distance < 40
+          ? 40
+          : e.company.noLocation
+          ? 29
+          : distance,
     };
   });
 
