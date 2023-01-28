@@ -24,10 +24,20 @@ const JobSeekResolvers = {
         const locations = await getLocation(args.location);
 
         if (locations) {
-          location =
-            locations[0].address.city ||
-            locations[0].address.county ||
-            locations[0].address.state;
+          // location =
+          //   locations[0].address.city ||
+          //   locations[0].address.county ||
+          //   locations[0].address.state;
+
+          location = {
+            location:
+              locations[0].address.city ||
+              locations[0].address.county ||
+              locations[0].address.state,
+            zipCode: locations[0].address.postalCode,
+            country: locations[0].address.countryName,
+          };
+
           args.position = locations[0].position;
         } else {
           throw new UserInputError(

@@ -12,7 +12,7 @@
               ? berufsgruppe.active.join(" & ")
               : "MFA & ZFA"
           }}
-          Jobs {{ filter.ort ? " in " + filter.ort : "" }}</span
+          Jobs {{ canonicalLocation ? " in " + canonicalLocation : "" }}</span
         >
       </h1>
       <b-breadcrumb :items="breadcrumbs" class="text-capitalize"></b-breadcrumb>
@@ -553,6 +553,7 @@
       return {
         jobs: null,
         count: 0,
+        canonicalLocation: "",
         loading: false,
         filter: {
           s: "",
@@ -602,13 +603,13 @@
                     "item": "https://www.mfa-mal-anders.de/stellenangebote"
                   }
                   ${
-                    this.filter.ort
+                    this.canonicalLocation
                       ? `,{
                     "@type": "ListItem",
                     "position": 3,
-                    "name": "${this.filter.ort}",
+                    "name": "${this.canonicalLocation}",
                     "item": "https://www.mfa-mal-anders.de/stellenangebote/${textToSlug(
-                      this.filter.ort
+                      this.canonicalLocation
                     )}"
                   }`
                       : ""
@@ -629,10 +630,10 @@
           { text: "Stellenangebote", href: "/stellenangebote" }
         ];
 
-        if (this.filter.ort) {
+        if (this.canonicalLocation) {
           breadcrumbs.push({
-            text: this.filter.ort,
-            href: `/stellenangebote/${textToSlug(this.filter.ort)}`
+            text: this.canonicalLocation,
+            href: `/stellenangebote/${textToSlug(this.canonicalLocation)}`
           });
 
           if (this.berufsgruppe.active.length === 1) {
@@ -649,9 +650,9 @@
 
         // if (this.berufsgruppe.active.length === 1) {
         //   canonical += this.berufsgruppe.active[0].toLowerCase();
-        if (this.filter.ort && !this.loading) {
+        if (this.canonicalLocation && !this.loading) {
           if (this.jobs) {
-            canonical += "/" + textToSlug(this.filter.ort);
+            canonical += "/" + textToSlug(this.canonicalLocation);
           }
         }
 
@@ -752,7 +753,11 @@
                       }
                     }
                     count
-                    location
+                    location {
+                      location
+                      zipCode
+                      country
+                    }
                   }
                 }
               `
@@ -767,6 +772,7 @@
             ) {
               this.errors = jobs.data.errors;
               this.loading = false;
+              this.canonicalLocation = this.filter.ort;
               return;
             }
 
@@ -778,8 +784,30 @@
           this.jobs = [...(this.jobs || ""), ...jobs.data.data.publicJobs.jobs];
           this.count = jobs.data.data.publicJobs.count;
 
+          // todo change location behavior
           if (jobs.data.data.publicJobs.location) {
-            this.filter.ort = jobs.data.data.publicJobs.location;
+            // console.log(jobs.data.data.publicJobs.location);
+
+            // this.filter.ort =
+            //   (jobs.data.data.publicJobs.location.zipCode || "") +
+            //   (jobs.data.data.publicJobs.location.zipCode ? " " : "") +
+            //   jobs.data.data.publicJobs.location.location;
+
+            this.filter.ort = [
+              jobs.data.data.publicJobs.location.zipCode || "",
+              jobs.data.data.publicJobs.location.location || "",
+              (!jobs.data.data.publicJobs.location.zipCode &&
+                !jobs.data.data.publicJobs.location.location &&
+                jobs.data.data.publicJobs.location.country) ||
+                ""
+            ]
+              .filter(e => e)
+              .join(" ");
+
+            this.canonicalLocation =
+              jobs.data.data.publicJobs.location.location || "";
+          } else {
+            this.canonicalLocation = "";
           }
         } catch (err) {
           this.$root.$bvToast.toast(

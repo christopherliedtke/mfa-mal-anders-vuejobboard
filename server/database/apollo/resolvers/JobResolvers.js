@@ -34,10 +34,20 @@ const JobResolvers = {
 
         if (locations) {
           // console.log(locations[0]);
-          location =
-            locations[0].address.city ||
-            locations[0].address.county ||
-            locations[0].address.state;
+          // location =
+          //   locations[0].address.city ||
+          //   locations[0].address.county ||
+          //   locations[0].address.state;
+
+          location = {
+            location:
+              locations[0].address.city ||
+              locations[0].address.county ||
+              locations[0].address.state,
+            zipCode: locations[0].address.postalCode,
+            country: locations[0].address.countryName,
+          };
+
           args.position = locations[0].position;
         } else {
           throw new UserInputError(
@@ -111,11 +121,11 @@ const JobResolvers = {
 
       // sort by position
       if (args.position) {
-        jobs = sortJobsByPosition(args.position, jobs);
+        jobs = sortJobsByPosition(args.position, jobs, args.radius);
 
-        if (args.radius) {
-          jobs = filterJobsByDistance(args.radius, args.position, jobs);
-        }
+        // if (args.radius) {
+        //   jobs = filterJobsByDistance(args.radius, args.position, jobs);
+        // }
       }
 
       const count = jobs.length;
@@ -589,12 +599,12 @@ function sliceJobs(jobs = [], limit = 15, offset = 0) {
   return jobs.slice(offset, offset + limit);
 }
 
-function sortJobsByPosition(position, jobs) {
+function sortJobsByPosition(position, jobs, radius) {
   if (!position.lat || !position.lng) {
     return jobs;
   }
 
-  const distances = jobs.map(function (e, i) {
+  let distances = jobs.map(function (e, i) {
     const distance =
       calcDistance(
         e.company.geoCodeLat,
@@ -605,17 +615,23 @@ function sortJobsByPosition(position, jobs) {
 
     return {
       index: i,
-      value:
-        e.source == "joblift" && distance < 40
-          ? 40
-          : e.company.noLocation
-          ? 29
-          : distance,
+      value: e.company.noLocation ? 29 : distance,
+      toTop: e.source == "joblift" && distance < 40 ? 40 - distance : 0,
+      noLocation: e.company.noLocation,
     };
   });
 
+  if (radius) {
+    distances = distances.filter(function (distance) {
+      return distance.value < radius || distance.noLocation;
+    });
+  }
+
   distances.sort(function (a, b) {
-    return +(a.value > b.value) || +(a.value === b.value) - 1;
+    return (
+      +(a.value + a.toTop > b.value + b.toTop) ||
+      +(a.value + a.toTop === b.value + b.toTop) - 1
+    );
   });
 
   return distances.map(function (e) {
@@ -672,23 +688,23 @@ function sortJobsByPosition(position, jobs) {
   // });
 }
 
-function filterJobsByDistance(radius, position, jobs) {
-  if (!position.lat || !position.lng) {
-    return jobs;
-  }
+// function filterJobsByDistance(radius, position, jobs) {
+//   if (!position.lat || !position.lng) {
+//     return jobs;
+//   }
 
-  return jobs.filter(
-    job =>
-      calcDistance(
-        job.company.geoCodeLat,
-        job.company.geoCodeLng,
-        position.lat,
-        position.lng
-      ) /
-        1000 <
-        radius || job.company.noLocation
-  );
-}
+//   return jobs.filter(
+//     job =>
+//       calcDistance(
+//         job.company.geoCodeLat,
+//         job.company.geoCodeLng,
+//         position.lat,
+//         position.lng
+//       ) /
+//         1000 <
+//         radius || job.company.noLocation
+//   );
+// }
 
 function calcDistance(lat1, lon1, lat2, lon2) {
   const R = 6371000; // metres

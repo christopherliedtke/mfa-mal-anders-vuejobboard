@@ -118,8 +118,13 @@ const JobSeekType = gql`
   type JobSeeksWithCount {
     jobSeeks: [JobSeek]
     count: Float
-    location: String
+    location: Location
   }
+
+  # type Location {
+  #   location: String
+  #   zipCode: String
+  # }
 `;
 
 module.exports = JobSeekType;

@@ -5,7 +5,7 @@
         <strong>Stellengesuche</strong> <br />
         <span class="h4"
           >Qualifizierte MFA & ZFA finden{{
-            filter.ort ? " in " + filter.ort : ""
+            canonicalLocation ? " in " + canonicalLocation : ""
           }}</span
         >
       </h1>
@@ -424,6 +424,7 @@
         title: "",
         jobSeeks: null,
         count: null,
+        canonicalLocation: "",
         filter: {
           ort: "",
           radius: null,
@@ -457,11 +458,11 @@
                     "name": "Stellengesuche",
                     "item": "https://www.mfa-mal-anders.de/stellengesuche"
                 }${
-                  this.filter.ort
+                  this.canonicalLocation
                     ? ',{"@type": "ListItem","position": 3,"name": "' +
-                      this.filter.ort +
+                      this.canonicalLocation +
                       '","item": "https://www.mfa-mal-anders.de/stellengesuche/ort/' +
-                      textToSlug(this.filter.ort) +
+                      textToSlug(this.canonicalLocation) +
                       '"}'
                     : ""
                 }]
@@ -480,10 +481,10 @@
           { text: "Stellengesuche", to: "/stellengesuche" }
         ];
 
-        if (this.filter.ort) {
+        if (this.canonicalLocation) {
           breadcrumbs.push({
-            text: this.filter.ort,
-            to: `/stellengesuche/ort/${this.filter.ort.toLowerCase()}`
+            text: this.canonicalLocation,
+            to: `/stellengesuche/ort/${this.canonicalLocation.toLowerCase()}`
           });
         }
 
@@ -492,11 +493,11 @@
       canonical() {
         let canonical = "/stellengesuche";
 
-        if (this.filter.ort && !this.loading) {
+        if (this.canonicalLocation && !this.loading) {
           if (!this.jobSeeks) {
             canonical = "/404";
           } else {
-            canonical += "/ort/" + textToSlug(this.filter.ort);
+            canonical += "/ort/" + textToSlug(this.canonicalLocation);
           }
         }
 
@@ -552,7 +553,11 @@
                       slug
                     }
                     count
-                    location
+                    location {
+                      location
+                      zipCode
+                      country
+                    }
                   }
                 }
               `
@@ -567,6 +572,7 @@
             ) {
               this.errors = jobSeeks.data.errors;
               this.loading = false;
+              this.canonicalLocation = this.filter.ort;
               return;
             }
 
@@ -583,7 +589,28 @@
           this.count = jobSeeks.data.data.publicJobSeeks.count;
 
           if (jobSeeks.data.data.publicJobSeeks.location) {
-            this.filter.ort = jobSeeks.data.data.publicJobSeeks.location;
+            // this.filter.ort = jobSeeks.data.data.publicJobSeeks.location;
+
+            // this.filter.ort =
+            //   (jobSeeks.data.data.publicJobSeeks.location.zipCode || "") +
+            //   (jobSeeks.data.data.publicJobSeeks.location.zipCode ? " " : "") +
+            //   jobSeeks.data.data.publicJobSeeks.location.location;
+
+            this.filter.ort = [
+              jobSeeks.data.data.publicJobSeeks.location.zipCode || "",
+              jobSeeks.data.data.publicJobSeeks.location.location || "",
+              (!jobSeeks.data.data.publicJobSeeks.location.zipCode &&
+                !jobSeeks.data.data.publicJobSeeks.location.location &&
+                jobSeeks.data.data.publicJobSeeks.location.country) ||
+                ""
+            ]
+              .filter(e => e)
+              .join(" ");
+
+            this.canonicalLocation =
+              jobSeeks.data.data.publicJobSeeks.location.location || "";
+          } else {
+            this.canonicalLocation = "";
           }
         } catch (err) {
           this.$root.$bvToast.toast(

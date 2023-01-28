@@ -189,7 +189,13 @@ const JobType = gql`
   type PublicJobWithCount {
     jobs: [Job]
     count: Float
+    location: Location
+  }
+
+  type Location {
     location: String
+    zipCode: String
+    country: String
   }
 
   input PositionInput {
