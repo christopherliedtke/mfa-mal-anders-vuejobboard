@@ -3,7 +3,7 @@
     <div
       v-for="testimonial in testimonials"
       :key="testimonial.company"
-      class="col-12 col-lg-4 mb-4"
+      class="col-12 col-lg-6 mb-4"
     >
       <div class="position-relative bg-light-shade border-radius2 shadow1 p-5">
         <svg
@@ -53,6 +53,13 @@
     data() {
       return {
         testimonials: Object.freeze([
+          {
+            name: "Dr.-Ing. Reinhard Roth",
+            company: "as+ Arbeitsmedizin & Sicherheitstechnik",
+            text:
+              "Die Anzeige war ein voller Erfolg. Vielen Dank und ich bin froh Ihre Plattform gefunden zu haben. Um MFAs zu suchen für unsere Allgemeinmedizin und unsere Betriebsmedizin werde ich in Zukunft immer auf Ihre Plattform zurückgreifen.",
+            imgUrl: require("@/assets/img/logo-roth.jpg")
+          },
           {
             name: "Dr. Mari Bjørnsgård-Riggenbach",
             company: "MVZ Strahlentherapie Singen-Friedrichshafen",
