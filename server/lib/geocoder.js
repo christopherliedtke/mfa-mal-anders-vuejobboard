@@ -21,7 +21,7 @@ const getLocation = async (q, country) => {
       // throw new Error(`No items found for ${q}!`);
       console.error(
         `No locations found for '${q}' ---> location from api: `,
-        location
+        location.data
       );
       return null;
     }
