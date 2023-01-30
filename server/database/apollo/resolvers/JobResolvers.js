@@ -50,6 +50,10 @@ const JobResolvers = {
 
           args.position = locations[0].position;
         } else {
+          console.error(
+            `No locations found for '${args.location}' ---> locations: `,
+            locations
+          );
           throw new UserInputError(
             `Es konnte kein passender Ort für '${args.location}' gefunden werden oder der Ortungsservice funktioniert aktuell nicht. Bitte stellen Sie sicher, dass der Ort bzw. die PLZ korrekt und komplett angegeben ist.`,
             { argumentName: "location" }
