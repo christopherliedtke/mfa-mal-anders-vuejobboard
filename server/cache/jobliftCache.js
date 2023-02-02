@@ -26,142 +26,145 @@ class Cache {
       return Promise.resolve(value);
     }
 
-    try {
-      const jobLiftXml = await axios.get(process.env.JOBLIFT_FEED_URL);
+    return [];
 
-      let jobLiftJobs;
-      parseString(jobLiftXml.data, function (err, result) {
-        // console.log("result.feed.job: ", result.feed.job);
-        jobLiftJobs = result.feed.job.filter(filterJobliftJobs).map(job => {
-          return {
-            _id: job.id && job.id.length > 0 ? job.id[0] + "-jl" : "",
-            source: "joblift",
-            status: "published",
-            paid: true,
-            title: job.title ? job.title[0] : "",
-            description: job.fullDescription
-              ? decode(job.fullDescription[0])
-              : "",
-            excerpt:
-              sanitizeHtml(
-                decode(job.fullDescription[0]).replace(
-                  /<\/([a-z, 0-9]*)>/g,
-                  "</$1> "
-                ),
-                {
-                  allowedTags: [],
-                  allowedAttributes: {},
-                }
-              )
-                .substring(0, 200)
-                .trim() + "...",
-            employmentType:
-              job.workingTimes && job.workingTimes[0].item
-                ? getEmploymentType(job.workingTimes[0].item)
-                : "",
-            employmentTypeFull:
-              job.workingTimes && job.workingTimes[0].item
-                ? (
-                    employmentTypeOptions.find(
-                      option =>
-                        option.value ===
-                        getEmploymentType(job.workingTimes[0].item)
-                    ) || { text: "" }
-                  ).text
-                : "",
-            profession: getProfession(job.title[0] + job.fullDescription[0]),
-            specialization: "",
-            extJobUrl: job.url ? job.url[0] : "",
-            publishedAt: new Date(
-              job.publishDate ? job.publishDate[0] : ""
-            ).getTime(),
-            timeSincePublished: calcTimeSince(
-              new Date(job.publishDate ? job.publishDate[0] : "").getTime()
-            ),
-            updatedAt: new Date(
-              job.publishDate ? job.publishDate[0] : ""
-            ).getTime(),
-            contactEmail:
-              job.contact && job.contact[0].email
-                ? job.contact[0].email[0]
-                : "",
-            applicationEmail:
-              job.contact && job.contact[0].email
-                ? job.contact[0].email[0]
-                : "",
-            simpleApplication: false,
-            slug: textToSlug(
-              job.title[0] + "-in-" + job.locations[0].location[0].city[0]
-            ),
-            company: {
-              _id: "",
-              name: job.company ? decode(job.company[0]) : "",
-              noLocation: false,
-              location:
-                job.locations &&
-                job.locations[0].location &&
-                job.locations[0].location[0].city
-                  ? job.locations[0].location[0].city[0].replace(/\w\S*/g, w =>
-                      w.replace(/^\w/, c => c.toUpperCase())
-                    )
-                  : "",
-              state:
-                job.locations &&
-                job.locations[0].location &&
-                job.locations[0].location[0].zip
-                  ? zipCodeToState(job.locations[0].location[0].zip[0])
-                  : "",
-              zipCode:
-                job.locations &&
-                job.locations[0].location &&
-                job.locations[0].location[0].zip
-                  ? job.locations[0].location[0].zip[0]
-                  : "",
-              country:
-                job.locations &&
-                job.locations[0].location &&
-                job.locations[0].location[0].country
-                  ? job.locations[0].location[0].country[0]
-                  : "Deutschland",
-              geoCodeLat:
-                job.locations &&
-                job.locations[0].location &&
-                job.locations[0].location[0].geo &&
-                job.locations[0].location[0].geo[0].geo_lat
-                  ? parseFloat(job.locations[0].location[0].geo[0].geo_lat[0])
-                  : 51.241,
-              geoCodeLng:
-                job.locations &&
-                job.locations[0].location &&
-                job.locations[0].location[0].geo &&
-                job.locations[0].location[0].geo[0].geo_lon
-                  ? parseFloat(job.locations[0].location[0].geo[0].geo_lon[0])
-                  : 10.528,
-            },
-          };
-        });
+    // try {
+    //   const jobLiftXml = await axios.get(process.env.JOBLIFT_FEED_URL);
 
-        jobLiftJobs.forEach(job => {
-          job.jobStructuredData = generateJobStructuredData(job);
-        });
+    //   let jobLiftJobs;
+    //   parseString(jobLiftXml.data, function (err, result) {
+    //     // console.log("result.feed.job: ", result.feed.job);
+    //     jobLiftJobs = result.feed.job.filter(filterJobliftJobs).map(job => {
+    //       return {
+    //         _id: job.id && job.id.length > 0 ? job.id[0] + "-jl" : "",
+    //         source: "joblift",
+    //         status: "published",
+    //         paid: true,
+    //         title: job.title ? job.title[0] : "",
+    //         description: job.fullDescription
+    //           ? decode(job.fullDescription[0])
+    //           : "",
+    //         excerpt:
+    //           sanitizeHtml(
+    //             decode(job.fullDescription[0]).replace(
+    //               /<\/([a-z, 0-9]*)>/g,
+    //               "</$1> "
+    //             ),
+    //             {
+    //               allowedTags: [],
+    //               allowedAttributes: {},
+    //             }
+    //           )
+    //             .substring(0, 200)
+    //             .trim() + "...",
+    //         employmentType:
+    //           job.workingTimes && job.workingTimes[0].item
+    //             ? getEmploymentType(job.workingTimes[0].item)
+    //             : "",
+    //         employmentTypeFull:
+    //           job.workingTimes && job.workingTimes[0].item
+    //             ? (
+    //                 employmentTypeOptions.find(
+    //                   option =>
+    //                     option.value ===
+    //                     getEmploymentType(job.workingTimes[0].item)
+    //                 ) || { text: "" }
+    //               ).text
+    //             : "",
+    //         profession: getProfession(job.title[0] + job.fullDescription[0]),
+    //         specialization: "",
+    //         extJobUrl: job.url ? job.url[0] : "",
+    //         publishedAt: new Date(
+    //           job.publishDate ? job.publishDate[0] : ""
+    //         ).getTime(),
+    //         timeSincePublished: calcTimeSince(
+    //           new Date(job.publishDate ? job.publishDate[0] : "").getTime()
+    //         ),
+    //         updatedAt: new Date(
+    //           job.publishDate ? job.publishDate[0] : ""
+    //         ).getTime(),
+    //         contactEmail:
+    //           job.contact && job.contact[0].email
+    //             ? job.contact[0].email[0]
+    //             : "",
+    //         applicationEmail:
+    //           job.contact && job.contact[0].email
+    //             ? job.contact[0].email[0]
+    //             : "",
+    //         simpleApplication: false,
+    //         slug: textToSlug(
+    //           job.title[0] + "-in-" + job.locations[0].location[0].city[0]
+    //         ),
+    //         company: {
+    //           _id: "",
+    //           name: job.company ? decode(job.company[0]) : "",
+    //           noLocation: false,
+    //           location:
+    //             job.locations &&
+    //             job.locations[0].location &&
+    //             job.locations[0].location[0].city
+    //               ? job.locations[0].location[0].city[0].replace(/\w\S*/g, w =>
+    //                   w.replace(/^\w/, c => c.toUpperCase())
+    //                 )
+    //               : "",
+    //           state:
+    //             job.locations &&
+    //             job.locations[0].location &&
+    //             job.locations[0].location[0].zip
+    //               ? zipCodeToState(job.locations[0].location[0].zip[0])
+    //               : "",
+    //           zipCode:
+    //             job.locations &&
+    //             job.locations[0].location &&
+    //             job.locations[0].location[0].zip
+    //               ? job.locations[0].location[0].zip[0]
+    //               : "",
+    //           country:
+    //             job.locations &&
+    //             job.locations[0].location &&
+    //             job.locations[0].location[0].country
+    //               ? job.locations[0].location[0].country[0]
+    //               : "Deutschland",
+    //           geoCodeLat:
+    //             job.locations &&
+    //             job.locations[0].location &&
+    //             job.locations[0].location[0].geo &&
+    //             job.locations[0].location[0].geo[0].geo_lat
+    //               ? parseFloat(job.locations[0].location[0].geo[0].geo_lat[0])
+    //               : 51.241,
+    //           geoCodeLng:
+    //             job.locations &&
+    //             job.locations[0].location &&
+    //             job.locations[0].location[0].geo &&
+    //             job.locations[0].location[0].geo[0].geo_lon
+    //               ? parseFloat(job.locations[0].location[0].geo[0].geo_lon[0])
+    //               : 10.528,
+    //         },
+    //       };
+    //     });
 
-        if (err) {
-          console.log("Error on set jobLiftCache: ", err);
-          return null;
-        }
-      });
+    //     jobLiftJobs.forEach(job => {
+    //       job.jobStructuredData = generateJobStructuredData(job);
+    //     });
 
-      this.cache.set(
-        "jobs",
-        jobLiftJobs
-          ? jobLiftJobs.sort((a, b) => b.publishedAt - a.publishedAt)
-          : null
-      );
-    } catch (error) {
-      console.log("error: ", error);
-      return null;
-    }
-    return this.cache.get("jobs");
+    //     if (err) {
+    //       console.log("Error on set jobLiftCache: ", err);
+    //       return [];
+    //     }
+    //   });
+
+    //   this.cache.set(
+    //     "jobs",
+    //     jobLiftJobs
+    //       ? jobLiftJobs.sort((a, b) => b.publishedAt - a.publishedAt)
+    //       : []
+    //   );
+    // } catch (error) {
+    //   console.log("error: ", error);
+    //   return [];
+    // }
+
+    // return this.cache.get("jobs");
   }
 
   del(keys) {
