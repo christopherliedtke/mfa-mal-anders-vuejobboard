@@ -620,6 +620,7 @@ function sortJobsByPosition(position, jobs, radius) {
     return {
       index: i,
       value: e.company.noLocation ? 29 : distance,
+      // todo update to if source
       toTop: e.source == "joblift" && distance < 40 ? 40 - distance : 0,
       noLocation: e.company.noLocation,
     };
