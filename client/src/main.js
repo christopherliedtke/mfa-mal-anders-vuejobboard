@@ -103,12 +103,12 @@ Vue.use(
     // disableScriptLoad: true,
     // bootstrap: false,
     config: {
-      id: "G-BF8L4F2PWL",
-      params: {
-        anonymize_ip: config.ga.anonymizeIP,
-        client_storage: config.ga.storage
-        // send_page_view: false
-      }
+      id: "G-BF8L4F2PWL"
+      // params: {
+      //   // anonymize_ip: config.ga.anonymizeIP
+      //   // client_storage: config.ga.storage
+      //   // send_page_view: false
+      // }
       // id: config.ga.trackingCode,
       // params: {
       //   anonymize_ip: config.ga.anonymizeIP,
@@ -126,12 +126,12 @@ Vue.use(
       //   }
       // },
       {
-        id: "AW-797795882",
-        params: {
-          anonymize_ip: config.ga.anonymizeIP,
-          client_storage: config.ga.storage
-          // send_page_view: false
-        }
+        id: "AW-797795882"
+        // params: {
+        //   // anonymize_ip: config.ga.anonymizeIP,
+        //   // client_storage: config.ga.storage
+        //   // send_page_view: false
+        // }
       }
     ],
     enabled:

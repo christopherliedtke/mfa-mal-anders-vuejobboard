@@ -46,6 +46,7 @@
     },
     async created() {
       await this.checkLoggedIn();
+      this.$cookiebot.consentBanner();
       // #GA4 no cookies
       // this.gtag.query("consent", "default", {
       //   ad_storage: "denied",
@@ -58,7 +59,6 @@
     mounted() {
       document.addEventListener("visibilitychange", this.checkVersion);
       document.addEventListener("visibilitychange", this.checkLoggedIn);
-      this.$cookiebot.consentBanner();
     },
     destroyed() {
       document.removeEventListener("visibilitychange", this.checkVersion);
