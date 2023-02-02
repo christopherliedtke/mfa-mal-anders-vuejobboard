@@ -1,12 +1,12 @@
 <template>
   <div class="privacy-policy">
     <div class="title">
-      <h1 class="bold">
+      <h1>
         <strong>{{ title }}</strong>
       </h1>
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
-    <div class="container py-3 py-lg-5">
+    <div class="container py-3 py-lg-5 overflow- text-break">
       <div>
         <h1>Datenschutz&shy;erkl&auml;rung</h1>
         <h2>1. Datenschutz auf einen Blick</h2>
@@ -327,7 +327,8 @@
         </p>
         <h2>4. Datenerfassung auf dieser Website</h2>
         <h3>Cookies</h3>
-        <p>
+        <div ref="consent"></div>
+        <!-- <p>
           Unsere Internetseiten verwenden so genannte &bdquo;Cookies&ldquo;.
           Cookies sind kleine Datenpakete und richten auf Ihrem Endger&auml;t
           keinen Schaden an. Sie werden entweder vor&uuml;bergehend f&uuml;r die
@@ -438,7 +439,7 @@
           Bearbeitung Ihres Anliegens). Zwingende gesetzliche Bestimmungen
           &ndash; insbesondere gesetzliche Aufbewahrungsfristen &ndash; bleiben
           unber&uuml;hrt.
-        </p>
+        </p> -->
         <h2>5. Analyse-Tools und Werbung</h2>
         <h3>Matomo</h3>
         <p>Diese Website benutzt den Open Source Webanalysedienst Matomo.</p>
@@ -1227,6 +1228,13 @@
           { text: "Datenschutzerklärung", to: "/datenschutz" }
         ]
       };
+    },
+    mounted() {
+      this.$cookiebot.consentPage({
+        async: true,
+        locale: "de", // tip: replace 'en' with this.$i18n.locale when using vue-i18n
+        ref: this.$refs.consent // Must be a Vue ref or html element
+      });
     }
   };
 </script>

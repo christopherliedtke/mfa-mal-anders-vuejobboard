@@ -66,14 +66,14 @@ export const saveJobMixin = {
           throw new Error("Error on saving the job!");
         }
 
-        // this.$gtag.event(
-        //   `job_${/update/gi.test(mutationType) ? "update" : "add"}${
-        //     /admin/gi.test(mutationType) ? "_admin" : ""
-        //   }`,
-        //   {
-        //     event_label: `${job.title} | ${job.company.state} - ${jobQueryResponse.data.data[mutationType]._id}`
-        //   }
-        // );
+        this.$gtag.event(
+          `job_${/update/gi.test(mutationType) ? "update" : "add"}${
+            /admin/gi.test(mutationType) ? "_admin" : ""
+          }`,
+          {
+            event_label: `${job.title} | ${job.company.state} - ${jobQueryResponse.data.data[mutationType]._id}`
+          }
+        );
 
         this.$matomo &&
           this.$matomo.trackEvent(

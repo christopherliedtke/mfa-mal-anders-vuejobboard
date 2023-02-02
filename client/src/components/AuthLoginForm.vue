@@ -134,10 +134,10 @@
 
               this.$store.dispatch("getStarredJobs");
 
-              // this.$gtag.event("user_login", {
-              //   method: "local",
-              //   event_label: this.$store.state.auth.user._id
-              // });
+              this.$gtag.event("user_login", {
+                method: "local",
+                event_label: this.$store.state.auth.user._id
+              });
 
               this.$matomo &&
                 this.$matomo.trackEvent(

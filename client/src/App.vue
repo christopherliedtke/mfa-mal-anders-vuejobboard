@@ -58,6 +58,7 @@
     mounted() {
       document.addEventListener("visibilitychange", this.checkVersion);
       document.addEventListener("visibilitychange", this.checkLoggedIn);
+      this.$cookiebot.consentBanner();
     },
     destroyed() {
       document.removeEventListener("visibilitychange", this.checkVersion);

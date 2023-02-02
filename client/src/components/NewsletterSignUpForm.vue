@@ -276,9 +276,9 @@
           this.disabled = true;
           localStorage.setItem("nl-pop", "false");
 
-          // this.$gtag.event("newsletter_subscription", {
-          //   event_label: this.form.state
-          // });
+          this.$gtag.event("newsletter_subscription", {
+            event_label: this.form.state
+          });
 
           this.$matomo &&
             this.$matomo.trackEvent(
