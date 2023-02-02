@@ -149,7 +149,7 @@ class Cache {
 
     //     if (err) {
     //       console.log("Error on set jobLiftCache: ", err);
-    //       return null;
+    //       return [];
     //     }
     //   });
 
@@ -157,11 +157,11 @@ class Cache {
     //     "jobs",
     //     jobLiftJobs
     //       ? jobLiftJobs.sort((a, b) => b.publishedAt - a.publishedAt)
-    //       : null
+    //       : []
     //   );
     // } catch (error) {
     //   console.log("error: ", error);
-    //   return null;
+    //   return [];
     // }
 
     // return this.cache.get("jobs");
