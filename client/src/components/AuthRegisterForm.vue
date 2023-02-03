@@ -285,6 +285,10 @@
             await this.$store.dispatch("getActivationEmail");
 
             if (this.$store.state.auth.user._id) {
+              this.$gtag.config({
+                user_id: this.$store.state.auth.user._id
+              });
+
               this.$gtag.event("user_register", {
                 method: "local",
                 event_label: `id: ${this.$store.state.auth.user._id}; type: ${
