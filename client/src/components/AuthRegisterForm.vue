@@ -291,13 +291,12 @@
 
               this.$gtag.event("user_register", {
                 method: "local",
-                event_label: `id: ${this.$store.state.auth.user._id}; type: ${
-                  this.isEmployer
-                    ? "employer"
-                    : this.isEmployee
-                    ? "employee"
-                    : "educational"
-                }`
+                id: this.$store.state.auth.user._id,
+                user_type: this.isEmployer
+                  ? "employer"
+                  : this.isEmployee
+                  ? "employee"
+                  : "educational"
               });
 
               this.$matomo &&
