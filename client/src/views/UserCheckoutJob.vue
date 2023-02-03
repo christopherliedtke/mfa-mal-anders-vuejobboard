@@ -597,14 +597,16 @@
               }
             );
 
-            this.$gtag.event("begin_checkout", {
+            this.$gtag.event("purchase", {
               value: this.amountComputed / 100,
               currency: "EUR",
+              transaction_id: this.job._id + "_" + new Date().toISOString(),
+              coupon: this.checkout.promotionCode || "",
               items: [
                 {
-                  id: this.job._id,
-                  name: this.job.title,
-                  price: this.amountComputed / 100
+                  item_id: this.checkout.pricingPackage.stripePrice.id || "",
+                  price: this.amountComputed / 100,
+                  quantity: 1
                 }
               ]
             });

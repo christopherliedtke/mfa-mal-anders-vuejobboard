@@ -485,6 +485,10 @@
           if (response.status === 200) {
             this.step++;
 
+            this.$gtag.event("job_apply_short", {
+              event_label: `${this.job.title} | ${this.job.company.name} - ${this.job._id}`
+            });
+
             this.$matomo &&
               this.$matomo.trackEvent(
                 "engagement",

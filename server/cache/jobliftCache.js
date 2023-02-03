@@ -29,7 +29,12 @@ class Cache {
     return [];
 
     // try {
-    //   const jobLiftXml = await axios.get(process.env.JOBLIFT_FEED_URL);
+    //   // const jobLiftXml = await axios.get(process.env.JOBLIFT_FEED_URL);
+    //   const jobLiftXml = await axios({
+    //     method: "get",
+    //     url: process.env.JOBLIFT_FEED_URL,
+    //     timeout: 500,
+    //   });
 
     //   let jobLiftJobs;
     //   parseString(jobLiftXml.data, function (err, result) {
@@ -160,8 +165,9 @@ class Cache {
     //       : []
     //   );
     // } catch (error) {
+    //   console.error(error);
     //   console.log("error: ", error);
-    //   return [];
+    //   this.cache.set("jobs", [], 60 * 60 * 2);
     // }
 
     // return this.cache.get("jobs");
@@ -239,7 +245,7 @@ function isRecruitingAgency(job) {
 }
 
 function checkMfa(str) {
-  return str.match(/\bmedizinische|mta|mfa|\barzthelf/gi);
+  return str.match(/\bmedizinische|\bmta\b|\bmfa\b|\barzthelf/gi);
 }
 
 function checkZfa(str) {
