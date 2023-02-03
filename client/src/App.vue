@@ -46,7 +46,7 @@
     },
     async created() {
       await this.checkLoggedIn();
-      this.$cookiebot.consentBanner();
+      // await this.$cookiebot.consentBanner();
       // #GA4 no cookies
       // this.gtag.query("consent", "default", {
       //   ad_storage: "denied",

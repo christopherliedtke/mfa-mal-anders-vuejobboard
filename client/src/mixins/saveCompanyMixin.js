@@ -18,7 +18,7 @@ export const saveCompanyMixin = {
               } 
               ${userId ? `userId: "${userId}",` : ""} 
               name: "${company.name}", 
-              noLocation: ${company.noLocation},
+              noLocation: ${company.noLocation || false},
               description: "${company.description || ""}", 
               street: "${company.street}"
               location: "${company.location}", 
@@ -70,7 +70,7 @@ export const saveCompanyMixin = {
           };
         }
       } catch (err) {
-        // console.log(err);
+        // console.log(err.response.data);
         this.$root.$bvToast.toast(
           err
             ? err.message

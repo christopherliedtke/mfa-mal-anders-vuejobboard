@@ -128,9 +128,9 @@
             <router-link to="/karriere/zfa/gehalt"
               >ZFA Gehalt | Gehaltsrechner</router-link
             >
-            <router-link to="/unternehmensverzeichnis"
+            <!-- <router-link to="/unternehmensverzeichnis"
               >Unternehmensverzeichnis</router-link
-            >
+            > -->
 
             <router-link class="mt-4" to="/fuer-arbeitgeber"
               >Für Arbeitgeber</router-link

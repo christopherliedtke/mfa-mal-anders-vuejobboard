@@ -36,11 +36,11 @@ import axios from "@/services/axios.js";
 Vue.prototype.$axios = axios;
 
 // #CookieConsentManager
-import VueCookieBot from "@ambitiondev/vue-cookiebot-plugin";
-Vue.use(VueCookieBot, {
-  cookieBotID: "9ef6bac5-150d-40d3-a91e-7448f7e6848b",
-  defaulLocale: "de"
-});
+// import VueCookieBot from "@ambitiondev/vue-cookiebot-plugin";
+// Vue.use(VueCookieBot, {
+//   cookieBotID: "9ef6bac5-150d-40d3-a91e-7448f7e6848b",
+//   defaulLocale: "de"
+// });
 
 // #Bootstrap Integration
 import {

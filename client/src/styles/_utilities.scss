@@ -379,9 +379,24 @@ nav {
   }
 }
 
-#CybotCookiebotDialog { 
+#CybotCookiebotDialog *, #CookiebotWidget * { 
   font-family: "Montserrat", sans-serif !important; 
+  font-size: small !important;
+  line-height: 1.5 !important;
 
+  button {
+    font-size: small !important;
+    padding: 0.466rem 1.4rem !important;
+    border-radius: $border-radius2 !important;
+    width: auto !important;
+  }
+
+  a {
+    font-size: inherit !important;
+  }
+}
+
+#CybotCookiebotDialog { 
   @media screen and (max-width: 1279px) {
     top: unset !important;
     bottom: 1vh !important;
@@ -397,8 +412,6 @@ nav {
   #CybotCookiebotDialogHeader, #CybotCookiebotDialogPoweredByText {
     display: none !important;
   }
-
-
  
   @media screen and (max-width: 1279px) {
     #CybotCookiebotDialogBodyContent {
@@ -407,15 +420,14 @@ nav {
     }
   }
   
+  // #CybotCookiebotDialogBodyContentText, #CybotCookiebotDialogDetailFooter, .CybotCookiebotDialogDetailBodyContentCookieTypeIntro, #CybotCookiebotDialogDetailBodyContentTextAbout {
+  //   // font-size: small !important;
+  //   // line-height: 1.5 !important;
 
-  #CybotCookiebotDialogBodyContentText, #CybotCookiebotDialogDetailFooter, .CybotCookiebotDialogDetailBodyContentCookieTypeIntro, #CybotCookiebotDialogDetailBodyContentTextAbout {
-    font-size: small !important;
-    line-height: 1.5 !important;
-
-    a {
-      font-size: inherit !important;
-    }
-  }
+  //   // a {
+  //   //   font-size: inherit !important;
+  //   // }
+  // }
 
   .CookieCard {
     padding: 1em 0 1em !important;
@@ -425,51 +437,33 @@ nav {
     overflow-y: hidden !important;  
   }
 
-.CybotCookiebotDialogBodyBottomWrapper {
-  margin-top: 0rem !important;
+  .CybotCookiebotDialogBodyBottomWrapper {
+    margin-top: 0rem !important;
 
-  #CybotCookiebotDialogBodyEdgeMoreDetails {
-    margin: 1em 2em 0 0 !important;
+    #CybotCookiebotDialogBodyEdgeMoreDetails {
+      margin: 1em 2em 0 0 !important;
 
-    a {
-      font-size: small !important;
+      a {
+        font-size: small !important;
+      }
     }
-  }
-}
-  
-  button {
-    font-size: small !important;
-    padding: 0.466rem 1.4rem !important;
-    border-radius: $border-radius2 !important;
-    width: auto !important;
   }
 }
 
 #CookiebotWidget .CookiebotWidget-logo svg circle {
   fill: $secondary !important;
-
-  
 }
 
 #CookiebotWidget {
   bottom: 2vh !important;
   left: 2vh !important;
 
-  // transform: scale(0.85);
-  // transform-origin: 0% 100% !important;
-
   .CookiebotWidget-main-logo {
     display: none !important;
   }
 
   .CookiebotWidget-logo {
-
     svg {
-      // width: 15px !important;
-      circle: {
-        fill: $secondary !important;
-      }
-      
       path {
         fill: $light !important;
       }
