@@ -634,9 +634,11 @@
           event_label: eventLabel
         });
 
-        this.$gtag.query("event", "conversion", {
-          send_to: "AW-797795882/cM5pCJu31IoYEKrMtfwC"
-        });
+        if (eventAction === "job_apply") {
+          this.$gtag.query("event", "conversion", {
+            send_to: "AW-797795882/cM5pCJu31IoYEKrMtfwC"
+          });
+        }
 
         this.$matomo &&
           this.$matomo.trackEvent("engagement", eventAction, eventLabel);
