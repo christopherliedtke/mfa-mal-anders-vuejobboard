@@ -93,9 +93,9 @@
           this.active = true;
           await this.$store.dispatch("addStarredJob", this.jobId);
 
-          this.$gtag.event("job_add_star", {
-            event_label: this.jobId
-          });
+          // this.$gtag.event("job_add_star", {
+          //   event_label: this.jobId
+          // });
 
           this.$matomo &&
             this.$matomo.trackEvent("engagement", "job_add_star", this.jobId);
@@ -103,9 +103,9 @@
           this.active = false;
           await this.$store.dispatch("deleteStarredJob", this.jobId);
 
-          this.$gtag.event("job_delete_star", {
-            event_label: this.jobId
-          });
+          // this.$gtag.event("job_delete_star", {
+          //   event_label: this.jobId
+          // });
 
           this.$matomo &&
             this.$matomo.trackEvent(

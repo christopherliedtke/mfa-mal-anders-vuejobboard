@@ -373,103 +373,103 @@ nav {
   padding-bottom: 0.8rem !important;
 }
 
-@media screen and (min-width: 1280px) {
-  .CybotCookiebotDialogContentWrapper {
-    align-items: center !important;
-  }
-}
+// @media screen and (min-width: 1280px) {
+//   .CybotCookiebotDialogContentWrapper {
+//     align-items: center !important;
+//   }
+// }
 
-#CybotCookiebotDialog *, #CookiebotWidget * { 
-  font-family: "Montserrat", sans-serif !important; 
-  font-size: small !important;
-  line-height: 1.5 !important;
+// #CybotCookiebotDialog *, #CookiebotWidget * { 
+//   font-family: "Montserrat", sans-serif !important; 
+//   font-size: small !important;
+//   line-height: 1.5 !important;
 
-  button {
-    font-size: small !important;
-    padding: 0.466rem 1.4rem !important;
-    border-radius: $border-radius2 !important;
-    width: auto !important;
-  }
+//   button {
+//     font-size: small !important;
+//     padding: 0.466rem 1.4rem !important;
+//     border-radius: $border-radius2 !important;
+//     width: auto !important;
+//   }
 
-  a {
-    font-size: inherit !important;
-  }
-}
+//   a {
+//     font-size: inherit !important;
+//   }
+// }
 
-#CybotCookiebotDialog { 
-  @media screen and (max-width: 1279px) {
-    top: unset !important;
-    bottom: 1vh !important;
-    transform: translate(-50%, 0%) !important;
-  }
+// #CybotCookiebotDialog { 
+//   @media screen and (max-width: 1279px) {
+//     top: unset !important;
+//     bottom: 1vh !important;
+//     transform: translate(-50%, 0%) !important;
+//   }
   
-  @media screen and (min-width: 1280px) {
-  &.CybotEdge {
-    padding: 1rem 1.5rem !important;
-    }
-  }
+//   @media screen and (min-width: 1280px) {
+//   &.CybotEdge {
+//     padding: 1rem 1.5rem !important;
+//     }
+//   }
 
-  #CybotCookiebotDialogHeader, #CybotCookiebotDialogPoweredByText {
-    display: none !important;
-  }
+//   #CybotCookiebotDialogHeader, #CybotCookiebotDialogPoweredByText {
+//     display: none !important;
+//   }
  
-  @media screen and (max-width: 1279px) {
-    #CybotCookiebotDialogBodyContent {
-      max-height: 18vh !important;
-      padding: 0.5em 0.5em !important;
-    }
-  }
+//   @media screen and (max-width: 1279px) {
+//     #CybotCookiebotDialogBodyContent {
+//       max-height: 18vh !important;
+//       padding: 0.5em 0.5em !important;
+//     }
+//   }
   
-  // #CybotCookiebotDialogBodyContentText, #CybotCookiebotDialogDetailFooter, .CybotCookiebotDialogDetailBodyContentCookieTypeIntro, #CybotCookiebotDialogDetailBodyContentTextAbout {
-  //   // font-size: small !important;
-  //   // line-height: 1.5 !important;
+//   // #CybotCookiebotDialogBodyContentText, #CybotCookiebotDialogDetailFooter, .CybotCookiebotDialogDetailBodyContentCookieTypeIntro, #CybotCookiebotDialogDetailBodyContentTextAbout {
+//   //   // font-size: small !important;
+//   //   // line-height: 1.5 !important;
 
-  //   // a {
-  //   //   font-size: inherit !important;
-  //   // }
-  // }
+//   //   // a {
+//   //   //   font-size: inherit !important;
+//   //   // }
+//   // }
 
-  .CookieCard {
-    padding: 1em 0 1em !important;
-  }
+//   .CookieCard {
+//     padding: 1em 0 1em !important;
+//   }
 
-  #CybotCookiebotDialogBodyContentText {
-    overflow-y: hidden !important;  
-  }
+//   #CybotCookiebotDialogBodyContentText {
+//     overflow-y: hidden !important;  
+//   }
 
-  .CybotCookiebotDialogBodyBottomWrapper {
-    margin-top: 0rem !important;
+//   .CybotCookiebotDialogBodyBottomWrapper {
+//     margin-top: 0rem !important;
 
-    #CybotCookiebotDialogBodyEdgeMoreDetails {
-      margin: 1em 2em 0 0 !important;
+//     #CybotCookiebotDialogBodyEdgeMoreDetails {
+//       margin: 1em 2em 0 0 !important;
 
-      a {
-        font-size: small !important;
-      }
-    }
-  }
-}
+//       a {
+//         font-size: small !important;
+//       }
+//     }
+//   }
+// }
 
-#CookiebotWidget .CookiebotWidget-logo svg circle {
-  fill: $secondary !important;
-}
+// #CookiebotWidget .CookiebotWidget-logo svg circle {
+//   fill: $secondary !important;
+// }
 
-#CookiebotWidget {
-  bottom: 2vh !important;
-  left: 2vh !important;
+// #CookiebotWidget {
+//   bottom: 2vh !important;
+//   left: 2vh !important;
 
-  .CookiebotWidget-main-logo {
-    display: none !important;
-  }
+//   .CookiebotWidget-main-logo {
+//     display: none !important;
+//   }
 
-  .CookiebotWidget-logo {
-    svg {
-      path {
-        fill: $light !important;
-      }
-    }
-  }
-}
+//   .CookiebotWidget-logo {
+//     svg {
+//       path {
+//         fill: $light !important;
+//       }
+//     }
+//   }
+// }
 
 // #Transitions
 .fade-enter-active,

@@ -285,28 +285,28 @@
             await this.$store.dispatch("getActivationEmail");
 
             if (this.$store.state.auth.user._id) {
-              this.$gtag.config({
-                user_id: this.$store.state.auth.user._id
-              });
+              // this.$gtag.config({
+              //   user_id: this.$store.state.auth.user._id
+              // });
 
-              this.$gtag.event("user_register", {
-                method: "local",
-                user_type: this.isEmployer
-                  ? "employer"
-                  : this.isEmployee
-                  ? "employee"
-                  : "educational"
-              });
+              // this.$gtag.event("user_register", {
+              //   method: "local",
+              //   user_type: this.isEmployer
+              //     ? "employer"
+              //     : this.isEmployee
+              //     ? "employee"
+              //     : "educational"
+              // });
 
-              if (this.isEmployer) {
-                this.$gtag.query("event", "conversion", {
-                  send_to: "AW-797795882/N78KCJ_N0ooYEKrMtfwC"
-                });
-              } else if (this.isEmployee) {
-                this.$gtag.query("event", "conversion", {
-                  send_to: "AW-797795882/v1aJCJrO0ooYEKrMtfwC"
-                });
-              }
+              // if (this.isEmployer) {
+              //   this.$gtag.query("event", "conversion", {
+              //     send_to: "AW-797795882/N78KCJ_N0ooYEKrMtfwC"
+              //   });
+              // } else if (this.isEmployee) {
+              //   this.$gtag.query("event", "conversion", {
+              //     send_to: "AW-797795882/v1aJCJrO0ooYEKrMtfwC"
+              //   });
+              // }
 
               this.$matomo &&
                 this.$matomo.trackEvent(

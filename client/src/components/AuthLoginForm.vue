@@ -134,18 +134,18 @@
 
               this.$store.dispatch("getStarredJobs");
 
-              this.$gtag.config({
-                user_id: this.$store.state.auth.user._id
-              });
+              // this.$gtag.config({
+              //   user_id: this.$store.state.auth.user._id
+              // });
 
-              this.$gtag.event("user_login", {
-                method: "local",
-                user_type: this.$store.state.auth.user.isEmployer
-                  ? "employer"
-                  : this.$store.state.auth.user.isEmployee
-                  ? "employee"
-                  : "educational"
-              });
+              // this.$gtag.event("user_login", {
+              //   method: "local",
+              //   user_type: this.$store.state.auth.user.isEmployer
+              //     ? "employer"
+              //     : this.$store.state.auth.user.isEmployee
+              //     ? "employee"
+              //     : "educational"
+              // });
 
               this.$matomo &&
                 this.$matomo.trackEvent(

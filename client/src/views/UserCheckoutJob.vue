@@ -431,25 +431,25 @@
 
       await this.checkForPromotionCode();
     },
-    mounted() {
-      try {
-        this.$gtag.event("begin_checkout", {
-          value: this.amountComputed / 100,
-          currency: "EUR",
-          transaction_id: this.job._id + "_" + new Date().toISOString(),
-          coupon: this.checkout.promotionCode || "",
-          items: [
-            {
-              item_id: this.checkout.pricingPackage.stripePrice.id || "",
-              price: this.amountComputed / 100,
-              quantity: 1
-            }
-          ]
-        });
-      } catch (error) {
-        //
-      }
-    },
+    // mounted() {
+    //   try {
+    //     this.$gtag.event("begin_checkout", {
+    //       value: this.amountComputed / 100,
+    //       currency: "EUR",
+    //       transaction_id: this.job._id + "_" + new Date().toISOString(),
+    //       coupon: this.checkout.promotionCode || "",
+    //       items: [
+    //         {
+    //           item_id: this.checkout.pricingPackage.stripePrice.id || "",
+    //           price: this.amountComputed / 100,
+    //           quantity: 1
+    //         }
+    //       ]
+    //     });
+    //   } catch (error) {
+    //     //
+    //   }
+    // },
     methods: {
       async getJob() {
         this.$store.dispatch("setOverlay", true);
@@ -617,19 +617,19 @@
             );
 
             try {
-              this.$gtag.event("purchase", {
-                value: this.amountComputed / 100,
-                currency: "EUR",
-                transaction_id: this.job._id + "_" + new Date().toISOString(),
-                coupon: this.checkout.promotionCode || "",
-                items: [
-                  {
-                    item_id: this.checkout.pricingPackage.stripePrice.id || "",
-                    price: this.amountComputed / 100,
-                    quantity: 1
-                  }
-                ]
-              });
+              // this.$gtag.event("purchase", {
+              //   value: this.amountComputed / 100,
+              //   currency: "EUR",
+              //   transaction_id: this.job._id + "_" + new Date().toISOString(),
+              //   coupon: this.checkout.promotionCode || "",
+              //   items: [
+              //     {
+              //       item_id: this.checkout.pricingPackage.stripePrice.id || "",
+              //       price: this.amountComputed / 100,
+              //       quantity: 1
+              //     }
+              //   ]
+              // });
 
               this.$matomo &&
                 this.$matomo.trackEvent(

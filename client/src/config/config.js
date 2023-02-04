@@ -21,7 +21,7 @@ module.exports = {
     path: "mfa.mal.anders/"
   },
   ga: {
-    active: true,
+    active: false,
     // trackingCode: "UA-138281267-3",
     anonymizeIP: true,
     storage: "none"
