@@ -140,7 +140,6 @@
 
               this.$gtag.event("user_login", {
                 method: "local",
-                id: this.$store.state.auth.user._id,
                 user_type: this.$store.state.auth.user.isEmployer
                   ? "employer"
                   : this.$store.state.auth.user.isEmployee
