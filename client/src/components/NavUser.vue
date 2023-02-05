@@ -64,10 +64,9 @@
       </li>
       <li
         v-if="
-          $config.starredJobs.active &&
-            ($store.state.auth.user.isAdmin ||
-              $store.state.auth.user.isEmployee ||
-              $store.state.starredJobs.starredJobs.length > 0)
+          $store.state.auth.user.isAdmin ||
+            $store.state.auth.user.isEmployee ||
+            $store.state.starredJobs.starredJobs.length > 0
         "
         class="nav-item"
         role="presentation"

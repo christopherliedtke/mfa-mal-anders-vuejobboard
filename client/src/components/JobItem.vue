@@ -408,7 +408,7 @@
           :variant="job.simpleApplication ? 'outline-primary' : 'primary'"
           :href="
             job.extJobUrl ||
-              `mailto:${job.applicationEmail}?subject=Bewerbung - ${job.title} über ${$config.website.name}`
+              `mailto:${job.applicationEmail}?subject=Bewerbung - ${job.title} über MFA mal anders`
           "
           target="_blank"
           class="mb-2"
@@ -489,7 +489,7 @@
               :href="
                 `mailto:${job.contactEmail || job.applicationEmail}?subject=${
                   job.title
-                } über ${$config.website.name}`
+                } über MFA mal anders`
               "
               target="_blank"
               @click="

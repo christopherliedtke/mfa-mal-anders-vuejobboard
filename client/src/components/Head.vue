@@ -70,7 +70,7 @@
             },
             {
               property: "og:title",
-              content: `${this.title} – ${this.$config.website.name}`,
+              content: `${this.title} – ${process.env.VUE_APP_WEBSITE_NAME}`,
               id: "og-title"
             },
             {
@@ -103,7 +103,7 @@
             },
             {
               property: "fb:app_id",
-              content: this.$config.fb.appId,
+              content: process.env.VUE_APP_FACEBOOK_APP_ID,
               id: "fb-app-id"
             },
             {
@@ -113,7 +113,7 @@
             },
             {
               property: "twitter:title",
-              content: `${this.title} – ${this.$config.website.name}`,
+              content: `${this.title} – ${process.env.VUE_APP_WEBSITE_NAME}`,
               id: "twitter-title"
             },
             {
@@ -146,7 +146,7 @@
         return [
           {
             rel: "canonical",
-            href: `${this.$config.website.url + this.$route.path}`,
+            href: `${process.env.VUE_APP_WEBSITE_URL + this.$route.path}`,
             id: "canonical"
           },
           ...this.link

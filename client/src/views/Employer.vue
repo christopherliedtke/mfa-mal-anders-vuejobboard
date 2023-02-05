@@ -388,7 +388,7 @@
               >,
               <span class="text-tertiary"><strong>Social Media</strong></span>
               <!-- <a
-                :href="`https://www.facebook.com/${$config.fb.path}`"
+                :href="`https://www.facebook.com/MFAmalanders`"
                 target="_blank"
                 >Facebook</a
               > -->
@@ -1109,7 +1109,7 @@
           },
           {
             rel: "canonical",
-            href: `${this.$config.website.url}/fuer-arbeitgeber`,
+            href: `${process.env.VUE_APP_WEBSITE_URL}/fuer-arbeitgeber`,
             id: "canonical"
           }
         ],

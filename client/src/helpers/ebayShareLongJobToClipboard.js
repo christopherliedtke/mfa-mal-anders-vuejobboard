@@ -1,7 +1,7 @@
 // import copyToClipBoard from "@/helpers/copyToClipBoard";
 
 export default function(job) {
-  const text = `Wir sind MFA mal anders, das Karriereportal für Medizinische & Zahnmedizinische Fachangestellte. Im Auftrag des Arbeitgebers haben wir diese Stellenanzeige veröffentlicht.<br><br>--------------------------------------------------<br>**** ACHTUNG: Fragen zur Stelle und Bewerbungen ausschließlich über den folgenden Link!! ****<br><br>${this.$config.website.url}/job/${job._id}<br><br>(kopieren Sie den Link einfach in die URL Zeile Ihres Browsers)<br>
+  const text = `Wir sind MFA mal anders, das Karriereportal für Medizinische & Zahnmedizinische Fachangestellte. Im Auftrag des Arbeitgebers haben wir diese Stellenanzeige veröffentlicht.<br><br>--------------------------------------------------<br>**** ACHTUNG: Fragen zur Stelle und Bewerbungen ausschließlich über den folgenden Link!! ****<br><br>${process.env.VUE_APP_WEBSITE_URL}/job/${job._id}<br><br>(kopieren Sie den Link einfach in die URL Zeile Ihres Browsers)<br>
   --------------------------------------------------<br><br>`;
 
   const desc = document.getElementById("job-description");

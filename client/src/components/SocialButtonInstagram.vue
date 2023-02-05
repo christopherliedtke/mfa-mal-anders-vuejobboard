@@ -3,7 +3,7 @@
     class="instagram-btn"
     variant="primary"
     :size="size"
-    :href="`https://www.instagram.com/${$config.ig.path}`"
+    :href="`https://www.instagram.com/mfa.mal.anders/`"
     target="_blank"
     aria-label="Instagram"
   >

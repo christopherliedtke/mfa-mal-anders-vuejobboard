@@ -70,8 +70,8 @@
             id: "canonical",
             rel: "canonical",
             href: this.error
-              ? `${this.$config.website.url}/404`
-              : `${this.$config.website.url}/stellengesuche/gesuch/${this.jobSeek._id}/${this.jobSeek.slug}`
+              ? `${process.env.VUE_APP_WEBSITE_URL}/404`
+              : `${process.env.VUE_APP_WEBSITE_URL}/stellengesuche/gesuch/${this.jobSeek._id}/${this.jobSeek.slug}`
           }
         ];
       }

@@ -68,7 +68,7 @@ const mailToEmployers = async () => {
         employer.title ? employer.title + " " : ""
       }${employer.lastName}`,
       websiteUrl: process.env.WEBSITE_URL,
-      websiteName: config.website.name,
+      websiteName: process.env.WEBSITE_NAME,
       headerImg: `${process.env.WEBSITE_URL}/img/MfaMalAnders_Banner_1200.jpg`,
       lightColor: "#fffcfd",
       lightShadeColor: "#f7f6f9",
@@ -137,7 +137,7 @@ const mailToEmployees = async () => {
     const htmlToEmployee = template({
       to: `${employee.firstName}`,
       websiteUrl: process.env.WEBSITE_URL,
-      websiteName: config.website.name,
+      websiteName: process.env.WEBSITE_NAME,
       headerImg: `${process.env.WEBSITE_URL}/img/MfaMalAnders_Stellengesuche.jpg`,
       lightColor: "#fffcfd",
       lightShadeColor: "#f7f6f9",

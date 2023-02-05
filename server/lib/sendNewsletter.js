@@ -102,7 +102,7 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
           jobs: stateJobs,
           state: state,
           websiteUrl: process.env.WEBSITE_URL,
-          websiteName: config.website.name,
+          websiteName: process.env.WEBSITE_NAME,
           headerImg: `${process.env.WEBSITE_URL}/img/MfaMalAnders_Stellengesuche.jpg`,
           // headerImg: `${
           //   process.env.WEBSITE_URL
@@ -121,7 +121,7 @@ module.exports.sendNewsletter = async (daysBack = 7) => {
           from: `${config.website.emailFrom} <newsletter@${process.env.MG_DOMAIN}>`,
           to: process.env.CONTACT_EMAIL_ADRESS,
           bcc: stateReceivers.join(", "),
-          subject: `Dein Job-Newsletter für ${state} – ${config.website.name}`,
+          subject: `Dein Job-Newsletter für ${state} – ${process.env.WEBSITE_NAME}`,
           html: html,
         };
 

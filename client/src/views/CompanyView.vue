@@ -179,7 +179,7 @@
           {
             id: "canonical",
             rel: "canonical",
-            href: `${this.$config.website.url}/unternehmen/${this.company._id}/${this.company.slug}`
+            href: `${process.env.VUE_APP_WEBSITE_URL}/unternehmen/${this.company._id}/${this.company.slug}`
           }
         ];
       }

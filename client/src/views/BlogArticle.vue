@@ -47,14 +47,14 @@
           Gesundheitswesen? Dann folge MFA mal anders gern auf
           <b-link
             class="bold"
-            :href="`https://www.facebook.com/${$config.fb.path}`"
+            :href="`https://www.facebook.com/MFAmalanders`"
             target="_blank"
             >Facebook</b-link
           >
           und
           <b-link
             class="bold"
-            :href="`https://www.instagram.com/${$config.ig.path}`"
+            :href="`https://www.instagram.com/mfa.mal.anders/`"
             target="_blank"
             >Instagram</b-link
           >.
@@ -246,7 +246,7 @@
           {
             id: "canonical",
             rel: "canonical",
-            href: `${this.$config.website.url}/blog/artikel/${this.$route.params.slug}`
+            href: `${process.env.VUE_APP_WEBSITE_URL}/blog/artikel/${this.$route.params.slug}`
           }
         ];
       }

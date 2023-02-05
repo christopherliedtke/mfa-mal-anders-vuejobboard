@@ -51,7 +51,7 @@
         <div class="col order-1 order-lg-3">
           <div class="mb-4">
             <b-link
-              :href="`https://www.facebook.com/${$config.fb.path}`"
+              :href="`https://www.facebook.com/MFAmalanders`"
               class="mr-3"
               target="_blank"
               rel="noopener"
@@ -71,7 +71,7 @@
               </svg>
             </b-link>
             <b-link
-              :href="`https://twitter.com/${$config.twitter.path}`"
+              :href="`https://twitter.com/MfaMalAnders`"
               class="mr-3"
               target="_blank"
               rel="noopener"
@@ -91,7 +91,7 @@
               </svg>
             </b-link>
             <b-link
-              :href="`https://www.instagram.com/${$config.ig.path}`"
+              :href="`https://www.instagram.com/mfa.mal.anders/`"
               class="mr-3"
               target="_blank"
               rel="noopener"

@@ -87,7 +87,7 @@
           {
             id: "canonical",
             rel: "canonical",
-            href: `${this.$config.website.url}/karriere/fort-und-weiterbildung`
+            href: `${process.env.VUE_APP_WEBSITE_URL}/karriere/fort-und-weiterbildung`
           }
         ]
       };

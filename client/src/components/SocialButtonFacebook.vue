@@ -3,7 +3,7 @@
     class="facebook-btn"
     variant="primary"
     :size="size"
-    :href="`https://www.facebook.com/${$config.fb.path}`"
+    :href="`https://www.facebook.com/MFAmalanders`"
     target="_blank"
     aria-label="Facebook"
   >

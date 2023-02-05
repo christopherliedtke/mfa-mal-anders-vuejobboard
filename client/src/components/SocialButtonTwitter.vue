@@ -3,7 +3,7 @@
     class="twitter-btn"
     variant="primary"
     :size="size"
-    :href="`https://www.twitter.com/${$config.twitter.path}`"
+    :href="`https://www.twitter.com/MfaMalAnders`"
     target="_blank"
     aria-label="Twitter"
   >

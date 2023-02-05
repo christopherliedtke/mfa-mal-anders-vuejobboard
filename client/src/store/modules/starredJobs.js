@@ -1,5 +1,4 @@
 import axios from "@/services/axios";
-import config from "@/config/config.js";
 
 const state = {
   starredJobs: []
@@ -11,10 +10,9 @@ const getters = {
 
 const actions = {
   async getStarredJobs({ commit }) {
-    if (config.starredJobs.active) {
-      const response = await axios.get("/graphql", {
-        params: {
-          query: `
+    const response = await axios.get("/graphql", {
+      params: {
+        query: `
             query {
               starredJobs {
                 _id
@@ -23,11 +21,10 @@ const actions = {
               }  
             }
           `
-        }
-      });
+      }
+    });
 
-      commit("setStarredJobs", response.data.data.starredJobs);
-    }
+    commit("setStarredJobs", response.data.data.starredJobs);
   },
   async addStarredJob({ commit }, jobId) {
     const response = await axios.post("/graphql", {

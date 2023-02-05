@@ -54,7 +54,7 @@
           {
             id: "canonical",
             rel: "canonical",
-            href: `${this.$config.website.url}/unternehmensverzeichnis`
+            href: `${process.env.VUE_APP_WEBSITE_URL}/unternehmensverzeichnis`
           },
           {
             id: "breadcrumbs",

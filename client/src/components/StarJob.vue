@@ -1,6 +1,5 @@
 <template>
   <span
-    v-if="$config.starredJobs.active"
     :style="`padding: ${padding}; position: ${position}`"
     class="star text-secondary"
     @click.prevent="toggleStar"

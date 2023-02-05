@@ -78,7 +78,7 @@ const SubscriberResolvers = {
           subscriberId: newSubscriber._id,
           state: newSubscriber.state,
           websiteUrl: process.env.WEBSITE_URL,
-          websiteName: config.website.name,
+          websiteName: process.env.WEBSITE_NAME,
           lightColor: "#fffcfd",
           primaryColor: "#6d0230",
           fbPath: config.social.fb.path,
@@ -88,9 +88,9 @@ const SubscriberResolvers = {
         const emailData = {
           from: `${config.website.emailFrom} <newsletter@${process.env.MG_DOMAIN}>`,
           to: args.email,
-          subject: `Anmeldung für Job Newsletter auf ${config.website.name}`,
+          subject: `Anmeldung für Job Newsletter auf ${process.env.WEBSITE_NAME}`,
           text: `
-            Bitte bestätige deine Anmeldung für den Job-Newsletter für ${args.state} auf ${config.website.name}: ${process.env.WEBSITE_URL}/newsletter/subscription-activation/${newSubscriber._id}
+            Bitte bestätige deine Anmeldung für den Job-Newsletter für ${args.state} auf ${process.env.WEBSITE_NAME}: ${process.env.WEBSITE_URL}/newsletter/subscription-activation/${newSubscriber._id}
           `,
           html: html,
         };

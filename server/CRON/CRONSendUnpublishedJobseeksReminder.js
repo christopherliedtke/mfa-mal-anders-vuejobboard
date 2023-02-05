@@ -51,7 +51,7 @@ const sendUnpublishedJobSeeksReminder = async () => {
         to: `${jobSeek.user.firstName}`,
         jobSeekTitle: jobSeek.title,
         websiteUrl: process.env.WEBSITE_URL,
-        websiteName: config.website.name,
+        websiteName: process.env.WEBSITE_NAME,
         headerImg: `${process.env.WEBSITE_URL}/img/MfaMalAnders_Stellengesuche.jpg`,
         lightColor: "#fffcfd",
         lightShadeColor: "#f7f6f9",

@@ -5,9 +5,9 @@
     :disabled="!$route.meta.public"
     class="email-share-btn"
     :href="
-      `mailto:?subject=${subject}&body=Stellenanzeige auf ${
-        $config.website.name
-      }: ${url}${sharePath ? sharePath : ''}`
+      `mailto:?subject=${subject}&body=Stellenanzeige auf MFA mal anders: ${url}${
+        sharePath ? sharePath : ''
+      }`
     "
     target="_blank"
     rel="nofollow"

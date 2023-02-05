@@ -302,7 +302,7 @@
           },
           {
             rel: "canonical",
-            href: `${this.$config.website.url + "/fortbildungskatalog"}`,
+            href: `${process.env.VUE_APP_WEBSITE_URL + "/fortbildungskatalog"}`,
             id: "canonical"
           }
         ]

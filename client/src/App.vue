@@ -23,6 +23,7 @@
     import(
       /* webpackChunkName: "starJobModal" */ "@/components/TheStarJobModal"
     );
+  // import { setOptions, bootstrap } from "vue-gtag";
   export default {
     components: {
       TheHeader,
@@ -46,14 +47,24 @@
     },
     async created() {
       await this.checkLoggedIn();
-      // await this.$cookiebot.consentBanner();
+
       // #GA4 no cookies
-      // this.gtag.query("consent", "default", {
-      //   ad_storage: "denied",
-      //   analytics_storage: "denied",
-      //   functionality_storage: "denied",
-      //   personalization_storage: "denied",
-      //   security_storage: "denied"
+      // setOptions({
+      //   config: {
+      //     id: process.env.VUE_APP_GTAG
+      //   }
+      // });
+
+      // bootstrap().then(() => {
+      //   this.$gtag.query("consent", "default", {
+      //     ad_storage: "denied",
+      //     analytics_storage: "denied",
+      //     functionality_storage: "denied",
+      //     personalization_storage: "denied",
+      //     security_storage: "denied"
+      //   });
+
+      //   this.$gtag.pageview(this.$route);
       // });
     },
     mounted() {
@@ -125,13 +136,7 @@
         }
       }
       // track() {
-      //   this.$gtag.pageview({
-      //     page_title: this.$route.name,
-      //     page_path: this.$route.fullPath,
-      //     page_location: window.location.href,
-      //     anonymize_ip: this.$config.ga.anonymizeIP,
-      //     client_storage: this.$config.ga.storage
-      //   });
+      //   this.$gtag.pageview(this.$route);
       // }
     }
   };

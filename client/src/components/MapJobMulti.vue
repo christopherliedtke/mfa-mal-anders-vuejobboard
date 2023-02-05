@@ -72,21 +72,31 @@
                     reject("");
                   }
                 },
-                () => resolve(this.$config.maps.defaultCenter)
+                () =>
+                  resolve({
+                    lat: 51.241,
+                    lng: 10.528
+                  })
               );
             });
           } catch (err) {
-            geocode = this.$config.maps.defaultCenter;
+            geocode = {
+              lat: 51.241,
+              lng: 10.528
+            };
           }
 
           if (!geocode) {
-            geocode = this.$config.maps.defaultCenter;
+            geocode = {
+              lat: 51.241,
+              lng: 10.528
+            };
           }
 
           const mapContainer = this.$refs.hereMap;
           const H = window.H;
           const maptypes = this.platform.createDefaultLayers({
-            lg: this.$config.maps.lang
+            lg: "de"
           });
 
           this.map = new H.Map(mapContainer, maptypes.vector.normal.map, {

@@ -382,8 +382,7 @@
           <div class="mt-3 text-right">
             <b-button
               v-if="
-                $config.starredJobs.active &&
-                  $store.state.auth.loggedIn &&
+                $store.state.auth.loggedIn &&
                   $store.state.starredJobs.starredJobs &&
                   $store.state.starredJobs.starredJobs.length > 0
               "
@@ -619,7 +618,7 @@
           },
           {
             rel: "canonical",
-            href: `${this.$config.website.url}${this.canonical}`,
+            href: `${process.env.VUE_APP_WEBSITE_URL}${this.canonical}`,
             id: "canonical"
           }
         ];

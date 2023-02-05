@@ -68,10 +68,9 @@
       >
       <router-link
         v-if="
-          $config.starredJobs.active &&
-            ($store.state.auth.user.isEmployee ||
-              ($store.state.starredJobs.starredJobs &&
-                $store.state.starredJobs.starredJobs.length > 0))
+          $store.state.auth.user.isEmployee ||
+            ($store.state.starredJobs.starredJobs &&
+              $store.state.starredJobs.starredJobs.length > 0)
         "
         to="/user/gespeicherte-stellenanzeigen"
         >Gespeicherte Jobs</router-link

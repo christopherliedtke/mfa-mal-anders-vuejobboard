@@ -348,7 +348,7 @@ const UserResolvers = {
       const html = template({
         secretCode,
         websiteUrl: process.env.WEBSITE_URL,
-        websiteName: config.website.name,
+        websiteName: process.env.WEBSITE_NAME,
         lightColor: "#fffcfd",
         primaryColor: "#6d0230",
         fbPath: config.social.fb.path,
@@ -358,9 +358,9 @@ const UserResolvers = {
       const emailData = {
         from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
         to: args.email,
-        subject: `Ihr Code für den Passwort Reset auf ${config.website.name}`,
+        subject: `Ihr Code für den Passwort Reset auf ${process.env.WEBSITE_NAME}`,
         text: `
-          Bitte nutzen Sie den folgenden Code innerhalb der nächsten 60 Minuten, um Ihr Passwort auf ${config.website.name} zu ändern: ${secretCode}
+          Bitte nutzen Sie den folgenden Code innerhalb der nächsten 60 Minuten, um Ihr Passwort auf ${process.env.WEBSITE_NAME} zu ändern: ${secretCode}
         `,
         html: html,
       };
@@ -443,7 +443,7 @@ const UserResolvers = {
         const html = template({
           userId: user._id,
           websiteUrl: process.env.WEBSITE_URL,
-          websiteName: config.website.name,
+          websiteName: process.env.WEBSITE_NAME,
           lightColor: "#fffcfd",
           primaryColor: "#6d0230",
           fbPath: config.social.fb.path,
@@ -454,9 +454,9 @@ const UserResolvers = {
           from: `${config.website.emailFrom} <noreply@${process.env.SES_DOMAIN}>`,
           to: user.email,
           replyTo: "kontakt@mfa-mal-anders.de",
-          subject: `E-Mail bestätigen für ${config.website.name}`,
+          subject: `E-Mail bestätigen für ${process.env.WEBSITE_NAME}`,
           text: `
-            Bitte nutzen Sie den folgenden Link, um Ihren Account auf ${config.website.name} zu aktivieren: ${process.env.WEBSITE_URL}/auth/account/verification/${user._id}
+            Bitte nutzen Sie den folgenden Link, um Ihren Account auf ${process.env.WEBSITE_NAME} zu aktivieren: ${process.env.WEBSITE_URL}/auth/account/verification/${user._id}
           `,
           html: html,
         };
@@ -586,7 +586,7 @@ const UserResolvers = {
       const emailData = {
         from: `${config.website.emailFrom} <${process.env.CONTACT_EMAIL_ADRESS}>`,
         to: user.email,
-        subject: `Aktivierung Ihres Accounts für ${config.website.name}`,
+        subject: `Aktivierung Ihres Accounts für ${process.env.WEBSITE_NAME}`,
         html: `
                     <p>
                         Sehr ${
@@ -601,7 +601,7 @@ const UserResolvers = {
                     </p>
                     <p>
                         Ihr Account für '${
-                          config.website.name
+                          process.env.WEBSITE_NAME
                         }' wurde erfolgreich aktiviert. Ab sofort können Sie sich unter ${
           process.env.WEBSITE_URL
         }/auth/login mit Ihrer registrierten E-Mail Adresse anmelden.

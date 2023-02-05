@@ -343,7 +343,7 @@
             inner: JSON.stringify({
               "@context": "http://schema.org",
               "@type": "Organization",
-              "url": this.$config.website.url,
+              "url": process.env.VUE_APP_WEBSITE_URL,
               "logo": "/img/MfaMalAnders_logo_circle_bgdark_white.png"
             })
           }

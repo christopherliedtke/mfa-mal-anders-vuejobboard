@@ -107,8 +107,8 @@
             id: "canonical",
             rel: "canonical",
             href: this.error
-              ? this.$config.website.url
-              : `${this.$config.website.url}/job/${
+              ? process.env.VUE_APP_WEBSITE_URL
+              : `${process.env.VUE_APP_WEBSITE_URL}/job/${
                   this.job ? this.job._id : ""
                 }/${this.job ? this.job.slug : ""}`
           }

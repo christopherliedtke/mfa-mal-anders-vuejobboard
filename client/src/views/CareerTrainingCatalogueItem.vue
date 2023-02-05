@@ -129,8 +129,8 @@
           {
             rel: "canonical",
             href: this.error
-              ? `${this.$config.website.url}/404`
-              : `${this.$config.website.url}/fortbildungskatalog/${
+              ? `${process.env.VUE_APP_WEBSITE_URL}/404`
+              : `${process.env.VUE_APP_WEBSITE_URL}/fortbildungskatalog/${
                   this.$route.params.id
                 }/${this.training ? this.training.slug : ""}`,
             id: "canonical"

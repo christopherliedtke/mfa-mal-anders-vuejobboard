@@ -327,14 +327,6 @@
         </p>
         <h2>4. Datenerfassung auf dieser Website</h2>
         <h3>Cookies</h3>
-        <!-- <div ref="consent"></div>
-        <div ref="scriptHolder"></div> -->
-        <!-- <script
-          id="CookieDeclaration"
-          src="https://consent.cookiebot.com/9ef6bac5-150d-40d3-a91e-7448f7e6848b/cd.js"
-          type="text/javascript"
-          async
-        ></script> -->
         <p>
           Unsere Internetseiten verwenden so genannte &bdquo;Cookies&ldquo;.
           Cookies sind kleine Datenpakete und richten auf Ihrem Endger&auml;t
@@ -1236,21 +1228,5 @@
         ]
       };
     }
-    // mounted() {
-    //   // this.$cookiebot.consentPage({
-    //   //   async: true,
-    //   //   locale: "de", // tip: replace 'en' with this.$i18n.locale when using vue-i18n
-    //   //   ref: this.$refs.consent // Must be a Vue ref or html element
-    //   // });
-    //   let scriptEl = document.createElement("script");
-    //   scriptEl.setAttribute(
-    //     "src",
-    //     "https://consent.cookiebot.com/9ef6bac5-150d-40d3-a91e-7448f7e6848b/cd.js"
-    //   );
-    //   scriptEl.setAttribute("type", "text/javascript");
-    //   scriptEl.setAttribute("id", "CookieDeclaration");
-    //   scriptEl.async = true;
-    //   this.$refs.scriptHolder.appendChild(scriptEl);
-    // }
   };
 </script>

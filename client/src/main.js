@@ -28,19 +28,12 @@ import LoadScript from "vue-plugin-load-script";
 Vue.use(LoadScript);
 
 // #Global Config Integration
-import config from "@/config/config.js";
-Vue.prototype.$config = config;
+// import config from "@/config/config.js";
+// Vue.prototype.$config = config;
 
 // #Global Axios Integration
 import axios from "@/services/axios.js";
 Vue.prototype.$axios = axios;
-
-// #CookieConsentManager
-// import VueCookieBot from "@ambitiondev/vue-cookiebot-plugin";
-// Vue.use(VueCookieBot, {
-//   cookieBotID: "9ef6bac5-150d-40d3-a91e-7448f7e6848b",
-//   defaulLocale: "de"
-// });
 
 // #Bootstrap Integration
 import {
@@ -92,7 +85,7 @@ import Head from "@/components/Head.vue";
 Vue.component("Head", Head);
 Vue.use(VueHead, {
   separator: "–",
-  complement: config.website.name
+  complement: process.env.VUE_APP_WEBSITE_NAME
 });
 
 // #Analytics Integration
@@ -100,50 +93,48 @@ Vue.use(VueHead, {
 // Vue.use(
 //   VueGtag,
 //   {
-//     // disableScriptLoad: true,
-//     // bootstrap: false,
-//     config: {
-//       id: "G-BF8L4F2PWL",
-//       params: {
-//         anonymize_ip: config.ga.anonymizeIP
-//         // client_storage: config.ga.storage
-//         // send_page_view: false
-//       }
-//       // id: config.ga.trackingCode,
-//       // params: {
-//       //   anonymize_ip: config.ga.anonymizeIP,
-//       //   client_storage: config.ga.storage,
-//       //   send_page_view: false
-//       // }
-//     },
-//     includes: [
-//       // {
-//       //   id: "G-BF8L4F2PWL",
-//       //   params: {
-//       //     anonymize_ip: config.ga.anonymizeIP,
-//       //     client_storage: config.ga.storage,
-//       //     send_page_view: false
-//       //   }
-//       // },
-//       {
-//         id: "AW-797795882",
-//         params: {
-//           anonymize_ip: config.ga.anonymizeIP
-//           // client_storage: config.ga.storage
-//           // send_page_view: false
-//         }
-//       }
-//     ],
-//     enabled:
-//       config.ga.active && window.location.origin.includes(config.website.url)
-//   },
-//   router
+//     bootstrap: false
+//     // enabled: false,
+//     // config: {
+//     //   id: process.env.VUE_APP_GTAG
+//     //   // params: {
+//     //   //   // anonymize_ip: true,
+//     //   //   // client_storage: false
+//     //   //   send_page_view: false
+//     //   // }
+//     //   // id: config.ga.trackingCode,
+//     //   // params: {
+//     //   //   anonymize_ip: config.ga.anonymizeIP,
+//     //   //   client_storage: config.ga.storage,
+//     //   //   send_page_view: false
+//     //   // }
+//     // }
+//     // includes: [
+//     //   // {
+//     //   //   id: "G-BF8L4F2PWL",
+//     //   //   params: {
+//     //   //     anonymize_ip: config.ga.anonymizeIP,
+//     //   //     client_storage: config.ga.storage,
+//     //   //     send_page_view: false
+//     //   //   }
+//     //   // },
+//     //   {
+//     //     id: process.env.VUE_APP_GADSTAG,
+//     //     params: {
+//     //       anonymize_ip: config.ga.anonymizeIP
+//     //       // client_storage: config.ga.storage
+//     //       // send_page_view: false
+//     //     }
+//     //   }
+//     // ]
+//   }
+//   // router
 // );
 
 import VueMatomo from "vue-matomo";
 Vue.use(VueMatomo, {
-  host: config.matomo.host,
-  siteId: config.matomo.siteId,
+  host: process.env.VUE_APP_MATOMO_HOST,
+  siteId: parseInt(process.env.VUE_APP_MATOMO_SITEID),
   trackerFileName: "matomo",
   router: router,
   enableLinkTracking: true,
@@ -155,7 +146,7 @@ Vue.use(VueMatomo, {
   debug: false,
   userId: undefined,
   cookieDomain: undefined,
-  domains: config.matomo.domains,
+  domains: process.env.VUE_APP_MATOMO_DOMAINS,
   preInitActions: []
 });
 

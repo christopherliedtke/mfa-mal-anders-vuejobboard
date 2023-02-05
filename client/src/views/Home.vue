@@ -354,7 +354,7 @@
           },
           {
             rel: "canonical",
-            href: `${this.$config.website.url}`,
+            href: `${process.env.VUE_APP_WEBSITE_URL}`,
             id: "canonical"
           }
         ]

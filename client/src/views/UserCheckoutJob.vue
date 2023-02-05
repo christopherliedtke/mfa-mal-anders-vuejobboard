@@ -410,7 +410,7 @@
           const taxRate =
             !this.checkout.customer.address.country ||
             this.checkout.customer.address.country == "DE"
-              ? this.$config.payment.taxRate
+              ? 0.19
               : 0;
 
           amount = Math.round(amount * (1 + taxRate));

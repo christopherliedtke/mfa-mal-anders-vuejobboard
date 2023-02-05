@@ -113,7 +113,7 @@
             this.mapContainer = this.$refs.hereMap;
             this.H = window.H;
             this.maptypes = this.platform.createDefaultLayers({
-              lg: this.$config.maps.lang
+              lg: "de"
             });
 
             this.map = new this.H.Map(

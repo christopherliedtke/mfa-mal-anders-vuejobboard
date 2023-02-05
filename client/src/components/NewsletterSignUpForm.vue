@@ -94,7 +94,7 @@
       <p class="lead mb-0">
         Oder folge uns auf
         <b-link
-          :href="`https://www.facebook.com/${$config.fb.path}`"
+          :href="`https://www.facebook.com/MFAmalanders`"
           class="ml-2"
           target="_blank"
           rel="noopener"
@@ -114,7 +114,7 @@
           </svg>
         </b-link>
         <b-link
-          :href="`https://www.instagram.com/${$config.ig.path}`"
+          :href="`https://www.instagram.com/mfa.mal.anders/`"
           class="ml-2"
           target="_blank"
           rel="noopener"
@@ -134,7 +134,7 @@
           </svg>
         </b-link>
         <!-- <b-link
-          :href="`https://twitter.com/${$config.twitter.path}`"
+          :href="`https://twitter.com/MfaMalAnders`"
           class="ml-2"
           target="_blank"
           rel="noopener"
