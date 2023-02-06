@@ -210,16 +210,16 @@
         }
       };
 
-      if (process.env.VUE_APP_GADSTAG) {
-        options.includes = [
-          {
-            id: process.env.VUE_APP_GADSTAG
-            // params: {
-            //   send_page_view: false
-            // }
-          }
-        ];
-      }
+      // if (process.env.VUE_APP_GADSTAG) {
+      //   options.includes = [
+      //     {
+      //       id: process.env.VUE_APP_GADSTAG
+      //       // params: {
+      //       //   send_page_view: false
+      //       // }
+      //     }
+      //   ];
+      // }
 
       setOptions(options);
 
