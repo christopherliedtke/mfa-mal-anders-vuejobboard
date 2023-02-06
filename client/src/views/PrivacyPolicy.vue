@@ -382,8 +382,51 @@
           Soweit Cookies von Drittunternehmen oder zu Analysezwecken eingesetzt
           werden, werden wir Sie hier&uuml;ber im Rahmen dieser
           Datenschutzerkl&auml;rung gesondert informieren und ggf. eine
-          Einwilligung abfragen.
+          Einwilligung abfragen. Ihren
+          <strong
+            class="text-secondary"
+            @click="() => $store.commit('setShowCookieConsentBanner', true)"
+            >aktuellen Einwilligungsstatus</strong
+          >
+          können Sie jederzeit
+          <strong
+            class="text-secondary"
+            @click="() => $store.commit('setShowCookieConsentBanner', true)"
+            >ändern</strong
+          >.
         </p>
+
+        <h4>Liste der verwendeten Cookies</h4>
+        <div v-for="cookieType in cookieTypes" :key="cookieType.type">
+          <h5>{{ cookieType.type }}</h5>
+          <p>{{ cookieType.desc }}</p>
+          <div
+            v-for="cookie in cookieType.cookies"
+            :key="cookie.name"
+            class="bg-light-shade border-radius1 small px-3 py-2 mb-3"
+          >
+            <h6 class="bold mb-1">{{ cookie.name }}</h6>
+            <div>Anbieter: {{ cookie.initiator }}</div>
+            <div>Zweck: {{ cookie.purpose }}</div>
+            <div>Speicherdauer: {{ cookie.expiration }}</div>
+            <div>Typ: {{ cookie.type }}</div>
+          </div>
+        </div>
+        <p>
+          Ihren
+          <strong
+            class="text-secondary"
+            @click="() => $store.commit('setShowCookieConsentBanner', true)"
+            >aktuellen Einwilligungsstatus</strong
+          >
+          können Sie jederzeit
+          <strong
+            class="text-secondary"
+            @click="() => $store.commit('setShowCookieConsentBanner', true)"
+            >ändern</strong
+          >.
+        </p>
+
         <h3>Kontaktformular</h3>
         <p>
           Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre
@@ -439,6 +482,30 @@
           &ndash; insbesondere gesetzliche Aufbewahrungsfristen &ndash; bleiben
           unber&uuml;hrt.
         </p>
+        <h3>Server-Log-Dateien</h3>
+        <p>
+          Der Provider der Seiten erhebt und speichert automatisch Informationen
+          in so genannten Server-Log Dateien, die Ihr Browser automatisch an uns
+          übermittelt. Dies sind:
+        </p>
+        <ul>
+          <li>Browsertyp und Browserversion</li>
+          <li>verwendetes Betriebssystem</li>
+          <li>Referrer URL</li>
+          <li>Hostname des zugreifenden Rechners</li>
+          <li>Uhrzeit der Serveranfrage</li>
+          <li>IP-Adresse</li>
+        </ul>
+        <p>
+          Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht
+          vorgenommen.
+        </p>
+        <p>
+          Die Erfassung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1
+          lit. f DSGVO. Der Websitebetreiber hat ein berechtigtes Interesse an
+          der technisch fehlerfreien Darstellung und der Optimierung seiner
+          Website – hierzu müssen die Server-Log-Files erfasst werden.
+        </p>
         <h2>5. Analyse-Tools und Werbung</h2>
         <h3>Matomo</h3>
         <p>Diese Website benutzt den Open Source Webanalysedienst Matomo.</p>
@@ -482,6 +549,209 @@
           sodass alle Analysedaten bei uns verbleiben und nicht weitergegeben
           werden.
         </p>
+        <h3>Google Analytics</h3>
+        <p>
+          Diese Website nutzt Funktionen des Webanalysedienstes Google
+          Analytics. Anbieter ist die Google Ireland Limited („Google“), Gordon
+          House, Barrow Street, Dublin 4, Irland.
+        </p>
+        <p>
+          Google Analytics ermöglicht es dem Websitebetreiber, das Verhalten der
+          Websitebesucher zu analysieren. Hierbei erhält der Websitebetreiber
+          verschiedene Nutzungsdaten, wie z.B. Seitenaufrufe, Verweildauer,
+          verwendete Betriebssysteme und Herkunft des Nutzers. Diese Daten
+          werden von Google ggf. in einem Profil zusammengefasst, das dem
+          jeweiligen Nutzer bzw. dessen Endgerät zugeordnet ist.
+        </p>
+        <p>
+          Google Analytics verwendet Technologien, die die Wiedererkennung des
+          Nutzers zum Zwecke der Analyse des Nutzerverhaltens ermöglichen (z.B.
+          Cookies oder Device-Fingerprinting). Die von Google erfassten
+          Informationen über die Benutzung dieser Website werden in der Regel an
+          einen Server von Google in den USA übertragen und dort gespeichert.
+        </p>
+        <p>
+          Die Nutzung dieses Analyse-Tools erfolgt auf Grundlage von Art. 6 Abs.
+          1 lit. f DSGVO. Der Websitebetreiber hat ein berechtigtes Interesse an
+          der Analyse des Nutzerverhaltens, um sowohl sein Webangebot als auch
+          seine Werbung zu optimieren. Sofern eine entsprechende Einwilligung
+          abgefragt wurde (z. B. eine Einwilligung zur Speicherung von Cookies),
+          erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6 Abs.
+          1 lit. a DSGVO; die Einwilligung ist jederzeit widerrufbar.
+        </p>
+        <p>
+          Die Datenübertragung in die USA wird auf die Standardvertragsklauseln
+          der EU-Kommission gestützt. Details finden Sie hier:
+          https://privacy.google.com/businesses/controllerterms/mccs/.
+        </p>
+        <h4>IP Anonymisierung</h4>
+        <p>
+          Wir haben auf dieser Website die Funktion IP-Anonymisierung aktiviert.
+          Dadurch wird Ihre IP-Adresse von Google innerhalb von Mitgliedstaaten
+          der Europäischen Union oder in anderen Vertragsstaaten des Abkommens
+          über den Europäischen Wirtschaftsraum vor der Übermittlung in die USA
+          gekürzt. Nur in Ausnahmefällen wird die volle IP-Adresse an einen
+          Server von Google in den USA übertragen und dort gekürzt. Im Auftrag
+          des Betreibers dieser Website wird Google diese Informationen
+          benutzen, um Ihre Nutzung der Website auszuwerten, um Reports über die
+          Websiteaktivitäten zusammenzustellen und um weitere mit der
+          Websitenutzung und der Internetnutzung verbundene Dienstleistungen
+          gegenüber dem Websitebetreiber zu erbringen. Die im Rahmen von Google
+          Analytics von Ihrem Browser übermittelte IP-Adresse wird nicht mit
+          anderen Daten von Google zusammengeführt.
+        </p>
+        <h4>Browser Plugin</h4>
+        <p>
+          Sie können die Erfassung und Verarbeitung Ihrer Daten durch Google
+          verhindern, indem Sie das unter dem folgenden Link verfügbare
+          Browser-Plugin herunterladen und installieren:
+          https://tools.google.com/dlpage/gaoptout?hl=de.
+        </p>
+        <p>
+          Mehr Informationen zum Umgang mit Nutzerdaten bei Google Analytics
+          finden Sie in der Datenschutzerklärung von Google:
+          https://support.google.com/analytics/answer/6004245?hl=de.
+        </p>
+        <h4>
+          Auftragsverarbeitung
+        </h4>
+        <p>
+          Wir haben mit Google einen Vertrag zur Auftragsverarbeitung
+          abgeschlossen und setzen die strengen Vorgaben der deutschen
+          Datenschutzbehörden bei der Nutzung von Google Analytics vollständig
+          um.
+        </p>
+        <h4>Demografische Merkmale bei Google Analytics</h4>
+        <p>
+          Diese Website nutzt die Funktion „demografische Merkmale“ von Google
+          Analytics, um den Websitebesuchern passende Werbeanzeigen innerhalb
+          des Google-Werbenetzwerks anzeigen zu können. Dadurch können Berichte
+          erstellt werden, die Aussagen zu Alter, Geschlecht und Interessen der
+          Seitenbesucher enthalten. Diese Daten stammen aus interessenbezogener
+          Werbung von Google sowie aus Besucherdaten von Drittanbietern. Diese
+          Daten können keiner bestimmten Person zugeordnet werden. Sie können
+          diese Funktion jederzeit über die Anzeigeneinstellungen in Ihrem
+          Google-Konto deaktivieren oder die Erfassung Ihrer Daten durch Google
+          Analytics wie im Punkt Widerspruch gegen Datenerfassung“ dargestellt
+          generell untersagen.
+        </p>
+        <h4>Speicherdauer</h4>
+        <p>
+          Bei Google gespeicherte Daten auf Nutzer- und Ereignisebene, die mit
+          Cookies, Nutzerkennungen (z. B. User ID) oder Werbe-IDs (z. B.
+          DoubleClick-Cookies, Android-Werbe-ID) verknüpft sind, werden nach 14
+          Monaten anonymisiert bzw. gelöscht. Details hierzu ersehen Sie unter
+          folgendem Link:
+          https://support.google.com/analytics/answer/7667196?hl=de
+        </p>
+
+        <h3>Google Ads</h3>
+        <p>
+          Diese Website verwendet die „Google AdWords Conversion-Tracking“-
+          Funktion der Google Inc., 1600 Amphitheatre Parkway, Mountain View, CA
+          94043, United States („Google“). Google AdWords Conversion-Tracking
+          verwendet sog. „Cookies“, Textdateien, die auf Ihrem Computer
+          gespeichert werden und die eine Analyse der Benutzung der Website
+          durch Sie ermöglichen, wenn Sie auf eine Google-Anzeige gekickt haben.
+          Die Cookies sind maximal 90 Tagen gültig. Personenbezogene Daten
+          werden dabei nicht gespeichert. Solange das Cookie gültig ist, können
+          Google und wir als Webseitenbetreiber erkennen, dass Sie eine Anzeige
+          geklickt haben und zu einer bestimmten Zielseite (z.B.
+          Bestellbestätigungsseite, Newsletteranmeldung) gelangt sind. Diese
+          Cookies können nicht über mehrere Websites von verschiedenen
+          AdWords-Teilnehmern nachverfolgt werden können. Durch das Cookie
+          werden in „Google AdWords“ Conversion-Statistiken erstellt. In diesen
+          Statistiken wird die Anzahl der Nutzer, die auf eine unserer Anzeige
+          geklickt haben, erfasst. Zudem wird gezählt, wie viele Nutzer zu einer
+          Zielseite, die mit einem „Conversion-Tag“ versehen worden ist, gelangt
+          sind. Die Statistiken enthalten jedoch keine Daten, mit denen Sie sich
+          identifizieren lassen.
+        </p>
+        <p>
+          Das Speichern von Cookies auf Ihrer Festplatte können Sie verhindern,
+          indem Sie in Ihren Browser-Einstellungen „keine Cookies akzeptieren“
+          wählen (Im MS Internet-Explorer unter „Extras > Internetoptionen >
+          Datenschutz > Einstellung“; im Firefox unter „Extras > Einstellungen >
+          Datenschutz > Cookies“); wir weisen Sie jedoch darauf hin, dass Sie in
+          diesem Fall gegebenenfalls nicht sämtliche Funktionen dieser Website
+          voll umfänglich nutzen können. Durch die Nutzung dieser Website
+          erklären Sie sich mit der Bearbeitung der über Sie erhobenen Daten
+          durch Google in der zuvor beschriebenen Art und Weise und zu dem zuvor
+          benannten Zweck einverstanden. Weitere Informationen darüber wie
+          Google Conversion-Daten verwendet sowie die Datenschutzerklärung von
+          Google finden Sie unter:
+          <a
+            href="https://support.google.com/adwords/answer/93148?ctx=tltp"
+            target="_blank"
+            rel="noopener noreferrer"
+            >https://support.google.com/adwords/answer/93148?ctx=tltp</a
+          >,
+          <a
+            href="http://www.google.de/policies/privacy/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >http://www.google.de/policies/privacy/</a
+          >
+        </p>
+        <h3>Facebook Pixel</h3>
+        <p>
+          Diese Website nutzt zur Konversionsmessung der Besucheraktions-Pixel
+          von Facebook. Anbieter dieses Dienstes ist die Facebook Ireland
+          Limited, 4 Grand Canal Square, Dublin 2, Irland. Die erfassten Daten
+          werden nach Aussage von Facebook jedoch auch in die USA und in andere
+          Drittländer übertragen.
+        </p>
+        <p>
+          So kann das Verhalten der Seitenbesucher nachverfolgt werden, nachdem
+          diese durch Klick auf eine Facebook-Werbeanzeige auf die Website des
+          Anbieters weitergeleitet wurden. Dadurch können die Wirksamkeit der
+          Facebook-Werbeanzeigen für statistische und Marktforschungszwecke
+          ausgewertet werden und zukünftige Werbemaßnahmen optimiert werden.
+        </p>
+        <p>
+          Die erhobenen Daten sind für uns als Betreiber dieser Website anonym,
+          wir können keine Rückschlüsse auf die Identität der Nutzer ziehen. Die
+          Daten werden aber von Facebook gespeichert und verarbeitet, sodass
+          eine Verbindung zum jeweiligen Nutzerprofil möglich ist und Facebook
+          die Daten für eigene Werbezwecke, entsprechend der
+          Facebook-Datenverwendungsrichtlinie verwenden kann. Dadurch kann
+          Facebook das Schalten von Werbeanzeigen auf Seiten von Facebook sowie
+          außerhalb von Facebook ermöglichen. Diese Verwendung der Daten kann
+          von uns als Seitenbetreiber nicht beeinflusst werden.
+        </p>
+        <p>
+          Die Nutzung von Facebook-Pixel erfolgt auf Grundlage von Art. 6 Abs. 1
+          lit. f DSGVO. Der Websitebetreiber hat ein berechtigtes Interesse an
+          effektiven Werbemaßnahmen unter Einschluss der sozialen Medien. Sofern
+          eine entsprechende Einwilligung abgefragt wurde (z. B. eine
+          Einwilligung zur Speicherung von Cookies), erfolgt die Verarbeitung
+          ausschließlich auf Grundlage von Art. 6 Abs. 1 lit. a DSGVO; die
+          Einwilligung ist jederzeit widerrufbar.
+        </p>
+        <p>
+          Die Datenübertragung in die USA wird auf die Standardvertragsklauseln
+          der EU-Kommission gestützt. Details finden Sie hier:
+          https://www.facebook.com/legal/EU_data_transfer_addendum und
+          https://de-de.facebook.com/help/566994660333381.
+        </p>
+        <p>
+          In den Datenschutzhinweisen von Facebook finden Sie weitere Hinweise
+          zum Schutz Ihrer Privatsphäre:
+          https://de-de.facebook.com/about/privacy/.
+        </p>
+        <p>
+          Sie können außerdem die Remarketing-Funktion „Custom Audiences“ im
+          Bereich Einstellungen für Werbeanzeigen unter
+          https://www.facebook.com/ads/preferences/?entry_product=ad_settings_screen
+          deaktivieren. Dazu müssen Sie bei Facebook angemeldet sein.
+        </p>
+        <p>
+          Wenn Sie kein Facebook Konto besitzen, können Sie nutzungsbasierte
+          Werbung von Facebook auf der Website der European Interactive Digital
+          Advertising Alliance deaktivieren:
+          http://www.youronlinechoices.com/de/praferenzmanagement/.
+        </p>
+
         <h2>6. Newsletter</h2>
         <h3>Newsletter&shy;daten</h3>
         <p>
@@ -1207,7 +1477,9 @@
 
         <p>
           Quelle:
-          <a href="https://www.e-recht24.de">https://www.e-recht24.de</a>
+          <a target="_blank" rel="noreferrer" href="https://www.e-recht24.de"
+            >https://www.e-recht24.de</a
+          >
         </p>
       </div>
     </div>
@@ -1225,6 +1497,171 @@
         breadcrumbs: [
           { text: "Home", to: "/" },
           { text: "Datenschutzerklärung", to: "/datenschutz" }
+        ],
+        cookieTypes: [
+          {
+            type: "Notwendig",
+            desc:
+              "Notwendige Cookies helfen dabei, eine Webseite nutzbar zu machen, indem sie Grundfunktionen wie Seitennavigation und Zugriff auf sichere Bereiche der Webseite ermöglichen. Die Webseite kann ohne diese Cookies nicht richtig funktionieren.",
+            cookies: [
+              {
+                name: "XSRF-TOKEN",
+                initiator: "MFA mal anders",
+                purpose: "Schützt den Nutzer vor CSRF-Attacken.",
+                expiration: "Session",
+                type: "HTTP Cookie"
+              },
+              {
+                name: "connect.sid",
+                initiator: "MFA mal anders",
+                purpose:
+                  "Behält die Zustände des Benutzers bei allen Seitenanfragen bei.",
+                expiration: "7 Tage",
+                type: "HTTP Cookie"
+              },
+              {
+                name: "CookieConsent",
+                initiator: "MFA mal anders",
+                purpose:
+                  "Speichert den Zustimmungsstatus des Benutzers für Cookies auf der aktuellen Domäne.",
+                expiration: "30 Tage",
+                type: "HTTP Cookie"
+              },
+              {
+                name: "AEC",
+                initiator: "Google",
+                purpose:
+                  "Dient dazu, Spam, Betrug und Missbrauch zu verhindern",
+                expiration: "6 Monate",
+                type: "HTTP Cookie"
+              }
+            ]
+          },
+          {
+            type: "Präferenzen",
+            desc:
+              "Präferenz-Cookies ermöglichen einer Webseite sich an Informationen zu erinnern, die die Art beeinflussen, wie sich eine Webseite verhält oder aussieht, wie z. B. Ihre bevorzugte Sprache oder die Region in der Sie sich befinden.",
+            cookies: [
+              {
+                name: "CONSENT",
+                initiator: "Google",
+                purpose:
+                  "Speichert den Zustimmungsstatus des Benutzers für Cookies von Google-Diensten.",
+                expiration: "2 Jahre",
+                type: "HTTP Cookie"
+              },
+              {
+                name: "SOCS",
+                initiator: "Google",
+                purpose:
+                  "Speichert den Zustimmungsstatus des Benutzers für Cookies von Google-Diensten.",
+                expiration: "13 Monate",
+                type: "HTTP Cookie"
+              },
+              {
+                name: "OTZ",
+                initiator: "Google",
+                purpose:
+                  "Diese Cookies werden von Google gesetzt, um Ihnen dessen Dienste wie zum Beispiel Google Maps zur Verfügung zu stellen",
+                expiration: "1 Monat",
+                type: "HTTP Cookie"
+              },
+              {
+                name: "ENID, __Secure-ENID",
+                initiator: "Google",
+                purpose:
+                  "Diese Cookies speichern Ihre bevorzugten Einstellungen und andere Informationen, zum Beispiel Ihre bevorzugte Sprache, wie viele Suchergebnisse pro Seite angezeigt werden sollen",
+                expiration: "6 Monate",
+                type: "HTTP Cookie"
+              }
+            ]
+          },
+          {
+            type: "Statistiken",
+            desc:
+              "Statistik-Cookies helfen Webseiten-Besitzern zu verstehen, wie Besucher mit Webseiten interagieren, indem Informationen anonym gesammelt und gemeldet werden.",
+            cookies: [
+              {
+                name: "_ga",
+                initiator: "Google",
+                purpose:
+                  "Registriert eine eindeutige ID, die verwendet wird, um statistische Daten dazu, wie der Besucher die Website nutzt, zu generieren.",
+                expiration: "399 Tage",
+                type: "HTTP Cookie"
+              },
+              {
+                name: "_ga_#",
+                initiator: "Google",
+                purpose:
+                  "Sammelt Daten dazu, wie oft ein Benutzer eine Website besucht hat, sowie Daten für den ersten und letzten Besuch. Von Google Analytics verwendet.",
+                expiration: "399 Tage",
+                type: "HTTP Cookie"
+              },
+              {
+                name: "_gat",
+                initiator: "Google",
+                purpose:
+                  "Wird von Google Analytics verwendet, um die Anforderungsrate einzuschränken.",
+                expiration: "399 Tage",
+                type: "HTTP Cookie"
+              },
+              {
+                name: "_gid",
+                initiator: "Google",
+                purpose:
+                  "Registriert eine eindeutige ID, die verwendet wird, um statistische Daten dazu, wie der Besucher die Website nutzt, zu generieren.",
+                expiration: "1 Tage",
+                type: "HTTP Cookie"
+              },
+              {
+                name: "collect",
+                initiator: "Google",
+                purpose:
+                  "Wird verwendet, um Daten zu Google Analytics über das Gerät und das Verhalten des Besuchers zu senden. Erfasst den Besucher über Geräte und Marketingkanäle hinweg.",
+                expiration: "Session",
+                type: "Pixel Tracker"
+              },
+              {
+                name: "_fbp	",
+                initiator: "Meta",
+                purpose:
+                  "Enthält eine zufallsgenerierte User-ID und den Zeitpunkt Ihres ersten Besuchs. Anhand dieser ID kann Facebook wiederkehrende User auf dieser Website wiedererkennen und die Daten von früheren Besuchen zusammenführen.",
+                expiration: "90 Tage",
+                type: "HTTP Cookie"
+              }
+            ]
+          },
+          {
+            type: "Marketing",
+            desc:
+              "Marketing-Cookies werden verwendet, um Besuchern auf Webseiten zu folgen. Die Absicht ist, Anzeigen zu zeigen, die relevant und ansprechend für den einzelnen Benutzer sind und daher wertvoller für Publisher und werbetreibende Drittparteien sind.",
+            cookies: [
+              {
+                name: "_gcl_au",
+                initiator: "Google",
+                purpose:
+                  "Wird von Google AdSense zum Experimentieren mit Werbungseffizienz auf Webseiten verwendet, die ihre Dienste nutzen. Enthält eine zufallsgenerierte User-ID.",
+                expiration: "3 Monate",
+                type: "HTTP Cookie"
+              },
+              {
+                name: "_gac_",
+                initiator: "Google",
+                purpose:
+                  "Dieses Cookie wird gesetzt, wenn ein User über einen Klick auf eine Google Werbeanzeige auf die Website gelangt. Es enthält Informationen darüber, welche Werbeanzeige geklickt wurde, sodass erzielte Erfolge wie z.B. Bestellungen oder Kontaktanfragen der Anzeige zugewiesen werden können.",
+                expiration: "3 Monate",
+                type: "HTTP Cookie"
+              },
+              {
+                name: "_fbc",
+                initiator: "Meta",
+                purpose:
+                  "Dieses Cookie wird gesetzt, wenn ein User über einen Klick auf eine Facebook Werbeanzeige auf die Website gelangt. Es enthält Informationen darüber, welche Werbeanzeige geklickt wurde, sodass erzielte Erfolge wie z.B. Bestellungen oder Kontaktanfragen der Anzeige zugewiesen werden können.",
+                expiration: "90 Tage",
+                type: "HTTP Cookie"
+              }
+            ]
+          }
         ]
       };
     }

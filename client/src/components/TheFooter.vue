@@ -144,6 +144,13 @@
             >
             <router-link to="/kontakt">Kontakt</router-link>
             <router-link to="/datenschutz">Datenschutzerklärung</router-link>
+            <a
+              style="cursor: pointer"
+              @click.prevent="
+                () => $store.commit('setShowCookieConsentBanner', true)
+              "
+              >Einwilligungsstatus ändern</a
+            >
             <router-link to="/impressum">Impressum</router-link>
             <router-link to="/agbs">AGBs</router-link>
           </nav>

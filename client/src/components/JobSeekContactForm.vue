@@ -300,9 +300,9 @@
               }
             );
 
-            // this.$gtag.event("jobseek_contact", {
-            //   event_label: `${this.jobSeekId} by ${this.$store.state.auth.user._id}`
-            // });
+            this.$gtag.event("jobseek_contact", {
+              event_label: `${this.jobSeekId} by ${this.$store.state.auth.user._id}`
+            });
 
             this.$matomo &&
               this.$matomo.trackEvent(

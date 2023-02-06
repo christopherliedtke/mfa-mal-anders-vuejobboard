@@ -1,6 +1,6 @@
 {
   "name": "mfa-mal-anders",
-  "version": "2.1.58",
+  "version": "2.1.59",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -21,6 +21,7 @@
     "core-js": "^3.6.4",
     "vue": "^2.6.11",
     "vue-chartjs": "^3.5.1",
+    "vue-cookies": "^1.8.2",
     "vue-gtag": "^1.8.0",
     "vue-head": "^2.2.0",
     "vue-matomo": "^4.1.0",

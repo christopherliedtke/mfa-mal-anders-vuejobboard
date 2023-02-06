@@ -8,6 +8,7 @@
     <TheOverlay />
     <TheStarJobModal v-if="$store.state.utils.starJobModal" />
     <NewsletterSignUpPopUp v-if="loadNewsletterPopUp" />
+    <BannerCookieConsent />
   </div>
 </template>
 
@@ -15,6 +16,7 @@
   import TheHeader from "@/components/TheHeader";
   import TheFooter from "@/components/TheFooter";
   import TheOverlay from "@/components/TheOverlay";
+  import BannerCookieConsent from "@/components/BannerCookieConsent.vue";
   const NewsletterSignUpPopUp = () =>
     import(
       /* webpackChunkName: "NewsletterSignUpPopUp" */ "@/components/NewsletterSignUpPopUp.vue"
@@ -30,7 +32,8 @@
       TheFooter,
       NewsletterSignUpPopUp,
       TheOverlay,
-      TheStarJobModal
+      TheStarJobModal,
+      BannerCookieConsent
     },
     data() {
       return {

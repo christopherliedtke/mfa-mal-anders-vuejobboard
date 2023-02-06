@@ -35,6 +35,10 @@ Vue.use(LoadScript);
 import axios from "@/services/axios.js";
 Vue.prototype.$axios = axios;
 
+// #Vue Cookies
+import VueCookies from "vue-cookies";
+Vue.use(VueCookies, { expires: "31d" });
+
 // #Bootstrap Integration
 import {
   // NavbarPlugin,
@@ -89,47 +93,47 @@ Vue.use(VueHead, {
 });
 
 // #Analytics Integration
-// import VueGtag from "vue-gtag";
-// Vue.use(
-//   VueGtag,
-//   {
-//     bootstrap: false
-//     // enabled: false,
-//     // config: {
-//     //   id: process.env.VUE_APP_GTAG
-//     //   // params: {
-//     //   //   // anonymize_ip: true,
-//     //   //   // client_storage: false
-//     //   //   send_page_view: false
-//     //   // }
-//     //   // id: config.ga.trackingCode,
-//     //   // params: {
-//     //   //   anonymize_ip: config.ga.anonymizeIP,
-//     //   //   client_storage: config.ga.storage,
-//     //   //   send_page_view: false
-//     //   // }
-//     // }
-//     // includes: [
-//     //   // {
-//     //   //   id: "G-BF8L4F2PWL",
-//     //   //   params: {
-//     //   //     anonymize_ip: config.ga.anonymizeIP,
-//     //   //     client_storage: config.ga.storage,
-//     //   //     send_page_view: false
-//     //   //   }
-//     //   // },
-//     //   {
-//     //     id: process.env.VUE_APP_GADSTAG,
-//     //     params: {
-//     //       anonymize_ip: config.ga.anonymizeIP
-//     //       // client_storage: config.ga.storage
-//     //       // send_page_view: false
-//     //     }
-//     //   }
-//     // ]
-//   }
-//   // router
-// );
+import VueGtag from "vue-gtag";
+Vue.use(
+  VueGtag,
+  {
+    bootstrap: false
+    // enabled: false,
+    // config: {
+    //   id: process.env.VUE_APP_GTAG
+    //   // params: {
+    //   //   // anonymize_ip: true,
+    //   //   // client_storage: false
+    //   //   send_page_view: false
+    //   // }
+    //   // id: config.ga.trackingCode,
+    //   // params: {
+    //   //   anonymize_ip: config.ga.anonymizeIP,
+    //   //   client_storage: config.ga.storage,
+    //   //   send_page_view: false
+    //   // }
+    // }
+    // includes: [
+    //   // {
+    //   //   id: "G-BF8L4F2PWL",
+    //   //   params: {
+    //   //     anonymize_ip: config.ga.anonymizeIP,
+    //   //     client_storage: config.ga.storage,
+    //   //     send_page_view: false
+    //   //   }
+    //   // },
+    //   {
+    //     id: process.env.VUE_APP_GADSTAG,
+    //     params: {
+    //       anonymize_ip: config.ga.anonymizeIP
+    //       // client_storage: config.ga.storage
+    //       // send_page_view: false
+    //     }
+    //   }
+    // ]
+  }
+  // router
+);
 
 import VueMatomo from "vue-matomo";
 Vue.use(VueMatomo, {
