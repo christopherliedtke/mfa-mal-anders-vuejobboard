@@ -489,7 +489,7 @@
               event_label: `${this.job.title} | ${this.job.company.name} - ${this.job._id}`
             });
 
-            this.$gtag.query("event", "conversion", {
+            this.$gtag.event("conversion", {
               send_to: "AW-797795882/cM5pCJu31IoYEKrMtfwC"
             });
 

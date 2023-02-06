@@ -37,9 +37,13 @@ export const setPromotionCodeMixin = {
   methods: {
     async setPromotionCode() {
       if (this.$route.query.promotion) {
+        const promotionCode = Array.isArray(this.$route.query.promotion)
+          ? this.$route.query.promotion[0]
+          : this.$route.query.promotion;
+
         const response = await this.$axios.get(
           "/api/coupons/retrieve/coupon-by-promotion-code",
-          { params: { code: this.$route.query.promotion } }
+          { params: { code: promotionCode } }
         );
 
         if (response.data.coupon) {

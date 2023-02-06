@@ -617,10 +617,13 @@
             );
 
             try {
+              const transaction_id =
+                this.job._id + "_" + new Date().toISOString();
+
               this.$gtag.event("purchase", {
                 value: this.amountComputed / 100,
                 currency: "EUR",
-                transaction_id: this.job._id + "_" + new Date().toISOString(),
+                transaction_id,
                 coupon: this.checkout.promotionCode || "",
                 items: [
                   {
@@ -629,6 +632,13 @@
                     quantity: 1
                   }
                 ]
+              });
+
+              this.$gtag.event("conversion", {
+                send_to: "AW-797795882/cM5pCJu31IoYEKrMtfwC",
+                value: this.amountComputed / 100,
+                currency: "EUR",
+                transaction_id
               });
 
               this.$matomo &&

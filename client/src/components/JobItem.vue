@@ -635,7 +635,7 @@
         });
 
         if (eventAction === "job_apply") {
-          this.$gtag.query("event", "conversion", {
+          this.$gtag.event("conversion", {
             send_to: "AW-797795882/cM5pCJu31IoYEKrMtfwC"
           });
         }

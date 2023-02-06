@@ -211,7 +211,14 @@
       };
 
       if (process.env.VUE_APP_GADSTAG) {
-        options.includes = [{ id: process.env.VUE_APP_GADSTAG }];
+        options.includes = [
+          {
+            id: process.env.VUE_APP_GADSTAG
+            // params: {
+            //   send_page_view: false
+            // }
+          }
+        ];
       }
 
       setOptions(options);
@@ -305,7 +312,12 @@
           !this.acceptedCookies.preferences
         ) {
           cookieKeys
-            .filter(key => key != "CookieConsent")
+            .filter(
+              key =>
+                key != "CookieConsent" &&
+                key != "XSRF-TOKEN" &&
+                key != "connect.sid"
+            )
             .forEach(key => this.$cookies.remove(key));
         } else {
           if (
