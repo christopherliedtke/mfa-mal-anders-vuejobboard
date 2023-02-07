@@ -97,7 +97,11 @@ import VueGtag from "vue-gtag";
 Vue.use(
   VueGtag,
   {
-    bootstrap: false
+    config: {
+      id: process.env.VUE_APP_GTAG
+    },
+    // disableScriptLoad: true,
+    enabled: false
     // enabled: false,
     // config: {
     //   id: process.env.VUE_APP_GTAG

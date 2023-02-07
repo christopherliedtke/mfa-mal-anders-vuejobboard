@@ -19,7 +19,7 @@
       <div v-if="tab === 1" class="d-flex flex-column flex-xl-row">
         <div class="pb-1">
           <div class="mb-2">
-            <strong>Diese Webseite verwendet Cookie</strong>
+            <strong>Diese Webseite verwendet Cookies</strong>
           </div>
           <div class="position-relative">
             <div
@@ -174,13 +174,23 @@
       <button
         v-if="tab === 2"
         class="btn btn-outline-primary btn-sm text-nowrap mr-1"
-        @click="acceptChosenCookies"
+        @click="updateConsent"
       >
         Auswahl zulassen
       </button>
       <button
         class="btn btn-secondary btn-sm text-nowrap"
-        @click="acceptAllCookies"
+        @click="
+          () => {
+            acceptedCookies = {
+              necessary: true,
+              preferences: true,
+              statistics: true,
+              marketing: true
+            };
+            updateConsent();
+          }
+        "
       >
         Alle zulassen
       </button>
@@ -189,7 +199,7 @@
 </template>
 
 <script>
-  import { setOptions, bootstrap } from "vue-gtag";
+  // import { bootstrap, setOptions } from "vue-gtag";
   export default {
     name: "BannerCookieConsent",
     data() {
@@ -204,12 +214,35 @@
       };
     },
     created() {
-      const options = {
-        config: {
-          id: process.env.VUE_APP_GTAG
-        }
-      };
+      // this.$gtag.query("consent", "default", {
+      //   ad_storage: "denied",
+      //   analytics_storage: "denied",
+      //   functionality_storage: "denied",
+      //   personalization_storage: "denied",
+      //   security_storage: "denied",
+      //   wait_for_update: 500
+      // });
 
+      const consentState = this.$cookies.get("CookieConsent");
+
+      if (consentState) {
+        this.acceptedCookies = {
+          necessary: consentState.necessary || true,
+          preferences: consentState.preferences || false,
+          statistics: consentState.statistics || false,
+          marketing: consentState.marketing || false
+        };
+        this.updateGtagConsent();
+      }
+
+      this.$gtag.optIn();
+
+      // this.deleteMarketingCookies();
+      // const options = {
+      //   config: {
+      //     id: process.env.VUE_APP_GTAG
+      //   }
+      // };
       // if (process.env.VUE_APP_GADSTAG) {
       //   options.includes = [
       //     {
@@ -220,122 +253,179 @@
       //     }
       //   ];
       // }
-
-      setOptions(options);
-
-      // if (consentState) {
-      //   this.acceptedCookies = {
-      //     necessary: consentState.necessary || false,
-      //     preferences: consentState.preferences || false,
-      //     statistics: consentState.statistics || false,
-      //     marketing: consentState.marketing || false
-      //   };
-      // }
-
-      bootstrap().then(() => {
-        const consentState = this.$cookies.get("CookieConsent");
-
-        if (consentState) {
-          this.acceptedCookies = {
-            necessary: consentState.necessary || true,
-            preferences: consentState.preferences || false,
-            statistics: consentState.statistics || false,
-            marketing: consentState.marketing || false
-          };
-
-          this.setGtagConsent("default");
-        } else {
-          this.$gtag.query("consent", "default", {
-            ad_storage: "denied",
-            analytics_storage: "denied",
-            functionality_storage: "denied",
-            personalization_storage: "denied",
-            security_storage: "denied"
-          });
-        }
-
-        this.$gtag.pageview(this.$route);
-      });
+      // setOptions({
+      //   config: {
+      //     id: process.env.VUE_APP_GTAG
+      //   },
+      //   onReady: () => {
+      //     try {
+      //       this.$gtag.query("consent", "default", {
+      //         ad_storage: "denied",
+      //         analytics_storage: "denied",
+      //         functionality_storage: "denied",
+      //         personalization_storage: "denied",
+      //         security_storage: "denied",
+      //         wait_for_update: 500
+      //       });
+      //       // this.$gtag.set("ads_data_redaction", "true");
+      //       // this.$gtag.set("url_passthrough", "true");
+      //     } catch (error) {
+      //       // console.error(error);
+      //     }
+      //   }
+      // });
+      // bootstrap().then(() => {
+      //   const consentState = this.$cookies.get("CookieConsent");
+      //   if (consentState) {
+      //     this.acceptedCookies = {
+      //       necessary: consentState.necessary || true,
+      //       preferences: consentState.preferences || false,
+      //       statistics: consentState.statistics || false,
+      //       marketing: consentState.marketing || false
+      //     };
+      //     this.updateGtagConsent("update");
+      //     // this.deleteCookies();
+      //   }
+      //   // // else {
+      //   // //   this.$gtag.query("consent", "default", {
+      //   // //     ad_storage: "denied",
+      //   // //     analytics_storage: "denied",
+      //   // //     functionality_storage: "denied",
+      //   // //     personalization_storage: "denied",
+      //   // //     security_storage: "denied"
+      //   // //   });
+      //   // // }
+      //   this.$gtag.pageview(this.$route);
+      // });
     },
     methods: {
-      acceptAllCookies() {
-        this.acceptedCookies = {
-          necessary: true,
-          preferences: true,
-          statistics: true,
-          marketing: true
-        };
-
-        this.setConsent();
-      },
-      acceptChosenCookies() {
-        this.setConsent();
-        this.deleteCookies();
-      },
-      setConsent() {
+      updateConsent() {
         this.$cookies.set("CookieConsent", this.acceptedCookies);
-        this.setGtagConsent();
+        this.updateGtagConsent();
+
         this.$store.commit("setShowCookieConsentBanner", false);
+
+        !this.acceptedCookies.preferences && this.deletePreferencesCookies();
+        !this.acceptedCookies.statistics && this.deleteStatisticsCookies();
+        !this.acceptedCookies.marketing && this.deleteMarketingCookies();
       },
-      setGtagConsent(type = "update") {
-        this.$gtag.query("consent", type, {
+      deletePreferencesCookies() {
+        const deleteKeys = [];
+        const cookieKeys = this.$cookies.keys();
+
+        const cookieKeysToDelete = cookieKeys.filter(key =>
+          deleteKeys.some(deleteKey => key.startsWith(deleteKey))
+        );
+
+        console.log(cookieKeysToDelete);
+
+        cookieKeysToDelete.forEach(cookie => {
+          this.$cookies.remove(cookie);
+        });
+      },
+      deleteStatisticsCookies() {
+        const deleteKeys = ["_ga", "_gid", "_gat", "_fbp"];
+        const cookieKeys = this.$cookies.keys();
+
+        const cookieKeysToDelete = cookieKeys.filter(key =>
+          deleteKeys.some(deleteKey => key.startsWith(deleteKey))
+        );
+
+        console.log(cookieKeysToDelete);
+
+        cookieKeysToDelete.forEach(cookie => {
+          this.$cookies.remove(cookie);
+        });
+      },
+      deleteMarketingCookies() {
+        const deleteKeys = ["_gac", "_gcl", "_fbc"];
+        const cookieKeys = this.$cookies.keys();
+
+        const cookieKeysToDelete = cookieKeys.filter(key =>
+          deleteKeys.some(deleteKey => key.startsWith(deleteKey))
+        );
+
+        console.log(cookieKeysToDelete);
+
+        cookieKeysToDelete.forEach(cookie => {
+          this.$cookies.remove(cookie);
+        });
+      },
+      // acceptAllCookies() {
+      //   this.acceptedCookies = {
+      //     necessary: true,
+      //     preferences: true,
+      //     statistics: true,
+      //     marketing: true
+      //   };
+
+      //   this.setConsent();
+      // },
+      // acceptChosenCookies() {
+      //   this.setConsent();
+      //   this.deleteCookies();
+      // },
+      // setConsent() {
+      //   this.$cookies.set("CookieConsent", this.acceptedCookies);
+      //   this.updateGtagConsent();
+      //   this.$store.commit("setShowCookieConsentBanner", false);
+      // },
+      updateGtagConsent() {
+        this.$gtag.query("consent", "update", {
           ad_storage: this.acceptedCookies.marketing ? "granted" : "denied",
           analytics_storage: this.acceptedCookies.statistics
             ? "granted"
-            : "denied",
-          functionality_storage: "denied",
-          personalization_storage: "denied",
-          security_storage: "denied"
+            : "denied"
         });
-      },
-      deleteCookies() {
-        const cookieKeys = this.$cookies.keys();
-
-        const statisticsCookies = cookieKeys.filter(
-          key =>
-            key.startsWith("_ga") ||
-            key.startsWith("_gid") ||
-            key.startsWith("_gat") ||
-            key.startsWith("_fbp")
-        );
-
-        const marketingCookies = cookieKeys.filter(
-          key =>
-            key.startsWith("_gac_") ||
-            key.startsWith("_gcl") ||
-            key.startsWith("_fbc")
-        );
-
-        if (
-          !this.acceptedCookies.statistics &&
-          !this.acceptedCookies.marketing &&
-          !this.acceptedCookies.preferences
-        ) {
-          cookieKeys
-            .filter(
-              key =>
-                key != "CookieConsent" &&
-                key != "XSRF-TOKEN" &&
-                key != "connect.sid"
-            )
-            .forEach(key => this.$cookies.remove(key));
-        } else {
-          if (
-            !this.acceptedCookies.statistics &&
-            statisticsCookies.length > 0
-          ) {
-            statisticsCookies.forEach(cookie => {
-              this.$cookies.remove(cookie);
-            });
-          }
-
-          if (!this.acceptedCookies.marketing && marketingCookies.length > 0) {
-            marketingCookies.forEach(cookie => {
-              this.$cookies.remove(cookie);
-            });
-          }
-        }
       }
+      // deleteCookies() {
+      //   const cookieKeys = this.$cookies.keys();
+
+      //   const statisticsCookies = cookieKeys.filter(
+      //     key =>
+      //       key.startsWith("_ga") ||
+      //       key.startsWith("_gid") ||
+      //       key.startsWith("_gat") ||
+      //       key.startsWith("_fbp")
+      //   );
+
+      //   const marketingCookies = cookieKeys.filter(
+      //     key =>
+      //       key.startsWith("_gac_") ||
+      //       key.startsWith("_gcl") ||
+      //       key.startsWith("_fbc")
+      //   );
+
+      //   if (
+      //     !this.acceptedCookies.statistics &&
+      //     !this.acceptedCookies.marketing &&
+      //     !this.acceptedCookies.preferences
+      //   ) {
+      //     cookieKeys
+      //       .filter(
+      //         key =>
+      //           key != "CookieConsent" &&
+      //           key != "XSRF-TOKEN" &&
+      //           key != "connect.sid"
+      //       )
+      //       .forEach(key => this.$cookies.remove(key));
+      //   } else {
+      //     if (
+      //       !this.acceptedCookies.statistics &&
+      //       statisticsCookies.length > 0
+      //     ) {
+      //       statisticsCookies.forEach(cookie => {
+      //         this.$cookies.remove(cookie);
+      //       });
+      //     }
+
+      //     if (!this.acceptedCookies.marketing && marketingCookies.length > 0) {
+      //       marketingCookies.forEach(cookie => {
+      //         this.$cookies.remove(cookie);
+      //       });
+      //     }
+      //   }
+      // }
     }
   };
 </script>
