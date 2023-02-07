@@ -15,7 +15,7 @@
           />
         </svg>
         <div class="display-4 bold mb-3">
-          810.000+
+          960.000+
         </div>
         <p>Menschen sehen uns monatlich bei Google</p>
       </div>
@@ -54,12 +54,12 @@
           ></path>
         </svg>
         <div class="display-4 bold mb-3">
-          115.000+
+          155.000+
         </div>
         <p>Monatliche Seitenaufrufe auf der Webseite</p>
       </div>
     </div>
-    <p class="mt-4 small text-muted text-right">Stand: 09/2022</p>
+    <p class="mt-4 small text-muted text-right">Stand: 01/2023</p>
   </div>
 </template>
 
