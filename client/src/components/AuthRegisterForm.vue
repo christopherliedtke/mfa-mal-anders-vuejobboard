@@ -289,7 +289,7 @@
                 user_id: this.$store.state.auth.user._id
               });
 
-              this.$gtag.event("user_register", {
+              this.$gtag.event("sign_up", {
                 method: "local",
                 user_type: this.isEmployer
                   ? "employer"

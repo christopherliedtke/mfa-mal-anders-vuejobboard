@@ -138,7 +138,7 @@
                 user_id: this.$store.state.auth.user._id
               });
 
-              this.$gtag.event("user_login", {
+              this.$gtag.event("login", {
                 method: "local",
                 user_type: this.$store.state.auth.user.isEmployer
                   ? "employer"

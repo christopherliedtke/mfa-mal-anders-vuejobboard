@@ -58,6 +58,7 @@
       track(eventAction, method, path) {
         this.$gtag.event(eventAction, {
           method: method,
+          content_type: "link",
           content_id: path
         });
 
