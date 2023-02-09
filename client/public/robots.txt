@@ -1,2 +1,9 @@
 User-Agent: *
-Allow: /
+
+Disallow:: /impressum
+Disallow:: /datenschutz
+Disallow:: /agbs
+Disallow:: /kontakt
+Disallow:: /auth/login
+Disallow:: /auth/register
+Disallow:: /auth/password-reset

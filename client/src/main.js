@@ -99,9 +99,9 @@ Vue.use(
   {
     config: {
       id: process.env.VUE_APP_GTAG
-    },
+    }
     // disableScriptLoad: true,
-    enabled: false
+    // enabled: false
     // enabled: false,
     // config: {
     //   id: process.env.VUE_APP_GTAG
