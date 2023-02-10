@@ -73,9 +73,9 @@
               </span>
               <div>
                 <span class="text-secondary">Engagierte MFA & ZFA</span>
-                erreichen und exklusiv direkten
+                erreichen und exklusiv direkt
                 <b-link to="/stellengesuche" class="text-secondary"
-                  >Zugriff auf unsere Stellensuchenden<svg
+                  >Kontakt zu unseren suchenden MFA & ZFA<svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="12"
                     height="12"
@@ -93,7 +93,7 @@
                       d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
                     /></svg
                 ></b-link>
-                erhalten
+                aufnehmen
               </div>
             </li>
             <li class="d-flex mb-2">
@@ -203,8 +203,10 @@
                 </svg>
               </span>
               <div>
-                Erhalten Sie Zugriff auf unsere Stellengesuche mit der
-                Möglichkeit Kontakt zu potentiellen MitarbeiterInnen aufzunehmen
+                <span class="text-secondary">10% Neukunden-Rabatt</span> mit
+                Aktionscode
+                <strong class="bg-secondary bold px-1">MFAMA10</strong>
+                sichern
               </div>
             </li> -->
           </ul>

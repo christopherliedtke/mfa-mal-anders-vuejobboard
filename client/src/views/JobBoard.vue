@@ -494,7 +494,7 @@
                 .map(profession => profession.text)
                 .join(' & ')
             : professionOptions.map(profession => profession.value).join(' & ')
-        } ${filter.ort ? ' | ' + filter.ort : ''}`
+        } ${canonicalLocation ? ' | ' + canonicalLocation : ''}`
       "
       :desc="
         `Attraktive Stellenangebote für ${
@@ -504,7 +504,7 @@
               : 'Zahnmedizinische Fachangestellte (ZFA)'
             : 'Medizinische Fachangestellte (MFA) & Zahnmedizinische Fachangestellte (ZFA)'
         }${
-          filter.ort ? ' in ' + filter.ort + ' & Umgebung' : ''
+          canonicalLocation ? ' in ' + canonicalLocation + ' & Umgebung' : ''
         } | MFA mal anders`
       "
       img=""

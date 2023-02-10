@@ -18,7 +18,7 @@
               class="h2 bg-primary text-light p-2 mt-2 border-radius1 d-inline-block"
               style="font-weight: 600"
             >
-              Das Stellen- & Karriereportal nur für MFA & ZFA
+              Karriereportal | Jobbörse nur für MFA & ZFA
             </span>
           </h1>
           <p class="lead mt-2 mt-md-3 mb-0">
@@ -312,7 +312,7 @@
     </div>
 
     <Head
-      title="Das Karriereportal nur für MFA & ZFA"
+      title="Karriereportal | Jobbörse nur für MFA & ZFA"
       desc="MFA mal anders ist dein Job- und Karriereportal speziell für ArzthelferIn | Medizinische Fachangestellte (MFA) | Zahnmedizinische Fachangestellte (ZFA)"
       img=""
       :script="snippet"
