@@ -206,9 +206,9 @@
         tab: 1,
         acceptedCookies: {
           necessary: true,
-          preferences: true,
-          statistics: true,
-          marketing: true
+          preferences: false,
+          statistics: false,
+          marketing: false
         }
       };
     },
