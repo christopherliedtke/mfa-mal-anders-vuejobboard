@@ -238,9 +238,22 @@
       <h2 class="display-4 bold text-center">
         Warum MFA mal anders?
       </h2>
-      <p class="h3 text-center" style="font-weight: 400">
-        Die Jobbörse speziell für Medizinische Fachangestellte&nbsp;& <br />
+      <p
+        class="h3 d-block mx-auto text-center"
+        style="font-weight: 400; max-width: 35em"
+      >
+        Die authentische Jobbörse speziell für Medizinische
+        Fachangestellte&nbsp;& <br />
         Zahnmedizinische Fachangestellte
+      </p>
+      <p>
+        MFA mal anders ist keine weitere beliebige Marketing-Agentur, die Ihnen
+        Werbekampagnen für Ihre unbesetzten Stellen verkauft. Wir sind eine
+        authentische Stellen- und Karriereplattform, die sich ausschließlich an
+        genau Ihre Zielgruppe – MFA bzw. ZFA – richtet und diese ganzheitlichen
+        informiert. Das was wir machen, machen wir aus Überzeugung und weil wir
+        genau wissen, wo es auf Seiten der MFA & ZFA aber auch auf Seiten der
+        Arbeitgeber brennt. Bei uns erhalten Sie die folgenden Vorteile:
       </p>
 
       <div
@@ -487,7 +500,16 @@
             MitarbeiterInnen-Suche optimal unterstützen und ergänzen zu können.
             In der Regel empfehlen wir Ihnen unser beliebtes
             <strong class="text-secondary">Standard Paket</strong>, um die
-            Reichweite Ihrer Stellenanzeige zu optimieren.
+            Reichweite Ihrer Stellenanzeige zu optimieren. Ist Ihre Stelle nur
+            schwierig zu besetzen oder benötigen Sie zusätzliche Unterstützung,
+            empfehlen wir Ihnen unser
+            <strong class="text-secondary">Professional Paket</strong>, mit dem
+            Sie Ihre Reichweite mit Hilfe von individuellen Werbekampagnen
+            maximieren können. Sollten Sie sich unsicher sein, welches Paket das
+            richtige für Sie ist, kontaktieren Sie uns gern über unser
+            <b-link to="/kontakt?subject=Beratung zum richtigen Stellenpaket"
+              >Kontaktformular</b-link
+            >.
           </p>
         </div>
 
