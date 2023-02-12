@@ -10,19 +10,19 @@ module.exports = [
     accent: "light-shade",
     productFeatures: [
       {
-        html: 'Stellenanzeige für <strong class="text-secondary">60 Tage</strong> online',
+        html: '<strong class="text-secondary">60 Tage Online-Präsenz:</strong> Maximieren Sie Ihre Online-Sichtbarkeit für eine größere Zielgruppe',
       },
       {
-        html: 'Integration <strong class="text-secondary">Logo & Titelbild</strong> in Stellenanzeige auf <strong class="italic text-primary">MFA mal anders</strong> für individuelles Branding',
+        html: '<strong class="text-secondary">Individuelles Branding:</strong> Integrieren Sie Ihr Logo und Titelbild für ein professionelles Aussehen',
       },
       {
-        html: 'Optimierung für <strong class="text-secondary">Google Jobs</strong> &ndash; Ihre Anzeige in den organischen Suchergebnissen von Google',
+        html: '<strong class="text-secondary">Google Jobs-Optimierung:</strong> Steigern Sie Ihre Sichtbarkeit bei Google-Suchen',
       },
       {
-        html: 'Einmaliger Versand Ihrer Stellenanzeige in unserem <strong class="text-secondary" >wöchentlichen Job-Newsletter</strong>',
+        html: '<strong class="text-secondary" >Wöchentlicher Job-Newsletter:</strong> Versenden Sie Ihre Stellenanzeige einmalig an qualifizierte MFA & ZFA',
       },
       {
-        html: '<strong class="text-secondary">Zugriff auf</strong> qualifiziertes Fachpersonal aus unseren <a href="/stellengesuche" target="_blank" class="text-secondary" ><strong>Stellengesuchen</strong></a>',
+        html: '<strong class="text-secondary">Zugriff auf qualifiziertes Fachpersonal:</strong> Kontaktieren Sie MFA & ZFA aus unserer Datenbank <a href="/stellengesuche" target="_blank" class="text-secondary" ><strong>qualifizierter Stellengesuche</strong></a>',
       },
     ],
   },
@@ -41,19 +41,19 @@ module.exports = [
     productFeatures: [
       { html: "<strong>Basis Features</strong>" },
       {
-        html: 'Stellenanzeige für <strong class="text-secondary">90 Tage</strong> online',
+        html: '<strong class="text-secondary">90 Tage Online-Sichtbarkeit:</strong> Vergrößern Sie Ihre Chancen, die perfekten BewerberInnen zu finden, durch 90 Tage Online-Präsenz Ihrer Stellenanzeige',
         icon: "plus-circle",
       },
       {
-        html: '<strong class="text-secondary">Datumsupdate alle 14 Tage</strong> &ndash; Ihre Stellenanzeige rutscht nach oben',
+        html: '<strong class="text-secondary">Regelmäßiges Datumsupdate:</strong> Bleiben Sie oben auf der Liste durch die <strong class="text-secondary" >14-tägige Aktualisierung</strong> Ihrer Stellenanzeige',
         icon: "plus-circle",
       },
       {
-        html: 'Wiederholter Versand Ihrer Stellenanzeige in unserem <strong class="text-secondary" >wöchentlichen Job-Newsletter alle 14 Tage</strong>',
+        html: '<strong class="text-secondary" >Wöchentlicher Job-Newsletter:</strong> Verbreiten Sie Ihre Stelle weiter durch die <strong class="text-secondary" >14-tägige Veröffentlichung</strong> im Job-Newsletter',
         icon: "plus-circle",
       },
       {
-        html: 'Social Boost durch Veröffentlichung Ihrer Stellenanzeige <strong class="text-secondary">auf unserem Facebook-Kanal sowie in speziellen Facebook-Gruppen</strong> für MFA & ZFA',
+        html: '<strong class="text-secondary">Social Boost:</strong> Steigern Sie Ihre Online-Präsenz und erreichen Sie eine größere Zielgruppe durch die <strong class="text-secondary">Veröffentlichung auf unserem Facebook-Kanal und in speziellen Facebook-Gruppen</strong>',
         icon: "plus-circle",
       },
     ],
@@ -72,28 +72,28 @@ module.exports = [
         html: "<strong>Basis & Standard Features</strong>",
       },
       {
-        html: '<strong class="text-light bg-secondary">Maximale Reichweite</strong> mit<br><strong class="text-light bg-secondary">Google Ads & Social Media Kampagne inkl. 200€ Start-Budget</strong> &ndash; Ihre Stelle als professionelle Werbeanzeige in den Google Suchergebnissen und auf Facebook & Instagram <strong class="text-light bg-secondary">speziell für Ihren Standort</strong>',
+        html: '<strong class="text-light bg-secondary">Maximale Reichweite:</strong><br><strong class="text-light bg-secondary">Google Ads & Social Media Kampagne inkl. 200€ Start-Budget</strong> &ndash; Ihre Stelle als professionelle Werbeanzeige in den Google Suchergebnissen und auf Facebook & Instagram <strong class="text-light bg-secondary">speziell für Ihren Standort</strong>',
         icon: "plus-circle",
         more: true,
       },
       {
-        html: '<strong class="text-secondary">Persönlicher Ansprechpartner</strong> mit Tipps zur Optimierung Ihrer Stellenanzeige',
+        html: '<strong class="text-secondary">Persönlicher Ansprechpartner:</strong> Profitieren Sie von einem persönlichen Ansprechpartner, der Ihnen <strong class="text-secondary" >Tipps zur Optimierung Ihrer Stellenanzeige</strong> gibt und Sie bei jedem Schritt unterstützt',
         icon: "plus-circle",
       },
       {
-        html: '<strong class="text-secondary">Farbliche Hervorhebung</strong> Ihrer Stellenanzeige in unserer Stellenbörse',
+        html: '<strong class="text-secondary">Farbliche Hervorhebung</strong> Stechen Sie aus der Masse heraus, indem Ihre Stellenanzeige in unserer Stellenbörse farblich hervorgehoben wird',
         icon: "plus-circle",
       },
       {
-        html: '<strong class="text-secondary">Datumsupdate alle 7 Tage</strong> &ndash; Ihre Stellenanzeige rutscht nach oben',
+        html: '<strong class="text-secondary">Regelmäßiges Datumsupdate:</strong> Bleiben Sie immer oben auf der Liste durch die <strong class="text-secondary" >7-tägige Aktualisierung</strong> Ihrer Stellenanzeige',
         icon: "plus-circle",
       },
       {
-        html: 'Wiederholter Versand Ihrer Stellenanzeige in unserem <strong class="text-secondary">wöchentlichen Job-Newsletter alle 7 Tage</strong>',
+        html: '<strong class="text-secondary" >Wöchentlicher Job-Newsletter:</strong> Verbreiten Sie Ihre Stelle weiter durch die <strong class="text-secondary" >7-tägige Veröffentlichung</strong> im Job-Newsletter',
         icon: "plus-circle",
       },
       {
-        html: 'Optionale <strong class="text-secondary">Einbindung eines vorhandenen Image Videos</strong> in Ihre Stellenanzeige',
+        html: '<strong class="text-secondary">Einbindung Image Video:</strong> Verleihen Sie Ihrer Stelle mit der optionalen Einbindung eines vorhandenen Image Videos eine besondere Dimension',
         icon: "plus-circle",
       },
     ],

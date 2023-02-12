@@ -217,7 +217,7 @@
               variant="secondary"
               size="lg"
               class="d-block d-md-inline-block my-2 mr-md-2"
-              >Stellenanzeige schalten</b-button
+              >Jetzt Stellenanzeige schalten</b-button
             >
             <b-button
               href="#vorteile"
@@ -537,6 +537,13 @@
       </div>
     </div>
 
+    <div id="numbers-and-facts2" class="container mb-5 py-md-5">
+      <h2 class="h1 text-center bold mb-4">
+        Ein paar Zahlen und Fakten
+      </h2>
+      <TheNumbersAndFacts class="mt-5" />
+    </div>
+
     <div id="professional" class="container my-4 my-md-5">
       <h2 class="display-4 text-center bold">
         Unser Professional Paket
@@ -604,13 +611,6 @@
           >.
         </p>
       </div>
-    </div>
-
-    <div id="numbers-and-facts2" class="container mb-5 py-md-5">
-      <h2 class="h1 text-center bold mb-4">
-        Ein paar Zahlen und Fakten
-      </h2>
-      <TheNumbersAndFacts class="mt-5" />
     </div>
 
     <div class="container my-4 my-md-5">

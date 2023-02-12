@@ -641,6 +641,12 @@
             }
           );
 
+          if (jobSeekMutationType == "jobseek_add") {
+            this.$gtag.event("conversion", {
+              send_to: "AW-797795882/KnOQCK7-34sYEKrMtfwC"
+            });
+          }
+
           this.$matomo &&
             this.$matomo.trackEvent(
               "engagement",
