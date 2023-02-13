@@ -17,7 +17,7 @@
         class="row px-3 py-5 px-md-5 mx-auto ml-lg-auto position-relative"
       >
         <div class="bg-logo"></div>
-        <div class="col-12 col-md-8" style="z-index: 1">
+        <div class="col-12 col-md-9" style="z-index: 1">
           <h2 class="display-4 bold mb-4">
             <em>Motivierte</em> und <em>qualifizierte</em> <br />
             MFA & ZFA{{
@@ -25,9 +25,12 @@
             }}
             gesucht?
           </h2>
-          <h3 class="d-none d-md-block">
+          <h3 class="">
             <em>
-              Die reichweitenstärkste Karriereplattform <br />
+              Die reichweitenstärkste Karriereplattform
+              <span class="text-secondary"
+                >mit&nbsp;155.000+&nbsp;monatl. Seitenaufrufen</span
+              >
               speziell für Medizinische Fachangestellte | Zahnmedizinische
               Fachangestellte
             </em>
@@ -55,6 +58,7 @@
                 Ihrer Stellenanzeige
               </div>
             </li> -->
+
             <li class="d-flex mb-2">
               <span>
                 <svg
@@ -72,10 +76,40 @@
                 </svg>
               </span>
               <div>
-                <span class="text-secondary">Engagierte MFA & ZFA</span>
-                erreichen und exklusiv direkt
-                <b-link to="/stellengesuche" class="text-secondary"
-                  >Kontakt zu unseren suchenden MFA & ZFA<svg
+                <span class="text-secondary" style="font-weight: 600"
+                  >Erreichen Sie mehr engagierte MFA & ZFA</span
+                >
+                über Ihre Stellenanzeige auf <em>MFA mal anders</em> (inkl.
+                Platzierung in unserem wöchentlichen Job-Newsletter sowie auf
+                Google, Google Jobs und Social Media)
+              </div>
+            </li>
+            <li class="d-flex mb-2">
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="25"
+                  fill="currentColor"
+                  class="bi bi-check-lg mr-3"
+                  style="vertical-align: top;"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"
+                  />
+                </svg>
+              </span>
+              <div>
+                <span class="text-secondary" style="font-weight: 600"
+                  >Nehmen Sie</span
+                >
+                exklusiv und direkt über unsere Stellengesuche
+                <b-link
+                  to="/stellengesuche"
+                  class="text-secondary"
+                  style="font-weight: 600"
+                  >Kontakt zu suchenden MFA & ZFA<svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="12"
                     height="12"
@@ -93,7 +127,7 @@
                       d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
                     /></svg
                 ></b-link>
-                aufnehmen
+                auf
               </div>
             </li>
             <li class="d-flex mb-2">
@@ -113,31 +147,14 @@
                 </svg>
               </span>
               <div>
-                <span class="text-secondary">Größere relevante Reichweite</span>
-                über unseren Jobnewsletter, Google, Google Jobs, Social Media
-                und unsere MFA & ZFA Community
-              </div>
-            </li>
-            <li class="d-flex mb-2">
-              <span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="25"
-                  height="25"
-                  fill="currentColor"
-                  class="bi bi-check-lg mr-3"
-                  style="vertical-align: top;"
-                  viewBox="0 0 16 16"
+                <span class="text-secondary" style="font-weight: 600"
+                  >Erhalten Sie mehr passende KandidatInnen</span
                 >
-                  <path
-                    d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"
-                  />
-                </svg>
-              </span>
-              <div>
-                <span class="">Mehr passende KandidatInnen</span>
-                per optionaler
-                <b-link to="#kurzbewerbung" class="text-secondary"
+                mit der optionalen
+                <b-link
+                  to="#kurzbewerbung"
+                  class="text-secondary"
+                  style="font-weight: 600"
                   >2&#8209;Minuten&nbsp;Kurzbewerbung<svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="12"
@@ -158,7 +175,7 @@
                 ></b-link>
               </div>
             </li>
-            <li class="d-flex mb-2">
+            <!-- <li class="d-flex mb-2">
               <span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -184,6 +201,38 @@
                   >€</b-link
                 >
                 <span class="small"> (zzgl. USt.)</span> veröffentlichen
+              </div>
+            </li> -->
+            <li class="d-flex mb-2">
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="25"
+                  fill="currentColor"
+                  class="bi bi-check-lg mr-3"
+                  style="vertical-align: top;"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"
+                  />
+                </svg>
+              </span>
+              <div>
+                Wählen Sie aus unseren
+                <span class="text-secondary" style="font-weight: 600"
+                  >Stellenpaketen</span
+                >
+                – von
+                <span class="text-secondary" style="font-weight: 600"
+                  >Basis</span
+                >
+                bis
+                <span class="text-secondary" style="font-weight: 600"
+                  >Professional mit individueller Werbekampagne für Ihren
+                  Standort</span
+                >
               </div>
             </li>
             <!-- <li class="d-flex">
@@ -220,11 +269,18 @@
               >Jetzt Stellenanzeige schalten</b-button
             >
             <b-button
-              href="#vorteile"
+              href="#preise"
+              variant="outline-secondary"
+              size="lg"
+              class="d-block d-md-inline-block my-2 mr-md-2"
+              >Unsere Stellenpakete</b-button
+            >
+            <b-button
+              href="#tipps-stellenanzeigen"
               variant="outline-light"
               size="lg"
               class="d-block d-md-inline-block my-2 mr-md-2"
-              >Mehr erfahren</b-button
+              >Tipps für Ihre Stellenanzeige</b-button
             >
           </div>
         </div>
@@ -242,18 +298,22 @@
         class="h3 d-block mx-auto text-center"
         style="font-weight: 400; max-width: 35em"
       >
-        Die authentische Jobbörse speziell für Medizinische
-        Fachangestellte&nbsp;& <br />
+        Die Jobbörse speziell für Medizinische Fachangestellte&nbsp;& <br />
         Zahnmedizinische Fachangestellte
       </p>
       <p>
-        MFA mal anders ist keine weitere beliebige Marketing-Agentur, die Ihnen
-        Werbekampagnen für Ihre unbesetzten Stellen verkauft. Wir sind eine
-        authentische Stellen- und Karriereplattform, die sich ausschließlich an
-        genau Ihre Zielgruppe – MFA bzw. ZFA – richtet und diese ganzheitlichen
-        informiert. Das was wir machen, machen wir aus Überzeugung und weil wir
-        genau wissen, wo es auf Seiten der MFA & ZFA aber auch auf Seiten der
-        Arbeitgeber brennt. Bei uns erhalten Sie die folgenden Vorteile:
+        MFA mal anders ist keine weitere beliebige Stellenbörse, hinter der eine
+        Marketingagentur steckt, die Ihnen Kampagnen für Ihre unbesetzten
+        Stellen verkauft. Wir sind eine
+        <strong class="text-secondary"
+          >authentische Stellen- und Karriereplattform, die sich ausschließlich
+          an genau Ihre Zielgruppe – MFA bzw. ZFA – richtet
+        </strong>
+        und diese ganzheitlich informiert. Das was wir machen, machen wir aus
+        Überzeugung und weil wir genau wissen, wo es auf Seiten der MFA & ZFA
+        aber auch auf Seiten der Arbeitgeber brennt. Heute ist es schwieriger
+        denn je, qualifiziertes Praxispersonal zu finden. Wir helfen Ihnen bei
+        der Suche!
       </p>
 
       <div
@@ -278,7 +338,7 @@
               />
               <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
             </svg>
-            <h4 class="bold mt-2 mb-3">Speziell für MFA & ZFA</h4>
+            <h4 class="bold mt-2 mb-3">Ausschließlich für MFA & ZFA</h4>
             <p>
               Über eine
               <router-link to="/stellenangebote"
@@ -307,11 +367,11 @@
                 d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm-1.993-1.679a.5.5 0 0 0-.686.172l-1.17 1.95-.547-.547a.5.5 0 0 0-.708.708l.774.773a.75.75 0 0 0 1.174-.144l1.335-2.226a.5.5 0 0 0-.172-.686Z"
               />
             </svg>
-            <h4 class="bold mt-2 mb-3">Zugriff auf Stellengesuche</h4>
+            <h4 class="bold mt-2 mb-3">MFA & ZFA direkt kontaktieren</h4>
             <p>
               Mit Ihrer Stellenanzeige erhalten Sie automatisch
               <strong>Zugriff auf</strong>
-              unsere
+              hunderte
               <router-link to="/stellengesuche"
                 ><strong>Stellengesuche</strong></router-link
               >
@@ -341,12 +401,13 @@
                 d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"
               />
             </svg>
-            <h4 class="bold mt-2 mb-3">Kurzbewerbungen</h4>
+            <h4 class="bold mt-2 mb-3">Einfach mit Kurzbewerbungen</h4>
             <p>
               Mit unserer optionalen
               <b-link to="#kurzbewerbung"><strong>Kurzbewerbung</strong></b-link
               >-Funktion senken Sie die Hürde zum Abschicken einer Bewerbung und
-              <strong>vervielfachen die Anzahl passender KandidatInnen</strong>.
+              erhalten so
+              <strong>mehr Anfragen passender KandidatInnen</strong>.
             </p>
           </div>
         </div>
@@ -389,13 +450,13 @@
                 d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"
               />
             </svg>
-            <h4 class="bold mt-2 mb-3">Reichweite erhöhen</h4>
+            <h4 class="bold mt-2 mb-3">Maximieren Sie Ihre Reichweite</h4>
             <p>
-              Sie erstellen Ihre Anzeige, wir sorgen für den Rest &ndash;
-              <strong>Relevante Reichweite auf </strong>
+              Erhöhen Sie Ihre Chancen auf passende BewerberInnen mit
+              <strong>relevanter Reichweite auf </strong>
               <b-link to="/stellenangebote"
                 ><strong>MFA mal anders</strong></b-link
-              >,
+              >, Google,
               <a
                 href="https://www.google.com/search?q=mfa+mal+anders&ibp=htl;jobs#htivrt=jobs&htilrad=-1.0"
                 target="_blank"
@@ -469,15 +530,7 @@
       </div>
     </div>
 
-    <div class="container mb-4 mb-lg-5">
-      <h2 class="text-center">Feedback</h2>
-      <h3 class="display-4 text-center bold mb-4 mb-lg-5">
-        Was unsere Kunden sagen
-      </h3>
-      <TheTestimonials />
-    </div>
-
-    <div class="container-fluid bg-light-shade py-4 py-lg-5 px-0">
+    <div class="container-fluid bg-light-shade py-4 py-lg-5 px-0 mb-4">
       <div id="preise" class="container">
         <h2 class=" display-4 bold text-center">
           Unsere Stellenpakete
@@ -529,7 +582,7 @@
           </div>
         </div>
 
-        <p>
+        <!-- <p>
           <strong
             >Gern bieten wir Ihnen nach Absprache auch individuelle Pakete
             an</strong
@@ -555,8 +608,16 @@
           >
           zu antworten und Kontakt zu potentiellen neuen MitarbeiterInnen
           aufzunehmen.
-        </p>
+        </p> -->
       </div>
+    </div>
+
+    <div class="container mb-4 mb-lg-5">
+      <h2 class="text-center">Feedback</h2>
+      <h3 class="display-4 text-center bold mb-4 mb-lg-5">
+        Was unsere Kunden sagen
+      </h3>
+      <TheTestimonials />
     </div>
 
     <div id="numbers-and-facts2" class="container mb-5 py-md-5">
@@ -805,8 +866,8 @@
 
     <div id="tipps-stellenanzeigen" class="container mb-5">
       <h2 class="bold mb-4">
-        8 Tipps &ndash; Stellenanzeige für Medizinische Fachangestellte (MFA) &
-        Zahnmedizinische Fachangestellte (ZFA)
+        8 Tipps &ndash; Attraktive Stellenanzeigen für Medizinische
+        Fachangestellte (MFA) & Zahnmedizinische Fachangestellte (ZFA)
       </h2>
       <p>
         Ihre Stellenanzeige ist eine Einladung für BewerberInnen zum Dialog –

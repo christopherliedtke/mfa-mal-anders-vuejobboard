@@ -13,7 +13,7 @@ module.exports = [
         html: 'Stellenanzeige für <strong class="text-secondary">60 Tage</strong> online',
       },
       {
-        html: 'Integration <strong class="text-secondary">Logo & Titelbild</strong> in Ihre Stellenanzeige auf <strong class="italic text-primary">MFA mal anders</strong> für ein <strong class="text-secondary">individuelles Design</strong>',
+        html: 'Integration <strong class="text-secondary">Logo & Titelbild</strong> für ein <strong class="text-secondary">individuelles Design</strong>',
       },
       {
         html: '<strong class="text-secondary">Optimierung für Google Jobs</strong> &ndash; Steigern Sie Ihre Sichtbarkeit in der Google-Suche',
@@ -53,7 +53,7 @@ module.exports = [
         icon: "plus-circle",
       },
       {
-        html: '<strong class="text-secondary">Social Boost</strong> durch Veröffentlichung Ihrer Stellenanzeige auf unserem <strong class="text-secondary">Facebook-Kanal sowie in speziellen Facebook-Gruppen</strong> für MFA & ZFA',
+        html: '<strong class="text-secondary">Mehr Reichweite mit Social Boost</strong> – Veröffentlichung Ihrer Stellenanzeige auf unserem <strong class="text-secondary">Facebook-Kanal sowie in speziellen Facebook-Gruppen</strong> für MFA & ZFA',
         icon: "plus-circle",
       },
     ],
