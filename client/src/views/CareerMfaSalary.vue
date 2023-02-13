@@ -299,7 +299,7 @@
         </p>
       </div>
 
-      <h3 class="h4 mt-5">
+      <!-- <h3 class="h4 mt-5">
         Gehaltstabelle MFA 2022 nach Gehaltstarifvertrag – gültig ab 01.01.2022
       </h3>
       <p>
@@ -411,7 +411,7 @@
       <p class="small text-muted">
         Quelle: Gehaltstarifvertrag 2021 für Medizinische Fachangestellte (MFA)
         / ArzthelferInnen – AAA (2021)
-      </p>
+      </p> -->
 
       <h3 class="h4 mt-5">
         Gehaltstabelle MFA 2023 nach Gehaltstarifvertrag – gültig ab 01.01.2023

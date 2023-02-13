@@ -57,13 +57,13 @@
               blank-height="130"
               offset="1000"
             />
-            <h2 class="bold">Stellenbörse für MFA & ZFA</h2>
+            <h2 class="bold">Stellenangebote für MFA & ZFA</h2>
             <p>
-              Bist Du auf der Suche nach einer interessanten Stelle, die genau
-              zu Dir passt? Schau direkt in unserer Stellenbörse nur für
+              Bist Du auf der Suche nach einem interessanten Job, der genau zu
+              Dir passt? Schau direkt in unsere Stellenangebote nur für
               ArzthelferInnen (MFA & ZFA) vorbei!
             </p>
-            <b-button variant="primary">Zur Stellenbörse</b-button>
+            <b-button variant="primary">Zu den Stellenangeboten</b-button>
           </b-link>
         </div>
         <div class="col">

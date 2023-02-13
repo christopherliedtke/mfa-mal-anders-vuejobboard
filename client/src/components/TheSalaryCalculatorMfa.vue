@@ -42,10 +42,7 @@
         id="applicable-year"
         v-model="year"
         class="mt-2"
-        :options="[
-          { text: 'Jahr 2022', value: 2022 },
-          { text: 'Jahr 2023', value: 2023 }
-        ]"
+        :options="[{ text: 'Jahr 2023', value: 2023 }]"
       ></b-form-select>
       <label for="years-of-experience" class="sr-only">Berufsjahre</label>
       <b-form-select
@@ -133,9 +130,7 @@
           hoursOfEducation: null,
           workingHours: 38.5
         },
-        year: new Date(
-          new Date().getTime() + 1000 * 60 * 60 * 24 * 45
-        ).getFullYear(),
+        year: 2023,
         yearsOfExperienceOptions: [
           {
             value: null,
