@@ -466,16 +466,12 @@
         Gehalt in der Ausbildung zur Medizinischen Fachangestellten
       </h2>
       <p>
-        Der
-        <b-link href="https://www.vmf-online.de/mfa/mfa-tarife" target="_blank"
-          >Verband Medizinischer Fachberufe e.V. (VMF)</b-link
-        >
-        ist die einzige Organisation für Medizinische Fachangestellte auf
-        Arbeitnehmerseite. Sie vertritt uns Medizinische Fachangestellte bei
-        Tarifverhandlungen gegenüber der Arbeitsgemeinschaft zur Regelung der
-        Arbeitsbedingungen der ArzthelferInnen / Medizinischen Fachangestellten
-        (AAA). Die AAA ist die Tarifpartei der Arbeitgeber, sprich der
-        niedergelassenen Ärzte.
+        Der Verband Medizinischer Fachberufe e.V. (VMF) ist die einzige
+        Organisation für Medizinische Fachangestellte auf Arbeitnehmerseite. Sie
+        vertritt uns Medizinische Fachangestellte bei Tarifverhandlungen
+        gegenüber der Arbeitsgemeinschaft zur Regelung der Arbeitsbedingungen
+        der ArzthelferInnen / Medizinischen Fachangestellten (AAA). Die AAA ist
+        die Tarifpartei der Arbeitgeber, sprich der niedergelassenen Ärzte.
       </p>
       <p>
         Der VMF setzt sich auch für die Ausbildungsvergütung der MFA ein und hat
@@ -551,11 +547,20 @@
         Gehalt nach der Ausbildung zur Medizinischen Fachangestellten (MFA)
       </h2>
       <p>
-        Das Gehalt einer MFA orientiert sich an dem Tarifvertrag für
-        Medizinische Fachangestellte. Ausführliche Informationen zum Gehalt für
-        Medizinische Fachangestellte nach der Ausbildung, den Tätigkeitsgruppen
-        und Einteilung der Berufsjahre findest du
-        <b-link to="/karriere/mfa/gehalt">hier</b-link>.
+        Das Gehalt einer MFA orientiert sich an dem
+        <b-link to="/karriere/mfa/gehalt#gehaltstarifvertrag"
+          >Tarifvertrag</b-link
+        >
+        für Medizinische Fachangestellte. Ausführliche Informationen zum
+        <b-link to="/karriere/mfa/gehalt"
+          >Gehalt für Medizinische Fachangestellte</b-link
+        >
+        nach der Ausbildung, den
+        <b-link to="/karriere/mfa/gehalt#taetigkeitsgruppen"
+          >Tätigkeitsgruppen</b-link
+        >
+        und Einteilung der Berufsjahre findest du auf unserer
+        <b-link to="/karriere/mfa/gehalt">MFA Gehalt</b-link> Seite.
       </p>
       <p>
         Hast Du noch Fragen zum Beruf oder der Ausbildung der Medizinischen
@@ -587,8 +592,8 @@
         eine Anstellung zu finden. Auch andere Arbeitgeber aus dem
         Gesundheitswesen schätzen die breiten Fähigkeiten von Medizinischen
         Fachangestellten. Sie versuchen auf sich aufmerksam zu machen durch
-        attraktive Stellenangebote, die Dir andere Möglichkeiten außerhalb der
-        Arztpraxis bieten.
+        <b-link to="/stellenangebote">attraktive Stellenangebote</b-link>, die
+        Dir andere Möglichkeiten außerhalb der Arztpraxis bieten.
       </p>
       <p>
         Ganz allgemein haben wir die Kompetenzbereiche und Jobmöglichkeiten für
@@ -602,10 +607,13 @@
       <p>
         Manche liebäugeln eventuell mit dem Gedanken zu studieren. Hier gibt es
         einige Studiengänge, die mit entsprechender Berufserfahrung von MFAs
-        absolviert werden können. Daneben gibt es verschiedene Fortbildungen
-        oder Weiterbildungen im Sinne einer Aufstiegsfortbildung, die
-        Medizinische Fachangestellte befähigen mehr Verantwortung zu übernehmen
-        und in eine höhere Gehaltsklasse zu wechseln.
+        absolviert werden können. Daneben gibt es verschiedene
+        <b-link to="/karriere/fort-und-weiterbildung"
+          >Fortbildungen oder Weiterbildungen</b-link
+        >
+        im Sinne einer Aufstiegsfortbildung, die Medizinische Fachangestellte
+        befähigen mehr Verantwortung zu übernehmen und in eine höhere
+        Gehaltsklasse zu wechseln.
       </p>
       <p>
         Informationen über die drei großen Bildungsformen, Fortbildung,

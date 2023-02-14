@@ -99,6 +99,17 @@
         €/h
       </p>
     </b-form>
+    <p>
+      Lies auch:
+      <b-link
+        class="text-secondary"
+        to="/blog/artikel/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
+        ><strong
+          >Gehaltsverhandlung – Wie Du erfolgreich mehr Gehalt
+          verhandelst?</strong
+        ></b-link
+      >
+    </p>
     <p class="small mt-4 source">
       <span>
         *Quelle: Gehaltstarifvertrag 2022 für Zahnmedizinische Fachangestellte

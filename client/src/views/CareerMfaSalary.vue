@@ -269,7 +269,7 @@
               </p></template
             >
           </BannerJobboard>
-          <BannerSalaryNegotiation class="mb-4" />
+          <!-- <BannerSalaryNegotiation class="mb-4" /> -->
           <SocialButtonFacebook
             class="mb-4 mr-1"
             content="Folgen und keine Neuigkeiten verpassen"
@@ -1628,7 +1628,7 @@
   import BannerJobboard from "@/components/BannerJobboard.vue";
   import BannerProfessions from "@/components/BannerProfessions.vue";
   import BannerTrainingOverview from "@/components/BannerTrainingOverview.vue";
-  import BannerSalaryNegotiation from "@/components/BannerSalaryNegotiation.vue";
+  // import BannerSalaryNegotiation from "@/components/BannerSalaryNegotiation.vue";
   import BannerTrainingCatalogueSmall from "@/components/BannerTrainingCatalogueSmall.vue";
   import BannerJobSeeksLarge from "@/components/BannerJobSeeksLarge.vue";
   import { scrollToHashMixin } from "@/mixins/scrollToHashMixin";
@@ -1643,7 +1643,7 @@
       BannerJobboard,
       BannerProfessions,
       BannerTrainingOverview,
-      BannerSalaryNegotiation,
+      // BannerSalaryNegotiation,
       BannerTrainingCatalogueSmall,
       BannerJobSeeksLarge,
       ScrollTopButton

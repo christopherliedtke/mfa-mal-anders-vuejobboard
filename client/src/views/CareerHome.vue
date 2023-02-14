@@ -219,9 +219,14 @@
             beruflichen Weg im Gesundheitswesen zu finden und erfolgreich deine
             Ziele zu erreichen. Mit Fachwissen und persönlichen Erfahrungen
             stehen wir Dir zur Seite und unterstützen Dich – egal, ob es darum
-            geht für Dich die passende Fort- oder Weiterbildung zu finden, einen
-            neuen Job zu finden, deine Gehaltswünsche durchzusetzen oder einfach
-            nur durch den Praxisalltagswahnsinn zu helfen.
+            geht für Dich die passende
+            <b-link to="/karriere/fort-und-weiterbildung"
+              >Fort- oder Weiterbildung</b-link
+            >
+            zu finden, einen neuen Job zu finden, deine
+            <b-link to="/karriere/mfa/gehalt">Gehaltswünsche</b-link>
+            durchzusetzen oder einfach nur durch den Praxisalltagswahnsinn zu
+            helfen.
           </p>
         </div>
       </div>
@@ -235,9 +240,10 @@
         läuft. Und das zeigen die Chefs in einem wertschätzenden Umgang,
         familienfreundlichen Arbeitsbedingungen und einer guten Bezahlung. In
         der Regel trennt sich die Spreu vom Weizen von ganz allein. Wir sind
-        trotzdem sehr bemüht, bei den veröffentlichten Stellenanzeigen auf
-        unserer Plattform einen besonderen Augenmerk auf bestimmte Kriterien zu
-        legen:
+        trotzdem sehr bemüht, bei den
+        <b-link to="/stellenangebote">veröffentlichten Stellenanzeigen</b-link>
+        auf unserer Plattform einen besonderen Augenmerk auf bestimmte Kriterien
+        zu legen:
       </p>
       <ul>
         <li>Leistungsgerechte Bezahlung</li>
@@ -251,9 +257,6 @@
           Unbefristete Stellen oder befristete Stellen mit Aussicht auf
           Übernahme
         </li>
-        <li>
-          Keine Jobs über Zeitarbeitsfirmen oder Personaldienstleiter
-        </li>
       </ul>
       <div class="d-flex justify-content-center my-5">
         <BannerJobboard />
@@ -265,14 +268,18 @@
         gibt aber auch viele Karrierechancen darüber hinaus.
       </p>
       <p>
-        Durch deine Ausbildung als MFA & ZFA und mit wachsender Berufserfahrung
-        hast Du Dir eine Vielzahl an Fähigkeiten und Kompetenzen angeeignet.
+        Durch deine
+        <b-link to="/karriere/mfa/ausbildung-berufsbild"
+          >Ausbildung als MFA & ZFA</b-link
+        >
+        und mit wachsender Berufserfahrung hast Du Dir eine Vielzahl an
+        Fähigkeiten und Kompetenzen angeeignet.
       </p>
       <p>
         Du bist Organisationstalent, hast medizinisches Wissen, bist Profi im
         Office Management, Assistenz des Arztes bei chirurgischen Eingriffen,
         hast Abrechnungskenntnisse und weißt, wie man professionell mit
-        Patienten- bzw. Kunden umgeht. Und dies sind nur ein Paar deiner
+        Patienten bzw. Kunden umgeht. Und dies sind nur ein Paar deiner
         Eigenschaften, die Dich zu einer begehrten Fachkraft machen. Auch bei
         Arbeitgebern außerhalb der Arztpraxis.
       </p>
@@ -281,9 +288,11 @@
         einem Unternehmen, das dem Gesundheitswesen angehört, sein.
       </p>
       <p>
-        Auf Mfa mal anders findest Du deshalb auch viele alternative
-        Jobmöglichkeiten, die Du mit deinen Kenntnissen und Fähigkeiten als
-        Medizinische Fachangestellte ausüben kannst.
+        Auf MFA mal anders findest Du deshalb auch viele
+        <b-link to="/karriere/jobs-und-berufsbilder"
+          >alternative Jobmöglichkeiten</b-link
+        >, die Du mit deinen Kenntnissen und Fähigkeiten als Medizinische oder
+        Zahnmedizinische Fachangestellte ausüben kannst.
       </p>
       <p>
         Vielleicht möchtest Du Dich aber auch in deiner Fachrichtung
@@ -321,8 +330,9 @@
         Praxisperlen.
       </p>
       <p>
-        MFA mal anders unterstützt Praxen bei der Suche nach neuem Personal.
-        Dabei sensibilisieren wir die Praxisinhaber stets für ein positives
+        MFA mal anders unterstützt Praxen bei der
+        <b-link to="/fuer-arbeitgeber">Suche nach neuem Personal</b-link>. Dabei
+        sensibilisieren wir die Praxisinhaber stets für ein positives
         Arbeitsklima und Mitarbeiterförderung, -führung und -entwicklung. Das
         bringt nicht nur dem Chef etwas, sondern der gesamten Praxis und die
         Personalsuche erleichert es ebenfalls.
@@ -330,7 +340,7 @@
       <p>
         Wenn Du auf der Suche nach einer tollen Praxis bist, schau regelmäßig
         auf unserer
-        <b-link to="/stellenangebote">Stellenbörse</b-link> vorbei.
+        <b-link to="/stellenangebote">Jobbörse</b-link> vorbei.
       </p>
       <p>
         Wenn Du schon in einer tollen Praxis arbeitest und ihr neue Kollegen
