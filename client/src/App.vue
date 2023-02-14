@@ -7,7 +7,8 @@
     <TheFooter />
     <TheOverlay />
     <TheStarJobModal v-if="$store.state.utils.starJobModal" />
-    <NewsletterSignUpPopUp v-if="loadNewsletterPopUp" />
+    <JobseekPopUp v-if="loadJobseekPopUp" />
+    <!-- <NewsletterSignUpPopUp v-if="loadNewsletterPopUp" /> -->
     <BannerCookieConsent />
   </div>
 </template>
@@ -17,9 +18,13 @@
   import TheFooter from "@/components/TheFooter";
   import TheOverlay from "@/components/TheOverlay";
   import BannerCookieConsent from "@/components/BannerCookieConsent.vue";
-  const NewsletterSignUpPopUp = () =>
+  // const NewsletterSignUpPopUp = () =>
+  //   import(
+  //     /* webpackChunkName: "NewsletterSignUpPopUp" */ "@/components/NewsletterSignUpPopUp.vue"
+  //   );
+  const JobseekPopUp = () =>
     import(
-      /* webpackChunkName: "NewsletterSignUpPopUp" */ "@/components/NewsletterSignUpPopUp.vue"
+      /* webpackChunkName: "JobseekPopUp" */ "@/components/JobseekPopUp.vue"
     );
   const TheStarJobModal = () =>
     import(
@@ -30,45 +35,29 @@
     components: {
       TheHeader,
       TheFooter,
-      NewsletterSignUpPopUp,
+      // NewsletterSignUpPopUp,
       TheOverlay,
       TheStarJobModal,
-      BannerCookieConsent
+      BannerCookieConsent,
+      JobseekPopUp
     },
     data() {
       return {
-        loadNewsletterPopUp: false
+        // loadNewsletterPopUp: false,
+        loadJobseekPopUp: false
       };
     },
     watch: {
       $route(to, from) {
         if (from.path && to.path != from.path) {
           // this.track();
-          this.loadNewsletterPopUp = true;
+          // this.loadNewsletterPopUp = true;
+          this.loadJobseekPopUp = true;
         }
       }
     },
     async created() {
       await this.checkLoggedIn();
-
-      // #GA4 no cookies
-      // setOptions({
-      //   config: {
-      //     id: process.env.VUE_APP_GTAG
-      //   }
-      // });
-
-      // bootstrap().then(() => {
-      //   this.$gtag.query("consent", "default", {
-      //     ad_storage: "denied",
-      //     analytics_storage: "denied",
-      //     functionality_storage: "denied",
-      //     personalization_storage: "denied",
-      //     security_storage: "denied"
-      //   });
-
-      //   this.$gtag.pageview(this.$route);
-      // });
     },
     mounted() {
       document.addEventListener("visibilitychange", this.checkVersion);

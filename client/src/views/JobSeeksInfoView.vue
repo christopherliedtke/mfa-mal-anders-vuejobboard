@@ -216,8 +216,8 @@
           <div class="icon-box shadow1 py-5 px-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="50"
-              height="50"
+              width="35"
+              height="35"
               fill="currentColor"
               class="bi bi-hourglass-bottom"
               viewBox="0 0 16 16"
@@ -237,8 +237,8 @@
           <div class="icon-box shadow1 py-5 px-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="50"
-              height="50"
+              width="35"
+              height="35"
               fill="currentColor"
               class="bi bi-shield-fill-check"
               viewBox="0 0 16 16"
@@ -259,8 +259,8 @@
           <div class="icon-box shadow1 py-5 px-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="50"
-              height="50"
+              width="35"
+              height="35"
               fill="currentColor"
               class="bi bi-puzzle-fill"
               viewBox="0 0 16 16"
@@ -280,8 +280,8 @@
           <div class="icon-box shadow1 py-5 px-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="50"
-              height="50"
+              width="35"
+              height="35"
               fill="currentColor"
               class="bi bi-send-fill"
               viewBox="0 0 16 16"
@@ -302,8 +302,8 @@
           <div class="icon-box shadow1 py-5 px-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="50"
-              height="50"
+              width="35"
+              height="35"
               fill="currentColor"
               class="bi bi-signpost-split-fill"
               viewBox="0 0 16 16"
@@ -323,8 +323,8 @@
           <div class="icon-box shadow1 py-5 px-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="50"
-              height="50"
+              width="35"
+              height="35"
               fill="currentColor"
               class="bi bi-file-lock-fill"
               viewBox="0 0 16 16"
@@ -347,8 +347,8 @@
           <div class="icon-box shadow1 py-5 px-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="50"
-              height="50"
+              width="35"
+              height="35"
               fill="currentColor"
               class="bi bi-piggy-bank-fill"
               viewBox="0 0 16 16"
@@ -412,6 +412,8 @@
               kannst ein Bild bereitstellen, aber die Entscheidung liegt allein
               bei Dir!
             </p>
+          </div>
+          <div class="col">
             <h3 class="h5 bold">
               Wer kann mich kontaktieren?
             </h3>
@@ -420,8 +422,6 @@
               Arbeitgeber, die auf MFA mal anders nach neuen MitarbeiterInnen
               suchen, kontaktieren.
             </p>
-          </div>
-          <div class="col">
             <h3 class="h5 bold">
               Was passiert, wenn ein Arbeitgeber mich kontaktieren möchte?
             </h3>
