@@ -105,8 +105,8 @@
         class="text-secondary"
         to="/blog/artikel/gehaltserhoehung-fuer-mfa-tipps-wie-du-erfolgreich-mehr-gehalt-verhandelst"
         ><strong
-          >Gehaltsverhandlung – Wie Du erfolgreich mehr Gehalt
-          verhandelst?</strong
+          >Gehaltsverhandlung – 9 Tipps um erfolgreich mehr Gehalt zu
+          verhandeln</strong
         ></b-link
       >
     </p>

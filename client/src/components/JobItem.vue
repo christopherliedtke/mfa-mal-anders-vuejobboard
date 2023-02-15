@@ -382,12 +382,19 @@
           Beziehe Dich in Deiner Bewerbung auf MFA mal anders.
         </p>
       </div>
-      <div class="mt-4">
+      <div class="d-flex flex-column flex-lg-row align-items-lg-center mt-4">
+        <StarJob
+          class="mb-2 mx-auto mx-lg-0"
+          :job-id="job._id"
+          position="relative"
+          padding="0 10px 0 0"
+          :size="2"
+        />
         <b-button
           v-if="job.simpleApplication"
           size="lg"
           :to="`/kurzbewerbung/${job._id}`"
-          class="mr-2 mb-2"
+          class="mx-lg-1 mb-2"
           :disabled="!$route.meta.public"
           rel="nofollow"
           ><svg
@@ -414,7 +421,7 @@
               `mailto:${job.applicationEmail}?subject=Bewerbung - ${job.title} über MFA mal anders`
           "
           target="_blank"
-          class="mb-2"
+          class="mb-2 mx-lg-1"
           :disabled="!$route.meta.public"
           @click="
             track(
