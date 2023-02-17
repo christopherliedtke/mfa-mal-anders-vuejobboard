@@ -75,6 +75,13 @@
         </ol>
       </nav>
 
+      <h2 class="h4">
+        <strong
+          >Wie viel verdient man als Zahnmedizinische Fachangestellte (ZFA) bzw.
+          ZahnarzthelferIn?</strong
+        >
+      </h2>
+
       <b-btn to="#gehaltsrechner" variant="primary" class="mb-3"
         ><svg
           xmlns="http://www.w3.org/2000/svg"
@@ -975,9 +982,9 @@
     <ScrollTopButton />
 
     <Head
-      :title="`ZFA Gehalt 2023 || Gehaltsrechner | Tarifvertrag`"
+      :title="`ZFA Gehalt & Tarifvertrag 2023 ➤ Gehaltsrechner`"
       :desc="
-        `Gehalt als Zahnmedizinische Fachangestellte (ZFA) | Gehaltstarifvertrag 2023 | Tätigkeitsgruppen || Gehaltsrechner Teilzeit / Vollzeit`
+        `Zahnmedizinische Fachangestellte (ZFA) Gehalt ✔ Gehaltsrechner TZ | VZ ✔ Gehaltstarifvertrag 2023 ✔ Tätigkeitsgruppen ✔ Berufsjahre ✔ Benefits`
       "
       img="/img/MfaMalAnders_GehaltZfa_hkucp5_c_scale,w_1200.jpg"
       :script="snippet"

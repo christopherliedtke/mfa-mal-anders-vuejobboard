@@ -34,7 +34,7 @@
     "express": "^4.17.1",
     "express-graphql": "^0.12.0",
     "express-session": "^1.17.1",
-    "googleapis": "^58.0.0",
+    "googleapis": "^111.0.0",
     "graphql": "^15.8.0",
     "graphql-modules": "^1.4.4",
     "handlebars": "^4.7.7",

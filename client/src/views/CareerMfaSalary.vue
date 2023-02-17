@@ -109,6 +109,13 @@
         </ol>
       </nav>
 
+      <h2 class="h4">
+        <strong
+          >Wie viel verdient man als Mdizinische Fachangestellte (MFA) bzw.
+          ArzthelferIn?</strong
+        >
+      </h2>
+
       <b-btn to="#gehaltsrechner" variant="primary" class="mb-3"
         ><svg
           xmlns="http://www.w3.org/2000/svg"
@@ -1424,6 +1431,44 @@
         Geld auch nicht glücklich, wenn Dir die Aufgaben, der Chef oder das Team
         Bauchschmerzen bereiten und jeden Arbeitstag zur Zumutung werden lassen.
       </p>
+
+      <h2>Häufige Fragen</h2>
+      <h3 class="h5">
+        <strong
+          >Wie viel Gehalt verdient eine Medizinische Fachangestellte (MFA) /
+          ArzthelferIn?</strong
+        >
+      </h3>
+      <p>
+        Das Gehalt einer Medizinischen Fachangestellten / ArzthelferIn liegt bei
+        Berufseinstieg laut aktuellen Gehaltstarifvertrag bei ca. 1.970 Euro /
+        Monat für eine Vollzeitstelle. Mit zunehmender Berufserfahrung und
+        abgeschlossenen Fortbildungen erhöht sich das Gehalt tariflich bis auf
+        über 3.800 Euro / Monat. Im aktuellen Durchschnitt liegt der Verdienst
+        einer MFA / ArzthelferIn bei ca. 2.500 Euro / Monat.
+      </p>
+      <h3 class="h5">
+        <strong>Wie viel verdient mal als MFA netto?</strong>
+      </h3>
+      <p>
+        Das durchschnittliche Nettogehalt einer Medizinischen Fachangestellten
+        (MFA) liegt bei etwa 1.600 bis 1.900 Euro im Monat. Allerdings kann das
+        Nettogehalt je nach Bundesland, Berufserfahrung und Arbeitsplatz
+        variieren.
+      </p>
+      <h3 class="h5">
+        <strong
+          >Wie hoch ist der Stundenlohn für eine Medizinische Fachangestellte
+          (MFA) / ArzthelferIn in 2023?</strong
+        >
+      </h3>
+      <p>
+        Der Stundenlohn im Jahr 2023 für Medizinische Fachangestellte (MFA) /
+        ArzthelferInnen bewegt sich laut Gehaltstarifvertrag je nach
+        Berufserfahrung und erworbenen Qualifikationen durch Fort- und
+        Weiterbildungen zwischen 12,51 €/h und 25,13 €/h.
+      </p>
+
       <div class="checklist border-radius1 shadow1 my-5">
         <h3 class="h4 mb-4">
           Checkliste &ndash; MFA / ArzthelferIn Gehalt einschätzen
@@ -1608,9 +1653,9 @@
     <ScrollTopButton />
 
     <Head
-      :title="`MFA Gehalt & Tarifvertrag 2023 || + Gehaltsrechner`"
+      :title="`MFA Gehalt & Tarifvertrag 2023 ➤ Gehaltsrechner`"
       :desc="
-        `Gehalt als Medizinische Fachangestellte (MFA) | Gehaltstarifvertrag 2023 | Tätigkeitsgruppen || Gehaltsrechner Teilzeit / Vollzeit`
+        `Medizinische Fachangestellte (MFA) Gehalt ✔ Gehaltsrechner Teilzeit | Vollzeit ✔ Gehaltstarifvertrag 2023 ✔ Tätigkeitsgruppen ✔ Berufsjahre ✔ Benefits`
       "
       img="/img/MfaMalAnders_GehaltMfa_x5gq6a_c_scale,w_1200.jpg"
       :script="snippet"
@@ -1704,6 +1749,14 @@
                 "acceptedAnswer": {
                   "@type": "Answer",
                   "text": "Der Stundenlohn im Jahr 2023 für Medizinische Fachangestellte (MFA) / ArzthelferInnen bewegt sich laut Gehaltstarifvertrag je nach Berufserfahrung und erworbenen Qualifikationen durch Fort- und Weiterbildungen zwischen 12,51 €/h und 25,13 €/h."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Wie viel verdient man als MFA netto?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Das durchschnittliche Nettogehalt einer Medizinischen Fachangestellten (MFA) liegt bei etwa 1.600 bis 1.900 Euro im Monat. Allerdings kann das Nettogehalt je nach Bundesland, Berufserfahrung und Arbeitsplatz variieren."
                 }
               }]
             }`

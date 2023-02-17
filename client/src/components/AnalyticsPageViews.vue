@@ -53,6 +53,24 @@
                 this.dateTo.toISOString().split("T")[0]
             }
           });
+          // const res = await this.$axios.get(
+          //   "/api/analytics/ga4/get-page-views",
+          //   {
+          //     params: {
+          //       pageUrlStartingString: this.url,
+          //       // method: "VisitsSummary.getVisits",
+          //       // segment: `pageUrl=@${this.url}`,
+          //       // day: this.day.toISOString().split("T")[0],
+          //       // period: this.period,
+          //       startDate: this.dateFrom.toISOString().split("T")[0],
+          //       endDate: this.dateTo.toISOString().split("T")[0]
+          //       // date:
+          //       //   this.dateFrom.toISOString().split("T")[0] +
+          //       //   "," +
+          //       //   this.dateTo.toISOString().split("T")[0]
+          //     }
+          //   }
+          // );
 
           this.pageViews = res.data.value;
         } catch (error) {
