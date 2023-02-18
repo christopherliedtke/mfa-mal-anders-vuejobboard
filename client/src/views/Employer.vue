@@ -221,18 +221,40 @@
               </span>
               <div>
                 Wählen Sie aus unseren
-                <span class="text-secondary" style="font-weight: 600"
-                  >Stellenpaketen</span
+                <b-link
+                  to="#preise"
+                  class="text-secondary"
+                  style="font-weight: 600"
+                  >Stellenpaketen</b-link
                 >
                 – von
                 <span class="text-secondary" style="font-weight: 600"
                   >Basis</span
                 >
                 bis
-                <span class="text-secondary" style="font-weight: 600"
+                <b-link
+                  to="#professional"
+                  class="text-secondary"
+                  style="font-weight: 600"
                   >Professional mit individueller Werbekampagne für Ihren
-                  Standort</span
-                >
+                  Standort<svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="12"
+                    height="12"
+                    fill="currentColor"
+                    class="bi bi-box-arrow-up-right position-relative"
+                    style="top: -0.3em; margin-left: 2px"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"
+                    />
+                    <path
+                      fill-rule="evenodd"
+                      d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
+                    /></svg
+                ></b-link>
               </div>
             </li>
             <!-- <li class="d-flex">
@@ -280,7 +302,7 @@
               variant="outline-light"
               size="lg"
               class="d-block d-md-inline-block my-2 mr-md-2"
-              >Tipps für Ihre Stellenanzeige</b-button
+              >Muster Stellenanzeige + 8 Tipps</b-button
             >
           </div>
         </div>
@@ -453,7 +475,7 @@
             <h4 class="bold mt-2 mb-3">Maximieren Sie Ihre Reichweite</h4>
             <p>
               Erhöhen Sie Ihre Chancen auf passende BewerberInnen mit
-              <strong>relevanter Reichweite auf </strong>
+              <strong>zielgerichteter Reichweite auf </strong>
               <b-link to="/stellenangebote"
                 ><strong>MFA mal anders</strong></b-link
               >, Google,
@@ -510,7 +532,7 @@
             variant="outline-secondary"
             size="lg"
             class="d-block d-lg-inline-block mx-1 my-1"
-            >Tipps für Stellenanzeigen</b-button
+            >Muster Stellenanzeige + 8 Tipps</b-button
           >
           <b-button
             href="#mehr-informationen"
@@ -528,6 +550,14 @@
           >
         </div>
       </div>
+    </div>
+
+    <div class="container mb-4 mb-lg-5">
+      <h2 class="text-center">Feedback</h2>
+      <h3 class="display-4 text-center bold mb-4 mb-lg-5">
+        Was unsere Kunden sagen
+      </h3>
+      <TheTestimonials />
     </div>
 
     <div class="container-fluid bg-light-shade py-4 py-lg-5 px-0 mb-4">
@@ -612,19 +642,69 @@
       </div>
     </div>
 
-    <div class="container mb-4 mb-lg-5">
-      <h2 class="text-center">Feedback</h2>
-      <h3 class="display-4 text-center bold mb-4 mb-lg-5">
-        Was unsere Kunden sagen
-      </h3>
-      <TheTestimonials />
-    </div>
-
-    <div id="numbers-and-facts2" class="container mb-5 py-md-5">
+    <div id="numbers-and-facts2" class="container mb-3 py-3 py-md-5">
       <h2 class="h1 text-center bold mb-4">
         Ein paar Zahlen und Fakten
       </h2>
       <TheNumbersAndFacts class="mt-5" />
+    </div>
+
+    <div id="tipps-stellenanzeigen" class="container mb-5">
+      <h2 class="display-4 bold mb-2">
+        MFA Stellenanzeige – Muster
+      </h2>
+      <h3 class="h4">
+        + 8 Tipps &ndash; Attraktive Stellenanzeige für Medizinische
+        Fachangestellte (MFA) & Zahnmedizinische Fachangestellte (ZFA)
+      </h3>
+      <p>
+        Ihre Stellenanzeige ist eine Einladung für BewerberInnen zum Dialog –
+        denn bestenfalls wird daraus ein Vorstellungsgespräch. Eine gute
+        Stellenausschreibung beschreibt nicht nur die zu besetzende Stelle,
+        sondern geht auch auf die Bedürfnisse der Zielgruppe ein. Machen Sie ein
+        Angebot, dass so attraktiv ist, dass man nicht anders kann, als sich zu
+        bewerben!
+      </p>
+      <p>
+        Durch unsere Arbeit hatten wir die Gelegenheit eine Vielzahl von
+        Bewerbungsprozessen zu begleiten und aus erster Hand zu erfahren, was
+        bei potentiellen BewerberInnen ankommt und was nicht. Deshalb geben wir
+        hier eine kleine Übersicht an Tipps, die wir Ihnen ans Herz legen
+        möchten. Zusätzlich können Sie sich unsere
+        <b-link
+          href="/downloads/MfaMalAnders_Beispiel_Stellenanzeige.pdf"
+          target="_blank"
+          ><strong
+            >Muster Stellenanzeige für MFA | ZFA | ArzthelferIn</strong
+          ></b-link
+        >
+        zur Inspiration ansehen.
+      </p>
+
+      <div class="d-flex justify-content-center mt-4 mb-5">
+        <b-button
+          variant="primary"
+          href="/downloads/MfaMalAnders_Beispiel_Stellenanzeige.pdf"
+          target="_blank"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-download mr-2"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"
+            />
+            <path
+              d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"
+            /></svg
+          >MFA Stellenanzeige Muster | Download</b-button
+        >
+      </div>
+
+      <TheJobAdTipsList class="my-4" />
     </div>
 
     <div id="professional" class="container my-4 my-md-5">
@@ -862,48 +942,6 @@
           >
         </p>
       </div>
-    </div>
-
-    <div id="tipps-stellenanzeigen" class="container mb-5">
-      <h2 class="bold mb-4">
-        8 Tipps &ndash; Attraktive Stellenanzeigen für Medizinische
-        Fachangestellte (MFA) & Zahnmedizinische Fachangestellte (ZFA)
-      </h2>
-      <p>
-        Ihre Stellenanzeige ist eine Einladung für BewerberInnen zum Dialog –
-        denn bestenfalls wird daraus ein Vorstellungsgespräch. Eine gute
-        Stellenanzeige beschreibt nicht nur die zu besetzende Stelle, sondern
-        geht auch auf die Bedürfnisse der Zielgruppe ein. Machen Sie ein
-        Angebot, dass so attraktiv ist, dass man nicht anders kann, als sich zu
-        bewerben!
-      </p>
-      <p>
-        Durch unsere Arbeit hatten wir die Gelegenheit eine Vielzahl von
-        Bewerbungsprozessen zu begleiten und aus erster Hand zu erfahren, was
-        bei potentiellen BewerberInnen ankommt und was nicht. Deshalb geben wir
-        hier eine kleine Übersicht an Tipps, die wir Ihnen ans Herz legen
-        möchten. Zusätzlich können Sie sich unsere
-        <b-link
-          href="/downloads/MfaMalAnders_Beispiel_Stellenanzeige.pdf"
-          target="_blank"
-          ><strong
-            >Beispiel & Muster Stellenanzeige für MFA | ZFA |
-            ArzthelferIn</strong
-          ></b-link
-        >
-        zur Inspiration ansehen.
-      </p>
-
-      <div class="d-flex justify-content-center mt-4 mb-5">
-        <b-button
-          variant="primary"
-          href="/downloads/MfaMalAnders_Beispiel_Stellenanzeige.pdf"
-          target="_blank"
-          >Download Muster-Stellenanzeige</b-button
-        >
-      </div>
-
-      <TheJobAdTipsList class="my-4" />
     </div>
 
     <div id="faq" class="container mb-5">

@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 const verifyToken = require("../middleware/verifyToken");
 const isAdmin = require("../middleware/verifyToken");
-const { google } = require("googleapis");
+// const { google } = require("googleapis");
 
 // #route:  GET /api/analytics/get-data
 // #desc:   Get page views from matomo
