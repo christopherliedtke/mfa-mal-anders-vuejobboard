@@ -982,9 +982,9 @@
     <ScrollTopButton />
 
     <Head
-      :title="`ZFA Gehalt & Tarifvertrag 2023 ➤ Gehaltsrechner`"
+      :title="`ZFA Gehalt & Tarifvertrag 2023 || Gehaltsrechner`"
       :desc="
-        `Zahnmedizinische Fachangestellte (ZFA) Gehalt ✔ Gehaltsrechner TZ | VZ ✔ Gehaltstarifvertrag 2023 ✔ Tätigkeitsgruppen ✔ Berufsjahre ✔ Benefits`
+        `Zahnmedizinische Fachangestellte (ZFA) Gehalt || Gehaltsrechner TZ | VZ ✅ Gehaltstarifvertrag 2023 ✅ Tätigkeitsgruppen ✅ Berufsjahre ✅ Benefits`
       "
       img="/img/MfaMalAnders_GehaltZfa_hkucp5_c_scale,w_1200.jpg"
       :script="snippet"

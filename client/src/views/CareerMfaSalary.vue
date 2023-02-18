@@ -1653,9 +1653,9 @@
     <ScrollTopButton />
 
     <Head
-      :title="`MFA Gehalt & Tarifvertrag 2023 ➤ Gehaltsrechner`"
+      :title="`MFA Gehalt & Tarifvertrag 2023 || Gehaltsrechner`"
       :desc="
-        `Medizinische Fachangestellte (MFA) Gehalt ✔ Gehaltsrechner Teilzeit | Vollzeit ✔ Gehaltstarifvertrag 2023 ✔ Tätigkeitsgruppen ✔ Berufsjahre ✔ Benefits`
+        `Medizinische Fachangestellte (MFA) Gehalt || Gehaltsrechner Teilzeit | Vollzeit ✅ Gehaltstarifvertrag 2023 ✅ Tätigkeitsgruppen ✅ Berufsjahre ✅ Benefits`
       "
       img="/img/MfaMalAnders_GehaltMfa_x5gq6a_c_scale,w_1200.jpg"
       :script="snippet"

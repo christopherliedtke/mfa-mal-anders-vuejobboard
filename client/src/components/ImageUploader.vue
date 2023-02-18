@@ -28,7 +28,13 @@
     </div>
     <b-form-invalid-feedback :state="success">
       Das Bild muss im Format *.jpg oder *.png hochgeladen werden und darf
-      maximal 5MB groß sein.
+      maximal 5MB groß sein. Nutzen Sie z.B.
+      <a
+        href="https://www.img2go.com/de/bild-komprimieren"
+        target="_blank"
+        class="text-secondary"
+        ><u>img2go</u></a
+      >, um Ihr Bild zu verkleinern.
     </b-form-invalid-feedback>
   </div>
 </template>
