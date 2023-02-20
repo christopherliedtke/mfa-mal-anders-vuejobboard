@@ -88,6 +88,9 @@ class Cache {
             updatedAt: new Date(
               job.publishDate ? job.publishDate[0] : ""
             ).getTime(),
+            paidExpiresAt:
+              new Date(job.publishDate ? job.publishDate[0] : "").getTime() +
+              1000 * 60 * 60 * 24 * 30,
             contactEmail:
               job.contact && job.contact[0].email
                 ? job.contact[0].email[0]

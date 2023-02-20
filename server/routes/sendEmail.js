@@ -376,8 +376,10 @@ router.post("/contact-jobseek", verifyToken, async (req, res) => {
     // get jobSeek
     const jobSeek = await JobSeek.findOne({ _id: req.body.jobSeekId }).populate(
       "user",
-      "email"
+      "_id email"
     );
+
+    console.info("jobSeek: ", jobSeek);
 
     if (!jobSeek) {
       throw new Error(
