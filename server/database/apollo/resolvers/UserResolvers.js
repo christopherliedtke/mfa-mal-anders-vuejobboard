@@ -751,7 +751,15 @@ const UserResolvers = {
 
       // return { _id: jobSeek.user };
 
+      // if (!jobSeek.user) {
+      //   return null;
+      // }
+
       const user = await User.findOne({ _id: jobSeek.user });
+
+      if (!user) {
+        return { _id: null };
+      }
 
       delete user.password;
 
