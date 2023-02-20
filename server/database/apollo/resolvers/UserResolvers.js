@@ -749,13 +749,13 @@ const UserResolvers = {
         throw new AuthenticationError("Missing permission!");
       }
 
-      return { _id: jobSeek.user };
+      // return { _id: jobSeek.user };
 
-      // const user = await User.findOne({ _id: jobSeek.user });
+      const user = await User.findOne({ _id: jobSeek.user });
 
-      // delete user.password;
+      delete user.password;
 
-      // return user;
+      return user;
     },
   },
 };
