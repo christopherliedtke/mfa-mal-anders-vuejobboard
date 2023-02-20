@@ -749,21 +749,38 @@ const UserResolvers = {
         throw new AuthenticationError("Missing permission!");
       }
 
+      if (
+        jobSeek.user instanceof Object &&
+        jobSeek.user instanceof mongoose.Types.ObjectId === false
+      ) {
+        return jobSeek.user;
+      } else if (!jobSeek.user) {
+        return { _id: "0" };
+      }
+
+      const user = await User.findOne({
+        _id: jobSeek.user,
+      });
+
+      delete user.password;
+
+      return user;
+
       // return { _id: jobSeek.user };
 
       // if (!jobSeek.user) {
       //   return null;
       // }
 
-      const user = await User.findOne({ _id: jobSeek.user });
+      // const user = await User.findOne({ _id: jobSeek.user });
 
-      if (!user) {
-        return { _id: null };
-      }
+      // if (!user) {
+      //   return { _id: "0" };
+      // }
 
-      delete user.password;
+      // delete user.password;
 
-      return user;
+      // return user;
     },
   },
 };
