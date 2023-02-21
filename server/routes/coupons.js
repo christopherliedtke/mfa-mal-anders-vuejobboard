@@ -21,6 +21,8 @@ router.get(
         );
       }
 
+      console.info(`Validating promotion code: "${code}"`);
+
       if (!code) {
         throw new Error("Kein Aktionscode eingegeben.");
       }
