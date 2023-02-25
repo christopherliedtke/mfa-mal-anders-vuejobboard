@@ -141,6 +141,7 @@ app.use(express.json());
 
 // # Routes w/o csrf protection && cors protection
 app.use("/api/version", require("./routes/version"));
+app.use("/api/feeds", require("./routes/feeds"));
 
 // #Express Session
 app.use(
