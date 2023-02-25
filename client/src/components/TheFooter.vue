@@ -41,13 +41,13 @@
                 <li>
                   <a href="https://de.jooble.org/" target="_blank">Jooble</a>
                 </li>
-                <li>
+                <!-- <li>
                   <a
                     href="https://www.metajob.de/?mfu=3BAZMQM6pf9BRHp"
                     target="_blank"
                     >MetaJob</a
                   >
-                </li>
+                </li> -->
               </ul>
             </div>
           </div>
