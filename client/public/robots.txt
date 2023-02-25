@@ -1,9 +1,11 @@
 User-Agent: *
 
-Disallow:: /impressum
-Disallow:: /datenschutz
-Disallow:: /agbs
-Disallow:: /kontakt
-Disallow:: /auth/login
-Disallow:: /auth/register
-Disallow:: /auth/password-reset
+Disallow: /impressum
+Disallow: /datenschutz
+Disallow: /agbs
+Disallow: /kontakt
+Disallow: /auth/login
+Disallow: /auth/register
+Disallow: /auth/password-reset
+Disallow: /auth/password-reset
+Disallow: /kurzbewerbung

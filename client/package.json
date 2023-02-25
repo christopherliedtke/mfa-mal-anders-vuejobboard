@@ -1,6 +1,6 @@
 {
   "name": "mfa-mal-anders",
-  "version": "2.1.77",
+  "version": "2.1.78",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
