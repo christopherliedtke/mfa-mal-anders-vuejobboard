@@ -11,9 +11,10 @@
           <b-button block to="/stellenangebote"
             >📬 Aktuelle Stellenangebote</b-button
           >
-          <b-button block to="/karriere/jobs-und-berufsbilder"
+          <b-button block to="/fuer-arbeitgeber">🏥 Für Arbeitgeber</b-button>
+          <!-- <b-button block to="/karriere/jobs-und-berufsbilder"
             >💼 50+ Alternative Jobmöglichkeiten</b-button
-          >
+          > -->
           <b-button block to="/karriere/mfa/gehalt"
             >🧮 MFA Gehaltsrechner</b-button
           >
@@ -26,8 +27,7 @@
           <b-button block to="/fortbildungskatalog"
             >📆 Fortbildungskatalog</b-button
           >
-          <b-button block to="/blog">📰 Blog</b-button>
-          <b-button block to="/fuer-arbeitgeber">🏥 Für Arbeitgeber</b-button>
+          <!-- <b-button block to="/blog">📰 Blog</b-button> -->
         </nav>
       </div>
     </div>

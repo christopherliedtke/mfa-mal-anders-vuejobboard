@@ -5,33 +5,31 @@
       :key="testimonial.company"
       class="col-12 col-lg-6 mb-4"
     >
-      <div class="position-relative bg-light-shade border-radius2 shadow1 p-5">
+      <div class="position-relative bg-light-shade border-radius2 shadow1 p-4">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="150"
           height="150"
           viewBox="0 0 512 512"
           class="position-absolute text-primary icon-transparent"
-          style="right: 0; top: 0; transform: translate(-25%, 70%)"
+          style="right: 0; bottom: 0; transform: translate(-25%, -20%)"
         >
           <path
             fill="currentColor"
             d="M464 32H336c-26.5 0-48 21.5-48 48v128c0 26.5 21.5 48 48 48h80v64c0 35.3-28.7 64-64 64h-8c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h8c88.4 0 160-71.6 160-160V80c0-26.5-21.5-48-48-48zm-288 0H48C21.5 32 0 53.5 0 80v128c0 26.5 21.5 48 48 48h80v64c0 35.3-28.7 64-64 64h-8c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h8c88.4 0 160-71.6 160-160V80c0-26.5-21.5-48-48-48z"
           ></path>
         </svg>
-        <div class="row">
-          <div class="col-12 d-flex justify-content-center py-2 px-4">
-            <b-img-lazy
-              class="rounded-circle shadow1"
-              height="100"
-              :src="testimonial.imgUrl"
-              :alt="`Bild von ${testimonial.company} | ${testimonial.name}`"
-            />
-          </div>
-          <div class="col-12 pt-2">
-            <p>
-              {{ testimonial.text }}
-            </p>
+
+        <div class="p-3">
+          <div class="d-flex align-items-center mb-4">
+            <div class="mr-4">
+              <b-img-lazy
+                class="rounded-circle shadow1"
+                height="70"
+                :src="testimonial.imgUrl"
+                :alt="`Bild von ${testimonial.company} | ${testimonial.name}`"
+              />
+            </div>
             <div>
               <p class="h6 mb-1">
                 <strong>{{ testimonial.name }}</strong> |
@@ -41,6 +39,9 @@
               </p>
             </div>
           </div>
+          <p class="mb-0">
+            {{ testimonial.text }}
+          </p>
         </div>
       </div>
     </div>

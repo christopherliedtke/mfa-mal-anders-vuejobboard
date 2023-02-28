@@ -25,13 +25,12 @@
             }}
             gesucht?
           </h2>
-          <h3 class="">
+          <h3 class="" style="font-weight: 400">
             <em>
-              Die reichweitenstärkste Karriereplattform
               <span class="text-secondary"
-                >mit&nbsp;155.000+&nbsp;monatl. Seitenaufrufen</span
+                >155.000+&nbsp;monatl. Seitenaufrufen</span
               >
-              speziell für Medizinische Fachangestellte | Zahnmedizinische
+              speziell von Medizinische Fachangestellte | Zahnmedizinische
               Fachangestellte
             </em>
           </h3>
@@ -76,12 +75,13 @@
                 </svg>
               </span>
               <div>
+                Erreichen Sie exklusiv
                 <span class="text-secondary" style="font-weight: 600"
-                  >Erreichen Sie mehr engagierte MFA & ZFA</span
+                  >engagierte MFA & ZFA</span
                 >
-                über Ihre Stellenanzeige auf <em>MFA mal anders</em> (inkl.
+                <!-- über Ihre Stellenanzeige auf <em>MFA mal anders</em> (inkl.
                 Platzierung in unserem wöchentlichen Job-Newsletter sowie auf
-                Google, Google Jobs und Social Media)
+                Google, Google Jobs und Social Media) -->
               </div>
             </li>
             <li class="d-flex mb-2">
@@ -101,15 +101,15 @@
                 </svg>
               </span>
               <div>
-                <span class="text-secondary" style="font-weight: 600"
+                <!-- <span class="text-secondary" style="font-weight: 600"
                   >Nehmen Sie</span
                 >
-                exklusiv und direkt über unsere Stellengesuche
+                exklusiv und direkt über unsere Stellengesuche -->
                 <b-link
                   to="/stellengesuche"
                   class="text-secondary"
                   style="font-weight: 600"
-                  >Kontakt zu suchenden MFA & ZFA<svg
+                  >Direkt Kontakt<svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="12"
                     height="12"
@@ -127,7 +127,8 @@
                       d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
                     /></svg
                 ></b-link>
-                auf
+                zu suchenden MFA & ZFA aufnehmen
+                <!-- auf -->
               </div>
             </li>
             <li class="d-flex mb-2">
@@ -147,10 +148,8 @@
                 </svg>
               </span>
               <div>
-                <span class="text-secondary" style="font-weight: 600"
-                  >Erhalten Sie mehr passende KandidatInnen</span
-                >
-                mit der optionalen
+                <span class="text-light">Mehr KandidatInnen mit unserer </span>
+
                 <b-link
                   to="#kurzbewerbung"
                   class="text-secondary"
@@ -220,16 +219,12 @@
                 </svg>
               </span>
               <div>
-                Wählen Sie aus unseren
+                Stellenpakete – von
                 <b-link
                   to="#preise"
                   class="text-secondary"
                   style="font-weight: 600"
-                  >Stellenpaketen</b-link
-                >
-                – von
-                <span class="text-secondary" style="font-weight: 600"
-                  >Basis</span
+                  >Basis</b-link
                 >
                 bis
                 <b-link
@@ -284,11 +279,11 @@
 
           <div class="my-3">
             <b-button
-              to="/auth/register"
+              to="#vorteile"
               variant="secondary"
               size="lg"
               class="d-block d-md-inline-block my-2 mr-md-2"
-              >Jetzt Stellenanzeige schalten</b-button
+              >Mehr erfahren</b-button
             >
             <b-button
               href="#preise"
@@ -323,7 +318,7 @@
         Die Jobbörse speziell für Medizinische Fachangestellte&nbsp;& <br />
         Zahnmedizinische Fachangestellte
       </p>
-      <p>
+      <!-- <p>
         MFA mal anders ist keine weitere beliebige Stellenbörse, hinter der eine
         Marketingagentur steckt, die Ihnen Kampagnen für Ihre unbesetzten
         Stellen verkauft. Wir sind eine
@@ -336,7 +331,7 @@
         aber auch auf Seiten der Arbeitgeber brennt. Heute ist es schwieriger
         denn je, qualifiziertes Praxispersonal zu finden. Wir helfen Ihnen bei
         der Suche!
-      </p>
+      </p> -->
 
       <div
         class="row row-cols-1 row-cols-lg-2 my-4 my-md-5 justify-content-center"
@@ -472,9 +467,9 @@
                 d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"
               />
             </svg>
-            <h4 class="bold mt-2 mb-3">Maximieren Sie Ihre Reichweite</h4>
+            <h4 class="bold mt-2 mb-3">Erhöhen Sie Ihre Reichweite</h4>
             <p>
-              Erhöhen Sie Ihre Chancen auf passende BewerberInnen mit
+              Steigern Sie Ihre Chancen auf passende BewerberInnen mit
               <strong>zielgerichteter Reichweite auf </strong>
               <b-link to="/stellenangebote"
                 ><strong>MFA mal anders</strong></b-link
@@ -565,7 +560,14 @@
         <h2 class=" display-4 bold text-center">
           Unsere Stellenpakete
         </h2>
-        <div class="my-4  text-center text-lg-left">
+        <p
+          class="h3 d-block mx-auto text-center mb-4 mb-lg-g"
+          style="font-weight: 400; max-width: 35em"
+        >
+          Zur Veröffentlichung Ihrer Stellenanzeige stehen folgende
+          Stellenpakete zur Verfügung.
+        </p>
+        <!-- <div class="my-4  text-center text-lg-left">
           <p>
             Mit der
             <strong><b-link to="/stellenangebote">Stellenbörse</b-link></strong>
@@ -594,7 +596,7 @@
               >Kontaktformular</b-link
             >.
           </p>
-        </div>
+        </div> -->
 
         <div v-if="pricingPackages" class="row row-cols-1 row-cols-lg-3 mb-4">
           <div
@@ -612,18 +614,34 @@
           </div>
         </div>
 
-        <!-- <p>
+        <p>
+          <b-link to="/auth/register"><strong>Registrieren</strong></b-link> Sie
+          sich, um Ihre Stellenanzeige individuell selbst einzustellen und
+          jederzeit anpassen zu können. Sie sind bereits registriert? Sie können
+          sich hier <b-link to="/auth/login"><strong>anmelden</strong></b-link
+          >.
+        </p>
+        <p>
+          <strong>Alternativ</strong> senden Sie uns Ihre Stellenanzeige an
+          <b-link
+            href="mailto:stellenanzeigen@mfa-mal-anders.de?subject=Veröffentlichung meine Stellenanzeige auf MFA mal anders&body=[Bitte fügen Sie folgendes bei: Gewähltes Stellenpaket (Basis, Standard, Professional), Stellentitel, Stellenbeschreibung, Anstellungsart (Vollzeit/Teilzeit/520€/Ausbildung), Kurzbewerbung (ja/nein), E-Mail Adresse für Bewerbungen, Unternehmensname, Straße + Hausnr., PLZ, Ort, (optional: Unternehmenswebseite, Logo, Titelbild für Stellenanzeige, Gehaltsspanne, Kontaktdaten für Nachfragen, abweichende Rechnungsadresse)]"
+            ><strong>stellenanzeigen@mfa-mal-anders.de</strong></b-link
+          >
+          und wir veröffentlichen diese schnell und ohne Aufpreis für Sie.
+        </p>
+
+        <p>
           <strong
             >Gern bieten wir Ihnen nach Absprache auch individuelle Pakete
             an</strong
           >, wenn Sie beispielsweise eine Stellenanzeige dauerhaft bei uns
-          schalten oder eine zusätzliche Marketingkampagne (Google, Facebook,
-          Instagram) schalten möchten. Kontaktieren Sie uns dazu gern über unser
+          schalten oder größere Kontingente buchen möchten. Kontaktieren Sie uns
+          dazu gern über unser
           <router-link to="/kontakt?role=employer&subject=Stellenpakete"
             ><strong>Kontaktformular</strong></router-link
           >.
         </p>
-        <p>
+        <!-- <p>
           Sie haben die Möglichkeit, Ihre Stellenanzeige nach der
           <b-link to="/auth/register"><strong>Registrierung</strong></b-link>
           auf unserem Portal zu erstellen und in einer Vorschau zu betrachten.
