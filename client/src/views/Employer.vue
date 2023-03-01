@@ -30,8 +30,8 @@
               <span class="text-secondary"
                 >155.000+&nbsp;monatl. Seitenaufrufen</span
               >
-              speziell von Medizinische Fachangestellte | Zahnmedizinische
-              Fachangestellte
+              speziell von Medizinischen Fachangestellten | Zahnmedizinischen
+              Fachangestellten
             </em>
           </h3>
           <ul class="lead no-bullets my-4 mt-lg-5">
@@ -81,6 +81,7 @@
                 <span class="text-secondary" style="font-weight: 600"
                   >engagierte MFA & ZFA</span
                 >
+                auf unserer Karriereplattform
                 <!-- über Ihre Stellenanzeige auf <em>MFA mal anders</em> (inkl.
                 Platzierung in unserem wöchentlichen Job-Newsletter sowie auf
                 Google, Google Jobs und Social Media) -->
@@ -293,7 +294,7 @@
                 width="18"
                 height="18"
                 fill="currentColor"
-                class="bi bi-egg-fill mb-1"
+                class="bi bi-egg-fill mb-1 mr-1"
                 viewBox="0 0 16 16"
               >
                 <path
@@ -613,7 +614,7 @@
               width="18"
               height="18"
               fill="currentColor"
-              class="bi bi-egg-fill mb-1"
+              class="bi bi-egg-fill mb-1 mr-1"
               viewBox="0 0 16 16"
             >
               <path

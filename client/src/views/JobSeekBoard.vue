@@ -375,7 +375,7 @@
         }`
       "
       :desc="
-        `Stellengesuche von Medizinische Fachangestellte (MFA) | Zahnmedizinische Fachangestellte (ZFA) ${
+        `Stellengesuche von Medizinische Fachangestellte (MFA) | Zahnmedizinische Fachangestellte (ZFA)${
           filter.ort ? ' in ' + filter.ort + ' & Umgebung' : ''
         } ✓ Teilzeit | Vollzeit`
       "
