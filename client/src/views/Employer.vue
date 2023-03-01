@@ -65,12 +65,14 @@
                   width="25"
                   height="25"
                   fill="currentColor"
-                  class="bi bi-check-lg mr-3"
-                  style="vertical-align: top;"
+                  class="bi bi-check2-circle mr-3"
                   viewBox="0 0 16 16"
                 >
                   <path
-                    d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"
+                    d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"
+                  />
+                  <path
+                    d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"
                   />
                 </svg>
               </span>
@@ -91,12 +93,14 @@
                   width="25"
                   height="25"
                   fill="currentColor"
-                  class="bi bi-check-lg mr-3"
-                  style="vertical-align: top;"
+                  class="bi bi-check2-circle mr-3"
                   viewBox="0 0 16 16"
                 >
                   <path
-                    d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"
+                    d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"
+                  />
+                  <path
+                    d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"
                   />
                 </svg>
               </span>
@@ -138,12 +142,14 @@
                   width="25"
                   height="25"
                   fill="currentColor"
-                  class="bi bi-check-lg mr-3"
-                  style="vertical-align: top;"
+                  class="bi bi-check2-circle mr-3"
                   viewBox="0 0 16 16"
                 >
                   <path
-                    d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"
+                    d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"
+                  />
+                  <path
+                    d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"
                   />
                 </svg>
               </span>
@@ -209,12 +215,14 @@
                   width="25"
                   height="25"
                   fill="currentColor"
-                  class="bi bi-check-lg mr-3"
-                  style="vertical-align: top;"
+                  class="bi bi-check2-circle mr-3"
                   viewBox="0 0 16 16"
                 >
                   <path
-                    d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"
+                    d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"
+                  />
+                  <path
+                    d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"
                   />
                 </svg>
               </span>
@@ -277,6 +285,30 @@
             </li> -->
           </ul>
 
+          <div class="lead py-2">
+            Mit unserer
+            <span class="bold"
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                fill="currentColor"
+                class="bi bi-egg-fill mb-1"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M14 10a6 6 0 0 1-12 0C2 5.686 5 0 8 0s6 5.686 6 10z"
+                /></svg
+              >Oster-Aktion</span
+            >* erhalten Sie aktuell einen
+            <span class="bold">Rabatt von 15%</span>. Geben Sie einfach bei der
+            Veröffentlichung Ihrer Stellenanzeige den Aktionscode
+            <span class="bg-secondary px-1 bold border-radius1 "
+              >OSTEREI23</span
+            >
+            an.
+          </div>
+
           <div class="my-3">
             <b-button
               to="#vorteile"
@@ -300,6 +332,9 @@
               >Muster Stellenanzeige + 8 Tipps</b-button
             >
           </div>
+          <p class="text-right mb-0">
+            <small>* Die Osteraktion läuft bis zum 16. April 2023.</small>
+          </p>
         </div>
         <div
           class="col-12 col-lg-4 d-none d-lg-flex justify-content-center align-items-center"
@@ -557,16 +592,40 @@
 
     <div class="container-fluid bg-light-shade py-4 py-lg-5 px-0 mb-4">
       <div id="preise" class="container">
-        <h2 class=" display-4 bold text-center">
+        <h2 class=" display-4 bold text-center mb-4">
           Unsere Stellenpakete
         </h2>
-        <p
+        <!-- <p
           class="h3 d-block mx-auto text-center mb-4 mb-lg-g"
           style="font-weight: 400; max-width: 35em"
         >
           Zur Veröffentlichung Ihrer Stellenanzeige stehen folgende
           Stellenpakete zur Verfügung.
-        </p>
+        </p> -->
+
+        <div
+          class="bg-primary text-light lead text-center p-2 border-radius2 mb-4"
+        >
+          Mit unserer
+          <span class="bold"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              fill="currentColor"
+              class="bi bi-egg-fill mb-1"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M14 10a6 6 0 0 1-12 0C2 5.686 5 0 8 0s6 5.686 6 10z"
+              /></svg
+            >Oster-Aktion</span
+          >* erhalten Sie aktuell einen
+          <span class="bold">Rabatt von 15%</span>. Geben Sie einfach bei der
+          Veröffentlichung Ihrer Stellenanzeige den Aktionscode
+          <span class="bg-secondary px-1 bold border-radius1 ">OSTEREI23</span>
+          an.
+        </div>
         <!-- <div class="my-4  text-center text-lg-left">
           <p>
             Mit der
@@ -622,9 +681,10 @@
           >.
         </p>
         <p>
-          <strong>Alternativ</strong> senden Sie uns Ihre Stellenanzeige an
+          <strong>Sie möchten sich nicht registrieren?</strong> Alternativ
+          senden Sie uns Ihre Stellenanzeige an
           <b-link
-            href="mailto:stellenanzeigen@mfa-mal-anders.de?subject=Veröffentlichung meine Stellenanzeige auf MFA mal anders&body=[Bitte fügen Sie folgendes bei: Gewähltes Stellenpaket (Basis, Standard, Professional), Stellentitel, Stellenbeschreibung, Anstellungsart (Vollzeit/Teilzeit/520€/Ausbildung), Kurzbewerbung (ja/nein), E-Mail Adresse für Bewerbungen, Unternehmensname, Straße + Hausnr., PLZ, Ort, (optional: Unternehmenswebseite, Logo, Titelbild für Stellenanzeige, Gehaltsspanne, Kontaktdaten für Nachfragen, abweichende Rechnungsadresse)]"
+            href="mailto:stellenanzeigen@mfa-mal-anders.de?subject=Veröffentlichung meine Stellenanzeige auf MFA mal anders&body=[Bitte fügen Sie folgendes bei: Gewähltes Stellenpaket (Basis, Standard, Professional), Stellentitel, Stellenbeschreibung, Anstellungsart (Vollzeit/Teilzeit/520€/Ausbildung), E-Mail Adresse für Bewerbungen, Unternehmensname, Arbeitsort (Straße + Hausnr., PLZ, Ort), Rechnungsadresse | (optional: Unternehmenswebseite, Unternehmenslogo, Titelbild für Stellenanzeige, Kurzbewerbung (ja/nein), Gehaltsspanne, Kontaktdaten für Bewerber-Rückfragen (E-Mail, Telefonnummer, Name), Aktionscode)]"
             ><strong>stellenanzeigen@mfa-mal-anders.de</strong></b-link
           >
           und wir veröffentlichen diese schnell und ohne Aufpreis für Sie.
@@ -640,6 +700,9 @@
           <router-link to="/kontakt?role=employer&subject=Stellenpakete"
             ><strong>Kontaktformular</strong></router-link
           >.
+        </p>
+        <p class="text-right">
+          <small>* Die Osteraktion läuft bis zum 16. April 2023.</small>
         </p>
         <!-- <p>
           Sie haben die Möglichkeit, Ihre Stellenanzeige nach der
