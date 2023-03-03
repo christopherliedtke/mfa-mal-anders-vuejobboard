@@ -20,6 +20,10 @@ h6,
 a {
   // color: $tertiary;
   transition: $transition1;
+  // text-decoration: underline;
+  // text-decoration-color: $light;
+  // text-decoration-thickness: 0.5em;
+  // text-underline-offset: -0.2em;
 
   &.text-primary {
     &:hover {

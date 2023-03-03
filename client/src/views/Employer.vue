@@ -9,23 +9,26 @@
 
     <div
       id="hero"
-      class="text-light bg-primary shadow1 border-radius2 my-3 mr-2 mr-lg-5 my-lg-5 position-relative"
+      class="text-light bg-primary shadow1 border-radius2 my-3 mr-2 mr-lg-5 my-lg-4 position-relative"
       style="border-top-left-radius: 0; border-bottom-left-radius: 0"
     >
       <div
         style="max-width: 1600px; overflow-x: hidden"
-        class="row px-3 py-5 px-md-5 mx-auto ml-lg-auto position-relative"
+        class="row px-3 pt-5 pb-4 px-md-5 mx-auto ml-lg-auto position-relative"
       >
         <div class="bg-logo"></div>
         <div class="col-12 col-md-9" style="z-index: 1">
-          <h2 class="display-4 bold mb-4">
+          <h2 class="display-4 bold mb-3" style="line-height: 1.1em">
             <em>Motivierte</em> und <em>qualifizierte</em> <br />
-            MFA & ZFA{{
-              $route.query.location ? ` in ${$route.query.location}` : ""
-            }}
+            MFA & ZFA
+            <span>{{
+              $route.query.location
+                ? `in ${$route.query.location.toUpperCase()}`
+                : ""
+            }}</span>
             gesucht?
           </h2>
-          <h3 class="" style="font-weight: 400">
+          <h3 class="d-none d-lg-block" style="font-weight: 300">
             <em>
               <span class="text-secondary"
                 >155.000+&nbsp;monatl. Seitenaufrufen</span
@@ -34,7 +37,7 @@
               Fachangestellten
             </em>
           </h3>
-          <ul class="lead no-bullets my-4 mt-lg-5">
+          <ul class="lead no-bullets my-4 py-2 mt-lg-4">
             <!-- <li class="d-flex mb-2">
               <span>
                 <svg
@@ -286,7 +289,7 @@
             </li> -->
           </ul>
 
-          <div class="lead py-2">
+          <div class="">
             Mit unserer
             <span class="bold"
               ><svg
@@ -310,20 +313,20 @@
             an.
           </div>
 
-          <div class="my-3">
-            <b-button
+          <div class="mt-3">
+            <!-- <b-button
               to="#vorteile"
               variant="secondary"
               size="lg"
               class="d-block d-md-inline-block my-2 mr-md-2"
               >Mehr erfahren</b-button
-            >
+            > -->
             <b-button
               href="#preise"
-              variant="outline-secondary"
+              variant="secondary"
               size="lg"
               class="d-block d-md-inline-block my-2 mr-md-2"
-              >Unsere Stellenpakete</b-button
+              >Stellenpaket wählen</b-button
             >
             <b-button
               href="#tipps-stellenanzeigen"
@@ -333,17 +336,17 @@
               >Muster Stellenanzeige + 8 Tipps</b-button
             >
           </div>
-          <p class="text-right mb-0">
+          <p class="text-xl-right mt-2 mb-0">
             <small>* Die Osteraktion läuft bis zum 16. April 2023.</small>
           </p>
         </div>
-        <div
+        <!-- <div
           class="col-12 col-lg-4 d-none d-lg-flex justify-content-center align-items-center"
-        ></div>
+        ></div> -->
       </div>
     </div>
 
-    <div id="vorteile" class="container my-5 py-3 py-lg-5">
+    <div id="vorteile" class="container mb-5 py-3 pb-lg-5">
       <h2 class="display-4 bold text-center">
         Warum MFA mal anders?
       </h2>
