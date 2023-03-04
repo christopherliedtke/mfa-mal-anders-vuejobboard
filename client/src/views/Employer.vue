@@ -105,7 +105,7 @@
                       : "MFA & ZFA"
                   }}</span
                 >
-                auf unserer Karriereplattform
+                auf unserer etablierte Karriereplattform
                 <!-- über Ihre Stellenanzeige auf <em>MFA mal anders</em> (inkl.
                 Platzierung in unserem wöchentlichen Job-Newsletter sowie auf
                 Google, Google Jobs und Social Media) -->
@@ -156,7 +156,7 @@
                       d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
                     /></svg
                 ></b-link>
-                zu suchenden
+                zu aktiv suchenden
                 {{
                   $route.query.berufsgruppe &&
                   typeof $route.query.berufsgruppe == "string" &&
@@ -427,13 +427,27 @@
               />
               <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
             </svg>
-            <h4 class="bold mt-2 mb-3">Ausschließlich für MFA & ZFA</h4>
+            <h4 class="bold mt-2 mb-3">
+              Speziell für
+              {{
+                $route.query.berufsgruppe &&
+                typeof $route.query.berufsgruppe == "string" &&
+                $route.query.berufsgruppe.toLowerCase() == "mfa"
+                  ? "MFA"
+                  : $route.query.berufsgruppe &&
+                    typeof $route.query.berufsgruppe == "string" &&
+                    $route.query.berufsgruppe.toLowerCase() == "zfa"
+                  ? "ZFA"
+                  : "MFA & ZFA"
+              }}
+            </h4>
             <p>
-              Über eine
+              Über Ihre
               <router-link to="/stellenangebote"
                 ><strong>Stellenanzeige</strong></router-link
               >
-              auf <em>MFA mal anders</em> erreichen Sie
+              auf unserer <em>MFA mal anders</em> Karriereplattform erreichen
+              Sie
               <strong
                 >exklusiv motivierte
                 {{
@@ -484,7 +498,7 @@
               direkt kontaktieren
             </h4>
             <p>
-              Mit Ihrer Stellenanzeige erhalten Sie automatisch
+              Mit Ihrer Stellenanzeige erhalten Sie zusätzlich
               <strong>Zugriff auf</strong>
               hunderte
               <router-link to="/stellengesuche"
@@ -516,11 +530,13 @@
                 d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"
               />
             </svg>
-            <h4 class="bold mt-2 mb-3">Einfach mit Kurzbewerbungen</h4>
+            <h4 class="bold mt-2 mb-3">
+              ++ KandidatInnen mit Kurzbewerbungen
+            </h4>
             <p>
               Mit unserer optionalen
               <b-link to="#kurzbewerbung"><strong>Kurzbewerbung</strong></b-link
-              >-Funktion senken Sie die Hürde zum Abschicken einer Bewerbung und
+              >-Funktion senken Sie die Hürde zum Einreichen einer Bewerbung und
               erhalten so
               <strong>mehr Anfragen passender KandidatInnen</strong>.
             </p>
@@ -565,13 +581,23 @@
                 d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"
               />
             </svg>
-            <h4 class="bold mt-2 mb-3">Erhöhen Sie Ihre Reichweite</h4>
+            <h4 class="bold mt-2 mb-3">
+              Erreichen Sie mehr
+              {{
+                $route.query.berufsgruppe &&
+                typeof $route.query.berufsgruppe == "string" &&
+                $route.query.berufsgruppe.toLowerCase() == "mfa"
+                  ? "MFA"
+                  : $route.query.berufsgruppe &&
+                    typeof $route.query.berufsgruppe == "string" &&
+                    $route.query.berufsgruppe.toLowerCase() == "zfa"
+                  ? "ZFA"
+                  : "MFA & ZFA"
+              }}
+            </h4>
             <p>
-              Steigern Sie Ihre Chancen auf passende BewerberInnen mit
-              <strong>zielgerichteter Reichweite auf </strong>
-              <b-link to="/stellenangebote"
-                ><strong>MFA mal anders</strong></b-link
-              >, Google,
+              Ihre Stellenanzeige wird ausgehend von
+              <em>MFA mal anders</em> zusätzlich auf Google,
               <a
                 href="https://www.google.com/search?q=mfa+mal+anders&ibp=htl;jobs#htivrt=jobs&htilrad=-1.0"
                 target="_blank"
@@ -584,7 +610,8 @@
                 >Facebook</a
               > -->
               und
-              <b-link to="#mehr-informationen">mehr...</b-link>
+              <b-link to="#mehr-informationen">Weiteren</b-link>
+              ausgespielt.
             </p>
           </div>
         </div>

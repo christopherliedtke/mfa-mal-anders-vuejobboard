@@ -35,12 +35,12 @@
                 <strong>{{ testimonial.name }}</strong> |
               </p>
               <p class="mb-0" style="line-height: 1.15">
-                <em class="text-muted">{{ testimonial.company }}</em>
+                <span class="text-muted">{{ testimonial.company }}</span>
               </p>
             </div>
           </div>
           <p class="mb-0">
-            {{ testimonial.text }}
+            <em>{{ testimonial.text }}</em>
           </p>
         </div>
       </div>
@@ -91,7 +91,7 @@
 <style lang="scss" scoped>
   #testimonials {
     .icon-transparent {
-      opacity: 0.065;
+      opacity: 0.075;
     }
   }
 </style>
