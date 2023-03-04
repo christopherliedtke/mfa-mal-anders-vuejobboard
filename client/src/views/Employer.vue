@@ -20,9 +20,19 @@
         <div class="col-12 col-md-9" style="z-index: 1">
           <h2 class="display-4 bold mb-3" style="line-height: 1.1em">
             <em>Motivierte</em> und <em>qualifizierte</em> <br />
-            MFA & ZFA
+            {{
+              $route.query.berufsgruppe &&
+              typeof $route.query.berufsgruppe == "string" &&
+              $route.query.berufsgruppe.toLowerCase() == "mfa"
+                ? "MFA"
+                : $route.query.berufsgruppe &&
+                  typeof $route.query.berufsgruppe == "string" &&
+                  $route.query.berufsgruppe.toLowerCase() == "zfa"
+                ? "ZFA"
+                : "MFA & ZFA"
+            }}
             <span>{{
-              $route.query.location
+              $route.query.location && typeof $route.query.location == "string"
                 ? `in ${$route.query.location.toUpperCase()}`
                 : ""
             }}</span>
@@ -82,7 +92,18 @@
               <div>
                 Erreichen Sie exklusiv
                 <span class="text-secondary" style="font-weight: 600"
-                  >engagierte MFA & ZFA</span
+                  >engagierte
+                  {{
+                    $route.query.berufsgruppe &&
+                    typeof $route.query.berufsgruppe == "string" &&
+                    $route.query.berufsgruppe.toLowerCase() == "mfa"
+                      ? "MFA"
+                      : $route.query.berufsgruppe &&
+                        typeof $route.query.berufsgruppe == "string" &&
+                        $route.query.berufsgruppe.toLowerCase() == "zfa"
+                      ? "ZFA"
+                      : "MFA & ZFA"
+                  }}</span
                 >
                 auf unserer Karriereplattform
                 <!-- über Ihre Stellenanzeige auf <em>MFA mal anders</em> (inkl.
@@ -135,7 +156,19 @@
                       d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
                     /></svg
                 ></b-link>
-                zu suchenden MFA & ZFA aufnehmen
+                zu suchenden
+                {{
+                  $route.query.berufsgruppe &&
+                  typeof $route.query.berufsgruppe == "string" &&
+                  $route.query.berufsgruppe.toLowerCase() == "mfa"
+                    ? "MFA"
+                    : $route.query.berufsgruppe &&
+                      typeof $route.query.berufsgruppe == "string" &&
+                      $route.query.berufsgruppe.toLowerCase() == "zfa"
+                    ? "ZFA"
+                    : "MFA & ZFA"
+                }}
+                aufnehmen
                 <!-- auf -->
               </div>
             </li>
@@ -401,7 +434,20 @@
                 ><strong>Stellenanzeige</strong></router-link
               >
               auf <em>MFA mal anders</em> erreichen Sie
-              <strong>exklusiv motivierte MFA | ZFA | ArzthelferIn</strong>
+              <strong
+                >exklusiv motivierte
+                {{
+                  $route.query.berufsgruppe &&
+                  typeof $route.query.berufsgruppe == "string" &&
+                  $route.query.berufsgruppe.toLowerCase() == "mfa"
+                    ? "MFA"
+                    : $route.query.berufsgruppe &&
+                      typeof $route.query.berufsgruppe == "string" &&
+                      $route.query.berufsgruppe.toLowerCase() == "zfa"
+                    ? "ZFA"
+                    : "MFA | ZFA"
+                }}</strong
+              >
               und damit genau Ihre Zielgruppe.
             </p>
           </div>
@@ -423,7 +469,20 @@
                 d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm-1.993-1.679a.5.5 0 0 0-.686.172l-1.17 1.95-.547-.547a.5.5 0 0 0-.708.708l.774.773a.75.75 0 0 0 1.174-.144l1.335-2.226a.5.5 0 0 0-.172-.686Z"
               />
             </svg>
-            <h4 class="bold mt-2 mb-3">MFA & ZFA direkt kontaktieren</h4>
+            <h4 class="bold mt-2 mb-3">
+              {{
+                $route.query.berufsgruppe &&
+                typeof $route.query.berufsgruppe == "string" &&
+                $route.query.berufsgruppe.toLowerCase() == "mfa"
+                  ? "MFA"
+                  : $route.query.berufsgruppe &&
+                    typeof $route.query.berufsgruppe == "string" &&
+                    $route.query.berufsgruppe.toLowerCase() == "zfa"
+                  ? "ZFA"
+                  : "MFA & ZFA"
+              }}
+              direkt kontaktieren
+            </h4>
             <p>
               Mit Ihrer Stellenanzeige erhalten Sie automatisch
               <strong>Zugriff auf</strong>
