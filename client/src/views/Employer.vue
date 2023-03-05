@@ -668,10 +668,18 @@
     </div>
 
     <div class="container mb-4 mb-lg-5">
-      <h2 class="text-center">Feedback</h2>
-      <h3 class="display-4 text-center bold mb-4 mb-lg-5">
+      <!-- <h2 class="text-center">Feedback</h2> -->
+      <h3 class="display-4 text-center bold">
         Was unsere Kunden sagen
       </h3>
+      <p class="lead mb-4 mb-lg-5">
+        <strong class="text-primary" style="font-weight: 600"
+          >Über 1.000 registrierte Arbeitgeber aus dem
+          Gesundheitsbereich</strong
+        >
+        vertrauen uns bereits mit Ihren offenen Stellen speziell für
+        Medizinische & Zahnmedizinische Fachangestellte.
+      </p>
       <TheTestimonials />
     </div>
 

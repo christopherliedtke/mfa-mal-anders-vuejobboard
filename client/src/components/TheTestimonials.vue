@@ -32,7 +32,8 @@
             </div>
             <div>
               <p class="h6 mb-1">
-                <strong>{{ testimonial.name }}</strong> |
+                <strong>{{ testimonial.name }}</strong
+                >&nbsp;|
               </p>
               <p class="mb-0" style="line-height: 1.15">
                 <span class="text-muted">{{ testimonial.company }}</span>
