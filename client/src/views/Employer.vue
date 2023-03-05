@@ -92,7 +92,7 @@
               <div>
                 Erreichen Sie exklusiv
                 <span class="text-secondary" style="font-weight: 600"
-                  >engagierte
+                  >aktiv suchende und passiv wechselwillige
                   {{
                     $route.query.berufsgruppe &&
                     typeof $route.query.berufsgruppe == "string" &&
@@ -105,7 +105,7 @@
                       : "MFA & ZFA"
                   }}</span
                 >
-                auf unserer etablierte Karriereplattform
+                auf MFA mal anders
                 <!-- über Ihre Stellenanzeige auf <em>MFA mal anders</em> (inkl.
                 Platzierung in unserem wöchentlichen Job-Newsletter sowie auf
                 Google, Google Jobs und Social Media) -->
@@ -138,7 +138,7 @@
                   to="/stellengesuche"
                   class="text-secondary"
                   style="font-weight: 600"
-                  >Direkt Kontakt<svg
+                  >Direkter Kontakt<svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="12"
                     height="12"
@@ -156,7 +156,7 @@
                       d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
                     /></svg
                 ></b-link>
-                zu aktiv suchenden
+
                 {{
                   $route.query.berufsgruppe &&
                   typeof $route.query.berufsgruppe == "string" &&
@@ -168,8 +168,7 @@
                     ? "ZFA"
                     : "MFA & ZFA"
                 }}
-                aufnehmen
-                <!-- auf -->
+                aus unseren Stellengesuchen
               </div>
             </li>
             <li class="d-flex mb-2">
@@ -387,7 +386,8 @@
         class="h3 d-block mx-auto text-center"
         style="font-weight: 400; max-width: 35em"
       >
-        Die Jobbörse speziell für Medizinische Fachangestellte&nbsp;& <br />
+        Jobbörse und Karriereportal speziell für Medizinische
+        Fachangestellte&nbsp;& <br />
         Zahnmedizinische Fachangestellte
       </p>
       <!-- <p>
@@ -442,14 +442,9 @@
               }}
             </h4>
             <p>
-              Über Ihre
-              <router-link to="/stellenangebote"
-                ><strong>Stellenanzeige</strong></router-link
-              >
-              auf unserer <em>MFA mal anders</em> Karriereplattform erreichen
-              Sie
+              Über unser Fachportal erreichen Sie
               <strong
-                >exklusiv motivierte
+                >exklusiv aktiv suchende und passiv wechselwillige
                 {{
                   $route.query.berufsgruppe &&
                   typeof $route.query.berufsgruppe == "string" &&
@@ -462,7 +457,7 @@
                     : "MFA | ZFA"
                 }}</strong
               >
-              und damit genau Ihre Zielgruppe.
+              – also genau Ihre Zielgruppe – für Ihre offene Stelle.
             </p>
           </div>
         </div>
