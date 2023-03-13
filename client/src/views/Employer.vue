@@ -383,7 +383,7 @@
         Warum MFA mal anders?
       </h2>
       <p
-        class="h3 d-block mx-auto text-center"
+        class="h3 d-block mx-auto text-center mb-5"
         style="font-weight: 400; max-width: 35em"
       >
         Jobbörse und Karriereportal speziell für Medizinische
@@ -404,6 +404,39 @@
         denn je, qualifiziertes Praxispersonal zu finden. Wir helfen Ihnen bei
         der Suche!
       </p> -->
+
+      <div class="d-flex align-items-start mx-auto" style="max-width: 800px">
+        <b-img-lazy
+          class="mr-4 mb-3 shadow1"
+          style="border-radius: 50% 50% 15px 50%"
+          fluid
+          src="@/assets/img/KristinMaurach_portrait_800.jpg"
+          alt="Portrait Kristin Maurach"
+          width="100"
+          height="100"
+        />
+        <div>
+          <p class="mb-2">
+            <em
+              >Wir sind das Fachportal rund um das Thema Karrieremöglichkeiten
+              für MFA & ZFA. Als ausgebildete MFA mit jahrelanger
+              Berufserfahrung kenne ich die Herausforderungen, mit denen sowohl
+              Arbeitgeber als auch Mitarbeiter konfrontiert sind. Mit
+              <strong class="text-muted">MFA mal anders</strong> haben wir einen
+              Raum geschaffen, in dem beide Seiten zusammenkommen und
+              Unterstützung finden.
+            </em>
+          </p>
+          <div class="small">
+            <p class="h6 mb-1"><strong>Kristin Maurach</strong>&nbsp;|</p>
+            <p class="mb-0" style="line-height: 1.15">
+              <span class="text-muted"
+                >Gründerin von <em>MFA mal anders</em></span
+              >
+            </p>
+          </div>
+        </div>
+      </div>
 
       <div
         class="row row-cols-1 row-cols-lg-2 my-4 my-md-5 justify-content-center"
@@ -444,7 +477,7 @@
             <p>
               Über unser Fachportal erreichen Sie
               <strong
-                >exklusiv aktiv suchende sowie wechselwillige
+                >exklusiv aktiv suchende sowie latent wechselwillige
                 {{
                   $route.query.berufsgruppe &&
                   typeof $route.query.berufsgruppe == "string" &&
@@ -1286,7 +1319,7 @@
 
     <Head
       title="MFA & ZFA gesucht? – Stellenanzeige schalten!"
-      desc="MFA | ZFA gesucht? Jetzt Stellenanzeige schalten auf MFA mal anders! Die exklusive Jobbörse für Zahnmedizinische | Medizinische Fachangestellten."
+      desc="Zahnmedizinische | Medizinische Fachangestellte finden! Jetzt Stellenanzeige schalten auf MFA mal anders – Die Jobbörse nur für MFA & ZFA!"
       img=""
       :script="snippet"
     />

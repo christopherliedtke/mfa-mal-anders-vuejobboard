@@ -46,6 +46,8 @@
         </div>
       </div>
     </div>
+
+    <!-- <Head :script="snippet" /> -->
   </div>
 </template>
 
@@ -84,6 +86,49 @@
             imgUrl: require("@/assets/img/kinderarztpraxis_ostertor_200.jpg")
           }
         ])
+        // snippet: [
+        //   {
+        //     type: "application/ld+json",
+        //     inner: `{
+        //       "@context": "http://schema.org",
+        //       "@type" : "Review",
+        //       "itemReviewed": [{
+        //         "@type": "Product",
+        //         "name": "Stellenpaket Professional",
+        //         "offers": {
+        //           "@type": "Offer",
+        //           "url": "https://www.mfa-mal-anders.de/fuer-arbeitgeber",
+        //           "priceCurrency": "EUR",
+        //           "price": "1499"
+        //         }
+        //       }],
+        //       "positiveNotes": {
+        //         "@type": "ItemList",
+        //         "itemListElement": [
+        //           {
+        //             "@type": "ListItem",
+        //             "position": 1,
+        //             "name": "MFA mal anders war für unsere Praxis eine durchweg positive Erfahrung. Bereits einen Tag nach der Veröffentlichung unserer Stellenanzeige hat sich eine erste Bewerberin gemeldet. Nach vier Wochen hatten wir das perfekte Match gefunden. Mein besonderer Dank gilt Frau Maurach für ihre sehr professionelle Unterstützung unserer Bewerberinnensuche."
+        //           }
+        //         ]
+        //       },
+        //       "reviewRating": {
+        //         "@type": "Rating",
+        //         "ratingValue": "5"
+        //       },
+        //       "author": {
+        //         "@type": "Person",
+        //         "name": "Dr. Jörg Schröder",
+        //         "image": "${require("@/assets/img/DrJoergSchroeder.jpg")}",
+        //         "affiliation": {
+        //           "@type": "Organization",
+        //           "name": "Endodontologische Privatpraxis Berlin",
+        //           "url": "https://www.endodontiepraxis.de/"
+        //         }
+        //       }
+        //     }`
+        //   }
+        // ]
       };
     }
   };
