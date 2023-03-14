@@ -9,7 +9,7 @@ const internalJobsCache = require("../../../cache/internalJobsCache");
 const PaymentResolvers = {
   Query: {
     payment: async (root, args, context) => {
-      if (!context.user.isAdmin) {
+      if (!context.user || !context.user.isAdmin) {
         throw new AuthenticationError("Missing permission!");
       }
 
@@ -18,7 +18,7 @@ const PaymentResolvers = {
       return payment;
     },
     payments: async (root, args, context) => {
-      if (!context.user.isAdmin) {
+      if (!context.user || !context.user.isAdmin) {
         throw new AuthenticationError("Missing permission!");
       }
 
@@ -29,7 +29,7 @@ const PaymentResolvers = {
       return payments;
     },
     myPayments: async (root, args, context) => {
-      if (!context.user._id) {
+      if (!context.user) {
         throw new AuthenticationError("Must be logged in!");
       }
 
@@ -43,7 +43,7 @@ const PaymentResolvers = {
 
   Mutation: {
     addPayment: async (root, args, context) => {
-      if (!context.user.isAdmin) {
+      if (!context.user || !context.user.isAdmin) {
         throw new AuthenticationError("Missing permission!");
       }
 
@@ -113,7 +113,7 @@ const PaymentResolvers = {
       return payment;
     },
     updatePayment: async (root, args, context) => {
-      if (!context.user.isAdmin) {
+      if (!context.user || !context.user.isAdmin) {
         throw new AuthenticationError("Missing permission!");
       }
 
@@ -196,7 +196,7 @@ const PaymentResolvers = {
       return updatedPayment;
     },
     deletePayment: async (root, args, context) => {
-      if (!context.user.isAdmin) {
+      if (!context.user || !context.user.isAdmin) {
         throw new AuthenticationError("Missing permission!");
       }
 

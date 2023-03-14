@@ -226,19 +226,19 @@ async function startServer() {
       //   },
       // },
     ],
-    formatError: err => {
-      if (
-        (err.path.includes("company") &&
-          err.extensions.exception.path === "_id" &&
-          err.extensions.exception.kind === "ObjectId") ||
-        (err.path.includes("register") &&
-          err.extensions.argumentName === "registerRequirements")
-        // || err.extensions.code === "BAD_USER_INPUT"
-      ) {
-        return err;
-      }
-      console.error(err);
-      return err;
+    formatError: formattedError => {
+      // if (
+      //   (formattedError.path.includes("company") &&
+      //     formattedError.extensions.exception.path === "_id" &&
+      //     formattedError.extensions.exception.kind === "ObjectId") ||
+      //   (formattedError.path.includes("register") &&
+      //     formattedError.extensions.argumentName === "registerRequirements")
+      //   // || err.extensions.code === "BAD_USER_INPUT"
+      // ) {
+      //   return formattedError;
+      // }
+      console.error(formattedError);
+      return formattedError;
     },
   });
 

@@ -27,6 +27,10 @@ const { sesMailTransporter } = require("../../../lib/ses");
 const UserResolvers = {
   Query: {
     me: async (root, args, context) => {
+      if (!context.user) {
+        throw new AuthenticationError("Must be logged in!");
+      }
+
       const user = await User.findOne({
         _id: context.user._id,
       });
@@ -65,10 +69,14 @@ const UserResolvers = {
       return user;
     },
     meFromToken: (root, args, context) => {
+      if (!context.user) {
+        throw new AuthenticationError("Must be logged in!");
+      }
+
       return context.user;
     },
     adminUser: async (root, args, context) => {
-      if (!context.user.isAdmin) {
+      if (!context.user || !context.user.isAdmin) {
         throw new AuthenticationError("Missing permission!");
       }
 
@@ -77,7 +85,7 @@ const UserResolvers = {
       return user;
     },
     adminUsers: async (root, args, context) => {
-      if (!context.user.isAdmin) {
+      if (!context.user || !context.user.isAdmin) {
         throw new AuthenticationError("Missing permission!");
       }
 
@@ -416,7 +424,7 @@ const UserResolvers = {
       return { _id: user._id };
     },
     accountVerificationGetEmail: async (root, args, context) => {
-      if (!context.user._id) {
+      if (!context.user) {
         throw new ApolloError(errorMsg.general);
       }
 
@@ -488,7 +496,7 @@ const UserResolvers = {
       return { _id: user._id };
     },
     updateMe: async (root, args, context) => {
-      if (!context.user._id) {
+      if (!context.user) {
         throw new AuthenticationError("Must be logged in!");
       }
 
@@ -530,7 +538,7 @@ const UserResolvers = {
       return user;
     },
     deleteMe: async (root, args, context) => {
-      if (!context.user._id) {
+      if (!context.user) {
         throw new AuthenticationError("Must be logged in!");
       }
 
@@ -575,7 +583,7 @@ const UserResolvers = {
       return deletedUser;
     },
     adminUserActivationConfirmation: async (root, args, context) => {
-      if (!context.user.isAdmin) {
+      if (!context.user || !context.user.isAdmin) {
         throw new AuthenticationError("Missing permission!");
       }
 
@@ -646,7 +654,7 @@ const UserResolvers = {
       return { _id: user._id };
     },
     adminUpdateUser: async (root, args, context) => {
-      if (!context.user.isAdmin) {
+      if (!context.user || !context.user.isAdmin) {
         throw new AuthenticationError("Missing permission!");
       }
 
@@ -665,7 +673,7 @@ const UserResolvers = {
       return user;
     },
     adminDeleteUser: async (root, args, context) => {
-      if (!context.user.isAdmin) {
+      if (!context.user || !context.user.isAdmin) {
         throw new AuthenticationError("Missing permission!");
       }
 
@@ -677,7 +685,7 @@ const UserResolvers = {
 
   Job: {
     userId: async (job, args, context) => {
-      if (!context.user.isAdmin) {
+      if (!context.user || !context.user.isAdmin) {
         return null;
         // return job.userId;
       }
@@ -709,7 +717,7 @@ const UserResolvers = {
 
   Payment: {
     user: async (payment, args, context) => {
-      if (!context.user.isAdmin) {
+      if (!context.user || !context.user.isAdmin) {
         throw new AuthenticationError("Missing permission!");
       }
 
@@ -729,7 +737,7 @@ const UserResolvers = {
 
   Training: {
     user: async (training, args, context) => {
-      if (!context.user.isAdmin) {
+      if (!context.user || !context.user.isAdmin) {
         throw new AuthenticationError("Missing permission!");
       }
 
@@ -745,7 +753,7 @@ const UserResolvers = {
 
   JobSeek: {
     user: async (jobSeek, args, context) => {
-      if (!context.user.isAdmin) {
+      if (!context.user || !context.user.isAdmin) {
         throw new AuthenticationError("Missing permission!");
       }
 

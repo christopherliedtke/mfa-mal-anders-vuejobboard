@@ -4,7 +4,7 @@ const { JobAlert } = require("../../models/jobAlert");
 const JobAlertResolvers = {
   Query: {
     myJobAlert: async (root, args, context) => {
-      if (!context.user._id) {
+      if (!context.user) {
         throw new AuthenticationError("Must be logged in!");
       }
 
@@ -16,7 +16,7 @@ const JobAlertResolvers = {
       return jobAlert;
     },
     myJobAlerts: async (root, args, context) => {
-      if (!context.user._id) {
+      if (!context.user) {
         throw new AuthenticationError("Must be logged in!");
       }
 
@@ -28,7 +28,7 @@ const JobAlertResolvers = {
 
   Mutation: {
     addJobAlert: async (root, args, context) => {
-      if (!context.user._id) {
+      if (!context.user) {
         throw new AuthenticationError("Must be logged in!");
       }
 
@@ -40,7 +40,7 @@ const JobAlertResolvers = {
       return newJobAlert;
     },
     deleteJobAlert: async (root, args, context) => {
-      if (!context.user._id) {
+      if (!context.user) {
         throw new AuthenticationError("Must be logged in!");
       }
 
@@ -54,7 +54,7 @@ const JobAlertResolvers = {
   },
 
   User: {
-    jobAlerts: async (user) => {
+    jobAlerts: async user => {
       const jobAlerts = await JobAlert.find({ user: user._id });
       return jobAlerts;
     },

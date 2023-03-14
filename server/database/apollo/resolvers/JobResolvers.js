@@ -142,7 +142,7 @@ const JobResolvers = {
       };
     },
     myJob: async (root, args, context) => {
-      if (!context.user._id) {
+      if (!context.user) {
         throw new AuthenticationError("Must be logged in!");
       }
 
@@ -157,7 +157,7 @@ const JobResolvers = {
       return job;
     },
     myJobs: async (root, args, context) => {
-      if (!context.user._id) {
+      if (!context.user) {
         throw new AuthenticationError("Must be logged in!");
       }
 
@@ -173,7 +173,7 @@ const JobResolvers = {
       return jobs;
     },
     adminJob: async (root, args, context) => {
-      if (!context.user.isAdmin) {
+      if (!context.user || !context.user.isAdmin) {
         throw new AuthenticationError("Missing permission!");
       }
 
@@ -184,7 +184,7 @@ const JobResolvers = {
       return job;
     },
     adminJobs: async (root, args, context) => {
-      if (!context.user.isAdmin) {
+      if (!context.user || !context.user.isAdmin) {
         throw new AuthenticationError("Missing permission!");
       }
 
@@ -208,7 +208,7 @@ const JobResolvers = {
 
   Mutation: {
     addJob: async (root, args, context) => {
-      if (!context.user._id) {
+      if (!context.user) {
         throw new AuthenticationError("Must be logged in!");
       }
 
@@ -233,7 +233,7 @@ const JobResolvers = {
       return newJob;
     },
     updateJob: async (root, args, context) => {
-      if (!context.user._id) {
+      if (!context.user) {
         throw new AuthenticationError("Must be logged in!");
       }
 
@@ -265,7 +265,7 @@ const JobResolvers = {
       return updatedJob;
     },
     deleteJob: async (root, args, context) => {
-      if (!context.user._id) {
+      if (!context.user) {
         throw new AuthenticationError("Must be logged in!");
       }
 
@@ -280,7 +280,7 @@ const JobResolvers = {
       return updatedJob;
     },
     adminAddJob: async (root, args, context) => {
-      if (!context.user.isAdmin) {
+      if (!context.user || !context.user.isAdmin) {
         throw new AuthenticationError("Missing permission!");
       }
 
@@ -304,7 +304,7 @@ const JobResolvers = {
       return newJob;
     },
     adminUpdateJob: async (root, args, context) => {
-      if (!context.user.isAdmin) {
+      if (!context.user || !context.user.isAdmin) {
         throw new AuthenticationError("Missing permission!");
       }
 
@@ -334,7 +334,7 @@ const JobResolvers = {
       return updatedJob;
     },
     adminDeleteJob: async (root, args, context) => {
-      if (!context.user.isAdmin) {
+      if (!context.user || !context.user.isAdmin) {
         throw new AuthenticationError("Missing permission!");
       }
 
@@ -356,7 +356,11 @@ const JobResolvers = {
 
   User: {
     jobs: async (user, args, context) => {
-      if (!user._id === context.user._id || !context.user.isAdmin) {
+      if (
+        !context.user ||
+        !user._id === context.user._id ||
+        !context.user.isAdmin
+      ) {
         throw new AuthenticationError("Missing permission!");
       }
 
@@ -367,7 +371,11 @@ const JobResolvers = {
 
   Company: {
     jobs: async (company, args, context) => {
-      if (!company.userId === context.user._id || !context.user.isAdmin) {
+      if (
+        !context.user ||
+        !company.userId === context.user._id ||
+        !context.user.isAdmin
+      ) {
         throw new AuthenticationError("Missing permission!");
       }
 
@@ -394,7 +402,7 @@ const JobResolvers = {
 
   Payment: {
     job: async (payment, args, context) => {
-      if (!context.user._id) {
+      if (!context.user) {
         throw new AuthenticationError("Must be logged in!");
       }
 

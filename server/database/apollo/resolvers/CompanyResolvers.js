@@ -23,6 +23,10 @@ const CompanyResolvers = {
       return companies;
     },
     myCompanies: async (root, args, context) => {
+      if (!context.user) {
+        throw new AuthenticationError("Must be logged in!");
+      }
+
       const companies = await Company.find({
         userId: context.user._id,
       }).sort({
@@ -34,7 +38,7 @@ const CompanyResolvers = {
 
   Mutation: {
     addCompany: async (root, args, context) => {
-      if (!context.user._id) {
+      if (!context.user) {
         throw new AuthenticationError("Must be logged in!");
       }
 
@@ -73,7 +77,7 @@ const CompanyResolvers = {
       return company;
     },
     updateCompany: async (root, args, context) => {
-      if (!context.user._id) {
+      if (!context.user) {
         throw new AuthenticationError("Must be logged in!");
       }
 
@@ -114,7 +118,7 @@ const CompanyResolvers = {
       return company;
     },
     deleteCompany: async (root, args, context) => {
-      if (!context.user._id) {
+      if (!context.user) {
         throw new AuthenticationError("Must be logged in!");
       }
 
@@ -130,7 +134,7 @@ const CompanyResolvers = {
       return company;
     },
     adminUpdateCompany: async (root, args, context) => {
-      if (!context.user.isAdmin) {
+      if (!context.user || !context.user.isAdmin) {
         throw new AuthenticationError("Missing permission!");
       }
 
@@ -167,7 +171,7 @@ const CompanyResolvers = {
       return company;
     },
     adminDeleteCompany: async (root, args, context) => {
-      if (!context.user.isAdmin) {
+      if (!context.user || !context.user.isAdmin) {
         throw new AuthenticationError("Missing permission!");
       }
 

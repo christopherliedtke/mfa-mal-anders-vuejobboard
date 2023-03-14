@@ -92,7 +92,7 @@ const TrainingResolvers = {
       return trainings;
     },
     myTraining: async (root, args, context) => {
-      if (!context.user._id) {
+      if (!context.user) {
         throw new AuthenticationError("Must be logged in!");
       }
 
@@ -104,7 +104,7 @@ const TrainingResolvers = {
       return training;
     },
     myTrainings: async (root, args, context) => {
-      if (!context.user._id) {
+      if (!context.user) {
         throw new AuthenticationError("Must be logged in!");
       }
 
@@ -122,7 +122,7 @@ const TrainingResolvers = {
       return trainings;
     },
     adminTraining: async (root, args, context) => {
-      if (!context.user.isAdmin) {
+      if (!context.user || !context.user.isAdmin) {
         throw new AuthenticationError("Missing permission!");
       }
 
@@ -133,7 +133,7 @@ const TrainingResolvers = {
       return training;
     },
     adminTrainings: async (root, args, context) => {
-      if (!context.user.isAdmin) {
+      if (!context.user || !context.user.isAdmin) {
         throw new AuthenticationError("Missing persmission!");
       }
 
@@ -145,7 +145,7 @@ const TrainingResolvers = {
 
   Mutation: {
     addTraining: async (root, args, context) => {
-      if (!context.user._id) {
+      if (!context.user) {
         throw new AuthenticationError("Must be logged in!");
       }
 
@@ -160,7 +160,7 @@ const TrainingResolvers = {
       return newTraining;
     },
     updateTraining: async (root, args, context) => {
-      if (!context.user._id) {
+      if (!context.user) {
         throw new AuthenticationError("Must be logged in!");
       }
 
@@ -183,7 +183,7 @@ const TrainingResolvers = {
       return updatedTraining;
     },
     submitTraining: async (root, args, context) => {
-      if (!context.user._id) {
+      if (!context.user) {
         throw new AuthenticationError("Must be logged in!");
       }
 
@@ -224,7 +224,7 @@ const TrainingResolvers = {
       return updatedTraining;
     },
     deleteTraining: async (root, args, context) => {
-      if (!context.user._id) {
+      if (!context.user) {
         throw new AuthenticationError("Must be logged in!");
       }
 

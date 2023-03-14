@@ -418,12 +418,14 @@
         <div>
           <p class="mb-2">
             <em
-              >Wir sind das Fachportal rund um das Thema Karrieremöglichkeiten
-              für MFA & ZFA. Als ausgebildete MFA mit jahrelanger
-              Berufserfahrung kenne ich die Herausforderungen, mit denen sowohl
+              >Wir sind das Fachportal rund um die Themen Karriere und
+              Weiterbildung speziell für MFA & ZFA. Als ausgebildete MFA mit
+              langjähriger Erfahrung aus der Arztpraxis, später bei der KV
+              Berlin und zuletzt als verantwortliche Recruiterin für ein Medizin
+              Start-Up, kenne ich die Herausforderungen, mit denen sowohl
               Arbeitgeber als auch Mitarbeiter konfrontiert sind. Mit
               <strong class="text-muted">MFA mal anders</strong> haben wir einen
-              Raum geschaffen, in dem beide Seiten zusammenkommen und
+              Raum geschaffen, in dem beide Seiten zueinander kommen und
               Unterstützung finden.
             </em>
           </p>

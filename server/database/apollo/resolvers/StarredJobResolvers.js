@@ -4,7 +4,7 @@ const { StarredJob } = require("../../models/starredJob");
 const StarredJobResolvers = {
   Query: {
     starredJobs: async (root, args, context) => {
-      if (!context.user._id) {
+      if (!context.user) {
         throw new AuthenticationError("Must be logged in!");
       }
 
@@ -18,7 +18,7 @@ const StarredJobResolvers = {
 
   Mutation: {
     addStarredJob: async (root, args, context) => {
-      if (!context.user._id) {
+      if (!context.user) {
         throw new AuthenticationError("Must be logged in!");
       }
 
@@ -30,7 +30,7 @@ const StarredJobResolvers = {
       return newStarredJob;
     },
     deleteStarredJob: async (root, args, context) => {
-      if (!context.user._id) {
+      if (!context.user) {
         throw new AuthenticationError("Must be logged in!");
       }
 
@@ -44,7 +44,7 @@ const StarredJobResolvers = {
   },
 
   User: {
-    starredJobs: async (user) => {
+    starredJobs: async user => {
       const starredJobs = await StarredJob.find({ user: user._id });
       return starredJobs;
     },

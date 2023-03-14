@@ -165,7 +165,7 @@
       <div class="row">
         <div class="col-12 col-lg-4">
           <label
-            for="simple-applcation"
+            for="simple-application"
             class="bg-secondary text-light border-radius1 px-1"
             >Kurzbewerbungen aktivieren</label
           >
@@ -410,7 +410,7 @@
             :state="validated ? (job.contactGender ? true : null) : null"
           >
             <b-form-select-option value=""
-              >-- Titel auswählen --</b-form-select-option
+              >-- Anrede auswählen --</b-form-select-option
             >
             <b-form-select-option
               v-for="title in contactGenderOptions"

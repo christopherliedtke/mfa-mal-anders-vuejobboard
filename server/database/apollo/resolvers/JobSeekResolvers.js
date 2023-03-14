@@ -97,7 +97,7 @@ const JobSeekResolvers = {
       return { jobSeeks, count, location };
     },
     myJobSeek: async (root, args, context) => {
-      if (!context.user._id) {
+      if (!context.user) {
         throw new AuthenticationError("Must be logged in!");
       }
 
@@ -114,7 +114,7 @@ const JobSeekResolvers = {
       return jobSeek;
     },
     myJobSeeks: async (root, args, context) => {
-      if (!context.user._id) {
+      if (!context.user) {
         throw new AuthenticationError("Must be logged in!");
       }
 
@@ -132,7 +132,7 @@ const JobSeekResolvers = {
       return jobSeeks;
     },
     adminJobSeek: async (root, args, context) => {
-      if (!context.user.isAdmin) {
+      if (!context.user || !context.user.isAdmin) {
         throw new AuthenticationError("Missing permission!");
       }
 
@@ -143,7 +143,7 @@ const JobSeekResolvers = {
       return jobSeek;
     },
     adminJobSeeks: async (root, args, context) => {
-      if (!context.user.isAdmin) {
+      if (!context.user || !context.user.isAdmin) {
         throw new AuthenticationError("Missing persmission!");
       }
 
@@ -160,7 +160,7 @@ const JobSeekResolvers = {
 
   Mutation: {
     addJobSeek: async (root, args, context) => {
-      if (!context.user._id) {
+      if (!context.user) {
         throw new AuthenticationError("Must be logged in!");
       }
 
@@ -191,7 +191,7 @@ const JobSeekResolvers = {
       return newJobSeek;
     },
     updateJobSeek: async (root, args, context) => {
-      if (!context.user._id) {
+      if (!context.user) {
         throw new AuthenticationError("Must be logged in!");
       }
 
@@ -236,7 +236,7 @@ const JobSeekResolvers = {
       return updatedJobSeek;
     },
     deleteJobSeek: async (root, args, context) => {
-      if (!context.user._id) {
+      if (!context.user) {
         throw new AuthenticationError("Must be logged in!");
       }
       const filter = { _id: args._id };
