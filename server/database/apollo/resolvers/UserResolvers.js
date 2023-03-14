@@ -69,10 +69,6 @@ const UserResolvers = {
       return user;
     },
     meFromToken: (root, args, context) => {
-      if (!context.user) {
-        throw new AuthenticationError("Must be logged in!");
-      }
-
       return context.user;
     },
     adminUser: async (root, args, context) => {
