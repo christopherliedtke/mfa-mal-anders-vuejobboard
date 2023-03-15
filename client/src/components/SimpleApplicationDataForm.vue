@@ -509,7 +509,7 @@
         this.$store.dispatch("setOverlay", false);
       },
       formatter(value) {
-        return value.replace(/"/, "'").replace(/\\/g, "/");
+        return value.replace(/"/gi, "'").replace(/\\/g, "/");
       },
       formValidation() {
         this.validated = true;

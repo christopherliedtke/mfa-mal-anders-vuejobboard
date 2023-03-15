@@ -342,7 +342,7 @@
         };
       },
       formatter(value) {
-        return value.replaceAll('"', "'");
+        return value.replace(/"/gi, "'").replace(/\\/g, "/");
       },
       formValidation() {
         this.validated = true;
