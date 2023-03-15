@@ -17,7 +17,7 @@ const sharpImg = async (req, res, next) => {
     const newFilename = `${newWidth}x${newHeight}_${filename}`;
     const newPath = __dirname + "/../uploads/" + newFilename;
 
-    await sharp(path)
+    await sharp(path, { failOn: "truncated" })
       .resize({ width: newWidth, height: newHeight, fit: newFit })
       .toFile(newPath);
 

@@ -5,7 +5,169 @@
       <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
     </div>
 
-    <div class="header-img" style="max-height: 300px">
+    <div
+      id="hero"
+      class="text-light shadow1 border-radius2 my-3 mr-2 mr-lg-5 my-lg-4 position-relative"
+      style="border-top-left-radius: 0; border-bottom-left-radius: 0"
+    >
+      <div
+        style="max-width: 1600px; overflow-x: hidden"
+        class="row px-3 pt-5 pb-4 px-md-5 mx-auto ml-lg-auto position-relative"
+      >
+        <div class="bg-logo"></div>
+        <div class="col-12 col-md-9" style="z-index: 1">
+          <!-- <h2 class="display-4 bold mb-3" style="line-height: 1.1em">
+            Unzufrieden im Job? <br />
+            Auf der Suche nach einer neuen Herausforderung?
+          </h2>
+
+          <h3 class="d-none d-lg-block">
+            <em>
+              Unsere Arbeitgeber bewerben sich bei Dir!
+            </em>
+          </h3> -->
+          <h4 class="mb-2">
+            <em>
+              Unzufrieden im Job? Auf der Suche nach einer neuen
+              Herausforderung?
+            </em>
+          </h4>
+          <h2 class="display-4 bold mb-3" style="line-height: 1.1em">
+            Unsere Arbeitgeber bewerben sich bei Dir!
+          </h2>
+
+          <ul class="lead no-bullets mb-4 my-lg-4 py-lg-2 mt-lg-4">
+            <li class="d-flex mb-2">
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="25"
+                  fill="currentColor"
+                  class="bi bi-check2-circle mr-3"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"
+                  />
+                  <path
+                    d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"
+                  />
+                </svg>
+              </span>
+              <div>
+                Du hast die
+                <span style="font-weight: 600"
+                  >volle Kontrolle über Deine Daten</span
+                >, kannst Dein Stellengesuch
+                <span style="font-weight: 600">anonym</span> schalten und
+                jederzeit online/offline nehmen
+              </div>
+            </li>
+            <li class="d-flex mb-2">
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="25"
+                  fill="currentColor"
+                  class="bi bi-check2-circle mr-3"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"
+                  />
+                  <path
+                    d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"
+                  />
+                </svg>
+              </span>
+              <div>
+                <span style="font-weight: 600">Du entscheidest</span>
+                , wie Du auf Kontaktanfragen von Arbeitgebern reagierst
+              </div>
+            </li>
+            <li class="d-flex mb-2">
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="25"
+                  fill="currentColor"
+                  class="bi bi-check2-circle mr-3"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"
+                  />
+                  <path
+                    d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"
+                  />
+                </svg>
+              </span>
+              <div>
+                Dein Stellengesuch schaltest Du in
+                <span style="font-weight: 600">unter 5 Minuten</span> und zu
+                <span style="font-weight: 600">100% kostenfrei</span>
+              </div>
+            </li>
+
+            <li class="d-flex mb-2">
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="25"
+                  height="25"
+                  fill="currentColor"
+                  class="bi bi-check2-circle mr-3"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"
+                  />
+                  <path
+                    d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"
+                  />
+                </svg>
+              </span>
+              <div>
+                Du bist eine gefragte Fachkraft!
+                <span style="font-weight: 600"
+                  >Drehe den Bewerbungsprozess um</span
+                >
+                und lass Dich von attraktiven Arbeitgebern kontaktieren
+                (natürlich komplett anonym)
+              </div>
+            </li>
+          </ul>
+
+          <div class="mt-3">
+            <!-- <b-button
+              to="#vorteile"
+              variant="secondary"
+              size="lg"
+              class="d-block d-md-inline-block my-2 mr-md-2"
+              >Mehr erfahren</b-button
+            > -->
+            <b-button
+              to="/auth/register?role=employee"
+              variant="primary"
+              size="lg"
+              class="d-block d-md-inline-block my-2 mr-md-2"
+              >Stellengesuch erstellen</b-button
+            >
+            <b-button
+              to="/stellengesuche"
+              variant="outline-light"
+              class="d-block d-md-inline-block my-2 mr-md-2"
+              >Veröffentlichte Stellengesuche ansehen</b-button
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="header-img" style="max-height: 300px">
       <b-img-lazy
         class="header-img"
         style="object-position: center center"
@@ -25,12 +187,11 @@
         offset="1000"
       />
       <div class="overlay"></div>
-    </div>
+    </div> -->
 
-    <div class="container mt-4 mb-4 mb-lg-5">
-      <h2 class="display-3 bold text-gray-dark">
-        Lass Dich <br />
-        von Arbeitgebern finden
+    <div class="container mt-5 mb-4 mb-lg-5">
+      <h2 class="display-4 bold text-lg-center">
+        So startest Du...
       </h2>
       <p class="lead">
         Du bist auf der Suche nach einer neuen Stelle, aber findest nicht das
@@ -146,7 +307,7 @@
           <b-link to="/stellengesuche" class="bold"
             >Stellengesuch in der Übersicht</b-link
           >
-          aussehen
+          aussehen (anonym oder nicht anonym)
         </p>
         <div class="row justify-content-center">
           <div class="col-12 col-lg-8">
@@ -527,3 +688,27 @@
     }
   };
 </script>
+
+<style lang="scss" scoped>
+  #hero {
+    background: hsl(35, 98%, 47%) 0%;
+
+    @media screen and (min-width: 768px) {
+      background: linear-gradient(
+          90deg,
+          hsl(35, 98%, 47%) 0%,
+          hsl(35, 98%, 47%) 50%,
+          hsla(35, 98%, 47%, 0.467) 100%
+        ),
+        image-set(
+            url("/img/pexels-fauxels-3184465_ylkztw_c_scale,w_902.jpg") 1x,
+            url("/img/pexels-fauxels-3184465_ylkztw_c_scale,w_1394.jpg") 2x
+          )
+          400px center;
+
+      background-size: cover;
+      background-blend-mode: normal;
+      border-radius: $border-radius2;
+    }
+  }
+</style>
