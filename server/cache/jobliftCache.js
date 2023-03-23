@@ -34,6 +34,7 @@ class Cache {
         method: "get",
         url: process.env.JOBLIFT_FEED_URL,
         timeout: 3000,
+        maxContentLength: 1048576 * 25, //50MB
       });
 
       let jobLiftJobs;

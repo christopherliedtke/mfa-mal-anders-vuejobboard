@@ -83,8 +83,8 @@
                 </svg>
               </span>
               <div>
-                <span style="font-weight: 600">Du entscheidest</span>
-                , wie Du auf Kontaktanfragen von Arbeitgebern reagierst
+                <span style="font-weight: 600">Du entscheidest</span>, wie Du
+                auf Kontaktanfragen von Arbeitgebern reagierst
               </div>
             </li>
             <li class="d-flex mb-2">
@@ -193,14 +193,16 @@
       <h2 class="display-4 bold text-lg-center">
         So startest Du...
       </h2>
-      <p class="lead">
-        Du bist auf der Suche nach einer neuen Stelle, aber findest nicht das
-        passende Angebot? Mit einem Stellengesuch auf
-        <em>MFA mal anders</em> kannst Du Dich jetzt von passenden Arbeitgebern
-        finden und kontaktieren lassen. Und so funktioniert es...
-      </p>
+      <div class="text-lg-center mx-auto" style="max-width: 55em">
+        <p class="lead">
+          Du bist auf der Suche nach einer neuen Stelle, aber findest nicht das
+          passende Angebot? Mit einem Stellengesuch auf
+          <em>MFA mal anders</em> kannst Du Dich jetzt von passenden
+          Arbeitgebern finden und kontaktieren lassen. Und so funktioniert es...
+        </p>
+      </div>
 
-      <div class="row row-cols-1 row-cols-md-3">
+      <div class="row row-cols-1 row-cols-lg-3">
         <div class="col">
           <b-link
             to="/auth/register?role=employee&redirect=%2Fuser%2Fstellengesuche"
@@ -356,19 +358,22 @@
 
     <div class="container my-5">
       <h2 class="h1 bold text-center">Deine Vorteile</h2>
-      <p>
-        Ob Arztpraxis, Zahnarztpraxis, MVZ, Krankenhaus oder ein anderes
-        Unternehmen im Gesundheitswesen. In einem Stellengesuch auf
-        <em>MFA&nbsp;mal&nbsp;anders</em> beschreibst Du Deine individuellen
-        Anforderungen an Deinen neuen Job und bekommst Angebote von Unternehmen
-        für Deine bevorzugten Rahmenbedingungen und Dein gewünschtes Gehalt.
-      </p>
-      <p>
-        Egal, ob Du aktiv auf der Suche nach einer neuen Stelle bist oder
-        eigentlich nur die Augen nach interessanten Angeboten offen hältst. Mit
-        einem Stellengesuch auf <em>MFA&nbsp;mal&nbsp;anders</em> kannst Du
-        Deine Jobsuche ideal ergänzen.
-      </p>
+      <div class="text-lg-center mx-auto" style="max-width: 55em">
+        <p>
+          Ob Arztpraxis, Zahnarztpraxis, MVZ, Krankenhaus oder ein anderes
+          Unternehmen im Gesundheitswesen. In einem Stellengesuch auf
+          <em>MFA&nbsp;mal&nbsp;anders</em> beschreibst Du Deine individuellen
+          Anforderungen an Deinen neuen Job und bekommst Angebote von
+          Unternehmen für Deine bevorzugten Rahmenbedingungen und Dein
+          gewünschtes Gehalt.
+        </p>
+        <p>
+          Egal, ob Du aktiv auf der Suche nach einer neuen Stelle bist oder
+          eigentlich nur die Augen nach interessanten Angeboten offen hältst.
+          Mit einem Stellengesuch auf <em>MFA&nbsp;mal&nbsp;anders</em> kannst
+          Du Deine Jobsuche ideal ergänzen.
+        </p>
+      </div>
 
       <div
         class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center my-4"
@@ -455,7 +460,8 @@
             <h4 class="mt-2 mb-3">Direkter Kontakt</h4>
             <p>
               Der Arbeitgeber nimmt direkt zu Dir Kontakt auf. Als Plattform
-              stehen wir nicht als Dritte zwischen Dir und dem Arbeitgeber.
+              stehen wir nicht als Dritte zwischen Dir und dem Arbeitgeber. Du
+              bleibst dabei komplett <strong>anonym</strong>!
             </p>
           </div>
         </div>
