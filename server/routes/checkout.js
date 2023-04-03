@@ -100,11 +100,11 @@ router.post("/create-invoice", verifyToken, async (req, res) => {
                 return { coupon };
               })
             : [],
-        footer: `Sie können den Rechnungsbetrag über den Zahlungslink oder per Überweisung an das folgende Konto begleichen:\n\n   Empfänger: MFA mal anders – K. Maurach \u0026 C. Liedtke GbR\n   Bank: solarisbank AG\n   IBAN: DE43 1101 0100 2124 2828 90\n   BIC: SOBKDEBBXXX\n   Verwendungszweck: Rechnungsnummer\n\nSollten noch Fragen oder Wünsche offen geblieben sein, nehmen Sie gern Kontakt zu uns auf.\n\n${
-          invoiceItems.some(item => item.metadata.jobId)
-            ? "Der Leistungszeitpunkt entspricht dem Rechnungsdatum."
-            : ""
-        }`,
+        // footer: `Sie können den Rechnungsbetrag über den Zahlungslink oder per Überweisung an das folgende Konto begleichen:\n\n   Empfänger: MFA mal anders – K. Maurach \u0026 C. Liedtke GbR\n   IBAN: DE19 1001 0123 5717 7033 23\n   BIC: QNTODEB2XXX\n   Verwendungszweck: Rechnungsnummer\n\nSollten noch Fragen oder Wünsche offen geblieben sein, nehmen Sie gern Kontakt zu uns auf.\n\n${
+        //   invoiceItems.some(item => item.metadata.jobId)
+        //     ? "Der Leistungszeitpunkt entspricht dem Rechnungsdatum."
+        //     : ""
+        // }`,
       });
     } catch (error) {
       console.error("Error on create invoice in checkout: ", error);

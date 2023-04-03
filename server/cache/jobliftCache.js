@@ -169,8 +169,7 @@ class Cache {
           : []
       );
     } catch (error) {
-      console.error(error);
-      console.log("error: ", error);
+      console.error("Error in fetching joblift jobs", error);
       this.cache.set("jobs", [], 60 * 60 * 2);
     }
 

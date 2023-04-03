@@ -111,7 +111,7 @@
 
       <h2 class="h4">
         <strong
-          >Wie viel verdient man als Mdizinische Fachangestellte (MFA) bzw.
+          >Wie viel verdient man als Medizinische Fachangestellte (MFA) bzw.
           ArzthelferIn?</strong
         >
       </h2>
