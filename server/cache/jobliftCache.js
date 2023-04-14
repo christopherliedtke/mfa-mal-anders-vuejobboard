@@ -170,7 +170,7 @@ class Cache {
       );
     } catch (error) {
       console.error("Error in fetching joblift jobs", error);
-      this.cache.set("jobs", [], 60 * 60 * 2);
+      this.cache.set("jobs", [], 60 * 60 * 24);
     }
 
     return this.cache.get("jobs");
