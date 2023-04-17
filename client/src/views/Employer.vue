@@ -321,7 +321,7 @@
             </li> -->
           </ul>
 
-          <div class="">
+          <!-- <div class="">
             Mit unserer
             <span class="bold"
               ><svg
@@ -343,7 +343,7 @@
               >OSTEREI23</span
             >
             an.
-          </div>
+          </div> -->
 
           <div class="mt-3">
             <!-- <b-button
@@ -368,9 +368,9 @@
               >Muster Stellenanzeige + 8 Tipps</b-button
             >
           </div>
-          <p class="text-xl-right mt-2 mb-0">
+          <!-- <p class="text-xl-right mt-2 mb-0">
             <small>* Die Osteraktion läuft bis zum 16. April 2023.</small>
-          </p>
+          </p> -->
         </div>
         <!-- <div
           class="col-12 col-lg-4 d-none d-lg-flex justify-content-center align-items-center"
@@ -731,7 +731,7 @@
           Stellenpakete zur Verfügung.
         </p> -->
 
-        <div
+        <!-- <div
           class="bg-primary text-light lead text-center p-2 border-radius2 mb-4"
         >
           Mit unserer
@@ -753,7 +753,7 @@
           Veröffentlichung Ihrer Stellenanzeige den Aktionscode
           <span class="bg-secondary px-1 bold border-radius1 ">OSTEREI23</span>
           an.
-        </div>
+        </div> -->
         <!-- <div class="my-4  text-center text-lg-left">
           <p>
             Mit der
@@ -829,9 +829,9 @@
             ><strong>Kontaktformular</strong></router-link
           >.
         </p>
-        <p class="text-right">
+        <!-- <p class="text-right">
           <small>* Die Osteraktion läuft bis zum 16. April 2023.</small>
-        </p>
+        </p> -->
         <!-- <p>
           Sie haben die Möglichkeit, Ihre Stellenanzeige nach der
           <b-link to="/auth/register"><strong>Registrierung</strong></b-link>
